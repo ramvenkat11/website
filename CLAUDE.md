@@ -89,6 +89,8 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   both themes (theme comes from the saved profile, not localStorage). Details in s2oserver's
   CLAUDE.md under "GUI pages back to screenshots".
 - macOS has no `timeout`; the Bash cwd persists between calls - always cd explicitly.
+- Before running build.py, check `git status --porcelain html/docs`: the build overwrites
+  html/docs wholesale, and a hand edit sitting there uncommitted would be lost.
 
 ## Site facts
 - Tagline "Search that executes." is DECIDED; do not re-raise. Hero lines are factual statements
