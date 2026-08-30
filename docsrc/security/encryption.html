@@ -2,7 +2,7 @@
 <!--figure:encryption-->
 
 <h2>What is encrypted</h2>
-<p>Conversation state is everything a conversation carries between runs: variables, prompt history, output and where an agent paused. The user's query is stored encrypted as the conversation title and on the execution record. Hosted secrets are encrypted before they are stored. Everything else the cloud holds is stored in plain form; see <a href="data-privacy.html">Data privacy</a> for the full list. The cipher is AES-GCM, and transport between the agent server and the cloud is always TLS.</p>
+<p>Conversation state is everything a conversation carries between runs: variables, prompt history, output and where an agent paused. The user's query is stored encrypted as the conversation title and on the execution record. Hosted secrets are encrypted before they are stored. Agent descriptions and long-term memories are stored encrypted as well: the cloud reads the description once to index the agent, reads the memory text once to embed the memory, and keeps only the encrypted form. A memory's label is stored in plain form. Everything else the cloud holds is stored in plain form; see <a href="data-privacy.html">Data privacy</a> for the full list. The cipher is AES-GCM, and transport between the agent server and the cloud is always TLS.</p>
 
 <h2>Default: a key managed by Search2o</h2>
 <p>With <code>encryptionSource</code> set to <code>cloud</code>, Search2o keeps one key per account in a key management service. An agent server fetches the account's key over TLS when the server needs it and keeps the key in memory. The server encrypts and decrypts; the cloud only stores ciphertext and never decrypts your state. Nothing has to be set up, which is why this is the default. What this does not give you is exclusion of Search2o: the key exists on Search2o's side, so the protection rests on Search2o never using it.</p>
@@ -23,7 +23,7 @@
 <p>Switch before the account holds data you care about. State encrypted under the cloud-managed key stays readable after the switch, and new state is encrypted under your key. Hosted secrets can be entered only once end-to-end encryption is in place.</p>
 
 <h2>What encryption does not cover</h2>
-<p>Data an agent reads from your systems stays in the agent server's memory. Such data reaches the cloud only when the agent writes the data into conversation state, output or memory. Long-term memories are encrypted separately; the cloud needs the plain text once, to embed the memory for search, and stores only the encrypted form.</p>
+<p>Data an agent reads from your systems stays in the agent server's memory. Such data reaches the cloud only when the agent writes the data into conversation state, output or memory. Conversation state, output and long-term memories are all stored encrypted.</p>
 
 <h2>Settings</h2>
 <p>The Encryption part is edited in the GUI under Operations &rsaquo; Secrets &amp; encryption.</p>

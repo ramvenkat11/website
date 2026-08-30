@@ -78,7 +78,7 @@
 <p>A call with a <code>convid</code> restores the conversation's state before the agent runs, so agent and conversation variables and prompt history are available. The agent named in the call need not be the agent that ran before; a conversation can move from one agent to another, as it does after a follow-up search. A conversation expires three months after its last use unless the user pinned it.</p>
 
 <h2 id="validating-a-draft">Validating a draft</h2>
-<p><code>POST /api/exec/validateDraftStream</code> runs a developer's draft against its validation query, with tracing on. The request names the <code>draftid</code>; the response adds <code>validationSuccess</code>, <code>compileErrors</code> and <code>runtimeError</code> to the fields above. The GUI's validation view is this call with <code>stream: true</code>.</p>
+<p><code>POST /api/dev/validateDraftStream</code> runs a developer's draft against its validation query, with tracing on. The request names the <code>draftid</code>; the response adds <code>validationSuccess</code>, <code>compileErrors</code> and <code>runtimeError</code> to the fields above. The GUI's validation view is this call with <code>stream: true</code>.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../rest-api/authentication.html'><small>Previous</small>Authentication</a><a class=next href='../rest-api/streaming.html'><small>Next</small>Streaming</a></nav>
