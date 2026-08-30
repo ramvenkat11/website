@@ -97,11 +97,18 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   link anywhere; Contact goes to about.html#contact (the support page was folded into About).
 - Dark mode: tokens on :root, the dark set emitted twice (data-theme and prefers-color-scheme);
   Inter is loaded at static weights 400-800 only.
-- The "Why Search2o" page is agreed in outline but NOT built - it waits on the encrypted
-  description change; the outline and the exact security wording are in s2oserver's CLAUDE.md.
+- The "Why Search2o" page is agreed in outline but NOT built. The encrypted description
+  change it waited on landed on 2026-08-30; the outline and the exact security wording are in
+  s2oserver's CLAUDE.md.
 
 ## State on 2026-08-30
 Docs: 107 pages in 13 sections (Introduction, Getting started, Agent definition, Agent
 execution, Command reference, Search, Development process, Agent runtime, Profiles, Reports,
 System management, Security and privacy, GUI pages, REST API, Miscellaneous). Everything built,
-deployed and verified live. Nothing pending.
+deployed and verified live.
+
+Later on 2026-08-30: documented three server changes - memory text stored encrypted on the
+cloud with the label in plain form, descriptors kept only in encrypted form, draft validation
+moved from /api/exec to /api/dev. Edited security/encryption.html, security/data-privacy.html,
+rest-api/overview.html, rest-api/running-agents.html; rebuilt (107 pages, 32 examples valid).
+Next: Ram reviews the docsrc diff, then deploy (s3 sync + CloudFront "/docs/*" invalidation).
