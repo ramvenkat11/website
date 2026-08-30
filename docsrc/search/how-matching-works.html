@@ -1,0 +1,19 @@
+<p class="lead">Search is fast &mdash; under 300 milliseconds round trip &mdash; and returns zero, one, two or three agents, depending on how confident the match is.</p>
+
+<h2>What comes back</h2>
+<!--figure:search-results-->
+<ul>
+  <li><strong>One agent</strong> when the query clearly belongs to that agent.</li>
+  <li><strong>Two or three agents</strong> when descriptions overlap or the query is ambiguous. The best match comes first.</li>
+  <li><strong>No agents</strong> when the query does not carry enough information, or lies outside every agent's description. The user sees that nothing matched. A wrong agent does not run.</li>
+</ul>
+<p>What the search box does with the results is the <a href="search-settings.html">search behavior</a>. By default the best match runs at once. Other settings offer two or three matches as choices, or show the results without running anything.</p>
+
+<h2>What it matches on</h2>
+<p>Matching is semantic: a query does not have to share words with a description. Search works from the meaning of the description, and from the situations, needs and outcomes the description implies. A description written in terms of what the user gets therefore matches better than a description written in terms of how the agent works. The inner workings of search are hidden from users and developers. The description is the only input a developer controls.</p>
+
+<h2>Follow-ups</h2>
+<p>A follow-up query in a conversation is searched too, so a user can move to a related agent in the middle of a conversation. By default the top match runs. When nothing matches, the previous agent answers again. Other <a href="search-settings.html">follow-up settings</a> offer the matches as choices with the previous agent among them, or keep the whole conversation on the agent that started it.</p>
+
+<h2>From inside an agent</h2>
+<p>The <a href="../commands/search.html"><code>search</code></a> command gives agents the same search. An orchestrating agent can find the right specialist and <a href="../commands/invoke.html"><code>invoke</code></a> that specialist. See the deep-agent workflow in <a href="../development/ai-assist.html">AI assist</a>.</p>

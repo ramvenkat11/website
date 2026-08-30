@@ -1,0 +1,28 @@
+<p class="lead">Runs another agent inside this agent and returns the other agent's return value. Together with <code>search</code>, <code>invoke</code> is how deep agents and orchestrators are built.</p>
+
+<h2>Fields</h2>
+<!--fields:command:invoke-->
+
+<h2>Result</h2>
+<p>The value that the invoked agent's <code>main</code> function returns with <code>return</code>. Anything the invoked agent writes with <code>output</code> or <code>progress</code> is streamed to the user as the invoked agent runs, exactly as if the user had run that agent directly.</p>
+
+<h2>Prompts and state</h2>
+<p>The invoked agent runs in the same conversation. The invoked agent sees the same <code>conv.</code> variables and its own <code>agent.</code> variables. By default the invoked agent gets a fresh prompt, isolated from the caller's prompt. Set <code>sharePrompts</code> to let the invoked agent continue the caller's prompt instead. Sharing is wrong inside a tool function, because the caller's prompt is in the middle of a call there.</p>
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"invoke": {
+  "agent": "hr-helper",
+  "inputs": { "query": "{ f'How many vacation days does {employee} have left?' }" }
+},
+"var": { "vacation": "{ result }" }
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>The agent name may be an expression. Use an expression to invoke a <code>search</code> result. A literal name is checked at validation time: the agent must exist.</li>
+  <li>An agent cannot invoke itself, nor any agent that is already running in the chain that led here. A literal invocation also protects the invoked agent from being deleted while this agent refers to it.</li>
+  <li>If the invoked agent pauses on <code>ask</code>, the whole chain pauses. The user's answers resume the invoked agent.</li>
+  <li>If the invoked agent fails with <code>fail</code>, this command raises an error with the same message.</li>
+  <li><code>invoke</code> is not allowed inside a <code>for</code> block or in error handling, nor in any function called from those places.</li>
+</ul>

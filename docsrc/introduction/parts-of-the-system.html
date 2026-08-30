@@ -1,0 +1,21 @@
+<p class="lead">Search2o has three parts: a cloud service, an agent server that runs in your organization, and a GUI served by that agent server.</p>
+
+<!--figure:architecture-->
+<h2>Search2o Cloud</h2>
+<p>The cloud service holds all state: accounts and users, agent definitions and drafts, configuration, conversation context, and the data behind the reports. The cloud checks agent definitions, indexes each agent's description, and answers searches. Only agent servers call the cloud's API; the API is not documented, and the license prohibits calling it directly.</p>
+
+<h2>The agent server</h2>
+<p>The agent server is a Python 3.12+ package, <code>search2o</code>, installed with <code>pip</code>. The server runs inside your organization and holds no state: at startup it loads the account's configuration, keeps that configuration current, and runs agents. Every call an agent makes leaves from the agent server: calls to your APIs, databases, LLM providers and MCP servers. Data and credentials therefore stay inside your boundary. The server's REST API is described at <code>/openapi.json</code>, with Swagger UI at <code>/docs</code>.</p>
+<p>The server is asynchronous and needs nothing beyond its Python packages. Run one server on a laptop, run one as a standalone server, or run several as a load-balanced cluster. No server holds state, so any server can serve any request.</p>
+
+<h2>The GUI</h2>
+<p>The GUI is a single-page application bundled with the agent server and served at <code>/ui</code>. The GUI uses only the agent server's REST API. Each role sees what that role can do. Users get search and conversations. Developers get drafts, the code editor, AI assist, validation and publishing. Administrators get users, authentication, configuration and reports.</p>
+
+<h2>Who does what</h2>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Part</th><th>Runs</th><th>Holds</th><th>Connects to</th></tr></thead>
+<tbody>
+<tr><td>Search2o Cloud</td><td>Search2o</td><td>All state, encrypted</td><td>Agent servers only</td></tr>
+<tr><td>Agent server</td><td>Your organization</td><td>Nothing between requests</td><td>The cloud, your systems, LLMs, MCP servers</td></tr>
+<tr><td>GUI</td><td>The user's browser</td><td>The session</td><td>The agent server</td></tr>
+</tbody></table></div>

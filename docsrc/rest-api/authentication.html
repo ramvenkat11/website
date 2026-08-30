@@ -1,0 +1,25 @@
+<p class="lead">A browser signs in with <code>login</code> and receives a session cookie. A script signs in with <code>scriptLogin</code> and receives a bearer token. Every later call carries one or the other.</p>
+
+<h2>Session cookie</h2>
+<p><code>POST /api/auth/login</code> with <code>email</code> and <code>password</code>. The response sets an HTTP-only cookie, and the browser sends the cookie on every later call. A session ends after a period of inactivity and after a maximum lifetime; both are set in the <a href="../system-management/authentication.html">Authentication</a> configuration. <code>POST /api/user/logout</code> ends the session.</p>
+
+<h2>Bearer token</h2>
+<p><code>POST /api/auth/scriptLogin</code> with the same <code>email</code> and <code>password</code>. The response carries the token, the token type and the number of seconds until the token expires:</p>
+<x-code lang="bash">
+$ curl -s -X POST http://127.0.0.1:9020/api/auth/scriptLogin \
+    -H "Content-Type: application/json" \
+    -d '{"email": "bot@example.com", "password": "..."}'
+{"success": true, "token": "…", "tokenType": "Bearer", "expiresIn": 3600}
+</x-code>
+<p>Send the token in the <code>Authorization</code> header of every later call:</p>
+<x-code lang="bash">
+$ curl -s -X POST http://127.0.0.1:9020/api/user/getUserProfile \
+    -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -d '{}'
+</x-code>
+<p>A token lasts one hour by default; the lifetime is the <em>script token max age</em> in the Authentication configuration. A script that runs longer than the token signs in again when a response carries <code>mustLogin: true</code>.</p>
+
+<h2>Which user to sign in as</h2>
+<p>A script runs as the user whose credentials it holds, with that user's role. Conversations, memories and the usage report are recorded against that user. Create a dedicated user for each integration, so that the reports show what the integration did and so that the credentials can be revoked on their own.</p>
+
+<h2>Password reset</h2>
+<p><code>emailCode</code> sends a one-time code to the user's email address, and <code>createPasswordWithEmailCode</code> sets a new password with that code. A reset signs out every session of the user. The password rules are available from <code>getPasswordHelp</code>, so a client can show them before the user types.</p>

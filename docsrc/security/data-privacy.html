@@ -1,0 +1,42 @@
+<p class="lead">Data falls into four categories: what never leaves your organization, what leaves only in encrypted form, what leaves in plain form but is stored encrypted, and what leaves and is stored in plain form. For each category, the tables below say who can read the data and how long the cloud keeps it.</p>
+
+<h2>What never leaves your organization</h2>
+<p>Secrets read with <code>sys.secret</code> from the agent server's environment or from files never leave the server. Agents run on the agent server, and every call to your APIs, databases, LLM providers and MCP servers leaves from there. The data those calls return stays on the server, unless an agent writes the data into its output or into a conversation variable. The <code>log</code> command writes to the server's own log, and nothing in that log is sent to the cloud.</p>
+
+<h2>What leaves only in encrypted form</h2>
+<p>The agent server encrypts these before sending them, and the cloud stores the ciphertext without ever decrypting it. See <a href="encryption.html">Encryption</a> for who holds the key.</p>
+<div class="tablewrap"><table class="fields data">
+<thead><tr><th>Data</th><th>Who can read it</th><th>Kept for</th></tr></thead>
+<tbody>
+<tr><td>Conversation state<br><small>variables, prompt history, output, where an agent paused</small></td><td>The account's agent servers, on the user's next request</td><td>Three months after the last use; pinned conversations indefinitely</td></tr>
+<tr><td>Hosted secrets<br><small>available only with end-to-end encryption</small></td><td>The agent server, at runtime</td><td>Life of the account</td></tr>
+</tbody></table></div>
+
+<h2>What leaves in plain form but is stored encrypted</h2>
+<p>The cloud needs the plain text of these for one operation, does that operation in memory, and stores only the encrypted form. The plain text is never stored and never logged.</p>
+<div class="tablewrap"><table class="fields data">
+<thead><tr><th>Data</th><th>What the cloud does with the plain text</th><th>Who can read it</th><th>Kept for</th></tr></thead>
+<tbody>
+<tr><td>The user's query</td><td>Finds the matching agent. The shortened query is then stored encrypted as the conversation title, and the full query is stored encrypted on the execution record.</td><td>The user, as the conversation title; developers, in the error report, decrypted in their browser</td><td>Title: with the conversation. Execution record: three months</td></tr>
+<tr><td>Agent descriptions</td><td>Indexes the agent for search.</td><td>Developers and above</td><td>Life of the agent</td></tr>
+<tr><td>Long-term memories<br><small>written by agents with the memory command</small></td><td>Embeds the memory for semantic search.</td><td>Agents run by the user the memory belongs to</td><td>One year, refreshed when the memory is rewritten</td></tr>
+</tbody></table></div>
+
+<h2>What leaves and is stored in plain form</h2>
+<p>Everything else. The cloud works with these directly: checks definitions, serves configuration and profiles to your agent servers, and aggregates execution records into the reports. Passwords and license keys are stored as hashes.</p>
+<div class="tablewrap"><table class="fields data">
+<thead><tr><th>Data</th><th>Who can read it</th><th>Kept for</th></tr></thead>
+<tbody>
+<tr><td>Agent definitions<br><small>with titles, tags and past versions</small></td><td>Developers and above</td><td>Life of the agent; past versions three months</td></tr>
+<tr><td>Drafts</td><td>The developer who owns the draft</td><td>Until published or deleted</td></tr>
+<tr><td>Execution records<br><small>agent name and version, result code, error message, command path, duration, LLM cost</small></td><td>Developers, in the agent reports; administrators, in the usage report</td><td>Three months</td></tr>
+<tr><td>Configuration<br><small>agent servers, allowlist, limits, authentication, search settings</small></td><td>Developers or administrators, by part</td><td>Life of the account</td></tr>
+<tr><td>Profiles<br><small>LLMs, prompts, APIs, databases, MCP servers; a secret in a profile is a sys.secret reference, not the value</small></td><td>Developers and above</td><td>Life of the account</td></tr>
+<tr><td>Users<br><small>email address, name, role, UI preferences</small></td><td>Administrators and the owner</td><td>Until the user is deleted</td></tr>
+<tr><td>Account<br><small>name, license key</small></td><td>The owner</td><td>Life of the account</td></tr>
+<tr><td>Notifications<br><small>what changed and who changed it, as field names, never values</small></td><td>Developers and above</td><td>90 days</td></tr>
+<tr><td>Help messages<br><small>sent from the GUI</small></td><td>Search2o support</td><td>One year</td></tr>
+</tbody></table></div>
+
+<h2>Who else can see it</h2>
+<p>Search2o Cloud runs on a public cloud provider. Search2o staff, and the provider that operates the underlying infrastructure, can in principle see the data stored in plain form. Neither can read what is stored encrypted. With the default setting the account's key is managed for you, but the cloud never uses the key to decrypt. With client-held keys the key never leaves your organization.</p>

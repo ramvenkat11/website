@@ -1,0 +1,39 @@
+<p class="lead">Calls another function of the agent and returns that function's return value.</p>
+
+<h2>Fields</h2>
+<!--fields:command:func-->
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"functions": {
+  "lookupCustomer": {
+    "args": { "email": {} },
+    "commands": {
+      "db": {
+        "profile": "crm",
+        "sql": "select * from customers where email = :email",
+        "params": { "email": "{ email }" }
+      },
+      "return": "{ result[0] if result else None }"
+    }
+  },
+  "main": {
+    "commands": {
+      "func": {
+        "name": "lookupCustomer",
+        "args": { "email": "{ sys.userEmail }" }
+      },
+      "var": { "customer": "{ result }" }
+    }
+  }
+}
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>The function name is a literal, not an expression. The function must exist in the agent, and it cannot be <code>main</code>.</li>
+  <li>Arguments become local variables of the called function. An argument that the function declares but the call omits is set to <code>None</code>.</li>
+  <li>The called function's <code>return</code> value is this command's result. A function that reaches the end of its commands without a <code>return</code> returns <code>None</code>.</li>
+  <li>A function cannot call itself, directly or through other functions, while the function is still running.</li>
+  <li>The <code>llm</code> command uses the same mechanism when a function is offered to the model as a tool.</li>
+</ul>

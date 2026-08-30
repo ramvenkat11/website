@@ -1,0 +1,20 @@
+<p class="lead">Each time an agent completes successfully, the conversation state is encrypted and stored in Search2o Cloud. A follow-up query in the same conversation restores the state and runs the selected agent with that context.</p>
+
+<h2>What the state holds</h2>
+<!--figure:conversation-state-->
+<ul>
+  <li>The <strong>runs</strong> so far: which agent ran, with which inputs, what the agent output, and where the agent paused when the run paused on <code>ask</code>.</li>
+  <li>The <strong>prompts</strong>: for each named prompt, the system text and the full history of user turns, assistant answers and tool results. This history is why an LLM in a follow-up remembers the earlier exchange.</li>
+  <li>The <strong>conversation variables</strong> (<code>conv.</code>), shared by every agent in the conversation.</li>
+  <li>The <strong>agent variables</strong> (<code>agent.</code>) of every agent that has run in the conversation.</li>
+</ul>
+<p>Agents see the state only through these variables and prompts. Local variables are not kept.</p>
+
+<h2>When state is saved</h2>
+<p>State is saved when a run ends with <code>end</code>, with <code>return</code> from <code>main</code>, or by pausing on <code>ask</code>. State is <em>not</em> saved when the run ends with <code>fail</code> or with an error. A follow-up therefore sees the state as it was before the failed run.</p>
+
+<h2>Encryption</h2>
+<p>State is encrypted before the state leaves the agent server, and the cloud never decrypts the state. By default Search2o manages the key for your account. An administrator can switch to keys held entirely in your organization. See <a href="../security/encryption.html">Security</a>.</p>
+
+<h2>Retention</h2>
+<p>A conversation is deleted three months after the last time an agent ran in the conversation or the conversation was read, whichever is later. A user can pin a conversation to keep the conversation, and can delete a conversation at any time.</p>

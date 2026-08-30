@@ -1,0 +1,17 @@
+<p class="lead">A conversation is identified by its <code>convid</code>. The <code>/api/user/</code> and <code>/api/exec/</code> groups list, read, rename, pin and delete the caller's conversations.</p>
+
+<h2>Reading a conversation</h2>
+<p><code>POST /api/exec/getConversation</code> with a <code>convid</code> returns the exchanges so far: for each run, the <code>query</code>, the <code>response</code> (the agent's name and its output parts) and <code>respondedAt</code> in epoch milliseconds. The state is decrypted on the agent server for this call; the cloud only ever holds the ciphertext.</p>
+
+<h2>Listing conversations</h2>
+<p><code>getPinnedConversations</code> returns the caller's pinned conversations. <code>getUnpinnedConversations</code> returns the recent ones, most recently used first, in pages: send <code>limit</code> (1 to 25) and pass the <code>nextCursor</code> from one response into the next request until the cursor comes back null. Each entry carries the <code>convid</code>, the title and the time of the last run.</p>
+
+<h2>Changing a conversation</h2>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Endpoint</th><th>Body</th><th>Effect</th></tr></thead>
+<tbody>
+<tr><td><code>/api/user/setConversationTitle</code></td><td><code>convid</code>, <code>title</code></td><td>Renames the conversation. The title is the first query until renamed.</td></tr>
+<tr><td><code>/api/user/setPinned</code></td><td><code>convid</code>, <code>pinned</code></td><td>Pins or unpins. A pinned conversation is kept indefinitely; an unpinned one expires three months after its last use.</td></tr>
+<tr><td><code>/api/user/deleteConversation</code></td><td><code>convid</code></td><td>Deletes the conversation and its stored state.</td></tr>
+</tbody></table></div>
+<p>All of these act on the caller's own conversations only. A <code>convid</code> that belongs to another user, or that has expired, is reported as unknown.</p>

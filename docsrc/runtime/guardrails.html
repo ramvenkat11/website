@@ -1,0 +1,25 @@
+<p class="lead">Three parts of the runtime bound what an agent's expressions may do: the allowlist, the compile rules and the runtime limits. The GUI groups them under Guardrails, and developers edit them. Why they exist and what they protect against is explained in <a href="../security/controlled-runtime.html">The controlled runtime</a>; this page covers how each is written and how the runtime applies it.</p>
+
+<h2>Allowlist</h2>
+<p>The allowlist is the complete set of functions and objects an expression may reach. When the allowlist changes, the runtime imports each entry from the server's Python environment and builds the namespace that expressions evaluate in. An entry that cannot be imported is reported on the Agent servers page.</p>
+<p>One entry per line; anything after <code>#</code> is a comment.</p>
+<x-code lang="text" title="Entry forms">
+len                                 # a builtin
+str.join                            # a method of a builtin type
+math.sqrt as sqrt                   # a module attribute, under an alias
+datetime.datetime as datetime       # a class; its public members become available
+json.loads                          # callable as json.loads(...), not loads(...)
+mycompany.vault.get_secret          # anything importable in the server's environment
+</x-code>
+<p>Expressions use an entry's full dotted name unless the entry is aliased with <code>as</code>. A package your agents need is installed next to <code>search2o</code>. Expressions run on the server's shared event loop, so a function that blocks the loop must not be allowlisted. <code>asyncio.run</code> and synchronous network calls are examples, and the <code>asyncio</code> package itself is refused. <code>gather</code> and <code>sleep</code> are always available. A coroutine on the allowlist is awaited only when the coroutine is the whole expression.</p>
+<p>The allowlist is also where custom code is registered: an <a href="../misc/llm-adapters.html">LLM adapter</a>, the key function for <a href="../security/encryption.html">end-to-end encryption</a>, or a function that reads your own <a href="../security/secret-vault.html">vault</a>. <code>sysVariables</code> lists which of <code>userEmail</code>, <code>userSession</code> and <code>serverIp</code> agents may read from <code>sys</code>.</p>
+<!--fields:model:EvalAllowlistModel-->
+
+<h2>Compile rules</h2>
+<p>Each of the operators <code>+ - * / // % ** &lt;&lt; &gt;&gt; @</code> is set to <code>allow</code>, <code>deny</code> or <code>rewrite</code>. The rules are applied when a draft is validated or published, so a change reaches a published agent only when that agent is republished. A denied operator fails validation with the path of the expression. A rewritten operator is replaced by a call to a safe function that bounds the operation; the built-in functions live in <code>search2o/execution/safeoperators.py</code>, and <code>safe_pow</code>, for example, refuses exponents above 64. To substitute your own safe function, allowlist a function under the same name. Comprehensions are bounded by nesting depth and by the number of <code>for</code> clauses.</p>
+<!--fields:model:CompileOptions-->
+<!--fields:model:OperatorMappingModel-->
+
+<h2>Runtime limits</h2>
+<p>The limits are checked while the agent runs. Elapsed time is checked between commands, and inside loops every <em>yield loops after</em> iterations. A run past the limit ends with the result code <code>timedOut</code>. A long LLM or API call in progress ends only when the call's own timeout fires. A loop that exceeds the iteration limit fails the run. A <code>db</code> command returns at most the row limit. The LLM cost limit is checked after each call, against the prices in the <a href="../profiles/llm-profiles.html">LLM profile</a>; a profile with no prices never trips the limit. The definition length applies to the JSONC text of a draft, comments included. The stream heartbeat sets how often a streamed response sends a keep-alive line.</p>
+<!--fields:model:AgentValidationModel-->

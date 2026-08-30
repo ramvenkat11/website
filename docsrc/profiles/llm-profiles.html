@@ -1,0 +1,17 @@
+<p class="lead">An LLM profile is one model at one vendor: how to reach the model and what the model costs. Agents name the profile in the <code>llm</code> command. To use another model, define another profile.</p>
+
+<h2>Settings</h2>
+<!--fields:model:LlmModel-->
+
+<h2>Model prices</h2>
+<p>Prices are per million tokens. The <a href="../reports/cost.html">cost report</a> and the per-run spend limit are computed from these prices.</p>
+<!--fields:model:ModelDetails-->
+
+<h2>Dynamic values</h2>
+<p><code>url</code>, the values in <code>headers</code>, and the string values in <code>additionalParams</code> are dynamic strings. These values are evaluated for every call with the same rules as an agent expression. A secret read at call time keeps the key out of the configuration: <code>{ f"Bearer {sys.secret('OPENAI_API_KEY')}" }</code>.</p>
+
+<h2>Seeded profiles</h2>
+<p>A new account has profiles for OpenAI (<code>gpt5_mini</code>, and <code>gpt_image</code> for image generation), Anthropic (<code>claude_haiku</code>) and Gemini (<code>gemini_flash</code>, and <code>gemini_image</code> for image generation). Each profile reads its key from the environment. Edit the model and the prices to match your contracts.</p>
+
+<h2>Other vendors</h2>
+<p>Any endpoint that speaks one of the three protocols needs only a profile with the endpoint's URL. Any other endpoint needs an <a href="../misc/llm-adapters.html">adapter</a>.</p>

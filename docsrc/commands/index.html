@@ -1,0 +1,8 @@
+<p class="lead">Every agent is built from 23 commands. A command is one key in a function's <code>commands</code> object. The key names the command, and the value carries the command's fields. This page lists the commands in the groups the editor uses.</p>
+
+<p>A command can appear more than once in a function. Add a suffix to the key: <code>api</code>, <code>api.2</code>, <code>api.fetchWeather</code>. The suffix is only a name. Commands run in the order they are written.</p>
+
+<!--commands:groups-->
+
+<h2>Reading a command page</h2>
+<p>Each command page has the same shape: what the command does, a table of the command's fields generated from the agent schema, an example that runs as written, and the rules that apply. In the tables, a <em>dynamic string</em> is a string that may hold a Python expression in braces (see <a href="../agent-definition/syntax.html">Syntax and dynamic strings</a>). A <em>Python expression</em> must be an expression. A <em>command block</em> is a nested object of commands.</p>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#1d2b4a"/>
+  <text x="31" y="46" text-anchor="middle" font-family="Avenir Next, Futura, Century Gothic, -apple-system, Arial, sans-serif" font-size="38" font-weight="600">
+    <tspan fill="#ffffff">2</tspan><tspan fill="#8fa1bd" font-size="26">o</tspan>
+  </text>
+</svg>

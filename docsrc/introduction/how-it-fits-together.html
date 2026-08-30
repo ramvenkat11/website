@@ -1,0 +1,23 @@
+<p class="lead">From a developer writing an agent to a user getting an answer.</p>
+
+<h2>Building an agent</h2>
+<!--figure:build-pipeline-->
+<ol>
+  <li>A developer creates a <strong>draft</strong> and writes the agent in JSON, in the code editor or with AI assist.</li>
+  <li>The developer <strong>validates</strong> the draft. Search2o Cloud checks the definition and every Python expression in the definition; the agent server then runs the draft against a validation query the developer supplies and shows the full execution trace.</li>
+  <li>A validated draft is <strong>published</strong>. Other developers can now see the agent, and users can run it.</li>
+  <li>The developer writes a plain-English <strong>description</strong> of what the agent does. The cloud indexes the description, and from then on search can find the agent.</li>
+</ol>
+
+<h2>Answering a query</h2>
+<!--figure:request-lifecycle-->
+<ol>
+  <li>A user types a request in the search box. The agent server sends the request to the cloud, which returns the matching agent &mdash; or a few candidates when the request is ambiguous, or none when nothing fits.</li>
+  <li>The agent server runs the chosen agent in its controlled runtime. The agent calls LLMs and your systems, may ask the user for more input, and streams its output to the browser as it goes.</li>
+  <li>When the agent finishes, the conversation context is encrypted and stored in the cloud.</li>
+  <li>A follow-up request continues the conversation. The context is restored, and the same agent or a different agent runs with that context, so agents build on each other's work.</li>
+</ol>
+
+<h2>Keeping servers consistent</h2>
+<!--figure:config-sync-->
+<p>Configuration &mdash; LLM profiles, allowlists, limits, prompts &mdash; is edited in the GUI and stored in the cloud. Each time an agent starts, the agent server asks the cloud what has changed since the server last looked. The server fetches only those parts and applies them before running the agent. A change is therefore live on the very next run on every server, and two servers starting the same agent at the same moment run with the same configuration. See <a href="../runtime/overview.html">How configuration works</a>.</p>

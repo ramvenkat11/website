@@ -1,0 +1,15 @@
+<p class="lead">The <strong>Search</strong> configuration decides which tag the search box uses and what happens when the user presses Enter.</p>
+
+<!--fields:model:SearchOptionsModel-->
+<p>Leave <code>tag</code> empty and the search box searches agents of every tag. Set a tag and only agents carrying that tag are matched. See <a href="tags.html">Tags</a>.</p>
+
+<h2>Search behavior</h2>
+<!--enum:SearchBehavior-->
+<p>A search returns one, two or three agents, or none; see <a href="how-matching-works.html">How matching works</a>. The default setting runs the top match at once. The other two settings turn the results into choices. <code>executeOnlyMatch</code> still runs a single match without asking. <code>showResults</code> always waits for the user.</p>
+
+<h2>Follow-up behavior</h2>
+<p>A follow-up is a query typed into an existing conversation. The previous agent is the agent that answered last.</p>
+<!--enum:FollowupBehavior-->
+<p>The first three settings search the follow-up like a new query, with the previous agent as the fallback. Under the default setting, the previous agent answers when nothing else matches. Under the two choice settings, the previous agent is added to the end of the choices. <code>executePrevious</code> never searches a follow-up: the conversation stays on the agent that started it.</p>
+
+<p>Changes take effect on the next search. Search settings are edited under <strong>Agents → Search</strong> by a developer or an administrator.</p>

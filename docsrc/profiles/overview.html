@@ -1,0 +1,29 @@
+<p class="lead">Agents name profiles; profiles hold the details. An agent says <code>"profile": "gpt5_mini"</code>, and the LLM profile of that name holds the URL, the headers, the model and the prices.</p>
+
+<h2>The five kinds</h2>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Profile</th><th>Used by</th><th>Holds</th></tr></thead>
+<tbody>
+<tr><td><a href="llm-profiles.html">LLM profile</a></td><td>the <code>llm</code> command</td><td>Vendor, adapter, URL, headers, the model and its prices, limits</td></tr>
+<tr><td><a href="prompt-profiles.html">Prompt profile</a></td><td>the <code>prompt</code> command</td><td>System and user prompt text, reused across agents</td></tr>
+<tr><td><a href="api-profiles.html">API profile</a></td><td>the <code>api</code> command</td><td>Base URL, headers, the connection pool</td></tr>
+<tr><td><a href="db-profiles.html">Database profile</a></td><td>the <code>db</code> command</td><td>Connection string and pool settings</td></tr>
+<tr><td><a href="mcp-servers.html">MCP server</a></td><td>the tools of an <code>llm</code> command</td><td>The server's URL and the tools it offers</td></tr>
+</tbody></table></div>
+
+<h2>Why profiles</h2>
+<p>A profile is changed once, and every agent that uses the profile picks up the change on its next run. Three things follow from that.</p>
+<ul>
+  <li><strong>Moving between environments.</strong> The same agents run against development, staging and production by changing the profiles, not the agents. An agent that names <code>orders-db</code> does not know which database that is.</li>
+  <li><strong>Retiring a model or a service.</strong> When a model is sunset or an API moves, one profile changes and every agent follows.</li>
+  <li><strong>Keeping credentials out of agents.</strong> A profile's headers and connection string are dynamic strings, so a credential is a <code>sys.secret</code> reference read at call time; see <a href="../security/secret-vault.html">The secret vault</a>.</li>
+</ul>
+
+<h2>Rules that apply to every profile</h2>
+<ul>
+  <li>A profile name is letters, digits and underscores, and must start with a letter.</li>
+  <li>Each profile page in the GUI shows which agents use the profile. A profile in use cannot be deleted; remove the reference from the agents first.</li>
+  <li>Each kind of profile has a limit on how many an account may hold. The GUI shows the limit on the profile's page.</li>
+  <li>A profile carries a documentation note. AI assist reads the notes when it writes an agent, so a note that says what the profile is for helps the assistant choose the right one.</li>
+  <li>Profiles are versioned like every configuration part: a save is refused when someone else changed the profile first, and every create, update and delete produces a <a href="../system-management/notifications.html">notification</a>. See <a href="../runtime/overview.html">How configuration works</a>.</li>
+</ul>

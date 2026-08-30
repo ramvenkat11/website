@@ -1,0 +1,30 @@
+<p class="lead">The top-level object holds a set of named <strong>functions</strong>. Each function is an ordered object of <strong>commands</strong>. Commands are the units of execution in an agent.</p>
+
+<x-code lang="jsonc" nocheck title="The shape of every agent">
+{
+  "functions": {
+    "main": {                    // the entry point; required
+      "commands": {
+        "prompt": { ... },       // each key names a command
+        "llm": { ... },
+        "output": "{ result }"
+      }
+    },
+    "helper": {                  // any number of other functions
+      "args": { "city": {} },
+      "commands": { ... }
+    }
+  }
+}
+</x-code>
+
+<!--figure:agent-structure-->
+<h2>Commands are keys</h2>
+<p>Each command is a key-value pair. The key is the command type and the value carries the command's fields. The value is an object for most commands, and a single value for simple commands such as <code>progress</code> or <code>return</code>. Commands run in the order they are written.</p>
+<p>Keys in a JSON object must be unique. So a command that appears more than once in one function takes a suffix after a dot: <code>api</code>, <code>api.2</code>, <code>api.forecast</code>. The suffix is only a label. The suffix appears in traces and error messages.</p>
+
+<h2>main</h2>
+<p>Every agent defines a function named <code>main</code>. Execution starts in <code>main</code>. Other functions run when a function calls them with <code>func</code> or <code>parallel</code>, or when an LLM calls them as tools. <code>main</code> itself cannot be called.</p>
+
+<h2>Size</h2>
+<p>An agent definition may be at most 20,480 characters by default. The limit is an administrator setting in <a href="../runtime/guardrails.html#runtime-limits">Runtime limits</a>. Move repeated prompt text into <a href="../profiles/prompt-profiles.html">prompt profiles</a> rather than growing the agent.</p>

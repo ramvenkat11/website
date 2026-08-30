@@ -1,0 +1,36 @@
+<p class="lead">Runs a block of commands once for each element of an iterable: a list, a dict, or any Python iterable or async iterable that an expression produces.</p>
+
+<h2>Fields</h2>
+<!--fields:command:for-->
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"for": {
+  "iter": "{ result['properties']['periods'][:8] }",
+  "loopVar": "period",
+  "do": {
+    "var": {
+      "lines": "{ lines + [f'In {period['number']} hours: {period['temperature']} and {period['shortForecast']}'] }"
+    }
+  }
+}
+</x-code>
+<p>Iterating a dict binds the dict's keys. To get key and value together, iterate <code>{ d.items() }</code> and give two loop variables:</p>
+<x-code lang="jsonc">
+"for": {
+  "iter": "{ prices.items() }",
+  "loopVar": ["sku", "price"],
+  "do": {
+    "progress": "{ f'{sku} costs {price}' }"
+  }
+}
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>When an element is a tuple and several loop variables are given, the tuple is unpacked into the variables in order.</li>
+  <li>The loop variables are locals of the function. The loop variables are removed when the loop ends.</li>
+  <li>A <code>for</code> nested inside another <code>for</code> may not reuse the outer loop's variable names.</li>
+  <li><code>maxIterations</code> stops the loop quietly when the count is reached. Without <code>maxIterations</code>, the <em>max loop iterations</em> setting in <a href="../runtime/guardrails.html#runtime-limits">Runtime limits</a> applies.</li>
+  <li>The <code>ask</code> and <code>invoke</code> commands are not allowed inside a <code>for</code> block, nor in any function called from a <code>for</code> block.</li>
+</ul>

@@ -1,0 +1,34 @@
+<p class="lead">Every user has one of four roles. The roles are listed here in ascending order of privilege, and each role includes every permission of the roles below it.</p>
+
+<h2>Roles</h2>
+<!--figure:roles-->
+<ol>
+  <li><strong>User</strong> — an end user. A user runs searches, converses with agents, and manages a personal profile and preferences.</li>
+  <li><strong>Developer</strong> — creates, validates and publishes agents; views and edits the development configuration (allowlist, compile rules, runtime limits, search settings, profiles); reads the agent reports; sees all published agents.</li>
+  <li><strong>Administrator</strong> — everything a developer can do, plus users and their roles, authentication, agent servers, connection pools, secrets and encryption, and the user usage reports.</li>
+  <li><strong>Account owner</strong> — everything an administrator can do, plus the license, billing and subscription. Only an owner can grant or remove the owner role. Only another owner can delete or demote an owner.</li>
+</ol>
+
+<h2>Permissions</h2>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Capability</th><th>User</th><th>Developer</th><th>Administrator</th><th>Owner</th></tr></thead>
+<tbody>
+<tr><td>Run searches and agents</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td></tr>
+<tr><td>Create, validate, publish and describe agents</td><td>✖</td><td>✔</td><td>✔</td><td>✔</td></tr>
+<tr><td>View agent reports</td><td>✖</td><td>✔</td><td>✔</td><td>✔</td></tr>
+<tr><td>View and modify development configuration and profiles</td><td>✖</td><td>✔</td><td>✔</td><td>✔</td></tr>
+<tr><td>Manage users and roles</td><td>✖</td><td>✖</td><td>✔</td><td>✔</td></tr>
+<tr><td>Configure system-level settings</td><td>✖</td><td>✖</td><td>✔</td><td>✔</td></tr>
+<tr><td>View user usage reports</td><td>✖</td><td>✖</td><td>✔</td><td>✔</td></tr>
+<tr><td>Grant the owner role</td><td>✖</td><td>✖</td><td>✖</td><td>✔</td></tr>
+<tr><td>License, billing and subscription</td><td>✖</td><td>✖</td><td>✖</td><td>✔</td></tr>
+</tbody></table></div>
+
+<h2>Adding users</h2>
+<p>An administrator adds users by email address, up to 25 at a time. Each new user receives an email with a one-time code and chooses a password. No password ever travels in an email. If the account restricts email addresses to a domain, only addresses in that domain can be added. A user's role can be changed only by someone else.</p>
+
+<h2>Removing users</h2>
+<p>A deleted user cannot sign in and cannot be restored. The user's name stays on everything the user published. Administrators cannot delete themselves.</p>
+
+<h2>Freezing</h2>
+<p>An administrator can freeze the account. A freeze stops every change to agents and configuration: drafts, publishing, profiles and settings. Searches and agent runs continue. The freeze records who applied it, and only that administrator or another administrator can lift the freeze. Use a freeze during a release or an investigation.</p>

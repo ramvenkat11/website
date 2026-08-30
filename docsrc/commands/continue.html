@@ -1,0 +1,23 @@
+<p class="lead">Skips the rest of the current iteration and starts the next iteration, when the value is true.</p>
+
+<h2>Value</h2>
+<!--fields:command:continue-->
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"for": {
+  "iter": "{ rows }",
+  "loopVar": "row",
+  "do": {
+    "continue": "{ row['status'] != 'open' }",
+    "var": { "open": "{ open + [row] }" }
+  }
+}
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>The value is evaluated as a boolean.</li>
+  <li><code>continue</code> is allowed only inside a <code>for</code> or <code>while</code> block. Anywhere else the agent fails validation.</li>
+  <li>In a <code>while</code> loop the condition is evaluated again before the next iteration, as usual.</li>
+</ul>

@@ -1,0 +1,39 @@
+<p class="lead">Python expressions in agents execute inside a controlled runtime. Administrators decide what the runtime allows through the allowlist, operator remapping and runtime limits.</p>
+
+<p>The runtime is controlled at the application level, not by the operating system. The runtime decides which names an expression can reach and which operations an expression may perform; the runtime does not limit memory or CPU. Operator remapping is the tool for operations that could overload the server.</p>
+
+<!--figure:sandbox-->
+<h2>Allowlist</h2>
+<p>The <a href="../runtime/guardrails.html#allowlist">allowlist</a> is the complete set of functions and objects available to expressions.</p>
+<ul>
+  <li>Any name not on the list cannot be referenced or called.</li>
+  <li>All public members of an allowlisted object are accessible.</li>
+  <li>Private members and dunder methods (<code>__init__</code>, <code>__class__</code>, …) are disallowed even on allowlisted objects.</li>
+  <li><code>import</code> is not available. Everything an agent can use is imported by the allowlist.</li>
+</ul>
+<p>The <code>asyncio</code> package itself cannot be put on the allowlist, because the package can interfere with the server's event loop. <code>asyncio.gather</code> and <code>asyncio.sleep</code> are always available as <code>gather</code> and <code>sleep</code>. <code>gather</code> is the way to run several async calls in parallel.</p>
+<p>Every entry is checked against the server's Python environment at startup and whenever the allowlist changes. A failing entry is reported on the Agent servers page.</p>
+
+<h2>Operator remapping</h2>
+<p>Each potentially expensive Python operator can be allowed, denied, or rewritten to a safe function. The operators are <code>+ - * / // % ** &lt;&lt; &gt;&gt; @</code>. By default <code>**</code> is rewritten to a bounded implementation, and the shift and matrix operators are denied. The safe functions are built in, but can be replaced with your own functions from the allowlist. See <a href="../runtime/guardrails.html#compile-rules">Compile rules</a>. The rules are applied when a draft is validated or published.</p>
+
+<h2>Validation rules</h2>
+<p>The runtime enforces limits on resource usage and complexity. All limits are set in <a href="../runtime/guardrails.html#runtime-limits">Runtime limits</a> and <a href="../runtime/guardrails.html#compile-rules">Compile rules</a>. The limits include:</p>
+<ul>
+  <li>maximum agent execution time,</li>
+  <li>maximum iterations of each loop,</li>
+  <li>maximum rows a database call may return,</li>
+  <li>maximum LLM spend per run,</li>
+  <li>maximum nesting depth of comprehensions, and maximum generators per comprehension, in one expression,</li>
+  <li>maximum length of an agent definition.</li>
+</ul>
+
+<h2>Scope of an expression</h2>
+<p>Within an agent, an expression may reference only:</p>
+<ul>
+  <li>functions on the allowlist, and allowlisted objects with their public members,</li>
+  <li>variables defined earlier in the same function,</li>
+  <li>agent and conversation variables defined earlier,</li>
+  <li>the read-only <code>sys</code> and <code>command</code> namespaces.</li>
+</ul>
+<p>No other variables, objects or runtime state are accessible.</p>

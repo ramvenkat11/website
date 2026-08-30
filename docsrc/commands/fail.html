@@ -1,0 +1,22 @@
+<p class="lead">Ends the agent with a failure message. The message is shown to the user, and the conversation state is <em>not</em> saved.</p>
+
+<h2>Value</h2>
+<!--fields:command:fail-->
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"if": {
+  "condition": "{ location['country_code'] != 'US' }",
+  "then": {
+    "fail": "{ f'You are in {location['country_name']}. This agent supports only locations in the USA.' }"
+  }
+}
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li><code>fail</code> stops every function and loop that is running.</li>
+  <li>Because the state is not saved, a follow-up in the same conversation sees the state from before this run.</li>
+  <li>A failed run is recorded in the <a href="../reports/errors.html">agent errors report</a>, with the message.</li>
+  <li>When an invoked agent fails, the calling agent's <code>invoke</code> command raises an error with the same message. The caller's <code>onError</code> can handle the error.</li>
+</ul>

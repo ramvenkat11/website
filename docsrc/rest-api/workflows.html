@@ -1,0 +1,13 @@
+<p class="lead">Nothing in an agent runs on its own; every run starts with a request. A call to <code>execAgent</code> from your systems is how agents run without anyone typing.</p>
+
+<h2>Scheduled and event-driven runs</h2>
+<p>A scheduler or a webhook receiver that calls <code>execAgent</code> turns any agent into a scheduled job or an event handler: a morning digest, a handler for a new ticket, a check that runs every hour. Where the result should go &mdash; mail, chat, a ticket &mdash; is one more <code>api</code> command at the end of the agent. Run these as a dedicated user, so the reports show what the schedule did.</p>
+
+<h2>Fan-out over a list</h2>
+<p><code>parallel</code> runs a fixed set of functions, and <code>invoke</code> may not sit inside a loop. So &ldquo;run the triage agent for each of these forty tickets&rdquo; is written with the <code>api</code> command calling <code>execAgent</code> on the agent server itself, once per item. The calls go in a <code>for</code> loop, or several at a time with <code>gather</code> inside an expression. Each call is an ordinary agent run: recorded, reported and traced like any other.</p>
+
+<h2>Waiting on someone else</h2>
+<p><code>ask</code> pauses a conversation for the user who started the conversation. An approval by a different person takes two agents and a table. The requester&rsquo;s agent writes the request with <code>db</code> and ends. The approver&rsquo;s agent &mdash; opened from search, or run by a scheduled call &mdash; reads what is pending, asks the approver with <code>ask</code>, and records the decision. The requester&rsquo;s next request, or a scheduled run, picks the decision up.</p>
+
+<h2>Agents inside your applications</h2>
+<p>The API is the API the bundled GUI uses, so an agent can sit behind a button in your own application, in a chat integration, or in a pipeline step. With the <a href="search.html">search endpoint</a> an application offers the same &ldquo;type what you need&rdquo; experience without the bundled GUI. Runs started this way appear in the same <a href="../reports/index.html">reports</a> as runs from the search box.</p>

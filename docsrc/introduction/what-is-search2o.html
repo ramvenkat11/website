@@ -1,0 +1,13 @@
+<p class="lead">Search2o is a platform for building AI agents and running them from a search box. A user types what they need; Search2o finds the agent built for that need, runs the agent, and returns the answer in a conversation the user can continue.</p>
+
+<p>Developers write agents in a declarative JSON format with Python expressions, and describe each agent in plain English. Search2o matches a user's query to the agent whose description fits, runs that agent in a controlled runtime, and returns the response. A follow-up may go to the same agent or to a different agent; the conversation carries its context along.</p>
+
+<p>Search2o is self-contained. Register and install the agent server. The search box, the code editor, user management and reports are all there; nothing has to be built around Search2o.</p>
+
+<h2>What makes it different</h2>
+<ul>
+  <li><strong>Search is the orchestration layer.</strong> An organization accumulates many focused agents, written by different teams, and search makes the whole collection behave like one application. Users never pick an agent from a list; they say what they need.</li>
+  <li><strong>Agents are small and declarative.</strong> An agent is a set of functions, and a function is an ordered list of commands. The 23 commands cover what agents are built to do: call APIs and databases, prompt LLMs with tools, ask the user for input, invoke other agents, and remember facts across conversations.</li>
+  <li><strong>Execution is controlled.</strong> The Python expressions in an agent run in a controlled runtime, governed by an allowlist, operator rules and runtime limits that administrators set.</li>
+  <li><strong>State is not your problem.</strong> The agent server holds no state. Conversation context is encrypted and stored in Search2o Cloud, so servers can be started, stopped and scaled without losing a conversation.</li>
+</ul>

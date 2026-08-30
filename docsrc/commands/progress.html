@@ -1,0 +1,17 @@
+<p class="lead">Shows a short progress message to the user while the agent works. The message is not part of the agent's output.</p>
+
+<h2>Value</h2>
+<!--fields:command:progress-->
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"progress": "{ f'Got your location: {location['city_name']}, {location['region_name']}' }",
+"api": { "url": "{ forecastUrl }" },
+"progress": "Found the weather for the next 8 hours"
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>The value is converted to a string and sent immediately on the execution stream, so the user sees the message while the agent runs.</li>
+  <li>Progress messages are not saved with the conversation, so they do not appear when the conversation is opened again later.</li>
+</ul>

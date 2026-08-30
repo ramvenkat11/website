@@ -1,0 +1,17 @@
+<p class="lead">Writes a message to the execution trace that developers see when validating a draft. The command has no effect in production.</p>
+
+<h2>Value</h2>
+<!--fields:command:trace-->
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"search": { "query": "{ sys.query }" },
+"trace": "{ f'Found {len(result)} agents: {[r['agentName'] for r in result]} ' }"
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>The runtime already traces every command: the arguments, the result, tool calls and errors. Use <code>trace</code> for the values in between, which would otherwise be invisible.</li>
+  <li>The value is evaluated only when tracing is on, so an expensive expression here costs nothing in production.</li>
+  <li>Traces are not sent to the user and are not stored.</li>
+</ul>

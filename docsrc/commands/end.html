@@ -1,0 +1,21 @@
+<p class="lead">Ends the agent successfully. The value is added to the output, and the conversation state is saved.</p>
+
+<h2>Value</h2>
+<!--fields:command:end-->
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"if": {
+  "condition": "{ not result }",
+  "then": {
+    "end": "No open tickets match your request."
+  }
+}
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li><code>end</code> stops every function and loop that is running, however deeply nested the command is.</li>
+  <li>Set a value the user should read. An empty string ends the agent quietly.</li>
+  <li><code>end</code> is not allowed in a function that is offered to the LLM as a tool, nor in any function called from such a function. A tool must return to the model, not end the agent.</li>
+</ul>

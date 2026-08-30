@@ -1,0 +1,21 @@
+<p class="lead">Register for a license key at <a href="https://search2o.com/gettingstarted.html">search2o.com</a>, then install the agent server with <code>pip</code>.</p>
+
+<h2>Register</h2>
+<p>Registration creates your account and emails you the account's license key. The key connects an agent server to your account in Search2o Cloud. Keep the key with your other secrets.</p>
+
+<h2>Install</h2>
+<p>The agent server requires Python 3.12 or later.</p>
+<x-code lang="bash">
+$ pip install search2o
+</x-code>
+<p>The <code>db</code> command uses SQLAlchemy's async engines, so the driver for your database must be installed as well. SQLite works out of the box. The other drivers are optional extras:</p>
+<x-code lang="bash">
+$ pip install search2o[postgres]   # asyncpg
+$ pip install search2o[mysql]      # aiomysql, also used for MariaDB
+$ pip install search2o[oracle]     # oracledb
+$ pip install search2o[mssql]      # aioodbc, also needs a system ODBC driver
+$ pip install search2o[db]         # postgres, mysql and oracle together
+</x-code>
+
+<h2>Source</h2>
+<p>The agent server is published on PyPI. Its source is available at <a href="https://github.com/Search2o/agentserver.git">github.com/Search2o/agentserver</a> under a source-available license. See <a href="../misc/license.html">License and source</a>.</p>

@@ -1,0 +1,32 @@
+<p class="lead">Calls a REST API and returns the response. Use <code>api</code> for anything reachable over HTTP: your own services, public APIs, or a vendor's endpoints.</p>
+
+<h2>Fields</h2>
+<p>Either <code>profile</code> or <code>url</code> must be given. A profile is an <a href="../profiles/api-profiles.html">API profile</a> from the configuration. The profile carries the base URL, the headers sent on every call, and the connection pool to use. Headers and parameters set on the command are added to the profile's headers and parameters.</p>
+<!--fields:command:api-->
+
+<h2>Result</h2>
+<p>The response body is the command's result, available as <code>result</code> in the next command. A JSON response is parsed into a Python object. A text response is returned as a string, and a binary response as bytes. An empty body returns the HTTP status code as a number. The command does not check the status code. A timeout or a connection failure raises an error, which <code>onError</code> can catch.</p>
+
+<h2>Example</h2>
+<x-code lang="jsonc" title="Look up the caller's location, then the hourly forecast">
+"api": {
+  "url": "https://api.ip2location.io",
+  "params": {
+    "ip": "{ result }",
+    "key": "{ sys.secret('IP2LOCATION_KEY') }"
+  }
+},
+"var": {
+  "location": "{ result }"
+},
+"api.forecast": {
+  "url": "{ f'https://api.weather.gov/points/{location['latitude']},{location['longitude']}' }"
+}
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>Only <code>GET</code>, <code>POST</code>, <code>PUT</code> and <code>DELETE</code> are supported.</li>
+  <li>Keep credentials out of the definition. Read them with <code>sys.secret(...)</code> in a header, or put them in the API profile.</li>
+  <li>Timeouts default to the connection pool's settings. <code>timeout</code> overrides the default for this call.</li>
+</ul>

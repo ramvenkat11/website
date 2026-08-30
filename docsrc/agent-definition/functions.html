@@ -1,0 +1,34 @@
+<p class="lead">An agent is a collection of functions. When a function is called, the function runs its commands in order. Besides <code>commands</code>, a function may declare arguments, a description and an error handler.</p>
+
+<h2>Fields</h2>
+<!--fields:model:FunctionModel-->
+
+<h2>Arguments</h2>
+<p><code>args</code> maps each argument name to a description of that argument. When another function calls this function with <code>func</code>, only the names matter: the arguments arrive as local variables, and an argument the caller omits is <code>None</code>. When the function is offered to an LLM as a tool, the model reads the type and description of each argument, so fill them in:</p>
+<!--fields:model:FunctionArgModel-->
+
+<h2>Description</h2>
+<p>The description is needed only when the function is used as a tool. The description tells the model what the function does and when to call the function.</p>
+
+<h2>Error handling</h2>
+<p>When a command raises an error that the command's own <code>onError</code> does not handle, the function's <code>onError</code> block runs instead of the rest of the function. Inside the block, <code>exc</code> holds the exception. The block may <code>return</code> a value, and that value becomes the function's result. Otherwise the error propagates to the caller. The <code>ask</code> and <code>invoke</code> commands cannot be used in error handling.</p>
+
+<x-code lang="jsonc" title="A tool function with an error handler">
+"lookupOrder": {
+  "description": "Looks up one order by id and returns its status and total.",
+  "args": {
+    "orderId": { "type": "str", "description": "The order id, such as ORD-1042." }
+  },
+  "commands": {
+    "api": { "profile": "orders", "url": "{ f'/orders/{orderId}' }" },
+    "return": "{ {'status': result['status'], 'total': result['total']} }"
+  },
+  "onError": {
+    "log": "{ f'Order lookup failed: {exc}' }",
+    "return": "{ {'error': 'order not found'} }"
+  }
+}
+</x-code>
+
+<h2>Reentrancy</h2>
+<p>A function cannot call itself while it is running, directly or through other functions. Recursion is not available. Use loops instead.</p>

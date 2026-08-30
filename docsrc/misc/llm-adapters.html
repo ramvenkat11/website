@@ -1,0 +1,20 @@
+<p class="lead">An LLM that speaks the OpenAI, Gemini or Anthropic protocol needs only an LLM profile that points at its URL. An LLM with a different interface needs an adapter class. You write the adapter in Python and register it through the allowlist.</p>
+
+<h2>Compatible LLMs</h2>
+<p>Create a new <a href="../profiles/llm-profiles.html">LLM profile</a> in the GUI, pick the adapter that matches the protocol (<code>openai</code>, <code>anthropic</code> or <code>gemini</code>), and set the URL, the headers and the model. Private deployments and gateways that expose one of these protocols need nothing more.</p>
+
+<h2>Writing an adapter</h2>
+<p>An adapter turns the request that Search2o builds (prompt, tools, model and limits) into the vendor's request format, and turns the vendor's response back into Search2o's form. Subclass one of two classes from the <code>search2o</code> package:</p>
+<ul>
+  <li><code>search2o.llm.basellmadapter.BaseLlmAdapter</code> does the assembly and asks you only for the vendor-specific pieces: how to set the model and the token limit, how to express tools, the system prompt and each kind of message, and how to read flags and token counts from the response. <code>BaseLlmAdapter</code> is the right base for most APIs.</li>
+  <li><code>search2o.llm.llmadapter.LlmAdapter</code> is the bare interface: <code>name</code>, <code>description</code>, <code>process_request</code>, <code>process_response</code> and <code>get_error</code>. Use this class for a protocol so different that the base class does not help.</li>
+</ul>
+<p>The bundled adapters in <code>search2o.llm</code> are the reference implementations, and their source is available.</p>
+
+<h2>Registering it</h2>
+<ol>
+  <li>Put the class in the Python environment that the agent server runs in.</li>
+  <li>Add the class to the <a href="../runtime/guardrails.html#allowlist">allowlist</a> as <code>mypackage.myadapter.MyAdapter</code> and save.</li>
+  <li>The agent server instantiates every allowlisted subclass of <code>LlmAdapter</code> when the server loads the allowlist, and lists those adapters under <em>Adapters</em> when a new LLM profile is created. An adapter whose constructor fails is reported on the Agent servers page.</li>
+</ol>
+<p>The class needs a constructor that takes no arguments. Reports group spend under the profile's <em>vendor</em> field, so set that field to the vendor's name, whatever the adapter is called.</p>

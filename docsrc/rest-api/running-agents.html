@@ -1,0 +1,45 @@
+<p class="lead"><code>POST /api/exec/execAgent</code> runs a named agent. The call returns when the agent finishes, or streams the run as it happens.</p>
+
+<h2>The request</h2>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>agentName</code></td><td>The agent to run.</td></tr>
+<tr><td><code>inputs</code></td><td>A JSON object. The agent reads it as <code>sys.inputs</code>. The value under <code>query</code> is what the agent reads as <code>sys.query</code>; the search box sends the user's text there.</td></tr>
+<tr><td><code>convid</code></td><td>Omit to start a new conversation. Send the id from an earlier response to continue that conversation.</td></tr>
+<tr><td><code>stream</code></td><td><code>false</code> (the default) returns one response when the agent finishes. <code>true</code> streams the run; see <a href="streaming.html">Streaming</a>.</td></tr>
+</tbody></table></div>
+<x-code lang="bash">
+$ curl -s -X POST http://127.0.0.1:9020/api/exec/execAgent \
+    -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+    -d '{"agentName": "morning-briefing", "inputs": {"query": "what changed overnight", "team": "payments"}}'
+</x-code>
+
+<h2>The response</h2>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Field</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>resultCode</code></td><td>How the run ended; the values are listed below.</td></tr>
+<tr><td><code>convid</code></td><td>The conversation. Send it back to continue.</td></tr>
+<tr><td><code>agentName</code></td><td>The agent that ran.</td></tr>
+<tr><td><code>output</code></td><td>The agent's output as a list of parts: text (Markdown), html, or image with a <code>mimeType</code>. Present only when the call did not stream.</td></tr>
+<tr><td><code>askInput</code></td><td>Present when the agent paused on <code>ask</code>: a message and the list of inputs to collect. See below.</td></tr>
+</tbody></table></div>
+
+<h2>Result codes</h2>
+<!--enum:AgentExecResult-->
+<p><code>success</code> and <code>ask</code> are the two normal endings. Every other code is recorded in the <a href="../reports/errors.html">error report</a>. <code>unknownAgentOrConversation</code> is also what a client receives when the conversation has expired, or when the conversation is waiting for the answers of a different agent.</p>
+
+<h2>Answering an ask</h2>
+<p>When <code>resultCode</code> is <code>ask</code>, the agent has paused. <code>askInput.inputs</code> lists the inputs. Each input has a <code>name</code>, a <code>type</code>, a label, a description, the options and a default; the types are <code>str</code>, <code>password</code>, <code>text</code>, <code>chooseOne</code> and <code>chooseMany</code>. Collect the answers. Then call <code>execAgent</code> again with the same <code>agentName</code> and <code>convid</code>, and the answers as <code>inputs</code>, keyed by input name. The agent resumes at the <code>ask</code> command. The pause survives any delay: the answers may arrive the next day, from another client.</p>
+<x-code lang="bash">
+$ curl -s -X POST http://127.0.0.1:9020/api/exec/execAgent \
+    -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+    -d '{"agentName": "travel-booking", "convid": "'$CONVID'", "inputs": {"departure": "Boston", "seat": "aisle"}}'
+</x-code>
+
+<h2>Continuing a conversation</h2>
+<p>A call with a <code>convid</code> restores the conversation's state before the agent runs, so agent and conversation variables and prompt history are available. The agent named in the call need not be the agent that ran before; a conversation can move from one agent to another, as it does after a follow-up search. A conversation expires three months after its last use unless the user pinned it.</p>
+
+<h2>Validating a draft</h2>
+<p><code>POST /api/exec/validateDraftStream</code> runs a developer's draft against its validation query, with tracing on. The request names the <code>draftid</code>; the response adds <code>validationSuccess</code>, <code>compileErrors</code> and <code>runtimeError</code> to the fields above. The GUI's validation view is this call with <code>stream: true</code>.</p>

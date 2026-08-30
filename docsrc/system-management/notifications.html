@@ -1,0 +1,16 @@
+<p class="lead">Notifications record what changed in the account and who changed it. Developers and administrators read them as the audit trail: which agents were indexed or failed to index, which agents were renamed or retagged, and which configuration parts and profiles were edited.</p>
+
+<h2>What produces a notification</h2>
+<ul>
+  <li><strong>Agents</strong> &mdash; a description submitted for indexing; indexing completed; indexing failed, with the reason (contention, or the indexing service being down); a description removed from search; a title changed; a tag changed. Each notification names the agent. A title or tag notification also carries the old value and the new value.</li>
+  <li><strong>Configuration</strong> &mdash; a system configuration part created, updated or deleted: agent servers, encryption, secrets, compile rules, validation, allowlist, search, connection pools. The notification lists the <em>names</em> of the fields that changed, never their values. An allowlist change lists the entries that were added and the entries that were removed.</li>
+  <li><strong>Profiles</strong> &mdash; an LLM, API, database, MCP or prompt profile created, updated or deleted. The notification carries the profile name and the names of the fields that changed.</li>
+  <li><strong>Security</strong> &mdash; a password reset requested for an email address that has no account. The requester learns nothing either way. The notification is how an administrator sees the attempt.</li>
+</ul>
+<p>Every notification carries the time of the change and the user who made the change, shown by name and email. Changes to the authentication settings produce no notification.</p>
+
+<h2>Reading them</h2>
+<p>The Notifications page opens from the bell in the header. Developers and administrators can open the page. The page shows a time window, the last three months by default. The list can be narrowed to one kind of notification, or to the changes made by one user, identified by email. Notifications are kept for 90 days.</p>
+
+<h2>Why the values are not shown</h2>
+<p>A configuration part may hold secrets or encryption settings, and every developer can read notifications. Reporting the field names says what changed without exposing the new value. The current value is on the configuration page itself, where access depends on the role.</p>

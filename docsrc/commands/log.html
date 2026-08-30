@@ -1,0 +1,21 @@
+<p class="lead">Writes a line to the agent server's log. Logs stay in your environment and are never sent to Search2o Cloud.</p>
+
+<h2>Value</h2>
+<p>A plain string is logged at <code>info</code> level to the default logger. An object selects the logger and the level:</p>
+<!--fields:model:LogModel-->
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"log": "{ f'Order {orderId} placed by {sys.userEmail}' }",
+"log.audit": {
+  "name": "audit",
+  "level": "warning",
+  "message": "{ f'Override applied to {orderId}' }"
+}
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>The message must evaluate to a string.</li>
+  <li>The agent server's logging configuration decides where the log lines go; see <a href="../system-management/agent-servers.html">Agent servers</a>.</li>
+</ul>

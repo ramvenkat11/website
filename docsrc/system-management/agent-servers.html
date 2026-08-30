@@ -1,0 +1,17 @@
+<p class="lead">An agent server is the Python process that runs agents inside your organization. Run one on a laptop, one as a standalone server, or several behind a load balancer; every server holds the same runtime and any server can serve any request. Below: how servers are configured, and what they report.</p>
+
+<h2>Named server configurations</h2>
+<p>The Agent servers page holds one or more named configurations. The configuration named <code>default</code> is required, and a server uses it unless told otherwise. To run a server under another configuration, append the name to the license value: <code>SEARCH2O_LICENSE=your-license-key/edge</code> starts the server with the configuration named <code>edge</code>. Use separate configurations when servers differ in what they serve, for example a server that serves the GUI and a server that answers only REST calls.</p>
+
+<h2>What a configuration sets</h2>
+<!--fields:model:AgentServerModel-->
+<p>These settings are read once, at startup, so a change takes effect when the server restarts. The <code>logs</code> object is a standard Python logging configuration dictionary. The UI path may point anywhere the server can read; leave the UI path empty to serve no GUI. The documentation paths can be moved or set to nothing to switch the interactive API documentation off.</p>
+
+<h2>What a server reports</h2>
+<p>When a server loads its configuration, the server reports back what the server found: allowlist entries the server could not import, LLM adapters that failed to instantiate, and the account name. The Agent servers page shows the report of every server that has started. Restart a server to clear a stale report.</p>
+
+<h2>Keeping servers consistent</h2>
+<p>Every server picks up a configuration or profile change before its next agent run, so servers never drift from each other; see <a href="../runtime/overview.html">The agent runtime</a>. The exceptions are the settings on this page, which need a restart, and the license key, which every server must be restarted with after a <a href="../security/license-rotation.html">rotation</a>.</p>
+
+<h2>Health</h2>
+<p><code>POST /api/auth/getAccountName</code> is answered by the server itself, without sign-in, and is the call for a load balancer or a monitor to use. See <a href="../rest-api/overview.html">The REST API</a>.</p>

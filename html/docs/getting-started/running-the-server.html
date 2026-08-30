@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Running the server — Search2o docs</title>
+<meta name="description" content="The agent server is a FastAPI application served by Uvicorn. The search2o command starts the server and passes any further options to Uvicorn.">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../docs.css">
+</head>
+<body class="docs">
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="../../index.html" aria-label="Search2o home"><img src="../../logo.png" alt="Search2o" width="560" height="102"></a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="navlink" href="../../index.html">Home</a>
+      <a class="navlink" href="../../gettingstarted.html">Getting started</a>
+      <a class="navlink" href="../index.html" aria-current="page">Docs</a>
+      <a class="navlink" href="../../pricing.html">Pricing</a>
+      <a class="navlink" href="../../about.html">About</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch theme">
+      <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg>
+      <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+    <a class="btn btn-primary btn-sm header-cta" href="../../gettingstarted.html">Get started</a>
+  </div>
+</header>
+<div class="container docs-layout">
+  <button class="sb-toggle" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  <div id="sidebar" class="sb-wrap"><nav class=sidebar aria-label='Documentation'><a class='sb-home' href='../index.html'>Documentation</a><details><summary><a href='../introduction/index.html'>Introduction</a></summary><ul><li><a href='../introduction/what-is-search2o.html'>What is Search2o</a></li><li><a href='../introduction/parts-of-the-system.html'>Parts of the system</a></li><li><a href='../introduction/how-it-fits-together.html'>How it fits together</a></li></ul></details><details open><summary><a href='../getting-started/index.html'>Getting started</a></summary><ul><li><a href='../getting-started/registering-and-downloading.html'>Registering and downloading</a></li><li><a href='../getting-started/license-key.html'>The license key</a></li><li><a href='../getting-started/running-the-server.html' aria-current=page>Running the server</a></li><li><a href='../getting-started/the-gui.html'>The GUI</a></li><li><a href='../getting-started/your-first-agent.html'>Your first agent</a></li></ul></details><details><summary><a href='../agent-definition/index.html'>Agent definition</a></summary><ul><li><a href='../agent-definition/syntax.html'>Syntax and dynamic strings</a></li><li><a href='../agent-definition/structure.html'>Agent structure</a></li><li><a href='../agent-definition/functions.html'>Functions</a></li><li><a href='../agent-definition/commands.html'>Commands</a></li><li><a href='../agent-definition/variables.html'>Variables and namespaces</a></li></ul></details><details><summary><a href='../agent-execution/index.html'>Agent execution</a></summary><ul><li><a href='../agent-execution/output.html'>Agent output</a></li><li><a href='../agent-execution/order-of-execution.html'>Order of execution</a></li><li><a href='../agent-execution/conversation-state.html'>Conversation state</a></li></ul></details><details><summary><a href='../commands/index.html'>Command reference</a></summary><ul><li class=sb-group>Variables</li><li><a href='../commands/var.html'>var</a></li><li class=sb-group>Flow control</li><li><a href='../commands/if.html'>if</a></li><li><a href='../commands/while.html'>while</a></li><li><a href='../commands/for.html'>for</a></li><li><a href='../commands/break.html'>break</a></li><li><a href='../commands/continue.html'>continue</a></li><li><a href='../commands/func.html'>func</a></li><li><a href='../commands/return.html'>return</a></li><li><a href='../commands/parallel.html'>parallel</a></li><li class=sb-group>Progress information</li><li><a href='../commands/progress.html'>progress</a></li><li><a href='../commands/trace.html'>trace</a></li><li><a href='../commands/log.html'>log</a></li><li class=sb-group>Terminate agent</li><li><a href='../commands/end.html'>end</a></li><li><a href='../commands/fail.html'>fail</a></li><li class=sb-group>Call external systems</li><li><a href='../commands/api.html'>api</a></li><li><a href='../commands/db.html'>db</a></li><li class=sb-group>Engage with LLM</li><li><a href='../commands/prompt.html'>prompt</a></li><li><a href='../commands/llm.html'>llm</a></li><li><a href='../commands/memory.html'>memory</a></li><li class=sb-group>Deep agents</li><li><a href='../commands/search.html'>search</a></li><li><a href='../commands/invoke.html'>invoke</a></li><li class=sb-group>Human in the loop</li><li><a href='../commands/ask.html'>ask</a></li><li class=sb-group>Agent output</li><li><a href='../commands/output.html'>output</a></li></ul></details><details><summary><a href='../search/index.html'>Search</a></summary><ul><li><a href='../search/describing-an-agent.html'>Describing an agent</a></li><li><a href='../search/how-matching-works.html'>How matching behaves</a></li><li><a href='../search/tags.html'>Tags</a></li><li><a href='../search/search-settings.html'>Search settings</a></li></ul></details><details><summary><a href='../development/index.html'>Development process</a></summary><ul><li><a href='../development/drafts.html'>Drafts</a></li><li><a href='../development/code-editor.html'>The code editor</a></li><li><a href='../development/ai-assist.html'>AI assist</a></li><li><a href='../development/validation-and-publishing.html'>Validation and publishing</a></li><li><a href='../development/merging.html'>Multiple developers and merging</a></li></ul></details><details><summary><a href='../runtime/index.html'>Agent runtime</a></summary><ul><li><a href='../runtime/overview.html'>The agent runtime</a></li><li><a href='../runtime/guardrails.html'>Guardrails</a></li><li><a href='../runtime/pools-and-profiles.html'>Connection pools and profiles</a></li></ul></details><details><summary><a href='../profiles/index.html'>Profiles</a></summary><ul><li><a href='../profiles/overview.html'>How profiles work</a></li><li><a href='../profiles/llm-profiles.html'>LLM profiles</a></li><li><a href='../profiles/prompt-profiles.html'>Prompt profiles</a></li><li><a href='../profiles/api-profiles.html'>API profiles</a></li><li><a href='../profiles/db-profiles.html'>Database profiles</a></li><li><a href='../profiles/mcp-servers.html'>MCP servers</a></li></ul></details><details><summary><a href='../reports/index.html'>Reports</a></summary><ul><li><a href='../reports/performance.html'>Agent performance</a></li><li><a href='../reports/errors.html'>Agent errors</a></li><li><a href='../reports/cost.html'>LLM cost</a></li><li><a href='../reports/usage.html'>User usage</a></li></ul></details><details><summary><a href='../system-management/index.html'>System management</a></summary><ul><li><a href='../system-management/users-and-roles.html'>Users and roles</a></li><li><a href='../system-management/agent-servers.html'>Agent servers</a></li><li><a href='../system-management/authentication.html'>Authentication</a></li><li><a href='../system-management/notifications.html'>Notifications</a></li><li><a href='../system-management/support.html'>Support</a></li></ul></details><details><summary><a href='../security/index.html'>Security and privacy</a></summary><ul><li><a href='../security/license-rotation.html'>License key rotation</a></li><li><a href='../security/secret-vault.html'>The secret vault</a></li><li><a href='../security/encryption.html'>Encryption</a></li><li><a href='../security/controlled-runtime.html'>The controlled runtime</a></li><li><a href='../security/data-privacy.html'>Data privacy</a></li></ul></details><details><summary><a href='../gui/index.html'>GUI pages</a></summary><ul><li><a href='../gui/search.html'>Search and conversations</a></li><li><a href='../gui/agents.html'>Agents</a></li><li><a href='../gui/profiles.html'>Profiles</a></li><li><a href='../gui/guardrails.html'>Guardrails</a></li><li><a href='../gui/operations.html'>Operations</a></li><li><a href='../gui/reports.html'>Reports</a></li><li><a href='../gui/account.html'>Account</a></li><li><a href='../gui/personal.html'>Profile, notifications and docs</a></li></ul></details><details><summary><a href='../rest-api/index.html'>REST API</a></summary><ul><li><a href='../rest-api/overview.html'>The REST API</a></li><li><a href='../rest-api/authentication.html'>Authentication</a></li><li><a href='../rest-api/running-agents.html'>Running agents</a></li><li><a href='../rest-api/streaming.html'>Streaming</a></li><li><a href='../rest-api/search.html'>Search</a></li><li><a href='../rest-api/conversations.html'>Conversations</a></li><li><a href='../rest-api/workflows.html'>Workflows</a></li><li><a href='../rest-api/automating-with-an-llm.html'>Automating tasks with an LLM</a></li><li><a href='../rest-api/clients.html'>Creating your own client</a></li></ul></details><details><summary><a href='../misc/index.html'>Miscellaneous</a></summary><ul><li><a href='../misc/llm-adapters.html'>Connecting to other LLMs</a></li><li><a href='../misc/code-from-llm.html'>Executing code from an LLM</a></li><li><a href='../misc/license.html'>License and source</a></li></ul></details></nav></div>
+  <main class="docs-main">
+    <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../getting-started/index.html'>Getting started</a></div>
+    <article class="docs-article">
+      <h1>Running the server</h1>
+      <p class="lead">The agent server is a FastAPI application served by Uvicorn. The <code>search2o</code> command starts the server and passes any further options to Uvicorn.</p>
+
+<h2 id="start">Start</h2>
+<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>export SEARCH2O_LICENSE=your-license-key
+<span class=ps1>$ </span>search2o                                     <span class=cm># 127.0.0.1:9020</span>
+<span class=ps1>$ </span>search2o --host 0.0.0.0 --port 8080
+
+<span class=ps1>$ </span>SEARCH2O_LICENSE=your-license-key search2o   <span class=cm># the same, in one line</span></code></pre></figure>
+<p>The <code>--reload</code>, <code>--factory</code> and <code>--workers</code> options are not supported. Run several servers behind a load balancer instead of several workers in one process.</p>
+
+<h2 id="llm-keys">LLM keys</h2>
+<p>A new account comes with LLM profiles for OpenAI, Anthropic and Gemini. Each profile reads its API key from an environment variable on the server. Set the variable for the provider you use before starting the server:</p>
+<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>export OPENAI_API_KEY=sk-...
+<span class=ps1>$ </span>export ANTHROPIC_API_KEY=sk-ant-...
+<span class=ps1>$ </span>export GEMINI_API_KEY=...</code></pre></figure>
+<p>One key is enough to start. Where secrets come from is configurable; see <a href="../security/secret-vault.html">Secrets</a>.</p>
+
+<h2 id="what-starts-up">What starts up</h2>
+<p>At startup the server validates the license and downloads the account's configuration from Search2o Cloud. The server then checks every entry of the expression allowlist against its own Python environment and builds its connection pools. After that the server serves:</p>
+<ul>
+  <li>the GUI at <code>/ui/index.html</code>,</li>
+  <li>the OpenAPI schema at <code>/openapi.json</code>, Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>,</li>
+  <li>the REST API under <code>/api/</code>.</li>
+</ul>
+<p>The three documentation paths, the UI path and the allowed CORS origins can be changed in the <a href="../system-management/agent-servers.html">Agent servers</a> configuration.</p>
+
+<h2 id="running-in-production">Running in production</h2>
+<p>The server holds no state. Moving from a laptop to a shared server, or from one server to a cluster, changes nothing in the agents or in the configuration. Start as many servers as you need with the same license key and put them behind any load balancer. Each server brings itself up to date with the account's configuration on every agent run.</p>
+
+    </article>
+    <nav class=prevnext><a class=prev href='../getting-started/license-key.html'><small>Previous</small>The license key</a><a class=next href='../getting-started/the-gui.html'><small>Next</small>The GUI</a></nav>
+  </main>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#start'>Start</a></li><li class=l2><a href='#llm-keys'>LLM keys</a></li><li class=l2><a href='#what-starts-up'>What starts up</a></li><li class=l2><a href='#running-in-production'>Running in production</a></li></ul></aside>
+</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-base">
+      <span>&copy; <span id="year">2026</span> Search2o &middot; Northern Virginia, USA</span>
+      <span><a href="../../about.html#contact">Contact</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../../site.js"></script>
+<script src="../docs.js"></script>
+</body>
+</html>

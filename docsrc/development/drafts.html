@@ -1,0 +1,18 @@
+<p class="lead">Agent development begins with a draft. Drafts are private: only the developer who created a draft can see that draft.</p>
+
+<h2>What a draft holds</h2>
+<ul>
+  <li>The agent's name and title.</li>
+  <li>The agent definition, as a JSONC document.</li>
+  <li>The agent's tag.</li>
+  <li>A validation query: a typical query the agent is expected to handle. Validation runs the draft against this query.</li>
+</ul>
+
+<h2>New agents and changes</h2>
+<p>A draft is created either for a new agent, or from a published agent in order to change that agent. Every change to a published agent goes through a draft: edit, validate, publish. A draft for a new agent can be renamed until the draft is published. A draft of an existing agent keeps the agent's name.</p>
+
+<h2>Validating and the conversation</h2>
+<p>Each draft has its own conversation, which validation runs use. The draft's conversation is not listed with the user's conversations. The conversation is removed when the draft is published or deleted. Validation runs are not counted in reports.</p>
+
+<h2>Limits</h2>
+<p>A developer may hold up to 99 drafts. Drafts that are no longer needed can be deleted in bulk from the drafts list. Deleting a draft never affects a published agent.</p>

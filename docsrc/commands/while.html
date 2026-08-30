@@ -1,0 +1,31 @@
+<p class="lead">Repeats a block of commands while a condition stays true.</p>
+
+<h2>Fields</h2>
+<!--fields:command:while-->
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"var": { "page": 1, "items": [] },
+"while": {
+  "condition": "{ page <= 5 }",
+  "do": {
+    "api": {
+      "profile": "catalog",
+      "params": { "page": "{ page }" }
+    },
+    "var": {
+      "items": "{ items + result['items'] }",
+      "page": "{ page + 1 }"
+    },
+    "break": "{ not result['hasMore'] }"
+  }
+}
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>The condition is evaluated before every iteration, including the first.</li>
+  <li>A loop may not run more than the <em>max loop iterations</em> set in <a href="../runtime/guardrails.html#runtime-limits">Runtime limits</a>. Exceeding the limit fails the agent. The count restarts each time the loop is entered.</li>
+  <li>A long loop yields to other work from time to time, so that the agent's overall runtime limit can be enforced.</li>
+  <li>Use <code>break</code> to leave the loop early and <code>continue</code> to skip to the next iteration.</li>
+</ul>

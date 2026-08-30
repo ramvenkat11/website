@@ -1,0 +1,27 @@
+<p class="lead">Every call is an HTTP POST with a JSON body, under <code>/api/</code> on the agent server. The GUI uses nothing else, so everything the GUI does is available to your own code.</p>
+
+<h2>Endpoint groups</h2>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Prefix</th><th>What is there</th><th>Who may call it</th></tr></thead>
+<tbody>
+<tr><td><code>/api/auth/</code></td><td>Sign-in, script tokens, password reset, the account name</td><td>Anyone</td></tr>
+<tr><td><code>/api/exec/</code></td><td>Search, run an agent, validate a draft, read a conversation</td><td>Any signed-in user; drafts need a developer</td></tr>
+<tr><td><code>/api/user/</code></td><td>The caller's profile, password and conversations</td><td>Any signed-in user</td></tr>
+<tr><td><code>/api/dev/</code></td><td>Drafts, agents, descriptions, notifications, help messages</td><td>Developers and above</td></tr>
+<tr><td><code>/api/admin/</code></td><td>Users, roles, configuration, profiles, the license, freezing the account</td><td>Administrators and the owner</td></tr>
+<tr><td><code>/api/reports/</code></td><td>The four reports and their detail views</td><td>Developers; the usage report needs an administrator</td></tr>
+</tbody></table></div>
+<p>The role required by each call is the role the GUI requires for the same action; see <a href="../system-management/users-and-roles.html">Users and roles</a>. The check is made by Search2o Cloud on every call.</p>
+
+<h2>Requests and responses</h2>
+<p>A request body is a JSON object. A body with a field the endpoint does not know is rejected with status 422, so a typo in a field name cannot pass silently. Every response is a JSON object with <code>success</code>, and with <code>errorMessage</code> when <code>success</code> is false. The message is written for the person using the client and can be shown as is.</p>
+<x-code lang="json" title="A failed call">
+{ "success": false, "errorMessage": "This conversation has expired. Please start a new one." }
+</x-code>
+<p>A failed call carries an HTTP error status as well. 422 means a bad request or an error inside the agent. 401 or 403 means a missing or insufficient sign-in. 500 means the server or the cloud is at fault. When the caller's session has expired, the response also carries <code>mustLogin: true</code>; sign in again and repeat the call.</p>
+
+<h2>The schema</h2>
+<p>A running server serves its OpenAPI schema at <code>/openapi.json</code>. The schema lists every endpoint with its request and response models, and is the input for a generated client or for an LLM that calls the API. The same server renders the schema for people. Swagger UI at <code>/docs</code> lets each endpoint be tried from the browser, and ReDoc at <code>/redoc</code> is a reference to read. All three paths can be moved or switched off in the <a href="../system-management/agent-servers.html">Agent servers</a> configuration. See <a href="clients.html">Creating your own client</a> and <a href="automating-with-an-llm.html">Automating tasks with an LLM</a>.</p>
+
+<h2>Checking that a server is up</h2>
+<p><code>/api/auth/getAccountName</code> needs no sign-in and is answered by the agent server itself, so a load balancer or a monitor can use it as a health check. The response carries the account name.</p>

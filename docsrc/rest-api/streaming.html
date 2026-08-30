@@ -1,0 +1,28 @@
+<p class="lead">With <code>stream: true</code>, <code>execAgent</code> answers with newline-delimited JSON: one object per line, written as the run produces it.</p>
+
+<h2>The stream</h2>
+<p>The response has content type <code>application/x-ndjson</code>. Each line is a JSON object with a <code>type</code> and, for most types, a <code>value</code>:</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>type</th><th>value</th><th>When</th></tr></thead>
+<tbody>
+<tr><td><code>progress</code></td><td>A short string</td><td>Each <code>progress</code> command, as it runs.</td></tr>
+<tr><td><code>data</code></td><td>One output part: text, html or image</td><td>Each part the agent appends to its output, including the streamed text of an <code>llm</code> command.</td></tr>
+<tr><td><code>trace</code></td><td><code>traceType</code>, and a value with <code>path</code>, <code>duration</code> and <code>message</code></td><td>Only on <code>validateDraftStream</code>: the execution trace, one line per event.</td></tr>
+<tr><td><code>agent</code></td><td>The same object a non-streaming call returns, without <code>output</code></td><td>Once, when the run ends. Carries <code>resultCode</code>, <code>convid</code> and <code>askInput</code>.</td></tr>
+<tr><td><code>noop</code></td><td>none</td><td>A heartbeat while nothing else is happening, so that proxies keep the connection open. The interval is the <em>stream heartbeat</em> in <a href="../runtime/guardrails.html#runtime-limits">Runtime limits</a>.</td></tr>
+<tr><td><code>end</code></td><td>none</td><td>The last line.</td></tr>
+</tbody></table></div>
+<x-code lang="text" title="A streamed run">
+{"type": "progress", "value": "Looking up the forecast"}
+{"type": "data", "value": {"contentType": "text", "text": "Tomorrow in Boston: "}}
+{"type": "data", "value": {"contentType": "text", "text": "sunny, high of 24°C."}}
+{"type": "agent", "value": {"success": true, "resultCode": "success", "convid": "…", "agentName": "weather"}}
+{"type": "end"}
+</x-code>
+<p>Assemble the output by appending the <code>data</code> parts in order. Read <code>resultCode</code> and <code>askInput</code> from the <code>agent</code> line; an <code>ask</code> is answered exactly as in a non-streaming call.</p>
+
+<h2>Stopping a run</h2>
+<p>Closing the connection stops the agent. The run is recorded with the result code <code>stopped</code>, and the conversation keeps the state it had before the run. The GUI's stop button does nothing more than this.</p>
+
+<h2>When to stream</h2>
+<p>Stream when a person is watching: the first output appears as soon as the agent produces it, and progress messages show that a long call is still working. Do not stream from a scheduler or a pipeline step; a single response is simpler to handle and carries the whole output.</p>

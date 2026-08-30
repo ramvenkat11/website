@@ -1,0 +1,16 @@
+<p class="lead">A draft must be validated before it can be published. Validation checks the draft, then runs the draft against the validation query and shows the execution trace.</p>
+
+<h2>Checks</h2>
+<p>Search2o Cloud checks the JSON: the schema, every Python expression for unsafe constructs, the rules about where commands may appear, and that every referenced function and profile exists. If an <code>invoke</code> names an agent literally, the cloud also checks that the agent exists. Each error is reported with the path to the command that caused the error.</p>
+
+<h2>The validation run</h2>
+<p>The agent server then runs the checked draft against the validation query, in the draft's own conversation, with tracing on. The trace shows every command: what the command was called with, what the command returned, each LLM request and response, and each tool call. The <code>trace</code> command adds your own entries. As in any Python program, some errors show only at runtime. The validation run is mandatory for that reason.</p>
+<!--shot:validation-trace|640|The validation output: event filters and the trace of an execution, one line per command with its path|The trace after a validation run. Filters select event kinds; each event carries the path of the command that produced it.-->
+<p>Validation checks that the agent <em>completes without errors</em>. Validation does not judge whether the answer was right; the trace is there for that judgement. An agent that pauses on <code>ask</code> during validation is answered in the validation view, and the agent then continues.</p>
+
+<h2>Publishing</h2>
+<p>Once validation succeeds, the draft can be published. The published agent becomes visible to all developers and runnable by users. The draft is retired. Any edit to a draft clears the draft's validation, so a changed draft must be validated again before publishing.</p>
+<p>Each publish creates a new version of the agent. Previous versions are kept for three months and can be viewed from the agent's page.</p>
+
+<h2>Describing the agent</h2>
+<p>After publishing, describe the agent in plain English so that search can find the agent. See <a href="../search/describing-an-agent.html">Describing an agent</a>. An agent with no description can still be run by name and invoked by other agents. Such an agent simply cannot be found by search.</p>

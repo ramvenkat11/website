@@ -1,0 +1,35 @@
+<p class="lead">Stores, searches and deletes long-term memories for the current user. Memories outlive the conversation: a fact an agent learns today can be found by a query months later.</p>
+
+<h2>Fields</h2>
+<!--fields:command:memory-->
+
+<h2>How memories are keyed</h2>
+<p>A memory belongs to one user and is identified by the storing agent's name and a <em>label</em>. Storing under a label that already exists replaces the earlier memory, so a label holds the current truth of one fact rather than a history. Labels are literal names written in the definition. The text is a dynamic string. One command may both store and search.</p>
+
+<h2>Result</h2>
+<p>When <code>query</code> is set, the result is a list of the best-matching memories. Each memory has <code>agentName</code>, <code>label</code>, <code>text</code> and <code>createdAt</code>. Matching is semantic: the query does not have to share words with the memory. At most <code>limit</code> memories come back, and only memories that are relevant enough. An unrelated query returns an empty list. Without <code>query</code>, the result is <code>None</code>.</p>
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"memory": {
+  "query": "{ sys.query }",
+  "limit": 5
+},
+"prompt": {
+  "user": "{ f'What I remember about this user: {[m['text'] for m in result]}. Their question: {sys.query}' }"
+},
+"llm": { "profile": "gpt5_mini" },
+"memory.store": {
+  "store": {
+    "preferred_airline": "{ f'The user prefers to fly {airline}' }"
+  }
+}
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>Stores and deletes are applied when the agent completes successfully. A run that fails stores nothing. Validation runs never store memories.</li>
+  <li>One agent may use at most 10 distinct labels across its definition. A single command may store up to 25.</li>
+  <li>Memories are kept for a year. Each user has a bounded number of memories; when the bound is reached, the least recently retrieved memories are evicted first.</li>
+  <li>By default the search covers every agent's memories for this user. Narrow the search with <code>agentName</code> or <code>label</code>.</li>
+</ul>

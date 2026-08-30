@@ -1,0 +1,6 @@
+<p class="lead">An API profile is a REST server that agents call through the <code>api</code> command. The profile holds the server's base URL, the headers sent on every call, and the connection pool used.</p>
+
+<h2>Settings</h2>
+<!--fields:model:ApiServerModel-->
+
+<p>The URL and the header values are dynamic strings, so credentials can come from <code>sys.secret</code> instead of being stored in the profile. Headers set on the command are added to the profile's headers. Where both set the same header, the profile's value wins.</p>

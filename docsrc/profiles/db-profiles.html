@@ -1,0 +1,9 @@
+<p class="lead">A database profile is a connection that agents query through the <code>db</code> command. The profile holds the connection string and the pool settings for that connection.</p>
+
+<h2>Settings</h2>
+<!--fields:model:DbConnectionModel-->
+
+<h2>Connection pool</h2>
+<!--fields:model:DbConnectionPool-->
+
+<p>The connection string names an async SQLAlchemy driver, which must be installed in the server's environment: <code>postgresql+asyncpg://...</code>, <code>mysql+aiomysql://...</code>, <code>oracle+oracledb://...</code>, <code>sqlite+aiosqlite:///path</code>. The connection string is a dynamic string, so the password can come from <code>sys.secret</code>. An agent cannot override the connection string set in the profile.</p>

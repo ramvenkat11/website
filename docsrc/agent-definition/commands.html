@@ -1,0 +1,24 @@
+<p class="lead">There are 23 commands. Together the commands cover every agentic workflow: variables, flow control, progress, termination, external systems, LLMs, other agents, the user, and output.</p>
+
+<!--commands:groups-->
+
+<p>Each command is documented in the <a href="../commands/index.html">Command reference</a>. Each page has a table of the command's fields, generated from the agent schema, and an example.</p>
+
+<!--figure:agent-structure-->
+<h2>Results</h2>
+<p>Commands that call something set the <code>result</code> variable for the next command to read. The commands that set <code>result</code> are <code>api</code>, <code>db</code>, <code>llm</code>, <code>search</code>, <code>invoke</code>, <code>func</code>, <code>parallel</code>, <code>ask</code> and <code>memory</code>. Other commands leave <code>result</code> unchanged. The next call overwrites <code>result</code>, so save a result you need later with <code>var</code>.</p>
+
+<h2>Error handling on a command</h2>
+<p><code>api</code>, <code>db</code> and <code>llm</code> accept an <code>onError</code> block. When the command raises an error, the block runs with <code>exc</code> set to the exception, and the function continues with the next command. Without an <code>onError</code> block on the command, the error goes to the function's <code>onError</code>, and then to the caller.</p>
+
+<h2>Where a command may appear</h2>
+<p>A few commands are restricted. The restrictions are checked when the draft is validated. The check follows calls through <code>func</code> and through the functions an <code>llm</code> command offers as tools:</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Context</th><th>Not allowed</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Inside a <code>for</code> block</td><td><code>ask</code>, <code>invoke</code></td><td>A pause cannot be resumed mid-iteration.</td></tr>
+<tr><td>Inside <code>onError</code></td><td><code>ask</code>, <code>invoke</code></td><td>Error handling must complete.</td></tr>
+<tr><td>A function run by <code>parallel</code></td><td><code>ask</code></td><td>Parallel branches cannot pause.</td></tr>
+<tr><td>A function used as an LLM tool</td><td><code>end</code></td><td>A tool must return to the model.</td></tr>
+<tr><td>Outside a loop</td><td><code>break</code>, <code>continue</code></td><td>Nothing to break out of.</td></tr>
+</tbody></table></div>

@@ -1,0 +1,28 @@
+<p class="lead">The OpenAPI schema at <code>/openapi.json</code> describes every endpoint of the agent server precisely enough for an LLM to call the API. Hand the schema to a model or to a coding assistant, and administrative and reporting tasks can be automated in plain language.</p>
+
+<h2>What the schema gives a model</h2>
+<p>The schema names every endpoint, the fields of each request with their types and constraints, and the shape of each response. That is the same information a tool-calling model needs: most agent frameworks and coding assistants accept an OpenAPI document directly and turn each endpoint into a tool the model can call. The model then reads the descriptions, picks the endpoint, and fills in the body.</p>
+<x-code lang="bash">
+$ curl http://127.0.0.1:9020/openapi.json > search2o-openapi.json
+</x-code>
+
+<h2>Giving the model access</h2>
+<ol>
+  <li>Create a dedicated user for the automation, with the lowest role that covers the task. A user role covers search and conversations, a developer covers agents and agent reports, and an administrator covers users and usage reports.</li>
+  <li>Sign in with <code>scriptLogin</code> and pass the bearer token to the model's tool layer, so that every call carries <code>Authorization: Bearer &hellip;</code>. The token lasts one hour by default; sign in again when a response carries <code>mustLogin: true</code>. See <a href="authentication.html">Authentication</a>.</li>
+  <li>Tell the model the base URL of the agent server and that every endpoint is a POST with a JSON body.</li>
+</ol>
+
+<h2>Tasks that suit this</h2>
+<ul>
+  <li><strong>Reporting.</strong> "Which agents failed most last week, and with what error?" The model calls <code>getAgentErrorReport</code> for the window and reads the result; a follow-up calls <code>getAgentErrorDetailReport</code> for one agent.</li>
+  <li><strong>User administration.</strong> "Add these twelve people as developers." The model calls <code>addUsers</code> with the list, up to 25 at a time.</li>
+  <li><strong>Agent housekeeping.</strong> "Retag every agent that mentions finance in its title as <code>corporate</code>." The model lists agents with <code>getAgentList</code>, then calls <code>updateTag</code> for each match.</li>
+  <li><strong>Running agents.</strong> "Run the morning briefing for the payments team and send me the answer." The model calls <code>execAgent</code> without <code>stream</code> and returns the output; see <a href="running-agents.html">Running agents</a>.</li>
+</ul>
+
+<h2>Keeping it safe</h2>
+<p>A model with the schema can call anything the signed-in user may call, including <code>deleteAgent</code>, <code>deleteUsers</code> and <code>updateRole</code>. The role of the automation user is the boundary. Keep the role as low as the task allows, and use a user-role account where a report is all that is needed. Every call the model makes is an ordinary API call. Search2o Cloud checks the call against the role, records the call against the automation user, and shows the call in the reports and notifications like any other.</p>
+
+<h2>For people rather than models</h2>
+<p>The same schema is rendered for people. Swagger UI at <code>/docs</code> lets you fill in a request and send it from the browser. ReDoc at <code>/redoc</code> is a reference to read. Both are served by the agent server and can be moved or switched off in the <a href="../system-management/agent-servers.html">Agent servers</a> configuration.</p>

@@ -1,0 +1,50 @@
+<p class="lead">Sends the current prompt to a large language model and returns the model's answer. With <code>functions</code> or <code>mcp</code> set, the model can call tools, and the command runs the tool loop for you.</p>
+
+<h2>Fields</h2>
+<!--fields:command:llm-->
+
+<h2>Result</h2>
+<p>By default the result is the model's text answer, as a string. With <code>outputFormat: "structured"</code>, the model is expected to answer with a tool call. The result is then a dict of <code>{ functionName: arguments }</code>, shaped by the function's declared <code>args</code>. A function call gives typed output without parsing text. With <code>streamOutput: true</code>, the text and any images the model produces are also streamed straight to the user as part of the agent's output.</p>
+
+<h2>Tool calling</h2>
+<!--figure:tool-loop-->
+<p><code>functions</code> lists the functions of this agent that the model may call. Each function needs a <code>description</code> and typed <code>args</code>, because the model sees those. When the model asks for a call, the function runs with the model's arguments. The function's return value goes back to the model. The loop repeats until the model answers with text or <code>maxToolCallLoops</code> is reached.</p>
+<p><code>mcp</code> lists tools from <a href="../profiles/mcp-servers.html">MCP servers</a> as <code>server.tool</code>, or just <code>server</code> for every tool the server offers. <code>vendorTools</code> passes vendor-defined tools, such as web search, through untouched. The LLM profile caps how many tools one call may carry.</p>
+<p>A tool that raises an error is reported to the model as an error, together with the profile's <em>tool error prompt</em>. The model can then correct its arguments or give up gracefully. An <code>ask</code> inside a tool function pauses the agent exactly as anywhere else, and the agent resumes mid-loop when the user answers.</p>
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"functions": {
+  "runQuery": {
+    "description": "Runs a SQL query against the orders database and returns the rows.",
+    "args": {
+      "sql": { "type": "str", "description": "A read-only SQL query." }
+    },
+    "commands": {
+      "db": { "profile": "orders", "sql": "{ sql }" },
+      "return": "{ result }"
+    }
+  },
+  "main": {
+    "commands": {
+      "prompt": {
+        "system": "You answer questions about orders. The table orders has columns id, status, total and customer_email.",
+        "user": "{ sys.query }"
+      },
+      "llm": {
+        "profile": "gpt5_mini",
+        "functions": ["runQuery"],
+        "streamOutput": true
+      }
+    }
+  }
+}
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li><code>profile</code> is the literal name of an <a href="../profiles/llm-profiles.html">LLM profile</a>. To pick a profile at runtime, branch with <code>if</code>.</li>
+  <li>The token ceiling, retries, headers and any extra request parameters come from the profile.</li>
+  <li>An agent's run is stopped once the run's LLM spend passes the <em>max LLM cost per run</em> in <a href="../runtime/guardrails.html#runtime-limits">Runtime limits</a>.</li>
+  <li>Do not use <code>end</code> inside a tool function. A tool must return to the model.</li>
+</ul>

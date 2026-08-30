@@ -1,0 +1,35 @@
+<p class="lead">Sets or extends the prompt that the next <code>llm</code> command sends. Prompts live in the conversation, so the next run remembers what the previous run said.</p>
+
+<h2>Fields</h2>
+<!--fields:command:prompt-->
+
+<h2>How prompts accumulate</h2>
+<p>A prompt has a system part and a history of user turns, assistant answers and tool results. <code>system</code> replaces the system part. <code>user</code> is appended to the current user turn. Several <code>prompt</code> commands before one <code>llm</code> call are merged into a single user message. After the LLM answers, the answer is appended too, so a follow-up query in the same conversation carries the whole exchange.</p>
+<p>A <a href="../profiles/prompt-profiles.html">prompt profile</a> supplies the system and user text from the configuration. Values given on the command override the profile's values.</p>
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"prompt": {
+  "system": "You are a weather assistant. Answer in under 200 words.",
+  "user": "{ f'I live in {location['city_name']}. The forecast: {' '.join(lines)}' }"
+},
+"prompt.query": {
+  "user": "{ sys.query }"
+},
+"llm": { "profile": "gpt5_mini" }
+</x-code>
+
+<h2>Images</h2>
+<p><code>user</code> may also be a content part, or a list of content parts. An image reaches a vision model as a content part:</p>
+<x-code lang="jsonc">
+"prompt": {
+  "user": "{ [ {'contentType': 'image', 'contentBase64': sys.inputs['photo'], 'mimeType': 'image/png'}, {'contentType': 'text', 'text': 'What is in this picture?'} ] }"
+}
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>Leave <code>name</code> unset unless the agent needs more than one prompt, for example one prompt for classification and another for the answer. An <code>llm</code> command names the prompt to use in its <code>prompt</code> field.</li>
+  <li>Set the system prompt once, typically on the first run of a conversation. A common pattern is an <code>if</code> on an agent variable that marks initialization as done.</li>
+  <li>A prompt that an <code>llm</code> command is using cannot be used by a nested agent or a tool function at the same time. Give those their own prompt name.</li>
+</ul>

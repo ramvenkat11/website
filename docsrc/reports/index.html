@@ -1,0 +1,22 @@
+<p class="lead">Search2o keeps a record of every agent execution, including failures, for the most recent three months. The reports summarize those records. Developers see the agent reports; administrators also see the user usage reports.</p>
+<p>Every report covers a time window that you choose. Each report returns a table and a trend. The trend uses hourly buckets when the window is 48 hours or less, and daily buckets otherwise. A row in the table opens a detail report for that agent or user.</p>
+<!--pages:cards-->
+
+<h2>What is recorded</h2>
+<p>Each record holds the agent and its version, the user, the start time and the duration, the result code, the error message if there was one, and the LLM cost and LLM time. Validation runs of drafts are not recorded. The query text is stored encrypted. Only the error reports show queries, as a sample of the queries that produced an error, and the browser decrypts that sample.</p>
+
+<h2>Result codes</h2>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Code</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>success</code></td><td>The agent completed. Counted as a success.</td></tr>
+<tr><td><code>ask</code></td><td>The agent paused to ask the user for input. Counted as a success.</td></tr>
+<tr><td><code>callFailed</code></td><td>A call to an external system failed.</td></tr>
+<tr><td><code>failCommand</code></td><td>The agent ended itself with the <code>fail</code> command.</td></tr>
+<tr><td><code>errorInAgent</code></td><td>A coding error in the agent.</td></tr>
+<tr><td><code>unknownAgentOrConversation</code></td><td>The agent or the conversation could not be found.</td></tr>
+<tr><td><code>timedOut</code></td><td>The run exceeded the maximum agent runtime.</td></tr>
+<tr><td><code>stopped</code></td><td>The user stopped the run.</td></tr>
+<tr><td><code>mustLogin</code></td><td>The session expired during the run.</td></tr>
+<tr><td><code>unexpected</code></td><td>An unknown exception was raised.</td></tr>
+</tbody></table></div>

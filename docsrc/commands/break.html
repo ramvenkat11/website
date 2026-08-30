@@ -1,0 +1,23 @@
+<p class="lead">Leaves the innermost loop when the value is true.</p>
+
+<h2>Value</h2>
+<!--fields:command:break-->
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"for": {
+  "iter": "{ candidates }",
+  "loopVar": "cand",
+  "do": {
+    "var": { "match": "{ cand }" },
+    "break": "{ cand['score'] > 0.9 }"
+  }
+}
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>The value is evaluated as a boolean. A literal <code>"{ True }"</code> always breaks.</li>
+  <li><code>break</code> is allowed only inside a <code>for</code> or <code>while</code> block, including inside an <code>if</code> within the loop. Anywhere else the agent fails validation.</li>
+  <li>Only the innermost loop is left.</li>
+</ul>

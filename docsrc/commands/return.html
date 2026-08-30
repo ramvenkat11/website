@@ -1,0 +1,17 @@
+<p class="lead">Returns from the current function with a value.</p>
+
+<h2>Value</h2>
+<!--fields:command:return-->
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"return": "{ {'name': row['name'], 'total': row['amount'] * 1.2} }"
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>The value may be any JSON value. A string in braces is evaluated first.</li>
+  <li>Returning from <code>main</code> ends the agent successfully. The returned value is what an <code>invoke</code> command in another agent receives as its result. The user sees only what the agent wrote with <code>output</code>.</li>
+  <li>A function used as an LLM tool should return a dict. The dict is sent to the model as JSON; any other value is sent as text.</li>
+  <li><code>return</code> leaves every loop the command is inside.</li>
+</ul>

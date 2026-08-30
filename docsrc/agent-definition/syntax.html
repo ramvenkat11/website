@@ -1,0 +1,36 @@
+<p class="lead">Agents are written in JSONC, which is JSON with comments, plus one extension: a string enclosed in braces is a Python expression.</p>
+
+<h2>Dynamic strings</h2>
+<p>A string value enclosed in <code>{ ... }</code> is evaluated at runtime as a Python expression in the agent's execution context. The result of the expression replaces the string. The result can be of any Python type: a number, a list, a dict, an object. Any other string is a literal. A string that may be either a literal or an expression is called a <em>dynamic string</em>.</p>
+
+<x-code lang="jsonc" title="Dynamic strings in a var command">
+"var": {
+  "greeting": "Hello, world!",                       // a literal
+  "now": "{ datetime.now().isoformat() }",           // datetime must be in the allowlist
+  "weather": "{ f'{city}: {temperature}' }",         // f-strings are common
+  "squares": "{ [n * n for n in numbers] }",
+  "square_map": "{ {n: n * n for n in numbers} }",
+  "profile1": "{ await fetch_url_profile(user_id) }",
+  "profile2": "{ fetch_user_profile(user_id) }",     // an async function is awaited automatically
+  "lines": "{ [line async for line in stream_lines(url)] }",
+  "names": "{ gather(*(lookup_username(uid) for uid in user_ids)) }"   // parallel calls
+}
+</x-code>
+
+<h2>What an expression can use</h2>
+<ul>
+  <li>Variables set earlier in the same function, and the function's arguments.</li>
+  <li>Agent and conversation variables set earlier, as <code>agent.x</code> and <code>conv.x</code>.</li>
+  <li>The read-only <code>sys</code> and <code>command</code> namespaces, and the <code>inputs</code>, <code>query</code>, <code>result</code> and <code>exc</code> variables. See <a href="variables.html">Variables and namespaces</a>.</li>
+  <li>Functions and objects on the <a href="../runtime/guardrails.html#allowlist">allowlist</a>, and the public members of allowlisted objects.</li>
+</ul>
+<p>Nothing else is available. Names that are not on the allowlist, private and dunder members, and <code>import</code> are all unavailable. The rules are set out in <a href="../security/controlled-runtime.html">The controlled runtime</a>.</p>
+
+<h2>Awaiting</h2>
+<p>When the whole expression is a call to an async function, the result is awaited automatically, so <code>await</code> is optional there. Inside a larger expression, an async call must be awaited explicitly. <code>gather</code> and <code>sleep</code> are always available: <code>gather</code> runs several async calls at once, and <code>sleep</code> pauses.</p>
+
+<h2>Characters</h2>
+<p>Expressions are ASCII. Non-ASCII characters are rejected inside braces; they are fine in literal strings. A string that starts with a brace is treated as an expression only when the string also ends with a closing brace. To keep a leading brace literal, make sure the string does not end with a closing brace.</p>
+
+<h2>Comments</h2>
+<p>Line comments (<code>//</code>) and block comments (<code>/* */</code>) are allowed anywhere. Comments are stripped when the draft is validated.</p>

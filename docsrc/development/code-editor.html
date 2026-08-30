@@ -1,0 +1,14 @@
+<p class="lead">Agents are edited in a code editor that understands the agent schema: commands, fields and blocks. The editor provides completion, context-sensitive help and AI assist.</p>
+
+<h2>Completion</h2>
+<p>The editor knows which commands may appear where, and which fields each command takes. Typing a double quote inside the definition opens the suggestions for that location: the commands allowed in a block, or the fields of the command you are in. Each suggestion carries the field's description. The description is the same text that appears in the <a href="../commands/index.html">Command reference</a>.</p>
+<!--shot:editor-completion|600|The editor suggesting the commands allowed at the cursor, grouped as in the command reference|Typing a quote inside <code>commands</code> lists the commands allowed there, grouped as in the reference.-->
+
+<h2>F1</h2>
+<p>The <kbd>F1</kbd> key opens the full list of commands, grouped as in the reference, with a description of each command. Choosing a command inserts the command with its starter fields.</p>
+
+<h2>Errors as you type</h2>
+<p>The editor validates the definition against the schema while you type. Unknown commands, unknown fields, values of the wrong type and missing required fields are underlined, with the same message the server would give. Many mistakes are caught before validation runs.</p>
+
+<h2>Controls</h2>
+<p>The controls for the draft sit above the editor: the draft's name, title, tag and validation query, and the buttons to validate and publish. AI assist is a panel beside the editor; see <a href="ai-assist.html">AI assist</a>.</p>

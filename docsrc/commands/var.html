@@ -1,0 +1,32 @@
+<p class="lead">Sets one or more variables. Each key names the variable to set, and each value is the new value. The values are evaluated in the order written, so a later value can use an earlier variable.</p>
+
+<h2>Keys</h2>
+<p>A key is one of:</p>
+<ul>
+  <li><code>name</code> — a <strong>local</strong> variable, visible in this function only.</li>
+  <li><code>agent.name</code> — an <strong>agent</strong> variable, kept for the whole conversation and visible to every function of this agent.</li>
+  <li><code>conv.name</code> — a <strong>conversation</strong> variable, kept for the whole conversation and shared by every agent that runs in the conversation.</li>
+</ul>
+<p>Any key may be followed by an index to set one element of an existing list or dict: <code>totals['q3']</code>, <code>rows[0]</code>, <code>agent.cache['user']</code>. The base variable must already exist.</p>
+<p>A name starts with a letter, is at least two characters long, and contains only letters, digits and underscores. Python keywords and the names <code>sys</code>, <code>command</code>, <code>result</code>, <code>exc</code>, <code>env</code>, <code>agent</code>, <code>conv</code> and <code>onError</code> cannot be used. See <a href="../agent-definition/variables.html">Variables and namespaces</a>.</p>
+
+<h2>Values</h2>
+<p>A value is any JSON value. A string in braces is evaluated as a Python expression, and the variable receives the expression's result, whatever the type. Agent and conversation variables are saved with the conversation, so their values must be JSON serializable. Local variables may hold anything.</p>
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"var": {
+  "city": "Reston",
+  "now": "{ datetime.now().isoformat() }",
+  "greeting": "{ f'Hello from {city}' }",
+  "agent.callCount": "{ getattr(agent, 'callCount', 0) + 1 }",
+  "conv.lastCity": "{ city }"
+}
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>Assignments run top to bottom. In the example, <code>greeting</code> can use <code>city</code> because <code>city</code> is set earlier in the same command.</li>
+  <li>Reading an agent or conversation variable that has never been set raises an error. Seed the variable first, as the example does for <code>agent.callCount</code> with <code>getattr</code>.</li>
+  <li>The loop variables of an enclosing <code>for</code> are ordinary locals and can be read here. A <code>for</code> command may not reuse a name that an enclosing <code>for</code> already binds.</li>
+</ul>

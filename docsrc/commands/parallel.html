@@ -1,0 +1,25 @@
+<p class="lead">Runs several of the agent's functions at the same time and returns their results as a dict, with one entry per call.</p>
+
+<h2>Shape</h2>
+<p><code>parallel</code> is shaped like <code>var</code>, not like a command block. Each key names a function to call. Each value is an object holding the arguments for that call; the object is empty when the function takes no arguments. To call the same function twice, add a suffix after a dot, as with repeated commands: <code>lookup</code> and <code>lookup.2</code>. The result is a dict with the same keys. At least one function must be named, and <code>main</code> cannot be one of them.</p>
+
+<!--figure:parallel-->
+<h2>Example</h2>
+<x-code lang="jsonc">
+"parallel": {
+  "fetchWeather": { "city": "{ city }" },
+  "fetchEvents":  { "city": "{ city }" }
+},
+"var": {
+  "weather": "{ result['fetchWeather'] }",
+  "events": "{ result['fetchEvents'] }"
+}
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>The result is keyed by the names used in the command, so the order in which the calls finish does not matter.</li>
+  <li>Each function runs in its own scope with its own locals. Agent and conversation variables are shared, so two parallel functions should not write the same variable.</li>
+  <li>A function that runs in parallel cannot use <code>ask</code>, and cannot call a function that uses <code>ask</code>.</li>
+  <li>If any call fails, the whole command fails with that error. <code>onError</code> on the calling function can handle the error.</li>
+</ul>

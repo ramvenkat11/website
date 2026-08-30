@@ -1,0 +1,41 @@
+<p class="lead">From an empty draft to an agent that answers a search, in about ten minutes with one LLM key.</p>
+
+<h2>1. Create a draft</h2>
+<p>Sign in as a developer, open <strong>Agents → Drafts</strong> and create a new draft. Give the draft a name and a title. Agents refer to each other by name; users see the title.</p>
+
+<h2>2. Write the agent</h2>
+<p>Paste this agent into the editor. The agent sends the user's query to an LLM and streams the answer back:</p>
+<x-code lang="jsonc" title="A minimal agent">
+{
+  "functions": {
+    "main": {
+      "commands": {
+        "prompt": {
+          "system": "You are a helpful assistant. Answer briefly.",
+          "user": "{ sys.query }"
+        },
+        "llm": {
+          "profile": "gpt5_mini",
+          "streamOutput": true
+        }
+      }
+    }
+  }
+}
+</x-code>
+<p>Three things happen here. <code>main</code> is the function that runs first. <code>prompt</code> sets the system prompt and adds the user's query as the user turn; <code>sys.query</code> is the text the user typed. <code>llm</code> sends the prompt to the <code>gpt5_mini</code> profile and streams the answer to the user. Change the profile to <code>claude_haiku</code> or <code>gemini_flash</code> if that is the key you set.</p>
+
+<h2>3. Validate it</h2>
+<p>Enter a validation query such as <em>What is the capital of France, in one word?</em> and validate. The draft is checked and then run against that query. The execution trace shows each command, what the command was called with, and what came back. A draft must validate before it can be published.</p>
+
+<h2>4. Publish and describe it</h2>
+<p>Publish the draft. Then open the published agent and write its description, for example <em>Answers general knowledge questions in a sentence or two.</em> Publishing the description indexes the agent. A notification tells you when indexing is done.</p>
+
+<h2>5. Search</h2>
+<p>Switch to the search box and type a question. The agent matches, runs and streams its answer. Ask a follow-up; the conversation continues with the context of the first answer.</p>
+
+<h2>Where to go next</h2>
+<ul>
+  <li><a href="../agent-definition/index.html">Agent definition</a> explains the structure you just used.</li>
+  <li>AI assist in the editor writes a full agent from one sentence; see <a href="../development/ai-assist.html">AI assist</a>.</li>
+</ul>

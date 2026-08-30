@@ -1,0 +1,42 @@
+<p class="lead">An agent produces output with the <code>output</code> command. Output is streamed to the GUI as multipart content. Each part is written to the stream the moment the command runs, and the browser renders the part immediately.</p>
+
+<p>Output is append-only and keeps its order. The supported parts are text, HTML, images, and whatever an <code>llm</code> command with <code>streamOutput</code> produces.</p>
+
+<!--figure:output-stream-->
+<h2>Text</h2>
+<p>Text is the default part. Text is interpreted as Markdown, which is what LLMs produce.</p>
+<x-code lang="jsonc">
+"output": "The answer to your question is **42**"
+</x-code>
+<p>The same text, written as a part object:</p>
+<x-code lang="jsonc">
+"output": {
+  "contentType": "text",
+  "text": "The answer to your question is **42**"
+}
+</x-code>
+
+<h2>HTML</h2>
+<p>HTML is rendered after harmful content is removed. Markdown is not applied to HTML.</p>
+<x-code lang="jsonc">
+"output": {
+  "contentType": "html",
+  "text": "The answer to your question is <b>42</b>"
+}
+</x-code>
+
+<h2>Images</h2>
+<p>Images are emitted as base64-encoded data with an explicit MIME type.</p>
+<x-code lang="jsonc">
+"output": {
+  "contentType": "image",
+  "mimeType": "image/png",
+  "text": "iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQCAYAAACAvzbMAAAB..."
+}
+</x-code>
+
+<h2>Several parts at once</h2>
+<p>A list appends each element as a part. A string in the list becomes a text part.</p>
+
+<h2>Progress, trace and log are not output</h2>
+<p><code>progress</code> sends a transient message that the user sees while the agent runs. The message is not saved with the conversation. <code>trace</code> writes to the developer's execution trace during validation and does nothing in production. <code>log</code> writes to the agent server's log. Only <code>output</code> becomes part of the answer, plus <code>end</code>, which appends its value to the output.</p>

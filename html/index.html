@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Search2o — Search that executes</title>
+<meta name="description" content="Search2o is a platform for creating and running AI agents, built around a search interface. Type a request — the platform matches it to the right agent, runs it, and keeps context for follow-ups.">
+<meta property="og:title" content="Search2o — Search that executes">
+<meta property="og:description" content="Search2o is a platform for creating and running AI agents, built around a search interface. Type a request — the platform matches it to the right agent, runs it, and keeps context for follow-ups.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="index.html" aria-label="Search2o home"><img src="logo.png" alt="Search2o" width="560" height="102"></a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="navlink" href="index.html" aria-current="page">Home</a>
+      <a class="navlink" href="gettingstarted.html">Getting started</a>
+      <a class="navlink" href="docs/index.html">Docs</a>
+      <a class="navlink" href="pricing.html">Pricing</a>
+      <a class="navlink" href="about.html">About</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch theme">
+      <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg>
+      <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+    <a class="btn btn-primary btn-sm header-cta" href="gettingstarted.html">Get started</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-grid">
+      <div>
+        <span class="eyebrow"><span class="dot"></span>Free during the open beta</span>
+        <h1>Search that <span class="grad">executes.</span></h1>
+        <p class="def">Search2o is a platform for creating and running AI&nbsp;agents &mdash; behind one search box.</p>
+        <ul class="hero-points">
+          <li>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.4-3.4"/></svg>
+            <span><strong>Search is the orchestration.</strong> A request is matched to the agent that handles it and executed. Any number of agents sit behind one search box.</span>
+          </li>
+          <li>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg>
+            <span><strong>Conversations span agents.</strong> A follow-up can go to a different agent, and agents can build on each other&rsquo;s work.</span>
+          </li>
+          <li>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v4c0 1-1 2-2 2 1 0 2 1 2 2v4a2 2 0 0 0 2 2h1"/><path d="M16 3h1a2 2 0 0 1 2 2v4c0 1 1 2 2 2-1 0-2 1-2 2v4a2 2 0 0 1-2 2h-1"/></svg>
+            <span><strong>Hybrid architecture.</strong> Stateless agent servers run on your side with no other infrastructure dependency; Search2o Cloud maintains state.</span>
+          </li>
+        </ul>
+        <div class="hero-actions">
+          <a class="btn btn-blue btn-lg" href="gettingstarted.html">Get started <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          <span class="pip"><span class="ps1">$</span><span id="pip-cmd">pip install search2o</span>
+            <button type="button" data-copy="pip install search2o" aria-label="Copy install command">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+            </button>
+          </span>
+        </div>
+      </div>
+
+      <div class="demo" aria-label="Illustration of a Search2o request">
+        <div class="demo-search">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.4-3.4"/></svg>
+          <span>Renew the Acme contract at last year&rsquo;s rate</span>
+          <span class="caret" aria-hidden="true"></span>
+        </div>
+
+        <div class="demo-row stage stage-1">
+          <span class="demo-tag match">Match</span>
+          <div class="demo-body">
+            <span class="demo-agent">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+              Contract renewal agent
+            </span>
+          </div>
+        </div>
+
+        <div class="demo-row stage stage-2">
+          <span class="demo-tag run">Run</span>
+          <div class="demo-body demo-progress">
+            <span class="p"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Pulled the Acme account and current terms</span>
+            <span class="p"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Drafted the renewal at last year&rsquo;s rate</span>
+          </div>
+        </div>
+
+        <div class="demo-stream stage stage-3">
+          Renewal drafted for Acme at last year&rsquo;s rate &mdash; ready for your review. Want me to route it for signature?
+        </div>
+
+        <div class="demo-row stage stage-4">
+          <span class="demo-tag state">State</span>
+          <div class="demo-body demo-progress">
+            <span class="p" style="color: var(--muted)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--slate)"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Context encrypted and stored for follow-ups</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="section soft" id="how-it-works">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">How it works</span>
+        <h2>From request to result</h2>
+      </div>
+      <div class="howgrid">
+        <ol class="steps">
+          <li>
+            <h3>Type a request</h3>
+            <p>The user types a request &mdash; Search2o matches it to the agent built for it. The best match runs; a setting can offer the close matches as choices instead.</p>
+          </li>
+          <li>
+            <h3>The agent executes</h3>
+            <p>The agent runs on the agent server, next to your APIs, databases and documents.</p>
+          </li>
+          <li>
+            <h3>Reason, act, stream</h3>
+            <p>The agent reasons with LLMs, calls tools and enterprise systems, asks the user when it needs input, and streams its progress and answer as it goes.</p>
+          </li>
+          <li>
+            <h3>Context is encrypted and stored</h3>
+            <p>After the run, the conversation state is encrypted on the agent server and stored in Search2o Cloud &mdash; with end-to-end encryption, if you choose &mdash; ready for the next request.</p>
+          </li>
+        </ol>
+
+        <aside class="arch">
+          <h3>System architecture</h3>
+          <div class="arch-flow">
+            <div class="arch-actor">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+              Users
+            </div>
+            <div class="arch-link" aria-hidden="true"><span class="arch-lbl">search &amp; results</span></div>
+            <div class="arch-org">
+              <span class="arch-org-lbl">Your organization</span>
+              <div class="arch-node">
+                <strong>Search2o agent server</strong>
+                <span>Stateless &middot; Python 3.12+</span>
+                <div class="arch-chips">
+                  <span>LLMs</span><span>APIs</span><span>Databases</span><span>Tools / MCP</span>
+                </div>
+              </div>
+            </div>
+            <div class="arch-link two" aria-hidden="true"><span class="arch-lbl">encrypted context</span></div>
+            <div class="arch-node cloud">
+              <strong>Search2o Cloud</strong>
+              <span>Search &middot; state &middot; reporting</span>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXAMPLE WORKFLOW ============ -->
+  <section class="section" id="example">
+    <div class="container convo-wrap">
+      <div>
+        <span class="kicker">Example workflow</span>
+        <h2 style="font-size: 26px;">One conversation, many agents</h2>
+        <ul class="convo-points">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.4-3.4"/></svg>
+            <span>The user typed two requests and never picked an agent; search chose Payments for the first and Ticketing for the second.</span>
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
+            <span>The Ticketing agent attached the failure summary because the Payments agent&rsquo;s result was already in the conversation.</span>
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            <span>Nothing was configured to connect the two agents. They were built separately; the conversation is what links them.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="convo" aria-label="Example conversation across two agents">
+        <div class="convo-title">
+          <svg class="lock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+          Conversation &middot; context shared across agents
+        </div>
+        <div class="convo-body">
+          <div class="turn-user">Summarize yesterday&rsquo;s failed payment runs</div>
+          <div class="turn-agent">
+            <span class="who">Matched
+              <span class="chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Payments agent</span>
+            </span>
+            <div class="msg">3 of 214 runs failed yesterday, all on the same gateway timeout. Value held: $12,410 across runs #4411, #4416 and #4420.
+            </div>
+          </div>
+          <div class="turn-user">Open a ticket for the gateway timeouts and attach that summary</div>
+          <div class="turn-agent">
+            <span class="who">Matched
+              <span class="chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Ticketing agent</span>
+            </span>
+            <div class="msg">Created ticket OPS-2291 with the failure summary attached and the three runs linked.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DESCRIPTION & SEARCH ============ -->
+  <section class="section soft" id="description">
+    <div class="container">
+      <div class="split">
+        <div>
+          <span class="kicker">Search</span>
+          <h2 style="font-size: 22px;">How does search find an agent?</h2>
+          <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">Search uses the plain-English description of each agent, written by its developer, to match a request to the agents best suited to handle it. It supports most major languages, including queries in a different language from the agent description, scales to thousands of agents, and returns matches within 300 ms. The right agent should rank first about 85% of the time and appear in the top three about 95% of the time.</p>
+        </div>
+
+        <div class="codecard" aria-label="Example agent description">
+          <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">hr-policy &middot; description</span></div>
+<pre style="white-space: pre-wrap;"><code>Answers employee questions about Acme Corp workforce policies: vacation and leave, benefits eligibility, remote-work rules, expense limits and the code of conduct. It explains what the policy says and where to find the form. It cannot approve requests, change records or make exceptions.</code></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AGENT FRAMEWORK ============ -->
+  <section class="section" id="framework">
+    <div class="container">
+      <div class="split">
+        <div>
+          <span class="kicker">Agent framework</span>
+          <h2 style="font-size: 22px;">JSON syntax, Python expressions</h2>
+          <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">An agent is defined in JSON and contains a set of functions. Each function is an ordered dictionary of commands. Strings enclosed in <code>{ }</code> are interpreted as Python expressions. Execution begins with the main function.
+          </p>
+          <style>
+            .cmdgroups { margin-top: 12px; display: grid; gap: 9px; }
+            .cg { display: grid; grid-template-columns: 150px 1fr; gap: 10px; align-items: baseline; }
+            .cg-l { font-size: 12.5px; font-weight: 600; color: var(--muted); white-space: nowrap; }
+            .cg-c { display: flex; flex-wrap: wrap; gap: 6px; }
+            .cg-c code { font-family: var(--mono); font-size: 12.5px; padding: 3px 8px; border-radius: 7px; background: var(--bg-soft); border: 1px solid var(--line); color: var(--ink); }
+            @media (max-width: 640px) { .cg { grid-template-columns: 1fr; gap: 4px; } }
+          </style>
+          <h3 style="margin-top: 26px; font-size: 14px; font-weight: 700; color: var(--ink);">The 23 commands</h3>
+          <div class="cmdgroups" aria-label="The 23 commands, by group">
+            <div class="cg"><span class="cg-l">Variables</span><span class="cg-c"><code>var</code></span></div>
+            <div class="cg"><span class="cg-l">Flow control</span><span class="cg-c"><code>if</code><code>while</code><code>for</code><code>break</code><code>continue</code><code>func</code><code>return</code><code>parallel</code></span></div>
+            <div class="cg"><span class="cg-l">Progress information</span><span class="cg-c"><code>progress</code><code>trace</code><code>log</code></span></div>
+            <div class="cg"><span class="cg-l">Terminate agent</span><span class="cg-c"><code>end</code><code>fail</code></span></div>
+            <div class="cg"><span class="cg-l">Call external systems</span><span class="cg-c"><code>api</code><code>db</code></span></div>
+            <div class="cg"><span class="cg-l">Engage with LLM</span><span class="cg-c"><code>prompt</code><code>llm</code><code>memory</code></span></div>
+            <div class="cg"><span class="cg-l">Deep agents</span><span class="cg-c"><code>search</code><code>invoke</code></span></div>
+            <div class="cg"><span class="cg-l">Human in the loop</span><span class="cg-c"><code>ask</code></span></div>
+            <div class="cg"><span class="cg-l">Agent output</span><span class="cg-c"><code>output</code></span></div>
+          </div>
+        </div>
+
+        <div class="codecard" aria-label="Example agent definition">
+          <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">weather.json &middot; agent definition</span></div>
+<pre><code><span class="tk-pun">{</span>
+  <span class="tk-key">"functions"</span><span class="tk-pun">: {</span>
+    <span class="tk-key">"main"</span><span class="tk-pun">: {</span>
+      <span class="tk-key">"commands"</span><span class="tk-pun">: {</span>
+        <span class="tk-key">"func"</span><span class="tk-pun">: { </span><span class="tk-key">"name"</span><span class="tk-pun">:</span> <span class="tk-str">"forecast"</span><span class="tk-pun"> },</span>
+        <span class="tk-key">"prompt"</span><span class="tk-pun">: {</span>
+          <span class="tk-key">"user"</span><span class="tk-pun">:</span> <span class="tk-expr">"{ f'Forecast: {result}. {sys.query}' }"</span>
+        <span class="tk-pun">},</span>
+        <span class="tk-key">"llm"</span><span class="tk-pun">: { </span><span class="tk-key">"profile"</span><span class="tk-pun">:</span> <span class="tk-str">"anthropic"</span><span class="tk-pun">, </span><span class="tk-key">"streamOutput"</span><span class="tk-pun">:</span> <span class="tk-bool">true</span><span class="tk-pun"> }</span>
+      <span class="tk-pun">}</span>
+    <span class="tk-pun">},</span>
+    <span class="tk-key">"forecast"</span><span class="tk-pun">: {</span>
+      <span class="tk-key">"commands"</span><span class="tk-pun">: {</span>
+        <span class="tk-key">"api"</span><span class="tk-pun">: { </span><span class="tk-key">"url"</span><span class="tk-pun">:</span> <span class="tk-str">"https://api.weather.gov/&hellip;/forecast"</span><span class="tk-pun"> },</span>
+        <span class="tk-key">"return"</span><span class="tk-pun">:</span> <span class="tk-expr">"{ result['properties']['periods'][:8] }"</span>
+      <span class="tk-pun">}</span>
+    <span class="tk-pun">}</span>
+  <span class="tk-pun">}</span>
+<span class="tk-pun">}</span></code></pre>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ PLATFORM ============ -->
+  <section class="section soft" id="platform">
+    <div class="container">
+      <div class="section-head center">
+        <span class="kicker">Platform</span>
+        <h2>Built for the enterprise</h2>
+      </div>
+      <div class="cardgrid">
+        <article class="pcard">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-3.5 8-10V5l-8-3-8 3v7c0 6.5 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+          <h3>Agent security</h3>
+          <p>Agents run in a controlled runtime: only the functions on your allowlist can be called, and compile rules bound what an expression may do. Secrets come from your vault and never appear in an agent. Conversation state is encrypted before it leaves your server.</p>
+        </article>
+        <article class="pcard">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></div>
+          <h3>Model neutrality</h3>
+          <p>Bring your own keys. OpenAI, Anthropic and Gemini are supported out of the box, and so is any LLM with an interface compatible with one of the three. For any other LLM, you write a small adapter class.</p>
+        </article>
+        <article class="pcard">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 9 5-9 5-9-5 9-5z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></div>
+          <h3>Profiles</h3>
+          <p>LLMs, APIs, databases, MCP servers, and prompts are defined as named profiles that agents reference. This lets agents move from development to production without code changes, and lets shared configuration changes be made in one place for every agent that uses them.
+          </p>
+        </article>
+        <article class="pcard">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M7 4v5"/></svg></div>
+          <h3>Agent development</h3>
+          <p>Agent editor provides code completion and context help. AI assist creates agent drafts from your prompts. Validation runs full trace. Agents are versioned and past versions are available for three months. Notifications post all agent and config changes.</p>
+        </article>
+        <article class="pcard">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 4-4 16"/></svg></div>
+          <h3>API &amp; automation</h3>
+          <p>The agent server exposes a REST API described by an OpenAPI specification. The bundled UI is built entirely on it. Use it to build your own search UI, or to run non-interactive agent workflows &mdash; scheduled, event-driven, or in batch.</p>
+        </article>
+        <article class="pcard">
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M17.5 13.5a6.5 6.5 0 0 1 4 6.5"/></svg></div>
+          <h3>Access &amp; roles</h3>
+          <p>Four roles: owner, administrator, developer, user. Users run searches; developers build agents and control the agent environment; administrators manage users, the system environment and security; the owner alone has access to billing.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REPORTS ============ -->
+  <section class="section" id="reports">
+    <style>
+      .reportfan { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .rtile { margin: 0; }
+      .rtile .rshot { border-radius: 12px; overflow: hidden; border: 1px solid var(--line); box-shadow: var(--card-shadow); background: var(--card); }
+      .rtile svg { display: block; width: 100%; height: auto; }
+      .rtile figcaption { margin-top: 6px; font-size: 12.5px; font-weight: 600; color: var(--muted); text-align: center; }
+      @media (max-width: 640px) { .reportfan { grid-template-columns: 1fr; } }
+    </style>
+    <div class="container">
+      <div class="split">
+        <div>
+          <span class="kicker">Reports</span>
+          <h2 style="font-size: 22px;">What ran, what failed, what it cost</h2>
+          <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">Four top-level reports with trends. Each row opens a detailed report for that agent or user.</p>
+        </div>
+        <div class="reportfan" aria-label="The four reports">
+          <figure class="rtile"><div class="rshot"><svg viewBox="0 0 720 320" role="img" aria-label="Performance: executions, users, success rate and latency per agent" xmlns="http://www.w3.org/2000/svg"><defs><marker id="report-performance-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--faint)"/></marker><marker id="report-performance-arr-r" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M10,0 L0,5 L10,10 z" fill="var(--faint)"/></marker></defs><rect x="20" y="20" width="680" height="280" rx="12" fill="var(--card)" stroke="var(--line)"/><path d="M32,20 h108 v280 h-108 a12,12 0 0 1 -12,-12 v-256 a12,12 0 0 1 12,-12z" fill="var(--navy)"/><text x="34" y="40" text-anchor="start" dominant-baseline="middle" font-size="11" font-weight="800" fill="#fff">Search2o</text><text x="34" y="64" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="rgba(255,255,255,.55)">OPERATIONS</text><text x="34" y="81" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Agent servers</text><text x="34" y="98" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Connection pools</text><text x="34" y="115" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Secrets &amp; encryption</text><text x="34" y="132" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="rgba(255,255,255,.55)">REPORTS</text><text x="34" y="149" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Performance</text><text x="34" y="166" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Cost</text><text x="34" y="183" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Errors</text><text x="34" y="200" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Usage</text><text x="34" y="217" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="rgba(255,255,255,.55)">ACCOUNT</text><text x="34" y="234" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Users</text><text x="34" y="251" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Authentication</text><text x="34" y="268" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">License</text><path d="M140,50 L700,50" fill="none" stroke="var(--line)" stroke-width="1.4"/><text x="154" y="36" text-anchor="start" dominant-baseline="middle" font-size="10" font-weight="600" fill="var(--ink)">Acme Corp / Performance</text><rect x="154" y="60" width="120" height="22" rx="5" fill="var(--bg-soft)" stroke="var(--line)"/><text x="214.0" y="71.0" text-anchor="middle" dominant-baseline="middle" font-size="9.5" font-weight="600" fill="var(--ink)">Last 7 days  ⌄</text><text x="686" y="71" text-anchor="end" dominant-baseline="middle" font-size="8.5" font-weight="500" fill="var(--muted)">daily buckets</text><text x="154.0" y="96" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="var(--muted)">Executions</text><polyline points="154.0,136.0 179.6,126.0 205.1,131.0 230.7,116.0 256.2,121.0 281.8,106.0 307.3,111.0" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linejoin="round"/><text x="331.33333333333337" y="96" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="var(--muted)">Duration</text><polyline points="331.3,136.0 356.9,126.0 382.4,131.0 408.0,116.0 433.6,121.0 459.1,106.0 484.7,111.0" fill="none" stroke="var(--ok)" stroke-width="2" stroke-linejoin="round"/><text x="508.6666666666667" y="96" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="var(--muted)">Distinct agents</text><polyline points="508.7,136.0 534.2,126.0 559.8,131.0 585.3,116.0 610.9,121.0 636.4,106.0 662.0,111.0" fill="none" stroke="#d97706" stroke-width="2" stroke-linejoin="round"/><rect x="154" y="152" width="532" height="21" rx="6" fill="var(--bg-soft)"/><text x="164" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Agent</text><text x="259" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Executions</text><text x="329" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Users</text><text x="379" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Success</text><text x="439" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Avg</text><text x="494" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">P95</text><text x="549" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Last run</text><path d="M154,173 L686,173" fill="none" stroke="var(--line)" stroke-width="1.4"/><text x="164" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">weather</text><text x="259" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">162</text><text x="329" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">24</text><text x="379" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">100%</text><text x="439" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">1.7 s</text><text x="494" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">2.9 s</text><text x="549" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">Aug 27</text><path d="M154,194 L686,194" fill="none" stroke="var(--line)" stroke-width="1.4"/><text x="164" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">hr-policy</text><text x="259" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">58</text><text x="329" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">19</text><text x="379" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">98%</text><text x="439" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">1.2 s</text><text x="494" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">2.1 s</text><text x="549" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">Aug 27</text><path d="M154,215 L686,215" fill="none" stroke="var(--line)" stroke-width="1.4"/><text x="164" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">order-lookup</text><text x="259" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">53</text><text x="329" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">6</text><text x="379" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">94%</text><text x="439" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">3.4 s</text><text x="494" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">6.8 s</text><text x="549" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">Aug 26</text><path d="M154,236 L686,236" fill="none" stroke="var(--line)" stroke-width="1.4"/><text x="164" y="246.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">docs-rag</text><text x="259" y="246.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">35</text><text x="329" y="246.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">11</text><text x="379" y="246.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">100%</text><text x="439" y="246.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">2.6 s</text><text x="494" y="246.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">4.0 s</text><text x="549" y="246.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">Aug 26</text></svg></div><figcaption>Performance</figcaption></figure>
+          <figure class="rtile"><div class="rshot"><svg viewBox="0 0 720 320" role="img" aria-label="Errors: failures per agent, by result code, with the messages behind them" xmlns="http://www.w3.org/2000/svg"><defs><marker id="report-errors-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--faint)"/></marker><marker id="report-errors-arr-r" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M10,0 L0,5 L10,10 z" fill="var(--faint)"/></marker></defs><rect x="20" y="20" width="680" height="280" rx="12" fill="var(--card)" stroke="var(--line)"/><path d="M32,20 h108 v280 h-108 a12,12 0 0 1 -12,-12 v-256 a12,12 0 0 1 12,-12z" fill="var(--navy)"/><text x="34" y="40" text-anchor="start" dominant-baseline="middle" font-size="11" font-weight="800" fill="#fff">Search2o</text><text x="34" y="64" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="rgba(255,255,255,.55)">OPERATIONS</text><text x="34" y="81" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Agent servers</text><text x="34" y="98" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Connection pools</text><text x="34" y="115" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Secrets &amp; encryption</text><text x="34" y="132" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="rgba(255,255,255,.55)">REPORTS</text><text x="34" y="149" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Performance</text><text x="34" y="166" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Cost</text><text x="34" y="183" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Errors</text><text x="34" y="200" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Usage</text><text x="34" y="217" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="rgba(255,255,255,.55)">ACCOUNT</text><text x="34" y="234" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Users</text><text x="34" y="251" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Authentication</text><text x="34" y="268" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">License</text><path d="M140,50 L700,50" fill="none" stroke="var(--line)" stroke-width="1.4"/><text x="154" y="36" text-anchor="start" dominant-baseline="middle" font-size="10" font-weight="600" fill="var(--ink)">Acme Corp / Errors</text><rect x="154" y="60" width="120" height="22" rx="5" fill="var(--bg-soft)" stroke="var(--line)"/><text x="214.0" y="71.0" text-anchor="middle" dominant-baseline="middle" font-size="9.5" font-weight="600" fill="var(--ink)">Last 7 days  ⌄</text><text x="686" y="71" text-anchor="end" dominant-baseline="middle" font-size="8.5" font-weight="500" fill="var(--muted)">daily buckets</text><text x="154.0" y="96" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="var(--muted)">Errors</text><polyline points="154.0,136.0 179.6,126.0 205.1,131.0 230.7,116.0 256.2,121.0 281.8,106.0 307.3,111.0" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linejoin="round"/><text x="331.33333333333337" y="96" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="var(--muted)">Executions</text><polyline points="331.3,136.0 356.9,126.0 382.4,131.0 408.0,116.0 433.6,121.0 459.1,106.0 484.7,111.0" fill="none" stroke="var(--ok)" stroke-width="2" stroke-linejoin="round"/><text x="508.6666666666667" y="96" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="var(--muted)">Users affected</text><polyline points="508.7,136.0 534.2,126.0 559.8,131.0 585.3,116.0 610.9,121.0 636.4,106.0 662.0,111.0" fill="none" stroke="#d97706" stroke-width="2" stroke-linejoin="round"/><rect x="154" y="152" width="532" height="21" rx="6" fill="var(--bg-soft)"/><text x="164" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Agent</text><text x="259" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Errors</text><text x="314" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Executions</text><text x="384" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Rate</text><text x="434" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Users</text><text x="484" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Codes</text><text x="574" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Last</text><path d="M154,173 L686,173" fill="none" stroke="var(--line)" stroke-width="1.4"/><text x="164" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">order-lookup</text><text x="259" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">3</text><text x="314" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">53</text><text x="384" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">5.7%</text><text x="434" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">2</text><text x="484" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">callFailed</text><text x="574" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">Aug 26</text><path d="M154,194 L686,194" fill="none" stroke="var(--line)" stroke-width="1.4"/><text x="164" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">hr-policy</text><text x="259" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">1</text><text x="314" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">58</text><text x="384" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">1.7%</text><text x="434" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">1</text><text x="484" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">timedOut</text><text x="574" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">Aug 25</text></svg></div><figcaption>Errors</figcaption></figure>
+          <figure class="rtile"><div class="rshot"><svg viewBox="0 0 720 320" role="img" aria-label="Cost: LLM spend per agent, from token counts and the profile&#x27;s prices" xmlns="http://www.w3.org/2000/svg"><defs><marker id="report-cost-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--faint)"/></marker><marker id="report-cost-arr-r" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M10,0 L0,5 L10,10 z" fill="var(--faint)"/></marker></defs><rect x="20" y="20" width="680" height="280" rx="12" fill="var(--card)" stroke="var(--line)"/><path d="M32,20 h108 v280 h-108 a12,12 0 0 1 -12,-12 v-256 a12,12 0 0 1 12,-12z" fill="var(--navy)"/><text x="34" y="40" text-anchor="start" dominant-baseline="middle" font-size="11" font-weight="800" fill="#fff">Search2o</text><text x="34" y="64" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="rgba(255,255,255,.55)">OPERATIONS</text><text x="34" y="81" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Agent servers</text><text x="34" y="98" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Connection pools</text><text x="34" y="115" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Secrets &amp; encryption</text><text x="34" y="132" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="rgba(255,255,255,.55)">REPORTS</text><text x="34" y="149" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Performance</text><text x="34" y="166" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Cost</text><text x="34" y="183" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Errors</text><text x="34" y="200" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Usage</text><text x="34" y="217" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="rgba(255,255,255,.55)">ACCOUNT</text><text x="34" y="234" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Users</text><text x="34" y="251" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Authentication</text><text x="34" y="268" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">License</text><path d="M140,50 L700,50" fill="none" stroke="var(--line)" stroke-width="1.4"/><text x="154" y="36" text-anchor="start" dominant-baseline="middle" font-size="10" font-weight="600" fill="var(--ink)">Acme Corp / Cost</text><rect x="154" y="60" width="120" height="22" rx="5" fill="var(--bg-soft)" stroke="var(--line)"/><text x="214.0" y="71.0" text-anchor="middle" dominant-baseline="middle" font-size="9.5" font-weight="600" fill="var(--ink)">Last 7 days  ⌄</text><text x="686" y="71" text-anchor="end" dominant-baseline="middle" font-size="8.5" font-weight="500" fill="var(--muted)">daily buckets</text><text x="154.0" y="96" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="var(--muted)">Total cost</text><polyline points="154.0,136.0 179.6,126.0 205.1,131.0 230.7,116.0 256.2,121.0 281.8,106.0 307.3,111.0" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linejoin="round"/><text x="331.33333333333337" y="96" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="var(--muted)">Average cost</text><polyline points="331.3,136.0 356.9,126.0 382.4,131.0 408.0,116.0 433.6,121.0 459.1,106.0 484.7,111.0" fill="none" stroke="var(--ok)" stroke-width="2" stroke-linejoin="round"/><text x="508.6666666666667" y="96" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="var(--muted)">P95 cost</text><polyline points="508.7,136.0 534.2,126.0 559.8,131.0 585.3,116.0 610.9,121.0 636.4,106.0 662.0,111.0" fill="none" stroke="#d97706" stroke-width="2" stroke-linejoin="round"/><rect x="154" y="152" width="532" height="21" rx="6" fill="var(--bg-soft)"/><text x="164" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Agent</text><text x="259" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Executions</text><text x="329" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Users</text><text x="379" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Total</text><text x="439" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Average</text><text x="504" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Maximum</text><text x="574" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Last run</text><path d="M154,173 L686,173" fill="none" stroke="var(--line)" stroke-width="1.4"/><text x="164" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">docs-rag</text><text x="259" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">35</text><text x="329" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">11</text><text x="379" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">$0.41</text><text x="439" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">$0.012</text><text x="504" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">$0.031</text><text x="574" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">Aug 26</text><path d="M154,194 L686,194" fill="none" stroke="var(--line)" stroke-width="1.4"/><text x="164" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">weather</text><text x="259" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">162</text><text x="329" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">24</text><text x="379" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">$0.29</text><text x="439" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">$0.002</text><text x="504" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">$0.004</text><text x="574" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">Aug 27</text><path d="M154,215 L686,215" fill="none" stroke="var(--line)" stroke-width="1.4"/><text x="164" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">order-lookup</text><text x="259" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">53</text><text x="329" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">6</text><text x="379" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">$0.22</text><text x="439" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">$0.004</text><text x="504" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">$0.011</text><text x="574" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">Aug 26</text></svg></div><figcaption>LLM cost</figcaption></figure>
+          <figure class="rtile"><div class="rshot"><svg viewBox="0 0 720 320" role="img" aria-label="Usage: what each user ran, for administrators" xmlns="http://www.w3.org/2000/svg"><defs><marker id="report-usage-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--faint)"/></marker><marker id="report-usage-arr-r" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M10,0 L0,5 L10,10 z" fill="var(--faint)"/></marker></defs><rect x="20" y="20" width="680" height="280" rx="12" fill="var(--card)" stroke="var(--line)"/><path d="M32,20 h108 v280 h-108 a12,12 0 0 1 -12,-12 v-256 a12,12 0 0 1 12,-12z" fill="var(--navy)"/><text x="34" y="40" text-anchor="start" dominant-baseline="middle" font-size="11" font-weight="800" fill="#fff">Search2o</text><text x="34" y="64" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="rgba(255,255,255,.55)">OPERATIONS</text><text x="34" y="81" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Agent servers</text><text x="34" y="98" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Connection pools</text><text x="34" y="115" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Secrets &amp; encryption</text><text x="34" y="132" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="rgba(255,255,255,.55)">REPORTS</text><text x="34" y="149" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Performance</text><text x="34" y="166" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Cost</text><text x="34" y="183" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Errors</text><text x="34" y="200" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Usage</text><text x="34" y="217" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="rgba(255,255,255,.55)">ACCOUNT</text><text x="34" y="234" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Users</text><text x="34" y="251" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">Authentication</text><text x="34" y="268" text-anchor="start" dominant-baseline="middle" font-size="9.5" font-weight="500" fill="#fff">License</text><path d="M140,50 L700,50" fill="none" stroke="var(--line)" stroke-width="1.4"/><text x="154" y="36" text-anchor="start" dominant-baseline="middle" font-size="10" font-weight="600" fill="var(--ink)">Acme Corp / Usage</text><rect x="154" y="60" width="120" height="22" rx="5" fill="var(--bg-soft)" stroke="var(--line)"/><text x="214.0" y="71.0" text-anchor="middle" dominant-baseline="middle" font-size="9.5" font-weight="600" fill="var(--ink)">Last 7 days  ⌄</text><text x="686" y="71" text-anchor="end" dominant-baseline="middle" font-size="8.5" font-weight="500" fill="var(--muted)">daily buckets</text><text x="154.0" y="96" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="var(--muted)">Active users</text><polyline points="154.0,136.0 194.3,126.0 234.7,131.0 275.0,116.0 315.3,121.0 355.7,106.0 396.0,111.0" fill="none" stroke="var(--blue)" stroke-width="2" stroke-linejoin="round"/><text x="420.0" y="96" text-anchor="start" dominant-baseline="middle" font-size="8.5" font-weight="700" fill="var(--muted)">Total duration</text><polyline points="420.0,136.0 460.3,126.0 500.7,131.0 541.0,116.0 581.3,121.0 621.7,106.0 662.0,111.0" fill="none" stroke="var(--ok)" stroke-width="2" stroke-linejoin="round"/><rect x="154" y="152" width="532" height="21" rx="6" fill="var(--bg-soft)"/><text x="164" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">User</text><text x="284" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Executions</text><text x="354" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Agents</text><text x="414" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Success</text><text x="474" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Cost</text><text x="534" y="162.5" text-anchor="start" dominant-baseline="middle" font-size="10.5" font-weight="700" fill="var(--muted)">Last run</text><path d="M154,173 L686,173" fill="none" stroke="var(--line)" stroke-width="1.4"/><text x="164" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">Mei Chen</text><text x="284" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">88</text><text x="354" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">5</text><text x="414" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">99%</text><text x="474" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">$0.31</text><text x="534" y="183.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">Aug 27</text><path d="M154,194 L686,194" fill="none" stroke="var(--line)" stroke-width="1.4"/><text x="164" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">Diego Alvarez</text><text x="284" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">41</text><text x="354" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">7</text><text x="414" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">95%</text><text x="474" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">$0.27</text><text x="534" y="204.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">Aug 27</text><path d="M154,215 L686,215" fill="none" stroke="var(--line)" stroke-width="1.4"/><text x="164" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">Priya Natarajan</text><text x="284" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">23</text><text x="354" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">4</text><text x="414" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">100%</text><text x="474" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">$0.09</text><text x="534" y="225.5" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--ink)">Aug 26</text></svg></div><figcaption>Usage</figcaption></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GETTING STARTED BAND ============ -->
+  <section class="band section" id="get-started">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Getting started</span>
+        <h2>From install to your first search</h2>
+        <p>Start on your laptop with a license and one LLM key.</p>
+      </div>
+      <div class="bandsteps">
+        <div class="b">
+          <h3>Register &amp; install</h3>
+          <p>Register for a license, then <code>pip install search2o</code> and run the server on your local machine.</p>
+        </div>
+        <div class="b">
+          <h3>Create your first agent</h3>
+          <p>Write it in JSON, validate it, then publish.</p>
+        </div>
+        <div class="b">
+          <h3>Describe it &amp; search</h3>
+          <p>Describe the agent in plain English, index it, and search &mdash; your request finds the agent.</p>
+        </div>
+        <div class="b">
+          <h3>Bring your team</h3>
+          <p>Add users with roles, then move the server to a common place in your organization.</p>
+        </div>
+      </div>
+      <div class="band-actions">
+        <a class="btn btn-onnavy btn-lg" href="gettingstarted.html">Read the getting-started guide <span class="arrow" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn-ghost btn-lg" style="background: transparent; color: #c7d2e6; border-color: rgba(143,161,189,.35);" href="pricing.html">See beta pricing</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Search2o" width="560" height="102">
+        <p>Search that executes.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="fcol">
+          <h4>Product</h4>
+          <a href="index.html#how-it-works">How it works</a>
+          <a href="index.html#platform">Platform</a>
+          <a href="index.html#framework">Agent framework</a>
+          <a href="index.html#description">Search</a>
+          <a href="index.html#reports">Reports</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+        <div class="fcol">
+          <h4>Resources</h4>
+          <a href="gettingstarted.html">Getting started</a>
+          <a href="docs/index.html">Docs</a>
+        </div>
+        <div class="fcol">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>&copy; <span id="year">2026</span> Search2o &middot; Northern Virginia, USA</span>
+      <span>A platform for creating and running AI agents, built around a search interface.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+</body>
+</html>

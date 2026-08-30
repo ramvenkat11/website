@@ -1,0 +1,18 @@
+<p class="lead">The GUI is a single-page application bundled with the agent server and served at <code>/ui/index.html</code>. The GUI uses nothing but the agent server's REST API.</p>
+
+<h2>Signing in</h2>
+<p>Open <code>http://127.0.0.1:9020/ui/index.html</code> and sign in with the email address and password you registered with. The first user of an account is the account's <strong>owner</strong>. Add developers and users from the Account section. See <a href="../system-management/users-and-roles.html">Users and roles</a>.</p>
+
+<h2>Hosting the GUI elsewhere</h2>
+<p>The GUI's files live in the server's <code>ui</code> directory and can be served from anywhere, a CDN included. <code>index.html</code> carries a small block of configuration in a <code>&lt;meta name="search2o-ui-config"&gt;</code> tag:</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Setting</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td><code>apiBase</code></td><td>Base URL of the agent server's REST API. Empty means the same origin as the GUI. When the GUI and the agent server are on different origins, add the GUI's origin to the server's allowed CORS origins.</td></tr>
+<tr><td><code>apiTimeoutSeconds</code></td><td>Timeout, in seconds, for REST calls from the GUI. Keep the timeout above 60: publishing a description is checked by the cloud and can take up to a minute.</td></tr>
+<tr><td><code>notificationDurationSeconds</code></td><td>How long a notification stays visible in the GUI.</td></tr>
+<tr><td><code>defaultSuccessOutput</code></td><td>Shown when an agent finishes successfully without producing output.</td></tr>
+</tbody></table></div>
+
+<h2>What you will find</h2>
+<p>Every page is described in <a href="../gui/index.html">GUI pages</a>. In short: users get the search box and their conversations. Developers also get drafts, published agents, profiles and guardrails. Administrators also get users, authentication, agent servers and the license.</p>

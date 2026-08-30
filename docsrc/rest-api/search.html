@@ -1,0 +1,18 @@
+<p class="lead"><code>POST /api/exec/search</code> is the search box as an API call: it returns the agents that match a query, best first, and leaves the running to the caller.</p>
+
+<h2>The request</h2>
+<p><code>query</code> is the user's text. <code>tag</code> is optional: omit it to use the tag in the <a href="../search/search-settings.html">Search settings</a>, send an empty string to search every tag, or name a tag to search only that tag.</p>
+<x-code lang="bash">
+$ curl -s -X POST http://127.0.0.1:9020/api/exec/search \
+    -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
+    -d '{"query": "how many vacation days do I have left"}'
+{"success": true,
+ "searchResults": [{"agentName": "hr-policy", "agentTitle": "HR policies and entitlements"}],
+ "searchBehavior": "executeTopMatch", "followupBehavior": "executeTopMatch"}
+</x-code>
+
+<h2>The response</h2>
+<p><code>searchResults</code> holds zero, one, two or three agents; see <a href="../search/how-matching-works.html">How matching works</a> for when each happens. An empty list means nothing matched, and the client should say so rather than run anything. <code>searchBehavior</code> and <code>followupBehavior</code> are the account's settings. A client uses them to behave like the GUI: run the top match at once, run only a lone match, or show the list and let the user choose.</p>
+
+<h2>Running the match</h2>
+<p>Search does not run anything. Take the chosen <code>agentName</code> and call <a href="running-agents.html"><code>execAgent</code></a> with the same query under <code>inputs.query</code>. For a follow-up, send the query to search again and pass the conversation's <code>convid</code> to <code>execAgent</code>, whichever agent matched.</p>

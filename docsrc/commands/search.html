@@ -1,0 +1,30 @@
+<p class="lead">Finds the agents that match a query, the same way the search box does. With <code>search</code>, an agent can hand work to agents it does not know by name.</p>
+
+<h2>Fields</h2>
+<!--fields:command:search-->
+
+<h2>Result</h2>
+<p>A list of matches, best first. Each match has <code>agentName</code> and <code>agentTitle</code>. Search returns zero, one, two or three agents, depending on how confident the search is. Overlapping descriptions or an ambiguous query produce more than one match. A query outside every agent's description produces none. See <a href="../search/how-matching-works.html">How matching works</a>.</p>
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"search": {
+  "query": "{ sys.query }",
+  "tag": "corporate"
+},
+"if": {
+  "condition": "{ not result }",
+  "then": { "end": "No agent handles that request." }
+},
+"invoke": {
+  "agent": "{ result[0]['agentName'] }",
+  "inputs": { "query": "{ sys.query }" }
+}
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>The query must be at least 8 characters long.</li>
+  <li>Only agents carrying the tag are matched. Without <code>tag</code>, every tag is searched. See <a href="../search/tags.html">Tags</a>.</li>
+  <li>Search costs a round trip to Search2o Cloud. The round trip is designed to take well under a second.</li>
+</ul>

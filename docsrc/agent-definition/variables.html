@@ -1,0 +1,41 @@
+<p class="lead">There are three kinds of variables, with three scopes: local, agent and conversation. The runtime also provides a few read-only names.</p>
+
+<!--figure:variable-scopes-->
+<h2>Local variables</h2>
+<p>Local variables are set and read without a prefix. A local variable lives in the function that set it and disappears when that function returns. Function arguments and <code>for</code> loop variables are local variables. A local variable can hold any Python value.</p>
+
+<h2>Agent variables</h2>
+<p>Agent variables are written <code>agent.name</code>. An agent variable lives for the whole conversation. Every function of the agent that set the variable can read and write the variable; other agents cannot. Use agent variables for state that a follow-up query should find again: whether initialization has run, a cached lookup, the user's last choice.</p>
+
+<h2>Conversation variables</h2>
+<p>Conversation variables are written <code>conv.name</code>. A conversation variable lives for the whole conversation, and any agent that runs in the conversation can read and write the variable. Conversation variables are how agents hand work to each other: one agent leaves a result in <code>conv.order</code>, and the next agent picks the result up.</p>
+<p>Agent and conversation variables are saved with the conversation, so their values must be JSON serializable. Reading a variable that has never been set raises an error. Seed the variable before use, for example <code>"{ getattr(agent, 'count', 0) + 1 }"</code>.</p>
+
+<h2>Setting variables</h2>
+<p>The <a href="../commands/var.html"><code>var</code></a> command sets variables of all three kinds. The command can also set one element of an existing list or dict: <code>"totals['q3']": "{ ... }"</code>. Once set, a variable can be read in any dynamic string.</p>
+
+<h2>Read-only namespaces</h2>
+<h3>sys</h3>
+<p>The runtime provides <code>sys</code>. The following names are always present:</p>
+<ul>
+  <li><code>sys.inputs</code> — the inputs the agent was started with, as a dict. For a search the dict is <code>{ "query": ... }</code>. An <code>invoke</code> command passes any inputs it likes.</li>
+  <li><code>sys.query</code> — the user's query, the same as <code>sys.inputs['query']</code>.</li>
+  <li><code>sys.secret(name)</code> — reads a secret from the agent server's environment; see <a href="../security/secret-vault.html">Security</a>.</li>
+</ul>
+<p>The following names are present only when an administrator enables them in the <a href="../runtime/guardrails.html#allowlist">allowlist</a> configuration:</p>
+<ul>
+  <li><code>sys.userEmail</code> — the email address of the user running the agent.</li>
+  <li><code>sys.userSession</code> — a hash of the user's session, for keying per-session data.</li>
+  <li><code>sys.serverIp</code> — the agent server's address as seen by the cloud, for logging.</li>
+</ul>
+
+<h3>command</h3>
+<p><code>command</code> holds the values of the current command's fields that have been evaluated so far. A field may refer to a field written earlier in the same command as <code>command.field</code>.</p>
+
+<h3>Other names</h3>
+<ul>
+  <li><code>inputs</code> and <code>query</code> — the same as <code>sys.inputs</code> and <code>sys.query</code>.</li>
+  <li><code>result</code> — the result of the most recent command that produces one.</li>
+  <li><code>exc</code> — inside an <code>onError</code> block, the exception being handled.</li>
+</ul>
+<p><code>sys</code>, <code>command</code>, <code>result</code>, <code>exc</code>, <code>env</code>, <code>agent</code> and <code>conv</code> are reserved and cannot be assigned.</p>

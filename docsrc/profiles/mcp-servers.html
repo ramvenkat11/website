@@ -1,0 +1,7 @@
+<p class="lead">An MCP server is a tool provider that agents use through the <code>llm</code> command's <code>mcp</code> field. The server's tools are listed from the server itself and offered to the model.</p>
+
+<h2>Settings</h2>
+<!--fields:model:McpServerModel-->
+
+<p>The name is what agents write: <code>git.search_code</code> for one tool, or <code>git</code> for every tool the server offers. The GUI lists a server's tools next to the server. A server cannot be named <code>function</code>; that name is reserved for the agent's own functions in tool calls.</p>
+<p>When a tool call fails with one of the retryable error codes, the error is handed back to the model so that the model can correct the call. Any other error fails the command.</p>

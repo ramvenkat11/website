@@ -1,0 +1,21 @@
+<p class="lead">The agent server publishes an OpenAPI schema, so a client in any language can be generated with standard tools. The bundled GUI is itself a client generated from this schema.</p>
+
+<h2>Generating a client</h2>
+<x-code lang="bash">
+$ curl http://127.0.0.1:9020/openapi.json > openapi.json
+$ npx orval --input openapi.json --output ./search2o-client   # TypeScript
+$ openapi-generator-cli generate -i openapi.json -g python     # Python, Java, Go, ...
+</x-code>
+<p>The schema carries every request and response model, including the streamed line types of <code>execAgent</code>, so a generated client knows the shapes without hand-written definitions.</p>
+
+<h2>A client in a browser</h2>
+<p>A browser client that is not served by the agent server runs on a different origin. Add that origin to the allowed CORS origins in the <a href="../system-management/agent-servers.html">Agent servers</a> configuration, or the browser will refuse the calls. Use the session cookie, not a bearer token: the cookie is HTTP-only and never visible to page scripts.</p>
+
+<h2>Rules a client must follow</h2>
+<ul>
+  <li>Send only the fields an endpoint declares. An unknown field is rejected with status 422.</li>
+  <li>Check <code>success</code> in every response, and show <code>errorMessage</code> to the user when it is false; the message is written for that purpose.</li>
+  <li>Sign in again when a response carries <code>mustLogin: true</code>, then repeat the call.</li>
+  <li>Keep the <code>convid</code> from an <code>execAgent</code> response if the user may follow up.</li>
+  <li>Read a streamed response line by line; do not wait for the whole body.</li>
+</ul>

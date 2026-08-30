@@ -1,0 +1,32 @@
+<p class="lead">Appends to the agent's output. Output is streamed to the user as the agent writes it. An agent that runs to answer a query must set its output.</p>
+
+<h2>Value</h2>
+<!--fields:command:output-->
+
+<h2>Output parts</h2>
+<!--figure:output-stream-->
+<p>Output is a list of parts. Each <code>output</code> command appends one or more parts:</p>
+<ul>
+  <li>A <strong>string</strong> is a text part, rendered as Markdown.</li>
+  <li>An object <code>{ "contentType": "html", "text": "..." }</code> is an HTML part. The part is rendered after harmful content is removed; Markdown is not applied.</li>
+  <li>An object <code>{ "contentType": "image", "text": "&lt;base64&gt;", "mimeType": "image/png" }</code> is an image.</li>
+  <li>A <strong>list</strong> appends several parts at once.</li>
+  <li>The <strong>result of an <code>llm</code> command</strong> may be assigned directly. The answer's text and any images become parts. The <code>streamOutput</code> flag on the <code>llm</code> command does the same thing automatically.</li>
+</ul>
+<p>Output is append-only and keeps its order. Output is saved with the conversation, so the user sees the same output again when the conversation is opened later.</p>
+
+<h2>Example</h2>
+<x-code lang="jsonc">
+"output": "{ f'Found **{len(orders)}** open orders.' }",
+"output.table": {
+  "contentType": "html",
+  "text": "{ '<table>' + ''.join(f'<tr><td>{o['id']}</td><td>{o['total']}</td></tr>' for o in orders) + '</table>' }"
+}
+</x-code>
+
+<h2>Rules</h2>
+<ul>
+  <li>A dict without a valid <code>contentType</code> fails. To show a dict or a list as text, convert the value first: <code>"{ str(result) }"</code>.</li>
+  <li>An image part needs a <code>mimeType</code>.</li>
+  <li><code>output</code> does not change control flow. The agent continues with the next command.</li>
+</ul>

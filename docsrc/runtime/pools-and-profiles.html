@@ -1,0 +1,15 @@
+<p class="lead">The rest of the runtime is what agents connect through and refer to: the connection pools, the profiles, and the secrets and encryption settings. Each reaches every agent server the same way as the guardrails, before the server's next run.</p>
+
+<h2>Connection pools</h2>
+<p>The runtime keeps one HTTP client per named pool, built as <code>Network</code> in <code>search2o/execution/network.py</code>. Every outbound HTTP call goes through one of them: LLM calls, API calls, and the agent server's own calls to Search2o Cloud. An LLM profile and an API profile each name their pool, and a server configuration names the pool for the cloud connection. The pool named <code>default</code> always exists and cannot be deleted. When the pools change, agents that start afterwards use new clients; agents already running keep the pool they started with, and the old clients close when the last such agent finishes. Give a slow LLM or a busy internal API a pool of its own, with its own timeouts, so that one service cannot exhaust the connections everything else needs. Pools are edited under Operations &rsaquo; Connection pools.</p>
+<!--fields:model:ApiConnectionPoolsModel-->
+<h3>A pool</h3>
+<!--fields:model:ApiConnectionPoolModel-->
+<h3>Timeouts</h3>
+<!--fields:model:TimeoutModel-->
+
+<h2>Profiles</h2>
+<p>The runtime holds every profile of the account: LLM profiles with their open connections, prompt profiles, API profiles, database profiles with their open connection pools, and MCP servers. When a profile changes, the runtime rebuilds only what depends on that kind of profile. A changed LLM profile reopens the LLM connections. A changed database profile builds a new database engine, and the old engine closes once the last agent using the old engine finishes. A changed prompt or API profile is simply replaced. What each kind of profile holds and the rules that apply to profiles are in the <a href="../profiles/index.html">Profiles</a> section.</p>
+
+<h2>Secrets and encryption</h2>
+<p>The runtime also carries the secrets source, the decrypted hosted secrets when that source is in use, and the encryption settings with the key function for end-to-end encryption. Both are edited under Operations &rsaquo; Secrets &amp; encryption and are explained in <a href="../security/secret-vault.html">The secret vault</a> and <a href="../security/encryption.html">Encryption</a>.</p>
