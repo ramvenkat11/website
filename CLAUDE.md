@@ -119,6 +119,15 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   small and quiet); .page-body .section-head is 26px with 64px above (the "Side by side" head).
   The home hero keeps its own size. Not deployed.
 
+## State on 2026-08-31
+Docs: 108 pages in 15 sections. New LAST section "Support and licensing"
+(docsrc/support-licensing/): system-management/support.html and misc/license.html moved there;
+toc.py, both old section leads, the docs home cards and the two inbound links updated. NOT
+deployed. Deploy needs: aws s3 rm of docs/system-management/support.html and
+docs/misc/license.html (Ram declined the local rm of the stale copies in html/docs too - remove
+before or during deploy); regenerate the in-app summaries with s2oserver docs_create.py and
+delete the two stale JSON files by hand. compare.html content is final per Ram's csv + review.
+
 ## State on 2026-08-30
 Docs: 107 pages in 13 sections (Introduction, Getting started, Agent definition, Agent
 execution, Command reference, Search, Development process, Agent runtime, Profiles, Reports,
