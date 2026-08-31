@@ -131,11 +131,10 @@ Home how-it-works diagram: the users link is now bidirectional (class "two"; the
 arrow had no rationale - results stream back), and an "Agent framework / runs your agents" box
 sits left inside the agent-server node with the chips beside it (.arch-inner/.arch-fw CSS).
 That attempt was REVERTED (Ram: the framework must appear early, it is a central theme; the
-arrow fix stayed). Final resolution: hero point 3 now reads "Hybrid architecture. Search2o's
-agent framework runs on stateless agent servers on your side; Search2o Cloud maintains state."
-(Ram's rule: never "The ..." on a concept's first mention - indefinite article or possessive.)
-The point wraps to three lines with "state." alone on the last; Ram has not yet said whether
-that widow bothers him. Hero
+arrow fix stayed). Final resolution: hero point 3 reads, in Ram's own words: "Hybrid
+architecture. An agent framework runs on stateless servers on your side; Search2o Cloud
+maintains state." Two lines, no widow. (Ram's rule, saved to memory: never "The ..." on a
+concept's first mention - indefinite article or possessive.) Hero
 def line stays simple (Ram: do not overload it); three hero points is fixed; section order is
 fine as is.
 
