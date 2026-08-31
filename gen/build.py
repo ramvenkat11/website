@@ -440,6 +440,7 @@ def header(depth) -> str:
       <a class="navlink" href="{r}index.html">Home</a>
       <a class="navlink" href="{r}gettingstarted.html">Getting started</a>
       <a class="navlink" href="{rel(depth)}index.html" aria-current="page">Docs</a>
+      <a class="navlink" href="{r}compare.html">Compare</a>
       <a class="navlink" href="{r}pricing.html">Pricing</a>
       <a class="navlink" href="{r}about.html">About</a>
     </nav>
