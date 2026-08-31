@@ -107,6 +107,12 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   one standalone ad-landing subpage per competitor (own verdict hero, framing paragraph,
   sentence-cell table, CTA), starting with Skills.md and LangChain/LangServe. Vs pages are not
   in the nav. This SUPERSEDES the s2oserver note "categories, never vendor names".
+- 2026-08-30: html/vs/skills.html and html/vs/langchain.html exist as SKELETONS with
+  PLACEHOLDER text throughout; Ram supplies the content for both. Structure per page: verdict
+  hero, framing paragraph, .vs-table (sentence cells, no ticks), two prose sections,
+  other-comparisons cards, CTA band. The .vs-table and .verdict CSS is appended at the end of
+  styles.css, tokens only. A why.html card slot is marked with a comment in each vs page.
+  Not deployed.
 
 ## State on 2026-08-30
 Docs: 107 pages in 13 sections (Introduction, Getting started, Agent definition, Agent
