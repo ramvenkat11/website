@@ -115,8 +115,9 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   html/vs/skills.html and html/vs/langchain.html remain as UNUSED, UNTRACKED skeletons -
   nothing links to them; delete or keep is Ram's call (kept for possible ad-landing variants).
   Why Search2o stays a separate future page on the 2026-08-28 outline. Page titles:
-  .page-hero h1 is clamp(26px, 3.2vw, 36px) on every inner page; the home hero keeps its own
-  size. Not deployed.
+  .page-hero h1 is clamp(22px, 2.4vw, 28px) weight 700 on every inner page (Ram wanted titles
+  small and quiet); .page-body .section-head is 26px with 64px above (the "Side by side" head).
+  The home hero keeps its own size. Not deployed.
 
 ## State on 2026-08-30
 Docs: 107 pages in 13 sections (Introduction, Getting started, Agent definition, Agent
