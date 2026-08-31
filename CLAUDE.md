@@ -130,6 +130,8 @@ delete the two stale JSON files by hand. compare.html content is final per Ram's
 Home how-it-works diagram: the users link is now bidirectional (class "two"; the old one-way
 arrow had no rationale - results stream back), and an "Agent framework / runs your agents" box
 sits left inside the agent-server node with the chips beside it (.arch-inner/.arch-fw CSS).
+After numbered questions (2026-08-31): the box says "Agent framework" only, and step 2 of the
+steps column opens "The agent framework executes the agent on the agent server".
 
 ## State on 2026-08-30
 Docs: 107 pages in 13 sections (Introduction, Getting started, Agent definition, Agent
