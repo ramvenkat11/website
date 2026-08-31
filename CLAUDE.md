@@ -127,6 +127,9 @@ deployed. Deploy needs: aws s3 rm of docs/system-management/support.html and
 docs/misc/license.html (Ram declined the local rm of the stale copies in html/docs too - remove
 before or during deploy); regenerate the in-app summaries with s2oserver docs_create.py and
 delete the two stale JSON files by hand. compare.html content is final per Ram's csv + review.
+Home how-it-works diagram: the users link is now bidirectional (class "two"; the old one-way
+arrow had no rationale - results stream back), and an "Agent framework / runs your agents" box
+sits left inside the agent-server node with the chips beside it (.arch-inner/.arch-fw CSS).
 
 ## State on 2026-08-30
 Docs: 107 pages in 13 sections (Introduction, Getting started, Agent definition, Agent
