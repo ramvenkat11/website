@@ -107,12 +107,14 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   one standalone ad-landing subpage per competitor (own verdict hero, framing paragraph,
   sentence-cell table, CTA), starting with Skills.md and LangChain/LangServe. Vs pages are not
   in the nav. This SUPERSEDES the s2oserver note "categories, never vendor names".
-- 2026-08-30: html/vs/skills.html and html/vs/langchain.html exist as SKELETONS with
-  PLACEHOLDER text throughout; Ram supplies the content for both. Structure per page: verdict
-  hero, framing paragraph, .vs-table (sentence cells, no ticks), two prose sections,
-  other-comparisons cards, CTA band. The .vs-table and .verdict CSS is appended at the end of
-  styles.css, tokens only. A why.html card slot is marked with a comment in each vs page.
-  Not deployed.
+- 2026-08-30, later: Ram chose ONE comparison page instead of per-competitor subpages.
+  html/compare.html is built from content/compare.md (three framing sections + a 24-row
+  4-column .vs-table). "Compare" is in the nav of all site pages AND in the docs nav
+  (gen/build.py header template; docs rebuilt). The .vs-table/.verdict CSS at the end of
+  styles.css is tokens-only. Both themes verified by headless-Chrome screenshots.
+  html/vs/skills.html and html/vs/langchain.html remain as UNUSED, UNTRACKED skeletons -
+  nothing links to them; delete or keep is Ram's call (kept for possible ad-landing variants).
+  Why Search2o stays a separate future page on the 2026-08-28 outline. Not deployed.
 
 ## State on 2026-08-30
 Docs: 107 pages in 13 sections (Introduction, Getting started, Agent definition, Agent
