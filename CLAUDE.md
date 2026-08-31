@@ -102,6 +102,11 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
 - The "Why Search2o" page is agreed in outline but NOT built. The encrypted description
   change it waited on landed on 2026-08-30; the outline and the exact security wording are in
   s2oserver's CLAUDE.md.
+- Decided 2026-08-30: competitors ARE named. html/why.html is the hub (pillars, stat strip,
+  security wording, honest boundary) ending in one card per competitor; html/vs/<name>.html is
+  one standalone ad-landing subpage per competitor (own verdict hero, framing paragraph,
+  sentence-cell table, CTA), starting with Skills.md and LangChain/LangServe. Vs pages are not
+  in the nav. This SUPERSEDES the s2oserver note "categories, never vendor names".
 
 ## State on 2026-08-30
 Docs: 107 pages in 13 sections (Introduction, Getting started, Agent definition, Agent
