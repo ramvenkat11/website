@@ -124,8 +124,9 @@ COMPARE PAGE REMOVED at Ram's instruction - "not worth it at this stage and it c
 Search2o is". html/compare.html deleted with git rm (recoverable), the Compare nav link taken
 out of the four site pages and of the gen/build.py docs template, and the compare-only CSS
 (.vs-table, .page-hero .verdict) removed. .tablewrap STAYS - 48 docs pages use it. Docs rebuilt:
-109 pages, 32 examples valid. KEPT, nobody asked to delete them: content/compare_table.csv
-(Ram's edited table) and the two orphan skeletons html/vs/skills.html and html/vs/langchain.html.
+109 pages, 32 examples valid. html/vs/skills.html and html/vs/langchain.html were
+deleted with git rm as well. KEPT: content/compare_table.csv, Ram's edited table - the material
+is worth harvesting for the Why Search2o page, stated positively and naming nobody.
 The Why Search2o page from the 2026-08-28 outline is unaffected and still unbuilt.
 
 ## State on 2026-09-01
