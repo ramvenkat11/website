@@ -129,11 +129,13 @@ SEARCH2O_LICENSE stays: an environment variable name is a constant, not the prod
 Also fixed: about.html's meta and og descriptions still described the deleted "opinionated
 approach" copy after the rewrite - always update a page's meta when its body is rewritten.
 
-about.html top rewritten from Ram's text. "An opinionated approach" and the four old prose
-paragraphs are GONE. Now: h1 "Search that executes" (no period; the tagline keeps its period
-elsewhere), the traditional-search-versus-executables paragraph with the bolded question, the
-quoteblock "That is <hl>search that executes</hl>." keeping the existing quoteblock style, then
-the two paragraphs on enterprise requirements and what grew from them. The old quoteblock
+about.html top rewritten from Ram's text, twice. "An opinionated approach" and the four old
+prose paragraphs are GONE. Final: h1 "Rethinking search", the traditional-search-versus-
+executables paragraph with the bolded question, the quoteblock "That is <hl>search that
+executes</hl>.", then four paragraphs - agents ARE the executables and may use LLMs to modify
+their own workflow; what an enterprise needs (safe execution, enterprise calls, interactivity,
+a changing agent set); what that implies beyond search (framework, runtime, publishing model,
+conversations, administration, end-user interface); and how developers and users meet. The old quoteblock
 "Search is how users consume agents." is retired. Ram had already edited the founder line to
 link his name and had added the GCP hosting line.
 
