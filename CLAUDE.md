@@ -120,6 +120,15 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   The home hero keeps its own size. Not deployed.
 
 ## State on 2026-09-01 (about page)
+BRAND SPELLING (Ram, saved to memory): the name renders exactly as Search2o - capital S,
+lowercase o - and must never be uppercased. The About kicker read "About Search2o" and CSS
+text-transform turned it into "SEARCH2O". Forcing mixed case ("ABOUT Search2o") was wrong too:
+the kicker is now the plain label "About", matching every other kicker on the site (Pricing,
+Getting started, How it works), which keeps the brand out of uppercase contexts entirely.
+SEARCH2O_LICENSE stays: an environment variable name is a constant, not the product name.
+Also fixed: about.html's meta and og descriptions still described the deleted "opinionated
+approach" copy after the rewrite - always update a page's meta when its body is rewritten.
+
 about.html top rewritten from Ram's text. "An opinionated approach" and the four old prose
 paragraphs are GONE. Now: h1 "Search that executes" (no period; the tagline keeps its period
 elsewhere), the traditional-search-versus-executables paragraph with the bolded question, the
