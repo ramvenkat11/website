@@ -119,6 +119,15 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   small and quiet); .page-body .section-head is 26px with 64px above (the "Side by side" head).
   The home hero keeps its own size. Not deployed.
 
+## State on 2026-08-31 (continued)
+Docs: 109 pages. New page system-management/usage-limits.html written from
+../s2oserver/docs/usage_limits.md (toc, section lead and home card updated; built and checked).
+Deliberately left out of the published page: the deleted-and-re-added-user fresh allowance, the
+removed per-second rate limiter and its planned replacement, and everything under "Internal".
+docsQuestion is LIVE again (api.py:987 with UsageLimits checks) despite the 2026-08-28
+going-away note in s2oserver's CLAUDE.md - the page documents documentation questions.
+Deploy adds the new page (sync covers adds) and needs the summaries regenerated.
+
 ## State on 2026-08-31
 Docs: 108 pages in 15 sections. New LAST section "Support and licensing"
 (docsrc/support-licensing/): system-management/support.html and misc/license.html moved there;
