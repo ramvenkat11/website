@@ -142,10 +142,16 @@ node (.arch-fw contains .arch-chips) - Ram chose chips-inside over box-beside an
 Column alignment policy (my recommendation, Ram asked for one): .howgrid, .convo-wrap and
 .split are align-items start; the reports section's div carries class "split centered" and
 .split.centered recenters it (short caption beside tall thumbnails); the hero stays centered.
-The Search and Agent framework cards get margin-top 20px (.split:not(.centered) > :last-child)
-so each card's top edge lands on the h2 glyph top (44px overshot by 24px). Lesson applied after
-Ram caught it: measure alignment in the full-res screenshot (find edge rows with PIL), never
-eyeball a downscaled crop. Hero
+CONSISTENCY PASS (Ram: one system, stop making him point things out). The page now has two
+section families. Banner sections (Platform, Get-started band): full-width base h2 (36px).
+Column sections (How it works, Example, Search, Framework, Reports): kicker + 22px h2 INSIDE
+the left column (.howgrid h2/.convo-wrap h2/.split h2; inline sizes removed; the how-it-works
+section-head moved into its left column), and the picture's top edge aligns with the h2 glyph
+top everywhere: margin-top 20px on the grid's last child, 7px for .howgrid (its section-head
+spacing differs). Reports lost its centered exception. Hero stays special. Measured deltas
+0/+3/-1/-1/-5 px. Lesson: verify alignment by measuring edge rows with PIL in the full-res
+screenshot, never by eyeballing a downscaled crop; segment sections by background transitions
+before measuring. Hero
 def line stays simple (Ram: do not overload it); three hero points is fixed; section order is
 fine as is.
 
