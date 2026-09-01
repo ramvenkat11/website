@@ -141,7 +141,9 @@ documents." In the diagram the Agent framework box now WRAPS the four chips insi
 node (.arch-fw contains .arch-chips) - Ram chose chips-inside over box-beside and bar-above.
 Column alignment policy (my recommendation, Ram asked for one): .howgrid, .convo-wrap and
 .split are align-items start; the reports section's div carries class "split centered" and
-.split.centered recenters it (short caption beside tall thumbnails); the hero stays centered. Hero
+.split.centered recenters it (short caption beside tall thumbnails); the hero stays centered.
+The Search and Agent framework cards get margin-top 44px (.split:not(.centered) > :last-child)
+so each card top meets its section's h2 rather than the kicker. Hero
 def line stays simple (Ram: do not overload it); three hero points is fixed; section order is
 fine as is.
 
