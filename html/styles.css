@@ -313,6 +313,9 @@ p { margin: 0; }
 .arch-node.cloud strong { color: #fff; }
 .arch-node.cloud > span { color: #93a5c4; }
 .arch-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
+.arch-fw { margin-top: 12px; padding: 12px 14px; border: 1px solid var(--feat-border); border-radius: 10px; background: var(--icon-bg); }
+.arch-fw strong { color: var(--ink); font-size: 13px; }
+.arch-fw .arch-chips { margin-top: 9px; }
 .arch-chips span {
   padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px;
   background: var(--bg-soft); color: var(--muted); font-size: 12px; font-weight: 550;
@@ -336,7 +339,7 @@ p { margin: 0; }
 .pcard p { color: var(--muted); font-size: 14.5px; }
 
 /* example workflow — conversation */
-.convo-wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: center; }
+.convo-wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
 .convo { border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: var(--card-shadow-lg); overflow: hidden; }
 .convo-title {
   display: flex; align-items: center; gap: 10px;
@@ -373,7 +376,11 @@ p { margin: 0; }
 .convo-points svg { flex: 0 0 auto; margin-top: 3px; color: var(--blue); }
 
 /* framework — split with code */
-.split { display: grid; grid-template-columns: .92fr 1.08fr; gap: 56px; align-items: center; }
+.split { display: grid; grid-template-columns: .92fr 1.08fr; gap: 56px; align-items: start; }
+.howgrid h2, .convo-wrap h2, .split h2 { font-size: 22px; }
+.howgrid .section-head { margin-bottom: 18px; }
+.howgrid > :last-child, .convo-wrap > :last-child, .split > :last-child { margin-top: 20px; }
+.howgrid > :last-child { margin-top: 7px; }
 .codecard {
   border-radius: 16px; overflow: hidden;
   background: #101b33; border: 1px solid #22304f;

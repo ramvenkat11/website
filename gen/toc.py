@@ -91,7 +91,6 @@ TOC = [
         ("agent-servers", "Agent servers"),
         ("authentication", "Authentication"),
         ("notifications", "Notifications"),
-        ("support", "Support"),
     ]),
     ("security", "Security and privacy", [
         ("license-rotation", "License key rotation"),
@@ -124,6 +123,9 @@ TOC = [
     ("misc", "Miscellaneous", [
         ("llm-adapters", "Connecting to other LLMs"),
         ("code-from-llm", "Executing code from an LLM"),
+    ]),
+    ("support-licensing", "Support and licensing", [
+        ("support", "Support"),
         ("license", "License and source"),
     ]),
 ]

@@ -57,7 +57,7 @@
           </li>
           <li>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v4c0 1-1 2-2 2 1 0 2 1 2 2v4a2 2 0 0 0 2 2h1"/><path d="M16 3h1a2 2 0 0 1 2 2v4c0 1 1 2 2 2-1 0-2 1-2 2v4a2 2 0 0 1-2 2h-1"/></svg>
-            <span><strong>Hybrid architecture.</strong> Stateless agent servers run on your side; Search2o Cloud maintains state.</span>
+            <span><strong>Hybrid architecture.</strong> An agent framework runs on stateless servers on your side; Search2o Cloud maintains state.</span>
           </li>
         </ul>
         <div class="hero-actions">
@@ -113,19 +113,20 @@
   <!-- ============ HOW IT WORKS ============ -->
   <section class="section soft" id="how-it-works">
     <div class="container">
-      <div class="section-head">
-        <span class="kicker">How it works</span>
-        <h2>From request to result</h2>
-      </div>
       <div class="howgrid">
-        <ol class="steps">
+        <div>
+          <div class="section-head">
+            <span class="kicker">How it works</span>
+            <h2>From request to result</h2>
+          </div>
+          <ol class="steps">
           <li>
             <h3>Type a request</h3>
             <p>The user types a request &mdash; Search2o matches it to the agent built for it. The best match runs; a setting can offer the close matches as choices instead.</p>
           </li>
           <li>
             <h3>The agent executes</h3>
-            <p>The agent runs on the agent server, next to your APIs, databases and documents.</p>
+            <p>The agent runs using the agent framework on an agent server, next to your APIs, databases and documents.</p>
           </li>
           <li>
             <h3>Reason, act, stream</h3>
@@ -135,7 +136,8 @@
             <h3>Context is encrypted and stored</h3>
             <p>After the run, the conversation state is encrypted on the agent server and stored in Search2o Cloud &mdash; with end-to-end encryption, if you choose &mdash; ready for the next request.</p>
           </li>
-        </ol>
+          </ol>
+        </div>
 
         <aside class="arch">
           <h3>System architecture</h3>
@@ -144,14 +146,17 @@
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
               Users
             </div>
-            <div class="arch-link" aria-hidden="true"><span class="arch-lbl">search &amp; results</span></div>
+            <div class="arch-link two" aria-hidden="true"><span class="arch-lbl">search &amp; results</span></div>
             <div class="arch-org">
               <span class="arch-org-lbl">Your organization</span>
               <div class="arch-node">
                 <strong>Search2o agent server</strong>
                 <span>Stateless &middot; Python 3.12+</span>
-                <div class="arch-chips">
-                  <span>LLMs</span><span>APIs</span><span>Databases</span><span>Tools / MCP</span>
+                <div class="arch-fw">
+                  <strong>Agent framework</strong>
+                  <div class="arch-chips">
+                    <span>LLMs</span><span>APIs</span><span>Databases</span><span>Tools / MCP</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -171,7 +176,7 @@
     <div class="container convo-wrap">
       <div>
         <span class="kicker">Example workflow</span>
-        <h2 style="font-size: 26px;">One conversation, many agents</h2>
+        <h2>One conversation, many agents</h2>
         <ul class="convo-points">
           <li>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.4-3.4"/></svg>
@@ -221,7 +226,7 @@
       <div class="split">
         <div>
           <span class="kicker">Search</span>
-          <h2 style="font-size: 22px;">How does search find the right agent?</h2>
+          <h2>How does search find the right agent?</h2>
           <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">Search matches each request against the natural-language description of each agent, written by its developer. It supports most major languages, scales to thousands of agents, and returns matches within 300 ms. In our tests, the right agent ranked first about 85% of the time and appeared in the top three about 95% of the time, even with some overlapping descriptions.</p>
         </div>
 
@@ -239,7 +244,7 @@
       <div class="split">
         <div>
           <span class="kicker">Agent framework</span>
-          <h2 style="font-size: 22px;">JSON syntax, Python expressions</h2>
+          <h2>JSON syntax, Python expressions</h2>
           <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">An agent is defined in JSON and contains a set of functions. Each function is an ordered dictionary of commands. Strings enclosed in <code>{ }</code> are interpreted as Python expressions. Execution begins with the main function.
           </p>
           <style>
@@ -349,7 +354,7 @@
       <div class="split">
         <div>
           <span class="kicker">Reports</span>
-          <h2 style="font-size: 22px;">What ran, what failed, what it cost</h2>
+          <h2>What ran, what failed, what it cost</h2>
           <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">Four top-level reports with trends. Each row opens a detailed report for that agent or user.</p>
         </div>
         <div class="reportfan" aria-label="The four reports">
