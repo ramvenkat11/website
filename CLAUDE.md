@@ -138,7 +138,10 @@ concept's first mention - indefinite article or possessive.)
 How-it-works round two, per Ram's clarification and one answered question: step 2 reads "The
 agent runs using the agent framework on an agent server, next to your APIs, databases and
 documents." In the diagram the Agent framework box now WRAPS the four chips inside the server
-node (.arch-fw contains .arch-chips) - Ram chose chips-inside over box-beside and bar-above. Hero
+node (.arch-fw contains .arch-chips) - Ram chose chips-inside over box-beside and bar-above.
+Column alignment policy (my recommendation, Ram asked for one): .howgrid, .convo-wrap and
+.split are align-items start; the reports section's div carries class "split centered" and
+.split.centered recenters it (short caption beside tall thumbnails); the hero stays centered. Hero
 def line stays simple (Ram: do not overload it); three hero points is fixed; section order is
 fine as is.
 
