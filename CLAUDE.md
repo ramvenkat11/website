@@ -142,8 +142,10 @@ node (.arch-fw contains .arch-chips) - Ram chose chips-inside over box-beside an
 Column alignment policy (my recommendation, Ram asked for one): .howgrid, .convo-wrap and
 .split are align-items start; the reports section's div carries class "split centered" and
 .split.centered recenters it (short caption beside tall thumbnails); the hero stays centered.
-The Search and Agent framework cards get margin-top 44px (.split:not(.centered) > :last-child)
-so each card top meets its section's h2 rather than the kicker. Hero
+The Search and Agent framework cards get margin-top 20px (.split:not(.centered) > :last-child)
+so each card's top edge lands on the h2 glyph top (44px overshot by 24px). Lesson applied after
+Ram caught it: measure alignment in the full-res screenshot (find edge rows with PIL), never
+eyeball a downscaled crop. Hero
 def line stays simple (Ram: do not overload it); three hero points is fixed; section order is
 fine as is.
 
