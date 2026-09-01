@@ -275,7 +275,7 @@ p { margin: 0; }
 .steps p { color: var(--muted); font-size: 15px; max-width: 46ch; }
 
 /* architecture mini-diagram (in how-it-works right column) */
-.arch { border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: var(--card-shadow-lg); padding: 28px; }
+.arch { border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: var(--card-shadow-lg); padding: 32px 28px; }
 .arch h3 { font-size: 13px; color: var(--faint); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 22px; }
 .arch .note { margin-top: 20px; color: var(--faint); font-size: 13px; }
 .arch-flow { display: grid; justify-items: center; }
@@ -285,7 +285,7 @@ p { margin: 0; }
   background: var(--bg-soft); color: var(--ink); font-size: 14px; font-weight: 600;
 }
 .arch-actor svg { color: var(--slate); }
-.arch-link { position: relative; display: flex; align-items: center; width: 2px; height: 46px; background: var(--slate); opacity: .55; }
+.arch-link { position: relative; display: flex; align-items: center; width: 2px; height: 88px; background: var(--slate); opacity: .55; }
 .arch-link::after {
   content: ""; position: absolute; left: 50%; bottom: -1px; transform: translateX(-50%);
   border: 5px solid transparent; border-top-color: var(--slate); border-bottom: 0;
@@ -313,9 +313,43 @@ p { margin: 0; }
 .arch-node.cloud strong { color: #fff; }
 .arch-node.cloud > span { color: #93a5c4; }
 .arch-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
-.arch-fw { margin-top: 12px; padding: 12px 14px; border: 1px solid var(--feat-border); border-radius: 10px; background: var(--icon-bg); }
+.arch-fw { margin-top: 12px; padding: 11px 14px; border: 1px solid var(--feat-border); border-radius: 10px; background: var(--icon-bg); }
 .arch-fw strong { color: var(--ink); font-size: 13px; }
-.arch-fw .arch-chips { margin-top: 9px; }
+/* the org box stacks: server -> what it calls */
+.arch-org { display: grid; justify-items: center; padding: 24px 18px; }
+.arch-org-lbl { justify-self: start; }
+.arch-org > .arch-node { width: 100%; }
+/* the systems the framework calls sit beside the spine, not on it */
+.arch-row { display: grid; grid-template-columns: 1fr auto auto; align-items: center; width: 100%; }
+.arch-hlink { position: relative; width: 34px; height: 2px; background: var(--slate); opacity: .55; }
+/* one trunk, one branch into each system the framework calls */
+.arch-sys { position: relative; display: grid; gap: 10px; justify-items: start; padding-left: 30px; }
+.arch-sys::before {
+  content: ""; position: absolute; left: 0; top: 11px; bottom: 11px;
+  width: 2px; background: var(--slate); opacity: .55;
+}
+.arch-branch { position: relative; }
+.arch-branch::before {
+  content: ""; position: absolute; left: -30px; top: 50%; transform: translateY(-50%);
+  width: 21px; height: 2px; background: var(--slate); opacity: .55;
+}
+.arch-branch::after {
+  content: ""; position: absolute; left: -10px; top: 50%; transform: translateY(-50%);
+  border: 5px solid transparent; border-left-color: var(--slate); border-right: 0; opacity: .55;
+}
+.arch-sys span {
+  padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px;
+  background: var(--bg-soft); color: var(--muted); font-size: 12px; font-weight: 550;
+}
+/* the cloud holds two things, drawn like the framework box inside the server */
+.arch-node.cloud { padding: 18px 20px; }
+.arch-parts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.arch-part {
+  padding: 13px 14px; border: 1px solid rgba(147, 165, 196, .34); border-radius: 10px;
+  background: rgba(255, 255, 255, .07); color: #dbe5f5; font-size: 13px; font-weight: 600;
+  text-align: center;
+}
+.arch-node.cloud .arch-chips span { border-color: rgba(147, 165, 196, .32); background: rgba(255, 255, 255, .08); color: #c6d3e8; }
 .arch-chips span {
   padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px;
   background: var(--bg-soft); color: var(--muted); font-size: 12px; font-weight: 550;
