@@ -152,10 +152,12 @@ system for developing, publishing, discovering, and using agents across your ent
 (layers icon). The framework is now named in point 1. The subject phrase of each point is bold:
 "A structured JSON/Python framework", "An agent server", "A complete system". (Ram's rule, saved to memory: never "The ..." on a
 concept's first mention - indefinite article or possessive.)
-How-it-works round two, per Ram's clarification and one answered question: step 2 reads "The
-agent runs using the agent framework on an agent server, next to your APIs, databases and
-documents." In the diagram the Agent framework box now WRAPS the four chips inside the server
-node (.arch-fw contains .arch-chips) - Ram chose chips-inside over box-beside and bar-above.
+How-it-works: the four steps are Ram's own text (2026-09-01) and are now named after the PARTS
+of the system, not actions - Search interface, Agent server, Agent framework, Search2o Cloud.
+In the diagram the Agent framework box WRAPS the four chips inside the server node (.arch-fw
+contains .arch-chips) - Ram chose chips-inside over box-beside and bar-above. The diagram has
+no element named "Search interface"; the Users node plus the "search & results" link stands in
+for it. Ram has not been asked about that.
 Column alignment policy (my recommendation, Ram asked for one): .howgrid, .convo-wrap and
 .split are align-items start; the reports section's div carries class "split centered" and
 .split.centered recenters it (short caption beside tall thumbnails); the hero stays centered.
