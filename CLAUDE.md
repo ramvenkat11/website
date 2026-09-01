@@ -149,7 +149,8 @@ arrow fix stayed). 2026-09-01: Ram REPLACED all three hero points with his own t
 "A structured JSON/Python framework for rapidly creating agents with AI assistance" (braces
 icon), "An agent server that executes them in a controlled runtime" (shield icon), "A complete
 system for developing, publishing, discovering, and using agents across your enterprise"
-(layers icon). No bold lead-ins any more; the framework is now named in point 1. (Ram's rule, saved to memory: never "The ..." on a
+(layers icon). The framework is now named in point 1. The subject phrase of each point is bold:
+"A structured JSON/Python framework", "An agent server", "A complete system". (Ram's rule, saved to memory: never "The ..." on a
 concept's first mention - indefinite article or possessive.)
 How-it-works round two, per Ram's clarification and one answered question: step 2 reads "The
 agent runs using the agent framework on an agent server, next to your APIs, databases and
