@@ -127,6 +127,11 @@ out of the four site pages and of the gen/build.py docs template, and the compar
 109 pages, 32 examples valid. html/vs/skills.html and html/vs/langchain.html were
 deleted with git rm as well. KEPT: content/compare_table.csv, Ram's edited table - the material
 is worth harvesting for the Why Search2o page, stated positively and naming nobody.
+POSITIONING (Ram, 2026-09-01): Search2o is NOT positioned against agent frameworks, so the
+buyer does not ask "why not LangChain" - a platform is not compared to a library. The real
+alternatives are a vendor suite the customer already owns and building a portal in-house, and
+the real objection is build versus buy. Sitting beside LangChain in a table implied Search2o
+was the same kind of thing, which is the deeper reason the compare page was wrong.
 The Why Search2o page from the 2026-08-28 outline is unaffected and still unbuilt.
 
 ## State on 2026-09-01
