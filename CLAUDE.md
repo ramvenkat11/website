@@ -119,6 +119,15 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   small and quiet); .page-body .section-head is 26px with 64px above (the "Side by side" head).
   The home hero keeps its own size. Not deployed.
 
+## State on 2026-09-01
+about.html Company section rewritten from Ram's text: founder line naming Ram Venkat with
+https://www.linkedin.com/in/ramv1, the enterprise/government provenance paragraph, and the
+open-beta operations paragraph. The name filled Ram's "[Your Name]" placeholder from his git
+identity - HE MUST CONFIRM the spelling he wants shown publicly.
+Also repaired html/gettingstarted.html:86, whose "License and source" link still pointed at
+docs/misc/license.html after the Support and licensing docs move (my regression). No other
+site page referenced a moved docs page.
+
 ## State on 2026-08-31 (continued)
 Docs: 109 pages. New page system-management/usage-limits.html written from
 ../s2oserver/docs/usage_limits.md (toc, section lead and home card updated; built and checked).
