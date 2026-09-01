@@ -119,6 +119,15 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   small and quiet); .page-body .section-head is 26px with 64px above (the "Side by side" head).
   The home hero keeps its own size. Not deployed.
 
+## State on 2026-09-01 (later)
+COMPARE PAGE REMOVED at Ram's instruction - "not worth it at this stage and it confuses what
+Search2o is". html/compare.html deleted with git rm (recoverable), the Compare nav link taken
+out of the four site pages and of the gen/build.py docs template, and the compare-only CSS
+(.vs-table, .page-hero .verdict) removed. .tablewrap STAYS - 48 docs pages use it. Docs rebuilt:
+109 pages, 32 examples valid. KEPT, nobody asked to delete them: content/compare_table.csv
+(Ram's edited table) and the two orphan skeletons html/vs/skills.html and html/vs/langchain.html.
+The Why Search2o page from the 2026-08-28 outline is unaffected and still unbuilt.
+
 ## State on 2026-09-01
 about.html Company section rewritten from Ram's text: founder line naming Ram Venkat with
 https://www.linkedin.com/in/ramv1, the enterprise/government provenance paragraph, and the
