@@ -436,6 +436,7 @@ p { margin: 0; }
 .tk-expr { color: #f0c674; }     /* { expressions } */
 .tk-pun { color: #5b6b8e; }      /* punctuation */
 .tk-bool { color: #d497e8; }
+.tk-com { color: #6f819f; font-style: italic; }   /* jsonc comments */
 .feature-list { list-style: none; margin: 30px 0 0; padding: 0; display: grid; gap: 13px; }
 .feature-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 15.5px; color: var(--body); }
 .feature-list svg { flex: 0 0 auto; margin-top: 3px; color: var(--ok); }

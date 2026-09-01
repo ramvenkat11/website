@@ -255,7 +255,7 @@
           <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">An agent is defined in JSON and contains a set of functions. Each function is an ordered dictionary of commands. Strings enclosed in <code>{ }</code> are interpreted as Python expressions. Execution begins with the main function.
           </p>
           <style>
-            .cmdgroups { margin-top: 12px; display: grid; gap: 9px; }
+            .cmdgroups { margin-top: 12px; display: grid; gap: 20px; }
             .cg { display: grid; grid-template-columns: 150px 1fr; gap: 10px; align-items: baseline; }
             .cg-l { font-size: 12.5px; font-weight: 600; color: var(--muted); white-space: nowrap; }
             .cg-c { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -278,13 +278,17 @@
 
         <div class="codecard" aria-label="Example agent definition">
           <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">weather.json &middot; agent definition</span></div>
-<pre><code><span class="tk-pun">{</span>
+<pre><code><span class="tk-com">// JSON with comments (JSONC).</span>
+<span class="tk-pun">{</span>
   <span class="tk-key">"functions"</span><span class="tk-pun">: {</span>
     <span class="tk-key">"main"</span><span class="tk-pun">: {</span>
       <span class="tk-key">"commands"</span><span class="tk-pun">: {</span>
         <span class="tk-key">"func"</span><span class="tk-pun">: { </span><span class="tk-key">"name"</span><span class="tk-pun">:</span> <span class="tk-str">"forecast"</span><span class="tk-pun"> },</span>
-        <span class="tk-key">"prompt"</span><span class="tk-pun">: {</span>
+     <span class="tk-key">"prompt"</span><span class="tk-pun">: {</span>
           <span class="tk-key">"user"</span><span class="tk-pun">:</span> <span class="tk-expr">"{ f'Forecast: {result}. {sys.query}' }"</span>
+            <span class="tk-com">// After the above line, variable 'user' will have</span>
+            <span class="tk-com">// the value of the f-string. 'user' can be used in</span>
+            <span class="tk-com">// any subsequent expression.</span>
         <span class="tk-pun">},</span>
         <span class="tk-key">"llm"</span><span class="tk-pun">: { </span><span class="tk-key">"profile"</span><span class="tk-pun">:</span> <span class="tk-str">"anthropic"</span><span class="tk-pun">, </span><span class="tk-key">"streamOutput"</span><span class="tk-pun">:</span> <span class="tk-bool">true</span><span class="tk-pun"> }</span>
       <span class="tk-pun">}</span>
@@ -292,6 +296,9 @@
     <span class="tk-key">"forecast"</span><span class="tk-pun">: {</span>
       <span class="tk-key">"commands"</span><span class="tk-pun">: {</span>
         <span class="tk-key">"api"</span><span class="tk-pun">: { </span><span class="tk-key">"url"</span><span class="tk-pun">:</span> <span class="tk-str">"https://api.weather.gov/&hellip;/forecast"</span><span class="tk-pun"> },</span>
+        <span class="tk-com">// 'result' is a special variable that holds the result</span>
+        <span class="tk-com">// of the last command that was run, in this case, the</span>
+        <span class="tk-com">// api call above.</span>
         <span class="tk-key">"return"</span><span class="tk-pun">:</span> <span class="tk-expr">"{ result['properties']['periods'][:8] }"</span>
       <span class="tk-pun">}</span>
     <span class="tk-pun">}</span>
