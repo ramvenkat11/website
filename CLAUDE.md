@@ -162,7 +162,10 @@ rejected - two labels in the same spot read as clutter.
 Diagram restructured 2026-09-01 (Ram: congested, and it may be taller to match the steps).
 Nesting went from four levels to two, then the chips moved AGAIN (Ram): LLMs/APIs/Databases/
 Tools now form a SECOND COLUMN beside the agent server (.arch-row, .arch-sys), joined by a
-horizontal "calls" arrow (.arch-hlink) - they are orthogonal to the vertical spine
+fan-out connector - a stub from the server (.arch-hlink, labelled "calls") meets a vertical
+trunk (.arch-sys::before) and one arrow branches into each chip (.arch-branch::before/::after).
+Ram chose the fan-out from four options after rejecting an arrow that ended in empty space:
+an arrow must land on something. They are orthogonal to the vertical spine
 users -> agent server -> cloud, so they must not sit on it. The framework box is a label bar
 only, and the server subtitle is "Stateless - source-available" (Python 3.12+ dropped: the
 narrower column wrapped it). The cloud node lists what it holds as chips
