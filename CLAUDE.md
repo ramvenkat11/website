@@ -155,9 +155,10 @@ concept's first mention - indefinite article or possessive.)
 How-it-works: the four steps are Ram's own text (2026-09-01) and are now named after the PARTS
 of the system, not actions - Search interface, Agent server, Agent framework, Search2o Cloud.
 In the diagram the Agent framework box WRAPS the four chips inside the server node (.arch-fw
-contains .arch-chips) - Ram chose chips-inside over box-beside and bar-above. The diagram has
-no element named "Search interface"; the Users node plus the "search & results" link stands in
-for it. Ram has not been asked about that.
+contains .arch-chips) - Ram chose chips-inside over box-beside and bar-above. The users link is now labelled "search
+interface" (was "search & results") so the diagram carries all four part names; the two-way
+arrow already conveys that results come back. A caption under the Users pill was tried and
+rejected - two labels in the same spot read as clutter.
 Column alignment policy (my recommendation, Ram asked for one): .howgrid, .convo-wrap and
 .split are align-items start; the reports section's div carries class "split centered" and
 .split.centered recenters it (short caption beside tall thumbnails); the hero stays centered.
