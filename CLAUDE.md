@@ -128,8 +128,9 @@ Agent framework section: the code card carries Ram's own // comments, styled by 
 token. His two long ones are split across three // lines each so no line runs past the card
 (furthest text pixel 1112 vs card edge 1168) - never let a code line overflow, the pre scrolls
 horizontally and hides it. The wrap added 88px, paid for by .cmdgroups gap 9px -> 20px in the
-left column; both columns now end on the same pixel. NOTE: the h2 and lead still say JSON, and
-the file bar says weather.json while the first comment says JSONC; Ram's copy, left alone.
+left column; both columns now end on the same pixel. DECIDED by Ram, do not re-raise: headings, lead
+copy and the file bar say JSON because JSON is the marketable term; JSONC is only JSON plus
+comments, so it is mentioned casually in the code comment and nowhere else.
 Also repaired html/gettingstarted.html:86, whose "License and source" link still pointed at
 docs/misc/license.html after the Support and licensing docs move (my regression). No other
 site page referenced a moved docs page.
