@@ -145,9 +145,11 @@ Home how-it-works diagram: the users link is now bidirectional (class "two"; the
 arrow had no rationale - results stream back), and an "Agent framework / runs your agents" box
 sits left inside the agent-server node with the chips beside it (.arch-inner/.arch-fw CSS).
 That attempt was REVERTED (Ram: the framework must appear early, it is a central theme; the
-arrow fix stayed). Final resolution: hero point 3 reads, in Ram's own words: "Hybrid
-architecture. An agent framework runs on stateless servers on your side; Search2o Cloud
-maintains state." Two lines, no widow. (Ram's rule, saved to memory: never "The ..." on a
+arrow fix stayed). 2026-09-01: Ram REPLACED all three hero points with his own text -
+"A structured JSON/Python framework for rapidly creating agents with AI assistance" (braces
+icon), "An agent server that executes them in a controlled runtime" (shield icon), "A complete
+system for developing, publishing, discovering, and using agents across your enterprise"
+(layers icon). No bold lead-ins any more; the framework is now named in point 1. (Ram's rule, saved to memory: never "The ..." on a
 concept's first mention - indefinite article or possessive.)
 How-it-works round two, per Ram's clarification and one answered question: step 2 reads "The
 agent runs using the agent framework on an agent server, next to your APIs, databases and
