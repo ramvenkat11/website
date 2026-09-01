@@ -134,7 +134,11 @@ That attempt was REVERTED (Ram: the framework must appear early, it is a central
 arrow fix stayed). Final resolution: hero point 3 reads, in Ram's own words: "Hybrid
 architecture. An agent framework runs on stateless servers on your side; Search2o Cloud
 maintains state." Two lines, no widow. (Ram's rule, saved to memory: never "The ..." on a
-concept's first mention - indefinite article or possessive.) Hero
+concept's first mention - indefinite article or possessive.)
+How-it-works round two, per Ram's clarification and one answered question: step 2 reads "The
+agent runs using the agent framework on an agent server, next to your APIs, databases and
+documents." In the diagram the Agent framework box now WRAPS the four chips inside the server
+node (.arch-fw contains .arch-chips) - Ram chose chips-inside over box-beside and bar-above. Hero
 def line stays simple (Ram: do not overload it); three hero points is fixed; section order is
 fine as is.
 
