@@ -122,7 +122,10 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
 ## State on 2026-08-31 (continued)
 Docs: 109 pages. New page system-management/usage-limits.html written from
 ../s2oserver/docs/usage_limits.md (toc, section lead and home card updated; built and checked).
-Deliberately left out of the published page: the deleted-and-re-added-user fresh allowance, the
+SIMPLIFIED per Ram: JSON responses belong only in the REST API section; the page now says only
+that limits exist and what the limits are (table + three short sections; the 429 shape,
+resetAt, wording examples, when-a-call-counts detail and the Accuracy section were cut).
+Deliberately left out from the start: the deleted-and-re-added-user fresh allowance, the
 removed per-second rate limiter and its planned replacement, and everything under "Internal".
 docsQuestion is LIVE again (api.py:987 with UsageLimits checks) despite the 2026-08-28
 going-away note in s2oserver's CLAUDE.md - the page documents documentation questions.
