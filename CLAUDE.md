@@ -119,6 +119,15 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   small and quiet); .page-body .section-head is 26px with 64px above (the "Side by side" head).
   The home hero keeps its own size. Not deployed.
 
+## State on 2026-09-01 (about page)
+about.html top rewritten from Ram's text. "An opinionated approach" and the four old prose
+paragraphs are GONE. Now: h1 "Search that executes" (no period; the tagline keeps its period
+elsewhere), the traditional-search-versus-executables paragraph with the bolded question, the
+quoteblock "That is <hl>search that executes</hl>." keeping the existing quoteblock style, then
+the two paragraphs on enterprise requirements and what grew from them. The old quoteblock
+"Search is how users consume agents." is retired. Ram had already edited the founder line to
+link his name and had added the GCP hosting line.
+
 ## State on 2026-09-01 (later)
 COMPARE PAGE REMOVED at Ram's instruction - "not worth it at this stage and it confuses what
 Search2o is". html/compare.html deleted with git rm (recoverable), the Compare nav link taken
