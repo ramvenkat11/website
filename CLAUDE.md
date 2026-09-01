@@ -124,6 +124,11 @@ about.html Company section rewritten from Ram's text: founder line naming Ram Ve
 https://www.linkedin.com/in/ramv1, the enterprise/government provenance paragraph, and the
 open-beta operations paragraph. The name filled Ram's "[Your Name]" placeholder from his git
 identity - HE MUST CONFIRM the spelling he wants shown publicly.
+Agent framework section: the code card is now weather.jsonc and carries three // comments (the
+format allows comments, { } marks a Python expression, result holds the API response), styled
+by a new .tk-com token. The comments were sized to the left column - the card ends within 1px
+of "Agent output". NOTE: the section h2 and lead still say JSON, not JSONC; Ram's copy, left
+alone.
 Also repaired html/gettingstarted.html:86, whose "License and source" link still pointed at
 docs/misc/license.html after the Support and licensing docs move (my regression). No other
 site page referenced a moved docs page.
