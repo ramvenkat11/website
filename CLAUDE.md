@@ -125,6 +125,8 @@ Docs: 109 pages. New page system-management/usage-limits.html written from
 SIMPLIFIED per Ram: JSON responses belong only in the REST API section; the page now says only
 that limits exist and what the limits are (table + three short sections; the 429 shape,
 resetAt, wording examples, when-a-call-counts detail and the Accuracy section were cut).
+Table is ONE ROW PER OPERATION with the windows as columns (per developer a day / a month /
+whole account a day, em dash where none) - Ram: never repeat a label down a table's rows.
 Deliberately left out from the start: the deleted-and-re-added-user fresh allowance, the
 removed per-second rate limiter and its planned replacement, and everything under "Internal".
 docsQuestion is LIVE again (api.py:987 with UsageLimits checks) despite the 2026-08-28
