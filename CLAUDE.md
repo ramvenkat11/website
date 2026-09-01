@@ -168,9 +168,11 @@ Ram chose the fan-out from four options after rejecting an arrow that ended in e
 an arrow must land on something. They are orthogonal to the vertical spine
 users -> agent server -> cloud, so they must not sit on it. The framework box is a label bar
 only, and the server subtitle is "Stateless - source-available" (Python 3.12+ dropped: the
-narrower column wrapped it). The cloud node had an empty right half, so it now
-reads ACROSS: the name on the left, a 2x2 chip grid filling the right (Search, Encrypted state
-- the two Ram requires - plus Configuration and Reports as fillers). Link heights 46->58
+narrower column wrapped it). The cloud node holds exactly two boxes, Search and
+Encrypted state, drawn like the Agent framework box inside the server (.arch-parts/.arch-part):
+title on top, boxes below, full width. Configuration and Reports were tried as fillers and
+REMOVED - nothing may appear in the picture that the steps text does not discuss. The "calls"
+label on the fan-out is gone too (obvious from the arrows). Link heights 46->58
 (42 for the short one) and org padding 16/14 give the height. Both columns now measure delta
 0 at the top and 2px at the bottom. A stacked-card "cluster" effect on the server was tried
 and removed - it read as a stray outline, not as several instances.
