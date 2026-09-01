@@ -160,9 +160,12 @@ interface" (was "search & results") so the diagram carries all four part names; 
 arrow already conveys that results come back. A caption under the Users pill was tried and
 rejected - two labels in the same spot read as clutter.
 Diagram restructured 2026-09-01 (Ram: congested, and it may be taller to match the steps).
-Nesting went from four levels to two: the LLMs/APIs/Databases/Tools chips came OUT of the
-framework box and sit under the agent server inside the org box, joined by a short "calls"
-link; the framework box is now a label bar only. The cloud node lists what it holds as chips
+Nesting went from four levels to two, then the chips moved AGAIN (Ram): LLMs/APIs/Databases/
+Tools now form a SECOND COLUMN beside the agent server (.arch-row, .arch-sys), joined by a
+horizontal "calls" arrow (.arch-hlink) - they are orthogonal to the vertical spine
+users -> agent server -> cloud, so they must not sit on it. The framework box is a label bar
+only, and the server subtitle is "Stateless - source-available" (Python 3.12+ dropped: the
+narrower column wrapped it). The cloud node lists what it holds as chips
 in a 2x2 grid (Search index, Conversation state, Configuration, Reports). Link heights 46->58
 (42 for the short one) and org padding 16/14 give the height. Both columns now measure delta
 0 at the top and 2px at the bottom. A stacked-card "cluster" effect on the server was tried
