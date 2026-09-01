@@ -1,0 +1,20 @@
+<p class="lead">Three operations have usage limits: publishing an agent description, AI assist, and documentation questions. Everything else is unlimited. Running agents is never counted.</p>
+
+<h2>The limits</h2>
+<div class="tablewrap"><table class="fields data">
+<thead><tr><th>Operation</th><th>Who is counted</th><th>Window</th><th>Limit</th></tr></thead>
+<tbody>
+<tr><td>Agent descriptions<br><small>publishing a description for indexing</small></td><td>Each developer</td><td>Day</td><td>3</td></tr>
+<tr><td>Agent descriptions</td><td>The whole account</td><td>Day</td><td>2 per developer in the account, at least 10</td></tr>
+<tr><td>AI assist requests</td><td>Each developer</td><td>Day</td><td>10</td></tr>
+<tr><td>AI assist requests</td><td>Each developer</td><td>Month</td><td>100</td></tr>
+<tr><td>Documentation questions</td><td>Each developer</td><td>Day</td><td>10</td></tr>
+<tr><td>Documentation questions</td><td>Each developer</td><td>Month</td><td>100</td></tr>
+</tbody></table></div>
+<p>"Developer" includes administrators and the owner. Every limit counts developers only: end users are never counted. Where a daily and a monthly limit exist, both are enforced. The minimum of 10 on the account ceiling keeps a one-developer account from being held to 2 a day; adding a developer raises the ceiling immediately.</p>
+
+<h2>Reaching a limit</h2>
+<p>A call over a limit is refused before any work is done, with a message naming the limit. A refused call consumes no allowance, and a description rejected by <a href="../search/describing-an-agent.html">description validation</a> costs nothing. The windows are calendar-aligned in UTC: the day resets at 00:00 UTC, and the month resets on the 1st.</p>
+
+<h2>What is not limited</h2>
+<p>Search, running agents, conversations, the reports, user management and every read are unlimited. The limits on this page are the only usage limits in the system. <a href="../runtime/guardrails.html#runtime-limits">Runtime limits</a> are a different mechanism: runtime limits bound what one agent run may do, not how often anyone may call.</p>

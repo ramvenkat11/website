@@ -91,6 +91,7 @@ TOC = [
         ("agent-servers", "Agent servers"),
         ("authentication", "Authentication"),
         ("notifications", "Notifications"),
+        ("usage-limits", "Usage limits"),
     ]),
     ("security", "Security and privacy", [
         ("license-rotation", "License key rotation"),
