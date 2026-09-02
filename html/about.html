@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>About — Search2o</title>
-<meta name="description" content="Search2o takes an opinionated approach: search is how users consume agents. Built in Northern Virginia by a team with decades of experience in search and cloud systems.">
+<meta name="description" content="Search2o was built from one idea: search that retrieves executables instead of documents, and runs them to do what the user asked. Built in Northern Virginia.">
 <meta property="og:title" content="About — Search2o">
-<meta property="og:description" content="Search2o takes an opinionated approach: search is how users consume agents. Built in Northern Virginia by a team with decades of experience in search and cloud systems.">
+<meta property="og:description" content="Search2o was built from one idea: search that retrieves executables instead of documents, and runs them to do what the user asked. Built in Northern Virginia.">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -38,27 +38,32 @@
 <main>
   <section class="page-hero compact">
     <div class="container">
-      <span class="kicker">About Search2o</span>
-      <h1>An opinionated approach</h1>
+      <span class="kicker">About</span>
+      <h1>Rethinking search</h1>
     </div>
   </section>
 
   <section class="page-body">
     <div class="container">
+      <div class="prose">
+        <p>Traditional search is about information retrieval and is judged on precision and recall. Search2o was built on a simple idea: <strong>what if search retrieved executables instead of documents &mdash; and ran them to do what the user was asking?</strong></p>
+      </div>
+
       <div class="quoteblock">
-        <span class="hl">Search</span> is how users consume agents.
+        That is <span class="hl">search that executes</span>.
       </div>
 
       <div class="prose">
-        <p>By centralizing search as the orchestration layer and building a framework and runtime around that idea, Search2o simplifies and standardizes how agents are built and consumed.</p>
-        <p>Search2o&rsquo;s JSON/Python framework lets developers build agents declaratively. Instead of hardwiring coordination between agents, developers build focused agents with clear, stated responsibilities. These plain-English descriptions are used by search to match each user query to the right agent.</p>
-        <p>Users don&rsquo;t need to know which agents exist in the system. They discover them by entering their request and letting the system find the right agent. By progressively adding more requests to the same conversation, they can combine the capabilities of multiple agents dynamically to reach their end goal.</p>
-        <p>Because agents are focused and purpose-built, the system remains understandable and operable as it evolves.</p>
+        <p>In Search2o, those executables are agents &mdash; executables that can use LLMs in many ways, including to dynamically modify part or all of their workflow.</p>
+        <p>For <strong>search that executes</strong> to work in an enterprise, agents need to execute safely, call enterprise systems, and be interactive with users. The system also has to be dynamic: new agents can be added and existing ones removed as requirements change.</p>
+        <p>That implies more than search alone: a framework to define agents in a structured way, a runtime to execute them safely, a publishing model to make them available, conversations to support follow-ups, and administration and an end-user interface around the system.</p>
+        <p>A hybrid cloud architecture makes the system easier to deploy and maintain without assuming any existing infrastructure. Administrators only need to run stateless agent servers inside the organization. Encryption protects sensitive information in the cloud, including queries, conversations, short- and long-term memories, and agent descriptions.</p>
+        <p>Developers create focused agents with clear responsibilities and publish them into a common system. Users can start using the system from day one because they already understand search: they describe what they want, and search finds and runs the right agent, then waits for follow-ups.</p>
 
         <h2>Company</h2>
         <p>Search2o is based in Northern Virginia, USA.</p>
         <p>The platform was founded by <a href="https://www.linkedin.com/in/ramv1">Ram Venkat</a> and is built on decades of experience designing and operating enterprise search and cloud systems. Those foundational architectures have supported large corporations and U.S. government environments, including long-running, mission-critical production deployments over many years. Search2o brings this exact caliber of resilience, security, and high-performance engineering to modern AI agent orchestration.</p>
-        <p>The platform is hosted on Google Cloud Platform (GCP)</p>
+        <p>The platform is hosted on Google Cloud Platform (GCP).</p>
           <p>Search2o is currently in open beta. To ensure absolute platform integrity and maintain a direct technical feedback loop during this public scaling phase, all system operations are managed directly by our core engineering leadership.</p>
         <h2 id="contact">Contact</h2>
         <p>For product-related questions, use the <strong>Help</strong> icon in Search2o. For other inquiries, contact us by email.</p>
