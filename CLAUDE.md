@@ -119,6 +119,20 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   small and quiet); .page-body .section-head is 26px with 64px above (the "Side by side" head).
   The home hero keeps its own size. Not deployed.
 
+## State on 2026-09-01 (licensing)
+GITHUB AND SOURCE-AVAILABLE ARE GONE (Ram: the code is proprietary and ships only on PyPI; it
+will never be on GitHub). Rewrote docsrc/support-licensing/license.html (proprietary licence,
+no repository line, no promise to publish the GUI source), dropped the repository sentence from
+support.html, rewrote the PyPI paragraph in getting-started/registering-and-downloading.html,
+changed the merging page's analogy from "systems such as GitHub" to "a version control system",
+dropped "their source is available" from misc/llm-adapters.html, and removed "source-available"
+from the home page step 2 and the diagram subtitle (now "Stateless - Python 3.12+" again).
+The toc title is now just "License", and html/gettingstarted.html points at it. The two stale
+generated files html/docs/misc/license.html and html/docs/system-management/support.html were
+finally deleted with git rm - they were the last GitHub mentions in the tree. content/*.md is
+read-only history and still mentions github; left alone. Sweep for
+github|source-available|source is available now returns nothing under html/, docsrc/ and gen/.
+
 ## State on 2026-09-01 (about page)
 BRAND SPELLING (Ram, saved to memory): the name renders exactly as Search2o - capital S,
 lowercase o - and must never be uppercased. The About kicker read "About Search2o" and CSS
