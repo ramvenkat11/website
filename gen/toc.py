@@ -127,6 +127,6 @@ TOC = [
     ]),
     ("support-licensing", "Support and licensing", [
         ("support", "Support"),
-        ("license", "License and source"),
+        ("license", "License"),
     ]),
 ]

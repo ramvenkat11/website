@@ -9,7 +9,7 @@
   <li><code>search2o.llm.basellmadapter.BaseLlmAdapter</code> does the assembly and asks you only for the vendor-specific pieces: how to set the model and the token limit, how to express tools, the system prompt and each kind of message, and how to read flags and token counts from the response. <code>BaseLlmAdapter</code> is the right base for most APIs.</li>
   <li><code>search2o.llm.llmadapter.LlmAdapter</code> is the bare interface: <code>name</code>, <code>description</code>, <code>process_request</code>, <code>process_response</code> and <code>get_error</code>. Use this class for a protocol so different that the base class does not help.</li>
 </ul>
-<p>The bundled adapters in <code>search2o.llm</code> are the reference implementations, and their source is available.</p>
+<p>The bundled adapters in <code>search2o.llm</code> are the reference implementations.</p>
 
 <h2>Registering it</h2>
 <ol>
