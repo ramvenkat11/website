@@ -135,7 +135,11 @@ executables paragraph with the bolded question, the quoteblock "That is <hl>sear
 executes</hl>.", then four paragraphs - agents ARE the executables and may use LLMs to modify
 their own workflow; what an enterprise needs (safe execution, enterprise calls, interactivity,
 a changing agent set); what that implies beyond search (framework, runtime, publishing model,
-conversations, administration, end-user interface); and how developers and users meet. The old quoteblock
+conversations, administration, end-user interface); the hybrid cloud architecture (assumes
+nothing about existing infrastructure, administrators run only stateless agent servers,
+encryption covers queries, conversations, short- and long-term memories and agent
+descriptions); and how developers and users meet - users start on day one because they already
+understand search. The old quoteblock
 "Search is how users consume agents." is retired. Ram had already edited the founder line to
 link his name and had added the GCP hosting line.
 
