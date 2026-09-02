@@ -119,6 +119,16 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   small and quiet); .page-body .section-head is 26px with 64px above (the "Side by side" head).
   The home hero keeps its own size. Not deployed.
 
+## State on 2026-09-02 (hero demo)
+The hero demo's last beat was "Context encrypted and stored for follow-ups" with a STATE tag.
+Ram: the hero picture is not about implementation detail, but do not just delete the row and
+leave it flat. Replaced with a follow-up EXCHANGE that demonstrates a product behaviour: the
+user types "Yes, and tell me when Dana signs it" into the same search box (a second .demo-search
+with class followup, quieter border) and it MATCHES a different agent, "Signature agent". So
+the demo now shows conversations spanning agents, which the earlier row only asserted. New
+stage-5 animation delay 2.75s. The agent's streamed answer already ended with "Want me to route
+it for signature?", so the follow-up answers it.
+
 ## State on 2026-09-01 (licensing)
 GITHUB AND SOURCE-AVAILABLE ARE GONE (Ram: the code is proprietary and ships only on PyPI; it
 will never be on GitHub). Rewrote docsrc/support-licensing/license.html (proprietary licence,
