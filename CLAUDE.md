@@ -127,9 +127,13 @@ answer to an ask to a DIFFERENT agent (an ask always resumes the SAME agent, doc
 ask.html), and it invented a "Signature agent" that would somehow know when a named person
 signed. Correct version, checked against ask.html and gui/search.html: the streamed output ends
 without a question, then an ASK row shows the FORM that an ask puts in the conversation
-(message plus a chooseOne, .demo-form/.demo-tag.ask), then a RESUME row shows the same agent
-carrying on where it paused and routing for signature. Human in the loop, demonstrated. New
-stage-5 delay 2.75s. LESSON: verify product mechanics in docsrc before drawing them.
+(message plus a chooseOne, .demo-form/.demo-tag.ask), then a RUN row shows the OUTCOME only,
+"Sent the renewal to Acme for signature". Two further corrections from Ram: the ask form has
+ONE submit (the options are a chooseOne with a default selected, not two buttons - see
+AskInputModel), and "the same agent carried on where it paused" was implementation detail of
+exactly the kind he had just asked me to remove. RULE FOR THIS PICTURE: every line is something
+the customer gets, never how the system does it. New stage-5 delay 2.75s. LESSON: verify
+product mechanics in docsrc and the models before drawing them.
 
 ## State on 2026-09-01 (licensing)
 GITHUB AND SOURCE-AVAILABLE ARE GONE (Ram: the code is proprietary and ships only on PyPI; it
