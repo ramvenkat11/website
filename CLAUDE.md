@@ -122,12 +122,14 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
 ## State on 2026-09-02 (hero demo)
 The hero demo's last beat was "Context encrypted and stored for follow-ups" with a STATE tag.
 Ram: the hero picture is not about implementation detail, but do not just delete the row and
-leave it flat. Replaced with a follow-up EXCHANGE that demonstrates a product behaviour: the
-user types "Yes, and tell me when Dana signs it" into the same search box (a second .demo-search
-with class followup, quieter border) and it MATCHES a different agent, "Signature agent". So
-the demo now shows conversations spanning agents, which the earlier row only asserted. New
-stage-5 animation delay 2.75s. The agent's streamed answer already ended with "Want me to route
-it for signature?", so the follow-up answers it.
+leave it flat. My first replacement was WRONG twice and Ram caught both: it sent the
+answer to an ask to a DIFFERENT agent (an ask always resumes the SAME agent, docsrc/commands/
+ask.html), and it invented a "Signature agent" that would somehow know when a named person
+signed. Correct version, checked against ask.html and gui/search.html: the streamed output ends
+without a question, then an ASK row shows the FORM that an ask puts in the conversation
+(message plus a chooseOne, .demo-form/.demo-tag.ask), then a RESUME row shows the same agent
+carrying on where it paused and routing for signature. Human in the loop, demonstrated. New
+stage-5 delay 2.75s. LESSON: verify product mechanics in docsrc before drawing them.
 
 ## State on 2026-09-01 (licensing)
 GITHUB AND SOURCE-AVAILABLE ARE GONE (Ram: the code is proprietary and ships only on PyPI; it
