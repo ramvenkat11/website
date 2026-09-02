@@ -164,7 +164,11 @@ https://www.linkedin.com/in/ramv1, the enterprise/government provenance paragrap
 open-beta operations paragraph. The name filled Ram's "[Your Name]" placeholder from his git
 identity - HE MUST CONFIRM the spelling he wants shown publicly.
 Agent framework section: the code card carries Ram's own // comments, styled by a new .tk-com
-token. His two long ones are split across three // lines each so no line runs past the card
+token. VERIFY THE CODE BLOCK MECHANICALLY: strip the tk-* spans, unescape,
+and walk the brace depth (ignoring braces inside string literals) - "prompt" sat at indent 5
+instead of 8 and the comments at 12 instead of 10 for several renders and I never noticed,
+because a syntax-coloured block reads as correct at a glance. His two long comments are split
+across three // lines each so no line runs past the card
 (furthest text pixel 1112 vs card edge 1168) - never let a code line overflow, the pre scrolls
 horizontally and hides it. The wrap added 88px, paid for by .cmdgroups gap 9px -> 20px in the
 left column; both columns now end on the same pixel. DECIDED by Ram, do not re-raise: headings, lead
