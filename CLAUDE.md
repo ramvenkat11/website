@@ -132,7 +132,8 @@ without a question, then an ASK row shows the FORM that an ask puts in the conve
 ONE submit (the options are a chooseOne with a default selected, not two buttons - see
 AskInputModel), and "the same agent carried on where it paused" was implementation detail of
 exactly the kind he had just asked me to remove. RULE FOR THIS PICTURE: every line is something
-the customer gets, never how the system does it. New stage-5 delay 2.75s. LESSON: verify
+the customer gets, never how the system does it. The Submit is a QUIET outlined pill, not a
+filled button - the hero demo must never pull attention from the hero bullets and Get started. New stage-5 delay 2.75s. LESSON: verify
 product mechanics in docsrc and the models before drawing them.
 
 ## State on 2026-09-01 (licensing)
