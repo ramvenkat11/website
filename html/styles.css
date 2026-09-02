@@ -234,6 +234,32 @@ p { margin: 0; }
 .demo .stage-2 { animation-delay: .85s; }
 .demo .stage-3 { animation-delay: 1.5s; }
 .demo .stage-4 { animation-delay: 2.15s; }
+.demo .stage-5 { animation-delay: 2.75s; }
+/* an ask pauses the agent and puts a form in the conversation */
+.demo-tag.ask { background: var(--tag-match-bg); color: var(--tag-match-fg); }
+.demo-form {
+  display: grid; gap: 9px; padding: 11px 13px;
+  border: 1px solid var(--line); border-radius: 10px; background: var(--bg-soft);
+}
+.demo-form .q { color: var(--ink); font-size: 14px; font-weight: 600; }
+.demo-form .opts { display: flex; gap: 8px; }
+.demo-form .opts i {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px;
+  background: var(--card); color: var(--muted);
+  font-size: 12.5px; font-style: normal; font-weight: 600;
+}
+.demo-form .opts i::before {
+  content: ""; width: 9px; height: 9px; border-radius: 50%;
+  border: 1.5px solid var(--slate); box-sizing: border-box;
+}
+.demo-form .opts i.on { color: var(--ink); border-color: var(--blue); }
+.demo-form .opts i.on::before { background: var(--blue); border-color: var(--blue); }
+.demo-form .submit {
+  justify-self: start; padding: 5px 14px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--card); color: var(--muted);
+  font-size: 12.5px; font-weight: 600;
+}
 @keyframes rise { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
 @keyframes blink { 50% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {

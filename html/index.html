@@ -95,13 +95,24 @@
         </div>
 
         <div class="demo-stream stage stage-3">
-          Renewal drafted for Acme at last year&rsquo;s rate &mdash; ready for your review. Want me to route it for signature?
+          Renewal drafted for Acme at last year&rsquo;s rate &mdash; ready for your review.
         </div>
 
         <div class="demo-row stage stage-4">
-          <span class="demo-tag state">State</span>
+          <span class="demo-tag ask">Ask</span>
+          <div class="demo-body">
+            <div class="demo-form">
+              <span class="q">Route it for signature?</span>
+              <span class="opts"><i class="on">Yes</i><i>Not yet</i></span>
+              <span class="submit">Submit</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-row stage stage-5">
+          <span class="demo-tag run">Run</span>
           <div class="demo-body demo-progress">
-            <span class="p" style="color: var(--muted)"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="color: var(--slate)"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>Context encrypted and stored for follow-ups</span>
+            <span class="p"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Sent the renewal to Acme for signature</span>
           </div>
         </div>
 
@@ -233,7 +244,8 @@
         <div>
           <span class="kicker">Search</span>
           <h2>How does search find the right agent?</h2>
-          <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">Search matches each request against the natural-language description of each agent, written by its developer. It supports major languages, scales to thousands of agents, and returns matches within 300 ms. In our tests, the right agent ranked first 85% of the time and in the top three 95%, even with overlapping descriptions.</p>
+          <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">Search matches each request to agents using natural-language descriptions written by their developers. It supports major languages and returns matches within 300 ms. Across 15,180 queries in six test sets ranging from 40 to 1,000 agents, the right agent ranked first 86% of the time and in the top three 95%.
+          </p>
         </div>
 
         <div class="codecard" aria-label="Example agent description">
