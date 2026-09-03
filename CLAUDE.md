@@ -249,8 +249,12 @@ dropped "their source is available" from misc/llm-adapters.html, and removed "so
 from the home page step 2 and the diagram subtitle (now "Stateless - Python 3.12+" again).
 The toc title is now just "License", and html/gettingstarted.html points at it. The two stale
 generated files html/docs/misc/license.html and html/docs/system-management/support.html were
-finally deleted with git rm - they were the last GitHub mentions in the tree. content/*.md is
-read-only history and still mentions github; left alone. Sweep for
+finally deleted with git rm - they were the last GitHub mentions in the tree. content/gettingstarted.md was the last
+mention anywhere ("The source is available on github. To build from source...") and Ram asked
+on 2026-09-03 for it to go too, so content/ is no longer treated as untouchable when it states
+something that is no longer true; that line now reads "The agent server is published on PyPI
+under a proprietary license." A sweep of html/, docsrc/, gen/ and content/ for
+github|source-available|source is available|build from source|open source returns NOTHING. Sweep for
 github|source-available|source is available now returns nothing under html/, docsrc/ and gen/.
 
 ## State on 2026-09-01 (about page)
