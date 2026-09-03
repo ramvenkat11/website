@@ -126,7 +126,10 @@ overview section "What Search2o provides, and what you build" say Search2o provi
 integration POINTS (API, tokens, connect flow) and not the integration itself, that the bot is
 written and run by the customer because each company's platform, network and approval rules
 differ, and that we are happy to help - Help icon or info@search2o.com.
-New material: "Letting the person choose" (the four picker rules) added to finding-an-agent;
+New material: finding-an-agent now says searchBehavior and followupBehavior are GUIDANCE, not
+a rule - a bot may always run the top match for a more conversational feel, at the cost of
+never offering a choice when the match is uncertain. "Letting the person choose" (the four
+picker rules) added to the same page;
 the Slack Answer-button step (a modal needs a click, a message event carries no trigger_id)
 added to running-an-agent; the Slow answers section fully rewritten (per-vendor ack windows,
 do not build against the figure, per-application ways to send the later message, and reuse the
