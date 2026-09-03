@@ -119,6 +119,19 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   small and quiet); .page-body .section-head is 26px with 64px above (the "Side by side" head).
   The home hero keeps its own size. Not deployed.
 
+## State on 2026-09-02 (home page reflects chat)
+Home page updated for chat integrations, per Ram's guidelines plus judgment. Hero def now ends
+"behind one search interface" (was "one search box"; "one" kept - the single entry point is the
+point). Diagram: a clients chip row (Browser, Slack, Teams, Google Chat) sits under the Users
+pill, above the "search interface" link (.arch-clients); vertical links retuned to 67px and the
+columns measure gap 0. Platform cards: Profiles card REPLACED by Chat integrations (bubble
+icon; Slack/Teams/Google Chat, bot connects via the API, no password handed over, prompts write
+most of the bot); Agent development card lost the Notifications sentence and gained "Profiles
+keep LLMs, prompts, APIs, databases and MCP servers out of agent code". Extras: API card says
+"build your own UI or chat bot", and how-it-works step 1 opens "User types a request from a
+browser or a chat application." Footer sentence and meta description already said "search
+interface" and were left alone.
+
 ## State on 2026-09-02 (chat integrations)
 NEW DOCS SECTION "Chat integrations", placed after REST API in toc.py, written from
 content/chat_integration.md. 118 pages now (was 109). Eight pages: overview (what the bot does,
