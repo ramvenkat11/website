@@ -12,7 +12,7 @@
 <x-code lang="bash">
 $ curl -s -X POST http://127.0.0.1:9020/api/exec/execAgent \
     -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
-    -d '{"agentName": "morning-briefing", "inputs": {"query": "what changed overnight", "team": "payments"}}'
+    -d '{"agentName": "morning_briefing", "inputs": {"query": "what changed overnight", "team": "payments"}}'
 </x-code>
 
 <h2>The response</h2>
@@ -35,7 +35,7 @@ $ curl -s -X POST http://127.0.0.1:9020/api/exec/execAgent \
 <x-code lang="bash">
 $ curl -s -X POST http://127.0.0.1:9020/api/exec/execAgent \
     -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" \
-    -d '{"agentName": "travel-booking", "convid": "'$CONVID'", "inputs": {"departure": "Boston", "seat": "aisle"}}'
+    -d '{"agentName": "travel_booking", "convid": "'$CONVID'", "inputs": {"departure": "Boston", "seat": "aisle"}}'
 </x-code>
 
 <h2>Continuing a conversation</h2>

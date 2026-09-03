@@ -4,4 +4,6 @@
 <!--fields:model:McpServerModel-->
 
 <p>The name is what agents write: <code>git.search_code</code> for one tool, or <code>git</code> for every tool the server offers. The GUI lists a server's tools next to the server. A server cannot be named <code>function</code>; that name is reserved for the agent's own functions in tool calls.</p>
+<p>An MCP server's name is letters and digits only, up to 16 characters. It is the one name in Search2o that cannot contain an underscore. The name becomes part of the tool name the model sees, in the form <code>mcp_{server}_{tool}</code>, so an underscore in the server's name would make that split ambiguous. The 16-character limit leaves room inside the 64 characters model providers allow for a function name.</p>
+
 <p>When a tool call fails with one of the retryable error codes, the error is handed back to the model so that the model can correct the call. Any other error fails the command.</p>

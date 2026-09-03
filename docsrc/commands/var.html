@@ -8,7 +8,7 @@
   <li><code>conv.name</code> — a <strong>conversation</strong> variable, kept for the whole conversation and shared by every agent that runs in the conversation.</li>
 </ul>
 <p>Any key may be followed by an index to set one element of an existing list or dict: <code>totals['q3']</code>, <code>rows[0]</code>, <code>agent.cache['user']</code>. The base variable must already exist.</p>
-<p>A name starts with a letter, is at least two characters long, and contains only letters, digits and underscores. Python keywords and the names <code>sys</code>, <code>command</code>, <code>result</code>, <code>exc</code>, <code>env</code>, <code>agent</code>, <code>conv</code> and <code>onError</code> cannot be used. See <a href="../agent-definition/variables.html">Variables and namespaces</a>.</p>
+<p>A name starts with a letter and ends with a letter or a digit. A name contains only letters, digits and underscores, and is at least two characters long. Python keywords and the names <code>sys</code>, <code>command</code>, <code>result</code>, <code>exc</code>, <code>env</code>, <code>agent</code>, <code>conv</code> and <code>onError</code> cannot be used. See <a href="../agent-definition/variables.html">Variables and namespaces</a>.</p>
 
 <h2>Values</h2>
 <p>A value is any JSON value. A string in braces is evaluated as a Python expression, and the variable receives the expression's result, whatever the type. Agent and conversation variables are saved with the conversation, so their values must be JSON serializable. Local variables may hold anything.</p>

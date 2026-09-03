@@ -385,8 +385,8 @@ def _deep_agent():
     f.arrow(170, 68, 240, 68)
     f.text(205, 30, "the user's query", size=10.5, anchor="middle")
     f.box(460, 20, 120, 40, "weather", kind="card", size=12, mono=True)
-    f.box(460, 70, 120, 40, "hr-policy", kind="card", size=12, mono=True)
-    f.box(460, 120, 120, 40, "it-helpdesk", kind="card", size=12, mono=True)
+    f.box(460, 70, 120, 40, "hr_policy", kind="card", size=12, mono=True)
+    f.box(460, 120, 120, 40, "it_helpdesk", kind="card", size=12, mono=True)
     f.arrow(390, 60, 460, 40)
     f.arrow(390, 68, 460, 90)
     f.arrow(390, 76, 460, 140)
@@ -558,8 +558,8 @@ def _report(name, title, header_cols, rows, widths, trend_labels):
 def _report_performance():
     return _report("report-performance", "Performance: executions, users, success rate and latency per agent",
                    ["Agent", "Executions", "Users", "Success", "Avg", "P95", "Last run"],
-                   [["weather", "162", "24", "100%", "1.7 s", "2.9 s", "Aug 27"], ["hr-policy", "58", "19", "98%", "1.2 s", "2.1 s", "Aug 27"],
-                    ["order-lookup", "53", "6", "94%", "3.4 s", "6.8 s", "Aug 26"], ["docs-rag", "35", "11", "100%", "2.6 s", "4.0 s", "Aug 26"]],
+                   [["weather", "162", "24", "100%", "1.7 s", "2.9 s", "Aug 27"], ["hr_policy", "58", "19", "98%", "1.2 s", "2.1 s", "Aug 27"],
+                    ["order_lookup", "53", "6", "94%", "3.4 s", "6.8 s", "Aug 26"], ["docs_rag", "35", "11", "100%", "2.6 s", "4.0 s", "Aug 26"]],
                    [95, 70, 50, 60, 55, 55, 70], ["Executions", "Duration", "Distinct agents"])
 
 
@@ -567,7 +567,7 @@ def _report_performance():
 def _report_errors():
     return _report("report-errors", "Errors: failures per agent, by result code, with the messages behind them",
                    ["Agent", "Errors", "Executions", "Rate", "Users", "Codes", "Last"],
-                   [["order-lookup", "3", "53", "5.7%", "2", "callFailed", "Aug 26"], ["hr-policy", "1", "58", "1.7%", "1", "timedOut", "Aug 25"]],
+                   [["order_lookup", "3", "53", "5.7%", "2", "callFailed", "Aug 26"], ["hr_policy", "1", "58", "1.7%", "1", "timedOut", "Aug 25"]],
                    [95, 55, 70, 50, 50, 90, 60], ["Errors", "Executions", "Users affected"])
 
 
@@ -575,8 +575,8 @@ def _report_errors():
 def _report_cost():
     return _report("report-cost", "Cost: LLM spend per agent, from token counts and the profile's prices",
                    ["Agent", "Executions", "Users", "Total", "Average", "Maximum", "Last run"],
-                   [["docs-rag", "35", "11", "$0.41", "$0.012", "$0.031", "Aug 26"], ["weather", "162", "24", "$0.29", "$0.002", "$0.004", "Aug 27"],
-                    ["order-lookup", "53", "6", "$0.22", "$0.004", "$0.011", "Aug 26"]],
+                   [["docs_rag", "35", "11", "$0.41", "$0.012", "$0.031", "Aug 26"], ["weather", "162", "24", "$0.29", "$0.002", "$0.004", "Aug 27"],
+                    ["order_lookup", "53", "6", "$0.22", "$0.004", "$0.011", "Aug 26"]],
                    [95, 70, 50, 60, 65, 70, 60], ["Total cost", "Average cost", "P95 cost"])
 
 
@@ -610,7 +610,7 @@ def _detail(name, title, crumb, kpis, cols, rows, widths, trend_labels, extra=No
 @figure("report-performance-detail")
 def _report_performance_detail():
     return _detail("report-performance-detail", "Agent detail: the same figures per published version, plus the agent's trend",
-                   "Acme Corp / Reports / Performance / order-lookup",
+                   "Acme Corp / Reports / Performance / order_lookup",
                    [("53", "executions"), ("6", "users"), ("94%", "success"), ("3.4 s", "average"), ("6.8 s", "p95")],
                    ["Version", "Executions", "Users", "Success", "Avg", "P95", "Cost", "Last run"],
                    [["Aug 24 09:12", "31", "6", "97%", "3.1 s", "5.9 s", "$0.13", "Aug 27"], ["Aug 12 16:40", "22", "4", "91%", "3.8 s", "7.2 s", "$0.09", "Aug 24"]],
@@ -623,7 +623,7 @@ def _report_errors_detail():
         f.text(x, y + 6, "Example queries (a sample, most recent first)", size=9, weight=700)
         f.text(x, y + 22, "“where is order 48812” · “status of my order from last week” · “track 48719”", size=9.5, fill="ink")
     return _detail("report-errors-detail", "Error detail: failures by version, then result code, then message and path",
-                   "Acme Corp / Reports / Errors / order-lookup",
+                   "Acme Corp / Reports / Errors / order_lookup",
                    [("3", "errors"), ("53", "executions"), ("5.7%", "error rate"), ("2", "users affected"), ("2", "messages")],
                    ["Version · code", "Message", "Path", "Count", "Users", "Last"],
                    [["Aug 24 · callFailed", "HTTP 503 from orders API", "main.api.orders", "2", "2", "Aug 26"],
@@ -634,7 +634,7 @@ def _report_errors_detail():
 @figure("report-cost-detail")
 def _report_cost_detail():
     return _detail("report-cost-detail", "Cost detail: spend per published version, each with its own trend",
-                   "Acme Corp / Reports / Cost / docs-rag",
+                   "Acme Corp / Reports / Cost / docs_rag",
                    [("$0.41", "total"), ("$0.012", "average"), ("$0.031", "maximum"), ("35", "executions"), ("11", "users")],
                    ["Version", "Executions", "Users", "Total", "Average", "Maximum", "First run", "Last run"],
                    [["Aug 25 11:03", "20", "9", "$0.25", "$0.013", "$0.031", "Aug 25", "Aug 26"], ["Aug 18 08:47", "15", "6", "$0.16", "$0.011", "$0.024", "Aug 18", "Aug 25"]],
@@ -649,7 +649,7 @@ def _report_usage_detail():
                    "Acme Corp / Reports / Usage / Mei Chen",
                    [("88", "executions"), ("5", "agents"), ("99%", "success"), ("$0.31", "LLM cost"), ("6", "active days")],
                    ["Agent", "Executions", "Success", "Cost", "Avg", "Last run"],
-                   [["weather", "41", "100%", "$0.07", "1.6 s", "Aug 27"], ["hr-policy", "24", "100%", "$0.09", "1.3 s", "Aug 27"], ["order-lookup", "12", "92%", "$0.05", "3.5 s", "Aug 26"]],
+                   [["weather", "41", "100%", "$0.07", "1.6 s", "Aug 27"], ["hr_policy", "24", "100%", "$0.09", "1.3 s", "Aug 27"], ["order_lookup", "12", "92%", "$0.05", "3.5 s", "Aug 26"]],
                    [110, 70, 60, 55, 55, 60], ["Executions", "Cost", "Duration"], extra)
 
 

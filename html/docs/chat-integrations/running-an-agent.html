@@ -40,7 +40,7 @@
       <h1>Running an agent</h1>
       <p class="lead">The bot calls <code>execAgent</code> with the agent name and the person&rsquo;s question. The question goes in <code>inputs</code> under the name <code>query</code>.</p>
 
-<figure class=code data-lang=json><div class=bar><span>The request</span></div><pre><code>{ &quot;agentName&quot;: &quot;hr-policy&quot;,
+<figure class=code data-lang=json><div class=bar><span>The request</span></div><pre><code>{ &quot;agentName&quot;: &quot;hr_policy&quot;,
   &quot;inputs&quot;: { &quot;query&quot;: &quot;how much vacation have I accrued&quot; },
   &quot;convid&quot;: &quot;…&quot; }</code></pre></figure>
 <p>Leave <code>convid</code> out to start a conversation. The response carries the new identifier. Pass that identifier on every later call to continue the same conversation. Please leave the field out altogether rather than sending an empty <code>convid</code>.</p>

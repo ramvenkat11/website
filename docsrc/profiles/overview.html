@@ -14,14 +14,14 @@
 <h2>Why profiles</h2>
 <p>A profile is changed once, and every agent that uses the profile picks up the change on its next run. Three things follow from that.</p>
 <ul>
-  <li><strong>Moving between environments.</strong> The same agents run against development, staging and production by changing the profiles, not the agents. An agent that names <code>orders-db</code> does not know which database that is.</li>
+  <li><strong>Moving between environments.</strong> The same agents run against development, staging and production by changing the profiles, not the agents. An agent that names <code>orders_db</code> does not know which database that is.</li>
   <li><strong>Retiring a model or a service.</strong> When a model is sunset or an API moves, one profile changes and every agent follows.</li>
   <li><strong>Keeping credentials out of agents.</strong> A profile's headers and connection string are dynamic strings, so a credential is a <code>sys.secret</code> reference read at call time; see <a href="../security/secret-vault.html">The secret vault</a>.</li>
 </ul>
 
 <h2>Rules that apply to every profile</h2>
 <ul>
-  <li>A profile name is letters, digits and underscores, and must start with a letter.</li>
+  <li>A profile name is letters, digits and underscores. A profile name starts with a letter and ends with a letter or a digit.</li>
   <li>Each profile page in the GUI shows which agents use the profile. A profile in use cannot be deleted; remove the reference from the agents first.</li>
   <li>Each kind of profile has a limit on how many an account may hold. The GUI shows the limit on the profile's page.</li>
   <li>A profile carries a documentation note. AI assist reads the notes when it writes an agent, so a note that says what the profile is for helps the assistant choose the right one.</li>
