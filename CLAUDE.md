@@ -119,6 +119,19 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   small and quiet); .page-body .section-head is 26px with 64px above (the "Side by side" head).
   The home hero keeps its own size. Not deployed.
 
+## State on 2026-09-02 (chat integrations)
+NEW DOCS SECTION "Chat integrations", placed after REST API in toc.py, written from
+content/chat_integration.md. 118 pages now (was 109). Eight pages: overview (what the bot does,
+what to decide first), connecting-a-person (pasted token vs the connect flow, the short code,
+the approval-page address setting), integration-tokens (capability limits, expiry, revocation,
+SSO), finding-an-agent (search plus the behaviour table), running-an-agent (execAgent, threads
+vs conversations, the four result cases, asks, slow answers), showing-the-answer (text, images,
+HTML), chat-applications (Slack, Teams, Google Chat), ai-prompts (the reference prompt, one
+prompt per chat application, and the checks). Docs home card added.
+TRAP: build.py escapes x-code contents itself ("sources can hold the raw text"), so NEVER
+pre-escape a code block - the first version rendered &quot; and &lt;token&gt; literally. An
+HTML entity inside x-code is always a bug; scan for /&[a-z]+;/ inside code blocks.
+
 ## State on 2026-09-02 (hero demo)
 The hero demo's last beat was "Context encrypted and stored for follow-ups" with a STATE tag.
 Ram: the hero picture is not about implementation detail, but do not just delete the row and
