@@ -119,6 +119,16 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   small and quiet); .page-body .section-head is 26px with 64px above (the "Side by side" head).
   The home hero keeps its own size. Not deployed.
 
+## State on 2026-09-02 (single sign-on page)
+New page system-management/single-sign-on.html, directly below Authentication. 119 pages.
+Says SAML 2.0 and OpenID Connect are PLANNED (never dated), invites companies to name the
+standard and provider they need and to volunteer for a pilot, and states what will not change
+(roles stay in Search2o, integration tokens and the chat connect flow are unaffected). The
+authentication page's lead now links to it instead of saying "will be added in a future
+release"; the chat integrations token page links to it too; section lead and docs home card
+updated. content/comingsoon.md lists more unbuilt work (passwordless, email code, fob key) -
+NOT written up, nobody asked.
+
 ## State on 2026-09-02 (title-line alignment)
 NEW ALIGNMENT POLICY from Ram, superseding the h2-anchor pass of 2026-08-31: every right-side
 picture's TOP aligns with the section's BIG TITLE LINE glyph top - the h1 "Search that
