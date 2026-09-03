@@ -127,7 +127,20 @@ eyebrow level under align-items center), how +5, example +2, search -16, framewo
 reports -5 (the old "0" for search/framework was a measurement artifact: threshold 60 missed
 the card border at L48; use threshold 45 for card edges). Now: .hero-grid is align-items start
 with .hero-grid .demo margin-top 75px; .howgrid last-child 2px; shared split rule 36px;
-.convo-wrap 18px; #reports .split last-child 25px. All six measure delta 0 (reports 1).
+.convo-wrap 37px; .howgrid last-child 37px; #reports .split last-child 36px; shared split
+rule 36px. All six measure delta 0.
+MEASUREMENT: a brightness threshold does NOT find a card's top edge - the arch card's faint
+border and big soft shadow fooled it, so I reported "aligned" when the diagram sat 35px HIGH
+and Ram saw no movement. Correct detector: for each row compare pixels against that row's page
+background (abs diff > 4) across the card's x-range minus 30px of rounded corner, and take the
+first row where 60% differ. Verify by drawing a red guide line at the title glyph top on a crop
+and LOOKING. True deltas before the fix were how -35, example -19, reports -11, search 0,
+framework 0. Diagram links went 86 -> 51 to keep the how-it-works columns ending level (1px).
+The hero demo was also shortened at Ram's request: the streamed line lost "ready for your
+review." and .demo-form is now ONE flex row (question, options, Submit), so the panel ends
+7px below the left column instead of hanging.
+Example workflow and Reports still hang ~200px below their left columns; their right content
+is inherently tall and top alignment is now the rule. Ram has not objected.
 
 ## State on 2026-09-02 (home page reflects chat)
 Home page updated for chat integrations, per Ram's guidelines plus judgment. Hero def now ends
