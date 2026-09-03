@@ -43,7 +43,7 @@
 <ul class=pagecards><li><a href='performance.html'><b>Agent performance</b><small>One row per agent: how often the agent ran, for how many users, how often the agent succeeded, and how long a run took.</small></a></li><li><a href='errors.html'><b>Agent errors</b><small>One row per agent that failed at least once: how often the agent failed, for how many users, and with which result codes.</small></a></li><li><a href='cost.html'><b>LLM cost</b><small>One row per agent: the total LLM spend, the average spend per execution, and the highest spend of any single execution. Every execution counts, whether or no…</small></a></li><li><a href='usage.html'><b>User usage</b><small>One row per user: executions, distinct agents used, success rate, LLM spend and last activity. Administrators only. The table is paged and can be sorted by a…</small></a></li></ul>
 
 <h2 id="what-is-recorded">What is recorded</h2>
-<p>Each record holds the agent and its version, the user, the start time and the duration, the result code, the error message if there was one, and the LLM cost and LLM time. Validation runs of drafts are not recorded. The query text is stored encrypted. Only the error reports show queries, as a sample of the queries that produced an error, and the browser decrypts that sample.</p>
+<p>Each record holds the agent and its version, the user, the start time and the duration, the result code, the error message if there was one, and the LLM cost and LLM time. Validation runs of drafts are not recorded. The query text is stored encrypted, and no report shows it. A query is readable only by the person who typed it.</p>
 
 <h2 id="result-codes">Result codes</h2>
 <div class="tablewrap"><table class="fields">
