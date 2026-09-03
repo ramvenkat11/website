@@ -10,7 +10,7 @@
 pip install search2o
 
 
-The source is available on github. To build from source, use the directions provided in the inline docs in the app. 
+The agent server is published on PyPI under a proprietary license.
 
 
 ## Running the server
