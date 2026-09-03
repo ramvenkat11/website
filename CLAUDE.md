@@ -122,9 +122,12 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
 ## State on 2026-09-02 (home page reflects chat)
 Home page updated for chat integrations, per Ram's guidelines plus judgment. Hero def now ends
 "behind one search interface" (was "one search box"; "one" kept - the single entry point is the
-point). Diagram: a clients chip row (Browser, Slack, Teams, Google Chat) sits under the Users
-pill, above the "search interface" link (.arch-clients); vertical links retuned to 67px and the
-columns measure gap 0. Platform cards: Profiles card REPLACED by Chat integrations (bubble
+point). Diagram: the clients chip row was WRONG - the link's top arrowhead pointed at a loose chip
+row, and Ram had already ruled that arrows cannot end nowhere. The chips are gone; the link
+label now has a second fainter line, "search interface / from a browser or a chat app"
+(.arch-lbl em), so the arrow runs Users <-> organization with both ends on nodes. Links 86px,
+gap 0. STANDING RULE: every arrowhead in this diagram must land on a node's edge - check each
+end whenever an element is added or removed near a link. Platform cards: Profiles card REPLACED by Chat integrations (bubble
 icon; Slack/Teams/Google Chat, bot connects via the API, no password handed over, prompts write
 most of the bot); Agent development card lost the Notifications sentence and gained "Profiles
 keep LLMs, prompts, APIs, databases and MCP servers out of agent code". Extras: API card says
