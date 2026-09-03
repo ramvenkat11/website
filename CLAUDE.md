@@ -119,6 +119,22 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   small and quiet); .page-body .section-head is 26px with 64px above (the "Side by side" head).
   The home hero keeps its own size. Not deployed.
 
+## State on 2026-09-03 (chat docs resynced)
+content/chat_integration.md was updated and the docs were brought back in line.
+SCOPE STATEMENT added at Ram's request, politely: the section index lead and a renamed
+overview section "What Search2o provides, and what you build" say Search2o provides the
+integration POINTS (API, tokens, connect flow) and not the integration itself, that the bot is
+written and run by the customer because each company's platform, network and approval rules
+differ, and that we are happy to help - Help icon or info@search2o.com.
+New material: "Letting the person choose" (the four picker rules) added to finding-an-agent;
+the Slack Answer-button step (a modal needs a click, a message event carries no trigger_id)
+added to running-an-agent; the Slow answers section fully rewritten (per-vendor ack windows,
+do not build against the figure, per-application ways to send the later message, and reuse the
+placeholder when a conversation turns out to have expired); one more check on the ai-prompts
+page about Slack modals.
+The four prompt blocks are now GENERATED from content/chat_integration.md and verified
+byte-identical - resync them from the source rather than editing the page by hand.
+
 ## State on 2026-09-02 (single sign-on page)
 New page system-management/single-sign-on.html, directly below Authentication. 119 pages.
 Rewritten POLITE at Ram's request - this page states no
