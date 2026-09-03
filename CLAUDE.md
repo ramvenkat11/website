@@ -139,8 +139,10 @@ framework 0. Diagram links went 86 -> 51 to keep the how-it-works columns ending
 The hero demo was also shortened at Ram's request: the streamed line lost "ready for your
 review." and .demo-form is now ONE flex row (question, options, Submit), so the panel ends
 7px below the left column instead of hanging.
-Example workflow and Reports still hang ~200px below their left columns; their right content
-is inherently tall and top alignment is now the rule. Ram has not objected.
+REPORTS IS THE ONE EXCEPTION (Ram): #reports .split is align-items center with no top offset -
+a two-line caption beside a tall 2x2 thumbnail grid reads better centred, and the title-line
+rule does not apply there. Example workflow keeps the rule and hangs ~200px below its left
+column; its transcript card is simply taller. Every other section measures delta 0.
 
 ## State on 2026-09-02 (home page reflects chat)
 Home page updated for chat integrations, per Ram's guidelines plus judgment. Hero def now ends
