@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Chat integrations — Search2o docs</title>
-<meta name="description" content="People can use agents from Slack, Microsoft Teams or Google Chat. A bot sits between the chat application and the agent server. Search2o does not ship a bot,…">
+<meta name="description" content="People can use agents from Slack, Microsoft Teams or Google Chat. Search2o provides the integration points; the bot that sits between a chat application and …">
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +38,7 @@
     <div class="crumbs"><a href='../index.html'>Docs</a></div>
     <article class="docs-article">
       <h1>Chat integrations</h1>
-      <p class="lead">People can use agents from Slack, Microsoft Teams or Google Chat. A bot sits between the chat application and the agent server. Search2o does not ship a bot, and every call one needs is in the API today.</p>
+      <p class="lead">People can use agents from Slack, Microsoft Teams or Google Chat. Search2o provides the integration points; the bot that sits between a chat application and the agent server is written by your company. We are glad to help if you run into trouble.</p>
 <ul class=pagecards><li><a href='overview.html'><b>How a chat integration works</b><small>A person types a question in a chat thread. A bot finds the right agent, runs it, and posts the answer back in that thread.</small></a></li><li><a href='connecting-a-person.html'><b>Connecting a person</b><small>The bot acts as a person, so the bot needs a token for that person. The person creates the token. A password never reaches the bot.</small></a></li><li><a href='integration-tokens.html'><b>Integration tokens</b><small>An integration token acts as its owner, limited to what any user may do. A person creates the token, holds it, and can revoke it.</small></a></li><li><a href='finding-an-agent.html'><b>Finding an agent</b><small>The bot calls search with the person’s question. The call returns up to three agents, and two values that say what to do with them.</small></a></li><li><a href='running-an-agent.html'><b>Running an agent</b><small>The bot calls execAgent with the agent name and the person’s question. The question goes in inputs under the name query.</small></a></li><li><a href='showing-the-answer.html'><b>Showing the answer</b><small>An answer is a list of parts. A part is text, HTML or an image.</small></a></li><li><a href='chat-applications.html'><b>Slack, Teams and Google Chat</b><small>What differs between Slack, Microsoft Teams and Google Chat: how the bot receives events, how a form is drawn, and what identifies a thread.</small></a></li><li><a href='ai-prompts.html'><b>Building a bot with an AI assistant</b><small>The API is small enough that an assistant can write most of a bot in one pass. What an assistant cannot do is guess the contract, and a wrong guess produces …</small></a></li></ul>
 
     </article>

@@ -57,7 +57,7 @@
 
 <h2 id="rules">Rules</h2>
 <ul>
-  <li>Use named parameters (<code>:email</code>) with <code>params</code> instead of building SQL from variables. Parameters are passed to the driver and are never interpolated into the statement.</li>
+  <li>Named parameters (<code>:email</code>) with <code>params</code> are safer than SQL built from variables. Parameters are passed to the driver and are never interpolated into the statement.</li>
   <li>The connection string names an async driver, which must be installed in the server's Python environment. <code>sqlite+aiosqlite</code> works out of the box. <code>postgresql+asyncpg</code>, <code>mysql+aiomysql</code>, <code>oracle+oracledb</code> and <code>mssql+aioodbc</code> are optional extras of the <code>search2o</code> package.</li>
   <li>The default timeout is 30 seconds. A timeout or a connection failure raises an error that <code>onError</code> can catch.</li>
 </ul>

@@ -42,24 +42,24 @@
 
 <h2 id="slack">Slack</h2>
 <ul>
-  <li>Use Socket Mode where possible. The bot then needs only outgoing connections, so the bot can run inside a private network beside the agent server, with nothing exposed to the internet. This matters when the agent server is not reachable from outside the company.</li>
-  <li>Verify Slack&rsquo;s request signature on every event.</li>
-  <li>Post answers in a thread, so that a conversation in Search2o matches a thread in Slack.</li>
+  <li>We would suggest Socket Mode where possible. The bot then needs only outgoing connections, so the bot can run inside a private network beside the agent server, with nothing exposed to the internet. This matters when the agent server is not reachable from outside the company.</li>
+  <li>Please verify Slack&rsquo;s request signature on every event.</li>
+  <li>Answers are best posted in a thread, so that a conversation in Search2o matches a thread in Slack.</li>
   <li>The <a href="connecting-a-person.html">connect flow</a> uses an ordinary link button. Slack has no masked input, so never collect a password or a token in a Slack form.</li>
 </ul>
 
 <h2 id="microsoft-teams">Microsoft Teams</h2>
 <ul>
   <li>Teams bots are registered in Azure and receive events over HTTPS. The bot needs a public endpoint, or a tunnel into the company network.</li>
-  <li>Use Adaptive Cards for the connect button and for the input form when an agent asks a question.</li>
-  <li>Teams identifies a conversation and a reply chain. Use both to key the record of which thread belongs to which Search2o conversation.</li>
+  <li>Adaptive Cards suit the connect button, and the input form when an agent asks a question.</li>
+  <li>Teams identifies a conversation and a reply chain. Both are needed to key the record of which thread belongs to which Search2o conversation.</li>
 </ul>
 
 <h2 id="google-chat">Google Chat</h2>
 <ul>
   <li>A Google Chat app receives events over HTTPS or through Pub/Sub. Pub/Sub suits a bot inside a private network, for the same reason as Socket Mode in Slack.</li>
-  <li>Use card messages for the connect button and for input forms.</li>
-  <li>Google Chat identifies a space and a thread. Key the record on both.</li>
+  <li>Card messages suit the connect button and the input forms.</li>
+  <li>Google Chat identifies a space and a thread, and the record is best keyed on both.</li>
 </ul>
 
     </article>

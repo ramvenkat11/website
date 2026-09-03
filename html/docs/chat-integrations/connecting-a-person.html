@@ -64,12 +64,12 @@
 <p><code>startConnect</code>, <code>getConnectRequest</code> and <code>getConnectToken</code> need no token of their own. Every other call the bot makes carries the person&rsquo;s token; see <a href="../rest-api/authentication.html">Authentication</a>.</p>
 
 <h2 id="the-short-code">The short code</h2>
-<p>The short code is what protects the person. A link on its own is not enough to get a request approved, because a request started by somebody else displays a code the person has never seen. Tell people to compare the two codes. A bot must never display a code that did not come from <code>startConnect</code>.</p>
-<p>The secret from the first call belongs to the bot. The secret must never be shown to the person and never appear in a link.</p>
+<p>The short code is what protects the person. A link on its own is not enough to get a request approved, because a request started by somebody else displays a code the person has never seen. It helps to ask people to compare the two codes. A bot should never display a code that did not come from <code>startConnect</code>.</p>
+<p>The secret from the first call belongs to the bot. The secret should never be shown to the person, and never appear in a link.</p>
 
 <h2 id="where-the-approval-page-lives">Where the approval page lives</h2>
 <p>The address comes from a setting on the agent server. Leave the setting empty when the agent server serves the GUI, and the address follows wherever the GUI is served. Set a page for a GUI of your own, or a full address for a GUI hosted somewhere else. The agent server does not have to serve the GUI at all, and the GUI is a set of static pages that can be hosted anywhere, so a GUI hosted elsewhere needs an address here.</p>
-<p>The agent server adds the request to whatever address is set, as a query parameter, so a page that reads that parameter works whichever way the GUI is built. What a bot receives is therefore a full address or a path. Use a full address as it is. Join a path to the address of the agent server.</p>
+<p>The agent server adds the request to whatever address is set, as a query parameter, so a page that reads that parameter works whichever way the GUI is built. What a bot receives is therefore a full address or a path. A full address is used as it is, and a path is joined to the address of the agent server.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../chat-integrations/overview.html'><small>Previous</small>How a chat integration works</a><a class=next href='../chat-integrations/integration-tokens.html'><small>Next</small>Integration tokens</a></nav>

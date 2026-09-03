@@ -126,7 +126,7 @@ ASKING THE PERSON FOR INPUT
   inputs set to { &quot;&lt;name&gt;&quot;: &quot;&lt;answer&gt;&quot;, ... }.
 
 CONVERSATIONS
-  POST BASE/api/exec/getConversation          { &quot;convid&quot;: &quot;...&quot; }
+  POST BASE/api/exec/getConversation        { &quot;convid&quot;: &quot;...&quot; }
   POST BASE/api/user/getUnpinnedConversations { &quot;nextCursor&quot;: null, &quot;limit&quot;: 25 }
   POST BASE/api/user/getPinnedConversations   { }
   POST BASE/api/user/setConversationTitle     { &quot;convid&quot;: &quot;...&quot;, &quot;title&quot;: &quot;...&quot; }
@@ -143,7 +143,14 @@ RULES YOU MUST FOLLOW
   - An answer is markdown. Convert it to the chat application&#x27;s own format.
   - html parts cannot be shown in any chat application. Convert them to text, or tell the
     person the answer is in the Search2o GUI.
-  - image parts are base64. Upload them using the chat application&#x27;s file API.</code></pre></figure>
+  - image parts are base64. Upload them using the chat application&#x27;s file API.
+  - When searchBehavior or followupBehavior says to show the results, show one button per
+    agent. Put a short id in the button and keep the question in your own store, because a
+    button carries little and a question can be long. Replace the message once somebody
+    chooses, so a second click cannot start a second conversation. Accept the click only
+    from the person who asked.
+  - When a run returns unknownAgentOrConversation, reuse the message you already posted for
+    the retry. Do not post a second one.</code></pre></figure>
 
 <h2 id="the-prompt-for-slack">The prompt for Slack</h2>
 <figure class=code data-lang=text><div class=bar><span>Slack</span></div><pre><code>Write a Slack bot in &lt;your language&gt; using the reference above.
@@ -155,11 +162,16 @@ RULES YOU MUST FOLLOW
   - Reply in a thread. Key the conversation record on team id, channel id and thread_ts.
   - On first use by a person, run the connect flow. Post the button and the code in a
     direct message, never in a channel.
-  - Acknowledge within three seconds. Post a short &quot;working on it&quot; message, then edit it
-    with the answer when it arrives.
-  - Render an ask as a modal. Map the input types to Slack blocks: str to plain text,
-    password to plain text, text to a multiline input, chooseOne to a static select,
-    chooseMany to a multi select.
+  - Acknowledge the event within three seconds. Post a short &quot;working on it&quot; message, then
+    edit it with chat.update when the answer arrives. An agent can take a minute, so never
+    hold the acknowledgement open waiting for it.
+  - An ask cannot open a modal directly. A modal needs a trigger_id, and a message event
+    does not carry one. Post a message with an Answer button, and open the modal from the
+    button click.
+  - Map the input types to Slack blocks: str to plain text, password to plain text, text to
+    a multiline input, chooseOne to a static select, chooseMany to a multi select.
+  - Show search results as buttons in a message, one per agent, and update that message once
+    somebody chooses.
   - Convert markdown to Slack mrkdwn. Bold is *text*, links are &lt;url|label&gt;.
   - Upload image parts with files.upload and post them in the thread.</code></pre></figure>
 
@@ -172,7 +184,9 @@ RULES YOU MUST FOLLOW
   - Key the conversation record on the Teams conversation id and the reply chain id.
   - On first use by a person, run the connect flow. Send the button as an Adaptive Card,
     in a one to one chat rather than a channel.
-  - Acknowledge quickly, then update the activity with the answer when it arrives.
+  - Acknowledge the activity at once. Keep the conversation reference, and send the answer
+    as a proactive message when it arrives, or update the activity. An agent can take a
+    minute, which is longer than the connector will wait, so never answer inline.
   - Render an ask as an Adaptive Card with an input for each field, and a submit action
     that returns the answers.
   - Teams accepts a useful subset of markdown. Convert what it does not accept.
@@ -188,6 +202,9 @@ RULES YOU MUST FOLLOW
   - On first use by a person, run the connect flow. Send the button as a card, in a direct
     message rather than a space.
   - Reply in the same thread.
+  - Acknowledge the event at once, then create the answer as a new message with the Chat API
+    when it arrives. An agent can take a minute, which is longer than the wait allowed for a
+    reply to the event itself.
   - Render an ask as a card with a section per field and a submit button.
   - Convert markdown to Google Chat formatting. Bold is *text*, links are &lt;url|label&gt;.
   - Upload image parts as card images.</code></pre></figure>
@@ -201,6 +218,7 @@ RULES YOU MUST FOLLOW
   <li>The question goes in <code>inputs</code> under the name <code>query</code>. The question is not a top-level field.</li>
   <li><code>convid</code> is left out to start a conversation. The field is not set to null and not set to an empty string.</li>
   <li>An agent that asks needs the same <code>convid</code> on the next call, or the agent starts again from the beginning.</li>
+  <li>In Slack, opening a form straight from a message event cannot work. Generated code that does that fails the first time an agent asks for anything.</li>
 </ul>
 
     </article>

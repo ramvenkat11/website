@@ -9,7 +9,7 @@
 <thead><tr><th>Setting</th><th>Meaning</th></tr></thead>
 <tbody>
 <tr><td><code>apiBase</code></td><td>Base URL of the agent server's REST API. Empty means the same origin as the GUI. When the GUI and the agent server are on different origins, add the GUI's origin to the server's allowed CORS origins.</td></tr>
-<tr><td><code>apiTimeoutSeconds</code></td><td>Timeout, in seconds, for REST calls from the GUI. Keep the timeout above 60: publishing a description is checked by the cloud and can take up to a minute.</td></tr>
+<tr><td><code>apiTimeoutSeconds</code></td><td>Timeout, in seconds, for REST calls from the GUI. A timeout above 60 is worth keeping: publishing a description is checked by the cloud and can take up to a minute.</td></tr>
 <tr><td><code>notificationDurationSeconds</code></td><td>How long a notification stays visible in the GUI.</td></tr>
 <tr><td><code>defaultSuccessOutput</code></td><td>Shown when an agent finishes successfully without producing output.</td></tr>
 </tbody></table></div>

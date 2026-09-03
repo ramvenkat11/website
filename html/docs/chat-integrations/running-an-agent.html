@@ -43,7 +43,7 @@
 <figure class=code data-lang=json><div class=bar><span>The request</span></div><pre><code>{ &quot;agentName&quot;: &quot;hr-policy&quot;,
   &quot;inputs&quot;: { &quot;query&quot;: &quot;how much vacation have I accrued&quot; },
   &quot;convid&quot;: &quot;…&quot; }</code></pre></figure>
-<p>Leave <code>convid</code> out to start a conversation. The response carries the new identifier. Pass that identifier on every later call to continue the same conversation. Do not send an empty <code>convid</code>; leave the field out.</p>
+<p>Leave <code>convid</code> out to start a conversation. The response carries the new identifier. Pass that identifier on every later call to continue the same conversation. Please leave the field out altogether rather than sending an empty <code>convid</code>.</p>
 
 <h2 id="threads-and-conversations">Threads and conversations</h2>
 <p>A chat application identifies a thread in its own way. Slack uses a workspace, a channel and the timestamp of the first message. Teams and Google Chat each have their own identifiers.</p>
@@ -64,10 +64,15 @@
 <h2 id="when-an-agent-asks-a-question">When an agent asks a question</h2>
 <p>An agent can pause and ask the person for input. The response then carries the message to show and the list of inputs to collect. Each input has a type: a line of text, a password, a longer block of text, a choice of one, or a choice of several. Every chat application can render all five in a form.</p>
 <p>Collect the answers and call <code>execAgent</code> again, with the same <code>convid</code> and the answers as <code>inputs</code>, keyed by input name. The agent continues from where it paused. An input marked as hidden is not shown to the person; send it back unchanged. See the <a href="../commands/ask.html"><code>ask</code></a> command.</p>
+<p>Slack needs one extra step. A form there can only be opened in response to a click, and the answers arrive while the bot is replying to a message. The usual way round it is a message with an Answer button, with the form opening when that button is pressed.</p>
 
 <h2 id="slow-answers">Slow answers</h2>
-<p>A chat application expects a reply within a few seconds. An agent that calls a model takes longer, sometimes much longer.</p>
-<p>Acknowledge the message at once, then post the answer when the answer arrives. Most chat applications allow a message to be edited after it is posted, so a bot can post a short message and replace that message with the answer. The agent server can also <a href="../rest-api/streaming.html">stream progress</a> while an agent runs, and a bot can use the progress to update the message it posted. Do not close a stream that has not finished: closing it stops the agent.</p>
+<p>Every chat application expects the app to acknowledge an event quickly. Slack allows about three seconds. Microsoft Teams allows longer, and Google Chat longer still. It is worth checking the current figure for the application you are building against, because each vendor changes it.</p>
+<p>We would suggest not building against that figure. An agent that calls a model usually answers in about five seconds, and sometimes takes a minute or more. No window covers that.</p>
+<p>The pattern is therefore the same on all three. Acknowledge the event at once. Post a short message saying the answer is coming. Post or edit the real answer when the answer arrives.</p>
+<p>Each application has its own way to send that later message. In Slack, post a message and edit it with <code>chat.update</code>. In Teams, keep the conversation reference and send a proactive message, or update the activity. In Google Chat, create a message in the space with the Chat API. All three also have a typing or progress indicator worth using while the person waits.</p>
+<p>When a conversation turns out to have expired, the bot starts a new one and runs the question again. Reuse the message already posted rather than posting another. Otherwise the person sees two messages saying an answer is coming, for one question.</p>
+<p>The agent server can <a href="../rest-api/streaming.html">stream progress</a> while an agent runs, and a bot can use the progress to update the message it posted. Please leave an unfinished stream open: closing it stops the agent.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../chat-integrations/finding-an-agent.html'><small>Previous</small>Finding an agent</a><a class=next href='../chat-integrations/showing-the-answer.html'><small>Next</small>Showing the answer</a></nav>

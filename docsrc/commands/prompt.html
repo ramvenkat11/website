@@ -31,5 +31,5 @@
 <ul>
   <li>Leave <code>name</code> unset unless the agent needs more than one prompt, for example one prompt for classification and another for the answer. An <code>llm</code> command names the prompt to use in its <code>prompt</code> field.</li>
   <li>Set the system prompt once, typically on the first run of a conversation. A common pattern is an <code>if</code> on an agent variable that marks initialization as done.</li>
-  <li>A prompt that an <code>llm</code> command is using cannot be used by a nested agent or a tool function at the same time. Give those their own prompt name.</li>
+  <li>A prompt that an <code>llm</code> command is using cannot be used by a nested agent or a tool function at the same time. Those are worth giving their own prompt name.</li>
 </ul>

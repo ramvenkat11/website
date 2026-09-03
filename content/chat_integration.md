@@ -119,6 +119,25 @@ agent exists.
 A question must be at least eight characters. Treat a shorter one as a greeting rather than
 showing the error.
 
+## Letting the person choose
+
+When the behaviour says to show the results, show them as buttons. One button per agent,
+labelled with the agent title. Search returns at most three, so they fit in a single row.
+
+Four things make a picker work properly.
+
+Carry the question, not only the choice. Running an agent needs the question, and a click only
+says which agent. Put a short identifier in the button and keep the question in your own store.
+A chat application limits how much a button can carry, and a question can be longer than that.
+
+Replace the message once somebody has chosen. Otherwise the buttons stay live, and a second
+click starts a second conversation on the same question. Show which agent was chosen instead.
+
+Accept the click only from the person who asked. In a channel anybody can click. A click from
+somebody else would run that question under their account and put it in their history.
+
+Let the behaviour decide whether to show a picker at all. Do not invent a rule of your own.
+
 ## Running an agent
 
 The bot calls `execAgent` with the agent name and the person's question.
@@ -151,6 +170,10 @@ five in a form.
 Collect the answers and call `execAgent` again, with the same conversation identifier and the
 answers as inputs. The agent continues from where it paused.
 
+Slack needs one extra step. A form there can only be opened in response to a click, and the
+answer arrives while the bot is replying to a message. So post a message with an Answer button,
+and open the form when that button is pressed.
+
 An input marked as hidden is not shown to the person. Send it back unchanged.
 
 ## Showing the answer
@@ -168,16 +191,27 @@ text and images.
 
 ## Slow answers
 
-A chat application expects a reply within a few seconds. An agent that calls a model takes
-longer, sometimes much longer.
+Every chat application expects the app to acknowledge an event quickly. Slack allows about
+three seconds. Microsoft Teams allows longer, and Google Chat longer still. Check the current
+figure for the one you are building against, because each vendor changes it.
 
-Acknowledge the message at once, then post the answer when it arrives. Most chat applications
-allow a message to be edited after it is posted, so a bot can post a short "working on it"
-message and replace it with the answer.
+Do not build against the figure. An agent that calls a model usually answers in about five
+seconds, and sometimes takes a minute or more. No window covers that.
 
-The agent server can also stream progress while an agent runs. A bot can use the progress to
-update its placeholder message. Do not close a stream that has not finished. Closing it stops
-the agent.
+So the pattern is the same on all three. Acknowledge the event at once. Post a short message
+saying the answer is coming. Post or edit the real answer when it arrives.
+
+Each application has its own way to send that later message. In Slack, post a message and
+edit it with `chat.update`. In Teams, keep the conversation reference and send a proactive
+message, or update the activity. In Google Chat, create a message in the space with the Chat
+API. All three also have a typing or progress indicator worth using while the person waits.
+
+When a conversation turns out to have expired, the bot starts a new one and runs the question
+again. Reuse the message already posted rather than posting another. Otherwise the person sees
+two messages saying an answer is coming, for one question.
+
+The agent server can stream progress while an agent runs, and a bot can use it to update the
+placeholder message. Do not close a stream that has not finished. Closing it stops the agent.
 
 ## Notes for each chat application
 
@@ -326,6 +360,13 @@ RULES YOU MUST FOLLOW
   - html parts cannot be shown in any chat application. Convert them to text, or tell the
     person the answer is in the Search2o GUI.
   - image parts are base64. Upload them using the chat application's file API.
+  - When searchBehavior or followupBehavior says to show the results, show one button per
+    agent. Put a short id in the button and keep the question in your own store, because a
+    button carries little and a question can be long. Replace the message once somebody
+    chooses, so a second click cannot start a second conversation. Accept the click only
+    from the person who asked.
+  - When a run returns unknownAgentOrConversation, reuse the message you already posted for
+    the retry. Do not post a second one.
 ```
 
 ### The prompt for Slack
@@ -340,11 +381,16 @@ Write a Slack bot in <your language> using the reference above.
   - Reply in a thread. Key the conversation record on team id, channel id and thread_ts.
   - On first use by a person, run the connect flow. Post the button and the code in a
     direct message, never in a channel.
-  - Acknowledge within three seconds. Post a short "working on it" message, then edit it
-    with the answer when it arrives.
-  - Render an ask as a modal. Map the input types to Slack blocks: str to plain text,
-    password to plain text, text to a multiline input, chooseOne to a static select,
-    chooseMany to a multi select.
+  - Acknowledge the event within three seconds. Post a short "working on it" message, then
+    edit it with chat.update when the answer arrives. An agent can take a minute, so never
+    hold the acknowledgement open waiting for it.
+  - An ask cannot open a modal directly. A modal needs a trigger_id, and a message event
+    does not carry one. Post a message with an Answer button, and open the modal from the
+    button click.
+  - Map the input types to Slack blocks: str to plain text, password to plain text, text to
+    a multiline input, chooseOne to a static select, chooseMany to a multi select.
+  - Show search results as buttons in a message, one per agent, and update that message once
+    somebody chooses.
   - Convert markdown to Slack mrkdwn. Bold is *text*, links are <url|label>.
   - Upload image parts with files.upload and post them in the thread.
 ```
@@ -360,7 +406,9 @@ Write a Microsoft Teams bot in <your language> using the reference above.
   - Key the conversation record on the Teams conversation id and the reply chain id.
   - On first use by a person, run the connect flow. Send the button as an Adaptive Card,
     in a one to one chat rather than a channel.
-  - Acknowledge quickly, then update the activity with the answer when it arrives.
+  - Acknowledge the activity at once. Keep the conversation reference, and send the answer
+    as a proactive message when it arrives, or update the activity. An agent can take a
+    minute, which is longer than the connector will wait, so never answer inline.
   - Render an ask as an Adaptive Card with an input for each field, and a submit action
     that returns the answers.
   - Teams accepts a useful subset of markdown. Convert what it does not accept.
@@ -379,6 +427,9 @@ Write a Google Chat app in <your language> using the reference above.
   - On first use by a person, run the connect flow. Send the button as a card, in a direct
     message rather than a space.
   - Reply in the same thread.
+  - Acknowledge the event at once, then create the answer as a new message with the Chat API
+    when it arrives. An agent can take a minute, which is longer than the wait allowed for a
+    reply to the event itself.
   - Render an ask as a card with a section per field and a submit button.
   - Convert markdown to Google Chat formatting. Bold is *text*, links are <url|label>.
   - Upload image parts as card images.
@@ -403,6 +454,9 @@ The question goes in `inputs` under the name `query`. It is not a top level fiel
 
 An agent that asks needs the same `convid` on the next call, or it starts again from the
 beginning.
+
+In Slack, opening a form straight from a message event cannot work. If the generated code does
+that, it will fail the first time an agent asks for anything.
 
 ## When single sign-on is available
 

@@ -46,5 +46,5 @@
   <li><code>profile</code> is the literal name of an <a href="../profiles/llm-profiles.html">LLM profile</a>. To pick a profile at runtime, branch with <code>if</code>.</li>
   <li>The token ceiling, retries, headers and any extra request parameters come from the profile.</li>
   <li>An agent's run is stopped once the run's LLM spend passes the <em>max LLM cost per run</em> in <a href="../runtime/guardrails.html#runtime-limits">Runtime limits</a>.</li>
-  <li>Do not use <code>end</code> inside a tool function. A tool must return to the model.</li>
+  <li><code>end</code> is best avoided inside a tool function. A tool must return to the model.</li>
 </ul>

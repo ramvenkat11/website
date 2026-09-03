@@ -13,7 +13,7 @@
 
 <h2>Registering it</h2>
 <ol>
-  <li>Put the class in the Python environment that the agent server runs in.</li>
+  <li>The class belongs in the Python environment that the agent server runs in.</li>
   <li>Add the class to the <a href="../runtime/guardrails.html#allowlist">allowlist</a> as <code>mypackage.myadapter.MyAdapter</code> and save.</li>
   <li>The agent server instantiates every allowlisted subclass of <code>LlmAdapter</code> when the server loads the allowlist, and lists those adapters under <em>Adapters</em> when a new LLM profile is created. An adapter whose constructor fails is reported on the Agent servers page.</li>
 </ol>

@@ -48,7 +48,7 @@
 <ol>
   <li>Create a dedicated user for the automation, with the lowest role that covers the task. A user role covers search and conversations, a developer covers agents and agent reports, and an administrator covers users and usage reports.</li>
   <li>Sign in with <code>scriptLogin</code> and pass the bearer token to the model's tool layer, so that every call carries <code>Authorization: Bearer &hellip;</code>. The token lasts one hour by default; sign in again when a response carries <code>mustLogin: true</code>. See <a href="authentication.html">Authentication</a>.</li>
-  <li>Tell the model the base URL of the agent server and that every endpoint is a POST with a JSON body.</li>
+  <li>It helps to tell the model the base URL of the agent server, and that every endpoint is a POST with a JSON body.</li>
 </ol>
 
 <h2 id="tasks-that-suit-this">Tasks that suit this</h2>
@@ -60,7 +60,7 @@
 </ul>
 
 <h2 id="keeping-it-safe">Keeping it safe</h2>
-<p>A model with the schema can call anything the signed-in user may call, including <code>deleteAgent</code>, <code>deleteUsers</code> and <code>updateRole</code>. The role of the automation user is the boundary. Keep the role as low as the task allows, and use a user-role account where a report is all that is needed. Every call the model makes is an ordinary API call. Search2o Cloud checks the call against the role, records the call against the automation user, and shows the call in the reports and notifications like any other.</p>
+<p>A model with the schema can call anything the signed-in user may call, including <code>deleteAgent</code>, <code>deleteUsers</code> and <code>updateRole</code>. The role of the automation user is the boundary. The role is best kept as low as the task allows, and a user-role account suffices where a report is all that is needed. Every call the model makes is an ordinary API call. Search2o Cloud checks the call against the role, records the call against the automation user, and shows the call in the reports and notifications like any other.</p>
 
 <h2 id="for-people-rather-than-models">For people rather than models</h2>
 <p>The same schema is rendered for people. Swagger UI at <code>/docs</code> lets you fill in a request and send it from the browser. ReDoc at <code>/redoc</code> is a reference to read. Both are served by the agent server and can be moved or switched off in the <a href="../system-management/agent-servers.html">Agent servers</a> configuration.</p>

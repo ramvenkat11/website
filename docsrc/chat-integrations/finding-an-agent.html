@@ -17,9 +17,20 @@
 <tr><td><code>showResults</code></td><td>Show the list and let the person choose.</td></tr>
 <tr><td><code>executePrevious</code><br><small>only in <code>followupBehavior</code></small></td><td>Keep using the agent already in the conversation.</td></tr>
 </tbody></table></div>
+<p>Both values are guidance, not a rule the bot must follow. They carry the account&rsquo;s preference, and a bot may take its own line. A bot that always runs the top match, for example, feels more like a conversation and less like a search page. The cost is that the person is never offered a choice when the match is uncertain. Either suits, as long as the bot stays consistent.</p>
+
+<h2>Letting the person choose</h2>
+<p>When the behaviour says to show the results, show them as buttons: one button per agent, labelled with the agent title. Search returns at most three, so the buttons fit in a single row.</p>
+<p>Four things make a picker work properly.</p>
+<ul>
+  <li><strong>Carry the question, not only the choice.</strong> Running an agent needs the question, and a click only says which agent. It works well to put a short identifier in the button and keep the question in your own store. A chat application limits how much a button can carry, and a question can be longer than that.</li>
+  <li><strong>Replace the message once somebody has chosen.</strong> Otherwise the buttons stay live, and a second click starts a second conversation on the same question. Showing which agent was chosen reads better.</li>
+  <li><strong>Accept the click only from the person who asked.</strong> In a channel anybody can click. A click from somebody else would run that question under their account and put it in their history.</li>
+  <li><strong>Let the behaviour decide whether to show a picker at all.</strong> A rule of your own is likely to surprise people who also use the GUI.</li>
+</ul>
 
 <h2>When nothing matches</h2>
-<p>An empty result means no agent covers that question. Say so. There is no directory of agents for end users, and none is needed: people ask, and the answer tells them whether an agent exists. See <a href="../search/how-matching-works.html">How matching behaves</a>.</p>
+<p>An empty result means no agent covers that question, and it helps to tell the person so. There is no directory of agents for end users, and none is needed: people ask, and the answer tells them whether an agent exists. See <a href="../search/how-matching-works.html">How matching behaves</a>.</p>
 
 <h2>Short questions</h2>
-<p>A question must be at least eight characters. Treat a shorter one as a greeting rather than showing the error.</p>
+<p>A question must be at least eight characters. A shorter one is best treated as a greeting, rather than shown as an error.</p>
