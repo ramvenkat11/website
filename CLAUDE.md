@@ -119,6 +119,16 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   small and quiet); .page-body .section-head is 26px with 64px above (the "Side by side" head).
   The home hero keeps its own size. Not deployed.
 
+## State on 2026-09-02 (title-line alignment)
+NEW ALIGNMENT POLICY from Ram, superseding the h2-anchor pass of 2026-08-31: every right-side
+picture's TOP aligns with the section's BIG TITLE LINE glyph top - the h1 "Search that
+executes." in the hero, the h2 elsewhere. Measured deltas before: hero -89 (the demo hung at
+eyebrow level under align-items center), how +5, example +2, search -16, framework -17,
+reports -5 (the old "0" for search/framework was a measurement artifact: threshold 60 missed
+the card border at L48; use threshold 45 for card edges). Now: .hero-grid is align-items start
+with .hero-grid .demo margin-top 75px; .howgrid last-child 2px; shared split rule 36px;
+.convo-wrap 18px; #reports .split last-child 25px. All six measure delta 0 (reports 1).
+
 ## State on 2026-09-02 (home page reflects chat)
 Home page updated for chat integrations, per Ram's guidelines plus judgment. Hero def now ends
 "behind one search interface" (was "one search box"; "one" kept - the single entry point is the
