@@ -6,6 +6,13 @@ procedure. The full history of decisions made while this lived in s2oserver is i
 `../s2oserver/CLAUDE.md` (search it for "website", "docs", "home page").
 
 ## Standing instructions
+- POLITE, not curt (Ram, 2026-09-03, after a full-docs pass). Advice is offered, not ordered:
+  "we would suggest", "it helps to", "is best kept", "please" for a real request. Bare commands
+  ("Say so.", "Do not build against the figure.", "Tell people to compare the codes.") read as
+  brusque and must be rephrased. This does NOT license filler or hedging - the sentences stay
+  short and clear. Product FACTS stay firm ("ask is not allowed inside a for block"), and so do
+  security rules ("must never appear in an agent definition"). Table cells and field glosses
+  stay terse: that is a table, not a tone.
 - After completing any task, update this file with what was done and what is next. Do it
   without asking, and commit ONLY this file (`git commit CLAUDE.md -m ...`) without mentioning it.
   Ram owns every other commit - never commit code or content; he reviews first.
