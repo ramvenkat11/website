@@ -292,7 +292,7 @@
 <pre><code><span class="tk-com">// JSON with comments (JSONC).</span>
 <span class="tk-pun">{</span>
   <span class="tk-key">"functions"</span><span class="tk-pun">: {</span>
-    <span class="tk-key">"main"</span><span class="tk-pun">: {</span>
+    <span class="tk-key">"main"</span><span class="tk-pun">: {</span>  <span class="tk-com">// Execution begins here</span>
       <span class="tk-key">"commands"</span><span class="tk-pun">: {</span>
         <span class="tk-key">"func"</span><span class="tk-pun">: { </span><span class="tk-key">"name"</span><span class="tk-pun">:</span> <span class="tk-str">"forecast"</span><span class="tk-pun"> },</span>
         <span class="tk-key">"prompt"</span><span class="tk-pun">: {</span>
@@ -333,17 +333,17 @@
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-3.5 8-10V5l-8-3-8 3v7c0 6.5 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
           <h3>Agent security</h3>
-          <p>Agents run in a controlled runtime: only the functions on your allowlist can be called, and compile rules bound what an expression may do. Secrets come from your vault and never appear in an agent. Conversations and other sensitive information can be end-to-end encrypted.</p>
+          <p>Agents can only call what's on your allowlist. Secrets come from your vault and never appear in an agent. Conversations and other sensitive information can be end-to-end encrypted.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></div>
           <h3>Model neutrality</h3>
-          <p>Bring your own keys. OpenAI, Anthropic and Gemini are supported out of the box, and so is any LLM with an interface compatible with one of the three. For any other LLM, you write a small adapter class.</p>
+          <p>Bring your own keys. OpenAI, Anthropic and Gemini are supported out of the box, and so is any LLM with a compatible interface. For any other LLM, you write a small adapter class.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
           <h3>Chat integrations</h3>
-          <p>Agents can be used from Slack, Microsoft Teams, and Google Chat. A bot connects the chat application to the agent server. The docs include prompts that generate most of the bot code needed for integration.</p>
+          <p>Agents can be used from Slack, Microsoft Teams, and Google Chat. A bot connects the chat application to the agent server, which includes the necessary endpoints for the integration.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M7 4v5"/></svg></div>
