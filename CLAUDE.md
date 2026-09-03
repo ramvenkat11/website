@@ -121,9 +121,11 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
 
 ## State on 2026-09-02 (single sign-on page)
 New page system-management/single-sign-on.html, directly below Authentication. 119 pages.
-Says SAML 2.0 and OpenID Connect are PLANNED (never dated), invites companies to name the
-standard and provider they need and to volunteer for a pilot, and states what will not change
-(roles stay in Search2o, integration tokens and the chat connect flow are unaffected). The
+Rewritten POLITE at Ram's request - this page states no
+commitments and gives no orders. "We expect to support SAML 2.0 and OpenID Connect", "we would
+be glad to know", "we would also welcome a pilot", "we intend to keep roles in Search2o".
+Headings are "What we expect to support", "We would like to hear from you", "What we expect to
+keep the same". No dates anywhere. The
 authentication page's lead now links to it instead of saying "will be added in a future
 release"; the chat integrations token page links to it too; section lead and docs home card
 updated. content/comingsoon.md lists more unbuilt work (passwordless, email code, fob key) -
