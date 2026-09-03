@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Building a bot with an AI assistant — Search2o docs</title>
+<meta name="description" content="The API is small enough that an assistant can write most of a bot in one pass. What an assistant cannot do is guess the contract, and a wrong guess produces …">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../docs.css">
+</head>
+<body class="docs">
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="../../index.html" aria-label="Search2o home"><img src="../../logo.png" alt="Search2o" width="560" height="102"></a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="navlink" href="../../index.html">Home</a>
+      <a class="navlink" href="../../gettingstarted.html">Getting started</a>
+      <a class="navlink" href="../index.html" aria-current="page">Docs</a>
+      <a class="navlink" href="../../pricing.html">Pricing</a>
+      <a class="navlink" href="../../about.html">About</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch theme">
+      <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg>
+      <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+    <a class="btn btn-primary btn-sm header-cta" href="../../gettingstarted.html">Get started</a>
+  </div>
+</header>
+<div class="container docs-layout">
+  <button class="sb-toggle" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  <div id="sidebar" class="sb-wrap"><nav class=sidebar aria-label='Documentation'><a class='sb-home' href='../index.html'>Documentation</a><details><summary><a href='../introduction/index.html'>Introduction</a></summary><ul><li><a href='../introduction/what-is-search2o.html'>What is Search2o</a></li><li><a href='../introduction/parts-of-the-system.html'>Parts of the system</a></li><li><a href='../introduction/how-it-fits-together.html'>How it fits together</a></li></ul></details><details><summary><a href='../getting-started/index.html'>Getting started</a></summary><ul><li><a href='../getting-started/registering-and-downloading.html'>Registering and downloading</a></li><li><a href='../getting-started/license-key.html'>The license key</a></li><li><a href='../getting-started/running-the-server.html'>Running the server</a></li><li><a href='../getting-started/the-gui.html'>The GUI</a></li><li><a href='../getting-started/your-first-agent.html'>Your first agent</a></li></ul></details><details><summary><a href='../agent-definition/index.html'>Agent definition</a></summary><ul><li><a href='../agent-definition/syntax.html'>Syntax and dynamic strings</a></li><li><a href='../agent-definition/structure.html'>Agent structure</a></li><li><a href='../agent-definition/functions.html'>Functions</a></li><li><a href='../agent-definition/commands.html'>Commands</a></li><li><a href='../agent-definition/variables.html'>Variables and namespaces</a></li></ul></details><details><summary><a href='../agent-execution/index.html'>Agent execution</a></summary><ul><li><a href='../agent-execution/output.html'>Agent output</a></li><li><a href='../agent-execution/order-of-execution.html'>Order of execution</a></li><li><a href='../agent-execution/conversation-state.html'>Conversation state</a></li></ul></details><details><summary><a href='../commands/index.html'>Command reference</a></summary><ul><li class=sb-group>Variables</li><li><a href='../commands/var.html'>var</a></li><li class=sb-group>Flow control</li><li><a href='../commands/if.html'>if</a></li><li><a href='../commands/while.html'>while</a></li><li><a href='../commands/for.html'>for</a></li><li><a href='../commands/break.html'>break</a></li><li><a href='../commands/continue.html'>continue</a></li><li><a href='../commands/func.html'>func</a></li><li><a href='../commands/return.html'>return</a></li><li><a href='../commands/parallel.html'>parallel</a></li><li class=sb-group>Progress information</li><li><a href='../commands/progress.html'>progress</a></li><li><a href='../commands/trace.html'>trace</a></li><li><a href='../commands/log.html'>log</a></li><li class=sb-group>Terminate agent</li><li><a href='../commands/end.html'>end</a></li><li><a href='../commands/fail.html'>fail</a></li><li class=sb-group>Call external systems</li><li><a href='../commands/api.html'>api</a></li><li><a href='../commands/db.html'>db</a></li><li class=sb-group>Engage with LLM</li><li><a href='../commands/prompt.html'>prompt</a></li><li><a href='../commands/llm.html'>llm</a></li><li><a href='../commands/memory.html'>memory</a></li><li class=sb-group>Deep agents</li><li><a href='../commands/search.html'>search</a></li><li><a href='../commands/invoke.html'>invoke</a></li><li class=sb-group>Human in the loop</li><li><a href='../commands/ask.html'>ask</a></li><li class=sb-group>Agent output</li><li><a href='../commands/output.html'>output</a></li></ul></details><details><summary><a href='../search/index.html'>Search</a></summary><ul><li><a href='../search/describing-an-agent.html'>Describing an agent</a></li><li><a href='../search/how-matching-works.html'>How matching behaves</a></li><li><a href='../search/tags.html'>Tags</a></li><li><a href='../search/search-settings.html'>Search settings</a></li></ul></details><details><summary><a href='../development/index.html'>Development process</a></summary><ul><li><a href='../development/drafts.html'>Drafts</a></li><li><a href='../development/code-editor.html'>The code editor</a></li><li><a href='../development/ai-assist.html'>AI assist</a></li><li><a href='../development/validation-and-publishing.html'>Validation and publishing</a></li><li><a href='../development/merging.html'>Multiple developers and merging</a></li></ul></details><details><summary><a href='../runtime/index.html'>Agent runtime</a></summary><ul><li><a href='../runtime/overview.html'>The agent runtime</a></li><li><a href='../runtime/guardrails.html'>Guardrails</a></li><li><a href='../runtime/pools-and-profiles.html'>Connection pools and profiles</a></li></ul></details><details><summary><a href='../profiles/index.html'>Profiles</a></summary><ul><li><a href='../profiles/overview.html'>How profiles work</a></li><li><a href='../profiles/llm-profiles.html'>LLM profiles</a></li><li><a href='../profiles/prompt-profiles.html'>Prompt profiles</a></li><li><a href='../profiles/api-profiles.html'>API profiles</a></li><li><a href='../profiles/db-profiles.html'>Database profiles</a></li><li><a href='../profiles/mcp-servers.html'>MCP servers</a></li></ul></details><details><summary><a href='../reports/index.html'>Reports</a></summary><ul><li><a href='../reports/performance.html'>Agent performance</a></li><li><a href='../reports/errors.html'>Agent errors</a></li><li><a href='../reports/cost.html'>LLM cost</a></li><li><a href='../reports/usage.html'>User usage</a></li></ul></details><details><summary><a href='../system-management/index.html'>System management</a></summary><ul><li><a href='../system-management/users-and-roles.html'>Users and roles</a></li><li><a href='../system-management/agent-servers.html'>Agent servers</a></li><li><a href='../system-management/authentication.html'>Authentication</a></li><li><a href='../system-management/notifications.html'>Notifications</a></li><li><a href='../system-management/usage-limits.html'>Usage limits</a></li></ul></details><details><summary><a href='../security/index.html'>Security and privacy</a></summary><ul><li><a href='../security/license-rotation.html'>License key rotation</a></li><li><a href='../security/secret-vault.html'>The secret vault</a></li><li><a href='../security/encryption.html'>Encryption</a></li><li><a href='../security/controlled-runtime.html'>The controlled runtime</a></li><li><a href='../security/data-privacy.html'>Data privacy</a></li></ul></details><details><summary><a href='../gui/index.html'>GUI pages</a></summary><ul><li><a href='../gui/search.html'>Search and conversations</a></li><li><a href='../gui/agents.html'>Agents</a></li><li><a href='../gui/profiles.html'>Profiles</a></li><li><a href='../gui/guardrails.html'>Guardrails</a></li><li><a href='../gui/operations.html'>Operations</a></li><li><a href='../gui/reports.html'>Reports</a></li><li><a href='../gui/account.html'>Account</a></li><li><a href='../gui/personal.html'>Profile, notifications and docs</a></li></ul></details><details><summary><a href='../rest-api/index.html'>REST API</a></summary><ul><li><a href='../rest-api/overview.html'>The REST API</a></li><li><a href='../rest-api/authentication.html'>Authentication</a></li><li><a href='../rest-api/running-agents.html'>Running agents</a></li><li><a href='../rest-api/streaming.html'>Streaming</a></li><li><a href='../rest-api/search.html'>Search</a></li><li><a href='../rest-api/conversations.html'>Conversations</a></li><li><a href='../rest-api/workflows.html'>Workflows</a></li><li><a href='../rest-api/automating-with-an-llm.html'>Automating tasks with an LLM</a></li><li><a href='../rest-api/clients.html'>Creating your own client</a></li></ul></details><details open><summary><a href='../chat-integrations/index.html'>Chat integrations</a></summary><ul><li><a href='../chat-integrations/overview.html'>How a chat integration works</a></li><li><a href='../chat-integrations/connecting-a-person.html'>Connecting a person</a></li><li><a href='../chat-integrations/integration-tokens.html'>Integration tokens</a></li><li><a href='../chat-integrations/finding-an-agent.html'>Finding an agent</a></li><li><a href='../chat-integrations/running-an-agent.html'>Running an agent</a></li><li><a href='../chat-integrations/showing-the-answer.html'>Showing the answer</a></li><li><a href='../chat-integrations/chat-applications.html'>Slack, Teams and Google Chat</a></li><li><a href='../chat-integrations/ai-prompts.html' aria-current=page>Building a bot with an AI assistant</a></li></ul></details><details><summary><a href='../misc/index.html'>Miscellaneous</a></summary><ul><li><a href='../misc/llm-adapters.html'>Connecting to other LLMs</a></li><li><a href='../misc/code-from-llm.html'>Executing code from an LLM</a></li></ul></details><details><summary><a href='../support-licensing/index.html'>Support and licensing</a></summary><ul><li><a href='../support-licensing/support.html'>Support</a></li><li><a href='../support-licensing/license.html'>License</a></li></ul></details></nav></div>
+  <main class="docs-main">
+    <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../chat-integrations/index.html'>Chat integrations</a></div>
+    <article class="docs-article">
+      <h1>Building a bot with an AI assistant</h1>
+      <p class="lead">The API is small enough that an assistant can write most of a bot in one pass. What an assistant cannot do is guess the contract, and a wrong guess produces code that looks right and fails in testing. Give it the contract first.</p>
+
+<p>Paste the reference prompt, then the prompt for your chat application, then let the assistant work. Both are written to be pasted as they are.</p>
+
+<h2 id="the-reference-prompt">The reference prompt</h2>
+<figure class=code data-lang=text><div class=bar><span>The contract</span></div><pre><code>You are writing a chat bot that connects a chat application to Search2o. Use only the
+API described here. Do not invent endpoints, fields or values.
+
+BASE URL
+  The address of the customer&#x27;s agent server. Call it BASE. Every call is a POST with a
+  JSON body. Every response is JSON.
+
+AUTHENTICATION
+  Calls made on behalf of a person carry that person&#x27;s integration token:
+      Authorization: Bearer &lt;token&gt;
+  Three calls need no token at all: startConnect, getConnectRequest, getConnectToken.
+
+ERRORS
+  A failure is HTTP 4xx with a body of:
+      { &quot;success&quot;: false, &quot;error&quot;: { &quot;message&quot;: &quot;...&quot;, &quot;cause&quot;: &quot;...&quot;, &quot;data&quot;: {} } }
+  Show error.message. There is no error code to branch on.
+
+CONNECTING A PERSON  (run once per person, no password is ever handled by the bot)
+  1. POST BASE/api/auth/startConnect
+       in : { &quot;clientName&quot;: &quot;Slack - Acme workspace&quot; }
+       out: { &quot;success&quot;: true, &quot;connectId&quot;: &quot;...&quot;, &quot;connectSecret&quot;: &quot;...&quot;,
+              &quot;connectUrl&quot;: &quot;...&quot;, &quot;userCode&quot;: &quot;ZUEZFA&quot;,
+              &quot;expiresIn&quot;: 600, &quot;pollIntervalSeconds&quot;: 5 }
+     Keep connectSecret private to the bot. Never show it or put it in a link.
+  2. Show the person a button opening connectUrl, and show userCode next to it.
+     Tell them to check that the code on the page matches this one.
+  3. POST BASE/api/auth/getConnectToken every pollIntervalSeconds
+       in : { &quot;connectId&quot;: &quot;...&quot;, &quot;connectSecret&quot;: &quot;...&quot; }
+       out: { &quot;status&quot;: &quot;pending&quot; | &quot;approved&quot; | &quot;denied&quot; | &quot;expired&quot;,
+              &quot;token&quot;: &quot;...&quot;, &quot;tokenType&quot;: &quot;Bearer&quot;, &quot;expiresIn&quot;: 31536000,
+              &quot;userEmail&quot;: &quot;...&quot;, &quot;userName&quot;: &quot;...&quot; }
+     token is set only when status is approved, and only once. Store it against the
+     person&#x27;s chat-application user id. Stop polling on denied or expired.
+
+FINDING AN AGENT
+  POST BASE/api/exec/search
+    in : { &quot;query&quot;: &quot;the person&#x27;s question&quot; }        at least 8 characters
+    out: { &quot;success&quot;: true,
+           &quot;searchResults&quot;: [ { &quot;agentName&quot;: &quot;...&quot;, &quot;agentTitle&quot;: &quot;...&quot; } ],
+           &quot;searchBehavior&quot;: &quot;executeTopMatch&quot; | &quot;executeOnlyMatch&quot; | &quot;showResults&quot;,
+           &quot;followupBehavior&quot;: &quot;executeTopMatch&quot; | &quot;executeOnlyMatch&quot; | &quot;showResults&quot;
+                               | &quot;executePrevious&quot; }
+  Up to three results. searchBehavior tells you what to do with them for a new question,
+  followupBehavior for a question inside a conversation that already exists.
+      executeTopMatch   run the first result
+      executeOnlyMatch  run it when there is one result, otherwise show the list
+      showResults       show the list and let the person choose
+      executePrevious   keep using the agent already in this conversation
+  An empty searchResults means no agent covers that question. Say so.
+
+RUNNING AN AGENT
+  POST BASE/api/exec/execAgent
+    in : { &quot;agentName&quot;: &quot;...&quot;, &quot;inputs&quot;: { &quot;query&quot;: &quot;the person&#x27;s question&quot; },
+           &quot;stream&quot;: false, &quot;convid&quot;: &quot;...&quot; }
+         Leave convid out to start a conversation. Pass it to continue one.
+    out: { &quot;success&quot;: true, &quot;convid&quot;: &quot;...&quot;, &quot;agentName&quot;: &quot;...&quot;,
+           &quot;resultCode&quot;: &quot;...&quot;, &quot;askInput&quot;: null,
+           &quot;output&quot;: { &quot;agentName&quot;: &quot;...&quot;, &quot;parts&quot;: [ ... ] } }
+
+  resultCode is one of:
+      success                     finished; show output.parts
+      ask                         it needs input; see ASKING below
+      unknownAgentOrConversation  the conversation is gone; start a new one
+      failCommand, errorInAgent, callFailed, timedOut, stopped, unexpected, mustLogin
+                                  failed; tell the person, using error.message when present
+
+  output.parts is a list. Each part is one of:
+      { &quot;contentType&quot;: &quot;text&quot;,  &quot;text&quot;: &quot;markdown&quot; }
+      { &quot;contentType&quot;: &quot;html&quot;,  &quot;text&quot;: &quot;&lt;p&gt;...&lt;/p&gt;&quot; }
+      { &quot;contentType&quot;: &quot;image&quot;, &quot;text&quot;: &quot;&lt;base64&gt;&quot;, &quot;mimeType&quot;: &quot;image/png&quot; }
+
+ASKING THE PERSON FOR INPUT
+  When resultCode is &quot;ask&quot;, askInput is:
+      { &quot;message&quot;: &quot;shown above the fields&quot;,
+        &quot;inputs&quot;: [ { &quot;name&quot;: &quot;...&quot;, &quot;type&quot;: &quot;...&quot;, &quot;label&quot;: &quot;...&quot;,
+                      &quot;description&quot;: &quot;...&quot;, &quot;options&quot;: [], &quot;default&quot;: null,
+                      &quot;hidden&quot;: false } ] }
+  type is one of str, password, text, chooseOne, chooseMany.
+  A hidden input is not shown to the person. Send it back unchanged.
+  Collect the answers and call execAgent again with the same convid and
+  inputs set to { &quot;&lt;name&gt;&quot;: &quot;&lt;answer&gt;&quot;, ... }.
+
+CONVERSATIONS
+  POST BASE/api/exec/getConversation          { &quot;convid&quot;: &quot;...&quot; }
+  POST BASE/api/user/getUnpinnedConversations { &quot;nextCursor&quot;: null, &quot;limit&quot;: 25 }
+  POST BASE/api/user/getPinnedConversations   { }
+  POST BASE/api/user/setConversationTitle     { &quot;convid&quot;: &quot;...&quot;, &quot;title&quot;: &quot;...&quot; }
+  POST BASE/api/user/setPinned                { &quot;convid&quot;: &quot;...&quot;, &quot;pinned&quot;: true }
+  POST BASE/api/user/deleteConversation       { &quot;convid&quot;: &quot;...&quot; }
+
+RULES YOU MUST FOLLOW
+  - Store one integration token per chat-application user. Never share one between people.
+  - Keep your own record of which chat thread belongs to which convid. Search2o holds no
+    link to the chat application.
+  - When execAgent returns unknownAgentOrConversation, forget the stored convid, start a
+    new conversation and carry on. It is not an error to report.
+  - Never log a token, never put one in a URL, never post one into a channel.
+  - An answer is markdown. Convert it to the chat application&#x27;s own format.
+  - html parts cannot be shown in any chat application. Convert them to text, or tell the
+    person the answer is in the Search2o GUI.
+  - image parts are base64. Upload them using the chat application&#x27;s file API.</code></pre></figure>
+
+<h2 id="the-prompt-for-slack">The prompt for Slack</h2>
+<figure class=code data-lang=text><div class=bar><span>Slack</span></div><pre><code>Write a Slack bot in &lt;your language&gt; using the reference above.
+
+  - Use Socket Mode, so the bot needs no public address and can run inside a private
+    network next to the agent server.
+  - Verify Slack&#x27;s request signature on every event.
+  - Respond to app mentions and direct messages.
+  - Reply in a thread. Key the conversation record on team id, channel id and thread_ts.
+  - On first use by a person, run the connect flow. Post the button and the code in a
+    direct message, never in a channel.
+  - Acknowledge within three seconds. Post a short &quot;working on it&quot; message, then edit it
+    with the answer when it arrives.
+  - Render an ask as a modal. Map the input types to Slack blocks: str to plain text,
+    password to plain text, text to a multiline input, chooseOne to a static select,
+    chooseMany to a multi select.
+  - Convert markdown to Slack mrkdwn. Bold is *text*, links are &lt;url|label&gt;.
+  - Upload image parts with files.upload and post them in the thread.</code></pre></figure>
+
+<h2 id="the-prompt-for-microsoft-teams">The prompt for Microsoft Teams</h2>
+<figure class=code data-lang=text><div class=bar><span>Microsoft Teams</span></div><pre><code>Write a Microsoft Teams bot in &lt;your language&gt; using the reference above.
+
+  - Use the Bot Framework. The bot needs a public HTTPS endpoint, or a tunnel into the
+    network where the agent server runs.
+  - Respond to messages in channels and in one to one chats.
+  - Key the conversation record on the Teams conversation id and the reply chain id.
+  - On first use by a person, run the connect flow. Send the button as an Adaptive Card,
+    in a one to one chat rather than a channel.
+  - Acknowledge quickly, then update the activity with the answer when it arrives.
+  - Render an ask as an Adaptive Card with an input for each field, and a submit action
+    that returns the answers.
+  - Teams accepts a useful subset of markdown. Convert what it does not accept.
+  - Attach image parts as card images or file attachments.</code></pre></figure>
+
+<h2 id="the-prompt-for-google-chat">The prompt for Google Chat</h2>
+<figure class=code data-lang=text><div class=bar><span>Google Chat</span></div><pre><code>Write a Google Chat app in &lt;your language&gt; using the reference above.
+
+  - Receive events over Pub/Sub, so the app needs no public address and can run inside a
+    private network next to the agent server.
+  - Respond to messages in spaces and in direct messages.
+  - Key the conversation record on the space name and the thread name.
+  - On first use by a person, run the connect flow. Send the button as a card, in a direct
+    message rather than a space.
+  - Reply in the same thread.
+  - Render an ask as a card with a section per field and a submit button.
+  - Convert markdown to Google Chat formatting. Bold is *text*, links are &lt;url|label&gt;.
+  - Upload image parts as card images.</code></pre></figure>
+
+<h2 id="check-these-before-you-trust-the-result">Check these before you trust the result</h2>
+<p>An assistant produces something plausible. These are the points where a plausible answer is wrong, so check each one against the running bot.</p>
+<ul>
+  <li>The connect flow never returns the token to the browser. Code that reads a token from a redirect or from the page has invented that.</li>
+  <li>The token comes back once. Code that expects to fetch the token again later is wrong.</li>
+  <li><code>unknownAgentOrConversation</code> means start a new conversation. Code that treats it as a failure shows people an error when a conversation simply expired.</li>
+  <li>The question goes in <code>inputs</code> under the name <code>query</code>. The question is not a top-level field.</li>
+  <li><code>convid</code> is left out to start a conversation. The field is not set to null and not set to an empty string.</li>
+  <li>An agent that asks needs the same <code>convid</code> on the next call, or the agent starts again from the beginning.</li>
+</ul>
+
+    </article>
+    <nav class=prevnext><a class=prev href='../chat-integrations/chat-applications.html'><small>Previous</small>Slack, Teams and Google Chat</a><a class=next href='../misc/index.html'><small>Next</small>Miscellaneous</a></nav>
+  </main>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#the-reference-prompt'>The reference prompt</a></li><li class=l2><a href='#the-prompt-for-slack'>The prompt for Slack</a></li><li class=l2><a href='#the-prompt-for-microsoft-teams'>The prompt for Microsoft Teams</a></li><li class=l2><a href='#the-prompt-for-google-chat'>The prompt for Google Chat</a></li><li class=l2><a href='#check-these-before-you-trust-the-result'>Check these before you trust the result</a></li></ul></aside>
+</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-base">
+      <span>&copy; <span id="year">2026</span> Search2o &middot; Northern Virginia, USA</span>
+      <span><a href="../../about.html#contact">Contact</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../../site.js"></script>
+<script src="../docs.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<p class="lead">The bot calls <code>search</code> with the person&rsquo;s question. The call returns up to three agents, and two values that say what to do with them.</p>
+
+<x-code lang="json" title="The response">
+{ "success": true,
+  "searchResults": [ { "agentName": "hr-policy", "agentTitle": "HR policy" } ],
+  "searchBehavior": "executeTopMatch",
+  "followupBehavior": "executePrevious" }
+</x-code>
+
+<h2>What to do with the results</h2>
+<p><code>searchBehavior</code> applies to a new question. <code>followupBehavior</code> applies to a question asked inside a conversation that already exists. Both come from the account&rsquo;s <a href="../search/search-settings.html">search settings</a>.</p>
+<div class="tablewrap"><table class="fields data">
+<thead><tr><th>Value</th><th>What the bot does</th></tr></thead>
+<tbody>
+<tr><td><code>executeTopMatch</code></td><td>Run the first result.</td></tr>
+<tr><td><code>executeOnlyMatch</code></td><td>Run the result when there is exactly one. Otherwise show the list.</td></tr>
+<tr><td><code>showResults</code></td><td>Show the list and let the person choose.</td></tr>
+<tr><td><code>executePrevious</code><br><small>only in <code>followupBehavior</code></small></td><td>Keep using the agent already in the conversation.</td></tr>
+</tbody></table></div>
+
+<h2>When nothing matches</h2>
+<p>An empty result means no agent covers that question. Say so. There is no directory of agents for end users, and none is needed: people ask, and the answer tells them whether an agent exists. See <a href="../search/how-matching-works.html">How matching behaves</a>.</p>
+
+<h2>Short questions</h2>
+<p>A question must be at least eight characters. Treat a shorter one as a greeting rather than showing the error.</p>

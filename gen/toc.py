@@ -121,6 +121,16 @@ TOC = [
         ("automating-with-an-llm", "Automating tasks with an LLM"),
         ("clients", "Creating your own client"),
     ]),
+    ("chat-integrations", "Chat integrations", [
+        ("overview", "How a chat integration works"),
+        ("connecting-a-person", "Connecting a person"),
+        ("integration-tokens", "Integration tokens"),
+        ("finding-an-agent", "Finding an agent"),
+        ("running-an-agent", "Running an agent"),
+        ("showing-the-answer", "Showing the answer"),
+        ("chat-applications", "Slack, Teams and Google Chat"),
+        ("ai-prompts", "Building a bot with an AI assistant"),
+    ]),
     ("misc", "Miscellaneous", [
         ("llm-adapters", "Connecting to other LLMs"),
         ("code-from-llm", "Executing code from an LLM"),

@@ -1,0 +1,172 @@
+<p class="lead">The API is small enough that an assistant can write most of a bot in one pass. What an assistant cannot do is guess the contract, and a wrong guess produces code that looks right and fails in testing. Give it the contract first.</p>
+
+<p>Paste the reference prompt, then the prompt for your chat application, then let the assistant work. Both are written to be pasted as they are.</p>
+
+<h2>The reference prompt</h2>
+<x-code lang="text" title="The contract">
+You are writing a chat bot that connects a chat application to Search2o. Use only the
+API described here. Do not invent endpoints, fields or values.
+
+BASE URL
+  The address of the customer's agent server. Call it BASE. Every call is a POST with a
+  JSON body. Every response is JSON.
+
+AUTHENTICATION
+  Calls made on behalf of a person carry that person's integration token:
+      Authorization: Bearer <token>
+  Three calls need no token at all: startConnect, getConnectRequest, getConnectToken.
+
+ERRORS
+  A failure is HTTP 4xx with a body of:
+      { "success": false, "error": { "message": "...", "cause": "...", "data": {} } }
+  Show error.message. There is no error code to branch on.
+
+CONNECTING A PERSON  (run once per person, no password is ever handled by the bot)
+  1. POST BASE/api/auth/startConnect
+       in : { "clientName": "Slack - Acme workspace" }
+       out: { "success": true, "connectId": "...", "connectSecret": "...",
+              "connectUrl": "...", "userCode": "ZUEZFA",
+              "expiresIn": 600, "pollIntervalSeconds": 5 }
+     Keep connectSecret private to the bot. Never show it or put it in a link.
+  2. Show the person a button opening connectUrl, and show userCode next to it.
+     Tell them to check that the code on the page matches this one.
+  3. POST BASE/api/auth/getConnectToken every pollIntervalSeconds
+       in : { "connectId": "...", "connectSecret": "..." }
+       out: { "status": "pending" | "approved" | "denied" | "expired",
+              "token": "...", "tokenType": "Bearer", "expiresIn": 31536000,
+              "userEmail": "...", "userName": "..." }
+     token is set only when status is approved, and only once. Store it against the
+     person's chat-application user id. Stop polling on denied or expired.
+
+FINDING AN AGENT
+  POST BASE/api/exec/search
+    in : { "query": "the person's question" }        at least 8 characters
+    out: { "success": true,
+           "searchResults": [ { "agentName": "...", "agentTitle": "..." } ],
+           "searchBehavior": "executeTopMatch" | "executeOnlyMatch" | "showResults",
+           "followupBehavior": "executeTopMatch" | "executeOnlyMatch" | "showResults"
+                               | "executePrevious" }
+  Up to three results. searchBehavior tells you what to do with them for a new question,
+  followupBehavior for a question inside a conversation that already exists.
+      executeTopMatch   run the first result
+      executeOnlyMatch  run it when there is one result, otherwise show the list
+      showResults       show the list and let the person choose
+      executePrevious   keep using the agent already in this conversation
+  An empty searchResults means no agent covers that question. Say so.
+
+RUNNING AN AGENT
+  POST BASE/api/exec/execAgent
+    in : { "agentName": "...", "inputs": { "query": "the person's question" },
+           "stream": false, "convid": "..." }
+         Leave convid out to start a conversation. Pass it to continue one.
+    out: { "success": true, "convid": "...", "agentName": "...",
+           "resultCode": "...", "askInput": null,
+           "output": { "agentName": "...", "parts": [ ... ] } }
+
+  resultCode is one of:
+      success                     finished; show output.parts
+      ask                         it needs input; see ASKING below
+      unknownAgentOrConversation  the conversation is gone; start a new one
+      failCommand, errorInAgent, callFailed, timedOut, stopped, unexpected, mustLogin
+                                  failed; tell the person, using error.message when present
+
+  output.parts is a list. Each part is one of:
+      { "contentType": "text",  "text": "markdown" }
+      { "contentType": "html",  "text": "<p>...</p>" }
+      { "contentType": "image", "text": "<base64>", "mimeType": "image/png" }
+
+ASKING THE PERSON FOR INPUT
+  When resultCode is "ask", askInput is:
+      { "message": "shown above the fields",
+        "inputs": [ { "name": "...", "type": "...", "label": "...",
+                      "description": "...", "options": [], "default": null,
+                      "hidden": false } ] }
+  type is one of str, password, text, chooseOne, chooseMany.
+  A hidden input is not shown to the person. Send it back unchanged.
+  Collect the answers and call execAgent again with the same convid and
+  inputs set to { "<name>": "<answer>", ... }.
+
+CONVERSATIONS
+  POST BASE/api/exec/getConversation          { "convid": "..." }
+  POST BASE/api/user/getUnpinnedConversations { "nextCursor": null, "limit": 25 }
+  POST BASE/api/user/getPinnedConversations   { }
+  POST BASE/api/user/setConversationTitle     { "convid": "...", "title": "..." }
+  POST BASE/api/user/setPinned                { "convid": "...", "pinned": true }
+  POST BASE/api/user/deleteConversation       { "convid": "..." }
+
+RULES YOU MUST FOLLOW
+  - Store one integration token per chat-application user. Never share one between people.
+  - Keep your own record of which chat thread belongs to which convid. Search2o holds no
+    link to the chat application.
+  - When execAgent returns unknownAgentOrConversation, forget the stored convid, start a
+    new conversation and carry on. It is not an error to report.
+  - Never log a token, never put one in a URL, never post one into a channel.
+  - An answer is markdown. Convert it to the chat application's own format.
+  - html parts cannot be shown in any chat application. Convert them to text, or tell the
+    person the answer is in the Search2o GUI.
+  - image parts are base64. Upload them using the chat application's file API.
+</x-code>
+
+<h2>The prompt for Slack</h2>
+<x-code lang="text" title="Slack">
+Write a Slack bot in <your language> using the reference above.
+
+  - Use Socket Mode, so the bot needs no public address and can run inside a private
+    network next to the agent server.
+  - Verify Slack's request signature on every event.
+  - Respond to app mentions and direct messages.
+  - Reply in a thread. Key the conversation record on team id, channel id and thread_ts.
+  - On first use by a person, run the connect flow. Post the button and the code in a
+    direct message, never in a channel.
+  - Acknowledge within three seconds. Post a short "working on it" message, then edit it
+    with the answer when it arrives.
+  - Render an ask as a modal. Map the input types to Slack blocks: str to plain text,
+    password to plain text, text to a multiline input, chooseOne to a static select,
+    chooseMany to a multi select.
+  - Convert markdown to Slack mrkdwn. Bold is *text*, links are <url|label>.
+  - Upload image parts with files.upload and post them in the thread.
+</x-code>
+
+<h2>The prompt for Microsoft Teams</h2>
+<x-code lang="text" title="Microsoft Teams">
+Write a Microsoft Teams bot in <your language> using the reference above.
+
+  - Use the Bot Framework. The bot needs a public HTTPS endpoint, or a tunnel into the
+    network where the agent server runs.
+  - Respond to messages in channels and in one to one chats.
+  - Key the conversation record on the Teams conversation id and the reply chain id.
+  - On first use by a person, run the connect flow. Send the button as an Adaptive Card,
+    in a one to one chat rather than a channel.
+  - Acknowledge quickly, then update the activity with the answer when it arrives.
+  - Render an ask as an Adaptive Card with an input for each field, and a submit action
+    that returns the answers.
+  - Teams accepts a useful subset of markdown. Convert what it does not accept.
+  - Attach image parts as card images or file attachments.
+</x-code>
+
+<h2>The prompt for Google Chat</h2>
+<x-code lang="text" title="Google Chat">
+Write a Google Chat app in <your language> using the reference above.
+
+  - Receive events over Pub/Sub, so the app needs no public address and can run inside a
+    private network next to the agent server.
+  - Respond to messages in spaces and in direct messages.
+  - Key the conversation record on the space name and the thread name.
+  - On first use by a person, run the connect flow. Send the button as a card, in a direct
+    message rather than a space.
+  - Reply in the same thread.
+  - Render an ask as a card with a section per field and a submit button.
+  - Convert markdown to Google Chat formatting. Bold is *text*, links are <url|label>.
+  - Upload image parts as card images.
+</x-code>
+
+<h2>Check these before you trust the result</h2>
+<p>An assistant produces something plausible. These are the points where a plausible answer is wrong, so check each one against the running bot.</p>
+<ul>
+  <li>The connect flow never returns the token to the browser. Code that reads a token from a redirect or from the page has invented that.</li>
+  <li>The token comes back once. Code that expects to fetch the token again later is wrong.</li>
+  <li><code>unknownAgentOrConversation</code> means start a new conversation. Code that treats it as a failure shows people an error when a conversation simply expired.</li>
+  <li>The question goes in <code>inputs</code> under the name <code>query</code>. The question is not a top-level field.</li>
+  <li><code>convid</code> is left out to start a conversation. The field is not set to null and not set to an empty string.</li>
+  <li>An agent that asks needs the same <code>convid</code> on the next call, or the agent starts again from the beginning.</li>
+</ul>

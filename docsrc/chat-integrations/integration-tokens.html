@@ -1,0 +1,18 @@
+<p class="lead">An integration token acts as its owner, limited to what any user may do. A person creates the token, holds it, and can revoke it.</p>
+
+<h2>What a token can do</h2>
+<p>A token can search, run agents, and manage that person&rsquo;s own conversations. A token cannot read or change configuration, manage users, or read reports, whatever role the owner has.</p>
+
+<h2>Expiry</h2>
+<p>A token can be created without an expiry, if the account allows it. Otherwise the token expires after a period the account sets.</p>
+
+<h2>Managing tokens</h2>
+<p>A person sees their own tokens in the GUI. Each token shows the name the person gave it, when the token was created, and when the token was last used. The last-used date is what tells a live integration from one that was set up and forgotten.</p>
+<p>A person can revoke any of their own tokens. Revoking one stops that token at once and affects nothing else, including that person&rsquo;s own sign-in. A person may hold a limited number of tokens; ten is the usual limit.</p>
+
+<h2>What else ends a token</h2>
+<p>Two other events end a token. Resetting a password revokes that person&rsquo;s tokens, because account recovery exists to remove credentials that somebody else may hold. Deleting a person ends that person&rsquo;s tokens with the account.</p>
+
+<h2>Single sign-on</h2>
+<p>Search2o will support signing people in through a company&rsquo;s own identity provider, using OIDC or SAML. Very little changes for a chat integration. A token still belongs to a person, is still created by that person, and still works the same way. The <a href="connecting-a-person.html">connect flow</a> is unchanged, except that the approval page sends the person to the identity provider instead of showing a password form.</p>
+<p>Two points are worth planning for. Pasting a token becomes the only route for people who never open the GUI, so prefer the connect flow. Resetting a password no longer applies, because passwords live with the identity provider, so a token then ends when the person revokes it or the person is deleted. Disabling somebody at the identity provider does not end their Search2o tokens; remove the person in Search2o as well.</p>

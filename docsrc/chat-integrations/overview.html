@@ -1,0 +1,21 @@
+<p class="lead">A person types a question in a chat thread. A bot finds the right agent, runs it, and posts the answer back in that thread.</p>
+
+<h2>What the bot does</h2>
+<p>A chat integration needs four things.</p>
+<ul>
+  <li><strong>It authenticates as the person who is chatting.</strong> Every call the bot makes is made as that person, so the conversations, the memories and the usage belong to that person.</li>
+  <li><strong>It finds an agent for each question</strong>, using <a href="finding-an-agent.html">search</a>.</li>
+  <li><strong>It runs the agent and posts the answer.</strong></li>
+  <li><strong>It keeps the chat thread and the Search2o conversation together</strong>, so a follow-up in the same thread continues the same conversation.</li>
+</ul>
+
+<h2>What Search2o provides</h2>
+<p>Search2o provides the API, not the bot. A company writes the bot and runs it. The API includes the part that lets a person connect an account to the chat application without handing a password to the bot; see <a href="connecting-a-person.html">Connecting a person</a>. <a href="ai-prompts.html">Building a bot with an AI assistant</a> has prompts that write most of the code.</p>
+
+<h2>What to decide before starting</h2>
+<ul>
+  <li><strong>Who may connect a chat account.</strong> Every person who uses the bot needs a Search2o account.</li>
+  <li><strong>Whether tokens expire.</strong> A token that never expires is convenient, and has to be revoked by hand.</li>
+  <li><strong>How the bot reaches the agent server.</strong> A bot outside the network needs the agent server to be reachable, or a tunnel.</li>
+  <li><strong>What happens to an agent that produces HTML.</strong> Either change the agent, or have the bot convert the HTML. See <a href="showing-the-answer.html">Showing the answer</a>.</li>
+</ul>

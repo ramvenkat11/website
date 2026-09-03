@@ -1,0 +1,34 @@
+<p class="lead">The bot acts as a person, so the bot needs a token for that person. The person creates the token. A password never reaches the bot.</p>
+
+<p>There are two ways to create the token. Both produce the same kind of token.</p>
+
+<h2>Pasting a token</h2>
+<p>The person signs in to the GUI and creates an integration token. The GUI shows the token once. The person copies the token into the bot, usually with a slash command in a private message.</p>
+<p>This needs nothing from the bot beyond somewhere to store the token, and it suits a small team. It does not suit a large one: a token pasted into a public chat message stays in that workspace&rsquo;s history.</p>
+
+<h2>The connect flow</h2>
+<p>The bot sends the person a button. The button opens a page on the agent server. The person signs in if not signed in already, approves the request, and returns to the chat application. The bot collects the token by itself, and nothing is copied by hand.</p>
+<ol>
+  <li>The bot calls <code>startConnect</code> with a name to display, such as the name of the chat workspace. The call returns an identifier, a secret, a short code and an address.</li>
+  <li>The bot posts a button pointing at that address, and shows the short code beside the button.</li>
+  <li>The person opens the page. The page shows what is asking for access and the same short code.</li>
+  <li>The person compares the two codes and approves. A token is created for that person.</li>
+  <li>The bot calls <code>getConnectToken</code> with the identifier and the secret until the answer says the request was approved. The token comes back once.</li>
+</ol>
+<x-code lang="bash">
+$ curl -s -X POST http://127.0.0.1:9020/api/auth/startConnect \
+    -H "Content-Type: application/json" \
+    -d '{"clientName": "Slack - Acme workspace"}'
+{"success": true, "connectId": "…", "connectSecret": "…",
+ "connectUrl": "…", "userCode": "ZUEZFA",
+ "expiresIn": 600, "pollIntervalSeconds": 5}
+</x-code>
+<p><code>startConnect</code>, <code>getConnectRequest</code> and <code>getConnectToken</code> need no token of their own. Every other call the bot makes carries the person&rsquo;s token; see <a href="../rest-api/authentication.html">Authentication</a>.</p>
+
+<h2>The short code</h2>
+<p>The short code is what protects the person. A link on its own is not enough to get a request approved, because a request started by somebody else displays a code the person has never seen. Tell people to compare the two codes. A bot must never display a code that did not come from <code>startConnect</code>.</p>
+<p>The secret from the first call belongs to the bot. The secret must never be shown to the person and never appear in a link.</p>
+
+<h2>Where the approval page lives</h2>
+<p>The address comes from a setting on the agent server. Leave the setting empty when the agent server serves the GUI, and the address follows wherever the GUI is served. Set a page for a GUI of your own, or a full address for a GUI hosted somewhere else. The agent server does not have to serve the GUI at all, and the GUI is a set of static pages that can be hosted anywhere, so a GUI hosted elsewhere needs an address here.</p>
+<p>The agent server adds the request to whatever address is set, as a query parameter, so a page that reads that parameter works whichever way the GUI is built. What a bot receives is therefore a full address or a path. Use a full address as it is. Join a path to the address of the agent server.</p>
