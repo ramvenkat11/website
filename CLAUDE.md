@@ -126,6 +126,17 @@ Headings get ids from their text (`add_heading_ids`), so `guardrails.html#allowl
   small and quiet); .page-body .section-head is 26px with 64px above (the "Side by side" head).
   The home hero keeps its own size. Not deployed.
 
+## State on 2026-09-03 (privacy corrections)
+Three facts corrected in the docs. (1) The error report NO LONGER shows queries - the "who can
+read it" cell for the user's query is now "Only the user who typed it", and the claims on
+reports/errors.html ("a sample of the queries that produced the error") and reports/index.html
+("Only the error reports show queries") are gone. (2) Conversation state reads "Only the user
+whose conversation it is; the account's agent servers decrypt it to answer that user's next
+request". (3) The cloud provider is named: Search2o Cloud runs on Google Cloud Platform, and
+Google is named as the infrastructure provider - the about page already said GCP.
+support-licensing/support.html still asks a customer to include the query when reporting a
+problem; that is the customer sharing it themselves, so it stands.
+
 ## State on 2026-09-03 (chat docs resynced)
 content/chat_integration.md was updated and the docs were brought back in line.
 SCOPE STATEMENT added at Ram's request, politely: the section index lead and a renamed
