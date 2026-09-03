@@ -44,7 +44,7 @@
       <div>
         <span class="eyebrow"><span class="dot"></span>Free during the open beta</span>
         <h1>Search that <span class="grad">executes.</span></h1>
-        <p class="def">Search2o is a platform for creating and running AI&nbsp;agents &mdash; behind one search interface.</p>
+        <p class="def">Search2o is a platform for creating and running AI&nbsp;agents &mdash; behind a search interface.</p>
         <ul class="hero-points">
           <li>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v4c0 1-1 2-2 2 1 0 2 1 2 2v4a2 2 0 0 0 2 2h1"/><path d="M16 3h1a2 2 0 0 1 2 2v4c0 1 1 2 2 2-1 0-2 1-2 2v4a2 2 0 0 1-2 2h-1"/></svg>
@@ -132,19 +132,19 @@
           <ol class="steps">
             <li>
               <h3>Search interface</h3>
-              <p>User enters a request from a browser or a chat application. Search matches it to the agent built for it. The best match runs, or close matches are shown when there is ambiguity.</p>
+              <p>User enters a request from a browser or a chat application. Search matches it to the agent built for it.</p>
             </li>
             <li>
               <h3>Agent server</h3>
-              <p>The agent runs in a controlled runtime on the agent server &mdash; a stateless, asynchronous Python server in your environment. Run a single instance or a load-balanced cluster.</p>
+              <p>The agent runs in a controlled runtime on the agent server - it can be a single instance or a load-balanced cluster.</p>
             </li>
             <li>
               <h3>Agent framework</h3>
-              <p>The framework executes the agent&rsquo;s commands. The agent reasons with LLMs, calls tools and enterprise systems, asks the user when it needs input, and streams progress and results as it works.</p>
+              <p>The framework executes the agent&rsquo;s commands. The agent calls LLMs and enterprise systems and streams results.</p>
             </li>
             <li>
               <h3>Search2o Cloud</h3>
-              <p>After the run, conversation state/short-term memory, is encrypted on the agent server and stored in Search2o Cloud. End-to-end encryption is optional. Follow-up requests repeat the process with the same context.</p>
+              <p>After the run, conversation state is encrypted and stored in Search2o Cloud. Follow-ups repeat the process.</p>
             </li>
           </ol>
         </div>
@@ -243,8 +243,8 @@
       <div class="split">
         <div>
           <span class="kicker">Search</span>
-          <h2>How does search find the right agent?</h2>
-          <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">Search matches each request to agents using natural-language descriptions written by their developers. It supports major languages and returns matches within 300 ms. Across 15,180 queries in six test sets ranging from 40 to 1,000 agents, the right agent ranked first 86% of the time and in the top three 95%.
+          <h2>How search works</h2>
+          <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">Search uses natural-language descriptions written by developers to determine which agent is designed to produce the requested result. It supports major languages and provides sub-second search.
           </p>
         </div>
 
@@ -333,7 +333,7 @@
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-3.5 8-10V5l-8-3-8 3v7c0 6.5 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
           <h3>Agent security</h3>
-          <p>Agents run in a controlled runtime: only the functions on your allowlist can be called, and compile rules bound what an expression may do. Secrets come from your vault and never appear in an agent. Conversation state is encrypted before it leaves your server.</p>
+          <p>Agents run in a controlled runtime: only the functions on your allowlist can be called, and compile rules bound what an expression may do. Secrets come from your vault and never appear in an agent. Conversations and other sensitive information can be end-to-end encrypted.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></div>

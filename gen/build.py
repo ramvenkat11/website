@@ -222,7 +222,7 @@ def command_fields(alias: str) -> str:
 def commands_groups() -> str:
     out = []
     for g in AgentSchema.getSchema().commandGroups:
-        out.append(f"<h3>{html.escape(g.title)}</h3><ul class=cmdlist>")
+        out.append(f"<h3 class=cmdgroup-title>{html.escape(g.title)}</h3><ul class=cmdlist>")
         for c in g.commands:
             alias = c.value
             _, field = _COMMAND_FIELDS[alias]
