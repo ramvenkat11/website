@@ -90,6 +90,7 @@ TOC = [
         ("users-and-roles", "Users and roles"),
         ("agent-servers", "Agent servers"),
         ("authentication", "Authentication"),
+        ("single-sign-on", "Single sign-on"),
         ("notifications", "Notifications"),
         ("usage-limits", "Usage limits"),
     ]),
