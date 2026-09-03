@@ -160,7 +160,8 @@ table.fields .req { display: block; margin-top: 3px; font-size: 11px; font-weigh
 figure.fig { margin: 22px 0 28px; }
 figure.fig svg { display: block; width: 100%; height: auto; max-width: 720px; font-family: var(--font); }
 figure.fig figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px; }
-.sidebar li.sb-group { margin: 8px 0 2px; padding: 0 10px; font-size: 10.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--faint); }
+.sidebar li.sb-group { margin: 18px 0 4px; padding: 0 10px; font-size: 11.5px; font-weight: 800; letter-spacing: .03em; text-transform: uppercase; color: var(--ink); white-space: nowrap; }
+.sidebar li.sb-group:first-child { margin-top: 6px; }
 
 /* Screenshots are captured in BOTH GUI themes; the page shows the one matching its own theme.
    The explicit toggle (data-theme) wins; without it the system preference decides - the same rule styles.css uses. */
