@@ -34,6 +34,19 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-04 (command groups renamed to the home page names)
+Renamed in ../s2oserver/models/agentschema.py commandGroups (RAM'S REPO - HE COMMITS): Output
+progress information -> Progress and diagnostics, Terminate agent -> Agent termination, Engage
+with LLM -> LLM interaction, Human in the loop -> Human-in-the-loop. No server test asserts
+the titles. Website: gen/toc.py sidebar groups renamed to match (the third tuple element),
+ai-assist.html's bold "Human in the loop" hyphenated, docs rebuilt (120 pages) - schema drives
+the page headings, toc drives the sidebar, and the two must be renamed TOGETHER. No inbound
+links existed to the changed heading anchors (#output-progress-information etc.).
+SIDEBAR GROUPS ARE NO LONGER UPPERCASE (Ram, mid-task): uppercase could not fit "Progress and
+diagnostics" in the 166px column at any size >=10.5px, and Ram then ruled out all-caps
+entirely. .sidebar li.sb-group is now 12.5px w800 mixed case, no text-transform, no
+letter-spacing, nowrap kept; all nine labels measure ok.
+
 ## State on 2026-09-04 (about page wording pass, Ram's 19-row table)
 13 edits applied verbatim from his Suggested column to html/about.html (the Keep/dash rows
 untouched): "retrieves information", "programs that combine", "run safely", "accommodate
