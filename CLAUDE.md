@@ -34,6 +34,17 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-04, later still ("What a server reports" was FICTION)
+The old agent-servers.html section "What a server reports" (servers report allowlist/adapter
+failures back and the Agent servers GUI page shows them) described a feature that DOES NOT
+EXIST - errors are logged locally on the server and never appear in the GUI. Ram caught it
+after the merge carried the section over verbatim. Now: agent-servers.html has "Startup
+errors" (logged locally, do not appear in the GUI) and gui/operations.html lost its
+"page also shows what each server reported" sentence. LESSON: a pre-existing docs section is
+NOT evidence a feature exists - inherited claims need the same verification as new ones.
+Also: running-the-server.html:29 now says the UI/docs paths can be REMOVED (server with no
+GUI, no interactive API docs), matching agent-servers "What a configuration sets".
+
 ## State on 2026-09-04, later (server-process MERGED into agent-servers)
 Ram: one topic, not two. server-process.html is gone from toc.py; its content is the top of
 system-management/agent-servers.html - lead (FastAPI/Uvicorn, one worker, laptop-to-LB), The
