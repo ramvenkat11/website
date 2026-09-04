@@ -34,6 +34,18 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-04, later (server-process MERGED into agent-servers)
+Ram: one topic, not two. server-process.html is gone from toc.py; its content is the top of
+system-management/agent-servers.html - lead (FastAPI/Uvicorn, one worker, laptop-to-LB), The
+command line (refused options x-code block), What a server serves (URL table), then the
+existing Named configurations / What a configuration sets / What a server reports; "Keeping
+servers consistent" was folded into a new "Running many servers" (stateless, containerize, no
+count limit, drift rules). 120 pages. running-the-server.html links Agent servers again.
+LEFTOVER FOR RAM: Ram declined the rm, so docsrc/system-management/server-process.html and
+html/docs/system-management/server-process.html still sit on disk, orphaned - not in toc, no
+inbound links; the built one would serve as a stale URL if a deploy ever syncs it. Delete both
+or say the word.
+
 ## State on 2026-09-04 (server topic, getting-started resync, licence env vars)
 LIVE SITE IS A PLACEHOLDER (2026-09-03): Ram had the whole S3 bucket emptied and replaced with
 one "We'll be back soon." index.html; STANDING RULE: never s3-sync or invalidate again until he
