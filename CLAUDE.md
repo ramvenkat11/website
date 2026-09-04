@@ -34,6 +34,51 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-04 (server topic, getting-started resync, licence env vars)
+LIVE SITE IS A PLACEHOLDER (2026-09-03): Ram had the whole S3 bucket emptied and replaced with
+one "We'll be back soon." index.html; STANDING RULE: never s3-sync or invalidate again until he
+explicitly says he is ready - every change stays local. All work below is local only.
+Docs now 121 pages. From content/server.md: NEW page system-management/server-process.html
+("The server process", placed before Agent servers) - FastAPI/Uvicorn, args pass through, the
+refused options (--reload family/--factory/--workers, as an x-code block: inline code wraps at
+hyphens and broke --reload-delay mid-token), default URLs table, stateless scale-out, no server
+count limit. From Ram's content/gettingstarted.md edits: LICENSE ENV VARS CHANGED -
+SEARCH2O_LICENSE (env:/file: forms) is GONE; now SEARCH2O_LICENSE_KEY or _KEY_FILE, both set =
+error, neither/empty = exit. license-key.html rewritten; running-the-server.html,
+agent-servers.html (config suffix example), license-rotation.html updated. GUI IS AT THE ROOT
+now (http://127.0.0.1:9020, not /ui/index.html) - the-gui.html and running-the-server.html
+updated. Also added: open-beta welcome (registering-and-downloading), vendors-not-limited link
+to llm-adapters, share-key/common-place deployment note, APIs/DBs-reachable-from-server note.
+The agent server package code is NOT in ../s2oserver (that checkout is the cloud side), so
+content/*.md is the only verifiable source for launcher mechanics.
+Also on 2026-09-04: usage-limits.html REPLACED from content/usage_limits.md (service levels
+free/eval/paid per ServiceLevel enum; numbers deliberately unpublished; daily on the UTC day;
+contact us to raise) - the old per-operation table with 10/day-100/month figures is gone, and
+asking-the-docs.html was cleaned of those figures. NEW page
+support-licensing/asking-the-docs.html ("Asking the docs", from api.py docsQuestion +
+docsapi/docsquestion.py: answers written only from doc pages, no conversation, not support);
+linked from gui/personal.html and usage-limits.
+
+## State on 2026-09-03/04 (earlier this session)
+Naming sweep: agent names and tags are UNDERSCORE now (content/naming_rules.md is the final
+rule set; hr_policy, order_lookup, docs_rag, it_helpdesk, orders_db, hr_internal, eu_support
+across docsrc, gen/figures.py and html/index.html; figure ids like report-cost keep hyphens).
+tags.html Shape line says underscores; mcp-servers.html gained the MCP naming rule (letters and
+digits only, <=16, the mcp_{server}_{tool} reason); var.html and profiles/overview.html now
+state "ends with a letter or a digit". "command type" -> "command name" (structure.html:23).
+Ram added _NAME_TYPES to gen/build.py: field tables render agent name/profile name/tag/name.
+Docs command-reference page: group h3s carry class=cmdgroup-title (build.py:225), styled 21px
+w800 in docs.css; SIDEBAR .sb-group relabeled 11.5px w800 var(--ink) ls .03em nowrap (was
+10.5px faint - letter-spacing .09em was what wrapped "Call external systems", not the size).
+Home page code card: "main" carries "// Execution begins here" (index.html:295).
+gettingstarted.html: hero note line "The steps below are the outline..." linking
+docs/getting-started/index.html (.page-hero .note, 70ch - ch scales with font size, 62ch at
+15.5px was 606px vs the lead's 684px and left a one-word widow); step 3 links license-key.html;
+step 7 is "Read the docs, or ask a question" (GUI docs icon + ask-the-docs, then the web URL).
+BROWSER CACHE TRAP: the IDE server (localhost:63342) and headless checks both served stale
+styles.css/docs.css repeatedly - always hard-reload and verify computed styles before
+concluding a CSS change did not take.
+
 ## Layout
 
     html/            the shipped site: index.html, gettingstarted.html, pricing.html, about.html,
