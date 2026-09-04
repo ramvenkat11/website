@@ -342,7 +342,7 @@ ASKING THE PERSON FOR INPUT
   inputs set to { "<name>": "<answer>", ... }.
 
 CONVERSATIONS
-  POST BASE/api/exec/getConversation        { "convid": "..." }
+  POST BASE/api/user/getConversation        { "convid": "..." }
   POST BASE/api/user/getUnpinnedConversations { "nextCursor": null, "limit": 25 }
   POST BASE/api/user/getPinnedConversations   { }
   POST BASE/api/user/setConversationTitle     { "convid": "...", "title": "..." }
