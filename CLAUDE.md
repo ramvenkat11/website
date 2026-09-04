@@ -34,6 +34,20 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-04 (home page wording pass, Ram's 19-row table)
+All applied to html/index.html verbatim from his Better column (16 replacements; three rows
+shared lines): hero "runs it", "A user enters... browser or chat application", "Search matches
+the request", agent-server split into two sentences, "returns matches in under a second",
+group labels Progress and diagnostics / Agent termination / LLM interaction /
+Human-in-the-loop, Gemini models sentence + "Other LLMs require only a small adapter class",
+"required integration endpoints", "The agent editor... contextual help", "Validation runs
+produce a full trace", "Profiles keep LLM, prompt, API, database, and MCP server configuration
+out of agent code", "reports show trends" + "corresponding agent or user", band line "Search2o
+license and one LLM API key", meta+og "runs the agent". OPEN INCONSISTENCY: the docs and the
+GUI editor still use the server schema's group names (Output progress information / Terminate
+agent / Engage with LLM / Human in the loop) - renaming those means editing AgentSchema
+commandGroups in ../s2oserver and rebuilding; Ram has not asked.
+
 ## State on 2026-09-04 (home get-started band slimmed, PENDING RAM'S VERDICT)
 Ram: too many getting-started surfaces; chose the slim-band option over full removal. The four
 .bandsteps cards (a compressed copy of gettingstarted.html, third copy of steps that just
