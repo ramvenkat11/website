@@ -137,6 +137,7 @@ TOC = [
         ("code-from-llm", "Executing code from an LLM"),
     ]),
     ("support-licensing", "Support and licensing", [
+        ("asking-the-docs", "Asking the docs"),
         ("support", "Support"),
         ("license", "License"),
     ]),

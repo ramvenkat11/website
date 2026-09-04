@@ -52,7 +52,7 @@ from pydantic_core import PydanticUndefined  # noqa: E402
 
 from models import agentmodels, systemconfig, schemaobjects, reportmodels  # noqa: E402
 from models.agentschema import AgentSchema  # noqa: E402
-from base.common import safeNamePattern, AgentName  # noqa: E402
+from models.configtypes import AgentName, AgentTag, ProfileName, SafeName, TagFilter  # noqa: E402
 
 
 # ----------------------------------------------------------------------------- type rendering
@@ -79,33 +79,28 @@ _NAMED_TYPES = {
     "LogModel": "log object",
 }
 
-_AGENT_NAME_PATTERN = None
-for _m in get_args(AgentName)[1:]:
-    _AGENT_NAME_PATTERN = getattr(_m, "pattern", None) or _AGENT_NAME_PATTERN
+# Matched on the TYPE, not on its pattern. Every identifier now shares one pattern - agent
+# names, profile names and definition names are the same shape - so comparing patterns would
+# render all of them as "name" and silently lose the distinction the docs are for.
+_NAME_TYPES = [
+    (AgentName, "agent name"),
+    (ProfileName, "profile name"),
+    (TagFilter, "tag"),
+    (AgentTag, "tag"),
+    (SafeName, "name"),
+]
 
 
-def _pattern_of(meta) -> str | None:
-    for m in meta:
-        p = getattr(m, "pattern", None)
-        if p:
-            return p
-        for c in getattr(m, "metadata", []) or []:
-            p = getattr(c, "pattern", None)
-            if p:
-                return p
-    return None
 
 
 def render_type(t: Any) -> tuple[str, bool]:
     """Human name for an annotation, and whether None is allowed."""
+    for named, label in _NAME_TYPES:
+        if t == named:
+            return label, False
     origin = get_origin(t)
     if origin is Annotated:
         base, *meta = get_args(t)
-        pattern = _pattern_of(meta)
-        if pattern == safeNamePattern:
-            return "name", False
-        if pattern == _AGENT_NAME_PATTERN:
-            return "agent name", False
         return render_type(base)
     if origin in (types.UnionType, typing.Union):
         parts, nullable = [], False
@@ -239,7 +234,7 @@ def enum_table(name: str) -> str:
     src = inspect.getsource(e)
     rows = []
     for m in e:
-        mt = re.search(rf"^\s*{m.name}\s*=.*?#\s*(.*)$", src, re.M)
+        mt = re.search(rf"^[^\S\n]*{m.name}[^\S\n]*=.*?#[^\S\n]*(.*)$", src, re.M)
         note = mt.group(1).strip() if mt else ""
         rows.append(f"<tr><td><code>{html.escape(m.value)}</code></td><td>{html.escape(note)}</td></tr>")
     return (

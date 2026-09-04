@@ -20,7 +20,7 @@
 
 <!--figure:agent-structure-->
 <h2>Commands are keys</h2>
-<p>Each command is a key-value pair. The key is the command type and the value carries the command's fields. The value is an object for most commands, and a single value for simple commands such as <code>progress</code> or <code>return</code>. Commands run in the order they are written.</p>
+<p>Each command is a key-value pair. The key is the command name and the value carries the command's fields. The value is an object for most commands, and a single value for simple commands such as <code>progress</code> or <code>return</code>. Commands run in the order they are written.</p>
 <p>Keys in a JSON object must be unique. So a command that appears more than once in one function takes a suffix after a dot: <code>api</code>, <code>api.2</code>, <code>api.forecast</code>. The suffix is only a label. The suffix appears in traces and error messages.</p>
 
 <h2>main</h2>
