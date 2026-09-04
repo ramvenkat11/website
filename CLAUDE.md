@@ -34,6 +34,23 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-04 (gettingstarted.html rewritten SELF-SUFFICIENT + real registration form)
+Ram: the page must let someone get started without the docs; content pulled from docsrc
+(install extras, licence env vars, LLM keys, start command, GUI sign-in, the full first-agent
+walkthrough with the minimal-agent JSON from your-first-agent.html, describe+search, team).
+Eight steps now; hero note says "This page has everything you need to get started."
+THE REAL REGISTRATION FORM is in (from content/register/prod_register.html, restyled to
+.form-card): two steps against https://api.search2o.com (/reg1 email+name+account+password+
+terms+hCaptcha sends a code; /reg2 code -> licence key SHOWN ONCE). hCaptcha script in the
+page head; sitekey ff281746-...; hCaptcha warns on localhost, works on the real domain. New
+CSS: .form-card .hint/.terms/.h-captcha, .reg-out ok/err, .reg-key. The old mailto form and
+its script are gone. FACT CORRECTED BY THE FORM: the licence key is NOT emailed - it is shown
+once at the end of registration; registering-and-downloading.html updated too.
+GUI URL CORRECTED AGAIN (Ram): the GUI is at BASE_URL/ui, NOT the root - his earlier md said
+root and I had changed the docs to root; now /ui everywhere (the-gui.html lead+sign-in,
+running-the-server.html list, agent-servers.html table, gettingstarted.html). The agent JSON
+block was brace-walk verified (string-aware; depth 0) and neither codecard h-scrolls.
+
 ## State on 2026-09-04 (group REORDER, agreed with Ram)
 Final order: Variables / Flow control / LLM interaction / External systems / Deep agents /
 Human-in-the-loop / Agent output / Agent termination / Observability. Rationale: language
