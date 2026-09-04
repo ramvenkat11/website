@@ -1,7 +1,7 @@
-<p class="lead">The GUI is a single-page application bundled with the agent server and served at <code>/ui/index.html</code>. The GUI uses nothing but the agent server's REST API.</p>
+<p class="lead">The GUI is a single-page application bundled with the agent server and served at the server's root address. The GUI uses nothing but the agent server's REST API.</p>
 
 <h2>Signing in</h2>
-<p>Open <code>http://127.0.0.1:9020/ui/index.html</code> and sign in with the email address and password you registered with. The first user of an account is the account's <strong>owner</strong>. Add developers and users from the Account section. See <a href="../system-management/users-and-roles.html">Users and roles</a>.</p>
+<p>Open <code>http://127.0.0.1:9020</code> and sign in with the email address and password you registered with. The first user of an account is the account's <strong>owner</strong>. Add developers and users from the Account section. See <a href="../system-management/users-and-roles.html">Users and roles</a>.</p>
 
 <h2>Hosting the GUI elsewhere</h2>
 <p>The GUI's files live in the server's <code>ui</code> directory and can be served from anywhere, a CDN included. <code>index.html</code> carries a small block of configuration in a <code>&lt;meta name="search2o-ui-config"&gt;</code> tag:</p>

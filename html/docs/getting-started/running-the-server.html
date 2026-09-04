@@ -41,31 +41,33 @@
       <p class="lead">The agent server is a FastAPI application served by Uvicorn. The <code>search2o</code> command starts the server and passes any further options to Uvicorn.</p>
 
 <h2 id="start">Start</h2>
-<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>export SEARCH2O_LICENSE=your-license-key
+<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>export SEARCH2O_LICENSE_KEY=your-license-key
 <span class=ps1>$ </span>search2o                                     <span class=cm># 127.0.0.1:9020</span>
 <span class=ps1>$ </span>search2o --host 0.0.0.0 --port 8080
 
-<span class=ps1>$ </span>SEARCH2O_LICENSE=your-license-key search2o   <span class=cm># the same, in one line</span></code></pre></figure>
-<p>The <code>--reload</code>, <code>--factory</code> and <code>--workers</code> options are not supported. Run several servers behind a load balancer instead of several workers in one process.</p>
+<span class=ps1>$ </span>SEARCH2O_LICENSE_KEY=... ANTHROPIC_API_KEY=... search2o   <span class=cm># key, one LLM key, start</span></code></pre></figure>
+<p>Other command line options are passed through to Uvicorn. The <code>--reload</code> family, <code>--factory</code> and <code>--workers</code> are refused: the server always runs one worker, and capacity comes from more servers rather than more workers. See <a href="../system-management/agent-servers.html">Agent servers</a>.</p>
 
 <h2 id="llm-keys">LLM keys</h2>
 <p>A new account comes with LLM profiles for OpenAI, Anthropic and Gemini. Each profile reads its API key from an environment variable on the server. Set the variable for the provider you use before starting the server:</p>
 <figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>export OPENAI_API_KEY=sk-...
 <span class=ps1>$ </span>export ANTHROPIC_API_KEY=sk-ant-...
 <span class=ps1>$ </span>export GEMINI_API_KEY=...</code></pre></figure>
-<p>One key is enough to start. Where secrets come from is configurable; see <a href="../security/secret-vault.html">Secrets</a>.</p>
+<p>One key is enough to start. Search2o is not limited to these three vendors; see <a href="../misc/llm-adapters.html">Connecting to other LLMs</a>. Where secrets come from is configurable; see <a href="../security/secret-vault.html">Secrets</a>.</p>
 
 <h2 id="what-starts-up">What starts up</h2>
 <p>At startup the server validates the license and downloads the account's configuration from Search2o Cloud. The server then checks every entry of the expression allowlist against its own Python environment and builds its connection pools. After that the server serves:</p>
 <ul>
-  <li>the GUI at <code>/ui/index.html</code>,</li>
+  <li>the GUI at the server's root address,</li>
   <li>the OpenAPI schema at <code>/openapi.json</code>, Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>,</li>
   <li>the REST API under <code>/api/</code>.</li>
 </ul>
-<p>The three documentation paths, the UI path and the allowed CORS origins can be changed in the <a href="../system-management/agent-servers.html">Agent servers</a> configuration.</p>
+<p>The three documentation paths, the UI path and the allowed CORS origins are set in the <a href="../system-management/agent-servers.html">Agent servers</a> configuration. Each path can also be removed: a server can run with no GUI and no interactive API documentation.</p>
 
 <h2 id="running-in-production">Running in production</h2>
 <p>The server holds no state. Moving from a laptop to a shared server, or from one server to a cluster, changes nothing in the agents or in the configuration. Start as many servers as you need with the same license key and put them behind any load balancer. Each server brings itself up to date with the account's configuration on every agent run.</p>
+<p>To let colleagues try Search2o, start one server in a common place in your organization &mdash; or share the license key, and each person can run a server on their own laptop.</p>
+<p>One thing to check when choosing where a server runs: the APIs and databases your agents call must be reachable from that place.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../getting-started/license-key.html'><small>Previous</small>The license key</a><a class=next href='../getting-started/the-gui.html'><small>Next</small>The GUI</a></nav>

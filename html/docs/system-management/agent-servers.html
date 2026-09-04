@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Agent servers — Search2o docs</title>
-<meta name="description" content="An agent server is the Python process that runs agents inside your organization. Run one on a laptop, one as a standalone server, or several behind a load ba…">
+<meta name="description" content="An agent server is the Python process that runs agents inside your organization. The process is a FastAPI application served by Uvicorn, fully asynchronous, …">
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,20 +38,39 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../system-management/index.html'>System management</a></div>
     <article class="docs-article">
       <h1>Agent servers</h1>
-      <p class="lead">An agent server is the Python process that runs agents inside your organization. Run one on a laptop, one as a standalone server, or several behind a load balancer; every server holds the same runtime and any server can serve any request. Below: how servers are configured, and what they report.</p>
+      <p class="lead">An agent server is the Python process that runs agents inside your organization. The process is a FastAPI application served by Uvicorn, fully asynchronous, with exactly one worker. Run one server on a laptop or several behind a load balancer; any server can serve any request. Below: the command line, the addresses a server serves, how servers are configured, and what they report.</p>
+
+<h2 id="the-command-line">The command line</h2>
+<p>Options on the <code>search2o</code> command line are passed through to Uvicorn, so the Uvicorn options for the address, the port and TLS all work as documented by Uvicorn. A few options are refused because the agent server runs as exactly one worker per process:</p>
+<figure class=code data-lang=text><pre><code>--reload  --reload-dir  --reload-include  --reload-exclude  --reload-delay
+--factory
+--workers</code></pre></figure>
+<p>To use more than one worker's worth of capacity, run more servers rather than more workers.</p>
+
+<h2 id="what-a-server-serves">What a server serves</h2>
+<p>By default a server listens on <code>127.0.0.1:9020</code> and serves:</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Address</th><th>What is there</th></tr></thead>
+<tbody>
+<tr><td><code>http://127.0.0.1:9020</code></td><td>The GUI</td></tr>
+<tr><td><code>http://127.0.0.1:9020/openapi.json</code></td><td>The OpenAPI schema</td></tr>
+<tr><td><code>http://127.0.0.1:9020/docs</code></td><td>Swagger UI</td></tr>
+<tr><td><code>http://127.0.0.1:9020/redoc</code></td><td>ReDoc</td></tr>
+</tbody></table></div>
+<p>All of these paths are settings in the server's configuration, described next.</p>
 
 <h2 id="named-server-configurations">Named server configurations</h2>
-<p>The Agent servers page holds one or more named configurations. The configuration named <code>default</code> is required, and a server uses it unless told otherwise. To run a server under another configuration, append the name to the license value: <code>SEARCH2O_LICENSE=your-license-key/edge</code> starts the server with the configuration named <code>edge</code>. Use separate configurations when servers differ in what they serve, for example a server that serves the GUI and a server that answers only REST calls.</p>
+<p>The Agent servers page holds one or more named configurations. The configuration named <code>default</code> is required, and a server uses it unless told otherwise. To run a server under another configuration, append the name to the license key value: <code>SEARCH2O_LICENSE_KEY=your-license-key/edge</code> starts the server with the configuration named <code>edge</code>. Use separate configurations when servers differ in what they serve, for example a server that serves the GUI and a server that answers only REST calls.</p>
 
 <h2 id="what-a-configuration-sets">What a configuration sets</h2>
 <div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>uiPath</code></td><td class=ty>string</td><td class=dflt>&quot;/ui&quot;</td><td>The path the bundled UI is served at. Leave it empty to not serve the UI at all.</td></tr><tr><td><code>connectPageUrl</code></td><td class=ty>string</td><td class=dflt></td><td>The page where a user approves an integration&#x27;s request for access. Leave it empty and it follows the UI path above, which is what keeps the two in step. Set a page under that path for a UI of your own, such as connect, or a full address for a UI hosted elsewhere, such as https://ui.example.com/connect. Whatever is set must point at where the UI is really served. The request is added to it as a query parameter named c.</td></tr><tr><td><code>allowCrossOrigin</code></td><td class=ty>list of string</td><td class=dflt>[&#x27;*&#x27;]</td><td>Other origins allowed to call this API, such as https://ui.example.com.</td></tr><tr><td><code>docsUrl</code></td><td class=ty>string</td><td class=dflt>&quot;/docs&quot;</td><td>Where the API documentation is served.</td></tr><tr><td><code>redocUrl</code></td><td class=ty>string</td><td class=dflt>&quot;/redoc&quot;</td><td>Where the ReDoc documentation is served.</td></tr><tr><td><code>openapiUrl</code></td><td class=ty>string</td><td class=dflt>&quot;/openapi.json&quot;</td><td>Where the OpenAPI schema is served.</td></tr><tr><td><code>logs</code></td><td class=ty>object of string → JSON value</td><td class=dflt></td><td>Logging configuration for the agent server.</td></tr><tr><td><code>cloudPoolName</code></td><td class=ty>string</td><td class=dflt>&quot;default&quot;</td><td>The connection pool used for calls to the Search2o cloud.</td></tr></tbody></table></div>
 <p>These settings are read once, at startup, so a change takes effect when the server restarts. The <code>logs</code> object is a standard Python logging configuration dictionary. The UI path may point anywhere the server can read; leave the UI path empty to serve no GUI. The documentation paths can be moved or set to nothing to switch the interactive API documentation off.</p>
 
-<h2 id="what-a-server-reports">What a server reports</h2>
-<p>When a server loads its configuration, the server reports back what the server found: allowlist entries the server could not import, LLM adapters that failed to instantiate, and the account name. The Agent servers page shows the report of every server that has started. Restart a server to clear a stale report.</p>
+<h2 id="startup-errors">Startup errors</h2>
+<p>Problems found at startup &mdash; an allowlist entry the server cannot import, or an LLM adapter that fails to instantiate &mdash; are written to the server's log. Errors are logged locally on the server and do not appear in the GUI.</p>
 
-<h2 id="keeping-servers-consistent">Keeping servers consistent</h2>
-<p>Every server picks up a configuration or profile change before its next agent run, so servers never drift from each other; see <a href="../runtime/overview.html">The agent runtime</a>. The exceptions are the settings on this page, which need a restart, and the license key, which every server must be restarted with after a <a href="../security/license-rotation.html">rotation</a>.</p>
+<h2 id="running-many-servers">Running many servers</h2>
+<p>The server is stateless, so you are free to containerize it and run it load balanced; nothing more is needed, and there is no explicit limit today on the number of servers you run. Every server picks up a configuration or profile change before its next agent run, so servers never drift from each other; see <a href="../runtime/overview.html">The agent runtime</a>. The exceptions are the settings on this page, which need a restart, and the license key, which every server must be restarted with after a <a href="../security/license-rotation.html">rotation</a>.</p>
 
 <h2 id="health">Health</h2>
 <p><code>POST /api/auth/getAccountName</code> is answered by the server itself, without sign-in, and is the call for a load balancer or a monitor to use. See <a href="../rest-api/overview.html">The REST API</a>.</p>
@@ -59,7 +78,7 @@
     </article>
     <nav class=prevnext><a class=prev href='../system-management/users-and-roles.html'><small>Previous</small>Users and roles</a><a class=next href='../system-management/authentication.html'><small>Next</small>Authentication</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#named-server-configurations'>Named server configurations</a></li><li class=l2><a href='#what-a-configuration-sets'>What a configuration sets</a></li><li class=l2><a href='#what-a-server-reports'>What a server reports</a></li><li class=l2><a href='#keeping-servers-consistent'>Keeping servers consistent</a></li><li class=l2><a href='#health'>Health</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#the-command-line'>The command line</a></li><li class=l2><a href='#what-a-server-serves'>What a server serves</a></li><li class=l2><a href='#named-server-configurations'>Named server configurations</a></li><li class=l2><a href='#what-a-configuration-sets'>What a configuration sets</a></li><li class=l2><a href='#startup-errors'>Startup errors</a></li><li class=l2><a href='#running-many-servers'>Running many servers</a></li><li class=l2><a href='#health'>Health</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

@@ -1,17 +1,14 @@
-<p class="lead">The agent server needs the account's license key to start. The key is supplied through the <code>SEARCH2O_LICENSE</code> environment variable, in one of three forms.</p>
+<p class="lead">The agent server needs the account's license key to start. The key is supplied through one of two environment variables.</p>
 
-<h2>The three forms</h2>
+<h2>The two variables</h2>
 <x-code lang="bash">
 # 1. The key itself
-$ export SEARCH2O_LICENSE=your-license-key
+$ export SEARCH2O_LICENSE_KEY=your-license-key
 
-# 2. Read the key from another environment variable
-$ export SEARCH2O_LICENSE=env:SEARCH2O_LICENSE_KEY
-
-# 3. Read the key from a file
-$ export SEARCH2O_LICENSE=file:/etc/search2o/license.key
+# 2. The path to a file that holds the key
+$ export SEARCH2O_LICENSE_KEY_FILE=/etc/search2o/license.key
 </x-code>
-<p>If <code>SEARCH2O_LICENSE</code> is not set, or resolves to an empty value, the server prints a help message and exits.</p>
+<p>The server takes exactly one of the two: setting both is an error. If neither is set, or the key resolves to an empty value, the server exits at startup.</p>
 
 <h2>Rotating the key</h2>
 <p>An account owner can rotate the license key at any time from the GUI. Running agent servers keep working on the old key for a grace period. Restart them with the new key before the grace period ends. See <a href="../security/license-rotation.html">License rotation</a>.</p>

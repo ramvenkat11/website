@@ -62,7 +62,7 @@ Login with the same credentials you registered with above in the registration fo
 
 Other URLs:
 Openapi: http://127.0.0.1:9020/openapi.json
-Docs: http://127.0.0.1:9020/docs
+Swagger UI: http://127.0.0.1:9020/docs
 Redoc: http://127.0.0.1:9020/redoc
 
 You can customize all these from the GUI. See the docs. 

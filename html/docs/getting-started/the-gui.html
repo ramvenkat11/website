@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>The GUI — Search2o docs</title>
-<meta name="description" content="The GUI is a single-page application bundled with the agent server and served at /ui/index.html. The GUI uses nothing but the agent server&#x27;s REST API.">
+<meta name="description" content="The GUI is a single-page application bundled with the agent server and served at the server&#x27;s root address. The GUI uses nothing but the agent server&#x27;s REST …">
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,10 +38,10 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../getting-started/index.html'>Getting started</a></div>
     <article class="docs-article">
       <h1>The GUI</h1>
-      <p class="lead">The GUI is a single-page application bundled with the agent server and served at <code>/ui/index.html</code>. The GUI uses nothing but the agent server's REST API.</p>
+      <p class="lead">The GUI is a single-page application bundled with the agent server and served at the server's root address. The GUI uses nothing but the agent server's REST API.</p>
 
 <h2 id="signing-in">Signing in</h2>
-<p>Open <code>http://127.0.0.1:9020/ui/index.html</code> and sign in with the email address and password you registered with. The first user of an account is the account's <strong>owner</strong>. Add developers and users from the Account section. See <a href="../system-management/users-and-roles.html">Users and roles</a>.</p>
+<p>Open <code>http://127.0.0.1:9020</code> and sign in with the email address and password you registered with. The first user of an account is the account's <strong>owner</strong>. Add developers and users from the Account section. See <a href="../system-management/users-and-roles.html">Users and roles</a>.</p>
 
 <h2 id="hosting-the-gui-elsewhere">Hosting the GUI elsewhere</h2>
 <p>The GUI's files live in the server's <code>ui</code> directory and can be served from anywhere, a CDN included. <code>index.html</code> carries a small block of configuration in a <code>&lt;meta name="search2o-ui-config"&gt;</code> tag:</p>

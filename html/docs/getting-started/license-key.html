@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>The license key — Search2o docs</title>
-<meta name="description" content="The agent server needs the account&#x27;s license key to start. The key is supplied through the SEARCH2O_LICENSE environment variable, in one of three forms.">
+<meta name="description" content="The agent server needs the account&#x27;s license key to start. The key is supplied through one of two environment variables.">
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,18 +38,15 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../getting-started/index.html'>Getting started</a></div>
     <article class="docs-article">
       <h1>The license key</h1>
-      <p class="lead">The agent server needs the account's license key to start. The key is supplied through the <code>SEARCH2O_LICENSE</code> environment variable, in one of three forms.</p>
+      <p class="lead">The agent server needs the account's license key to start. The key is supplied through one of two environment variables.</p>
 
-<h2 id="the-three-forms">The three forms</h2>
+<h2 id="the-two-variables">The two variables</h2>
 <figure class=code data-lang=bash><pre><code><span class=cm># 1. The key itself</span>
-<span class=ps1>$ </span>export SEARCH2O_LICENSE=your-license-key
+<span class=ps1>$ </span>export SEARCH2O_LICENSE_KEY=your-license-key
 
-<span class=cm># 2. Read the key from another environment variable</span>
-<span class=ps1>$ </span>export SEARCH2O_LICENSE=env:SEARCH2O_LICENSE_KEY
-
-<span class=cm># 3. Read the key from a file</span>
-<span class=ps1>$ </span>export SEARCH2O_LICENSE=file:/etc/search2o/license.key</code></pre></figure>
-<p>If <code>SEARCH2O_LICENSE</code> is not set, or resolves to an empty value, the server prints a help message and exits.</p>
+<span class=cm># 2. The path to a file that holds the key</span>
+<span class=ps1>$ </span>export SEARCH2O_LICENSE_KEY_FILE=/etc/search2o/license.key</code></pre></figure>
+<p>The server takes exactly one of the two: setting both is an error. If neither is set, or the key resolves to an empty value, the server exits at startup.</p>
 
 <h2 id="rotating-the-key">Rotating the key</h2>
 <p>An account owner can rotate the license key at any time from the GUI. Running agent servers keep working on the old key for a grace period. Restart them with the new key before the grace period ends. See <a href="../security/license-rotation.html">License rotation</a>.</p>
@@ -57,7 +54,7 @@
     </article>
     <nav class=prevnext><a class=prev href='../getting-started/registering-and-downloading.html'><small>Previous</small>Registering and downloading</a><a class=next href='../getting-started/running-the-server.html'><small>Next</small>Running the server</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#the-three-forms'>The three forms</a></li><li class=l2><a href='#rotating-the-key'>Rotating the key</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#the-two-variables'>The two variables</a></li><li class=l2><a href='#rotating-the-key'>Rotating the key</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

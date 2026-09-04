@@ -21,7 +21,7 @@ By default, it exposes:
 UI: http://127.0.0.1:9020
 
 Openapi: http://127.0.0.1:9020/openapi.json
-Docs: http://127.0.0.1:9020/docs
+Swagger UI: http://127.0.0.1:9020/docs
 Redoc: http://127.0.0.1:9020/redoc
 
 All the above links can be configured from the GUI under operations/agent server. You can also create multiple configurations there and start multiple agent servers with different configurations. The configuration name has to be added to the end of the license as /<config_name>. Without this suffix, the agent server uses the "default" configuration. 
