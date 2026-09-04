@@ -28,7 +28,7 @@ $ curl -s -X POST http://127.0.0.1:9020/api/exec/execAgent \
 
 <h2>Result codes</h2>
 <!--enum:AgentExecResult-->
-<p><code>success</code> and <code>ask</code> are the two normal endings. Every other code is recorded in the <a href="../reports/errors.html">error report</a>. <code>unknownAgentOrConversation</code> is also what a client receives when the conversation has expired, or when the conversation is waiting for the answers of a different agent.</p>
+<p><code>success</code> and <code>ask</code> are the two normal endings. Every other code is recorded in the <a href="../reports/errors.html">error report</a>. <code>unknownConversation</code> is what a client receives when the conversation is unknown or has expired, or when it is paused on an <code>ask</code> recorded by a different agent.</p>
 
 <h2>Answering an ask</h2>
 <p>When <code>resultCode</code> is <code>ask</code>, the agent has paused. <code>askInput.inputs</code> lists the inputs. Each input has a <code>name</code>, a <code>type</code>, a label, a description, the options and a default; the types are <code>str</code>, <code>password</code>, <code>text</code>, <code>chooseOne</code> and <code>chooseMany</code>. Collect the answers. Then call <code>execAgent</code> again with the same <code>agentName</code> and <code>convid</code>, and the answers as <code>inputs</code>, keyed by input name. The agent resumes at the <code>ask</code> command. The pause survives any delay: the answers may arrive the next day, from another client.</p>

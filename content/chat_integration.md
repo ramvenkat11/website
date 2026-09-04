@@ -321,7 +321,7 @@ RUNNING AN AGENT
   resultCode is one of:
       success                     finished; show output.parts
       ask                         it needs input; see ASKING below
-      unknownAgentOrConversation  the conversation is gone; start a new one
+      unknownConversation  the conversation is gone; start a new one
       failCommand, errorInAgent, callFailed, timedOut, stopped, unexpected, mustLogin
                                   failed; tell the person, using error.message when present
 
@@ -353,7 +353,7 @@ RULES YOU MUST FOLLOW
   - Store one integration token per chat-application user. Never share one between people.
   - Keep your own record of which chat thread belongs to which convid. Search2o holds no
     link to the chat application.
-  - When execAgent returns unknownAgentOrConversation, forget the stored convid, start a
+  - When execAgent returns unknownConversation, forget the stored convid, start a
     new conversation and carry on. It is not an error to report.
   - Never log a token, never put one in a URL, never post one into a channel.
   - An answer is markdown. Convert it to the chat application's own format.
@@ -365,7 +365,7 @@ RULES YOU MUST FOLLOW
     button carries little and a question can be long. Replace the message once somebody
     chooses, so a second click cannot start a second conversation. Accept the click only
     from the person who asked.
-  - When a run returns unknownAgentOrConversation, reuse the message you already posted for
+  - When a run returns unknownConversation, reuse the message you already posted for
     the retry. Do not post a second one.
 ```
 
@@ -445,7 +445,7 @@ from a redirect or from the page, it has invented that.
 
 The token is returned once. If the code expects to fetch it again later, it is wrong.
 
-`unknownAgentOrConversation` means start a new conversation. If the code treats it as a
+`unknownConversation` means start a new conversation. If the code treats it as a
 failure and shows an error, people will see errors when a conversation simply expired.
 
 The question goes in `inputs` under the name `query`. It is not a top level field.

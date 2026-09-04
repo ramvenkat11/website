@@ -66,7 +66,7 @@ RUNNING AN AGENT
   resultCode is one of:
       success                     finished; show output.parts
       ask                         it needs input; see ASKING below
-      unknownAgentOrConversation  the conversation is gone; start a new one
+      unknownConversation  the conversation is gone; start a new one
       failCommand, errorInAgent, callFailed, timedOut, stopped, unexpected, mustLogin
                                   failed; tell the person, using error.message when present
 
@@ -98,7 +98,7 @@ RULES YOU MUST FOLLOW
   - Store one integration token per chat-application user. Never share one between people.
   - Keep your own record of which chat thread belongs to which convid. Search2o holds no
     link to the chat application.
-  - When execAgent returns unknownAgentOrConversation, forget the stored convid, start a
+  - When execAgent returns unknownConversation, forget the stored convid, start a
     new conversation and carry on. It is not an error to report.
   - Never log a token, never put one in a URL, never post one into a channel.
   - An answer is markdown. Convert it to the chat application's own format.
@@ -110,7 +110,7 @@ RULES YOU MUST FOLLOW
     button carries little and a question can be long. Replace the message once somebody
     chooses, so a second click cannot start a second conversation. Accept the click only
     from the person who asked.
-  - When a run returns unknownAgentOrConversation, reuse the message you already posted for
+  - When a run returns unknownConversation, reuse the message you already posted for
     the retry. Do not post a second one.
 </x-code>
 
@@ -182,7 +182,7 @@ Write a Google Chat app in <your language> using the reference above.
 <ul>
   <li>The connect flow never returns the token to the browser. Code that reads a token from a redirect or from the page has invented that.</li>
   <li>The token comes back once. Code that expects to fetch the token again later is wrong.</li>
-  <li><code>unknownAgentOrConversation</code> means start a new conversation. Code that treats it as a failure shows people an error when a conversation simply expired.</li>
+  <li><code>unknownConversation</code> means start a new conversation. Code that treats it as a failure shows people an error when a conversation simply expired.</li>
   <li>The question goes in <code>inputs</code> under the name <code>query</code>. The question is not a top-level field.</li>
   <li><code>convid</code> is left out to start a conversation. The field is not set to null and not set to an empty string.</li>
   <li>An agent that asks needs the same <code>convid</code> on the next call, or the agent starts again from the beginning.</li>
