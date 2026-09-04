@@ -10,10 +10,9 @@
 pip install search2o
 
 
-The agent server is published on PyPI under a proprietary license.
-
-
 ## Running the server
+
+If you are an AI hobbyist or just checking out the product for yourself, just run it from your laptop.
 
 
 

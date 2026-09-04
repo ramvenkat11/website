@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Usage limits — Search2o docs</title>
-<meta name="description" content="Three operations have usage limits: publishing an agent description, AI assist, and documentation questions. Everything else is unlimited. Running agents is …">
+<meta name="description" content="Search2o is in free, open beta, and usage limits help us protect the resources behind the service. Limits are counted daily, on the UTC day.">
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,28 +38,31 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../system-management/index.html'>System management</a></div>
     <article class="docs-article">
       <h1>Usage limits</h1>
-      <p class="lead">Three operations have usage limits: publishing an agent description, AI assist, and <a href="../support-licensing/asking-the-docs.html">documentation questions</a>. Everything else is unlimited. Running agents is never counted.</p>
+      <p class="lead">Search2o is in free, open beta, and usage limits help us protect the resources behind the service. Limits are counted daily, on the UTC day.</p>
 
-<h2 id="the-limits">The limits</h2>
-<div class="tablewrap"><table class="fields data">
-<thead><tr><th>Operation</th><th>Per developer, a day</th><th>Per developer, a month</th><th>Whole account, a day</th></tr></thead>
+<h2 id="what-sets-your-limits">What sets your limits</h2>
+<p>An account's limits follow its service level.</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Level</th><th>What it suits</th></tr></thead>
 <tbody>
-<tr><td>Agent descriptions<br><small>publishing a description for indexing</small></td><td>3</td><td>&mdash;</td><td>2 for every developer in the account, at least 10</td></tr>
-<tr><td>AI assist requests</td><td>10</td><td>100</td><td>&mdash;</td></tr>
-<tr><td>Documentation questions</td><td>10</td><td>100</td><td>&mdash;</td></tr>
+<tr><td>Free</td><td>Getting to know Search2o on your own. These are the smallest limits, and evaluating with many users may feel tight.</td></tr>
+<tr><td>Eval</td><td>Evaluating Search2o across an organization, with many users. The limits are considerably higher than the free limits.</td></tr>
+<tr><td>Paid</td><td>Normal operation without interruption. The limits follow the number of users on the account.</td></tr>
 </tbody></table></div>
-<p>"Developer" includes administrators and the owner. Every limit counts developers only: end users are never counted. Where a daily and a monthly limit exist, both are enforced. The minimum of 10 on the account ceiling keeps a one-developer account from being held to 2 a day; adding a developer raises the ceiling immediately.</p>
 
-<h2 id="reaching-a-limit">Reaching a limit</h2>
-<p>A call over a limit is refused before any work is done, with a message naming the limit. A refused call consumes no allowance, and a description rejected by <a href="../search/describing-an-agent.html">description validation</a> costs nothing. The windows are calendar-aligned in UTC: the day resets at 00:00 UTC, and the month resets on the 1st.</p>
+<h2 id="why-the-numbers-are-not-published">Why the numbers are not published</h2>
+<p>We do not publish the limits themselves. We expect to adjust them as the beta goes on, and a number published here would soon be the wrong one.</p>
 
-<h2 id="what-is-not-limited">What is not limited</h2>
-<p>Search, running agents, conversations, the reports, user management and every read are unlimited. The limits on this page are the only usage limits in the system. <a href="../runtime/guardrails.html#runtime-limits">Runtime limits</a> are a different mechanism: runtime limits bound what one agent run may do, not how often anyone may call.</p>
+<h2 id="if-you-reach-a-limit">If you reach a limit</h2>
+<p>Reaching a limit shows an error message in the GUI.</p>
+
+<h2 id="asking-for-higher-limits">Asking for higher limits</h2>
+<p>If the limits are getting in your way, we would be glad to hear from you, and we can raise them. Please tell us about your company and your position in it, since that is what we need in order to consider the request. If the request is urgent, please say so. <a href="../support-licensing/support.html">Support</a> describes the ways to reach us.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../system-management/notifications.html'><small>Previous</small>Notifications</a><a class=next href='../security/index.html'><small>Next</small>Security and privacy</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#the-limits'>The limits</a></li><li class=l2><a href='#reaching-a-limit'>Reaching a limit</a></li><li class=l2><a href='#what-is-not-limited'>What is not limited</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#what-sets-your-limits'>What sets your limits</a></li><li class=l2><a href='#why-the-numbers-are-not-published'>Why the numbers are not published</a></li><li class=l2><a href='#if-you-reach-a-limit'>If you reach a limit</a></li><li class=l2><a href='#asking-for-higher-limits'>Asking for higher limits</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">
