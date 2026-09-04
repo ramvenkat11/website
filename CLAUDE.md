@@ -34,6 +34,13 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-04 (two more group renames)
+Progress and diagnostics -> Observability; Call external systems -> External systems. Renamed
+in all three places at once: ../s2oserver/models/agentschema.py (uncommitted, Ram's),
+gen/toc.py, and the home page .cg-l labels. Rebuilt; no inbound links to the changed anchors.
+Group names now: Variables / Flow control / Observability / Agent termination / External
+systems / LLM interaction / Deep agents / Human-in-the-loop / Agent output.
+
 ## State on 2026-09-04 (command groups renamed to the home page names)
 Renamed in ../s2oserver/models/agentschema.py commandGroups (RAM'S REPO - HE COMMITS): Output
 progress information -> Progress and diagnostics, Terminate agent -> Agent termination, Engage
