@@ -34,6 +34,17 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-04 (../search2o/README.md rewritten for PyPI)
+The pip package repo is ../search2o (distinct from ../s2oserver, the cloud side). Its README
+(pyproject readme=README.md, shown on PyPI) was stale: "source-available" (retired 2026-09-01),
+a broken getting-started.html link (real page is gettingstarted.html), old vocabulary
+("management UI", "tasks"), no LLM-key or docs pointers. Rewritten brief from the new
+gettingstarted.html: what Search2o is + this package is the agent server, proprietary licence
+note, register/getting-started + docs links, requirements, install + db extras one-liner,
+licence env vars, start command, GUI at /ui. No registration form (points to the site).
+Ram commits it. NOTE: the README's links target pages that are live only after Ram deploys -
+the site is still the placeholder.
+
 ## State on 2026-09-04 (gettingstarted.html lightened, Ram's density pass)
 Ram: too dense, remove empty words, hero repeated the steps, "your laptop is A GOOD place to
 start" (not "the right place"). Hero lead is now one short line + the docs pointer (the .note
