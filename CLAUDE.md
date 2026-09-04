@@ -34,6 +34,15 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-04 (home get-started band slimmed, PENDING RAM'S VERDICT)
+Ram: too many getting-started surfaces; chose the slim-band option over full removal. The four
+.bandsteps cards (a compressed copy of gettingstarted.html, third copy of steps that just
+changed) are deleted from html/index.html; the band keeps kicker + "From install to your first
+search" + one line + the two buttons (378px tall; the 40px section-head/band-actions margins
+collapse to 40). Screenshots sent in both themes; awaiting his look. IF HE KEEPS IT: the
+.bandsteps CSS (styles.css:503-516 and the two responsive rules at ~:659/:670) is now unused -
+remove it then, not before.
+
 ## State on 2026-09-04, later still ("What a server reports" was FICTION)
 The old agent-servers.html section "What a server reports" (servers report allowlist/adapter
 failures back and the Agent servers GUI page shows them) described a feature that DOES NOT
