@@ -58,7 +58,7 @@
 <h2 id="what-starts-up">What starts up</h2>
 <p>At startup the server validates the license and downloads the account's configuration from Search2o Cloud. The server then checks every entry of the expression allowlist against its own Python environment and builds its connection pools. After that the server serves:</p>
 <ul>
-  <li>the GUI at the server's root address,</li>
+  <li>the GUI at <code>/ui</code>,</li>
   <li>the OpenAPI schema at <code>/openapi.json</code>, Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>,</li>
   <li>the REST API under <code>/api/</code>.</li>
 </ul>

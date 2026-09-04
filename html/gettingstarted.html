@@ -14,6 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body>
 
@@ -40,8 +41,7 @@
     <div class="container">
       <span class="kicker">Getting started</span>
       <h1>Up and running on your laptop</h1>
-      <p class="lead">Register for a license, install the agent server, and run it on your local machine &mdash; preferably with one LLM key. Build and publish one or two agents, then move the server to a common place for your team.</p>
-      <p class="note">The steps below are the outline. <a href="docs/getting-started/index.html">Getting started</a> in the docs covers each one in full.</p>
+      <p class="lead">From registration to your first running agent, on your laptop. This page has everything you need; the <a href="docs/index.html">docs</a> go deeper on every topic.</p>
     </div>
   </section>
 
@@ -51,63 +51,131 @@
 
         <div class="step-sec" id="register">
           <h2>Register</h2>
-          <p>Registration includes a Search2o license for the open beta, free for three months. You will not be charged unless you choose to upgrade to the paid service.</p>
-          <form class="form-card" id="reg-form">
-            <div class="form-grid">
-              <div class="field">
-                <label for="reg-name">Name</label>
-                <input id="reg-name" name="name" type="text" autocomplete="name" placeholder="Jordan Rivera" required>
+          <p>Search2o is in open beta, and anyone interested is welcome. The beta is free for three months, and nothing is charged unless you choose the paid service. Registration ends by showing your account&rsquo;s license key once &mdash; please store it with your other secrets.</p>
+          <div class="form-card" id="reg-card">
+            <div id="reg-step1">
+              <div class="form-grid">
+                <div class="field wide">
+                  <label for="reg-email">Work email</label>
+                  <input id="reg-email" type="email" autocomplete="email" placeholder="you@company.com">
+                </div>
+                <div class="field">
+                  <label for="reg-name">Your name</label>
+                  <input id="reg-name" type="text" autocomplete="name" placeholder="Jordan Rivera">
+                </div>
+                <div class="field">
+                  <label for="reg-account">Account name</label>
+                  <input id="reg-account" type="text" placeholder="Acme Corp">
+                </div>
+                <div class="field wide">
+                  <label for="reg-password">Password</label>
+                  <input id="reg-password" type="password" autocomplete="new-password">
+                  <span class="hint">8&ndash;16 characters, with an upper case letter, a lower case letter, a digit and a symbol.</span>
+                </div>
               </div>
-              <div class="field">
-                <label for="reg-org">Organization</label>
-                <input id="reg-org" name="org" type="text" autocomplete="organization" placeholder="Acme Corp">
+              <div class="terms">
+                <input type="checkbox" id="reg-terms">
+                <label for="reg-terms">I accept the Terms of Service</label>
               </div>
-              <div class="field wide">
-                <label for="reg-email">Work email</label>
-                <input id="reg-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>
+              <div class="h-captcha" data-sitekey="ff281746-715c-41a8-a28e-83d42d90b0da"></div>
+              <div class="actions">
+                <button class="btn btn-blue" type="button" id="reg-go1">Continue <span class="arrow" aria-hidden="true">&rarr;</span></button>
               </div>
             </div>
-            <div class="actions">
-              <button class="btn btn-blue" type="submit">Register for the beta <span class="arrow" aria-hidden="true">&rarr;</span></button>
+            <div id="reg-step2" hidden>
+              <p>We sent a code to <span id="reg-sent-to"></span>.</p>
+              <div class="form-grid">
+                <div class="field wide">
+                  <label for="reg-code">Code</label>
+                  <input id="reg-code" type="text" autocomplete="one-time-code">
+                </div>
+              </div>
+              <div class="actions">
+                <button class="btn btn-blue" type="button" id="reg-go2">Create account</button>
+              </div>
             </div>
-          </form>
+            <div class="reg-out" id="reg-out" hidden></div>
+          </div>
         </div>
 
         <div class="step-sec" id="install">
           <h2>Download the agent server</h2>
-          <p>The agent server is a Python 3.12+ package. Install it wherever you want agents to run &mdash; your laptop is the right place to start.</p>
+          <p>The agent server is a Python 3.12+ package. Install it wherever you want agents to run &mdash; your laptop is a good place to start.</p>
           <div class="shell">
             <span><span class="ps1">$</span>pip install search2o</span>
             <button type="button" data-copy="pip install search2o" aria-label="Copy install command">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             </button>
           </div>
+          <p class="dim">SQLite works out of the box. For another database, add the matching extra: <code>search2o[postgres]</code>, <code>search2o[mysql]</code>, <code>search2o[oracle]</code> or <code>search2o[mssql]</code>.</p>
           <p class="dim">The package is published on PyPI under a proprietary license; see <a href="docs/support-licensing/license.html">License</a>.</p>
         </div>
 
         <div class="step-sec" id="run">
           <h2>Run the server</h2>
           <h3>Set up the license key</h3>
-          <p>Add the license key from your registration email to the server&rsquo;s environment. The key is what connects your agent server to Search2o Cloud. <a href="docs/getting-started/license-key.html">The license key</a> covers where to put it and what it controls.</p>
+          <p>The license key from registration connects your agent server to Search2o Cloud. Give the server the key in one of two ways:</p>
+          <div class="codecard" aria-label="Providing the license key">
+            <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">terminal</span></div>
+<pre><code><span class="ps1">$ </span>export SEARCH2O_LICENSE_KEY=your-license-key
+<span class="tk-com"># or point at a file that holds the key</span>
+<span class="ps1">$ </span>export SEARCH2O_LICENSE_KEY_FILE=/path/to/license.key</code></pre>
+          </div>
+          <p class="dim">Please set only one of the two. With neither set, the server exits at startup.</p>
+          <h3>Set up one LLM key</h3>
+          <p>A new account comes with LLM profiles for OpenAI, Anthropic and Gemini. Set the environment variable for the vendor you use: <code>OPENAI_API_KEY</code>, <code>ANTHROPIC_API_KEY</code> or <code>GEMINI_API_KEY</code>. One key is enough, and Search2o is not limited to these vendors.</p>
           <h3>Start the server</h3>
-          <p>Start the server on your local machine with the license and, preferably, one LLM key. The server is stateless &mdash; all conversation state lives, encrypted, in Search2o Cloud, so you can stop and restart it anywhere, freely.</p>
+          <div class="codecard" aria-label="Starting the agent server">
+            <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">terminal</span></div>
+<pre><code><span class="ps1">$ </span>SEARCH2O_LICENSE_KEY=your-license-key ANTHROPIC_API_KEY=sk-ant-... search2o</code></pre>
+          </div>
+          <p>The server is stateless &mdash; conversation state lives, encrypted, in Search2o Cloud &mdash; so you can stop and restart the server anywhere. Just make sure the APIs and databases your agents call are reachable from where the server runs.</p>
+          <p class="dim">Further command line options go to Uvicorn, so <code>--host</code> and <code>--port</code> work as usual.</p>
+        </div>
+
+        <div class="step-sec" id="gui">
+          <h2>Open the GUI</h2>
+          <p>Go to <code>http://127.0.0.1:9020/ui</code> and sign in with the email address and password you registered with. The first user of an account is the account&rsquo;s owner.</p>
+          <p class="dim">The server also serves the OpenAPI schema at <code>/openapi.json</code>, Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>. All of these paths can be changed, or removed, from the GUI.</p>
         </div>
 
         <div class="step-sec" id="first-agent">
           <h2>Create your first agent</h2>
-          <p>Prompt the AI assistant. Modify the generated agent to suit your needs.</p>
-          <p><strong>Trace and debug</strong> the agent live from the developer UI as it runs, then <strong>publish</strong> it when it behaves the way you want.</p>
+          <p>Open <strong>Agents &rarr; Drafts</strong> and create a new draft. Give the draft a name and a title: agents refer to each other by name, and users see the title. Then paste this agent into the editor. The agent sends the user&rsquo;s query to an LLM and streams the answer back:</p>
+          <div class="codecard" aria-label="A minimal agent definition">
+            <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">A minimal agent</span></div>
+<pre><code><span class="tk-pun">{</span>
+  <span class="tk-key">"functions"</span><span class="tk-pun">: {</span>
+    <span class="tk-key">"main"</span><span class="tk-pun">: {</span>
+      <span class="tk-key">"commands"</span><span class="tk-pun">: {</span>
+        <span class="tk-key">"prompt"</span><span class="tk-pun">: {</span>
+          <span class="tk-key">"system"</span><span class="tk-pun">:</span> <span class="tk-str">"You are a helpful assistant. Answer briefly."</span><span class="tk-pun">,</span>
+          <span class="tk-key">"user"</span><span class="tk-pun">:</span> <span class="tk-expr">"{ sys.query }"</span>
+        <span class="tk-pun">},</span>
+        <span class="tk-key">"llm"</span><span class="tk-pun">: { </span><span class="tk-key">"profile"</span><span class="tk-pun">:</span> <span class="tk-str">"claude_haiku"</span><span class="tk-pun">, </span><span class="tk-key">"streamOutput"</span><span class="tk-pun">:</span> <span class="tk-bool">true</span><span class="tk-pun"> }</span>
+      <span class="tk-pun">}</span>
+    <span class="tk-pun">}</span>
+  <span class="tk-pun">}</span>
+<span class="tk-pun">}</span></code></pre>
+          </div>
+          <ul>
+            <li><code>main</code> is the function that runs first.</li>
+            <li><code>prompt</code> sets the system prompt; <code>sys.query</code> is the text the user typed.</li>
+            <li><code>llm</code> sends the prompt to the <code>claude_haiku</code> profile and streams the answer. Change the profile to <code>gpt5_mini</code> or <code>gemini_flash</code> if that is the key you set.</li>
+          </ul>
+          <p>Enter a validation query such as <em>What is the capital of France, in one word?</em> and validate. The draft is checked and run against that query, and the execution trace shows each command with what came back. When the draft validates, <strong>publish</strong> it.</p>
+          <p class="dim">AI assist in the editor writes a full agent from one sentence &mdash; a faster path once you have seen the shape.</p>
         </div>
 
         <div class="step-sec" id="describe">
           <h2>Describe your agent, then search</h2>
-          <p>Describe what the agent does in plain English. That description is what search uses to match user requests to your agent.</p>
-          <p>Now run a search &mdash; type a request the agent should handle and watch it match, execute, and stream its result.</p>
+          <p>Open the published agent and write its description in plain English &mdash; for example <em>Answers general knowledge questions in a sentence or two.</em> Search matches user requests against this description. Publishing the description indexes the agent, and a notification tells you when indexing is done.</p>
+          <p>Now switch to the search box and type a question the agent should handle. The agent matches, runs, and streams its answer. Ask a follow-up &mdash; the conversation continues with the context of the first answer.</p>
         </div>
 
         <div class="step-sec" id="team">
           <h2>Bring your team</h2>
-          <p>Add users from the admin UI. When you&rsquo;re ready, start the agent server in a common place in your organization &mdash; because the server is stateless, nothing else has to change. You can even continue running it on your laptop.</p>
+          <p>Add users with roles from the Account section. When you&rsquo;re ready, start the agent server in a common place in your organization &mdash; or share the license key, and colleagues can run servers on their own laptops. Because the server is stateless, nothing else has to change.</p>
         </div>
 
         <div class="step-sec" id="docs">
@@ -116,7 +184,7 @@
           <p>The same pages are on the web at <a href="docs/index.html">search2o.com/docs</a>: the agent framework, all 23 commands, configuration, reports and administration.</p>
           <div class="callout">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 12v5"/></svg>
-            <span>Stuck at any step? Email <a href="mailto:info@search2o.com">info@search2o.com</a> from your registration address and we&rsquo;ll help you get running. Once you have the agent server up and running and have your the UI open on the browser, the help icon in the UI is the best way to contact us.</span>
+            <span>Stuck at any step? Email <a href="mailto:info@search2o.com">info@search2o.com</a> from your registration address and we&rsquo;ll help you get running. Once the GUI is open in your browser, the help icon there is the best way to contact us.</span>
           </div>
         </div>
 
@@ -161,17 +229,75 @@
 
 <script src="site.js"></script>
 <script>
-// Beta registration: compose an email until the in-app flow opens publicly.
-document.getElementById("reg-form").addEventListener("submit", function (e) {
-  e.preventDefault();
-  var name = document.getElementById("reg-name").value.trim();
-  var org = document.getElementById("reg-org").value.trim();
-  var email = document.getElementById("reg-email").value.trim();
-  var body = "Name: " + name + "\nEmail: " + email + (org ? "\nOrganization: " + org : "") +
-    "\n\nPlease register me for the Search2o open beta.";
-  location.href = "mailto:info@search2o.com?subject=" +
-    encodeURIComponent("Search2o beta registration") + "&body=" + encodeURIComponent(body);
-});
+// Beta registration: two steps against the registration API. Step 1 sends a code to the
+// email address; step 2 exchanges the code for the license key, shown exactly once.
+(function () {
+  var BASE = "https://api.search2o.com";
+  var $ = function (id) { return document.getElementById(id); };
+  var lookup = "";
+
+  function say(msg, ok) {
+    var o = $("reg-out");
+    o.hidden = false;
+    o.className = "reg-out " + (ok ? "ok" : "err");
+    o.innerHTML = msg;
+  }
+  function hush() { $("reg-out").hidden = true; }
+
+  function post(path, body) {
+    return fetch(BASE + path, {
+      method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body)
+    }).then(function (r) { return r.json().catch(function () { return null; }); });
+  }
+
+  $("reg-go1").addEventListener("click", function () {
+    var email = $("reg-email").value.trim(), password = $("reg-password").value;
+    var userName = $("reg-name").value.trim(), accountName = $("reg-account").value.trim();
+    if (!email || !password || !userName || !accountName) return say("Please fill in every field.", false);
+    if (!$("reg-terms").checked) return say("Please accept the Terms of Service.", false);
+
+    var token = "";
+    try { token = hcaptcha.getResponse(); } catch (e) {}
+    if (!token) return say("Please complete the hCaptcha.", false);
+
+    $("reg-go1").disabled = true;
+    post("/reg1", {email: email, password: password, userName: userName, accountName: accountName, terms: true, token: token})
+      .then(function (data) {
+        if (data && data.success) {
+          lookup = data.lookup;
+          $("reg-sent-to").textContent = email;
+          $("reg-step1").hidden = true;
+          $("reg-step2").hidden = false;
+          hush();
+        } else {
+          say("We could not complete your registration. Please check your details and try again.", false);
+        }
+      })
+      .catch(function () { say("Something went wrong. Please try again.", false); })
+      .finally(function () {
+        $("reg-go1").disabled = false;
+        try { hcaptcha.reset(); } catch (e) {}
+      });
+  });
+
+  $("reg-go2").addEventListener("click", function () {
+    var code = $("reg-code").value.trim();
+    if (!code) return say("Please enter the code.", false);
+    $("reg-go2").disabled = true;
+    post("/reg2", {lookup: lookup, code: code})
+      .then(function (data) {
+        if (data && data.success && data.license) {
+          $("reg-step2").hidden = true;
+          say("Your account is ready. This is your key &mdash; store it now, it is shown only once."
+              + '<div class="reg-key">' + data.license + "</div>", true);
+        } else {
+          say("That code did not work. It may have expired.", false);
+        }
+      })
+      .catch(function () { say("Something went wrong. Please try again.", false); })
+      .finally(function () { $("reg-go2").disabled = false; });
+  });
+})();
 </script>
 </body>
 </html>
