@@ -34,6 +34,16 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-04 (gettingstarted.html lightened, Ram's density pass)
+Ram: too dense, remove empty words, hero repeated the steps, "your laptop is A GOOD place to
+start" (not "the right place"). Hero lead is now one short line + the docs pointer (the .note
+line is gone). Licence-key rules moved into a codecard (two export lines with a # comment);
+the both/neither rule is a dim line. The colleagues/share-key guidance moved OUT of Run the
+server INTO Bring your team (it duplicated that step). Demoted to .dim: db extras, Uvicorn
+options, the openapi/docs/redoc URLs. The minimal-agent explainer is now a 3-bullet ul (new
+.numbered ul/li rules in styles.css). Register text softened ("nothing is charged unless...",
+"please store it").
+
 ## State on 2026-09-04 (gettingstarted.html rewritten SELF-SUFFICIENT + real registration form)
 Ram: the page must let someone get started without the docs; content pulled from docsrc
 (install extras, licence env vars, LLM keys, start command, GUI sign-in, the full first-agent
