@@ -58,14 +58,13 @@ GUI editor still use the server schema's group names (Output progress informatio
 agent / Engage with LLM / Human in the loop) - renaming those means editing AgentSchema
 commandGroups in ../s2oserver and rebuilding; Ram has not asked.
 
-## State on 2026-09-04 (home get-started band slimmed, PENDING RAM'S VERDICT)
-Ram: too many getting-started surfaces; chose the slim-band option over full removal. The four
-.bandsteps cards (a compressed copy of gettingstarted.html, third copy of steps that just
-changed) are deleted from html/index.html; the band keeps kicker + "From install to your first
-search" + one line + the two buttons (378px tall; the 40px section-head/band-actions margins
-collapse to 40). Screenshots sent in both themes; awaiting his look. IF HE KEEPS IT: the
-.bandsteps CSS (styles.css:503-516 and the two responsive rules at ~:659/:670) is now unused -
-remove it then, not before.
+## State on 2026-09-04 (home get-started band slimmed, KEPT)
+Ram: too many getting-started surfaces; chose the slim-band option over full removal and kept
+it after seeing both themes. The four .bandsteps cards (a compressed copy of
+gettingstarted.html) are gone from html/index.html; the band is kicker + "From install to your
+first search" + one line + the two buttons (378px). All .bandsteps CSS removed from styles.css
+(the main block and the two responsive rules; .cardgrid/.form-grid selector kept). Band
+measures 378px before and after the CSS removal - nothing else depended on it.
 
 ## State on 2026-09-04, later still ("What a server reports" was FICTION)
 The old agent-servers.html section "What a server reports" (servers report allowlist/adapter
