@@ -34,6 +34,16 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-04 (about page wording pass, Ram's 19-row table)
+13 edits applied verbatim from his Suggested column to html/about.html (the Keep/dash rows
+untouched): "retrieves information", "programs that combine", "run safely", "accommodate
+change / evolve", the tightened implies-more-than-search list, "without depending on existing
+application infrastructure", "in their environment", "publish them to", "get started quickly",
+"Search2o was founded by" (LinkedIn link preserved), "That experience includes systems built
+for..." with "over many years" dropped, "Search2o Cloud runs on Google Cloud", "product
+questions". The em dash in the file is &mdash; - a literal — in a match string finds nothing.
+Meta/og descriptions checked: unaffected by these edits, still accurate.
+
 ## State on 2026-09-04 (home page wording pass, Ram's 19-row table)
 All applied to html/index.html verbatim from his Better column (16 replacements; three rows
 shared lines): hero "runs it", "A user enters... browser or chat application", "Search matches
