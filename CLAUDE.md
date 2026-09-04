@@ -34,6 +34,14 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-04 (group REORDER, agreed with Ram)
+Final order: Variables / Flow control / LLM interaction / External systems / Deep agents /
+Human-in-the-loop / Agent output / Agent termination / Observability. Rationale: language
+basics, then the work groups LLM-first (Ram's swap of my suggestion), then how an agent
+finishes, Observability last as the crosscutting aid. Reordered in the three places that
+must stay in step: agentschema.py commandGroups (page headings + GUI editor), gen/toc.py
+command entries (sidebar + prev/next), and the home page .cg rows. Rebuilt and verified.
+
 ## State on 2026-09-04 (two more group renames)
 Progress and diagnostics -> Observability; Call external systems -> External systems. Renamed
 in all three places at once: ../s2oserver/models/agentschema.py (uncommitted, Ram's),
