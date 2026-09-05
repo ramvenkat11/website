@@ -34,6 +34,11 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05 (band down to one button)
+Ram: the band's two buttons were fillers. The get-started band now has ONE button, "Get
+started ->" (btn-onnavy), to gettingstarted.html; "Read the getting-started guide" wording and
+the "See beta pricing" ghost button (with its inline styles) are gone. Head + one line stay.
+
 ## State on 2026-09-05 (register.html split out; NO GitHub on the home page)
 Ram: a GitHub mention on the home page can mislead as open source - the hero's
 install-from-git button (briefly "View on GitHub") is GONE; the hero has Get started alone.
