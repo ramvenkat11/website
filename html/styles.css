@@ -597,17 +597,18 @@ p { margin: 0; }
 .legal-body code { font-family: var(--mono); font-size: .9em; }
 
 /* pricing */
-.pricing-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; align-items: stretch; max-width: 980px; }
+.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
 .price-card {
-  position: relative; padding: 34px; border-radius: 18px;
+  position: relative; display: flex; flex-direction: column; padding: 34px; border-radius: 18px;
   border: 1px solid var(--line); background: var(--card); box-shadow: var(--card-shadow-lg);
 }
 .price-card.featured { border-color: var(--feat-border); background: var(--feat-bg); }
 .price-card .plan { color: var(--muted); font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.price-card .price { margin: 14px 0 4px; color: var(--ink); font-size: 44px; font-weight: 800; letter-spacing: -0.03em; }
+.price-card .price { margin: 14px 0 4px; color: var(--ink); font-size: 44px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
 .price-card .per { color: var(--muted); font-size: 15px; }
 .price-card .desc { margin-top: 16px; color: var(--body); font-size: 15.5px; }
-.checklist { list-style: none; margin: 24px 0 0; padding: 0; display: grid; gap: 12px; }
+.price-card .price-head { min-height: 113px; }
+.checklist { list-style: none; margin: 24px 0 24px; padding: 0; display: grid; gap: 12px; }
 .checklist li { display: flex; gap: 12px; align-items: flex-start; color: var(--body); font-size: 15px; }
 .checklist svg { flex: 0 0 auto; margin-top: 3px; color: var(--ok); }
 .checklist.neutral svg { color: var(--slate); }
@@ -616,7 +617,20 @@ p { margin: 0; }
   padding: 5px 12px; border-radius: 999px;
   background: var(--badge-bg); color: var(--ok); font-size: 12px; font-weight: 700; letter-spacing: .04em;
 }
-.price-note { max-width: 980px; margin-top: 22px; }
+.price-card .actions, .price-card .action-note { margin-top: auto; }
+.price-card .actions { padding-top: 28px; }
+.price-card .action-note {
+  padding: 13px 15px; border-radius: 10px;
+  background: var(--tag-match-bg); border: 1px solid var(--feat-border);
+  color: var(--ink); font-size: 14.5px; font-weight: 600; line-height: 1.55;
+}
+.price-card .permo { margin-left: 2px; font-size: 15px; font-weight: 600; letter-spacing: 0; color: var(--muted); }
+.price-card .price + .price { margin-top: 0; }
+.price-card .price.duo { font-size: 28px; }
+.price-card .duo .permo { font-size: 14px; }
+.badge.soon { background: var(--tag-state-bg); color: var(--tag-state-fg); }
+.price-para { margin-top: 26px; color: var(--muted); font-size: 15px; }
+.price-note { margin-top: 22px; }
 
 /* support / contact */
 .contact-card {
