@@ -45,7 +45,7 @@
 <figure class="shot"><img class="light" src="../img/gui-guardrails-light.png" alt="The Compile rules page: expression limits and per-operator allow/deny" style="--shot-w:560px"><img class="dark" src="../img/gui-guardrails-dark.png" alt="The Compile rules page: expression limits and per-operator allow/deny" style="--shot-w:560px"><figcaption>Compile rules: limits on expressions, and allow or deny per operator.</figcaption></figure>
 
 <h2 id="allowlist">Allowlist</h2>
-<p>The functions and objects that expressions may use, one per line, and the <code>sys</code> variables that agents may read. The server checks every entry against its Python environment and reports failures under Agent servers. See <a href="../runtime/guardrails.html#allowlist">Allowlist</a>.</p>
+<p>The functions and objects that expressions may use, one per line, and the <code>sys</code> variables that agents may read. The server checks every entry against its Python environment and logs any failure locally. See <a href="../runtime/guardrails.html#allowlist">Allowlist</a>.</p>
 <figure class="shot"><img class="light" src="../img/gui-allowlist-light.png" alt="The Allowlist page: the sys variables and functions expressions may use" style="--shot-w:560px"><img class="dark" src="../img/gui-allowlist-dark.png" alt="The Allowlist page: the sys variables and functions expressions may use" style="--shot-w:560px"><figcaption>The allowlist: the system variables, and the functions and objects that expressions may call.</figcaption></figure>
 
 <h2 id="runtime">Runtime</h2>

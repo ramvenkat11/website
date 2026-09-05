@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>What is Search2o — Search2o docs</title>
-<meta name="description" content="Search2o is a platform for building AI agents and running them from a search box. A user types what they need; Search2o finds the agent built for that need, …">
+<meta name="description" content="Search2o is a platform for building AI agents and running them from a search interface. A user types what they need; Search2o finds the agent built for that …">
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,7 +38,7 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../introduction/index.html'>Introduction</a></div>
     <article class="docs-article">
       <h1>What is Search2o</h1>
-      <p class="lead">Search2o is a platform for building AI agents and running them from a search box. A user types what they need; Search2o finds the agent built for that need, runs the agent, and returns the answer in a conversation the user can continue.</p>
+      <p class="lead">Search2o is a platform for building AI agents and running them from a search interface. A user types what they need; Search2o finds the agent built for that need, runs the agent, and returns the answer in a conversation the user can continue.</p>
 
 <p>Developers write agents in a declarative JSON format with Python expressions, and describe each agent in plain English. Search2o matches a user's query to the agent whose description fits, runs that agent in a controlled runtime, and returns the response. A follow-up may go to the same agent or to a different agent; the conversation carries its context along.</p>
 
@@ -48,7 +48,7 @@
 <ul>
   <li><strong>Search is the orchestration layer.</strong> An organization accumulates many focused agents, written by different teams, and search makes the whole collection behave like one application. Users never pick an agent from a list; they say what they need.</li>
   <li><strong>Agents are small and declarative.</strong> An agent is a set of functions, and a function is an ordered list of commands. The 23 commands cover what agents are built to do: call APIs and databases, prompt LLMs with tools, ask the user for input, invoke other agents, and remember facts across conversations.</li>
-  <li><strong>Execution is controlled.</strong> The Python expressions in an agent run in a controlled runtime, governed by an allowlist, operator rules and runtime limits that administrators set.</li>
+  <li><strong>Execution is controlled.</strong> The Python expressions in an agent run in a controlled runtime, governed by an allowlist, compile rules and runtime limits that administrators set.</li>
   <li><strong>State is not your problem.</strong> The agent server holds no state. Conversation context is encrypted and stored in Search2o Cloud, so servers can be started, stopped and scaled without losing a conversation.</li>
 </ul>
 

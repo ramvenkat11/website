@@ -17,7 +17,7 @@
 <p>From then on the agent server calls your function for every key it needs. The settings are listed below.</p>
 
 <h2>Key rotation</h2>
-<p>Every encrypted value records the name of the key that encrypted it, so several keys can be in use at once. With client-held keys, rotation is adding a new key at the end of the list. The new key encrypts everything from then on. The older keys stay in the list, so that state encrypted under them can still be read. Nothing already stored has to be re-encrypted. Only the keys of the last three months need to be kept, because conversations expire after three months unless pinned; a pinned conversation older than that needs its key kept as well. With the default setting there is nothing for you to rotate; Search2o manages the key.</p>
+<p>Every encrypted value records the name of the key that encrypted it, so several keys can be in use at once. With client-held keys, rotation is adding a new key at the end of the list. The new key encrypts everything from then on. The older keys stay in the list, so that state encrypted under them can still be read. Nothing already stored has to be re-encrypted. An old key is needed for as long as anything encrypted under it is still alive: three months for a conversation, longer for a pinned one, a year for a long-term memory, and the whole life of a hosted secret. With the default setting there is nothing for you to rotate; Search2o manages the key.</p>
 
 <h2>Switching to end-to-end encryption</h2>
 <p>Switch before the account holds data you care about. State encrypted under the cloud-managed key stays readable after the switch, and new state is encrypted under your key. Hosted secrets can be entered only once end-to-end encryption is in place.</p>

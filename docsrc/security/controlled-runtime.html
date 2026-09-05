@@ -12,7 +12,7 @@
   <li><code>import</code> is not available. Everything an agent can use is imported by the allowlist.</li>
 </ul>
 <p>The <code>asyncio</code> package itself cannot be put on the allowlist, because the package can interfere with the server's event loop. <code>asyncio.gather</code> and <code>asyncio.sleep</code> are always available as <code>gather</code> and <code>sleep</code>. <code>gather</code> is the way to run several async calls in parallel.</p>
-<p>Every entry is checked against the server's Python environment at startup and whenever the allowlist changes. A failing entry is reported on the Agent servers page.</p>
+<p>Every entry is checked against the server's Python environment at startup and whenever the allowlist changes. A failing entry is written to the server's log.</p>
 
 <h2>Operator remapping</h2>
 <p>Each potentially expensive Python operator can be allowed, denied, or rewritten to a safe function. The operators are <code>+ - * / // % ** &lt;&lt; &gt;&gt; @</code>. By default <code>**</code> is rewritten to a bounded implementation, and the shift and matrix operators are denied. The safe functions are built in, but can be replaced with your own functions from the allowlist. See <a href="../runtime/guardrails.html#compile-rules">Compile rules</a>. The rules are applied when a draft is validated or published.</p>

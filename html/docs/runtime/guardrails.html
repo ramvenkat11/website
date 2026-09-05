@@ -41,7 +41,7 @@
       <p class="lead">Three parts of the runtime bound what an agent's expressions may do: the allowlist, the compile rules and the runtime limits. The GUI groups them under Guardrails, and developers edit them. Why they exist and what they protect against is explained in <a href="../security/controlled-runtime.html">The controlled runtime</a>; this page covers how each is written and how the runtime applies it.</p>
 
 <h2 id="allowlist">Allowlist</h2>
-<p>The allowlist is the complete set of functions and objects an expression may reach. When the allowlist changes, the runtime imports each entry from the server's Python environment and builds the namespace that expressions evaluate in. An entry that cannot be imported is reported on the Agent servers page.</p>
+<p>The allowlist is the complete set of functions and objects an expression may reach. When the allowlist changes, the runtime imports each entry from the server's Python environment and builds the namespace that expressions evaluate in. An entry that cannot be imported is written to the server's log.</p>
 <p>One entry per line; anything after <code>#</code> is a comment.</p>
 <figure class=code data-lang=text><div class=bar><span>Entry forms</span></div><pre><code>len                                 # a builtin
 str.join                            # a method of a builtin type
