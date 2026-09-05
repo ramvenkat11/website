@@ -192,7 +192,8 @@
         if (data && data.success && data.license) {
           $("reg-step2").hidden = true;
           say("Your account is ready. This is your key &mdash; store it now, it is shown only once."
-              + '<div class="reg-key">' + data.license + "</div>", true);
+              + '<div class="reg-key">' + data.license + "</div>"
+              + '<div class="reg-next"><a href="gettingstarted.html">Getting started</a> takes you from install to your first agent.</div>', true);
         } else {
           say("That code did not work. It may have expired.", false);
         }
