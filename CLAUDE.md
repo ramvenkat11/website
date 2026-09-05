@@ -34,6 +34,14 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05 (getting-started reflects the tier flow)
+"Bring your team" rewritten to Ram's narrative: request an Evaluation license from the Account
+page -> approval arrives by email -> start the server in a common place; then add users, with
+a Pricing link. THE SHARE-THE-LICENSE-KEY GUIDANCE IS GONE from this step (a 1-user Individual
+tier cannot share a key). REPORTED, NOT FIXED: docsrc/getting-started/running-the-server.html
+still says "share the license key, and each person can run a server on their own laptop" -
+contradicts the tier model now; Ram to confirm before the docs change.
+
 ## State on 2026-09-05 (tier renamed: Team Evaluation -> Evaluation)
 Ram proposed, I agreed (the real win: "Team Evaluation" vs "Team" made every upgrade sentence
 ambiguous; the ladder is now Individual -> Evaluation -> Team). All five page occurrences
