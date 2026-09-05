@@ -34,6 +34,13 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05 (tier renamed: Team Evaluation -> Evaluation)
+Ram proposed, I agreed (the real win: "Team Evaluation" vs "Team" made every upgrade sentence
+ambiguous; the ladder is now Individual -> Evaluation -> Team). All five page occurrences
+renamed: plan label, the note, Individual's upgrade bullet, the 2-month bullet, Team's
+carry-over bullet. NOTE for Ram: the product's Account page and content/pricing.md still say
+"Team Evaluation" - the in-product name is his to change.
+
 ## State on 2026-09-05 (pricing FINAL form - descs gone)
 The Individual and Team Evaluation intro lines are REMOVED (Ram: the plan headline already
 says it) - card heads are now plan + price only, .price-head min-height 113px (natural
