@@ -34,6 +34,11 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05 (Team price rows sized down)
+Ram: the idea is fine but the rows were HUGE. Both Team rows carry .price.duo: 28px figures
+(suffixes 14px) instead of 44 - same format as each other, smaller than the Free headline.
+Aligned re-measured: duo lefts equal, single-line rows, checklist tops 502/502/502.
+
 ## State on 2026-09-05 (Team price finally right - $40 same format as $100)
 Ram (annoyed, second sloppiness call): $40 must match $100's format and the fees must line up.
 Final form: TWO .price rows, "$100/month platform fee +" then "$40/user/month" - both figures
