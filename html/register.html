@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Register — Search2o</title>
+<meta name="description" content="Create your Search2o account. The open beta is free for three months, and registration shows your license key once.">
+<meta property="og:title" content="Register — Search2o">
+<meta property="og:description" content="Create your Search2o account. The open beta is free for three months, and registration shows your license key once.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="index.html" aria-label="Search2o home"><img src="logo.png" alt="Search2o" width="560" height="102"></a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="navlink" href="index.html">Home</a>
+      <a class="navlink" href="gettingstarted.html">Getting started</a>
+      <a class="navlink" href="docs/index.html">Docs</a>
+      <a class="navlink" href="pricing.html">Pricing</a>
+      <a class="navlink" href="about.html">About</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch theme">
+      <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg>
+      <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+    <a class="btn btn-primary btn-sm header-cta" href="register.html" aria-current="page">Register</a>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker">Register</span>
+      <h1>Create your account</h1>
+      <p class="lead">Search2o is in open beta, and anyone interested is welcome. The beta is free for three months, and nothing is charged unless you choose the paid service.</p>
+      <p class="note">Registration ends by showing your account&rsquo;s license key once &mdash; please store it with your other secrets. Then <a href="gettingstarted.html">Getting started</a> takes you from install to your first agent.</p>
+    </div>
+  </section>
+
+  <section class="page-body">
+    <div class="container">
+      <div class="form-card reg-card" id="reg-card">
+        <div id="reg-step1">
+          <div class="form-grid">
+            <div class="field wide">
+              <label for="reg-email">Work email</label>
+              <input id="reg-email" type="email" autocomplete="email" placeholder="you@company.com">
+            </div>
+            <div class="field">
+              <label for="reg-name">Your name</label>
+              <input id="reg-name" type="text" autocomplete="name" placeholder="Jordan Rivera">
+            </div>
+            <div class="field">
+              <label for="reg-account">Account name</label>
+              <input id="reg-account" type="text" placeholder="Acme Corp">
+            </div>
+            <div class="field wide">
+              <label for="reg-password">Password</label>
+              <input id="reg-password" type="password" autocomplete="new-password">
+              <span class="hint">8&ndash;16 characters, with an upper case letter, a lower case letter, a digit and a symbol.</span>
+            </div>
+          </div>
+          <div class="terms">
+            <input type="checkbox" id="reg-terms">
+            <label for="reg-terms">I accept the Terms of Service</label>
+          </div>
+          <div class="h-captcha" data-sitekey="ff281746-715c-41a8-a28e-83d42d90b0da"></div>
+          <div class="actions">
+            <button class="btn btn-blue" type="button" id="reg-go1">Continue <span class="arrow" aria-hidden="true">&rarr;</span></button>
+          </div>
+        </div>
+        <div id="reg-step2" hidden>
+          <p>We sent a code to <span id="reg-sent-to"></span>.</p>
+          <div class="form-grid">
+            <div class="field wide">
+              <label for="reg-code">Code</label>
+              <input id="reg-code" type="text" autocomplete="one-time-code">
+            </div>
+          </div>
+          <div class="actions">
+            <button class="btn btn-blue" type="button" id="reg-go2">Create account</button>
+          </div>
+        </div>
+        <div class="reg-out" id="reg-out" hidden></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Search2o" width="560" height="102">
+        <p>Search that executes.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="fcol">
+          <h4>Product</h4>
+          <a href="index.html#how-it-works">How it works</a>
+          <a href="index.html#platform">Platform</a>
+          <a href="index.html#framework">Agent framework</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+        <div class="fcol">
+          <h4>Resources</h4>
+          <a href="gettingstarted.html">Getting started</a>
+          <a href="docs/index.html">Docs</a>
+        </div>
+        <div class="fcol">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>&copy; <span id="year">2026</span> Search2o &middot; Northern Virginia, USA</span>
+      <span>A platform for creating and running AI agents, built around a search interface.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="site.js"></script>
+<script>
+// Beta registration: two steps against the registration API. Step 1 sends a code to the
+// email address; step 2 exchanges the code for the license key, shown exactly once.
+(function () {
+  var BASE = "https://api.search2o.com";
+  var $ = function (id) { return document.getElementById(id); };
+  var lookup = "";
+
+  function say(msg, ok) {
+    var o = $("reg-out");
+    o.hidden = false;
+    o.className = "reg-out " + (ok ? "ok" : "err");
+    o.innerHTML = msg;
+  }
+  function hush() { $("reg-out").hidden = true; }
+
+  function post(path, body) {
+    return fetch(BASE + path, {
+      method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body)
+    }).then(function (r) { return r.json().catch(function () { return null; }); });
+  }
+
+  $("reg-go1").addEventListener("click", function () {
+    var email = $("reg-email").value.trim(), password = $("reg-password").value;
+    var userName = $("reg-name").value.trim(), accountName = $("reg-account").value.trim();
+    if (!email || !password || !userName || !accountName) return say("Please fill in every field.", false);
+    if (!$("reg-terms").checked) return say("Please accept the Terms of Service.", false);
+
+    var token = "";
+    try { token = hcaptcha.getResponse(); } catch (e) {}
+    if (!token) return say("Please complete the hCaptcha.", false);
+
+    $("reg-go1").disabled = true;
+    post("/reg1", {email: email, password: password, userName: userName, accountName: accountName, terms: true, token: token})
+      .then(function (data) {
+        if (data && data.success) {
+          lookup = data.lookup;
+          $("reg-sent-to").textContent = email;
+          $("reg-step1").hidden = true;
+          $("reg-step2").hidden = false;
+          hush();
+        } else {
+          say("We could not complete your registration. Please check your details and try again.", false);
+        }
+      })
+      .catch(function () { say("Something went wrong. Please try again.", false); })
+      .finally(function () {
+        $("reg-go1").disabled = false;
+        try { hcaptcha.reset(); } catch (e) {}
+      });
+  });
+
+  $("reg-go2").addEventListener("click", function () {
+    var code = $("reg-code").value.trim();
+    if (!code) return say("Please enter the code.", false);
+    $("reg-go2").disabled = true;
+    post("/reg2", {lookup: lookup, code: code})
+      .then(function (data) {
+        if (data && data.success && data.license) {
+          $("reg-step2").hidden = true;
+          say("Your account is ready. This is your key &mdash; store it now, it is shown only once."
+              + '<div class="reg-key">' + data.license + "</div>", true);
+        } else {
+          say("That code did not work. It may have expired.", false);
+        }
+      })
+      .catch(function () { say("Something went wrong. Please try again.", false); })
+      .finally(function () { $("reg-go2").disabled = false; });
+  });
+})();
+</script>
+</body>
+</html>
