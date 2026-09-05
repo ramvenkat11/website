@@ -34,6 +34,10 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05 (Individual bullet reword)
+"Intended for local evaluation and agent development" -> "For trying it out and developing
+agents on your laptop" (Ram: "evaluation" now collides with the Evaluation tier name).
+
 ## State on 2026-09-05 (gettingstarted TIGHTENED end to end)
 Ram: no overexplaining; the page's only job is to help and get out of the way. Full pass: hero
 lead REMOVED (kicker + h1 only, like pricing); every step cut to what the reader must do; code
