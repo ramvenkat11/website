@@ -34,6 +34,13 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05, latest (pricing card alignment)
+Ram: card 3's text did not line up with the others. Cause: its head was taller (two fee lines
++ desc). Fixed: "For ongoing organizational use." desc REMOVED (Ram allowed it); each card's
+plan/price/desc block is wrapped in .price-head with min-height 180px (measured: natural heads
+were 180/180/170) so all three checklists start on the SAME row - verified 502/502/502px.
+Alignment measured in the browser, not eyeballed, per the standing measurement lesson.
+
 ## State on 2026-09-05, latest (pricing note panels + bullet reword)
 Team Evaluation bullet "Significantly higher usage limits than Individual" -> "Usage limits
 sized for an organization-wide evaluation" (Ram: never compare to Individual; say the limits
