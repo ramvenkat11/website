@@ -34,6 +34,18 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05 (pricing page redone from content/pricing.md)
+Three tiers now: Individual (Free, register.html button), Team Evaluation (Free; NO button -
+the action is in-product, so a bottom .action-note says "Request Team Evaluation from the
+Account page."), Team (Coming soon badge - new neutral .badge.soon; $100 big, .per "/month
+platform fee", new .per2 line "+ $40/user/month"). Every bullet is Ram's md text verbatim.
+Hero: h1 "Individual and team evaluations are free", lead "public beta... paid service soon"
+(both his sentences, split to avoid repeating the h1). Below the grid: his end-of-2026
+paragraph (.price-para), the abuse callout reworded to his sentence, Questions with his
+wording. CSS: .pricing-grid -> repeat(3,1fr) full width; .price-card is now flex column with
+.actions/.action-note margin-top:auto (bottom-aligned across unequal cards); .featured/.badge
+green style now unused by the page but kept. Meta descriptions updated. Both themes verified.
+
 ## State on 2026-09-05 (legal pages built)
 html/legal/ now holds terms, privacy, license, intellectual .html, converted from
 content/legal/*.md by a scratchpad script (md subset: #/##/###, * bullets, **bold**, `code`;
