@@ -34,6 +34,21 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05 (legal pages built)
+html/legal/ now holds terms, privacy, license, intellectual .html, converted from
+content/legal/*.md by a scratchpad script (md subset: #/##/###, * bullets, **bold**, `code`;
+license.md's ```md fence stripped). FIDELITY VERIFIED: normalized text of every page is
+IDENTICAL to its md source - legal text must never be reworded. terms.md line 1 was a
+drafting-tool preamble ("Here is the full Terms document with...") - removed from the SOURCE
+too (content-can-be-corrected precedent). Pages use the site chrome, kicker "Legal", h1 from
+the md, article.legal-body (new tokens-only CSS: .legal-body h2/h3/p/li/strong/code), meta
+noindex. Footer on all FIVE site pages + the four legal pages gained a fourth "Legal" column:
+Terms of Service / Privacy Policy / Software License / Intellectual Property. Docs footer
+(minimal by design) untouched. The docs data-privacy privacy-policy link now resolves. All
+footer/legal links checked 200. The privacy contact email `support@search2o.com` renders as
+<code> (converter learned backticks after it showed literal ` on the page). html/legal is a
+NEW directory - a future deploy needs nothing special (sync adds it).
+
 ## State on 2026-09-05 (data-privacy corrections from Ram)
 Three facts corrected. (1) KEY CAPABILITY: with the default Search2o-managed key, Search2o AND
 Google can in principle read the encrypted data - only end-to-end encryption excludes them.
