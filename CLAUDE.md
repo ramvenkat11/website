@@ -34,6 +34,13 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05, latest (pricing note panels)
+The Team note is now just "Paid service will be introduced before the end of 2026." (the
+"Pricing is published now so organizations..." sentence removed, from the page only -
+content/pricing.md untouched). Both card-bottom notes are attention-grabbing callouts:
+--tag-match-bg background, --feat-border border, --ink 14.5px weight 600 (was the quiet
+bg-soft panel). Verified both themes.
+
 ## Lesson 2026-09-05 (Ram: "you are being sloppy sometimes")
 The two card-bottom notes shipped as bare muted 14px paragraphs while everything around them
 was styled - Ram called it sloppy. .price-card .action-note is now a bordered footnote panel
