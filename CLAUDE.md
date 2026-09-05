@@ -34,6 +34,17 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05, later (pricing page trims from Ram)
+Hero is now kicker + h1 "Free during the public beta" ONLY (his call: old hero content not
+needed; the beta mention had to live somewhere and the h1 carries it). The end-of-2026
+paragraph moved from below the grid INTO the bottom of the Team card (.action-note slot);
+.price-para CSS now unused. "Coming soon" badge removed. Individual card: "1-month evaluation
+period" bullet REMOVED - the tier is becoming perpetual but that is deliberately unstated; its
+upgrade bullet had to lose "after the evaluation period" (dangling once the period went) and
+now reads "Upgrade to Team Evaluation or Team at any time" - MY wording, flagged for Ram.
+NOTE: Individual is perpetual per Ram, which supersedes the pricing-decision note below about
+no perpetual tier being affordable - the md still says 1-month; content/pricing.md not edited.
+
 ## Pricing decisions (Ram, 2026-09-05 discussion - do not re-raise)
 No perpetual free tier: unlike 2010s SaaS, a free user costs real LLM money on Ram's cloud
 bill (indexing, query embedding, AI assist, docs questions) - the time-boxed evals bound the
