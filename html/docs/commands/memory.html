@@ -68,7 +68,7 @@
 <ul>
   <li>Stores and deletes are applied when the agent completes successfully. A run that fails stores nothing. Validation runs never store memories.</li>
   <li>One agent may use at most 10 distinct labels across its definition. A single command may store up to 25.</li>
-  <li>Memories are kept for a year. Each user has a bounded number of memories; when the bound is reached, the least recently retrieved memories are evicted first.</li>
+  <li>A memory is kept until the agent that stored it is deleted. Each user has a bounded number of memories; when the bound is reached, the least recently retrieved memories are evicted first.</li>
   <li>By default the search covers every agent's memories for this user. Narrow the search with <code>agentName</code> or <code>label</code>.</li>
 </ul>
 

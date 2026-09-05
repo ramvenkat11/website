@@ -17,9 +17,9 @@
 <div class="tablewrap"><table class="fields data">
 <thead><tr><th>Data</th><th>What the cloud does with the plain text</th><th>Who can read it</th><th>Kept for</th></tr></thead>
 <tbody>
-<tr><td>The user's query</td><td>Finds the matching agent. The shortened query is then stored encrypted as the conversation title, and the full query is stored encrypted on the execution record.</td><td>Only the user who typed it</td><td>Title: with the conversation. Execution record: three months</td></tr>
+<tr><td>The user's query</td><td>Finds the matching agent. The shortened query is then stored encrypted as the conversation title, and the full query is stored encrypted on the execution record.</td><td>Only the user who typed it</td><td>Title: with the conversation. Execution record: up to one year</td></tr>
 <tr><td>Agent descriptions</td><td>Indexes the agent for search.</td><td>Developers and above</td><td>Life of the agent</td></tr>
-<tr><td>Long-term memories<br><small>written by agents with the memory command</small></td><td>Embeds the memory text for semantic search. The label is stored in plain form.</td><td>Agents run by the user the memory belongs to</td><td>One year, refreshed when the memory is rewritten</td></tr>
+<tr><td>Long-term memories<br><small>written by agents with the memory command</small></td><td>Embeds the memory text for semantic search. The label is stored in plain form.</td><td>Agents run by the user the memory belongs to</td><td>Until the agent that stored the memory is deleted</td></tr>
 </tbody></table></div>
 
 <h2>What leaves and is stored in plain form</h2>
@@ -29,7 +29,7 @@
 <tbody>
 <tr><td>Agent definitions<br><small>with titles, tags and past versions</small></td><td>Developers and above</td><td>Life of the agent; past versions three months</td></tr>
 <tr><td>Drafts</td><td>The developer who owns the draft</td><td>Until published or deleted</td></tr>
-<tr><td>Execution records<br><small>agent name and version, result code, error message, command path, duration, LLM cost</small></td><td>Developers, in the agent reports; administrators, in the usage report</td><td>Three months</td></tr>
+<tr><td>Execution records<br><small>agent name and version, result code, error message, command path, duration, LLM cost</small></td><td>Developers, in the agent reports; administrators, in the usage report</td><td>Up to one year</td></tr>
 <tr><td>Configuration<br><small>agent servers, allowlist, limits, authentication, search settings</small></td><td>Developers or administrators, by part</td><td>Life of the account</td></tr>
 <tr><td>Profiles<br><small>LLMs, prompts, APIs, databases, MCP servers; a secret in a profile is a sys.secret reference, not the value</small></td><td>Developers and above</td><td>Life of the account</td></tr>
 <tr><td>Users<br><small>email address, name, role, UI preferences</small></td><td>Administrators and the owner</td><td>Until the user is deleted</td></tr>
@@ -39,4 +39,4 @@
 </tbody></table></div>
 
 <h2>Who else can see it</h2>
-<p>Search2o Cloud runs on Google Cloud Platform. Search2o staff, and Google as the provider of the underlying infrastructure, can in principle see the data stored in plain form. Neither can read what is stored encrypted. With the default setting the account's key is managed for you, but the cloud never uses the key to decrypt. With client-held keys the key never leaves your organization.</p>
+<p>Search2o Cloud runs on Google Cloud Platform. Search2o staff, and Google as the provider of the underlying infrastructure, can in principle see the data stored in plain form. With the default setting the account's key is managed by Search2o, so Search2o, and Google as the infrastructure provider, can in principle read the encrypted data as well. With end-to-end encryption the key never leaves your organization, and neither Search2o nor Google can read what is stored encrypted. The <a href="../../legal/privacy.html">privacy policy</a> has the final word.</p>
