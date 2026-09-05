@@ -57,7 +57,7 @@ SEARCH2O_LICENSE_KEY=... ANTHROPIC_API_KEY=... search2o
 ### GUI
 
 if you started it on your laptop:
-Go to http://127.0.0.1:9020 for the GUI
+Go to http://127.0.0.1:9020/ui for the GUI
 Login with the same credentials you registered with above in the registration form. 
 
 Other URLs:
