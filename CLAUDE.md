@@ -34,6 +34,44 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-04/05 (FULL DOCS FACT AUDIT, 120 pages)
+Ram: verify every line. Method: 9 fork auditors (7 died on a session limit; intro/getting-
+started and search/development completed), the rest audited in the main loop against
+../s2oserver, ../search2o (the agent server package IS at ~/IdeaProjects/search2o - launcher,
+routers, execution, UI; use it for server-side facts) and content/*.md.
+FIXED (all verified against code): positioning "search box" -> "search interface" (docs home,
+what-is-search2o, introduction lead; LITERAL search-box uses stay); "operator rules" ->
+"compile rules" (what-is-search2o); "under 300 milliseconds" -> "under a second"
+(how-matching-works, matches home); docsBase row added to the-gui ui-config table (5th
+setting, verified in package ui/index.html); "human in the loop" sample hyphenated
+(ai-assist); variables.html reserved list gained onError (ReadOnlyVariable + explicit check);
+THE SERVER-REPORTING FICTION HAD FOUR MORE INSTANCES beyond the two fixed earlier -
+runtime/guardrails, misc/llm-adapters, security/controlled-runtime, gui/guardrails - all now
+"written to the server's log"; gui/reports.html still claimed error detail shows "sample
+queries" (removed - contradicted the 2026-09-03 privacy correction); license-rotation "three
+ways" -> "two ways" (env var change fallout); encryption.html key-retention advice was wrong -
+memories (1yr, Epoch.s365) and hosted secrets (life of secret) are encrypted under the same
+named rotating keys, so "only the last three months of keys" is false; now states all three
+lifetimes.
+VERIFIED CORRECT (samples): restriction table == compiler prohibitedWhy exactly; onError only
+on api/db/llm (FailsafeCommandModelBase); 20480 default; safe_pow exp<=64; pow=rewrite
+shifts/matmul=deny defaults; memory 10 labels (maxMemoryLabelsPerAgent) / 25 per store /
+1yr / LRU-retrieved eviction; db timeout default 30; ask reserved input "query"; state saved
+only on success|ask; conversation TTL s90 refreshed on read+run, pinned off-clock;
+notifications s90; sessions 60/720min, script token 60min; addUsers<=25; freeze sysadmin-only;
+all 24+5 named REST endpoints exist (cloud api.py + package routers); stream types exactly
+progress/trace/data/agent/noop/end for execAgent (draft type is validateDraftStream-only);
+chat endpoints incl. /api/user/getConversation (Ram's f1ad8b6 fix) all real.
+OPEN FOR RAM (do not fix without his call): (1) "three months" of execution records/reports
+claimed in reports/index.html, gui/reports.html, data-privacy.html x2, docsrc/index.html card -
+agent_executed has NO ttl in spannerschema and no window cap; records are kept indefinitely
+today. Either the server gains the TTL or the docs drop the promise. (2) Ram's new
+../search2o/README.md says SOURCE AVAILABLE (public source, no PRs, CONTRIBUTING.md) -
+reversing 2026-09-01; docs license.html/registering still say only "proprietary, PyPI" with no
+repository mention; if the reversal stands, those pages need his wording. (3) Unverifiable but
+consistent: seeded profile names gpt5_mini/gpt_image/claude_haiku/gemini_flash/gemini_image
+(operational data), ask-during-validation GUI behavior.
+
 ## State on 2026-09-04 (../search2o/README.md rewritten for PyPI)
 The pip package repo is ../search2o (distinct from ../s2oserver, the cloud side). Its README
 (pyproject readme=README.md, shown on PyPI) was stale: "source-available" (retired 2026-09-01),
