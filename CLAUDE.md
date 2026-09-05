@@ -34,6 +34,25 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05 (SOURCE AVAILABLE IS BACK; GitHub install)
+Ram reversed 2026-09-01 again: the agent server is source available (still proprietary), repo
+github.com/Search2o/agent-server, installed with pip install git+https://github.com/Search2o/
+agent-server.git or git clone + pip install ./agent-server. PyPI IS GONE from the story - no
+page may say PyPI. The repo has README.md (Ram's own, canonical wording: "source available and
+proprietary... not open source", no PRs, CONTRIBUTING.md welcome items), LICENSE and
+CONTRIBUTING.md. Changes: home hero pip chip -> ghost button "Install from GitHub" (repo
+link); diagram server subtitle "Stateless · Python 3.12+" -> "Stateless · source available"
+(fits, 0 overflow); gen/figures.py architecture node "stateless · pip install search2o" ->
+"stateless · source available"; gettingstarted.html step 2 rewritten (codecard: git+ pip, or
+clone + pip install ./agent-server; extras from-clone "./agent-server[postgres]"; dim licence
+line; meta descriptions updated); registering-and-downloading.html rewritten (both install
+forms, extras from-clone block noting the "search2o[postgres] @ git+..." form, Source section);
+license.html rewritten (source available lead, repo + LICENSE + CONTRIBUTING links, no-PRs
+paragraph, GUI/cloud/beta kept) - the old page ALSO had a broken licence-text link
+(html/legal/ does not exist; text said ip/, href said legal/) - now links the repo LICENSE
+blob; support.html PyPI line -> repo link; docs home Getting started card wording. Sweep for
+PyPI/pip install search2o over docsrc/gen/html returns nothing.
+
 ## State on 2026-09-04/05 (FULL DOCS FACT AUDIT, 120 pages)
 Ram: verify every line. Method: 9 fork auditors (7 died on a session limit; intro/getting-
 started and search/development completed), the rest audited in the main loop against
