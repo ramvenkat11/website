@@ -34,6 +34,11 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05, latest (pricing note panels + bullet reword)
+Team Evaluation bullet "Significantly higher usage limits than Individual" -> "Usage limits
+sized for an organization-wide evaluation" (Ram: never compare to Individual; say the limits
+are commensurate with this level of usage). Page only; content/pricing.md keeps his original.
+
 ## State on 2026-09-05, latest (pricing note panels)
 The Team note is now just "Paid service will be introduced before the end of 2026." (the
 "Pricing is published now so organizations..." sentence removed, from the page only -
