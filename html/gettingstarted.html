@@ -40,7 +40,6 @@
     <div class="container">
       <span class="kicker">Getting started</span>
       <h1>Up and running on your laptop</h1>
-      <p class="lead">From registration to your first running agent, on your laptop. This page has everything you need; the <a href="docs/index.html">docs</a> go deeper on every topic.</p>
     </div>
   </section>
 
@@ -50,17 +49,20 @@
 
         <div class="step-sec" id="register">
           <h2>Register</h2>
-          <p>Registration is the prerequisite for everything below: it creates your account and shows your license key once. It takes a minute on the <a href="register.html">Register</a> page.</p>
+          <p>Registration creates your account and shows your license key once &mdash; store the key with your other secrets. <a href="register.html">Register here</a>.</p>
         </div>
 
         <div class="step-sec" id="install">
           <h2>Download the agent server</h2>
-          <p>The agent server is a Python 3.12+ package, installed from GitHub. Install it wherever you want agents to run &mdash; your laptop is a good place to start. Pip installs straight from the repository, or clone the repository first and install from the clone:</p>
-          <div class="codecard" aria-label="Installing the agent server">
+          <p>The agent server is a Python 3.12+ package. Install it from GitHub &mdash; your laptop is a good place to start:</p>
+          <div class="codecard" aria-label="Install straight from the repository">
             <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">terminal</span></div>
-<pre><code><span class="ps1">$ </span>pip install git+https://github.com/Search2o/agent-server.git
-<span class="tk-com"># or clone, then install from the clone</span>
-<span class="ps1">$ </span>git clone https://github.com/Search2o/agent-server.git
+<pre><code><span class="ps1">$ </span>pip install git+https://github.com/Search2o/agent-server.git</code></pre>
+          </div>
+          <div class="or">OR</div>
+          <div class="codecard" aria-label="Clone, then install from the clone">
+            <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">terminal</span></div>
+<pre><code><span class="ps1">$ </span>git clone https://github.com/Search2o/agent-server.git
 <span class="ps1">$ </span>pip install ./agent-server</code></pre>
           </div>
           <p class="dim">SQLite works out of the box. For another database, install from a clone with the matching extra &mdash; <code>pip install "./agent-server[postgres]"</code> &mdash; likewise <code>mysql</code>, <code>oracle</code> or <code>mssql</code>.</p>
@@ -70,34 +72,37 @@
         <div class="step-sec" id="run">
           <h2>Run the server</h2>
           <h3>Set up the license key</h3>
-          <p>The license key from registration connects your agent server to Search2o Cloud. Give the server the key in one of two ways:</p>
-          <div class="codecard" aria-label="Providing the license key">
+          <p>The license key connects your agent server to Search2o Cloud:</p>
+          <div class="codecard" aria-label="The key itself">
             <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">terminal</span></div>
-<pre><code><span class="ps1">$ </span>export SEARCH2O_LICENSE_KEY=your-license-key
-<span class="tk-com"># or point at a file that holds the key</span>
-<span class="ps1">$ </span>export SEARCH2O_LICENSE_KEY_FILE=/path/to/license.key</code></pre>
+<pre><code><span class="ps1">$ </span>export SEARCH2O_LICENSE_KEY=your-license-key</code></pre>
           </div>
-          <p class="dim">Please set only one of the two. With neither set, the server exits at startup.</p>
+          <div class="or">OR</div>
+          <div class="codecard" aria-label="A file that holds the key">
+            <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">terminal</span></div>
+<pre><code><span class="ps1">$ </span>export SEARCH2O_LICENSE_KEY_FILE=/path/to/license.key</code></pre>
+          </div>
           <h3>Set up one LLM key</h3>
-          <p>A new account comes with LLM profiles for OpenAI, Anthropic and Gemini. Set the environment variable for the vendor you use: <code>OPENAI_API_KEY</code>, <code>ANTHROPIC_API_KEY</code> or <code>GEMINI_API_KEY</code>. One key is enough, and Search2o is not limited to these vendors.</p>
+          <p>Set the key for the vendor you use: <code>OPENAI_API_KEY</code>, <code>ANTHROPIC_API_KEY</code> or <code>GEMINI_API_KEY</code>. One is enough.</p>
           <h3>Start the server</h3>
           <div class="codecard" aria-label="Starting the agent server">
             <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">terminal</span></div>
 <pre><code><span class="ps1">$ </span>SEARCH2O_LICENSE_KEY=your-license-key ANTHROPIC_API_KEY=sk-ant-... search2o</code></pre>
           </div>
-          <p>The server is stateless &mdash; conversation state lives, encrypted, in Search2o Cloud &mdash; so you can stop and restart the server anywhere. Just make sure the APIs and databases your agents call are reachable from where the server runs.</p>
+          <p>The server is stateless; stop and restart it anywhere. The APIs and databases your agents call must be reachable from where the server runs.</p>
           <p class="dim">Further command line options go to Uvicorn, so <code>--host</code> and <code>--port</code> work as usual.</p>
         </div>
 
         <div class="step-sec" id="gui">
           <h2>Open the GUI</h2>
-          <p>Go to <code>http://127.0.0.1:9020/ui</code> and sign in with the email address and password you registered with. The first user of an account is the account&rsquo;s owner.</p>
-          <p class="dim">The server also serves the OpenAPI schema at <code>/openapi.json</code>, Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>. All of these paths can be changed, or removed, from the GUI.</p>
+          <p>Sign in at <code>http://127.0.0.1:9020/ui</code> with the email and password you registered with.</p>
+          <h3>REST API</h3>
+          <p>The server also serves the OpenAPI schema at <code>/openapi.json</code>, Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>.</p>
         </div>
 
         <div class="step-sec" id="first-agent">
           <h2>Create your first agent</h2>
-          <p>Open <strong>Agents &rarr; Drafts</strong> and create a new draft. Give the draft a name and a title: agents refer to each other by name, and users see the title. Then paste this agent into the editor. The agent sends the user&rsquo;s query to an LLM and streams the answer back:</p>
+          <p>Open <strong>Agents &rarr; Drafts</strong>, create a draft, and paste this agent into the editor:</p>
           <div class="codecard" aria-label="A minimal agent definition">
             <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">A minimal agent</span></div>
 <pre><code><span class="tk-pun">{</span>
@@ -119,28 +124,29 @@
             <li><code>prompt</code> sets the system prompt; <code>sys.query</code> is the text the user typed.</li>
             <li><code>llm</code> sends the prompt to the <code>claude_haiku</code> profile and streams the answer. Change the profile to <code>gpt5_mini</code> or <code>gemini_flash</code> if that is the key you set.</li>
           </ul>
-          <p>Enter a validation query such as <em>What is the capital of France, in one word?</em> and validate. The draft is checked and run against that query, and the execution trace shows each command with what came back. When the draft validates, <strong>publish</strong> it.</p>
-          <p class="dim">AI assist in the editor writes a full agent from one sentence &mdash; a faster path once you have seen the shape.</p>
+          <p>Enter a validation query &mdash; <em>What is the capital of France, in one word?</em> &mdash; and validate. The trace shows each command and what came back. Then <strong>publish</strong>.</p>
+          <p class="dim">AI assist writes a full agent from one sentence.</p>
         </div>
 
         <div class="step-sec" id="describe">
           <h2>Describe your agent, then search</h2>
-          <p>Open the published agent and write its description in plain English &mdash; for example <em>Answers general knowledge questions in a sentence or two.</em> Search matches user requests against this description. Publishing the description indexes the agent, and a notification tells you when indexing is done.</p>
-          <p>Now switch to the search box and type a question the agent should handle. The agent matches, runs, and streams its answer. Ask a follow-up &mdash; the conversation continues with the context of the first answer.</p>
+          <p>Write the agent&rsquo;s description in plain English &mdash; for example <em>Answers general knowledge questions in a sentence or two.</em> Search matches requests against the description. Publishing the description indexes the agent.</p>
+          <p>Type a question in the search box. The agent matches, runs, and streams its answer. Follow-ups continue the conversation.</p>
         </div>
 
         <div class="step-sec" id="team">
           <h2>Bring your team</h2>
-          <p>Add users with roles from the Account section. When you&rsquo;re ready, start the agent server in a common place in your organization &mdash; or share the license key, and colleagues can run servers on their own laptops. Because the server is stateless, nothing else has to change.</p>
+          <p>When you&rsquo;re ready for your team, request an Evaluation license from the Account page. You are notified of the approval by email within one business day. Then start the server in a common place &mdash; nothing else has to change.</p>
+          <p>See <a href="pricing.html">Pricing</a> for what each level includes.</p>
         </div>
 
         <div class="step-sec" id="docs">
           <h2>Read the docs, or ask a question</h2>
-          <p>The docs icon at the top of the GUI opens the full documentation beside your work. From there you can also ask a question of the docs in plain English and get an answer.</p>
-          <p>The same pages are on the web at <a href="docs/index.html">search2o.com/docs</a>: the agent framework, all 23 commands, configuration, reports and administration.</p>
+          <p>The docs icon in the GUI opens the full documentation, and you can ask the docs a question in plain English.</p>
+          <p>The same pages are on the web at <a href="docs/index.html">search2o.com/docs</a>.</p>
           <div class="callout">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 12v5"/></svg>
-            <span>Stuck at any step? Email <a href="mailto:info@search2o.com">info@search2o.com</a> from your registration address and we&rsquo;ll help you get running. Once the GUI is open in your browser, the help icon there is the best way to contact us.</span>
+            <span>Stuck? Email <a href="mailto:info@search2o.com">info@search2o.com</a> and we&rsquo;ll help. Once the GUI is open, its help icon is the best way to reach us.</span>
           </div>
         </div>
 
