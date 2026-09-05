@@ -34,6 +34,21 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05 (data-privacy corrections from Ram)
+Three facts corrected. (1) KEY CAPABILITY: with the default Search2o-managed key, Search2o AND
+Google can in principle read the encrypted data - only end-to-end encryption excludes them.
+data-privacy "Who else can see it" rewritten; encryption.html default-key section now says the
+same (was "the protection rests on Search2o never using it"). (2) LONG-TERM MEMORY is kept
+until the agent that stored it is deleted (NOT one year - even though persistence/longmemory
+still writes Epoch.s365; Ram's statement wins): data-privacy row, commands/memory.html rule,
+and encryption.html's key-retention list ("the life of the storing agent"). (3) EXECUTION
+RECORDS are kept up to one year (not three months): data-privacy x2, reports/index lead,
+gui/reports lead, docs home Reports card (duration dropped). data-privacy now ends "The
+privacy policy has the final word" linking ../../legal/privacy.html - THAT PAGE DOES NOT EXIST
+YET (Ram: legal/privacy.html not written; content/legal/terms.html is appearing in his IDE);
+the link 404s until the legal pages land. Notifications 90 days and help messages one year
+stand (code-verified, undisputed). This resolves the audit's open "three months" flag.
+
 ## State on 2026-09-05 (registration success hands off to Getting started)
 The register success message now ends with a .reg-next line: "Getting started takes you from
 install to your first agent" (link), below the once-shown key. Verified by SIMULATING the
