@@ -582,6 +582,7 @@ p { margin: 0; }
 .reg-out.ok { background: rgba(22, 163, 74, .12); border: 1px solid rgba(22, 163, 74, .4); }
 .reg-out.err { background: rgba(220, 38, 38, .12); border: 1px solid rgba(220, 38, 38, .4); }
 .reg-key { display: inline-block; margin-top: 8px; padding: 6px 10px; border-radius: 6px; font-family: var(--mono); user-select: all; background: var(--bg-soft); border: 1px solid var(--line); }
+.reg-card { max-width: 560px; }
 
 /* pricing */
 .pricing-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; align-items: stretch; max-width: 980px; }
