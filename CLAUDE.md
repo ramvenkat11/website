@@ -34,6 +34,16 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05 (gettingstarted TIGHTENED end to end)
+Ram: no overexplaining; the page's only job is to help and get out of the way. Full pass: hero
+lead REMOVED (kicker + h1 only, like pricing); every step cut to what the reader must do; code
+blocks carry the detail, prose no longer narrates them. Cut entirely: first-user-is-owner,
+name/title explanation, the openapi/docs/redoc dim line, "not limited to these vendors",
+indexing notification, "from your registration address", the docs-topics list. "Add users
+with roles from the Account section" is GONE - Ram challenged it as possible hallucination
+(it came from docsrc/gui/the-gui claims, unverifiable in the minified UI bundle; the docs
+pages still carry it - UNRESOLVED, his call). Steps now ~528 words total.
+
 ## State on 2026-09-05 (getting-started reflects the tier flow)
 "Bring your team" rewritten to Ram's narrative: request an Evaluation license from the Account
 page -> "You are notified of the approval by email within one business day." (his sentence) ->
