@@ -34,6 +34,16 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05, final pricing trims
+Ram's four: "Up to 100 users" bullet REMOVED (Team Eval); note now "Request an upgrade to Team
+Evaluation from the Account page." (his wording, casing normalized to the tier name and
+"Account page" - flagged to him); "Upgrade to Team to continue after the evaluation period"
+REMOVED; Team's two limit bullets MERGED into "Account-level usage limits that scale with the
+number of users" (my words). Cards are 5/4/4 bullets; grid nearly fits one view; alignment
+holds (same .price-head). content/pricing.md untouched throughout - the page has diverged
+substantially from the md (no 100-user cap, no 1-month, reworded bullets); syncing the md is
+Ram's call.
+
 ## State on 2026-09-05, latest (pricing card alignment)
 Ram: card 3's text did not line up with the others. Cause: its head was taller (two fee lines
 + desc). Fixed: "For ongoing organizational use." desc REMOVED (Ram allowed it); each card's
