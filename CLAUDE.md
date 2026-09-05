@@ -34,6 +34,18 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05 (register.html split out; NO GitHub on the home page)
+Ram: a GitHub mention on the home page can mislead as open source - the hero's
+install-from-git button (briefly "View on GitHub") is GONE; the hero has Get started alone.
+The diagram's "source available" STAYS (Ram asked for it; names no repository). SIX site pages
+now: NEW html/register.html holds the whole registration flow (hero note points on to Getting
+started; .form-card.reg-card, .reg-card{max-width:560px} in styles.css; hCaptcha script only
+here). gettingstarted.html step 1 is one line + a link to the Register page ("prerequisite",
+Ram's word); its form, reg script and hCaptcha script are gone; its header CTA (and register
+page's own) -> register.html; index/about/pricing keep "Get started". Inbound register links
+now target register.html: registering-and-downloading lead and ../search2o/README.md (Ram
+commits that repo). Register is NOT in the nav - header button only.
+
 ## State on 2026-09-05 (SOURCE AVAILABLE IS BACK; GitHub install)
 Ram reversed 2026-09-01 again: the agent server is source available (still proprietary), repo
 github.com/Search2o/agent-server, installed with pip install git+https://github.com/Search2o/
