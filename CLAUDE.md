@@ -34,6 +34,14 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## Pricing decisions (Ram, 2026-09-05 discussion - do not re-raise)
+No perpetual free tier: unlike 2010s SaaS, a free user costs real LLM money on Ram's cloud
+bill (indexing, query embedding, AI assist, docs questions) - the time-boxed evals bound the
+worst case absolutely. No cheap end-user seat: $40 is value-priced for searchers (execution,
+not suggestions). Active-user billing exists as a PRIVATE negotiation lever for large deals -
+deliberately NOT published (self-targeting discount; publishing gives it away). No
+"volume pricing - talk to us" line on the page: Ram says everyone knows they can negotiate.
+
 ## State on 2026-09-05 (pricing page redone from content/pricing.md)
 Three tiers now: Individual (Free, register.html button), Team Evaluation (Free; NO button -
 the action is in-product, so a bottom .action-note says "Request Team Evaluation from the
