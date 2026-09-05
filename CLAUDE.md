@@ -34,6 +34,13 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## Lesson 2026-09-05 (Ram: "you are being sloppy sometimes")
+The two card-bottom notes shipped as bare muted 14px paragraphs while everything around them
+was styled - Ram called it sloppy. .price-card .action-note is now a bordered footnote panel
+(bg-soft, line-soft border, radius 10, --body text); .checklist gained bottom margin 24 so the
+panel never touches the list. RULE: secondary text gets the same design attention as primary
+elements - a bare <p> hanging at the bottom of a designed card is never finished work.
+
 ## State on 2026-09-05, later (pricing page trims from Ram)
 Hero is now kicker + h1 "Free during the public beta" ONLY (his call: old hero content not
 needed; the beta mention had to live somewhere and the h1 carries it). The end-of-2026
