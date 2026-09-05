@@ -37,7 +37,10 @@ the configuration part, "Compile rules". Marketing copy never says "compile agen
 ## State on 2026-09-05, latest (pricing note panels + bullet reword)
 Team Evaluation bullet "Significantly higher usage limits than Individual" -> "Usage limits
 sized for an organization-wide evaluation" (Ram: never compare to Individual; say the limits
-are commensurate with this level of usage). Page only; content/pricing.md keeps his original.
+are commensurate with this level of usage). Then "Intended for shared deployments and real
+organizational evaluation" REMOVED - back to back with the new bullet it repeated
+"organization/evaluation", and the card's desc line already carries that meaning. Page only;
+content/pricing.md keeps his originals.
 
 ## State on 2026-09-05, latest (pricing note panels)
 The Team note is now just "Paid service will be introduced before the end of 2026." (the
