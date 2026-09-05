@@ -34,6 +34,15 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05, later pricing trims (Search2o out of descs; fee line inline)
+Descs are "For one person evaluating on a local machine." / "For organizations evaluating with
+a shared deployment." (Ram: obviously they are evaluating Search2o). Note is "Request Team
+Evaluation from the Agent Server UI." (his words + "the"; NOTE this says "Agent Server UI"
+while the vocabulary elsewhere is "the GUI" - his choice, not flagged as an error). Team price
+is now "$100/month" on one line (.permo inline span, 18px muted) with ONE line beneath:
+"platform fee + $40/user/month" - the old stacked /month-fee + per2 lines are gone;
+.per2 CSS replaced by .permo. Checklist tops re-measured 502/502/502.
+
 ## State on 2026-09-05, final pricing trims
 Ram's four: "Up to 100 users" bullet REMOVED (Team Eval); note now "Request an upgrade to Team
 Evaluation from the Account page." (his wording, casing normalized to the tier name and
