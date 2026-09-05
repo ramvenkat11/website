@@ -585,6 +585,17 @@ p { margin: 0; }
 .reg-card { max-width: 560px; }
 .reg-next { margin-top: 12px; }
 
+/* legal pages */
+.legal-body { max-width: 780px; }
+.legal-body h2 { font-size: 20px; margin: 34px 0 10px; }
+.legal-body h3 { font-size: 16.5px; margin: 24px 0 8px; }
+.legal-body p, .legal-body li { font-size: 15.5px; line-height: 1.7; color: var(--body); }
+.legal-body p { margin: 0 0 14px; }
+.legal-body ul { margin: 0 0 14px; padding-left: 24px; }
+.legal-body li { margin: 6px 0; }
+.legal-body strong { color: var(--ink); }
+.legal-body code { font-family: var(--mono); font-size: .9em; }
+
 /* pricing */
 .pricing-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; align-items: stretch; max-width: 980px; }
 .price-card {

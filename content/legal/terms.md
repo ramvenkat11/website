@@ -1,5 +1,3 @@
-Here is the full Terms document with the latest international-use language and the revised retention/deletion provisions incorporated.
-
 # Search2o Terms of Service
 
 **Effective Date: September 5, 2026**
