@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Registering and downloading — Search2o docs</title>
-<meta name="description" content="Register for a license key at search2o.com, then install the agent server with pip.">
+<meta name="description" content="Register for a license key at search2o.com, then install the agent server from GitHub with pip.">
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,23 +38,26 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../getting-started/index.html'>Getting started</a></div>
     <article class="docs-article">
       <h1>Registering and downloading</h1>
-      <p class="lead">Register for a license key at <a href="https://search2o.com/gettingstarted.html">search2o.com</a>, then install the agent server with <code>pip</code>.</p>
+      <p class="lead">Register for a license key at <a href="https://search2o.com/gettingstarted.html">search2o.com</a>, then install the agent server from GitHub with <code>pip</code>.</p>
 
 <h2 id="register">Register</h2>
 <p>Search2o is in open beta, and anyone interested is welcome to try it. Registration creates your account and ends by showing the account's license key once. The key connects an agent server to your account in Search2o Cloud. The key belongs with your other secrets, so please store it as soon as registration shows it.</p>
 
 <h2 id="install">Install</h2>
-<p>The agent server requires Python 3.12 or later.</p>
-<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>pip install search2o</code></pre></figure>
-<p>The <code>db</code> command uses SQLAlchemy's async engines, so the driver for your database must be installed as well. SQLite works out of the box. The other drivers are optional extras:</p>
-<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>pip install search2o[postgres]   <span class=cm># asyncpg</span>
-<span class=ps1>$ </span>pip install search2o[mysql]      <span class=cm># aiomysql, also used for MariaDB</span>
-<span class=ps1>$ </span>pip install search2o[oracle]     <span class=cm># oracledb</span>
-<span class=ps1>$ </span>pip install search2o[mssql]      <span class=cm># aioodbc, also needs a system ODBC driver</span>
-<span class=ps1>$ </span>pip install search2o[db]         <span class=cm># postgres, mysql and oracle together</span></code></pre></figure>
+<p>The agent server requires Python 3.12 or later. The source is available at <a href="https://github.com/Search2o/agent-server">github.com/Search2o/agent-server</a>, and pip installs straight from the repository:</p>
+<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>pip install git+https://github.com/Search2o/agent-server.git</code></pre></figure>
+<p>Cloning first works just as well, and keeps the source at hand:</p>
+<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>git clone https://github.com/Search2o/agent-server.git
+<span class=ps1>$ </span>pip install ./agent-server</code></pre></figure>
+<p>The <code>db</code> command uses SQLAlchemy's async engines, so the driver for your database must be installed as well. SQLite works out of the box. The other drivers are optional extras, shown here from a clone; the same extras work in the <code>git+</code> form as <code>"search2o[postgres] @ git+..."</code>.</p>
+<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>pip install <span class=str>&quot;./agent-server[postgres]&quot;</span>   <span class=cm># asyncpg</span>
+<span class=ps1>$ </span>pip install <span class=str>&quot;./agent-server[mysql]&quot;</span>      <span class=cm># aiomysql, also used for MariaDB</span>
+<span class=ps1>$ </span>pip install <span class=str>&quot;./agent-server[oracle]&quot;</span>     <span class=cm># oracledb</span>
+<span class=ps1>$ </span>pip install <span class=str>&quot;./agent-server[mssql]&quot;</span>      <span class=cm># aioodbc, also needs a system ODBC driver</span>
+<span class=ps1>$ </span>pip install <span class=str>&quot;./agent-server[db]&quot;</span>         <span class=cm># postgres, mysql and oracle together</span></code></pre></figure>
 
 <h2 id="source">Source</h2>
-<p>The agent server is published on PyPI as the <code>search2o</code> package, under a proprietary license. See <a href="../support-licensing/license.html">License</a>.</p>
+<p>The agent server is source available: the code is public on GitHub, and the software remains proprietary. See <a href="../support-licensing/license.html">License</a>.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../getting-started/index.html'><small>Previous</small>Getting started</a><a class=next href='../getting-started/license-key.html'><small>Next</small>The license key</a></nav>

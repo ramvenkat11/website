@@ -145,7 +145,7 @@ def _architecture():
     f.group(20, 20, 420, 260, "YOUR ORGANIZATION")
     f.box(40, 60, 120, 60, "Users", "browser", kind="soft")
     f.box(40, 190, 120, 60, "Developers", "browser", kind="soft")
-    f.box(210, 100, 210, 110, "Agent server", "stateless · pip install search2o", kind="dark")
+    f.box(210, 100, 210, 110, "Agent server", "stateless · source available", kind="dark")
     f.text(315, 192, "GUI at /ui · REST at /api", size=11, fill="white", anchor="middle")
     f.parts[-1] = f.parts[-1].replace('fill="#fff"', 'fill="rgba(255,255,255,.75)"')
     f.arrow(160, 90, 210, 125)

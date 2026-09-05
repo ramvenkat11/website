@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Getting started — Search2o</title>
-<meta name="description" content="Register, pip install search2o, run the agent server with your license, and build your first agent.">
+<meta name="description" content="Register, install the agent server from GitHub, run it with your license, and build your first agent.">
 <meta property="og:title" content="Getting started — Search2o">
-<meta property="og:description" content="Register, pip install search2o, run the agent server with your license, and build your first agent.">
+<meta property="og:description" content="Register, install the agent server from GitHub, run it with your license, and build your first agent.">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -100,15 +100,16 @@
 
         <div class="step-sec" id="install">
           <h2>Download the agent server</h2>
-          <p>The agent server is a Python 3.12+ package. Install it wherever you want agents to run &mdash; your laptop is a good place to start.</p>
-          <div class="shell">
-            <span><span class="ps1">$</span>pip install search2o</span>
-            <button type="button" data-copy="pip install search2o" aria-label="Copy install command">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-            </button>
+          <p>The agent server is a Python 3.12+ package, installed from GitHub. Install it wherever you want agents to run &mdash; your laptop is a good place to start. Pip installs straight from the repository, or clone the repository first and install from the clone:</p>
+          <div class="codecard" aria-label="Installing the agent server">
+            <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">terminal</span></div>
+<pre><code><span class="ps1">$ </span>pip install git+https://github.com/Search2o/agent-server.git
+<span class="tk-com"># or clone, then install from the clone</span>
+<span class="ps1">$ </span>git clone https://github.com/Search2o/agent-server.git
+<span class="ps1">$ </span>pip install ./agent-server</code></pre>
           </div>
-          <p class="dim">SQLite works out of the box. For another database, add the matching extra: <code>search2o[postgres]</code>, <code>search2o[mysql]</code>, <code>search2o[oracle]</code> or <code>search2o[mssql]</code>.</p>
-          <p class="dim">The package is published on PyPI under a proprietary license; see <a href="docs/support-licensing/license.html">License</a>.</p>
+          <p class="dim">SQLite works out of the box. For another database, install from a clone with the matching extra &mdash; <code>pip install "./agent-server[postgres]"</code> &mdash; likewise <code>mysql</code>, <code>oracle</code> or <code>mssql</code>.</p>
+          <p class="dim">The source is available on GitHub under a proprietary license; see <a href="docs/support-licensing/license.html">License</a>.</p>
         </div>
 
         <div class="step-sec" id="run">
