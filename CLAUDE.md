@@ -34,6 +34,15 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05 (Team price finally right - $40 same format as $100)
+Ram (annoyed, second sloppiness call): $40 must match $100's format and the fees must line up.
+Final form: TWO .price rows, "$100/month platform fee +" then "$40/user/month" - both figures
+44px w800 ink, suffixes .permo 15px muted inline, dollar signs flush at the same left edge
+(measured 1182/1182). Two traps fixed on the way: at 17px the first suffix WRAPPED under the
+figure (head grew to 266 and broke alignment - 15px fits); and .price is a div so it inherited
+BODY line-height 1.65 (73px line boxes) - .price now sets line-height 1.15. Checklist tops
+re-measured 502/502/502. .price + .price { margin-top: 0 }.
+
 ## State on 2026-09-05, later pricing trims (Search2o out of descs; fee line inline)
 Descs are "For one person evaluating on a local machine." / "For organizations evaluating with
 a shared deployment." (Ram: obviously they are evaluating Search2o). Note is "Request Team
