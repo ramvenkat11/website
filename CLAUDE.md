@@ -34,6 +34,13 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05 (registration success hands off to Getting started)
+The register success message now ends with a .reg-next line: "Getting started takes you from
+install to your first agent" (link), below the once-shown key. Verified by SIMULATING the
+success DOM in the browser (the real flow needs hCaptcha + the live API and creating accounts
+is off-limits) - build the same innerHTML into #reg-out and screenshot; the say() IIFE is not
+console-reachable. .reg-next { margin-top: 12px; } in styles.css.
+
 ## State on 2026-09-05 (ONE LABEL, ONE DESTINATION - "Get started" retired)
 Ram's plan, agreed and applied: "Register" is the ONLY action button and always ->
 register.html; "Getting started" is the guide's NAME, plain links only (nav + footer + prose),
