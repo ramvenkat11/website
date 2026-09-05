@@ -34,6 +34,13 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05 (getting-started: OR-split boxes, REST API section back)
+The install block and the license-key block are each TWO codecards separated by a hairline
+"OR" divider (new .or CSS: flex label with ::before/::after lines) - one way per box; the
+"Set one of the two, not both." dim line became redundant and is gone (the OR carries it).
+The openapi/docs/redoc line I over-cut in the tightening pass is BACK as an h3 "REST API"
+under the Open the GUI step (Ram asked for it back; without the changeable-paths sentence).
+
 ## State on 2026-09-05 (Individual bullet reword)
 "Intended for local evaluation and agent development" -> "For trying it out and developing
 agents on your laptop" (Ram: "evaluation" now collides with the Evaluation tier name).
