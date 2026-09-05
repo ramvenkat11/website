@@ -34,6 +34,17 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-05 (ONE LABEL, ONE DESTINATION - "Get started" retired)
+Ram's plan, agreed and applied: "Register" is the ONLY action button and always ->
+register.html; "Getting started" is the guide's NAME, plain links only (nav + footer + prose),
+always -> gettingstarted.html; the phrase "Get started" no longer exists on the site or docs.
+Changed: header CTA on index/about/pricing AND the docs template (gen/build.py:445, rebuilt -
+all 120 docs pages now carry Register); home hero button; home band button; pricing.html's
+in-body price-card button (the sweep's one straggler). Nine Register buttons total, all ->
+register.html (docs pages relative, e.g. ../../register.html). Register stays OUT of the nav
+(mirror rule: Register everywhere as a button, nowhere as a nav item; Getting started the
+reverse). Footer has no Register link - offered, Ram did not take it.
+
 ## State on 2026-09-05 (band down to one button)
 Ram: the band's two buttons were fillers. The get-started band now has ONE button, "Get
 started ->" (btn-onnavy), to gettingstarted.html; "Read the getting-started guide" wording and
