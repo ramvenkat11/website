@@ -34,6 +34,11 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-06 (pricing bullets replaced again, Ram's v2)
+Checklists replaced verbatim with Ram's second content pass (3/4/3): single-user limits /
+deploy-publish-discover-generous limits / no-tiers + shared org limits + direct engineering
+support with production SLAs at GA. Cards aligned as before.
+
 ## State on 2026-09-06 (bottom row unified)
 Ram: still looked off; I made the button full-width; Ram REVERTED that call - a button is a
 button and stays small (natural width, min-height 50 kept so the row's heights match). The
