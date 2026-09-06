@@ -35,11 +35,10 @@ NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
 ## State on 2026-09-06 (bottom row unified)
-Ram: still looked off. Measurement showed the boxes were EXACT (tops 693, h 50, text centers
-within 1px) - the perceived misalignment was the SHAPE mismatch: a narrow button beside two
-full-width panels. The Register button is now width:100%; the bottom band is three equal
-blocks. Lesson: when measurements say aligned but the eye says off, the mismatch is form,
-not position.
+Ram: still looked off; I made the button full-width; Ram REVERTED that call - a button is a
+button and stays small (natural width, min-height 50 kept so the row's heights match). The
+boxes were measured exact all along (tops 693, h 50, text centers within 1px). FINAL: small
+Register button left-aligned, two full-width note panels, same vertical band.
 
 ## State on 2026-09-06 (bottom elements equalized)
 The Register button and the two note panels are all 50px tall, tops 693/693/693 (button gained
