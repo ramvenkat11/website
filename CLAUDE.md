@@ -34,6 +34,15 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-06 (pricing content replaced with Ram's final bullets)
+All three checklists replaced verbatim with Ram's new lists (3/4/3: explore-on-your-own /
+serious-evaluation / no-tiers-no-per-agent-charges). The Questions section is GONE - replaced
+by his closing line "Need help? Contact Search2o directly from the UI." (.help-line, bold).
+The ABUSE CALLOUT is REMOVED (his instruction; the Terms carry that rule now). RAM EDITED
+pricing.html HIMSELF between my passes: the notes now read "Request Evaluation from the UI."
+and "Will be available soon." - his wording, left exactly as found. Checklist tops still
+435/435/435.
+
 ## State on 2026-09-06 (browser-only sweep, per Ram)
 Ram: the docs opening figure shows Users reaching only a browser; chat apps missing. Sweep of
 every "browser" in figures + docsrc. FIXED: architecture figure Users sub "browser" ->
