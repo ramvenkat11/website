@@ -34,6 +34,14 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-06 (register API URL via config.js)
+From content/apiurl.js (Ram's pattern): NEW html/config.js sets
+window.SEARCH2O_CONFIG.apiUrl (checked-in copy = production https://api.search2o.com; for
+local work edit apiUrl to the local server and keep the edit out of the commit).
+register.html loads config.js and reads BASE from it, falling back to the prod URL if the
+config fails to load. The only hardcoded api.search2o.com is now the fallback. config.js is a
+NEW root file - a future deploy syncs it; a LOCAL apiUrl edit must never be deployed.
+
 ## State on 2026-09-06 (pricing bullets replaced again, Ram's v2)
 Checklists replaced verbatim with Ram's second content pass (3/4/3): single-user limits /
 deploy-publish-discover-generous limits / no-tiers + shared org limits + direct engineering
