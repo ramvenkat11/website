@@ -621,6 +621,7 @@ p { margin: 0; }
 }
 .price-card .actions, .price-card .action-note { margin-top: auto; }
 .price-card .actions { padding-top: 28px; }
+.price-card .actions .btn { min-height: 50px; }
 .price-card .action-note {
   padding: 13px 15px; border-radius: 10px;
   background: var(--tag-match-bg); border: 1px solid var(--feat-border);
@@ -633,6 +634,7 @@ p { margin: 0; }
 .badge.soon { background: var(--tag-state-bg); color: var(--tag-state-fg); }
 .price-para { margin-top: 26px; color: var(--muted); font-size: 15px; }
 .price-note { margin-top: 22px; }
+.help-line { margin-top: 40px; color: var(--ink); font-size: 15.5px; }
 
 /* support / contact */
 .contact-card {

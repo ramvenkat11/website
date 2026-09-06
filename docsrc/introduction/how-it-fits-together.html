@@ -12,8 +12,8 @@
 <h2>Answering a query</h2>
 <!--figure:request-lifecycle-->
 <ol>
-  <li>A user types a request in the search box. The agent server sends the request to the cloud, which returns the matching agent &mdash; or a few candidates when the request is ambiguous, or none when nothing fits.</li>
-  <li>The agent server runs the chosen agent in its controlled runtime. The agent calls LLMs and your systems, may ask the user for more input, and streams its output to the browser as it goes.</li>
+  <li>A user types a request in the search box or in a connected chat application. The agent server sends the request to the cloud, which returns the matching agent &mdash; or a few candidates when the request is ambiguous, or none when nothing fits.</li>
+  <li>The agent server runs the chosen agent in its controlled runtime. The agent calls LLMs and your systems, may ask the user for more input, and streams its output back to the user as it goes.</li>
   <li>When the agent finishes, the conversation context is encrypted and stored in the cloud.</li>
   <li>A follow-up request continues the conversation. The context is restored, and the same agent or a different agent runs with that context, so agents build on each other's work.</li>
 </ol>

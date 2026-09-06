@@ -143,7 +143,7 @@ def figure(name):
 def _architecture():
     f = Fig("architecture", 300, "The three parts, and what talks to what")
     f.group(20, 20, 420, 260, "YOUR ORGANIZATION")
-    f.box(40, 60, 120, 60, "Users", "browser", kind="soft")
+    f.box(40, 60, 120, 60, "Users", "browser · chat app", kind="soft")
     f.box(40, 190, 120, 60, "Developers", "browser", kind="soft")
     f.box(210, 100, 210, 110, "Agent server", "stateless · source available", kind="dark")
     f.text(315, 192, "GUI at /ui · REST at /api", size=11, fill="white", anchor="middle")
@@ -438,7 +438,7 @@ def _output_stream():
         if i < 4:
             f.arrow(xs + 120, 65, xs + 136, 65)
         xs += 136
-    f.text(20, 130, "each output command appends one or more parts; the browser renders them as they arrive", size=11.5)
+    f.text(20, 130, "each output command appends one or more parts; the client renders them as they arrive", size=11.5)
     f.text(20, 150, "progress and trace go to separate channels and are not part of the output", size=11.5)
     return f.render()
 
