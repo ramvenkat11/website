@@ -34,6 +34,12 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-06 (register page reworked further)
+Hero is kicker + "Create your account" ONLY - the key-shown-once lead moved INTO the success
+state as .reg-note under the key box ("This key is shown only once - please store it... Then
+Getting started takes you..."). reg1 failures now show the SERVER'S errorMessage when present
+(empty falls back to the generic line) and stay on step 1. Both states simulated and shown.
+
 ## State on 2026-09-06 (register page reworked)
 The outdated open-beta/free-three-months lead is GONE (pricing changed); the
 key-shown-once + Getting started line IS the lead now. Success state redesigned per Ram:
