@@ -37,7 +37,9 @@ the configuration part, "Compile rules". Marketing copy never says "compile agen
 ## State on 2026-09-06 (pricing bullets replaced again, Ram's v2)
 Checklists replaced verbatim with Ram's second content pass (3/4/3): single-user limits /
 deploy-publish-discover-generous limits / no-tiers + shared org limits + direct engineering
-support with production SLAs at GA. Cards aligned as before.
+support with production SLAs at GA; the support bullet was then SPLIT into two on Ram's
+follow-up ("Direct support from the Search2o engineering team" / "Production SLAs at general
+availability"). Cards aligned as before.
 
 ## State on 2026-09-06 (bottom row unified)
 Ram: still looked off; I made the button full-width; Ram REVERTED that call - a button is a
