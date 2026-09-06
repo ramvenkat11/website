@@ -34,6 +34,18 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-06 (browser-only sweep, per Ram)
+Ram: the docs opening figure shows Users reaching only a browser; chat apps missing. Sweep of
+every "browser" in figures + docsrc. FIXED: architecture figure Users sub "browser" ->
+"browser · chat app" (bbox measured 92.7px in the 120px box, fits; Developers stays
+"browser" - correct); output-stream figure "the browser renders" -> "the client renders";
+how-it-fits-together "types a request in the search box" -> "+ or in a connected chat
+application", "streams its output to the browser" -> "back to the user"; output.html lead
+"streamed to the GUI... the browser renders" -> "streamed to the user... the client - the GUI
+or a chat application - renders". CORRECT AND KEPT (browser is genuinely meant): auth cookie
+sign-in, parts-of-the-system GUI table row, connect-flow token warning, rest-api clients/CORS,
+Swagger-from-the-browser, config-sync GUI figure, request-lifecycle (already neutral).
+
 ## State on 2026-09-05 (getting-started: OR-split boxes, REST API section back)
 The install block and the license-key block are each TWO codecards separated by a hairline
 "OR" divider (new .or CSS: flex label with ::before/::after lines) - one way per box; the
