@@ -34,6 +34,13 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-06 (bottom row unified)
+Ram: still looked off. Measurement showed the boxes were EXACT (tops 693, h 50, text centers
+within 1px) - the perceived misalignment was the SHAPE mismatch: a narrow button beside two
+full-width panels. The Register button is now width:100%; the bottom band is three equal
+blocks. Lesson: when measurements say aligned but the eye says off, the mismatch is form,
+not position.
+
 ## State on 2026-09-06 (bottom elements equalized)
 The Register button and the two note panels are all 50px tall, tops 693/693/693 (button gained
 min-height 50, scoped .price-card .actions .btn; the btn-lg default was 46).
