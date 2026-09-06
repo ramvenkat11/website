@@ -34,6 +34,21 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-06 (register page reworked)
+The outdated open-beta/free-three-months lead is GONE (pricing changed); the
+key-shown-once + Getting started line IS the lead now. Success state redesigned per Ram:
+"Your account is ready." as a plain sentence (no green box), then a .reg-keybox - "LICENSE
+KEY" label, the key in mono, and a copy icon (clipboard.writeText with site.js's
+checkmark-for-1.4s feedback, bound manually since site.js only wires [data-copy] present at
+load). Old .reg-key/.reg-next CSS replaced by
+.reg-done/.reg-ready/.reg-keybox/.reg-keylabel/.reg-keyrow. Error path still uses
+.reg-out.err. Verified by SIMULATING the success DOM (real registration unavailable);
+screenshots of both states sent.
+ALSO: Uvicorn "Invalid HTTP request received." explained - Ram's local config.js said
+https://localhost:8080 against a plain-HTTP server (TLS bytes hit the HTTP parser); fixed to
+http://. config.js currently carries the LOCAL value - must be flipped to
+https://api.search2o.com before any deploy.
+
 ## State on 2026-09-06 (register API URL via config.js)
 From content/apiurl.js (Ram's pattern): NEW html/config.js sets
 window.SEARCH2O_CONFIG.apiUrl (checked-in copy = production https://api.search2o.com; for
