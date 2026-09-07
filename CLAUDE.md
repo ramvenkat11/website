@@ -39,6 +39,20 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-07 (gettingstarted restructured into three parts)
+Ram's outline applied: the page is now THREE numbered parts (the 46px chips number the parts,
+not the steps): 01 "Up and running on your laptop" (the seven former steps as h3s: Register /
+Download / Run (h4s: license key, LLM key, start) / GUI (+REST API h4) / first agent /
+describe+search / docs+Stuck callout), 02 "Evaluation with your team" (the old Bring-your-team
+text split into two paragraphs + Pricing link), 03 "Production across your organization" (MY
+rewording of his "Production installation"; skimmable by his instruction: shape-of-production
+intro + three bullets (stateless/LB/containers, key via secret store + both env vars, config
+reaches every server) + "The Team plan covers production use and will be available soon.").
+Hero h1 is now "From your laptop to production" (part 1 took the old h1); metas updated. CSS:
+.numbered h2 27px, h3 19px w700 (steps), h2+h3 margin-top 0, NEW h4 16px w700. All old step
+ids kept on the h3s (no inbound anchors existed; .numbered used only by this page). Shown to
+Ram in dark theme; light not yet checked.
+
 ## State on 2026-09-07 (AI assist line surfaced on gettingstarted)
 Ram: "AI assist writes a full agent from one sentence." was a key line hiding as a .dim
 footnote at the end of the first-agent step. His pick of my options: fold it into the step's
