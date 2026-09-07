@@ -34,6 +34,15 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-07 (sections swapped; ids retied)
+The two sections swapped position AND ids: the conversation/example section is now FIRST, as
+<section class="section soft" id="how-it-works"> (kicker How it works, h2 "One conversation,
+many agents"); the steps+diagram section follows as id="system-architecture" (plain). The
+.soft class was swapped WITH the position so the background rhythm held (soft/plain/soft...
+verified in-browser). The nine footer "How it works" links needed NO edits - they point at
+#how-it-works, which is now the right section (verified: lands on kicker "How it works").
+HTML comments renamed to match. Rewording session with Ram still pending.
+
 ## State on 2026-09-07 (section relabels; rewording session pending)
 Home relabels per Ram: the first column section's kicker is "System architecture" (was How it
 works); the diagram card's own "System architecture" h3 REMOVED (redundant with the kicker;
