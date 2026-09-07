@@ -55,6 +55,7 @@
 <span class=ps1>$ </span>pip install <span class=str>&quot;./agent-server[oracle]&quot;</span>     <span class=cm># oracledb</span>
 <span class=ps1>$ </span>pip install <span class=str>&quot;./agent-server[mssql]&quot;</span>      <span class=cm># aioodbc, also needs a system ODBC driver</span>
 <span class=ps1>$ </span>pip install <span class=str>&quot;./agent-server[db]&quot;</span>         <span class=cm># postgres, mysql and oracle together</span></code></pre></figure>
+<p>A note on <code>mssql</code>: aioodbc presents an async API but wraps the synchronous ODBC driver underneath. The agent server is fully asynchronous, so synchronous operations that load the CPU can cause performance issues.</p>
 
 <h2 id="source">Source</h2>
 <p>The agent server is source available: the code is public on GitHub, and the software remains proprietary. See <a href="../support-licensing/license.html">License</a>.</p>
