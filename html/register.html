@@ -41,8 +41,6 @@
     <div class="container">
       <span class="kicker">Register</span>
       <h1>Create your account</h1>
-      <p class="lead">Search2o is in open beta, and anyone interested is welcome. The beta is free for three months, and nothing is charged unless you choose the paid service.</p>
-      <p class="note">Registration ends by showing your account&rsquo;s license key once &mdash; please store it with your other secrets. Then <a href="gettingstarted.html">Getting started</a> takes you from install to your first agent.</p>
     </div>
   </section>
 
@@ -138,11 +136,36 @@
 </footer>
 
 <script src="site.js"></script>
+<script src="config.js"></script>
 <script>
 // Beta registration: two steps against the registration API. Step 1 sends a code to the
 // email address; step 2 exchanges the code for the license key, shown exactly once.
 (function () {
-  var BASE = "https://api.search2o.com";
+  var BASE = (window.SEARCH2O_CONFIG && window.SEARCH2O_CONFIG.apiUrl) || "https://api.search2o.com";
+  var REG_ERRORS = {
+    notHuman: "Human verification failed. Please try again.",
+    weakPassword: "Password does not meet the password requirements.",
+    didYouMean: "Please check your email address. Did you mean {didYouMean}?",
+    invalidEmail: "Please enter a valid email address.",
+    bogusEmail: "Disposable email addresses cannot be used to register.",
+    termsNotAccepted: "You must accept the Terms of Service to register.",
+    individualAccountExists: "An individual account already exists for this email address."
+  };
+  function esc(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  function regErrorMessages(data) {
+    var msgs = [];
+    ((data && data.registrationErrors) || []).forEach(function (key) {
+      var m = REG_ERRORS[key];
+      if (key === "didYouMean") {
+        m = data.didYouMean ? m.replace("{didYouMean}", esc(data.didYouMean))
+                            : "Please check your email address.";
+      }
+      if (m) msgs.push(m);
+    });
+    return msgs;
+  }
   var $ = function (id) { return document.getElementById(id); };
   var lookup = "";
 
@@ -180,7 +203,9 @@
           $("reg-step2").hidden = false;
           hush();
         } else {
-          say("We could not complete your registration. Please check your details and try again.", false);
+          var msgs = regErrorMessages(data);
+          say(msgs.length ? msgs.join("<br>")
+                          : "We could not complete your registration. Please check your details and try again.", false);
         }
       })
       .catch(function () { say("Something went wrong. Please try again.", false); })
@@ -198,9 +223,27 @@
       .then(function (data) {
         if (data && data.success && data.license) {
           $("reg-step2").hidden = true;
-          say("Your account is ready. This is your key &mdash; store it now, it is shown only once."
-              + '<div class="reg-key">' + data.license + "</div>"
-              + '<div class="reg-next"><a href="gettingstarted.html">Getting started</a> takes you from install to your first agent.</div>', true);
+          var o = $("reg-out");
+          o.hidden = false;
+          o.className = "reg-done";
+          o.innerHTML = '<p class="reg-ready">Your account is ready.</p>'
+            + '<div class="reg-keybox">'
+            +   '<div class="reg-keylabel">License key</div>'
+            +   '<div class="reg-keyrow"><code id="reg-key"></code>'
+            +   '<button type="button" id="reg-copy" aria-label="Copy license key">'
+            +     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'
+            +   '</button></div>'
+            + '</div>'
+            + '<p class="reg-note">This key is shown only once &mdash; please store it with your other secrets. Then <a href="gettingstarted.html">Getting started</a> takes you from install to your first agent.</p>';
+          $("reg-key").textContent = data.license;
+          var copyBtn = $("reg-copy");
+          var original = copyBtn.innerHTML;
+          copyBtn.addEventListener("click", function () {
+            navigator.clipboard.writeText(data.license).then(function () {
+              copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+              setTimeout(function () { copyBtn.innerHTML = original; }, 1400);
+            });
+          });
         } else {
           say("That code did not work. It may have expired.", false);
         }
