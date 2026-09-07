@@ -45,6 +45,12 @@ people may not use databases at first, and those who do likely have their driver
 The extras remain documented in registering-and-downloading.html. The install step is now
 just the intro line and the two OR'd codecards.
 
+## State on 2026-09-07 (Team card bullets reworked)
+Per Ram: the SLA bullet is REMOVED; "per-server charges" left the first bullet (now "No
+feature tiers or per-agent charges") and became its own second bullet in his words,
+typo-fixed and hyphenated: "Run the agent server in a load-balanced cluster - there is no
+per-server fee". Team card is four bullets: no-tiers / cluster / shared limits / support.
+
 ## State on 2026-09-07 (Call your systems section on gettingstarted)
 New h3 "Call your systems" in part 1, between describe+search and the docs section, holding
 the reachability sentence (moved OUT of the Run step) and a two-line driver note, trimmed by
