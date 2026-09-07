@@ -6,6 +6,11 @@ procedure. The full history of decisions made while this lived in s2oserver is i
 `../s2oserver/CLAUDE.md` (search it for "website", "docs", "home page").
 
 ## Standing instructions
+- DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
+  ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
+  DISCUSSION - propose only, apply NOTHING until an explicit go. A veto of one detail
+  ("do not mention 23") is not approval of the rest. His words: "You seem to have a tough
+  time realizing when to do things vs when to discuss."
 - POLITE, not curt (Ram, 2026-09-03, after a full-docs pass). Advice is offered, not ordered:
   "we would suggest", "it helps to", "is best kept", "please" for a real request. Bare commands
   ("Say so.", "Do not build against the figure.", "Tell people to compare the codes.") read as
