@@ -532,8 +532,10 @@ p { margin: 0; }
   background: linear-gradient(var(--line), var(--line-soft));
 }
 .numbered .step-sec:last-child::after { display: none; }
-.numbered h2 { font-size: 23px; margin-bottom: 10px; }
-.numbered h3 { font-size: 16.5px; margin: 22px 0 8px; }
+.numbered h2 { font-size: 27px; margin-bottom: 18px; }
+.numbered h3 { font-size: 19px; font-weight: 700; margin: 36px 0 10px; }
+.numbered h2 + h3 { margin-top: 0; }
+.numbered h4 { font-size: 16px; font-weight: 700; margin: 22px 0 8px; }
 .numbered p { margin: 0 0 12px; color: var(--body); font-size: 15.75px; line-height: 1.7; }
 .numbered p.dim { color: var(--muted); font-size: 14.75px; }
 .numbered ul { margin: 0 0 12px; padding-left: 22px; }
