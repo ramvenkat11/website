@@ -39,6 +39,17 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-07 (docs icon: ask only, docs on the website)
+Ram: the GUI's docs icon no longer opens the documentation - docs live only on the website;
+from the icon one can only ask questions, and AI answers them. Fixed in the three places that
+claimed otherwise: gettingstarted.html step 8 (docs-on-the-web line first, then "From the
+docs icon in the GUI, you can ask a question in plain English; AI writes the answer from the
+documentation."), docsrc/support-licensing/asking-the-docs.html Where-to-ask ("is where a
+question is asked"), and docsrc/gui/personal.html header line ("The docs icon in the header
+asks a question of the documentation, and an AI answers from these pages"). Sweep for
+"opens the (full) documentation" is clean. docsBase in the-gui.html is the schema host,
+unrelated, untouched.
+
 ## State on 2026-09-07 (pricing h1: "Free until you're convinced")
 Ram: "Free during the public beta" was inaccurate - paid service may start before the beta
 ends. New h1 chosen by Ram from my candidates, knowingly accepting my a-little-cheesy caveat.
