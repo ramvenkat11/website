@@ -41,10 +41,10 @@ the configuration part, "Compile rules". Marketing copy never says "compile agen
 
 ## State on 2026-09-07 (search latency: less than 0.5 seconds)
 The home Search section now says "returns matches in less than 0.5 seconds" (was "in under a
-second"; html/index.html:170). REPORTED, NOT CHANGED: the docs still say "under a second" in three
-places - search/how-matching-works.html:1, commands/search.html:29 ("well under"), and the
-search-results figure text in gen/figures.py ("well under") - align them if Ram wants the
-docs to carry the same number.
+second"; html/index.html:170). The three docs spots now match ("less than
+0.5 seconds", never "well under"): search/how-matching-works.html lead, commands/search.html
+round-trip note, and the search-results figure text in gen/figures.py. Rebuilt; the longer
+figure line measured 616px of 720, no overrun. No "under a second" remains anywhere.
 
 ## State on 2026-09-07 (footer: Virginia, not Northern Virginia)
 Every footer now reads "Search2o · Virginia, USA": the five site pages, the four legal pages,
