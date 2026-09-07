@@ -39,6 +39,14 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-07 (gettingstarted de-busied)
+Ram: "The page looks busy. Remove unnecessary lines." Cut: the dim source/license line
+(install step), the dim Uvicorn options line (docs material), and "The server is stateless;
+stop and restart it anywhere." (part 3 already says stateless) - the reachability sentence
+stays; the two docs lines merged into one paragraph. DELIBERATELY KEPT: the REST API h4
+(Ram asked it back on 2026-09-05 after an over-cut) and the SQLite/extras dim line (saves a
+wall for non-SQLite users).
+
 ## State on 2026-09-07 (gettingstarted restructured into three parts)
 Ram's outline applied: the page is now THREE numbered parts (the 46px chips number the parts,
 not the steps): 01 "Up and running on your laptop" (the seven former steps as h3s: Register /
