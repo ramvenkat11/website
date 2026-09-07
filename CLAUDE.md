@@ -39,6 +39,13 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-07 (Reports added to the cloud node)
+The diagram's Search2o Cloud node now holds THREE boxes - Search, Encrypted state, Reports
+(.arch-parts is 3-column). This satisfies the old nothing-in-the-picture-the-steps-do-not-
+discuss rule the RIGHT way: step 4 now says "search, state management, and reporting", so
+Reports belongs (it was removed in August precisely because the text then did not mention it).
+No overflow; "Encrypted state" wraps to two lines in the narrower box, heights uniform.
+
 ## State on 2026-09-07 (Search moved above System architecture)
 Ram asked, I recommended yes (the demo raises "how did it pick the agent?" and the Search
 section answers it; the differentiator belongs before the infrastructure), he said go. Order
