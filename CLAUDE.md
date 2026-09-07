@@ -39,6 +39,15 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-07 (pricing h1: "Free until you're convinced")
+Ram: "Free during the public beta" was inaccurate - paid service may start before the beta
+ends. New h1 chosen by Ram from my candidates, knowingly accepting my a-little-cheesy caveat.
+REPORTED, NOT CHANGED (his call pending): index.html:45 hero eyebrow still says "Free during
+the open beta" (the same inaccurate claim; suggested "Free to evaluate" there so the pricing
+h1 is not repeated verbatim), and register.html:8,10 metas still say "The open beta is free
+for three months" (doubly stale; suggested dropping the clause). about.html "currently in
+open beta" and the terms' generic beta language are fine.
+
 ## State on 2026-09-07 (search latency: less than 0.5 seconds)
 The home Search section now says "returns matches in less than 0.5 seconds" (was "in under a
 second"; html/index.html:170). The three docs spots now match ("less than
