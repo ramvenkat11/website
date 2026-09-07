@@ -34,6 +34,17 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-07 (section relabels; rewording session pending)
+Home relabels per Ram: the first column section's kicker is "System architecture" (was How it
+works); the diagram card's own "System architecture" h3 REMOVED (redundant with the kicker;
+orphaned .arch h3 CSS removed too); the Example workflow section's kicker is "How it works".
+Kickers now: System architecture | How it works | Search | Agent framework | Platform |
+Reports | Getting started. PENDING WITH RAM: he wants a joint rewording of the text next.
+LOOSE ENDS FOR THAT SESSION: section ids unchanged (#how-it-works is the System architecture
+section, #example is presumably the How-it-works section) and the footer/nav "How it works"
+link still points at #how-it-works = the architecture section - labels and anchors need
+re-tying once the wording settles. Also .demo-footnote CSS is unused (reported, not removed).
+
 ## State on 2026-09-06 (hero demo: streamed line removed)
 The .demo-stream row ("Renewal drafted for Acme at last year's rate.") is gone from the hero
 demo; the remaining ask/run stages were RENUMBERED (stage-4->3, stage-5->4) and the .stage-5
