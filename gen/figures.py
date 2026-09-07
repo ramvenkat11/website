@@ -141,23 +141,21 @@ def figure(name):
 
 @figure("architecture")
 def _architecture():
-    f = Fig("architecture", 300, "The three parts, and what talks to what")
+    f = Fig("architecture", 300, "What talks to what")
     f.group(20, 20, 420, 260, "YOUR ORGANIZATION")
     f.box(40, 60, 120, 60, "Users", "browser · chat app", kind="soft")
     f.box(40, 190, 120, 60, "Developers", "browser", kind="soft")
-    f.box(210, 100, 210, 110, "Agent server", "stateless · source available", kind="dark")
-    f.text(315, 192, "GUI at /ui · REST at /api", size=11, fill="white", anchor="middle")
+    f.box(195, 100, 210, 110, "Agent server", "stateless · source available", kind="dark")
+    f.text(300, 192, "GUI at /ui · REST at /api", size=11, fill="white", anchor="middle")
     f.parts[-1] = f.parts[-1].replace('fill="#fff"', 'fill="rgba(255,255,255,.75)"')
-    f.arrow(160, 90, 210, 125)
-    f.arrow(160, 220, 210, 185)
-    f.box(480, 60, 220, 190, "Search2o Cloud", "accounts · agents · config", kind="accent")
-    f.text(590, 200, "conversation state (encrypted)", size=11, fill="white", anchor="middle")
-    f.text(590, 220, "search index · reports", size=11, fill="white", anchor="middle")
-    for i in range(-2, 0):
-        f.parts[i] = f.parts[i].replace('fill="#fff"', 'fill="rgba(255,255,255,.8)"')
-    f.arrow(420, 155, 480, 155, "TLS", both=True)
-    f.box(210, 235, 210, 36, "Your APIs · databases · LLMs · MCP", kind="soft", size=11)
-    f.arrow(315, 210, 315, 235)
+    f.arrow(160, 90, 195, 125)
+    f.arrow(160, 220, 195, 185)
+    f.box(500, 100, 200, 110, "Search2o Cloud", "search · state · reports", kind="accent")
+    f.arrow(405, 145, 500, 145, both=True)
+    f.text(452.5, 165, "sensitive data", size=11, anchor="middle")
+    f.text(452.5, 180, "encrypted", size=11, anchor="middle")
+    f.box(195, 235, 210, 36, "Your APIs · databases · LLMs · MCP", kind="soft", size=11)
+    f.arrow(300, 210, 300, 235)
     return f.render()
 
 
@@ -523,7 +521,7 @@ def _sandbox():
     f.box(20, 30, 680, 200, "", kind="soft", r=14)
     f.text(36, 50, "a Python expression in braces", size=12, weight=700, fill="ink")
     layers = [("allowlist", "the only names it can reach; public members of allowlisted objects; no import, no dunders"),
-              ("operator rules", "each operator allowed, denied or rewritten to a bounded safe function"),
+              ("compile rules", "each operator allowed, denied or rewritten to a bounded safe function"),
               ("runtime limits", "time, loop iterations, database rows, definition size, LLM spend"),
               ("scope", "earlier locals, agent./conv. variables, sys and command namespaces — nothing else")]
     y = 70

@@ -297,7 +297,6 @@ p { margin: 0; }
 
 /* architecture mini-diagram (in how-it-works right column) */
 .arch { border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: var(--card-shadow-lg); padding: 32px 28px; }
-.arch h3 { font-size: 13px; color: var(--faint); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 22px; }
 .arch .note { margin-top: 20px; color: var(--faint); font-size: 13px; }
 .arch-flow { display: grid; justify-items: center; }
 .arch-actor {
@@ -366,7 +365,7 @@ p { margin: 0; }
 }
 /* the cloud holds two things, drawn like the framework box inside the server */
 .arch-node.cloud { padding: 18px 20px; }
-.arch-parts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.arch-parts { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 12px; }
 .arch-part {
   padding: 13px 14px; border: 1px solid rgba(147, 165, 196, .34); border-radius: 10px;
   background: rgba(255, 255, 255, .07); color: #dbe5f5; font-size: 13px; font-weight: 600;

@@ -113,77 +113,9 @@
 
   <!-- ============ HOW IT WORKS ============ -->
   <section class="section soft" id="how-it-works">
-    <div class="container">
-      <div class="howgrid">
-        <div>
-          <div class="section-head">
-            <span class="kicker">How it works</span>
-            <h2>From request to result</h2>
-          </div>
-          <ol class="steps">
-            <li>
-              <h3>Search interface</h3>
-              <p>A user enters a request from a browser or chat application. Search matches the request to the agent built to handle it.</p>
-            </li>
-            <li>
-              <h3>Agent server</h3>
-              <p>The agent runs in a controlled runtime on the agent server. The server can be a single instance or a load-balanced cluster.</p>
-            </li>
-            <li>
-              <h3>Agent framework</h3>
-              <p>The framework executes the agent&rsquo;s commands. The agent calls LLMs and enterprise systems and streams results.</p>
-            </li>
-            <li>
-              <h3>Search2o Cloud</h3>
-              <p>After the run, conversation state is encrypted and stored in Search2o Cloud. Follow-ups repeat the process.</p>
-            </li>
-          </ol>
-        </div>
-
-        <aside class="arch">
-          <h3>System architecture</h3>
-          <div class="arch-flow">
-            <div class="arch-actor">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
-              Users
-            </div>
-            <div class="arch-link two" aria-hidden="true"><span class="arch-lbl">search interface<em>from a browser or a chat app</em></span></div>
-            <div class="arch-org">
-              <span class="arch-org-lbl">Your organization</span>
-              <div class="arch-row">
-                <div class="arch-node">
-                  <strong>Agent server</strong>
-                  <span>Stateless &middot; source available</span>
-                  <div class="arch-fw"><strong>Agent framework</strong></div>
-                </div>
-                <div class="arch-hlink" aria-hidden="true"></div>
-                <div class="arch-sys">
-                  <div class="arch-branch"><span>LLMs</span></div>
-                  <div class="arch-branch"><span>APIs</span></div>
-                  <div class="arch-branch"><span>Databases</span></div>
-                  <div class="arch-branch"><span>Tools / MCP</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="arch-link two" aria-hidden="true"><span class="arch-lbl">encrypted context</span></div>
-            <div class="arch-node cloud">
-              <strong>Search2o Cloud</strong>
-              <div class="arch-parts">
-                <div class="arch-part">Search</div>
-                <div class="arch-part">Encrypted state</div>
-              </div>
-            </div>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ EXAMPLE WORKFLOW ============ -->
-  <section class="section" id="example">
     <div class="container convo-wrap">
       <div>
-        <span class="kicker">Example workflow</span>
+        <span class="kicker">How it works</span>
         <h2>One conversation, many agents</h2>
         <ul class="convo-points">
           <li>
@@ -229,7 +161,7 @@
   </section>
 
   <!-- ============ DESCRIPTION & SEARCH ============ -->
-  <section class="section soft" id="description">
+  <section class="section" id="description">
     <div class="container">
       <div class="split">
         <div>
@@ -243,6 +175,74 @@
           <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">hr_policy &middot; description</span></div>
 <pre style="white-space: pre-wrap;"><code>Answers employee questions about Acme Corp workforce policies: vacation and leave, benefits eligibility, remote-work rules, expense limits and the code of conduct. It explains what the policy says and where to find the form. It cannot approve requests, change records or make exceptions.</code></pre>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SYSTEM ARCHITECTURE ============ -->
+  <section class="section soft" id="system-architecture">
+    <div class="container">
+      <div class="howgrid">
+        <div>
+          <div class="section-head">
+            <span class="kicker">System architecture</span>
+            <h2>From request to result</h2>
+          </div>
+          <ol class="steps">
+            <li>
+              <h3>Search interface</h3>
+              <p>The entry point, from a browser or a chat application. Search matches each request to the agent designed to handle it.</p>
+            </li>
+            <li>
+              <h3>Agent server</h3>
+              <p>A stateless server that runs agents in a controlled runtime. State and other sensitive information are encrypted before leaving the server. Source available.</p>
+            </li>
+            <li>
+              <h3>Agent framework</h3>
+              <p>Runs within the agent server and executes each agent&rsquo;s commands.</p>
+            </li>
+            <li>
+              <h3>Search2o Cloud</h3>
+              <p>The shared service behind every agent server. The cloud provides search, state management, and reporting.</p>
+            </li>
+          </ol>
+        </div>
+
+        <aside class="arch">
+          <div class="arch-flow">
+            <div class="arch-actor">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>
+              Users
+            </div>
+            <div class="arch-link two" aria-hidden="true"><span class="arch-lbl">search interface<em>from a browser or a chat app</em></span></div>
+            <div class="arch-org">
+              <span class="arch-org-lbl">Your organization</span>
+              <div class="arch-row">
+                <div class="arch-node">
+                  <strong>Agent server</strong>
+                  <span>Stateless &middot; source available</span>
+                  <div class="arch-fw"><strong>Agent framework</strong></div>
+                </div>
+                <div class="arch-hlink" aria-hidden="true"></div>
+                <div class="arch-sys">
+                  <div class="arch-branch"><span>LLMs</span></div>
+                  <div class="arch-branch"><span>APIs</span></div>
+                  <div class="arch-branch"><span>Databases</span></div>
+                  <div class="arch-branch"><span>Tools / MCP</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="arch-link two" aria-hidden="true"><span class="arch-lbl">sensitive data encrypted</span></div>
+            <div class="arch-node cloud">
+              <strong>Search2o Cloud</strong>
+              <div class="arch-parts">
+                <div class="arch-part">Search</div>
+                <div class="arch-part">State</div>
+                <div class="arch-part">Reports</div>
+              </div>
+            </div>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
