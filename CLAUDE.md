@@ -39,6 +39,14 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-07 (docs figure aligned)
+The docs architecture figure's cloud box line is now "state (encrypted)" (was "conversation
+state (encrypted)"), matching the home vocabulary. LEFT ALONE deliberately: the
+request-lifecycle step "state stored, encrypted" (already says state) and the
+conversation-state figure's "conversation state (encrypted before it leaves the agent
+server)" - that page's subject IS conversation state, so the full term is right there.
+Rebuilt; 0 overrun measured.
+
 ## State on 2026-09-07 (arrow label: "sensitive data encrypted")
 Ram: "encrypted context" could mislead - only SENSITIVE data is encrypted (queries,
 conversations, long-term memory, descriptions); much else travels/lives plain. The home
