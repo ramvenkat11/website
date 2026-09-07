@@ -452,7 +452,7 @@ def footer(depth) -> str:
     return f"""<footer class="site-footer">
   <div class="container">
     <div class="footer-base">
-      <span>&copy; <span id="year">2026</span> Search2o &middot; Northern Virginia, USA</span>
+      <span>&copy; <span id="year">2026</span> Search2o &middot; Virginia, USA</span>
       <span><a href="{r}about.html#contact">Contact</a></span>
     </div>
   </div>
