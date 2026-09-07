@@ -39,6 +39,14 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-07 (arrow label: "sensitive data encrypted")
+Ram: "encrypted context" could mislead - only SENSITIVE data is encrypted (queries,
+conversations, long-term memory, descriptions); much else travels/lives plain. The home
+diagram's org->cloud arrow label is now "sensitive data encrypted" (his pick over my "travels
+encrypted"; 0 overflow). QUEUED NEXT TASK from Ram: make the DOCS architecture figure's cloud
+box consistent with this vocabulary (it says "conversation state (encrypted)" - accurate but
+to be aligned "after we finish this task").
+
 ## State on 2026-09-07 (cloud node formatting fixed; "state" not "conversation state")
 Ram called the three-box cloud row ugly (the "Encrypted state" wrap I had rationalized).
 Fix: the box is "State" - the arrow into it already says "encrypted context", so no meaning
