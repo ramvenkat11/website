@@ -34,6 +34,16 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-06 (reg1 error contract implemented)
+reg1 failure shape: {success:false, registrationErrors:["errorKey",...], didYouMean:...}.
+register.html maps the seven keys (notHuman/weakPassword/didYouMean/invalidEmail/bogusEmail/
+termsNotAccepted/individualAccountExists) to Ram's exact messages; didYouMean substitutes the
+server value (HTML-escaped - it echoes user input); several errors render one per line;
+unknown/empty keys fall back to the generic line; the form stays on step 1. VERIFIED THROUGH
+THE REAL HANDLER by stubbing window.hcaptcha + window.fetch in the page and clicking Continue
+(not by simulating the output DOM): two-error render, unknown-key fallback, and the full
+reg1->step2->reg2->key-box success path all exercised.
+
 ## State on 2026-09-06 (register page reworked further)
 Hero is kicker + "Create your account" ONLY - the key-shown-once lead moved INTO the success
 state as .reg-note under the key box ("This key is shown only once - please store it... Then
