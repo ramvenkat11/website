@@ -39,6 +39,12 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-07 (extras line off gettingstarted)
+Ram removed the SQLite/db-extras dim line from the install step entirely - docs material;
+people may not use databases at first, and those who do likely have their drivers installed.
+The extras remain documented in registering-and-downloading.html. The install step is now
+just the intro line and the two OR'd codecards.
+
 ## State on 2026-09-07 (mssql removed everywhere)
 Ram: mssql support is plain wrong - the agent server is 100% async and mssql is not (his
 ruling; aioodbc's async-over-ODBC does not count). Removed the three references: the extras
