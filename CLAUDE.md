@@ -34,6 +34,12 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-06 (reg2 mismatch verified)
+reg2 returns bare {"success": false} on a code mismatch. The existing handler already covers
+that shape (no code change needed): "That code did not work. It may have expired." in the err
+panel, step 2 stays visible, the button re-enables, and a retried correct code proceeds to
+the key box - all verified through the real handlers with stubbed fetch.
+
 ## State on 2026-09-06 (reg1 error contract implemented)
 reg1 failure shape: {success:false, registrationErrors:["errorKey",...], didYouMean:...}.
 register.html maps the seven keys (notHuman/weakPassword/didYouMean/invalidEmail/bogusEmail/
