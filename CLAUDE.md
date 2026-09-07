@@ -39,6 +39,13 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-07 (AI assist line surfaced on gettingstarted)
+Ram: "AI assist writes a full agent from one sentence." was a key line hiding as a .dim
+footnote at the end of the first-agent step. His pick of my options: fold it into the step's
+opening - "Open Agents -> Drafts and create a draft. AI assist writes a full agent from one
+sentence - or paste this one into the editor:" - and the dim footnote is gone. The fast path
+now reads before the JSON.
+
 ## State on 2026-09-07 (docs icon: ask only, docs on the website)
 Ram: the GUI's docs icon no longer opens the documentation - docs live only on the website;
 from the icon one can only ask questions, and AI answers them. Fixed in the three places that
