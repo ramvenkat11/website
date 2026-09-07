@@ -48,8 +48,8 @@ just the intro line and the two OR'd codecards.
 ## State on 2026-09-07 (Call your systems section on gettingstarted)
 New h3 "Call your systems" in part 1, between describe+search and the docs section, holding
 the reachability sentence (moved OUT of the Run step) and a two-line driver note, trimmed by
-Ram to: "Databases are reached through async drivers. SQLite works out of the box; see the
-docs for others." (the docs link goes to registering-and-downloading). The
+Ram to: "Databases are reached through async drivers; see the docs." (no SQLite
+mention either, his call; the docs link goes to registering-and-downloading). The
 mssql caveat itself stays in the docs; the page only links.
 
 ## State on 2026-09-07 (mssql back, DOCS ONLY, with the async caveat)
