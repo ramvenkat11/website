@@ -39,6 +39,16 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-07 (mssql removed everywhere)
+Ram: mssql support is plain wrong - the agent server is 100% async and mssql is not (his
+ruling; aioodbc's async-over-ODBC does not count). Removed the three references: the extras
+dim line on gettingstarted.html (now "likewise mysql or oracle"), the
+"./agent-server[mssql]" line in docsrc/getting-started/registering-and-downloading.html, and
+"mssql+aioodbc" in docsrc/commands/db.html's driver list. Rebuilt; sweep for
+mssql/aioodbc/ODBC/SQL Server over html, docsrc, gen and content is clean. NOTE for Ram: if
+the search2o package's pyproject still defines the mssql extra and the [db] bundle, the
+package is his to change.
+
 ## State on 2026-09-07 (gettingstarted de-busied)
 Ram: "The page looks busy. Remove unnecessary lines." Cut: the dim source/license line
 (install step), the dim Uvicorn options line (docs material), and "The server is stateless;
