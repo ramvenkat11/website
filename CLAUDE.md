@@ -45,6 +45,10 @@ people may not use databases at first, and those who do likely have their driver
 The extras remain documented in registering-and-downloading.html. The install step is now
 just the intro line and the two OR'd codecards.
 
+## State on 2026-09-07 (Evaluation request located in the GUI)
+Part 2's first line now says "from the Account page in the GUI" - Ram: without it, people
+would look for the Account page on the website.
+
 ## State on 2026-09-07 (Team card bullets reworked)
 Per Ram: the SLA bullet is REMOVED; "per-server charges" left the first bullet (now "No
 feature tiers or per-agent charges") and became its own second bullet in his words,
