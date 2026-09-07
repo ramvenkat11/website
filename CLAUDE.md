@@ -43,7 +43,9 @@ the configuration part, "Compile rules". Marketing copy never says "compile agen
 Ram: "The page looks busy. Remove unnecessary lines." Cut: the dim source/license line
 (install step), the dim Uvicorn options line (docs material), and "The server is stateless;
 stop and restart it anywhere." (part 3 already says stateless) - the reachability sentence
-stays; the two docs lines merged into one paragraph. DELIBERATELY KEPT: the REST API h4
+stays; the two docs lines merged into one paragraph. Then "store the key
+with your other secrets" cut from the Register step (the register page itself carries the
+store-it advice under the key box). DELIBERATELY KEPT: the REST API h4
 (Ram asked it back on 2026-09-05 after an over-cut) and the SQLite/extras dim line (saves a
 wall for non-SQLite users).
 
