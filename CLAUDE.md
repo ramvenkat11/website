@@ -45,6 +45,15 @@ people may not use databases at first, and those who do likely have their driver
 The extras remain documented in registering-and-downloading.html. The install step is now
 just the intro line and the two OR'd codecards.
 
+## State on 2026-09-07 (mssql back, DOCS ONLY, with the async caveat)
+Ram reversed after learning aioodbc is async-API-over-sync-ODBC: mssql is documented again,
+in the docs only (his emphasis, twice: not on getting started). registering-and-downloading
+has the [mssql] install line back plus a note paragraph; commands/db.html lists mssql+aioodbc
+again with the same caveat. Caveat wording in both: aioodbc presents an async API but wraps
+the synchronous ODBC driver underneath; the agent server is fully asynchronous, so
+synchronous operations that load the CPU can cause performance issues. gettingstarted.html
+carries no db-extras material at all.
+
 ## State on 2026-09-07 (mssql removed everywhere)
 Ram: mssql support is plain wrong - the agent server is 100% async and mssql is not (his
 ruling; aioodbc's async-over-ODBC does not count). Removed the three references: the extras
