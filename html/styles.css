@@ -221,11 +221,6 @@ p { margin: 0; }
 .demo-progress { display: grid; gap: 7px; }
 .demo-progress .p { display: flex; align-items: center; gap: 9px; color: var(--muted); font-size: 13.5px; }
 .demo-progress .p svg { color: var(--ok); flex: 0 0 auto; }
-.demo-stream {
-  margin-top: 8px; padding: 12px 14px; border-left: 3px solid var(--blue);
-  background: var(--bg-soft); border-radius: 0 10px 10px 0;
-  color: var(--ink); font-size: 14px; line-height: 1.6;
-}
 .demo-footnote { display: flex; align-items: center; gap: 8px; margin-top: 16px; color: var(--faint); font-size: 12.5px; }
 .demo-footnote svg { color: var(--slate); }
 
@@ -235,7 +230,6 @@ p { margin: 0; }
 .demo .stage-2 { animation-delay: .85s; }
 .demo .stage-3 { animation-delay: 1.5s; }
 .demo .stage-4 { animation-delay: 2.15s; }
-.demo .stage-5 { animation-delay: 2.75s; }
 /* an ask pauses the agent and puts a form in the conversation */
 .demo-tag.ask { background: var(--tag-match-bg); color: var(--tag-match-fg); }
 .demo-form {
