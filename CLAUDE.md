@@ -46,7 +46,9 @@ stop and restart it anywhere." (part 3 already says stateless) - the reachabilit
 stays; the two docs lines merged into one paragraph. Then "store the key
 with your other secrets" cut from the Register step (the register page itself carries the
 store-it advice under the key box). Ram then replaced the whole Register line with his own:
-"Before you start, you need a license key. Register to get one." (Register is the link). DELIBERATELY KEPT: the REST API h4
+"Before you start, you need a license key. Register to get one." (Register is the link). And
+"your laptop is a good place to start" cut from the install line (part 1's title already
+says laptop). DELIBERATELY KEPT: the REST API h4
 (Ram asked it back on 2026-09-05 after an over-cut) and the SQLite/extras dim line (saves a
 wall for non-SQLite users).
 
