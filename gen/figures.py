@@ -511,7 +511,7 @@ def _search_results():
     f.text(360, 128, "the user picks", size=11, anchor="middle")
     f.box(500, 40, 200, 110, "none", "outside every description", kind="soft")
     f.text(600, 128, "nothing runs", size=11, anchor="middle")
-    f.text(20, 178, "Matching is semantic and answers in well under a second; the description is the only input a developer controls.", size=11)
+    f.text(20, 178, "Matching is semantic and answers in less than 0.5 seconds; the description is the only input a developer controls.", size=11)
     return f.render()
 
 
