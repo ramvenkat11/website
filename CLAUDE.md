@@ -39,6 +39,16 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-07 (figure captions vs pictures)
+Ram: the architecture caption said "The three parts" but the picture shows two blocks (the
+GUI, the third part, is only a text line in the server box). Caption is now "What talks to
+what". Swept every figure caption and every counted claim in docsrc against what the figure
+or page actually shows - all correct: 23 commands (toc counted), four reports, five profile
+kinds, three guardrail parts, three variable scopes, four roles, two encryption modes, two
+token ways, 0-3 search matches. ONE more mismatch found and fixed: the controlled-runtime
+figure's layer said "operator rules" - the page heading is "Operator remapping" and the
+setting's name is "Compile rules", so the box now says "compile rules". Rebuilt.
+
 ## State on 2026-09-07 (docs figure matched to home)
 Ram: "match everything. Don't say search index etc." The docs architecture figure's cloud box
 now mirrors the home diagram exactly: sub "search · state · reports" (the old
