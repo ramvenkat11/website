@@ -34,6 +34,12 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-06 (hero demo: streamed line removed)
+The .demo-stream row ("Renewal drafted for Acme at last year's rate.") is gone from the hero
+demo; the remaining ask/run stages were RENUMBERED (stage-4->3, stage-5->4) and the .stage-5
+delay rule deleted so the animation has no dead gap. Beats now: match, run (two checks), ask
+form, sent-for-signature. The .demo-stream CSS remains but is unused.
+
 ## State on 2026-09-06 (reg2 mismatch verified)
 reg2 returns bare {"success": false} on a code mismatch. The existing handler already covers
 that shape (no code change needed): "That code did not work. It may have expired." in the err
