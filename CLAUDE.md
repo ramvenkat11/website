@@ -34,6 +34,19 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-07 (System architecture steps reworded, jointly)
+Ram drafted, I edited, he approved my set verbatim. Final: 1 Search interface "The entry
+point, from a browser or a chat application. Search matches each request to the agent designed
+to handle it." 2 Agent server "A stateless server that runs agents in a controlled runtime.
+Conversation state and other sensitive information are encrypted before leaving the server.
+Source available." (his draft said "on GitHub" - I flagged his own no-GitHub-on-home rule and
+he accepted the trim) 3 Agent framework "The execution engine inside the agent server. The
+framework's built-in commands cover LLM interaction, enterprise system calls, flow control,
+and user interaction." 4 Search2o Cloud "The shared service behind every agent server. The
+cloud provides search, state management, and reporting." My edits fixed: two "it"s with
+different referents in his step 2, subjectless fragments in 3 and 4, "browser and chat
+applications". h2 stays "From request to result". Columns still end level (screenshot).
+
 ## State on 2026-09-07 (sections swapped; ids retied)
 The two sections swapped position AND ids: the conversation/example section is now FIRST, as
 <section class="section soft" id="how-it-works"> (kicker How it works, h2 "One conversation,
