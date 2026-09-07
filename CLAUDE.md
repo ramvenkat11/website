@@ -39,6 +39,13 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-07 (cloud node formatting fixed; "state" not "conversation state")
+Ram called the three-box cloud row ugly (the "Encrypted state" wrap I had rationalized).
+Fix: the box is "State" - the arrow into it already says "encrypted context", so no meaning
+lost; boxes are even 49px single-line each (measured). Ram then trimmed step 2's text the same
+way: "State and other sensitive information are encrypted before leaving the server."
+LESSON reinforced: do not ship a known visual wart with a written justification - fix it.
+
 ## State on 2026-09-07 (Reports added to the cloud node)
 The diagram's Search2o Cloud node now holds THREE boxes - Search, Encrypted state, Reports
 (.arch-parts is 3-column). This satisfies the old nothing-in-the-picture-the-steps-do-not-
