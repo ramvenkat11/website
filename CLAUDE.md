@@ -45,11 +45,11 @@ point, from a browser or a chat application. Search matches each request to the 
 to handle it." 2 Agent server "A stateless server that runs agents in a controlled runtime.
 Conversation state and other sensitive information are encrypted before leaving the server.
 Source available." (his draft said "on GitHub" - I flagged his own no-GitHub-on-home rule and
-he accepted the trim) 3 Agent framework "What every agent is built from: JSON structure,
-Python expressions, and built-in commands. The commands cover LLM interaction, enterprise
-system calls, flow control, and user interaction." (three iterations: "execution engine" was
-MY overclaim - the runtime is the engine, the framework is what agents are written against;
-Ram then vetoed naming "23" in this step) 4 Search2o Cloud "The shared service behind every agent server. The
+he accepted the trim) 3 Agent framework "Runs within the agent server and executes
+each agent's commands." (FIVE iterations, settled in DISCUSSION mode: "execution engine" was
+my overclaim - the runtime is the engine; "what agents are built from" DUPLICATED the Agent
+framework section below; the command list was a repeat too; final line is placement + role
+only, one sentence - Ram asked why single-line and accepted the two-fragments argument) 4 Search2o Cloud "The shared service behind every agent server. The
 cloud provides search, state management, and reporting." My edits fixed: two "it"s with
 different referents in his step 2, subjectless fragments in 3 and 4, "browser and chat
 applications". h2 stays "From request to result". Columns still end level (screenshot).
