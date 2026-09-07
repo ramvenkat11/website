@@ -45,6 +45,13 @@ people may not use databases at first, and those who do likely have their driver
 The extras remain documented in registering-and-downloading.html. The install step is now
 just the intro line and the two OR'd codecards.
 
+## State on 2026-09-07 (Call your systems section on gettingstarted)
+New h3 "Call your systems" in part 1, between describe+search and the docs section, holding
+the reachability sentence (moved OUT of the Run step) and a two-line driver note: databases
+are reached through async drivers, SQLite out of the box, Postgres/MySQL/Oracle/SQL Server
+drivers as package extras with a link to registering-and-downloading for the commands. The
+mssql caveat itself stays in the docs; the page only links.
+
 ## State on 2026-09-07 (mssql back, DOCS ONLY, with the async caveat)
 Ram reversed after learning aioodbc is async-API-over-sync-ODBC: mssql is documented again,
 in the docs only (his emphasis, twice: not on getting started). registering-and-downloading
