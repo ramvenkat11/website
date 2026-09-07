@@ -39,6 +39,13 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
+## State on 2026-09-07 (footer: Virginia, not Northern Virginia)
+Every footer now reads "Search2o · Virginia, USA": the five site pages, the four legal pages,
+and the docs template (gen/build.py:455, all 120 docs pages rebuilt). LEFT ALONE, flagged to
+Ram: html/about.html still says "Northern Virginia" outside the footer - the meta and og
+descriptions ("Built in Northern Virginia.") and the body line "Search2o is based in
+Northern Virginia, USA." (about.html:8,10,64) - he asked for the footer only.
+
 ## State on 2026-09-07 (figure captions vs pictures)
 Ram: the architecture caption said "The three parts" but the picture shows two blocks (the
 GUI, the third part, is only a text line in the server box). Caption is now "What talks to
