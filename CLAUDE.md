@@ -39,13 +39,20 @@ Vocabulary: agent server, Search2o Cloud (or "the cloud"), the GUI, the controll
 NEVER "sandbox". NEVER "compile/compiles/compilation" - the one exception is the product name of
 the configuration part, "Compile rules". Marketing copy never says "compile agents" either.
 
-## State on 2026-09-07 (docs figure aligned)
-The docs architecture figure's cloud box line is now "state (encrypted)" (was "conversation
-state (encrypted)"), matching the home vocabulary. LEFT ALONE deliberately: the
-request-lifecycle step "state stored, encrypted" (already says state) and the
-conversation-state figure's "conversation state (encrypted before it leaves the agent
-server)" - that page's subject IS conversation state, so the full term is right there.
-Rebuilt; 0 overrun measured.
+## State on 2026-09-07 (docs figure matched to home)
+Ram: "match everything. Don't say search index etc." The docs architecture figure's cloud box
+now mirrors the home diagram exactly: sub "search · state · reports" (the old
+"accounts · agents · config" sub and the two extra lines "state (encrypted)" /
+"search index · reports" are gone), and the server-cloud arrow label is
+"sensitive data encrypted" (was "TLS"). LAYOUT: the label cannot fit as a one-line arrow pill
+(pill ~166px, gap 60px - my first render sat the pill over both boxes, the second hid the
+whole arrow under it). Final: server box moved to x195, cloud box narrowed to 200 wide and
+shortened to the server's height band (y100-210, so the shrunken content no longer floats in
+a tall empty box), arrow at y145, and the label as two plain text lines UNDER the arrow in
+the 95px free strip - the same under-the-link style as the home diagram. Verified by getBBox:
+every text 0 overrun, both label lines fully inside the strip. LEFT ALONE deliberately:
+request-lifecycle "state stored, encrypted" and the conversation-state figure's full phrase
+(that page's subject IS conversation state).
 
 ## State on 2026-09-07 (arrow label: "sensitive data encrypted")
 Ram: "encrypted context" could mislead - only SENSITIVE data is encrypted (queries,
