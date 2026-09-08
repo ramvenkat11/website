@@ -45,6 +45,19 @@ people may not use databases at first, and those who do likely have their driver
 The extras remain documented in registering-and-downloading.html. The install step is now
 just the intro line and the two OR'd codecards.
 
+## State on 2026-09-07 (home queries de-keyworded)
+Ram: query/agent word overlaps ("Acme contract" -> "Contract renewal agent") misinform
+people that search is keyword-based. All three queries recast in everyday vocabulary with
+ZERO words shared with the matched agent's name; the domain words now appear only in agent
+OUTPUT (deliberate - the specialist answering in its own vocabulary is the "aha"). Hero:
+"Keep Acme on for another year at last year's rate" -> Contract renewal agent. Convo card:
+"Which transfers didn't go through yesterday?" -> Payments agent (reply now opens "3 of 214
+payment runs failed" - the word moved INTO the reply); "Have someone look into the timeouts
+and give them that summary" -> Ticketing agent ("Created ticket OPS-2291..."). Run/ask lines
+and the three convo-points bullets unchanged (still accurate). Screenshots sent; fits on one
+line in the search pill and the bubbles. NOTE: browser tab was recreated (396095690); old tab
+had been closed.
+
 ## State on 2026-09-07 (Evaluation request located in the GUI)
 Part 2's first line now says "from the Account page in the GUI" - Ram: without it, people
 would look for the Account page on the website.
