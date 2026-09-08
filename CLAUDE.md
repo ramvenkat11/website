@@ -47,10 +47,9 @@ just the intro line and the two OR'd codecards.
 
 ## State on 2026-09-08 (lead redone; docs step is now Ask a question)
 Ram: the lead was preachy (do not tell them what to do) and "Read the docs" is pre-AI. Lead
-settled with Ram's own sentence, repaired ("just run have to run" -> "you only have to
-run"): "A laptop is enough to start. Since the agent server is completely stateless, you
-only have to run it from a common place for your team." He edited the file directly; the
-repair was applied on top. The last step is retitled "Ask a
+went through three rounds and settled on Ram's shape: "A laptop is enough to start. When
+you are ready to show it to your team, just run the server from a common place - it is
+completely stateless." (team-readiness first, stateless as the trailing reason). The last step is retitled "Ask a
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
