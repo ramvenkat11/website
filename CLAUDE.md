@@ -54,6 +54,16 @@ clause is gone; the Evaluation upgrade path is back on the page (it had left wit
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-08 (new docs page: Running multiple environments)
+From Ram's notes in the IDE scratch file (~/Library/Application Support/JetBrains/
+IntelliJIdea2025.2/scratches/ui_prompt.txt - IDE scratches are where "see X.txt" notes may
+live). New page docsrc/misc/multiple-environments.html, last in Miscellaneous (121 pages
+now): one account+license per environment (accounts fully separate), each environment has
+its own users, same profile names point at that environment's servers so definitions move
+unchanged, and promotion through the REST API (read -> draft -> validate -> publish; the
+same calls the GUI uses). Misc section lead's stale "and what is planned" replaced with the
+environments mention; docs home Miscellaneous card extended the same way.
+
 ## State on 2026-09-08 (gettingstarted back to a single block)
 Ram reversed the three-part structure: parts 2 (Evaluation with your team) and 3 (Production
 across your organization) are DELETED; the page is eight numbered steps again (Register /
