@@ -55,6 +55,20 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-08 (consistency iteration 2b: sidebar groups are Admin and Billing)
+Ram confirmed the GUI sidebar structure IS his answer-3 grouping: ADMIN (Users,
+Authentication, License) and BILLING (Account, Invoices) - the old ACCOUNT group is gone.
+Applied: figures.py RAIL2 now ends "#ADMIN ... #BILLING, Account, Invoices" and screen()
+auto-fits the rail pitch (min(17, (h-52)/len(rail)); Invoices bottom measured 283/300 and
+264/280 in the two report-figure sizes). gui/index.html group list is "...Reports, Admin
+and Billing" and its header line now says "the docs icon for asking the documentation a
+question" (a missed instance of the docs-icon correction). the-gui.html says add users
+"from the Users page" (was Account section). Invoices entry carries Ram's description:
+itemized with prorated charges, current shows accumulated + end-of-month projection, past
+show what was charged. toc gui page title renamed Account -> "Admin and billing" (slug/URL
+unchanged). GUI SCREENSHOTS in gui/ pages (gui-users, gui-license shots etc.) still show
+the OLD sidebar - they come from the real product on :9020 and are Ram's to retake.
+
 ## State on 2026-09-08 (consistency iteration 2: billing pages + encryption rotation)
 Ram's answers: freeze is ADMIN (rest-api row already right); document the Evaluation
 request; the GUI Account area is Admin (Users, Authentication, License - the License page
