@@ -55,6 +55,22 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-08 (consistency iteration 2: billing pages + encryption rotation)
+Ram's answers: freeze is ADMIN (rest-api row already right); document the Evaluation
+request; the GUI Account area is Admin (Users, Authentication, License - the License page
+carries license key rotation, ENCRYPTION KEY ROTATION and freeze) plus Billing for the
+owner (Account: Upgrade to Eval + Delete account; Invoices). Applied: gui/account.html
+lead widened, License entry lists the three admin actions with links (freeze anchor is
+#freezing), NEW Account and Invoices entries (Evaluation request + one-business-day email;
+delete is permanent; invoices owner-only). encryption.html Key rotation section: the stale
+"nothing for you to rotate" sentence replaced with managed-key rotation, VERIFIED against
+s2oserver api.py rotateEncryptionKey + Namespace.rotate_key: new key per account, old data
+readable forever (each ciphertext names its key), no re-encryption, servers use the new key
+only after RESTART, does not protect data under a stolen key, at most every 90 days ->
+contact support if exposed. OPEN QUESTION to Ram: the GUI-mock sidebar in gen/figures.py
+(RAIL2 "#ACCOUNT | Users, Authentication, License") - does the real GUI sidebar now show
+the Billing pages (Account, Invoices), i.e. should the report figures' rail gain them?
+
 ## State on 2026-09-08 (docs-product consistency sweep, iteration 1)
 Ram found the stale Free/Eval/Paid table and ordered a full docs consistency sweep, done
 ITERATIVELY with numbered questions; his answers this round: (1) levels ARE
