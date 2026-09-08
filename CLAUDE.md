@@ -45,6 +45,14 @@ people may not use databases at first, and those who do likely have their driver
 The extras remain documented in registering-and-downloading.html. The install step is now
 just the intro line and the two OR'd codecards.
 
+## State on 2026-09-07 (Team cluster bullet settled: "Unlimited agent servers")
+The load-balanced-cluster bullet went through three forms: Ram's "no per-server fee" line
+sounded arrogant to him (invites "why would you charge for what we run?"), my laptop-to-
+cluster reframe was wrong register for an enterprise card ("laptop!?"), and the final pick
+is the three-word "Unlimited agent servers" - freedom stated, fee never mentioned. Team card:
+no tiers/charges/premium seats · Unlimited agent servers · shared org limits · direct
+support.
+
 ## State on 2026-09-07 (Team bullet: same price per seat)
 Team card bullet 1 settled as "No feature tiers, per-agent charges, or premium seats" -
 Ram picked "no premium seats" from my alternatives; it carries the same-price-for-every-role
