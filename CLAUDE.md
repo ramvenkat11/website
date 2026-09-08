@@ -65,7 +65,10 @@ register.html reworked (password field + hint gone, step 2 gone, single handler 
 showLicense(); stale three-months meta dropped to "Registration shows your license key
 once.") and VERIFIED through the real handlers with stubbed hcaptcha+fetch: body correct,
 two-error render, success key box. gettingstarted GUI step rewritten (open /ui, click the
-link, ENTER YOUR EMAIL ADDRESS - Ram's corrections; "registered with" was wrong for added users, who never registered - code arrives, choose password, sign
+link, enter the email - wording differs BY AUDIENCE, Ram was
+annoyed I flattened it: gettingstarted says "the email you registered with" (its reader
+registered in step 1); the-gui says "your email address" (its readers include added users,
+who never registered); users-and-roles says "that email address" (the one the admin added) - code arrives, choose password, sign
 in; same fix in the-gui and users-and-roles). Docs: the-gui first-sign-in flow;
 registering-and-downloading "Registration asks for no password"; users-and-roles added-user
 flow (email says added, code via the link, "No password or code travels in the added-user
