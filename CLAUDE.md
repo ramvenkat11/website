@@ -65,7 +65,8 @@ register.html reworked (password field + hint gone, step 2 gone, single handler 
 showLicense(); stale three-months meta dropped to "Registration shows your license key
 once.") and VERIFIED through the real handlers with stubbed hcaptcha+fetch: body correct,
 two-error render, success key box. gettingstarted GUI step rewritten (open /ui, click the
-link, code arrives, choose password, sign in). Docs: the-gui first-sign-in flow;
+link, ENTER THE REGISTERED EMAIL - Ram's correction - code arrives, choose password, sign
+in; same fix in the-gui and users-and-roles). Docs: the-gui first-sign-in flow;
 registering-and-downloading "Registration asks for no password"; users-and-roles added-user
 flow (email says added, code via the link, "No password or code travels in the added-user
 email"); gui/account Users entry; authentication.html two-emails paragraph (added-user email
