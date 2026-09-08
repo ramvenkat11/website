@@ -55,6 +55,24 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-08 (registration PARADIGM removed site-wide)
+Ram: get rid of the "registration" paradigm everywhere; also say in getting started that no
+credit card is asked for. Step 1 intro is now "Before you start, you need a license key.
+Creating your account shows it right here - no credit card, no payment details." Reworded
+across files: gettingstarted metas + step anchor (id="create-account") + JS comment + three
+user-facing error strings ("...to create an account", "We could not create your account");
+docs home Getting started card; getting-started section lead ("From creating an account
+to..."); what-is-search2o ("Create an account and install"); multiple-environments ("Create
+an account for each environment"); registering-and-downloading h2 "Create your account" +
+body rewritten (single step, no password asked); license.html link text; toc TITLE is now
+"Creating an account and downloading". KEPT deliberately: the technical sense of register
+(LLM adapters/Teams bots/allowlist code registered), the server contract (/register,
+registrationErrors), reg-* internal ids, and the LEGAL pages (verbatim text, Ram edits the
+source). "the email you registered with" became "the email you used in step 1" (the form
+is on the same page now). FLAGGED, NOT DONE: the SLUG registering-and-downloading.html is
+still register-flavored and URL-visible - renaming means a docsrc+toc rename, a stale
+html/docs orphan, and an s3 rm at deploy; Ram's call.
+
 ## State on 2026-09-08 (REGISTER PAGE RETIRED; form lives in getting started)
 Ram's call, won on his argument: the key is shown ONCE, and inside getting started the user
 never has to copy it anywhere - the export step sits right below. "Register" is no longer
