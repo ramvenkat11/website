@@ -45,6 +45,12 @@ people may not use databases at first, and those who do likely have their driver
 The extras remain documented in registering-and-downloading.html. The install step is now
 just the intro line and the two OR'd codecards.
 
+## State on 2026-09-07 (what-you-need line atop part 1)
+Ram: say up front what background laptop setup takes (a sales person without tech background
+cannot do it easily). New line directly under the part-1 h2, MY wording offered for veto:
+"The setup runs from a terminal: you install a Python package, set two environment
+variables, and start the server. Familiarity with those is all you need."
+
 ## State on 2026-09-07 (Team cluster bullet settled: "Unlimited agent servers")
 The load-balanced-cluster bullet went through three forms: Ram's "no per-server fee" line
 sounded arrogant to him (invites "why would you charge for what we run?"), my laptop-to-
