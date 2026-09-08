@@ -45,6 +45,16 @@ people may not use databases at first, and those who do likely have their driver
 The extras remain documented in registering-and-downloading.html. The install step is now
 just the intro line and the two OR'd codecards.
 
+## State on 2026-09-07 (Search line reworded)
+The Search section line is now "...to determine which agent is designed to handle the
+request." (Ram's wording; he called "produce the requested result" a very bad change - that
+phrase had been on the page since the 2026-09-04 wording pass). PENDING from the same
+exchange: Ram called both conversation-block queries weird twice; my open proposal is to
+RESTORE the original natural queries ("Summarize yesterday's failed payment runs" / "Open a
+ticket for the gateway timeouts and attach that summary") and RENAME the agents instead -
+Accounts payable agent (or Treasury) and Helpdesk agent, bullets updated to match. Awaiting
+his pick; nothing applied to the conversation block beyond the earlier de-keyword pass.
+
 ## State on 2026-09-07 (home queries de-keyworded)
 Ram: query/agent word overlaps ("Acme contract" -> "Contract renewal agent") misinform
 people that search is keyword-based. All three queries recast in everyday vocabulary with
