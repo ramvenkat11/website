@@ -57,8 +57,10 @@ question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL 
 
 ## State on 2026-09-08 (registration PARADIGM removed site-wide)
 Ram: get rid of the "registration" paradigm everywhere; also say in getting started that no
-credit card is asked for. Step 1 intro is now "Before you start, you need a license key.
-Creating your account shows it right here - no credit card, no payment details." Reworded
+credit card is asked for. Step 1 intro was then CUT by Ram (no essays on this page;
+creating an account is obvious) to just "No credit card, no payment details." And the terms
+checkbox label is now "I accept the Terms of Service and the Privacy Policy" - BOTH words
+are links (legal/terms.html, legal/privacy.html, target=_blank). Reworded
 across files: gettingstarted metas + step anchor (id="create-account") + JS comment + three
 user-facing error strings ("...to create an account", "We could not create your account");
 docs home Getting started card; getting-started section lead ("From creating an account
