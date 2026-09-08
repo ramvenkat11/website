@@ -55,6 +55,24 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-08 (docs-product consistency sweep, iteration 1)
+Ram found the stale Free/Eval/Paid table and ordered a full docs consistency sweep, done
+ITERATIVELY with numbered questions; his answers this round: (1) levels ARE
+Individual/Evaluation/Team, (2) an Individual account canNOT add users, (3) the
+share-the-license-key line is impossible - removed, (4) registering may say it creates an
+Individual account, (5) OWNER holds only billing and account-level settings; THE LICENSE
+BELONGS TO ADMINISTRATORS. Applied: usage-limits lead de-beta'd + table renamed with new
+descriptions; license.html beta section is now h2 Pricing with "Individual use and team
+evaluations are free"; the-gui + gui/account gained from-Evaluation-level qualifiers;
+running-the-server says upgrade-to-Evaluation + common place; registering says Individual
+single-user account; users-and-roles admin bullet + table row "Manage the license" (admin+
+owner) split from "Billing and account-level settings" (owner); license-key.html and
+license-rotation.html say administrator rotates; roles FIGURE moved license to the admin
+row (bbox-verified 586/600, 686/700); gui/account License page "Administrators and the
+owner" (was Owners only); data-privacy account row readers likewise. Sweep of
+owner+license/billing and beta mentions is clean. NEXT ITERATIONS: chat-integrations, GUI
+pages vs product, profiles, search, commands - not yet re-swept for tier/role consistency.
+
 ## State on 2026-09-08 (new docs page: Running multiple environments)
 From Ram's notes in the IDE scratch file (~/Library/Application Support/JetBrains/
 IntelliJIdea2025.2/scratches/ui_prompt.txt - IDE scratches are where "see X.txt" notes may
