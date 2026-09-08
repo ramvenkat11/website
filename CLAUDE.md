@@ -55,6 +55,18 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-08 (consistency iteration 3: chat/gui/profiles swept)
+Swept chat-integrations, the remaining gui pages, profiles, rest-api, development, security
+for tier/role staleness. Only two residues found and fixed: authentication.html's
+"Account > Authentication" breadcrumb is now "Admin > Authentication", and the
+gui/account.html lead now names the two GUI groups ("Two groups: Admin - Users,
+Authentication and License, for administrators and the owner - and Billing - Account and
+Invoices, for the owner."). Verified consistent, no change: integration-tokens (owner =
+token's holder, different sense), seeded profile names everywhere (gpt5_mini/claude_haiku/
+gemini_flash/gpt_image/gemini_image), addUsers<=25 in automating-with-an-llm, secret-vault
+role language, reports role labels. The sweep that started with the Free/Eval/Paid table is
+COMPLETE apart from the GUI screenshots (Ram's to retake with the new sidebar).
+
 ## State on 2026-09-08 (consistency iteration 2b: sidebar groups are Admin and Billing)
 Ram confirmed the GUI sidebar structure IS his answer-3 grouping: ADMIN (Users,
 Authentication, License) and BILLING (Account, Invoices) - the old ACCOUNT group is gone.
