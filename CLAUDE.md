@@ -48,12 +48,15 @@ just the intro line and the two OR'd codecards.
 ## State on 2026-09-07 (Search line reworded)
 The Search section line is now "...to determine which agent is designed to handle the
 request." (Ram's wording; he called "produce the requested result" a very bad change - that
-phrase had been on the page since the 2026-09-04 wording pass). PENDING from the same
-exchange: Ram called both conversation-block queries weird twice; my open proposal is to
-RESTORE the original natural queries ("Summarize yesterday's failed payment runs" / "Open a
-ticket for the gateway timeouts and attach that summary") and RENAME the agents instead -
-Accounts payable agent (or Treasury) and Helpdesk agent, bullets updated to match. Awaiting
-his pick; nothing applied to the conversation block beyond the earlier de-keyword pass.
+phrase had been on the page since the 2026-09-04 wording pass). RESOLVED in the same
+exchange: Ram approved "Accounts payable + Help desk" (his two-word spelling kept). The
+conversation block has its ORIGINAL natural queries back ("Summarize yesterday's failed
+payment runs" / "Open a ticket for the gateway timeouts and attach that summary") and the
+agents are renamed Accounts payable agent / Help desk agent - the fix was on the agent-name
+side, after two rounds of query rewrites read as weird. Reply reverted to "3 of 214 runs
+failed". Both left bullets renamed to match. The hero de-keyword change stands ("Keep Acme
+on for another year at last year's rate" -> Contract renewal agent). LESSON: when natural
+speech and a name collide, rename the thing, not the speech.
 
 ## State on 2026-09-07 (home queries de-keyworded)
 Ram: query/agent word overlaps ("Acme contract" -> "Contract renewal agent") misinform
