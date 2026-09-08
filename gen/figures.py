@@ -105,6 +105,7 @@ class Fig:
         self.parts.append(f'<path d="M{x + 12},{y} h{rw - 12} v{h} h-{rw - 12} a12,12 0 0 1 -12,-12 v-{h - 24} a12,12 0 0 1 12,-12z" fill="var(--navy)"/>')
         self.text(x + 14, y + 20, "Search2o", size=11, weight=800, fill="white")
         ry = y + 44
+        pitch = min(17, (h - 52) / len(rail))
         for item in rail:
             if item.startswith("#"):
                 self.text(x + 14, ry, item[1:], size=8.5, weight=700, fill="white")
@@ -113,7 +114,7 @@ class Fig:
                 if item == active:
                     self.parts.append(f'<rect x="{x + 8}" y="{ry - 8}" width="{rw - 16}" height="16" rx="5" fill="var(--teal)" opacity=".85"/>')
                 self.text(x + 14, ry, item, size=9.5, weight=500 if item != active else 700, fill="white")
-            ry += 17
+            ry += pitch
         self.line(x + rw, y + 30, x + w, y + 30)
         self.text(x + rw + 14, y + 16, header, size=10, weight=600, fill="ink")
         return (x + rw + 14, y + 44, w - rw - 28, h - 56)
@@ -468,7 +469,7 @@ def _conversation_state():
 def _roles():
     f = Fig("roles", 220, "Four roles; each includes the ones below it")
     roles = [("User", "search, converse, own profile", "soft"), ("Developer", "+ agents, dev configuration, agent reports", "card"),
-             ("Administrator", "+ users, system configuration, usage reports", "dark"), ("Account owner", "+ owner role, license, billing", "accent")]
+             ("Administrator", "+ users, system configuration, license, usage reports", "dark"), ("Account owner", "+ owner role, billing", "accent")]
     for i, (a, b, k) in enumerate(roles):
         w = 380 + i * 100
         f.box(20, 170 - i * 46, w, 40, "", kind=k)
@@ -536,7 +537,7 @@ def _sandbox():
 RAIL = ["#AGENTS", "Drafts", "Published", "Search", "#PROFILES", "LLM", "Prompt", "API", "Database", "MCP",
         "#GUARDRAILS", "Compile rules", "Allowlist", "Runtime"]
 RAIL2 = ["#OPERATIONS", "Agent servers", "Connection pools", "Secrets & encryption", "#REPORTS", "Performance", "Cost", "Errors", "Usage",
-         "#ACCOUNT", "Users", "Authentication", "License"]
+         "#ADMIN", "Users", "Authentication", "License", "#BILLING", "Account", "Invoices"]
 
 
 def _report(name, title, header_cols, rows, widths, trend_labels):

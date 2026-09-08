@@ -108,7 +108,7 @@ TOC = [
         ("guardrails", "Guardrails"),
         ("operations", "Operations"),
         ("reports", "Reports"),
-        ("account", "Account"),
+        ("account", "Admin and billing"),
         ("personal", "Profile, notifications and docs"),
     ]),
     ("rest-api", "REST API", [
@@ -135,6 +135,7 @@ TOC = [
     ("misc", "Miscellaneous", [
         ("llm-adapters", "Connecting to other LLMs"),
         ("code-from-llm", "Executing code from an LLM"),
+        ("multiple-environments", "Running multiple environments"),
     ]),
     ("support-licensing", "Support and licensing", [
         ("asking-the-docs", "Asking the docs"),

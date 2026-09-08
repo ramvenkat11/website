@@ -1,0 +1,11 @@
+<p class="lead">Most organizations run their systems in several environments &mdash; development, test, staging, production. Search2o supports this with one account per environment.</p>
+
+<h2>One account per environment</h2>
+<p>Each environment needs its own Search2o account and license key. Register once per environment, and start each environment's agent servers with that environment's key. Accounts are fully separate: agents, configuration, conversations and reports never cross between them.</p>
+<p>Each environment typically has its own users as well &mdash; developers in development, testers in test, and the real user population in production.</p>
+
+<h2>Profiles point to the environment's systems</h2>
+<p>An agent names its <a href="../profiles/overview.html">profiles</a>; the profiles carry the endpoints. The same profile names can exist in every account, pointing at that environment's servers &mdash; the development database in development, the production database in production. An agent definition therefore moves between environments without any change.</p>
+
+<h2>Moving agents between environments</h2>
+<p>Agents are promoted through the <a href="../rest-api/overview.html">REST API</a>: read the agent and its description from one account, create a draft in the next, then validate and publish there. The calls are the same calls the GUI uses.</p>

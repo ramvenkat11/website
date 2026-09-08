@@ -5,8 +5,8 @@
 <ol>
   <li><strong>User</strong> — an end user. A user runs searches, converses with agents, and manages a personal profile and preferences.</li>
   <li><strong>Developer</strong> — creates, validates and publishes agents; views and edits the development configuration (allowlist, compile rules, runtime limits, search settings, profiles); reads the agent reports; sees all published agents.</li>
-  <li><strong>Administrator</strong> — everything a developer can do, plus users and their roles, authentication, agent servers, connection pools, secrets and encryption, and the user usage reports.</li>
-  <li><strong>Account owner</strong> — everything an administrator can do, plus the license, billing and subscription. Only an owner can grant or remove the owner role. Only another owner can delete or demote an owner.</li>
+  <li><strong>Administrator</strong> — everything a developer can do, plus users and their roles, authentication, agent servers, connection pools, secrets and encryption, the license, and the user usage reports.</li>
+  <li><strong>Account owner</strong> — everything an administrator can do, plus billing and account-level settings. Only an owner can grant or remove the owner role. Only another owner can delete or demote an owner.</li>
 </ol>
 
 <h2>Permissions</h2>
@@ -21,11 +21,12 @@
 <tr><td>Configure system-level settings</td><td>✖</td><td>✖</td><td>✔</td><td>✔</td></tr>
 <tr><td>View user usage reports</td><td>✖</td><td>✖</td><td>✔</td><td>✔</td></tr>
 <tr><td>Grant the owner role</td><td>✖</td><td>✖</td><td>✖</td><td>✔</td></tr>
-<tr><td>License, billing and subscription</td><td>✖</td><td>✖</td><td>✖</td><td>✔</td></tr>
+<tr><td>Manage the license</td><td>✖</td><td>✖</td><td>✔</td><td>✔</td></tr>
+<tr><td>Billing and account-level settings</td><td>✖</td><td>✖</td><td>✖</td><td>✔</td></tr>
 </tbody></table></div>
 
 <h2>Adding users</h2>
-<p>An administrator adds users by email address, up to 25 at a time. Each new user receives an email with a one-time code and chooses a password. No password ever travels in an email. If the account restricts email addresses to a domain, only addresses in that domain can be added. A user's role can be changed only by someone else.</p>
+<p>An administrator adds users by email address, up to 25 at a time. Each new user receives an email saying they were added, then clicks <strong>New user / Forgot password?</strong> on the sign-in dialog, receives a one-time code, and chooses a password. No password or code travels in the added-user email. If the account restricts email addresses to a domain, only addresses in that domain can be added. A user's role can be changed only by someone else.</p>
 
 <h2>Removing users</h2>
 <p>A deleted user cannot sign in and cannot be restored. The user's name stays on everything the user published. Administrators cannot delete themselves.</p>
