@@ -64,7 +64,8 @@ password?' link: email with one-time code, enter it, choose a password. APPLIED:
 register.html reworked (password field + hint gone, step 2 gone, single handler with
 showLicense(); stale three-months meta dropped to "Registration shows your license key
 once.") and VERIFIED through the real handlers with stubbed hcaptcha+fetch: body correct,
-two-error render, success key box. gettingstarted GUI step rewritten (open /ui, click the
+two-error render, success key box. The form button says "Register"
+(no arrow), not "Continue" - single step now. gettingstarted GUI step rewritten (open /ui, click the
 link, enter the email - wording differs BY AUDIENCE, Ram was
 annoyed I flattened it: gettingstarted says "the email you registered with" (its reader
 registered in step 1); the-gui says "your email address" (its readers include added users,
