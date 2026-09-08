@@ -45,6 +45,12 @@ people may not use databases at first, and those who do likely have their driver
 The extras remain documented in registering-and-downloading.html. The install step is now
 just the intro line and the two OR'd codecards.
 
+## State on 2026-09-07 (Team bullet: same price per seat)
+Team card bullet 1 is now "No feature tiers or per-agent charges. Every seat is the same
+price, end user or developer." - MY sales phrasing of Ram's "include same charge for end
+user, developer etc.", offered for his veto. Two-sentence bullet has precedent (Evaluation
+card bullet 1).
+
 ## State on 2026-09-07 (Search line reworded)
 The Search section line is now "...to determine which agent is designed to handle the
 request." (Ram's wording; he called "produce the requested result" a very bad change - that
