@@ -45,6 +45,18 @@ people may not use databases at first, and those who do likely have their driver
 The extras remain documented in registering-and-downloading.html. The install step is now
 just the intro line and the two OR'd codecards.
 
+## State on 2026-09-08 (gettingstarted back to a single block)
+Ram reversed the three-part structure: parts 2 (Evaluation with your team) and 3 (Production
+across your organization) are DELETED; the page is eight numbered steps again (Register /
+Download / Run (h3 sub-steps back) / GUI / first agent / describe+search / Call your systems
+/ docs+callout). Hero h1 back to "Up and running on your laptop" with a NEW lead carrying
+his story: "It is easy to get started on your laptop. When the team is ready to evaluate,
+move the server to a common place - nothing else changes." CSS reverted (.numbered h2 23px,
+h3 16.5px; h4 rule and h2+h3 rule gone). Meta back to the register/install/build wording.
+GONE with part 2: the request-an-Evaluation-license-from-the-Account-page text and the
+Pricing link; GONE with part 3: the stateless/cluster line and the Team-plan line. Browser
+tab recreated again: 396095754.
+
 ## State on 2026-09-07 (what-you-need line atop part 1)
 Ram asked for an up-front what-background-you-need line, then REMOVED my version the next
 day: "The following lines make it obvious what they need." Part 1 opens straight with the
