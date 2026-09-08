@@ -55,6 +55,25 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-08 (registration is one call, password set on first sign-in)
+Ram: registration no longer takes a password and sends no email - ONE call POST /register
+(renamed from /reg1; /reg2 is gone) with email/userName/accountName/terms/token, returning
+{success, license}; error keys unchanged minus weakPassword. First sign-in (and every added
+user, whose email carries NO code) goes through the login dialog's 'New user / Forgot
+password?' link: email with one-time code, enter it, choose a password. APPLIED:
+register.html reworked (password field + hint gone, step 2 gone, single handler with
+showLicense(); stale three-months meta dropped to "Registration shows your license key
+once.") and VERIFIED through the real handlers with stubbed hcaptcha+fetch: body correct,
+two-error render, success key box. gettingstarted GUI step rewritten (open /ui, click the
+link, code arrives, choose password, sign in). Docs: the-gui first-sign-in flow;
+registering-and-downloading "Registration asks for no password"; users-and-roles added-user
+flow (email says added, code via the link, "No password or code travels in the added-user
+email"); gui/account Users entry; authentication.html two-emails paragraph (added-user email
+carries no code); rest-api/authentication h2 "Setting or resetting a password" + "the GUI's
+New user / Forgot password? link is these two calls". NOTE: Ram set config.js apiUrl to
+https://s2o-api-761928161625.us-east4.run.app (a Cloud Run URL) - confirm the right
+production value before any deploy; register.html's fallback is still api.search2o.com.
+
 ## State on 2026-09-08 (consistency iteration 3: chat/gui/profiles swept)
 Swept chat-integrations, the remaining gui pages, profiles, rest-api, development, security
 for tier/role staleness. Only two residues found and fixed: authentication.html's
