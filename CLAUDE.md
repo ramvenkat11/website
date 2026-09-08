@@ -46,10 +46,9 @@ The extras remain documented in registering-and-downloading.html. The install st
 just the intro line and the two OR'd codecards.
 
 ## State on 2026-09-07 (what-you-need line atop part 1)
-Ram: say up front what background laptop setup takes (a sales person without tech background
-cannot do it easily). New line directly under the part-1 h2, MY wording offered for veto:
-"The setup runs from a terminal: you install a Python package, set two environment
-variables, and start the server. Familiarity with those is all you need."
+Ram asked for an up-front what-background-you-need line, then REMOVED my version the next
+day: "The following lines make it obvious what they need." Part 1 opens straight with the
+Register step again. Do not re-add a prerequisites line.
 
 ## State on 2026-09-07 (Team cluster bullet settled: "Unlimited agent servers")
 The load-balanced-cluster bullet went through three forms: Ram's "no per-server fee" line
