@@ -50,7 +50,8 @@ Ram: the lead was preachy (do not tell them what to do) and "Read the docs" is p
 settled on Ram's final wording (fourth round), verbatim with curly quotes: "A laptop is
 enough to start. When you are ready to show it to your team, upgrade it to 'Evaluation'
 from the Account page in the GUI and run the server from a common place." The stateless
-clause is gone; the Evaluation upgrade path is back on the page (it had left with part 2). The last step is retitled "Ask a
+clause is gone; the Evaluation upgrade path is back on the page (it had left with part 2). The
+line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just a note. The last step is retitled "Ask a
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
