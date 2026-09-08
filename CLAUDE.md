@@ -55,6 +55,26 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-08 (REGISTER PAGE RETIRED; form lives in getting started)
+Ram's call, won on his argument: the key is shown ONCE, and inside getting started the user
+never has to copy it anywhere - the export step sits right below. "Register" is no longer
+the paradigm. Applied: step 1 is "Create your account" - intro line "Before you start, you
+need a license key. Registration ends by showing it right here." + the form-card (button
+"Create account"); success renders the key box IN PLACE with the note ending "The next
+steps use it right away."; hCaptcha script + config.js now load on gettingstarted.html.
+HEADER CTA REMOVED everywhere: four site pages, four legal pages, and gen/build.py's docs
+template (all 121 docs pages rebuilt; header is nav + theme toggle only). The three body
+buttons say "Get started ->" -> gettingstarted.html (hero, band, pricing Individual card).
+html/register.html DELETED with git rm -f (today's uncommitted rework went with it - its
+script lives on in gettingstarted; the last committed version is in git history).
+registering-and-downloading lead -> "Create your account at search2o.com/gettingstarted";
+../search2o/README.md register sentence rewritten (Ram commits). Sweep for register.html
+over html/gen/docsrc is CLEAN. Verified in-browser via stubbed hcaptcha+fetch: success key
+box renders inside step 1 (screenshots sent). Coexistence ruled fine by Ram: buttons say
+"Get started", the nav link and page stay "Getting started". DEPLOY NOTE: the live bucket
+still holds the OLD register.html - it must be aws s3 rm'd at deploy or the stale URL keeps
+serving.
+
 ## State on 2026-09-08 (registration is one call, password set on first sign-in)
 Ram: registration no longer takes a password and sends no email - ONE call POST /register
 (renamed from /reg1; /reg2 is gone) with email/userName/accountName/terms/token, returning
