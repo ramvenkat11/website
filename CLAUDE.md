@@ -55,6 +55,16 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-08 (GUI section renamed; How the GUI runs page)
+Per Ram: the docs section "GUI pages" is now "GUI" (toc + docs home card; the card small
+text mentions the new page). NEW first page gui/how-the-gui-runs.html (122 pages now):
+official GUI, uses the REST API and nothing else (no private endpoints - everything the GUI
+does is open to your code), lives in the server's ui directory served at /ui, can be served
+from any web server or CDN - the hosting section + ui-config table MOVED here from
+getting-started/the-gui.html (one topic one home; that page now links here instead), and a
+closing section says users are free to build their own interfaces (links rest-api/clients +
+chat integrations).
+
 ## State on 2026-09-08 (registration PARADIGM removed site-wide)
 Ram: get rid of the "registration" paradigm everywhere; also say in getting started that no
 credit card is asked for. Step 1 intro was then CUT by Ram (no essays on this page;
