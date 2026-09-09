@@ -55,6 +55,12 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-08 (key note rephrased)
+The success note under the key box now reads "This key is shown only once - please copy it
+and store it on your machine right away. The next steps use it." (Ram's direction,
+my phrasing). The docs registering page still says "belongs with your other secrets" -
+different audience, left alone unless Ram says otherwise.
+
 ## State on 2026-09-08 (REST API sub-section cut from getting started)
 The Open-the-GUI step lost its REST API h3 (openapi.json/Swagger//docs//redoc) on Ram's
 order - he had asked for it back on 2026-09-05, and has now reversed that; the URLs remain
