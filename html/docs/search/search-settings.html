@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Search settings — Search2o docs</title>
-<meta name="description" content="The Search configuration decides which tag the search box uses and what happens when the user presses Enter.">
+<meta name="description" content="The Search configuration decides which tag the search box uses and what happens when the user presses Enter on the bundled GUI.">
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +37,7 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../search/index.html'>Search</a></div>
     <article class="docs-article">
       <h1>Search settings</h1>
-      <p class="lead">The <strong>Search</strong> configuration decides which tag the search box uses and what happens when the user presses Enter.</p>
+      <p class="lead">The <strong>Search</strong> configuration decides which tag the search box uses and what happens when the user presses Enter on the bundled GUI.</p>
 
 <div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>tag</code></td><td class=ty>string</td><td class=dflt></td><td>Only agents carrying this tag are matched. Default is an empty string, which matches all tags.</td></tr><tr><td><code>searchBehavior</code></td><td class=ty>&quot;executeTopMatch&quot; | &quot;executeOnlyMatch&quot; | &quot;showResults&quot;</td><td class=dflt>&quot;executeTopMatch&quot;</td><td>Decides what happens when the user hits enter on a new search.</td></tr><tr><td><code>followupBehavior</code></td><td class=ty>&quot;executeTopMatch&quot; | &quot;executeOnlyMatch&quot; | &quot;showResults&quot; | &quot;executePrevious&quot;</td><td class=dflt>&quot;executeTopMatch&quot;</td><td>Decides what happens when the user hits enter on a followup.</td></tr></tbody></table></div>
 <p>Leave <code>tag</code> empty and the search box searches agents of every tag. Set a tag and only agents carrying that tag are matched. See <a href="tags.html">Tags</a>.</p>
@@ -53,10 +53,13 @@
 
 <p>Changes take effect on the next search. Search settings are edited under <strong>Agents → Search</strong> by a developer or an administrator.</p>
 
+
+<h2 id="custom-gui-chat-interface">Custom GUI / Chat interface</h2>
+<p>These setting can be safely ignored when you develop your own search UI or when you create a chat integration. </p>
     </article>
     <nav class=prevnext><a class=prev href='../search/tags.html'><small>Previous</small>Tags</a><a class=next href='../search/search-quality.html'><small>Next</small>Search quality</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#search-behavior'>Search behavior</a></li><li class=l2><a href='#follow-up-behavior'>Follow-up behavior</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#search-behavior'>Search behavior</a></li><li class=l2><a href='#follow-up-behavior'>Follow-up behavior</a></li><li class=l2><a href='#custom-gui-chat-interface'>Custom GUI / Chat interface</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

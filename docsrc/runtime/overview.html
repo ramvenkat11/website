@@ -26,9 +26,6 @@
 <h2>Running agents are not disturbed</h2>
 <p>An agent keeps the runtime it started with, for its whole run. When a runtime is replaced, the connection pools and database engines of the old runtime stay open until the last agent using them finishes, and are closed then. A configuration change can therefore never break an agent in the middle of a call.</p>
 
-<h2>What a server needs to start</h2>
-<p>At startup the server fetches the whole configuration. The allowlist, the search settings, the runtime limits, the connection pools and every kind of profile must all be present, or the server refuses to start rather than run with a partial runtime. A new account has all of them, seeded with working defaults.</p>
-
 <h2>Where the parts are configured</h2>
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Part</th><th>Where in the GUI</th><th>Edited by</th></tr></thead>

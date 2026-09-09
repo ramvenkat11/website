@@ -22,7 +22,7 @@
   <li><code>sys.query</code> — the user's query, the same as <code>sys.inputs['query']</code>.</li>
   <li><code>sys.secret(name)</code> — reads a secret from the agent server's environment; see <a href="../security/secret-vault.html">Security</a>.</li>
 </ul>
-<p>The following names are present only when an administrator enables them in the <a href="../runtime/guardrails.html#allowlist">allowlist</a> configuration:</p>
+<p>The following names are present only when an administrator enables them in the <a href="../runtime/guardrails.html#system-variables">system variables</a> configuration:</p>
 <ul>
   <li><code>sys.userEmail</code> — the email address of the user running the agent.</li>
   <li><code>sys.userSession</code> — a hash of the user's session, for keying per-session data.</li>

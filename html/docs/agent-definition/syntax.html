@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Syntax and dynamic strings — Search2o docs</title>
-<meta name="description" content="Agents are written in JSONC, which is JSON with comments, plus one extension: a string enclosed in braces is a Python expression.">
+<meta name="description" content="Agents are written in JSONC (JSON with comments), plus one extension: a string enclosed in braces is a Python expression, called a dynamic string.">
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +37,7 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../agent-definition/index.html'>Agent definition</a></div>
     <article class="docs-article">
       <h1>Syntax and dynamic strings</h1>
-      <p class="lead">Agents are written in JSONC, which is JSON with comments, plus one extension: a string enclosed in braces is a Python expression.</p>
+      <p class="lead">Agents are written in JSONC (JSON with comments), plus one extension: a string enclosed in braces is a Python expression, called a dynamic string.</p>
 
 <h2 id="dynamic-strings">Dynamic strings</h2>
 <p>A string value enclosed in <code>{ ... }</code> is evaluated at runtime as a Python expression in the agent's execution context. The result of the expression replaces the string. The result can be of any Python type: a number, a list, a dict, an object. Any other string is a literal. A string that may be either a literal or an expression is called a <em>dynamic string</em>.</p>
@@ -57,7 +57,7 @@
 <h2 id="what-an-expression-can-use">What an expression can use</h2>
 <ul>
   <li>Variables set earlier in the same function, and the function's arguments.</li>
-  <li>Agent and conversation variables set earlier, as <code>agent.x</code> and <code>conv.x</code>.</li>
+  <li>Agent and conversation variables set earlier, as <code>agent.x</code> and <code>conv.x</code>. See <a href="variables.html">Variables and namespaces</a>.</li>
   <li>The read-only <code>sys</code> and <code>command</code> namespaces, and the <code>inputs</code>, <code>query</code>, <code>result</code> and <code>exc</code> variables. See <a href="variables.html">Variables and namespaces</a>.</li>
   <li>Functions and objects on the <a href="../runtime/guardrails.html#allowlist">allowlist</a>, and the public members of allowlisted objects.</li>
 </ul>

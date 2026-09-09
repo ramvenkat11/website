@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Guardrails — Search2o docs</title>
-<meta name="description" content="Three parts of the runtime bound what an agent&#x27;s expressions may do: the allowlist, the compile rules and the runtime limits. The GUI groups them under Guard…">
+<meta name="description" content="Four parts of the runtime bound what an agent&#x27;s expressions may do: the allowlist, the system variables, the compile rules and the runtime limits. The GUI gr…">
 <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -37,7 +37,7 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../runtime/index.html'>Agent runtime</a></div>
     <article class="docs-article">
       <h1>Guardrails</h1>
-      <p class="lead">Three parts of the runtime bound what an agent's expressions may do: the allowlist, the compile rules and the runtime limits. The GUI groups them under Guardrails, and developers edit them. Why they exist and what they protect against is explained in <a href="../security/controlled-runtime.html">The controlled runtime</a>; this page covers how each is written and how the runtime applies it.</p>
+      <p class="lead">Four parts of the runtime bound what an agent's expressions may do: the allowlist, the system variables, the compile rules and the runtime limits. The GUI groups them under Guardrails, and developers edit them. Why they exist and what they protect against is explained in <a href="../security/controlled-runtime.html">The controlled runtime</a>; this page covers how each is written and how the runtime applies it.</p>
 
 <h2 id="allowlist">Allowlist</h2>
 <p>The allowlist is the complete set of functions and objects an expression may reach. When the allowlist changes, the runtime imports each entry from the server's Python environment and builds the namespace that expressions evaluate in. An entry that cannot be imported is written to the server's log.</p>
@@ -49,8 +49,17 @@ datetime.datetime as datetime       # a class; its public members become availab
 json.loads                          # callable as json.loads(...), not loads(...)
 mycompany.vault.get_secret          # anything importable in the server&#x27;s environment</code></pre></figure>
 <p>Expressions use an entry's full dotted name unless the entry is aliased with <code>as</code>. A package your agents need is installed next to <code>search2o</code>. Expressions run on the server's shared event loop, so a function that blocks the loop must not be allowlisted. <code>asyncio.run</code> and synchronous network calls are examples, and the <code>asyncio</code> package itself is refused. <code>gather</code> and <code>sleep</code> are always available. A coroutine on the allowlist is awaited only when the coroutine is the whole expression.</p>
-<p>The allowlist is also where custom code is registered: an <a href="../llm/llm-adapters.html">LLM adapter</a>, the key function for <a href="../security/encryption.html">end-to-end encryption</a>, or a function that reads your own <a href="../security/secret-vault.html">vault</a>. <code>sysVariables</code> lists which of <code>userEmail</code>, <code>userSession</code> and <code>serverIp</code> agents may read from <code>sys</code>.</p>
-<div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>sysVariables</code></td><td class=ty>list of &quot;userEmail&quot; | &quot;userSession&quot; | &quot;serverIp&quot;</td><td class=dflt></td><td>Which system variables agents can read from the &#x27;sys&#x27; namespace. &#x27;inputs&#x27; and &#x27;query&#x27; are always available.</td></tr><tr><td><code>allowlist</code></td><td class=ty>list of string</td><td class=dflt></td><td>What agent expressions may call. These run on the server&#x27;s shared event loop and must not block it - asyncio.run, for example. A coroutine is awaited only when it is the whole expression, not when it appears inside a larger one.</td></tr></tbody></table></div>
+<p>The allowlist is also where custom code is registered: an <a href="../llm/llm-adapters.html">LLM adapter</a>, the key function for <a href="../security/encryption.html">end-to-end encryption</a>, or a function that reads your own <a href="../security/secret-vault.html">vault</a>.</p>
+<div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>allowlist</code></td><td class=ty>list of string</td><td class=dflt></td><td>What agent expressions may call. These run on the server&#x27;s shared event loop and must not block it - asyncio.run, for example. A coroutine is awaited only when it is the whole expression, not when it appears inside a larger one.</td></tr></tbody></table></div>
+
+<h2 id="system-variables">System variables</h2>
+<p>The <code>sys</code> namespace carries what the runtime knows about a run. <code>sys.inputs</code> and <code>sys.query</code> are always there. The three below reach an agent only when an administrator lists them here, so an agent sees nothing about the user or the server by default. See <a href="../agent-definition/variables.html">Variables</a> for how an expression reads them.</p>
+<ul>
+  <li><code>userEmail</code> is the email address of the user running the agent.</li>
+  <li><code>userSession</code> is a hash of that user's session, for keying data that belongs to the session.</li>
+  <li><code>serverIp</code> is the agent server's address as the cloud sees it, for logging.</li>
+</ul>
+<div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>sysVariables</code></td><td class=ty>list of &quot;userEmail&quot; | &quot;userSession&quot; | &quot;serverIp&quot;</td><td class=dflt></td><td>Which system variables agents can read from the &#x27;sys&#x27; namespace. &#x27;inputs&#x27; and &#x27;query&#x27; are always available.</td></tr></tbody></table></div>
 
 <h2 id="compile-rules">Compile rules</h2>
 <p>Each of the operators <code>+ - * / // % ** &lt;&lt; &gt;&gt; @</code> is set to <code>allow</code>, <code>deny</code> or <code>rewrite</code>. The rules are applied when a draft is validated or published, so a change reaches a published agent only when that agent is republished. A denied operator fails validation with the path of the expression. A rewritten operator is replaced by a call to a safe function that bounds the operation; the built-in functions live in <code>search2o/execution/safeoperators.py</code>, and <code>safe_pow</code>, for example, refuses exponents above 64. To substitute your own safe function, allowlist a function under the same name. Comprehensions are bounded by nesting depth and by the number of <code>for</code> clauses.</p>
@@ -64,7 +73,7 @@ mycompany.vault.get_secret          # anything importable in the server&#x27;s e
     </article>
     <nav class=prevnext><a class=prev href='../runtime/overview.html'><small>Previous</small>The agent runtime</a><a class=next href='../runtime/pools-and-profiles.html'><small>Next</small>Connection pools and profiles</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#allowlist'>Allowlist</a></li><li class=l2><a href='#compile-rules'>Compile rules</a></li><li class=l2><a href='#runtime-limits'>Runtime limits</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#allowlist'>Allowlist</a></li><li class=l2><a href='#system-variables'>System variables</a></li><li class=l2><a href='#compile-rules'>Compile rules</a></li><li class=l2><a href='#runtime-limits'>Runtime limits</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

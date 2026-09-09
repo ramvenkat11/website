@@ -1,4 +1,4 @@
-<p class="lead">The <strong>Search</strong> configuration decides which tag the search box uses and what happens when the user presses Enter.</p>
+<p class="lead">The <strong>Search</strong> configuration decides which tag the search box uses and what happens when the user presses Enter on the bundled GUI.</p>
 
 <!--fields:model:SearchOptionsModel-->
 <p>Leave <code>tag</code> empty and the search box searches agents of every tag. Set a tag and only agents carrying that tag are matched. See <a href="tags.html">Tags</a>.</p>
@@ -13,3 +13,7 @@
 <p>The first three settings search the follow-up like a new query, with the previous agent as the fallback. Under the default setting, the previous agent answers when nothing else matches. Under the two choice settings, the previous agent is added to the end of the choices. <code>executePrevious</code> never searches a follow-up: the conversation stays on the agent that started it.</p>
 
 <p>Changes take effect on the next search. Search settings are edited under <strong>Agents → Search</strong> by a developer or an administrator.</p>
+
+
+<h2>Custom GUI / Chat interface</h2>
+<p>These setting can be safely ignored when you develop your own search UI or when you create a chat integration. </p>
