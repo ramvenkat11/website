@@ -56,8 +56,8 @@ question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL 
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
 ## State on 2026-09-08 (hero note simplified; step-1 line removed)
-The hero note is now "Start with the free Individual plan. Upgrade when you are ready."
-(my polish of Ram's sentence) - the upgrade detail lives only in the Bring-your-team step.
+The hero note settled as "Start with the free Individual plan. When you are ready,
+upgrade in place from the GUI." (Ram wanted the where - in place / in the GUI - added) - the upgrade detail lives only in the Bring-your-team step.
 The step-1 "Individual plans are free. See Pricing for details." line is REMOVED (the note
 above already says it). Step 1 is heading + form only.
 
