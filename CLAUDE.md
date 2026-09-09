@@ -55,6 +55,11 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-08 (link label: no question mark)
+"New user / Forgot password?" is now "New user / Forgot password" in all six places
+(gettingstarted, the-gui, users-and-roles, authentication, rest-api/authentication,
+gui/account) - Ram is removing the question mark in the UI too.
+
 ## State on 2026-09-08 (clone-install variant cut from getting started)
 The Download step is ONE codecard now - pip install git+... The clone-then-install OR-box
 is gone (unnecessary, Ram); the clone form remains documented in
