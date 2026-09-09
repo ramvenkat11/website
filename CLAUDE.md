@@ -55,6 +55,12 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-08 (hero note simplified; step-1 line removed)
+The hero note is now "Start with the free Individual plan. Upgrade when you are ready."
+(my polish of Ram's sentence) - the upgrade detail lives only in the Bring-your-team step.
+The step-1 "Individual plans are free. See Pricing for details." line is REMOVED (the note
+above already says it). Step 1 is heading + form only.
+
 ## State on 2026-09-08 (Bring your team step restored as the last step)
 Per Ram, the Evaluation step is BACK at the end of getting started (id="team", h2 "Bring
 your team"): request an Evaluation license from the Account page in the GUI / approval
