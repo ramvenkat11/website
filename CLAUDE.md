@@ -57,8 +57,12 @@ question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL 
 
 ## State on 2026-09-09 (AI assist line under the 23 commands)
 New muted line below the command groups on the home page: "Describe the agentic workflow you
-need, and AI assist writes the agent, or a first draft of it." (Ram's wording; the
-"already understands these commands" opener was cut; 14.5px var(--muted), margin-top 18). It lengthened the left column by
+need - AI assist writes the first draft." (Ram's final wording, third pass; 14.5px
+var(--muted), margin-top 18). It needs 499px in a 467px column, so it wraps to two lines
+and left "draft." ORPHANED; text-wrap:balance fixed the orphan but split mid-clause
+("you / need"), so the second clause is wrapped in a white-space:nowrap span - the break
+now falls at the em dash: "Describe the agentic workflow you need -" / "AI assist writes
+the first draft." It lengthened the left column by
 34px and broke the columns-end-level rule, so .cmdgroups gap went 20px -> 16px (8 gaps x 4px
 = 32) and the new line's margin-top 20 -> 18 (2). Re-measured: delta 0.
 
