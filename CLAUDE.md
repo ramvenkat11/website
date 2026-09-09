@@ -55,6 +55,13 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-08 (Bring your team step restored as the last step)
+Per Ram, the Evaluation step is BACK at the end of getting started (id="team", h2 "Bring
+your team"): request an Evaluation license from the Account page in the GUI / approval
+email within one business day / start the server in a common place / See Pricing. It sits
+AFTER the Ask-a-question step, per "add a last point". The hero note carries the same
+upgrade message - accepted duplication, his call.
+
 ## State on 2026-09-08 (GUI section renamed; How the GUI runs page)
 Per Ram: the docs section "GUI pages" is now "GUI" (toc + docs home card; the card small
 text mentions the new page). NEW first page gui/how-the-gui-runs.html (122 pages now):
