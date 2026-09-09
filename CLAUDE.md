@@ -56,9 +56,9 @@ question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL 
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
 ## State on 2026-09-09 (AI assist line under the 23 commands)
-New muted line below the command groups on the home page: "AI assist already understands
-these commands - describe the agentic workflow you need, and it writes the agent." (Ram's
-content, my phrasing; 14.5px var(--muted), margin-top 18). It lengthened the left column by
+New muted line below the command groups on the home page: "Describe the agentic workflow you
+need, and AI assist writes the agent, or a first draft of it." (Ram's wording; the
+"already understands these commands" opener was cut; 14.5px var(--muted), margin-top 18). It lengthened the left column by
 34px and broke the columns-end-level rule, so .cmdgroups gap went 20px -> 16px (8 gaps x 4px
 = 32) and the new line's margin-top 20 -> 18 (2). Re-measured: delta 0.
 
