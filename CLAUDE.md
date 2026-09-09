@@ -55,6 +55,27 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-09 (new docs page: Search quality)
+NEW docsrc/search/search-quality.html, last page under Search (124 pages), written from
+content/search_results.md - a source file that is EXPLICITLY not the page and carries
+publish rules. Twelve sections: the conditional >99% short answer; overlap-not-size as the
+reframe (the escalations/incident-triage example, the two 50-agent catalogues at 99.2% vs
+83.8%); the well-separated table; the deliberately-hard pooled table (86/94.3/58/0.77/0.14)
+labelled as our test set, not a typical deployment; the 40/100/1,000 scale table plus the
+1,000-agent detail (every agent queried, 367 perfect, none failed all ten, worst were
+near-synonym halves); one-two-three-or-none with the confidence trade in PROSE (range 88%
+single results / 7.2% wrong -> 42% / 0.23%, shipped setting keeps wrong under 1%); refusals
+(100% multi-language, 99.6% English, under 0.5% genuine turned away, the deliberate
+neighbour bias); languages (both tables, Mandarin-Japanese 97.5% as the meaning-not-words
+proof); speed (70-130ms to ~120 agents, ~400ms at 1,000, 230-260ms end to end - consistent
+with the site's "less than 0.5 seconds"); method; "What we do not claim" (generated test
+data, constructed 99% catalogue, translated descriptions, English strictest, indexing
+required); and Ram's closing commitment (twenty years, quality will keep improving).
+PUBLISH RULES OBEYED - swept and verified: no corpus names, no thresholds/settings/dials, no
+vendor or technology names, no per-agent breakdowns. The confidence table from the source
+was deliberately turned into prose so readers do not hunt for a dial the GUI does not offer.
+Search section lead and docs home card updated; five tables measured, none scrolls.
+
 ## State on 2026-09-09 (hero eyebrow matches the pricing h1)
 "Free during the open beta" was the ONLY beta pricing claim on the site (verified) and is
 now "Free until you're convinced" (index.html:44), the pricing h1 verbatim - 216px, one
