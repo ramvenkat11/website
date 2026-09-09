@@ -55,6 +55,15 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-09 (Start the server: two cards, macOS/Linux and Windows)
+The Start-the-server step now has TWO codecards, labelled in the .fname bar (the old label
+was "terminal"): "macOS / Linux" with the $-prompt one-liner, and "Windows PowerShell" with
+a PS> prompt. Ram's PowerShell ONE-LINER (semicolon-joined) OVERFLOWED the card - measured
+753px in a 704px pre, which the horizontal scroll would have hidden - so it is split into
+three PS> lines (same commands, exactly equivalent). All three pres measure "fits" now. The
+license-key card above still shows only the macOS/Linux `export` form; a Windows variant
+there was NOT added (not asked).
+
 ## State on 2026-09-09 (account-creation JS moved to site.js; two new error keys)
 The inline account-creation script is OUT of gettingstarted.html and appended to
 html/site.js, guarded by `if (!document.getElementById("reg-go1")) return;` so it costs
