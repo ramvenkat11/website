@@ -55,6 +55,20 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-09 (Miscellaneous retired; new LLM section)
+Per Ram: NEW section "LLM" (docsrc/llm/, placed where misc was - after Chat integrations,
+before Support and licensing) holding the two moved pages, Connecting to other LLMs and
+Executing code from an LLM; new section index lead "Connecting Search2o to any LLM, and
+running code that an LLM writes." Running multiple environments MOVED to System management
+(last page there; that section's lead gained "and running several environments"). The misc
+section is GONE: docsrc/misc/index.html git rm'd, the directory removed, and the STALE
+GENERATED html/docs/misc (4 files) git rm'd too - the build never deletes, so a leftover
+would have kept serving old URLs. Docs home card replaced (Miscellaneous -> LLM). Inbound
+../misc/llm-adapters.html links fixed in runtime/guardrails, getting-started/
+running-the-server, profiles/llm-profiles, and html/gettingstarted (docs/llm/...). 122
+pages, 32 examples valid; sidebar verified in-browser. DEPLOY NOTE: the live bucket will
+need `aws s3 rm --recursive s3://search2o.com/docs/misc/`.
+
 ## State on 2026-09-09 (new last step: Upgrade to the paid service)
 Added after Bring-your-team (id="paid"): "When your team is ready, upgrade to the paid
 service from the Account page in the GUI. You never have to contact us." + "If you would
