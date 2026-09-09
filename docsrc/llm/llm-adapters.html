@@ -1,0 +1,41 @@
+<p class="lead">An adapter is what connects Search2o to an LLM. Three adapters are bundled, and they already cover every endpoint that speaks the OpenAI, Anthropic or Gemini protocol. An LLM with an interface of its own needs an adapter class, written in Python and registered through the allowlist.</p>
+
+<h2>First, try a bundled adapter</h2>
+<p>Many LLMs are reachable with the adapters that are already there. A private deployment, a gateway, or a vendor that offers an OpenAI-compatible API needs no code at all: create an <a href="../profiles/llm-profiles.html">LLM profile</a> under <strong>Profiles &rsaquo; LLM</strong>, pick the adapter that matches the protocol (<code>openai</code>, <code>anthropic</code> or <code>gemini</code>), and set the URL, the headers and the model. See <a href="vendors.html">The three vendors</a>.</p>
+<p>Each bundled adapter says so itself. The GUI shows the adapter's description when a profile is created &mdash; the OpenAI one reads &ldquo;Adapter for OpenAI ChatGPT responses API or any vendor that is compatible with it&rdquo;.</p>
+
+<h2>When you need an adapter of your own</h2>
+<p>An adapter turns the request that Search2o builds &mdash; prompt, tools, model and limits &mdash; into the vendor's request body, and turns the vendor's response back into Search2o's form. Write one only when the vendor's protocol matches none of the three.</p>
+
+<h3>BaseLlmAdapter, for most APIs</h3>
+<p><code>search2o.llm.basellmadapter.BaseLlmAdapter</code> does the assembly and the control flow. It builds the request in a fixed order, merges the profile's <code>additionalParams</code> over the result, and reads the response in a fixed order. You supply only the vendor-specific pieces, as these methods:</p>
+<div class="tablewrap"><table class="fields data">
+<thead><tr><th>Method</th><th>What it does</th></tr></thead>
+<tbody>
+<tr><td><code>name</code><small>from LlmAdapter</small></td><td>The adapter's name, as it appears in a profile's <code>adapter</code> field.</td></tr>
+<tr><td><code>description</code><small>from LlmAdapter</small></td><td>One line, shown in the GUI when a profile is created.</td></tr>
+<tr><td><code>set_model</code></td><td>Put the profile's model into the request parameters.</td></tr>
+<tr><td><code>set_max_tokens</code></td><td>Put the token ceiling into the request parameters.</td></tr>
+<tr><td><code>set_tools</code></td><td>Express the agent's tools in the vendor's schema.</td></tr>
+<tr><td><code>set_system_prompt</code></td><td>Place the system prompt where the vendor expects it, in the parameters or as a message.</td></tr>
+<tr><td><code>set_messages_user_entry</code></td><td>Append one user message.</td></tr>
+<tr><td><code>set_messages_assistant_response_content_output</code></td><td>Append an earlier assistant answer.</td></tr>
+<tr><td><code>set_messages_assistant_response_tool_calls</code></td><td>Append the assistant's earlier tool calls.</td></tr>
+<tr><td><code>set_messages_tool_results</code></td><td>Append the results of those tool calls.</td></tr>
+<tr><td><code>set_response_flags</code></td><td>Read success or failure from the response.</td></tr>
+<tr><td><code>set_token_counts</code></td><td>Read the token counts, which the cost report is computed from.</td></tr>
+<tr><td><code>set_assistant_vendor</code></td><td>Read the answer: either tool calls or content. A response with neither is an error.</td></tr>
+</tbody></table></div>
+<p><code>BaseLlmAdapter</code> walks the prompt for you and calls the four message methods in the order the conversation happened, so an adapter never has to sort the history itself. <code>get_error</code> has a working implementation that reads the response's <code>error</code> field; override it when the vendor reports errors differently.</p>
+
+<h3>LlmAdapter, for anything else</h3>
+<p><code>search2o.llm.llmadapter.LlmAdapter</code> is the bare interface, for a protocol so different that the assembly above does not help. Five methods, and nothing is done for you: <code>name</code>, <code>description</code>, <code>process_request</code> (an <code>LlmRequestModel</code> in, the request body out), <code>process_response</code> (the response in, an <code>LlmResponseModel</code> out), and <code>get_error</code>.</p>
+<p>The bundled adapters in <code>search2o.llm</code> &mdash; <code>openaiadapter.py</code>, <code>anthropicadapter.py</code> and <code>geminiadapter.py</code> &mdash; are the reference implementations, and each is a short file.</p>
+
+<h2>Registering it</h2>
+<ol>
+  <li>The class belongs in the Python environment that the agent server runs in.</li>
+  <li>Add the class to the <a href="../runtime/guardrails.html#allowlist">allowlist</a> as <code>mypackage.myadapter.MyAdapter</code> and save.</li>
+  <li>The agent server instantiates every allowlisted subclass of <code>LlmAdapter</code> when the server loads the allowlist, and lists those adapters under <em>Adapters</em> when a new LLM profile is created. An adapter whose constructor fails is written to the server's log.</li>
+</ol>
+<p>The class needs a constructor that takes no arguments. Reports group spend under the profile's <em>vendor</em> field, so set that field to the vendor's name, whatever the adapter is called.</p>

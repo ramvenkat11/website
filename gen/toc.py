@@ -29,6 +29,11 @@ TOC = [
         ("order-of-execution", "Order of execution"),
         ("conversation-state", "Conversation state"),
     ]),
+    ("llm", "LLM", [
+        ("vendors", "The three vendors"),
+        ("llm-adapters", "Connecting to other LLMs"),
+        ("code-from-llm", "Executing code from an LLM"),
+    ]),
     ("commands", "Command reference", [
         ("var", "var", "Variables"),
         ("if", "if", "Flow control"),
@@ -93,6 +98,7 @@ TOC = [
         ("single-sign-on", "Single sign-on"),
         ("notifications", "Notifications"),
         ("usage-limits", "Usage limits"),
+        ("multiple-environments", "Running multiple environments"),
     ]),
     ("security", "Security and privacy", [
         ("license-rotation", "License key rotation"),
@@ -132,11 +138,6 @@ TOC = [
         ("showing-the-answer", "Showing the answer"),
         ("chat-applications", "Slack, Teams and Google Chat"),
         ("ai-prompts", "Building a bot with an AI assistant"),
-    ]),
-    ("misc", "Miscellaneous", [
-        ("llm-adapters", "Connecting to other LLMs"),
-        ("code-from-llm", "Executing code from an LLM"),
-        ("multiple-environments", "Running multiple environments"),
     ]),
     ("support-licensing", "Support and licensing", [
         ("asking-the-docs", "Asking the docs"),

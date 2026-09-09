@@ -1,0 +1,40 @@
+<p class="lead">Search2o ships with adapters for OpenAI, Anthropic and Google Gemini. One API key is enough to start, and a new account already has a profile for each vendor.</p>
+
+<h2>The key</h2>
+<p>Each seeded profile reads its key from the agent server's environment. Set the key for the vendor you use before starting the server:</p>
+<x-code lang="bash">
+$ export OPENAI_API_KEY=...        # OpenAI
+$ export ANTHROPIC_API_KEY=...     # Anthropic
+$ export GEMINI_API_KEY=...        # Google Gemini
+</x-code>
+<p>Where a key is read from is configurable; see <a href="../security/secret-vault.html">Secrets</a>.</p>
+
+<h2>The seeded profiles</h2>
+<p>A new account has these <a href="../profiles/llm-profiles.html">LLM profiles</a>. An agent names one of them in its <code>llm</code> command.</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Profile</th><th>Vendor</th><th>What it is for</th></tr></thead>
+<tbody>
+<tr><td><code>gpt5_mini</code></td><td>OpenAI</td><td>Text</td></tr>
+<tr><td><code>gpt_image</code></td><td>OpenAI</td><td>Image generation</td></tr>
+<tr><td><code>claude_haiku</code></td><td>Anthropic</td><td>Text</td></tr>
+<tr><td><code>gemini_flash</code></td><td>Google Gemini</td><td>Text</td></tr>
+<tr><td><code>gemini_image</code></td><td>Google Gemini</td><td>Image generation</td></tr>
+</tbody></table></div>
+<p>The prices on a seeded profile are the list prices at the time the account was created. Please edit them to match your own contract, so that the <a href="../reports/cost.html">cost report</a> is right.</p>
+
+<h2>A profile for another model</h2>
+<p>A profile is one model at one vendor, so a second model needs a second profile. Create one under <strong>Profiles &rsaquo; LLM</strong> in the GUI and set:</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Field</th><th>What to set</th></tr></thead>
+<tbody>
+<tr><td><code>adapter</code></td><td><code>openai</code>, <code>anthropic</code> or <code>gemini</code>, matching the protocol the endpoint speaks.</td></tr>
+<tr><td><code>vendor</code></td><td>The name the reports group spend under.</td></tr>
+<tr><td><code>url</code></td><td>The endpoint, for example <code>https://api.openai.com</code>.</td></tr>
+<tr><td><code>headers</code></td><td>Authorization and anything else the vendor wants. The values are dynamic strings, so the key can be read at call time: <code>{ f"Bearer {sys.secret('OPENAI_API_KEY')}" }</code>.</td></tr>
+<tr><td><code>model</code></td><td>The model name as the vendor writes it.</td></tr>
+<tr><td><code>pricing</code></td><td>The prices per million tokens.</td></tr>
+</tbody></table></div>
+<p>Every field is described in <a href="../profiles/llm-profiles.html">LLM profiles</a>. An agent changes model by naming a different profile; nothing in the agent's code changes.</p>
+
+<h2>Any compatible LLM</h2>
+<p>These three adapters are not limited to the three vendors. Any endpoint that speaks one of the three protocols works with the matching adapter and a profile that points at the endpoint's URL &mdash; a private deployment, a gateway, or another vendor's compatible API. See <a href="llm-adapters.html">Connecting to other LLMs</a>.</p>

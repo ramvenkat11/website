@@ -12,7 +12,7 @@ json.loads                          # callable as json.loads(...), not loads(...
 mycompany.vault.get_secret          # anything importable in the server's environment
 </x-code>
 <p>Expressions use an entry's full dotted name unless the entry is aliased with <code>as</code>. A package your agents need is installed next to <code>search2o</code>. Expressions run on the server's shared event loop, so a function that blocks the loop must not be allowlisted. <code>asyncio.run</code> and synchronous network calls are examples, and the <code>asyncio</code> package itself is refused. <code>gather</code> and <code>sleep</code> are always available. A coroutine on the allowlist is awaited only when the coroutine is the whole expression.</p>
-<p>The allowlist is also where custom code is registered: an <a href="../misc/llm-adapters.html">LLM adapter</a>, the key function for <a href="../security/encryption.html">end-to-end encryption</a>, or a function that reads your own <a href="../security/secret-vault.html">vault</a>. <code>sysVariables</code> lists which of <code>userEmail</code>, <code>userSession</code> and <code>serverIp</code> agents may read from <code>sys</code>.</p>
+<p>The allowlist is also where custom code is registered: an <a href="../llm/llm-adapters.html">LLM adapter</a>, the key function for <a href="../security/encryption.html">end-to-end encryption</a>, or a function that reads your own <a href="../security/secret-vault.html">vault</a>. <code>sysVariables</code> lists which of <code>userEmail</code>, <code>userSession</code> and <code>serverIp</code> agents may read from <code>sys</code>.</p>
 <!--fields:model:EvalAllowlistModel-->
 
 <h2>Compile rules</h2>
