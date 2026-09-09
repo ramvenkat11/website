@@ -62,8 +62,9 @@ a PS> prompt. Ram's PowerShell ONE-LINER (semicolon-joined) OVERFLOWED the card 
 753px in a 704px pre, which the horizontal scroll would have hidden - so it is split into
 three PS> lines (same commands, exactly equivalent). All three pres measure "fits" now. Ram then REMOVED the whole
 "Set up the license key" block (its export line was redundant - both start commands set the
-key inline). The Run step is now: h3 "Set up one LLM key" (prose) + h3 "Start the server"
-(the two cards).
+key inline). The Run step is now: h3 "Use an LLM key" - "A key from one of the
+three major vendors is enough: OPENAI_API_KEY, ANTHROPIC_API_KEY or GEMINI_API_KEY. See the
+docs for other LLMs." (links misc/llm-adapters) - plus h3 "Start the server" (the two cards).
 
 ## State on 2026-09-09 (account-creation JS moved to site.js; two new error keys)
 The inline account-creation script is OUT of gettingstarted.html and appended to
