@@ -5,15 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Getting started — Search2o</title>
-<meta name="description" content="Register, install the agent server from GitHub, run it with your license, and build your first agent.">
+<meta name="description" content="Create your account, install the agent server from GitHub, run it with your license, and build your first agent.">
 <meta property="og:title" content="Getting started — Search2o">
-<meta property="og:description" content="Register, install the agent server from GitHub, run it with your license, and build your first agent.">
+<meta property="og:description" content="Create your account, install the agent server from GitHub, run it with your license, and build your first agent.">
 <meta property="og:type" content="website">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
+<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body>
 
@@ -31,7 +32,6 @@
       <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg>
       <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
     </button>
-    <a class="btn btn-primary btn-sm header-cta" href="register.html">Register</a>
   </div>
 </header>
 
@@ -40,7 +40,7 @@
     <div class="container">
       <span class="kicker">Getting started</span>
       <h1>Up and running on your laptop</h1>
-      <p class="note">A laptop is enough to start. When you are ready to show it to your team, upgrade it to &lsquo;Evaluation&rsquo; from the Account page in the GUI and run the server from a common place.</p>
+      <p class="note">Start with the free Individual plan. When you are ready, upgrade in place from the GUI.</p>
     </div>
   </section>
 
@@ -48,9 +48,35 @@
     <div class="container">
       <div class="numbered">
 
-        <div class="step-sec" id="register">
-          <h2>Register</h2>
-          <p>Before you start, you need a license key. <a href="register.html">Register</a> to get one.</p>
+        <div class="step-sec" id="create-account">
+          <h2>Create your account</h2>
+          <div class="form-card reg-card" id="reg-card">
+                  <div id="reg-step1">
+                    <div class="form-grid">
+                      <div class="field wide">
+                        <label for="reg-email">Work email</label>
+                        <input id="reg-email" type="email" autocomplete="email" placeholder="you@company.com">
+                      </div>
+                      <div class="field">
+                        <label for="reg-name">Your name</label>
+                        <input id="reg-name" type="text" autocomplete="name" placeholder="Jordan Rivera">
+                      </div>
+                      <div class="field">
+                        <label for="reg-account">Account name</label>
+                        <input id="reg-account" type="text" placeholder="Acme Corp">
+                      </div>
+                    </div>
+                    <div class="terms">
+                      <input type="checkbox" id="reg-terms">
+                      <label for="reg-terms">I accept the <a href="legal/terms.html" target="_blank" rel="noopener">Terms of Service</a> and the <a href="legal/privacy.html" target="_blank" rel="noopener">Privacy Policy</a></label>
+                    </div>
+                    <div class="h-captcha" data-sitekey="ff281746-715c-41a8-a28e-83d42d90b0da"></div>
+                    <div class="actions">
+                      <button class="btn btn-blue" type="button" id="reg-go1">Create account</button>
+                    </div>
+                  </div>
+                  <div class="reg-out" id="reg-out" hidden></div>
+                </div>
         </div>
 
         <div class="step-sec" id="install">
@@ -59,12 +85,6 @@
           <div class="codecard" aria-label="Install straight from the repository">
             <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">terminal</span></div>
 <pre><code><span class="ps1">$ </span>pip install git+https://github.com/Search2o/agent-server.git</code></pre>
-          </div>
-          <div class="or">OR</div>
-          <div class="codecard" aria-label="Clone, then install from the clone">
-            <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">terminal</span></div>
-<pre><code><span class="ps1">$ </span>git clone https://github.com/Search2o/agent-server.git
-<span class="ps1">$ </span>pip install ./agent-server</code></pre>
           </div>
         </div>
 
@@ -75,11 +95,6 @@
           <div class="codecard" aria-label="The key itself">
             <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">terminal</span></div>
 <pre><code><span class="ps1">$ </span>export SEARCH2O_LICENSE_KEY=your-license-key</code></pre>
-          </div>
-          <div class="or">OR</div>
-          <div class="codecard" aria-label="A file that holds the key">
-            <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">terminal</span></div>
-<pre><code><span class="ps1">$ </span>export SEARCH2O_LICENSE_KEY_FILE=/path/to/license.key</code></pre>
           </div>
           <h3>Set up one LLM key</h3>
           <p>Set the key for the vendor you use: <code>OPENAI_API_KEY</code>, <code>ANTHROPIC_API_KEY</code> or <code>GEMINI_API_KEY</code>. One is enough.</p>
@@ -92,9 +107,7 @@
 
         <div class="step-sec" id="gui">
           <h2>Open the GUI</h2>
-          <p>Open <code>http://127.0.0.1:9020/ui</code> and click <strong>New user / Forgot password?</strong> on the sign-in dialog. An email with a code arrives at your registered address; enter the code, choose a password, and sign in.</p>
-          <h3>REST API</h3>
-          <p>The server also serves the OpenAPI schema at <code>/openapi.json</code>, Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>.</p>
+          <p>Open <code>http://127.0.0.1:9020/ui</code> and click <strong>New user / Forgot password</strong> on the sign-in dialog. Enter the email you used in step 1; an email with a code arrives. Enter the code, choose a password, and sign in.</p>
         </div>
 
         <div class="step-sec" id="first-agent">
@@ -145,6 +158,13 @@
           </div>
         </div>
 
+        <div class="step-sec" id="team">
+          <h2>Bring your team</h2>
+          <p>When you&rsquo;re ready for your team, request an Evaluation license from the Account page in the GUI. You are notified of the approval by email within one business day.</p>
+          <p>Then start the server in a common place &mdash; nothing else has to change.</p>
+          <p>See <a href="pricing.html">Pricing</a> for what each level includes.</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -192,6 +212,104 @@
 </footer>
 
 <script src="site.js"></script>
+<script src="config.js"></script>
+<script>
+// Account creation: one call to the API. Success returns the license key, shown
+// exactly once. The user sets a password on first sign-in to the GUI.
+(function () {
+  var BASE = (window.SEARCH2O_CONFIG && window.SEARCH2O_CONFIG.apiUrl) || "https://api.search2o.com";
+  var REG_ERRORS = {
+    notHuman: "Human verification failed. Please try again.",
+    didYouMean: "Please check your email address. Did you mean {didYouMean}?",
+    invalidEmail: "Please enter a valid email address.",
+    bogusEmail: "Disposable email addresses cannot be used to create an account.",
+    termsNotAccepted: "You must accept the Terms of Service to create an account.",
+    individualAccountExists: "An individual account already exists for this email address."
+  };
+  function esc(s) {
+    return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+  function regErrorMessages(data) {
+    var msgs = [];
+    ((data && data.registrationErrors) || []).forEach(function (key) {
+      var m = REG_ERRORS[key];
+      if (key === "didYouMean") {
+        m = data.didYouMean ? m.replace("{didYouMean}", esc(data.didYouMean))
+                            : "Please check your email address.";
+      }
+      if (m) msgs.push(m);
+    });
+    return msgs;
+  }
+  var $ = function (id) { return document.getElementById(id); };
+
+  function say(msg, ok) {
+    var o = $("reg-out");
+    o.hidden = false;
+    o.className = "reg-out " + (ok ? "ok" : "err");
+    o.innerHTML = msg;
+  }
+
+  function showLicense(license) {
+    var o = $("reg-out");
+    o.hidden = false;
+    o.className = "reg-done";
+    o.innerHTML = '<p class="reg-ready">Your account is ready.</p>'
+      + '<div class="reg-keybox">'
+      +   '<div class="reg-keylabel">License key</div>'
+      +   '<div class="reg-keyrow"><code id="reg-key"></code>'
+      +   '<button type="button" id="reg-copy" aria-label="Copy license key">'
+      +     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>'
+      +   '</button></div>'
+      + '</div>'
+      + '<p class="reg-note">This key is shown only once &mdash; please store it with your other secrets. The next steps use it right away.</p>';
+    $("reg-key").textContent = license;
+    var copyBtn = $("reg-copy");
+    var original = copyBtn.innerHTML;
+    copyBtn.addEventListener("click", function () {
+      navigator.clipboard.writeText(license).then(function () {
+        copyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+        setTimeout(function () { copyBtn.innerHTML = original; }, 1400);
+      });
+    });
+  }
+
+  function post(path, body) {
+    return fetch(BASE + path, {
+      method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify(body)
+    }).then(function (r) { return r.json().catch(function () { return null; }); });
+  }
+
+  $("reg-go1").addEventListener("click", function () {
+    var email = $("reg-email").value.trim();
+    var userName = $("reg-name").value.trim(), accountName = $("reg-account").value.trim();
+    if (!email || !userName || !accountName) return say("Please fill in every field.", false);
+    if (!$("reg-terms").checked) return say("Please accept the Terms of Service.", false);
+
+    var token = "";
+    try { token = hcaptcha.getResponse(); } catch (e) {}
+    if (!token) return say("Please complete the hCaptcha.", false);
+
+    $("reg-go1").disabled = true;
+    post("/register", {email: email, userName: userName, accountName: accountName, terms: true, token: token})
+      .then(function (data) {
+        if (data && data.success && data.license) {
+          $("reg-step1").hidden = true;
+          showLicense(data.license);
+        } else {
+          var msgs = regErrorMessages(data);
+          say(msgs.length ? msgs.join("<br>")
+                          : "We could not create your account. Please check your details and try again.", false);
+        }
+      })
+      .catch(function () { say("Something went wrong. Please try again.", false); })
+      .finally(function () {
+        $("reg-go1").disabled = false;
+        try { hcaptcha.reset(); } catch (e) {}
+      });
+  });
+})();
+</script>
 
 </body>
 </html>

@@ -11,7 +11,7 @@ TOC = [
         ("how-it-fits-together", "How it fits together"),
     ]),
     ("getting-started", "Getting started", [
-        ("registering-and-downloading", "Registering and downloading"),
+        ("registering-and-downloading", "Creating an account and downloading"),
         ("license-key", "The license key"),
         ("running-the-server", "Running the server"),
         ("the-gui", "The GUI"),
@@ -101,7 +101,8 @@ TOC = [
         ("controlled-runtime", "The controlled runtime"),
         ("data-privacy", "Data privacy"),
     ]),
-    ("gui", "GUI pages", [
+    ("gui", "GUI", [
+        ("how-the-gui-runs", "How the GUI runs"),
         ("search", "Search and conversations"),
         ("agents", "Agents"),
         ("profiles", "Profiles"),
