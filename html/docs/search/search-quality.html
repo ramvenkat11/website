@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Search quality — Search2o docs</title>
+<meta name="description" content="Search is what stands between a user and the right agent, so its quality decides whether the whole system feels reliable. This page gives the measured number…">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../docs.css">
+</head>
+<body class="docs">
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="../../index.html" aria-label="Search2o home"><img src="../../logo.png" alt="Search2o" width="560" height="102"></a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="navlink" href="../../index.html">Home</a>
+      <a class="navlink" href="../../gettingstarted.html">Getting started</a>
+      <a class="navlink" href="../index.html" aria-current="page">Docs</a>
+      <a class="navlink" href="../../pricing.html">Pricing</a>
+      <a class="navlink" href="../../about.html">About</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch theme">
+      <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg>
+      <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+<div class="container docs-layout">
+  <button class="sb-toggle" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  <div id="sidebar" class="sb-wrap"><nav class=sidebar aria-label='Documentation'><a class='sb-home' href='../index.html'>Documentation</a><details><summary><a href='../introduction/index.html'>Introduction</a></summary><ul><li><a href='../introduction/what-is-search2o.html'>What is Search2o</a></li><li><a href='../introduction/parts-of-the-system.html'>Parts of the system</a></li><li><a href='../introduction/how-it-fits-together.html'>How it fits together</a></li></ul></details><details><summary><a href='../getting-started/index.html'>Getting started</a></summary><ul><li><a href='../getting-started/registering-and-downloading.html'>Creating an account and downloading</a></li><li><a href='../getting-started/license-key.html'>The license key</a></li><li><a href='../getting-started/running-the-server.html'>Running the server</a></li><li><a href='../getting-started/the-gui.html'>The GUI</a></li><li><a href='../getting-started/your-first-agent.html'>Your first agent</a></li></ul></details><details><summary><a href='../agent-definition/index.html'>Agent definition</a></summary><ul><li><a href='../agent-definition/syntax.html'>Syntax and dynamic strings</a></li><li><a href='../agent-definition/structure.html'>Agent structure</a></li><li><a href='../agent-definition/functions.html'>Functions</a></li><li><a href='../agent-definition/commands.html'>Commands</a></li><li><a href='../agent-definition/variables.html'>Variables and namespaces</a></li></ul></details><details><summary><a href='../agent-execution/index.html'>Agent execution</a></summary><ul><li><a href='../agent-execution/output.html'>Agent output</a></li><li><a href='../agent-execution/order-of-execution.html'>Order of execution</a></li><li><a href='../agent-execution/conversation-state.html'>Conversation state</a></li></ul></details><details><summary><a href='../llm/index.html'>LLM</a></summary><ul><li><a href='../llm/vendors.html'>The three vendors</a></li><li><a href='../llm/llm-adapters.html'>Connecting to other LLMs</a></li><li><a href='../llm/code-from-llm.html'>Executing code from an LLM</a></li></ul></details><details><summary><a href='../commands/index.html'>Command reference</a></summary><ul><li class=sb-group>Variables</li><li><a href='../commands/var.html'>var</a></li><li class=sb-group>Flow control</li><li><a href='../commands/if.html'>if</a></li><li><a href='../commands/while.html'>while</a></li><li><a href='../commands/for.html'>for</a></li><li><a href='../commands/break.html'>break</a></li><li><a href='../commands/continue.html'>continue</a></li><li><a href='../commands/func.html'>func</a></li><li><a href='../commands/return.html'>return</a></li><li><a href='../commands/parallel.html'>parallel</a></li><li class=sb-group>LLM interaction</li><li><a href='../commands/prompt.html'>prompt</a></li><li><a href='../commands/llm.html'>llm</a></li><li><a href='../commands/memory.html'>memory</a></li><li class=sb-group>External systems</li><li><a href='../commands/api.html'>api</a></li><li><a href='../commands/db.html'>db</a></li><li class=sb-group>Deep agents</li><li><a href='../commands/search.html'>search</a></li><li><a href='../commands/invoke.html'>invoke</a></li><li class=sb-group>Human-in-the-loop</li><li><a href='../commands/ask.html'>ask</a></li><li class=sb-group>Agent output</li><li><a href='../commands/output.html'>output</a></li><li class=sb-group>Agent termination</li><li><a href='../commands/end.html'>end</a></li><li><a href='../commands/fail.html'>fail</a></li><li class=sb-group>Observability</li><li><a href='../commands/progress.html'>progress</a></li><li><a href='../commands/trace.html'>trace</a></li><li><a href='../commands/log.html'>log</a></li></ul></details><details open><summary><a href='../search/index.html'>Search</a></summary><ul><li><a href='../search/describing-an-agent.html'>Describing an agent</a></li><li><a href='../search/how-matching-works.html'>How matching behaves</a></li><li><a href='../search/tags.html'>Tags</a></li><li><a href='../search/search-settings.html'>Search settings</a></li><li><a href='../search/search-quality.html' aria-current=page>Search quality</a></li></ul></details><details><summary><a href='../development/index.html'>Development process</a></summary><ul><li><a href='../development/drafts.html'>Drafts</a></li><li><a href='../development/code-editor.html'>The code editor</a></li><li><a href='../development/ai-assist.html'>AI assist</a></li><li><a href='../development/validation-and-publishing.html'>Validation and publishing</a></li><li><a href='../development/merging.html'>Multiple developers and merging</a></li></ul></details><details><summary><a href='../runtime/index.html'>Agent runtime</a></summary><ul><li><a href='../runtime/overview.html'>The agent runtime</a></li><li><a href='../runtime/guardrails.html'>Guardrails</a></li><li><a href='../runtime/pools-and-profiles.html'>Connection pools and profiles</a></li></ul></details><details><summary><a href='../profiles/index.html'>Profiles</a></summary><ul><li><a href='../profiles/overview.html'>How profiles work</a></li><li><a href='../profiles/llm-profiles.html'>LLM profiles</a></li><li><a href='../profiles/prompt-profiles.html'>Prompt profiles</a></li><li><a href='../profiles/api-profiles.html'>API profiles</a></li><li><a href='../profiles/db-profiles.html'>Database profiles</a></li><li><a href='../profiles/mcp-servers.html'>MCP servers</a></li></ul></details><details><summary><a href='../reports/index.html'>Reports</a></summary><ul><li><a href='../reports/performance.html'>Agent performance</a></li><li><a href='../reports/errors.html'>Agent errors</a></li><li><a href='../reports/cost.html'>LLM cost</a></li><li><a href='../reports/usage.html'>User usage</a></li></ul></details><details><summary><a href='../system-management/index.html'>System management</a></summary><ul><li><a href='../system-management/users-and-roles.html'>Users and roles</a></li><li><a href='../system-management/agent-servers.html'>Agent servers</a></li><li><a href='../system-management/authentication.html'>Authentication</a></li><li><a href='../system-management/single-sign-on.html'>Single sign-on</a></li><li><a href='../system-management/notifications.html'>Notifications</a></li><li><a href='../system-management/usage-limits.html'>Usage limits</a></li><li><a href='../system-management/multiple-environments.html'>Running multiple environments</a></li></ul></details><details><summary><a href='../security/index.html'>Security and privacy</a></summary><ul><li><a href='../security/license-rotation.html'>License key rotation</a></li><li><a href='../security/secret-vault.html'>The secret vault</a></li><li><a href='../security/encryption.html'>Encryption</a></li><li><a href='../security/controlled-runtime.html'>The controlled runtime</a></li><li><a href='../security/data-privacy.html'>Data privacy</a></li></ul></details><details><summary><a href='../gui/index.html'>GUI</a></summary><ul><li><a href='../gui/how-the-gui-runs.html'>How the GUI runs</a></li><li><a href='../gui/search.html'>Search and conversations</a></li><li><a href='../gui/agents.html'>Agents</a></li><li><a href='../gui/profiles.html'>Profiles</a></li><li><a href='../gui/guardrails.html'>Guardrails</a></li><li><a href='../gui/operations.html'>Operations</a></li><li><a href='../gui/reports.html'>Reports</a></li><li><a href='../gui/account.html'>Admin and billing</a></li><li><a href='../gui/personal.html'>Profile, notifications and docs</a></li></ul></details><details><summary><a href='../rest-api/index.html'>REST API</a></summary><ul><li><a href='../rest-api/overview.html'>The REST API</a></li><li><a href='../rest-api/authentication.html'>Authentication</a></li><li><a href='../rest-api/running-agents.html'>Running agents</a></li><li><a href='../rest-api/streaming.html'>Streaming</a></li><li><a href='../rest-api/search.html'>Search</a></li><li><a href='../rest-api/conversations.html'>Conversations</a></li><li><a href='../rest-api/workflows.html'>Workflows</a></li><li><a href='../rest-api/automating-with-an-llm.html'>Automating tasks with an LLM</a></li><li><a href='../rest-api/clients.html'>Creating your own client</a></li></ul></details><details><summary><a href='../chat-integrations/index.html'>Chat integrations</a></summary><ul><li><a href='../chat-integrations/overview.html'>How a chat integration works</a></li><li><a href='../chat-integrations/connecting-a-person.html'>Connecting a person</a></li><li><a href='../chat-integrations/integration-tokens.html'>Integration tokens</a></li><li><a href='../chat-integrations/finding-an-agent.html'>Finding an agent</a></li><li><a href='../chat-integrations/running-an-agent.html'>Running an agent</a></li><li><a href='../chat-integrations/showing-the-answer.html'>Showing the answer</a></li><li><a href='../chat-integrations/chat-applications.html'>Slack, Teams and Google Chat</a></li><li><a href='../chat-integrations/ai-prompts.html'>Building a bot with an AI assistant</a></li></ul></details><details><summary><a href='../support-licensing/index.html'>Support and licensing</a></summary><ul><li><a href='../support-licensing/asking-the-docs.html'>Asking the docs</a></li><li><a href='../support-licensing/support.html'>Support</a></li><li><a href='../support-licensing/license.html'>License</a></li></ul></details></nav></div>
+  <main class="docs-main">
+    <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../search/index.html'>Search</a></div>
+    <article class="docs-article">
+      <h1>Search quality</h1>
+      <p class="lead">Search is what stands between a user and the right agent, so its quality decides whether the whole system feels reliable. This page gives the measured numbers, the conditions they hold under, and the method behind them.</p>
+
+<h2 id="the-short-answer">The short answer</h2>
+<p>When your agents describe different things and the question is clear, Search2o finds the right agent more than 99% of the time. When two agents genuinely cover the same ground, search offers both rather than guessing. When nothing fits, search says so.</p>
+
+<h2 id="what-decides-accuracy-is-overlap-not-catalogue-size">What decides accuracy is overlap, not catalogue size</h2>
+<p>Most people expect accuracy to fall as the catalogue grows. It barely does. What accuracy tracks is how distinct the agents are from one another.</p>
+<p>Suppose one agent handles escalations and another handles incident triage. A question such as <em>who signs off on this?</em> belongs to both. No search engine can be certain, because the ambiguity is in the catalogue rather than in the search. The useful thing to do is offer both agents.</p>
+<p>We measured this directly. Two catalogues of the same size, 50 agents each, scored 99.2% and 83.8% for the top match. The only difference was how far apart the agents' subjects sat. Fifteen points of accuracy came from catalogue design.</p>
+<p>Catalogue design is in your hands, and <a href="describing-an-agent.html">Describing an agent</a> covers what makes a description distinct.</p>
+
+<h2 id="a-well-separated-catalogue">A well-separated catalogue</h2>
+<p>50 agents, each from a different industry, and 500 questions.</p>
+<div class="tablewrap"><table class="fields">
+<tbody>
+<tr><td>Right agent is the single top match</td><td>99.2%</td></tr>
+<tr><td>Right agent is among the results shown</td><td>99.6%</td></tr>
+<tr><td>Searches answered with exactly one result</td><td>95&ndash;98%</td></tr>
+<tr><td>Confident but wrong single answers</td><td>1 in 500 searches</td></tr>
+</tbody></table></div>
+
+<h2 id="deliberately-overlapping-catalogues">Deliberately overlapping catalogues</h2>
+<p>Our hardest test material: six catalogues, 1,418 agents and 15,180 questions. Several are packed with near-synonym agent pairs on purpose, so that the difficult case is measured rather than the flattering one.</p>
+<div class="tablewrap"><table class="fields">
+<tbody>
+<tr><td>Right agent is the single top match</td><td>86%</td></tr>
+<tr><td>Right agent is among the results shown</td><td>94.3%</td></tr>
+<tr><td>Searches answered with exactly one result</td><td>58%</td></tr>
+<tr><td>Confident but wrong single answers</td><td>0.77%</td></tr>
+<tr><td>Nothing returned when something was available</td><td>0.14%</td></tr>
+</tbody></table></div>
+<p>Read the last lines with the first. Even on our hardest material, fewer than one search in a hundred gives a confidently wrong single answer.</p>
+<p>These pooled figures describe our test set rather than a typical deployment. Per catalogue, the share of searches answered with a single result runs from 52% to 79%. The well-separated catalogues sit at the top of that range and the near-synonym ones at the bottom.</p>
+
+<h2 id="scale-40-100-and-1-000-agents">Scale: 40, 100 and 1,000 agents</h2>
+<p>Search2o handles a thousand agents in one catalogue. Accuracy at 1,000 agents is the same as at 100.</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Catalogue size</th><th>Questions</th><th>Top match is correct</th><th>Right agent is among the results</th></tr></thead>
+<tbody>
+<tr><td>40 agents</td><td>400</td><td>94.0%</td><td>98.2%</td></tr>
+<tr><td>100 agents</td><td>1,000 and 2,000</td><td>85.8&ndash;86.5%</td><td>94.3&ndash;95.4%</td></tr>
+<tr><td>1,000 agents</td><td>10,000</td><td>85.8%</td><td>93.6%</td></tr>
+</tbody></table></div>
+<p>Going from 100 agents to 1,000 cost essentially nothing: 86% for the top match at both sizes.</p>
+<p>The 1,000-agent test is the one worth describing in full, because it is the one people doubt.</p>
+<ul>
+  <li>Every one of the 1,000 agents was queried, with ten questions each. This is not a sample of the easy ones.</li>
+  <li>367 agents answered all ten of their own questions correctly.</li>
+  <li>Not one agent failed all ten. There is no agent in a thousand that cannot be found.</li>
+  <li>The worst agents scored two out of ten, and every one of them was half of a near-synonym pair.</li>
+</ul>
+<p>We also measured size on its own, holding subject separation roughly constant. At 50, 100 and 200 agents the top match was correct 83.8%, 83.3% and 79.5% of the time, and the right agent was among the top three 97.2%, 95.7% and 92.7% of the time. A fourfold increase in catalogue size costs a few points. Adding one near-duplicate agent costs more.</p>
+
+<h2 id="one-two-or-three-results-and-sometimes-none">One, two or three results, and sometimes none</h2>
+<p>Search decides how many results to show from how close the candidates are to each other.</p>
+<ul>
+  <li>The best candidate is far ahead: one result, and the agent runs.</li>
+  <li>Two are close: both are offered.</li>
+  <li>Three are close: all three are offered.</li>
+  <li>Nothing is close enough to the question: no results, rather than a wrong answer.</li>
+</ul>
+<p>Never more than three. This is what turns ambiguity into a choice instead of an error. On our hardest material the right agent is among the offered results 94% of the time, against 86% if search always insisted on a single answer. What the user sees for each of these cases is covered in <a href="how-matching-works.html">How matching behaves</a>.</p>
+<p>The balance between the two is a real trade, and it is worth stating plainly. Answering with one result more often means being confidently wrong more often. Measured over 15,180 questions, the range runs from showing a single result for 88% of searches, where 7.2% of answers are confidently wrong, to showing one for 42% of searches, where 0.23% are. Search2o ships the setting that keeps confidently wrong answers below 1%. On a well-separated catalogue the choice stops mattering, because the best candidate is nearly always far ahead of the second.</p>
+
+<h2 id="questions-that-nothing-covers">Questions that nothing covers</h2>
+<p>A search engine that always answers is easy to embarrass, so we measured this separately. The accuracy tests above only ever asked questions that had an answer.</p>
+<p>Against questions with no covering agent at all &mdash; general knowledge, other domains, unrelated subjects &mdash; 100% are refused in every language tested, and 99.6% across a larger English-only set. The cost is under 0.5% of genuine questions wrongly turned away.</p>
+<p>Questions that sit beside the catalogue's territory without being covered by it are handled the other way on purpose. Between a third and two thirds of those are refused, and the rest are answered. Showing a plausible neighbouring agent helps a user; answering a general knowledge question from a payments catalogue does not.</p>
+
+<h2 id="languages">Languages</h2>
+<p>Tested in Spanish, German, French, Mandarin and Japanese, at the 40-agent size, with 400 questions per language. The agent descriptions were translated, and the search code and settings were identical throughout.</p>
+<p>Descriptions and questions in the same language:</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Language</th><th>Top match is correct</th><th>Right agent is within the top three</th></tr></thead>
+<tbody>
+<tr><td>English</td><td>94.0%</td><td>98.2%</td></tr>
+<tr><td>Spanish</td><td>92.8%</td><td>98.2%</td></tr>
+<tr><td>German</td><td>92.5%</td><td>98.0%</td></tr>
+<tr><td>French</td><td>92.0%</td><td>98.0%</td></tr>
+<tr><td>Mandarin</td><td>91.8%</td><td>98.2%</td></tr>
+<tr><td>Japanese</td><td>91.2%</td><td>98.2%</td></tr>
+</tbody></table></div>
+<p>The right agent is found just as reliably whatever the language: the top-three figure is flat at 98% in all six. The small differences are in how often search is confident enough to answer with a single result. Part of even that gap is method rather than capability, since the English text is the original and the others are translations of it.</p>
+<p>Descriptions in one language and questions in another were tested across ten language pairs, 400 questions each. The top match was correct 88.2% to 90.8% of the time, and the right agent was within the top three 92.0% to 97.5% of the time.</p>
+<p>Cross-language search works. A German description answers a French question, and a Mandarin description answers a Japanese one. The cost is about three points against staying in one language. The strongest pair of all was Mandarin and Japanese, at 97.5%: two different scripts with no shared vocabulary, which is understanding of meaning rather than word matching.</p>
+<p>The refusal behaviour transfers as well. Unrelated questions were refused 100% of the time in every language, and no genuine question was wrongly refused in any of the five non-English ones.</p>
+
+<h2 id="speed">Speed</h2>
+<div class="tablewrap"><table class="fields">
+<tbody>
+<tr><td>Server-side time, catalogues up to about 120 agents</td><td>70&ndash;130 ms</td></tr>
+<tr><td>Server-side time, a 1,000-agent catalogue</td><td>about 400 ms</td></tr>
+<tr><td>End to end from a browser at low load</td><td>230&ndash;260 ms, under 600 ms at the 95th percentile</td></tr>
+<tr><td>Throughput</td><td>scales with provisioned capacity</td></tr>
+</tbody></table></div>
+<p>Latency stays flat up to the capacity limit and then degrades sharply, with no gradual slowdown as a warning. Capacity is therefore provisioned to the expected rate rather than to the average.</p>
+
+<h2 id="why-these-numbers-are-believable">Why these numbers are believable</h2>
+<p>Accuracy claims are cheap, so the method matters more than the figures.</p>
+<ul>
+  <li><strong>Measured against the live system.</strong> Every figure comes from the live search service, running the production code with its shipped settings. We previously used a faster offline approximation. It was wrong by 14 points at the 1,000-agent size, so we deleted it and adopted a rule: no accuracy number that was not measured live.</li>
+  <li><strong>More than 20,000 labelled questions</strong>, each with a known correct answer, across catalogues from 40 to 1,000 agents.</li>
+  <li><strong>Settings were tuned on two catalogues and judged on four others they had never seen.</strong> The tuned settings were then applied unchanged to a catalogue ten times larger, and held up.</li>
+  <li><strong>Ideas that did not survive were dropped.</strong> A cleverer rule for deciding when to show a single result looked seven points better on the data it was fitted to, and vanished on data it had not seen. It was not shipped, and several other candidate signals were rejected the same way.</li>
+  <li><strong>The test catalogues are adversarially hard on purpose.</strong> The pooled figures are close to a worst case rather than a typical one.</li>
+</ul>
+
+<h2 id="what-we-do-not-claim">What we do not claim</h2>
+<p>These are the limits of the numbers above, and a sceptical reader deserves them.</p>
+<ul>
+  <li>The test catalogues and their questions were generated rather than collected from live customers. They were built to be hard, and the questions for the largest catalogue were written without reference to the agent descriptions, so they do not flatter us. They are still not production traffic.</li>
+  <li>The better-than-99% case is a constructed catalogue of 50 agents from 50 different industries. It is a fair model of a focused deployment, and it is not an average of our test material.</li>
+  <li>The non-English results come from translated descriptions in one 40-agent catalogue, rather than from catalogues written natively at every size.</li>
+  <li>English is the strictest language on refusals. It turns away the most borderline questions, and it is the only language that wrongly refuses any genuine ones.</li>
+  <li>Every figure assumes the agent has been indexed and its description accepted. A description that says only how an agent works, rather than what it does for a user, is rejected at publish time and never reaches search.</li>
+</ul>
+
+<h2 id="our-commitment">Our commitment</h2>
+<p>We have lived and breathed search for the past twenty years. We make a simple commitment: Search2o's search quality will continue to improve over time.</p>
+
+    </article>
+    <nav class=prevnext><a class=prev href='../search/search-settings.html'><small>Previous</small>Search settings</a><a class=next href='../development/index.html'><small>Next</small>Development process</a></nav>
+  </main>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#the-short-answer'>The short answer</a></li><li class=l2><a href='#what-decides-accuracy-is-overlap-not-catalogue-size'>What decides accuracy is overlap, not catalogue size</a></li><li class=l2><a href='#a-well-separated-catalogue'>A well-separated catalogue</a></li><li class=l2><a href='#deliberately-overlapping-catalogues'>Deliberately overlapping catalogues</a></li><li class=l2><a href='#scale-40-100-and-1-000-agents'>Scale: 40, 100 and 1,000 agents</a></li><li class=l2><a href='#one-two-or-three-results-and-sometimes-none'>One, two or three results, and sometimes none</a></li><li class=l2><a href='#questions-that-nothing-covers'>Questions that nothing covers</a></li><li class=l2><a href='#languages'>Languages</a></li><li class=l2><a href='#speed'>Speed</a></li><li class=l2><a href='#why-these-numbers-are-believable'>Why these numbers are believable</a></li><li class=l2><a href='#what-we-do-not-claim'>What we do not claim</a></li><li class=l2><a href='#our-commitment'>Our commitment</a></li></ul></aside>
+</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-base">
+      <span>&copy; <span id="year">2026</span> Search2o &middot; Virginia, USA</span>
+      <span><a href="../../about.html#contact">Contact</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../../site.js"></script>
+<script src="../docs.js"></script>
+</body>
+</html>

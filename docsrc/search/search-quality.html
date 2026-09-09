@@ -1,0 +1,119 @@
+<p class="lead">Search is what stands between a user and the right agent, so its quality decides whether the whole system feels reliable. This page gives the measured numbers, the conditions they hold under, and the method behind them.</p>
+
+<h2>The short answer</h2>
+<p>When your agents describe different things and the question is clear, Search2o finds the right agent more than 99% of the time. When two agents genuinely cover the same ground, search offers both rather than guessing. When nothing fits, search says so.</p>
+
+<h2>What decides accuracy is overlap, not catalogue size</h2>
+<p>Most people expect accuracy to fall as the catalogue grows. It barely does. What accuracy tracks is how distinct the agents are from one another.</p>
+<p>Suppose one agent handles escalations and another handles incident triage. A question such as <em>who signs off on this?</em> belongs to both. No search engine can be certain, because the ambiguity is in the catalogue rather than in the search. The useful thing to do is offer both agents.</p>
+<p>We measured this directly. Two catalogues of the same size, 50 agents each, scored 99.2% and 83.8% for the top match. The only difference was how far apart the agents' subjects sat. Fifteen points of accuracy came from catalogue design.</p>
+<p>Catalogue design is in your hands, and <a href="describing-an-agent.html">Describing an agent</a> covers what makes a description distinct.</p>
+
+<h2>A well-separated catalogue</h2>
+<p>50 agents, each from a different industry, and 500 questions.</p>
+<div class="tablewrap"><table class="fields">
+<tbody>
+<tr><td>Right agent is the single top match</td><td>99.2%</td></tr>
+<tr><td>Right agent is among the results shown</td><td>99.6%</td></tr>
+<tr><td>Searches answered with exactly one result</td><td>95&ndash;98%</td></tr>
+<tr><td>Confident but wrong single answers</td><td>1 in 500 searches</td></tr>
+</tbody></table></div>
+
+<h2>Deliberately overlapping catalogues</h2>
+<p>Our hardest test material: six catalogues, 1,418 agents and 15,180 questions. Several are packed with near-synonym agent pairs on purpose, so that the difficult case is measured rather than the flattering one.</p>
+<div class="tablewrap"><table class="fields">
+<tbody>
+<tr><td>Right agent is the single top match</td><td>86%</td></tr>
+<tr><td>Right agent is among the results shown</td><td>94.3%</td></tr>
+<tr><td>Searches answered with exactly one result</td><td>58%</td></tr>
+<tr><td>Confident but wrong single answers</td><td>0.77%</td></tr>
+<tr><td>Nothing returned when something was available</td><td>0.14%</td></tr>
+</tbody></table></div>
+<p>Read the last lines with the first. Even on our hardest material, fewer than one search in a hundred gives a confidently wrong single answer.</p>
+<p>These pooled figures describe our test set rather than a typical deployment. Per catalogue, the share of searches answered with a single result runs from 52% to 79%. The well-separated catalogues sit at the top of that range and the near-synonym ones at the bottom.</p>
+
+<h2>Scale: 40, 100 and 1,000 agents</h2>
+<p>Search2o handles a thousand agents in one catalogue. Accuracy at 1,000 agents is the same as at 100.</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Catalogue size</th><th>Questions</th><th>Top match is correct</th><th>Right agent is among the results</th></tr></thead>
+<tbody>
+<tr><td>40 agents</td><td>400</td><td>94.0%</td><td>98.2%</td></tr>
+<tr><td>100 agents</td><td>1,000 and 2,000</td><td>85.8&ndash;86.5%</td><td>94.3&ndash;95.4%</td></tr>
+<tr><td>1,000 agents</td><td>10,000</td><td>85.8%</td><td>93.6%</td></tr>
+</tbody></table></div>
+<p>Going from 100 agents to 1,000 cost essentially nothing: 86% for the top match at both sizes.</p>
+<p>The 1,000-agent test is the one worth describing in full, because it is the one people doubt.</p>
+<ul>
+  <li>Every one of the 1,000 agents was queried, with ten questions each. This is not a sample of the easy ones.</li>
+  <li>367 agents answered all ten of their own questions correctly.</li>
+  <li>Not one agent failed all ten. There is no agent in a thousand that cannot be found.</li>
+  <li>The worst agents scored two out of ten, and every one of them was half of a near-synonym pair.</li>
+</ul>
+<p>We also measured size on its own, holding subject separation roughly constant. At 50, 100 and 200 agents the top match was correct 83.8%, 83.3% and 79.5% of the time, and the right agent was among the top three 97.2%, 95.7% and 92.7% of the time. A fourfold increase in catalogue size costs a few points. Adding one near-duplicate agent costs more.</p>
+
+<h2>One, two or three results, and sometimes none</h2>
+<p>Search decides how many results to show from how close the candidates are to each other.</p>
+<ul>
+  <li>The best candidate is far ahead: one result, and the agent runs.</li>
+  <li>Two are close: both are offered.</li>
+  <li>Three are close: all three are offered.</li>
+  <li>Nothing is close enough to the question: no results, rather than a wrong answer.</li>
+</ul>
+<p>Never more than three. This is what turns ambiguity into a choice instead of an error. On our hardest material the right agent is among the offered results 94% of the time, against 86% if search always insisted on a single answer. What the user sees for each of these cases is covered in <a href="how-matching-works.html">How matching behaves</a>.</p>
+<p>The balance between the two is a real trade, and it is worth stating plainly. Answering with one result more often means being confidently wrong more often. Measured over 15,180 questions, the range runs from showing a single result for 88% of searches, where 7.2% of answers are confidently wrong, to showing one for 42% of searches, where 0.23% are. Search2o ships the setting that keeps confidently wrong answers below 1%. On a well-separated catalogue the choice stops mattering, because the best candidate is nearly always far ahead of the second.</p>
+
+<h2>Questions that nothing covers</h2>
+<p>A search engine that always answers is easy to embarrass, so we measured this separately. The accuracy tests above only ever asked questions that had an answer.</p>
+<p>Against questions with no covering agent at all &mdash; general knowledge, other domains, unrelated subjects &mdash; 100% are refused in every language tested, and 99.6% across a larger English-only set. The cost is under 0.5% of genuine questions wrongly turned away.</p>
+<p>Questions that sit beside the catalogue's territory without being covered by it are handled the other way on purpose. Between a third and two thirds of those are refused, and the rest are answered. Showing a plausible neighbouring agent helps a user; answering a general knowledge question from a payments catalogue does not.</p>
+
+<h2>Languages</h2>
+<p>Tested in Spanish, German, French, Mandarin and Japanese, at the 40-agent size, with 400 questions per language. The agent descriptions were translated, and the search code and settings were identical throughout.</p>
+<p>Descriptions and questions in the same language:</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Language</th><th>Top match is correct</th><th>Right agent is within the top three</th></tr></thead>
+<tbody>
+<tr><td>English</td><td>94.0%</td><td>98.2%</td></tr>
+<tr><td>Spanish</td><td>92.8%</td><td>98.2%</td></tr>
+<tr><td>German</td><td>92.5%</td><td>98.0%</td></tr>
+<tr><td>French</td><td>92.0%</td><td>98.0%</td></tr>
+<tr><td>Mandarin</td><td>91.8%</td><td>98.2%</td></tr>
+<tr><td>Japanese</td><td>91.2%</td><td>98.2%</td></tr>
+</tbody></table></div>
+<p>The right agent is found just as reliably whatever the language: the top-three figure is flat at 98% in all six. The small differences are in how often search is confident enough to answer with a single result. Part of even that gap is method rather than capability, since the English text is the original and the others are translations of it.</p>
+<p>Descriptions in one language and questions in another were tested across ten language pairs, 400 questions each. The top match was correct 88.2% to 90.8% of the time, and the right agent was within the top three 92.0% to 97.5% of the time.</p>
+<p>Cross-language search works. A German description answers a French question, and a Mandarin description answers a Japanese one. The cost is about three points against staying in one language. The strongest pair of all was Mandarin and Japanese, at 97.5%: two different scripts with no shared vocabulary, which is understanding of meaning rather than word matching.</p>
+<p>The refusal behaviour transfers as well. Unrelated questions were refused 100% of the time in every language, and no genuine question was wrongly refused in any of the five non-English ones.</p>
+
+<h2>Speed</h2>
+<div class="tablewrap"><table class="fields">
+<tbody>
+<tr><td>Server-side time, catalogues up to about 120 agents</td><td>70&ndash;130 ms</td></tr>
+<tr><td>Server-side time, a 1,000-agent catalogue</td><td>about 400 ms</td></tr>
+<tr><td>End to end from a browser at low load</td><td>230&ndash;260 ms, under 600 ms at the 95th percentile</td></tr>
+<tr><td>Throughput</td><td>scales with provisioned capacity</td></tr>
+</tbody></table></div>
+<p>Latency stays flat up to the capacity limit and then degrades sharply, with no gradual slowdown as a warning. Capacity is therefore provisioned to the expected rate rather than to the average.</p>
+
+<h2>Why these numbers are believable</h2>
+<p>Accuracy claims are cheap, so the method matters more than the figures.</p>
+<ul>
+  <li><strong>Measured against the live system.</strong> Every figure comes from the live search service, running the production code with its shipped settings. We previously used a faster offline approximation. It was wrong by 14 points at the 1,000-agent size, so we deleted it and adopted a rule: no accuracy number that was not measured live.</li>
+  <li><strong>More than 20,000 labelled questions</strong>, each with a known correct answer, across catalogues from 40 to 1,000 agents.</li>
+  <li><strong>Settings were tuned on two catalogues and judged on four others they had never seen.</strong> The tuned settings were then applied unchanged to a catalogue ten times larger, and held up.</li>
+  <li><strong>Ideas that did not survive were dropped.</strong> A cleverer rule for deciding when to show a single result looked seven points better on the data it was fitted to, and vanished on data it had not seen. It was not shipped, and several other candidate signals were rejected the same way.</li>
+  <li><strong>The test catalogues are adversarially hard on purpose.</strong> The pooled figures are close to a worst case rather than a typical one.</li>
+</ul>
+
+<h2>What we do not claim</h2>
+<p>These are the limits of the numbers above, and a sceptical reader deserves them.</p>
+<ul>
+  <li>The test catalogues and their questions were generated rather than collected from live customers. They were built to be hard, and the questions for the largest catalogue were written without reference to the agent descriptions, so they do not flatter us. They are still not production traffic.</li>
+  <li>The better-than-99% case is a constructed catalogue of 50 agents from 50 different industries. It is a fair model of a focused deployment, and it is not an average of our test material.</li>
+  <li>The non-English results come from translated descriptions in one 40-agent catalogue, rather than from catalogues written natively at every size.</li>
+  <li>English is the strictest language on refusals. It turns away the most borderline questions, and it is the only language that wrongly refuses any genuine ones.</li>
+  <li>Every figure assumes the agent has been indexed and its description accepted. A description that says only how an agent works, rather than what it does for a user, is rejected at publish time and never reaches search.</li>
+</ul>
+
+<h2>Our commitment</h2>
+<p>We have lived and breathed search for the past twenty years. We make a simple commitment: Search2o's search quality will continue to improve over time.</p>

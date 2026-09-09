@@ -64,6 +64,7 @@ TOC = [
         ("how-matching-works", "How matching behaves"),
         ("tags", "Tags"),
         ("search-settings", "Search settings"),
+        ("search-quality", "Search quality"),
     ]),
     ("development", "Development process", [
         ("drafts", "Drafts"),
