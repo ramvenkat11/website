@@ -55,6 +55,11 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-08 (REST API sub-section cut from getting started)
+The Open-the-GUI step lost its REST API h3 (openapi.json/Swagger//docs//redoc) on Ram's
+order - he had asked for it back on 2026-09-05, and has now reversed that; the URLs remain
+in the docs (running-the-server, agent-servers, how-the-gui-runs links rest-api).
+
 ## State on 2026-09-08 (link label: no question mark)
 "New user / Forgot password?" is now "New user / Forgot password" in all six places
 (gettingstarted, the-gui, users-and-roles, authentication, rest-api/authentication,
