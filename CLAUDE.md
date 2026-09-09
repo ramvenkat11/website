@@ -81,9 +81,9 @@ now opens "Search2o handles a thousand agents in one catalogue. Accuracy at 1,00
 the same as at 100." and the catalogue-design line lost its "good news / yours to control"
 framing. Also self-caught: "the real search index" -> "the live search service" (Ram banned
 "search index" on 2026-09-07). Otherwise clean: no corpus names, no thresholds/dials, no
-vendor or technology names, no per-agent breakdowns. LEFT, reported not changed:
-commands/search.html "Search costs a round trip to Search2o Cloud" - topology the
-architecture figure already shows, not search mechanism. The confidence table from the source
+vendor or technology names, no per-agent breakdowns. KEPT with Ram's explicit approval:
+commands/search.html "Search costs a round trip to Search2o Cloud" - topology, not search
+mechanism, and worth saying because search is the ONLY command that behaves that way. The confidence table from the source
 was deliberately turned into prose so readers do not hunt for a dial the GUI does not offer.
 Search section lead and docs home card updated; five tables measured, none scrolls.
 
