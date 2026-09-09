@@ -71,8 +71,19 @@ proof); speed (70-130ms to ~120 agents, ~400ms at 1,000, 230-260ms end to end - 
 with the site's "less than 0.5 seconds"); method; "What we do not claim" (generated test
 data, constructed 99% catalogue, translated descriptions, English strictest, indexing
 required); and Ram's closing commitment (twenty years, quality will keep improving).
-PUBLISH RULES OBEYED - swept and verified: no corpus names, no thresholds/settings/dials, no
-vendor or technology names, no per-agent breakdowns. The confidence table from the source
+PUBLISH RULES: two violations Ram caught and I fixed -
+(1) "The question is turned into a vector next to the data, so nothing large crosses the
+network and there is no second round trip" REMOVED from the Speed section. HIS RULE, stated
+as absolute: the docs may say NOTHING about how search actually works. (2) "This is the
+catalogue shape most customers should aim for" REMOVED - "we do not tell customers what they
+should aim for. On the contrary, we say how we can manage a 1000 agents." The Scale section
+now opens "Search2o handles a thousand agents in one catalogue. Accuracy at 1,000 agents is
+the same as at 100." and the catalogue-design line lost its "good news / yours to control"
+framing. Also self-caught: "the real search index" -> "the live search service" (Ram banned
+"search index" on 2026-09-07). Otherwise clean: no corpus names, no thresholds/dials, no
+vendor or technology names, no per-agent breakdowns. LEFT, reported not changed:
+commands/search.html "Search costs a round trip to Search2o Cloud" - topology the
+architecture figure already shows, not search mechanism. The confidence table from the source
 was deliberately turned into prose so readers do not hunt for a dial the GUI does not offer.
 Search section lead and docs home card updated; five tables measured, none scrolls.
 
