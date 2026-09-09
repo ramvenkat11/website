@@ -55,6 +55,11 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-09 (describe step says HOW)
+Ram: the describe step never said where the description is entered. It now opens
+"Publishing offers to take the description - you can also open the agent later and add it."
+then the plain-English example, then the search/indexing sentence as its own paragraph.
+
 ## State on 2026-09-09 (Start the server: two cards, macOS/Linux and Windows)
 The Start-the-server step now has TWO codecards, labelled in the .fname bar (the old label
 was "terminal"): "macOS / Linux" with the $-prompt one-liner, and "Windows PowerShell" with
