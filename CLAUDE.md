@@ -55,6 +55,11 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-08 (clone-install variant cut from getting started)
+The Download step is ONE codecard now - pip install git+... The clone-then-install OR-box
+is gone (unnecessary, Ram); the clone form remains documented in
+registering-and-downloading. The .or divider still exists in the license-key step.
+
 ## State on 2026-09-08 (hero note simplified; step-1 line removed)
 The hero note settled as "Start with the free Individual plan. When you are ready,
 upgrade in place from the GUI." (Ram wanted the where - in place / in the GUI - added) - the upgrade detail lives only in the Bring-your-team step.
