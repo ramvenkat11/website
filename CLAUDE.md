@@ -70,8 +70,9 @@ chat integrations).
 ## State on 2026-09-08 (registration PARADIGM removed site-wide)
 Ram: get rid of the "registration" paradigm everywhere; also say in getting started that no
 credit card is asked for. Step 1 intro was then CUT by Ram (no essays on this page;
-creating an account is obvious) and then again
-(why repeat?) to "No credit card needed." And the terms
+creating an account is obvious) then "No credit
+card needed.", and finally to Ram's "Individual plans are free. See Pricing for details."
+(Pricing is the link). And the terms
 checkbox label is now "I accept the Terms of Service and the Privacy Policy" - BOTH words
 are links (legal/terms.html, legal/privacy.html, target=_blank). Reworded
 across files: gettingstarted metas + step anchor (id="create-account") + JS comment + three
