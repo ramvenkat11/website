@@ -61,7 +61,9 @@ text mentions the new page). NEW first page gui/how-the-gui-runs.html (122 pages
 official GUI, uses the REST API and nothing else (no private endpoints - everything the GUI
 does is open to your code), lives in the server's ui directory served at /ui, can be served
 from any web server or CDN - the hosting section + ui-config table MOVED here from
-getting-started/the-gui.html (one topic one home; that page now links here instead), and a
+getting-started/the-gui.html - then trimmed to THREE settings (apiBase, apiTimeoutSeconds,
+notificationDurationSeconds): Ram removed docsBase (the agent server serves the schema
+itself now, undocumented by his choice) and defaultSuccessOutput (just a UI string) (one topic one home; that page now links here instead), and a
 closing section says users are free to build their own interfaces (links rest-api/clients +
 chat integrations).
 
