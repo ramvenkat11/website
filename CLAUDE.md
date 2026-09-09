@@ -58,7 +58,10 @@ question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL 
 ## State on 2026-09-08 (clone-install variant cut from getting started)
 The Download step is ONE codecard now - pip install git+... The clone-then-install OR-box
 is gone (unnecessary, Ram); the clone form remains documented in
-registering-and-downloading. The .or divider still exists in the license-key step.
+registering-and-downloading. Ram then also cut the
+SEARCH2O_LICENSE_KEY_FILE OR-box from the license-key step (in the docs, license-key.html).
+No .or divider remains on the page; the .or CSS in styles.css is now UNUSED (reported, not
+removed).
 
 ## State on 2026-09-08 (hero note simplified; step-1 line removed)
 The hero note settled as "Start with the free Individual plan. When you are ready,
