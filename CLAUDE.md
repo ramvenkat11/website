@@ -55,6 +55,24 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-09 (LLM section moved up; new vendors page; adapters page deepened)
+LLM now sits right after Agent execution, BEFORE Command reference (toc order). NEW first
+page docsrc/llm/vendors.html "The three vendors" (123 pages): the three env keys with a
+secrets pointer, a table of the five seeded profiles (gpt5_mini/gpt_image/claude_haiku/
+gemini_flash/gemini_image) with the edit-the-prices note, how to create a profile for
+another model (adapter/vendor/url/headers/model/pricing, headers example with sys.secret),
+and a closing "Any compatible LLM" section pointing at llm-adapters. llm-adapters REWRITTEN
+to lead with the bundled adapters ("First, try a bundled adapter" - no code needed for
+OpenAI-compatible endpoints; quotes the OpenAI adapter's own description string) and then
+go deep, VERIFIED against ../search2o/search2o/llm: BaseLlmAdapter's 11 abstract methods
+plus name/description in a 13-row fields-data table (set_model, set_max_tokens, set_tools,
+set_system_prompt, the four set_messages_*, set_response_flags, set_token_counts,
+set_assistant_vendor), the note that it walks the prompt and calls the message methods in
+conversation order, that get_error has a working default reading response["error"], and
+LlmAdapter's five bare methods with the LlmRequestModel/LlmResponseModel signatures.
+Section leads and the docs home card updated; getting started's LLM-key line now links
+docs/llm/vendors.html (Ram's mid-task instruction). Tables measured: no scroll.
+
 ## State on 2026-09-09 (Miscellaneous retired; new LLM section)
 Per Ram: NEW section "LLM" (docsrc/llm/, placed where misc was - after Chat integrations,
 before Support and licensing) holding the two moved pages, Connecting to other LLMs and
