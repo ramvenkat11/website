@@ -55,6 +55,19 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-09 (account-creation JS moved to site.js; two new error keys)
+The inline account-creation script is OUT of gettingstarted.html and appended to
+html/site.js, guarded by `if (!document.getElementById("reg-go1")) return;` so it costs
+nothing on the other pages (site.js is loaded everywhere). Script order on the page is now
+config.js THEN site.js. LEFT INLINE deliberately (Ram: "move whatever is easily possible",
+"not a strict rule"): the one-line theme bootstrap in <head>, which must run before first
+paint or the wrong theme flashes. NEW error keys, in REG_ERRORS with the others:
+freeEmailCurrentlyNotAllowed -> "Please use your work email address."
+registrationCurrentlySuspended -> "New accounts are paused at the moment. Please try again
+later." VERIFIED in-browser through the real handler (stubbed hcaptcha+fetch): both new keys
+render together one per line, POST body unchanged, success key box + copy button still work,
+theme toggle and footer year unaffected.
+
 ## State on 2026-09-08 (key note rephrased)
 The success note under the key box now reads "This key is shown only once - please copy it
 and store it on your machine right away. The next steps use it." (Ram's direction,
