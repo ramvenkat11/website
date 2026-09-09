@@ -55,6 +55,18 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-09 (hero eyebrow matches the pricing h1)
+"Free during the open beta" was the ONLY beta pricing claim on the site (verified) and is
+now "Free until you're convinced" (index.html:44), the pricing h1 verbatim - 216px, one
+line. Untouched, both being status not pricing: about.html "Search2o is currently in open
+beta." and the docs registering page's "Search2o is in open beta, and anyone interested is
+welcome to try it."
+ALSO: Ram edited the AI-assist line himself to "Describe the workflow - AI assist will write
+the first draft." (one line now, my nowrap span kept), which left the columns 23px out of
+level; repaired with .cmdgroups gap 16 -> 19 (8 gaps x 3 = 24) and the line's margin-top
+18 -> 17. Re-measured delta 0. WATCH: any edit to that line's length breaks the
+columns-end-level rule and needs the gap re-tuned.
+
 ## State on 2026-09-09 (AI assist line under the 23 commands)
 New muted line below the command groups on the home page: "Describe the agentic workflow you
 need - AI assist writes the first draft." (Ram's final wording, third pass; 14.5px
