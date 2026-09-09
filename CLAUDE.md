@@ -55,6 +55,15 @@ line is styled .note (15.5px muted, 70ch) not .lead - Ram: too large, it is just
 question", asks-first: the docs-icon/AI-answer sentence leads, the web docs URL follows as
 "The documentation itself is on the web at...". Stuck callout unchanged.
 
+## State on 2026-09-09 (new last step: Upgrade to the paid service)
+Added after Bring-your-team (id="paid"): "When your team is ready, upgrade to the paid
+service from the Account page in the GUI. You never have to contact us." + "If you would
+like to talk to us, we are one click away from the help icon." Ram's content, my phrasing.
+The page is nine steps now: create account / download / run / GUI / first agent / describe
++ search / call your systems / ask a question / bring your team / upgrade. NOTE: pricing
+says the Team service "will be available soon", so this step describes a path that is not
+live yet - Ram's call, flagged only here.
+
 ## State on 2026-09-09 (describe step says HOW)
 Ram: the describe step never said where the description is entered. It now opens
 "Publishing offers to take the description - you can also open the agent later and add it."
