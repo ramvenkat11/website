@@ -25,7 +25,13 @@ Search2o agent - with seven rows: writing it (AI assist plus a schema that judge
 before it runs (checks plus the mandatory validation run), reading it, trusting it (controlled
 runtime, allowlist, no import), limits (run time, loop iterations, db rows, LLM spend),
 shipping a change (publish, no packaging), measuring it (duration, result, LLM cost). It closes
-with "Python does not disappear" - every expression is still Python. Table class is `fields`,
+with "Python does not disappear" - every expression is still Python. The header row is MIXED
+CASE: `table.fields th` in html/docs/docs.css uppercases every docs table header, which turned
+"A Search2o agent" into "A SEARCH2O AGENT" - a brand-spelling violation. New scoped rule
+`table.fields.compare th { text-transform: none; letter-spacing: 0; font-size: 13px; color:
+var(--ink) }` (docs.css:99) and the table carries `class="fields compare"`. Every OTHER docs
+table keeps its uppercase header - those headers are one-word labels (Field/Type/Default), and
+no other header contains the brand (checked). Say the word to drop the all-caps globally. Table class is `fields`,
 NOT `fields data`: the data variant's min-widths gave the short label column 170px and left the
 Search2o column narrowest (170/349/251); plain `fields` measures 153/265/352, no scroll, and the
 widest column is the one with the longest cells. Measured in Chrome over a local
