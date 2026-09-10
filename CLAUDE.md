@@ -215,6 +215,16 @@ agent schema" on commands/index and agent-definition/commands refers to OUR fiel
 (build.py) and is true. RULE: a claim about how a product part is implemented needs the code
 behind it, or it goes.
 
+## State on 2026-09-10 (home diagram: fan-out trunk ends on the arrows)
+Ram: the vertical trunk behind the four chip arrows overshot the top and bottom arrows by a
+few pixels. Measured: chips are 26.4px tall, so each arrow's centre is 13.2px from its
+branch's top and the 2px arrow spans 12.2-14.2px; the trunk (.arch-sys::before) used
+top/bottom 11px, 1.2px past the outer edge of the first and last arrow (2.4 device px on
+retina). Now top/bottom 12px (styles.css:349, with a comment) - 0.2px short of the edge, i.e.
+flush; overshoot measured 0.2/0.2 and a zoomed crop shows square corners. Chip height was
+deliberately left alone so the diagram's height and the columns-end-level alignment do not
+move. Site page CSS only; no docs rebuild needed.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
