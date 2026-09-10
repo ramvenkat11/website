@@ -5,7 +5,7 @@
 
 <h2>How prompts accumulate</h2>
 <p>A prompt has a system part and a history of user turns, assistant answers and tool results. <code>system</code> replaces the system part. <code>user</code> is appended to the current user turn. Several <code>prompt</code> commands before one <code>llm</code> call are merged into a single user message. After the LLM answers, the answer is appended too, so a follow-up query in the same conversation carries the whole exchange.</p>
-<p>A <a href="../profiles/prompt-profiles.html">prompt profile</a> supplies the system and user text from the configuration. Values given on the command override the profile's values.</p>
+<p>A <a href="../profiles/prompt-profiles.html">prompt profile</a> supplies the system and user text from the configuration. Values given on the command override the profile's values. The two differ in kind: <code>system</code> and <code>user</code> on the command are dynamic strings, evaluated at runtime and stored in plain form with the agent, while a profile's prompts are static text stored encrypted. A prompt that must stay confidential belongs in a profile; a prompt that changes at runtime belongs on the command.</p>
 
 <h2>Example</h2>
 <x-code lang="jsonc">

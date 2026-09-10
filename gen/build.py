@@ -141,7 +141,7 @@ def render_default(field) -> str:
             v = field.default_factory()
         except TypeError:
             return ""
-        if v in ({}, [], "", None):
+        if isinstance(v, BaseModel) or v in ({}, [], "", None):
             return ""
         return html.escape(repr(v))
     d = field.default

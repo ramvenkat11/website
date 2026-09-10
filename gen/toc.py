@@ -75,8 +75,11 @@ TOC = [
     ]),
     ("runtime", "Agent runtime", [
         ("overview", "The agent runtime"),
-        ("guardrails", "Guardrails"),
-        ("pools-and-profiles", "Connection pools and profiles"),
+        ("allowlist", "The allowlist"),
+        ("system-variables", "System variables"),
+        ("compile-rules", "Compile rules"),
+        ("runtime-limits", "Runtime limits"),
+        ("connection-pools", "Connection pools"),
     ]),
     ("profiles", "Profiles", [
         ("overview", "How profiles work"),
@@ -105,7 +108,6 @@ TOC = [
         ("license-rotation", "License key rotation"),
         ("secret-vault", "The secret vault"),
         ("encryption", "Encryption"),
-        ("controlled-runtime", "The controlled runtime"),
         ("data-privacy", "Data privacy"),
     ]),
     ("gui", "GUI", [

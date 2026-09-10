@@ -1,6 +1,11 @@
-<p class="lead">Reusable system and user prompts that agents refer to by name in the <code>prompt</code> command. The same wording does not have to be repeated in every agent, and the wording can be changed once for all agents that use the profile.</p>
+<p class="lead">Reusable system and user prompts that agents refer to by name in the <code>prompt</code> command. The same wording does not have to be repeated in every agent, and the wording can be changed once for all agents that use the profile. Both prompts are stored encrypted, and both are static text.</p>
 
 <h2>Settings</h2>
 <!--fields:model:PromptProfileModel-->
 
-<p>A prompt marked dynamic is evaluated as a dynamic string in the agent's context every time the prompt is used, so the prompt can refer to variables the agent has set. A static prompt is used verbatim. Static prompts are faster, and safer for text that contains braces.</p>
+<h2>Encrypted and static</h2>
+<p>The system prompt and the user prompt of a profile are encrypted by the agent server when the profile is saved, and Search2o Cloud stores only the encrypted form. The GUI decrypts the prompts through an agent server to show them, and every agent server decrypts them when it builds its runtime. See <a href="../security/encryption.html">Encryption</a> for who holds the key.</p>
+<p>A profile's prompts are used verbatim. Braces in the text are plain characters, and the text cannot refer to the agent's variables.</p>
+
+<h2>Two places for a prompt</h2>
+<p>A prompt written in the agent, on the <code>prompt</code> command, is a dynamic string: it can refer to variables and to the query, and it is stored in plain form with the agent definition. A prompt in a profile is static and encrypted. The choice is per prompt: put wording that must stay confidential in a profile, and build the parts that change at runtime in the agent. Values given on the command override the profile's values, so an agent can take the system prompt from a profile and compose the user prompt itself.</p>

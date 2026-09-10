@@ -1,0 +1,34 @@
+<p class="lead">The compile rules decide what an expression may contain: for each of the ten binary operators, whether an expression may use the operator as Python does, may not use the operator at all, or has the operator replaced by a function of your own; how deep a comprehension may go; and the shapes of expression that are never allowed. Search2o Cloud applies the rules only when a draft is validated or published. A changed rule does not touch an agent that is already published. Developers edit the rules in the GUI under Guardrails.</p>
+
+<h2>Python operators</h2>
+<p>The operators are <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code>, <code>%</code>, <code>**</code>, <code>&lt;&lt;</code>, <code>&gt;&gt;</code> and <code>@</code>. Each is set to one of three options.</p>
+<ul>
+  <li><strong>Allow.</strong> The operator works as Python defines it. This is the default for every operator.</li>
+  <li><strong>Deny.</strong> An expression that uses the operator fails validation, with the path of the expression.</li>
+  <li><strong>Rewrite.</strong> The operator is replaced by a call to a function you name. Choosing rewrite asks for the function name.</li>
+</ul>
+
+<h2>Rewriting an operator</h2>
+<p>Every use of a rewritten operator becomes a call to the named function with the operator's two operands: <code>a ** b</code> becomes <code>bounded_pow(a, b)</code>. Write the function yourself, and put the function on the <a href="allowlist.html">allowlist</a> under the name you enter, on every agent server.</p>
+<p>The function must keep the operator's shape: two arguments, the left operand and the right operand, both numbers. A function that takes one argument cannot stand in for an operator. When the settings are saved, the agent server checks each named function: the function must be on the allowlist, and must accept two numbers. A function that fails the check refuses the save, and the reason is shown. Matrix multiplication, <code>@</code>, is not checked.</p>
+<p>Rewriting is how an expensive operation is kept within bounds. A function that stands in for <code>**</code> can refuse an exponent above a limit, and a function that stands in for <code>*</code> can refuse a result that would not fit in 64 bits.</p>
+
+<h2>Comprehensions</h2>
+<p>A comprehension may be nested only so deep, and a single comprehension may have only so many <code>for</code> clauses. Both bounds are settings below.</p>
+<!--fields:model:CompileOptions-->
+
+<h2>What validation refuses</h2>
+<p>Besides a denied operator, the validation pass refuses these in any expression:</p>
+<ul>
+  <li>any character outside ASCII letters, digits, punctuation and the space;</li>
+  <li><code>import</code>, in any form;</li>
+  <li>any name that starts with an underscore, whether a variable, an attribute, a function or a keyword argument &mdash; so no private or dunder members;</li>
+  <li><code>lambda</code>;</li>
+  <li>the assignment expression <code>:=</code>;</li>
+  <li>a call to anything other than a name or an attribute, such as <code>(f)()</code> or <code>fs[0]()</code>;</li>
+  <li>a comprehension deeper, or with more <code>for</code> clauses, than the settings allow.</li>
+</ul>
+<p>Each refusal is reported with the path of the command that holds the expression.</p>
+
+<h2>When a rule changes</h2>
+<p>The rules are applied to a draft, at validation and at publishing, and at no other time. A published agent keeps the rules the agent was published under. A changed rule reaches that agent only when a developer creates a draft from the agent and publishes the draft again.</p>

@@ -516,13 +516,13 @@ def _search_results():
     return f.render()
 
 
-@figure("sandbox")
-def _sandbox():
-    f = Fig("sandbox", 250, "What decides what an expression may do")
+@figure("expression-bounds")
+def _expression_bounds():
+    f = Fig("expression-bounds", 250, "What decides what an expression may do")
     f.box(20, 30, 680, 200, "", kind="soft", r=14)
     f.text(36, 50, "a Python expression in braces", size=12, weight=700, fill="ink")
     layers = [("allowlist", "the only names it can reach; public members of allowlisted objects; no import, no dunders"),
-              ("compile rules", "each operator allowed, denied or rewritten to a bounded safe function"),
+              ("compile rules", "each operator allowed, denied or rewritten to a function of your own"),
               ("runtime limits", "time, loop iterations, database rows, definition size, LLM spend"),
               ("scope", "earlier locals, agent./conv. variables, sys and command namespaces — nothing else")]
     y = 70

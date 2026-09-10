@@ -25,7 +25,7 @@
 <h2>Rules</h2>
 <ul>
   <li>The condition is evaluated before every iteration, including the first.</li>
-  <li>A loop may not run more than the <em>max loop iterations</em> set in <a href="../runtime/guardrails.html#runtime-limits">Runtime limits</a>. Exceeding the limit fails the agent. The count restarts each time the loop is entered.</li>
+  <li>A loop may not run more than the <em>max loop iterations</em> set in <a href="../runtime/runtime-limits.html">Runtime limits</a>. Exceeding the limit fails the agent. The count restarts each time the loop is entered.</li>
   <li>A long loop yields to other work from time to time, so that the agent's overall runtime limit can be enforced.</li>
   <li>Use <code>break</code> to leave the loop early and <code>continue</code> to skip to the next iteration.</li>
 </ul>

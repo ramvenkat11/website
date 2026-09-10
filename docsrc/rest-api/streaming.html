@@ -9,7 +9,7 @@
 <tr><td><code>data</code></td><td>One output part: text, html or image</td><td>Each part the agent appends to its output, including the streamed text of an <code>llm</code> command.</td></tr>
 <tr><td><code>trace</code></td><td><code>traceType</code>, and a value with <code>path</code>, <code>duration</code> and <code>message</code></td><td>Only on <code>validateDraftStream</code>: the execution trace, one line per event.</td></tr>
 <tr><td><code>agent</code></td><td>The same object a non-streaming call returns, without <code>output</code></td><td>Once, when the run ends. Carries <code>resultCode</code>, <code>convid</code> and <code>askInput</code>.</td></tr>
-<tr><td><code>noop</code></td><td>none</td><td>A heartbeat while nothing else is happening, so that proxies keep the connection open. The interval is the <em>stream heartbeat</em> in <a href="../runtime/guardrails.html#runtime-limits">Runtime limits</a>.</td></tr>
+<tr><td><code>noop</code></td><td>none</td><td>A heartbeat while nothing else is happening, so that proxies keep the connection open. The interval is the <em>stream heartbeat</em> in <a href="../runtime/runtime-limits.html">Runtime limits</a>.</td></tr>
 <tr><td><code>end</code></td><td>none</td><td>The last line.</td></tr>
 </tbody></table></div>
 <x-code lang="text" title="A streamed run">

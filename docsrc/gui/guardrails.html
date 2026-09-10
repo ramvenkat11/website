@@ -1,12 +1,12 @@
 <p class="lead">What agent expressions may do. Developers edit these settings, and the settings apply to every agent.</p>
 
 <h2>Compile rules</h2>
-<p>Each operator is allowed, denied or rewritten to a safe function, and comprehensions are bounded. The rules are applied when a draft is validated or published. See <a href="../runtime/guardrails.html#compile-rules">Compile rules</a>.</p>
-<!--shot:gui-guardrails|560|The Compile rules page: expression limits and per-operator allow/deny|Compile rules: limits on expressions, and allow or deny per operator.-->
+<p>Each operator is allowed or denied, and an operator can be rewritten to a function of your own from the allowlist; comprehensions are bounded too. The rules are applied only when a draft is validated or published; a changed rule does not touch a published agent. See <a href="../runtime/compile-rules.html">Compile rules</a>.</p>
+<!--shot:gui-guardrails|560|The Compile rules page: expression limits and per-operator allow/deny|Compile rules: limits on expressions, and allow, deny or rewrite per operator.-->
 
 <h2>Allowlist</h2>
-<p>The functions and objects that expressions may use, one per line, and the <code>sys</code> variables that agents may read. The server checks every entry against its Python environment and logs any failure locally. See <a href="../runtime/guardrails.html#allowlist">Allowlist</a>.</p>
+<p>The functions and objects that expressions may use, one per line, and the <code>sys</code> variables that agents may read. The agent server resolves every entry when the allowlist is saved, and refuses the save if an entry cannot be imported. See <a href="../runtime/allowlist.html">The allowlist</a> and <a href="../runtime/system-variables.html">System variables</a>.</p>
 <!--shot:gui-allowlist|560|The Allowlist page: the sys variables and functions expressions may use|The allowlist: the system variables, and the functions and objects that expressions may call.-->
 
 <h2>Runtime</h2>
-<p>Limits on a run: time, loop iterations, database rows, definition size, and LLM spend. See <a href="../runtime/guardrails.html#runtime-limits">Runtime limits</a>.</p>
+<p>Limits on a run: time, loop iterations, database rows, definition size, and LLM spend. See <a href="../runtime/runtime-limits.html">Runtime limits</a>.</p>

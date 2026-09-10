@@ -1,0 +1,6 @@
+<p class="lead">Every HTTP connection an agent server opens goes through a connection pool: the calls to Search2o Cloud, the LLM calls, and the calls made by <code>api</code> commands and API profiles. Each of those can name its own pool. Pools are defined on the Connection pools page in the GUI, by administrators, and the pool named <code>default</code> is used wherever no pool is named. A changed pool reaches every agent server before the server's next run, and the old pool stays open until the last agent using the old pool finishes.</p>
+<!--fields:model:ApiConnectionPoolsModel-->
+<h2>A pool</h2>
+<!--fields:model:ApiConnectionPoolModel-->
+<h2>Timeouts</h2>
+<!--fields:model:TimeoutModel-->
