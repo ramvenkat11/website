@@ -5,6 +5,32 @@ the five site pages, the documentation source and generator, the built site, and
 procedure. The full history of decisions made while this lived in s2oserver is in
 `../s2oserver/CLAUDE.md` (search it for "website", "docs", "home page").
 
+## State on 2026-09-09 (sys.secret brackets; new "Why not Python?" section)
+
+SECRETS SYNTAX: `sys.secret(name)` is now `sys.secret[name]` everywhere in the docs. Six call
+sites in five sources: security/secret-vault.html (lead, the profile-header code block, the
+name-transform example), commands/api.html (the key header example and the credentials bullet
+`sys.secret[...]`), agent-definition/variables.html, profiles/llm-profiles.html and
+llm/vendors.html (both `f"Bearer {sys.secret['OPENAI_API_KEY']}"`). The bare mentions with no
+argument (data-privacy, gui/operations, profiles/overview, api-profiles, db-profiles) stayed
+`sys.secret`. Sweep for `sys.secret(` over html, docsrc, gen and content is clean.
+
+NEW LAST SECTION on introduction/what-is-search2o.html, "Why not Python?" - why an agent is
+JSON with Python expressions rather than a Python program. Ram's first form was a bullet list;
+he then asked for A TABLE that states plainly why declarative is superior, and for the
+indefensible rows to go: "When two developers change the same agent, publishing opens a merge
+view" was CUT because a version control system does the same for Python. Versioning was cut for
+the same reason (git exists). The table is three columns - Aspect / A Python program / A
+Search2o agent - with seven rows: writing it (AI assist plus a schema that judges the result),
+before it runs (checks plus the mandatory validation run), reading it, trusting it (controlled
+runtime, allowlist, no import), limits (run time, loop iterations, db rows, LLM spend),
+shipping a change (publish, no packaging), measuring it (duration, result, LLM cost). It closes
+with "Python does not disappear" - every expression is still Python. Table class is `fields`,
+NOT `fields data`: the data variant's min-widths gave the short label column 170px and left the
+Search2o column narrowest (170/349/251); plain `fields` measures 153/265/352, no scroll, and the
+widest column is the one with the longest cells. Measured in Chrome over a local
+`python3 -m http.server` under html/ - file:// URLs are refused by the browser tool.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
