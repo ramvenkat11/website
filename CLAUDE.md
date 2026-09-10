@@ -170,6 +170,14 @@ changed rule reaches an agent only through a new draft published again); gui/gua
 carries the same only-at-validate/publish sentence. 126 pages, 32 examples valid, link check
 unchanged (the one pre-existing support.html break).
 
+## State on 2026-09-10 (data-privacy: descriptions are plain while indexed)
+Ram: an agent description is stored in plain form for the brief period while the agent is
+indexed, and the plain form is deleted once indexing completes. data-privacy.html's "What
+leaves in plain form but is stored encrypted" intro no longer claims "the plain text is never
+stored" for everything: query and memory text are handled in memory and never stored; the
+description is stored plain until indexing completes, then deleted; none of the plain text is
+logged. The Agent descriptions table row says the same. Rebuilt, 126 pages.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
