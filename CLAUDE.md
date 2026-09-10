@@ -225,6 +225,19 @@ flush; overshoot measured 0.2/0.2 and a zoomed crop shows square corners. Chip h
 deliberately left alone so the diagram's height and the columns-end-level alignment do not
 move. Site page CSS only; no docs rebuild needed.
 
+## State on 2026-09-10 (home page: the 23 command chips link to their docs pages)
+Each <code>cmd</code> chip in the Agent framework section's .cmdgroups is now
+<a href="docs/commands/cmd.html"><code>cmd</code></a> (23 links, 23 distinct targets, every
+file exists). Inline CSS added next to .cg-c code: `.cg-c a { display: flex; text-decoration:
+none }` (+ a:hover no underline; `a:hover code` border and text var(--blue-ink)). WHY
+display:flex: a plain inline <a> became the flex item and its 15.5px line box made every row
+~2.4px shorter (.cmdgroups 444 -> 422px); with the anchor as a flex container the chip is the
+flex item again and the geometry is byte-identical to before (444px). Hover verified in a
+zoomed crop: quiet blue border + text, nothing else moves. FINDING, NOT MINE, NOT FIXED: at
+1920px wide the Agent framework .split columns end 43px apart (left 834 / right 791) - that
+was the committed state before this change, though the 2026-09-09 note claims delta 0;
+possibly a different viewport then. Ram's call whether to re-tune .cmdgroups gap.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
