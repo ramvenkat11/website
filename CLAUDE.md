@@ -72,7 +72,15 @@ what oprewriter emits.
 SYSTEM VARIABLES PAGE uses <!--enum:SysVariables--> (four members - the model has a FOURTH,
 `cookies`, wired in agent_executor.py, which the old page did not list; documented with a
 care note) and states sys.secret is always present (create_ro adds inputs, query, secret).
-FLAGGED TO RAM, NOT CHANGED: (1) "gather and sleep are always available" and "the asyncio
+RULINGS (Ram, 2026-09-10): cookies STAYS documented. gather AND sleep ARE GONE from the product
+(the parallel command replaced them) - every reference removed: syntax.html#awaiting now says
+"To run several calls at once, use the parallel command" and its example block lost the
+gather line; order-of-execution says one exception (parallel); rest-api/workflows says the
+execAgent calls go in a for loop. Sweep for gather is clean (allowlist.html's time.sleep is
+Python's blocking function, deliberately kept as a do-not-allowlist example). The safe_mult/
+safe_mul + missing safe_lshift/rshift/matmult bug is Ram's to fix in the package - he is also
+weighing an alternate design, so the compile-rules wording may need to follow.
+HISTORY: (1) "gather and sleep are always available" and "the asyncio
 package is refused" - claimed in agent-definition/syntax.html#awaiting and on the two retired
 pages - have NO code behind them anywhere in ../search2o or ../s2oserver (no alias, no
 allowlist check on save); the new pages do not repeat the claim; syntax.html still does.
