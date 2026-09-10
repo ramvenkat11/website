@@ -110,6 +110,34 @@ JSON. The link checker now shows ONE pre-existing break: support-licensing/suppo
 notifications.html (the page is in system-management); the parts-of-the-system GitHub href
 with a leading space is a pre-existing oddity too, not a 404.
 
+## State on 2026-09-10 ("Compile rules" is now "Python operators"; rewrite redesigned)
+Ram changed the product: OperatorMappingAction is now {allow: bool, rewrite: str} - each
+operator is allowed or denied, and an allowed operator may name the function it is rewritten
+to. Defaults per the model: EVERY operator allowed, none rewritten (the old ** rewrite / shift
+and @ denied defaults are gone). On save, the agent server (api/admin.py check_rewrite_targets)
+checks every named function: in the expression namespace (allowlist + SafeOperators), callable,
+takes two values, passes a trial run with two small integers - EXCEPT matmult, which gets no
+trial; a failing function refuses the save with the reason; a denied operator's rewrite name is
+cleared on save. The cloud rewriter uses the configured name. Also verified and added to "What
+validation refuses": expressions may hold only ASCII letters, digits, punctuation and space
+(validateexpr has_disallowed_expr_chars). The allowlist save is refused too when an entry
+cannot be imported (admin.py updateSystemConfigPart) - allowlist.html and gui/guardrails.html
+now say so; the skip-and-log behaviour remains true for OTHER servers at runtime build.
+NAME: the page is runtime/python-operators.html, toc title "Python operators"; every "compile
+rules" is gone from docsrc/gen (sweep clean apart from the REST field compileErrors and the
+model name CompileOptions in a placeholder) - the vocabulary rule's one exception no longer
+exists, so "compile" in any form is banned outright now. The GUI BUNDLE still says "Compile
+rules" in its nav (ui/assets/NavigationModule) - Ram's to rename; gui/guardrails h2 and the
+overview table already say Guardrails > Python operators; the gui-guardrails screenshot is
+stale (Ram retakes). The built-in bounded functions are listed by their REAL names now
+(safe_add, safe_sub, safe_mul, safe_div, safe_floordiv, safe_mod, safe_pow; none for shifts or
+@) on both python-operators and allowlist. LEFTOVER FOR RAM: docsrc/runtime/compile-rules.html
+and html/docs/runtime/compile-rules.html are UNTRACKED files from earlier today (never
+committed) - my rm was declined; `rm` both, they are orphans (not in toc, no inbound links).
+Figure layer label is "Python operators" (bbox inside its 150px box); 126 pages, 32 examples
+valid, tables fit. RAIL (the unused GUI-mock rail list in figures.py) renamed too; only RAIL2
+is drawn.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
