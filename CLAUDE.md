@@ -138,6 +138,24 @@ Figure layer label is "Python operators" (bbox inside its 150px box); 126 pages,
 valid, tables fit. RAIL (the unused GUI-mock rail list in figures.py) renamed too; only RAIL2
 is drawn.
 
+## State on 2026-09-10 (operators: no built-in functions; three options)
+Ram's design note (content/operators.md, his selection): each operator is allow / deny /
+rewrite; rewrite FORCES a function name; the function must be in the allowlist; it must take
+two numbers (a one-argument function cannot stand in); @ is not checked; there are NO
+system-defined functions - SafeOperators is going away. Applied: python-operators.html is
+"The three options" (allow is the default for all ten, deny fails validation with the path,
+rewrite asks for a name), "Rewriting an operator" (a ** b -> bounded_pow(a, b) as an example
+of YOUR function; no built-in; on the allowlist on every server; two numeric arguments;
+checked on save except @; refused with the reason), a short why-rewrite paragraph,
+comprehensions + CompileOptions table, what validation refuses, republish rule. NO operators
+table and NO OperatorMappingAction table - Ram: "no table is needed, just the 10 builtin Python
+operators" (listed inline). Every safe_* and "built-in bounded" mention is gone from
+allowlist.html (its "Always present" section deleted; the registering bullet now reads "a
+function that a Python operator is rewritten to"), gui/guardrails.html and the figure layer
+("each operator allowed, denied or rewritten to a function of your own"). The only remaining
+safe_ text is in the UNTRACKED orphan docsrc/runtime/compile-rules.html - still Ram's to rm.
+126 pages, 32 examples valid.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
