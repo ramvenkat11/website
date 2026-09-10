@@ -37,6 +37,54 @@ Search2o column narrowest (170/349/251); plain `fields` measures 153/265/352, no
 widest column is the one with the longest cells. Measured in Chrome over a local
 `python3 -m http.server` under html/ - file:// URLs are refused by the browser tool.
 
+## State on 2026-09-10 (Agent runtime: four guardrail pages; controlled runtime retired)
+Per Ram: the guardrail parts are their own topics under Agent runtime, the allowlist is
+expanded (a key part of the system), and security/controlled-runtime is gone with its content
+folded into the runtime section. toc order now: overview / allowlist (The allowlist) /
+system-variables / compile-rules / runtime-limits / pools-and-profiles. 126 pages. RETIRED with
+git rm (docsrc AND the generated html/docs copies): runtime/guardrails.html and
+security/controlled-runtime.html. DEPLOY NOTE: the live bucket will need
+`aws s3 rm s3://search2o.com/docs/runtime/guardrails.html` and
+`aws s3 rm s3://search2o.com/docs/security/controlled-runtime.html`; the in-app summaries need
+regenerating and security__controlled-runtime.json + runtime__guardrails.json deleted by hand.
+Every inbound link rewritten (13 docsrc pages: guardrails.html#allowlist -> allowlist.html
+etc.; syntax.html's controlled-runtime link now points at allowlist + compile-rules); a full
+href check over html/docs found only two PRE-EXISTING breaks, not mine: introduction/
+parts-of-the-system.html has an href with a leading space before the GitHub URL, and
+support-licensing/support.html links notifications.html which is in system-management.
+ALLOWLIST PAGE, verified against ../search2o/search2o/execution/allowlist.py, agent_executor.py
+create_ro/create_dict and ../s2oserver/compiler/validateexpr.py + oprewriter.py: the allowlist
+IS the expressions' __builtins__ (nothing available by default); three entry forms exactly as
+resolve() does them (one name -> builtins; two names with a builtin type first -> that type's
+method; any other dotted path -> importlib the module before the last dot, getattr the last
+name); "as" alias; wildcard `.*` adds nothing silently; a module member may itself be a module
+(os.path exposes every public function - advice: list functions, not modules); failing entries
+are skipped, "Error importing '...'" logged, the rest still load; LlmAdapter subclasses are
+constructed with no args when the allowlist is built; SafeOperators methods are added under
+their names unless an entry shadows them. Figure "sandbox" RENAMED expression-bounds (the word
+is banned even as an id) and moved to the allowlist page. Scope-of-an-expression and the
+application-level/no-CPU-or-memory-limit statement came over from the retired security page.
+COMPILE RULES PAGE has a "What validation refuses" list straight from validateexpr.py: import,
+any underscore-leading name (variable/attribute/function/keyword), lambda, walrus, calling
+anything but a name or attribute, comprehension depth/generators, denied operators. Rewrite
+function names are `safe_` + the model field name (safe_add, safe_mult, safe_pow) - that is
+what oprewriter emits.
+SYSTEM VARIABLES PAGE uses <!--enum:SysVariables--> (four members - the model has a FOURTH,
+`cookies`, wired in agent_executor.py, which the old page did not list; documented with a
+care note) and states sys.secret is always present (create_ro adds inputs, query, secret).
+FLAGGED TO RAM, NOT CHANGED: (1) "gather and sleep are always available" and "the asyncio
+package is refused" - claimed in agent-definition/syntax.html#awaiting and on the two retired
+pages - have NO code behind them anywhere in ../search2o or ../s2oserver (no alias, no
+allowlist check on save); the new pages do not repeat the claim; syntax.html still does.
+(2) PACKAGE BUG: oprewriter maps * to safe_mult but SafeOperators defines safe_mul, and no
+safe_lshift/safe_rshift/safe_matmult exist - rewriting * (or the denied-by-default three)
+would fail at runtime with a NameError.
+gen/build.py render_default: a default_factory that returns a BaseModel now renders "" like a
+BaseModel default (was a giant repr that made CompileOptions' operators row scroll 4236px);
+the same fix cleaned five other tables (connection pools, authentication method, two profile
+pages, secrets source). Measured in Chrome: every table and pre on the five runtime pages
+fits; the two figures have 0 overruns; 32 examples valid.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
