@@ -204,6 +204,17 @@ the cloud paragraph, Ram's content: "Search2o Cloud currently operates from the 
 region. Other regions will follow, so that the cloud can stay close to wherever your agent
 servers run."
 
+## State on 2026-09-10 (clients.html hallucination cut; GUI-claims sweep)
+Ram: "The bundled GUI is itself a client generated from this schema" was pure hallucination -
+REMOVED from rest-api/clients.html's lead. Sweep of every docs line that says how the GUI is
+built or what the GUI does: the rest are either Ram-approved (how-the-gui-runs, 2026-09-08:
+uses the REST API and nothing else) or verifiable (single-page application bundled at /ui:
+ui/index.html + assets; "the streamed line types are in the schema": exec.py declares
+responses={200: {"model": StreamAgentReturn}}, dev.py StreamDraftReturn). "Generated from the
+agent schema" on commands/index and agent-definition/commands refers to OUR field tables
+(build.py) and is true. RULE: a claim about how a product part is implemented needs the code
+behind it, or it goes.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
