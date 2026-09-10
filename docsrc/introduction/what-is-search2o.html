@@ -11,3 +11,19 @@
   <li><strong>Execution is controlled.</strong> The Python expressions in an agent run in a controlled runtime, governed by an allowlist, compile rules and runtime limits that administrators set.</li>
   <li><strong>State is managed.</strong> The agent server holds no state - everything is stored in Search2o cloud, so servers can be started, stopped and scaled without concerning about data loss. Sensitive information like conversation, queries, and memories are encrypted. </li>
 </ul>
+
+<h2>Why not Python?</h2>
+<p>A fair question is why an agent is JSON with Python expressions, and not simply a Python program. A definition made of data can be generated, checked, read and governed in ways a program cannot.</p>
+<div class="tablewrap"><table class="fields compare">
+<thead><tr><th>Aspect</th><th>A Python program</th><th>A Search2o agent</th></tr></thead>
+<tbody>
+<tr><td>Writing it</td><td>Someone writes the code. An AI can write code too, but a plausible program and a correct program look alike.</td><td>AI assist writes the definition from one sentence. The schema says whether the result is a valid agent.</td></tr>
+<tr><td>Before it runs</td><td>Syntax is checked. The rest appears at runtime.</td><td>The schema, every expression and every reference to a function or a profile are checked. A validation run must pass before publishing.</td></tr>
+<tr><td>Reading it</td><td>Programmers can read the code.</td><td>An agent is an ordered list of named commands. The people who own the process can follow the steps.</td></tr>
+<tr><td>Trusting it</td><td>A program reaches the file system, the network and the process. Holding a program back takes isolation outside the program.</td><td>Expressions run in the controlled runtime. Only allowlisted names are reachable, and <code>import</code> is not available.</td></tr>
+<tr><td>Limits</td><td>Whatever limits the author remembered.</td><td>Run time, loop iterations, database rows and LLM spend are capped for every agent, by administrators.</td></tr>
+<tr><td>Shipping a change</td><td>Package the code, install the dependencies, deploy and restart.</td><td>Publish. Every agent server in the account runs the new version on its next run.</td></tr>
+<tr><td>Measuring it</td><td>Whatever the author chose to log.</td><td>Every run carries its duration, its result and its LLM cost. The reports cover every agent.</td></tr>
+</tbody>
+</table></div>
+<p>Python does not disappear. Every expression in an agent is Python, so the full power of an expression is available where the power is needed.</p>

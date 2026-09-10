@@ -47,7 +47,7 @@
 <tr><td><a href="prompt-profiles.html">Prompt profile</a></td><td>the <code>prompt</code> command</td><td>System and user prompt text, reused across agents</td></tr>
 <tr><td><a href="api-profiles.html">API profile</a></td><td>the <code>api</code> command</td><td>Base URL, headers, the connection pool</td></tr>
 <tr><td><a href="db-profiles.html">Database profile</a></td><td>the <code>db</code> command</td><td>Connection string and pool settings</td></tr>
-<tr><td><a href="mcp-servers.html">MCP server</a></td><td>the tools field in an <code>llm</code> command</td><td>The server's URL and its connection settings.</td></tr>
+<tr><td><a href="mcp-servers.html">MCP server</a></td><td>the <code>mcp</code> field in an <code>llm</code> command</td><td>The server's URL and its connection settings.</td></tr>
 </tbody></table></div>
 
 <h2 id="why-profiles">Why profiles</h2>
@@ -63,7 +63,7 @@
   <li>A profile name is letters, digits and underscores. A profile name starts with a letter and ends with a letter or a digit. MCP names are an exception - they cannot have underscores.</li>
   <li>Each profile page in the GUI shows which agents use the profile. A profile in use cannot be deleted; remove the reference from the agents first.</li>
   <li>Each kind of profile has a limit on how many an account may hold. The GUI shows the limit on the profile's page.</li>
-  <li>A profile carries a documentation note. AI assist reads the notes when it writes an agent, so a note that says what the profile is for helps the assistant choose the right one.</li>
+  <li>A profile carries a documentation note. This field is mainly intended for AI assist in the future.</li>
   <li>Profiles are versioned like every configuration part: a save is refused when someone else changed the profile first, and every create, update and delete produces a <a href="../system-management/notifications.html">notification</a>. See <a href="../runtime/overview.html">How configuration works</a>.</li>
 </ul>
 
