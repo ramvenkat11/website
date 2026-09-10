@@ -1,4 +1,4 @@
-<p class="lead">Agents name profiles; profiles hold the details. An agent says <code>"profile": "gpt5_mini"</code>, and the LLM profile of that name holds the URL, the headers, the model and the prices.</p>
+<p class="lead">Commands in an agent name profiles; profiles hold the details. An llm command says <code>"profile": "gpt5_mini"</code>, and the LLM profile of that name holds the URL, the headers, the model and the prices.</p>
 
 <h2>The five kinds</h2>
 <div class="tablewrap"><table class="fields">
@@ -8,7 +8,7 @@
 <tr><td><a href="prompt-profiles.html">Prompt profile</a></td><td>the <code>prompt</code> command</td><td>System and user prompt text, reused across agents</td></tr>
 <tr><td><a href="api-profiles.html">API profile</a></td><td>the <code>api</code> command</td><td>Base URL, headers, the connection pool</td></tr>
 <tr><td><a href="db-profiles.html">Database profile</a></td><td>the <code>db</code> command</td><td>Connection string and pool settings</td></tr>
-<tr><td><a href="mcp-servers.html">MCP server</a></td><td>the tools of an <code>llm</code> command</td><td>The server's URL and the tools it offers</td></tr>
+<tr><td><a href="mcp-servers.html">MCP server</a></td><td>the tools field in an <code>llm</code> command</td><td>The server's URL and its connection settings.</td></tr>
 </tbody></table></div>
 
 <h2>Why profiles</h2>
@@ -21,7 +21,7 @@
 
 <h2>Rules that apply to every profile</h2>
 <ul>
-  <li>A profile name is letters, digits and underscores. A profile name starts with a letter and ends with a letter or a digit.</li>
+  <li>A profile name is letters, digits and underscores. A profile name starts with a letter and ends with a letter or a digit. MCP names are an exception - they cannot have underscores.</li>
   <li>Each profile page in the GUI shows which agents use the profile. A profile in use cannot be deleted; remove the reference from the agents first.</li>
   <li>Each kind of profile has a limit on how many an account may hold. The GUI shows the limit on the profile's page.</li>
   <li>A profile carries a documentation note. AI assist reads the notes when it writes an agent, so a note that says what the profile is for helps the assistant choose the right one.</li>

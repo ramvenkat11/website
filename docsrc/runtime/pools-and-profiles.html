@@ -1,7 +1,7 @@
 <p class="lead">The rest of the runtime is what agents connect through and refer to: the connection pools, the profiles, and the secrets and encryption settings. Each reaches every agent server the same way as the guardrails, before the server's next run.</p>
 
 <h2>Connection pools</h2>
-<p>The runtime keeps one HTTP client per named pool, built as <code>Network</code> in <code>search2o/execution/network.py</code>. Every outbound HTTP call goes through one of them: LLM calls, API calls, and the agent server's own calls to Search2o Cloud. An LLM profile and an API profile each name their pool, and a server configuration names the pool for the cloud connection. The pool named <code>default</code> always exists and cannot be deleted. When the pools change, agents that start afterwards use new clients; agents already running keep the pool they started with, and the old clients close when the last such agent finishes. Give a slow LLM or a busy internal API a pool of its own, with its own timeouts, so that one service cannot exhaust the connections everything else needs. Pools are edited under Operations &rsaquo; Connection pools.</p>
+<p>Many parts of the agent servers need to connect to a HTTP service: Connection to the Search2o cloud, LLM servers and api commands/profiles. They can all use different connection pool settings. These are defined in the connection pools page in the GUI. A connection pool called 'default' is used when no other connection pool is defined. </p>
 <!--fields:model:ApiConnectionPoolsModel-->
 <h3>A pool</h3>
 <!--fields:model:ApiConnectionPoolModel-->

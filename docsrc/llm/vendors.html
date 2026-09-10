@@ -30,7 +30,7 @@ $ export GEMINI_API_KEY=...        # Google Gemini
 <tr><td><code>adapter</code></td><td><code>openai</code>, <code>anthropic</code> or <code>gemini</code>, matching the protocol the endpoint speaks.</td></tr>
 <tr><td><code>vendor</code></td><td>The name the reports group spend under.</td></tr>
 <tr><td><code>url</code></td><td>The endpoint, for example <code>https://api.openai.com</code>.</td></tr>
-<tr><td><code>headers</code></td><td>Authorization and anything else the vendor wants. The values are dynamic strings, so the key can be read at call time: <code>{ f"Bearer {sys.secret('OPENAI_API_KEY')}" }</code>.</td></tr>
+<tr><td><code>headers</code></td><td>Authorization and anything else the vendor wants. The values are dynamic strings, so the key can be read at call time: <code>{ f"Bearer {sys.secret['OPENAI_API_KEY']}" }</code>.</td></tr>
 <tr><td><code>model</code></td><td>The model name as the vendor writes it.</td></tr>
 <tr><td><code>pricing</code></td><td>The prices per million tokens.</td></tr>
 </tbody></table></div>
