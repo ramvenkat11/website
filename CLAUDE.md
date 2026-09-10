@@ -176,7 +176,7 @@ indexed, and the plain form is deleted once indexing completes. data-privacy.htm
 leaves in plain form but is stored encrypted" intro no longer claims "the plain text is never
 stored" for everything: query and memory text are handled in memory and never stored; the
 description is stored plain until indexing completes, then deleted; none of the plain text is
-logged. The Agent descriptions table row says the same. Rebuilt, 126 pages.
+logged. The Agent descriptions table row says the same. Ram then called the rewritten intro paragraph "so badly written" and had it REMOVED - the section is now the h2 and the table only; the description-while-indexing fact lives in the table row.
 
 ## State on 2026-09-10 (prompt profiles: encrypted and static)
 Ram: prompt profiles are now ENCRYPTED (system and user prompt) and STATIC; a prompt on the
