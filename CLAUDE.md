@@ -198,6 +198,12 @@ cloud never holds the text") automatically. NOT TOUCHED, flagged: what-is-search
 "Sensitive information like conversation, queries, and memories are encrypted" (an examples
 list, Ram's line) and about.html's encryption list on the SITE (Ram's marketing copy).
 
+## State on 2026-09-10 (license page: cloud region line)
+license.html: the "cloud's code is not published" clause is gone (rule above). New line after
+the cloud paragraph, Ram's content: "Search2o Cloud currently operates from the US East
+region. Other regions will follow, so that the cloud can stay close to wherever your agent
+servers run."
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
@@ -225,6 +231,10 @@ list, Ram's line) and about.html's encryption list on the SITE (Ram's marketing 
   not one Ram gave, and an implementation detail besides. The page states the rule and stops:
   "Matrix multiplication, @, is not checked." A "because" on a docs page needs Ram's reason or
   none.
+- SAY WHAT IS, NEVER WHAT IS NOT (Ram, 2026-09-10, second time): "the cloud's code is not
+  published" was cut from license.html - "we only say when something is, not when something
+  is not. I already told you this for something else." Same rule as never documenting an
+  absence; a sentence that exists only to deny something does not belong on a page.
 - Tight scope: do what was asked, report related findings instead of fixing them uninvited.
 - Cite files as `path/file.html:123` (Ram runs Claude in a JetBrains terminal).
 - Ask before anything irreversible; deleting from the S3 bucket is irreversible.
