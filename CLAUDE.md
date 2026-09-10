@@ -165,7 +165,7 @@ Every "Python operators" reference reverted (toc, allowlist x3, overview x2, gui
 docs home card, runtime lead, users-and-roles, notifications, what-is-search2o, syntax,
 figure layer + RAIL). The lead now lists all three things the rules decide and states: "Search2o
 Cloud applies the rules only when a draft is validated or published. A changed rule does not
-touch an agent that is already published." The closing section is "When a rule changes" (a
+touch an agent that is already published." The first h2 is "Python operators" (was "The three options"); the rewrite paragraph says "Write the function yourself, and put the function on the allowlist..." (the "there is no built-in function" sentence was cut - see the standing instruction). The closing section is "When a rule changes" (a
 changed rule reaches an agent only through a new draft published again); gui/guardrails.html
 carries the same only-at-validate/publish sentence. 126 pages, 32 examples valid, link check
 unchanged (the one pre-existing support.html break).
@@ -187,6 +187,11 @@ unchanged (the one pre-existing support.html break).
   without asking, and commit ONLY this file (`git commit CLAUDE.md -m ...`) without mentioning it.
   Ram owns every other commit - never commit code or content; he reviews first.
 - Narrate; never go silent for more than ~20 seconds. Say what a long step is before starting it.
+- NEVER DOCUMENT AN ABSENCE (Ram, 2026-09-10): what he tells me in a note ("there are no
+  built-in functions") is context, not a sentence for the page. The docs never say "X does not
+  exist" or "there is no X"; the docs say what to do instead ("Write the function yourself and
+  put the function on the allowlist"). His words: "we don't say 'X doesn't exist' - we say 'Do
+  this'."
 - Tight scope: do what was asked, report related findings instead of fixing them uninvited.
 - Cite files as `path/file.html:123` (Ram runs Claude in a JetBrains terminal).
 - Ask before anything irreversible; deleting from the S3 bucket is irreversible.
