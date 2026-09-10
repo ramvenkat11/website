@@ -85,6 +85,23 @@ the same fix cleaned five other tables (connection pools, authentication method,
 pages, secrets source). Measured in Chrome: every table and pre on the five runtime pages
 fits; the two figures have 0 overruns; 32 examples valid.
 
+## State on 2026-09-10 (Connection pools is its own page; profiles and secrets pointed at)
+Per Ram: runtime/pools-and-profiles.html RETIRED (git rm -f, docsrc and html/docs) and replaced
+by runtime/connection-pools.html, which is ONLY about pools (lead rewritten in clear English
+from the old rough paragraph: every HTTP connection goes through a pool - cloud calls, LLM
+calls, api commands and API profiles - each can name a pool, "default" is used where none is
+named, administrators define them, a change reaches every server before the next run, the old
+pool stays open until the last agent using the pool finishes; then the three fields tables). The
+runtime overview's "What the runtime holds" list now just points elsewhere for profiles (the
+Profiles section) and secrets/encryption (Security and privacy); its table's Profiles row links
+../profiles/index.html. toc: ("connection-pools", "Connection pools"). Section lead and docs
+home card say "connection pools" only. gui/operations.html link updated. 126 pages, 32
+examples valid, every table on the three touched pages fits. DEPLOY NOTE: add
+`aws s3 rm s3://search2o.com/docs/runtime/pools-and-profiles.html` and delete its summary
+JSON. The link checker now shows ONE pre-existing break: support-licensing/support.html ->
+notifications.html (the page is in system-management); the parts-of-the-system GitHub href
+with a leading space is a pre-existing oddity too, not a 404.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
