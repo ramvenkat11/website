@@ -200,9 +200,9 @@ list, Ram's line) and about.html's encryption list on the SITE (Ram's marketing 
 
 ## State on 2026-09-10 (license page: cloud region line)
 license.html: the "cloud's code is not published" clause is gone (rule above). New line after
-the cloud paragraph, Ram's content: "Search2o Cloud currently operates from the US East
-region. Other regions will follow, so that the cloud can stay close to wherever your agent
-servers run."
+the cloud paragraph, Ram's wording verbatim (plus "the" before US East, twice): "Search2o
+Cloud currently operates from the US East. You will see the lowest latency if you run the
+agent server in the US East. We will expand to other regions in the future."
 
 ## State on 2026-09-10 (clients.html hallucination cut; GUI-claims sweep)
 Ram: "The bundled GUI is itself a client generated from this schema" was pure hallucination -
