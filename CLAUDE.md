@@ -192,6 +192,11 @@ unchanged (the one pre-existing support.html break).
   exist" or "there is no X"; the docs say what to do instead ("Write the function yourself and
   put the function on the allowlist"). His words: "we don't say 'X doesn't exist' - we say 'Do
   this'."
+- NO INVENTED REASONS (Ram, 2026-09-10, "Why did you say that?"): I wrote "@ is not checked,
+  because the server has no values to try" - a reason I inferred from admin.py's trial table,
+  not one Ram gave, and an implementation detail besides. The page states the rule and stops:
+  "Matrix multiplication, @, is not checked." A "because" on a docs page needs Ram's reason or
+  none.
 - Tight scope: do what was asked, report related findings instead of fixing them uninvited.
 - Cite files as `path/file.html:123` (Ram runs Claude in a JetBrains terminal).
 - Ask before anything irreversible; deleting from the S3 bucket is irreversible.
