@@ -178,6 +178,26 @@ stored" for everything: query and memory text are handled in memory and never st
 description is stored plain until indexing completes, then deleted; none of the plain text is
 logged. The Agent descriptions table row says the same. Rebuilt, 126 pages.
 
+## State on 2026-09-10 (prompt profiles: encrypted and static)
+Ram: prompt profiles are now ENCRYPTED (system and user prompt) and STATIC; a prompt on the
+prompt command in an agent is dynamic and unencrypted. Two choices: dynamic + plain in the
+agent, or static + encrypted in the profile. VERIFIED in ../search2o: api/admin.py
+encrypt_prompt_profile on save / decrypt_prompt_profile on read (the agent server behind the
+GUI does both, Encryptor.encrypt_query/decrypt_query); execution/runtime.py decrypts every
+profile's prompts when the runtime is built; commands/prompt.py uses profile.system/user
+verbatim (no evaluation) and command values override. Applied: profiles/prompt-profiles.html
+rewritten (lead + "Encrypted and static" + "Two places for a prompt"; the old "marked
+dynamic" paragraph is gone - there is no such flag); commands/prompt.html profile paragraph
+extended with the dynamic/plain vs static/encrypted distinction; profiles/overview table cell
+and gui/profiles say "stored encrypted"; data-privacy: NEW ROW "Prompt profiles" in "What
+leaves only in encrypted form" (developers via the GUI; agent servers decrypt at runtime; life
+of the profile) and the plain-form Profiles row now lists LLMs/APIs/databases/MCP plus "the
+name and note of a prompt profile"; encryption.html end-to-end sentence lists prompt profiles.
+The PromptProfileModel table carries Ram's new descriptions ("Stored encrypted; the Search2o
+cloud never holds the text") automatically. NOT TOUCHED, flagged: what-is-search2o's
+"Sensitive information like conversation, queries, and memories are encrypted" (an examples
+list, Ram's line) and about.html's encryption list on the SITE (Ram's marketing copy).
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
