@@ -156,6 +156,20 @@ function that a Python operator is rewritten to"), gui/guardrails.html and the f
 safe_ text is in the UNTRACKED orphan docsrc/runtime/compile-rules.html - still Ram's to rm.
 126 pages, 32 examples valid.
 
+## State on 2026-09-10 (title back to "Compile rules"; rules apply only at validate/publish)
+Ram reversed the rename once he saw the page covers more than operators (comprehension bounds
+and the refused shapes too): the topic is runtime/compile-rules.html, title "Compile rules"
+again, and the vocabulary exception for that product name stands. The python-operators files
+were `mv`ed over the compile-rules orphans, so NO orphans remain (no rm needed after all).
+Every "Python operators" reference reverted (toc, allowlist x3, overview x2, gui/guardrails,
+docs home card, runtime lead, users-and-roles, notifications, what-is-search2o, syntax,
+figure layer + RAIL). The lead now lists all three things the rules decide and states: "Search2o
+Cloud applies the rules only when a draft is validated or published. A changed rule does not
+touch an agent that is already published." The closing section is "When a rule changes" (a
+changed rule reaches an agent only through a new draft published again); gui/guardrails.html
+carries the same only-at-validate/publish sentence. 126 pages, 32 examples valid, link check
+unchanged (the one pre-existing support.html break).
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
