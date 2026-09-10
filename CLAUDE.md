@@ -238,6 +238,11 @@ zoomed crop: quiet blue border + text, nothing else moves. FINDING, NOT MINE, NO
 was the committed state before this change, though the 2026-09-09 note claims delta 0;
 possibly a different viewport then. Ram's call whether to re-tune .cmdgroups gap.
 
+## State on 2026-09-10 (gettingstarted hero note: Account page)
+The hero note (gettingstarted.html:43) now reads "Start with the free Individual plan. When
+you are ready, upgrade from the Account page in the GUI." (was "upgrade in place from the
+GUI"; Ram's wording).
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
