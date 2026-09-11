@@ -430,6 +430,18 @@ overflowing element outside pres and tablewraps); Pixel 7 (412x915) hero checked
 A sweep of 56 iframe loads in one javascript_tool call times out (45s) - do 8-12 loads per call
 (window.__sweep helper pattern). DEPLOYED on Ram's "Deploy it" (2026-09-11, --skip-build, only styles.css differed, invalidation Completed, live md5 == local).
 
+## State on 2026-09-11 (Running multiple environments moved to the end of Security and privacy)
+git mv docsrc/system-management/multiple-environments.html -> docsrc/security/ (the page's own
+links are ../profiles and ../rest-api - same depth, unchanged); toc entry moved to the end of
+the security section after data-privacy; the generated html/docs/system-management copy git
+rm'd; system-management lead lost "and running several environments", the security lead and
+the docs home Security card gained the page. No inbound links existed. 126 pages, 32 examples
+valid, sitemap has the new URL, link check unchanged (support.html -> notifications.html
+still the one pre-existing break). NOT DEPLOYED. DEPLOY NOTE: the old URL
+docs/system-management/multiple-environments.html now 404s live once deployed (sync never
+deletes - `aws s3 rm` it or leave it; the 404 mapping covers a missing key but NOT a stale
+object that still exists in the bucket, so the stale copy would keep serving the OLD sidebar).
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
