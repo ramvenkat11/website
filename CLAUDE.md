@@ -463,7 +463,8 @@ other two detail figures (was 300, leaving an empty band). DEPLOYED 2026-09-11 (
 Ram's text, verbatim plus full stops: p.def "Search2o is the layer that turns your 100 agents
 into one system." and TWO hero points (was three): "People request an outcome; search finds
 and runs the agent built to produce it." (layers icon) and "The agent runs in a controlled
-runtime, talks to your systems and reports what it cost." (shield icon), then Ram added a THIRD: "Agents share one conversation, so each can build on
+runtime, connects to your tools and data, and reports what it cost." (shield icon; Ram's
+revision of "talks to your systems"), then Ram added a THIRD: "Agents share one conversation, so each can build on
 what the last one did." (the chat-bubble icon reused from the Chat integrations card, at the
 points' 17px size). The braces-icon point and the bold lead-ins are gone (his lines have no bold subject; none invented). The h1
 "Search that executes." and the eyebrow are unchanged, so the demo's 75px title alignment
