@@ -324,6 +324,11 @@ the same shape to the license.html lead ("The agent server source is available o
 and the software is proprietary.") since it was the identical construction - flagged for veto.
 "Without the GUI" survives in license.html's Agent server paragraph and on support.html.
 
+## State on 2026-09-10 (gettingstarted Download step line)
+gettingstarted.html:83 is now "Install the agent server with the bundled GUI:" (Ram's
+wording; the "Python 3.12+ package" clause left the page - the requirement is still in the
+docs on registering-and-downloading).
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
