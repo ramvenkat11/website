@@ -365,6 +365,33 @@ Completed, live index.html md5 == local. FINDING: because build.py rewrites ever
 126 docs pages even when their content is unchanged. Harmless (5 MiB) but noisy; the fix
 would be build.py writing a page only when its content changed - not done, Ram's call.
 
+## State on 2026-09-11 (SEO pass: repo side DEPLOYED, AWS side awaits Ram)
+Ram asked whether the site is search-engine friendly, then "Go ahead with everything". AUDIT
+FINDINGS: no robots.txt / sitemap.xml (both 403); www.search2o.com and docs.search2o.com serve
+the same content with 200 and no canonical (duplicate content across three hosts); missing
+pages return 403 with index.html as the body (no bucket policy grants public ListBucket, so S3
+answers 403 not 404; the bucket's ErrorDocument was index.html); no og:image/og:url, no
+JSON-LD, no Cache-Control. Page-level basics were fine (title, description, lang, one h1,
+alt text, legal noindex).
+DONE AND LIVE (third deploy today, invalidation IBAXIY9A1GJFZN29QORFHOQHAL): html/robots.txt
+(allow all, Disallow /legal/, Sitemap line); gen/build.py now writes html/sitemap.xml (4 site
+pages + docs home + every toc page = 130 URLs, legal excluded, no lastmod) and puts
+canonical + og:title/description/type=article/url/image on every docs page (docs_path()
+helper); site pages gained canonical + og:url + og:image (logo.png, 560x102 - a placeholder
+until a 1200x630 card exists) and the home page a JSON-LD Organization + WebSite block; legal
+pages gained canonical; NEW html/404.html (About-page chrome, kicker 404, noindex, ALL paths
+absolute because CloudFront serves it under any URL); scripts/deploy.sh syncs with
+--cache-control "public, max-age=600" (objects not re-uploaded keep no header until they
+change: logo.png, favicon.svg, config.js, site.js).
+BLOCKED BY THE AUTO-MODE CLASSIFIER (AWS resource creation): the CloudFront Function. Written
+instead: scripts/cloudfront-canonical-host.js (viewer-request: www. -> apex 301, docs. ->
+apex/docs 301, query string kept) and scripts/cloudfront-setup.sh (idempotent: create-or-
+update + test on DEVELOPMENT + publish the function; update-distribution with the
+viewer-request association and CustomErrorResponses 403/404 -> /404.html status 404;
+put-bucket-website ErrorDocument 404.html; --wait polls until Deployed and verifies). RAM RUNS
+IT: `! scripts/cloudfront-setup.sh --wait`. Until then: missing pages still 403, www/docs
+hosts still 200.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
