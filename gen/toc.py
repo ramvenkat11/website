@@ -102,13 +102,13 @@ TOC = [
         ("single-sign-on", "Single sign-on"),
         ("notifications", "Notifications"),
         ("usage-limits", "Usage limits"),
-        ("multiple-environments", "Running multiple environments"),
     ]),
     ("security", "Security and privacy", [
         ("license-rotation", "License key rotation"),
         ("secret-vault", "The secret vault"),
         ("encryption", "Encryption"),
         ("data-privacy", "Data privacy"),
+        ("multiple-environments", "Running multiple environments"),
     ]),
     ("gui", "GUI", [
         ("how-the-gui-runs", "How the GUI runs"),
