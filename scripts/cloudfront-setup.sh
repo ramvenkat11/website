@@ -53,13 +53,20 @@ fi
 etag="$(aws cloudfront describe-function --name "$FUNCTION_NAME" --query ETag --output text)"
 
 # A redirect and a pass-through, checked against the DEVELOPMENT stage before publishing.
-event() { printf '{"version":"1.0","context":{"eventType":"viewer-request"},"viewer":{"ip":"203.0.113.1"},"request":{"method":"GET","uri":"%s","querystring":{},"headers":{"host":{"value":"%s"}},"cookies":{}}}' "$2" "$1" | base64; }
-out="$(aws cloudfront test-function --name "$FUNCTION_NAME" --if-match "$etag" --stage DEVELOPMENT \
-    --event-object "$(event docs.search2o.com /runtime/allowlist.html)" --query TestResult.FunctionOutput --output text)"
-[[ "$out" == *'"statusCode":301'* && "$out" == *'https://search2o.com/docs/runtime/allowlist.html'* ]] || fail "docs-host redirect test failed: $out"
-out="$(aws cloudfront test-function --name "$FUNCTION_NAME" --if-match "$etag" --stage DEVELOPMENT \
-    --event-object "$(event search2o.com /pricing.html)" --query TestResult.FunctionOutput --output text)"
+# The event goes in as a raw JSON file: the CLI base64-encodes a blob argument itself.
+event_file="$(mktemp)"
+run_test() {   # host, uri -> the function's output
+    printf '{"version":"1.0","context":{"eventType":"viewer-request"},"viewer":{"ip":"203.0.113.1"},"request":{"method":"GET","uri":"%s","querystring":{},"headers":{"host":{"value":"%s"}},"cookies":{}}}' "$2" "$1" > "$event_file"
+    aws cloudfront test-function --name "$FUNCTION_NAME" --if-match "$etag" --stage DEVELOPMENT \
+        --event-object "fileb://$event_file" --query TestResult.FunctionOutput --output text
+}
+out="$(run_test www.search2o.com /pricing.html)"
+[[ "$out" == *'"statusCode":301'* && "$out" == *'https://search2o.com/pricing.html'* ]] || fail "www redirect test failed: $out"
+out="$(run_test search2o.com /pricing.html)"
 [[ "$out" == *'"uri":"/pricing.html"'* && "$out" != *statusCode* ]] || fail "apex pass-through test failed: $out"
+out="$(run_test docs.search2o.com /docsweb/uitext_current.json)"   # the GUI reads under this host: never redirected
+[[ "$out" == *'"uri":"/docsweb/uitext_current.json"'* && "$out" != *statusCode* ]] || fail "docs-host pass-through test failed: $out"
+rm -f "$event_file"
 echo "tests passed"
 
 arn="$(aws cloudfront publish-function --name "$FUNCTION_NAME" --if-match "$etag" \
