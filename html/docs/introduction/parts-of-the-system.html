@@ -44,7 +44,7 @@
 <p>The cloud service holds all state: accounts and users, agent definitions and drafts, configuration, conversation context, and the data behind the reports. The cloud checks agent definitions, indexes each agent's description, and answers searches. Only agent servers call the cloud's API and the Search2o license prohibits calling it directly, as that can result in data inconsistency.</p>
 
 <h2 id="the-agent-server">The agent server</h2>
-<p>The agent server is a Python 3.12+ package, installed with <code>pip install search2o</code>. The server runs inside your organization and holds no state: at startup it loads the account's configuration, keeps that configuration current, and runs agents. The server's REST API is described at <code>/openapi.json</code>, with Swagger UI at <code>/docs</code> and Redoc UI at <code>/redoc</code></p>
+<p>The agent server, with the bundled GUI, is a Python 3.12+ package installed with <code>pip install search2o</code>. The server runs inside your organization and holds no state: at startup it loads the account's configuration, keeps that configuration current, and runs agents. The server's REST API is described at <code>/openapi.json</code>, with Swagger UI at <code>/docs</code> and Redoc UI at <code>/redoc</code></p>
 <p>The server is asynchronous and needs nothing beyond its Python packages. Run one server on a laptop, run one as a standalone server, or run several as a load-balanced cluster. No server holds state, so any server can serve any request.</p>
 
 <h2 id="the-gui">The GUI</h2>
