@@ -397,8 +397,13 @@ CustomErrorResponses 403/404 -> /404.html as 404), bucket ErrorDocument 404.html
 Deployed. VERIFIED LIVE: www.search2o.com/ -> 301 https://search2o.com/;
 docs.search2o.com/ -> 301 https://search2o.com/docs/; docs.search2o.com/docs/index.html keeps
 its path; a missing URL (e.g. docs/runtime/guardrails.html) answers 404 with the "Page not
-found" page; / still 200. The SEO pass is COMPLETE. Open: og:image is logo.png (560x102) until a
-1200x630 card exists.
+found" page; / still 200. Then Ram: WRONG - docs.search2o.com must point at the root, the UI depends on
+directories under it. REVERTED within the hour: cloudfront-canonical-host.js now redirects
+ONLY www. (function updated, tested, published LIVE - a function publish needs no distribution
+deploy); verified docs.search2o.com/ and /docsweb/uitext_current.json 200 again, www still
+301, missing page still 404. cloudfront-setup.sh's tests now assert the docs host passes
+through; website_deploy.md corrected. The SEO pass is COMPLETE. Open: og:image is logo.png
+(560x102) until a 1200x630 card exists.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
@@ -431,6 +436,11 @@ found" page; / still 200. The SEO pass is COMPLETE. Open: og:image is logo.png (
   published" was cut from license.html - "we only say when something is, not when something
   is not. I already told you this for something else." Same rule as never documenting an
   absence; a sentence that exists only to deny something does not belong on a page.
+- docs.search2o.com SERVES THE BUCKET ROOT, UNTOUCHED (Ram, 2026-09-11, after I broke it): the
+  GUI reads data under that host (docsweb/ and other directories not linked from the site),
+  so no redirect, rewrite, error mapping or deletion may ever treat that host or those paths as
+  website content. Only www.search2o.com redirects. Duplicate-content concerns are handled by
+  the canonical links, never by redirecting the docs host.
 - Tight scope: do what was asked, report related findings instead of fixing them uninvited.
 - Cite files as `path/file.html:123` (Ram runs Claude in a JetBrains terminal).
 - Ask before anything irreversible; deleting from the S3 bucket is irreversible.
