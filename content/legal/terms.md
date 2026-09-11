@@ -2,7 +2,7 @@
 
 **Effective Date: September 5, 2026**
 
-These Terms of Service (“Terms”) are an agreement between Search2o, Inc., a Virginia corporation with an address at 700 Highland Ave, Falls Church, VA 22046, USA (“Search2o,” “we,” “us,” or “our”), and the business or organization accessing or using the Services (“Customer,” “you,” or “your”).
+These Terms of Service (“Terms”) are an agreement between Search2o, Inc., a Virginia corporation (“Search2o,” “we,” “us,” or “our”), and the business or organization accessing or using the Services (“Customer,” “you,” or “your”).
 
 These Terms govern Customer’s access to and use of Search2o’s cloud services, APIs, websites where these Terms are posted, documentation, AI-assisted features, and related services (collectively, the “Services”).
 
@@ -478,16 +478,11 @@ If Customer does not agree to revised Terms, Customer may terminate its use of t
 
 ## 28. Notices
 
-Search2o may provide notices through the Services, by email to Customer’s account contact email address, through Customer’s administrative interface, or by another reasonable electronic method.
+Search2o will provide legal notices to Customer by email to Customer’s account contact email address, and may additionally provide notices through the Services, through Customer’s administrative interface, or by another reasonable electronic method.
 
 Customer is responsible for maintaining a current account contact email address and other contact information.
 
-Legal notices to Search2o may be sent to:
-
-Search2o, Inc.
-700 Highland Ave
-Falls Church, VA 22046
-USA
+Legal notices to Search2o must be sent by email to info@search2o.com with the subject line “Legal Notice.”
 
 Search2o may designate another notice address on its website.
 
