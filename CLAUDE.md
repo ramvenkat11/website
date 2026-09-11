@@ -459,6 +459,16 @@ leftover from before the 2026-09-03 privacy correction; the page text next to it
 queries are not shown). The extra() strip is REMOVED and the figure's height is 260 like the
 other two detail figures (was 300, leaving an empty band). DEPLOYED 2026-09-11 (invalidation I9HYZPGI1XVBGSW6AI4UCBYHOS); live page verified free of the strip.
 
+## State on 2026-09-11 (hero rewritten to Ram's three lines)
+Ram's text, verbatim plus full stops: p.def "Search2o is the layer that turns your 100 agents
+into one system." and TWO hero points (was three): "People request an outcome; search finds
+and runs the agent built to produce it." (layers icon) and "The agent runs in a controlled
+runtime, talks to your systems and reports what it cost." (shield icon). The braces-icon
+point and the bold lead-ins are gone (his lines have no bold subject; none invented). The h1
+"Search that executes." and the eyebrow are unchanged, so the demo's 75px title alignment
+holds; the left column ends ~level with the demo. Meta descriptions untouched (they never
+quoted the hero). Screenshot checked at desktop width. Not deployed.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
