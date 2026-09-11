@@ -480,6 +480,22 @@ own "AST compiler prevents dangerous constructs" line a minute later) / "Convers
 sensitive information are encrypted." (the end-to-end clause went in Ram's third pass). The
 vault sentence is gone. Not deployed.
 
+## State on 2026-09-11 (format/format_map refused; getattr/setattr always present)
+Ram: str.format and format_map are prohibited in expressions (they can bypass the dunder
+restriction); getattr and setattr are overridden by the agent server to check for dunders, so
+they are always available safely. VERIFIED: validateexpr.py forbidden_attrs = {format,
+format_map} (visit_Attribute refuses them; the comment explains the mini-language does
+attribute/index access from a string the AST never sees; f-strings are the replacement);
+allowlist.py sets mutable["getattr"]/["setattr"] = safe_getattr/safe_setattr AFTER the
+allowlist is built (so they override an entry of the same name); _check_attr_name refuses
+non-str names, names starting with "_", and "format"/"format_map". safeoperators.py is GONE
+from the package (consistent with the operators redesign). Docs: compile-rules "What
+validation refuses" gained the .format/.format_map item with the f-string advice;
+allowlist.html gained an "Always present" section (getattr/setattr, public names only, take
+precedence over an entry); syntax.html "What an expression can use" gained a getattr/setattr
+bullet. The getattr examples on var.html and variables.html need no allowlist entry and stay.
+Rebuilt; not deployed.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
