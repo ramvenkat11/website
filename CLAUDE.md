@@ -317,7 +317,12 @@ so the source-available story stays, with that precision. The three docs stateme
 "the source, without the GUI, is at/public at github.com/Search2o/agent-server":
 registering-and-downloading Source section (link added), support.html source line, and
 license.html lead + Agent server paragraph. Home page "Source available" (steps + diagram
-subtitle) untouched - still true. Vocabulary: "the GUI", never "ui".
+subtitle) untouched - still true. Vocabulary: "the GUI", never "ui". Ram then simplified the registering
+sentence to "The agent server source is available at github.com/Search2o/agent-server." (no
+"source available:" construction, no "without the GUI", no "proprietary" there); I applied
+the same shape to the license.html lead ("The agent server source is available on GitHub,
+and the software is proprietary.") since it was the identical construction - flagged for veto.
+"Without the GUI" survives in license.html's Agent server paragraph and on support.html.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
