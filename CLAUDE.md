@@ -329,6 +329,14 @@ gettingstarted.html:83 is now "Install the agent server with the bundled GUI:" (
 wording; the "Python 3.12+ package" clause left the page - the requirement is still in the
 docs on registering-and-downloading).
 
+## State on 2026-09-10 (pip install = agent server WITH the bundled GUI; no "without the GUI")
+Ram: wherever pip install search2o appears, say it is the agent server with the bundled GUI;
+and the source line is just "The agent server source is available at github.com/Search2o/
+agent-server" - "without the GUI" is NOT said. Applied: parts-of-the-system:8, registering
+Install intro, license.html Agent server paragraph (both halves), support.html:18;
+gettingstarted.html:83 already said "Install the agent server with the bundled GUI:". Sweep
+for "without the GUI" is clean.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
