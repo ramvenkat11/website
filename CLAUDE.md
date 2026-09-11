@@ -261,6 +261,12 @@ html.escape; the md h1 goes to the hero h1). FIDELITY VERIFIED: normalized text 
 chrome (header, footer, Legal column) was left as is. The converter is NOT in gen/ - it
 was rebuilt inline again; worth adding as gen/legal.py if the legal md keeps changing.
 
+## State on 2026-09-10 (legal/terms.html regenerated from content/legal/terms.md)
+Same converter as the license page (blocks; ## -> h2; **bold** -> <strong>; html.escape),
+run over terms.md (one h1, 29 h2, one bold "Effective Date: September 5, 2026" line).
+FIDELITY VERIFIED IDENTICAL (normalized hero h1 + article == normalized md with the **
+markers stripped). Title and metas unchanged.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
