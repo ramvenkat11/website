@@ -267,6 +267,12 @@ run over terms.md (one h1, 29 h2, one bold "Effective Date: September 5, 2026" l
 FIDELITY VERIFIED IDENTICAL (normalized hero h1 + article == normalized md with the **
 markers stripped). Title and metas unchanged.
 
+## State on 2026-09-10 (legal/privacy.html regenerated from content/legal/privacy.md)
+Same converter, now with "* " bullet blocks -> <ul><li> and backticks -> <code>: privacy.md
+has one h1, 13 h2, 30 bullets, 9 bold pairs, 3 code spans. FIDELITY VERIFIED IDENTICAL
+(markers stripped on the md side). Title and metas unchanged. All three regenerated legal
+pages (license, terms, privacy) are uncommitted in html/legal for Ram's review.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
