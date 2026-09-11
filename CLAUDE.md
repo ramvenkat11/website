@@ -251,6 +251,16 @@ and the .note paragraph is REMOVED; the hero is kicker + h1 only, like pricing. 
 untouched (they describe the steps, still accurate). The .page-hero .note CSS is now unused
 on this page (styles.css) - reported, not removed.
 
+## State on 2026-09-10 (legal/license.html regenerated from content/legal/license.md)
+Ram rewrote content/legal/license.md (Version 1.0, effective September 10, 2026; 162 blocks,
+22 h2, plain paragraphs, no bullets/bold/code/fences) and asked for the html version placed
+in html/legal. Regenerated the article body of html/legal/license.html and its hero h1 with
+a rebuilt converter (blank-line blocks; "## " -> h2, "### " -> h3, else <p> with
+html.escape; the md h1 goes to the hero h1). FIDELITY VERIFIED: normalized text of hero h1
++ article == normalized md, IDENTICAL. <title>/meta untouched (title unchanged). The page's
+chrome (header, footer, Legal column) was left as is. The converter is NOT in gen/ - it
+was rebuilt inline again; worth adding as gen/legal.py if the legal md keeps changing.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
