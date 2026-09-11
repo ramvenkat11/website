@@ -311,6 +311,14 @@ already said pip install search2o. The legal pages (verbatim legal text) mention
 and PyPI and are untouched. Sweep for git+ / agent-server.git / ./agent-server / "from
 GitHub" is clean. 126 pages, 32 examples valid.
 
+## State on 2026-09-10 (source available, WITHOUT the GUI)
+Ram: the agent server source (without the UI) is at https://github.com/Search2o/agent-server -
+so the source-available story stays, with that precision. The three docs statements now say
+"the source, without the GUI, is at/public at github.com/Search2o/agent-server":
+registering-and-downloading Source section (link added), support.html source line, and
+license.html lead + Agent server paragraph. Home page "Source available" (steps + diagram
+subtitle) untouched - still true. Vocabulary: "the GUI", never "ui".
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
