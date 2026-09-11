@@ -421,7 +421,14 @@ RESULT: scrollWidth 375 on index/gettingstarted/docs pages, no overflowing eleme
 code pres and .tablewrap tables, which scroll on their own by design; hero, demo, how-it-works,
 diagram and reports checked in zoomed crops. gettingstarted shows one element at x=-21: the
 hCaptcha script's own hidden helper div, not ours. The other site pages and the docs already
-fit. TRAP: iframes take styles.css from cache - cache-bust the <link> before auditing.
+fit. TRAP: iframes take styles.css from cache - cache-bust the <link> before auditing. Ram then
+asked which sizes were tested (only 390) while seeing cut-off on a DevTools Pixel 7 - he was
+looking at the LIVE site, which still had the old CSS. WIDTH SWEEP with the fix (local):
+index.html at 360/375/390/412/430/768/820/1024 all ok; gettingstarted, pricing, about, docs
+index, docs allowlist, docs api, legal/terms at 360/412/768 all ok (no sideways scroll, no
+overflowing element outside pres and tablewraps); Pixel 7 (412x915) hero checked in a crop.
+A sweep of 56 iframe loads in one javascript_tool call times out (45s) - do 8-12 loads per call
+(window.__sweep helper pattern). Still awaiting Ram's deploy go for styles.css.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
