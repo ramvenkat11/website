@@ -452,6 +452,13 @@ move (invalidation IHBBZ4D89XHD0GLJS9P47A7L8); the stale docs/system-management/
 multiple-environments.html object was REMOVED on Ram's "Remove it" (aws s3 rm + a path
 invalidation, IE48EBKEB7EU4WVMI6BZGYRVBK); the old URL now answers 404, the new one 200.
 
+## State on 2026-09-11 (error-detail mock-up: no queries)
+Ram: "we do not store or show the queries" - the report-errors-detail figure in gen/figures.py
+still drew an "Example queries (a sample, most recent first)" strip under the table (a
+leftover from before the 2026-09-03 privacy correction; the page text next to it already said
+queries are not shown). The extra() strip is REMOVED and the figure's height is 260 like the
+other two detail figures (was 300, leaving an empty band). Rebuilt; not deployed.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
