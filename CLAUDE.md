@@ -405,6 +405,24 @@ deploy); verified docs.search2o.com/ and /docsweb/uitext_current.json 200 again,
 through; website_deploy.md corrected. The SEO pass is COMPLETE. Open: og:image is logo.png
 (560x102) until a 1200x630 card exists.
 
+## State on 2026-09-11 (home page fixed for phones; NOT YET DEPLOYED)
+Ram: the home page did not look right on his phone. Measured at 390px (a 390px-wide iframe -
+the window resize was ignored by a full-screen Chrome, and the live site is blocked by the
+browser extension's site permissions, so use the local server): the page scrolled sideways
+(scrollWidth 404), the hero column was 502px wide with the text cut off, the nav showed a
+scrollbar. CAUSE: the <=1000px rules collapse the grids to `1fr`, and a 1fr track cannot
+shrink below its content - the demo's one-line nowrap query and the diagram's side-by-side
+.arch-row forced the column wider than the phone. FIX in styles.css: <=1000px grids are
+`minmax(0, 1fr)` with `min-width: 0` on their children and .hero-grid .demo margin-top 0;
+<=640px: .site-nav wraps (no overflow-x scroll), .demo-search text wraps, .demo-row/.demo-form
+wrap, .arch-row becomes one column with the fan-out connector hidden and the four system
+chips as a wrapped row under the server box (no arrows at phone width - flagged to Ram).
+RESULT: scrollWidth 375 on index/gettingstarted/docs pages, no overflowing element except
+code pres and .tablewrap tables, which scroll on their own by design; hero, demo, how-it-works,
+diagram and reports checked in zoomed crops. gettingstarted shows one element at x=-21: the
+hCaptcha script's own hidden helper div, not ours. The other site pages and the docs already
+fit. TRAP: iframes take styles.css from cache - cache-bust the <link> before auditing.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
