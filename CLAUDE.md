@@ -492,8 +492,8 @@ non-str names, names starting with "_", and "format"/"format_map". safeoperators
 from the package (consistent with the operators redesign). Docs: compile-rules "What
 validation refuses" gained the .format/.format_map item with the f-string advice;
 allowlist.html gained an "Always present" section (getattr/setattr, public names only, take
-precedence over an entry); syntax.html "What an expression can use" gained a getattr/setattr
-bullet. The getattr examples on var.html and variables.html need no allowlist entry and stay.
+precedence over an entry); the syntax.html bullet I added was REMOVED on Ram's
+review ("Don't think that was necessary") - the allowlist page is the one home for it. The getattr examples on var.html and variables.html need no allowlist entry and stay.
 Rebuilt; not deployed.
 
 ## Standing instructions
