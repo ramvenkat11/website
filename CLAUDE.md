@@ -388,9 +388,17 @@ instead: scripts/cloudfront-canonical-host.js (viewer-request: www. -> apex 301,
 apex/docs 301, query string kept) and scripts/cloudfront-setup.sh (idempotent: create-or-
 update + test on DEVELOPMENT + publish the function; update-distribution with the
 viewer-request association and CustomErrorResponses 403/404 -> /404.html status 404;
-put-bucket-website ErrorDocument 404.html; --wait polls until Deployed and verifies). RAM RUNS
-IT: `! scripts/cloudfront-setup.sh --wait`. Until then: missing pages still 403, www/docs
-hosts still 200.
+put-bucket-website ErrorDocument 404.html; --wait polls until Deployed and verifies). RAM RAN
+IT (2026-09-11): first run failed at the function test - my script passed the test event as
+a base64 STRING and the CLI base64-encoded the blob again (TestFunctionFailed, "unexpected
+result"); fixed to write the event to a temp file and pass fileb://. Second run: function
+updated, tests passed, published, distribution updated (viewer-request association +
+CustomErrorResponses 403/404 -> /404.html as 404), bucket ErrorDocument 404.html, distribution
+Deployed. VERIFIED LIVE: www.search2o.com/ -> 301 https://search2o.com/;
+docs.search2o.com/ -> 301 https://search2o.com/docs/; docs.search2o.com/docs/index.html keeps
+its path; a missing URL (e.g. docs/runtime/guardrails.html) answers 404 with the "Page not
+found" page; / still 200. The SEO pass is COMPLETE. Open: og:image is logo.png (560x102) until a
+1200x630 card exists.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
