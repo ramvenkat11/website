@@ -449,8 +449,8 @@ major world languages and returns matches in less than 0.5 seconds &mdash; see s
 quality." with "search quality" linking docs/search/search-quality.html (index.html Search
 section). The 0.5-second figure stays. DEPLOYED 2026-09-11 together with the environments page
 move (invalidation IHBBZ4D89XHD0GLJS9P47A7L8); the stale docs/system-management/
-multiple-environments.html object still sits in the bucket (200 with the old sidebar) - Ram
-asked whether to rm it.
+multiple-environments.html object was REMOVED on Ram's "Remove it" (aws s3 rm + a path
+invalidation, IE48EBKEB7EU4WVMI6BZGYRVBK); the old URL now answers 404, the new one 200.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
