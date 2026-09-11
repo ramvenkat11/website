@@ -447,7 +447,10 @@ After a long DISCUSSION (Ram: not bombastic, not falsely modest either; "test re
 the timing figure would read as results about speed), the settled line is Ram's: "It supports
 major world languages and returns matches in less than 0.5 seconds &mdash; see search
 quality." with "search quality" linking docs/search/search-quality.html (index.html Search
-section). The 0.5-second figure stays. Not deployed.
+section). The 0.5-second figure stays. DEPLOYED 2026-09-11 together with the environments page
+move (invalidation IHBBZ4D89XHD0GLJS9P47A7L8); the stale docs/system-management/
+multiple-environments.html object still sits in the bucket (200 with the old sidebar) - Ram
+asked whether to rm it.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
