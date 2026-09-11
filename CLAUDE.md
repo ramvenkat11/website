@@ -470,6 +470,13 @@ points' 17px size). The braces-icon point and the bold lead-ins are gone (his li
 holds; the left column ends ~level with the demo. Meta descriptions untouched (they never
 quoted the hero). Screenshot checked at desktop width. Not deployed.
 
+## State on 2026-09-11 (Agent security card rewritten, Ram's text)
+The Platform "Agent security" card (index.html:337) is now Ram's three sentences verbatim
+(curly apostrophe): allowlist / "AST compiler prevents dangerous constructs in Python
+expressions." / encrypted with optional end-to-end encryption. The vault sentence is gone.
+NOTE: "AST compiler" is Ram's own wording and stays; the compile-word ban applies to my
+writing, not to lines he supplies. Not deployed.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
