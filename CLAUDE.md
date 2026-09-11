@@ -457,7 +457,7 @@ Ram: "we do not store or show the queries" - the report-errors-detail figure in 
 still drew an "Example queries (a sample, most recent first)" strip under the table (a
 leftover from before the 2026-09-03 privacy correction; the page text next to it already said
 queries are not shown). The extra() strip is REMOVED and the figure's height is 260 like the
-other two detail figures (was 300, leaving an empty band). Rebuilt; not deployed.
+other two detail figures (was 300, leaving an empty band). DEPLOYED 2026-09-11 (invalidation I9HYZPGI1XVBGSW6AI4UCBYHOS); live page verified free of the strip.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
