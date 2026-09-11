@@ -26,9 +26,12 @@ writes `html/sitemap.xml` from the four site pages and the toc (legal pages left
 carry their own. `html/404.html` is the page for a missing URL; every path in it is absolute
 because CloudFront serves it under whatever URL was asked for. `scripts/cloudfront-setup.sh`
 holds the one-time CloudFront and S3 part: it publishes `scripts/cloudfront-canonical-host.js`
-as a viewer-request function that 301-redirects `www.search2o.com` and `docs.search2o.com` to
-`search2o.com`, maps the origin's 403 and 404 to a real 404 with `/404.html`, and makes
-`404.html` the bucket's error document. Run it once after a deploy; `--wait` polls until the
+as a viewer-request function that 301-redirects `www.search2o.com` to `search2o.com`, maps the
+origin's 403 and 404 to a real 404 with `/404.html`, and makes `404.html` the bucket's error
+document. `docs.search2o.com` is never redirected: the GUI reads data under that host (the
+`docsweb/` prefix and other paths not linked from the site), so it keeps serving the bucket
+root exactly as `search2o.com` does; the canonical links on every page point search engines
+at `search2o.com`. Run it once after a deploy; `--wait` polls until the
 distribution is deployed and verifies the redirects.
 
 ## Before deploying
