@@ -243,6 +243,14 @@ The hero note (gettingstarted.html:43) now reads "Start with the free Individual
 you are ready, upgrade from the Account page in the GUI." (was "upgrade in place from the
 GUI"; Ram's wording).
 
+## State on 2026-09-10 (gettingstarted h1: "From your laptop to your team"; note gone)
+Ram: "Up and running on your laptop" was misleading because the last two steps are about
+upgrading, and the note beneath was not needed. h1 is now "From your laptop to your team"
+(his pick of my four; "see whether you can make it better" - variants offered, none applied)
+and the .note paragraph is REMOVED; the hero is kicker + h1 only, like pricing. Metas
+untouched (they describe the steps, still accurate). The .page-hero .note CSS is now unused
+on this page (styles.css) - reported, not removed.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
