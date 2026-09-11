@@ -15,6 +15,7 @@ Depending on how the Service is used, we may collect or process:
 * **Account information**, including name, email address, account name, role, permissions, authentication information, and account settings.
 * **Usage and technical information**, including IP addresses, requested URLs, timestamps, login and access activity, agents executed, execution results, errors, performance information, resource usage, other operational information, and, for website interactions, browser or device information.
 * **Customer Content**, meaning queries, conversations, conversation state, long-term memories, agent definitions and descriptions, drafts, configurations, profiles, and other information submitted to or generated through the Service.
+* **License and authorization information**, including license keys, an instance identifier derived from the host name, and software version, transmitted by the agent server to Search2o to verify authorization.
 * **Communications**, including information provided when contacting Search2o for support or otherwise communicating with us.
 
 Except for website browsing and registration, ordinary use of the Service occurs through an agent server operated by the customer.
@@ -99,6 +100,8 @@ We use hCaptcha for security and abuse prevention in connection with registratio
 
 Other third-party providers used for hosting, security, registration, and related functions may collect or process technical information through their services.
 
+We do not track users across third-party websites or services, so no response to browser "Do Not Track" signals is needed.
+
 ## 7. Data Retention
 
 We retain information for as long as reasonably necessary for the purposes described in this Privacy Policy, including to provide and secure the Service, maintain business records, comply with legal obligations, resolve disputes, prevent fraud and abuse, and enforce our agreements.
@@ -125,11 +128,11 @@ Depending on applicable law, individuals may have rights concerning their person
 
 To submit a privacy request concerning information controlled by Search2o, contact:
 
-`support@search2o.com`
+`info@search2o.com`
 
 We may take reasonable steps to verify your identity or authority before acting on a request. Requests are subject to applicable legal exceptions, limitations, and retention requirements.
 
-If we deny a request and applicable law provides a right to appeal, you may appeal by contacting `support@search2o.com` and identifying the request as a **Privacy Appeal**.
+If we deny a request and applicable law provides a right to appeal, you may appeal by contacting `info@search2o.com` and identifying the request as a **Privacy Appeal**.
 
 Where Search2o processes information on behalf of a customer, we may direct the request to the customer that controls the applicable account.
 
@@ -157,4 +160,4 @@ If we make material changes, we will send notice to the account contact email ad
 
 **Search2o, Inc.**
 Virginia, United States
-`support@search2o.com`
+`info@search2o.com`
