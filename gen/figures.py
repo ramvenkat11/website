@@ -618,16 +618,13 @@ def _report_performance_detail():
 
 @figure("report-errors-detail")
 def _report_errors_detail():
-    def extra(f, x, y, w):
-        f.text(x, y + 6, "Example queries (a sample, most recent first)", size=9, weight=700)
-        f.text(x, y + 22, "“where is order 48812” · “status of my order from last week” · “track 48719”", size=9.5, fill="ink")
     return _detail("report-errors-detail", "Error detail: failures by version, then result code, then message and path",
                    "Acme Corp / Reports / Errors / order_lookup",
                    [("3", "errors"), ("53", "executions"), ("5.7%", "error rate"), ("2", "users affected"), ("2", "messages")],
                    ["Version · code", "Message", "Path", "Count", "Users", "Last"],
                    [["Aug 24 · callFailed", "HTTP 503 from orders API", "main.api.orders", "2", "2", "Aug 26"],
                     ["Aug 24 · callFailed", "timeout after 8 s", "main.api.orders", "1", "1", "Aug 25"]],
-                   [108, 172, 102, 46, 46, 50], ["Errors", "Executions", "Users affected"], extra)
+                   [108, 172, 102, 46, 46, 50], ["Errors", "Executions", "Users affected"], height=260)
 
 
 @figure("report-cost-detail")

@@ -7,7 +7,7 @@
 
 <h2>How a pause works</h2>
 <!--figure:ask-pause-->
-<p>The agent's position — every function, loop and tool call in progress — is saved with the conversation. The run then ends with a result that tells the UI what to ask. The user's next message on the conversation carries the answers. The agent is replayed to the same command, which returns a dict of the answers keyed by input name. Execution then continues. Inputs the user did not answer are asked for again. Hidden inputs come back with their default. Variables set before the pause keep their values.</p>
+<p>The agent's position — every function, loop and tool call in progress — is saved with the conversation. The run then ends with a result that tells the UI what to ask. The user's next message on the conversation carries the answers. The agent resumes at the same position, which returns a dict of the answers keyed by input name. Execution then continues. Inputs the user did not answer are asked for again. Hidden inputs come back with their default. Variables set before the pause keep their values.</p>
 
 <h2>Example</h2>
 <x-code lang="jsonc">
