@@ -347,7 +347,7 @@ p { margin: 0; }
 /* one trunk, one branch into each system the framework calls */
 .arch-sys { position: relative; display: grid; gap: 10px; justify-items: start; padding-left: 30px; }
 .arch-sys::before {
-  content: ""; position: absolute; left: 0; top: 11px; bottom: 11px;
+  content: ""; position: absolute; left: 0; top: 12px; bottom: 12px;   /* the chips are 26.4px tall: 12px lands on the outer edge of the first and last arrow */
   width: 2px; background: var(--slate); opacity: .55;
 }
 .arch-branch { position: relative; }

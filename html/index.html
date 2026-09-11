@@ -261,19 +261,22 @@
             .cg-l { font-size: 12.5px; font-weight: 600; color: var(--muted); white-space: nowrap; }
             .cg-c { display: flex; flex-wrap: wrap; gap: 6px; }
             .cg-c code { font-family: var(--mono); font-size: 12.5px; padding: 3px 8px; border-radius: 7px; background: var(--bg-soft); border: 1px solid var(--line); color: var(--ink); }
+            .cg-c a { display: flex; text-decoration: none; }   /* flex: the chip stays the flex item it was, so the rows keep their height */
+            .cg-c a:hover { text-decoration: none; }
+            .cg-c a:hover code { border-color: var(--blue-ink); color: var(--blue-ink); }
             @media (max-width: 640px) { .cg { grid-template-columns: 1fr; gap: 4px; } }
           </style>
           <h3 style="margin-top: 26px; font-size: 14px; font-weight: 700; color: var(--ink);">The 23 commands</h3>
           <div class="cmdgroups" aria-label="The 23 commands, by group">
-            <div class="cg"><span class="cg-l">Variables</span><span class="cg-c"><code>var</code></span></div>
-            <div class="cg"><span class="cg-l">Flow control</span><span class="cg-c"><code>if</code><code>while</code><code>for</code><code>break</code><code>continue</code><code>func</code><code>return</code><code>parallel</code></span></div>
-            <div class="cg"><span class="cg-l">LLM interaction</span><span class="cg-c"><code>prompt</code><code>llm</code><code>memory</code></span></div>
-            <div class="cg"><span class="cg-l">External systems</span><span class="cg-c"><code>api</code><code>db</code></span></div>
-            <div class="cg"><span class="cg-l">Deep agents</span><span class="cg-c"><code>search</code><code>invoke</code></span></div>
-            <div class="cg"><span class="cg-l">Human-in-the-loop</span><span class="cg-c"><code>ask</code></span></div>
-            <div class="cg"><span class="cg-l">Agent output</span><span class="cg-c"><code>output</code></span></div>
-            <div class="cg"><span class="cg-l">Agent termination</span><span class="cg-c"><code>end</code><code>fail</code></span></div>
-            <div class="cg"><span class="cg-l">Observability</span><span class="cg-c"><code>progress</code><code>trace</code><code>log</code></span></div>
+            <div class="cg"><span class="cg-l">Variables</span><span class="cg-c"><a href="docs/commands/var.html"><code>var</code></a></span></div>
+            <div class="cg"><span class="cg-l">Flow control</span><span class="cg-c"><a href="docs/commands/if.html"><code>if</code></a><a href="docs/commands/while.html"><code>while</code></a><a href="docs/commands/for.html"><code>for</code></a><a href="docs/commands/break.html"><code>break</code></a><a href="docs/commands/continue.html"><code>continue</code></a><a href="docs/commands/func.html"><code>func</code></a><a href="docs/commands/return.html"><code>return</code></a><a href="docs/commands/parallel.html"><code>parallel</code></a></span></div>
+            <div class="cg"><span class="cg-l">LLM interaction</span><span class="cg-c"><a href="docs/commands/prompt.html"><code>prompt</code></a><a href="docs/commands/llm.html"><code>llm</code></a><a href="docs/commands/memory.html"><code>memory</code></a></span></div>
+            <div class="cg"><span class="cg-l">External systems</span><span class="cg-c"><a href="docs/commands/api.html"><code>api</code></a><a href="docs/commands/db.html"><code>db</code></a></span></div>
+            <div class="cg"><span class="cg-l">Deep agents</span><span class="cg-c"><a href="docs/commands/search.html"><code>search</code></a><a href="docs/commands/invoke.html"><code>invoke</code></a></span></div>
+            <div class="cg"><span class="cg-l">Human-in-the-loop</span><span class="cg-c"><a href="docs/commands/ask.html"><code>ask</code></a></span></div>
+            <div class="cg"><span class="cg-l">Agent output</span><span class="cg-c"><a href="docs/commands/output.html"><code>output</code></a></span></div>
+            <div class="cg"><span class="cg-l">Agent termination</span><span class="cg-c"><a href="docs/commands/end.html"><code>end</code></a><a href="docs/commands/fail.html"><code>fail</code></a></span></div>
+            <div class="cg"><span class="cg-l">Observability</span><span class="cg-c"><a href="docs/commands/progress.html"><code>progress</code></a><a href="docs/commands/trace.html"><code>trace</code></a><a href="docs/commands/log.html"><code>log</code></a></span></div>
           </div>
           <p style="margin-top: 17px; color: var(--muted); font-size: 14.5px; line-height: 1.6;">Describe the workflow &mdash; <span style="white-space: nowrap;">AI assist will write the first draft.</span></p>
         </div>
@@ -288,9 +291,7 @@
         <span class="tk-key">"func"</span><span class="tk-pun">: { </span><span class="tk-key">"name"</span><span class="tk-pun">:</span> <span class="tk-str">"forecast"</span><span class="tk-pun"> },</span>
         <span class="tk-key">"prompt"</span><span class="tk-pun">: {</span>
           <span class="tk-key">"user"</span><span class="tk-pun">:</span> <span class="tk-expr">"{ f'Forecast: {result}. {sys.query}' }"</span>
-          <span class="tk-com">// After the above line, variable 'user' will have</span>
-          <span class="tk-com">// the value of the f-string. 'user' can be used in</span>
-          <span class="tk-com">// any subsequent expression.</span>
+          <span class="tk-com">// user prompt it set to the value of the f-string.</span>
         <span class="tk-pun">},</span>
         <span class="tk-key">"llm"</span><span class="tk-pun">: { </span><span class="tk-key">"profile"</span><span class="tk-pun">:</span> <span class="tk-str">"anthropic"</span><span class="tk-pun">, </span><span class="tk-key">"streamOutput"</span><span class="tk-pun">:</span> <span class="tk-bool">true</span><span class="tk-pun"> }</span>
       <span class="tk-pun">}</span>
