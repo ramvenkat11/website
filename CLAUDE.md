@@ -428,7 +428,7 @@ index.html at 360/375/390/412/430/768/820/1024 all ok; gettingstarted, pricing, 
 index, docs allowlist, docs api, legal/terms at 360/412/768 all ok (no sideways scroll, no
 overflowing element outside pres and tablewraps); Pixel 7 (412x915) hero checked in a crop.
 A sweep of 56 iframe loads in one javascript_tool call times out (45s) - do 8-12 loads per call
-(window.__sweep helper pattern). Still awaiting Ram's deploy go for styles.css.
+(window.__sweep helper pattern). DEPLOYED on Ram's "Deploy it" (2026-09-11, --skip-build, only styles.css differed, invalidation Completed, live md5 == local).
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
