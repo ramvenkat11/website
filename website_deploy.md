@@ -18,6 +18,19 @@ with credentials for another AWS account, or while `html/config.js` points at a 
 The `docsweb/` prefix is protected: it is the in-app docs data that s2oserver's uploader
 maintains, not website content, and the script never lists or deletes it.
 
+## Search engines
+
+`html/robots.txt` allows everything except `/legal/` and names the sitemap. `gen/build.py`
+writes `html/sitemap.xml` from the four site pages and the toc (legal pages left out, they are
+`noindex`), and puts a canonical link and Open Graph tags on every docs page; the site pages
+carry their own. `html/404.html` is the page for a missing URL; every path in it is absolute
+because CloudFront serves it under whatever URL was asked for. `scripts/cloudfront-setup.sh`
+holds the one-time CloudFront and S3 part: it publishes `scripts/cloudfront-canonical-host.js`
+as a viewer-request function that 301-redirects `www.search2o.com` and `docs.search2o.com` to
+`search2o.com`, maps the origin's 403 and 404 to a real 404 with `/404.html`, and makes
+`404.html` the bucket's error document. Run it once after a deploy; `--wait` polls until the
+distribution is deployed and verifies the redirects.
+
 ## Before deploying
 
 1. Rebuild the docs if anything under `docs/website/docsrc/` or `docs/website/gen/` changed:

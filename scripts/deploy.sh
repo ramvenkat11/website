@@ -15,6 +15,7 @@ DISTRIBUTION="E330RKTBY31L8X"
 AWS_ACCOUNT="406848153313"
 SITE_URL="https://search2o.com"
 SYNC_EXCLUDES=(--exclude "logo.svg" --exclude ".DS_Store" --exclude "*/.DS_Store")
+CACHE_CONTROL="public, max-age=600"   # CloudFront honours this as its TTL; deploys invalidate anyway
 # Bucket prefixes that are not website files and must never be reported or deleted as stale:
 # docsweb/ holds the in-app docs data that s2oserver's maintenance/docswebuploader.py maintains.
 PROTECTED_PREFIXES=("docsweb/")
@@ -70,7 +71,7 @@ fi
 
 # ---- what would change ---------------------------------------------------------------------------
 step "Files that differ from the bucket"
-(cd "$HTML" && aws s3 sync . "s3://$BUCKET/" "${SYNC_EXCLUDES[@]}" --acl public-read --dryrun) \
+(cd "$HTML" && aws s3 sync . "s3://$BUCKET/" "${SYNC_EXCLUDES[@]}" --acl public-read --cache-control "$CACHE_CONTROL" --dryrun) \
     | sed 's/^(dryrun) //' || fail "s3 sync dry run failed"
 
 step "Bucket objects with no local file (sync never deletes these)"
@@ -98,7 +99,7 @@ fi
 
 # ---- deploy ----------------------------------------------------------------------------------------
 step "Uploading to s3://$BUCKET/"
-(cd "$HTML" && aws s3 sync . "s3://$BUCKET/" "${SYNC_EXCLUDES[@]}" --acl public-read) || fail "s3 sync failed"
+(cd "$HTML" && aws s3 sync . "s3://$BUCKET/" "${SYNC_EXCLUDES[@]}" --acl public-read --cache-control "$CACHE_CONTROL") || fail "s3 sync failed"
 
 if $delete_stale && [[ -s "$stale_file" ]]; then
     step "Deleting stale objects"

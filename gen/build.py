@@ -469,6 +469,7 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
     nav += (f"<a class=next href='{href(nxt[0], nxt[1], depth)}'><small>Next</small>{html.escape(nxt[3])}</a>" if nxt else "<span></span>")
     nav += "</nav>"
     title = f"{ptitle} — Search2o docs" if pslug or sslug else "Search2o documentation"
+    path = docs_path(sslug, pslug)
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -477,6 +478,12 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
 <script>try{{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}}catch(e){{}}</script>
 <title>{html.escape(title)}</title>
 <meta name="description" content="{html.escape(description)}">
+<link rel="canonical" href="{SITE}/{path}">
+<meta property="og:title" content="{html.escape(title)}">
+<meta property="og:description" content="{html.escape(description)}">
+<meta property="og:type" content="article">
+<meta property="og:url" content="{SITE}/{path}">
+<meta property="og:image" content="{SITE}/logo.png">
 <link rel="icon" type="image/svg+xml" href="{r}favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -505,6 +512,24 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
 </body>
 </html>
 """
+
+
+SITE = "https://search2o.com"
+SITE_PAGES = ("", "gettingstarted.html", "pricing.html", "about.html")   # the sitemap; legal pages are noindex
+
+
+def docs_path(sslug, pslug) -> str:
+    if sslug is None:
+        return "docs/index.html"
+    return f"docs/{sslug}/" + ("index.html" if pslug is None else f"{pslug}.html")
+
+
+def write_sitemap(pages) -> None:
+    urls = [f"{SITE}/{p}" for p in SITE_PAGES] + [f"{SITE}/{docs_path(None, None)}"] \
+        + [f"{SITE}/{docs_path(s, p)}" for s, p, _, _ in pages]
+    body = "".join(f"  <url><loc>{html.escape(u)}</loc></url>\n" for u in urls)
+    (ROOT / "html" / "sitemap.xml").write_text(
+        '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + body + "</urlset>\n")
 
 
 def first_paragraph(body: str) -> str:
@@ -537,6 +562,7 @@ def build() -> int:
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, 1, first_paragraph(body)))
         written += 1
+    write_sitemap(pages)
     print(f"wrote {written} pages to {OUT.relative_to(ROOT)}; {missing} missing sources")
     return missing
 
