@@ -682,7 +682,11 @@ p { margin: 0; }
 
 /* ---------- responsive ---------- */
 @media (max-width: 1000px) {
-  .hero-grid, .howgrid, .convo-wrap, .split { grid-template-columns: 1fr; gap: 44px; }
+  /* minmax(0, 1fr), not 1fr: a 1fr track cannot shrink below its content, and the demo's one-line
+     query and the diagram's side-by-side row pushed the column past a phone's width */
+  .hero-grid, .howgrid, .convo-wrap, .split { grid-template-columns: minmax(0, 1fr); gap: 44px; }
+  .hero-grid > *, .howgrid > *, .convo-wrap > *, .split > * { min-width: 0; }
+  .hero-grid .demo { margin-top: 0; }
   .cardgrid { grid-template-columns: repeat(2, 1fr); }
   .factrow { grid-template-columns: 1fr; }
   .pricing-grid, .tworow { grid-template-columns: 1fr; }
@@ -691,7 +695,15 @@ p { margin: 0; }
 }
 @media (max-width: 640px) {
   .header-row { flex-wrap: wrap; gap: 6px 14px; padding: 10px 0; }
-  .site-nav { order: 3; width: 100%; margin-left: 0; overflow-x: auto; }
+  .site-nav { order: 3; width: 100%; margin-left: 0; flex-wrap: wrap; }   /* wraps instead of scrolling sideways */
+  /* the hero demo: the query wraps, the ask form's options and button wrap */
+  .demo-search, .demo-search span { white-space: normal; overflow-wrap: anywhere; }
+  .demo-row, .demo-form { flex-wrap: wrap; }
+  /* the architecture diagram: the four systems become a wrapped row of chips under the server;
+     the fan-out connector needs a second column and is hidden */
+  .arch-row { grid-template-columns: minmax(0, 1fr); }
+  .arch-hlink, .arch-sys::before, .arch-branch::before, .arch-branch::after { display: none; }
+  .arch-sys { display: flex; flex-wrap: wrap; gap: 6px; padding-left: 0; margin-top: 10px; }
   .theme-toggle { margin-left: auto; }
   .header-cta { display: none; }
   .cardgrid, .form-grid { grid-template-columns: 1fr; }
