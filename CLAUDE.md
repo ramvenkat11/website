@@ -273,6 +273,25 @@ has one h1, 13 h2, 30 bullets, 9 bold pairs, 3 code spans. FIDELITY VERIFIED IDE
 (markers stripped on the md side). Title and metas unchanged. All three regenerated legal
 pages (license, terms, privacy) are uncommitted in html/legal for Ram's review.
 
+## State on 2026-09-10 (scripts/deploy.sh created - NOT RUN with --go)
+NEW scripts/deploy.sh (executable, bash -n clean; shellcheck not installed). No arguments =
+DRY RUN: preflight (aws identity must be 406848153313; html/config.js apiUrl line must not be
+localhost/127.0.0.1 - the check reads ONLY the apiUrl line because the file's comment cites
+http://localhost:8080 as an example and tripped the first version; notes uncommitted changes
+under html/docsrc/gen), rebuilds docs + check_examples (S2O_PYTHON overrides
+../s2oserver/.venv/bin/python; --skip-build skips), `aws s3 sync --dryrun` listing, then a
+list of bucket objects with no local file. `--go`: sync (same excludes as website_deploy.md:
+logo.svg, .DS_Store), optional `--delete-stale` (asks to TYPE THE BUCKET NAME, then
+`aws s3 rm` each listed key), create-invalidation "/*", POLL every 10s up to 600s until
+Completed, curl-verify / and /docs/index.html title. PROTECTED_PREFIXES=("docsweb/"): the
+dry run revealed the bucket holds docsweb/ (agentschema.json, uitext.json,
+evaluationform.json - the in-app docs data s2oserver's docswebuploader.py maintains and the
+PRODUCT READS); the stale list skips it so --delete-stale can never remove it. Read-only dry
+runs were executed twice (sts, sync --dryrun, s3 ls - nothing uploaded, nothing invalidated):
+175 files would upload (the bucket still holds only the 2026-09-03 placeholder) and the stale
+list is "none" once docsweb/ is protected. website_deploy.md gained a "The script" section.
+STANDING RULE UNCHANGED: --go only when Ram says deploy.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
