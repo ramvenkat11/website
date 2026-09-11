@@ -341,6 +341,22 @@ for "without the GUI" is clean.
 Ram wanted something other than "to your team"; picked option 2 of four, "From your laptop to
 production" (gettingstarted.html:42) - the same title he used on 2026-09-07.
 
+## State on 2026-09-10 (DEPLOYED - the live site is no longer the placeholder)
+Ram said "Deploy it"; ran `scripts/deploy.sh --go` (backgrounded, log in the session
+scratchpad): docs rebuilt (126 pages, 32 examples valid), 175 files / 5.2 MiB uploaded to
+s3://search2o.com/ (the bucket had held only the 2026-09-03 placeholder; nothing stale,
+docsweb/ untouched), CloudFront invalidation IA1H0UOJID9J5C9GQ3XHJEKGEW Completed after
+~30s, verification 200 on / and the docs title. Spot checks live: /, gettingstarted (h1 "From
+your laptop to production"), pricing, about, legal/license, docs runtime allowlist +
+compile-rules, what-is-search2o (Why not Python present), docs.css carries the
+fields.compare rule, config.js served. A retired URL such as docs/runtime/guardrails.html
+serves the home page (the bucket's error document is index.html - by design, no 404 page).
+STANDING RULE UNCHANGED: every future deploy needs Ram's explicit go. NOT DONE (s2oserver
+side, Ram's): regenerate the in-app docs summaries with maintenance/docs_create.py and hand-
+delete the stale JSON for the retired pages (security__controlled-runtime,
+runtime__guardrails, runtime__pools-and-profiles, misc__*). config.js apiUrl deployed as
+checked in (the Cloud Run URL Ram set on 2026-09-08).
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
