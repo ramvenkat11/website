@@ -357,6 +357,14 @@ delete the stale JSON for the retired pages (security__controlled-runtime,
 runtime__guardrails, runtime__pools-and-profiles, misc__*). config.js apiUrl deployed as
 checked in (the Cloud Run URL Ram set on 2026-09-08).
 
+## State on 2026-09-10 (second deploy: Ram's index.html edit)
+Ram edited html/index.html himself and said "Deploy whatever is needed"; ran
+`scripts/deploy.sh --go` again: index.html uploaded, invalidation I90V2OYHH64OQKPJRUHNJX5N8K
+Completed, live index.html md5 == local. FINDING: because build.py rewrites every docs page
+(new mtime) and `aws s3 sync` compares size+mtime, a deploy after any rebuild re-uploads all
+126 docs pages even when their content is unchanged. Harmless (5 MiB) but noisy; the fix
+would be build.py writing a page only when its content changed - not done, Ram's call.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
