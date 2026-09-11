@@ -292,6 +292,25 @@ runs were executed twice (sts, sync --dryrun, s3 ls - nothing uploaded, nothing 
 list is "none" once docsweb/ is protected. website_deploy.md gained a "The script" section.
 STANDING RULE UNCHANGED: --go only when Ram says deploy.
 
+## State on 2026-09-10 (INSTALL IS `pip install search2o` FROM PyPI AGAIN)
+Ram: "The way to deploy search2o now is: pip install search2o (not from github). Change it
+everywhere." This REVERSES the 2026-09-05 "PyPI is gone, no page may say PyPI" rule: the
+package is on PyPI as search2o (pyproject name search2o, version 0.2.0; extras postgres/
+mysql/oracle/mssql/db unchanged). Changed: html/gettingstarted.html Download step ("Install
+it with pip:" + `pip install search2o`, codecard aria-label "Install with pip") and both
+metas ("install the agent server with pip"); docs home Getting started card; registering-and-
+downloading (lead; Install section is one `pip install search2o` block, the clone block and
+the "@ git+" extras form are GONE, extras are `pip install "search2o[postgres]"` etc.);
+support-licensing/license.html ("installed with pip install search2o from PyPI" first, the
+repo link second); parts-of-the-system ("installed with pip install search2o" - the odd
+leading-space GitHub href is gone with it, which also clears the last pre-existing link-check
+oddity). KEPT, flagged to Ram: the SOURCE-AVAILABLE story and the repo links (registering
+Source section, license lead + repo/CONTRIBUTING links, support.html source line) - he ruled
+on the install path, not on the source. ../search2o/README.md and content/gettingstarted.md
+already said pip install search2o. The legal pages (verbatim legal text) mention both GitHub
+and PyPI and are untouched. Sweep for git+ / agent-server.git / ./agent-server / "from
+GitHub" is clean. 126 pages, 32 examples valid.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
