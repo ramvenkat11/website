@@ -1,6 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="14" fill="#1d2b4a"/>
-  <text x="31" y="46" text-anchor="middle" font-family="Avenir Next, Futura, Century Gothic, -apple-system, Arial, sans-serif" font-size="38" font-weight="600">
-    <tspan fill="#ffffff">2</tspan><tspan fill="#8fa1bd" font-size="26">o</tspan>
-  </text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Search2o">
+  <!--
+    The "2o" from the Search2o wordmark, redrawn as paths so it stays crisp at
+    every size, on the wordmark's own navy (#082040).
+
+    The "o" is nested into the 2's lower-right corner and sits on its foot, the
+    way a subscript would, rather than beside it: that gives the "2" the width
+    it needs at 16px, where width is everything. The wider navy circle under it
+    is a knockout, so the two shapes stay separate instead of fusing at tab size.
+
+    Colours: the "2" is white, the most legible ink there is at 16px. The "o" is
+    the app's DARK-theme primary teal (#62C0B4, hsl 172 43% 57%), not the light
+    one: this box is a dark surface, and the light primary (#0D7D71) reaches
+    only about 3:1 against it. Teal on the "o" is where the eye lands last, and
+    it is what ties the tab to the teal app beneath it. Nothing here is the
+    wordmark's slate; slate on navy was the one pairing that smeared.
+
+    NOTE: no double hyphen may appear anywhere in this comment. It is illegal in
+    XML, and an SVG that fails to parse renders as a broken image with no error
+    anywhere. The first version of this file shipped exactly that way.
+  -->
+  <rect width="64" height="64" rx="14" fill="#082040"/>
+  <path d="M 10 22 A 14 14 0 1 1 37 30 L 10 54 L 44 54" fill="none" stroke="#FFFFFF" stroke-width="7.5"/>
+  <circle cx="48" cy="47" r="8.5" fill="none" stroke="#082040" stroke-width="11.5"/>
+  <circle cx="48" cy="47" r="8.5" fill="none" stroke="#62C0B4" stroke-width="6.5"/>
 </svg>

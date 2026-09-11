@@ -7,6 +7,17 @@ bucket `search2o.com` (static-website hosting) behind the CloudFront distributio
 (`search2o.com.s3-website-us-east-1.amazonaws.com`), so the bucket's index-document rule applies:
 `/` serves `index.html`, and any missing key also serves `index.html` (there is no 404 page).
 
+## The script
+
+`scripts/deploy.sh` runs the whole procedure below. With no arguments it is a dry run: it
+rebuilds the docs, shows which files differ from the bucket, and lists bucket objects that no
+longer exist locally. `--go` uploads, invalidates, waits for the invalidation to complete and
+verifies with curl; `--go --delete-stale` also removes the listed stale objects after asking
+for the bucket name; `--skip-build` leaves the docs as they are. The script refuses to run
+with credentials for another AWS account, or while `html/config.js` points at a local server.
+The `docsweb/` prefix is protected: it is the in-app docs data that s2oserver's uploader
+maintains, not website content, and the script never lists or deletes it.
+
 ## Before deploying
 
 1. Rebuild the docs if anything under `docs/website/docsrc/` or `docs/website/gen/` changed:
