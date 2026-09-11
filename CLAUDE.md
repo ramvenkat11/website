@@ -337,6 +337,10 @@ Install intro, license.html Agent server paragraph (both halves), support.html:1
 gettingstarted.html:83 already said "Install the agent server with the bundled GUI:". Sweep
 for "without the GUI" is clean.
 
+## State on 2026-09-10 (gettingstarted h1: "From your laptop to production")
+Ram wanted something other than "to your team"; picked option 2 of four, "From your laptop to
+production" (gettingstarted.html:42) - the same title he used on 2026-09-07.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
