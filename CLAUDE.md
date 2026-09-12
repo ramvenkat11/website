@@ -496,6 +496,18 @@ precedence over an entry); the syntax.html bullet I added was REMOVED on Ram's
 review ("Don't think that was necessary") - the allowlist page is the one home for it. The getattr examples on var.html and variables.html need no allowlist entry and stay.
 Rebuilt; not deployed.
 
+## State on 2026-09-12 (framework code card matches the left column's height)
+Ram: match the right-side block to the left in the Agent framework section. styles.css (next
+to the #reports rule): `#framework .split { align-items: stretch }`, `#framework .codecard {
+display: flex; flex-direction: column }`, `#framework .codecard pre { flex: 1 0 auto }` - the
+grid stretches the card to the row height and the pre grows to fill the card, so the code
+area's background reaches the bottom. Measured with cache-busted CSS at 1920/1440/1280/1100:
+bottom delta 0 at every width; card top stays 2px under the h2 glyph top (the existing 36px
+rule, untouched). Screenshot checked at 1920. NOTE: Ram has been editing index.html himself
+(hero "Search2o turns your 100 agents into one system.", new point wording, framework h2
+"Designed for AI-assisted development", a "Commands" heading, the AI-assist line gone) -
+always re-read the file before editing it. Not deployed.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
