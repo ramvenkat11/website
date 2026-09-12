@@ -531,7 +531,7 @@ changes" - the six trims applied (line 5 "from the 23."; 7 "auth, pool. Secrets 
 16 "previous command's parsed response."; 17 system prompt "Use only these sections:
 {result}"). Longest line 66 chars; measured: widest line 495px in 507px, overflow 0, section
 847px (identical to the weather card), columns level. Still valid. The card label is "hr_policy · agent
-definition" (Ram: the same agent as the "hr_policy · description" card in How search works). Previous cards saved in the scratchpad. Not deployed.
+definition" (Ram: the same agent as the "hr_policy · description" card in How search works). DEPLOYED 2026-09-12 with the framework stretch CSS (index.html + styles.css, invalidation I9A66I77JHM16BCZW1ONRUCHYA, live md5s == local). Previous cards saved in the scratchpad. Not deployed.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
