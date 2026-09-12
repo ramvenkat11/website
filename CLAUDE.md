@@ -490,7 +490,7 @@ allowlist.py sets mutable["getattr"]/["setattr"] = safe_getattr/safe_setattr AFT
 allowlist is built (so they override an entry of the same name); _check_attr_name refuses
 non-str names, names starting with "_", and "format"/"format_map". safeoperators.py is GONE
 from the package (consistent with the operators redesign). Docs: compile-rules "What
-validation refuses" gained the .format/.format_map item with the f-string advice, plus (Ram, second pass) that the check is on the attribute NAME, statically, on any value - a class's own legitimate format method is refused too - and the workaround: bind the method to a module-level name in your package (render_report = Report.format), allowlist that name, call it as a function;
+validation refuses" gained the .format/.format_map item with the f-string advice, plus (Ram, second pass) that the check is on the attribute NAME, statically, on any value - a class's own legitimate format method is refused too - and the workaround: bind the method to a module-level name in your package (render_report = Report.format), allowlist that name, call it as a function; DEPLOYED 2026-09-11 (invalidation I83XLTEVV5BD88D19V9JQCAGJ9, both pages verified live);
 allowlist.html gained an "Always present" section (getattr/setattr, public names only, take
 precedence over an entry); the syntax.html bullet I added was REMOVED on Ram's
 review ("Don't think that was necessary") - the allowlist page is the one home for it. The getattr examples on var.html and variables.html need no allowlist entry and stay.
