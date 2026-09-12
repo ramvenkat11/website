@@ -508,6 +508,20 @@ rule, untouched). Screenshot checked at 1920. NOTE: Ram has been editing index.h
 "Designed for AI-assisted development", a "Commands" heading, the AI-assist line gone) -
 always re-read the file before editing it. Not deployed.
 
+## State on 2026-09-12 (framework card: Ram's renewal example TRIED, in the file, not deployed)
+Ram: "Try this example in agent framework section. Let's see how big the section gets" - a
+62-line contract-renewal agent (prompt/llm with a tool function/var/ask/if/api/output +
+getContract tool). VALIDATED against AgentModel (same check as check_examples.py): valid.
+Tokenized with a small JSONC tokenizer into the existing tk-key/tk-str/tk-expr/tk-pun/
+tk-bool/tk-com spans; card label "renewal.json · agent definition". ONE WORD CHANGED in his
+comment: "run in a sandbox" -> "run in a controlled runtime" (the standing vocabulary ban;
+flagged to him). MEASURED (cache-busted, 1920 and 1280 identical): section 847px -> 1665px
+(x2), card 635 -> 1453px, and the pre OVERFLOWS by 131px (longest line 85 chars vs ~66 that
+fit at 12.5px mono in the 507px content width) - the comments are the long lines, so the card
+scrolls sideways and hides text. The PREVIOUS card (weather.json, 24 lines) is saved at
+<scratchpad>/index_before_example.html for a revert. Screenshot sent. Ram's call: keep and
+shorten lines (comments <= ~66 chars, drop blank lines), or revert.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
