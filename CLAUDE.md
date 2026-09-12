@@ -530,8 +530,8 @@ changes" - the six trims applied (line 5 "from the 23."; 7 "auth, pool. Secrets 
 8 "the request search routed"; 15 "// Inside { } is Python, run in a controlled runtime.";
 16 "previous command's parsed response."; 17 system prompt "Use only these sections:
 {result}"). Longest line 66 chars; measured: widest line 495px in 507px, overflow 0, section
-847px (identical to the weather card), columns level. Still valid. The policy.json card is
-the home page example now. Previous cards saved in the scratchpad. Not deployed.
+847px (identical to the weather card), columns level. Still valid. The card label is "hr_policy · agent
+definition" (Ram: the same agent as the "hr_policy · description" card in How search works). Previous cards saved in the scratchpad. Not deployed.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
