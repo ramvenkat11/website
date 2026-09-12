@@ -60,7 +60,7 @@
           </li>
           <li>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-3.5 8-10V5l-8-3-8 3v7c0 6.5 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-            <span>The agent runs in a controlled runtime, connects to your enterprise systems, and reports what it cost.</span>
+            <span>The agent runs in a controlled runtime, connects to your enterprise systems, and interacts with the user.</span>
           </li>
           <li>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
@@ -262,8 +262,8 @@
       <div class="split">
         <div>
           <span class="kicker">Agent framework</span>
-          <h2>Built for AI-assisted development</h2>
-          <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">An agent is defined in JSON as a set of functions, each containing an ordered sequence of commands. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with safeguards on what those expressions can do.
+          <h2>Designed for AI-assisted development</h2>
+          <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">An agent is defined in structured JSON as a set of functions, each containing an ordered sequence of commands. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with safeguards on what those expressions can do.
           </p>
           <style>
             .cmdgroups { margin-top: 12px; display: grid; gap: 19px; }
@@ -276,8 +276,8 @@
             .cg-c a:hover code { border-color: var(--blue-ink); color: var(--blue-ink); }
             @media (max-width: 640px) { .cg { grid-template-columns: 1fr; gap: 4px; } }
           </style>
-          <h3 style="margin-top: 26px; font-size: 14px; font-weight: 700; color: var(--ink);">The 23 commands</h3>
-          <div class="cmdgroups" aria-label="The 23 commands, by group">
+          <h3 style="margin-top: 26px; font-size: 14px; font-weight: 700; color: var(--ink);">Commands</h3>
+          <div class="cmdgroups" aria-label="The commands, by group">
             <div class="cg"><span class="cg-l">Variables</span><span class="cg-c"><a href="docs/commands/var.html"><code>var</code></a></span></div>
             <div class="cg"><span class="cg-l">Flow control</span><span class="cg-c"><a href="docs/commands/if.html"><code>if</code></a><a href="docs/commands/while.html"><code>while</code></a><a href="docs/commands/for.html"><code>for</code></a><a href="docs/commands/break.html"><code>break</code></a><a href="docs/commands/continue.html"><code>continue</code></a><a href="docs/commands/func.html"><code>func</code></a><a href="docs/commands/return.html"><code>return</code></a><a href="docs/commands/parallel.html"><code>parallel</code></a></span></div>
             <div class="cg"><span class="cg-l">LLM interaction</span><span class="cg-c"><a href="docs/commands/prompt.html"><code>prompt</code></a><a href="docs/commands/llm.html"><code>llm</code></a><a href="docs/commands/memory.html"><code>memory</code></a></span></div>
@@ -288,31 +288,31 @@
             <div class="cg"><span class="cg-l">Agent termination</span><span class="cg-c"><a href="docs/commands/end.html"><code>end</code></a><a href="docs/commands/fail.html"><code>fail</code></a></span></div>
             <div class="cg"><span class="cg-l">Observability</span><span class="cg-c"><a href="docs/commands/progress.html"><code>progress</code></a><a href="docs/commands/trace.html"><code>trace</code></a><a href="docs/commands/log.html"><code>log</code></a></span></div>
           </div>
-          <p style="margin-top: 17px; color: var(--muted); font-size: 14.5px; line-height: 1.6;">Describe the workflow &mdash; <span style="white-space: nowrap;">AI assist will write the agent.</span></p>
         </div>
 
         <div class="codecard" aria-label="Example agent definition">
-          <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">weather.json &middot; agent definition</span></div>
-<pre><code><span class="tk-com">// JSON with comments (JSONC).</span>
-<span class="tk-pun">{</span>
-  <span class="tk-key">"functions"</span><span class="tk-pun">: {</span>
-    <span class="tk-key">"main"</span><span class="tk-pun">: {</span>  <span class="tk-com">// Execution begins here</span>
-      <span class="tk-key">"commands"</span><span class="tk-pun">: {</span>
-        <span class="tk-key">"func"</span><span class="tk-pun">: { </span><span class="tk-key">"name"</span><span class="tk-pun">:</span> <span class="tk-str">"forecast"</span><span class="tk-pun"> },</span>
-        <span class="tk-key">"prompt"</span><span class="tk-pun">: {</span>
-          <span class="tk-key">"user"</span><span class="tk-pun">:</span> <span class="tk-expr">"{ f'Forecast: {result}. {sys.query}' }"</span>
-          <span class="tk-com">// user prompt is set to the value of the f-string.</span>
-        <span class="tk-pun">},</span>
-        <span class="tk-key">"llm"</span><span class="tk-pun">: { </span><span class="tk-key">"profile"</span><span class="tk-pun">:</span> <span class="tk-str">"claude_haiku"</span><span class="tk-pun">, </span><span class="tk-key">"streamOutput"</span><span class="tk-pun">:</span> <span class="tk-bool">true</span><span class="tk-pun"> }</span>
-      <span class="tk-pun">}</span>
-    <span class="tk-pun">},</span>
-    <span class="tk-key">"forecast"</span><span class="tk-pun">: {</span>
-      <span class="tk-key">"commands"</span><span class="tk-pun">: {</span>
-        <span class="tk-key">"api"</span><span class="tk-pun">: { </span><span class="tk-key">"url"</span><span class="tk-pun">:</span> <span class="tk-str">"https://api.weather.gov/&hellip;/forecast"</span><span class="tk-pun"> },</span>
-        <span class="tk-com">// 'result' is a special variable that holds the result</span>
-        <span class="tk-com">// of the last command that was run, in this case, the</span>
-        <span class="tk-com">// api call above.</span>
-        <span class="tk-key">"return"</span><span class="tk-pun">:</span> <span class="tk-expr">"{ result['properties']['periods'][:8] }"</span>
+          <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">hr_policy &middot; agent definition</span></div>
+<pre><code><span class="tk-pun">{</span>
+  <span class="tk-com">// An agent is a set of functions. Execution starts in main.</span>
+  <span class="tk-key">&quot;functions&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
+    <span class="tk-key">&quot;main&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
+      <span class="tk-com">// A function is an ordered list of commands, from the 23.</span>
+      <span class="tk-key">&quot;commands&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
+        <span class="tk-com">// API profile: base URL, auth, pool. Secrets stay out.</span>
+        <span class="tk-com">// sys.query is the request search routed to this agent.</span>
+        <span class="tk-key">&quot;api&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
+          <span class="tk-key">&quot;profile&quot;</span><span class="tk-pun">:</span> <span class="tk-str">&quot;intranet&quot;</span><span class="tk-pun">,</span>
+          <span class="tk-key">&quot;url&quot;</span><span class="tk-pun">:</span> <span class="tk-str">&quot;/policies/search&quot;</span><span class="tk-pun">,</span>
+          <span class="tk-key">&quot;params&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span> <span class="tk-key">&quot;q&quot;</span><span class="tk-pun">:</span> <span class="tk-expr">&quot;{ sys.query }&quot;</span> <span class="tk-pun">}</span>
+        <span class="tk-pun">}</span><span class="tk-pun">,</span>
+        <span class="tk-key">&quot;prompt&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
+          <span class="tk-com">// Inside { } is Python, run in a controlled runtime.</span>
+          <span class="tk-com">// result is the previous command&#x27;s parsed response.</span>
+          <span class="tk-key">&quot;system&quot;</span><span class="tk-pun">:</span> <span class="tk-expr">&quot;{ f&#x27;Use only these sections: {result}&#x27; }&quot;</span><span class="tk-pun">,</span>
+          <span class="tk-key">&quot;user&quot;</span><span class="tk-pun">:</span> <span class="tk-expr">&quot;{ sys.query }&quot;</span>
+        <span class="tk-pun">}</span><span class="tk-pun">,</span>
+        <span class="tk-com">// A profile holds the vendor, model and key.</span>
+        <span class="tk-key">&quot;llm&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span> <span class="tk-key">&quot;profile&quot;</span><span class="tk-pun">:</span> <span class="tk-str">&quot;claude_haiku&quot;</span><span class="tk-pun">,</span> <span class="tk-key">&quot;streamOutput&quot;</span><span class="tk-pun">:</span> <span class="tk-bool">true</span> <span class="tk-pun">}</span>
       <span class="tk-pun">}</span>
     <span class="tk-pun">}</span>
   <span class="tk-pun">}</span>

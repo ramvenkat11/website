@@ -439,6 +439,11 @@ p { margin: 0; }
 .convo-wrap > :last-child { margin-top: 37px; }
 /* reports: a two-line caption beside a tall thumbnail grid reads better centred */
 #reports .split { align-items: center; }
+/* the framework code card is as tall as the text column beside it: the grid stretches the card,
+   and the card is a column so its pre grows to fill it */
+#framework .split { align-items: stretch; }
+#framework .codecard { display: flex; flex-direction: column; }
+#framework .codecard pre { flex: 1 0 auto; }
 #reports .split > :last-child { margin-top: 0; }
 .howgrid > :last-child { margin-top: 37px; }
 .codecard {
