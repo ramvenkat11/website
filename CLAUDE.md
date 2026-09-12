@@ -533,6 +533,17 @@ changes" - the six trims applied (line 5 "from the 23."; 7 "auth, pool. Secrets 
 847px (identical to the weather card), columns level. Still valid. The card label is "hr_policy · agent
 definition" (Ram: the same agent as the "hr_policy · description" card in How search works). DEPLOYED 2026-09-12 with the framework stretch CSS (index.html + styles.css, invalidation I9A66I77JHM16BCZW1ONRUCHYA, live md5s == local). Previous cards saved in the scratchpad. Not deployed.
 
+## State on 2026-09-12 (end-to-end key function: no allowlist entry)
+Ram: the key function for end-to-end encryption is no longer put on the allowlist (bad
+design). VERIFIED: runtime.py resolves encryption_model.keyFunction with
+allowlist.resolve_function(), which imports the dotted path directly from the server's
+environment (same importer as an entry, but independent of the entries); a failed import
+raises InitializationError when the runtime is built. Docs: encryption.html step 2 now says
+name the function by its dotted path (example mycompany.keys.get_key); each server imports it
+when building its runtime and logs a failed import. allowlist.html's "Registering your own
+code" list lost the key-function bullet (LLM adapters, vault function, operator rewrite
+function remain). Rebuilt; not deployed.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
