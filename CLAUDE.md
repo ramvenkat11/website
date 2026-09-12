@@ -519,8 +519,14 @@ flagged to him). MEASURED (cache-busted, 1920 and 1280 identical): section 847px
 (x2), card 635 -> 1453px, and the pre OVERFLOWS by 131px (longest line 85 chars vs ~66 that
 fit at 12.5px mono in the 507px content width) - the comments are the long lines, so the card
 scrolls sideways and hides text. The PREVIOUS card (weather.json, 24 lines) is saved at
-<scratchpad>/index_before_example.html for a revert. Screenshot sent. Ram's call: keep and
-shorten lines (comments <= ~66 chars, drop blank lines), or revert.
+<scratchpad>/index_before_example.html for a revert. Screenshot sent. Ram: "Too long. Try this:" - a 25-line policy.json example (api with params -> prompt with an
+f-string system prompt -> llm streaming). VALID against AgentModel; swapped in (label
+"policy.json · agent definition"; "sandbox" -> "controlled runtime" again). Section 856px vs
+847 with the weather card - same height. BUT SIX LINES OVERFLOW the 507px content width
+(67 chars at 7.5px/char, measured with canvas measureText in the card's font): comment lines
+5 (71 chars), 7 (71), 8 (69), 15 (85 - the controlled-runtime substitution lengthened it; his
+original was 73 and overflowed too), 16 (74), and the system f-string line 17 (72). Trimmed
+wordings PROPOSED to Ram, not applied (his words). Previous cards saved in the scratchpad.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
