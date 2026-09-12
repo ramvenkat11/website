@@ -39,6 +39,9 @@ mycompany.vault.get_secret       # anything importable on the server
 </ul>
 <p>No other variables, objects or runtime state are accessible. See <a href="../agent-definition/variables.html">Variables and namespaces</a>.</p>
 
+<h2>Always present</h2>
+<p><code>getattr</code> and <code>setattr</code> are available in every expression without an entry. The agent server provides its own versions, which accept only a public attribute name: a name that starts with an underscore, and the names <code>format</code> and <code>format_map</code>, are refused. An attribute reached through <code>getattr</code> therefore obeys the same rule as a dotted name. The server's versions take precedence over an allowlist entry of either name.</p>
+
 <h2>Async functions</h2>
 <p>Expressions run on the agent server's shared event loop, so a function that blocks the loop must not be allowlisted. <code>asyncio.run</code>, <code>time.sleep</code> and synchronous network calls are examples. Async functions are welcome: when the whole expression is a call to an async function, the result is awaited automatically. Inside a larger expression, an async call must be awaited with <code>await</code>. See <a href="../agent-definition/syntax.html#awaiting">Awaiting</a>.</p>
 

@@ -82,6 +82,9 @@ mycompany.vault.get_secret       # anything importable on the server</code></pre
 </ul>
 <p>No other variables, objects or runtime state are accessible. See <a href="../agent-definition/variables.html">Variables and namespaces</a>.</p>
 
+<h2 id="always-present">Always present</h2>
+<p><code>getattr</code> and <code>setattr</code> are available in every expression without an entry. The agent server provides its own versions, which accept only a public attribute name: a name that starts with an underscore, and the names <code>format</code> and <code>format_map</code>, are refused. An attribute reached through <code>getattr</code> therefore obeys the same rule as a dotted name. The server's versions take precedence over an allowlist entry of either name.</p>
+
 <h2 id="async-functions">Async functions</h2>
 <p>Expressions run on the agent server's shared event loop, so a function that blocks the loop must not be allowlisted. <code>asyncio.run</code>, <code>time.sleep</code> and synchronous network calls are examples. Async functions are welcome: when the whole expression is a call to an async function, the result is awaited automatically. Inside a larger expression, an async call must be awaited with <code>await</code>. See <a href="../agent-definition/syntax.html#awaiting">Awaiting</a>.</p>
 
@@ -101,7 +104,7 @@ mycompany.vault.get_secret       # anything importable on the server</code></pre
     </article>
     <nav class=prevnext><a class=prev href='../runtime/overview.html'><small>Previous</small>The agent runtime</a><a class=next href='../runtime/system-variables.html'><small>Next</small>System variables</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#how-expressions-are-contained'>How expressions are contained</a></li><li class=l2><a href='#entry-forms'>Entry forms</a></li><li class=l2><a href='#what-an-entry-makes-reachable'>What an entry makes reachable</a></li><li class=l2><a href='#scope-of-an-expression'>Scope of an expression</a></li><li class=l2><a href='#async-functions'>Async functions</a></li><li class=l2><a href='#registering-your-own-code'>Registering your own code</a></li><li class=l2><a href='#when-the-allowlist-changes'>When the allowlist changes</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#how-expressions-are-contained'>How expressions are contained</a></li><li class=l2><a href='#entry-forms'>Entry forms</a></li><li class=l2><a href='#what-an-entry-makes-reachable'>What an entry makes reachable</a></li><li class=l2><a href='#scope-of-an-expression'>Scope of an expression</a></li><li class=l2><a href='#always-present'>Always present</a></li><li class=l2><a href='#async-functions'>Async functions</a></li><li class=l2><a href='#registering-your-own-code'>Registering your own code</a></li><li class=l2><a href='#when-the-allowlist-changes'>When the allowlist changes</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

@@ -52,7 +52,7 @@
       <div>
         <span class="eyebrow"><span class="dot"></span>Free until you&rsquo;re convinced</span>
         <h1>Search that <span class="grad">executes.</span></h1>
-        <p class="def">Search2o is the layer that turns your 100 agents into one system.</p>
+        <p class="def">Search2o turns your 100 agents into one system.</p>
         <ul class="hero-points">
           <li>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 9 5-9 5-9-5 9-5z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>
@@ -64,7 +64,7 @@
           </li>
           <li>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            <span>Agents share one conversation, so each can build on what the last one did.</span>
+            <span>A conversation can span multiple agents, each building on the work already done.</span>
           </li>
         </ul>
         <div class="hero-actions">
@@ -203,7 +203,8 @@
             </li>
             <li>
               <h3>Agent server</h3>
-              <p>A stateless server that runs agents in a controlled runtime. State and other sensitive information are encrypted before leaving the server. Source available.</p>
+              <p>A stateless server designed to run standalone or in a cluster. Runs agents in a controlled runtime. Encrypts sensitive information before it leaves the server. Source available.
+              </p>
             </li>
             <li>
               <h3>Agent framework</h3>
@@ -261,8 +262,8 @@
       <div class="split">
         <div>
           <span class="kicker">Agent framework</span>
-          <h2>JSON syntax, Python expressions</h2>
-          <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">An agent is defined in JSON as a set of functions, each containing an ordered sequence of commands. Strings enclosed in <code>{ }</code> are evaluated as Python expressions.
+          <h2>Built for AI-assisted development</h2>
+          <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">An agent is defined in JSON as a set of functions, each containing an ordered sequence of commands. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with safeguards on what those expressions can do.
           </p>
           <style>
             .cmdgroups { margin-top: 12px; display: grid; gap: 19px; }
@@ -302,7 +303,7 @@
           <span class="tk-key">"user"</span><span class="tk-pun">:</span> <span class="tk-expr">"{ f'Forecast: {result}. {sys.query}' }"</span>
           <span class="tk-com">// user prompt is set to the value of the f-string.</span>
         <span class="tk-pun">},</span>
-        <span class="tk-key">"llm"</span><span class="tk-pun">: { </span><span class="tk-key">"profile"</span><span class="tk-pun">:</span> <span class="tk-str">"anthropic"</span><span class="tk-pun">, </span><span class="tk-key">"streamOutput"</span><span class="tk-pun">:</span> <span class="tk-bool">true</span><span class="tk-pun"> }</span>
+        <span class="tk-key">"llm"</span><span class="tk-pun">: { </span><span class="tk-key">"profile"</span><span class="tk-pun">:</span> <span class="tk-str">"claude_haiku"</span><span class="tk-pun">, </span><span class="tk-key">"streamOutput"</span><span class="tk-pun">:</span> <span class="tk-bool">true</span><span class="tk-pun"> }</span>
       <span class="tk-pun">}</span>
     <span class="tk-pun">},</span>
     <span class="tk-key">"forecast"</span><span class="tk-pun">: {</span>

@@ -68,6 +68,7 @@
   <li>any character outside ASCII letters, digits, punctuation and the space;</li>
   <li><code>import</code>, in any form;</li>
   <li>any name that starts with an underscore, whether a variable, an attribute, a function or a keyword argument &mdash; so no private or dunder members;</li>
+  <li><code>.format</code> and <code>.format_map</code> on any value: the format-string mini-language reads attributes at run time, where the checks above cannot see them. An f-string does the same job and is checked like any expression. The check is on the attribute name alone and is made before anything runs, so a class of your own with a legitimate <code>format</code> method is refused too. To make such a method callable, bind it to a module-level name in your package, for example <code>render_report = Report.format</code>, add that name to the <a href="allowlist.html">allowlist</a>, and call <code>render_report(report, ...)</code>;</li>
   <li><code>lambda</code>;</li>
   <li>the assignment expression <code>:=</code>;</li>
   <li>a call to anything other than a name or an attribute, such as <code>(f)()</code> or <code>fs[0]()</code>;</li>
