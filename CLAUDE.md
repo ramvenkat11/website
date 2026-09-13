@@ -609,6 +609,35 @@ draft before validating, history, prompt profiles). The three-way merge view and
 are resolved in the merged definition" are gone. Docs home card ("publishing and merging")
 still accurate. Held with the SSO/service-account batch.
 
+## State on 2026-09-13 (editor + Draft with AI merged into one topic; NOT DEPLOYED)
+Ram: AI assist is full-fledged now (content/ai_assist.md, the feature is "Draft with AI");
+update the page and merge the code editor and AI assist into one topic. docsrc/development/
+code-editor.html is now "The editor and Draft with AI" (slug kept; ai-assist.html git rm'd
+from docsrc AND html/docs -> the live bucket keeps a stale docs/development/ai-assist.html
+until --delete-stale; 126 pages). Content: Completion / Errors as you type / Controls (Draft
+with AI and Validate below the definition, one open at a time) then h2 "Draft with AI" with
+h3s What it knows (schema + validation rules with the four examples; the current draft is
+edited, untouched parts kept; the account configuration as a 2-column table: used profiles /
+allowlist / compile rules / system variables, each linked to its runtime page; what it has
+never seen - db/API/MCP - so it leaves those fields empty with a comment), Using it (4 steps,
+Ctrl+Enter / cmd-return, 10,000 chars, draft saved first, Writing..., Validate locked), What
+comes back (replaces the definition, saved, comments mark gaps, vague requests change nothing,
+validate before publishing), Undo (Undo AI edit, up to ten, Keep my changes / Undo, cleared by
+a manual save), Tips, usage note. VOCABULARY: the md's "compiler/compiles/compile" became
+"validation"/"the rules validation enforces"/"pass validation" - the ban applies to my
+writing; "Compile rules" (product name) stays. DROPPED from the old page: the "Workflows it
+can write" list (RAG/tools/MCP/deep agents/HITL/parallel - not in the new md) and the
+"Nothing is saved" section (false now: the draft IS saved), plus the ai-assist screenshot
+(showed the old Ask AI panel; the shot files remain under html/docs/img). "AI assist" renamed
+everywhere in docsrc: your-first-agent (links code-editor.html#draft-with-ai),
+how-matching-works (the deep-agent-workflow pointer sentence dropped), gui/agents,
+parts-of-the-system, what-is-search2o table, how-it-fits-together, profiles/overview (the
+note is what Draft with AI reads), section lead, docs home card. Sweep for "AI assist" in
+docsrc: 0. SITE PAGES NOT TOUCHED (Ram's copy): gettingstarted.html:117 "AI assist writes a
+full agent from one sentence" and index.html:354 "AI assisted draft creation" - flagged.
+Verified in-browser: h1, on-page toc (9 entries), the one table fits, the editor-completion
+screenshots load, sidebar shows the merged entry. Link check unchanged.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
