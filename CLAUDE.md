@@ -804,6 +804,14 @@ docs/development/ai-assist.html DELETED from the bucket by the sync (now 404), i
 I3D8CP8SNRTR8J5IFRMW5AQDW7 Completed, live index.html and styles.css md5 == local, billing /
 custom-search / data-privacy / pricing 200.
 
+## State on 2026-09-13 (config.js rule; deploy with the production apiUrl)
+Ram found config.js pointing at the test environment (the Cloud Run URL had been live since the
+first deploy). He set apiUrl to https://reg.api.search2o.com/register and made the rule above.
+scripts/deploy.sh preflight now requires that exact value (was: refuse localhost only). Memory
+saved (feedback-config-apiurl-production-only). site.js:50 BASE falls back to
+https://api.search2o.com when config.js fails to load - see the site.js usage check in the
+same commit's notes.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
@@ -847,6 +855,11 @@ custom-search / data-privacy / pricing 200.
 - Tight scope: do what was asked, report related findings instead of fixing them uninvited.
 - Cite files as `path/file.html:123` (Ram runs Claude in a JetBrains terminal).
 - Ask before anything irreversible; deleting from the S3 bucket is irreversible.
+- NEVER PUBLISH UNLESS config.js IS PRODUCTION (Ram, 2026-09-13, absolute: "you can never
+  forget this"): html/config.js apiUrl must be exactly https://reg.api.search2o.com/register or
+  nothing goes to the bucket. The test-environment URL went live in the deploys of 09-11/09-13.
+  scripts/deploy.sh compares the line exactly and stops in preflight; any deploy by hand reads
+  config.js first.
 
 ## How Ram wants the writing (he judges every line)
 Clear, simple English that communicates. One idea per sentence. At most two commas in a
