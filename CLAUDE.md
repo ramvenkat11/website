@@ -711,7 +711,9 @@ Ram: replace the Agent development box with operational continuity, about server
 themselves with the latest configs. index.html card now: h3 "Operational continuity", a
 sync-arrows icon, text "Agent servers keep themselves current. A change to configuration,
 profiles or agents is live on the next run, on every server, with no restart. A running agent
-keeps the runtime it started with, so a change never breaks an agent mid-call." - facts from
+keeps the runtime it started with, so a change never breaks an agent mid-call." - then replaced by Ram's own three sentences: "Never have to restart agent servers. A change to
+configuration is live on the next agent run. A running agent keeps running with the old
+configuration." - facts from
 runtime/overview.html (change live on the next run on every server; running agents keep their
 runtime). The old development card text (completion, AI drafts, trace, versioned) is now
 covered by the framework section's linked line.
