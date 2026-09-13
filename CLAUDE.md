@@ -806,11 +806,15 @@ custom-search / data-privacy / pricing 200.
 
 ## State on 2026-09-13 (config.js rule; deploy with the production apiUrl)
 Ram found config.js pointing at the test environment (the Cloud Run URL had been live since the
-first deploy). He set apiUrl to https://reg.api.search2o.com/register and made the rule above.
-scripts/deploy.sh preflight now requires that exact value (was: refuse localhost only). Memory
-saved (feedback-config-apiurl-production-only). site.js:50 BASE falls back to
-https://api.search2o.com when config.js fails to load - see the site.js usage check in the
-same commit's notes.
+first deploy). He set apiUrl to https://reg.api.search2o.com/register, then REMOVED /register ("I removed
+/register") - the value is the base. scripts/deploy.sh preflight requires exactly
+https://reg.api.search2o.com (was: refuse localhost only). PROBED, not guessed: POST
+https://reg.api.search2o.com/register with a bogus captcha token -> 403 {"detail":"Forbidden"}
+(the endpoint); the base and /register/register -> 422 missing header x-api-key (another
+route). So site.js (BASE + "/register") was right all along; I had briefly rewritten it to
+post to apiUrl directly and REVERTED before deploying. site.js:50 fallback is now
+https://reg.api.search2o.com (was api.search2o.com). Memory saved
+(feedback-config-apiurl-production-only).
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
@@ -856,8 +860,9 @@ same commit's notes.
 - Cite files as `path/file.html:123` (Ram runs Claude in a JetBrains terminal).
 - Ask before anything irreversible; deleting from the S3 bucket is irreversible.
 - NEVER PUBLISH UNLESS config.js IS PRODUCTION (Ram, 2026-09-13, absolute: "you can never
-  forget this"): html/config.js apiUrl must be exactly https://reg.api.search2o.com/register or
-  nothing goes to the bucket. The test-environment URL went live in the deploys of 09-11/09-13.
+  forget this"): html/config.js apiUrl must be exactly https://reg.api.search2o.com (the BASE - site.js
+  appends /register itself; Ram first wrote it with /register, then removed it) or nothing
+  goes to the bucket. The test-environment URL went live in the deploys of 09-11/09-13.
   scripts/deploy.sh compares the line exactly and stops in preflight; any deploy by hand reads
   config.js first.
 
