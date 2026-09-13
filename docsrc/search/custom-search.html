@@ -1,0 +1,13 @@
+<p class="lead">The bundled GUI uses the agent server's REST API and nothing else, so an interface of your own can use the same API: <a href="../rest-api/search.html"><code>search</code></a> to find the agents for a request, and <a href="../rest-api/running-agents.html"><code>execAgent</code></a> to run one. The page, the wording and what happens between the two calls are yours. Some common shapes:</p>
+
+<h2>A search page without sign-in</h2>
+<p>A public page, on an intranet for example, can call the API with a <a href="../system-management/service-accounts.html">service account</a>'s key. The calls run as that service account, with its role, and nobody has to sign in. Every visitor then shares the service account's conversations, so such a page shows no conversation history: each visitor gets a fresh conversation, and a follow-up stays within it.</p>
+
+<h2>Letting users pick a catalogue</h2>
+<p>The <code>search</code> call takes a <code>tag</code>, so an interface can offer <a href="tags.html">tags</a> to its users, as a drop-down of catalogues for example, or search every tag with an empty string. Without a tag, the tag in the <a href="search-settings.html">Search settings</a> applies.</p>
+
+<h2>Deciding what to run</h2>
+<p>Search returns one, two or three agents, best first, or none when nothing matches; see <a href="how-matching-works.html">How matching behaves</a>. An interface can run the first match, show the choice, or run only when there is exactly one. The response carries the account's <code>searchBehavior</code> and <code>followupBehavior</code> settings, which an interface may follow or not.</p>
+
+<h2>Several requests in one box</h2>
+<p>An interface can split what the user typed on a delimiter, a new line or a row of dashes for example, send each part to <code>search</code> on its own, and run the matched agents in sequence. Passing the conversation's <code>convid</code> along lets each agent see what the previous one did.</p>

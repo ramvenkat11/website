@@ -10,13 +10,13 @@ bucket `search2o.com` (static-website hosting) behind the CloudFront distributio
 ## The script
 
 `scripts/deploy.sh` runs the whole procedure below. With no arguments it is a dry run: it
-rebuilds the docs, shows which files differ from the bucket, and lists bucket objects that no
-longer exist locally. `--go` uploads, invalidates, waits for the invalidation to complete and
-verifies with curl; `--go --delete-stale` also removes the listed stale objects after asking
-for the bucket name; `--skip-build` leaves the docs as they are. The script refuses to run
-with credentials for another AWS account, or while `html/config.js` points at a local server.
-The `docsweb/` prefix is protected: it is the in-app docs data that s2oserver's uploader
-maintains, not website content, and the script never lists or deletes it.
+rebuilds the docs and shows which files would be uploaded and which bucket objects would be
+deleted. `--go` uploads, deletes every bucket object that no longer exists locally, invalidates,
+waits for the invalidation to complete and verifies with curl; `--skip-build` leaves the docs
+as they are. The script refuses to run with credentials for another AWS account, or while
+`html/config.js` points at a local server.
+The `docsweb/` prefix is excluded from the sync: it is the in-app docs data that s2oserver's
+uploader maintains, not website content, and the script never uploads to it or deletes from it.
 
 ## Search engines
 
@@ -58,8 +58,9 @@ Run from `docs/website/html`, with AWS credentials for account 406848153313:
 
     aws cloudfront create-invalidation --distribution-id E330RKTBY31L8X --paths "/*"
 
-That is the whole deploy. `sync` uploads only files that changed, sets the content type from the
-extension, and never deletes anything in the bucket. The invalidation takes about a minute:
+That is the whole deploy. `sync` uploads only files that changed and sets the content type from
+the extension. The script adds `--delete`, so a page removed from the build is removed from the
+bucket as well. The invalidation takes about a minute:
 
     aws cloudfront get-invalidation --distribution-id E330RKTBY31L8X --id <id> --query Invalidation.Status
 
@@ -82,9 +83,8 @@ Objects are uploaded with `--acl public-read`; the bucket has ACLs enabled for t
 ## Notes
 
 - `logo.svg` (589 KB) is excluded: nothing references it; `logo.png` is the wordmark in use.
-- Because `sync` does not delete, retired files stay in the bucket until removed by hand. As of
-  2026-08-28 the bucket still holds the old `home.html`, `css/`, `js/`, `docsweb/` and a stray
-  `e2b6c55d-….html`, none referenced by the site.
+- The script syncs with `--delete`, so a retired page leaves the bucket at the next deploy. Only
+  `docsweb/` is kept, being excluded from the sync.
 - `maintenance/docswebuploader.py` uploads the OLD in-app docs (`docsweb/` prefix) and is not part
   of deploying the website.
 - Add `--dryrun` to the `sync` command to see what would change before uploading.

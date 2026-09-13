@@ -65,6 +65,7 @@ TOC = [
         ("tags", "Tags"),
         ("search-settings", "Search settings"),
         ("search-quality", "Search quality"),
+        ("custom-search", "Custom search"),
     ]),
     ("development", "Development process", [
         ("drafts", "Drafts"),
@@ -146,5 +147,6 @@ TOC = [
         ("asking-the-docs", "Asking the docs"),
         ("support", "Support"),
         ("license", "License"),
+        ("billing", "Billing"),
     ]),
 ]
