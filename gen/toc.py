@@ -68,8 +68,7 @@ TOC = [
     ]),
     ("development", "Development process", [
         ("drafts", "Drafts"),
-        ("code-editor", "The code editor"),
-        ("ai-assist", "AI assist"),
+        ("code-editor", "The editor and Draft with AI"),
         ("validation-and-publishing", "Validation and publishing"),
         ("merging", "Multiple developers and merging"),
     ]),
