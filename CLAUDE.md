@@ -773,7 +773,10 @@ guidance; several requests at once: split on a delimiter, search each part, run 
 with convid. Section lead + home card mention it. Ram: the language was not clear - "we are suggesting
 various common use cases, not telling the user what to do" - REWRITTEN as use cases ("Some
 common shapes:" / A search page without sign-in / Letting users pick a catalogue / Deciding
-what to run / Several requests in one box), all in "can"/"may" register. 128 pages, 31
+what to run / Several requests in one box), all in "can"/"may" register. Ram added: a page without sign-in means those users have no
+(and should not see) conversation history - the section now says every visitor shares the
+service account's conversations, so the page shows no history; each visitor gets a fresh
+conversation and follow-ups stay within it. 128 pages, 31
 examples valid, link check unchanged.
 
 ## Standing instructions
