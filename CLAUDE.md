@@ -839,6 +839,25 @@ comment block - gone with it; old file saved at <scratchpad>/favicon_old.svg). P
 up ~8% so the 16px tab icon fills its box. Referenced unchanged as favicon.svg by the site
 pages, /favicon.svg by 404.html, and by the docs template. og:image is still logo.png.
 
+## State on 2026-09-13 (logo keeps both colours in dark theme; unused files deleted; NOT DEPLOYED)
+Ram: the wordmark showed two colours in light and one in dark - the dark theme applied
+`--logo-filter: brightness(0) invert(1)`, flattening it. FIX: html/logo-dark.png generated from
+logo.png with PIL (venv): navy (15,38,68) pixels -> #eef3fb, the slate "o" (~#7088a0) kept,
+alpha preserved (16 KB). Every page carries TWO imgs in the header, `.logo-light` (logo.png)
+and `.logo-dark` (logo-dark.png): 4 site pages, 4 legal pages, 404.html, and gen/build.py's
+docs template (rebuilt). styles.css: the --logo-filter token is gone; tokens `--logo-light`/
+`--logo-dark` (block/none, swapped in BOTH dark blocks) drive `.brand .logo-light/.logo-dark`.
+The FOOTER (always dark) had its own brightness(0) invert(1) filter and, with two imgs, would
+have shown both: now `.footer-brand .logo-light { display: none }` and no filter, so the footer
+wordmark is two-colour too. Verified in-browser: header light/dark switch correct, footer one
+image, header width 168 unchanged; zoomed crop shows white "Search" + slate "2o" on dark.
+UNUSED FILES (Ram: delete): a reference scan of all 182 files under html/ against html/docsrc/
+gen found exactly two unreferenced - the retired ai-assist screenshots
+(docs/img/ai-assist-light/dark.png) - plus logo.svg (a 589 KB PNG wrapped in SVG, never
+referenced, excluded from sync); all three git rm'd. deploy.sh no longer excludes logo.svg;
+website_deploy.md updated. At the next deploy the sync's --delete removes the two screenshot
+files from the bucket (logo.svg was never there).
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
