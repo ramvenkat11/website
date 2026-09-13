@@ -770,8 +770,11 @@ BACK: written as "one, two or three agents, or none when nothing matches" - Ram 
 returns 1, 2 or 3" but the API model is a list that can be empty and rest-api/search.html and
 search-quality document the zero/refusal case - FLAGGED; searchBehavior/followupBehavior as
 guidance; several requests at once: split on a delimiter, search each part, run in sequence
-with convid. Section lead + home card mention it. 128 pages, 31 examples valid, link check
-unchanged.
+with convid. Section lead + home card mention it. Ram: the language was not clear - "we are suggesting
+various common use cases, not telling the user what to do" - REWRITTEN as use cases ("Some
+common shapes:" / A search page without sign-in / Letting users pick a catalogue / Deciding
+what to run / Several requests in one box), all in "can"/"may" register. 128 pages, 31
+examples valid, link check unchanged.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
