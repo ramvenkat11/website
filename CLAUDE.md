@@ -593,6 +593,22 @@ Service accounts in the Admin group and gained a "Service accounts" h2; figures.
 two mock sizes, no overruns); section lead + docs home card mention service accounts. Tables
 and the pre on the new page fit; link check unchanged. Ram: "Don't deploy this yet" applies.
 
+## State on 2026-09-12 (merging is done by the cloud; NOT DEPLOYED)
+Ram: when another user publishes an agent that a draft was checked out from, there is no
+manual merging any more - the GUI prompts the user to merge and the cloud does the merge.
+VERIFIED: package api/dev.py POST /api/dev/mergeDraft ("use this when getDraft reports
+draftAgentHasChanged"; the merged definition is produced and returned, nothing sent in);
+cloud persistence/draft.py merge_draft: DraftMerger (an LLM - NOT said in the docs, it is
+mechanism) merges the draft with the published definition, saves it to the draft, sets the
+draft's version to the published one, and CLEARS VALIDATION (so the draft is validated
+again). development/merging.html rewritten: lead; How it works (draft remembers its base
+version; when opened out of date the GUI offers to merge; the cloud produces and saves the
+merged definition; review, validate, publish; a draft that is behind cannot be published until
+merged; mergeDraft/getDraft in the API); Practical advice (short-lived drafts, read the merged
+draft before validating, history, prompt profiles). The three-way merge view and "conflicts
+are resolved in the merged definition" are gone. Docs home card ("publishing and merging")
+still accurate. Held with the SSO/service-account batch.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
