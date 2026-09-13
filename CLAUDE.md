@@ -860,6 +860,11 @@ website_deploy.md updated. DEPLOYED 2026-09-13 with the new favicon (invalidatio
 the two screenshots deleted from the bucket by the sync (now 404), favicon.svg / logo-dark.png
 live, live styles.css md5 == local.
 
+## State on 2026-09-13 (deploy on Ram's "Deploy": his own index.html edits)
+Ram edited html/index.html himself and said "Deploy": 130 uploads (index.html, sitemap.xml
+and the rebuilt docs pages - the rebuild retimestamps them), invalidation
+IDFF1H1GL40VK5MO2QSDEYSPHK Completed, live index.html md5 == local, home and docs 200.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
