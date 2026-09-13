@@ -699,7 +699,10 @@ the parts they need." - the separate command-list line and its .cmdlink CSS are 
 ("Agents are drafted together with AI:"); the code-editor sentence is its own paragraph; the
 prompts are three CREATE (orders-API tool calling / Jira MCP ticket / policy answers from the
 intranet API) and two EDIT-the-current-agent ("Ask for approval before the renewal is sent." /
-"Remember the customer's account number for the next question.").
+"Remember the customer's account number for the next question."). Then the closing became
+Ram's two lines: "An agent is defined in JSON using 23 commands (link). Strings enclosed in
+{ } are evaluated as Python expressions, with built-in safeguards." and a muted 14.5px w600
+line "Code editor · validation with full trace · publish".
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
