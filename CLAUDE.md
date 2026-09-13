@@ -823,7 +823,8 @@ from the public files: styles.css (54 comment blocks, 41.8 -> 39.0 KB), docs/doc
 site.js (7 // lines), index.html (8 section-marker HTML comments). gettingstarted/pricing/
 about/404/legal pages and the generated docs had none; config.js is clean. Verified: only
 comments removed (index.html byte-equal after a comment-only diff; the 89/90 div count
-imbalance is PRE-EXISTING), CSS brace counts intact, site.js parses, stylesheets load with 338
+imbalance was PRE-EXISTING and is now FIXED: a duplicated `</div>` after the framework code
+card (left from an earlier edit of that block) is removed; 89/89, walk balanced; not deployed), CSS brace counts intact, site.js parses, stylesheets load with 338
 and 108 rules and styles apply on index/gettingstarted/a docs page. Pre-strip copies in
 <scratchpad>/precomment/. Non-public sources (docsrc, gen/*.py, scripts/) keep their comments. DEPLOYED (invalidation
 I9TMML5XD45OLPLQSLBSQ10578): live config.js, site.js, styles.css, docs.css and index.html
