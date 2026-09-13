@@ -638,6 +638,21 @@ full agent from one sentence" and index.html:354 "AI assisted draft creation" - 
 Verified in-browser: h1, on-page toc (9 entries), the one table fits, the editor-completion
 screenshots load, sidebar shows the merged entry. Link check unchanged.
 
+## State on 2026-09-13 (getting started: prompts instead of an agent; NOT DEPLOYED)
+Ram: no reason to give an actual agent on getting started - give prompts to create one. BOTH
+getting-started surfaces changed (the docs page is the same story, flagged): html/
+gettingstarted.html "Create your first agent" step lost the minimal-agent codecard and its
+three bullets; now: create a draft, tick the LLM profile matching your key (claude_haiku /
+gpt5_mini / gemini_flash) under Used profiles, describe the agent to Draft with AI, four
+prompts to try (forward the query to the LLM / ask for a city first / a tool-calling agent
+with an orders-API function / summarize pasted text in five bullets), comments mark what is
+left, validation query, validate, publish. The page's last "AI assist" mention went with it.
+docsrc/getting-started/your-first-agent.html step 2 is "Draft it with AI" (the simplest prompt
+first, what comes back, the other three prompts, comments, link to Draft with AI); the JSON
+example is gone (31 examples now, 0 invalid); Where to go next links the merged editor topic.
+No tk-key spans remain on gettingstarted.html; the .codecard is still used by the Download
+step.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
