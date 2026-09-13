@@ -792,6 +792,12 @@ getAnimations().forEach(a=>a.finish()) is the trick): stamps sit on their rows' 
 inside the card at 1920, demo height 332 (unchanged), h1 alignment unchanged, 390px: no
 overflow. Screenshot sent.
 
+## State on 2026-09-13 (descriptions: plain text in memory only; not deployed)
+Ram: the description is now handled like the query on the cloud - the plain text is never
+stored and stays in memory. data-privacy.html Agent descriptions row: "Indexes the agent for
+search. The plain text is held in memory for that and never stored." (replaces the 09-10
+"stored until the indexing completes, then deleted"). No other page stated the old fact.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
