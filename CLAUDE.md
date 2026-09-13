@@ -653,7 +653,9 @@ example is gone (31 examples now, 0 invalid); Where to go next links the merged 
 No tk-key spans remain on gettingstarted.html; the .codecard is still used by the Download
 step. Ram: "so verbose" - both steps cut to one sentence + three prompts (+ one closing
 line): site step ends "Validate, then publish."; docs step 2 ends with the comments line and
-the Draft with AI link.
+the Draft with AI link. Step 6 (Describe your agent, then search) cut from three paragraphs to
+two sentences: describe when you publish (example kept), then type a question - matches, runs
+and answers. The indexing sentence and the follow-ups sentence are gone.
 
 ## State on 2026-09-13 (scriptLogin removed from the docs; NOT DEPLOYED)
 Ram: scriptLogin is gone from the product (service accounts replace it); the model field
