@@ -779,6 +779,19 @@ service account's conversations, so the page shows no history; each visitor gets
 conversation and follow-ups stay within it. 128 pages, 31
 examples valid, link check unchanged.
 
+## State on 2026-09-13 (hero demo: match time stamp + retimed animation; not deployed)
+Ram wanted the hero to say, subtly and not in words on the left, that search is not an LLM
+call (<0.5 s vs 2 s+). Chosen from my ideas: (1) a time stamp on the match row and (2) let the
+timing show it. index.html: `<span class="demo-time">0.3 s</span>` on the MATCH row and
+`2.8 s` on the first RUN row (right-aligned, --faint 12px, tabular-nums, aria-labels).
+styles.css: stage-1 (match) now delay .2s / duration .3s (near-instant), stage-2 (run) delay
+1.5s with its second progress line streaming in at 2.4s (`.stage-2 .p + .p`), ask 3.2s, final
+run 3.9s (was .25/.85/1.5/2.15); the reduced-motion block also covers the new line. Verified
+with animations finished by script (CSS animations do not advance in a background tab -
+getAnimations().forEach(a=>a.finish()) is the trick): stamps sit on their rows' first line
+inside the card at 1920, demo height 332 (unchanged), h1 alignment unchanged, 390px: no
+overflow. Screenshot sent.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
