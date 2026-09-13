@@ -855,8 +855,9 @@ UNUSED FILES (Ram: delete): a reference scan of all 182 files under html/ agains
 gen found exactly two unreferenced - the retired ai-assist screenshots
 (docs/img/ai-assist-light/dark.png) - plus logo.svg (a 589 KB PNG wrapped in SVG, never
 referenced, excluded from sync); all three git rm'd. deploy.sh no longer excludes logo.svg;
-website_deploy.md updated. At the next deploy the sync's --delete removes the two screenshot
-files from the bucket (logo.svg was never there).
+website_deploy.md updated. DEPLOYED 2026-09-13 with the new favicon (invalidation IAJRD5SWB0EQLTL4MFZU6P0A36): 141 uploads,
+the two screenshots deleted from the bucket by the sync (now 404), favicon.svg / logo-dark.png
+live, live styles.css md5 == local.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
