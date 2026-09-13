@@ -687,7 +687,11 @@ quote-cards (RAG via intranet API / tool-calling orders API / Jira MCP ticket / 
 that finds and invokes / ask for approval before sending the renewal), and a muted line
 "Agents are built from 23 commands - command list." linking docs/commands/index.html. The
 .cmdgroups/.cg CSS and the chip links are gone with it. Measured: section 841px (was 847),
-columns level (delta 0), pre fits. Screenshot sent. Ram decides keep/revert.
+columns level (delta 0), pre fits. Screenshot sent. Ram then reordered: h2 -> the AI line -> three prompts (RAG and the
+orchestrator REMOVED) -> the JSON paragraph -> the command-list line. The AI line was to be
+precise and count ("we are not going to start with this line"); mine: "Developers build agents
+with AI: describe the agent, or the change you want, and Draft with AI writes it into the
+draft. The developer validates and publishes." - his to judge.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
