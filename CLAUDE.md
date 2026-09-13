@@ -651,7 +651,9 @@ docsrc/getting-started/your-first-agent.html step 2 is "Draft it with AI" (the s
 first, what comes back, the other three prompts, comments, link to Draft with AI); the JSON
 example is gone (31 examples now, 0 invalid); Where to go next links the merged editor topic.
 No tk-key spans remain on gettingstarted.html; the .codecard is still used by the Download
-step.
+step. Ram: "so verbose" - both steps cut to one sentence + three prompts (+ one closing
+line): site step ends "Validate, then publish."; docs step 2 ends with the comments line and
+the Draft with AI link.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
@@ -689,6 +691,10 @@ step.
   so no redirect, rewrite, error mapping or deletion may ever treat that host or those paths as
   website content. Only www.search2o.com redirects. Duplicate-content concerns are handled by
   the canonical links, never by redirecting the docs host.
+- PITHY (Ram, 2026-09-13, "It's so verbose. You need to be pithy. No one read this many
+  words"): on the getting-started pages my first-agent step ran to two paragraphs plus four
+  prompts; the kept version is one line, three prompts, "Validate, then publish." When a step
+  can be a sentence and a list, that is the whole step. Cut before showing, not after.
 - Tight scope: do what was asked, report related findings instead of fixing them uninvited.
 - Cite files as `path/file.html:123` (Ram runs Claude in a JetBrains terminal).
 - Ask before anything irreversible; deleting from the S3 bucket is irreversible.
