@@ -655,7 +655,9 @@ step. Ram: "so verbose" - both steps cut to one sentence + three prompts (+ one 
 line): site step ends "Validate, then publish."; docs step 2 ends with the comments line and
 the Draft with AI link. Step 6 (Describe your agent, then search) cut from three paragraphs to
 two sentences: describe when you publish (example kept), then type a question - matches, runs
-and answers. The indexing sentence and the follow-ups sentence are gone.
+and answers. The indexing sentence and the follow-ups sentence are gone. Step 5 is now "Create two or
+three agents" - "Make two or three, so that search has a choice:" before the prompts, and
+"Validate and publish each one." after (Ram: so they can test search).
 
 ## State on 2026-09-13 (scriptLogin removed from the docs; NOT DEPLOYED)
 Ram: scriptLogin is gone from the product (service accounts replace it); the model field
