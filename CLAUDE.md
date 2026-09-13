@@ -748,6 +748,31 @@ let others discover them dynamically" (Ram's words, joined/trimmed - flagged). i
 gettingstarted and about were checked line by line; the Team note is now "SLAs will be provided at GA." (Ram): all sentences end with a stop, headings
 and the "Code completion · ..." label carry none - consistent, nothing changed.
 
+## State on 2026-09-13 (usage limits confined; Billing and Custom search topics; NOT DEPLOYED)
+USAGE LIMITS: mentions removed from every docs page but usage-limits.html itself -
+code-editor (the Draft-with-AI counts-towards-usage paragraph), service-accounts (the
+counts-like-anyone sentence), asking-the-docs (the counts-towards-limits paragraph), the
+system-management lead and the docs home card (list ends "and notifications"). The toc entry
+stays. NOT touched: html/pricing.html's three "Usage limits ..." card bullets (Ram's pricing
+copy) - flagged.
+BILLING: new docsrc/support-licensing/billing.html, last in Support and licensing (from Ram's
+bullets): Stripe; invoices in the GUI under Billing > Invoices (owner); issued in the first
+week of each month; per-user charge prorated by days; "The platform fee starts with the second
+month." (his "not charged for the first month", said positively); current invoice = charges so
+far + month-end projection, past = what was charged (from gui/account); billing@search2o.com
+with the account ID; Pricing link. Section lead + home card mention billing.
+CUSTOM SEARCH: new docsrc/search/custom-search.html, last in Search (from Ram's bullets,
+verified against api/exec.py SearchModel/SearchResponseModel and rest-api/search.html): the
+GUI uses only the REST API, any interface can too; two calls (search, execAgent); sign-in via
+cookie or a service account's key for a page without sign-in; the search call takes `tag` so
+tags can be exposed (empty string = every tag; omitted = the Search settings tag); WHAT COMES
+BACK: written as "one, two or three agents, or none when nothing matches" - Ram said "always
+returns 1, 2 or 3" but the API model is a list that can be empty and rest-api/search.html and
+search-quality document the zero/refusal case - FLAGGED; searchBehavior/followupBehavior as
+guidance; several requests at once: split on a delimiter, search each part, run in sequence
+with convid. Section lead + home card mention it. 128 pages, 31 examples valid, link check
+unchanged.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
