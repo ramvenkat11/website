@@ -572,6 +572,27 @@ settings". integration-tokens.html: "will support ... OIDC or SAML" -> "can sign
 table to 811/770 and the pre-existing Password policy table's Default column was 501px; both
 fit now, and the four checked pages' tables all fit. 126 pages, 32 examples valid.
 
+## State on 2026-09-12 (Service accounts topic; NOT DEPLOYED with the SSO work)
+NEW docsrc/system-management/service-accounts.html, right after Users and roles in the toc
+(127 pages), written from content/service_account.md and VERIFIED against
+../search2o/search2o/api/admin.py (getServiceAccounts / createServiceAccount /
+rotateServiceAccountKey / setServiceAccountRole / deleteServiceAccount under /api/admin/;
+key returned once and stored nowhere; any role except owner; updateRole/deleteUsers refuse
+service accounts) and configtypes.ServiceAccountName (letters/digits with _ - . between,
+starts and ends alphanumeric, <=64). Sections: lead + role/independence paragraph; "Service
+accounts and integration tokens" as a `fields compare` table (Acts as / Role / Created by /
+Typical use); Adding (5 steps, the key panel, copy-it-now in polite form, no recovery ->
+rotate); Using the key (Bearer header on every request, no sign-in/session, curl against
+/api/exec/search with {"query": ...}, role decides, person-only actions refused, counts
+towards usage, key never expires - rotation/deletion end it); Changing the role; Rotating a
+key; Deleting; Good practice; The API (the five calls). CROSS-LINKS: users-and-roles gained a
+pointer paragraph after the roles list; rest-api/authentication "Which user to sign in as"
+recommends a service account for a program acting on its own behalf; gui/account lead lists
+Service accounts in the Admin group and gained a "Service accounts" h2; figures.py RAIL2 gained
+"Service accounts" after Users (rail rows measured: Invoices bottom 284/300 and 265/280 in the
+two mock sizes, no overruns); section lead + docs home card mention service accounts. Tables
+and the pre on the new page fit; link check unchanged. Ram: "Don't deploy this yet" applies.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
