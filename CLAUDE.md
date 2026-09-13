@@ -798,6 +798,12 @@ stored and stays in memory. data-privacy.html Agent descriptions row: "Indexes t
 search. The plain text is held in memory for that and never stored." (replaces the 09-10
 "stored until the indexing completes, then deleted"). No other page stated the old fact.
 
+## State on 2026-09-13 (DEPLOYED: home hero timing, pricing, billing, custom search, docs)
+Ram: "Deploy it". scripts/deploy.sh --go with --delete: 132 uploads, the retired
+docs/development/ai-assist.html DELETED from the bucket by the sync (now 404), invalidation
+I3D8CP8SNRTR8J5IFRMW5AQDW7 Completed, live index.html and styles.css md5 == local, billing /
+custom-search / data-privacy / pricing 200.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
