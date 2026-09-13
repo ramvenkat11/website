@@ -825,7 +825,9 @@ about/404/legal pages and the generated docs had none; config.js is clean. Verif
 comments removed (index.html byte-equal after a comment-only diff; the 89/90 div count
 imbalance is PRE-EXISTING), CSS brace counts intact, site.js parses, stylesheets load with 338
 and 108 rules and styles apply on index/gettingstarted/a docs page. Pre-strip copies in
-<scratchpad>/precomment/. Non-public sources (docsrc, gen/*.py, scripts/) keep their comments.
+<scratchpad>/precomment/. Non-public sources (docsrc, gen/*.py, scripts/) keep their comments. DEPLOYED (invalidation
+I9TMML5XD45OLPLQSLBSQ10578): live config.js, site.js, styles.css, docs.css and index.html
+verified comment-free.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
