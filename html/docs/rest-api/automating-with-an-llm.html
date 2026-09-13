@@ -51,8 +51,8 @@
 
 <h2 id="giving-the-model-access">Giving the model access</h2>
 <ol>
-  <li>Create a dedicated user for the automation, with the lowest role that covers the task. A user role covers search and conversations, a developer covers agents and agent reports, and an administrator covers users and usage reports.</li>
-  <li>Sign in with <code>scriptLogin</code> and pass the bearer token to the model's tool layer, so that every call carries <code>Authorization: Bearer &hellip;</code>. The token lasts one hour by default; sign in again when a response carries <code>mustLogin: true</code>. See <a href="authentication.html">Authentication</a>.</li>
+  <li>Create a <a href="../system-management/service-accounts.html">service account</a> for the automation, with the lowest role that covers the task. A user role covers search and conversations, a developer covers agents and agent reports, and an administrator covers users and usage reports.</li>
+  <li>Give the model's tool layer the service account's key, so that every call carries <code>Authorization: Bearer &hellip;</code>. See <a href="authentication.html">Authentication</a>.</li>
   <li>It helps to tell the model the base URL of the agent server, and that every endpoint is a POST with a JSON body.</li>
 </ol>
 

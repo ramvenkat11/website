@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Authentication — Search2o docs</title>
-<meta name="description" content="A browser signs in with login and receives a session cookie. A script signs in with scriptLogin and receives a bearer token. Every later call carries one or …">
+<meta name="description" content="A browser signs in with login and receives a session cookie. A program sends a service account&#x27;s key as a bearer token. Every call carries one or the other.">
 <link rel="canonical" href="https://search2o.com/docs/rest-api/authentication.html">
 <meta property="og:title" content="Authentication — Search2o docs">
-<meta property="og:description" content="A browser signs in with login and receives a session cookie. A script signs in with scriptLogin and receives a bearer token. Every later call carries one or …">
+<meta property="og:description" content="A browser signs in with login and receives a session cookie. A program sends a service account&#x27;s key as a bearer token. Every call carries one or the other.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/rest-api/authentication.html">
 <meta property="og:image" content="https://search2o.com/logo.png">
@@ -43,24 +43,16 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../rest-api/index.html'>REST API</a></div>
     <article class="docs-article">
       <h1>Authentication</h1>
-      <p class="lead">A browser signs in with <code>login</code> and receives a session cookie. A script signs in with <code>scriptLogin</code> and receives a bearer token. Every later call carries one or the other.</p>
+      <p class="lead">A browser signs in with <code>login</code> and receives a session cookie. A program sends a <a href="../system-management/service-accounts.html">service account</a>'s key as a bearer token. Every call carries one or the other.</p>
 
 <h2 id="session-cookie">Session cookie</h2>
 <p><code>POST /api/auth/login</code> with <code>email</code> and <code>password</code>. The response sets an HTTP-only cookie, and the browser sends the cookie on every later call. A session ends after a period of inactivity and after a maximum lifetime; both are set in the <a href="../system-management/authentication.html">Authentication</a> configuration. <code>POST /api/auth/logout</code> ends the session.</p>
 
 <h2 id="bearer-token">Bearer token</h2>
-<p><code>POST /api/auth/scriptLogin</code> with the same <code>email</code> and <code>password</code>. The response carries the token, the token type and the number of seconds until the token expires:</p>
-<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>curl -s -X POST http://127.0.0.1:9020/api/auth/scriptLogin \
-    -H <span class=str>&quot;Content-Type: application/json&quot;</span> \
-    -d <span class=str>&#x27;{&quot;email&quot;: &quot;bot@example.com&quot;, &quot;password&quot;: &quot;...&quot;}&#x27;</span>
-{<span class=str>&quot;success&quot;</span>: true, <span class=str>&quot;token&quot;</span>: <span class=str>&quot;…&quot;</span>, <span class=str>&quot;tokenType&quot;</span>: <span class=str>&quot;Bearer&quot;</span>, <span class=str>&quot;expiresIn&quot;</span>: 3600}</code></pre></figure>
-<p>Send the token in the <code>Authorization</code> header of every later call:</p>
+<p>A program authenticates with a service account's key, sent in the <code>Authorization</code> header of every call. There is no sign-in call and no session, and the key does not expire; it stops working when an administrator rotates it or deletes the service account. See <a href="../system-management/service-accounts.html">Service accounts</a>.</p>
 <figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>curl -s -X POST http://127.0.0.1:9020/api/user/getUserProfile \
-    -H <span class=str>&quot;Authorization: Bearer $TOKEN&quot;</span> -H <span class=str>&quot;Content-Type: application/json&quot;</span> -d <span class=str>&#x27;{}&#x27;</span></code></pre></figure>
-<p>A token lasts one hour by default; the lifetime is the <em>script token max age</em> in the Authentication configuration. A script that runs longer than the token signs in again when a response carries <code>mustLogin: true</code>.</p>
-
-<h2 id="which-user-to-sign-in-as">Which user to sign in as</h2>
-<p>A script runs as the user whose credentials it holds, with that user's role. Conversations, memories and the usage report are recorded against that user. A program that acts on its own behalf is best given a <a href="../system-management/service-accounts.html">service account</a>: a user with its own role and a key that is sent with every request, with no sign-in call and no session, and that an administrator can rotate on its own.</p>
+    -H <span class=str>&quot;Authorization: Bearer $SEARCH2O_SERVICE_KEY&quot;</span> -H <span class=str>&quot;Content-Type: application/json&quot;</span> -d <span class=str>&#x27;{}&#x27;</span></code></pre></figure>
+<p>Calls are recorded against the service account, with its role, in the usage report.</p>
 
 <h2 id="setting-or-resetting-a-password">Setting or resetting a password</h2>
 <p><code>emailCode</code> sends a one-time code to the user's email address, and <code>createPasswordWithEmailCode</code> sets a new password with that code. A new user sets a first password the same way; the GUI's <strong>New user / Forgot password</strong> link is these two calls. A reset signs out every session of the user. The password rules are available from <code>getPasswordHelp</code>, so a client can show them before the user types.</p>
@@ -68,7 +60,7 @@
     </article>
     <nav class=prevnext><a class=prev href='../rest-api/overview.html'><small>Previous</small>The REST API</a><a class=next href='../rest-api/running-agents.html'><small>Next</small>Running agents</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#session-cookie'>Session cookie</a></li><li class=l2><a href='#bearer-token'>Bearer token</a></li><li class=l2><a href='#which-user-to-sign-in-as'>Which user to sign in as</a></li><li class=l2><a href='#setting-or-resetting-a-password'>Setting or resetting a password</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#session-cookie'>Session cookie</a></li><li class=l2><a href='#bearer-token'>Bearer token</a></li><li class=l2><a href='#setting-or-resetting-a-password'>Setting or resetting a password</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

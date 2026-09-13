@@ -46,7 +46,7 @@
       <p class="lead">Search2o has built-in authentication with email and password. An administrator sets the session and password rules to the organization's requirements on the Admin &rsaquo; Authentication page. People can also sign in through your identity provider with <a href="single-sign-on.html">single sign-on</a>, alongside password sign-in or instead of it.</p>
 
 <h2 id="sessions">Sessions</h2>
-<p>A browser sign-in creates a session held in an HTTP-only cookie. The session ends after a period of inactivity, and in any case after a maximum lifetime; the defaults are one hour and twelve hours. A script signs in separately and receives a bearer token with its own lifetime, one hour by default. A change to any of these affects a signed-in user only when that user signs in again. See <a href="../rest-api/authentication.html">Authentication in the REST API</a> for how clients sign in.</p>
+<p>A browser sign-in creates a session held in an HTTP-only cookie. The session ends after a period of inactivity, and in any case after a maximum lifetime; the defaults are one hour and twelve hours. A change to any of these affects a signed-in user only when that user signs in again. See <a href="../rest-api/authentication.html">Authentication in the REST API</a> for how clients sign in.</p>
 
 <h2 id="passwords">Passwords</h2>
 <p>The password policy sets the length and the character classes a password must contain, and is enforced on every new password. Users can be made to change their password after a number of days. A password reset signs out every session of that user.</p>

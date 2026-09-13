@@ -128,7 +128,7 @@
         <ul class="convo-points">
           <li>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.4-3.4"/></svg>
-            <span>The user typed two requests and never picked an agent; search chose Accounts payable for the first and Help desk for the second.</span>
+            <span>The user typed two requests and never picked an agent; search chose the Accounts payable for the first and the Help desk agent for the second.</span>
           </li>
           <li>
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
@@ -263,31 +263,21 @@
         <div>
           <span class="kicker">Agent framework</span>
           <h2>Designed for AI-assisted development</h2>
-          <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">An agent is defined in structured JSON as a set of functions, each containing an ordered sequence of commands. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with safeguards on what those expressions can do.
-          </p>
           <style>
-            .cmdgroups { margin-top: 12px; display: grid; gap: 19px; }
-            .cg { display: grid; grid-template-columns: 150px 1fr; gap: 10px; align-items: baseline; }
-            .cg-l { font-size: 12.5px; font-weight: 600; color: var(--muted); white-space: nowrap; }
-            .cg-c { display: flex; flex-wrap: wrap; gap: 6px; }
-            .cg-c code { font-family: var(--mono); font-size: 12.5px; padding: 3px 8px; border-radius: 7px; background: var(--bg-soft); border: 1px solid var(--line); color: var(--ink); }
-            .cg-c a { display: flex; text-decoration: none; }   /* flex: the chip stays the flex item it was, so the rows keep their height */
-            .cg-c a:hover { text-decoration: none; }
-            .cg-c a:hover code { border-color: var(--blue-ink); color: var(--blue-ink); }
-            @media (max-width: 640px) { .cg { grid-template-columns: 1fr; gap: 4px; } }
+            .prompts { margin-top: 14px; padding: 0; list-style: none; display: grid; gap: 8px; }
+            .prompts li { position: relative; padding: 9px 12px 9px 34px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-soft); color: var(--body); font-size: 14px; line-height: 1.5; font-style: italic; }
+            .prompts li::before { content: "\201C"; position: absolute; left: 12px; top: 6px; font-size: 22px; line-height: 1; color: var(--slate); font-style: normal; }
           </style>
-          <h3 style="margin-top: 26px; font-size: 14px; font-weight: 700; color: var(--ink);">Commands</h3>
-          <div class="cmdgroups" aria-label="The commands, by group">
-            <div class="cg"><span class="cg-l">Variables</span><span class="cg-c"><a href="docs/commands/var.html"><code>var</code></a></span></div>
-            <div class="cg"><span class="cg-l">Flow control</span><span class="cg-c"><a href="docs/commands/if.html"><code>if</code></a><a href="docs/commands/while.html"><code>while</code></a><a href="docs/commands/for.html"><code>for</code></a><a href="docs/commands/break.html"><code>break</code></a><a href="docs/commands/continue.html"><code>continue</code></a><a href="docs/commands/func.html"><code>func</code></a><a href="docs/commands/return.html"><code>return</code></a><a href="docs/commands/parallel.html"><code>parallel</code></a></span></div>
-            <div class="cg"><span class="cg-l">LLM interaction</span><span class="cg-c"><a href="docs/commands/prompt.html"><code>prompt</code></a><a href="docs/commands/llm.html"><code>llm</code></a><a href="docs/commands/memory.html"><code>memory</code></a></span></div>
-            <div class="cg"><span class="cg-l">External systems</span><span class="cg-c"><a href="docs/commands/api.html"><code>api</code></a><a href="docs/commands/db.html"><code>db</code></a></span></div>
-            <div class="cg"><span class="cg-l">Deep agents</span><span class="cg-c"><a href="docs/commands/search.html"><code>search</code></a><a href="docs/commands/invoke.html"><code>invoke</code></a></span></div>
-            <div class="cg"><span class="cg-l">Human-in-the-loop</span><span class="cg-c"><a href="docs/commands/ask.html"><code>ask</code></a></span></div>
-            <div class="cg"><span class="cg-l">Agent output</span><span class="cg-c"><a href="docs/commands/output.html"><code>output</code></a></span></div>
-            <div class="cg"><span class="cg-l">Agent termination</span><span class="cg-c"><a href="docs/commands/end.html"><code>end</code></a><a href="docs/commands/fail.html"><code>fail</code></a></span></div>
-            <div class="cg"><span class="cg-l">Observability</span><span class="cg-c"><a href="docs/commands/progress.html"><code>progress</code></a><a href="docs/commands/trace.html"><code>trace</code></a><a href="docs/commands/log.html"><code>log</code></a></span></div>
-          </div>
+          <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">Agents are drafted together with AI:</p>
+          <ul class="prompts" aria-label="Sample prompts for Draft with AI">
+            <li>A tool-calling agent that fetches a customer&rsquo;s orders from our orders API.</li>
+            <li>An agent that uses our Jira MCP server to open a ticket from the request.</li>
+            <li>An agent that answers policy questions from the sections our intranet API returns.</li>
+            <li>Ask for approval before the renewal is sent.</li>
+            <li>Remember the customer&rsquo;s account number for the next question.</li>
+          </ul>
+          <p style="margin-top: 22px; color: var(--body); font-size: 15.5px; line-height: 1.6;">An agent is defined in JSON using <a href="docs/commands/index.html">23 commands</a>. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with built-in safeguards.</p>
+          <p style="margin-top: 12px; color: var(--muted); font-size: 14.5px; font-weight: 600;"><a href="docs/development/code-editor.html#completion">Code completion</a> &middot; <a href="docs/development/validation-and-publishing.html">validation with full trace</a> &middot; <a href="docs/development/validation-and-publishing.html#publishing">versioned</a></p>
         </div>
 
         <div class="codecard" aria-label="Example agent definition">
@@ -296,10 +286,10 @@
   <span class="tk-com">// An agent is a set of functions. Execution starts in main.</span>
   <span class="tk-key">&quot;functions&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
     <span class="tk-key">&quot;main&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
-      <span class="tk-com">// A function is an ordered list of commands, from the 23.</span>
+      <span class="tk-com">// A function is an ordered list of commands.</span>
       <span class="tk-key">&quot;commands&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
         <span class="tk-com">// API profile: base URL, auth, pool. Secrets stay out.</span>
-        <span class="tk-com">// sys.query is the request search routed to this agent.</span>
+        <span class="tk-com">// sys.query is the request that search routed to this agent.</span>
         <span class="tk-key">&quot;api&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
           <span class="tk-key">&quot;profile&quot;</span><span class="tk-pun">:</span> <span class="tk-str">&quot;intranet&quot;</span><span class="tk-pun">,</span>
           <span class="tk-key">&quot;url&quot;</span><span class="tk-pun">:</span> <span class="tk-str">&quot;/policies/search&quot;</span><span class="tk-pun">,</span>
@@ -349,9 +339,9 @@
           </p>
         </article>
         <article class="pcard">
-          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M7 4v5"/></svg></div>
-          <h3>Agent development</h3>
-          <p>Development environment provides code completion, context help, AI assisted draft creation and validation runs with trace output. Agents are versioned.</p>
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-15.5 6.2M3 12a9 9 0 0 1 15.5-6.2"/><path d="M3 21v-5h5M21 3v5h-5"/></svg></div>
+          <h3>Operational continuity</h3>
+          <p>Never have to restart agent servers. A change to configuration is live on the next agent run. A running agent keeps running with the old configuration.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 4-4 16"/></svg></div>
@@ -361,8 +351,7 @@
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M17.5 13.5a6.5 6.5 0 0 1 4 6.5"/></svg></div>
           <h3>Access &amp; roles</h3>
-          <p>Four roles: users run searches; developers build agents; administrators manage users and the system; owners manage the account and billing.
-          </p>
+          <p>Four roles: users, developers, administrators and owners. Service accounts for bots and scripts. Built-in authentication as well as single sign-on.</p>
         </article>
       </div>
     </div>
