@@ -718,6 +718,12 @@ runtime/overview.html (change live on the next run on every server; running agen
 runtime). The old development card text (completion, AI drafts, trace, versioned) is now
 covered by the framework section's linked line.
 
+## State on 2026-09-13 (Platform card: Access & roles rewritten; not deployed)
+Ram: four roles, service accounts for bots, SSO-OIDC; rewrite as I see fit. Card text now:
+"Four roles: users, developers, administrators and owners. Service accounts for bots and
+scripts. Single sign-on with OpenID Connect, beside password sign-in." (the old per-role
+clauses are gone).
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
