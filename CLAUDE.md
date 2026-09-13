@@ -673,6 +673,22 @@ single-sign-on.html: "and for scripts, which sign in with a password" removed (s
 service accounts). Sweep for scriptLogin/script token/scriptAccess is clean; 31 examples
 valid.
 
+## State on 2026-09-13 (framework section: prompts instead of the command groups - TRIAL, not deployed)
+Ram: "I want to see how it looks" with the command groups replaced by "developers don't
+hand-code agents" + sample prompts, and a "- command list" link to the docs commands page; he
+asked WHERE the docs list of sample prompts lives - answer: the retired AI assist page had
+"sample requests" + "Workflows it can write" (RAG / tools with functions / tools with MCP /
+deep agents / human-in-the-loop / parallel), gone since this morning's merge; the only current
+prompt list is the three on getting started. Applied in index.html (copy of the previous page
+in <scratchpad>/index_before_prompts.html): the .cmdgroups block + "Commands" h3 + the 23
+linked chips are REPLACED by a paragraph "Developers describe agents rather than hand-code
+them. Draft with AI writes the draft from a sentence:", a .prompts list of five italic
+quote-cards (RAG via intranet API / tool-calling orders API / Jira MCP ticket / orchestrator
+that finds and invokes / ask for approval before sending the renewal), and a muted line
+"Agents are built from 23 commands - command list." linking docs/commands/index.html. The
+.cmdgroups/.cg CSS and the chip links are gone with it. Measured: section 841px (was 847),
+columns level (delta 0), pre fits. Screenshot sent. Ram decides keep/revert.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
