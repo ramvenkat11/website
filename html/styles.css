@@ -1,19 +1,16 @@
-/* Search2o website — light, navy-branded design system.
-   Brand colors sampled from the wordmark: navy #1d2b4a, slate #8fa1bd. */
-
 :root {
-  --ink: #16223d;          /* headings */
-  --body: #3d4a63;         /* body text */
-  --muted: #64718a;        /* secondary text */
-  --faint: #8b97ad;        /* tertiary text */
-  --line: #e4e9f2;         /* borders */
+  --ink: #16223d;
+  --body: #3d4a63;
+  --muted: #64718a;
+  --faint: #8b97ad;
+  --line: #e4e9f2;
   --line-soft: #edf1f7;
   --bg: #ffffff;
-  --bg-soft: #f6f8fb;      /* alternating sections */
-  --navy: #1d2b4a;         /* brand navy */
+  --bg-soft: #f6f8fb;
+  --navy: #1d2b4a;
   --navy-deep: #131f38;
-  --slate: #8fa1bd;        /* brand slate */
-  --blue: #2563eb;         /* action */
+  --slate: #8fa1bd;
+  --blue: #2563eb;
   --blue-ink: #1d4ed8;
   --teal: #0891b2;
   --ok: #15803d;
@@ -22,10 +19,10 @@
   --radius: 14px;
   --max: 1120px;
   color-scheme: light;
-  --card: #ffffff;              /* elevated surfaces (cards, inputs' parents) */
+  --card: #ffffff;
   --input-bg: #ffffff;
   --sel: #dbe6ff;
-  --logo-filter: none;          /* dark mode renders the navy wordmark white */
+  --logo-filter: none;
   --grid-line: rgba(29, 43, 74, .045);
   --hero-bg:
     radial-gradient(760px 420px at 14% -8%, rgba(37, 99, 235, .07), transparent 62%),
@@ -75,7 +72,6 @@ p { margin: 0; }
 
 .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 24px; }
 
-/* ---------- header ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 50;
   background: color-mix(in srgb, var(--bg) 86%, transparent);
@@ -105,7 +101,6 @@ p { margin: 0; }
 .theme-toggle .sun { display: none; }
 .theme-toggle .moon { display: block; }
 
-/* ---------- buttons ---------- */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
   padding: 11px 20px; border-radius: 10px; border: 1px solid transparent;
@@ -127,7 +122,6 @@ p { margin: 0; }
 .btn-onnavy { background: #fff; color: var(--navy); }
 .btn-onnavy:hover { background: #e8edf7; }
 
-/* ---------- hero ---------- */
 .hero {
   position: relative;
   padding: 84px 0 92px;
@@ -148,7 +142,7 @@ p { margin: 0; }
 }
 .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 56px; align-items: start; }
 .hero-grid .demo { margin-top: 75px; }
-/* sized so "Search that executes." stays on ONE line in the desktop column */
+
 .hero h1 { font-size: clamp(32px, 3.9vw, 46px); }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
@@ -183,7 +177,6 @@ p { margin: 0; }
 }
 .pip button:hover { background: var(--bg-soft); color: var(--ink); }
 
-/* hero demo card */
 .demo {
   position: relative;
   border: 1px solid var(--line); border-radius: 18px; background: var(--card);
@@ -224,8 +217,6 @@ p { margin: 0; }
 .demo-footnote { display: flex; align-items: center; gap: 8px; margin-top: 16px; color: var(--faint); font-size: 12.5px; }
 .demo-footnote svg { color: var(--slate); }
 
-/* staged entrance */
-/* the match lands at once; the run arrives after a pause and its lines stream in - search is not an LLM call */
 .demo .stage { opacity: 0; animation: rise .5s ease forwards; }
 .demo .stage-1 { animation-delay: .2s; animation-duration: .3s; }
 .demo .stage-2 { animation-delay: 1.5s; }
@@ -233,7 +224,7 @@ p { margin: 0; }
 .demo .stage-3 { animation-delay: 3.2s; }
 .demo .stage-4 { animation-delay: 3.9s; }
 .demo-time { margin-left: auto; align-self: flex-start; padding-top: 3px; color: var(--faint); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
-/* an ask pauses the agent and puts a form in the conversation */
+
 .demo-tag.ask { background: var(--tag-match-bg); color: var(--tag-match-fg); }
 .demo-form {
   display: flex; align-items: center; gap: 8px; padding: 9px 11px;
@@ -265,7 +256,6 @@ p { margin: 0; }
   .demo-search .caret { animation: none; }
 }
 
-/* ---------- sections ---------- */
 [id] { scroll-margin-top: 92px; }
 .section { padding: 88px 0; }
 .section.soft { background: var(--bg-soft); border-top: 1px solid var(--line-soft); border-bottom: 1px solid var(--line-soft); }
@@ -277,7 +267,6 @@ p { margin: 0; }
 }
 .section-head p { margin-top: 14px; font-size: 16.5px; color: var(--muted); }
 
-/* how it works — timeline */
 .howgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
 .steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
 .steps li { position: relative; padding: 0 0 34px 62px; counter-increment: step; }
@@ -298,7 +287,6 @@ p { margin: 0; }
 .steps h3 { margin-bottom: 6px; font-size: 17px; }
 .steps p { color: var(--muted); font-size: 15px; max-width: 46ch; }
 
-/* architecture mini-diagram (in how-it-works right column) */
 .arch { border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: var(--card-shadow-lg); padding: 32px 28px; }
 .arch .note { margin-top: 20px; color: var(--faint); font-size: 13px; }
 .arch-flow { display: grid; justify-items: center; }
@@ -340,17 +328,17 @@ p { margin: 0; }
 .arch-chips { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 10px; }
 .arch-fw { margin-top: 12px; padding: 11px 14px; border: 1px solid var(--feat-border); border-radius: 10px; background: var(--icon-bg); }
 .arch-fw strong { color: var(--ink); font-size: 13px; }
-/* the org box stacks: server -> what it calls */
+
 .arch-org { display: grid; justify-items: center; padding: 24px 18px; }
 .arch-org-lbl { justify-self: start; }
 .arch-org > .arch-node { width: 100%; }
-/* the systems the framework calls sit beside the spine, not on it */
+
 .arch-row { display: grid; grid-template-columns: 1fr auto auto; align-items: center; width: 100%; }
 .arch-hlink { position: relative; width: 34px; height: 2px; background: var(--slate); opacity: .55; }
-/* one trunk, one branch into each system the framework calls */
+
 .arch-sys { position: relative; display: grid; gap: 10px; justify-items: start; padding-left: 30px; }
 .arch-sys::before {
-  content: ""; position: absolute; left: 0; top: 12px; bottom: 12px;   /* the chips are 26.4px tall: 12px lands on the outer edge of the first and last arrow */
+  content: ""; position: absolute; left: 0; top: 12px; bottom: 12px;
   width: 2px; background: var(--slate); opacity: .55;
 }
 .arch-branch { position: relative; }
@@ -366,7 +354,7 @@ p { margin: 0; }
   padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px;
   background: var(--bg-soft); color: var(--muted); font-size: 12px; font-weight: 550;
 }
-/* the cloud holds two things, drawn like the framework box inside the server */
+
 .arch-node.cloud { padding: 18px 20px; }
 .arch-parts { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 12px; }
 .arch-part {
@@ -380,7 +368,6 @@ p { margin: 0; }
   background: var(--bg-soft); color: var(--muted); font-size: 12px; font-weight: 550;
 }
 
-/* platform cards */
 .cardgrid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
 .pcard {
   padding: 26px; border: 1px solid var(--line); border-radius: var(--radius);
@@ -397,7 +384,6 @@ p { margin: 0; }
 .pcard h3 { margin-bottom: 8px; font-size: 17px; }
 .pcard p { color: var(--muted); font-size: 14.5px; }
 
-/* example workflow — conversation */
 .convo-wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
 .convo { border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: var(--card-shadow-lg); overflow: hidden; }
 .convo-title {
@@ -434,16 +420,14 @@ p { margin: 0; }
 .convo-points li { display: flex; gap: 12px; align-items: flex-start; color: var(--body); font-size: 15.5px; }
 .convo-points svg { flex: 0 0 auto; margin-top: 3px; color: var(--blue); }
 
-/* framework — split with code */
 .split { display: grid; grid-template-columns: .92fr 1.08fr; gap: 56px; align-items: start; }
 .howgrid h2, .convo-wrap h2, .split h2 { font-size: 22px; }
 .howgrid .section-head { margin-bottom: 18px; }
 .howgrid > :last-child, .convo-wrap > :last-child, .split > :last-child { margin-top: 36px; }
 .convo-wrap > :last-child { margin-top: 37px; }
-/* reports: a two-line caption beside a tall thumbnail grid reads better centred */
+
 #reports .split { align-items: center; }
-/* the framework code card is as tall as the text column beside it: the grid stretches the card,
-   and the card is a column so its pre grows to fill it */
+
 #framework .split { align-items: stretch; }
 #framework .codecard { display: flex; flex-direction: column; }
 #framework .codecard pre { flex: 1 0 auto; }
@@ -465,18 +449,17 @@ p { margin: 0; }
   font-family: var(--mono); font-size: 12.5px; line-height: 1.75; color: #c7d3ea;
 }
 .codecard code { font-family: inherit; }
-.tk-key { color: #8ab4ff; }      /* json keys */
-.tk-str { color: #7fd8c1; }      /* strings */
-.tk-expr { color: #f0c674; }     /* { expressions } */
-.tk-pun { color: #5b6b8e; }      /* punctuation */
+.tk-key { color: #8ab4ff; }
+.tk-str { color: #7fd8c1; }
+.tk-expr { color: #f0c674; }
+.tk-pun { color: #5b6b8e; }
 .tk-bool { color: #d497e8; }
-.tk-com { color: #6f819f; font-style: italic; }   /* jsonc comments */
+.tk-com { color: #6f819f; font-style: italic; }
 .feature-list { list-style: none; margin: 30px 0 0; padding: 0; display: grid; gap: 13px; }
 .feature-list li { display: flex; gap: 12px; align-items: flex-start; font-size: 15.5px; color: var(--body); }
 .feature-list svg { flex: 0 0 auto; margin-top: 3px; color: var(--ok); }
 .feature-list strong { color: var(--ink); font-weight: 600; }
 
-/* stats strip under framework */
 .factrow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 56px; }
 .fact {
   padding: 22px 26px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card);
@@ -485,7 +468,6 @@ p { margin: 0; }
 .fact .n { display: block; color: var(--ink); font-size: 30px; font-weight: 750; letter-spacing: -0.03em; }
 .fact .l { display: block; margin-top: 4px; color: var(--muted); font-size: 14px; }
 
-/* getting started band */
 .band { position: relative; overflow: hidden; background: var(--band-bg); color: #c7d2e6; }
 .band::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
@@ -503,7 +485,6 @@ p { margin: 0; }
 .band .section-head p { color: #9fb0cc; }
 .band-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
 
-/* ---------- inner pages ---------- */
 .page-hero { padding: 72px 0 26px; }
 .page-hero .kicker { color: var(--blue-ink); }
 .page-hero h1 { font-size: clamp(22px, 2.4vw, 28px); font-weight: 700; }
@@ -557,7 +538,6 @@ p { margin: 0; }
 .shell button { display: inline-flex; padding: 7px; border: 0; border-radius: 7px; background: transparent; color: #7f92b8; cursor: pointer; }
 .shell button:hover { background: #1a2745; color: #fff; }
 
-/* forms */
 .form-card {
   max-width: 560px; margin-top: 18px;
   padding: 28px; border: 1px solid var(--line); border-radius: 16px;
@@ -596,7 +576,6 @@ p { margin: 0; }
 .or::before, .or::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 .reg-next { margin-top: 12px; }
 
-/* legal pages */
 .legal-body { max-width: 780px; }
 .legal-body h2 { font-size: 20px; margin: 34px 0 10px; }
 .legal-body h3 { font-size: 16.5px; margin: 24px 0 8px; }
@@ -607,7 +586,6 @@ p { margin: 0; }
 .legal-body strong { color: var(--ink); }
 .legal-body code { font-family: var(--mono); font-size: .9em; }
 
-/* pricing */
 .pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
 .price-card {
   position: relative; display: flex; flex-direction: column; padding: 34px; border-radius: 18px;
@@ -645,7 +623,6 @@ p { margin: 0; }
 .price-note { margin-top: 22px; }
 .help-line { margin-top: 40px; color: var(--ink); font-size: 15.5px; }
 
-/* support / contact */
 .contact-card {
   display: inline-grid; gap: 8px;
   padding: 14px 22px; border: 1px solid var(--line); border-radius: 12px;
@@ -656,7 +633,6 @@ p { margin: 0; }
 .contact-card .mail:hover { text-decoration: none; color: var(--blue-ink); }
 .contact-card p { color: var(--muted); font-size: 15px; }
 
-/* about */
 .quoteblock {
   display: inline-block; margin: 0 0 30px;
   padding: 14px 22px; border-radius: 12px;
@@ -667,13 +643,11 @@ p { margin: 0; }
 .page-hero.compact + .page-body { padding-top: 24px; }
 .quoteblock .hl { color: #9db4e0; }
 
-/* two-col info rows on inner pages */
 .tworow { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 980px; margin-top: 8px; }
 .info-card { padding: 28px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); box-shadow: var(--card-shadow); }
 .info-card h3 { margin-bottom: 10px; }
 .info-card p { color: var(--muted); font-size: 15px; }
 
-/* ---------- footer ---------- */
 .site-footer { background: var(--footer-bg); color: #93a5c4; }
 .footer-main { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; padding: 52px 0 40px; }
 .footer-brand img { width: 150px; height: auto; filter: brightness(0) invert(1); opacity: .92; }
@@ -688,10 +662,8 @@ p { margin: 0; }
   font-size: 13px; color: #7d90b3;
 }
 
-/* ---------- responsive ---------- */
 @media (max-width: 1000px) {
-  /* minmax(0, 1fr), not 1fr: a 1fr track cannot shrink below its content, and the demo's one-line
-     query and the diagram's side-by-side row pushed the column past a phone's width */
+
   .hero-grid, .howgrid, .convo-wrap, .split { grid-template-columns: minmax(0, 1fr); gap: 44px; }
   .hero-grid > *, .howgrid > *, .convo-wrap > *, .split > * { min-width: 0; }
   .hero-grid .demo { margin-top: 0; }
@@ -703,12 +675,11 @@ p { margin: 0; }
 }
 @media (max-width: 640px) {
   .header-row { flex-wrap: wrap; gap: 6px 14px; padding: 10px 0; }
-  .site-nav { order: 3; width: 100%; margin-left: 0; flex-wrap: wrap; }   /* wraps instead of scrolling sideways */
-  /* the hero demo: the query wraps, the ask form's options and button wrap */
+  .site-nav { order: 3; width: 100%; margin-left: 0; flex-wrap: wrap; }
+
   .demo-search, .demo-search span { white-space: normal; overflow-wrap: anywhere; }
   .demo-row, .demo-form { flex-wrap: wrap; }
-  /* the architecture diagram: the four systems become a wrapped row of chips under the server;
-     the fan-out connector needs a second column and is hidden */
+
   .arch-row { grid-template-columns: minmax(0, 1fr); }
   .arch-hlink, .arch-sys::before, .arch-branch::before, .arch-branch::after { display: none; }
   .arch-sys { display: flex; flex-wrap: wrap; gap: 6px; padding-left: 0; margin-top: 10px; }
@@ -723,9 +694,6 @@ p { margin: 0; }
   .numbered .step-sec::after { display: none; }
 }
 
-/* ---------- dark theme ----------
-   The two blocks below are generated from ONE token set and must stay identical.
-   System preference applies unless the user chose explicitly (data-theme, set by site.js). */
 :root[data-theme="dark"] {
   color-scheme: dark;
   --ink: #eef3fb;

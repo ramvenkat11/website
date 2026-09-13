@@ -45,10 +45,12 @@ identity="$(aws sts get-caller-identity --query Account --output text 2>/dev/nul
 [[ "$identity" == "$AWS_ACCOUNT" ]] || fail "AWS credentials are for account '${identity:-none}', expected $AWS_ACCOUNT"
 echo "AWS account $identity"
 
-if grep -E '^\s*apiUrl:' "$HTML/config.js" | grep -Eq 'localhost|127\.0\.0\.1'; then
-    fail "html/config.js points at a local server - restore the production apiUrl before deploying"
-fi
-echo "config.js apiUrl: $(grep -o 'apiUrl: *"[^"]*"' "$HTML/config.js")"
+# STANDING RULE (Ram, 2026-09-13): the website is never published unless config.js carries exactly the
+# production registration URL. A test or local URL here has gone live before; it must not again.
+PRODUCTION_API_URL="https://reg.api.search2o.com"
+api_url="$(grep -E '^\s*apiUrl:' "$HTML/config.js" | sed -E 's/.*apiUrl: *"([^"]*)".*/\1/')"
+[[ "$api_url" == "$PRODUCTION_API_URL" ]] || fail "html/config.js apiUrl is '${api_url:-missing}', not $PRODUCTION_API_URL - nothing is published"
+echo "config.js apiUrl: $api_url"
 
 if [[ -n "$(git -C "$ROOT" status --porcelain -- html docsrc gen)" ]]; then
     echo "note: uncommitted changes under html/, docsrc/ or gen/ - they will be deployed as they are on disk"

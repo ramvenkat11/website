@@ -1,4 +1,3 @@
-// Copy-to-clipboard buttons ([data-copy]) and footer year.
 document.querySelectorAll("[data-copy]").forEach(function (btn) {
   var original = btn.innerHTML;
   btn.addEventListener("click", function () {
@@ -13,10 +12,6 @@ document.querySelectorAll("[data-copy]").forEach(function (btn) {
 var year = document.getElementById("year");
 if (year) year.textContent = String(new Date().getFullYear());
 
-// Theme: system preference by default (pure CSS); the toggle sets an explicit
-// data-theme override, persisted. Toggling back to the system's own value clears
-// the override, so the page follows the system again. A tiny inline script in
-// each page's <head> re-applies the stored override before first paint.
 var themeBtn = document.querySelector(".theme-toggle");
 if (themeBtn) {
   var darkQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -43,11 +38,9 @@ if (themeBtn) {
   updateLabel();
 }
 
-// Account creation: one call to the API. Success returns the license key, shown
-// exactly once. The user sets a password on first sign-in to the GUI.
 (function () {
   if (!document.getElementById("reg-go1")) return;
-  var BASE = (window.SEARCH2O_CONFIG && window.SEARCH2O_CONFIG.apiUrl) || "https://api.search2o.com";
+  var BASE = (window.SEARCH2O_CONFIG && window.SEARCH2O_CONFIG.apiUrl) || "https://reg.api.search2o.com";
   var REG_ERRORS = {
     notHuman: "Human verification failed. Please try again.",
     didYouMean: "Please check your email address. Did you mean {didYouMean}?",
