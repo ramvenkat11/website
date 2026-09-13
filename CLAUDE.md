@@ -702,7 +702,8 @@ intranet API) and two EDIT-the-current-agent ("Ask for approval before the renew
 "Remember the customer's account number for the next question."). Then the closing became
 Ram's two lines: "An agent is defined in JSON using 23 commands (link). Strings enclosed in
 { } are evaluated as Python expressions, with built-in safeguards." and a muted 14.5px w600
-line, now "Code completion · validation with full trace · versioned", each linked:
+line, now "Code completion · Validation with full trace · Versioned" (each item capitalized,
+Ram 2026-09-13), each linked:
 development/code-editor.html#completion, development/validation-and-publishing.html, and its #publishing
 anchor (each publish creates a version) for "versioned".
 
