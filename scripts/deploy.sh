@@ -15,7 +15,7 @@ AWS_ACCOUNT="406848153313"
 SITE_URL="https://search2o.com"
 # docsweb/ is excluded from the sync itself: it holds the in-app docs data that s2oserver's
 # maintenance/docswebuploader.py maintains, so --delete must never touch it.
-SYNC_EXCLUDES=(--exclude "logo.svg" --exclude ".DS_Store" --exclude "*/.DS_Store" --exclude "docsweb/*")
+SYNC_EXCLUDES=(--exclude ".DS_Store" --exclude "*/.DS_Store" --exclude "docsweb/*")
 CACHE_CONTROL="public, max-age=600"   # CloudFront honours this as its TTL; deploys invalidate anyway
 INVALIDATION_POLL_SECONDS=10
 INVALIDATION_MAX_WAIT_SECONDS=600

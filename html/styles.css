@@ -22,7 +22,8 @@
   --card: #ffffff;
   --input-bg: #ffffff;
   --sel: #dbe6ff;
-  --logo-filter: none;
+  --logo-light: block;
+  --logo-dark: none;
   --grid-line: rgba(29, 43, 74, .045);
   --hero-bg:
     radial-gradient(760px 420px at 14% -8%, rgba(37, 99, 235, .07), transparent 62%),
@@ -81,7 +82,9 @@ p { margin: 0; }
 }
 .header-row { display: flex; align-items: center; gap: 28px; min-height: 68px; }
 .brand { display: flex; align-items: center; flex: 0 0 auto; }
-.brand img { display: block; width: clamp(136px, 13vw, 168px); height: auto; filter: var(--logo-filter); }
+.brand img { width: clamp(136px, 13vw, 168px); height: auto; }
+.brand .logo-light { display: var(--logo-light); }
+.brand .logo-dark { display: var(--logo-dark); }
 .site-nav { display: flex; align-items: center; gap: 2px; margin-left: auto; }
 .navlink {
   padding: 8px 12px; border-radius: 9px;
@@ -650,7 +653,8 @@ p { margin: 0; }
 
 .site-footer { background: var(--footer-bg); color: #93a5c4; }
 .footer-main { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; padding: 52px 0 40px; }
-.footer-brand img { width: 150px; height: auto; filter: brightness(0) invert(1); opacity: .92; }
+.footer-brand img { width: 150px; height: auto; opacity: .92; }
+.footer-brand .logo-light { display: none; }
 .footer-brand p { margin-top: 14px; max-width: 34ch; font-size: 13.5px; line-height: 1.6; color: #7d90b3; }
 .footer-cols { display: flex; gap: 72px; }
 .fcol h4 { color: #cdd8ec; font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px; }
@@ -713,7 +717,8 @@ p { margin: 0; }
   --sel: #23407c;
   --card-shadow: 0 1px 2px rgba(0, 0, 0, .5), 0 8px 28px -12px rgba(0, 0, 0, .55);
   --card-shadow-lg: 0 2px 4px rgba(0, 0, 0, .5), 0 24px 60px -20px rgba(0, 0, 0, .65);
-  --logo-filter: brightness(0) invert(1);
+  --logo-light: none;
+  --logo-dark: block;
   --grid-line: rgba(143, 161, 189, .05);
   --hero-bg:
     radial-gradient(760px 420px at 14% -8%, rgba(77, 141, 255, .13), transparent 62%),
@@ -756,7 +761,8 @@ p { margin: 0; }
   --sel: #23407c;
   --card-shadow: 0 1px 2px rgba(0, 0, 0, .5), 0 8px 28px -12px rgba(0, 0, 0, .55);
   --card-shadow-lg: 0 2px 4px rgba(0, 0, 0, .5), 0 24px 60px -20px rgba(0, 0, 0, .65);
-  --logo-filter: brightness(0) invert(1);
+  --logo-light: none;
+  --logo-dark: block;
   --grid-line: rgba(143, 161, 189, .05);
   --hero-bg:
     radial-gradient(760px 420px at 14% -8%, rgba(77, 141, 255, .13), transparent 62%),

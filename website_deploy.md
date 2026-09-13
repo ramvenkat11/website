@@ -53,7 +53,7 @@ distribution is deployed and verifies the redirects.
 Run from `docs/website/html`, with AWS credentials for account 406848153313:
 
     aws s3 sync . s3://search2o.com/ \
-        --exclude logo.svg --exclude ".DS_Store" --exclude "*/.DS_Store" \
+        --exclude ".DS_Store" --exclude "*/.DS_Store" \
         --acl public-read
 
     aws cloudfront create-invalidation --distribution-id E330RKTBY31L8X --paths "/*"
@@ -82,7 +82,8 @@ Objects are uploaded with `--acl public-read`; the bucket has ACLs enabled for t
 
 ## Notes
 
-- `logo.svg` (589 KB) is excluded: nothing references it; `logo.png` is the wordmark in use.
+- `logo.png` is the light wordmark and `logo-dark.png` the dark one; the pages carry both and the
+  theme tokens show one.
 - The script syncs with `--delete`, so a retired page leaves the bucket at the next deploy. Only
   `docsweb/` is kept, being excluded from the sync.
 - `maintenance/docswebuploader.py` uploads the OLD in-app docs (`docsweb/` prefix) and is not part
