@@ -816,6 +816,17 @@ post to apiUrl directly and REVERTED before deploying. site.js:50 fallback is no
 https://reg.api.search2o.com (was api.search2o.com). Memory saved
 (feedback-config-apiurl-production-only).
 
+## State on 2026-09-13 (all comments stripped from the public files; deploying)
+Ram saw the old comment block on the live config.js (his local copy was already clean and
+went live in the previous deploy). Then: remove every comment I wrote from all files. Stripped
+from the public files: styles.css (54 comment blocks, 41.8 -> 39.0 KB), docs/docs.css (16),
+site.js (7 // lines), index.html (8 section-marker HTML comments). gettingstarted/pricing/
+about/404/legal pages and the generated docs had none; config.js is clean. Verified: only
+comments removed (index.html byte-equal after a comment-only diff; the 89/90 div count
+imbalance is PRE-EXISTING), CSS brace counts intact, site.js parses, stylesheets load with 338
+and 108 rules and styles apply on index/gettingstarted/a docs page. Pre-strip copies in
+<scratchpad>/precomment/. Non-public sources (docsrc, gen/*.py, scripts/) keep their comments.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
@@ -856,6 +867,11 @@ https://reg.api.search2o.com (was api.search2o.com). Memory saved
   words"): on the getting-started pages my first-agent step ran to two paragraphs plus four
   prompts; the kept version is one line, three prompts, "Validate, then publish." When a step
   can be a sentence and a list, that is the whole step. Cut before showing, not after.
+- NO COMMENTS IN PUBLIC FILES (Ram, 2026-09-13): anything served from the bucket - html/*.html,
+  html/legal/*.html, styles.css, docs/docs.css, site.js, config.js - carries no comments of
+  mine, ever ("You cannot write such public comments that anyone can see"). Explanations go in
+  CLAUDE.md, in docsrc/gen sources (not served), or in scripts/. All comments were stripped on
+  2026-09-13; keep it that way.
 - Tight scope: do what was asked, report related findings instead of fixing them uninvited.
 - Cite files as `path/file.html:123` (Ram runs Claude in a JetBrains terminal).
 - Ask before anything irreversible; deleting from the S3 bucket is irreversible.
