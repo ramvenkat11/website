@@ -706,6 +706,16 @@ line, now "Code completion · validation with full trace · versioned", each lin
 development/code-editor.html#completion, development/validation-and-publishing.html, and its #publishing
 anchor (each publish creates a version) for "versioned".
 
+## State on 2026-09-13 (Platform card: Agent development -> Operational continuity; not deployed)
+Ram: replace the Agent development box with operational continuity, about servers syncing
+themselves with the latest configs. index.html card now: h3 "Operational continuity", a
+sync-arrows icon, text "Agent servers keep themselves current. A change to configuration,
+profiles or agents is live on the next run, on every server, with no restart. A running agent
+keeps the runtime it started with, so a change never breaks an agent mid-call." - facts from
+runtime/overview.html (change live on the next run on every server; running agents keep their
+runtime). The old development card text (completion, AI drafts, trace, versioned) is now
+covered by the framework section's linked line.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
