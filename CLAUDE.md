@@ -695,7 +695,11 @@ draft. The developer validates and publishes." - Ram: "Oh boy! This is home page
 from a sentence:" (one line leading into the prompts). Then the closing paragraph became Ram's: "An agent is
 defined in JSON as a set of functions, each containing an ordered sequence of commands - there
 are 23 commands (link). Strings enclosed in { } ... The code editor helps developers hand-code
-the parts they need." - the separate command-list line and its .cmdlink CSS are gone.
+the parts they need." - the separate command-list line and its .cmdlink CSS are gone. Then: "from a sentence" cut
+("Agents are drafted together with AI:"); the code-editor sentence is its own paragraph; the
+prompts are three CREATE (orders-API tool calling / Jira MCP ticket / policy answers from the
+intranet API) and two EDIT-the-current-agent ("Ask for approval before the renewal is sent." /
+"Remember the customer's account number for the next question.").
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
