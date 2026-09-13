@@ -830,6 +830,15 @@ and 108 rules and styles apply on index/gettingstarted/a docs page. Pre-strip co
 I9TMML5XD45OLPLQSLBSQ10578): live config.js, site.js, styles.css, docs.css and index.html
 verified comment-free.
 
+## State on 2026-09-13 (new favicon: search icon, transparent; not deployed)
+Ram: a better favicon - just a search icon, transparent background. html/favicon.svg is now a
+magnifying glass in the brand action blue #2563eb (circle r18 at 25,25 stroke 8.5; handle
+39,39 -> 58,58 stroke 10, round cap), no background, NO COMMENTS (the old file carried a long
+comment block - gone with it; old file saved at <scratchpad>/favicon_old.svg). Previewed at
+16/24/32/64px on white, #f1f3f4, #3c3c3c and #202124 tab strips - legible on all; then scaled
+up ~8% so the 16px tab icon fills its box. Referenced unchanged as favicon.svg by the site
+pages, /favicon.svg by 404.html, and by the docs template. og:image is still logo.png.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
