@@ -724,6 +724,14 @@ Ram: four roles, service accounts for bots, SSO-OIDC; rewrite as I see fit. Card
 scripts. Single sign-on with OpenID Connect, beside password sign-in." (the old per-role
 clauses are gone).
 
+## State on 2026-09-13 (DEPLOYED: the whole held batch)
+Ram: "Deploy it". scripts/deploy.sh --go: 130 uploads (index.html, gettingstarted.html,
+docs.css, the rebuilt docs incl. single-sign-on, service-accounts, code-editor, merging,
+rest-api pages, compile-rules, allowlist), invalidation I5AQ4Y48W9NMO1AQ5AL4XD2DKE Completed,
+spot checks 200, live index md5 == local. STALE in the bucket: docs/development/
+ai-assist.html (retired page, still answers 200 with the old sidebar) - Ram asked whether to
+rm it (irreversible, his call).
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
