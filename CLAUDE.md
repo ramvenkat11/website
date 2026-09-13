@@ -544,6 +544,34 @@ when building its runtime and logs a failed import. allowlist.html's "Registerin
 code" list lost the key-function bullet (LLM adapters, vault function, operator rewrite
 function remain). Rebuilt; not deployed.
 
+## State on 2026-09-12 (Single sign-on is REAL: OIDC page written; NOT DEPLOYED, Ram's order)
+Ram: OIDC integration exists (content/sso.md); write the topic; an account can use built-in
+and SSO at the same time. Then mid-task: "Don't deploy this yet." docsrc/system-management/
+single-sign-on.html REWRITTEN from sso.md (the roadmap page is gone): lead (Entra ID, Okta,
+Google Workspace, any OpenID Connect provider; the provider says who, Search2o decides
+membership/role/session; both methods together, password off only once SSO is proven);
+Before you start; Step 1 register a web application with the authorization code flow, the
+Search2o UI address as redirect URI, client ID + secret + issuer; Step 2 the settings as the
+GENERATED OidcAuthModel table (issuer is all Search2o needs, the rest read from
+<issuer>/.well-known/openid-configuration) + the client-secret-never-returned note; Step 3
+test then decide (leave on: rollout, contractors, scripts; off: refused until SSO is
+configured, only while the provider is available); Per-provider notes (Entra issuer
+.../<tenant-id>/v2.0 and preferred_username; Okta issuer forms; Google accounts.google.com);
+What your users see; Roles and membership (Create user -> user role); Removing people
+(sessions and integration tokens continue; remove in Search2o too; sign-out is Search2o only);
+What Search2o stores (provider id + issuer per user; secret encrypted, never returned; the
+exchange happens in Search2o Cloud, the agent server never holds the secret). VERIFIED against
+models/systemconfig.py: AuthModel has builtinAuth + isBuiltinAllowed + sso (OidcAuthModel |
+Saml2AuthModel) with the some_way_in validator; SsoProvisioning reject/createUser.
+authentication.html: lead now says SSO can be used alongside or instead of passwords; new
+"Sign-in methods" h2 with the AuthModel table, and the old Settings h2 is "Password sign-in
+settings". integration-tokens.html: "will support ... OIDC or SAML" -> "can sign people in
+... with OpenID Connect". NOT DOCUMENTED, flagged: Saml2AuthModel exists in the model union
+(Ram said OIDC; the docs mention only OpenID Connect). docs.css: `td.dflt` no longer nowrap
+(overflow-wrap: anywhere) - the scopes default ['openid','profile','email'] widened the SSO
+table to 811/770 and the pre-existing Password policy table's Default column was 501px; both
+fit now, and the four checked pages' tables all fit. 126 pages, 32 examples valid.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
