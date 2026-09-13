@@ -1,12 +1,13 @@
-<p class="lead">When several developers create drafts of the same published agent, each developer works on an independent copy. Publishing reconciles the copies.</p>
+<p class="lead">When several developers create drafts of the same published agent, each developer works on an independent copy. When one of them publishes, the others' drafts are behind the agent, and Search2o Cloud brings a draft up to date on request.</p>
 
 <h2>How it works</h2>
-<p>A draft remembers the version of the agent the draft was created from. If the agent has been republished since, publishing the draft opens a merge view in the GUI. The merge view shows three definitions with the differences highlighted: the version the draft started from, the current published version, and the draft. Conflicts are resolved in the merged definition. The merged definition is then validated and published like any draft.</p>
-<p>The process is similar to a source-code merge in a version control system. If the agent has not changed since the draft was created, publishing needs no merge.</p>
+<p>A draft remembers the version of the agent the draft was created from. When another developer publishes that agent, the draft is out of date. The next time the draft is opened, the GUI says so and offers to merge. On accepting, Search2o Cloud produces a merged definition from the draft and the newly published version, saves the merged definition to the draft, and marks the draft as based on the current version. The developer then reviews the merged draft, validates it, and publishes it like any draft; the merge clears the draft's validation, so validation runs again.</p>
+<p>A draft that is behind cannot be published until it is merged. If the agent has not changed since the draft was created, there is nothing to merge and publishing proceeds directly. In the REST API the same step is the <code>mergeDraft</code> call, offered when <code>getDraft</code> reports that the agent has changed.</p>
 
 <h2>Practical advice</h2>
 <ul>
-  <li>Drafts are best kept short-lived. The longer a draft waits, the more likely a merge becomes.</li>
+  <li>Drafts are best kept short-lived. The longer a draft waits, the more likely a merge becomes, and the more the two sides drift apart.</li>
+  <li>A merged draft deserves a read before validation: the merge is done for you, and the developer decides whether the result is the agent intended.</li>
   <li>The published agent&rsquo;s history is worth a look before starting a large change.</li>
-  <li>Move shared prompt text into <a href="../profiles/prompt-profiles.html">prompt profiles</a>, so that wording changes never need a merge.</li>
+  <li>Shared prompt text is best kept in <a href="../profiles/prompt-profiles.html">prompt profiles</a>, so that wording changes never need a merge.</li>
 </ul>

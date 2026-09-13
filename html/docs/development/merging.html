@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Multiple developers and merging — Search2o docs</title>
-<meta name="description" content="When several developers create drafts of the same published agent, each developer works on an independent copy. Publishing reconciles the copies.">
+<meta name="description" content="When several developers create drafts of the same published agent, each developer works on an independent copy. When one of them publishes, the others&#x27; draft…">
 <link rel="canonical" href="https://search2o.com/docs/development/merging.html">
 <meta property="og:title" content="Multiple developers and merging — Search2o docs">
-<meta property="og:description" content="When several developers create drafts of the same published agent, each developer works on an independent copy. Publishing reconciles the copies.">
+<meta property="og:description" content="When several developers create drafts of the same published agent, each developer works on an independent copy. When one of them publishes, the others&#x27; draft…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/development/merging.html">
 <meta property="og:image" content="https://search2o.com/logo.png">
@@ -43,17 +43,18 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../development/index.html'>Development process</a></div>
     <article class="docs-article">
       <h1>Multiple developers and merging</h1>
-      <p class="lead">When several developers create drafts of the same published agent, each developer works on an independent copy. Publishing reconciles the copies.</p>
+      <p class="lead">When several developers create drafts of the same published agent, each developer works on an independent copy. When one of them publishes, the others' drafts are behind the agent, and Search2o Cloud brings a draft up to date on request.</p>
 
 <h2 id="how-it-works">How it works</h2>
-<p>A draft remembers the version of the agent the draft was created from. If the agent has been republished since, publishing the draft opens a merge view in the GUI. The merge view shows three definitions with the differences highlighted: the version the draft started from, the current published version, and the draft. Conflicts are resolved in the merged definition. The merged definition is then validated and published like any draft.</p>
-<p>The process is similar to a source-code merge in a version control system. If the agent has not changed since the draft was created, publishing needs no merge.</p>
+<p>A draft remembers the version of the agent the draft was created from. When another developer publishes that agent, the draft is out of date. The next time the draft is opened, the GUI says so and offers to merge. On accepting, Search2o Cloud produces a merged definition from the draft and the newly published version, saves the merged definition to the draft, and marks the draft as based on the current version. The developer then reviews the merged draft, validates it, and publishes it like any draft; the merge clears the draft's validation, so validation runs again.</p>
+<p>A draft that is behind cannot be published until it is merged. If the agent has not changed since the draft was created, there is nothing to merge and publishing proceeds directly. In the REST API the same step is the <code>mergeDraft</code> call, offered when <code>getDraft</code> reports that the agent has changed.</p>
 
 <h2 id="practical-advice">Practical advice</h2>
 <ul>
-  <li>Drafts are best kept short-lived. The longer a draft waits, the more likely a merge becomes.</li>
+  <li>Drafts are best kept short-lived. The longer a draft waits, the more likely a merge becomes, and the more the two sides drift apart.</li>
+  <li>A merged draft deserves a read before validation: the merge is done for you, and the developer decides whether the result is the agent intended.</li>
   <li>The published agent&rsquo;s history is worth a look before starting a large change.</li>
-  <li>Move shared prompt text into <a href="../profiles/prompt-profiles.html">prompt profiles</a>, so that wording changes never need a merge.</li>
+  <li>Shared prompt text is best kept in <a href="../profiles/prompt-profiles.html">prompt profiles</a>, so that wording changes never need a merge.</li>
 </ul>
 
     </article>
