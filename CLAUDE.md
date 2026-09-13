@@ -732,6 +732,22 @@ spot checks 200, live index md5 == local. STALE in the bucket: docs/development/
 ai-assist.html (retired page, still answers 200 with the old sidebar) - Ram asked whether to
 rm it (irreversible, his call).
 
+## State on 2026-09-13 (sync deletes; pricing full stops; not deployed)
+Ram: make sync always delete unused files. scripts/deploy.sh now runs `aws s3 sync --delete`
+in both the dry run and the deploy, with `--exclude "docsweb/*"` so the in-app docs data can
+never be deleted or overwritten (an excluded path is skipped on both sides of a sync); the
+--delete-stale flag, the stale listing and the type-the-bucket-name prompt are gone; the
+dry-run heading says "(delete: an object with no local file)". Dry run today: delete
+docs/development/ai-assist.html, upload index.html (Ram's own edit) and pricing.html.
+website_deploy.md and the CLAUDE.md deploy section updated (no more "sync never deletes").
+FULL STOPS: the pricing card bullets were mixed (Individual and Team: fragments without stops;
+Evaluation: two sentences with stops + one fragment). Rule applied: bullets are fragments
+without full stops; the note paragraphs keep theirs. The two Evaluation bullets became
+"Deploy Search2o on your servers and bring others in" and "Publish agents, describe them, and
+let others discover them dynamically" (Ram's words, joined/trimmed - flagged). index,
+gettingstarted and about were checked line by line: all sentences end with a stop, headings
+and the "Code completion · ..." label carry none - consistent, nothing changed.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
@@ -1899,8 +1915,8 @@ concluding a CSS change did not take.
         --exclude "*/.DS_Store" --acl public-read
     aws cloudfront create-invalidation --distribution-id E330RKTBY31L8X --paths "/docs/*"   # or "/*"
 
-`sync` never deletes: a page removed from the build must be removed from the bucket with
-`aws s3 rm` (recursive for a directory), or the old URL keeps serving. Verify with curl after
+scripts/deploy.sh syncs with `--delete` (since 2026-09-13): a page removed from the build is
+removed from the bucket at the next deploy; only `docsweb/` is excluded from the sync. Verify with curl after
 the invalidation reports Completed (about a minute). The site pages under html/ are edited by
 hand; a single page can be pushed with `aws s3 cp ... --acl public-read --content-type text/html`.
 
