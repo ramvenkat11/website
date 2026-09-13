@@ -225,11 +225,14 @@ p { margin: 0; }
 .demo-footnote svg { color: var(--slate); }
 
 /* staged entrance */
+/* the match lands at once; the run arrives after a pause and its lines stream in - search is not an LLM call */
 .demo .stage { opacity: 0; animation: rise .5s ease forwards; }
-.demo .stage-1 { animation-delay: .25s; }
-.demo .stage-2 { animation-delay: .85s; }
-.demo .stage-3 { animation-delay: 1.5s; }
-.demo .stage-4 { animation-delay: 2.15s; }
+.demo .stage-1 { animation-delay: .2s; animation-duration: .3s; }
+.demo .stage-2 { animation-delay: 1.5s; }
+.demo .stage-2 .p + .p { opacity: 0; animation: rise .4s ease forwards; animation-delay: 2.4s; }
+.demo .stage-3 { animation-delay: 3.2s; }
+.demo .stage-4 { animation-delay: 3.9s; }
+.demo-time { margin-left: auto; align-self: flex-start; padding-top: 3px; color: var(--faint); font-size: 12px; font-variant-numeric: tabular-nums; white-space: nowrap; }
 /* an ask pauses the agent and puts a form in the conversation */
 .demo-tag.ask { background: var(--tag-match-bg); color: var(--tag-match-fg); }
 .demo-form {
@@ -258,7 +261,7 @@ p { margin: 0; }
 @keyframes rise { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
 @keyframes blink { 50% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
-  .demo .stage { animation: none; opacity: 1; }
+  .demo .stage, .demo .stage-2 .p + .p { animation: none; opacity: 1; }
   .demo-search .caret { animation: none; }
 }
 
