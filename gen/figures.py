@@ -537,7 +537,7 @@ def _expression_bounds():
 RAIL = ["#AGENTS", "Drafts", "Published", "Search", "#PROFILES", "LLM", "Prompt", "API", "Database", "MCP",
         "#GUARDRAILS", "Compile rules", "Allowlist", "Runtime"]
 RAIL2 = ["#OPERATIONS", "Agent servers", "Connection pools", "Secrets & encryption", "#REPORTS", "Performance", "Cost", "Errors", "Usage",
-         "#ADMIN", "Users", "Authentication", "License", "#BILLING", "Account", "Invoices"]
+         "#ADMIN", "Users", "Service accounts", "Authentication", "License", "#BILLING", "Account", "Invoices"]
 
 
 def _report(name, title, header_cols, rows, widths, trend_labels):

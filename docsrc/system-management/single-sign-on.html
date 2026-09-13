@@ -1,13 +1,51 @@
-<p class="lead">Search2o authenticates with email and password today. Single sign-on is on our roadmap, and we would welcome your input on it.</p>
+<p class="lead">By default, people sign in to Search2o with an email and a password. With single sign-on they sign in through your company's identity provider instead: Microsoft Entra ID, Okta, Google Workspace, or any provider that speaks OpenID Connect. The identity provider checks who the person is. Search2o still decides everything else: whether the person is a member of your account, which role the person has, and how long the session lasts.</p>
 
-<h2>What we expect to support</h2>
-<p>We expect to support SAML 2.0 and OpenID Connect. Either would let your company keep its own identity provider as the place where people sign in, so a person could reach Search2o with the account you already manage.</p>
-<p>Until then, sign-in is the built-in email and password described in <a href="authentication.html">Authentication</a>, with the session and password rules an administrator sets.</p>
+<p>Password sign-in and single sign-on can be used together. An account keeps its password sign-in while single sign-on is set up and proven. After that, an administrator can turn password sign-in off so that single sign-on is the only way in, or leave both on for good. Single sign-on is configured on the Admin &rsaquo; Authentication page.</p>
 
-<h2>We would like to hear from you</h2>
-<p>What our customers need will guide what we build first. If single sign-on matters to your organization, we would be glad to know which standard and which identity provider you use.</p>
-<p>We would also welcome a pilot. If your company is open to working with us on one, your requirements would help shape what we build.</p>
-<p>The <strong>Help</strong> icon in the GUI reaches us, and so does <a href="mailto:info@search2o.com">info@search2o.com</a>. See <a href="../support-licensing/support.html">Support</a>.</p>
+<h2>Before you start</h2>
+<ul>
+  <li>An account at your identity provider where you can register an application. Registering the application is an administrator task at the provider.</li>
+  <li>The address your users open Search2o at, such as <code>https://search2o.example.com/ui</code>. You register this address at the provider and enter the same address in Search2o. The two must match exactly.</li>
+</ul>
 
-<h2>What we expect to keep the same</h2>
-<p>We intend to keep roles in Search2o. An identity provider would say who a person is, and Search2o would still decide what that person may do. We also expect <a href="../chat-integrations/integration-tokens.html">integration tokens</a> and the connect flow for a chat bot to work as they do today.</p>
+<h2>Step 1: register an application at your identity provider</h2>
+<p>At your identity provider, create a new application. Providers call it an app registration, a client, or an application integration. Set the application up as a <strong>web application</strong> that uses the <strong>authorization code flow</strong>. When the provider asks for a redirect URI, also called a callback or sign-in return URL, enter your Search2o address, the same one your users open:</p>
+<x-code lang="text">
+https://search2o.example.com/ui
+</x-code>
+<p>The provider then gives you a <strong>client ID</strong> and a <strong>client secret</strong>. Please copy both before you leave the page; most providers show the secret only once. You also need the provider's <strong>issuer URL</strong>, the base address the provider publishes its configuration under. The exact form differs by provider; see the notes below.</p>
+
+<h2>Step 2: enter the details in Search2o</h2>
+<p>On the Admin &rsaquo; Authentication page, choose OpenID Connect as the single sign-on method and fill in the settings. The issuer is all Search2o needs to find the provider: everything else about the provider is read from <code>&lt;issuer&gt;/.well-known/openid-configuration</code>. The default scopes, claims and verified-email rule suit almost every provider.</p>
+<!--fields:model:OidcAuthModel-->
+<p>The client secret is stored encrypted and is never returned, so the settings page shows the field blank once the secret is saved. To replace the secret, type a new one. To change any other setting, leave the field blank and the stored secret is kept.</p>
+
+<h2>Step 3: test it, then decide about passwords</h2>
+<p>Keep password sign-in on while you test. Save the settings, then open Search2o in a new browser session: the sign-in dialog offers single sign-on beside the password form. Sign in through your provider and confirm that you arrive in Search2o as the right person.</p>
+<p>Once that works, decide whether to turn password sign-in off.</p>
+<ul>
+  <li><strong>Leave it on</strong> to let people use either method. This helps during a rollout, and it is necessary for anyone who is not in your identity provider, such as an outside contractor, and for scripts, which sign in with a password.</li>
+  <li><strong>Turn it off</strong> so that single sign-on is the only way in. Search2o refuses to turn password sign-in off until single sign-on is configured, so that an account always keeps a way to sign in. Once it is off, a person can sign in only while your provider is available, so we would suggest turning it off only once single sign-on is proven.</li>
+</ul>
+
+<h2>Per-provider notes</h2>
+<p>The settings that differ by provider are the issuer and, occasionally, the email claim.</p>
+<ul>
+  <li><strong>Microsoft Entra ID.</strong> The issuer is <code>https://login.microsoftonline.com/&lt;tenant-id&gt;/v2.0</code>, with your tenant's id and the <code>/v2.0</code> on the end. Entra does not always send <code>email</code>; if sign-ins are refused for a missing email, set the email claim to <code>preferred_username</code>. Register the redirect URI under the Web platform.</li>
+  <li><strong>Okta.</strong> The issuer is <code>https://&lt;your-org&gt;.okta.com</code>, or <code>https://&lt;your-org&gt;.okta.com/oauth2/default</code> if you use the default authorization server. Create an OIDC web application and enable the authorization code grant.</li>
+  <li><strong>Google Workspace.</strong> The issuer is <code>https://accounts.google.com</code>. Create an OAuth client of type Web application in the Google Cloud console.</li>
+</ul>
+<p>Any other OpenID Connect provider works the same way: register a web application with your Search2o address as the redirect URI, and give Search2o the issuer, the client ID and the client secret.</p>
+
+<h2>What your users see</h2>
+<p>A person opening Search2o is sent to your identity provider to sign in, and comes straight back signed in, without typing a Search2o password. When both sign-in methods are on, the person is offered the choice.</p>
+
+<h2>Roles and membership</h2>
+<p>The identity provider says only who the person is. The person's <a href="users-and-roles.html">role</a> is set in Search2o, as it always has been, and signing in through the provider changes nobody's role. A user created automatically by the <em>Create user</em> setting starts with the <code>user</code> role; an administrator promotes the user from the Users page.</p>
+
+<h2>Removing people</h2>
+<p>Search2o and your identity provider are separate. Disabling a person at the identity provider stops the person from starting a new Search2o session; sessions the person already has continue, and the person's <a href="../chat-integrations/integration-tokens.html">integration tokens</a> stay valid. When someone leaves, please remove the person in Search2o as well, from the Users page.</p>
+<p>Signing out of Search2o ends the Search2o session only. The person stays signed in at your identity provider.</p>
+
+<h2>What Search2o stores, and where the secret lives</h2>
+<p>For each user, Search2o stores the identity provider's permanent id for that person together with the issuer, so the same email address can never be quietly reassigned to a different person. The client secret is encrypted before it is written and is never sent back out. The exchange with your identity provider happens in Search2o Cloud; your agent server never holds the secret and never talks to the provider.</p>

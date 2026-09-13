@@ -1,4 +1,4 @@
-<p class="lead">Search2o has built-in authentication with email and password. An administrator sets the session and password rules to the organization's requirements on the Admin &rsaquo; Authentication page. Support for <a href="single-sign-on.html">single sign-on</a> is planned.</p>
+<p class="lead">Search2o has built-in authentication with email and password. An administrator sets the session and password rules to the organization's requirements on the Admin &rsaquo; Authentication page. People can also sign in through your identity provider with <a href="single-sign-on.html">single sign-on</a>, alongside password sign-in or instead of it.</p>
 
 <h2>Sessions</h2>
 <p>A browser sign-in creates a session held in an HTTP-only cookie. The session ends after a period of inactivity, and in any case after a maximum lifetime; the defaults are one hour and twelve hours. A script signs in separately and receives a bearer token with its own lifetime, one hour by default. A change to any of these affects a signed-in user only when that user signs in again. See <a href="../rest-api/authentication.html">Authentication in the REST API</a> for how clients sign in.</p>
@@ -12,7 +12,11 @@
 <h2>Emails and one-time codes</h2>
 <p>Two emails are sent: one when an administrator adds a user, and one when a person clicks <strong>New user / Forgot password</strong> on the sign-in dialog. Both are HTML templates that can be edited. The second carries a one-time code, valid for a set number of minutes and usable once; the person enters the code and chooses a password. The added-user email carries no code. A code requested for an address the account does not know produces a <a href="notifications.html">notification</a> rather than an email.</p>
 
-<h2>Settings</h2>
+<h2>Sign-in methods</h2>
+<p>Every account has password sign-in, and can add <a href="single-sign-on.html">single sign-on</a> beside it. Password sign-in can be turned off only once single sign-on is configured, so that an account always keeps a way to sign in.</p>
+<!--fields:model:AuthModel-->
+
+<h2>Password sign-in settings</h2>
 <!--fields:model:BuiltinAuthModel-->
 <h3>Session cookie</h3>
 <!--fields:model:CookieModel-->

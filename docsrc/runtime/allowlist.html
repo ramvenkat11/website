@@ -49,7 +49,6 @@ mycompany.vault.get_secret       # anything importable on the server
 <p>The allowlist is also where custom code enters the runtime. A package your agents need is installed next to <code>search2o</code> in the server's environment, on every agent server.</p>
 <ul>
   <li>An <a href="../llm/llm-adapters.html">LLM adapter</a>: a class that extends <code>LlmAdapter</code>. When the allowlist is built, each such class is constructed once with no arguments, and a class that cannot be constructed is written to the server's log.</li>
-  <li>The key function for <a href="../security/encryption.html">end-to-end encryption</a>, named in the encryption settings.</li>
   <li>A function that reads your own <a href="../security/secret-vault.html">vault</a>, called from expressions and from the dynamic strings of a profile.</li>
   <li>A function that a <a href="compile-rules.html#rewriting-an-operator">Python operator</a> is rewritten to.</li>
 </ul>

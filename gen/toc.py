@@ -97,6 +97,7 @@ TOC = [
     ]),
     ("system-management", "System management", [
         ("users-and-roles", "Users and roles"),
+        ("service-accounts", "Service accounts"),
         ("agent-servers", "Agent servers"),
         ("authentication", "Authentication"),
         ("single-sign-on", "Single sign-on"),
