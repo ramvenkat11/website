@@ -692,7 +692,10 @@ orchestrator REMOVED) -> the JSON paragraph -> the command-list line. The AI lin
 precise and count ("we are not going to start with this line"); mine: "Developers build agents
 with AI: describe the agent, or the change you want, and Draft with AI writes it into the
 draft. The developer validates and publishes." - Ram: "Oh boy! This is home page - not docs" - cut to "Agents are drafted together with AI,
-from a sentence:" (one line leading into the prompts).
+from a sentence:" (one line leading into the prompts). Then the closing paragraph became Ram's: "An agent is
+defined in JSON as a set of functions, each containing an ordered sequence of commands - there
+are 23 commands (link). Strings enclosed in { } ... The code editor helps developers hand-code
+the parts they need." - the separate command-list line and its .cmdlink CSS are gone.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
