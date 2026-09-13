@@ -691,7 +691,8 @@ columns level (delta 0), pre fits. Screenshot sent. Ram then reordered: h2 -> th
 orchestrator REMOVED) -> the JSON paragraph -> the command-list line. The AI line was to be
 precise and count ("we are not going to start with this line"); mine: "Developers build agents
 with AI: describe the agent, or the change you want, and Draft with AI writes it into the
-draft. The developer validates and publishes." - his to judge.
+draft. The developer validates and publishes." - Ram: "Oh boy! This is home page - not docs" - cut to "Agents are drafted together with AI,
+from a sentence:" (one line leading into the prompts).
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
