@@ -745,7 +745,7 @@ Evaluation: two sentences with stops + one fragment). Rule applied: bullets are 
 without full stops; the note paragraphs keep theirs. The two Evaluation bullets became
 "Deploy Search2o on your servers and bring others in" and "Publish agents, describe them, and
 let others discover them dynamically" (Ram's words, joined/trimmed - flagged). index,
-gettingstarted and about were checked line by line: all sentences end with a stop, headings
+gettingstarted and about were checked line by line; the Team note is now "SLAs will be provided at GA." (Ram): all sentences end with a stop, headings
 and the "Code completion · ..." label carry none - consistent, nothing changed.
 
 ## Standing instructions
