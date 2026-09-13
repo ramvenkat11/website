@@ -655,6 +655,20 @@ step. Ram: "so verbose" - both steps cut to one sentence + three prompts (+ one 
 line): site step ends "Validate, then publish."; docs step 2 ends with the comments line and
 the Draft with AI link.
 
+## State on 2026-09-13 (scriptLogin removed from the docs; NOT DEPLOYED)
+Ram: scriptLogin is gone from the product (service accounts replace it); the model field
+scriptAccessMaxAgeMinutes is gone too (the BuiltinAuthModel table follows). rest-api/
+authentication.html: lead says a program sends a service account's key as a bearer token; the
+"Bearer token" section is now the service-account key (no sign-in, no session, no expiry;
+rotation/deletion end it; curl with $SEARCH2O_SERVICE_KEY; calls recorded against the service
+account); the "Which user to sign in as" section is gone. automating-with-an-llm steps 1-2:
+create a service account, give its key to the tool layer (the one-hour/mustLogin re-sign-in
+line is gone). rest-api/overview /api/auth/ row: "Sign-in, password reset, the account name".
+system-management/authentication.html Sessions: the script-token sentence removed.
+single-sign-on.html: "and for scripts, which sign in with a password" removed (scripts use
+service accounts). Sweep for scriptLogin/script token/scriptAccess is clean; 31 examples
+valid.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
