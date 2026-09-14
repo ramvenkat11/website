@@ -9,11 +9,10 @@ bucket `search2o.com` (static-website hosting) behind the CloudFront distributio
 
 ## The script
 
-`scripts/deploy.sh` runs the whole procedure below. With no arguments it is a dry run: it
-rebuilds the docs and shows which files would be uploaded and which bucket objects would be
-deleted. `--go` uploads, deletes every bucket object that no longer exists locally, invalidates,
-waits for the invalidation to complete and verifies with curl; `--skip-build` leaves the docs
-as they are. The script refuses to run with credentials for another AWS account, or while
+`scripts/deploy.sh` runs the whole procedure below: it rebuilds the docs, uploads what changed,
+deletes every bucket object that no longer exists locally, invalidates, waits for the
+invalidation to complete and verifies with curl. `--dry-run` shows what would be uploaded and
+deleted and touches nothing; `--skip-build` leaves the docs as they are. The script refuses to run with credentials for another AWS account, or while
 `html/config.js` points at a local server.
 The `docsweb/` prefix is excluded from the sync: it is the in-app docs data that s2oserver's
 uploader maintains, not website content, and the script never uploads to it or deletes from it.

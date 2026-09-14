@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Trace and validation — Search2o docs</title>
+<meta name="description" content="Before a draft can be published, it has to validate: the agent server checks the draft and then runs it against a sample question. Validation proves that the…">
+<link rel="canonical" href="https://search2o.com/docs/development/trace-and-validation.html">
+<meta property="og:title" content="Trace and validation — Search2o docs">
+<meta property="og:description" content="Before a draft can be published, it has to validate: the agent server checks the draft and then runs it against a sample question. Validation proves that the…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://search2o.com/docs/development/trace-and-validation.html">
+<meta property="og:image" content="https://search2o.com/logo.png">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../docs.css">
+</head>
+<body class="docs">
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="../../index.html" aria-label="Search2o home"><img class="logo-light" src="../../logo.png" alt="Search2o" width="560" height="102"><img class="logo-dark" src="../../logo-dark.png" alt="Search2o" width="560" height="102"></a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="navlink" href="../../index.html">Home</a>
+      <a class="navlink" href="../../gettingstarted.html">Getting started</a>
+      <a class="navlink" href="../index.html" aria-current="page">Docs</a>
+      <a class="navlink" href="../../pricing.html">Pricing</a>
+      <a class="navlink" href="../../about.html">About</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch theme">
+      <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg>
+      <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+<div class="container docs-layout">
+  <button class="sb-toggle" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  <div id="sidebar" class="sb-wrap"><nav class=sidebar aria-label='Documentation'><a class='sb-home' href='../index.html'>Documentation</a><details><summary><a href='../introduction/index.html'>Introduction</a></summary><ul><li><a href='../introduction/what-is-search2o.html'>What is Search2o</a></li><li><a href='../introduction/parts-of-the-system.html'>Parts of the system</a></li><li><a href='../introduction/how-it-fits-together.html'>How it fits together</a></li></ul></details><details><summary><a href='../getting-started/index.html'>Getting started</a></summary><ul><li><a href='../getting-started/registering-and-downloading.html'>Creating an account and downloading</a></li><li><a href='../getting-started/license-key.html'>The license key</a></li><li><a href='../getting-started/running-the-server.html'>Running the server</a></li><li><a href='../getting-started/the-gui.html'>The GUI</a></li><li><a href='../getting-started/your-first-agent.html'>Your first agent</a></li></ul></details><details><summary><a href='../agent-definition/index.html'>Agent definition</a></summary><ul><li><a href='../agent-definition/syntax.html'>Syntax and dynamic strings</a></li><li><a href='../agent-definition/structure.html'>Agent structure</a></li><li><a href='../agent-definition/functions.html'>Functions</a></li><li><a href='../agent-definition/commands.html'>Commands</a></li><li><a href='../agent-definition/variables.html'>Variables and namespaces</a></li></ul></details><details><summary><a href='../agent-execution/index.html'>Agent execution</a></summary><ul><li><a href='../agent-execution/output.html'>Agent output</a></li><li><a href='../agent-execution/order-of-execution.html'>Order of execution</a></li><li><a href='../agent-execution/conversation-state.html'>Conversation state</a></li></ul></details><details><summary><a href='../llm/index.html'>LLM</a></summary><ul><li><a href='../llm/vendors.html'>The three vendors</a></li><li><a href='../llm/llm-adapters.html'>Connecting to other LLMs</a></li><li><a href='../llm/code-from-llm.html'>Executing code from an LLM</a></li></ul></details><details><summary><a href='../commands/index.html'>Command reference</a></summary><ul><li class=sb-group>Variables</li><li><a href='../commands/var.html'>var</a></li><li class=sb-group>Flow control</li><li><a href='../commands/if.html'>if</a></li><li><a href='../commands/while.html'>while</a></li><li><a href='../commands/for.html'>for</a></li><li><a href='../commands/break.html'>break</a></li><li><a href='../commands/continue.html'>continue</a></li><li><a href='../commands/func.html'>func</a></li><li><a href='../commands/return.html'>return</a></li><li><a href='../commands/parallel.html'>parallel</a></li><li class=sb-group>LLM interaction</li><li><a href='../commands/prompt.html'>prompt</a></li><li><a href='../commands/llm.html'>llm</a></li><li><a href='../commands/memory.html'>memory</a></li><li class=sb-group>External systems</li><li><a href='../commands/api.html'>api</a></li><li><a href='../commands/db.html'>db</a></li><li class=sb-group>Deep agents</li><li><a href='../commands/search.html'>search</a></li><li><a href='../commands/invoke.html'>invoke</a></li><li class=sb-group>Human-in-the-loop</li><li><a href='../commands/ask.html'>ask</a></li><li class=sb-group>Agent output</li><li><a href='../commands/output.html'>output</a></li><li class=sb-group>Agent termination</li><li><a href='../commands/end.html'>end</a></li><li><a href='../commands/fail.html'>fail</a></li><li class=sb-group>Observability</li><li><a href='../commands/progress.html'>progress</a></li><li><a href='../commands/trace.html'>trace</a></li><li><a href='../commands/log.html'>log</a></li></ul></details><details><summary><a href='../search/index.html'>Search</a></summary><ul><li><a href='../search/describing-an-agent.html'>Describing an agent</a></li><li><a href='../search/how-matching-works.html'>How matching behaves</a></li><li><a href='../search/tags.html'>Tags</a></li><li><a href='../search/search-settings.html'>Search settings</a></li><li><a href='../search/search-quality.html'>Search quality</a></li><li><a href='../search/custom-search.html'>Custom search</a></li></ul></details><details open><summary><a href='../development/index.html'>Development process</a></summary><ul><li><a href='../development/drafts.html'>Drafts</a></li><li><a href='../development/code-editor.html'>The agent editor</a></li><li><a href='../development/draft-with-ai.html'>Draft with AI</a></li><li><a href='../development/trace-and-validation.html' aria-current=page>Trace and validation</a></li><li><a href='../development/publishing.html'>Publishing</a></li></ul></details><details><summary><a href='../runtime/index.html'>Agent runtime</a></summary><ul><li><a href='../runtime/overview.html'>The agent runtime</a></li><li><a href='../runtime/allowlist.html'>The allowlist</a></li><li><a href='../runtime/system-variables.html'>System variables</a></li><li><a href='../runtime/compile-rules.html'>Compile rules</a></li><li><a href='../runtime/runtime-limits.html'>Runtime limits</a></li><li><a href='../runtime/connection-pools.html'>Connection pools</a></li></ul></details><details><summary><a href='../profiles/index.html'>Profiles</a></summary><ul><li><a href='../profiles/overview.html'>How profiles work</a></li><li><a href='../profiles/llm-profiles.html'>LLM profiles</a></li><li><a href='../profiles/prompt-profiles.html'>Prompt profiles</a></li><li><a href='../profiles/api-profiles.html'>API profiles</a></li><li><a href='../profiles/db-profiles.html'>Database profiles</a></li><li><a href='../profiles/mcp-servers.html'>MCP servers</a></li></ul></details><details><summary><a href='../reports/index.html'>Reports</a></summary><ul><li><a href='../reports/performance.html'>Agent performance</a></li><li><a href='../reports/errors.html'>Agent errors</a></li><li><a href='../reports/cost.html'>LLM cost</a></li><li><a href='../reports/usage.html'>User usage</a></li></ul></details><details><summary><a href='../system-management/index.html'>System management</a></summary><ul><li><a href='../system-management/users-and-roles.html'>Users and roles</a></li><li><a href='../system-management/service-accounts.html'>Service accounts</a></li><li><a href='../system-management/agent-servers.html'>Agent servers</a></li><li><a href='../system-management/authentication.html'>Authentication</a></li><li><a href='../system-management/single-sign-on.html'>Single sign-on</a></li><li><a href='../system-management/notifications.html'>Notifications</a></li><li><a href='../system-management/usage-limits.html'>Usage limits</a></li></ul></details><details><summary><a href='../security/index.html'>Security and privacy</a></summary><ul><li><a href='../security/license-rotation.html'>License key rotation</a></li><li><a href='../security/secret-vault.html'>The secret vault</a></li><li><a href='../security/encryption.html'>Encryption</a></li><li><a href='../security/data-privacy.html'>Data privacy</a></li><li><a href='../security/multiple-environments.html'>Running multiple environments</a></li></ul></details><details><summary><a href='../gui/index.html'>GUI</a></summary><ul><li><a href='../gui/how-the-gui-runs.html'>How the GUI runs</a></li><li><a href='../gui/search.html'>Search and conversations</a></li><li><a href='../gui/agents.html'>Agents</a></li><li><a href='../gui/profiles.html'>Profiles</a></li><li><a href='../gui/guardrails.html'>Guardrails</a></li><li><a href='../gui/operations.html'>Operations</a></li><li><a href='../gui/reports.html'>Reports</a></li><li><a href='../gui/account.html'>Admin and billing</a></li><li><a href='../gui/personal.html'>Profile, notifications and docs</a></li></ul></details><details><summary><a href='../rest-api/index.html'>REST API</a></summary><ul><li><a href='../rest-api/overview.html'>The REST API</a></li><li><a href='../rest-api/authentication.html'>Authentication</a></li><li><a href='../rest-api/running-agents.html'>Running agents</a></li><li><a href='../rest-api/streaming.html'>Streaming</a></li><li><a href='../rest-api/search.html'>Search</a></li><li><a href='../rest-api/conversations.html'>Conversations</a></li><li><a href='../rest-api/workflows.html'>Workflows</a></li><li><a href='../rest-api/automating-with-an-llm.html'>Automating tasks with an LLM</a></li><li><a href='../rest-api/clients.html'>Creating your own client</a></li></ul></details><details><summary><a href='../chat-integrations/index.html'>Chat integrations</a></summary><ul><li><a href='../chat-integrations/overview.html'>How a chat integration works</a></li><li><a href='../chat-integrations/connecting-a-person.html'>Connecting a person</a></li><li><a href='../chat-integrations/integration-tokens.html'>Integration tokens</a></li><li><a href='../chat-integrations/finding-an-agent.html'>Finding an agent</a></li><li><a href='../chat-integrations/running-an-agent.html'>Running an agent</a></li><li><a href='../chat-integrations/showing-the-answer.html'>Showing the answer</a></li><li><a href='../chat-integrations/chat-applications.html'>Slack, Teams and Google Chat</a></li><li><a href='../chat-integrations/ai-prompts.html'>Building a bot with an AI assistant</a></li></ul></details><details><summary><a href='../support-licensing/index.html'>Support and licensing</a></summary><ul><li><a href='../support-licensing/asking-the-docs.html'>Asking the docs</a></li><li><a href='../support-licensing/support.html'>Support</a></li><li><a href='../support-licensing/license.html'>License</a></li><li><a href='../support-licensing/billing.html'>Billing</a></li></ul></details></nav></div>
+  <main class="docs-main">
+    <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../development/index.html'>Development process</a></div>
+    <article class="docs-article">
+      <h1>Trace and validation</h1>
+      <p class="lead">Before a draft can be <a href="publishing.html">published</a>, it has to validate: the agent server checks the draft and then runs it against a sample question. Validation proves that the agent passes the schema and security checks, finds everything it needs in your account, and runs to the end. Publish stays unavailable until it does. Validation happens in the draft editor, on the <strong>Validate</strong> tab below the agent definition.</p>
+
+<h2 id="what-validation-checks">What validation checks</h2>
+<p>Validation runs in three stages. Problems from the first two are reported together, and the agent runs only if neither finds any.</p>
+<ol>
+  <li><strong>Definition and security checks.</strong> The definition is checked fresh, with the account's current settings. Every command and field must be one the agent schema allows. Every Python expression must pass the security checks: no dunders, and no operator the <a href="../runtime/compile-rules.html">compile rules</a> disallow. The agent may read only the <code>sys</code> variables the account makes available, and every profile the agent names must exist.</li>
+  <li><strong>What the agent server can find.</strong> Every name an expression calls must be on the account's <a href="../runtime/allowlist.html">allowlist</a>, and every secret the agent reads must exist.</li>
+  <li><strong>A real run.</strong> The agent runs against the draft's validation query, exactly as it would for a user, with tracing on, so that every step is visible.</li>
+</ol>
+<p>The draft validates only if the run finishes successfully. Both results are stored with the draft: that it passed the checks, and that it ran. Saving any change to the draft clears both, so the draft validates again before it can be published.</p>
+
+<h2 id="running-a-validation">Running a validation</h2>
+<ol>
+  <li>Open the draft and select the <strong>Validate</strong> tab.</li>
+  <li>Enter a <strong>validation query</strong>: a typical question a user would ask this agent. The query is saved with the draft.</li>
+  <li>Select <strong>Validate/Trace</strong>, or press Ctrl+Enter (&#8984;&#9166; on a Mac). Unsaved changes are saved first.</li>
+</ol>
+<p>While the run is under way, the Validate tab reads <strong>Validating</strong>, and <strong>Stop</strong> appears beside it in the output panel. Stopping ends the run, and nothing from the run is saved. The Draft with AI tab is locked until the run finishes, so its result cannot land out of sight.</p>
+
+<h3 id="follow-up-questions">Follow-up questions</h3>
+<p>A user rarely asks just one question: the user asks, reads the answer, and continues in the same conversation. Validation lets you test that too, with follow-up questions to the conversation your validation run started. Every draft has its own validation conversation, separate from anyone's searches. The conversation holds what the agent carried over between turns, such as its <code>agent.</code> and <code>conv.</code> variables, just as a user's conversation would.</p>
+<ol>
+  <li><strong>Start the conversation.</strong> Validate with the saved validation query. Once the agent has run, the conversation exists, whether the run finished or paused on an <code>ask</code>.</li>
+  <li><strong>Ask a follow-up.</strong> The box's label changes from <em>Validation query</em> to <em>Follow-up question</em>. Type the next question a user might ask, and select <strong>Validate/Trace</strong> or press Ctrl+Enter.</li>
+  <li><strong>Keep going.</strong> Each follow-up continues the same conversation, and the box empties after each run, ready for the next question. The output console shows the latest run.</li>
+</ol>
+<ul>
+  <li>Follow-up questions are not saved with the draft. The saved validation query stays as it was, however many follow-ups you ask.</li>
+  <li>You can change the agent in the middle of a conversation. Every run checks the draft as it is now, so you can fix something the second turn exposed and ask the same follow-up again.</li>
+  <li>A follow-up is a full validation. It goes through the same checks, and a follow-up that runs successfully marks the draft as validated.</li>
+  <li>A failed run ends the conversation in the editor. After check errors or a runtime error, the box goes back to the validation query, and the next run starts the conversation again from the first question.</li>
+  <li><strong>Start over with the validation query</strong> leaves the conversation; the next run asks the saved query in a fresh conversation. Reloading the page does the same.</li>
+  <li>Publishing or deleting the draft deletes its validation conversation.</li>
+</ul>
+<p>Two messages you may see. <em>Type a follow-up question, or start a new conversation</em>: the follow-up box is empty. <em>Validation cannot be run on the follow-up query as the stored state could not be found</em>: the conversation the follow-up was meant to continue is no longer stored; start over with the validation query.</p>
+
+<h3 id="when-the-agent-asks-for-input">When the agent asks for input</h3>
+<p>If the agent reaches an <code>ask</code> command, the run pauses and the form the user would see appears in the panel. This is not a failure: fill in the form and submit it to continue the run.</p>
+
+<h2 id="reading-the-result">Reading the result</h2>
+<p>The Validate tab always shows where the draft stands, even while you are on Draft with AI.</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Status</th><th>Meaning</th></tr></thead>
+<tbody>
+<tr><td>Not validated</td><td>Never validated, or changed since it last validated.</td></tr>
+<tr><td>Validating</td><td>A run is in progress.</td></tr>
+<tr><td>Failed</td><td>The last run in this session found problems. Not stored: after a reload, a draft that failed reads Not validated.</td></tr>
+<tr><td>Validated</td><td>The draft passed the checks and ran. It can be published.</td></tr>
+</tbody></table></div>
+
+<h3 id="validation-errors">Validation errors</h3>
+<p>When the checks find problems, they are listed under <strong>Validation errors</strong>, definition errors first. Each one says what is wrong, and where.</p>
+<ul>
+  <li><strong>at <code>main.commands.llm</code></strong>: select the location to jump to that command in the editor, with the whole command selected. A location that no longer exists, because you have edited the definition since, says so.</li>
+  <li><strong>Allowlist item</strong>: the agent calls something that is not on the account's allowlist. Select <strong>Open Allowlist</strong> to add it, or change the expression.</li>
+  <li><strong>Secret</strong>: the agent reads a secret the account does not have. Set it up where your secrets are kept.</li>
+</ul>
+
+<h3 id="runtime-errors">Runtime errors</h3>
+<p>If the definition passes the checks but the run fails, the error that ended it is shown as a <strong>Runtime error</strong>, for example an expression that could not be evaluated or an API call that failed. The output console shows everything that happened up to that point.</p>
+
+<h2 id="the-validation-output">The validation output</h2>
+<p>Below the errors, the <strong>Validation output</strong> console lists the run step by step. Each line shows how long after the start it happened, what happened, and, when the line belongs to a command, where in the agent the command is. Select that location to jump to the command in the editor.</p>
+<figure class="shot"><img class="light" src="../img/validation-trace-light.png" alt="The validation output: event filters and the trace of an execution, one line per command with its path" style="--shot-w:640px"><img class="dark" src="../img/validation-trace-dark.png" alt="The validation output: event filters and the trace of an execution, one line per command with its path" style="--shot-w:640px"><figcaption>The trace after a validation run. Filters select event kinds; each event carries the path of the command that produced it.</figcaption></figure>
+<p>A traced run mixes very different things, and the payloads are usually the largest part. The filters above the console put a kind of line away and bring it back.</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Filter</th><th>What it shows</th></tr></thead>
+<tbody>
+<tr><td>Agent output</td><td>What the agent produced: the output a user would see.</td></tr>
+<tr><td>Progress</td><td>Progress notes sent while the run is under way.</td></tr>
+<tr><td>Agent trace</td><td>The agent author's own notes, written with the <code>trace</code> command.</td></tr>
+<tr><td>Flow</td><td>Command and function boundaries, <code>if</code> and loop conditions, <code>break</code> and <code>continue</code> when they fire, <code>end</code>, and the definition checks.</td></tr>
+<tr><td>Input</td><td>What each command was called with: the LLM request, API URL and headers, SQL, a search's query and tag, prompt text, a function's arguments, and the fields an <code>ask</code> presented.</td></tr>
+<tr><td>Output</td><td>What each command produced: LLM content and token counts, API bodies, database row counts, search results, a function's return value, what a <code>var</code> assigned, and the answers to an <code>ask</code>.</td></tr>
+<tr><td>Tool</td><td>Tool calls the LLM makes, with their arguments and results, and MCP discovery.</td></tr>
+<tr><td>Invoke</td><td>Nested agents: the inputs another agent was invoked with, and what it returned or whether it paused.</td></tr>
+<tr><td>Error</td><td>Every failure, whatever raised it. Showing only this filter gives the complete list of errors.</td></tr>
+</tbody></table></div>
+<ul>
+  <li>Each filter shows how many lines of its kind the run produced; hovering over a filter shows what it covers.</li>
+  <li>Every filter is on at the start, so a run is never shown partially without you choosing it. A kind the run did not produce is greyed out rather than hidden.</li>
+  <li><strong>Show all</strong> and <strong>Hide all</strong> turn every filter on or off at once; each appears only when it would change something. The header counts the lines shown and the lines hidden.</li>
+  <li>Filters change only what you see. They never re-run anything, so you can read the flow, put the payloads away and bring them back without paying for another run.</li>
+</ul>
+<p><strong>Clear</strong> empties the console and removes the errors shown for the last run. It does not change whether the draft is validated: if the last run failed, the Validate tab goes back to showing the stored status. Validation runs are your own testing and are not counted in the agent's execution, cost or performance reports.</p>
+
+<h2 id="why-validation-errors-are-not-fixed-by-ai">Why validation errors are not fixed by AI</h2>
+<p>The draft editor has Draft with AI, which can write and edit the agent. It would be easy to add a button that sends a failed validation to the AI. We deliberately do not.</p>
+<p>A validation run is a real run against your own systems. Its output, trace and runtime errors carry whatever those systems returned: rows from your databases and bodies from your APIs; what your LLMs said, and the prompts that were sent to them; the validation query, and values such as the user's email address or cookies when the agent reads them; error messages, which often quote the value that caused them.</p>
+<p>Search2o does not send your agent's output to an LLM. Draft with AI receives the draft's definition, your request, the profiles the draft uses with their notes, and the account's allowlist, disallowed operators and available <code>sys</code> variables. Nothing produced by running the agent is included: no output, no trace, no runtime error, and no validation query. An automatic fix would have to break that, so it is not offered. Instead:</p>
+<ul>
+  <li><strong>Fix it in the editor.</strong> Validation errors point at the command they are about.</li>
+  <li><strong>Describe the problem to Draft with AI yourself</strong>, for example "the <code>for</code> loop contains an <code>ask</code>, which is not allowed". Definition errors describe the definition, not your data, so repeating one in your request is safe. Anything you type into the request is sent, so please keep output and trace lines out of it.</li>
+  <li><strong>Keep credentials out of the definition.</strong> The definition itself is sent to Draft with AI. Connection strings, API keys and URLs that carry credentials belong in profiles and secrets, not inline in the agent.</li>
+</ul>
+
+    </article>
+    <nav class=prevnext><a class=prev href='../development/draft-with-ai.html'><small>Previous</small>Draft with AI</a><a class=next href='../development/publishing.html'><small>Next</small>Publishing</a></nav>
+  </main>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#what-validation-checks'>What validation checks</a></li><li class=l2><a href='#running-a-validation'>Running a validation</a></li><li class=l3><a href='#follow-up-questions'>Follow-up questions</a></li><li class=l3><a href='#when-the-agent-asks-for-input'>When the agent asks for input</a></li><li class=l2><a href='#reading-the-result'>Reading the result</a></li><li class=l3><a href='#validation-errors'>Validation errors</a></li><li class=l3><a href='#runtime-errors'>Runtime errors</a></li><li class=l2><a href='#the-validation-output'>The validation output</a></li><li class=l2><a href='#why-validation-errors-are-not-fixed-by-ai'>Why validation errors are not fixed by AI</a></li></ul></aside>
+</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-base">
+      <span>&copy; <span id="year">2026</span> Search2o &middot; Virginia, USA</span>
+      <span><a href="../../about.html#contact">Contact</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../../site.js"></script>
+<script src="../docs.js"></script>
+</body>
+</html>

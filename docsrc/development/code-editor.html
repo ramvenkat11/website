@@ -1,65 +1,80 @@
-<p class="lead">Agents are edited in a code editor that understands the agent schema: commands, fields and blocks. The editor provides completion and errors as you type, and <strong>Draft with AI</strong> writes and edits the draft for you, inside the draft you are working on.</p>
+<p class="lead">An agent is written as a definition: a JSON document with a <code>functions</code> object, each function holding the commands it runs. The <strong>Agent definition</strong> editor on the draft page is where you write it. The editor is built on Monaco, the editor inside Visual Studio Code, and it knows the Search2o agent language, so it suggests what comes next and points out mistakes as you type.</p>
 
-<h2>Completion</h2>
-<p>The editor knows which commands may appear where, and which fields each command takes. Typing a double quote inside the definition opens the suggestions for that location: the commands allowed in a block, or the fields of the command you are in. Each suggestion carries the field's description, and the command list is grouped as in the <a href="../commands/index.html">Command reference</a>. Press <kbd>F1</kbd> for the command list.</p>
-<!--shot:editor-completion|600|The editor suggesting the commands allowed at the cursor, grouped as in the command reference|Typing a quote inside <code>commands</code> lists the commands allowed there, grouped as in the reference.-->
+<h2>What the editor knows</h2>
+<p>The editor learns the agent language from the agent schema that your agent server publishes: the same description validation checks your agent against. The schema covers every command, the fields each command takes, what type each field holds, and a sentence describing each one. So a command or field added to Search2o appears in the editor at once, and what the editor suggests is what validation accepts.</p>
+<p>The schema is loaded the first time you open the editor and kept for the rest of the session. If the schema cannot be loaded, the editor still works as a plain JSON editor, without the suggestions and checks described below.</p>
 
-<h2>Errors as you type</h2>
-<p>The editor validates the definition against the schema while you type. Unknown commands, unknown fields, values of the wrong type and missing required fields are underlined, with the same message the server would give. Many mistakes are caught before validation runs.</p>
-
-<h2>Controls</h2>
-<p>The controls for the draft sit above the editor: the draft's name, title, tag and validation query, and the buttons to validate and publish. Below the agent definition sit <strong>Draft with AI</strong> and <strong>Validate</strong>; one of the two is open at a time.</p>
-
-<h2>Draft with AI</h2>
-<p>Draft with AI writes and edits an agent for you, inside the draft you are working on. Describe the agent you want, or the change you want made to this one. The AI returns the whole draft with that change made, and the editor shows the result straight away. Draft with AI is not a general chatbot, and it is not the documentation: for questions about how Search2o works, the <strong>Docs</strong> icon at the top of the page is the place to ask.</p>
-
-<h3>What it knows</h3>
-<p>Draft with AI does not start from a blank page. Every request carries four things.</p>
-<p><strong>How an agent is built.</strong> The AI works from the same command schema the editor and validation use. It knows every command, the fields each command takes, how blocks run in order, and how to use a command twice (<code>var</code>, then <code>var.2</code>). It also knows the rules validation enforces, so it avoids writing what would be refused. For example:</p>
-<ul>
-  <li><code>ask</code> and <code>invoke</code> cannot go inside a <code>for</code> loop or an <code>onError</code> block. When the work needs them, the AI uses a <code>while</code> loop, or has the handler set a variable and asks afterwards.</li>
-  <li>A function used as a tool cannot <code>end</code>. The AI uses <code>fail</code>, or returns a value for the LLM to explain.</li>
-  <li>An agent runs again on every turn. <code>agent.</code> and <code>conv.</code> variables carry over, and a variable that was never set is read safely.</li>
-  <li>An <code>ask</code> that always runs could never finish validation, so the AI guards it.</li>
-</ul>
-<p><strong>Your current draft.</strong> Every request edits the draft you have open. The AI keeps every function, command, name, expression and comment that your request does not touch, exactly as you wrote them. It changes only what you asked for, and leaves working parts in your style. On a new, empty draft, it builds the agent from scratch.</p>
-<p><strong>This account's configuration.</strong></p>
+<h2>Adding a command</h2>
+<p>Inside a function's <code>commands</code> block, start a new line and type <code>"</code>. A list of every command allowed there opens, grouped by what it does:</p>
 <div class="tablewrap"><table class="fields">
-<thead><tr><th>Setting</th><th>How the AI uses it</th></tr></thead>
+<thead><tr><th>Group</th><th>Commands</th></tr></thead>
 <tbody>
-<tr><td>Used profiles</td><td>The AI names these profiles exactly, in the command of their type. It reads each profile's notes to learn what the API serves or what the database holds, and to choose between profiles. It names only the profiles you have ticked.</td></tr>
-<tr><td>Expression allowlist</td><td>Expressions call only the names on the allowlist, plus the built-in types. If your request needs a function that is not there, the AI leaves that value empty and says the function must be added to the allowlist first.</td></tr>
-<tr><td>Compile rules</td><td>The AI stays clear of an operator your account disallows. It writes the value another way, or leaves the value empty with a note naming the operator.</td></tr>
-<tr><td>System variables</td><td>The AI reads only the <code>sys</code> variables your account makes available. <code>sys.inputs</code> and <code>sys.query</code> are always there.</td></tr>
+<tr><td>Variables</td><td><code>var</code></td></tr>
+<tr><td>Flow control</td><td><code>if</code>, <code>while</code>, <code>for</code>, <code>break</code>, <code>continue</code>, <code>func</code>, <code>return</code>, <code>parallel</code></td></tr>
+<tr><td>LLM interaction</td><td><code>prompt</code>, <code>llm</code>, <code>memory</code></td></tr>
+<tr><td>External systems</td><td><code>api</code>, <code>db</code></td></tr>
+<tr><td>Deep agents</td><td><code>search</code>, <code>invoke</code></td></tr>
+<tr><td>Human-in-the-loop</td><td><code>ask</code></td></tr>
+<tr><td>Agent output</td><td><code>output</code></td></tr>
+<tr><td>Agent termination</td><td><code>end</code>, <code>fail</code></td></tr>
+<tr><td>Observability</td><td><code>progress</code>, <code>trace</code>, <code>log</code></td></tr>
 </tbody></table></div>
-<p>You choose the used profiles in the draft. The allowlist, compile rules and system variables come from the account's settings under Guardrails; see <a href="../runtime/allowlist.html">The allowlist</a>, <a href="../runtime/compile-rules.html">Compile rules</a> and <a href="../runtime/system-variables.html">System variables</a>.</p>
-<p><strong>What it has never seen.</strong> Your database, your API and your MCP tools are outside the AI's view, so it never writes SQL, URL paths, request parameters or tool arguments. It puts the command in the right place, leaves those fields empty, and adds a comment saying what belongs there. An empty field with a comment takes a moment to fill in; an invented query would pass validation and publish, then fail against a table that does not exist.</p>
+<p>Keep typing to filter the list. Up and Down move through it, and the box under the list describes the highlighted command. Enter, Tab or a click inserts the command; Escape closes the list. The list shows only the commands allowed where you are typing, and opens as tall as the window allows.</p>
+<!--shot:editor-completion|600|The editor suggesting the commands allowed at the cursor, grouped as in the command reference|Typing a quote inside <code>commands</code> lists the commands allowed there, grouped as in the reference.-->
+<p>Choosing a command inserts it ready to fill in, with the fields you will almost always need: <code>if</code> arrives with <code>condition</code>, <code>then</code> and <code>else</code>; <code>for</code> with <code>iter</code>, <code>loopVar</code> and <code>do</code>; <code>api</code> with <code>url</code>, <code>params</code> and <code>body</code>; <code>invoke</code> with <code>agent</code> and <code>inputs</code>. Each field gets a starter value to replace: a Python expression field gets <code>"{  }"</code>, a block of commands <code>{}</code>, a list of objects one empty object, a field with a fixed set of values its first value, and a field with a default that default. A block cannot hold the same key twice, so when the block already has a <code>var</code>, the next one is inserted as <code>var.1</code>, then <code>var.2</code>. The command is indented to match its surroundings, a comma is added to the previous entry if it needs one, and the cursor lands where you type next.</p>
 
-<h3>Using it</h3>
-<ol>
-  <li>Open a draft from Agents &rsaquo; Drafts, or create a new one.</li>
-  <li>Below the agent definition, select <strong>Draft with AI</strong>. It is selected when the page opens.</li>
-  <li>Under <strong>Used profiles</strong>, tick the profiles the agent should use. They are part of the draft and are saved with it, like its title.</li>
-  <li>In the box, describe what you want, and select <strong>Send</strong> or press Ctrl+Enter (&#8984;&#9166; on a Mac). Say at least a few words, up to 10,000 characters.</li>
-</ol>
-<p>Before anything is sent, the draft is saved if it has unsaved changes: its definition, used profiles, name, title, tag and validation query. The AI works from the saved draft, so what you see is what it gets. If the save fails, nothing is sent. While the AI is writing, the button reads <strong>Writing&hellip;</strong> and the switch to <strong>Validate</strong> is locked, so the result cannot land out of sight.</p>
+<h2>Suggestions as you type</h2>
+<p>Everywhere else a key belongs, the editor shows the next likely key as grey text ahead of the cursor. Tab or Enter accepts it; keep typing to ignore it. Inside a function: <code>description</code>, <code>args</code>, <code>commands</code> and <code>onError</code>. Inside a function argument: <code>type</code>, <code>description</code> and <code>required</code>. Inside a command: that command's fields, required ones first, so that a deleted <code>condition</code> is the first thing suggested back. Inside a list of objects, such as an <code>ask</code>'s <code>inputs</code>: the fields each entry takes. Only keys that are not already there are suggested, and the suggestion appears even on an empty line, so an unfinished object shows what it is still missing.</p>
+<p>Some suggestions come from your own agent rather than the schema. Inside <code>parallel</code>, each key names one of the agent's functions, so the editor suggests the functions this definition declares, with their descriptions; inside one of those entries, it suggests that function's arguments. These are read from the definition as you type, and they are suggestions, not restrictions: a name you type yourself is left alone, and validation decides whether it is right.</p>
+<p>Two messages you may see. <em>No suggestions here</em>: you typed a key where the agent language does not describe one. <em>An object goes here</em>: you typed a quote directly inside a list whose entries must be objects; each entry starts with <code>{</code>.</p>
 
-<h3>What comes back</h3>
-<p>The answer replaces the definition in the editor, and the draft is saved with it. Comments mark what is left for you: a query to write, a URL to fill in, an agent to name. Each comment sits above the line it is about. Fill them in, delete the comments you are done with, and save. If you ask for something that needs no gaps, the agent comes back finished, with no comments. If your request is too vague to start from, nothing is changed, and you are told in a sentence or two what the AI would need to know.</p>
-<p>Please validate what comes back before you publish, and check that the agent does what you meant. The AI works within the rules above; validation is what proves that an agent runs.</p>
+<h2>Checks as you type</h2>
+<p>The editor checks the definition continuously and underlines problems: syntax errors, such as a missing bracket or a stray character, and anything the agent language does not allow, such as an unknown command or field, or a value of the wrong type. Hover over an underlined problem to read what is wrong. <code>//</code> and <code>/* */</code> comments are allowed, and are not reported.</p>
+<p>These checks catch most mistakes early, but they are not the final word. <a href="trace-and-validation.html">Validation</a> checks the agent with your account's settings and runs it, and reports each problem with a sentence and its location.</p>
 
-<h3>Undo</h3>
-<p>Each AI edit can be undone. Select <strong>Undo AI edit</strong> beside the <strong>Agent definition</strong> heading. The number in the button is how many edits you can step back through, up to the last ten.</p>
+<h2>Reading the definition</h2>
 <ul>
-  <li>Undo puts back the definition as it was before that AI edit, and saves it.</li>
-  <li>If you have typed changes into the definition since the AI edit and not saved them, you are asked first. <strong>Keep my changes</strong> leaves everything as it is; <strong>Undo</strong> discards those changes and goes back.</li>
-  <li>When you edit the definition yourself and save it, the undo history is cleared. From then on, the editor's own undo (Ctrl+Z) is the way back.</li>
+  <li>Expressions stand out: a value written as a Python expression, like <code>"{ total + 1 }"</code>, is shown with bold braces and its contents in a monospace font.</li>
+  <li>Matching brackets share a colour, and indent guides show how blocks nest.</li>
+  <li>A function or command folds with the arrow beside its line number.</li>
+  <li>The editor grows with the definition rather than scrolling inside a box; the page scrolls instead.</li>
+  <li>The editor follows the GUI's theme, light or dark.</li>
 </ul>
 
-<h3>Tips</h3>
+<h2>Formatting</h2>
+<p>Quotes and brackets close automatically as you type them. Pasted text and new lines are formatted as they go in. <strong>Format document</strong> reformats the whole definition with an indentation of two spaces.</p>
+
+<h2>The toolbar</h2>
+<p>The toolbar above the editor holds every action. Hover over a button to see its name and shortcut.</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Button</th><th>Shortcut</th></tr></thead>
+<tbody>
+<tr><td>Find</td><td>&#8984;F / Ctrl+F</td></tr>
+<tr><td>Replace</td><td>&#8997;&#8984;F / Ctrl+H</td></tr>
+<tr><td>Find next, Find previous</td><td></td></tr>
+<tr><td>Toggle comment</td><td>&#8984;/ / Ctrl+/</td></tr>
+<tr><td>Block comment</td><td></td></tr>
+<tr><td>Format document</td><td>&#8679;&#8997;F / Shift+Alt+F</td></tr>
+<tr><td>Word wrap on or off (on at the start)</td><td></td></tr>
+<tr><td>Line numbers on or off</td><td></td></tr>
+<tr><td>Indent guides on or off</td><td></td></tr>
+<tr><td>Go to line</td><td>&#8963;G / Ctrl+G</td></tr>
+<tr><td>Fold all, Unfold all</td><td></td></tr>
+<tr><td>Undo</td><td>&#8984;Z / Ctrl+Z</td></tr>
+<tr><td>Redo</td><td>&#8679;&#8984;Z / Ctrl+Y</td></tr>
+</tbody></table></div>
+
+<h2>Around the editor</h2>
 <ul>
-  <li><strong>Ask for one change at a time.</strong> "Add an ask for the order number before the lookup" is easier to check than a whole agent rewritten at once.</li>
-  <li><strong>Tick the profiles first, and keep their notes useful.</strong> A profile's notes are what the AI knows about your system. "Orders database: orders, order_lines, customers" leads to a better draft than an empty note.</li>
-  <li><strong>Name the agents to call.</strong> The AI does not know which agents exist in your account. To have the draft invoke one, say which.</li>
-  <li><strong>If something is refused at validation,</strong> say what the error was in your next request, or fix it in the editor. A validation error names the place in the definition it is about.</li>
+  <li><strong>Save</strong> with Ctrl+S (&#8984;S on a Mac) from anywhere on the page, including while typing in the editor. <em>Saved</em> appears briefly beside the Agent definition heading.</li>
+  <li><strong>Validate</strong> with Ctrl+Enter (&#8984;&#9166;) from anywhere on the page except inside the editor, where that key belongs to the editor; there, use the <strong>Validate/Trace</strong> button or click outside the editor first.</li>
+  <li><strong>Jump to a problem.</strong> Validation errors and lines in the validation output show where in the agent they happened, such as <code>main.commands.llm</code>. Select one to scroll to that command and select the whole of it. If you have since removed or renamed the command, you are told so.</li>
+  <li><strong>Two kinds of undo.</strong> The editor's own Undo steps back through your typing. <strong>Undo AI edit</strong>, beside the heading, steps back through changes made by <a href="draft-with-ai.html">Draft with AI</a>, up to the last ten.</li>
+</ul>
+
+<h2>What the editor leaves to others</h2>
+<ul>
+  <li>Hovering shows a problem's message, never a description of the command or field under the pointer; the box under the command list describes each command, and the Docs icon answers questions about the language.</li>
+  <li>Profile names, secret names and functions on your allowlist are typed, not suggested; validation checks that each one exists.</li>
+  <li>The editor is a first line of defence. Validation on the agent server has the final say when you validate and publish.</li>
 </ul>

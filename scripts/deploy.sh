@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # Deploys the website (html/) to the search2o.com S3 bucket and invalidates CloudFront.
 #
-#   scripts/deploy.sh                 dry run: rebuild the docs, show what would upload and what would be deleted
-#   scripts/deploy.sh --go            upload, delete bucket objects that no longer exist locally, invalidate,
-#                                     wait for the invalidation, verify with curl
+#   scripts/deploy.sh                 rebuild the docs, upload what changed, delete bucket objects that no
+#                                     longer exist locally, invalidate, wait for it, verify with curl
+#   scripts/deploy.sh --dry-run       show what would upload and what would be deleted; touch nothing
 #   scripts/deploy.sh --skip-build    do not rebuild the docs first (either mode)
 #
 # The full procedure and the one-time bucket setup are in website_deploy.md.
@@ -24,10 +24,11 @@ ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 HTML="$ROOT/html"
 PYTHON="${S2O_PYTHON:-$ROOT/../s2oserver/.venv/bin/python}"
 
-go=false
+go=true
 skip_build=false
 for arg in "$@"; do
     case "$arg" in
+        --dry-run) go=false ;;
         --go) go=true ;;
         --skip-build) skip_build=true ;;
         -h|--help) sed -n '2,10p' "$0"; exit 0 ;;
@@ -70,7 +71,7 @@ step "Files that differ from the bucket (delete: an object with no local file)"
 
 if ! $go; then
     echo
-    echo "Dry run only. Re-run with --go to deploy."
+    echo "Dry run only. Run without --dry-run to deploy."
     exit 0
 fi
 
@@ -97,9 +98,12 @@ echo "Completed"
 step "Verifying"
 home_status="$(curl -s -o /dev/null -w '%{http_code}' "$SITE_URL/")"
 docs_title="$(curl -s "$SITE_URL/docs/index.html" | grep -o '<title>[^<]*' | head -1)"
+live_api_url="$(curl -s "$SITE_URL/config.js" | grep -E '^\s*apiUrl:' | sed -E 's/.*apiUrl: *"([^"]*)".*/\1/')"
 echo "$SITE_URL/            $home_status"
 echo "$SITE_URL/docs/index.html  ${docs_title:-no title found}"
+echo "$SITE_URL/config.js   apiUrl: ${live_api_url:-missing}"
 [[ "$home_status" == "200" ]] || fail "home page returned $home_status"
+[[ "$live_api_url" == "$PRODUCTION_API_URL" ]] || fail "the LIVE config.js apiUrl is '${live_api_url:-missing}', not $PRODUCTION_API_URL - fix it now"
 
 echo
 echo "Deployed. If the docs changed, regenerate the in-app summaries with s2oserver's maintenance/docs_create.py."

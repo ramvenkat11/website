@@ -9,5 +9,5 @@
 <h2>Deciding what to run</h2>
 <p>Search returns one, two or three agents, best first, or none when nothing matches; see <a href="how-matching-works.html">How matching behaves</a>. An interface can run the first match, show the choice, or run only when there is exactly one. The response carries the account's <code>searchBehavior</code> and <code>followupBehavior</code> settings, which an interface may follow or not.</p>
 
-<h2>Several requests in one box</h2>
-<p>An interface can split what the user typed on a delimiter, a new line or a row of dashes for example, send each part to <code>search</code> on its own, and run the matched agents in sequence. Passing the conversation's <code>convid</code> along lets each agent see what the previous one did.</p>
+<h2>Orchestrator</h2>
+<p>One can create an orchestrating agent that every user request goes to. The orchestrator splits the request with an LLM, matches each part to an agent with the <a href="../commands/search.html"><code>search</code></a> command, and <a href="../commands/invoke.html">invokes</a> each agent in sequence. This is close to how agent orchestration is done in the industry today.</p>

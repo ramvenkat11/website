@@ -1,0 +1,12 @@
+<p class="lead">Once a draft is <a href="trace-and-validation.html">validated</a>, it can be published. The published agent becomes visible to all developers and runnable by users, and the draft is retired.</p>
+
+<h2>Versions</h2>
+<p>Each publish creates a new version of the agent. Previous versions are kept for three months and can be viewed from the agent's page.</p>
+
+<h2>Describing the agent</h2>
+<p>After publishing, describe the agent in plain English so that search can find it. See <a href="../search/describing-an-agent.html">Describing an agent</a>. An agent with no description can still be run by name and invoked by other agents; it simply cannot be found by search.</p>
+
+<h2>When several developers change the same agent</h2>
+<p>When several developers create drafts of the same published agent, each developer works on an independent copy. When one of them publishes, the others' drafts are behind the agent, and Search2o Cloud brings a draft up to date on request.</p>
+<p>A draft remembers the version of the agent the draft was created from. When another developer publishes that agent, the draft is out of date. The next time the draft is opened, the GUI says so and offers to merge. On accepting, Search2o Cloud produces a merged definition from the draft and the newly published version, saves the merged definition to the draft, and marks the draft as based on the current version. The developer then reviews the merged draft, validates it, and publishes it like any draft; the merge clears the draft's validation, so validation runs again.</p>
+<p>A draft that is behind cannot be published until it is merged. If the agent has not changed since the draft was created, there is nothing to merge and publishing proceeds directly. In the REST API the same step is the <code>mergeDraft</code> call, offered when <code>getDraft</code> reports that the agent has changed.</p>
