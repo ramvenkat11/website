@@ -1011,7 +1011,13 @@ table (fields compare; bold labels in the md are plain cells), and the closing "
 expressiveness ... belongs in a Python function that an agent calls." ONE WORD CHANGED: the
 md's "Sandboxing has to be added around it." (about a Python program) was first "Containment has to
 be added around it.", then REMOVED entirely on Ram's order - the cell ends at "...the network
-and the process." Table fits (151/234/385), 341 words.
+and the process." Table fits (151/234/385), 341 words. Then REWRITTEN AGAIN from the revised md (same lead,
+table and closing): the prose is now six paragraphs - small closed language an AI can hold
+entirely; Search2o checks what Python cannot; the ask-in-for-vs-while example (a while loop's
+state can be saved and resumed, a for loop over a generator cannot); profiles tracked and
+undeletable while in use ("The UI" -> "The GUI"); planning the system with global controls
+enforced at publish; "Python is still there". The table's "Sandboxing" sentence stays
+removed as Ram ordered.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
