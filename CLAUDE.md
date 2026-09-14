@@ -990,7 +990,7 @@ text from "The organizing axis" to the end, INCLUDING the Tally section (weighti
 per-section table, 8 tables now) and Sources (URLs as plain text, as written), numbered h2s
 kept, and the four "sandbox" mentions and "three-way merge" left as Claude wrote them - the
 vocabulary rules do NOT apply to this page because it is presented as Claude's text.
-FIDELITY VERIFIED IDENTICAL (normalized page body == normalized md body). The second paragraph's last sentence is now "One should be able to repeat this analysis on their own using our docs." (Ram, replacing the fair-and-balanced line). Superseded note on
+FIDELITY VERIFIED IDENTICAL (normalized page body == normalized md body). The second paragraph now opens "We gave our product documentation to Claude Fable 5.1 and asked for a comparative analysis." (Ram; "comparitive" in his message spelled comparative). Its last sentence is now "One should be able to repeat this analysis on their own using our docs." (Ram, replacing the fair-and-balanced line). Superseded note on
 the earlier version's edits: the three
 "Sandbox - ..." rows are "Containment - ...", "A capability sandbox bounds" -> "The controlled
 runtime bounds", any other "sandbox" -> "environment"; "Search2o has a three-way merge in the
