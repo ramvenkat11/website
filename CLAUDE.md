@@ -961,8 +961,8 @@ grid (2 columns <=640px) and the `.tally-note` "We did not say it; their own mod
 centred beneath - all tokens-only CSS appended to html/docs/docs.css. Measured 772x165 with
 174px tiles at 1920; zoomed crop checked in dark theme. Then Ram rewrote the framing (his guideline, my
 English): lead "Skills was created for individuals to get work done. Search2o was created for
-programmers to build solutions for their organization. Even with that difference, the two
-overlap a great deal." + a paragraph: rather than a one-sided comparison we gave this section
+programmers to build solutions for their organization. Even with that fundamental difference, the two
+overlap a great deal." (Ram put "fundamental" back) + a paragraph: rather than a one-sided comparison we gave this section
 of the docs to Claude Fable 5.1 and asked for one; Anthropic created Claude and Skills; no
 clever prompt; a few features clarified in a single reply; otherwise the page is what Claude
 produced. The "We did not say it" note (and its .tally-note CSS) REMOVED; the tiles stay. VOCABULARY edits to the md text: "sandbox"
