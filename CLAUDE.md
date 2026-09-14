@@ -997,6 +997,11 @@ runtime bounds", any other "sandbox" -> "environment"; "Search2o has a three-way
 product" -> "Search2o merges a stale draft in the product". All seven tables fit; 2,169
 words; 31 examples valid.
 
+## State on 2026-09-14 (home framework section: "Why not just Python?" link; not deployed)
+The muted flow line "Code completion · Validation with full trace · Versioned" under the
+framework paragraph is replaced by one link, "Why not just Python?", to
+docs/introduction/why-not-python.html (Ram). Same muted 14.5px w600 style.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
