@@ -1,0 +1,118 @@
+<p class="lead">This comparison was written by Fable 5.1, a model from Anthropic, the creator of Skills, after reading the Search2o documentation.</p>
+<div class="tally" aria-label="The tally">
+  <div class="tally-tiles">
+    <div class="tally-tile win"><b>38</b><span>Search2o</span></div>
+    <div class="tally-tile"><b>10</b><span>Skills</span></div>
+    <div class="tally-tile"><b>10</b><span>Ties</span></div>
+    <div class="tally-tile"><b>4</b><span>Depends</span></div>
+  </div>
+  <p class="tally-note">We did not say it; their own model did. &#128578;</p>
+</div>
+
+<h2>The organizing axis</h2>
+<p>A skill is a capability a person adds to their own assistant. Even when distributed organization-wide, each person runs it in their own session, with their own permissions, and the author is out of the picture once it is shared.</p>
+<p>A Search2o agent is a service: built by a developer, operated by an administrator, run by people who never see the definition, against systems the runner may have no direct access to.</p>
+<p>Everything on the Search2o side of the tables follows from that. Validation before release only matters if someone else will run it. Reports only matter if the author won't be there when it fails. Roles, publish gates, versioning with rollback, cost per agent, error paths per version, human-in-the-loop that resumes days later on another device — all of it exists because the runner is not the author.</p>
+<p>Everything on the Skills side follows from the opposite. Authoring is easy because the author is also the beneficiary and can fix it in the moment. Flexibility is a virtue because the person watching can correct a wrong turn. A transcript is enough audit because the runner was present.</p>
+<p>The same fact reads as a strength on one side of the axis and a defect on the other. "The model improvises on inputs the author didn't anticipate" is a feature in a personal tool and a fault in a service.</p>
+
+<h2>Points the axis adds</h2>
+<p>These rows exist only because author and runner can be different people.</p>
+<div class="tablewrap"><table class="fields compare">
+<thead><tr><th>Point</th><th>Winner</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Whose permissions it runs with</td><td>Depends</td><td>A skill acts as the person and reaches only what they can. An agent acts through profiles and reaches what the profile allows regardless of who asked — a help-desk agent can file a ticket for someone with no ticketing access; access control becomes the agent's responsibility.</td></tr>
+<tr><td>Who is present when it fails</td><td>Search2o</td><td>A skill author is absent when a colleague runs it and nothing tells them. An agent failure lands in the error report with a version and a command path.</td></tr>
+<tr><td>Consistency across runners</td><td>Search2o</td><td>A skill's behavior varies with the runner's phrasing, context, and model. An agent runs the same commands for everyone.</td></tr>
+<tr><td>Onboarding the runner</td><td>Tie</td><td>Both need an account. Both present the runner with a box they already understand — a search box or a chat window — and the runner never sees a SKILL.md any more than they see an agent definition; the model loads the skill on its own. The only difference is whether the organization already has the assistant deployed, which is the distribution row below.</td></tr>
+<tr><td>Accountability and cost attribution</td><td>Search2o</td><td>Usage per user, cost per agent. A skill's cost dissolves into the runner's token bill.</td></tr>
+<tr><td>Scaling from one author to many runners</td><td>Search2o</td><td>Publish, describe, done. A skill scales by being copied into each assistant; updates propagate only where the platform manages that.</td></tr>
+<tr><td>Support burden on the author</td><td>Search2o</td><td>An operator handles failures and access. A skill author becomes the help desk for their skill.</td></tr>
+<tr><td>Doing only what it was designed to do</td><td>Search2o</td><td>The paired row to "inputs the author did not anticipate" in section 3. For a service run on behalf of others, an agent that does exactly what it was written to do is the requirement, not a limitation.</td></tr>
+</tbody></table></div>
+
+<h2>Finding the right capability</h2>
+<div class="tablewrap"><table class="fields compare">
+<thead><tr><th>Point</th><th>Winner</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Routing mechanism</td><td>Search2o</td><td>Embedding search with thresholds vs the model reading a list of descriptions and choosing.</td></tr>
+<tr><td>Refusal when nothing fits</td><td>Search2o</td><td>Search returns zero results; the model always does something.</td></tr>
+<tr><td>Ambiguity handling</td><td>Tie</td><td>Search offers two or three when close; the model asks a clarifying question.</td></tr>
+<tr><td>Catalogue scale</td><td>Search2o</td><td>Measured at 1,000 agents. Every skill description sits in context, so cost and accuracy degrade with count.</td></tr>
+<tr><td>Published accuracy evidence</td><td>Search2o</td><td>A measured page exists. Nobody publishes skill-selection accuracy.</td></tr>
+<tr><td>Routing latency</td><td>Search2o</td><td>Sub-second search vs a model turn to read and decide.</td></tr>
+<tr><td>Routing cost</td><td>Search2o</td><td>Search is free per request; every skill description costs tokens on every turn.</td></tr>
+</tbody></table></div>
+
+<h2>Building one</h2>
+<div class="tablewrap"><table class="fields compare">
+<thead><tr><th>Point</th><th>Winner</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Authoring effort</td><td>Depends on the author</td><td>For a non-programmer, Skills, outright: a markdown file, no runtime to learn. For a programmer expressing a multi-step workflow — call this, loop over that, ask, then write — the command list is the natural form and prose is the awkward one. For a programmer writing a simple instruction-shaped capability, roughly a tie.</td></tr>
+<tr><td>Who can author</td><td>Skills</td><td>Anyone who can write instructions vs a developer who learns 23 commands.</td></tr>
+<tr><td>Readability by non-developers</td><td>Depends on length</td><td>A twenty-line JSON workflow reads more easily than a two-hundred-line SKILL.md, and worse than a ten-line one. Prose wins at short lengths; structure wins as the workflow grows.</td></tr>
+<tr><td>Precision — knowing exactly what it will do</td><td>Search2o</td><td>A command list states what happens; prose leaves the model to interpret it, and two readers can disagree about what a paragraph of instructions means. An AI can explain a JSON workflow exactly; it can only paraphrase prose.</td></tr>
+<tr><td>Time to first working result</td><td>Skills</td><td>No install, no profiles, no validation pass.</td></tr>
+<tr><td>AI-assisted authoring</td><td>Tie</td><td>Claude writes skills; Draft with AI writes agents.</td></tr>
+<tr><td>Pre-release validation</td><td>Search2o</td><td>Mandatory execution run with trace vs none built in.</td></tr>
+<tr><td>Versioning and rollback</td><td>Tie</td><td>Platform-managed skills have thin versioning; skills in a repo get git. Search2o has version history with rollback.</td></tr>
+<tr><td>Concurrent editing</td><td>Search2o</td><td>The cloud merges a stale draft in the product vs git or nothing.</td></tr>
+<tr><td>Inputs the author did not anticipate</td><td>Skills, for a personal tool</td><td>The model improvises. This is the other face of "doing only what it was designed to do" in section 1: a feature when the author is watching, a fault when a stranger is relying on it.</td></tr>
+</tbody></table></div>
+
+<h2>Running one</h2>
+<div class="tablewrap"><table class="fields compare">
+<thead><tr><th>Point</th><th>Winner</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Determinism</td><td>Search2o</td><td>Fixed command sequence vs model judgment over prose.</td></tr>
+<tr><td>Error handling</td><td>Search2o</td><td><code>onError</code> per command and function, transactional <code>fail</code>. The model improvises recovery.</td></tr>
+<tr><td>Human-in-the-loop</td><td>Search2o</td><td>Structured <code>ask</code>, resumes days later on another device. A skill asks in-session only.</td></tr>
+<tr><td>Long-running and paused workflows</td><td>Search2o</td><td>State saved and resumed. A skill lives inside one session.</td></tr>
+<tr><td>Non-interactive, batch, event-driven runs</td><td>Search2o</td><td>REST API and workflows. Skills are designed around a conversation.</td></tr>
+<tr><td>Arbitrary code — capability</td><td>Skills</td><td>Scripts in Python or bash. Search2o allows none by design.</td></tr>
+<tr><td>Arbitrary code — blast radius of a mistake or an injection</td><td>Search2o</td><td>The controlled runtime bounds what an expression can reach; a script can do whatever the container allows.</td></tr>
+<tr><td>Per-run token cost for routine tasks</td><td>Search2o</td><td>Only the <code>llm</code> command's tokens. A skill run reads the body and reasons every time.</td></tr>
+<tr><td>Composition in one conversation</td><td>Tie</td><td>The model composes skills fluidly within one person's turn. Search2o composes across requests and via <code>invoke</code>/<code>search</code>. Tilts to Skills for one person, to Search2o across many.</td></tr>
+<tr><td>Latency of a routine action</td><td>Search2o</td><td>Direct API/DB calls vs model-mediated steps.</td></tr>
+<tr><td>Long-term memory</td><td>Tie</td><td>Per-user memory in Search2o; the assistant has its own memory. Different scoping, both present.</td></tr>
+</tbody></table></div>
+
+<h2>Reaching your systems</h2>
+<div class="tablewrap"><table class="fields compare">
+<thead><tr><th>Point</th><th>Winner</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Direct access to internal APIs and databases</td><td>Search2o</td><td>Profiles and commands inside your network. Skills reach systems through MCP servers you expose.</td></tr>
+<tr><td>Breadth of integrations</td><td>Skills</td><td>Files, web, computer use, vendor tools, plus MCP. Search2o has REST, SQL, MCP.</td></tr>
+<tr><td>MCP</td><td>Tie</td><td>Both are clients.</td></tr>
+<tr><td>Secrets handling</td><td>Search2o</td><td>Vault and profiles vs environment and MCP server config.</td></tr>
+<tr><td>Where execution happens</td><td>Search2o</td><td>Your server. Skills run in the vendor's environment (local only with Claude Code).</td></tr>
+<tr><td>Data residency and privacy</td><td>Search2o, narrowly</td><td>Data plane in your org, control plane in Search2o Cloud. Skills put everything in the vendor's cloud. Not a clean win given the plaintext-query boundary.</td></tr>
+<tr><td>Retention control</td><td>Search2o</td><td>Conversations expire at three months, are pinnable, and are deletable by the user; retention under a skill follows the vendor's policy.</td></tr>
+</tbody></table></div>
+
+<h2>Trust and governance</h2>
+<div class="tablewrap"><table class="fields compare">
+<thead><tr><th>Point</th><th>Winner</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Prompt-injection exposure</td><td>Search2o</td><td>The model does not choose actions, so injected text cannot redirect the sequence. A skill-driven model can be steered.</td></tr>
+<tr><td>Containment — control</td><td>Search2o</td><td>The customer's allowlist bounds what code can reach.</td></tr>
+<tr><td>Containment — isolation strength</td><td>Tie</td><td>Skills' container is built in and operated by the vendor. Search2o's application-level containment has no CPU or memory limits of its own, but the agent server is a process the customer can run in a container with OS limits. Built-in versus configurable.</td></tr>
+<tr><td>Auditability of what ran</td><td>Search2o</td><td>Command-level trace and error paths. A skill leaves a transcript.</td></tr>
+<tr><td>Cost per capability, per version</td><td>Search2o</td><td>Reports exist. Skills have none.</td></tr>
+<tr><td>Roles and publish control</td><td>Search2o</td><td>Four roles. Skills are shared by admins or personal; no publish gate.</td></tr>
+<tr><td>Reproducibility for regulated review</td><td>Search2o</td><td>Same input, same steps.</td></tr>
+</tbody></table></div>
+
+<h2>Ecosystem and business</h2>
+<div class="tablewrap"><table class="fields compare">
+<thead><tr><th>Point</th><th>Winner</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>Model neutrality</td><td>Search2o</td><td>Any vendor or compatible endpoint. Skills run on the vendor's models.</td></tr>
+<tr><td>Format openness and portability</td><td>Skills</td><td>Open spec, plain markdown, adopted elsewhere. Search2o is a proprietary JSON DSL.</td></tr>
+<tr><td>Distribution and reach</td><td>Skills</td><td>Every Claude user, plus other tools.</td></tr>
+<tr><td>Maturity and community</td><td>Skills</td><td>Months of wide use vs a launch.</td></tr>
+<tr><td>End-user interface</td><td>Tie</td><td>Search2o ships a purpose-built search UI, conversations, and chat-bot integrations. Skills ship no interface of their own; they borrow the assistant's chat, which is polished and familiar but not built for finding and running capabilities. Purpose-built versus borrowed.</td></tr>
+<tr><td>Embedding in your own apps</td><td>Tie</td><td>Both have APIs.</td></tr>
+<tr><td>Pricing model</td><td>Depends</td><td>Skills ride on seats or tokens. Search2o adds a license on top of your own LLM spend. Cheaper at small scale for Skills, cheaper per routine run for Search2o.</td></tr>
+<tr><td>Can host the other's shape</td><td>Search2o</td><td>An <code>llm</code> command with a prompt profile and tools is a skill-shaped agent. A skill cannot be a Search2o agent.</td></tr>
+</tbody></table></div>
