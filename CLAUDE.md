@@ -1000,7 +1000,7 @@ words; 31 examples valid.
 ## State on 2026-09-14 (home framework section: "Why not just Python?" link; not deployed)
 The muted flow line "Code completion · Validation with full trace · Versioned" under the
 framework paragraph is replaced by one link, "Why not just Python?", to
-docs/introduction/why-not-python.html (Ram). Same muted 14.5px w600 style.
+docs/introduction/why-not-python.html (Ram). Then folded INTO the paragraph as its last sentence ("... with built-in safeguards. Why not just Python?"), the separate muted line gone.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
