@@ -1009,8 +1009,9 @@ can be validated / generated / read as steps / bounded; expressions supply the g
 without giving up those properties), the seven-row Aspect / A Python program / A Search2o agent
 table (fields compare; bold labels in the md are plain cells), and the closing "The trade is
 expressiveness ... belongs in a Python function that an agent calls." ONE WORD CHANGED: the
-md's "Sandboxing has to be added around it." (about a Python program) is "Containment has to
-be added around it." - the vocabulary ban; flagged. Table fits (151/234/385), 341 words.
+md's "Sandboxing has to be added around it." (about a Python program) was first "Containment has to
+be added around it.", then REMOVED entirely on Ram's order - the cell ends at "...the network
+and the process." Table fits (151/234/385), 341 words.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
