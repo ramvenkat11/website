@@ -170,5 +170,4 @@ figure.fig figcaption { font-size: 13.5px; color: var(--muted); margin-top: 8px;
 .tally-tile span { display: block; margin-top: 4px; font-size: 13px; font-weight: 600; color: var(--muted); }
 .tally-tile.win { border-color: var(--feat-border); background: var(--feat-bg); }
 .tally-tile.win b { color: var(--blue-ink); }
-.docs-article .tally-note { margin: 14px 0 0; font-size: 14.5px; color: var(--muted); text-align: center; }
 @media (max-width: 640px) { .tally-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
