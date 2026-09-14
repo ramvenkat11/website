@@ -959,7 +959,13 @@ border, radius 12) holding four `.tally-tile`s (30px w800 number + 13px muted la
 Search2o tile `.win` with --feat-border/--feat-bg and the number in --blue-ink) in a 4-column
 grid (2 columns <=640px) and the `.tally-note` "We did not say it; their own model did. 🙂"
 centred beneath - all tokens-only CSS appended to html/docs/docs.css. Measured 772x165 with
-174px tiles at 1920; zoomed crop checked in dark theme. VOCABULARY edits to the md text: "sandbox"
+174px tiles at 1920; zoomed crop checked in dark theme. Then Ram rewrote the framing (his guideline, my
+English): lead "Skills was created for individuals to get work done. Search2o was created for
+programmers to build solutions for their organization. Even with that difference, the two
+overlap a great deal." + a paragraph: rather than a one-sided comparison we gave this section
+of the docs to Claude Fable 5.1 and asked for one; Anthropic created Claude and Skills; no
+clever prompt; a few features clarified in a single reply; otherwise the page is what Claude
+produced. The "We did not say it" note (and its .tally-note CSS) REMOVED; the tiles stay. VOCABULARY edits to the md text: "sandbox"
 removed everywhere (Skills' "code-execution sandbox" -> "code-execution environment"; "A
 capability sandbox bounds..." -> "The controlled runtime bounds..."; the two "Sandbox - ..."
 rows -> "Containment - ..."); "Three-way merge in the product" -> "The cloud merges a stale
