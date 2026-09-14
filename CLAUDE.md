@@ -983,6 +983,10 @@ section is gone.
   mine, ever ("You cannot write such public comments that anyone can see"). Explanations go in
   CLAUDE.md, in docsrc/gen sources (not served), or in scripts/. All comments were stripped on
   2026-09-13; keep it that way.
+- ADVICE MUST EARN ITS PLACE (Ram, 2026-09-14): the Publishing page's "Practical advice" was
+  "too basic and patronising" and was cut; the advisory sentences he kept each protect the
+  reader from a real cost (SSO off only once proven, cookies, credentials, least role). No
+  basic tips; a single sentence beside the fact it protects, never a section of them.
 - Tight scope: do what was asked, report related findings instead of fixing them uninvited.
 - Cite files as `path/file.html:123` (Ram runs Claude in a JetBrains terminal).
 - Ask before anything irreversible; deleting from the S3 bucket is irreversible.
