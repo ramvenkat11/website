@@ -953,7 +953,13 @@ note, as the lead: "This comparison was written by Fable 5.1, a model from Anthr
 creator of Skills, after reading the Search2o documentation." and, per Ram's next message, the tally in a light vein - "Its tally: Search2o 38, Skills 10,
 ten ties, and four that depend on the case. We did not say it; their own model did. 🙂" - with
 the axis sentence REMOVED from the lead (and gone from the page), and the "Assumptions about
-Skills" and "Tally (for reference only)" sections REMOVED. VOCABULARY edits to the md text: "sandbox"
+Skills" and "Tally (for reference only)" sections REMOVED. Then (Ram: not as a line, make it
+catch the eye) the tally became a TILE STRIP under the lead: `.tally` panel (bg-soft, line
+border, radius 12) holding four `.tally-tile`s (30px w800 number + 13px muted label; the
+Search2o tile `.win` with --feat-border/--feat-bg and the number in --blue-ink) in a 4-column
+grid (2 columns <=640px) and the `.tally-note` "We did not say it; their own model did. 🙂"
+centred beneath - all tokens-only CSS appended to html/docs/docs.css. Measured 772x165 with
+174px tiles at 1920; zoomed crop checked in dark theme. VOCABULARY edits to the md text: "sandbox"
 removed everywhere (Skills' "code-execution sandbox" -> "code-execution environment"; "A
 capability sandbox bounds..." -> "The controlled runtime bounds..."; the two "Sandbox - ..."
 rows -> "Containment - ..."); "Three-way merge in the product" -> "The cloud merges a stale
