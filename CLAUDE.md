@@ -863,7 +863,9 @@ live, live styles.css md5 == local.
 ## State on 2026-09-13 (deploy on Ram's "Deploy": his own index.html edits)
 Ram edited html/index.html himself and said "Deploy": 130 uploads (index.html, sitemap.xml
 and the rebuilt docs pages - the rebuild retimestamps them), invalidation
-IDFF1H1GL40VK5MO2QSDEYSPHK Completed, live index.html md5 == local, home and docs 200.
+IDFF1H1GL40VK5MO2QSDEYSPHK Completed, live index.html md5 == local, home and docs 200. A second
+"Deploy" followed with another index.html edit of his (invalidation I586O6M59RZKLQT2MD0U8LX3E6,
+md5 == local).
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
