@@ -895,6 +895,27 @@ Describing the agent (kept). VOCABULARY: the md's "compiles/compile errors/compi
 name. 1,791 words; both tables fit; on-page toc 11 entries; screenshot loads. 128 pages, 31
 examples valid.
 
+## State on 2026-09-14 (editor and Draft with AI split into two topics; NOT DEPLOYED)
+Ram: split them; the editor from content/editor.md, Draft with AI essentially unchanged.
+docsrc/development/code-editor.html is now "The agent editor" (slug kept): lead (Monaco);
+What the editor knows (schema from the agent server, loaded once per session, plain JSON
+fallback); Adding a command (the group table uses the CURRENT group names/order from toc.py -
+the md still had the pre-09-04 names; keep typing/arrows/Enter/Escape; starter fields and
+values, var.1/var.2 numbering, tidy insertion; the editor-completion screenshot); Suggestions
+as you type (grey-text keys; from your own agent inside parallel; the two messages); Checks
+as you type (comments allowed; validation is the final word); Reading the definition;
+Formatting; The toolbar (shortcut table with mac symbols as entities); Around the editor
+(Ctrl+S, Ctrl+Enter except inside the editor, jump to a problem, two kinds of undo); "What the
+editor leaves to others" (the md's "What the editor does not do", said positively). NEW
+docsrc/development/draft-with-ai.html = the former Draft with AI section verbatim, its first
+paragraph as the lead and h3 -> h2 (129 pages). toc: code-editor "The agent editor", then
+draft-with-ai "Draft with AI". Inbound links: your-first-agent, profiles/overview and
+gui/agents point at draft-with-ai.html; the HOME PAGE flow line's "Code completion" now links
+code-editor.html#adding-a-command (the #completion heading is gone). VOCABULARY: the md's
+"compiler"/"compiles" -> "validation"/"checks". Verified in-browser: both pages' tables fit,
+on-page tocs (9 and 5), screenshots load, sidebar shows both entries; link check unchanged;
+31 examples valid.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
