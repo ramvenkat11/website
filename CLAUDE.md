@@ -945,6 +945,21 @@ why-not-python.html (its intro paragraph is the lead), second page of Introducti
 toc (130 pages). what-is-search2o ends at "What makes it different". No anchor links existed
 to #why-not-python.
 
+## State on 2026-09-14 (Why not Skills? topic; NOT DEPLOYED)
+NEW docsrc/introduction/why-not-skills.html, third in Introduction (131 pages), generated
+from content/skill_cmp.md by a small md converter (headings, the assumptions list, the axis
+paragraphs, seven Point/Winner/Why tables as `fields compare`, the tally). Ram's upfront
+note, as the lead: "This comparison was written by Fable 5.1, a model from Anthropic, the
+creator of Skills, after reading the Search2o documentation." plus the axis sentence (the
+duplicate at the end of the axis section dropped). VOCABULARY edits to the md text: "sandbox"
+removed everywhere (Skills' "code-execution sandbox" -> "code-execution environment"; "A
+capability sandbox bounds..." -> "The controlled runtime bounds..."; the two "Sandbox - ..."
+rows -> "Containment - ..."); "Three-way merge in the product" -> "The cloud merges a stale
+draft in the product" (the merge changed on 09-12). docs.css: `table.fields.compare
+td:first-child { white-space: normal; min-width: 150px }` so long Point labels wrap (the
+why-not-python table is unaffected: 151/266/353). All seven tables fit (first column
+167-213px, Why column 455-510px). 1,625 words. 31 examples valid.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
