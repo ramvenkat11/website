@@ -875,6 +875,26 @@ examples). Verified with a --dry-run --skip-build run. Then (Ram): a LAST STEP a
 completes fetches https://search2o.com/config.js and fails the run if its apiUrl is not
 https://reg.api.search2o.com - so the live value is checked, not only the local one.
 
+## State on 2026-09-14 (validation-and-publishing rewritten from content/validation.md; NOT DEPLOYED)
+Ram: rewrite Validation and publishing from content/validation.md. New page (h2s): What
+validation checks (three stages: definition+security checks / what the server can find / a
+real run; both results stored with the draft, any save clears both); Running a validation
+(Validate tab, validation query saved with the draft, Validate/Trace or Ctrl+Enter, Stop,
+Draft with AI locked meanwhile) with h3 Follow-up questions (the draft's own validation
+conversation; start / ask a follow-up / keep going; six facts; the two messages) and h3 When
+the agent asks for input; Reading the result (status table: Not validated / Validating /
+Failed - not stored / Validated) with h3 Validation errors (location link, Allowlist item ->
+Open Allowlist, Secret) and h3 Runtime errors; The validation output (the console, the
+validation-trace screenshot kept, the nine-filter table, the filter bullets, Clear, runs not
+counted in reports); Why validation errors are not fixed by AI (a validation run is a real run
+against your systems; Draft with AI never receives output/trace/runtime error/query; fix in
+the editor, describe the problem yourself, keep credentials out of the definition);
+Publishing (KEPT - the home page links #publishing; versions three months; merge first) and
+Describing the agent (kept). VOCABULARY: the md's "compiles/compile errors/compiled" became
+"passes the checks"/"definition errors"/"checked fresh"; "Compile rules" stays as the product
+name. 1,791 words; both tables fit; on-page toc 11 entries; screenshot loads. 128 pages, 31
+examples valid.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
