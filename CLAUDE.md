@@ -974,6 +974,22 @@ td:first-child { white-space: normal; min-width: 150px }` so long Point labels w
 why-not-python table is unaffected: 151/266/353). All seven tables fit (first column
 167-213px, Why column 455-510px). 1,625 words. 31 examples valid.
 
+## State on 2026-09-14 (Why not Skills? REDONE from the revised content/skill_cmp.md; NOT DEPLOYED)
+Ram revised skill_cmp.md (a product and technology comparison; 69 rows in seven sections; a
+per-section tally 39/16/10/4; a Sources section with two Anthropic URLs + search2o.com/docs,
+checked September 14) and asked for the page redone: keep the first paragraph, update the
+tally, replace the "no clever prompt" sentences. Page now: the kept lead; second paragraph
+ending "The rest of this page is what Claude produced. We asked Claude one question at the
+end, whether it considers the analysis fair and balanced, and it said yes."; the tally tiles
+39 Search2o / 16 Skills / 10 Ties / 4 Depends (no note beneath); then the md body from "The
+organizing axis" through the seven sections (section numbers stripped from the h2s) and
+Sources (URLs made links). The md's Tally section (weighting sentence + per-section table) is
+NOT on the page - the tiles carry it. VOCABULARY EDITS to Claude's text, flagged: the three
+"Sandbox - ..." rows are "Containment - ...", "A capability sandbox bounds" -> "The controlled
+runtime bounds", any other "sandbox" -> "environment"; "Search2o has a three-way merge in the
+product" -> "Search2o merges a stale draft in the product". All seven tables fit; 2,169
+words; 31 examples valid.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
