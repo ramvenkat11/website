@@ -950,8 +950,10 @@ NEW docsrc/introduction/why-not-skills.html, third in Introduction (131 pages), 
 from content/skill_cmp.md by a small md converter (headings, the assumptions list, the axis
 paragraphs, seven Point/Winner/Why tables as `fields compare`, the tally). Ram's upfront
 note, as the lead: "This comparison was written by Fable 5.1, a model from Anthropic, the
-creator of Skills, after reading the Search2o documentation." plus the axis sentence (the
-duplicate at the end of the axis section dropped). VOCABULARY edits to the md text: "sandbox"
+creator of Skills, after reading the Search2o documentation." and, per Ram's next message, the tally in a light vein - "Its tally: Search2o 38, Skills 10,
+ten ties, and four that depend on the case. We did not say it; their own model did. 🙂" - with
+the axis sentence REMOVED from the lead (and gone from the page), and the "Assumptions about
+Skills" and "Tally (for reference only)" sections REMOVED. VOCABULARY edits to the md text: "sandbox"
 removed everywhere (Skills' "code-execution sandbox" -> "code-execution environment"; "A
 capability sandbox bounds..." -> "The controlled runtime bounds..."; the two "Sandbox - ..."
 rows -> "Containment - ..."); "Three-way merge in the product" -> "The cloud merges a stale
