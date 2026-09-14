@@ -867,6 +867,12 @@ IDFF1H1GL40VK5MO2QSDEYSPHK Completed, live index.html md5 == local, home and doc
 "Deploy" followed with another index.html edit of his (invalidation I586O6M59RZKLQT2MD0U8LX3E6,
 md5 == local).
 
+## State on 2026-09-14 (deploy.sh deploys by default)
+Ram: make the default the actual deploy. scripts/deploy.sh: go=true by default; `--dry-run`
+switches it off (`--go` still accepted, a no-op); help text and website_deploy.md updated. The
+preflight gates are unchanged (account, config.js == https://reg.api.search2o.com, build,
+examples). Verified with a --dry-run --skip-build run.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
@@ -2045,7 +2051,8 @@ concluding a CSS change did not take.
         --exclude "*/.DS_Store" --acl public-read
     aws cloudfront create-invalidation --distribution-id E330RKTBY31L8X --paths "/docs/*"   # or "/*"
 
-scripts/deploy.sh syncs with `--delete` (since 2026-09-13): a page removed from the build is
+scripts/deploy.sh DEPLOYS BY DEFAULT (since 2026-09-14; `--dry-run` for a look, `--go` still
+accepted, `--skip-build` when only site files changed) and syncs with `--delete` (since 2026-09-13): a page removed from the build is
 removed from the bucket at the next deploy; only `docsweb/` is excluded from the sync. Verify with curl after
 the invalidation reports Completed (about a minute). The site pages under html/ are edited by
 hand; a single page can be pushed with `aws s3 cp ... --acl public-read --content-type text/html`.
