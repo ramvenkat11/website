@@ -932,6 +932,12 @@ support.html -> trace-and-validation; the HOME flow line "Validation with full t
 trace-and-validation.html and "Versioned" -> publishing.html#versions; section lead + home
 card reworded. Link check unchanged; 31 examples valid.
 
+## State on 2026-09-14 (custom search: Orchestrator replaces "Several requests in one box"; not deployed)
+Ram's text, tidied: an orchestrating agent that every request goes to splits the request with
+an LLM, matches each part with the search command, and invokes each agent in sequence -
+"close to how agent orchestration is done in the industry today". The delimiter-split
+section is gone.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
