@@ -924,7 +924,7 @@ Describing sections cut; the lead links publishing.html). NEW docsrc/development
 publishing.html: lead (validated draft -> publish, visible to developers, runnable by users,
 draft retired), Versions (each publish a version, three months), Describing the agent, "When
 several developers change the same agent" (the merging page's How-it-works text: the cloud
-merges on request, review/validate/publish, mergeDraft in the API) with h3 Practical advice.
+merges on request, review/validate/publish, mergeDraft in the API) with h3 Practical advice - then REMOVED on Ram's order; he asked where else the docs advise (list given: draft-with-ai Tips, service-accounts Good practice, and ~20 inline "is best"/"we would suggest"/"it helps to" sentences across authentication, SSO, allowlist, system-variables, chat-integrations x6, describing-an-agent, asking-the-docs, commands ask/llm/api, rest-api clients/automating).
 merging.html RETIRED (git rm docsrc + html/docs), and html/docs/development/
 validation-and-publishing.html git rm'd (both leave the bucket at the next deploy via
 --delete). toc: trace-and-validation, publishing (129 pages). Links: code-editor and
