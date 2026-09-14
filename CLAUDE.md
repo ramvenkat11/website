@@ -916,6 +916,22 @@ code-editor.html#adding-a-command (the #completion heading is gone). VOCABULARY:
 on-page tocs (9 and 5), screenshots load, sidebar shows both entries; link check unchanged;
 31 examples valid.
 
+## State on 2026-09-14 (Trace and validation; Publishing as its own topic with merging; NOT DEPLOYED)
+Ram: rename Validation and publishing to "Trace and validation"; make Publishing its own topic
+and fold multiple-developer merging into it. docsrc/development/validation-and-publishing.html
+git mv'd to trace-and-validation.html (title "Trace and validation"; its Publishing and
+Describing sections cut; the lead links publishing.html). NEW docsrc/development/
+publishing.html: lead (validated draft -> publish, visible to developers, runnable by users,
+draft retired), Versions (each publish a version, three months), Describing the agent, "When
+several developers change the same agent" (the merging page's How-it-works text: the cloud
+merges on request, review/validate/publish, mergeDraft in the API) with h3 Practical advice.
+merging.html RETIRED (git rm docsrc + html/docs), and html/docs/development/
+validation-and-publishing.html git rm'd (both leave the bucket at the next deploy via
+--delete). toc: trace-and-validation, publishing (129 pages). Links: code-editor and
+support.html -> trace-and-validation; the HOME flow line "Validation with full trace" ->
+trace-and-validation.html and "Versioned" -> publishing.html#versions; section lead + home
+card reworded. Link check unchanged; 31 examples valid.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
