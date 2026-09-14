@@ -984,7 +984,14 @@ end, whether it considers the analysis fair and balanced, and it said yes."; the
 39 Search2o / 16 Skills / 10 Ties / 4 Depends (no note beneath); then the md body from "The
 organizing axis" through the seven sections (section numbers stripped from the h2s) and
 Sources (URLs made links). The md's Tally section (weighting sentence + per-section table) is
-NOT on the page - the tiles carry it. VOCABULARY EDITS to Claude's text, flagged: the three
+NOT on the page - the tiles carry it. THEN RAM: "Reproduce the document exactly - Do not change the content. Only the first
+paragraph and the tally box is ours." REGENERATED with ZERO edits to the md body: Claude's
+text from "The organizing axis" to the end, INCLUDING the Tally section (weighting sentence +
+per-section table, 8 tables now) and Sources (URLs as plain text, as written), numbered h2s
+kept, and the four "sandbox" mentions and "three-way merge" left as Claude wrote them - the
+vocabulary rules do NOT apply to this page because it is presented as Claude's text.
+FIDELITY VERIFIED IDENTICAL (normalized page body == normalized md body). Superseded note on
+the earlier version's edits: the three
 "Sandbox - ..." rows are "Containment - ...", "A capability sandbox bounds" -> "The controlled
 runtime bounds", any other "sandbox" -> "environment"; "Search2o has a three-way merge in the
 product" -> "Search2o merges a stale draft in the product". All seven tables fit; 2,169
