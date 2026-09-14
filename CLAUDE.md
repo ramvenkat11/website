@@ -871,7 +871,9 @@ md5 == local).
 Ram: make the default the actual deploy. scripts/deploy.sh: go=true by default; `--dry-run`
 switches it off (`--go` still accepted, a no-op); help text and website_deploy.md updated. The
 preflight gates are unchanged (account, config.js == https://reg.api.search2o.com, build,
-examples). Verified with a --dry-run --skip-build run.
+examples). Verified with a --dry-run --skip-build run. Then (Ram): a LAST STEP after the invalidation
+completes fetches https://search2o.com/config.js and fails the run if its apiUrl is not
+https://reg.api.search2o.com - so the live value is checked, not only the local one.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
