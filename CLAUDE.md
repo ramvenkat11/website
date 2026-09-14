@@ -938,6 +938,13 @@ an LLM, matches each part with the search command, and invokes each agent in seq
 "close to how agent orchestration is done in the industry today". The delimiter-split
 section is gone.
 
+## State on 2026-09-14 (Why not Python? is its own topic; NOT DEPLOYED)
+The "Why not Python?" section (intro paragraph + the fields.compare table + the "Python does
+not disappear" line) moved out of what-is-search2o.html into NEW docsrc/introduction/
+why-not-python.html (its intro paragraph is the lead), second page of Introduction in the
+toc (130 pages). what-is-search2o ends at "What makes it different". No anchor links existed
+to #why-not-python.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
