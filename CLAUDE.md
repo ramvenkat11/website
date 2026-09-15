@@ -1263,6 +1263,8 @@ docsrc/commands/index.html's lead (Ram); rebuilt.
 ALSO data-privacy.html: the plain-form Account row's small text is now "name; the license key
 as a hash, like passwords" (Ram: the license key is stored hashed like passwords - the row's
 bare "license key" read as stored plain; the section lead already said keys are hashed).
+ALSO billing.html: the first bullet now ends ", and are paid directly on Stripe's website."
+(Ram).
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
