@@ -1060,6 +1060,17 @@ and gen/build.py's docs template, rebuilt) now loads the Google Fonts stylesheet
 render-blocking by nature; the alternatives (inline critical CSS, or inline all 39 KB) trade
 caching for one round trip - offered, not done.
 
+## State on 2026-09-15 (wordmark images 55 KB -> 4 KB; not deployed)
+PageSpeed: logo.png 55.7 KiB, 560x102, displayed at 238x43. Both wordmarks are now 336x61
+(2x of the 168px max display width; 2 KB/4 KB) palette PNGs with per-index alpha (PIL
+quantize colors=64, FASTOCTREE; max channel diff 56 vs the RGBA resize, only on edge alpha;
+q16/q32 lost the edges, lossy WebP was 11-14 KB - PNG q64 wins): logo.png 55 KB -> 4.1 KB,
+logo-dark.png 32 KB -> 4.2 KB. The 38 img tags (header+footer, two per page, and the docs
+template) carry width="336" height="61". Verified in-browser: natural 336x61, shown 168x31 on
+a 2x screen, both themes crisp in zoomed crops. Originals in <scratchpad>/logo_orig.png and
+logo-dark_orig.png. og:image still points at logo.png (now 336 wide - fine for OG's 200px
+minimum; a 1200x630 card remains the open item).
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
