@@ -1265,6 +1265,12 @@ Ram first had the license key restated as a hash, then "Completely remove. Makes
 The section lead's "Passwords and license keys are stored as hashes." still stands.
 ALSO billing.html: the first bullet now ends ", and are paid directly on Stripe's website."
 (Ram).
+ALSO home framework section (Ram): h2 is "JSON DSL designed for AI-assisted development"
+("designed" lowercased mid-phrase - flagged) and the closing DSL paragraph MOVED to sit right
+under the h2, now reading "An agent is defined using 23 commands. Strings enclosed in { } are
+evaluated as Python expressions, with built-in safeguards. Why not Python?" ("in JSON" dropped
+- the h2 says JSON DSL). Order: h2 > DSL para > "Draft agents by telling AI what you want:" >
+five prompts. Columns still end level (delta 0 measured).
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
