@@ -1113,9 +1113,12 @@ gone. The page otherwise follows content/why_not_python.md; a regeneration must 
 <strong> and drop the removed line (the md still has it).
 
 ## State on 2026-09-15 (hero: quiet "pip install search2o" beside Get started; not deployed)
-index.html .hero-actions now holds `<code class="hero-pip">pip install search2o</code>` after
-the Get started button; styles.css `.hero-pip` = mono 13.5px var(--muted) nowrap, no border
-or background (Ram: light, non-attention-seeking). The flex row already centres and wraps, so
+index.html .hero-actions now holds `<a class="hero-pip" href="gettingstarted.html">` with a
+slate "$" prompt and `pip install search2o` in mono, after the Get started button (Ram's
+second pass: "place it nicely, maybe a box, and link to getting started"). styles.css
+`.hero-pip`: inline-flex pill, min-height 46 (= the button), padding 0 16, --line border,
+radius 12, --card background, --muted text; hover: --blue border + --ink text, no underline.
+Measured: pill and button both 46px tall at the same top. The flex row already centres and wraps, so
 the line sits on the button's midline at 1920 and drops under it on a phone. Verified in a
 zoomed crop. FINDING: styles.css still carries an unused `.pip { ... }` bordered-chip rule
 (the old hero chip) and `.pip .ps1` - dead CSS, reported not removed.
