@@ -1097,6 +1097,14 @@ requests to googleapis/gstatic, body font Inter, headline renders as before. Swe
 googleapis/gstatic over html and gen: 0. Old Google-served weights 100-300/900 were never
 requested, so nothing is lost.
 
+## State on 2026-09-15 (mono font preloaded where used; not deployed)
+Ram deployed the self-hosted fonts himself; PageSpeed's chain is now page -> styles.css ->
+jetbrains-mono woff2 (705 ms): the mono file was discovered only when the CSS parsed. Added a
+second preload for fonts/jetbrains-mono-latin.woff2 on the pages that use monospace: index,
+gettingstarted, legal/privacy (the support address in <code>) and the docs template (rebuilt);
+pricing, about, 404 and the other legal pages have no code and get no preload (an unused
+preload is a warning of its own). Inter stays preloaded everywhere.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
