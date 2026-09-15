@@ -1128,6 +1128,13 @@ the line sits on the button's midline at 1920 and drops under it on a phone. Ver
 zoomed crop. FINDING: styles.css still carries an unused `.pip { ... }` bordered-chip rule
 (the old hero chip) and `.pip .ps1` - dead CSS, reported not removed.
 
+## State on 2026-09-15 (hero button: "Create account"; not deployed)
+Ram: replace "Get started" with "Create account" and the pip install next to it, as the two
+steps. The hero button now reads "Create account ->" and links gettingstarted.html#create-
+account (the form's step id); the copyable "$ pip install search2o" stays beside it. The
+other "Get started" buttons (band, pricing card) are untouched; the nav/footer still say
+Getting started.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
