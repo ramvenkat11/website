@@ -1254,6 +1254,10 @@ per the vocabulary; this note is his explicit exception to the 2026-09-10 "witho
 not said" ruling.)
 ALSO: the Run step's LLM-key line now ends "See the docs for other LLMs." (was "...for the
 details, and for other LLMs.", Ram).
+ALSO: the Search step's send-off line now shows the ACTUAL GUI icons inline (Ram: Lucide
+NotebookText for docs, HelpCircle for help): 18px inline SVGs with class="inicon" right after
+"the docs icon" and "the help icon"; styles.css `.numbered .inicon { vertical-align: -4px;
+color: var(--muted) }`. Verified in-browser: both glyphs sit on the text line.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
