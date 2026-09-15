@@ -1156,7 +1156,9 @@ Stuck callout MOVED to the END of the page, per Ram: it now sits AFTER the .numb
 (no connector line, no bottom padding); styles.css `.callout.after-steps { max-width: 706px;
 margin: 48px 0 0 74px }` aligns it with the step text (measured: left 490.5 == step text
 left, width 706 == text width) and the <=640px block resets margin-left to 0. Verified in
-Chrome over the local server. No inbound #docs anchor existed.
+Chrome over the local server. No inbound #docs anchor existed. Then Ram: REMOVE "Upgrade to
+the paid service" - the id="paid" step is gone; SEVEN steps now, Bring your team is last and
+the callout follows it. No inbound #paid anchor existed.
 
 ## State on 2026-09-15 (Call your systems folded into step 5; not deployed)
 Ram: fold the "Call your systems" section into the create-agents step as a small line, then
