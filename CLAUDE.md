@@ -1260,9 +1260,9 @@ NotebookText for docs, HelpCircle for help): 18px inline SVGs with class="inicon
 color: var(--muted) }`. Verified in-browser: both glyphs sit on the text line.
 ALSO: the tautological sentence "A Python expression must be an expression." removed from
 docsrc/commands/index.html's lead (Ram); rebuilt.
-ALSO data-privacy.html: the plain-form Account row's small text is now "name; the license key
-as a hash, like passwords" (Ram: the license key is stored hashed like passwords - the row's
-bare "license key" read as stored plain; the section lead already said keys are hashed).
+ALSO data-privacy.html: the plain-form Account row (name, license key) is REMOVED entirely -
+Ram first had the license key restated as a hash, then "Completely remove. Makes no sense."
+The section lead's "Passwords and license keys are stored as hashes." still stands.
 ALSO billing.html: the first bullet now ends ", and are paid directly on Stripe's website."
 (Ram).
 
