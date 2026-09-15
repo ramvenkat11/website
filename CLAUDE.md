@@ -1166,6 +1166,17 @@ REMOVED the line altogether. The step-sec id="systems" is gone (nine steps now) 
 reachability / async-driver sentence is off the page entirely (the facts stay in the docs on
 registering-and-downloading and commands/db). No inbound #systems anchor existed.
 
+## State on 2026-09-15 (hero pip install: option C, a code chip; not deployed)
+Ram: the hero's "$ pip install search2o" + copy icon looked ugly. Three treatments were mocked
+in the live DOM (A terminal box always dark, B card pill, C inline code chip) in both themes;
+Ram picked C WITHOUT the "or". index.html .hero-pip is now `<code>pip install search2o</code>` +
+the copy button (the "$" prompt span is gone). styles.css: `.hero-pip code` is the chip -
+mono 13.5px, --ink text, --bg-soft background, --line border, radius 7, padding 5px 10px;
+`.hero-pip` lost its margin-left 4px (on a phone the chip wraps under the button and sat 4px
+right of it; desktop gap is now the row's 14px). Measured at 1920: button, chip and copy icon
+share the same midline (577.1); at 390px: no sideways scroll, chip wraps under the button.
+The dead `.pip` / `.pip .ps1` rules from the old hero chip remain (reported earlier).
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
