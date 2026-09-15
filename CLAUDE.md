@@ -1252,6 +1252,8 @@ Per Ram, a small note under the pip codecard in the Download-the-agent-server st
 published as a separate GitHub project." (GitHub links the repo; his "UI" written as "the GUI"
 per the vocabulary; this note is his explicit exception to the 2026-09-10 "without the GUI is
 not said" ruling.)
+ALSO: the Run step's LLM-key line now ends "See the docs for other LLMs." (was "...for the
+details, and for other LLMs.", Ram).
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
