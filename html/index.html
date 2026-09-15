@@ -70,96 +70,25 @@
         </div>
       </div>
 
-      <div class="demo" aria-label="Illustration of a Search2o request">
-        <div class="demo-search">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.4-3.4"/></svg>
-          <span>Keep Acme on for another year at last year&rsquo;s rate</span>
-          <span class="caret" aria-hidden="true"></span>
-        </div>
-
-        <div class="demo-row stage stage-1">
-          <span class="demo-tag match">Match</span>
-          <div class="demo-body">
-            <span class="demo-agent">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-              Contract renewal agent
-            </span>
-          </div>
-          <span class="demo-time" aria-label="matched in 0.3 seconds">0.3 s</span>
-        </div>
-
-        <div class="demo-row stage stage-2">
-          <span class="demo-tag run">Run</span>
-          <div class="demo-body demo-progress">
-            <span class="p"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Pulled the Acme account and current terms</span>
-            <span class="p"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Drafted the renewal at last year&rsquo;s rate</span>
-          </div>
-          <span class="demo-time" aria-label="ran in 2.8 seconds">2.8 s</span>
-        </div>
-
-        <div class="demo-row stage stage-3">
-          <span class="demo-tag ask">Ask</span>
-          <div class="demo-body">
-            <div class="demo-form">
-              <span class="q">Route it for signature?</span>
-              <span class="opts"><i class="on">Yes</i><i>Not yet</i></span>
-              <span class="submit">Submit</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="demo-row stage stage-4">
-          <span class="demo-tag run">Run</span>
-          <div class="demo-body demo-progress">
-            <span class="p"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Sent the renewal to Acme for signature</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  <section class="section soft" id="how-it-works">
-    <div class="container convo-wrap">
-      <div>
-        <span class="kicker">How it works</span>
-        <h2>One conversation, many agents</h2>
-        <ul class="convo-points">
-          <li>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.4-3.4"/></svg>
-            <span>The user typed two requests and never picked an agent; search chose the Accounts payable for the first and the Help desk agent for the second.</span>
-          </li>
-          <li>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 3a2.8 2.8 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/></svg>
-            <span>The Help desk agent attached the failure summary because the Accounts payable agent&rsquo;s result was already in the conversation.</span>
-          </li>
-          <li>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-            <span>Nothing was configured to connect the two agents. They were built separately; the conversation is what links them.</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="convo" aria-label="Example conversation across two agents">
+      <div class="convo hero-convo" aria-label="One conversation across two agents">
         <div class="convo-title">
           <svg class="lock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
           Conversation &middot; context shared across agents
         </div>
         <div class="convo-body">
-          <div class="turn-user">Summarize yesterday&rsquo;s failed payment runs</div>
+          <div class="turn-user st st1">Book me a flight to the Berlin office for next Tuesday</div>
           <div class="turn-agent">
-            <span class="who">Matched
-              <span class="chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Accounts payable agent</span>
+            <span class="who st st2">Matched
+              <span class="chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>travel_desk</span>
             </span>
-            <div class="msg">3 of 214 runs failed yesterday, all on the same gateway timeout. Value held: $12,410 across runs #4411, #4416 and #4420.
-            </div>
+            <div class="msg st st3">Booked LH1191: out Tuesday 08:05, back Thursday 18:30, and two nights at the Marriott near the office.</div>
           </div>
-          <div class="turn-user">Open a ticket for the gateway timeouts and attach that summary</div>
+          <div class="turn-user st st4">File the expenses for that trip</div>
           <div class="turn-agent">
-            <span class="who">Matched
-              <span class="chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>Help desk agent</span>
+            <span class="who st st5">Matched
+              <span class="chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h7l-1 8 10-12h-7l1-8z"/></svg>reimbursements</span>
             </span>
-            <div class="msg">Created ticket OPS-2291 with the failure summary attached and the three runs linked.
-            </div>
+            <div class="msg st st6">Filed the Berlin trip: flight LH1191 and two hotel nights, &euro;640 in total. Sent to your manager for approval.</div>
           </div>
         </div>
       </div>
@@ -197,7 +126,7 @@
             </li>
             <li>
               <h3>Agent server</h3>
-              <p>A stateless server designed to run standalone or in a cluster. Runs agents in a controlled runtime. Encrypts sensitive information before it leaves the server. Source available.
+              <p>A stateless server designed to run standalone or in a cluster. Runs agents in a controlled runtime. Encrypts sensitive information before it leaves the server. <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">GitHub</a>.
               </p>
             </li>
             <li>
@@ -223,7 +152,7 @@
               <div class="arch-row">
                 <div class="arch-node">
                   <strong>Agent server</strong>
-                  <span>Stateless &middot; source available</span>
+                  <span>Stateless &middot; <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">GitHub</a></span>
                   <div class="arch-fw"><strong>Agent framework</strong></div>
                 </div>
                 <div class="arch-hlink" aria-hidden="true"></div>
@@ -254,12 +183,13 @@
       <div class="split">
         <div>
           <span class="kicker">Agent framework</span>
-          <h2>Designed for AI-assisted development</h2>
+          <h2>JSON DSL designed for agents</h2>
           <style>
             .prompts { margin-top: 14px; padding: 0; list-style: none; display: grid; gap: 8px; }
             .prompts li { position: relative; padding: 9px 12px 9px 34px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-soft); color: var(--body); font-size: 14px; line-height: 1.5; font-style: italic; }
             .prompts li::before { content: "\201C"; position: absolute; left: 12px; top: 6px; font-size: 22px; line-height: 1; color: var(--slate); font-style: normal; }
           </style>
+          <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">An agent is defined using <a href="docs/commands/index.html">23 commands</a>. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with built-in safeguards. <a href="docs/introduction/why-not-python.html">Why not Python?</a></p>
           <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">Draft agents by telling AI what you want:</p>
           <ul class="prompts" aria-label="Sample prompts for Draft with AI">
             <li>A tool-calling agent that fetches a customer&rsquo;s orders from our orders API.</li>
@@ -268,7 +198,6 @@
             <li>Ask for approval before the renewal is sent.</li>
             <li>Remember the customer&rsquo;s account number for the next question.</li>
           </ul>
-          <p style="margin-top: 22px; color: var(--body); font-size: 15.5px; line-height: 1.6;">An agent is defined in JSON using <a href="docs/commands/index.html">23 commands</a>. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with built-in safeguards. <a href="docs/introduction/why-not-python.html">Why not Python?</a></p>
         </div>
 
         <div class="codecard" aria-label="Example agent definition">
