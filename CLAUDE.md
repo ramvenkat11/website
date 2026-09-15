@@ -1044,6 +1044,12 @@ Three paragraphs changed in content/why_not_python.md: the language paragraph no
 understands it and an AI can write it..."; the closing "doing what it is good at: computing".
 Page == md verbatim (fidelity identical, 8 paragraphs).
 
+## State on 2026-09-15 (legal pages crawlable; not deployed)
+Ram asked why /legal/ was disallowed (my SEO-pass choice, mirroring the 09-05 noindex) and
+whether that is common - it is not; agreed to open them up. robots.txt no longer disallows
+/legal/; the four legal pages lost their noindex meta; build.py's SITE_PAGES now includes the
+four legal pages, so sitemap.xml has 134 URLs; website_deploy.md updated.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
