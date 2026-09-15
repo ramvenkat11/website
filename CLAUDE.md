@@ -1112,6 +1112,14 @@ platform understands." is now <strong> (the docs' 650-weight ink emphasis), the 
 gone. The page otherwise follows content/why_not_python.md; a regeneration must re-apply the
 <strong> and drop the removed line (the md still has it).
 
+## State on 2026-09-15 (hero: quiet "pip install search2o" beside Get started; not deployed)
+index.html .hero-actions now holds `<code class="hero-pip">pip install search2o</code>` after
+the Get started button; styles.css `.hero-pip` = mono 13.5px var(--muted) nowrap, no border
+or background (Ram: light, non-attention-seeking). The flex row already centres and wraps, so
+the line sits on the button's midline at 1920 and drops under it on a phone. Verified in a
+zoomed crop. FINDING: styles.css still carries an unused `.pip { ... }` bordered-chip rule
+(the old hero chip) and `.pip .ps1` - dead CSS, reported not removed.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
