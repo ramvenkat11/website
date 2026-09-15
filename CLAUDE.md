@@ -1118,7 +1118,12 @@ slate "$" prompt and `pip install search2o` in mono, after the Get started butto
 second pass: "place it nicely, maybe a box, and link to getting started"). styles.css
 `.hero-pip`: inline-flex pill, min-height 46 (= the button), padding 0 16, --line border,
 radius 12, --card background, --muted text; hover: --blue border + --ink text, no underline.
-Measured: pill and button both 46px tall at the same top. The flex row already centres and wraps, so
+Measured: pill and button both 46px tall at the same top. THIRD PASS (Ram: copy the command
+instead; no box, two boxes look weird): `.hero-pip` is now a plain inline-flex group - slate
+"$", muted mono `pip install search2o`, and a 28px icon `<button class="copy"
+data-copy="pip install search2o">` (clipboard icon; site.js's [data-copy] handler swaps it for
+the green check for 1.4 s; hover: --bg-soft background, --ink icon). No border, no background,
+no link. Vertically centred on the button's midline (577/577). The flex row already centres and wraps, so
 the line sits on the button's midline at 1920 and drops under it on a phone. Verified in a
 zoomed crop. FINDING: styles.css still carries an unused `.pip { ... }` bordered-chip rule
 (the old hero chip) and `.pip .ps1` - dead CSS, reported not removed.
