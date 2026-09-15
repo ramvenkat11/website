@@ -16,7 +16,10 @@ SITE_URL="https://search2o.com"
 # docsweb/ is excluded from the sync itself: it holds the in-app docs data that s2oserver's
 # maintenance/docswebuploader.py maintains, so --delete must never touch it.
 SYNC_EXCLUDES=(--exclude ".DS_Store" --exclude "*/.DS_Store" --exclude "docsweb/*")
-CACHE_CONTROL="public, max-age=600"   # CloudFront honours this as its TTL; deploys invalidate anyway
+CACHE_CONTROL="public, max-age=600"   # pages, CSS, JS: short, so a deploy reaches browsers within minutes
+IMAGE_CACHE_CONTROL="public, max-age=2592000"   # images, icons and fonts: 30 days; they change rarely
+IMAGE_INCLUDES=(--exclude "*" --include "*.png" --include "*.svg" --include "*.jpg" --include "*.ico" --include "*.woff2")
+IMAGE_EXCLUDES=(--exclude "*.png" --exclude "*.svg" --exclude "*.jpg" --exclude "*.ico" --exclude "*.woff2")
 INVALIDATION_POLL_SECONDS=10
 INVALIDATION_MAX_WAIT_SECONDS=600
 
@@ -66,7 +69,8 @@ fi
 
 # ---- what would change ---------------------------------------------------------------------------
 step "Files that differ from the bucket (delete: an object with no local file)"
-(cd "$HTML" && aws s3 sync . "s3://$BUCKET/" "${SYNC_EXCLUDES[@]}" --delete --acl public-read --cache-control "$CACHE_CONTROL" --dryrun) \
+(cd "$HTML" && aws s3 sync . "s3://$BUCKET/" "${SYNC_EXCLUDES[@]}" "${IMAGE_EXCLUDES[@]}" --delete --acl public-read --cache-control "$CACHE_CONTROL" --dryrun \
+    && aws s3 sync . "s3://$BUCKET/" "${IMAGE_INCLUDES[@]}" --exclude "docsweb/*" --delete --acl public-read --cache-control "$IMAGE_CACHE_CONTROL" --dryrun) \
     | sed 's/^(dryrun) //' || fail "s3 sync dry run failed"
 
 if ! $go; then
@@ -77,7 +81,8 @@ fi
 
 # ---- deploy ----------------------------------------------------------------------------------------
 step "Uploading to s3://$BUCKET/"
-(cd "$HTML" && aws s3 sync . "s3://$BUCKET/" "${SYNC_EXCLUDES[@]}" --delete --acl public-read --cache-control "$CACHE_CONTROL") || fail "s3 sync failed"
+(cd "$HTML" && aws s3 sync . "s3://$BUCKET/" "${SYNC_EXCLUDES[@]}" "${IMAGE_EXCLUDES[@]}" --delete --acl public-read --cache-control "$CACHE_CONTROL") || fail "s3 sync failed"
+(cd "$HTML" && aws s3 sync . "s3://$BUCKET/" "${IMAGE_INCLUDES[@]}" --exclude "docsweb/*" --delete --acl public-read --cache-control "$IMAGE_CACHE_CONTROL") || fail "s3 sync of images failed"
 
 step "Invalidating CloudFront $DISTRIBUTION"
 invalidation_id="$(aws cloudfront create-invalidation --distribution-id "$DISTRIBUTION" --paths "/*" \

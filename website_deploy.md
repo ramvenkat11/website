@@ -58,7 +58,8 @@ Run from `docs/website/html`, with AWS credentials for account 406848153313:
 
 That is the whole deploy. `sync` uploads only files that changed and sets the content type from
 the extension. The script adds `--delete`, so a page removed from the build is removed from the
-bucket as well. The invalidation takes about a minute:
+bucket as well, and it syncs in two passes so that pages, CSS and JS carry
+`Cache-Control: max-age=600` while images and icons carry 30 days. The invalidation takes about a minute:
 
     aws cloudfront get-invalidation --distribution-id E330RKTBY31L8X --id <id> --query Invalidation.Status
 

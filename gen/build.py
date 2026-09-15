@@ -430,7 +430,7 @@ def header(depth) -> str:
     r = rel(depth) + "../"
     return f"""<header class="site-header">
   <div class="container header-row">
-    <a class="brand" href="{r}index.html" aria-label="Search2o home"><img class="logo-light" src="{r}logo.png" alt="Search2o" width="560" height="102"><img class="logo-dark" src="{r}logo-dark.png" alt="Search2o" width="560" height="102"></a>
+    <a class="brand" href="{r}index.html" aria-label="Search2o home"><img class="logo-light" src="{r}logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="{r}logo-dark.png" alt="Search2o" width="336" height="61"></a>
     <nav class="site-nav" aria-label="Main">
       <a class="navlink" href="{r}index.html">Home</a>
       <a class="navlink" href="{r}gettingstarted.html">Getting started</a>
@@ -485,11 +485,8 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
 <meta property="og:url" content="{SITE}/{path}">
 <meta property="og:image" content="{SITE}/logo.png">
 <link rel="icon" type="image/svg+xml" href="{r}favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap"></noscript>
+<link rel="preload" as="font" type="font/woff2" href="{r}fonts/inter-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="{r}fonts/jetbrains-mono-latin.woff2" crossorigin>
 <link rel="stylesheet" href="{r}styles.css">
 <link rel="stylesheet" href="{rel(depth)}docs.css">
 </head>
