@@ -1260,6 +1260,9 @@ NotebookText for docs, HelpCircle for help): 18px inline SVGs with class="inicon
 color: var(--muted) }`. Verified in-browser: both glyphs sit on the text line.
 ALSO: the tautological sentence "A Python expression must be an expression." removed from
 docsrc/commands/index.html's lead (Ram); rebuilt.
+ALSO data-privacy.html: the plain-form Account row's small text is now "name; the license key
+as a hash, like passwords" (Ram: the license key is stored hashed like passwords - the row's
+bare "license key" read as stored plain; the section lead already said keys are hashed).
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
