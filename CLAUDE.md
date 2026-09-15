@@ -1135,6 +1135,12 @@ account (the form's step id); the copyable "$ pip install search2o" stays beside
 other "Get started" buttons (band, pricing card) are untouched; the nav/footer still say
 Getting started.
 
+## State on 2026-09-15 (getting started: API footnote under Open the GUI; not deployed)
+Ram asked for a smaller footnote on openapi.json, docs and redoc in the Open-the-GUI step
+(he had cut the REST API h3 there on 09-08). Added as the existing `p.dim` style (14.75px
+muted): "The same server serves its OpenAPI schema at /openapi.json, Swagger UI at /docs and
+ReDoc at /redoc." - wording from running-the-server.html.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
