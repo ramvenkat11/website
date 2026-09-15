@@ -1071,6 +1071,17 @@ a 2x screen, both themes crisp in zoomed crops. Originals in <scratchpad>/logo_o
 logo-dark_orig.png. og:image still points at logo.png (now 336 wide - fine for OG's 200px
 minimum; a 1200x630 card remains the open item).
 
+## State on 2026-09-15 (cache lifetimes: images 30 days; not deployed)
+PageSpeed "efficient cache lifetimes": logo.png had no Cache-Control (never re-uploaded since
+the header was added), everything else 10 min. scripts/deploy.sh now syncs in TWO PASSES:
+pages/CSS/JS/XML/TXT with max-age=600 (excluding *.png *.svg *.jpg *.ico), then images and
+icons only (--exclude "*" --include the four globs, docsweb/ still excluded) with
+max-age=2592000 (30 days). Both passes carry --delete and both run in the dry run too. CSS
+and JS stay at 10 minutes on purpose: the pages reference them unversioned, so a long TTL
+could leave a browser with stale CSS after a deploy. To push the new header onto images that
+have not changed, every image under html/ was `touch`ed so the next deploy re-sends them (~35
+files, the docs screenshots included). website_deploy.md updated.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
