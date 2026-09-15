@@ -1182,6 +1182,14 @@ Ram: "Create account ->" beside the pip chip read as if the arrow pointed at pip
 hero button is back to "Get started ->" linking gettingstarted.html (the #create-account anchor
 dropped), matching the band and pricing buttons. The pip chip stays beside it.
 
+## State on 2026-09-15 (hero bullets replaced; not deployed)
+Ram's three hero points, in order, full stops added for consistency: "One platform to build,
+run, and use AI agents across your enterprise." (layers icon) / "People request an outcome;
+search finds and runs the agent built to produce it." (NEW magnifying-glass icon) / "One
+conversation, many agents, each building on prior work." (chat bubble). GONE: the controlled-
+runtime point ("The agent runs in a controlled runtime, connects to your enterprise systems,
+and interacts with the user.") and its shield icon.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
