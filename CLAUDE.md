@@ -1150,11 +1150,10 @@ describe, wait for indexing); the docs step's h2 is "Ask the docs" (was "Ask a q
 runs and answers."
 
 ## State on 2026-09-15 (Call your systems folded into step 5; not deployed)
-Ram: fold the "Call your systems" section into the create-agents step as a small line. The
-step-sec id="systems" is gone (nine steps now); step 5 ends with a p.dim line: "The APIs and
-databases your agents call must be reachable from where the server runs, and database drivers
-must be async; see the docs." (docs link unchanged: registering-and-downloading). No inbound
-#systems anchor existed.
+Ram: fold the "Call your systems" section into the create-agents step as a small line, then
+REMOVED the line altogether. The step-sec id="systems" is gone (nine steps now) and the
+reachability / async-driver sentence is off the page entirely (the facts stay in the docs on
+registering-and-downloading and commands/db). No inbound #systems anchor existed.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
