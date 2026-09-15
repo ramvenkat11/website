@@ -1246,6 +1246,13 @@ still flagged). ALSO: the architecture step 2 sentence "Source available." is no
 EXPLICIT REVERSAL of the 2026-09-05 no-GitHub-on-home rule; the diagram subtitle still says
 "Stateless - source available" (left alone, flagged). Verified in-browser both themes.
 
+## State on 2026-09-15 (Download step: GitHub-without-the-GUI note; not deployed)
+Per Ram, a small note under the pip codecard in the Download-the-agent-server step
+(gettingstarted.html, p.dim): "GitHub holds the agent server without the GUI; the GUI will be
+published as a separate GitHub project." (GitHub links the repo; his "UI" written as "the GUI"
+per the vocabulary; this note is his explicit exception to the 2026-09-10 "without the GUI is
+not said" ruling.)
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
