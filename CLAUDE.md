@@ -1029,11 +1029,13 @@ lead, backticks as <code>), fidelity verified identical; the comparison table is
 it. The home page's "Why not just Python?" link still targets the page. Regenerated once more
 after Ram's one-line change to the md (page == md, verified).
 
-## State on 2026-09-14 (Why not Skills: the tally box explains its numbers; not deployed)
-Ram: not clear what the top numbers are. The .tally panel now opens with a caption
-(.tally-title, 13.5px w600 muted): "Which side Claude judged better on each criterion below, criteria Claude chose itself" (Ram's
-wording, "criteria" -> "criterion" where singular; replaced "Rows won, of 69"); tile labels Search2o / Skills / Tie /
-Depends.
+## State on 2026-09-14 (Why not Skills: tally captions tried and removed; not deployed)
+Ram: not clear what the top numbers are. Three captions were tried above the tiles ("Claude's
+tally of the 69 comparison rows below: which side each row favours" - too long; "Rows won,
+of 69"; "Which side Claude judged better on each criterion below, criteria Claude chose
+itself" - "it looks awkward") and all REMOVED; the box is the four tiles only (Search2o /
+Skills / Tie / Depends) and the .tally-title CSS is gone. What the numbers mean is left to
+the second paragraph and the tables.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
