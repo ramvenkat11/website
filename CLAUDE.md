@@ -1050,6 +1050,16 @@ whether that is common - it is not; agreed to open them up. robots.txt no longer
 /legal/; the four legal pages lost their noindex meta; build.py's SITE_PAGES now includes the
 four legal pages, so sitemap.xml has 134 URLs; website_deploy.md updated.
 
+## State on 2026-09-15 (Google Fonts off the critical path; not deployed)
+PageSpeed (mobile) flagged two render-blocking requests: styles.css (8.1 KiB, 220 ms) and the
+Google Fonts CSS (1.7 KiB, 750 ms). FIX for the fonts: every page (4 site pages, 4 legal, 404,
+and gen/build.py's docs template, rebuilt) now loads the Google Fonts stylesheet as
+`<link rel="preload" as="style">` + `<link rel="stylesheet" media="print" onload="this.media='all'">`
++ a <noscript> fallback - the standard non-blocking pattern; text paints in the fallback font
+(display=swap was already in the URL) and Inter swaps in. NOT changed: styles.css itself is
+render-blocking by nature; the alternatives (inline critical CSS, or inline all 39 KB) trade
+caching for one round trip - offered, not done.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
