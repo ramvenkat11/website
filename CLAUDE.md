@@ -1216,6 +1216,18 @@ old demo: the ask-form beat and the 2.8 s run stamp - the card only shows match 
 The round-2 mock (hr scenario, steps) is in the scratchpad mock/ dir if the walkthrough is
 ever wanted elsewhere.
 
+## State on 2026-09-15 (diagram subtitle GitHub; Why not Python regenerated; not deployed)
+The home diagram's server subtitle is now "Stateless - <a ...>GitHub</a>" (same repo link,
+target=_blank; measured: fits in the box, right edge 1266 of 1285). "source available" no
+longer appears on the home page. AND: Ram revised content/why_not_python.md again (new lead
+"Search2o's domain-specific language is built for one thing: agents."; "The DSL uses JSON
+syntax..."; the editor "can check it, complete it and explain it"; ask "which is a question
+to a person"; new closing sentence "Every expression is parsed and checked before
+publication."). docsrc/introduction/why-not-python.html regenerated verbatim - the **bold**
+marks in the md now carry the <strong> themselves and "That one fact does all the work." is
+gone from the SOURCE, so no hand edits remain to re-apply on regeneration. Fidelity verified
+IDENTICAL; 131 pages built.
+
 ## State on 2026-09-15 (hero card: travel-to-expenses scenario, tightened, no times; GitHub link; not deployed)
 Ram's three changes to the new hero card. (1) SCENARIO replaced (not IT, easy, two otherwise
 unrelated agents each useful alone, "aha" they worked together): user "Book me a flight to the
