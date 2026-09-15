@@ -1031,7 +1031,8 @@ after Ram's one-line change to the md (page == md, verified).
 
 ## State on 2026-09-14 (Why not Skills: the tally box explains its numbers; not deployed)
 Ram: not clear what the top numbers are. The .tally panel now opens with a caption
-(.tally-title, 13.5px w600 muted): "Rows won, of 69" (Ram: the first caption was too long); tile labels Search2o / Skills / Tie /
+(.tally-title, 13.5px w600 muted): "Which side Claude judged better on each criterion below, criteria Claude chose itself" (Ram's
+wording, "criteria" -> "criterion" where singular; replaced "Rows won, of 69"); tile labels Search2o / Skills / Tie /
 Depends.
 
 ## Standing instructions
