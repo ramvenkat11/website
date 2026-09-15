@@ -1216,6 +1216,24 @@ old demo: the ask-form beat and the 2.8 s run stamp - the card only shows match 
 The round-2 mock (hr scenario, steps) is in the scratchpad mock/ dir if the walkthrough is
 ever wanted elsewhere.
 
+## State on 2026-09-15 (hero card: travel-to-expenses scenario, tightened, no times; GitHub link; not deployed)
+Ram's three changes to the new hero card. (1) SCENARIO replaced (not IT, easy, two otherwise
+unrelated agents each useful alone, "aha" they worked together): user "Book me a flight to the
+Berlin office for next Tuesday" -> Matched travel_desk -> "Booked LH1191: out Tuesday 08:05,
+back Thursday 18:30, and two nights at the Marriott near the office." -> user "File the
+expenses for that trip" -> Matched reimbursements -> "Filed the Berlin trip: flight LH1191 and
+two hotel nights, EUR 640 in total. Sent to your manager for approval." Queries share no words
+with the agent names (query 2 says "expenses" so the agent is reimbursements, not
+expense_*). The hr_policy tie to the Search section is gone with the scenario. (2) TIGHTENED:
+.hero-convo overrides - convo-title padding 11px 18px, convo-body 16/16/18 gap 11, turn-agent
+gap 6, msg padding 10px 14px, turn-user padding 9px 14px + max-width 92% (both queries fit one
+line). Card 477 -> 413px, hang below the left column 130 -> 65px. (3) TIME STAMPS removed from
+the card (no .demo-time anywhere in markup now - the whole demo CSS incl .demo-time is dead,
+still flagged). ALSO: the architecture step 2 sentence "Source available." is now
+'<a href=github.com/Search2o/agent-server target=_blank rel=noopener>GitHub</a>.' - RAM'S
+EXPLICIT REVERSAL of the 2026-09-05 no-GitHub-on-home rule; the diagram subtitle still says
+"Stateless - source available" (left alone, flagged). Verified in-browser both themes.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
