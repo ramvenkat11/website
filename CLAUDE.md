@@ -1177,6 +1177,11 @@ right of it; desktop gap is now the row's 14px). Measured at 1920: button, chip 
 share the same midline (577.1); at 390px: no sideways scroll, chip wraps under the button.
 The dead `.pip` / `.pip .ps1` rules from the old hero chip remain (reported earlier).
 
+## State on 2026-09-15 (hero button back to "Get started"; not deployed)
+Ram: "Create account ->" beside the pip chip read as if the arrow pointed at pip install. The
+hero button is back to "Get started ->" linking gettingstarted.html (the #create-account anchor
+dropped), matching the band and pricing buttons. The pip chip stays beside it.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
