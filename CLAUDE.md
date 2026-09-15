@@ -1019,6 +1019,15 @@ undeletable while in use ("The UI" -> "The GUI"); planning the system with globa
 enforced at publish; "Python is still there". The table's "Sandboxing" sentence stays
 removed as Ram ordered.
 
+## State on 2026-09-14 (Why not Python? = Ram's completely rewritten md; NOT DEPLOYED)
+Ram rewrote content/why_not_python.md from scratch: nine short paragraphs, NO table ("Because
+an agent is not a program. It is data..." / small closed language / "That one fact does all
+the work." / an AI can hold the whole language / the ask-in-while-not-for check, "rejected at
+publishing, not at 3 a.m." / profiles know their agents / administrators set limits once /
+"Python is still inside every command"). The page is the md verbatim (first paragraph as the
+lead, backticks as <code>), fidelity verified identical; the comparison table is gone with
+it. The home page's "Why not just Python?" link still targets the page.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
