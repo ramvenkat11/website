@@ -1190,6 +1190,32 @@ conversation, many agents, each building on prior work." (chat bubble). GONE: th
 runtime point ("The agent runs in a controlled runtime, connects to your enterprise systems,
 and interacts with the user.") and its shield icon.
 
+## State on 2026-09-15 (HERO BOX = CONVERSATION CARD; How it works section REMOVED; not deployed)
+Ram's redirection after two mock rounds (title "Focused agents, dynamically orchestrated" and
+meaty steps were settled in the mocks, then superseded): the hero's animated demo is REPLACED
+by a conversation card that shows one-conversation-many-agents, and the "How it works" section
+is gone entirely. index.html: the .demo div (search pill, match/run/ask/run rows) is replaced
+by <div class="convo hero-convo"> - lock header "Conversation - context shared across agents",
+then: user "How many vacation days can I carry over into next year?" / Matched hr_policy
+(0.3 s stamp, .demo-time inside .who) / reply "Up to five unused days carry over..." / user
+"Use those days for the last week of December" / Matched time_off (0.4 s) / reply "Requested
+December 21-25 - five days, your full carry-over. Sent to your manager for approval."
+hr_policy is the SAME agent as the Search section's description card and the framework
+section's definition card - deliberate. Queries share no words with the agent names. The
+six .st elements animate in sequence (styles.css .hero-convo .st1-.st6, delays .2-4.1s,
+rise keyframes; added to the reduced-motion block). .hero-grid rules extended to
+.hero-convo (margin-top 75px desktop, 0 on phone). Sections now: hero > description(Search) >
+system-architecture > framework > platform > reports > band - alternation still holds.
+Verified: both themes screenshotted, animations finished by script; 390px: no overflow,
+scrollWidth 375. OPEN, FLAGGED: (1) every page's footer still links index.html#how-it-works -
+the anchor is GONE (lands at page top); fix across 9 footers + nothing in docs template? once
+Ram keeps the design. (2) The demo CSS (.demo, .demo-search, .demo-row, .stage-*, .demo-form
+etc.) is now unused except .demo-time; the convo-points CSS is unused too. (3) Gone with the
+old demo: the ask-form beat and the 2.8 s run stamp - the card only shows match times.
+(4) The card hangs ~130px below the left column (old demo hung 7px); not re-tuned yet.
+The round-2 mock (hr scenario, steps) is in the scratchpad mock/ dir if the walkthrough is
+ever wanted elsewhere.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
