@@ -1144,8 +1144,9 @@ ReDoc at /redoc." - wording from running-the-server.html.
 ## State on 2026-09-15 (getting started steps 5-6 de-duplicated; not deployed)
 A stray "When you publish, describe the agent in plain English." sat at the end of step 5 and
 step 6 opened with the same sentence. The stray line is gone; Ram: still not right - describing belongs
-with publishing. Step 5 now ends "Validate each one, then publish it with a plain-English
-description."; step 6 is just "Search": "Type a question in the search box: the agent matches,
+with publishing. Step 5 now ends "Validate each one, publish it, then add a plain-English
+description. Wait for the indexing to finish." (Ram's order of events: validate, publish,
+describe, wait for indexing); step 6 is just "Search": "Type a question in the search box: the agent matches,
 runs and answers."
 
 ## State on 2026-09-15 (Call your systems folded into step 5; not deployed)
