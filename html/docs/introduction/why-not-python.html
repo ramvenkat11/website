@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Why not Python? — Search2o docs</title>
-<meta name="description" content="A fair question is why an agent is JSON with Python expressions rather than a Python program.">
+<meta name="description" content="Because an agent is not a program. It is data: the steps an agent takes, written in a language made only for agents.">
 <link rel="canonical" href="https://search2o.com/docs/introduction/why-not-python.html">
 <meta property="og:title" content="Why not Python? — Search2o docs">
-<meta property="og:description" content="A fair question is why an agent is JSON with Python expressions rather than a Python program.">
+<meta property="og:description" content="Because an agent is not a program. It is data: the steps an agent takes, written in a language made only for agents.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/introduction/why-not-python.html">
 <meta property="og:image" content="https://search2o.com/logo.png">
@@ -43,25 +43,15 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../introduction/index.html'>Introduction</a></div>
     <article class="docs-article">
       <h1>Why not Python?</h1>
-      <p class="lead">A fair question is why an agent is JSON with Python expressions rather than a Python program.</p>
+      <p class="lead">Because an agent is not a program. It is data: the steps an agent takes, written in a language made only for agents.</p>
 
-<p>Python is a general-purpose language. Search2o is a language for one domain: AI agents.</p>
-<p>An agent is an ordered list of commands, held as data with a fixed structure. Because the structure and the commands are known in advance, the definition can be validated before it runs, generated from a description, read as steps, and bounded at runtime.</p>
-<p>Python expressions supply the granular logic inside each command without giving up those properties.</p>
-
-<div class="tablewrap"><table class="fields compare">
-<thead><tr><th>Aspect</th><th>A Python program</th><th>A Search2o agent</th></tr></thead>
-<tbody>
-<tr><td>Writing it</td><td>A programmer, or an AI, writes the code. Only tests tell you whether it does what was asked.</td><td>Draft with AI writes or edits the definition from a description. The schema constrains the output to a valid agent, and a validation run checks that it executes.</td></tr>
-<tr><td>Before it runs</td><td>Syntax, plus whatever the author set up: type checkers, linters, tests.</td><td>Always, without setup: the schema, the syntax and names in every expression, and every reference to a function or a profile. A validation run must pass before publishing.</td></tr>
-<tr><td>Reading it</td><td>You read the code.</td><td>An ordered list of named commands. The people who own the process can follow the steps.</td></tr>
-<tr><td>Trusting it</td><td>The interpreter can reach the file system, the network and the process.</td><td>Expressions run in the agent runtime: only allowlisted names are reachable, no <code>import</code>, no dunder access, no private member access.</td></tr>
-<tr><td>Limits</td><td>Whatever the author or the hosting environment enforces.</td><td>Run time, loop iterations, database rows and LLM spend are capped for every agent, by administrators.</td></tr>
-<tr><td>Shipping a change</td><td>Build, deploy, restart.</td><td>Publish. Every agent server in the account runs the new version on its next run.</td></tr>
-<tr><td>Measuring it</td><td>Whatever was instrumented.</td><td>Every run records its duration, result and LLM cost. Reports cover every agent.</td></tr>
-</tbody></table></div>
-
-<p>The trade is expressiveness. An agent can only do what its commands and allowlisted functions allow. That is the point, and a task that does not fit the command model belongs in a Python function that an agent calls.</p>
+<p>Python can express anything. That is exactly why so little can be promised about a Python program before it runs. Search2o's language is small and closed: a fixed set of commands, a schema for each, Python expressions for the logic. Everything in it means something the platform understands.</p>
+<p>That one fact does all the work.</p>
+<p>An AI can hold the whole language. Draft with AI writes agents from a description, and validation confirms each one before it is published.</p>
+<p>The platform can check what a program cannot know about itself. An <code>ask</code> command, a question to a person, is allowed in a <code>while</code> loop and not in a <code>for</code> loop, because a suspended <code>while</code> loop resumes exactly where it stopped and a <code>for</code> loop over a generator cannot. The agent is rejected at publishing, not at 3 a.m.</p>
+<p>Every profile, whether LLM, MCP, prompt, API or database, knows which agents use it, and cannot be deleted while one does.</p>
+<p>Administrators set limits once. Every agent obeys them. Developers write only the agent logic.</p>
+<p>Python is still inside every command, doing what it is good at: the logic. The structure around it does everything else.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../introduction/what-is-search2o.html'><small>Previous</small>What is Search2o</a><a class=next href='../introduction/why-not-skills.html'><small>Next</small>Why not Skills?</a></nav>
