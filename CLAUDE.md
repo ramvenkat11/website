@@ -1026,7 +1026,8 @@ the work." / an AI can hold the whole language / the ask-in-while-not-for check,
 publishing, not at 3 a.m." / profiles know their agents / administrators set limits once /
 "Python is still inside every command"). The page is the md verbatim (first paragraph as the
 lead, backticks as <code>), fidelity verified identical; the comparison table is gone with
-it. The home page's "Why not just Python?" link still targets the page.
+it. The home page's "Why not just Python?" link still targets the page. Regenerated once more
+after Ram's one-line change to the md (page == md, verified).
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
