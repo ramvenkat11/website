@@ -1,7 +1,6 @@
 <p class="lead">Because an agent is not a program. It is data: the steps an agent takes, written in a language made only for agents.</p>
 
-<p>Search2o uses a domain-specific language, and only the commands are new: the syntax is JSON, the expressions are Python, and there are 23 commands, each with a schema. Everything in it means something the platform understands.</p>
-<p>That one fact does all the work.</p>
+<p>Search2o uses a domain-specific language, and only the commands are new: the syntax is JSON, the expressions are Python, and there are 23 commands, each with a schema. <strong>Everything in it means something the platform understands.</strong></p>
 <p>Because the language is fixed, the editor understands it and an AI can write it. Draft with AI produces an agent from a description, and validation confirms it before it is published.</p>
 <p>The platform can check what a program cannot know about itself. An <code>ask</code> command, a question to a person, is allowed in a <code>while</code> loop and not in a <code>for</code> loop, because a suspended <code>while</code> loop resumes exactly where it stopped and a <code>for</code> loop over a generator cannot. The agent is rejected at publishing, not at 3 a.m.</p>
 <p>Every profile, whether LLM, MCP, prompt, API or database, knows which agents use it, and cannot be deleted while one does.</p>

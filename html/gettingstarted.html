@@ -109,6 +109,7 @@
         <div class="step-sec" id="gui">
           <h2>Open the GUI</h2>
           <p>Open <code>http://127.0.0.1:9020/ui</code> and click <strong>New user / Forgot password</strong> on the sign-in dialog. Enter the email you used in step 1; an email with a code arrives. Enter the code, choose a password, and sign in.</p>
+          <p class="dim">The same server serves its OpenAPI schema at <code>/openapi.json</code>, Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>.</p>
         </div>
 
         <div class="step-sec" id="first-agent">
@@ -119,13 +120,12 @@
             <li><em>A tool-calling agent that fetches a customer's orders from our orders API.</em></li>
             <li><em>An agent that asks for a city, then answers questions about it.</em></li>
           </ul>
-          <p>Validate and publish each one.</p>
-            <p>When you publish, describe the agent in plain English.</p>
+          <p>Validate each one, then publish it with a plain-English description.</p>
         </div>
 
         <div class="step-sec" id="describe">
-          <h2>Describe your agents, then search</h2>
-          <p>When you publish, describe the agent in plain English. Then type a question in the search box: the agent matches, runs and answers.</p>
+          <h2>Search</h2>
+          <p>Type a question in the search box: the agent matches, runs and answers.</p>
         </div>
 
         <div class="step-sec" id="systems">

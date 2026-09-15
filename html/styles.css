@@ -173,6 +173,11 @@ p { margin: 0; }
   max-width: 44ch; margin-top: 24px;
   color: var(--ink); font-size: 20px; font-weight: 600; line-height: 1.5; letter-spacing: -0.014em;
 }
+.hero-pip { display: inline-flex; align-items: center; gap: 8px; margin-left: 4px; color: var(--muted); font-family: var(--mono); font-size: 13.5px; white-space: nowrap; }
+.hero-pip .ps1 { color: var(--slate); user-select: none; }
+.hero-pip code { font-family: inherit; font-size: inherit; color: inherit; }
+.hero-pip .copy { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; margin-left: 2px; border: 0; border-radius: 7px; background: transparent; color: var(--faint); cursor: pointer; transition: color .15s ease, background .15s ease; }
+.hero-pip .copy:hover { color: var(--ink); background: var(--bg-soft); }
 .hero-points { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 14px; }
 .hero-points li { display: flex; gap: 12px; align-items: flex-start; max-width: 54ch; color: var(--body); font-size: 15.5px; line-height: 1.6; }
 .hero-points svg { flex: 0 0 auto; margin-top: 4px; color: var(--blue); }
