@@ -1029,6 +1029,11 @@ lead, backticks as <code>), fidelity verified identical; the comparison table is
 it. The home page's "Why not just Python?" link still targets the page. Regenerated once more
 after Ram's one-line change to the md (page == md, verified).
 
+## State on 2026-09-14 (Why not Skills: the tally box explains its numbers; not deployed)
+Ram: not clear what the top numbers are. The .tally panel now opens with a caption
+(.tally-title, 13.5px w600 muted): "Claude's tally of the 69 comparison rows below: which side
+each row favours"; tile labels are Search2o / Skills / Tie / Depends on the case.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
