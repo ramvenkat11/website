@@ -515,7 +515,8 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
 
 
 SITE = "https://search2o.com"
-SITE_PAGES = ("", "gettingstarted.html", "pricing.html", "about.html")   # the sitemap; legal pages are noindex
+SITE_PAGES = ("", "gettingstarted.html", "pricing.html", "about.html",
+              "legal/terms.html", "legal/privacy.html", "legal/license.html", "legal/intellectual.html")   # the sitemap
 
 
 def docs_path(sslug, pslug) -> str:

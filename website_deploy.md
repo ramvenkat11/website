@@ -19,9 +19,8 @@ uploader maintains, not website content, and the script never uploads to it or d
 
 ## Search engines
 
-`html/robots.txt` allows everything except `/legal/` and names the sitemap. `gen/build.py`
-writes `html/sitemap.xml` from the four site pages and the toc (legal pages left out, they are
-`noindex`), and puts a canonical link and Open Graph tags on every docs page; the site pages
+`html/robots.txt` allows everything and names the sitemap. `gen/build.py` writes
+`html/sitemap.xml` from the site pages, the legal pages and the toc, and puts a canonical link and Open Graph tags on every docs page; the site pages
 carry their own. `html/404.html` is the page for a missing URL; every path in it is absolute
 because CloudFront serves it under whatever URL was asked for. `scripts/cloudfront-setup.sh`
 holds the one-time CloudFront and S3 part: it publishes `scripts/cloudfront-canonical-host.js`
