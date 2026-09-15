@@ -1037,6 +1037,13 @@ itself" - "it looks awkward") and all REMOVED; the box is the four tiles only (S
 Skills / Tie / Depends) and the .tally-title CSS is gone. What the numbers mean is left to
 the second paragraph and the tables.
 
+## State on 2026-09-15 (Why not Python? regenerated from the md again; NOT DEPLOYED)
+Three paragraphs changed in content/why_not_python.md: the language paragraph now says
+"only the commands are new: the syntax is JSON, the expressions are Python, and there are
+23 commands, each with a schema"; the AI paragraph "Because the language is fixed, the editor
+understands it and an AI can write it..."; the closing "doing what it is good at: computing".
+Page == md verbatim (fidelity identical, 8 paragraphs).
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
