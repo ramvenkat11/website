@@ -1082,6 +1082,21 @@ could leave a browser with stale CSS after a deploy. To push the new header onto
 have not changed, every image under html/ was `touch`ed so the next deploy re-sends them (~35
 files, the docs screenshots included). website_deploy.md updated.
 
+## State on 2026-09-15 (fonts self-hosted; not deployed)
+Ram: self-host the fonts (after PageSpeed's render-blocking, forced-reflow and LCP-render-delay
+items all traced to the Google Fonts stylesheet + late swap). html/fonts/inter-latin.woff2
+(48 KB, the variable file Google serves for weights 400-800) and jetbrains-mono-latin.woff2
+(31 KB, 400-600), fetched from fonts.gstatic.com with Google's Latin unicode-range. styles.css
+now opens with two @font-face rules (font-weight ranges 400 800 / 400 600, font-display swap,
+url(fonts/...) relative to the stylesheet, so every page depth resolves). All 10
+pages/templates lost the two preconnects and the three Google Fonts link tags and gained
+`<link rel="preload" as="font" type="font/woff2" href="<prefix>fonts/inter-latin.woff2"
+crossorigin>` (mono loads on demand). deploy.sh caches *.woff2 30 days with the images (both
+globs lists). Verified in-browser (home + a docs page): both faces "loaded" from /fonts/, zero
+requests to googleapis/gstatic, body font Inter, headline renders as before. Sweep for
+googleapis/gstatic over html and gen: 0. Old Google-served weights 100-300/900 were never
+requested, so nothing is lost.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
