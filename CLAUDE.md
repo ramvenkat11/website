@@ -1148,10 +1148,15 @@ with publishing. Step 5 now ends "Validate and publish them. Then add a plain-En
 each agent and wait for the indexing to finish." (Ram's order of events: validate, publish,
 describe, wait for indexing); the docs step's h2 is "Ask the docs" (was "Ask a question", Ram) and its line opens "From the docs icon on the top" (was "in the GUI", Ram); step 6 is just "Search": "Type a question in the search box: the agent matches,
 runs and answers." + a SECOND paragraph "You are all set. Explore, and build the agents your
-team needs. If you have questions, click on the docs icon on the top." The "Ask the docs" step
-(h2 + docs-icon line) is REMOVED on Ram's order - eight steps now; its Stuck callout (email +
-help icon) was KEPT and now sits at the end of the Search step - Ram did not mention the
-callout, flagged for veto. No inbound #docs anchor existed.
+team needs. If you have questions, click on the docs icon on the top. If you need to reach us
+for support, click on the help icon." (Ram's text; his "need reach us" -> "need to reach us").
+The "Ask the docs" step (h2 + docs-icon line) is REMOVED on Ram's order - eight steps now. The
+Stuck callout MOVED to the END of the page, per Ram: it now sits AFTER the .numbered div
+(inside .container) as `.callout.after-steps` - outside the list so step 08 stays :last-child
+(no connector line, no bottom padding); styles.css `.callout.after-steps { max-width: 706px;
+margin: 48px 0 0 74px }` aligns it with the step text (measured: left 490.5 == step text
+left, width 706 == text width) and the <=640px block resets margin-left to 0. Verified in
+Chrome over the local server. No inbound #docs anchor existed.
 
 ## State on 2026-09-15 (Call your systems folded into step 5; not deployed)
 Ram: fold the "Call your systems" section into the create-agents step as a small line, then
