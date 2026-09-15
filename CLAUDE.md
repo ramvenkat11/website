@@ -1258,6 +1258,8 @@ ALSO: the Search step's send-off line now shows the ACTUAL GUI icons inline (Ram
 NotebookText for docs, HelpCircle for help): 18px inline SVGs with class="inicon" right after
 "the docs icon" and "the help icon"; styles.css `.numbered .inicon { vertical-align: -4px;
 color: var(--muted) }`. Verified in-browser: both glyphs sit on the text line.
+ALSO: the tautological sentence "A Python expression must be an expression." removed from
+docsrc/commands/index.html's lead (Ram); rebuilt.
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
