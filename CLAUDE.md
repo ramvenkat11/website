@@ -1105,10 +1105,12 @@ gettingstarted, legal/privacy (the support address in <code>) and the docs templ
 pricing, about, 404 and the other legal pages have no code and get no preload (an unused
 preload is a warning of its own). Inter stays preloaded everywhere.
 
-## State on 2026-09-15 (Why not Python: pull line; not deployed)
-"That one fact does all the work." is now `<p class="pull">` (docs.css: 22px w750 ink,
-tokens-only). NOTE: the page is otherwise regenerated from content/why_not_python.md - a
-future regeneration must re-apply the class to that paragraph.
+## State on 2026-09-15 (Why not Python: emphasis moved; not deployed)
+Ram: remove "That one fact does all the work." entirely (it was briefly a 22px pull line) and
+slightly highlight the previous sentence instead - "Everything in it means something the
+platform understands." is now <strong> (the docs' 650-weight ink emphasis), the .pull CSS is
+gone. The page otherwise follows content/why_not_python.md; a regeneration must re-apply the
+<strong> and drop the removed line (the md still has it).
 
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
