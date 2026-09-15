@@ -1141,6 +1141,12 @@ Ram asked for a smaller footnote on openapi.json, docs and redoc in the Open-the
 muted): "The same server serves its OpenAPI schema at /openapi.json, Swagger UI at /docs and
 ReDoc at /redoc." - wording from running-the-server.html.
 
+## State on 2026-09-15 (getting started steps 5-6 de-duplicated; not deployed)
+A stray "When you publish, describe the agent in plain English." sat at the end of step 5 and
+step 6 opened with the same sentence. The stray line is gone; step 6 ("Describe your agents,
+then search") now reads "Describe each agent in plain English when you publish it. Then type a
+question in the search box: the agent matches, runs and answers."
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
