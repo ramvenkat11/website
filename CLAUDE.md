@@ -3277,3 +3277,19 @@ no sideways scroll. The diagram is 9px taller again (ends 62px below the steps c
 re-tuned). Both themes screenshotted.
 Then Ram: he meant the LINK, not the word - the sub-line is "Stateless &middot; GitHub" as
 plain text again (index.html:155), no anchor.
+
+## State on 2026-09-16 (diagram: "Search2o Cloud" is a tag on the cloud box's border; not deployed)
+Per Ram, the same treatment as "Your organization". index.html: the cloud node's
+`<strong>Search2o Cloud</strong>` is `<span class="arch-cloud-lbl">Search2o Cloud</span>`;
+styles.css .arch-node.cloud is position relative with padding 24px 20px 18px (top grew from
+18 so the parts sit 12px under the tag), .arch-parts lost its margin-top 12, and
+.arch-cloud-lbl mirrors .arch-org-lbl (absolute, top 0, left 18px, translateY(-50%), 3px 11px,
+radius 999, 12px w700, white) but with a SOLID 1.5px --cloud-border and the --cloud-bg
+gradient as its fill, so it reads as a navy tab on the navy box. Measured at 1920: tag
+130x24.6 centred on the border (mid 520.6 vs top 519.6), same left as the org tag, 73px
+clear of the "sensitive data encrypted" arrow, parts 12px below. PHONES: at 390 the arrow
+into the cloud (x 193) landed on the tag (right edge 204), so the <=640px block now keeps
+BOTH tags inside their boxes as ordinary pills (position static, display inline-block,
+margin-bottom 12; org and cloud padding-top 16) - measured at 390: both tags inside, the arrow
+lands on the cloud top and is clear of the tag. Cloud box 93px tall (was ~120 with the
+title inside), so the diagram ends 28px below the steps column now. Both themes screenshotted.
