@@ -3104,3 +3104,21 @@ container 67.9px tall instead of 60 on the home page (the form already had line-
 Measured after the change on both pages: reserved 256x60 before load, badge lands exactly in
 it, logo div 60px. PRE-EXISTING, NOT MINE, NOT FIXED: index.html scrolls sideways 12px at a
 360px viewport (the overflowing elements are .arch-lbl in the diagram and the code pre).
+
+## State on 2026-09-15 (registration loads reCAPTCHA on first field focus; not deployed)
+Ram: load it on first field focus, as the home page does. html/site.js, in the registration
+block: reg-email, reg-name and reg-account each get a "focus" listener calling loadCaptcha().
+The loadCaptcha() call in the Create-account handler STAYS - it is a no-op once the load is
+under way, and it is the fallback for a visitor who reaches the button without ever focusing a
+field. Before this, the script was requested only when the button was pressed AND the four
+field checks passed, so the press itself waited for Google. VERIFIED on the no-cache server
+(port 8932 - a plain server serves a stale site.js and makes the test read false): the page
+loads with no reCAPTCHA script and window.grecaptcha undefined; one real click in the Work
+email field loads the script and renders the badge at 256x60, with the button never pressed.
+TESTING NOTE: an element's .focus() does NOT fire the focus event when the tab is not focused
+(document.hasFocus() false) - click with the computer tool, or dispatch a FocusEvent.
+SITE KEYS ARE PUBLIC, asked and answered: a reCAPTCHA site key cannot be hidden. Verified in
+the page - the key appears verbatim in the api2 iframe URL the browser requests, so anything
+that loads the page or watches the network reads it however the HTML stores it. What protects
+it is the domain restriction on the key plus the server's own check of the token (score,
+action, and the hostname Google returns). No obfuscation was added.
