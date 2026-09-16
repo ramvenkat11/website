@@ -3165,3 +3165,28 @@ with a long line injected into #agen-code: computed scrollbar-color rgb(52,69,10
 rgb(16,27,51), width thin, the bar takes 11px of layout, screenshot shows a slate thumb on
 navy. RELATED, NOT TOUCHED: docs.css `figure.code pre` (the docs' always-dark code figures)
 has the same native-bar behaviour in the light theme - say the word.
+
+## State on 2026-09-16 (code box: fixed height, both scrollbars, copy icon; not deployed)
+Per Ram, on the home page's agent card. (1) FIXED HEIGHT: `#framework .codecard pre { height:
+583px }` - the natural height of the 25-line hr_policy example (25 x 21.875 + 36 padding), so
+the card is 629px before and after a generate at every width (measured 629/629 at 1920 and at
+390). The 09-12 stretch rules (#framework .split align-items stretch; codecard flex column; pre
+flex 1 0 auto) are GONE - I first tried pinning the card to the grid row with height:0 /
+min-height:100%, but the left column is now only ~491px tall (the badge moved beside the
+button and the h3 replaced a paragraph), shorter than the example itself, so the example would
+have scrolled, and the 100% ignored the card's 36px title-offset margin. CONSEQUENCE, FLAGGED:
+the left column now ends ~170px above the card's bottom - the columns-end-level rule no longer
+holds in this section (the textarea could grow to fill if Ram wants; not done). (2) VERTICAL
+SCROLLBAR: `.codecard pre` is `overflow: auto` (was overflow-x) and the webkit rule sets
+width 10 as well as height 10; the same slate-on-navy theming covers both bars. Before a
+generate the example fits exactly: no bar in either direction. (3) COPY ICON: `<button
+class="copy" id="agen-copy" hidden>` (the hero's clipboard SVG) at the right end of the card's
+.bar (margin-left auto; 24x20 so it sits inside the 12.5px filename's line box and the bar
+stays 43.6px - a 26px button had grown the bar 5px; hover rgba white .07; `[hidden]`
+display none). site.js: the generate block keeps the raw data.code in `generated`, unhides the
+button on success, and the click writes `generated` to the clipboard with the same green check
+for 1.4s as the other copy buttons. Verified on the no-cache server with a stubbed fetch: button
+hidden before, shown after, centred on the filename's midline, 17px from the card edge; a
+synthetic click throws nothing (the clipboard write itself needs a focused tab, so the check
+swap was not observable from the tool - same code path as the hero's button). 390px: card 629
+before and after, no sideways scroll.
