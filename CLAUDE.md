@@ -3132,3 +3132,7 @@ the 467px column and wraps; the first form orphaned "yourself:", so "Try it your
 white-space:nowrap span and the break falls at the full stop (measured: two lines, 367px +
 105px). The framework columns still end level (delta 0 - the #framework stretch rule absorbs
 the extra height in the code card); 390px: no sideways scroll. Zoomed screenshot checked.
+
+Then Ram: better on one line - the lead-in is now "Build agents with AI assistance:" (his
+wording; the "Try it yourself" clause and the nowrap span are gone). Measured: one line,
+231px in the 467px column; columns still end level (delta 0).
