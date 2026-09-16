@@ -3241,3 +3241,14 @@ paints --card over the dashed border so it reads as a label hung on the box, not
 label left the flow, so the org box is ~30px shorter; the diagram now ends 44px below the
 steps column (it was ~74 before - the steps text has changed since the last re-tune; the
 09-02 links-51px alignment is stale). Not re-tuned - Ram's call.
+
+## State on 2026-09-16 (diagram: Users moved inside the organization box; not deployed)
+Ram: users were drawn outside "Your organization". The Users pill and its two-way "search
+interface" link now sit INSIDE .arch-org, above the agent-server row (index.html: the two
+divs moved under the .arch-org-lbl span; .arch-org is already a centred grid, so no CSS
+change). The spine is now org box [Users -> agent server + chips] -> "sensitive data
+encrypted" -> Search2o Cloud. VERIFIED: every arrow end lands on a node (0px at all four
+ends), the tag on the border clears the Users pill (20px across, 13px down at 1920; 12px down
+at 390 where they overlap horizontally), no sideways scroll at 390, and the diagram's total
+height is unchanged (still ends 44px below the steps column - not re-tuned). Both themes
+screenshotted.
