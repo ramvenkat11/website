@@ -3293,3 +3293,21 @@ BOTH tags inside their boxes as ordinary pills (position static, display inline-
 margin-bottom 12; org and cloud padding-top 16) - measured at 390: both tags inside, the arrow
 lands on the cloud top and is clear of the tag. Cloud box 93px tall (was ~120 with the
 title inside), so the diagram ends 28px below the steps column now. Both themes screenshotted.
+
+## State on 2026-09-16 (home generate block: nothing jumps any more; not deployed)
+Ram: the reCAPTCHA box jumped when an agent was generated. TWO CAUSES, measured: (1) the
+button relabels "Generate agent" -> "Generating..." and changed width, pushing the badge
+sideways; (2) the message box (.reg-out) appearing under the button shrank the fill-the-
+column textarea, so the whole button row lifted by the message height (and dropped again
+when the next run hid it). FIX in styles.css: `#agen-go { min-width: 154px }` (its natural
+width); the .agen grid's last row is `minmax(49px, auto)` - the exact height of a one-line
+message (14px x 1.65 + 24 padding + 2 border) - and `.agen .reg-out[hidden] { display:
+block; visibility: hidden }` keeps the row laid out while empty, so the textarea is 49px
+shorter from the start and nothing moves when a message arrives. A two-line message would
+still lift the row by 46px, so the home block's verify failure text is now one line: "Could
+not verify this request. Please reload and try again." (site.js:300; the registration form's
+longer wording at :192 is untouched - its card is wider). VERIFIED on the no-cache server:
+button y, badge x/y and textarea height identical across rest / badge rendered / generating /
+each of the three one-line messages / relabel (moved: []); all three messages measure one
+line (49.1px). A server-sent data.message longer than ~60 chars would wrap and lift the row -
+keep server messages short.
