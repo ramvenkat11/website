@@ -3275,3 +3275,5 @@ Measured: pill 140x59, the pill, the Users row and the sub-line share one centre
 arrow ends land on the pill and the server (0px); tag 12px above the pill at 1920 and 390;
 no sideways scroll. The diagram is 9px taller again (ends 62px below the steps column - not
 re-tuned). Both themes screenshotted.
+Then Ram: he meant the LINK, not the word - the sub-line is "Stateless &middot; GitHub" as
+plain text again (index.html:155), no anchor.
