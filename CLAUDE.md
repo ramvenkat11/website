@@ -3149,3 +3149,19 @@ sideways scroll. (2) "Build agents with AI assistance" is now `<h3 class="agen-t
 h3 and .pcard h3; weight 650 from the base h3 rule). The trailing COLON WAS DROPPED - a
 heading does not end in a colon; flagged to Ram. .agen margin-top 10 -> 12 under the heading.
 Columns still end level (delta 0). Zoomed screenshots checked.
+
+## State on 2026-09-16 (code card scrollbar themed; not deployed)
+Ram: the horizontal scrollbar on the generated agent card was the native (light) one. CAUSE:
+the .codecard is always dark (#101b33) but inherits the page's color-scheme, so in the light
+theme the pre's scrollbar came out light on a dark card. styles.css `.codecard pre` now
+carries `color-scheme: dark; scrollbar-width: thin; scrollbar-color: #34456b #101b33` (the
+standard properties - Chrome 121+ and Firefox) plus `::-webkit-scrollbar` rules (height 10,
+track #101b33, thumb #34456b radius 5 with a 2px track-coloured border, hover #44588a) for
+Safari; the colours come from the card's own hard-coded palette (bar dots #2c3c5f, border
+#22304f), so they are right in both page themes. Chrome ignores the webkit pseudo-elements
+once scrollbar-color is set, so each engine draws one themed bar. Applies to every .codecard
+(home + the two getting-started cards). VERIFIED on the no-cache server in the light theme
+with a long line injected into #agen-code: computed scrollbar-color rgb(52,69,107)
+rgb(16,27,51), width thin, the bar takes 11px of layout, screenshot shows a slate thumb on
+navy. RELATED, NOT TOUCHED: docs.css `figure.code pre` (the docs' always-dark code figures)
+has the same native-bar behaviour in the light theme - say the word.
