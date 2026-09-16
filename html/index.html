@@ -184,25 +184,23 @@
         <div>
           <span class="kicker">Agent framework</span>
           <h2>JSON DSL designed for agents</h2>
-          <style>
-            .prompts { margin-top: 14px; padding: 0; list-style: none; display: grid; gap: 8px; }
-            .prompts li { position: relative; padding: 9px 12px 9px 34px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-soft); color: var(--body); font-size: 14px; line-height: 1.5; font-style: italic; }
-            .prompts li::before { content: "\201C"; position: absolute; left: 12px; top: 6px; font-size: 22px; line-height: 1; color: var(--slate); font-style: normal; }
-          </style>
           <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">An agent is built using <a href="docs/commands/index.html">23 commands</a>. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with built-in safeguards. <a href="docs/introduction/why-not-python.html">Why not Python?</a></p>
-          <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">Draft agents by telling AI what you want:</p>
-          <ul class="prompts" aria-label="Sample prompts for Draft with AI">
-            <li>A tool-calling agent that fetches a customer&rsquo;s orders from our orders API.</li>
-            <li>An agent that uses our Jira MCP server to open a ticket from the request.</li>
-            <li>An agent that answers policy questions from the sections our intranet API returns.</li>
-            <li>Ask for approval before the renewal is sent.</li>
-            <li>Remember the customer&rsquo;s account number for the next question.</li>
-          </ul>
+          <div class="agen">
+            <textarea id="agen-text" rows="6" maxlength="400" placeholder="A tool-calling agent that fetches a customer&rsquo;s orders from our orders API." aria-label="Describe the agent you want"></textarea>
+            <p class="agen-count" id="agen-count" aria-live="polite">40 more characters</p>
+            <div><button class="btn btn-blue" type="button" id="agen-go" disabled>Generate agent</button></div>
+            <!-- reCAPTCHA v3: nothing is solved here. This element carries the site key
+                 and is where Google's badge is drawn — site.js renders the widget with
+                 badge: "inline", which puts the badge here instead of floating in the
+                 corner of the window. The badge has to stay visible somewhere. -->
+            <div class="recaptcha-v3" data-sitekey="6Leg9r0tAAAAAKjlTLpFY352CKMKdIhZPvk-WrQj"></div>
+            <div class="reg-out" id="agen-out" hidden></div>
+          </div>
         </div>
 
         <div class="codecard" aria-label="Example agent definition">
-          <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">hr_policy &middot; agent definition</span></div>
-<pre><code><span class="tk-pun">{</span>
+          <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname" id="agen-fname">hr_policy &middot; agent definition</span></div>
+<pre><code id="agen-code"><span class="tk-pun">{</span>
   <span class="tk-com">// An agent is a set of functions. Execution starts in main.</span>
   <span class="tk-key">&quot;functions&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
     <span class="tk-key">&quot;main&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
@@ -356,6 +354,7 @@
   </div>
 </footer>
 
+<script src="config.js"></script>
 <script src="site.js"></script>
 </body>
 </html>

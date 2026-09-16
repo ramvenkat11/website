@@ -2881,3 +2881,177 @@ cloud with the label in plain form, descriptors kept only in encrypted form, dra
 moved from /api/exec to /api/dev. Edited security/encryption.html, security/data-privacy.html,
 rest-api/overview.html, rest-api/running-agents.html; rebuilt (107 pages, 32 examples valid).
 Next: Ram reviews the docsrc diff, then deploy (s3 sync + CloudFront "/docs/*" invalidation).
+
+## Agent framework block: hCaptcha → reCAPTCHA — 2026-09-15 (Ram)
+
+The "Generate agent" form in the home page's **Agent framework** section (`html/index.html`, the
+`#framework` section) now carries a **reCAPTCHA** widget:
+
+    <div class="g-recaptcha" data-sitekey="6Leg9r0tAAAAAKjlTLpFY352CKMKdIhZPvk-WrQj"></div>
+
+**This matches the server, which was already expecting reCAPTCHA there.**
+`publicapi/demoagentgen.py` verifies with `Register.verify_recaptcha`, while registration
+(`persistence/register.py`) verifies with `verify_hcaptcha`. Its comment says the two pages carry
+DIFFERENT widgets and that the wrong token is `notHuman` in production — the page was the side that
+disagreed.
+
+**Registration is untouched and stays on hCaptcha**: `html/gettingstarted.html` (its own
+`js.hcaptcha.com` tag and `.h-captcha` div), and both `content/register/*.html`.
+
+`html/site.js` served one provider. Its helpers now read the widget on the page and use whichever it
+is: `captchaBox()` matches `.g-recaptcha, .h-captcha`, `captchaApi()` returns `grecaptcha` or
+`hcaptcha`, and `loadCaptcha()` injects Google's `api.js?render=explicit&onload=s2oCaptchaReady` or
+hCaptcha's. A page only ever carries one widget, so there is no ambiguity. The agent form's own
+message now says "Please complete the reCAPTCHA."; the registration form still says hCaptcha.
+
+**Checked** on a local copy of the site: typing in the agent box loads Google's script and nothing
+from hCaptcha, `grecaptcha` is defined, and a widget renders inside the block with the new site key
+(two iframes). `node --check html/site.js` passes. Not checked: a real token round trip, which needs
+the production host — the key is domain-bound, and the server only verifies in production.
+
+### Corrected the same day: the key is reCAPTCHA **v3**, so there is no widget
+
+The first attempt used a `g-recaptcha` div, which is the v2 checkbox. The page showed
+**"ERROR for site owner: Invalid key type"** (Ram). v3 works differently: the script is loaded with
+the site key, **nothing is drawn or solved**, and a token is minted per action at submit time.
+
+- `html/index.html`: the widget is replaced by a hidden element that only carries the key —
+  `<div class="recaptcha-v3" data-sitekey="6Leg9r0t…" hidden>`. Keeping the key in the block means
+  removing the block removes it.
+- `html/site.js`:
+  - `isRecaptchaV3()` replaces `isRecaptcha()`; `captchaBox()` matches `.recaptcha-v3, .h-captcha`.
+  - `loadCaptcha()` loads `api.js?render=<sitekey>` for v3 (no `explicit`/`onload`, which is the v2
+    form), and hCaptcha's unchanged.
+  - `renderCaptcha()` and `resetCaptcha()` do nothing for v3: there is no widget, and a token is
+    single use.
+  - **`captchaToken(action)`** is new and returns a promise, because v3 is asynchronous —
+    `grecaptcha.ready` then `grecaptcha.execute(key, {action})`. The agent form now fetches the
+    token when Generate is pressed and posts it, instead of reading a widget. Its action is
+    `generate_agent`.
+  - The old "Please complete the reCAPTCHA." is gone — nothing is completed. A missing token now
+    says "We could not verify this request. Please reload the page and try again."
+- Registration is untouched and still uses the synchronous `captchaResponse()` with hCaptcha.
+
+**Checked on a local copy**: no visible widget, Google's script loads (hCaptcha's does not), the
+badge appears, no console errors, and `grecaptcha.execute` minted a real token (542 characters) even
+from localhost. Pressing Generate got past the token step and failed at the API, which is expected
+away from production.
+
+**Two things for Ram:**
+- v3 adds Google's **badge** to the corner of every page carrying the key. Hiding it is allowed only
+  if the reCAPTCHA privacy text is shown instead.
+- v3 returns a **score**, not a pass or fail. `Register.verify_recaptcha` should check `success`
+  **and** a score threshold (and ideally the action), or a bot with any token passes.
+
+### The v3 action must be `demoAgentGen` — 2026-09-15
+
+The server checks the action carried inside the token, so the page's string and the server's must be
+identical or **every visitor is refused as `notHuman`**. The first version sent `generate_agent`;
+`html/site.js` now sends **`demoAgentGen`**, and the call site says why it cannot be reworded.
+
+The action travels inside the token and is returned by Google's verify call, so it is not something
+the page can be trusted on — which is exactly why the server checks it.
+
+### The v3 badge sits under the Generate button, not in the window's corner — 2026-09-15 (Ram)
+
+Ram: clicking the agent box made Google show something in the bottom-right corner. That is the
+reCAPTCHA badge, and v3 floats it there by default.
+
+It is now drawn **inline, in the block itself**. The `.recaptcha-v3` element moved out of `hidden`
+and sits directly after the Generate button in `html/index.html`, and `site.js` renders the widget
+explicitly into it:
+
+    api.render(box, {sitekey: …, size: "invisible", badge: "inline"})
+
+So the script is loaded with `render=explicit&onload=s2oCaptchaReady` (as hCaptcha already was)
+rather than `render=<sitekey>`, and `captchaToken()` calls `grecaptcha.execute(captchaWidget, …)`
+with the widget id instead of the site key. Nothing is solved: the widget is invisible, the badge is
+all that shows.
+
+**The badge is not hidden, deliberately.** Google allows hiding it only if the reCAPTCHA privacy
+text is shown instead; moving it keeps the attribution and takes it out of the corner.
+
+**Measured on a local copy** after focusing the agent box: exactly one badge, inside the container,
+`position: static` (so not floating), 14px below the button, 256x60. A token still mints from the
+rendered widget (552 characters).
+
+### Getting started moved to reCAPTCHA v3 too, on its own key — 2026-09-15 (Ram)
+
+The registration form on `html/gettingstarted.html` now uses **reCAPTCHA v3** with
+`6LevBr4tAAAAANLQ1St5pdOPvYvuWZuBJCc9yPpH` — a **different key from the home page's**, each carried
+by its own `.recaptcha-v3` element. Its `js.hcaptcha.com` script tag is gone, and the badge element
+sits under **Create account**.
+
+**Its action is `register`.** ASSUMED, not confirmed: the home page's `demoAgentGen` came from the
+server session, and nothing has said what registration's must be. The server checks the action
+inside the token, so if it expects something else, every visitor is `notHuman`. **Worth confirming.**
+
+`html/site.js` is now **reCAPTCHA v3 only** — no page that loads it carries an hCaptcha widget any
+more, so `captchaResponse`, `captchaApi` and the hCaptcha branches are gone. The standalone pages
+under `content/register` keep hCaptcha in their own inline scripts and do not use this file.
+
+**A race fixed while doing it.** The script was only requested when the form was submitted, and the
+token was asked for immediately afterwards — before the script could load, which resolves to no
+token and reads as "could not verify". `loadCaptcha()` now returns a promise that `captchaToken()`
+waits on, resolved by the `onload` callback, by a 10s timeout, or by `onerror`. So the press is never
+left hanging, and never fails because the script was a moment late.
+
+**Checked on a local copy, both pages:** the right key on each, tokens minted (558 on getting
+started, 552 on the home page), exactly one badge per page, inside the block and `position: static`
+— under Create account, and 14px under Generate agent. No hCaptcha script or leftover widget on
+either page.
+
+### The registration badge sits to the RIGHT of Create account — 2026-09-15 (Ram)
+
+The `.recaptcha-v3` element moved **inside** the form's `.actions` row, after the button, so Google's
+badge opens beside it rather than beneath it. `.form-card .actions` was already
+`display: flex; align-items: center; gap: 14px`, so nothing else was needed — it gained `flex-wrap:
+wrap` so the 256x60 badge drops to its own line on a narrow window instead of overflowing the card,
+and the stale `.form-card .h-captcha` rule became `.form-card .recaptcha-v3 { line-height: 0; }`.
+
+**The action is `register`** — confirmed by Ram, no longer an assumption.
+
+**Measured on a local copy:** badge 14px to the right of the button, centres aligned within 4px,
+256x60, `position: static`, token still minted (558 characters).
+
+**On localhost the badge shows a red "Localhost is not in the list of supported domains for this site
+key."** That is the key being registered to the real domain, not a fault — and a token is minted
+anyway. It will read as the ordinary badge once served from search2o.com.
+
+Note the badge is a light block, which stands out on the dark card. Google does not offer a dark
+variant; the only alternatives are leaving it, or hiding it and showing the reCAPTCHA privacy text.
+
+**The home page's badge is still UNDER its Generate button** — it was not asked to move.
+
+## Everything a UI session did in this repo — 2026-09-12 to 2026-09-15
+
+Written from the **ui1** project by a session working on the Search2o UI. Ram has since ruled that
+this must not happen again: that session works on the UI only. Recorded here so this repo's own log
+is complete, and so the next person knows where these came from.
+
+### Four new documents in `content/`
+
+None of them is linked from any index — that was never asked for, and the site's own pages link with
+`.html`, so they carry no cross-links between themselves.
+
+| File | What it covers |
+| --- | --- |
+| `service_account.md` | What a service account is, how it differs from an integration token, adding one, using its key (`Authorization: Bearer`), changing its role, rotating and deleting. |
+| `ai_assist.md` | Draft with AI: what it works from (the command schema, the current draft, the account's profiles/allowlist/operators/sys variables), what it deliberately does not know (your databases, APIs and tools), using it, what comes back, the ten-deep undo, and tips. |
+| `validation.md` | What validation checks and in what order, running one, follow-up questions, a paused `ask`, the four tab statuses, validation and runtime errors, the output console and its nine filters — and **why validation errors are not fixed by AI automatically**: a run's output carries the customer's own data, and Search2o does not send agent output to an LLM. |
+| `editor.md` | The agent definition editor: where its knowledge of the language comes from, the grouped command picker, starter fields and values, grey-text suggestions (including ones read from the agent itself), checks as you type and the message on hover, expression highlighting, formatting, the toolbar and shortcuts, jumping to a location, and what it deliberately does not do. |
+
+Every claim in them was taken from the code — this repo's, the agent server's and the cloud's — not
+from memory, and several first drafts were corrected against it before being kept. Each document's
+own detail, and the corrections, are in the ui1 project's CLAUDE.md under the dates above.
+
+### The captcha work in `html/`
+
+Logged in full in the entries above: hCaptcha to reCAPTCHA in the Agent framework block, the
+correction to v3 (no widget, token per action), the `demoAgentGen` action, the badge moved out of the
+window's corner, then the getting-started registration form onto its own v3 key with the `register`
+action and its badge beside the button. `site.js` is reCAPTCHA v3 only; the standalone pages under
+`content/register` still carry hCaptcha in their own inline scripts.
+
+**Left for this repo's own sessions:** nothing is committed, and the server side of reCAPTCHA v3 (the
+score, and checking the action) belongs to the agent server, not here.

@@ -16,7 +16,6 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/jetbrains-mono-latin.woff2" crossorigin>
 <link rel="stylesheet" href="styles.css">
-<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </head>
 <body>
 
@@ -71,9 +70,14 @@
                       <input type="checkbox" id="reg-terms">
                       <label for="reg-terms">I accept the <a href="legal/terms.html" target="_blank" rel="noopener">Terms of Service</a> and the <a href="legal/privacy.html" target="_blank" rel="noopener">Privacy Policy</a></label>
                     </div>
-                    <div class="h-captcha" data-sitekey="ff281746-715c-41a8-a28e-83d42d90b0da"></div>
                     <div class="actions">
                       <button class="btn btn-blue" type="button" id="reg-go1">Create account</button>
+                      <!-- reCAPTCHA v3: nothing is solved here. This element carries the site
+                           key (its own, not the home page's) and is where Google's badge is
+                           drawn — site.js renders the widget with badge: "inline". Inside the
+                           actions row, so the badge opens to the RIGHT of the button rather
+                           than floating in the corner of the window. -->
+                      <div class="recaptcha-v3" data-sitekey="6LevBr4tAAAAANLQ1St5pdOPvYvuWZuBJCc9yPpH"></div>
                     </div>
                   </div>
                   <div class="reg-out" id="reg-out" hidden></div>
