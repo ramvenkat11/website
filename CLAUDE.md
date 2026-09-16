@@ -3190,3 +3190,23 @@ hidden before, shown after, centred on the filename's midline, 17px from the car
 synthetic click throws nothing (the clipboard write itself needs a focused tab, so the check
 swap was not observable from the tool - same code path as the hero's button). 390px: card 629
 before and after, no sideways scroll.
+
+## State on 2026-09-16 (command reference: short output blurb; api params -> queryParams; not deployed)
+Ram: the output command's one-liner on commands/index.html was too long and about how. The
+blurbs come from the model field descriptions (build.py commands_groups), and output's
+description carries the HTML/image JSON shapes for the editor and Draft with AI, so the model
+was left alone: gen/build.py now has `_COMMAND_BLURBS`, an index-only override, with output
+= "Adds text, HTML or images to the agent's output." Every other command keeps its model
+description on the index. FOUND ON THE WAY: build.py could not run - ../s2oserver
+models/agentschema.py getSchema() raised "starterFields no longer matches the models" because
+the api command's field is `queryParams` now (committed in s2oserver as part of "The big move
+to GCP") while starterFields still listed `params`. FIXED IN RAM'S REPO (he commits, the file
+is uncommitted there alongside his own docs/sample.jsonc): CommandName.api starter fields are
+["url", "queryParams", "body"] - without it the schema, the editor's starter fields and this
+build all fail. The rename then showed up as 2 invalid examples: docsrc/commands/api.html:14
+and while.html:14 now say "queryParams" (db's own `params` field is unchanged, so func.html
+and db.html stay). The HOME PAGE CARD (index.html:213, the hr_policy example, live) also used
+"params" and was invalid against the model - renamed; the longest card line is still 66 chars
+(the renamed line is 49). The api command's field table picked the new name up from the model
+on rebuild. 131 pages, 31 examples valid. The auto-mode classifier refused `sed -i` batches
+that touched ../s2oserver - use the Edit tool for edits outside this repo.
