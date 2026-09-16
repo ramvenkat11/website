@@ -219,6 +219,16 @@ window.s2oCaptchaReady = function () {
   var out = document.getElementById("agen-out");
   var codeEl = document.getElementById("agen-code");
   var fname = document.getElementById("agen-fname");
+  var copyBtn = document.getElementById("agen-copy");
+  var copyIcon = copyBtn.innerHTML;
+  var generated = "";
+  copyBtn.addEventListener("click", function () {
+    navigator.clipboard.writeText(generated).then(function () {
+      copyBtn.innerHTML =
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+      setTimeout(function () { copyBtn.innerHTML = copyIcon; }, 1400);
+    });
+  });
   var count = document.getElementById("agen-count");
   var MIN_CHARS = 40, MAX_CHARS = 400;
 
@@ -298,6 +308,8 @@ window.s2oCaptchaReady = function () {
             if (data.code) {
               codeEl.innerHTML = highlight(data.code);
               fname.textContent = "generated \u00b7 agent definition";
+              generated = data.code;
+              copyBtn.hidden = false;
             }
             if (data.message) say(data.message, true);
           } else {

@@ -458,9 +458,7 @@ p { margin: 0; }
 
 #reports .split { align-items: center; }
 
-#framework .split { align-items: stretch; }
-#framework .codecard { display: flex; flex-direction: column; }
-#framework .codecard pre { flex: 1 0 auto; }
+#framework .codecard pre { height: 583px; }
 #reports .split > :last-child { margin-top: 0; }
 .howgrid > :last-child { margin-top: 37px; }
 .codecard {
@@ -475,12 +473,15 @@ p { margin: 0; }
 }
 .codecard .bar .d { width: 10px; height: 10px; border-radius: 50%; background: #2c3c5f; }
 .codecard .bar .fname { margin-left: 8px; color: #7f92b8; font-family: var(--mono); font-size: 12.5px; }
+.codecard .bar .copy { display: inline-flex; align-items: center; justify-content: center; margin-left: auto; width: 24px; height: 20px; border: 0; border-radius: 6px; background: transparent; color: #7f92b8; cursor: pointer; transition: color .15s ease, background .15s ease; }
+.codecard .bar .copy:hover { color: #c7d3ea; background: rgba(255, 255, 255, .07); }
+.codecard .bar .copy[hidden] { display: none; }
 .codecard pre {
-  margin: 0; padding: 18px 20px; overflow-x: auto;
+  margin: 0; padding: 18px 20px; overflow: auto;
   font-family: var(--mono); font-size: 12.5px; line-height: 1.75; color: #c7d3ea;
   color-scheme: dark; scrollbar-width: thin; scrollbar-color: #34456b #101b33;
 }
-.codecard pre::-webkit-scrollbar { height: 10px; }
+.codecard pre::-webkit-scrollbar { width: 10px; height: 10px; }
 .codecard pre::-webkit-scrollbar-track { background: #101b33; }
 .codecard pre::-webkit-scrollbar-thumb { background: #34456b; border-radius: 5px; border: 2px solid #101b33; }
 .codecard pre::-webkit-scrollbar-thumb:hover { background: #44588a; }

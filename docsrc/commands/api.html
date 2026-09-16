@@ -11,7 +11,7 @@
 <x-code lang="jsonc" title="Look up the caller's location, then the hourly forecast">
 "api": {
   "url": "https://api.ip2location.io",
-  "params": {
+  "queryParams": {
     "ip": "{ result }",
     "key": "{ sys.secret['IP2LOCATION_KEY'] }"
   }

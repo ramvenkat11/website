@@ -214,6 +214,13 @@ def command_fields(alias: str) -> str:
     return fields_table(model, skip=())
 
 
+# The command reference's one-line blurbs come from the model descriptions. A
+# description that goes into detail (shapes, examples) gets a short line here.
+_COMMAND_BLURBS = {
+    "output": "Adds text, HTML or images to the agent's output.",
+}
+
+
 def commands_groups() -> str:
     out = []
     for g in AgentSchema.getSchema().commandGroups:
@@ -223,7 +230,7 @@ def commands_groups() -> str:
             _, field = _COMMAND_FIELDS[alias]
             out.append(
                 f"<li><a href='../commands/{alias}.html'><code>{alias}</code></a>"
-                f"<span>{html.escape(field.description or field.title or '')}</span></li>"
+                f"<span>{html.escape(_COMMAND_BLURBS.get(alias) or field.description or field.title or '')}</span></li>"
             )
         out.append("</ul>")
     return "".join(out)

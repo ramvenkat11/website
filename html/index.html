@@ -198,7 +198,7 @@
         </div>
 
         <div class="codecard" aria-label="Example agent definition">
-          <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname" id="agen-fname">hr_policy &middot; agent definition</span></div>
+          <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname" id="agen-fname">hr_policy &middot; agent definition</span><button type="button" class="copy" id="agen-copy" aria-label="Copy the agent definition" hidden><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></div>
 <pre><code id="agen-code"><span class="tk-pun">{</span>
   <span class="tk-com">// An agent is a set of functions. Execution starts in main.</span>
   <span class="tk-key">&quot;functions&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
@@ -210,7 +210,7 @@
         <span class="tk-key">&quot;api&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
           <span class="tk-key">&quot;profile&quot;</span><span class="tk-pun">:</span> <span class="tk-str">&quot;intranet&quot;</span><span class="tk-pun">,</span>
           <span class="tk-key">&quot;url&quot;</span><span class="tk-pun">:</span> <span class="tk-str">&quot;/policies/search&quot;</span><span class="tk-pun">,</span>
-          <span class="tk-key">&quot;params&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span> <span class="tk-key">&quot;q&quot;</span><span class="tk-pun">:</span> <span class="tk-expr">&quot;{ sys.query }&quot;</span> <span class="tk-pun">}</span>
+          <span class="tk-key">&quot;queryParams&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span> <span class="tk-key">&quot;q&quot;</span><span class="tk-pun">:</span> <span class="tk-expr">&quot;{ sys.query }&quot;</span> <span class="tk-pun">}</span>
         <span class="tk-pun">}</span><span class="tk-pun">,</span>
         <span class="tk-key">&quot;prompt&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
           <span class="tk-com">// Inside { } is Python, run in a controlled runtime.</span>
