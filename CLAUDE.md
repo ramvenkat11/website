@@ -3263,3 +3263,15 @@ is just "search interface" (its em sub-line is gone). styles.css: .arch-actor sv
 is 12px above the pill (they overlap by 11px across now, so keep that clearance in mind if
 the pill grows), no sideways scroll at 390; the diagram is 9px taller (ends 53px below the
 steps column - still not re-tuned). Both themes screenshotted.
+
+## State on 2026-09-16 (diagram: no GitHub link in the server box; Users pill centred; not deployed)
+Ram: remove the GitHub link inside the box, and centre the "Users" text. index.html: the
+agent-server sub-line is `<span>Stateless</span>` (the step-2 text link to GitHub in the
+steps column stays - he said inside the box). The Users pill is a centred STACK:
+`<span class="arch-actor-name">[icon]Users</span>` over `<em>browser &middot; chat app</em>`;
+styles.css .arch-actor is flex-direction column, align-items center, gap 2, padding 8px 18px;
+.arch-actor-name is an inline-flex row (gap 8, line-height 1.2); .arch-actor-txt is gone.
+Measured: pill 140x59, the pill, the Users row and the sub-line share one centre (1236.5);
+arrow ends land on the pill and the server (0px); tag 12px above the pill at 1920 and 390;
+no sideways scroll. The diagram is 9px taller again (ends 62px below the steps column - not
+re-tuned). Both themes screenshotted.
