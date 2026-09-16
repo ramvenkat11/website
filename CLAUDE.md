@@ -1272,6 +1272,29 @@ evaluated as Python expressions, with built-in safeguards. Why not Python?" ("in
 - the h2 says JSON DSL). Order: h2 > DSL para > "Draft agents by telling AI what you want:" >
 five prompts. Columns still end level (delta 0 measured).
 
+## State on 2026-09-15 (LIVE "Generate agent" block in the framework section; NOT DEPLOYED, endpoint not live)
+Per Ram (his spec, his answers to my four questions): the "Draft agents by telling AI what you
+want:" line and the five .prompts cards (and their inline <style>) are REPLACED by a live
+generate block in index.html's framework section left column. NOTE: Ram had edited the section
+himself first - h2 is HIS "JSON DSL designed for agents" and the paragraph "An agent is built
+using 23 commands..." (always re-read before editing). The block (.agen): textarea id=agen-text
+(rows 3, maxlength 400, PLACEHOLDER ONLY - the orders-API prompt as placeholder, box empty),
+the SAME hCaptcha as the register form (sitekey ff281746-..., script tag added to index head),
+button id=agen-go "Generate agent", and a .reg-out message div. index now loads config.js
+before site.js. site.js gained a guarded IIFE (agen-go): validates 40-400 chars, requires the
+captcha, POSTs {userPrompt, token} to BASE + /demoAgentGen (BASE from SEARCH2O_CONFIG, fallback
+https://reg.api.search2o.com), response {success, code, message}: success -> highlight code
+into #agen-code with a small JSONC tokenizer (tk-key/str/expr/pun/bool/com; a string whose
+content is {...} is tk-expr; string before ":" is tk-key), set #agen-fname to "generated -
+agent definition", show message green if not empty; failure -> right side untouched, message
+red (generic fallback text); captcha reset + button restored in finally. styles.css: .agen
+rules (textarea mirrors .field input tokens). VERIFIED WITH STUBS ONLY - hcaptcha+fetch stubbed
+in-page, real handler exercised for the three paths (min-length error, failure, success incl
+highlight+relabel); THE ENDPOINT IS NOT LIVE YET (Ram: "You can't test this yet") - no real
+call was made; test against the real API before any deploy. 390px: no overflow. hCaptcha
+shows its localhost warning locally, renders properly only on the real domain. The initial
+card content (hr_policy) still shows until the first successful generate.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
