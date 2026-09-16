@@ -1343,8 +1343,12 @@ the onload callback runs renderCaptcha(), which renders the widget
 present and fall back to the no-argument calls otherwise; BOTH the generate handler and the
 account-creation handler now use them (the register page still loads api.js eagerly in its own
 head - its form is the point of that page; say the word to make it lazy on first field focus
-too). `.agen .h-captcha` reserves 303x78 so the widget's arrival shifts nothing (no radius, no
-overflow clip - see the reverted theming note above).
+too). `.agen .h-captcha` reserves the widget's space so its arrival shifts nothing (no radius, no
+overflow clip - see the reverted theming note above). The first reservation (303x78) still let
+the Generate button jump ~6px: the rendered widget is a 302x76 INLINE iframe, so the line box
+added a baseline gap and the container measured 83.9px. Now min-width 302 / min-height 76 plus
+`.agen .h-captcha iframe { display: block }` - measured 76px before and after, button top
+identical (jump 0).
 VERIFIED on the no-cache server: home page loads with ZERO hcaptcha scripts and
 window.hcaptcha undefined; one keystroke -> script injected, iframe rendered (default
 theme), box height 78 before and after; gettingstarted auto-renders ONE widget and refuses to
