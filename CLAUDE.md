@@ -3222,3 +3222,9 @@ loosened: .agen-title margin-top 38 (was 26), .agen margin-top 14, gap 16. At <=
 column is its own row, so the textarea falls back to its 184px min-height (measured at 390:
 184, card 629, no sideways scroll). The reserved reCAPTCHA box beside the button is inside
 the flex row and unaffected. Screenshot checked.
+
+## State on 2026-09-16 (diagram: "Your organization" in mixed case; not deployed)
+Ram: no all caps. styles.css .arch-org-lbl lost text-transform: uppercase; its letter-spacing
+went .09em -> .02em (the wide tracking only suited caps) and the size 11.5 -> 12px so the
+mixed-case label stays legible. The markup already read "Your organization". The other
+uppercase labels on the site (kickers, price plan, footer h4, key label) are untouched.
