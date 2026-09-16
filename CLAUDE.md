@@ -1311,6 +1311,24 @@ system-theme change. Verified on a NO-CACHE server (python3 /tmp/nocache_serve.p
 plain 8913 kept serving a stale site.js and made the first test read false): start dark ->
 iframe theme=dark, toggle -> light, toggle back -> dark, shadows switch with it.
 
+## State on 2026-09-15 (generate block: counter, disabled button, bigger box; not deployed)
+Per Ram: (1) NEW live counter under the textarea (p.agen-count, 13px --faint, aria-live):
+"40 more characters" counting down as the user types ("1 more character" singular), then
+flipping to "N characters left" against the 400 cap once the minimum is met. (2) The Generate
+agent button now ships DISABLED and is enabled only at 40+ characters (styles.css
+`.btn[disabled] { opacity:.45; cursor:not-allowed }` + a hover override, the first disabled
+style on the site); the handler's length checks became a silent guard, and the two
+length error strings are gone (the counter says it). (3) The textarea is DOUBLE size: rows 6,
+min-height 92 -> 184px. (4) .agen .h-captcha gets border-radius 12 + overflow hidden so the
+widget's corners match the card. Verified by driving input events on the no-cache server:
+empty 40/disabled, 8 chars "32 more characters", 39 chars "1 more character" disabled, 40
+chars enabled "360 characters left", 395 "5 characters left", cleared back to disabled.
+HCAPTCHA COLOURS (answer to Ram's question): the widget only takes light / dark / contrast
+unless the account is on hCaptcha Enterprise, which alone accepts a custom palette (background,
+text, link colours) through hcaptcha.render({theme:{palette:...}}). So the box stays hCaptcha's
+own dark grey, framed to match; if Ram wants the exact card navy, that needs an Enterprise
+plan.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
