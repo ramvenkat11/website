@@ -3228,3 +3228,16 @@ Ram: no all caps. styles.css .arch-org-lbl lost text-transform: uppercase; its l
 went .09em -> .02em (the wide tracking only suited caps) and the size 11.5 -> 12px so the
 mixed-case label stays legible. The markup already read "Your organization". The other
 uppercase labels on the site (kickers, price plan, footer h4, key label) are untouched.
+
+## State on 2026-09-16 (diagram: "Your organization" is a tag on the box's border; not deployed)
+Ram: it was not clear that the whole dashed box is "your organization" (the label was a small
+faint line inside the top-left corner). NOW the label is a TAG sitting on the box's top
+border, the fieldset-legend convention: styles.css .arch-org is position relative and
+.arch-org-lbl is absolute (top 0, left 18px, translateY(-50%)), a pill with the same 1.5px
+dashed --org-border, radius 999, --card background, --muted 12px w700, padding 3px 11px,
+nowrap; the old `justify-self: start` rule is gone. Measured: pill 133x23, its midline 252.7
+on the border at 251.2, 70px clear of the users arrow, both themes screenshotted (the pill
+paints --card over the dashed border so it reads as a label hung on the box, not a bar). The
+label left the flow, so the org box is ~30px shorter; the diagram now ends 44px below the
+steps column (it was ~74 before - the steps text has changed since the last re-tune; the
+09-02 links-51px alignment is stale). Not re-tuned - Ram's call.
