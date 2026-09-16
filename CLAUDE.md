@@ -1329,6 +1329,23 @@ text, link colours) through hcaptcha.render({theme:{palette:...}}). So the box s
 own dark grey, framed to match; if Ram wants the exact card navy, that needs an Enterprise
 plan.
 
+## State on 2026-09-15 (hCaptcha loads lazily on the home page; not deployed)
+Ram asked whether hCaptcha can load only once the user starts typing - yes. index.html's
+eager `<script src="https://js.hcaptcha.com/1/api.js" async defer>` tag is GONE; site.js now
+injects `api.js?render=explicit&onload=s2oCaptchaReady` on the FIRST focus or input in the
+generate textarea (loadCaptcha(), guarded by captchaAsked + an existing window.hcaptcha), and
+the onload callback runs paintCaptcha(), which renders the widget with the resolved theme and
+KEEPS ITS ID in captchaWidget. New helpers captchaResponse() / resetCaptcha() use that id when
+present and fall back to the no-argument calls otherwise; BOTH the generate handler and the
+account-creation handler now use them (the register page still loads api.js eagerly in its own
+head - its form is the point of that page; say the word to make it lazy on first field focus
+too). `.agen .h-captcha` reserves 303x78 so the widget's arrival shifts nothing.
+VERIFIED on the no-cache server: home page loads with ZERO hcaptcha scripts and
+window.hcaptcha undefined; one keystroke -> script injected, iframe rendered with theme=dark,
+box height 78 before and after; gettingstarted still renders its widget dark and refuses to
+post with "Please complete the hCaptcha." when unsolved (so getResponse via the widget id
+works on the auto-render page too).
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
