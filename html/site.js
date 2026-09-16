@@ -40,22 +40,9 @@ if (themeBtn) {
 
 var captchaWidget = null;
 var captchaAsked = false;
-var captchaLoaded = null;      // resolves once Google's script has run
+var captchaLoaded = null;
 var captchaLoadedResolve = null;
 
-/**
- * reCAPTCHA v3, on the pages that carry a form.
- *
- * v3 shows NOTHING and has nothing to solve: the script is loaded, a widget is
- * rendered invisibly, and a token is minted per press. Each page carries its own
- * site key on a `.recaptcha-v3` element, which is also where Google's badge is
- * drawn — `badge: "inline"` puts it there rather than floating it in the corner
- * of the window. The badge has to stay visible somewhere: the alternative is
- * hiding it and showing the reCAPTCHA privacy text instead.
- *
- * The standalone pages under content/register carry their own inline scripts and
- * do not use this file.
- */
 function captchaBox() {
   return document.querySelector(".recaptcha-v3");
 }
@@ -73,7 +60,6 @@ function renderCaptcha() {
 }
 
 function resetCaptcha() {
-  // v3 tokens are single use and the widget is invisible: nothing to reset.
 }
 
 function loadCaptcha() {
@@ -91,17 +77,11 @@ function loadCaptcha() {
     s.defer = true;
     s.onerror = function () { resolve(false); };
     document.head.appendChild(s);
-    // Never leave a press waiting for a script that is not coming.
     setTimeout(function () { resolve(!!(window.grecaptcha && window.grecaptcha.render)); }, 10000);
   });
   return captchaLoaded;
 }
 
-/**
- * A fresh token, as a promise. Resolves to "" when one cannot be had, and the
- * caller says so. The action is checked against the token by the server, so each
- * form's string must match what the server expects, exactly.
- */
 function captchaToken(action) {
   if (!captchaBox()) return Promise.resolve("");
   return loadCaptcha().then(function (ok) {
@@ -194,6 +174,10 @@ window.s2oCaptchaReady = function () {
     }).then(function (r) { return r.json().catch(function () { return null; }); });
   }
 
+  ["reg-email", "reg-name", "reg-account"].forEach(function (id) {
+    $(id).addEventListener("focus", loadCaptcha);
+  });
+
   $("reg-go1").addEventListener("click", function () {
     var email = $("reg-email").value.trim();
     var userName = $("reg-name").value.trim(), accountName = $("reg-account").value.trim();
@@ -201,9 +185,6 @@ window.s2oCaptchaReady = function () {
     if (!$("reg-terms").checked) return say("Please accept the Terms of Service.", false);
 
     $("reg-go1").disabled = true;
-    // v3 mints a token per press, so it is asked for here rather than read from a
-    // widget. "register" is checked against the token by the server, so it must
-    // match exactly — a different string makes every visitor `notHuman`.
     loadCaptcha();
     captchaToken("register").then(function (token) {
       if (!token) {
@@ -301,9 +282,6 @@ window.s2oCaptchaReady = function () {
     var label = btn.textContent;
     btn.textContent = "Generating\u2026";
     out.hidden = true;
-    // The token is fetched here, not read from a widget: v3 mints one per press.
-    // "demoAgentGen" is checked against the token by the server, so it must match
-    // exactly — a different string makes every visitor `notHuman`.
     loadCaptcha();
     captchaToken("demoAgentGen").then(function (token) {
       if (!token) {

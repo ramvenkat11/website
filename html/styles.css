@@ -478,7 +478,12 @@ p { margin: 0; }
 .codecard pre {
   margin: 0; padding: 18px 20px; overflow-x: auto;
   font-family: var(--mono); font-size: 12.5px; line-height: 1.75; color: #c7d3ea;
+  color-scheme: dark; scrollbar-width: thin; scrollbar-color: #34456b #101b33;
 }
+.codecard pre::-webkit-scrollbar { height: 10px; }
+.codecard pre::-webkit-scrollbar-track { background: #101b33; }
+.codecard pre::-webkit-scrollbar-thumb { background: #34456b; border-radius: 5px; border: 2px solid #101b33; }
+.codecard pre::-webkit-scrollbar-thumb:hover { background: #44588a; }
 .codecard code { font-family: inherit; }
 .tk-key { color: #8ab4ff; }
 .tk-str { color: #7fd8c1; }
@@ -527,10 +532,13 @@ p { margin: 0; }
 .prose h2 { margin: 46px 0 16px; font-size: 26px; }
 .prose ul { margin: 0 0 18px; padding-left: 24px; }
 .prose li { margin: 8px 0; }
-.agen { margin-top: 18px; display: grid; gap: 14px; justify-items: start; }
+.agen-title { margin-top: 26px; font-size: 17px; }
+.agen { margin-top: 12px; display: grid; gap: 14px; justify-items: start; }
+.agen .actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.agen .actions .recaptcha-v3 { flex: 0 0 auto; }
 .agen-count { margin: -8px 0 0; color: var(--faint); font-size: 13px; }
-.agen .h-captcha { min-width: 302px; min-height: 76px; }
-.agen .h-captcha iframe { display: block; }
+.recaptcha-v3 { line-height: 0; min-width: 256px; min-height: 60px; }
+.recaptcha-v3 iframe { display: block; }
 .btn[disabled] { opacity: .45; cursor: not-allowed; }
 .btn[disabled]:hover { background: var(--blue); }
 .agen textarea {
@@ -607,7 +615,7 @@ p { margin: 0; }
 .form-card .hint { color: var(--faint); font-size: 12.5px; }
 .form-card .terms { display: flex; align-items: center; gap: 8px; margin-top: 16px; color: var(--body); font-size: 14px; }
 .form-card .terms input { accent-color: var(--blue); width: 15px; height: 15px; }
-.form-card .recaptcha-v3 { line-height: 0; }
+.form-card .actions .recaptcha-v3 { flex: 0 0 auto; }
 .reg-out { margin-top: 16px; padding: 12px 14px; border-radius: 10px; font-size: 14px; color: var(--ink); }
 .reg-out.ok { background: rgba(22, 163, 74, .12); border: 1px solid rgba(22, 163, 74, .4); }
 .reg-out.err { background: rgba(220, 38, 38, .12); border: 1px solid rgba(220, 38, 38, .4); }

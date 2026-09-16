@@ -185,15 +185,14 @@
           <span class="kicker">Agent framework</span>
           <h2>JSON DSL designed for agents</h2>
           <p style="margin-top: 14px; color: var(--body); font-size: 15.5px; line-height: 1.6;">An agent is built using <a href="docs/commands/index.html">23 commands</a>. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with built-in safeguards. <a href="docs/introduction/why-not-python.html">Why not Python?</a></p>
+          <h3 class="agen-title">Build agents with AI assistance</h3>
           <div class="agen">
             <textarea id="agen-text" rows="6" maxlength="400" placeholder="A tool-calling agent that fetches a customer&rsquo;s orders from our orders API." aria-label="Describe the agent you want"></textarea>
             <p class="agen-count" id="agen-count" aria-live="polite">40 more characters</p>
-            <div><button class="btn btn-blue" type="button" id="agen-go" disabled>Generate agent</button></div>
-            <!-- reCAPTCHA v3: nothing is solved here. This element carries the site key
-                 and is where Google's badge is drawn — site.js renders the widget with
-                 badge: "inline", which puts the badge here instead of floating in the
-                 corner of the window. The badge has to stay visible somewhere. -->
-            <div class="recaptcha-v3" data-sitekey="6Leg9r0tAAAAAKjlTLpFY352CKMKdIhZPvk-WrQj"></div>
+            <div class="actions">
+              <button class="btn btn-blue" type="button" id="agen-go" disabled>Generate agent</button>
+              <div class="recaptcha-v3" data-sitekey="6Leg9r0tAAAAAKjlTLpFY352CKMKdIhZPvk-WrQj"></div>
+            </div>
             <div class="reg-out" id="agen-out" hidden></div>
           </div>
         </div>
