@@ -1,3 +1,3 @@
 window.SEARCH2O_CONFIG = {
-  apiUrl: "https://reg.api.search2o.com",
+  apiUrl: "https://s2o-api-761928161625.us-east4.run.app",
 };

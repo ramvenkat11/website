@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last Updated: September 5, 2026**
+**Last Updated: September 16, 2026**
 
 This Privacy Policy describes how Search2o, Inc. ("Search2o," "we," "us," or "our") collects, uses, discloses, and retains personal information in connection with our website, software, cloud services, and related services (collectively, the "Service").
 
@@ -96,7 +96,7 @@ We may disclose information when directed or configured to do so by a customer, 
 
 Search2o does not currently use advertising cookies, tracking pixels, retargeting, or cross-site behavioral advertising on its website.
 
-We use hCaptcha for security and abuse prevention in connection with registration. hCaptcha may collect or process technical and behavioral information through its service in accordance with its own privacy practices.
+We use Google reCAPTCHA v3 for security and abuse prevention in connection with registration. reCAPTCHA may collect or process technical, device, and behavioral information through its service in accordance with Google's Privacy Policy and Terms of Service.
 
 Other third-party providers used for hosting, security, registration, and related functions may collect or process technical information through their services.
 
