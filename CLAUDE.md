@@ -3069,3 +3069,38 @@ exactly those two lines, so the converter reproduces the rest byte for byte. 13 
 51 paragraphs, tags balanced. Title and metas untouched (still accurate). The policy now
 matches the site: a sweep of html/ for hCaptcha finds nothing - both captcha widgets are
 reCAPTCHA v3.
+
+## State on 2026-09-15 (every comment stripped from the served files again; reCAPTCHA box sized)
+COMMENTS: Ram found the two reCAPTCHA comment blocks the ui1 session left in html/index.html
+and html/gettingstarted.html and ruled, absolutely, that no comment of mine may ever appear on
+a publicly visible page. Removed: both HTML blocks, and EVERY comment in html/site.js (the
+jsdoc block over the captcha helpers, the one over captchaToken, the trailing comment on
+captchaLoaded, and the four inline notes about the load timeout, the v3 token and the
+demoAgentGen / register actions). site.js parses (node --check) and both flows were exercised
+afterwards. A sweep of everything served from the bucket - html/*.html, legal/*.html, 404,
+docs/*, styles.css, docs/docs.css, site.js, config.js - finds no comment; the only // left are
+inside URLs and inside the home page's code card, which is Ram's visible example text. The
+reasoning that was in those comments is in this file, above.
+THE CUT-OFF BADGE: Ram saw Google's badge clipped on the right. MEASURED on a local server,
+both pages: our container is not the cause - the badge is 256x60, Google's own size, set by an
+inline style the page never touches, and it sits well inside its column (home: 256 in a 467
+column; getting started: right edge 942 against a card edge of 1051) at 360/390/412/768 and
+desktop. What is clipped is the text INSIDE Google's cross-origin iframe: off the production
+domain the badge renders "Localhost is not in the list of supported domains for this site
+key.", which is wider than the badge, so the logo and the reCAPTCHA label are cut. Proved by
+rendering a second badge with Google's public test key beside it: the ordinary "protected by
+reCAPTCHA" badge fits 256x60 with nothing cut. The key is bound to search2o.com, so this
+disappears on the real host. Forcing width 300 / height 74 on .grecaptcha-badge and its iframe
+does make the error legible - tried, screenshotted, NOT kept, because on production it would
+leave dead white space beside the ordinary badge. Say the word if the local error should be
+readable anyway.
+WHAT DID CHANGE in html/styles.css: the two dead .agen .h-captcha rules (no hCaptcha element
+exists on either page any more) are replaced by `.recaptcha-v3 { line-height: 0; min-width:
+256px; min-height: 60px }` and `.recaptcha-v3 iframe { display: block }`, and
+`.form-card .recaptcha-v3 { line-height: 0 }` became `.form-card .actions .recaptcha-v3 {
+flex: 0 0 auto }`. Two real defects go with it: the box now reserves 256x60 before the badge
+arrives, so its arrival shifts nothing; and the inline iframe's line box made the badge's
+container 67.9px tall instead of 60 on the home page (the form already had line-height 0).
+Measured after the change on both pages: reserved 256x60 before load, badge lands exactly in
+it, logo div 60px. PRE-EXISTING, NOT MINE, NOT FIXED: index.html scrolls sideways 12px at a
+360px viewport (the overflowing elements are .arch-lbl in the diagram and the code pre).
