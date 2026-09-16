@@ -297,7 +297,7 @@ window.s2oCaptchaReady = function () {
       if (!token) {
         btn.textContent = label;
         tally();
-        return say("We could not verify this request. Please reload the page and try again.", false);
+        return say("Could not verify this request. Please reload and try again.", false);
       }
       return fetch(BASE + "/demoAgentGen", {
         method: "POST", headers: {"Content-Type": "application/json"},
