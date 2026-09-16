@@ -3122,3 +3122,13 @@ the page - the key appears verbatim in the api2 iframe URL the browser requests,
 that loads the page or watches the network reads it however the HTML stores it. What protects
 it is the domain restriction on the key plus the server's own check of the token (score,
 action, and the hostname Google returns). No obfuscation was added.
+
+## State on 2026-09-16 (lead-in line above the Generate-agent box; not deployed)
+Ram: tell the user what the textarea is, "something like" Agents are developed together with
+AI assistance. Try it yourself:. Added as a paragraph between the DSL paragraph and .agen in
+html/index.html:188, same inline style as the DSL paragraph (15.5px --body, margin-top 18);
+.agen margin-top 18 -> 10 so the box sits close under its lead-in. The line needs ~480px in
+the 467px column and wraps; the first form orphaned "yourself:", so "Try it yourself:" is in a
+white-space:nowrap span and the break falls at the full stop (measured: two lines, 367px +
+105px). The framework columns still end level (delta 0 - the #framework stretch rule absorbs
+the extra height in the code card); 390px: no sideways scroll. Zoomed screenshot checked.
