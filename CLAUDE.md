@@ -3055,3 +3055,17 @@ action and its badge beside the button. `site.js` is reCAPTCHA v3 only; the stan
 
 **Left for this repo's own sessions:** nothing is committed, and the server side of reCAPTCHA v3 (the
 score, and checking the action) belongs to the agent server, not here.
+
+## State on 2026-09-15 (legal/privacy.html regenerated from the revised privacy.md; NOT DEPLOYED)
+Ram revised content/legal/privacy.md: the Last Updated line is September 16, 2026, and the
+Website and tracking section's captcha sentence now names Google reCAPTCHA v3 ("may collect or
+process technical, device, and behavioral information ... in accordance with Google's Privacy
+Policy and Terms of Service") in place of hCaptcha. The article body and hero h1 of
+html/legal/privacy.html were regenerated with the same converter as before (blank-line blocks;
+## -> h2, ### -> h3, "* " -> ul/li, **bold** -> <strong>, backticks -> <code>, html.escape;
+a multi-line block joins with a space, as the Contact block does). FIDELITY VERIFIED IDENTICAL
+(normalized hero h1 + article == normalized md with the markers stripped); the html diff is
+exactly those two lines, so the converter reproduces the rest byte for byte. 13 h2, 4 lists,
+51 paragraphs, tags balanced. Title and metas untouched (still accurate). The policy now
+matches the site: a sweep of html/ for hCaptcha finds nothing - both captcha widgets are
+reCAPTCHA v3.
