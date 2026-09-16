@@ -3252,3 +3252,14 @@ ends), the tag on the border clears the Users pill (20px across, 13px down at 19
 at 390 where they overlap horizontally), no sideways scroll at 390, and the diagram's total
 height is unchanged (still ends 44px below the steps column - not re-tuned). Both themes
 screenshotted.
+
+## State on 2026-09-16 (diagram: Users pill carries "browser · chat app"; arrow says "search interface"; not deployed)
+Ram: browser/chat app belongs inside the Users box and "search interface" beside the arrow.
+index.html: the Users pill is now icon + `<span class="arch-actor-txt">Users<em>browser
+&middot; chat app</em></span>` (two lines, 163x51, radius 999 kept); the first arrow's label
+is just "search interface" (its em sub-line is gone). styles.css: .arch-actor svg flex none;
+.arch-actor-txt is a column, line-height 1.2; .arch-actor em 11.5px w500 --faint, margin-top
+2. Measured: arrow ends still land on the pill and the server (0px), the tag on the border
+is 12px above the pill (they overlap by 11px across now, so keep that clearance in mind if
+the pill grows), no sideways scroll at 390; the diagram is 9px taller (ends 53px below the
+steps column - still not re-tuned). Both themes screenshotted.
