@@ -1304,12 +1304,16 @@ with a faint grid reads as a smudge, not a shadow. FIX: both dark blocks now set
 --card-shadow: 0 1px 2px rgba(0,0,0,.3) and --card-shadow-lg: 0 2px 6px rgba(0,0,0,.35), and
 .codecard/.convo/.arch get `box-shadow: 0 2px 6px rgba(0,0,0,.35)` in the dark blocks (the
 codecard's own rule is hard-coded, so it needs the override; light theme keeps its shadows
-exactly as before - verified by toggling). HCAPTCHA: site.js gained resolvedSiteTheme() and
-paintCaptcha() - sets data-theme on the .h-captcha div and, once the API is present, re-renders
-the widget with {sitekey, theme}; called at load, on window load, on the theme toggle and on a
-system-theme change. Verified on a NO-CACHE server (python3 /tmp/nocache_serve.py on 8915 -
-plain 8913 kept serving a stale site.js and made the first test read false): start dark ->
-iframe theme=dark, toggle -> light, toggle back -> dark, shadows switch with it.
+exactly as before - verified by toggling). HCAPTCHA THEMING WAS TRIED AND REVERTED the same
+evening: site.js briefly set data-theme on the widget and re-rendered it dark with the site
+theme, and .agen .h-captcha carried border-radius 12 + overflow hidden - Ram: "previous
+formatting of hCaptcha was better - this is showing something weird in the corners - and the
+color has not changed... the neutral color before is ok". So the widget renders in hCaptcha's
+DEFAULT (light/neutral) theme on both pages, with no radius or overflow clip; only its
+303x78 space reservation stays. DO NOT re-theme it. The shadow fix above stands.
+TESTING NOTE: use the no-cache server (python3 /tmp/nocache_serve.py on 8915) for JS changes -
+plain 8913 kept serving a stale site.js and made a test read false; a same-URL navigate can
+also come from the browser cache, so add a ?r=N.
 
 ## State on 2026-09-15 (generate block: counter, disabled button, bigger box; not deployed)
 Per Ram: (1) NEW live counter under the textarea (p.agen-count, 13px --faint, aria-live):
@@ -1334,15 +1338,16 @@ Ram asked whether hCaptcha can load only once the user starts typing - yes. inde
 eager `<script src="https://js.hcaptcha.com/1/api.js" async defer>` tag is GONE; site.js now
 injects `api.js?render=explicit&onload=s2oCaptchaReady` on the FIRST focus or input in the
 generate textarea (loadCaptcha(), guarded by captchaAsked + an existing window.hcaptcha), and
-the onload callback runs paintCaptcha(), which renders the widget with the resolved theme and
-KEEPS ITS ID in captchaWidget. New helpers captchaResponse() / resetCaptcha() use that id when
+the onload callback runs renderCaptcha(), which renders the widget
+(sitekey only, default theme) and KEEPS ITS ID in captchaWidget. New helpers captchaResponse() / resetCaptcha() use that id when
 present and fall back to the no-argument calls otherwise; BOTH the generate handler and the
 account-creation handler now use them (the register page still loads api.js eagerly in its own
 head - its form is the point of that page; say the word to make it lazy on first field focus
-too). `.agen .h-captcha` reserves 303x78 so the widget's arrival shifts nothing.
+too). `.agen .h-captcha` reserves 303x78 so the widget's arrival shifts nothing (no radius, no
+overflow clip - see the reverted theming note above).
 VERIFIED on the no-cache server: home page loads with ZERO hcaptcha scripts and
-window.hcaptcha undefined; one keystroke -> script injected, iframe rendered with theme=dark,
-box height 78 before and after; gettingstarted still renders its widget dark and refuses to
+window.hcaptcha undefined; one keystroke -> script injected, iframe rendered (default
+theme), box height 78 before and after; gettingstarted auto-renders ONE widget and refuses to
 post with "Please complete the hCaptcha." when unsolved (so getResponse via the widget id
 works on the auto-render page too).
 
