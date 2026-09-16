@@ -1295,6 +1295,22 @@ call was made; test against the real API before any deploy. 390px: no overflow. 
 shows its localhost warning locally, renders properly only on the real domain. The initial
 card content (hr_policy) still shows until the first successful generate.
 
+## State on 2026-09-15 (dark-mode ghost shadow; hCaptcha follows the theme; not deployed)
+Ram: a ghost shadow around the right-side boxes in dark mode, and the hCaptcha box should be
+dark too. CAUSE of the ghost: the dark token set kept the LIGHT-theme shadow geometry with
+heavy blacks (--card-shadow-lg 0 24px 60px -20px rgba(0,0,0,.65)) and .codecard has its own
+hard-coded 0 30px 70px -28px rgba(16,27,51,.55) - a 60-70px black blur over a near-black page
+with a faint grid reads as a smudge, not a shadow. FIX: both dark blocks now set
+--card-shadow: 0 1px 2px rgba(0,0,0,.3) and --card-shadow-lg: 0 2px 6px rgba(0,0,0,.35), and
+.codecard/.convo/.arch get `box-shadow: 0 2px 6px rgba(0,0,0,.35)` in the dark blocks (the
+codecard's own rule is hard-coded, so it needs the override; light theme keeps its shadows
+exactly as before - verified by toggling). HCAPTCHA: site.js gained resolvedSiteTheme() and
+paintCaptcha() - sets data-theme on the .h-captcha div and, once the API is present, re-renders
+the widget with {sitekey, theme}; called at load, on window load, on the theme toggle and on a
+system-theme change. Verified on a NO-CACHE server (python3 /tmp/nocache_serve.py on 8915 -
+plain 8913 kept serving a stale site.js and made the first test read false): start dark ->
+iframe theme=dark, toggle -> light, toggle back -> dark, shadows switch with it.
+
 ## Standing instructions
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
