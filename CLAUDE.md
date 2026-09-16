@@ -3210,3 +3210,15 @@ and db.html stay). The HOME PAGE CARD (index.html:213, the hr_policy example, li
 (the renamed line is 49). The api command's field table picked the new name up from the model
 on rebuild. 131 pages, 31 examples valid. The auto-mode classifier refused `sed -i` batches
 that touched ../s2oserver - use the Edit tool for edits outside this repo.
+
+## State on 2026-09-16 (Agent framework: the textarea fills the column; not deployed)
+Ram: the section looked busy and cramped with empty space. The left column ended 174px above
+the card, its pieces separated by paragraph-sized gaps. NOW: `#framework .split { align-items:
+stretch }` again, `#framework .split > :first-child { display: flex; flex-direction: column }`,
+`.agen { flex: 1; grid-template-rows: 1fr auto auto auto; gap: 16px }` and `.agen textarea {
+height: 100% }` - the card's fixed 629px sets the row and the TEXTAREA absorbs the rest, so
+the two columns end level (measured delta 0; textarea 324px at 1920, was 184). Spacing
+loosened: .agen-title margin-top 38 (was 26), .agen margin-top 14, gap 16. At <=1000px the
+column is its own row, so the textarea falls back to its 184px min-height (measured at 390:
+184, card 629, no sideways scroll). The reserved reCAPTCHA box beside the button is inside
+the flex row and unaffected. Screenshot checked.
