@@ -3136,3 +3136,16 @@ the extra height in the code card); 390px: no sideways scroll. Zoomed screenshot
 Then Ram: better on one line - the lead-in is now "Build agents with AI assistance:" (his
 wording; the "Try it yourself" clause and the nowrap span are gone). Measured: one line,
 231px in the 467px column; columns still end level (delta 0).
+
+## State on 2026-09-16 (home: badge beside the Generate button; lead-in is an h3; not deployed)
+Per Ram. (1) The reCAPTCHA box moved from under the button into a flex row with it, the same
+shape as the getting-started form: index.html's button and .recaptcha-v3 now sit in
+`<div class="actions">` inside .agen; styles.css `.agen .actions { display: flex; align-items:
+center; gap: 14px; flex-wrap: wrap }` and `.agen .actions .recaptcha-v3 { flex: 0 0 auto }`.
+Measured at 1920: badge 14px right of the button, both on the same midline (550.5), badge
+right edge 840 against a column edge of 884; at 390px the badge wraps under the button, no
+sideways scroll. (2) "Build agents with AI assistance" is now `<h3 class="agen-title">`
+(styles.css: margin-top 26px, font-size 17px - the size of the home page's other h3s, .steps
+h3 and .pcard h3; weight 650 from the base h3 rule). The trailing COLON WAS DROPPED - a
+heading does not end in a colon; flagged to Ram. .agen margin-top 10 -> 12 under the heading.
+Columns still end level (delta 0). Zoomed screenshots checked.
