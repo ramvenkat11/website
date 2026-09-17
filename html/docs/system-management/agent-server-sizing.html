@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Agent server sizing — Search2o docs</title>
+<meta name="description" content="This page reports what one agent server handled under load, so that a deployment can be sized from measurements rather than from guesswork. Everything below …">
+<link rel="canonical" href="https://search2o.com/docs/system-management/agent-server-sizing.html">
+<meta property="og:title" content="Agent server sizing — Search2o docs">
+<meta property="og:description" content="This page reports what one agent server handled under load, so that a deployment can be sized from measurements rather than from guesswork. Everything below …">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://search2o.com/docs/system-management/agent-server-sizing.html">
+<meta property="og:image" content="https://search2o.com/logo.png">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="../../fonts/inter-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../../fonts/jetbrains-mono-latin.woff2" crossorigin>
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../docs.css">
+</head>
+<body class="docs">
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="../../index.html" aria-label="Search2o home"><img class="logo-light" src="../../logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="../../logo-dark.png" alt="Search2o" width="336" height="61"></a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="navlink" href="../../index.html">Home</a>
+      <a class="navlink" href="../../gettingstarted.html">Getting started</a>
+      <a class="navlink" href="../index.html" aria-current="page">Docs</a>
+      <a class="navlink" href="../../pricing.html">Pricing</a>
+      <a class="navlink" href="../../about.html">About</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch theme">
+      <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg>
+      <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+<div class="container docs-layout">
+  <button class="sb-toggle" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  <div id="sidebar" class="sb-wrap"><nav class=sidebar aria-label='Documentation'><a class='sb-home' href='../index.html'>Documentation</a><details><summary><a href='../introduction/index.html'>Introduction</a></summary><ul><li><a href='../introduction/what-is-search2o.html'>What is Search2o</a></li><li><a href='../introduction/why-not-python.html'>Why not Python?</a></li><li><a href='../introduction/why-not-skills.html'>Why not Skills?</a></li><li><a href='../introduction/why-not-langchain.html'>Why not LangChain?</a></li><li><a href='../introduction/parts-of-the-system.html'>Parts of the system</a></li><li><a href='../introduction/how-it-fits-together.html'>How it fits together</a></li></ul></details><details><summary><a href='../getting-started/index.html'>Getting started</a></summary><ul><li><a href='../getting-started/registering-and-downloading.html'>Creating an account and downloading</a></li><li><a href='../getting-started/license-key.html'>The license key</a></li><li><a href='../getting-started/running-the-server.html'>Running the server</a></li><li><a href='../getting-started/the-gui.html'>The GUI</a></li><li><a href='../getting-started/your-first-agent.html'>Your first agent</a></li></ul></details><details><summary><a href='../agent-definition/index.html'>Agent definition</a></summary><ul><li><a href='../agent-definition/syntax.html'>Syntax and dynamic strings</a></li><li><a href='../agent-definition/structure.html'>Agent structure</a></li><li><a href='../agent-definition/functions.html'>Functions</a></li><li><a href='../agent-definition/commands.html'>Commands</a></li><li><a href='../agent-definition/variables.html'>Variables and namespaces</a></li></ul></details><details><summary><a href='../agent-execution/index.html'>Agent execution</a></summary><ul><li><a href='../agent-execution/output.html'>Agent output</a></li><li><a href='../agent-execution/order-of-execution.html'>Order of execution</a></li><li><a href='../agent-execution/conversation-state.html'>Conversation state</a></li></ul></details><details><summary><a href='../llm/index.html'>LLM</a></summary><ul><li><a href='../llm/vendors.html'>The three vendors</a></li><li><a href='../llm/llm-adapters.html'>Connecting to other LLMs</a></li><li><a href='../llm/code-from-llm.html'>Executing code from an LLM</a></li></ul></details><details><summary><a href='../commands/index.html'>Command reference</a></summary><ul><li class=sb-group>Variables</li><li><a href='../commands/var.html'>var</a></li><li class=sb-group>Flow control</li><li><a href='../commands/if.html'>if</a></li><li><a href='../commands/while.html'>while</a></li><li><a href='../commands/for.html'>for</a></li><li><a href='../commands/break.html'>break</a></li><li><a href='../commands/continue.html'>continue</a></li><li><a href='../commands/func.html'>func</a></li><li><a href='../commands/return.html'>return</a></li><li><a href='../commands/parallel.html'>parallel</a></li><li class=sb-group>LLM interaction</li><li><a href='../commands/prompt.html'>prompt</a></li><li><a href='../commands/llm.html'>llm</a></li><li><a href='../commands/memory.html'>memory</a></li><li class=sb-group>External systems</li><li><a href='../commands/api.html'>api</a></li><li><a href='../commands/db.html'>db</a></li><li class=sb-group>Deep agents</li><li><a href='../commands/search.html'>search</a></li><li><a href='../commands/invoke.html'>invoke</a></li><li class=sb-group>Human-in-the-loop</li><li><a href='../commands/ask.html'>ask</a></li><li class=sb-group>Agent output</li><li><a href='../commands/output.html'>output</a></li><li class=sb-group>Agent termination</li><li><a href='../commands/end.html'>end</a></li><li><a href='../commands/fail.html'>fail</a></li><li class=sb-group>Observability</li><li><a href='../commands/progress.html'>progress</a></li><li><a href='../commands/trace.html'>trace</a></li><li><a href='../commands/log.html'>log</a></li></ul></details><details><summary><a href='../search/index.html'>Search</a></summary><ul><li><a href='../search/describing-an-agent.html'>Describing an agent</a></li><li><a href='../search/how-matching-works.html'>How matching behaves</a></li><li><a href='../search/tags.html'>Tags</a></li><li><a href='../search/search-settings.html'>Search settings</a></li><li><a href='../search/search-quality.html'>Search quality</a></li><li><a href='../search/custom-search.html'>Custom search</a></li></ul></details><details><summary><a href='../development/index.html'>Development process</a></summary><ul><li><a href='../development/drafts.html'>Drafts</a></li><li><a href='../development/code-editor.html'>The agent editor</a></li><li><a href='../development/draft-with-ai.html'>Draft with AI</a></li><li><a href='../development/trace-and-validation.html'>Trace and validation</a></li><li><a href='../development/publishing.html'>Publishing</a></li></ul></details><details><summary><a href='../runtime/index.html'>Agent runtime</a></summary><ul><li><a href='../runtime/overview.html'>The agent runtime</a></li><li><a href='../runtime/allowlist.html'>The allowlist</a></li><li><a href='../runtime/system-variables.html'>System variables</a></li><li><a href='../runtime/compile-rules.html'>Compile rules</a></li><li><a href='../runtime/runtime-limits.html'>Runtime limits</a></li><li><a href='../runtime/connection-pools.html'>Connection pools</a></li></ul></details><details><summary><a href='../profiles/index.html'>Profiles</a></summary><ul><li><a href='../profiles/overview.html'>How profiles work</a></li><li><a href='../profiles/llm-profiles.html'>LLM profiles</a></li><li><a href='../profiles/prompt-profiles.html'>Prompt profiles</a></li><li><a href='../profiles/api-profiles.html'>API profiles</a></li><li><a href='../profiles/db-profiles.html'>Database profiles</a></li><li><a href='../profiles/mcp-servers.html'>MCP servers</a></li></ul></details><details><summary><a href='../reports/index.html'>Reports</a></summary><ul><li><a href='../reports/performance.html'>Agent performance</a></li><li><a href='../reports/errors.html'>Agent errors</a></li><li><a href='../reports/cost.html'>LLM cost</a></li><li><a href='../reports/usage.html'>User usage</a></li></ul></details><details open><summary><a href='../system-management/index.html'>System management</a></summary><ul><li><a href='../system-management/users-and-roles.html'>Users and roles</a></li><li><a href='../system-management/service-accounts.html'>Service accounts</a></li><li><a href='../system-management/agent-servers.html'>Agent servers</a></li><li><a href='../system-management/agent-server-sizing.html' aria-current=page>Agent server sizing</a></li><li><a href='../system-management/authentication.html'>Authentication</a></li><li><a href='../system-management/single-sign-on.html'>Single sign-on</a></li><li><a href='../system-management/notifications.html'>Notifications</a></li><li><a href='../system-management/usage-limits.html'>Usage limits</a></li></ul></details><details><summary><a href='../security/index.html'>Security and privacy</a></summary><ul><li><a href='../security/license-rotation.html'>License key rotation</a></li><li><a href='../security/secret-vault.html'>The secret vault</a></li><li><a href='../security/encryption.html'>Encryption</a></li><li><a href='../security/data-privacy.html'>Data privacy</a></li><li><a href='../security/multiple-environments.html'>Running multiple environments</a></li></ul></details><details><summary><a href='../gui/index.html'>GUI</a></summary><ul><li><a href='../gui/how-the-gui-runs.html'>How the GUI runs</a></li><li><a href='../gui/search.html'>Search and conversations</a></li><li><a href='../gui/agents.html'>Agents</a></li><li><a href='../gui/profiles.html'>Profiles</a></li><li><a href='../gui/guardrails.html'>Guardrails</a></li><li><a href='../gui/operations.html'>Operations</a></li><li><a href='../gui/reports.html'>Reports</a></li><li><a href='../gui/account.html'>Admin and billing</a></li><li><a href='../gui/personal.html'>Profile, notifications and docs</a></li></ul></details><details><summary><a href='../rest-api/index.html'>REST API</a></summary><ul><li><a href='../rest-api/overview.html'>The REST API</a></li><li><a href='../rest-api/authentication.html'>Authentication</a></li><li><a href='../rest-api/running-agents.html'>Running agents</a></li><li><a href='../rest-api/streaming.html'>Streaming</a></li><li><a href='../rest-api/search.html'>Search</a></li><li><a href='../rest-api/conversations.html'>Conversations</a></li><li><a href='../rest-api/workflows.html'>Workflows</a></li><li><a href='../rest-api/automating-with-an-llm.html'>Automating tasks with an LLM</a></li><li><a href='../rest-api/clients.html'>Creating your own client</a></li></ul></details><details><summary><a href='../chat-integrations/index.html'>Chat integrations</a></summary><ul><li><a href='../chat-integrations/overview.html'>How a chat integration works</a></li><li><a href='../chat-integrations/connecting-a-person.html'>Connecting a person</a></li><li><a href='../chat-integrations/integration-tokens.html'>Integration tokens</a></li><li><a href='../chat-integrations/finding-an-agent.html'>Finding an agent</a></li><li><a href='../chat-integrations/running-an-agent.html'>Running an agent</a></li><li><a href='../chat-integrations/showing-the-answer.html'>Showing the answer</a></li><li><a href='../chat-integrations/chat-applications.html'>Slack, Teams and Google Chat</a></li><li><a href='../chat-integrations/ai-prompts.html'>Building a bot with an AI assistant</a></li></ul></details><details><summary><a href='../support-licensing/index.html'>Support and licensing</a></summary><ul><li><a href='../support-licensing/asking-the-docs.html'>Asking the docs</a></li><li><a href='../support-licensing/support.html'>Support</a></li><li><a href='../support-licensing/license.html'>License</a></li><li><a href='../support-licensing/billing.html'>Billing</a></li></ul></details></nav></div>
+  <main class="docs-main">
+    <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../system-management/index.html'>System management</a></div>
+    <article class="docs-article">
+      <h1>Agent server sizing</h1>
+      <p class="lead">This page reports what one agent server handled under load, so that a deployment can be sized from measurements rather than from guesswork. Everything below is about the agent server, which is the part your company runs. Search2o Cloud scales separately and is not the subject of this page.</p>
+
+<h2 id="how-the-measurements-were-taken">How the measurements were taken</h2>
+<p>One agent server ran on a machine with an Intel Core i9 and 32 GB of memory. The agent server used one of the eight cores, and the rest of the machine was idle.</p>
+<p>The account held 100 published agents, each covering a different business domain, so the load ran against a populated account rather than an empty one.</p>
+<p>The agent under load is pure logic. It loops, calls a function and sets variables. No language model sits in its path, so the timings below belong to Search2o rather than to a model vendor.</p>
+<p>Every level ran for a fixed period. Throughout each level a separate caller measured two other requests, so the tables also show what somebody else felt while the load ran. All measurements come from one session on one day.</p>
+
+<h2 id="running-agents">Running agents</h2>
+<p>Each row is one concurrency level. The p50 and p90 columns are execution times. The last two columns are what a separate caller measured at the same moment: a request the agent server answers by itself, and a page of the GUI.</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Concurrent</th><th>Executions per second</th><th>p50</th><th>p90</th><th>Cores used</th><th>Local call p50</th><th>Browse p50</th></tr></thead>
+<tbody>
+<tr><td>idle</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>0.02</td><td>0.0027s</td><td>0.062s</td></tr>
+<tr><td>1</td><td>3.3</td><td>0.272s</td><td>0.325s</td><td>0.07</td><td>0.0027s</td><td>0.059s</td></tr>
+<tr><td>5</td><td>17.7</td><td>0.272s</td><td>0.299s</td><td>0.23</td><td>0.0026s</td><td>0.061s</td></tr>
+<tr><td>10</td><td>28.3</td><td>0.336s</td><td>0.387s</td><td>0.40</td><td>0.0025s</td><td>0.097s</td></tr>
+<tr><td>25</td><td>29.1</td><td>0.755s</td><td>0.882s</td><td>0.64</td><td>0.0040s</td><td>0.227s</td></tr>
+<tr><td>50</td><td>27.3</td><td>1.545s</td><td>1.682s</td><td>0.62</td><td>0.0025s</td><td>0.501s</td></tr>
+<tr><td>100</td><td>13.4</td><td>3.293s</td><td>4.588s</td><td>0.36</td><td>0.0036s</td><td>1.069s</td></tr>
+<tr><td>150</td><td>22.3</td><td>4.171s</td><td>4.593s</td><td>0.58</td><td>0.0210s</td><td>1.435s</td></tr>
+</tbody></table></div>
+<p>Every execution completed at every level, including 150 at once. The product slows down under load and keeps answering.</p>
+<p>Throughput peaks at 25 concurrent callers, at 29 executions per second. Adding callers past that point adds waiting rather than throughput: latency rises from 0.755s at 25 concurrent to 4.171s at 150, while throughput stays level or falls.</p>
+<p>The core is not what runs out. At peak throughput the agent server used 0.64 of one core. A process that is waiting is not a process that is busy.</p>
+
+<h2 id="what-other-people-feel-while-the-load-runs">What other people feel while the load runs</h2>
+<p>This is the number to plan against. The question is not how many agents one server can run. The question is how slow the product becomes for everybody else while those agents run.</p>
+<p>Browsing took 0.062s on an idle server. It took 0.097s with 10 agents running, 0.227s with 25, 0.501s with 50 and 1.069s with 100.</p>
+<p>Ten concurrent agents are invisible to everybody else. Twenty five are noticeable and acceptable. Fifty make the product feel slow to somebody who is only browsing.</p>
+
+<h2 id="telling-which-side-is-constrained">Telling which side is constrained</h2>
+<p>Call a request that the agent server answers by itself. <code>getAccountName</code> is one, because it needs nothing from anywhere else. Call it while the load runs, and read the median. See <a href="agent-servers.html#health">Agent servers</a>.</p>
+<p>A fast answer means the agent server has capacity to spare, and the waiting is elsewhere. Another agent server will not help. That was the case through most of the table above: the request stayed near 0.003s at 100 concurrent callers, while throughput had fallen to 13 executions per second and the agent server was using a third of a core.</p>
+<p>A slow answer means the agent server itself is saturated, and another one will help. At 150 concurrent callers the same request took 0.021s, which is eight times its idle figure.</p>
+<p>Work that the agent server passes on behaves the same way. Searching for an agent costs an agent server almost nothing, so the rate at which searches complete is set by the capacity behind it rather than by the number of agent servers. A local request that stays fast is the signal for that case.</p>
+<p>That one measurement separates the two cases, and it costs nothing to take.</p>
+
+<h2 id="sizing-guidance">Sizing guidance</h2>
+<p>Plan for 10 concurrent executions per agent server if nobody should notice a slowdown.</p>
+<p>Plan for 25 per agent server if a modest slowdown is acceptable. That level is also where one agent server reached its highest throughput.</p>
+<p>Planning for 50 or more per agent server is best avoided. Throughput is no better there than at 25, and people who are only browsing find the product slow.</p>
+<p>Add agent servers rather than cores. One agent server is a single process, and a single process uses one core, so a larger machine is mostly spent on processes that an agent server does not start.</p>
+<p>It helps to check a local request before adding agent servers. If that request is still fast, the wait is not in the agent server, and another one will not make anything faster.</p>
+
+<h2 id="keeping-measurements-comparable">Keeping measurements comparable</h2>
+<p>Several things have to stay the same, or two runs cannot be compared.</p>
+<p>The set of agents has to stay the same. The account held 100 published agents for every measurement on this page.</p>
+<p>The agent under load has to stay the same. An agent that calls a language model spends most of its time waiting for that model, so its timings describe the model vendor rather than the hardware.</p>
+<p>The concurrency levels and durations have to stay the same.</p>
+
+    </article>
+    <nav class=prevnext><a class=prev href='../system-management/agent-servers.html'><small>Previous</small>Agent servers</a><a class=next href='../system-management/authentication.html'><small>Next</small>Authentication</a></nav>
+  </main>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#how-the-measurements-were-taken'>How the measurements were taken</a></li><li class=l2><a href='#running-agents'>Running agents</a></li><li class=l2><a href='#what-other-people-feel-while-the-load-runs'>What other people feel while the load runs</a></li><li class=l2><a href='#telling-which-side-is-constrained'>Telling which side is constrained</a></li><li class=l2><a href='#sizing-guidance'>Sizing guidance</a></li><li class=l2><a href='#keeping-measurements-comparable'>Keeping measurements comparable</a></li></ul></aside>
+</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-base">
+      <span>&copy; <span id="year">2026</span> Search2o &middot; Virginia, USA</span>
+      <span><a href="../../about.html#contact">Contact</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../../site.js"></script>
+<script src="../docs.js"></script>
+</body>
+</html>

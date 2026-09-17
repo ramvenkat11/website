@@ -1,0 +1,50 @@
+<p class="lead">This page reports what one agent server handled under load, so that a deployment can be sized from measurements rather than from guesswork. Everything below is about the agent server, which is the part your company runs. Search2o Cloud scales separately and is not the subject of this page.</p>
+
+<h2>How the measurements were taken</h2>
+<p>One agent server ran on a machine with an Intel Core i9 and 32 GB of memory. The agent server used one of the eight cores, and the rest of the machine was idle.</p>
+<p>The account held 100 published agents, each covering a different business domain, so the load ran against a populated account rather than an empty one.</p>
+<p>The agent under load is pure logic. It loops, calls a function and sets variables. No language model sits in its path, so the timings below belong to Search2o rather than to a model vendor.</p>
+<p>Every level ran for a fixed period. Throughout each level a separate caller measured two other requests, so the tables also show what somebody else felt while the load ran. All measurements come from one session on one day.</p>
+
+<h2>Running agents</h2>
+<p>Each row is one concurrency level. The p50 and p90 columns are execution times. The last two columns are what a separate caller measured at the same moment: a request the agent server answers by itself, and a page of the GUI.</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Concurrent</th><th>Executions per second</th><th>p50</th><th>p90</th><th>Cores used</th><th>Local call p50</th><th>Browse p50</th></tr></thead>
+<tbody>
+<tr><td>idle</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>0.02</td><td>0.0027s</td><td>0.062s</td></tr>
+<tr><td>1</td><td>3.3</td><td>0.272s</td><td>0.325s</td><td>0.07</td><td>0.0027s</td><td>0.059s</td></tr>
+<tr><td>5</td><td>17.7</td><td>0.272s</td><td>0.299s</td><td>0.23</td><td>0.0026s</td><td>0.061s</td></tr>
+<tr><td>10</td><td>28.3</td><td>0.336s</td><td>0.387s</td><td>0.40</td><td>0.0025s</td><td>0.097s</td></tr>
+<tr><td>25</td><td>29.1</td><td>0.755s</td><td>0.882s</td><td>0.64</td><td>0.0040s</td><td>0.227s</td></tr>
+<tr><td>50</td><td>27.3</td><td>1.545s</td><td>1.682s</td><td>0.62</td><td>0.0025s</td><td>0.501s</td></tr>
+<tr><td>100</td><td>13.4</td><td>3.293s</td><td>4.588s</td><td>0.36</td><td>0.0036s</td><td>1.069s</td></tr>
+<tr><td>150</td><td>22.3</td><td>4.171s</td><td>4.593s</td><td>0.58</td><td>0.0210s</td><td>1.435s</td></tr>
+</tbody></table></div>
+<p>Every execution completed at every level, including 150 at once. The product slows down under load and keeps answering.</p>
+<p>Throughput peaks at 25 concurrent callers, at 29 executions per second. Adding callers past that point adds waiting rather than throughput: latency rises from 0.755s at 25 concurrent to 4.171s at 150, while throughput stays level or falls.</p>
+<p>The core is not what runs out. At peak throughput the agent server used 0.64 of one core. A process that is waiting is not a process that is busy.</p>
+
+<h2>What other people feel while the load runs</h2>
+<p>This is the number to plan against. The question is not how many agents one server can run. The question is how slow the product becomes for everybody else while those agents run.</p>
+<p>Browsing took 0.062s on an idle server. It took 0.097s with 10 agents running, 0.227s with 25, 0.501s with 50 and 1.069s with 100.</p>
+<p>Ten concurrent agents are invisible to everybody else. Twenty five are noticeable and acceptable. Fifty make the product feel slow to somebody who is only browsing.</p>
+
+<h2>Telling which side is constrained</h2>
+<p>Call a request that the agent server answers by itself. <code>getAccountName</code> is one, because it needs nothing from anywhere else. Call it while the load runs, and read the median. See <a href="agent-servers.html#health">Agent servers</a>.</p>
+<p>A fast answer means the agent server has capacity to spare, and the waiting is elsewhere. Another agent server will not help. That was the case through most of the table above: the request stayed near 0.003s at 100 concurrent callers, while throughput had fallen to 13 executions per second and the agent server was using a third of a core.</p>
+<p>A slow answer means the agent server itself is saturated, and another one will help. At 150 concurrent callers the same request took 0.021s, which is eight times its idle figure.</p>
+<p>Work that the agent server passes on behaves the same way. Searching for an agent costs an agent server almost nothing, so the rate at which searches complete is set by the capacity behind it rather than by the number of agent servers. A local request that stays fast is the signal for that case.</p>
+<p>That one measurement separates the two cases, and it costs nothing to take.</p>
+
+<h2>Sizing guidance</h2>
+<p>Plan for 10 concurrent executions per agent server if nobody should notice a slowdown.</p>
+<p>Plan for 25 per agent server if a modest slowdown is acceptable. That level is also where one agent server reached its highest throughput.</p>
+<p>Planning for 50 or more per agent server is best avoided. Throughput is no better there than at 25, and people who are only browsing find the product slow.</p>
+<p>Add agent servers rather than cores. One agent server is a single process, and a single process uses one core, so a larger machine is mostly spent on processes that an agent server does not start.</p>
+<p>It helps to check a local request before adding agent servers. If that request is still fast, the wait is not in the agent server, and another one will not make anything faster.</p>
+
+<h2>Keeping measurements comparable</h2>
+<p>Several things have to stay the same, or two runs cannot be compared.</p>
+<p>The set of agents has to stay the same. The account held 100 published agents for every measurement on this page.</p>
+<p>The agent under load has to stay the same. An agent that calls a language model spends most of its time waiting for that model, so its timings describe the model vendor rather than the hardware.</p>
+<p>The concurrency levels and durations have to stay the same.</p>
