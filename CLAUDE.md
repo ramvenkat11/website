@@ -3331,3 +3331,33 @@ above - re-tune only on his word.
 ## State on 2026-09-17 (agentName reverted; not deployed)
 Ram: remove the agentName use. site.js:310 is back to the fixed title "generated · agent
 definition"; no reference to agentName remains.
+
+## State on 2026-09-17 (new topic: Agent server sizing; NOT DEPLOYED)
+NEW docsrc/system-management/agent-server-sizing.html, written from content/agent_server_sizing.md
+and placed right after Agent servers in the toc (132 pages). Six h2s, following the source:
+How the measurements were taken (one server, one of eight cores on an i9/32GB, 100 published
+agents, a pure-logic agent so the timings are ours and not a model vendor's, one session on one
+day); Running agents (the eight-level table, throughput peaks at 25 concurrent / 29 per second,
+adding callers past that adds waiting, 0.64 of a core at peak); What other people feel while
+the load runs (browse 0.062s idle -> 1.069s at 100; ten invisible, twenty five acceptable,
+fifty slow); Telling which side is constrained (getAccountName, fast answer = the wait is
+elsewhere and another server will not help, slow answer = saturated; search is set by the
+capacity behind it); Sizing guidance (10 / 25 / avoid 50+, add servers rather than cores,
+check a local request first); Keeping measurements comparable. 846 words.
+EDITS TO THE SOURCE'S WORDING: "The Search2o cloud service" -> "Search2o Cloud" (vocabulary);
+"There were no failed executions at any level ... It does not fall over" -> "Every execution
+completed at every level ... The product slows down under load and keeps answering" (the
+standing say-what-is rule); "Do not plan for 50 or more" -> "Planning for 50 or more per agent
+server is best avoided" and "Check a local request" -> "It helps to check a local request"
+(the politeness rule - both still protect the reader from a real cost, so they earn their
+place). ADDED, not in the source: a one-line key above the table (p50/p90 are execution times;
+the last two columns are what a separate caller measured at the same moment), because the
+headers alone do not say whose times they are; em dashes in the idle row's three empty cells;
+and a link to agent-servers.html#health, which already documents getAccountName as the call
+for a load balancer or monitor.
+Table is `class="fields"` with SEVEN columns: 770px in a 770px column at 1920, no scroll; at
+768 and 390 it scrolls inside its own .tablewrap and the page does not scroll sideways.
+Section lead and the docs home card mention sizing. Sitemap 140 URLs. 31 examples valid. A
+site-wide href check shows only the known pre-existing break (support.html -> notifications.html,
+the page is in system-management); 404.html's absolute paths are by design. Both themes
+screenshotted.
