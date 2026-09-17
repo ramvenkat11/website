@@ -3410,3 +3410,15 @@ the page has NO `p.lead` - it opens with the h2 46px under the h1 - so build.py'
 description is now the document's first paragraph ("The LangChain ecosystem is not one
 product..."), and the on-page toc starts at "How this comparison works". 390 and 768: no
 sideways scroll. The four content flags above still stand.
+Then Ram asked for placeholder text above "How this comparison works", in the Why not Skills
+shape and with no table, for him to edit. Added: a lead "LangChain was created for developers
+to build an agent in code. Search2o was created for organizations to run hundreds of agents as
+one system. Even with that fundamental difference, the two overlap a great deal." and a second
+paragraph "We gave our product documentation and LangChain's to Claude Opus 5 and asked for a
+comparative analysis. The rest of this page is what Claude produced. One should be able to
+repeat this analysis on their own using the documentation on both sides." THE PROVENANCE
+SENTENCE IS A GUESS - the md does not say who wrote the document or which model, and the
+Skills page's "Anthropic created Claude and created Skills" argument does not transfer to
+LangChain. Ram to correct before any deploy. The meta description is the lead again. WARNING:
+the generator (scratchpad genlang.py) writes the whole file, so a regeneration overwrites
+Ram's edits to this top block - copy his wording into the LEAD constant first.
