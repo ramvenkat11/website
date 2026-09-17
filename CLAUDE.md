@@ -3361,3 +3361,42 @@ Section lead and the docs home card mention sizing. Sitemap 140 URLs. 31 example
 site-wide href check shows only the known pre-existing break (support.html -> notifications.html,
 the page is in system-management); 404.html's absolute paths are by design. Both themes
 screenshotted.
+
+## State on 2026-09-17 (new topic: Why not LangChain?; NOT DEPLOYED)
+NEW docsrc/introduction/why-not-langchain.html, fourth in Introduction after Why not Skills?
+(133 pages), generated from content/why_not_langchain.md by a converter in the session
+scratchpad (genlang.py: blank-line blocks, ## -> h2, md tables -> `fields compare`, bullets,
+**bold** -> strong, backticks -> code, --- dropped). Built like why-not-skills: OURS is the
+top only, the rest is the document.
+OURS (Ram's to edit): the lead "LangChain is a set of frameworks for building an agent in
+code. Search2o is a platform for running hundreds of agents as one system across a company.
+The two are not the same kind of thing, so a feature-by-feature comparison would measure the
+wrong thing." plus "This page asks one question instead: what does it take, with each, to
+create and manage hundreds of agents as a single system across an enterprise?"
+THE TALLY IS AT THE TOP, per Ram. The md's whole Tally section moved up: its caveat paragraph,
+then the 5-row x 3-column table inside the existing `.tally` panel as a new `table.tally-table`
+(docs.css: centred cells, first column left and muted, row rules, and the SEARCH2O COLUMN
+highlighted with --feat-bg/--blue-ink via nth-child(2); tighter padding <=640px), then the
+"What the columns say" paragraph. Nothing is duplicated - the body runs from "How this
+comparison works" to Sources with no Tally section.
+FIDELITY: every word of the md appears on the page (verified with a word-count comparison;
+only the md's own `|---|` separator rows and `---` rules differ). 2,466 words, five 4-column
+tables, all fit at 770px with no scroll; at 768 they still fit, at 390 they scroll inside
+their own .tablewrap.
+BUG FOUND AND FIXED WHILE MEASURING: at 390px the PAGE scrolled sideways 74px - traced with a
+text-node Range scan to the bare URLs in Sources, which have no break opportunity. docs.css
+now has `.docs-article p, .docs-article li { overflow-wrap: break-word }`; a word only breaks
+when it would otherwise overflow, so nothing else moves. Re-measured: this page, why-not-skills,
+agent-server-sizing, the docs home and commands/api all have scrollWidth == clientWidth at 390
+and 768.
+FLAGGED TO RAM, NOT CHANGED (the document is reproduced as written): (1) the Creating agents
+table says Search2o has a "three-way merge in the product" - superseded on 2026-09-12, the
+cloud produces the merge and there is no three-way view; (2) "Sandboxed agent code under a
+customer-controlled allowlist" uses the banned word about OUR product (the two "Sandboxes"
+mentions are LangChain's product name and have to stay); (3) in "Each cell says one of four
+things", the "You build it" bullet is indented one level in the md and is rendered flat with
+the other three; (4) the caveat's "Read the tables, then the counts, in that order" now sits
+above the tables, because the tally moved up.
+Introduction's section lead and the docs home card name no why-not page, so neither was
+touched. Sitemap 141 URLs, 31 examples valid, no broken links on the page. Both themes
+screenshotted.
