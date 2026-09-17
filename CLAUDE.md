@@ -3524,3 +3524,28 @@ gone; the reduced-motion block already covers `.hero-convo .st`. At 390: the con
 two rows, no sideways scroll, card 694. LH1191 became UA1191 (a New York carrier code); the
 amount stayed 640 as asked - flagged that $640 for a New York flight plus two hotel nights
 reads low. Both themes screenshotted. The old .demo-* CSS is still dead and still present.
+
+## State on 2026-09-17 (hero card tightened: day trip, no repeats, 394px; Ram: "Looks good. stop"; not deployed)
+Ram's follow-ups, applied in sequence: remove "The confirmation is in your inbox."; get the
+card as close to the left column's bottom as possible (extending past it is fine); do not
+repeat "flight UA1191 and two hotel nights, $640 in total" in the last reply; remove the hotel
+(a day trip); drop the "Book it?" question. FINAL CARD: user "Book me a flight to the New
+York office for next Tuesday" / Matched travel_desk / ask panel "UA1191, Tuesday 08:05 out,
+18:30 back: $640." with Book (selected) / Hold pills and a quiet Submit / "Booked UA1191 for
+Tuesday." / user "File the expenses for that trip" / Matched reimbursements / "Filed the New
+York trip. Sent to your manager for approval." Card 394px (was 529 with the first
+confirmation draft, 413 before any confirmation), hanging 47px below the hero text (was 182,
+then 65 originally). The offer fits one line; no hotel or "Book it" text remains.
+CSS FINDING while doing it: the 09-15 `.hero-convo .msg` / `.msg.ask` / `.ask .q` / pill
+overrides NEVER APPLIED - the generic `.turn-agent .msg` rules sit later in styles.css at the
+same specificity and won - so the agent bubbles had been at the generic 12px 16px / 14.5px all
+along. The overrides are now `.hero-convo .turn-agent .msg` (8px 12px, 14px), `.hero-convo
+.turn-agent .msg.ask` (8px 12px, gap 6px 8px), `.hero-convo .turn-agent .ask .q` (14px) and
+`.hero-convo .turn-agent .ask .opts i, ... .submit` (3px 9px), verified by computed style.
+Also `.hero-convo .turn-agent { max-width: 100% }` (was 92%, which wrapped one-line replies),
+convo-title 9px 16px, convo-body 14px / gap 8, turn-user 7px 12px at 14px. At 390: card 485,
+no sideways scroll. TESTING NOTE: document.getAnimations().forEach(a => a.finish()) now
+throws on this page (an infinite animation exists) - guard with
+isFinite(a.effect.getComputedTiming().endTime). Ram stopped the iteration at this state; the
+light-theme screenshot of the final version was not taken (the previous version was checked
+in both themes and only text changed since).
