@@ -1,200 +1,104 @@
 # Sizing an agent server
 
-This page reports what one agent server handled under load, and how much a second and a fourth
-added. It is here so that a company can size a deployment from measurements rather than from
-guesswork.
+An agent server is the part of Search2o that a company runs. This page says how many to run and
+how to configure them. The figures come from our own load tests, on an Intel i9 at 2.40 GHz. A
+faster processor does proportionally more, so these are a conservative starting point.
 
-Everything below is about the agent server, which is the part a company runs.
+## Run one agent server for every processor core
 
-## What was measured
+An agent server is a single Python process. Python holds a global interpreter lock, so one process
+uses one core however many threads it has. A larger machine therefore does nothing for a single
+agent server, and capacity comes from running more of them.
 
-One hundred agents were published, each mocking a different business domain. Every agent validates
-a reference, branches on the result, builds a short list of notes and returns an answer. Each one
-can also call a backend service or a language model, chosen by an input, so the same agents
-produced all three workloads below.
+A machine with eight cores should run eight agent servers behind a load balancer. In our tests a
+second agent server nearly doubled throughput, from 50 to 89 agent runs per second, and both
+servers stayed near a full core.
 
-| workload | what each run does | why it is here |
-|---|---|---|
-| **logic** | validation, branching, a loop of four steps, one function call | the agent server with nothing to wait for |
-| **waiting** | the same, plus a call to a backend that takes 200 ms or 1 s | the common case, where a run waits on something |
-| **language model** | the same, plus one model call, spread across three vendors | the realistic case, measured rather than assumed |
+## Plan about 50 agent runs per second for each agent server
 
-Every level ran three times and the tables give the median. A separate caller measured two other
-requests throughout, so the tables also show what somebody else felt. The load generator was
-measured too, and never used more than 0.26 of a core, so it was never the constraint.
+Every agent run costs an agent server about 20 to 24 milliseconds of processor time, whatever the
+agent does. One core is a thousand milliseconds per second, which is where the figure of 50 comes
+from.
 
-The agent server ran on a laptop with 8 cores. One agent server uses one core. Measurements come
-from one session on one day, with 62,492 executions behind them.
+How many runs that allows at the same time depends on how long a run lasts.
 
-### The network
+    agent runs at the same time  =  50 per second  x  seconds per run
 
-Every figure is a function of this distance, so it is stated first.
+**Plan about 25 at the same time for agents that mostly compute.** A computing agent finishes in
+around half a second and uses the processor for all of it.
 
-| measurement | median |
+**Plan 100 to 150 at the same time for agents that call a remote language model.** Such an agent takes a
+few seconds and spends almost all of that waiting, which costs the agent server nothing. These
+agents never fill a core. What gives out first is the agent server's responsiveness, so watch that
+rather than the processor.
+
+How long a model call takes belongs to the model rather than to Search2o, and it is the number that
+decides how many runs fit. These are the medians we measured with small fast models.
+
+| model | median run |
 |---|---|
-| one round trip to Search2o Cloud | 0.056s |
-| one request the agent server answers alone | 0.0037s |
+| claude-haiku-4-5 | 1.5s |
+| gemini-3.6-flash | 3.9s |
+| gpt-5-mini | 4.5s |
 
-Each execution makes exactly three requests to Search2o Cloud. One registers the run, one records
-the execution, one saves the conversation state. Three round trips are 0.17s of every execution,
-and that floor moves with distance rather than with processor speed.
+A model at 1.5s per run fills an agent server with three times as many runs as one at 4.5s.
 
-## One agent server, agents with nothing to wait for
+Agents that stream their answers hold a connection for the life of the run, so a deployment that
+streams heavily holds fewer runs at the same time than these figures suggest.
 
-| concurrent runs | runs per second | p50 | p90 | cores | memory | local call | browse |
-|---|---|---|---|---|---|---|---|
-| 1 | 3.5 | 0.282s | 0.312s | 0.07 | 107 MB | 0.0039s | 0.057s |
-| 5 | 19.8 | 0.247s | 0.281s | 0.23 | 109 MB | 0.0038s | 0.057s |
-| 10 | 37.0 | 0.265s | 0.302s | 0.45 | 112 MB | 0.0040s | 0.082s |
-| 25 | 49.0 | 0.493s | 0.569s | 0.97 | 118 MB | 0.0047s | 0.145s |
-| 50 | 47.3 | 1.019s | 1.129s | 0.98 | 120 MB | 0.0073s | 0.321s |
-| 100 | 39.7 | 2.425s | 2.617s | 0.96 | 124 MB | 0.0093s | 0.830s |
-| 150 | 33.7 | 4.206s | 4.484s | 0.92 | 131 MB | 0.0144s | 1.336s |
-| 250 | 26.1 | 7.956s | 10.050s | 0.90 | 141 MB | 0.0367s | 3.095s |
-| 400 | 20.9 | 14.415s | 18.890s | 0.75 | 165 MB | 0.0383s | 5.358s |
+## Raise the API connection pool if your agents call anything
 
-There were no failed runs at any level, including 400 at once.
+This is the pool the agents themselves use, for calls to language models and to your own services.
+Its default of 20 connections is far too small for that work, because each waiting run holds a
+connection for the whole call. Twenty connections therefore serve about twenty runs.
 
-**One agent server peaks at about 49 runs per second, and it reaches one full core to do it.** The
-processor is the limit here, and the limit arrives at 25 concurrent runs. Past that, adding callers
-adds queueing and nothing else.
+In our tests, 100 model-calling runs at the same time gave **1 run per second and 82 failures** on
+the default pool, and **24 runs per second with no failures** on a wide one. Size the pool above the
+number of runs you expect at the same time.
 
-Memory is not a constraint. The process held 107 MB idle and 165 MB with 400 runs in flight.
-Conversation state is saved to Search2o Cloud rather than accumulated in the process.
+## Leave the cloud connection pool alone
 
-## One agent server, agents that wait
+That is a different pool, used by the agent server to reach Search2o Cloud rather than by your
+agents. Widening it from 20 to 200 gained nothing in our tests and made heavy load worse, because
+it admits more work into one process.
 
-A run that waits holds its place without using the processor. This is what most real agents do.
+## Treat 107 MB to 165 MB as base memory
 
-| concurrent runs | 200 ms backend | cores | 1 s backend | cores |
-|---|---|---|---|---|
-| 10 | 20.9 | 0.33 | 7.7 | 0.13 |
-| 25 | 38.9 | 0.85 | 17.7 | 0.34 |
-| 50 | 38.6 | 1.03 | 30.1 | 0.67 |
-| 100 | 34.8 | 0.98 | 39.9 | 0.94 |
-| 150 | 31.1 | 0.96 | 35.3 | 1.00 |
-| 250 | 26.0 | 0.91 | 29.4 | 0.93 |
+An agent server held 107 MB idle and 165 MB with 400 runs in flight. It stays in that band because
+conversation state is saved to Search2o Cloud rather than accumulated in the process.
 
-The slower the backend, the more runs one agent server carries before its processor fills. With a
-200 ms backend the core fills at 50 concurrent runs. With a 1 s backend it takes 150.
+That band covers agents that move short text. Everything else a run holds lives in the process
+while the run lasts. An agent that handles images is the clear case, because an image travels as
+text and a single one can be several megabytes. Large API responses, database results and long
+documents count the same way. A run carrying 2 MB needs at least that much on top of the base, and
+a hundred such runs need at least two hundred megabytes more.
 
-## One agent server, agents that call a language model
+## Put the agent server near Search2o Cloud
 
-Three vendors were used together, so no single vendor's rate limit set the result.
+Every agent run makes three requests to Search2o Cloud, which is 0.17s of the 0.28s that the
+quickest possible run takes. A run that continues an existing conversation makes a fourth request
+to load the state. That floor follows the distance rather than the speed of the machine.
 
-| concurrent runs | runs per second | p50 | cores | local call | browse |
-|---|---|---|---|---|---|
-| 1 | 0.3 | 4.298s | 0.02 | 0.0036s | 0.058s |
-| 10 | 4.0 | 1.235s | 0.09 | 0.0039s | 0.057s |
-| 25 | 7.2 | 1.302s | 0.13 | 0.0037s | 0.056s |
-| 50 | 16.9 | 1.297s | 0.32 | 0.0043s | 0.059s |
-| 100 | 23.9 | 2.089s | 0.58 | 0.0058s | 0.105s |
+## Watching a deployment that is already busy
 
-**One hundred model-calling runs at the same time used 0.58 of a core, and browsing stayed at
-0.105s.** The same agent server filled its core at 25 runs when there was nothing to wait for.
+Two things tell you whether another agent server will help. Neither needs any extra load put on the
+system.
 
-How long a run takes is a property of the vendor rather than of Search2o. At 100 concurrent runs
-the medians were 1.47s, 3.90s and 4.53s for the three vendors. Use the figure for the vendor being
-bought.
+The first is the processor use of each agent server, which ordinary monitoring reports.
 
-## The rule that covers all three
+The second is how long an agent server takes to answer a request it handles by itself. **`GET
+/health` is the one to use.** It returns a fixed answer, it needs no sign in, and it reaches
+nothing outside the agent server, so its response time reflects that server's own health and
+nothing else. Any uptime monitor can poll it.
 
-Each run costs the agent server about the same amount of processor time whatever it waits for.
+It answers in about 0.003s on a server with capacity to spare, and stays there while the server has
+room. It passes 0.01s when the server is running out.
 
-| workload | runs per second | cores | processor time per run |
-|---|---|---|---|
-| logic | 49.0 | 0.97 | 20 ms |
-| 1 s backend | 39.9 | 0.94 | 24 ms |
-| language model | 23.9 | 0.58 | 24 ms |
-
-**About 20 to 24 milliseconds per run, so one agent server sustains roughly 50 runs per second.**
-That figure belongs to the agent server and transfers to another deployment.
-
-The number of runs in flight then follows from how long a run lasts.
-
-    runs at the same time  =  50 per second  x  seconds per run
-
-A logic run of half a second gives 25 at the same time, which is what was measured. A model run of
-two seconds gives 100, which is also what was measured. Put the duration of the real agents into
-that line and it gives the number to plan for.
-
-## More than one agent server
-
-Each agent server is one process on one core, so a machine with eight cores runs eight of them.
-
-| agent servers | peak runs per second | cores used | cores per server |
-|---|---|---|---|
-| 1 | 50.0 | 0.96 | 0.96 |
-| 2 | 89.5 | 1.81 | 0.91 |
-| 4 | 101.9 | 2.30 | 0.58 |
-
-The second agent server nearly doubles throughput. The third and fourth add much less.
-
-The reason is visible in the last column. At one and two servers each one is using nearly a full
-core, so the agent servers are the limit and another one helps. At four servers each is at 0.58 of
-a core, so they are waiting rather than working, and the limit has moved to the capacity behind
-them.
-
-That capacity was raised for these runs and is elastic in production, sized to the account. So the
-ceiling of about 100 runs per second is a property of this test setup. **The last column is the
-part that transfers.** Add agent servers while each is near a full core. Stop when they are not.
-
-## What other people feel while the load runs
-
-This is the number to plan against. The question is not how many agents an account holds. It is
-how slow the product becomes for everybody else while agents are running.
-
-| runs at the same time | browsing, logic agents | browsing, model agents |
+| what you see at a busy time | what it means | what to do |
 |---|---|---|
-| 10 | 0.082s | 0.057s |
-| 25 | 0.145s | 0.056s |
-| 50 | 0.321s | 0.059s |
-| 100 | 0.830s | 0.105s |
+| each server near a full core | the agent servers are doing the work | add another one |
+| `/health` under 0.01s, servers well under a core | the runs are waiting on something else | another server will wait too |
+| `/health` climbing above 0.01s | the agent server itself is saturated | add another one |
 
-Model-calling agents barely disturb anybody, because they spend their time waiting. Logic agents
-compete for the same processor as everything else, and browsing passes 0.8s at 100 of them.
-
-## Telling which side is constrained
-
-Call a request that the agent server answers by itself. `getAccountName` is one, because it needs
-nothing from anywhere else. Read the median while the load runs.
-
-Under 0.01s means the agent server has capacity left. The waiting is elsewhere, and another agent
-server will not help.
-
-Rising well above that means the agent server is saturated, and another one will help. It reached
-0.038s at 400 concurrent logic runs on one server.
-
-The companion measurement is processor use per server, in the table above. Near one core means add
-a server. Well under it means do not.
-
-## Sizing guidance
-
-These numbers count agent runs happening at the same time. They are not a limit on how many agents
-an account holds. The account here held 100 agents, and any of them can run at any time.
-
-Plan 25 agent runs at the same time per agent server for agents that mostly compute.
-
-Plan 100 at the same time per agent server for agents that call a language model, and more if the
-model is slow. Check the processor rather than the count.
-
-Run one agent server per core. Two servers gave 1.8 times the throughput of one.
-
-Give interactive users their own agent servers when the work is compute heavy. Browsing went from
-0.082s to 0.830s as logic runs went from 10 to 100 on a shared process.
-
-Stop adding agent servers when each is well under a full core. At that point the capacity behind
-them is the limit, and more of them changes nothing.
-
-## Keeping measurements comparable
-
-The agents have to stay the same, and so does the work each run does.
-
-The distance to Search2o Cloud has to stay the same, because three round trips sit inside every
-run.
-
-The levels, durations and number of repetitions have to stay the same. Each level here ran three
-times, and the medians are reported.
-
-The load generator has to be measured as well as the servers. It used 0.26 of a core at 95 runs per
-second here, which is what makes these numbers the servers' own.
+Add agent servers while each one is near a full core. A server at half a core is waiting rather
+than working, and another one waits alongside it.

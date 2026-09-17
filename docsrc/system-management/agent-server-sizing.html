@@ -1,50 +1,52 @@
-<p class="lead">This page reports what one agent server handled under load, so that a deployment can be sized from measurements rather than from guesswork. Everything below is about the agent server, which is the part your company runs. Search2o Cloud scales separately and is not the subject of this page.</p>
+<p class="lead">An agent server is the part of Search2o that a company runs. This page says how many to run and how to configure them. The figures come from our own load tests, on an Intel i9 at 2.40 GHz. A faster processor does proportionally more, so these are a conservative starting point.</p>
 
-<h2>How the measurements were taken</h2>
-<p>One agent server ran on a machine with an Intel Core i9 and 32 GB of memory. The agent server used one of the eight cores, and the rest of the machine was idle.</p>
-<p>The account held 100 published agents, each covering a different business domain, so the load ran against a populated account rather than an empty one.</p>
-<p>The agent under load is pure logic. It loops, calls a function and sets variables. No language model sits in its path, so the timings below belong to Search2o rather than to a model vendor.</p>
-<p>Every level ran for a fixed period. Throughout each level a separate caller measured two other requests, so the tables also show what somebody else felt while the load ran. All measurements come from one session on one day.</p>
+<h2>Running one agent server for every processor core</h2>
+<p>An agent server is a single Python process. Python holds a global interpreter lock, so one process uses one core however many threads it has. A larger machine therefore does nothing for a single agent server, and capacity comes from running more of them.</p>
+<p>A machine with eight cores should run eight agent servers behind a load balancer. In our tests a second agent server nearly doubled throughput, from 50 to 89 agent runs per second, and both servers stayed near a full core.</p>
 
-<h2>Running agents</h2>
-<p>Each row is one concurrency level. The p50 and p90 columns are execution times. The last two columns are what a separate caller measured at the same moment: a request the agent server answers by itself, and a page of the GUI.</p>
+<h2>Planning about 50 agent runs per second for each agent server</h2>
+<p>Every agent run costs an agent server about 20 to 24 milliseconds of processor time, whatever the agent does. One core is a thousand milliseconds per second, which is where the figure of 50 comes from.</p>
+<p>How many runs that allows at the same time depends on how long a run lasts.</p>
+<x-code lang="text" nocheck>
+agent runs at the same time  =  50 per second  x  seconds per run
+</x-code>
+<p><strong>About 25 at the same time suits agents that mostly compute.</strong> A computing agent finishes in around half a second and uses the processor for all of it.</p>
+<p><strong>We would suggest 100 to 150 at the same time for agents that call a remote language model.</strong> Such an agent takes a few seconds and spends almost all of that waiting, which costs the agent server nothing. These agents never fill a core. What gives out first is the agent server's responsiveness, so it helps to watch that rather than the processor.</p>
+<p>How long a model call takes belongs to the model rather than to Search2o, and it is the number that decides how many runs fit. These are the medians we measured with small fast models.</p>
 <div class="tablewrap"><table class="fields">
-<thead><tr><th>Concurrent</th><th>Executions per second</th><th>p50</th><th>p90</th><th>Cores used</th><th>Local call p50</th><th>Browse p50</th></tr></thead>
+<thead><tr><th>Model</th><th>Median run</th></tr></thead>
 <tbody>
-<tr><td>idle</td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td><td>0.02</td><td>0.0027s</td><td>0.062s</td></tr>
-<tr><td>1</td><td>3.3</td><td>0.272s</td><td>0.325s</td><td>0.07</td><td>0.0027s</td><td>0.059s</td></tr>
-<tr><td>5</td><td>17.7</td><td>0.272s</td><td>0.299s</td><td>0.23</td><td>0.0026s</td><td>0.061s</td></tr>
-<tr><td>10</td><td>28.3</td><td>0.336s</td><td>0.387s</td><td>0.40</td><td>0.0025s</td><td>0.097s</td></tr>
-<tr><td>25</td><td>29.1</td><td>0.755s</td><td>0.882s</td><td>0.64</td><td>0.0040s</td><td>0.227s</td></tr>
-<tr><td>50</td><td>27.3</td><td>1.545s</td><td>1.682s</td><td>0.62</td><td>0.0025s</td><td>0.501s</td></tr>
-<tr><td>100</td><td>13.4</td><td>3.293s</td><td>4.588s</td><td>0.36</td><td>0.0036s</td><td>1.069s</td></tr>
-<tr><td>150</td><td>22.3</td><td>4.171s</td><td>4.593s</td><td>0.58</td><td>0.0210s</td><td>1.435s</td></tr>
+<tr><td><code>claude-haiku-4-5</code></td><td>1.5s</td></tr>
+<tr><td><code>gemini-3.6-flash</code></td><td>3.9s</td></tr>
+<tr><td><code>gpt-5-mini</code></td><td>4.5s</td></tr>
 </tbody></table></div>
-<p>Every execution completed at every level, including 150 at once. The product slows down under load and keeps answering.</p>
-<p>Throughput peaks at 25 concurrent callers, at 29 executions per second. Adding callers past that point adds waiting rather than throughput: latency rises from 0.755s at 25 concurrent to 4.171s at 150, while throughput stays level or falls.</p>
-<p>The core is not what runs out. At peak throughput the agent server used 0.64 of one core. A process that is waiting is not a process that is busy.</p>
+<p>A model at 1.5s per run fills an agent server with three times as many runs as one at 4.5s.</p>
+<p>Agents that stream their answers hold a connection for the life of the run, so a deployment that streams heavily holds fewer runs at the same time than these figures suggest.</p>
 
-<h2>What other people feel while the load runs</h2>
-<p>This is the number to plan against. The question is not how many agents one server can run. The question is how slow the product becomes for everybody else while those agents run.</p>
-<p>Browsing took 0.062s on an idle server. It took 0.097s with 10 agents running, 0.227s with 25, 0.501s with 50 and 1.069s with 100.</p>
-<p>Ten concurrent agents are invisible to everybody else. Twenty five are noticeable and acceptable. Fifty make the product feel slow to somebody who is only browsing.</p>
+<h2>Raising the API connection pool if your agents call anything</h2>
+<p>This is the pool the agents themselves use, for calls to language models and to your own services. Its default of 20 connections is far too small for that work, because each waiting run holds a connection for the whole call. Twenty connections therefore serve about twenty runs.</p>
+<p>In our tests, 100 model-calling runs at the same time gave <strong>1 run per second and 82 failures</strong> on the default pool, and <strong>24 runs per second with no failures</strong> on a wide one. The pool is best sized above the number of runs you expect at the same time. See <a href="../runtime/connection-pools.html">Connection pools</a>.</p>
 
-<h2>Telling which side is constrained</h2>
-<p>Call a request that the agent server answers by itself. <code>getAccountName</code> is one, because it needs nothing from anywhere else. Call it while the load runs, and read the median. See <a href="agent-servers.html#health">Agent servers</a>.</p>
-<p>A fast answer means the agent server has capacity to spare, and the waiting is elsewhere. Another agent server will not help. That was the case through most of the table above: the request stayed near 0.003s at 100 concurrent callers, while throughput had fallen to 13 executions per second and the agent server was using a third of a core.</p>
-<p>A slow answer means the agent server itself is saturated, and another one will help. At 150 concurrent callers the same request took 0.021s, which is eight times its idle figure.</p>
-<p>Work that the agent server passes on behaves the same way. Searching for an agent costs an agent server almost nothing, so the rate at which searches complete is set by the capacity behind it rather than by the number of agent servers. A local request that stays fast is the signal for that case.</p>
-<p>That one measurement separates the two cases, and it costs nothing to take.</p>
+<h2>Leaving the cloud connection pool alone</h2>
+<p>That is a different pool, used by the agent server to reach Search2o Cloud rather than by your agents. Widening it from 20 to 200 gained nothing in our tests and made heavy load worse, because it admits more work into one process.</p>
 
-<h2>Sizing guidance</h2>
-<p>Plan for 10 concurrent executions per agent server if nobody should notice a slowdown.</p>
-<p>Plan for 25 per agent server if a modest slowdown is acceptable. That level is also where one agent server reached its highest throughput.</p>
-<p>Planning for 50 or more per agent server is best avoided. Throughput is no better there than at 25, and people who are only browsing find the product slow.</p>
-<p>Add agent servers rather than cores. One agent server is a single process, and a single process uses one core, so a larger machine is mostly spent on processes that an agent server does not start.</p>
-<p>It helps to check a local request before adding agent servers. If that request is still fast, the wait is not in the agent server, and another one will not make anything faster.</p>
+<h2>Treating 107 MB to 165 MB as base memory</h2>
+<p>An agent server held 107 MB idle and 165 MB with 400 runs in flight. It stays in that band because conversation state is saved to Search2o Cloud rather than accumulated in the process.</p>
+<p>That band covers agents that move short text. Everything else a run holds lives in the process while the run lasts. An agent that handles images is the clear case, because an image travels as text and a single one can be several megabytes. Large API responses, database results and long documents count the same way. A run carrying 2 MB needs at least that much on top of the base, and a hundred such runs need at least two hundred megabytes more.</p>
 
-<h2>Keeping measurements comparable</h2>
-<p>Several things have to stay the same, or two runs cannot be compared.</p>
-<p>The set of agents has to stay the same. The account held 100 published agents for every measurement on this page.</p>
-<p>The agent under load has to stay the same. An agent that calls a language model spends most of its time waiting for that model, so its timings describe the model vendor rather than the hardware.</p>
-<p>The concurrency levels and durations have to stay the same.</p>
+<h2>Putting the agent server near Search2o Cloud</h2>
+<p>Every agent run makes three requests to Search2o Cloud, which is 0.17s of the 0.28s that the quickest possible run takes. A run that continues an existing conversation makes a fourth request to load the state. That floor follows the distance rather than the speed of the machine.</p>
+
+<h2>Watching a deployment that is already busy</h2>
+<p>Two things tell you whether another agent server will help. Neither needs any extra load put on the system.</p>
+<p>The first is the processor use of each agent server, which ordinary monitoring reports.</p>
+<p>The second is how long an agent server takes to answer a request it handles by itself. <strong><code>GET /health</code> is the one to use.</strong> It returns a fixed answer, it needs no sign in, and it reaches nothing outside the agent server, so its response time reflects that server's own health and nothing else. Any uptime monitor can poll it.</p>
+<p>It answers in about 0.003s on a server with capacity to spare, and stays there while the server has room. It passes 0.01s when the server is running out.</p>
+<div class="tablewrap"><table class="fields compare">
+<thead><tr><th>What you see at a busy time</th><th>What it means</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>Each server near a full core</td><td>The agent servers are doing the work</td><td>Add another one</td></tr>
+<tr><td><code>/health</code> under 0.01s, servers well under a core</td><td>The runs are waiting on something else</td><td>Another server will wait too</td></tr>
+<tr><td><code>/health</code> climbing above 0.01s</td><td>The agent server itself is saturated</td><td>Add another one</td></tr>
+</tbody></table></div>
+<p>It helps to add agent servers while each one is near a full core. A server at half a core is waiting rather than working, and another one waits alongside it.</p>

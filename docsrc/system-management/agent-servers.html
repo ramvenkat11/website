@@ -35,4 +35,4 @@
 <p>The server is stateless, so you are free to containerize it and run it load balanced; nothing more is needed, and there is no explicit limit today on the number of servers you run. Every server picks up a configuration or profile change before its next agent run, so servers never drift from each other; see <a href="../runtime/overview.html">The agent runtime</a>. The exceptions are the settings on this page, which need a restart, and the license key, which every server must be restarted with after a <a href="../security/license-rotation.html">rotation</a>.</p>
 
 <h2>Health</h2>
-<p><code>POST /api/auth/getAccountName</code> is answered by the server itself, without sign-in, and is the call for a load balancer or a monitor to use. See <a href="../rest-api/overview.html">The REST API</a>.</p>
+<p><code>GET /health</code> is answered by the server itself, without sign-in, and is the call for a load balancer or a monitor to use. It reaches nothing outside the agent server, so its response time reflects that server's own health. See <a href="agent-server-sizing.html">Agent server sizing</a>.</p>
