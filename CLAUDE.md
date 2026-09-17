@@ -3438,3 +3438,5 @@ since singular "they" pairs with "anyone" but not with "one"; changed on BOTH pa
 (why-not-langchain and why-not-skills, whose wording ends "using our docs") so the two stay
 identical. And "LLM and AI agent applications" is "LLM and AI-agent applications". The
 generator's LEAD constant carries both. 133 pages, 31 examples valid.
+Then Ram: drop "LLM and" - the lead ends "an ecosystem of frameworks and commercial tools for
+building and operating AI-agent applications."
