@@ -3422,3 +3422,13 @@ Skills page's "Anthropic created Claude and created Skills" argument does not tr
 LangChain. Ram to correct before any deploy. The meta description is the lead again. WARNING:
 the generator (scratchpad genlang.py) writes the whole file, so a regeneration overwrites
 Ram's edits to this top block - copy his wording into the LEAD constant first.
+Ram then wrote his own top block, IN THE GENERATED FILE html/docs/introduction/why-not-langchain.html
+(that directory is overwritten by every build) - his text was moved into docsrc and into the
+generator's LEAD constant, so it survives. TWO CORRECTIONS, both grammar: "is even more
+difficult than to compare it with Skills" -> "than comparing it with Skills" (a gerund and an
+infinitive cannot be compared); and "some feature overlaps - like creating agents and running
+them," -> commas on both sides (a dash had opened the aside and a comma closed it). Nothing
+else was touched. FLAGGED, not changed: "One should be able to repeat this analysis on their
+own" mixes "one" with "their" - the identical sentence is on why-not-skills, so changing one
+page would split them; and "LLM and AI agent applications" reads as a noun pile that a hyphen
+in "AI-agent applications" would settle.
