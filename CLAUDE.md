@@ -3486,3 +3486,19 @@ section lead therefore still reads "how many concurrent executions one server ha
 described the OLD page; Ram's call whether it should follow the rewrite. LESSON: a redo of one
 page's content is that page and nothing else, even when a neighbouring summary goes stale -
 report it instead.
+Ram's three follow-ups, all applied. (1) /health EVERYWHERE: getAccountName is gone from the
+docs as the health call - system-management/agent-servers.html:38 now says `GET /health` is
+answered by the server itself, without sign-in, reaches nothing outside the agent server, and
+links Agent server sizing; rest-api/overview.html:27 says the same, gives the response
+{"status": "ok"}, and links the sizing page's Watching section. Sweep for getAccountName over
+docsrc: 0. (2) The System management section lead says "how many to run and how to size them"
+again. (3) POLITE PASS over the sizing page: every imperative h2 is a gerund now (Running one
+agent server... / Planning about 50... / Raising the API connection pool... / Leaving the
+cloud connection pool alone / Treating 107 MB to 165 MB as base memory / Putting the agent
+server near Search2o Cloud; Watching... was already one), which also matches the docs' own
+title style. Four sentences softened: "Plan about 25 at the same time" -> "About 25 at the
+same time suits agents that mostly compute"; "Plan 100 to 150" -> "We would suggest 100 to
+150"; "so watch that" -> "so it helps to watch that"; "Size the pool above" -> "The pool is
+best sized above"; "Add agent servers while" -> "It helps to add agent servers while". The
+table cells stay terse, per the rule. 133 pages, 31 examples valid, every link and anchor on
+the four touched pages resolves.
