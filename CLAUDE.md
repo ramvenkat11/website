@@ -3448,3 +3448,34 @@ text otherwise stands: the lead is "Search2o was created for organizations to ru
 agents behind one search interface. LangChain provides frameworks and tools for building and
 operating AI-agent applications." The generator's LEAD was re-synced from docsrc, so the next
 regeneration keeps his wording.
+
+## State on 2026-09-17 (Agent server sizing REDONE from the rewritten md; NOT DEPLOYED)
+Ram rewrote content/agent_server_sizing.md completely - it is prescriptive sizing guidance now,
+not a load-test report - and asked for the page redone. docsrc/system-management/
+agent-server-sizing.html replaced wholesale (952 words, seven h2s, all his): Run one agent
+server for every processor core (the GIL argument; eight cores -> eight servers; a second
+server took throughput 50 -> 89 runs/second); Plan about 50 agent runs per second for each
+agent server (20-24 ms of processor time per run; the runs-at-once formula as an x-code text
+block; 25 at once for computing agents, 100-150 for model-calling ones; the three-model median
+table, model ids as <code>; the streaming caveat); Raise the API connection pool if your agents
+call anything (default 20 serves ~20 runs; 1 run/second with 82 failures against 24 with none);
+Leave the cloud connection pool alone; Treat 107 MB to 165 MB as base memory (plus the
+image/large-payload caveat); Put the agent server near Search2o Cloud (three cloud requests =
+0.17s of a 0.28s floor, a fourth to load conversation state); Watching a deployment that is
+already busy (processor use, GET /health, the three-row what-you-see table).
+VERIFIED, not assumed: GET /health is real - search2o/main.py:189 registers it for GET and HEAD
+with include_in_schema=False, returning {"status": "ok"}, outside the auth routers.
+ONLY THREE DEPARTURES from the md, all flagged: table headers and cells are sentence-capitalised
+(the md has them lowercase); a "See Connection pools" link was added to the API-pool section
+(runtime/connection-pools.html is exactly that pool); nothing else. HIS IMPERATIVE VOICE WAS
+KEPT THROUGHOUT - every h2 is a command and several sentences are ("Size the pool above...",
+"Add agent servers while..."). The 2026-09-03 politeness rule would soften those, and last
+time I did soften two; this rewrite is deliberate and consistent, so it stands as written -
+say the word to soften it.
+FLAGGED FOR RAM, NOT CHANGED: the docs still name getAccountName as the load-balancer and
+monitor call in TWO places (system-management/agent-servers.html:38 "Health" section and
+rest-api/overview.html:27). This page now recommends GET /health instead. One of the three
+should win; the cross-link to agent-servers.html#health was dropped from this page meanwhile.
+Tables and the pre fit at 770px; 390 and 768 show no sideways scroll; section lead reworded
+("how many to run and how to size them"); the docs home card already said "and how to size
+them". 133 pages, 31 examples valid, no broken links. Both themes screenshotted.
