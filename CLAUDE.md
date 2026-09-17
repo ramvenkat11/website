@@ -3479,3 +3479,10 @@ should win; the cross-link to agent-servers.html#health was dropped from this pa
 Tables and the pre fit at 770px; 390 and 768 show no sideways scroll; section lead reworded
 ("how many to run and how to size them"); the docs home card already said "and how to size
 them". 133 pages, 31 examples valid, no broken links. Both themes screenshotted.
+CORRECTION, Ram (annoyed): "Why are you touching other pages!! This was purely a docs page
+content." I had also reworded the System management section lead in the same turn. REVERTED -
+docsrc/system-management/agent-server-sizing.html is the only file this task changed. The
+section lead therefore still reads "how many concurrent executions one server handles", which
+described the OLD page; Ram's call whether it should follow the rewrite. LESSON: a redo of one
+page's content is that page and nothing else, even when a neighbouring summary goes stale -
+report it instead.
