@@ -3432,3 +3432,9 @@ else was touched. FLAGGED, not changed: "One should be able to repeat this analy
 own" mixes "one" with "their" - the identical sentence is on why-not-skills, so changing one
 page would split them; and "LLM and AI agent applications" reads as a noun pile that a hyphen
 in "AI-agent applications" would settle.
+Ram's two follow-ups applied: "One should be able to repeat this analysis on their own" is now
+"ANYONE should be able to repeat this analysis on their own" - gender-neutral and agreeing,
+since singular "they" pairs with "anyone" but not with "one"; changed on BOTH pages
+(why-not-langchain and why-not-skills, whose wording ends "using our docs") so the two stay
+identical. And "LLM and AI agent applications" is "LLM and AI-agent applications". The
+generator's LEAD constant carries both. 133 pages, 31 examples valid.
