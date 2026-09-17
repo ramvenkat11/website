@@ -3316,3 +3316,14 @@ keep server messages short.
 Ram: demoAgentGen now returns agentName (not in production yet). site.js: on success the
 card's title bar reads `<agentName> · agent definition`, falling back to "generated" when the
 field is absent - so the current production response still renders as before.
+
+## State on 2026-09-16 (Ram restructured the System architecture steps himself; not deployed)
+After my options for step 3, Ram edited index.html directly: the steps are THREE now -
+"Browser or Chat application" (users submit requests through the browser UI or a chat
+application; the browser UI is also the workspace for developers and administrators), "Agent
+server" (now says "Uses the agent framework to run agents in a controlled runtime"; GitHub
+link kept), "Search2o Cloud". The separate Agent framework step is GONE; the diagram still
+shows the Agent framework box inside the server, which step 2 now names. Flagged, not
+changed: "browser UI" (vocabulary says "the GUI") and the capital C in "Chat application";
+and the steps column is shorter, so the diagram hangs further below it than the 28px noted
+above - re-tune only on his word.
