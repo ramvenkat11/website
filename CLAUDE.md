@@ -3502,3 +3502,25 @@ same time suits agents that mostly compute"; "Plan 100 to 150" -> "We would sugg
 best sized above"; "Add agent servers while" -> "It helps to add agent servers while". The
 table cells stay terse, per the rule. 133 pages, 31 examples valid, every link and anchor on
 the four touched pages resolves.
+
+## State on 2026-09-17 (hero card: a confirmation before the booking; New York; dollars; not deployed)
+Ram: add an ask for confirmation before the ticket is booked, city New York, amount in $.
+index.html .hero-convo is now SEVEN beats: user "Book me a flight to the New York office for
+next Tuesday" / Matched travel_desk / an ASK panel whose message is the offer itself
+("UA1191, out Tuesday 08:05, back Thursday 18:30, and two nights at the Marriott near the
+office: $640. <b>Book it?</b>") with a chooseOne of two radio pills, Book selected and Hold,
+and ONE quiet Submit at the right / "Booked UA1191 and the two hotel nights. The confirmation
+is in your inbox." / user "File the expenses for that trip" / Matched reimbursements / "Filed
+the New York trip: flight UA1191 and two hotel nights, $640 in total. Sent to your manager
+for approval." The 2026-09-02 ask rules hold: the same agent asks and then continues, one
+submit, a default selected, every line is what the customer sees. FIRST DRAFT had the offer
+as its own bubble before the form (8 beats, card 573px, hanging 226px below the hero text);
+folding the offer INTO the ask - an ask is a message plus its inputs - saved a bubble: card
+529px (was 413), hang 182px (was 65). Flagged to Ram as the price of the beat. CSS: new
+`.turn-agent .msg.ask` rules (flex-wrap, --bg-soft panel; .q takes the full first row at
+14.5px --body with the question in bold ink; radio pills and .submit copied from the old
+.demo-form rules, submit margin-left auto); stages retimed .2/.6/1.4/2.9/3.8/4.2/5.1s, st8
+gone; the reduced-motion block already covers `.hero-convo .st`. At 390: the controls wrap to
+two rows, no sideways scroll, card 694. LH1191 became UA1191 (a New York carrier code); the
+amount stayed 640 as asked - flagged that $640 for a New York flight plus two hotel nights
+reads low. Both themes screenshotted. The old .demo-* CSS is still dead and still present.
