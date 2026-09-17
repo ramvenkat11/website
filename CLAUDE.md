@@ -3549,3 +3549,14 @@ throws on this page (an infinite animation exists) - guard with
 isFinite(a.effect.getComputedTiming().endTime). Ram stopped the iteration at this state; the
 light-theme screenshot of the final version was not taken (the previous version was checked
 in both themes and only text changed since).
+
+## State on 2026-09-17 (framework textarea halved; the fill-the-column design is gone; not deployed)
+Ram: make the textbox half its size. It measured 324px at desktop under the 09-16
+fill-the-column rules; it is now a FIXED 162px (`.agen textarea { height: 162px; min-height:
+92px }`, resize vertical kept) at every width (measured 162 at 1920 and 390). The fill design
+went with it: `.agen` rows are `auto auto auto minmax(49px, auto)` (no 1fr, no flex: 1), and
+`#framework .split { align-items: stretch }` plus the flex-column rule on the left column are
+REMOVED. CONSEQUENCE: the left column ends 113px above the card's bottom again (the columns
+were level under the fill design); the 49px reserved message row and the fixed 154px button
+still keep the row from jumping. Section 841px, no sideways scroll at 390. Screenshot
+checked (dark).
