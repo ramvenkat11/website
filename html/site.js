@@ -307,7 +307,7 @@ window.s2oCaptchaReady = function () {
           if (data && data.success) {
             if (data.code) {
               codeEl.innerHTML = highlight(data.code);
-              fname.textContent = (data.agentName || "generated") + " \u00b7 agent definition";
+              fname.textContent = "generated \u00b7 agent definition";
               generated = data.code;
               copyBtn.hidden = false;
             }
