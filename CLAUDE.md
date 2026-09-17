@@ -3400,3 +3400,13 @@ above the tables, because the tally moved up.
 Introduction's section lead and the docs home card name no why-not page, so neither was
 touched. Sitemap 141 URLs, 31 examples valid, no broken links on the page. Both themes
 screenshotted.
+Then Ram: REMOVE everything before "How this comparison works", the tally table at the top
+included, and keep the tally block in the content with its table at the end. The page is now
+the md body VERBATIM from "How this comparison works" to Sources, with the Tally section back
+in its own place before Sources - its caveat paragraph, the table in the `.tally` panel as a
+`table.tally-table` (Search2o column highlighted), then the "What the columns say" paragraph.
+Nothing of mine remains on the page. Word-for-word fidelity re-verified. CONSEQUENCE, flagged:
+the page has NO `p.lead` - it opens with the h2 46px under the h1 - so build.py's meta
+description is now the document's first paragraph ("The LangChain ecosystem is not one
+product..."), and the on-page toc starts at "How this comparison works". 390 and 768: no
+sideways scroll. The four content flags above still stand.
