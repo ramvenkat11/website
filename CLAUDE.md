@@ -3311,3 +3311,8 @@ button y, badge x/y and textarea height identical across rest / badge rendered /
 each of the three one-line messages / relabel (moved: []); all three messages measure one
 line (49.1px). A server-sent data.message longer than ~60 chars would wrap and lift the row -
 keep server messages short.
+
+## State on 2026-09-16 (generated card title uses agentName; not deployed)
+Ram: demoAgentGen now returns agentName (not in production yet). site.js: on success the
+card's title bar reads `<agentName> · agent definition`, falling back to "generated" when the
+field is absent - so the current production response still renders as before.
