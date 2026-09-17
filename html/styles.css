@@ -275,10 +275,11 @@ p { margin: 0; }
 .hero-convo .st { opacity: 0; animation: rise .45s ease forwards; }
 .hero-convo .st1 { animation-delay: .2s; }
 .hero-convo .st2 { animation-delay: .6s; animation-duration: .3s; }
-.hero-convo .st3 { animation-delay: 1.6s; }
-.hero-convo .st4 { animation-delay: 2.7s; }
-.hero-convo .st5 { animation-delay: 3.1s; animation-duration: .3s; }
-.hero-convo .st6 { animation-delay: 4.1s; }
+.hero-convo .st3 { animation-delay: 1.4s; }
+.hero-convo .st4 { animation-delay: 2.9s; }
+.hero-convo .st5 { animation-delay: 3.8s; }
+.hero-convo .st6 { animation-delay: 4.2s; animation-duration: .3s; }
+.hero-convo .st7 { animation-delay: 5.1s; }
 @keyframes rise { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: none; } }
 @keyframes blink { 50% { opacity: 0; } }
 @media (prefers-reduced-motion: reduce) {
@@ -451,6 +452,15 @@ p { margin: 0; }
   background: var(--card); color: var(--body); font-size: 14.5px;
 }
 .turn-agent .msg .fine { display: block; margin-top: 6px; color: var(--faint); font-size: 12.5px; }
+.turn-agent .msg.ask { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 8px; padding: 10px 14px 10px; background: var(--bg-soft); }
+.turn-agent .ask .q { flex: 1 0 100%; color: var(--body); font-size: 14.5px; }
+.turn-agent .ask .q b { color: var(--ink); font-weight: 600; }
+.turn-agent .ask .opts { display: flex; gap: 8px; }
+.turn-agent .ask .opts i { display: inline-flex; align-items: center; gap: 7px; padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--muted); white-space: nowrap; font-size: 12.5px; font-style: normal; font-weight: 600; }
+.turn-agent .ask .opts i::before { content: ""; width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--slate); box-sizing: border-box; }
+.turn-agent .ask .opts i.on { color: var(--ink); border-color: var(--blue); }
+.turn-agent .ask .opts i.on::before { background: var(--blue); border-color: var(--blue); }
+.turn-agent .ask .submit { margin-left: auto; padding: 5px 12px; border-radius: 8px; white-space: nowrap; border: 1px solid var(--line); background: var(--card); color: var(--muted); font-size: 12.5px; font-weight: 600; }
 .ctx-marker {
   display: flex; align-items: center; gap: 10px; margin: 2px 0;
   color: var(--faint); font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
