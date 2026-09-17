@@ -3440,3 +3440,11 @@ identical. And "LLM and AI agent applications" is "LLM and AI-agent applications
 generator's LEAD constant carries both. 133 pages, 31 examples valid.
 Then Ram: drop "LLM and" - the lead ends "an ecosystem of frameworks and commercial tools for
 building and operating AI-agent applications."
+Ram rewrote the top block again, this time in DOCSRC (correct place). Proofread: TWO
+corrections - "the readers may have this question" -> "readers may have this question" (a
+generic plural takes no article), and a comma before "and we tried to answer it here" (two
+independent clauses joined by "and"; the sentence now has its two commas and no more). His
+text otherwise stands: the lead is "Search2o was created for organizations to run hundreds of
+agents behind one search interface. LangChain provides frameworks and tools for building and
+operating AI-agent applications." The generator's LEAD was re-synced from docsrc, so the next
+regeneration keeps his wording.
