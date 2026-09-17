@@ -3327,3 +3327,7 @@ shows the Agent framework box inside the server, which step 2 now names. Flagged
 changed: "browser UI" (vocabulary says "the GUI") and the capital C in "Chat application";
 and the steps column is shorter, so the diagram hangs further below it than the 28px noted
 above - re-tune only on his word.
+
+## State on 2026-09-17 (agentName reverted; not deployed)
+Ram: remove the agentName use. site.js:310 is back to the fixed title "generated · agent
+definition"; no reference to agentName remains.
