@@ -3616,3 +3616,10 @@ REVERTED to the outlined form of the previous step: `.turn-agent .ask .submit` i
 background with a 1px --blue border and --blue-ink text at weight 650. So the highlight he
 asked for stays, without the fill. Computed: submit bg rgb(15,25,48) / border rgb(77,141,255)
 against the user bubble's solid rgb(59,130,246) - clearly different now. Screenshotted.
+Then Ram: remove the highlighting on Book. The blue filled radio dot was the last blue in the
+ask panel apart from Submit; `.turn-agent .ask .opts i.on::before` is now --ink instead of
+--blue, so the dot still reads as filled-and-chosen without carrying a highlight colour. The
+label keeps `color: var(--ink)` so Book is legibly the selected option against Hold's muted
+text; both pills keep the --line border. Submit's blue border is now the only colour in the
+form. Checked in the browser (Book dot rgb(238,243,251) = --ink in dark, Hold's dot
+transparent, Submit border rgb(77,141,255)).
