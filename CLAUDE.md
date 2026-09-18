@@ -3835,3 +3835,32 @@ RE-AUDIT: 0 broken footer links across all 9 files, anchors and files both. Reso
 and Legal columns were already correct and are untouched. Screenshot checked.
 LESSON: a flagged-but-unfixed broken link is still a broken link - when a section is removed,
 sweep the footers in the same commit rather than filing it as an open item.
+
+## State on 2026-09-18 (The allowlist rewritten from content/allowlist.md; obsolete claims removed; NOT DEPLOYED)
+Ram: update the topic from allowlist.md, which is the current documentation, and make sure
+nothing obsolete survives. docsrc/runtime/allowlist.html rewritten to follow the md.
+THREE THINGS ON THE OLD PAGE WERE FALSE, all verified against ../search2o/search2o/execution/
+allowlist.py before rewriting:
+(1) "A wildcard such as os.path.* is not an entry form and adds nothing" - WRONG now.
+`.*` IS a form: build_eval_allowlist branches on parts[-1] == "*" and star_import() puts the
+module's __all__ (or its public names) straight into the namespace, skipping submodules.
+(2) "The server resolves an entry in one of THREE ways" - there are SIX forms now (builtin,
+builtin type, one method of a builtin type, one name from a module, a whole module, and
+`.*`), and the page carries the md's three-column table of them.
+(3) The log/save message `Error importing '...'` does not exist in the code any more. The
+strings are "Could not be imported." and "A star import cannot be renamed with 'as'." - both
+reproduced from the md and confirmed at allowlist.py:102/127.
+NEW, from the md and confirmed in code: an `as` on a `.*` line is refused on save; a module
+entry does NOT open the modules that module imports (granted_module and star_import both skip
+isinstance(value, ModuleType)) - json does not bring codecs, urllib does not bring
+urllib.parse; the "choosing between the forms" guidance, including that `.*` replaces an
+earlier entry of the same name (math.* shadows Python's pow); and that a failing save reports
+EACH failing line with its own message, the line as written.
+KEPT although the md does not cover them, because both are still true and were deliberately
+moved here when security/controlled-runtime was retired on 2026-09-10: "How expressions are
+contained" with the expression-bounds figure, and "Scope of an expression". Flagged for Ram.
+Also kept: the EvalAllowlistModel table at the end. asyncio.run dropped from the blocking
+examples (the md lists time.sleep and synchronous network calls; asyncio left the product).
+VERIFIED: 133 pages, 31 examples valid, no broken link or anchor on the page, both tables and
+all four code blocks fit at 770px, no sideways scroll at 390 or 768, 1,377 words, nine h2s and
+four h3s, the figure still renders. A sweep of docsrc for the old claims returns nothing.
