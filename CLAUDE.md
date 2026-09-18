@@ -3745,3 +3745,26 @@ rewrite shortened it; not re-tuned. Zoomed screenshot checked.
 Then Ram: the step-1 second sentence is "The browser UI also provides a complete workspace
 for agent development and system administration." (his wording; was "for developers and
 administrators").
+
+## State on 2026-09-18 (Platform: Reports card replaces Chat integrations; Reports section removed; not deployed)
+Per Ram. index.html: the "Chat integrations" card is GONE (its Slack/Teams/Google Chat text
+with it - the chat story on the home page is now only the hero's "chat application" and the
+architecture step); a new LAST card "Reports" (bar-chart icon, same 22px stroke style as the
+others) carries the old Reports section's content, pictures excluded: "What ran, what failed,
+what it cost. Four reports show trends in agent performance, errors, LLM cost, and user usage.
+Each row opens a detailed report for the corresponding agent or user." - the section's h2, its
+paragraph and the four tile captions folded into three sentences. The whole `#reports`
+section (its inline <style>, the .reportfan grid and the four SVG report tiles) is deleted;
+the home footer's "Reports" link now points at #platform (it was the only inbound #reports
+link on the site); the two dead `#reports .split` rules are out of styles.css. Order now:
+Agent security / Model neutrality / Operational continuity / API & automation / Access & roles
+/ Reports; two rows of three, 236 and 259px (the Reports text is five lines, one more than
+its row-mates); sections hero > Search > architecture > framework > Platform > band - the
+soft/plain alternation still holds. 390: six cards stacked, no sideways scroll.
+MISTAKE AND RECOVERY: my first removal regex (`<article class="pcard">\n ... .*? ...
+<h3>Chat integrations</h3>` with re.S) matched from the FIRST card, so it deleted Agent
+security and Model neutrality too; caught by the card count (4). Both were restored from
+`git show HEAD:html/index.html` (their text had not changed since; checked against this
+morning's Platform screenshot word for word). LESSON: never delete a block with a non-greedy
+`.*?` that starts at a repeated opener - split on the opener and pick the block by its title.
+Screenshot checked.
