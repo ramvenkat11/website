@@ -3629,3 +3629,22 @@ filled. `.turn-agent .ask .opts i.on { color: var(--ink) }` is DELETED, so only
 two pills' computed styles are byte-identical (same --muted text, --line border, --card
 background, weight 600); the only difference is the dot, filled --ink on Book against Hold's
 hollow --slate ring.
+
+## State on 2026-09-18 (home hero: the "Search that executes" h1 is gone; not deployed)
+Ram: remove Search that executes from the hero. index.html:50, the `<h1>Search that <span
+class="grad">executes</span></h1>`, is deleted. To keep the page's ONE H1 (the 09-11 SEO pass
+checked that), the line below it was PROMOTED rather than left as a paragraph: it is now
+`<h1 class="def">Turn hundreds of focused AI agents into one system</h1>` - same look, since
+.def carries its own size and weight. styles.css: `.hero h1` became `.hero h1:not(.def)` so
+the 46px clamp does not hit it, and `.hero .def` margin-top 24 -> 0 now that it leads. FLAGGED:
+if a different headline is coming, say so and the promotion comes straight back out.
+The card was re-anchored AGAIN, to the new first line's cap top: `.hero-grid .demo,
+.hero-grid .hero-convo` margin-top 9 -> 7px (the def line's 20px/1.5 box puts its cap top
+7.2px below the grid top, against the old 46px headline's 9.3px). Measured: card top 160.0
+against a cap top of 160.2, delta -0.2, red guide line checked on a screenshot. Hero 577px
+(was 588), card hangs 163px below the left column - the column is much shorter now that the
+big headline has gone; the top-alignment rule still governs, so left alone. One h1 at 390 and
+768, no sideways scroll. NOW UNUSED in styles.css: `.hero h1 .grad` (the gradient span went
+with the headline) on top of the already-dead `.eyebrow` rules - reported, not removed.
+The <title> and og:title still say "Search2o - Search that executes", and the footer brand
+line on every page still reads "Search that executes." - the tagline only left the hero.
