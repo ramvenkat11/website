@@ -3589,3 +3589,24 @@ re-inserting the eyebrow in the DOM to recover the old h1 box top (210) against 
 (153): the h1 box-top to glyph-top offset is 18px, so the margin is now 18px. Measured after:
 card top 171 == h1 box top 153 + 18, delta 0. The <=1000px rule still zeroes it. Hero 588px
 tall (was 664), the card hangs 97px below the left column, no sideways scroll at 390.
+Ram then asked whether the hero is lined up. AUDITED PROPERLY and found my 18px was WRONG.
+The 18px came from assuming the old 75px margin had been exactly right; it had not. Measured
+the real cap top with font metrics instead (canvas measureText on the h1's computed font:
+baseline = lineTop + (lineHeight - (fontAscent+fontDescent))/2 + fontAscent, cap top =
+baseline - actualBoundingBoxAscent): cap top 162.3 against a card top of 171, so the card was
+8.7px LOW - and by the same measure the OLD eyebrow layout was ~9px low too, a pre-existing
+miss nobody had caught. `.hero-grid .demo, .hero-grid .hero-convo` is now `margin-top: 9px`
+and the card top measures 162.0 against a cap top of 162.3 (delta -0.3), confirmed with a red
+guide line drawn at the card top across the headline in a zoomed crop: it sits on the cap
+tops of "Search that executes" and on the card's own top edge. Holds at 1280 (-0.3) and 1100
+(+0.1). THE REST OF THE HERO: every left-column element starts at x=417 (h1, def, bullets,
+button); the button, the pip chip and the copy icon share one midline (445.3); grid gap 56;
+the card's right edge is on the container's content edge (1488 vs 1489); vertical gaps 24 /
+26 / 34. One column at <=1000 as designed, nothing in .hero overflows at any width. THE 2px
+SIDEWAYS SCROLL AT 360 IS THE DIAGRAM'S .arch-lbl, not the hero - pre-existing, still not
+fixed. Card hangs 88px below the left column at 1920 and 67px at 1100 - the top-alignment
+rule is the one that governs, so left as is.
+REPORTED, NOT CHANGED: (1) the h1 is "Search that executes" with NO full stop, while the
+footer brand line on this page and all three other site pages say "Search that executes." -
+the decided tagline has the stop; (2) the .def line "Turn hundreds of focused AI agents into
+one system" has no full stop while the three bullets under it do.
