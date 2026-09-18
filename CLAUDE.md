@@ -3742,3 +3742,6 @@ sub-line on one row at 1920 and 390, the tag 12px above the pill, both arrow end
 their nodes, the step title one line; no new sideways scroll (the 2px at 360 is the old
 .arch-lbl item). The steps column ends 96px above the diagram now - Ram's own three-step
 rewrite shortened it; not re-tuned. Zoomed screenshot checked.
+Then Ram: the step-1 second sentence is "The browser UI also provides a complete workspace
+for agent development and system administration." (his wording; was "for developers and
+administrators").
