@@ -3795,3 +3795,9 @@ untouched. OPEN: Ram may still cut the "Start on your laptop..." line as redunda
 would leave the band as the button + chip alone.
 Then Ram: the diagram's Users sub-line is capitalised - "Browser &middot; Chat app &middot;
 Skill".
+Ram: just remove it. The "Start on your laptop..." line and its `.band-line` rule are gone,
+and .band-actions lost its margin-top (nothing above it now). The closing band is the Get
+started button and the copyable pip chip on one midline (447), starting at the container's
+417px edge: band 222px (was 376 with the old heading), page 4,011px. 768: 182px; 390: 234px,
+no sideways scroll. Screenshot checked. The band's 88px section padding is what holds its
+height now.
