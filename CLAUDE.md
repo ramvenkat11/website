@@ -3888,3 +3888,28 @@ FLAGGED: the other two `overview`-slug pages are titled descriptively - profiles
 overview pages now use two naming styles. Ram's call whether those two become "Overview" too.
 The in-app docs summaries (s2oserver maintenance/docs_create.py) read these titles and want
 regenerating on his side.
+
+## State on 2026-09-18 (Why not Skills? and Why not LangChain? RETIRED from the docs; NOT DEPLOYED)
+Ram: the comparisons live in the md files; copy the hand-written top from each html into its
+md, then remove the html pages and every reference, keeping the mds.
+TOPS COPIED FIRST, verbatim as plain text, straight after each md's h1:
+- content/why_not_skills.md gains "Skills was created for individuals to get work done..." and
+  "We gave our product documentation to Claude Fable 5.1... Anyone should be able to repeat
+  this analysis on their own using our docs."
+- content/why_not_langchain.md gains "Search2o was created for organizations to run hundreds of
+  agents behind one search interface..." and "Comparing Search2o with LangChain is even more
+  difficult than comparing it with Skills... using the documentation on both sides."
+The TALLY TILES were not copied: they only rendered numbers the mds already carry (skills has
+39/16/10/4 in its ## Tally section; langchain has its counts table).
+REMOVED: docsrc/introduction/why-not-skills.html and why-not-langchain.html, their generated
+html/docs copies (git rm - the build never deletes), and the two gen/toc.py entries. The only
+non-generated reference anywhere was toc.py; no page linked either one in prose. 131 pages
+(was 133), 31 examples valid, sitemap down to why-not-python only, Introduction reads What is
+Search2o / Why not Python? / Parts of the system / How it fits together. Site-wide link and
+anchor check: the one pre-existing break (support.html -> notifications.html).
+NOW DEAD in html/docs/docs.css, reported not removed: the whole `.tally` family (.tally,
+.tally-tiles, .tally-tile, .tally-tile b/span, .tally-tile.win, the <=640px rule and
+.tally-table with its seven rules) - nothing carries class="tally" any more.
+`table.fields.compare` STAYS in use (agent-server-sizing, service-accounts, allowlist).
+DEPLOY NOTE: the live bucket has never held either page (neither was deployed), so no
+aws s3 rm is needed; the --delete sync would handle it anyway.
