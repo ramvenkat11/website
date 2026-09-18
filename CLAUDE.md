@@ -3648,3 +3648,18 @@ big headline has gone; the top-alignment rule still governs, so left alone. One 
 with the headline) on top of the already-dead `.eyebrow` rules - reported, not removed.
 The <title> and og:title still say "Search2o - Search that executes", and the footer brand
 line on every page still reads "Search that executes." - the tagline only left the hero.
+
+## State on 2026-09-18 (hero formatting redone, content unchanged; not deployed)
+Ram: redo the hero formatting, content stays. (He had meanwhile edited the line himself to
+"Search2o turns hundreds of AI agents into one system" - kept verbatim.) THE LINE IS THE
+HEADLINE NOW: `<h1>Search2o turns hundreds of AI agents into <span class="grad">one
+system</span></h1>` - a real h1 at `clamp(28px, 3vw, 36px)`, weight 800 from the base rule,
+line-height 1.12, with the blue-to-teal gradient (the old "executes" accent, `.hero h1 .grad`
+back in use) on "one system". Two lines at 1920 and 1280 (36px), two at 1100 (33px), three at
+390 (28px). A first pass with `max-width: 14ch` gave FOUR lines - removed; the h1 spans the
+518px column. `.hero .def` and the `.hero h1:not(.def)` hack are DELETED (no other page used
+.def). Bullets 15.5 -> 16px, list margin-top 26 -> 30. Card re-anchored to the new cap top:
+`.hero-grid .demo, .hero-grid .hero-convo` margin-top 6px (measured need 6.2; delta -0.2 after,
+red guide checked on the cap tops and the card's top edge). Hero 576px; left column 321, card
+394, hang 79 (was 163 with the 20px line). No sideways scroll at 390. Both themes
+screenshotted. Still dead in styles.css: the two `.eyebrow` rules.
