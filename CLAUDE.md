@@ -3768,3 +3768,7 @@ security and Model neutrality too; caught by the card count (4). Both were resto
 morning's Platform screenshot word for word). LESSON: never delete a block with a non-greedy
 `.*?` that starts at a repeated opener - split on the opener and pick the block by its title.
 Screenshot checked.
+Then Ram supplied the Reports card's sentence: the card reads "What ran, what failed, what it
+cost. Eight reports show trends in agent performance, errors, LLM cost and usage along with
+details." (his sentence verbatim, the h2 opener kept; the "Four reports" and "Each row
+opens" sentences are gone).
