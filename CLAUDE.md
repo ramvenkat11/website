@@ -3793,3 +3793,5 @@ row; 390 and 768 fine, no sideways scroll. Both themes screenshotted. NAMING, fl
 chip keeps the class `hero-pip` in the band - reused rather than renamed to keep the hero
 untouched. OPEN: Ram may still cut the "Start on your laptop..." line as redundant, which
 would leave the band as the button + chip alone.
+Then Ram: the diagram's Users sub-line is capitalised - "Browser &middot; Chat app &middot;
+Skill".
