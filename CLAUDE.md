@@ -3913,3 +3913,15 @@ NOW DEAD in html/docs/docs.css, reported not removed: the whole `.tally` family 
 `table.fields.compare` STAYS in use (agent-server-sizing, service-accounts, allowlist).
 DEPLOY NOTE: the live bucket has never held either page (neither was deployed), so no
 aws s3 rm is needed; the --delete sync would handle it anyway.
+
+## State on 2026-09-18 (pricing h1 says the product is in open beta; not deployed)
+Ram: replace "Free until you're convinced" with saying it is in open beta - and yes, Pricing
+was the ONLY page carrying it (the home page's eyebrow with the same line went this morning;
+a sweep of html, docsrc, gen and content finds no other instance). pricing.html:42 is now
+`<h1>Search2o is in open beta</h1>`, matching about.html's "Search2o is currently in open
+beta." and the docs' "Search2o is in open beta, and anyone interested is welcome to try it."
+DELIBERATELY NOT "Free during the open beta" - Ram killed that wording on 2026-09-07 because
+the paid service may start before the beta ends, and the same objection still applies.
+The brand renders mixed case (.page-hero h1 has no text-transform - checked, since the kicker
+above it IS uppercased). One line at 1920, 768 and 390; no sideways scroll. The metas are
+about the tiers, not the beta, and are untouched and still accurate. Screenshot checked.
