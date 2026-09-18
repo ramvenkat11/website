@@ -155,9 +155,9 @@ p { margin: 0; }
   -webkit-mask-image: radial-gradient(720px 460px at 62% 0%, #000 25%, transparent 72%);
 }
 .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 56px; align-items: start; }
-.hero-grid .demo, .hero-grid .hero-convo { margin-top: 9px; }
+.hero-grid .demo, .hero-grid .hero-convo { margin-top: 5px; }
 
-.hero h1 { font-size: clamp(32px, 3.9vw, 46px); }
+.hero h1 { font-size: clamp(25px, 2.6vw, 30px); line-height: 1.15; }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   margin-bottom: 22px; padding: 6px 13px;
@@ -166,12 +166,9 @@ p { margin: 0; }
 }
 .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 3px rgba(21, 128, 61, .14); }
 .hero h1 .grad {
+  white-space: nowrap;
   background: linear-gradient(94deg, var(--blue) 4%, var(--teal) 96%);
   -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-.hero .def {
-  max-width: 44ch; margin-top: 24px;
-  color: var(--ink); font-size: 20px; font-weight: 600; line-height: 1.5; letter-spacing: -0.014em;
 }
 .hero-pip { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; }
 .hero-pip code { font-family: var(--mono); font-size: 13.5px; color: var(--ink); background: var(--bg-soft); border: 1px solid var(--line); border-radius: 7px; padding: 5px 10px; }
@@ -299,7 +296,7 @@ p { margin: 0; }
   display: block; margin-bottom: 12px;
   color: var(--blue-ink); font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
 }
-.section-head p { margin-top: 14px; font-size: 16.5px; color: var(--muted); }
+.section-head p { margin-top: 14px; font-size: 15px; color: var(--muted); }
 
 .howgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
 .steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
@@ -319,7 +316,7 @@ p { margin: 0; }
 }
 .steps li:last-child::after { display: none; }
 .steps h3 { margin-bottom: 6px; font-size: 17px; }
-.steps p { color: var(--muted); font-size: 15px; max-width: 46ch; }
+.steps p { color: var(--muted); font-size: 14.5px; max-width: 46ch; }
 
 .arch { border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: var(--card-shadow-lg); padding: 32px 28px; }
 .arch .note { margin-top: 20px; color: var(--faint); font-size: 13px; }
@@ -426,7 +423,7 @@ p { margin: 0; }
   color: var(--icon-fg);
 }
 .pcard h3 { margin-bottom: 8px; font-size: 17px; }
-.pcard p { color: var(--muted); font-size: 14.5px; }
+.pcard p { color: var(--muted); font-size: 14px; }
 
 .convo-wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; }
 .convo { border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: var(--card-shadow-lg); overflow: hidden; }
@@ -478,10 +475,8 @@ p { margin: 0; }
 .howgrid > :last-child, .convo-wrap > :last-child, .split > :last-child { margin-top: 36px; }
 .convo-wrap > :last-child { margin-top: 37px; }
 
-#reports .split { align-items: center; }
 
 #framework .codecard pre { height: 583px; }
-#reports .split > :last-child { margin-top: 0; }
 .howgrid > :last-child { margin-top: 37px; }
 .codecard {
   border-radius: 16px; overflow: hidden;
@@ -542,7 +537,7 @@ p { margin: 0; }
 .band h2 { color: #fff; }
 .band .kicker { color: var(--slate); }
 .band .section-head p { color: #9fb0cc; }
-.band-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 40px; }
+.band-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; }
 
 .page-hero { padding: 72px 0 26px; }
 .page-hero .kicker { color: var(--blue-ink); }
@@ -760,7 +755,7 @@ p { margin: 0; }
   .arch-org-lbl, .arch-cloud-lbl { position: static; transform: none; display: inline-block; margin: 0 0 12px; justify-self: start; }
   .arch-org { padding-top: 16px; }
   .arch-node.cloud { padding-top: 16px; }
-  .header-row { flex-wrap: wrap; gap: 6px 14px; padding: 10px 0; }
+  .header-row { flex-wrap: wrap; gap: 6px 14px; padding-block: 10px; }
   .site-nav { order: 3; width: 100%; margin-left: 0; flex-wrap: wrap; }
 
   .demo-search, .demo-search span { white-space: normal; overflow-wrap: anywhere; }
