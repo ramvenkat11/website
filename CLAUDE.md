@@ -3731,3 +3731,14 @@ at 1000 (single column); three at 390. The accent phrase "across your enterprise
 letter-spacing or column tricks were needed. The h1 at 30px is still below the 36px banner
 h2s; there is now ~40px of slack per line, so ~32px would also hold two lines if Ram wants the
 hero larger.
+
+## State on 2026-09-18 (architecture: the skill is the third way in; not deployed)
+Ram: browser, chat application, skill. index.html step 1 is now "Browser, chat application,
+or skill" / "Users can submit requests through the browser, a chat application, or an agent
+skill. The browser UI also provides a complete workspace for developers and administrators."
+(his sentence with the third way added; "browser UI" is his term, left) and the diagram's
+Users pill sub-line reads "browser · chat app · skill". Measured: pill 171x59 (was 140), the
+sub-line on one row at 1920 and 390, the tag 12px above the pill, both arrow ends still on
+their nodes, the step title one line; no new sideways scroll (the 2px at 360 is the old
+.arch-lbl item). The steps column ends 96px above the diagram now - Ram's own three-step
+rewrite shortened it; not re-tuned. Zoomed screenshot checked.
