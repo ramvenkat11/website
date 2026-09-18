@@ -3702,3 +3702,20 @@ pages do). Measured: hero 15.5 > band 15 > prose 14.5 > cards 14 (heroIsLargest 
 other 15). Headings untouched (hero h1 30, banner h2 36, column h2 22 - the h1-smaller-than-
 the-banner-h2 inversion noted earlier still stands; Ram has not chosen a headline size yet).
 Platform section screenshot checked.
+
+## State on 2026-09-18 (hero content replaced with Ram's; not deployed)
+Ram's text, verbatim: h1 "Search2o is a platform to build, run, and use AI agents across your
+enterprise" (no full stop, as given) and three bullets "Search finds and runs the agent built
+for each request." / "One conversation, many agents, each building on prior work." / "Use
+from a browser, chat application, or agent skill." The old first bullet (the platform line)
+is gone - its idea is the headline now. Icons follow the meaning: magnifier / chat bubble /
+layers (the layers icon, previously on the platform bullet, now sits on the use-from bullet -
+a devices icon would fit better; flagged). The gradient accent moved to the closing phrase,
+"across your enterprise", as it had been on "one system". At 79 characters the h1 is THREE
+lines at 30px in the 518px column (1920/1280/1100) and four at 390; the first render orphaned
+"enterprise" on line three, so `.hero h1 .grad` now has white-space: nowrap and the lines
+break as "Search2o is a platform to build, run, / and use AI agents / across your enterprise"
+(accent whole at every width, 390 included). Bullets one line each at desktop, two at 390.
+Card anchor unchanged (delta ~1px, same font); hero 576px, card hangs 88px. The h1 at 30px is
+still smaller than the 36px banner h2s - and two lines are now impossible at any headline
+size (79 chars would need <=23px) - Ram's call on size.
