@@ -3719,3 +3719,15 @@ break as "Search2o is a platform to build, run, / and use AI agents / across you
 Card anchor unchanged (delta ~1px, same font); hero 576px, card hangs 88px. The h1 at 30px is
 still smaller than the 36px banner h2s - and two lines are now impossible at any headline
 size (79 chars would need <=23px) - Ram's call on size.
+
+## State on 2026-09-18 (hero headline on two lines: "A platform to build, run, and use AI agents across your enterprise"; not deployed)
+Ram: two lines - remove "Search2o is", any other tricks, size may drop. The brand came off the
+front (67 characters now), and that alone did it: at 28px the longest line measured 444px in
+the 518px column, so the size went back UP to `clamp(25px, 2.6vw, 30px)` and still holds two
+lines at 1920, 1440 and 1280 (30px, widest line 476) and 1100 (28.6px, 454 in 500); one line
+at 1000 (single column); three at 390. The accent phrase "across your enterprise" stays whole
+(nowrap kept). Card anchor `.hero-grid .demo, .hero-grid .hero-convo { margin-top: 5px }`
+(need 5.1, delta -0.1 after). Hero 575px, left column 277, card hangs 122 below it. No
+letter-spacing or column tricks were needed. The h1 at 30px is still below the 36px banner
+h2s; there is now ~40px of slack per line, so ~32px would also hold two lines if Ram wants the
+hero larger.
