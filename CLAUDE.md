@@ -3663,3 +3663,23 @@ back in use) on "one system". Two lines at 1920 and 1280 (36px), two at 1100 (33
 red guide checked on the cap tops and the card's top edge). Hero 576px; left column 321, card
 394, hang 79 (was 163 with the 20px line). No sideways scroll at 390. Both themes
 screenshotted. Still dead in styles.css: the two `.eyebrow` rules.
+
+## State on 2026-09-18 (hero headline: two lines at 30px in the column; phone header padding fixed; not deployed)
+Ram asked for the headline on one line if possible, else smaller. One line inside the 518px
+column is impossible at headline size (51 characters need ~970px at 36px), so it was TRIED
+FULL-WIDTH above both columns - one line from 768px up - and Ram rejected it: a full-width
+line reads as a page-top title, not part of the hero. REVERTED to the in-column h1 and made it
+smaller: `.hero h1 { font-size: clamp(26px, 2.5vw, 30px); line-height: 1.15 }` - two lines at
+1920/1280 (30px) and 1100 (27.5px), three at 390 (26px). Ram: "I like the two line version
+better." `.hero-points` margin-top is 26px again. Card anchor re-measured for the 30px cap
+top: `.hero-grid .demo, .hero-grid .hero-convo { margin-top: 6px }` (need 5.9; delta 0.1 after).
+Hero 576px, card hangs 95px below the left column.
+PHONE HEADER (Ram: the logo touched the left edge and the theme toggle the right - "doesn't
+look professional"): the <=640px rule `.header-row { ... padding: 10px 0 }` was the cause - the
+header row IS the .container, and the padding shorthand zeroed the container's 24px sides
+(the exact shorthand trap the artifact guidance warns about). Now `padding-block: 10px`.
+Measured at 360/390/430: logo left 24px, toggle 24px from the right edge, nav starts at 24;
+the row is 142px tall at all three because the nav wraps to two rows in the narrower width
+(it was 100px at 430 before - the price of the margins). Measured on the visible `.brand`
+anchor, not `.logo-light` - that image is display:none in dark mode and reads left 0, a
+measurement trap. Zoomed phone-header screenshot checked.
