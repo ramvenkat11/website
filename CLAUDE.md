@@ -3801,3 +3801,17 @@ started button and the copyable pip chip on one midline (447), starting at the c
 417px edge: band 222px (was 376 with the old heading), page 4,011px. 768: 182px; 390: 234px,
 no sideways scroll. Screenshot checked. The band's 88px section padding is what holds its
 height now.
+CORRECTION: Ram meant the WHOLE section - "That is why I asked whether you are recommending
+keeping it for formatting." The entire `<section class="band section" id="get-started">` is
+now deleted from index.html (no inbound #get-started link existed anywhere). The page ends on
+Platform and runs into the footer: five sections, 3,789px (was 4,165 this morning). The
+Get started routes are the nav link, the hero button and the footer link - three; the hero
+keeps the only copyable pip chip. The three `.band .hero-pip` overrides I had added minutes
+earlier are removed with it. NOW DEAD in styles.css, reported not removed: the whole `.band`
+family (.band, .band::before, .band .container, .band .section-head, .band h2, .band .kicker,
+.band .section-head p, .band-actions) and `.btn-onnavy` / `.btn-onnavy:hover` - `class="band"`
+and btn-onnavy appear nowhere in html/ now; `--band-bg` likewise. Also still dead from earlier
+today: the two `.eyebrow` rules. The soft/plain alternation ends ...framework(plain) >
+platform(soft) > footer, which reads fine (screenshot). LESSON: when Ram asks "are you
+recommending X for <reason>", he is probing whether the reason is the ONLY thing holding X up
+- answer that, and ask what he wants done rather than assuming the smaller edit.
