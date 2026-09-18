@@ -3683,3 +3683,8 @@ the row is 142px tall at all three because the nav wraps to two rows in the narr
 (it was 100px at 430 before - the price of the margins). Measured on the visible `.brand`
 anchor, not `.logo-light` - that image is display:none in dark mode and reads left 0, a
 measurement trap. Zoomed phone-header screenshot checked.
+Then Ram: why is the first bullet on two lines now? MY DOING - the reformat had raised
+`.hero-points li` from 15.5px to 16px, and "One platform to build, run, and use agents across
+your enterprise." (66 characters) only just fit the column at 15.5px. Back to 15.5px; all
+three bullets are one line at 1920, 1440 and 1280 (at 1100 the first wraps, as it did before
+the reformat). Screenshot checked.
