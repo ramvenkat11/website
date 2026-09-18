@@ -1,5 +1,9 @@
 # Why not LangChain?
 
+Search2o was created for organizations to run hundreds of agents behind one search interface. LangChain provides frameworks and tools for building and operating AI-agent applications.
+
+Comparing Search2o with LangChain is even more difficult than comparing it with Skills. But since there are some feature overlaps, readers may have this question, and we tried to answer it here. As with Skills, we gave our product documentation to Claude Fable 5.1 and asked for a comparative analysis. The rest of this page is what Claude produced. Anyone should be able to repeat this analysis on their own using the documentation on both sides.
+
 ## How this comparison works
 
 The LangChain ecosystem is not one product. LangChain and LangGraph are open-source frameworks for building agents in code. LangSmith is a commercial platform with several products inside it — Observability and Evaluation, Deployment (the Agent Server), Sandboxes, an LLM Gateway, Engine. LangSmith Fleet is a no-code product for creating and sharing agents across a company. They have separate licenses, deployment paths, and prices, and they don't compose into one install: Fleet's per-agent permissions apply to Fleet agents, not to a LangGraph graph you deployed, and LangGraph's determinism applies to graphs you author, not to Fleet agents.

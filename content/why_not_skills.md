@@ -1,5 +1,9 @@
 # Search2o vs Agent Skills (SKILL.md) — a product and technology comparison
 
+Skills was created for individuals to get work done. Search2o was created for programmers to build solutions for their organization. Even with that fundamental difference, the two overlap a great deal.
+
+We gave our product documentation to Claude Fable 5.1 and asked for a comparative analysis. Anthropic created Claude and created Skills, so we hope the result carries more weight than our own analysis would. The rest of this page is what Claude produced. Anyone should be able to repeat this analysis on their own using our docs.
+
 ## The organizing axis
 
 A skill is a capability a person adds to their own assistant. On claude.ai, custom skills are individual to each user and cannot be centrally managed; on the Claude API they are shared workspace-wide; in Claude Code they are personal or per project. In every case each person runs a skill inside their own session, with their own permissions, and the author is out of the picture once it is shared.

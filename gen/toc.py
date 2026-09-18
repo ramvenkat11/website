@@ -8,8 +8,6 @@ TOC = [
     ("introduction", "Introduction", [
         ("what-is-search2o", "What is Search2o"),
         ("why-not-python", "Why not Python?"),
-        ("why-not-skills", "Why not Skills?"),
-        ("why-not-langchain", "Why not LangChain?"),
         ("parts-of-the-system", "Parts of the system"),
         ("how-it-fits-together", "How it fits together"),
     ]),
