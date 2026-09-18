@@ -3610,3 +3610,9 @@ REPORTED, NOT CHANGED: (1) the h1 is "Search that executes" with NO full stop, w
 footer brand line on this page and all three other site pages say "Search that executes." -
 the decided tagline has the stop; (2) the .def line "Turn hundreds of focused AI agents into
 one system" has no full stop while the three bullets under it do.
+Then Ram: the filled Submit "should not be styled like the user's request" - a filled blue
+pill is what the user's own bubbles are, so the agent's control was wearing the user's colour.
+REVERTED to the outlined form of the previous step: `.turn-agent .ask .submit` is --card
+background with a 1px --blue border and --blue-ink text at weight 650. So the highlight he
+asked for stays, without the fill. Computed: submit bg rgb(15,25,48) / border rgb(77,141,255)
+against the user bubble's solid rgb(59,130,246) - clearly different now. Screenshotted.
