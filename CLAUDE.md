@@ -3772,3 +3772,24 @@ Then Ram supplied the Reports card's sentence: the card reads "What ran, what fa
 cost. Eight reports show trends in agent performance, errors, LLM cost and usage along with
 details." (his sentence verbatim, the h2 opener kept; the "Four reports" and "Each row
 opens" sentences are gone).
+
+## State on 2026-09-18 (closing band: one line + the install chip, no heading; not deployed)
+Ram asked whether the band was useless. MEASURED before answering: the page is 4,165px (4.5
+screens), the band 376px, and gettingstarted.html already had FOUR routes (nav, hero button,
+this band, footer) - so the slot earns its place as the page's only closing action but the
+content did not. Ram: do it, and he noted the license/LLM-key requirement is also stated on
+gettingstarted, in the PyPI readme, and by the agent server itself when started without one.
+BUILT: the band's whole .section-head (kicker "Getting started", h2 "From install to your
+first search") is gone; what remains is `<p class="band-line">Start on your laptop with a
+Search2o license and one LLM API key.</p>` and a .band-actions row of the Get started button
+plus the hero's copyable `pip install search2o` chip (markup reused verbatim, so site.js's
+[data-copy] handler picks it up - 2 copy buttons on the page now, both bound at load).
+styles.css: `.band-line` (62ch, #c7d2e6, 15px), .band-actions gap 14 -> 18 and margin-top 40
+-> 26, and three `.band .hero-pip` overrides so the chip reads on navy in BOTH themes
+(rgba white .07 fill, .18 border, #eef2f9 text; copy icon #9fb0cc, white on hover) - the band
+is dark in both themes while --bg-soft/--ink are not. Measured: band 376 -> 273px, page
+4,165 -> 4,062; button, chip and copy icon on one midline (447.2); 26px from the line to the
+row; 390 and 768 fine, no sideways scroll. Both themes screenshotted. NAMING, flagged: the
+chip keeps the class `hero-pip` in the band - reused rather than renamed to keep the hero
+untouched. OPEN: Ram may still cut the "Start on your laptop..." line as redundant, which
+would leave the band as the button + chip alone.
