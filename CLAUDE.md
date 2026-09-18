@@ -3815,3 +3815,23 @@ today: the two `.eyebrow` rules. The soft/plain alternation ends ...framework(pl
 platform(soft) > footer, which reads fine (screenshot). LESSON: when Ram asks "are you
 recommending X for <reason>", he is probing whether the reason is the ONLY thing holding X up
 - answer that, and ask what he wants done rather than assuming the smaller edit.
+
+## State on 2026-09-18 (footers: Product column rebuilt from the real sections, all 9 pages; not deployed)
+Ram: the footer links are outdated, and "the ordering should match the sections". He is right,
+and one of these had been flagged-not-fixed since 2026-09-15: "How it works" pointed at
+index.html#how-it-works, an anchor that died when the hero demo replaced that section - noted
+as OPEN then and left, which is how it survived today's commits. Today's removals added a
+second: "Reports" pointed at a section I deleted (I had retargeted it to #platform, a
+misleading landing).
+AUDITED every footer link on all 9 non-docs pages against the real ids, then rewrote the
+Product column to BE the page's sections in order: Search (#description) / System architecture
+(#system-architecture) / Agent framework (#framework) / Platform (#platform) / Pricing
+(pricing.html). "How it works" and "Reports" are GONE - neither is a section now (Reports is a
+Platform card). Each label matches the kicker of the section it lands on, verified in the
+browser. Applied with the right prefix per page: bare on the four site pages, `../` on the four
+legal pages, `/` on 404.html (absolute by design - CloudFront serves it under any URL, and a
+naive checker reports those as missing; resolve them against html/ instead).
+RE-AUDIT: 0 broken footer links across all 9 files, anchors and files both. Resources, Company
+and Legal columns were already correct and are untouched. Screenshot checked.
+LESSON: a flagged-but-unfixed broken link is still a broken link - when a section is removed,
+sweep the footers in the same commit rather than filing it as an open item.
