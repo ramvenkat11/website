@@ -3560,3 +3560,11 @@ REMOVED. CONSEQUENCE: the left column ends 113px above the card's bottom again (
 were level under the fill design); the 49px reserved message row and the fixed 154px button
 still keep the row from jumping. Section 841px, no sideways scroll at 390. Screenshot
 checked (dark).
+
+## State on 2026-09-18 (hero ask: Submit carries the highlight, Book only the selected dot; not deployed)
+Ram: Submit is the one that should be highlighted; Book is selected. styles.css: `.turn-agent
+.ask .opts i.on` lost its blue border (ink text and the filled blue radio dot still mark the
+selection); `.turn-agent .ask .submit` now has a 1px --blue border, --blue-ink text and weight
+650 - an OUTLINED highlight, not a filled button, so the 09-02 rule that the hero demo never
+competes with Get started still holds. Computed styles checked (Book border = --line, dot =
+--blue, Submit border = --blue); both themes screenshotted.
