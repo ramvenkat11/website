@@ -3864,3 +3864,27 @@ examples (the md lists time.sleep and synchronous network calls; asyncio left th
 VERIFIED: 133 pages, 31 examples valid, no broken link or anchor on the page, both tables and
 all four code blocks fit at 770px, no sideways scroll at 390 or 768, 1,377 words, nine h2s and
 four h3s, the figure still renders. A sweep of docsrc for the old claims returns nothing.
+
+## State on 2026-09-18 (docs titles: the eight "The ..." titles renamed; NOT DEPLOYED)
+Ram asked why titles carry a definite article - 8 of 132 did - and then: all 8, using Overview
+where appropriate. gen/toc.py: "The license key" -> License key; "The GUI" -> Opening the GUI
+(it sits among "Running the server" and "Your first agent" in Getting started, so a gerund
+matches); "The three vendors" -> LLM vendors (it also counted something that could become
+four); "The agent editor" -> Agent editor; "The allowlist" -> Allowlist; "The secret vault" ->
+Secret vault; and the two SECTION-OVERVIEW pages, runtime/overview "The agent runtime" and
+rest-api/overview "The REST API", are both "Overview" - the article had been papering over the
+page repeating its own section's name in the sidebar, which now reads "Agent runtime >
+Overview" and "REST API > Overview".
+Titles live only in toc.py, so slugs, URLs and every inbound href are untouched; the h1,
+<title>, sidebar, prev/next and the section index cards all follow automatically (verified for
+all eight). PROSE LINK TEXT also updated where a link named a renamed page - five link texts
+across nine files (syntax, draft-with-ai, gui/agents, gui/guardrails, llm-adapters,
+profiles/overview, system-variables, license-rotation, your-first-agent); confirmed by
+diffing the changed substrings that ONLY the anchor text moved ("The a" -> "A" etc), not the
+surrounding prose. Sentences that legitimately say "the allowlist" mid-sentence are untouched.
+133 pages, 31 examples valid, 0 broken links or anchors across html/docs.
+FLAGGED: the other two `overview`-slug pages are titled descriptively - profiles/overview is
+"How profiles work" and chat-integrations/overview is "How a chat integration works" - so four
+overview pages now use two naming styles. Ram's call whether those two become "Overview" too.
+The in-app docs summaries (s2oserver maintenance/docs_create.py) read these titles and want
+regenerating on his side.
