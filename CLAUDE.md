@@ -3688,3 +3688,17 @@ Then Ram: why is the first bullet on two lines now? MY DOING - the reformat had 
 your enterprise." (66 characters) only just fit the column at 15.5px. Back to 15.5px; all
 three bullets are one line at 1920, 1440 and 1280 (at 1100 the first wraps, as it did before
 the reformat). Screenshot checked.
+
+## State on 2026-09-18 (body-copy scale: the hero bullets are the largest body text; not deployed)
+Ram (after asking whether the hero was smaller than the rest): the hero is the most
+important, reduce the others to sit under it - "I am not sure what a good size is". Applied
+scale, hero bullets UNCHANGED at 15.5px (raising them to 16 wraps the first bullet - see
+above): section prose 14.5px - the three inline-styled paragraphs in index.html (Search
+:106, framework :186, reports :286) 15.5 -> 14.5 and `.steps p` 15 -> 14.5; card text 14px
+(`.pcard p` 14.5 -> 14); banner intro lines 15px (`.section-head p` 16.5 -> 15 - the only
+instance on the home page is the get-started band's line, which at 16.5 had been LARGER than
+the hero; the rule is shared with any other page using .section-head p - none of the four site
+pages do). Measured: hero 15.5 > band 15 > prose 14.5 > cards 14 (heroIsLargest true, max
+other 15). Headings untouched (hero h1 30, banner h2 36, column h2 22 - the h1-smaller-than-
+the-banner-h2 inversion noted earlier still stands; Ram has not chosen a headline size yet).
+Platform section screenshot checked.
