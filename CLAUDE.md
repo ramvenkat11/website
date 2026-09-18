@@ -3623,3 +3623,9 @@ label keeps `color: var(--ink)` so Book is legibly the selected option against H
 text; both pills keep the --line border. Submit's blue border is now the only colour in the
 form. Checked in the browser (Book dot rgb(238,243,251) = --ink in dark, Hold's dot
 transparent, Submit border rgb(77,141,255)).
+Ram's final word on the pills: Book indistinguishable except for the dot, and the dot is
+filled. `.turn-agent .ask .opts i.on { color: var(--ink) }` is DELETED, so only
+`...i.on::before { background: var(--ink); border-color: var(--ink) }` remains. Verified: the
+two pills' computed styles are byte-identical (same --muted text, --line border, --card
+background, weight 600); the only difference is the dot, filled --ink on Book against Hold's
+hollow --slate ring.
