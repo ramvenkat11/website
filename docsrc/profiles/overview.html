@@ -16,7 +16,7 @@
 <ul>
   <li><strong>Moving between environments.</strong> The same agents run against development, staging and production by changing the profiles, not the agents. An agent that names <code>orders_db</code> does not know which database that is.</li>
   <li><strong>Retiring a model or a service.</strong> When a model is sunset or an API moves, one profile changes and every agent follows.</li>
-  <li><strong>Keeping credentials out of agents.</strong> A profile's headers and connection string are dynamic strings, so a credential is a <code>sys.secret</code> reference read at call time; see <a href="../security/secret-vault.html">The secret vault</a>.</li>
+  <li><strong>Keeping credentials out of agents.</strong> A profile's headers and connection string are dynamic strings, so a credential is a <code>sys.secret</code> reference read at call time; see <a href="../security/secret-vault.html">Secret vault</a>.</li>
 </ul>
 
 <h2>Rules that apply to every profile</h2>

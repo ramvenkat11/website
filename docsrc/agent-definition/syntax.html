@@ -23,7 +23,7 @@
   <li>The read-only <code>sys</code> and <code>command</code> namespaces, and the <code>inputs</code>, <code>query</code>, <code>result</code> and <code>exc</code> variables. See <a href="variables.html">Variables and namespaces</a>.</li>
   <li>Functions and objects on the <a href="../runtime/allowlist.html">allowlist</a>, and the public members of allowlisted objects.</li>
 </ul>
-<p>Nothing else is available. Names that are not on the allowlist, private and dunder members, and <code>import</code> are all unavailable. The rules are set out in <a href="../runtime/allowlist.html">The allowlist</a> and <a href="../runtime/compile-rules.html">Compile rules</a>.</p>
+<p>Nothing else is available. Names that are not on the allowlist, private and dunder members, and <code>import</code> are all unavailable. The rules are set out in <a href="../runtime/allowlist.html">Allowlist</a> and <a href="../runtime/compile-rules.html">Compile rules</a>.</p>
 
 <h2>Awaiting</h2>
 <p>When the whole expression is a call to an async function, the result is awaited automatically, so <code>await</code> is optional there. Inside a larger expression, an async call must be awaited explicitly. To run several calls at once, use the <a href="../commands/parallel.html">parallel</a> command.</p>

@@ -15,9 +15,9 @@ TOC = [
     ]),
     ("getting-started", "Getting started", [
         ("registering-and-downloading", "Creating an account and downloading"),
-        ("license-key", "The license key"),
+        ("license-key", "License key"),
         ("running-the-server", "Running the server"),
-        ("the-gui", "The GUI"),
+        ("the-gui", "Opening the GUI"),
         ("your-first-agent", "Your first agent"),
     ]),
     ("agent-definition", "Agent definition", [
@@ -33,7 +33,7 @@ TOC = [
         ("conversation-state", "Conversation state"),
     ]),
     ("llm", "LLM", [
-        ("vendors", "The three vendors"),
+        ("vendors", "LLM vendors"),
         ("llm-adapters", "Connecting to other LLMs"),
         ("code-from-llm", "Executing code from an LLM"),
     ]),
@@ -72,14 +72,14 @@ TOC = [
     ]),
     ("development", "Development process", [
         ("drafts", "Drafts"),
-        ("code-editor", "The agent editor"),
+        ("code-editor", "Agent editor"),
         ("draft-with-ai", "Draft with AI"),
         ("trace-and-validation", "Trace and validation"),
         ("publishing", "Publishing"),
     ]),
     ("runtime", "Agent runtime", [
-        ("overview", "The agent runtime"),
-        ("allowlist", "The allowlist"),
+        ("overview", "Overview"),
+        ("allowlist", "Allowlist"),
         ("system-variables", "System variables"),
         ("compile-rules", "Compile rules"),
         ("runtime-limits", "Runtime limits"),
@@ -111,7 +111,7 @@ TOC = [
     ]),
     ("security", "Security and privacy", [
         ("license-rotation", "License key rotation"),
-        ("secret-vault", "The secret vault"),
+        ("secret-vault", "Secret vault"),
         ("encryption", "Encryption"),
         ("data-privacy", "Data privacy"),
         ("multiple-environments", "Running multiple environments"),
@@ -128,7 +128,7 @@ TOC = [
         ("personal", "Profile, notifications and docs"),
     ]),
     ("rest-api", "REST API", [
-        ("overview", "The REST API"),
+        ("overview", "Overview"),
         ("authentication", "Authentication"),
         ("running-agents", "Running agents"),
         ("streaming", "Streaming"),

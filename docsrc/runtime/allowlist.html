@@ -1,32 +1,65 @@
-<p class="lead">The allowlist is the complete set of functions and objects that an agent's Python expressions may reach. Expressions have no builtins of their own: the allowlist takes the place of Python's builtins, so a name that is not on the allowlist does not exist for an agent. Developers edit the allowlist in the GUI under Guardrails, and the allowlist applies to every agent in the account.</p>
+<p class="lead">The allowlist is the complete set of names that an agent's Python expressions may use. Expressions do not get Python's builtins; the allowlist takes their place, so a name that is not on the allowlist does not exist for an agent, and an expression that uses it is refused before the agent ever runs. The allowlist applies to every agent in the account, and developers edit it in the GUI under Guardrails.</p>
 
 <h2>How expressions are contained</h2>
 <p>Expressions are contained at the application level, not by the operating system. Four things decide what an expression may do: the allowlist decides which names the expression can reach; the <a href="compile-rules.html">compile rules</a> decide which operators and which shapes of expression are accepted; the <a href="runtime-limits.html">runtime limits</a> bound a run in time, iterations, rows and LLM spend; and the scope rules below decide which variables are visible. The runtime does not limit memory or CPU. Rewriting an operator to a function of your own is the tool for operations that could load the server.</p>
 <!--figure:expression-bounds-->
 
-<h2>Entry forms</h2>
-<p>One entry per line. Anything after <code>#</code> is a comment, and blank lines are ignored. The server resolves an entry in one of three ways.</p>
-<x-code lang="text" title="The three forms, and an alias">
-len                              # a Python builtin
-str.join                         # a method of a builtin type
-math.sqrt                        # imported from the module before the last dot
-datetime.datetime as datetime    # any form, under an alias
-mycompany.vault.get_secret       # anything importable on the server
+<h2>One entry per line</h2>
+<p>Each line names one thing to allow, and blank lines are ignored. Anything after a <code>#</code> is a comment. A line that is only a comment is ignored, so comments can be used to group a long allowlist into sections.</p>
+<x-code lang="text">
+# Text handling
+json.loads
+json.dumps
+re.sub              # replace matches in a string
 </x-code>
-<ul>
-  <li>A single name is looked up among Python's builtins: <code>len</code>, <code>str</code>, <code>int</code>, <code>sorted</code>.</li>
-  <li>Two names, the first of which is a builtin type, give one method of that type: <code>str.join</code>, <code>dict.items</code>.</li>
-  <li>Any other dotted path is split at the last dot. The part before the dot is imported as a module, and the last name is read from that module: <code>math.sqrt</code>, <code>json.loads</code>, <code>mycompany.vault.get_secret</code>.</li>
-  <li><code>as</code> gives the entry the name expressions use. Without an alias, expressions use the entry's full dotted name: <code>json.loads(...)</code>, not <code>loads(...)</code>.</li>
-</ul>
-<p>A wildcard such as <code>os.path.*</code> is not an entry form and adds nothing. The last name in a dotted path may itself be a module. <code>os.path</code>, for example, makes every public function of <code>os.path</code> reachable. We would suggest listing the functions an agent needs, one by one, rather than the module that holds them.</p>
 
-<h2>What an entry makes reachable</h2>
-<ul>
-  <li>The name itself, and every public member of the object behind the name. A class on the allowlist can be called to construct an object, and the object's public members can be used.</li>
-  <li>Private and dunder members are refused, even on an allowlisted object. Any name that starts with an underscore is refused, whether the name is a variable, an attribute, a function or a keyword argument.</li>
-  <li><code>import</code> is not available in an expression. Everything an agent can use is imported by the allowlist.</li>
-</ul>
+<h2>What an entry can be</h2>
+<p>There are six forms. The last column shows how an agent writes it in an expression.</p>
+<div class="tablewrap"><table class="fields compare">
+<thead><tr><th>Form</th><th>Example</th><th>Used as</th></tr></thead>
+<tbody>
+<tr><td>A Python builtin</td><td><code>len</code></td><td><code>len(items)</code></td></tr>
+<tr><td>A builtin type</td><td><code>str</code></td><td><code>str(5)</code></td></tr>
+<tr><td>One method of a builtin type</td><td><code>str.join</code></td><td><code>str.join('-', parts)</code></td></tr>
+<tr><td>One name from a module</td><td><code>math.sqrt</code></td><td><code>math.sqrt(16)</code></td></tr>
+<tr><td>A whole module</td><td><code>math</code></td><td><code>math.sqrt(16)</code></td></tr>
+<tr><td>Everything public in a module</td><td><code>math.*</code></td><td><code>sqrt(16)</code></td></tr>
+</tbody></table></div>
+<p>A module inside a package is named in full. <code>urllib.parse</code> allows that module, and <code>xml.etree.ElementTree</code> allows that one.</p>
+<p>The same forms allow your own code. <code>mycompany.vault.get_secret</code> is resolved the same way as <code>math.sqrt</code>, as long as the package is installed beside the agent server.</p>
+
+<h3>Renaming an entry with <code>as</code></h3>
+<p>Any entry can be given the name that expressions will use.</p>
+<x-code lang="text">
+math.sqrt as sqrt                # sqrt(16)
+datetime.datetime as datetime    # datetime(2026, 1, 2)
+</x-code>
+<p>Without <code>as</code>, an expression uses the entry as written. <code>math.sqrt</code> is used as <code>math.sqrt(16)</code>.</p>
+<p>An entry that ends in <code>.*</code> cannot be renamed. There is nothing to rename, because that form brings in many names at once. An <code>as</code> on such a line is refused when the allowlist is saved.</p>
+
+<h3>Choosing between the forms</h3>
+<p>Naming one function is the narrowest choice, and it is the one we would suggest. <code>math.sqrt</code> allows that function and nothing else in the module.</p>
+<p>Allowing a whole module is convenient when agents use many of its functions. It allows every public function in that module, so it is worth knowing what is in the module first.</p>
+<p>The <code>.*</code> form puts the names into the expression directly, without the module in front. It also replaces any earlier entry of the same name. <code>math.*</code> provides a <code>pow</code>, so a <code>pow</code> entry higher up the list is no longer Python's <code>pow</code>. One of the other forms is best unless short names are what you want.</p>
+
+<h2>What a name gives an agent</h2>
+<p>An entry allows the name itself and the public members of the object behind it.</p>
+<p>A class brings its methods with it. An entry of <code>str</code> allows <code>str.join</code> and <code>str.split</code> without an entry for either. The same is true of <code>dict</code>, <code>list</code> and the other builtin types.</p>
+<p>An allowlisted class can be used to construct an object, and the public members of that object can be used.</p>
+
+<h3>A module does not open the modules it uses</h3>
+<p>A module entry allows what is in that module. It does not allow the modules that module imports.</p>
+<p>Python modules import each other freely. The <code>json</code> module imports <code>codecs</code>, and <code>uuid</code> imports <code>os</code>. Without this rule, allowing <code>json</code> would quietly allow <code>codecs.open</code>, and allowing <code>uuid</code> would allow the operating system.</p>
+<x-code lang="text">
+json                # json.dumps and json.loads are allowed
+                    # json.codecs is refused
+</x-code>
+<p>The same holds for a package. Allowing <code>urllib</code> does not allow <code>urllib.parse</code>. Name <code>urllib.parse</code> when that is what agents need.</p>
+
+<h3>What is always refused</h3>
+<p>Any name that starts with an underscore is refused. This covers private names and dunder names. The rule holds for a variable, an attribute, a function and a keyword argument, and it holds on an allowlisted object too.</p>
+<p><code>format</code> and <code>format_map</code> are refused on every object. A format string is read when the expression runs, so it can reach places that are checked nowhere else. Use an f-string instead.</p>
+<p><code>import</code> is not available in an expression. Everything an agent can reach is named in the allowlist.</p>
 <p>The rules for what an expression may contain, beyond names, are listed in <a href="compile-rules.html#what-validation-refuses">Compile rules</a>.</p>
 
 <h2>Scope of an expression</h2>
@@ -39,20 +72,31 @@ mycompany.vault.get_secret       # anything importable on the server
 </ul>
 <p>No other variables, objects or runtime state are accessible. See <a href="../agent-definition/variables.html">Variables and namespaces</a>.</p>
 
-<h2>Always present</h2>
-<p><code>getattr</code> and <code>setattr</code> are available in every expression without an entry. The agent server provides its own versions, which accept only a public attribute name: a name that starts with an underscore, and the names <code>format</code> and <code>format_map</code>, are refused. An attribute reached through <code>getattr</code> therefore obeys the same rule as a dotted name. The server's versions take precedence over an allowlist entry of either name.</p>
+<h2>Two names that are always present</h2>
+<p><code>getattr</code> and <code>setattr</code> are available in every expression, with no entry.</p>
+<p>The agent server provides its own versions. They accept only a public attribute name: a name that starts with an underscore is refused, and so are <code>format</code> and <code>format_map</code>. An attribute reached through <code>getattr</code> therefore obeys the same rules as one reached with a dot.</p>
+<p>These versions take precedence. An allowlist entry named <code>getattr</code> or <code>setattr</code> does not replace them.</p>
 
-<h2>Async functions</h2>
-<p>Expressions run on the agent server's shared event loop, so a function that blocks the loop must not be allowlisted. <code>asyncio.run</code>, <code>time.sleep</code> and synchronous network calls are examples. Async functions are welcome: when the whole expression is a call to an async function, the result is awaited automatically. Inside a larger expression, an async call must be awaited with <code>await</code>. See <a href="../agent-definition/syntax.html#awaiting">Awaiting</a>.</p>
+<h2>Functions must not block</h2>
+<p>Expressions run on the agent server's shared event loop. A function that blocks that loop holds up every agent on the server, so such a function does not belong on the allowlist. <code>time.sleep</code> and synchronous network calls are examples.</p>
+<p>Async functions are welcome. When the whole expression is a call to an async function, the result is awaited for you. Inside a larger expression, use <code>await</code>; see <a href="../agent-definition/syntax.html#awaiting">Awaiting</a>.</p>
+
+<h2>When an entry is wrong</h2>
+<p>Every entry is resolved when the allowlist is saved. If any line fails, the allowlist is not saved, and each failing line is reported with its own message.</p>
+<x-code lang="text">
+nosuchmodule       Could not be imported.
+math.nope          Could not be imported.
+math.* as m        A star import cannot be renamed with 'as'.
+</x-code>
+<p>The line is reported exactly as it was written, so a long allowlist shows which rows to fix.</p>
+<p>Once the allowlist is saved, every agent server rebuilds its names before the next agent run. No restart is needed; see <a href="overview.html#how-a-change-reaches-every-server">How a change reaches every server</a>.</p>
+<p>Each server resolves each entry in its own Python environment. An entry that cannot be imported on one server is skipped there, a message is written to that server's log, and the rest of the allowlist still loads. A package installed on one server and missing on another shows up this way, so it is worth keeping the environments of your servers the same.</p>
 
 <h2>Registering your own code</h2>
-<p>The allowlist is also where custom code enters the runtime. A package your agents need is installed next to <code>search2o</code> in the server's environment, on every agent server.</p>
+<p>The allowlist is also how your own code enters the runtime. Install the package beside the agent server, on every agent server, and name it in the allowlist.</p>
 <ul>
-  <li>An <a href="../llm/llm-adapters.html">LLM adapter</a>: a class that extends <code>LlmAdapter</code>. When the allowlist is built, each such class is constructed once with no arguments, and a class that cannot be constructed is written to the server's log.</li>
-  <li>A function that reads your own <a href="../security/secret-vault.html">vault</a>, called from expressions and from the dynamic strings of a profile.</li>
-  <li>A function that a <a href="compile-rules.html#rewriting-an-operator">Python operator</a> is rewritten to.</li>
+  <li>An <a href="../llm/llm-adapters.html">LLM adapter</a> is a class that extends <code>LlmAdapter</code>. Each such class on the allowlist is constructed once, with no arguments, when the names are built. A class that cannot be constructed is reported.</li>
+  <li>A function that reads your own <a href="../security/secret-vault.html">vault</a> can be called from expressions and from the dynamic strings of a profile.</li>
+  <li>A function that a <a href="compile-rules.html#rewriting-an-operator">Python operator</a> is rewritten to must be on the allowlist, and it must take the two values that operator works on.</li>
 </ul>
-
-<h2>When the allowlist changes</h2>
-<p>When the allowlist is saved, the agent server behind the GUI resolves every entry first. An entry that cannot be imported refuses the save, and the GUI shows which entries failed. Once saved, every agent server rebuilds the namespace before its next agent run, so the change is live everywhere without a restart; see <a href="overview.html#how-a-change-reaches-every-server">How a change reaches every server</a>. Each server imports each entry from its own Python environment. An entry that cannot be imported there is skipped, the message <code>Error importing '...'</code> is written to that server's log, and the remaining entries still load. A package present on one server and missing on another shows up this way, so it helps to keep the environments of your servers identical.</p>
 <!--fields:model:EvalAllowlistModel-->
