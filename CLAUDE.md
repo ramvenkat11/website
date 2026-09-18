@@ -3568,3 +3568,10 @@ selection); `.turn-agent .ask .submit` now has a 1px --blue border, --blue-ink t
 650 - an OUTLINED highlight, not a filled button, so the 09-02 rule that the hero demo never
 competes with Get started still holds. Computed styles checked (Book border = --line, dot =
 --blue, Submit border = --blue); both themes screenshotted.
+Then Ram: "Submit is the one that should be highlighted - that's what user's clicks on" - the
+outlined treatment was not enough. `.turn-agent .ask .submit` is now a FILLED button: --blue
+background, white text, weight 650, same small size. This SUPERSEDES the 09-02 "quiet
+outlined pill" rule for the hero's ask form - Ram wants the click target obvious. Computed:
+bg rgb(77,141,255), white text; both themes screenshotted. (Ram has also edited the hero
+copy himself meanwhile - "Turn hundreds of focused AI agents into one system." and shorter
+bullets - his, untouched.)
