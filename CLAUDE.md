@@ -3575,3 +3575,17 @@ outlined pill" rule for the hero's ask form - Ram wants the click target obvious
 bg rgb(77,141,255), white text; both themes screenshotted. (Ram has also edited the hero
 copy himself meanwhile - "Turn hundreds of focused AI agents into one system." and shorter
 bullets - his, untouched.)
+
+## State on 2026-09-18 (home hero: the "Free until you're convinced" eyebrow is gone; not deployed)
+Ram: remove "free until" from the home page. index.html:50, the whole `<span class="eyebrow">`
+with its green dot, is deleted; the hero now opens with the h1. pricing.html's h1 "Free until
+you're convinced" is untouched (he said the home page). The .eyebrow and .eyebrow .dot rules
+in styles.css are now UNUSED - no other page or template carries the class - reported, not
+removed.
+CONSEQUENCE FIXED IN THE SAME SECTION: the 09-02 rule is that the hero card's top sits on the
+h1's glyph top, and the 75px margin on `.hero-grid .demo, .hero-grid .hero-convo` had been
+calibrated to the eyebrow's height, so the card hung 75px low once it went. Re-derived by
+re-inserting the eyebrow in the DOM to recover the old h1 box top (210) against the grid top
+(153): the h1 box-top to glyph-top offset is 18px, so the margin is now 18px. Measured after:
+card top 171 == h1 box top 153 + 18, delta 0. The <=1000px rule still zeroes it. Hero 588px
+tall (was 664), the card hangs 97px below the left column, no sideways scroll at 390.
