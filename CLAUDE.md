@@ -3925,3 +3925,40 @@ the paid service may start before the beta ends, and the same objection still ap
 The brand renders mixed case (.page-hero h1 has no text-transform - checked, since the kicker
 above it IS uppercased). One line at 1920, 768 and 390; no sideways scroll. The metas are
 about the tiers, not the beta, and are untouched and still accurate. Screenshot checked.
+
+## State on 2026-09-18 (NEW docs section "Skill integration", after Chat integrations; NOT DEPLOYED)
+Ram: a new section after Chat integrations, written from content/agentskill.md. THREE PAGES
+plus the section index (135 pages now), toc slugs skill-integration/{overview,
+installing-the-skill, operating-notes}:
+- "How the skill works" (overview): why an agent and not code the assistant writes (the
+  boundary argument), the Claude Code ticket example (PAY-2291), why ONE skill for all agents
+  (Anthropic's 20-skills-per-request limit and recall guidance; Search2o does the routing),
+  what the skill does (the two REST calls, search and execAgent, and the five-step flow), what
+  Search2o provides behind it (the md's nine bullets, each linked to its docs page), and a
+  Sources paragraph (agentskills.io and the two Anthropic pages, checked Sept 18 2026 - kept
+  because the page quotes Anthropic's numbers).
+- "Installing the skill": prerequisites as the lead; Authorization (the per-person integration
+  token, SEARCH2O_TOKEN / ~/.search2o/token, SEARCH2O_SERVER, paste-per-session and revoke);
+  Where it works (open standard, ~40 clients, local vs hosted clients, plugin distribution
+  in Claude Code); the folder; the full SKILL.md; the script; the closing paragraph on the
+  full script (error envelope, mustLogin) and the 600-second timeout.
+- "Operating notes": long-running agents, testing when the skill fires, tag scoping, refusal
+  is a feature.
+Section index lead and a docs home card (after Chat integrations) added; sitemap 4 new URLs.
+VERIFIED, not assumed: /api/exec/search and /api/exec/execAgent and mustLogin are what the
+REST pages document; the 600 s timeout matches maxAgentRuntime's default of 600 in the
+generated runtime-limits table; tokens are created from the GUI as connecting-a-person says.
+VOCABULARY applied to my writing (this is a docs page written FROM the md, not a reproduced
+document): the md's "hosted sandbox" is "hosted environment" - the pages contain no "sandbox";
+"under half a second" is written as the site's "less than 0.5 seconds"; "Treat any token that
+has been sent in a chat as one to revoke" -> "is best revoked afterwards" (politeness rule).
+Everything else is the md's wording.
+THE SCRIPT BLOCK: the md's python had two 100+-character lines; the pre fits ~92 chars at
+13.25px mono, so the block scrolled sideways by 93px and hid text (the standing rule: never
+let a code line overflow). Reflowed: TOKEN across two lines, the Request() call across three,
+and the trailing comment shortened to "# search or execAgent, then the body". Longest line
+91; all three blocks measure 0 overflow. No sideways page scroll at 390 on any of the four
+pages. Sidebar order Chat integrations > Skill integration > Support and licensing; no
+broken links in the section; 31 examples valid (the new blocks are text/markdown/python, so
+not validated). The in-app docs summaries need regenerating on the s2oserver side for the
+four new pages.
