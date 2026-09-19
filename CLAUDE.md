@@ -4050,3 +4050,13 @@ the local server at 1920: two lines at 30px, widest line 490px in the 518px colu
 unchanged (158 vs h1 box top 153 + the 5px anchor), no sideways scroll. Zoomed screenshot
 checked. The metas and footer already said "built around a search interface" and are
 untouched.
+
+## State on 2026-09-19 (footer platform sentence matches the hero; not deployed)
+Ram edited the hero himself to "... AI agents &mdash; with a search interface" ("with", not
+my "behind") and asked for the footer line to match. The bottom-right footer sentence on all
+NINE non-docs pages (index, gettingstarted, pricing, about, 404, legal x4) is now "A platform
+to build, run, and use AI agents &mdash; with a search interface." (full stop kept - the
+footer's lines are sentences). The docs footer carries no platform sentence, so gen/build.py
+is untouched. NOT CHANGED, flagged: index.html's meta and og descriptions (lines 8 and 10)
+still open "Search2o is a platform for creating and running AI agents, built around a search
+interface." - the old wording.
