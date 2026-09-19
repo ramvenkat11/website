@@ -4122,3 +4122,10 @@ Ram restored the markdown in content/legal/privacy.md (1 h1, 13 h2, 30 bullets, 
 3 code spans). html/legal/privacy.html regenerated with the plain converter (no git-HEAD
 guide): the result is BYTE-IDENTICAL to the guided version from earlier today, and the
 normalized page text == the md with markers stripped. The guide trick is retired.
+
+## State on 2026-09-19 (diagram: Users sub-line "Browser · Chat · Skill"; not deployed)
+Ram: "Chat app" -> "Chat" in the architecture box. index.html:150 is now
+`<em>Browser &middot; Chat &middot; Skill</em>`. No width rule needed changing - the pill is
+inline-flex and sizes to its content: 171 -> 151px wide, sub-line one row (113px), the tag on
+the border still 12px above the pill, both arrow ends on their nodes, no sideways scroll at
+375. Desktop screenshot checked.
