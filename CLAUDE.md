@@ -4196,3 +4196,8 @@ Ram: tell people registering that they will not receive any email. Step 1 now ha
 between its h2 and the form card (gettingstarted.html:55): "Your license key appears right
 here when you create the account. No email is sent." - a plain step paragraph, the same style
 as the other steps' text. The success note under the key box is unchanged.
+
+## State on 2026-09-19 (skill docs: h2 "One skill for all the agents in Search2o"; not deployed)
+Ram: on "What the skill does" (skill-integration/finding-and-running-an-agent.html) the h2
+"One skill for every agent" is now "One skill for all the agents in Search2o". Its anchor id
+follows the text (no page linked the old anchor). Docs rebuilt, 137 pages.
