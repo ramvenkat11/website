@@ -4088,3 +4088,16 @@ two boundaries checked, dark and light: a hairline plus the shade change.
 LEFTOVER: html/_phone.html, a one-line iframe harness I created for the phone measurements,
 is still on disk - the rm was refused by the auto-mode classifier. It is UNTRACKED and MUST
 be deleted before any deploy (deploy.sh syncs everything under html/). Ram: `rm html/_phone.html`.
+
+## State on 2026-09-19 (Google Analytics tag on every page; not deployed)
+Ram: add content/google_analytics.html (gtag.js, property G-DYRX3801TG) to every page, docs
+included. Inserted immediately before </head> on the nine hand-written pages (index,
+gettingstarted, pricing, about, 404, legal x4) and in gen/build.py's docs template (braces
+doubled for the f-string), docs rebuilt: 146 of 147 html files carry it - the odd one is
+html/google8a34dfac988a5d9f.html, Ram's Search Console verification file, which must stay
+as Google issued it. (Ram has already removed the _phone.html harness.) The snippet's leading HTML comment
+"<!-- Google tag (gtag.js) -->" was DROPPED (no comments in served files); the inline script
+is one line, otherwise Google's code verbatim, and parses (node --check). No page was loaded
+in the browser afterwards on purpose - a local load would post a real page view to the
+property. FLAGGED: content/legal/privacy.md names Google reCAPTCHA but not Google Analytics;
+the privacy policy is Ram's text.
