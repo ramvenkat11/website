@@ -3962,3 +3962,14 @@ pages. Sidebar order Chat integrations > Skill integration > Support and licensi
 broken links in the section; 31 examples valid (the new blocks are text/markdown/python, so
 not validated). The in-app docs summaries need regenerating on the s2oserver side for the
 four new pages.
+Then Ram: split "How the skill works", remove Sources. The section is FIVE pages now (137 in
+all): "How the skill works" (overview: why an agent and not code, the example; 399 words),
+NEW "Finding and running an agent" (finding-and-running-an-agent: why one skill for all
+agents, what the skill does - the two calls and the flow; 352 words), NEW "What Search2o
+provides" (what-search2o-provides: the nine linked bullets under a lead, no h2 - 220 words;
+the lead was rewritten from the md's "Everything below is..." to "An agent gets all of this by
+living in Search2o rather than in the skill itself..." because the sentence also serves as the
+section card's blurb), then Installing the skill and Operating notes. The Sources section is
+GONE (nothing else on the docs cites sources; the two Anthropic numbers stand unsourced in
+the finding page). toc, sidebar, cards and sitemap (6 URLs) follow; no broken links in the
+section; no sideways scroll at 390 on the new pages. Screenshot of the section index checked.
