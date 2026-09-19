@@ -4060,3 +4060,31 @@ footer's lines are sentences). The docs footer carries no platform sentence, so 
 is untouched. NOT CHANGED, flagged: index.html's meta and og descriptions (lines 8 and 10)
 still open "Search2o is a platform for creating and running AI agents, built around a search
 interface." - the old wording.
+
+## State on 2026-09-19 (phone view: diagram fits its card; section boundaries visible; not deployed)
+Ram, from his phone: (a) the architecture card's right end was messed up, (b) no visible
+boundary between one section and the next. MEASURED in a 360/375/390/412px iframe over the
+local server. (a) TWO causes: the "sensitive data encrypted" arrow label (nowrap, 142px, set
+12px right of the arrow) ran past the card's right edge at 375 and 360 and gave the page a
+2px sideways scroll; and .arch-flow's grid column was sized by its min-content (the org box's
+padding + the chip row), so at 360 the dashed "Your organization" box was 282px wide inside a
+239px card and stuck out through the border. FIX, all in the <=640px block of styles.css:
+`.arch { padding: 24px 16px }` (was 32/28), `.arch-flow { grid-template-columns: minmax(0,
+1fr) }`, `.arch-org { min-width: 0 }`, and `.arch-lbl { white-space: normal; width:
+max-content; max-width: 100px; line-height: 1.25 }` - width: max-content is REQUIRED: an
+absolutely positioned label inside the 2px-wide arrow has no available width, so with
+white-space normal alone it collapsed to one word per line (measured 3 lines before the fix).
+After: org and cloud boxes end exactly on the card's inner edge at all four widths, "search
+interface" one line, "sensitive data encrypted" two lines (100px), every arrow end on its node
+(0px gaps), scrollWidth == clientWidth at 360/375/390/412. Screenshot at 375 checked.
+(b) The soft band differs from the page by a few RGB points in both themes (dark #0d1526 on
+#090f1d, light #f6f8fb on #fff) and its border was --line-soft, invisible on a phone where
+every section is a stack of full-width cards; hero > Search are both plain, so that boundary
+had nothing at all. FIX in the <=1000px block: `.section { border-top: 1px solid
+var(--line) }` and `.section.soft { border-color: var(--line); border-bottom: 0 }` (top
+borders only, so no boundary doubles up; the footer's own darker navy closes the last
+section). Desktop is untouched (both blocks are phone/tablet media queries). Screenshots of
+two boundaries checked, dark and light: a hairline plus the shade change.
+LEFTOVER: html/_phone.html, a one-line iframe harness I created for the phone measurements,
+is still on disk - the rm was refused by the auto-mode classifier. It is UNTRACKED and MUST
+be deleted before any deploy (deploy.sh syncs everything under html/). Ram: `rm html/_phone.html`.
