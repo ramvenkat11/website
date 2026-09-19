@@ -3984,3 +3984,10 @@ being in Search2o rather than in the skill). Retitled "What Search2o adds to a s
 MOVED to second place so the two related topics sit together. Section order now: Skills and
 Search2o together / What Search2o adds to a skill / Finding and running an agent / Installing
 the skill / Operating notes. toc only; cards, sidebar, prev/next follow; no broken links.
+Then Ram: shorter titles so the sidebar does not wrap, and a truer title for the finding page.
+gen/toc.py now: "Skills + Search2o" (overview), "What Search2o adds" (what-search2o-provides),
+"What the skill does" (finding-and-running-an-agent - Ram: "finding and running" was not what
+the page is about; it covers why one skill serves every agent and the two calls, and "What
+the skill does" is that page's own second h2), then Installing the skill and Operating notes.
+Measured in the sidebar: all five entries one line each (the 186px entry width in the 201px
+column). h1s follow the toc. The "+" in the first title is Ram's spelling.
