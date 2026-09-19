@@ -4142,3 +4142,22 @@ stub 34px, card height unchanged at 520 (632 at 375), no sideways scroll. Screen
 Ram: "Source available" did not look good (the box widened and the row lost its balance).
 index.html:156 is `<span>Stateless &middot; GitHub</span>` again - the exact text before the
 change, so the earlier measurements (node ~202px, chips column wider) apply once more.
+
+## State on 2026-09-19 (three clickable example descriptions above the Generate-agent box; not deployed)
+Ram: three example descriptions - RAG, tool calling with an ask before the tool is called,
+MCP - each clickable to fill the textbox, and the click should start the reCAPTCHA.
+index.html: a `.agen-ex` row as the first row of .agen ("Try one:" in --faint 13px, then
+three `<button class="agen-chip" data-prompt="...">` pills labelled RAG / Tool calling with
+confirmation / MCP). The prompts (130 / 106 / 114 chars, all inside the 40-400 window):
+"Answer questions about our HR policies from the policy documents in our intranet API, and
+cite the section each answer comes from." / "Look up a customer's open orders from our orders
+API. Before cancelling an order, ask the user to confirm." / "Open a Jira ticket through our
+Jira MCP server from a one-line problem description, and reply with the ticket key."
+styles.css: .agen rows are `auto auto auto auto minmax(49px, auto)` now; .agen-ex flex-wrap
+gap 8; .agen-chip 13px w600 --muted pill on --bg-soft with a --line border, hover --ink text
+and --blue border. site.js (generate block): each chip's click sets the textarea value from
+data-prompt, calls tally() (counter + button state) and loadCaptcha(), then focuses the
+textarea. VERIFIED on the no-cache server via a scripted click: value set, counter "294
+characters left", Generate enabled, Google's script loaded and the badge rendered, textarea
+focused; at 375 the chips wrap to two rows inside the column, no sideways scroll. Desktop
+screenshot checked (one row: 502-811px of the 467px column... i.e. 53 + 211 + 56px chips).
