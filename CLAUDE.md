@@ -4176,3 +4176,10 @@ NEXT (Ram): the pricing page. Tier names still live in html/pricing.html and in 
 usage-limits, getting-started/the-gui, running-the-server, gui/account, support-licensing/
 license.html ("Individual use and team evaluations are free") and billing.html - to be
 swept once the two-level pricing is settled.
+
+## State on 2026-09-19 (getting started: the closing callout asks how the setup went; not deployed)
+Ram: replace "Stuck?" with something like "We would love to hear how your setup went..."
+The callout after the steps now reads "We would love to hear how your setup went. Was it easy
+to get started? Email info@search2o.com, or send a message from the help icon in the GUI."
+(his sentences; "the UI" -> "the GUI" per the vocabulary; the address is the link). The
+info icon on the callout is unchanged.
