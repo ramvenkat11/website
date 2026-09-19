@@ -496,6 +496,8 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
 <link rel="preload" as="font" type="font/woff2" href="{r}fonts/jetbrains-mono-latin.woff2" crossorigin>
 <link rel="stylesheet" href="{r}styles.css">
 <link rel="stylesheet" href="{rel(depth)}docs.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYRX3801TG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-DYRX3801TG');</script>
 </head>
 <body class="docs">
 {header(depth)}

@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last Updated: September 16, 2026**
+**Last Updated: September 19, 2026**
 
 This Privacy Policy describes how Search2o, Inc. ("Search2o," "we," "us," or "our") collects, uses, discloses, and retains personal information in connection with our website, software, cloud services, and related services (collectively, the "Service").
 
@@ -94,7 +94,11 @@ We may disclose information when directed or configured to do so by a customer, 
 
 ## 6. Website and Tracking
 
-Search2o does not currently use advertising cookies, tracking pixels, retargeting, or cross-site behavioral advertising on its website.
+We use Google Analytics to understand how visitors use our website and to improve the website. Google Analytics may collect information such as pages viewed, interactions with the website, approximate location, browser and device information, and IP address. Google processes this information in accordance with its privacy policy.
+
+Google Analytics may use cookies or similar technologies. You can limit cookies through your browser settings or use the Google Analytics Opt-out Browser Add-on.
+
+Search2o does not use this information for retargeting or cross-site behavioral advertising.
 
 We use Google reCAPTCHA v3 for security and abuse prevention in connection with registration. reCAPTCHA may collect or process technical, device, and behavioral information through its service in accordance with Google's Privacy Policy and Terms of Service.
 
