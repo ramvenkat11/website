@@ -116,8 +116,7 @@ window.s2oCaptchaReady = function () {
     freeEmailCurrentlyNotAllowed: "Public email domains are currently not allowed. Please use your work email address.",
     currentlySuspended: "New accounts are paused at the moment due to high volume. Please try again in a few days.",
     termsNotAccepted: "You must accept the Terms of Service and Privacy Policy to create an account.",
-    individualAccountExists: "An individual account already exists for this email address. " +
-        "You should upgrade the other account, before you can register another account with the same email. " +
+      freeAccountExists: "An account already exists for this email address. " +
         "If you lost your license key, please contact us at support@search2o.com."
   };
   function esc(s) {
@@ -199,7 +198,7 @@ window.s2oCaptchaReady = function () {
           } else {
             var msgs = regErrorMessages(data);
             say(msgs.length ? msgs.join("<br>")
-                            : "We could not create your account. Please check your details and try again.", false);
+                            : "We could not create your account due to an internal error.", false);
           }
         })
         .catch(function () { say("Something went wrong. Please try again.", false); })
@@ -245,6 +244,14 @@ window.s2oCaptchaReady = function () {
   }
   text.addEventListener("input", function () { tally(); loadCaptcha(); });
   text.addEventListener("focus", loadCaptcha);
+  Array.prototype.forEach.call(document.querySelectorAll(".agen-chip"), function (chip) {
+    chip.addEventListener("click", function () {
+      text.value = chip.getAttribute("data-prompt");
+      tally();
+      loadCaptcha();
+      text.focus();
+    });
+  });
   tally();
 
   function esc(s) {

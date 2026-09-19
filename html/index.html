@@ -147,7 +147,7 @@
               <span class="arch-org-lbl">Your organization</span>
               <div class="arch-actor">
                 <span class="arch-actor-name"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>Users</span>
-                <em>Browser &middot; Chat app &middot; Skill</em>
+                <em>Browser &middot; Chat &middot; Skill</em>
               </div>
               <div class="arch-link two" aria-hidden="true"><span class="arch-lbl">search interface</span></div>
               <div class="arch-row">
@@ -188,6 +188,12 @@
           <p style="margin-top: 14px; color: var(--body); font-size: 14.5px; line-height: 1.6;">An agent is built using <a href="docs/commands/index.html">23 commands</a>. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with built-in safeguards. <a href="docs/introduction/why-not-python.html">Why not Python?</a></p>
           <h3 class="agen-title">Build agents with AI assistance</h3>
           <div class="agen">
+            <div class="agen-ex" aria-label="Example descriptions">
+              <span>Try one:</span>
+              <button type="button" class="agen-chip" data-prompt="Answer questions about our HR policies from the policy documents in our intranet API, and cite the section each answer comes from.">RAG</button>
+              <button type="button" class="agen-chip" data-prompt="Look up a customer&rsquo;s open orders from our orders API. Before cancelling an order, ask the user to confirm.">Tool calling with confirmation</button>
+              <button type="button" class="agen-chip" data-prompt="Open a Jira ticket through our Jira MCP server from a one-line problem description, and reply with the ticket key.">MCP</button>
+            </div>
             <textarea id="agen-text" rows="6" maxlength="400" placeholder="A tool-calling agent that fetches a customer&rsquo;s orders from our orders API." aria-label="Describe the agent you want"></textarea>
             <p class="agen-count" id="agen-count" aria-live="polite">40 more characters</p>
             <div class="actions">

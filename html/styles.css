@@ -552,7 +552,14 @@ p { margin: 0; }
 .prose ul { margin: 0 0 18px; padding-left: 24px; }
 .prose li { margin: 8px 0; }
 .agen-title { margin-top: 38px; font-size: 17px; }
-.agen { margin-top: 14px; display: grid; gap: 16px; grid-template-rows: auto auto auto minmax(49px, auto); justify-items: start; }
+.agen { margin-top: 14px; display: grid; gap: 16px; grid-template-rows: auto auto auto auto minmax(49px, auto); justify-items: start; }
+.agen-ex { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.agen-ex span { font-size: 13px; color: var(--faint); }
+.agen-chip {
+  font: inherit; font-size: 13px; font-weight: 600; line-height: 1.2; color: var(--muted); cursor: pointer;
+  padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-soft);
+}
+.agen-chip:hover { color: var(--ink); border-color: var(--blue); }
 #agen-go { min-width: 154px; }
 .agen .actions { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .agen .actions .recaptcha-v3 { flex: 0 0 auto; }
