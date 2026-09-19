@@ -4031,3 +4031,11 @@ other overview-slug pages ("How profiles work", "How a chat integration works");
 sweep (.eyebrow, .band family, .btn-onnavy, --band-bg, .demo*, .tally*); in-app docs
 summaries (s2oserver docs_create.py) for the new/renamed pages; ../s2oserver
 models/agentschema.py queryParams change to commit; nothing deployed.
+
+## State on 2026-09-18 (pricing "open beta" line shrunk to a status line; not deployed)
+Ram: reduce the size - it was the shared .page-hero h1 at 28px, a headline size for what is
+a status remark, my miss when I swapped the text in. pricing.html:42 is now
+`<h1 class="status">Search2o is in open beta</h1>` and styles.css:545 adds `.page-hero
+h1.status { font-size: 18px; font-weight: 600; color: var(--body) }`. It stays an h1 so the
+page keeps its one h1. The shared rule and the other inner pages are untouched. Verified on
+the local server: 18px / 600 / --body, one h1, screenshot checked.
