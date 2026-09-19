@@ -4039,3 +4039,14 @@ a status remark, my miss when I swapped the text in. pricing.html:42 is now
 h1.status { font-size: 18px; font-weight: 600; color: var(--body) }`. It stays an h1 so the
 page keeps its one h1. The shared rule and the other inner pages are untouched. Verified on
 the local server: 18px / 600 / --body, one h1, screenshot checked.
+
+## State on 2026-09-19 (hero h1 closes "— behind a search interface"; not deployed)
+Ram: replace "across your enterprise" with the search-interface phrase we had before, with the
+hyphen. The old hero def (2026-09-02) ended "&mdash; behind a search interface", so that is
+the form used: index.html:50 is now `A platform to build, run, and use AI agents &mdash;
+<span class="grad">behind a search interface</span>` - the dash outside the accent span, the
+gradient on "behind a search interface" (nowrap kept, so the accent stays whole). Measured on
+the local server at 1920: two lines at 30px, widest line 490px in the 518px column, card top
+unchanged (158 vs h1 box top 153 + the 5px anchor), no sideways scroll. Zoomed screenshot
+checked. The metas and footer already said "built around a search interface" and are
+untouched.
