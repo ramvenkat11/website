@@ -3991,3 +3991,17 @@ the page is about; it covers why one skill serves every agent and the two calls,
 the skill does" is that page's own second h2), then Installing the skill and Operating notes.
 Measured in the sidebar: all five entries one line each (the 186px entry width in the 201px
 column). h1s follow the toc. The "+" in the first title is Ram's spelling.
+Then Ram: the "What Search2o adds" lead ("An agent gets all of this by living in Search2o
+rather than in the skill itself.") was abrupt - the split pages had to be redone as pages,
+not fragments. REWRITTEN: "What Search2o adds" opens "On its own, a skill is a set of
+instructions and a script. A skill with Search2o behind it inherits everything the platform
+gives an agent: a search that finds the right agent, a controlled runtime, validation before
+publication, encryption, memory, profiles and reports. Each item has its own page in these
+docs; this page is the summary." followed by a framing paragraph (the skill stays small - no
+credentials, no logic for reaching systems, no knowledge of which agents exist, because all
+of that lives in Search2o), the nine bullets unchanged, and a closing paragraph (the list
+applies to an agent however it is reached; the skill is one more surface beside the GUI,
+the bots and the REST API, linking Publishing). 345 words. "What the skill does" opens "The
+skill does two things..." (one entry standing for every agent; the two calls) and its h2s
+are now One skill for every agent / The two calls / A request, step by step - the old
+second h2 had repeated the page title. 382 words. Built, no broken links, screenshot checked.
