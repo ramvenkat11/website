@@ -4005,3 +4005,29 @@ the bots and the REST API, linking Publishing). 345 words. "What the skill does"
 skill does two things..." (one entry standing for every agent; the two calls) and its h2s
 are now One skill for every agent / The two calls / A request, step by step - the old
 second h2 had repeated the page title. 382 words. Built, no broken links, screenshot checked.
+
+## State on 2026-09-18 (agentskill.md re-applied to the Skill integration pages; NOT DEPLOYED)
+Ram updated content/agentskill.md (an orchestrator subsection, a new multi-part example, and
+a seventh SKILL.md rule) and asked for the html to follow. Applied to docsrc/skill-integration:
+finding-and-running-an-agent.html ("What the skill does") - the lead now ends "A request
+with several parts is handled as a series of those calls in one conversation, with the
+assistant as the orchestrator."; NEW h2 "The assistant as orchestrator" (two paragraphs: the
+assistant splits the request, runs each part through search and execAgent in the same
+conversation, each agent sees what earlier ones produced - links
+../agent-execution/conversation-state.html - and composes one answer; Search2o supplies the
+parts, the assistant supplies the plan) and NEW h2 "An example" (order 48812 shipped? if not,
+open a warehouse ticket - two searches, the warehouse-ticket agent reads the order from
+conversation state, ticket WH-1183; two agents by two developers, neither knowing the other).
+overview.html ("Skills + Search2o") lost its old PAY-2291 example section - the page is the
+lead plus ONE h2, "Why an agent, not code" (235 words). installing-the-skill.html: the SKILL.md
+block gained rule 7 ("If the request has several parts, handle each part as its own request -
+search, run - in the same conversation, then compose one answer from the results.") and the
+paragraph under it says "The seven rules are the whole body" (was six). Built: 137 pages, no
+broken links, PAY-2291 gone from html/docs; 390px probe of the changed page clean (scrollW
+375); screenshot of the orchestrator/example section checked. FLAG for Ram: overview.html
+now has a single h2 under its lead - fine as a page, but the on-page toc shows one entry;
+left as is. Open items unchanged: the getting-started vs README decision; naming of the two
+other overview-slug pages ("How profiles work", "How a chat integration works"); dead CSS
+sweep (.eyebrow, .band family, .btn-onnavy, --band-bg, .demo*, .tally*); in-app docs
+summaries (s2oserver docs_create.py) for the new/renamed pages; ../s2oserver
+models/agentschema.py queryParams change to commit; nothing deployed.
