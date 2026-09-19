@@ -146,6 +146,13 @@ TOC = [
         ("chat-applications", "Slack, Teams and Google Chat"),
         ("ai-prompts", "Building a bot with an AI assistant"),
     ]),
+    ("skill-integration", "Skill integration", [
+        ("overview", "Skills + Search2o"),
+        ("what-search2o-provides", "What Search2o adds"),
+        ("finding-and-running-an-agent", "What the skill does"),
+        ("installing-the-skill", "Installing the skill"),
+        ("operating-notes", "Operating notes"),
+    ]),
     ("support-licensing", "Support and licensing", [
         ("asking-the-docs", "Asking the docs"),
         ("support", "Support"),

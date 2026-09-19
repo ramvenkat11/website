@@ -1,0 +1,15 @@
+<p class="lead">On its own, a skill is a set of instructions and a script. A skill with Search2o behind it inherits everything the platform gives an agent: a search that finds the right agent, a controlled runtime, validation before publication, encryption, memory, profiles and reports. Each item has its own page in these docs; this page is the summary.</p>
+<p>The skill itself stays small. It carries no credentials, no logic for reaching your systems and no knowledge of which agents exist, because all of that lives in Search2o. What the assistant gets through the skill is the list below.</p>
+
+<ul>
+  <li><strong>Finding the right agent.</strong> Search matches a request to an agent in less than 0.5 seconds and costs no model tokens. See <a href="../search/how-matching-works.html">How matching behaves</a>.</li>
+  <li><strong>A controlled runtime.</strong> An agent is a fixed list of commands from a set of 23. What it can do is written by its author; what it can reach is bounded by an <a href="../runtime/allowlist.html">allowlist</a> the company controls; loops, run time and LLM spend are limited per run by the <a href="../runtime/runtime-limits.html">runtime limits</a>.</li>
+  <li><strong>Validated before anyone runs it.</strong> Nothing is published without a validation run, and nothing reaches people until it is <a href="../development/publishing.html">published and described</a>.</li>
+  <li><strong>One model per agent, or several.</strong> Each agent can use the appropriate, cost-effective LLM for each step.</li>
+  <li><strong>Encrypted at rest.</strong> Conversation state and other sensitive information are <a href="../security/encryption.html">encrypted</a> and saved.</li>
+  <li><strong>Long-term memory.</strong> The <a href="../commands/memory.html">memory</a> command keeps long-term memory per person.</li>
+  <li><strong>Reaching your systems.</strong> API, database and MCP calls go through <a href="../profiles/index.html">profiles</a>, which are audited with change notifications.</li>
+  <li><strong>Management and reporting.</strong> Agent runs, performance and LLM costs are <a href="../reports/index.html">reported</a>.</li>
+  <li><strong>One definition, every surface.</strong> An agent is published once and serves the GUI, the chat bots, the REST API and the skill.</li>
+</ul>
+<p>Everything on this list applies to an agent however it is reached. The skill is one more surface for agents that already serve the GUI, the chat bots and the REST API; see <a href="../development/publishing.html">Publishing</a> for how an agent becomes available to all of them.</p>
