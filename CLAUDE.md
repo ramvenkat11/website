@@ -4116,3 +4116,9 @@ IDENTICAL (normalized hero h1 + article == normalized md). The html diff is exac
 line plus the three new paragraphs; 13 h2, 4 lists, 30 items, 52 paragraphs, tags balanced.
 FLAGGED: the md should get its markers back (or the guide breaks on the next edit) - Ram's
 file; say the word and I restore them from HEAD without touching a word of text.
+
+## State on 2026-09-19 (privacy.md has its markers back; page regenerated plain; not deployed)
+Ram restored the markdown in content/legal/privacy.md (1 h1, 13 h2, 30 bullets, 9 bold pairs,
+3 code spans). html/legal/privacy.html regenerated with the plain converter (no git-HEAD
+guide): the result is BYTE-IDENTICAL to the guided version from earlier today, and the
+normalized page text == the md with markers stripped. The guide trick is retired.
