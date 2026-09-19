@@ -750,9 +750,14 @@ p { margin: 0; }
   .factrow { grid-template-columns: 1fr; }
   .pricing-grid, .tworow { grid-template-columns: 1fr; }
   .hero { padding: 60px 0 72px; }
-  .section { padding: 68px 0; }
+  .section { padding: 68px 0; border-top: 1px solid var(--line); }
+  .section.soft { border-color: var(--line); border-bottom: 0; }
 }
 @media (max-width: 640px) {
+  .arch { padding: 24px 16px; }
+  .arch-flow { grid-template-columns: minmax(0, 1fr); }
+  .arch-org { min-width: 0; }
+  .arch-lbl { white-space: normal; width: max-content; max-width: 100px; line-height: 1.25; }
   .arch-org-lbl, .arch-cloud-lbl { position: static; transform: none; display: inline-block; margin: 0 0 12px; justify-self: start; }
   .arch-org { padding-top: 16px; }
   .arch-node.cloud { padding-top: 16px; }
