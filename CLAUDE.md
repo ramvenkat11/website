@@ -4190,3 +4190,9 @@ password, the emailed code, choosing a password) is "Set up your account" (was "
 GUI"); step 5 is "Get started" (was my "Create two or three agents, then search"). Steps now:
 Create your account / Download the agent server / Run the server / Set up your account / Get
 started. Ids unchanged (gui, first-agent).
+
+## State on 2026-09-19 (getting started: no email is sent at registration; not deployed)
+Ram: tell people registering that they will not receive any email. Step 1 now has one line
+between its h2 and the form card (gettingstarted.html:55): "Your license key appears right
+here when you create the account. No email is sent." - a plain step paragraph, the same style
+as the other steps' text. The success note under the key box is unchanged.
