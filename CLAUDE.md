@@ -3973,3 +3973,9 @@ section card's blurb), then Installing the skill and Operating notes. The Source
 GONE (nothing else on the docs cites sources; the two Anthropic numbers stand unsourced in
 the finding page). toc, sidebar, cards and sitemap (6 URLs) follow; no broken links in the
 section; no sideways scroll at 390 on the new pages. Screenshot of the section index checked.
+Then Ram: the first topic's title is not "How the skill works" - the page is about the power
+of a skill WITH Search2o over a skill alone. Retitled "Skills and Search2o together" (the
+md's own closing line of that argument: "Together, Agent Skills provide the interface and
+Search2o provides the controlled execution behind it"). toc only; h1, sidebar and card
+follow. The docs home card's "how the skill works" phrase was checked - it is a description
+of the section, not the title, and stays.
