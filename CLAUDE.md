@@ -4161,3 +4161,18 @@ textarea. VERIFIED on the no-cache server via a scripted click: value set, count
 characters left", Generate enabled, Google's script loaded and the badge rendered, textarea
 focused; at 375 the chips wrap to two rows inside the column, no sideways scroll. Desktop
 screenshot checked (one row: 502-811px of the 467px column... i.e. 53 + 211 + 56px chips).
+
+## State on 2026-09-19 (getting started: five steps; pricing is going to two levels; not deployed)
+Ram: pricing will have TWO levels, free and paid (the three-tier Individual / Evaluation /
+Team ladder is gone); on Getting started remove step 7 and fold step 6 into step 5. The
+"Bring your team" step (id team - the Evaluation-license request) is DELETED and the
+"Search" step (id describe) is gone as a step: its two paragraphs ("Type a question in the
+search box..." and "You are all set...") now close step 5, retitled "Create two or three
+agents, then search" (the retitle is mine - flagged). FIVE steps: Create your account /
+Download the agent server / Run the server / Open the GUI / Create two or three agents, then
+search; the Stuck callout still follows the list. No inbound #team or #describe anchors
+existed; the metas never mentioned the team step. No tier name remains on the page.
+NEXT (Ram): the pricing page. Tier names still live in html/pricing.html and in the docs -
+usage-limits, getting-started/the-gui, running-the-server, gui/account, support-licensing/
+license.html ("Individual use and team evaluations are free") and billing.html - to be
+swept once the two-level pricing is settled.
