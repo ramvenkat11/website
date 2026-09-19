@@ -4183,3 +4183,10 @@ The callout after the steps now reads "We would love to hear how your setup went
 to get started? Email info@search2o.com, or send a message from the help icon in the GUI."
 (his sentences; "the UI" -> "the GUI" per the vocabulary; the address is the link). The
 info icon on the callout is unchanged.
+
+## State on 2026-09-19 (getting started: steps 4 and 5 retitled; not deployed)
+Ram: the headlines for 4 and 5 were wrong. Step 4 (the first sign-in: New user / Forgot
+password, the emailed code, choosing a password) is "Set up your account" (was "Open the
+GUI"); step 5 is "Get started" (was my "Create two or three agents, then search"). Steps now:
+Create your account / Download the agent server / Run the server / Set up your account / Get
+started. Ids unchanged (gui, first-agent).
