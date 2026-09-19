@@ -4129,3 +4129,11 @@ Ram: "Chat app" -> "Chat" in the architecture box. index.html:150 is now
 inline-flex and sizes to its content: 171 -> 151px wide, sub-line one row (113px), the tag on
 the border still 12px above the pill, both arrow ends on their nodes, no sideways scroll at
 375. Desktop screenshot checked.
+
+## State on 2026-09-19 (diagram server box: "Stateless · Source available"; not deployed)
+Ram: "GitHub" -> "Source available" in the diagram's server box; the GitHub link in step 2 on
+the left stays. index.html:156 is `<span>Stateless &middot; Source available</span>` (plain
+text, as the GitHub word was since 09-16). Measured at 1920 and 375: the sub-line is one row
+(214px / 201px at 13px), the server node grew 202 -> 252px at desktop and the chips column
+shrank to 121px - every chip still one line ("Tools / MCP" 91px is the widest), the connector
+stub 34px, card height unchanged at 520 (632 at 375), no sideways scroll. Screenshot checked.
