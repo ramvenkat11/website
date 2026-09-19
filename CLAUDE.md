@@ -4101,3 +4101,18 @@ is one line, otherwise Google's code verbatim, and parses (node --check). No pag
 in the browser afterwards on purpose - a local load would post a real page view to the
 property. FLAGGED: content/legal/privacy.md names Google reCAPTCHA but not Google Analytics;
 the privacy policy is Ram's text.
+
+## State on 2026-09-19 (legal/privacy.html regenerated from the revised privacy.md; not deployed)
+Ram revised content/legal/privacy.md: Last Updated September 19, 2026, and the Website and
+Tracking section gained three paragraphs on Google Analytics (what it may collect, cookies
+and the opt-out add-on, no retargeting or cross-site advertising) ahead of the reCAPTCHA
+paragraph. THE MD LOST ITS MARKDOWN in the process - no #/##, no "* " bullets, no **bold**,
+no backticks (a plain-text paste, by the look of it): all 13 headings and all 30 former
+bullets are present WORD FOR WORD, so the structure was rebuilt from the previous md (git
+HEAD) as a guide - a block whose text equals an old bullet renders as that bullet with its
+bold lead-in, "N. Title" blocks are h2s, the Last Updated line keeps its bold, everything else
+is a paragraph, the three-line Contact block joins with a space as before. FIDELITY VERIFIED
+IDENTICAL (normalized hero h1 + article == normalized md). The html diff is exactly the date
+line plus the three new paragraphs; 13 h2, 4 lists, 30 items, 52 paragraphs, tags balanced.
+FLAGGED: the md should get its markers back (or the guide breaks on the next edit) - Ram's
+file; say the word and I restore them from HEAD without touching a word of text.
