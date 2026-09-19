@@ -3979,3 +3979,8 @@ md's own closing line of that argument: "Together, Agent Skills provide the inte
 Search2o provides the controlled execution behind it"). toc only; h1, sidebar and card
 follow. The docs home card's "how the skill works" phrase was checked - it is a description
 of the section, not the title, and stays.
+Then Ram: the third title is related too - it is the same argument (what an agent gets from
+being in Search2o rather than in the skill). Retitled "What Search2o adds to a skill" and
+MOVED to second place so the two related topics sit together. Section order now: Skills and
+Search2o together / What Search2o adds to a skill / Finding and running an agent / Installing
+the skill / Operating notes. toc only; cards, sidebar, prev/next follow; no broken links.
