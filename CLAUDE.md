@@ -4137,3 +4137,8 @@ text, as the GitHub word was since 09-16). Measured at 1920 and 375: the sub-lin
 (214px / 201px at 13px), the server node grew 202 -> 252px at desktop and the chips column
 shrank to 121px - every chip still one line ("Tools / MCP" 91px is the widest), the connector
 stub 34px, card height unchanged at 520 (632 at 375), no sideways scroll. Screenshot checked.
+
+## State on 2026-09-19 (server box back to "Stateless · GitHub"; not deployed)
+Ram: "Source available" did not look good (the box widened and the row lost its balance).
+index.html:156 is `<span>Stateless &middot; GitHub</span>` again - the exact text before the
+change, so the earlier measurements (node ~202px, chips column wider) apply once more.
