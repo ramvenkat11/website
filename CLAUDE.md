@@ -4417,3 +4417,18 @@ and the body text lines up with the second note, and `.price-freeze + .price-fre
 tightens the gap to 8px (was 18). The star is still the only marker, because only the legend
 is keyed to something in the table. Measured: both bodies start at the same x, no sideways
 scroll at 375, "$30/member/month" on both widths.
+
+## State on 2026-09-20 (pricing: two footnote markers, * for member and ** for pooling; not deployed)
+Ram: the first row defines members, so put a star there and let the footnote explain it. That
+means TWO keyed notes, so they need different marks. In reading order: the Members row label
+carries `<sup>*</sup>`, and the four pooled rows (Agent executions, Agent indexing, Searches,
+AI assistance) moved from * to `<sup>**</sup>`. The footnotes follow the same order:
+  *   A member is a person, a developer, or a service account.
+  **  On the Paid plan, these allowances are pooled across the whole account, so what one
+      member does not use is available to the others.
+MARKUP/CSS: each footnote is `<p class="price-freeze"><span class="mk">..</span><span>text
+</span></p>` and `.price-freeze` is a 22px + 1fr GRID - the padding-left/text-indent hanging
+trick from the previous pass could not align a one-star and a two-star note, a grid can. The
+`.legend` class and the `.price-freeze sup` colour rule are gone; `.plans tbody th sup` still
+mutes the marks in the table. Measured at 1920 and 375: both notes' text starts at the same
+x, five marks in the table, no sideways scroll.
