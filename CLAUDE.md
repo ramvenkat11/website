@@ -4443,3 +4443,16 @@ the words. Already without a stop and untouched: index.html's <title> and og:tit
 ("Search that executes™ is a trademark of Search2o"), where the ™ takes the position. The
 docs template has no brand line, so gen/build.py and the 137 built pages needed nothing. A
 sweep for "Search that executes." over html, gen and docsrc is clean.
+
+## State on 2026-09-20 (og card: search2o.com at heading size; not deployed)
+Ram: search2o.com looked dull next to the bright text - set it like the heading, same size.
+html/og.png regenerated (1200x630, 90 KB): the URL is now Helvetica Neue Bold 58 in --ink,
+the same face, size and colour as the headline (was Medium 26 in --muted). The block was
+rebalanced to make room: the headline moved up 24px (lines at y 262/332/402), the hairline
+sits at y 500 and the URL baseline block at 520, leaving 52px of air under it. Wordmark,
+glow, grid and the blue-to-teal accent are unchanged.
+THE GENERATOR IS NOW A SCRIPT, <scratchpad>/ogcard.py (build() takes head_y, url_y, rule_y,
+rule), so the card can be re-rendered without rewriting it inline. The scratchpad HAS been
+wiped once this session, so if it is gone: the wordmark source is the base64 PNG inside the
+retired html/logo.svg (`git show c91b0b6^:html/logo.svg`), navy pixels recoloured to --ink.
+Say the word and the script moves into gen/ as a tracked file.
