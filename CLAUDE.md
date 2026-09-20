@@ -4284,3 +4284,29 @@ Account page (the GUI's upgrade path under the new model is not verified in code
 "billed at the rate on the Pricing page" overage behaviour (from pricing.md Part 1, not yet
 seen in the server). NOT TOUCHED: site.js's individualAccountExists message (Ram's wording
 wanted) and the server's freeAccountExists key mismatch.
+
+## State on 2026-09-19 (docs follow Ram's edited pricing table: per-plan retention; not deployed)
+Ram edited html/pricing.html himself: the meters are now Agent executions / Agent indexing /
+Searches / Long-term memory entries / Long-term memory searches / AI assistance, the three
+pooled meters carry a $15 per extra 300 overage on Paid, "System performance" replaces
+Capacity, and Reports, Conversations and Agent version history are each "Last 7 days" on
+Free and "Last 90 days" on Paid (version history no longer "None" on Free). Docs brought in
+line - 15 edits in 11 pages, all now stating the two retentions per plan:
+- reports/index.html lead (records kept 7 days Free / 90 days Paid - was "three months");
+  gui/reports.html lead ("over the retained executions: 7 days on the Free plan, 90 days on
+  Paid" - was "up to a year"); data-privacy.html execution-record cell, the query row's
+  "Execution record:" cell, and the agent-definitions "past versions" cell.
+- Conversations: conversation-state.html:20, rest-api/conversations.html setPinned row,
+  rest-api/running-agents.html:42, gui/search.html:12, data-privacy.html conversation-state
+  row, and encryption.html's key-lifetime list - all "7 days on the Free plan, 90 days on
+  Paid" after the last use, pinned kept.
+- development/publishing.html Versions: kept 7 days Free / 90 days Paid (was three months).
+- commands/memory.html: "a bounded number of memories, 100 on the Free plan and 500 on Paid".
+- usage-limits.html: lead lists agent executions, searches, long-term memory searches,
+  indexing and AI assistance; the Paid overage sentence names the three pooled meters and
+  "the rates on the Pricing page" (no figures in the docs).
+Remaining "three months" in docsrc: notifications.html's default time window only (the
+notification TTL is 90 days in code, unrelated to the plans). 137 pages built. NOTE: these
+retention figures come from the pricing page, not from code - the server still writes
+Epoch.s90 for conversations and has no per-plan TTL that I can see; the docs now state the
+promise, as with the earlier one-year/three-month figures.
