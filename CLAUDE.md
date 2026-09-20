@@ -4401,3 +4401,19 @@ remedy is more members" - it says nothing about AI assistance). Veto any of the 
 ALSO STALE NOW, not touched: docsrc/system-management/usage-limits.html still lists
 "long-term memory searches" as a meter and calls the allowances pooled in the plural - that
 row left the pricing page in Ram's edit.
+
+## State on 2026-09-20 (pricing: one word, "member"; the two footnotes aligned; not deployed)
+Ram: the page used both "member" and "user", and one footnote carried a star while the other
+did not. (He had also just removed the beta price-freeze sentences himself, so the second
+footnote is now only the member definition.)
+ONE WORD: "member" wins - it is the term the footnote defines, and the only one that covers a
+service account. Three changes: the price suffix is `/member/month` (was /user/month, which
+he had picked before the definition moved into the footnote), and the two Long-term memory
+cells read "100 memories / member" and "500 memories / member". A sweep of the page for
+"user" returns nothing.
+THE TWO FOOTNOTES now read as one set: both `.price-freeze` paragraphs get `padding-left:
+13px`, the legend carries `.legend` with `text-indent: -13px` so its star hangs in the margin
+and the body text lines up with the second note, and `.price-freeze + .price-freeze`
+tightens the gap to 8px (was 18). The star is still the only marker, because only the legend
+is keyed to something in the table. Measured: both bodies start at the same x, no sideways
+scroll at 375, "$30/member/month" on both widths.
