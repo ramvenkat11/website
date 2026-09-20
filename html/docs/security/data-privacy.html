@@ -54,7 +54,7 @@
 <div class="tablewrap"><table class="fields data">
 <thead><tr><th>Data</th><th>Who can read it</th><th>Kept for</th></tr></thead>
 <tbody>
-<tr><td>Conversation state<br><small>variables, prompt history, output, where an agent paused</small></td><td>Only the user whose conversation it is; the account's agent servers decrypt it to answer that user's next request</td><td>Three months after the last use; pinned conversations indefinitely</td></tr>
+<tr><td>Conversation state<br><small>variables, prompt history, output, where an agent paused</small></td><td>Only the user whose conversation it is; the account's agent servers decrypt it to answer that user's next request</td><td>7 days after the last use on the Free plan, 90 days on Paid; pinned conversations indefinitely</td></tr>
 <tr><td>Hosted secrets<br><small>available only with end-to-end encryption</small></td><td>The agent server, at runtime</td><td>Life of the account</td></tr>
 <tr><td>Prompt profiles<br><small>the system and user prompt text; a prompt written in an agent is stored in plain form with the agent</small></td><td>Developers and above, through the GUI; the account's agent servers decrypt them at runtime</td><td>Life of the profile</td></tr>
 </tbody></table></div>
@@ -63,7 +63,7 @@
 <div class="tablewrap"><table class="fields data">
 <thead><tr><th>Data</th><th>What the cloud does with the plain text</th><th>Who can read it</th><th>Kept for</th></tr></thead>
 <tbody>
-<tr><td>The user's query</td><td>Finds the matching agent. The shortened query is then stored encrypted as the conversation title, and the full query is stored encrypted on the execution record.</td><td>Only the user who typed it</td><td>Title: with the conversation. Execution record: up to one year</td></tr>
+<tr><td>The user's query</td><td>Finds the matching agent. The shortened query is then stored encrypted as the conversation title, and the full query is stored encrypted on the execution record.</td><td>Only the user who typed it</td><td>Title: with the conversation. Execution record: 7 days on the Free plan, 90 days on Paid</td></tr>
 <tr><td>Agent descriptions</td><td>Indexes the agent for search. The plain text is held in memory for that and never stored.</td><td>Developers and above</td><td>Life of the agent</td></tr>
 <tr><td>Long-term memories<br><small>written by agents with the memory command</small></td><td>Embeds the memory text for semantic search. The label is stored in plain form.</td><td>Agents run by the user the memory belongs to</td><td>Until the agent that stored the memory is deleted</td></tr>
 </tbody></table></div>
@@ -73,9 +73,9 @@
 <div class="tablewrap"><table class="fields data">
 <thead><tr><th>Data</th><th>Who can read it</th><th>Kept for</th></tr></thead>
 <tbody>
-<tr><td>Agent definitions<br><small>with titles, tags and past versions</small></td><td>Developers and above</td><td>Life of the agent; past versions three months</td></tr>
+<tr><td>Agent definitions<br><small>with titles, tags and past versions</small></td><td>Developers and above</td><td>Life of the agent; past versions 7 days on the Free plan, 90 days on Paid</td></tr>
 <tr><td>Drafts</td><td>The developer who owns the draft</td><td>Until published or deleted</td></tr>
-<tr><td>Execution records<br><small>agent name and version, result code, error message, command path, duration, LLM cost</small></td><td>Developers, in the agent reports; administrators, in the usage report</td><td>Up to one year</td></tr>
+<tr><td>Execution records<br><small>agent name and version, result code, error message, command path, duration, LLM cost</small></td><td>Developers, in the agent reports; administrators, in the usage report</td><td>7 days on the Free plan, 90 days on Paid</td></tr>
 <tr><td>Configuration<br><small>agent servers, allowlist, limits, authentication, search settings</small></td><td>Developers or administrators, by part</td><td>Life of the account</td></tr>
 <tr><td>Profiles<br><small>LLMs, APIs, databases, MCP servers, and the name and note of a prompt profile; a secret in a profile is a sys.secret reference, not the value</small></td><td>Developers and above</td><td>Life of the account</td></tr>
 <tr><td>Users<br><small>email address, name, role, UI preferences</small></td><td>Administrators and the owner</td><td>Until the user is deleted</td></tr>

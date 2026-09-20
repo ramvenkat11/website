@@ -11,7 +11,7 @@
 <thead><tr><th>Endpoint</th><th>Body</th><th>Effect</th></tr></thead>
 <tbody>
 <tr><td><code>/api/user/setConversationTitle</code></td><td><code>convid</code>, <code>title</code></td><td>Renames the conversation. The title is the first query until renamed.</td></tr>
-<tr><td><code>/api/user/setPinned</code></td><td><code>convid</code>, <code>pinned</code></td><td>Pins or unpins. A pinned conversation is kept indefinitely; an unpinned one expires three months after its last use.</td></tr>
+<tr><td><code>/api/user/setPinned</code></td><td><code>convid</code>, <code>pinned</code></td><td>Pins or unpins. A pinned conversation is kept indefinitely; an unpinned one expires after its last use: 7 days on the Free plan, 90 days on Paid.</td></tr>
 <tr><td><code>/api/user/deleteConversation</code></td><td><code>convid</code></td><td>Deletes the conversation and its stored state.</td></tr>
 </tbody></table></div>
 <p>All of these act on the caller's own conversations only. A <code>convid</code> that belongs to another user, or that has expired, is reported as unknown.</p>
