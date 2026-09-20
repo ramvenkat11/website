@@ -4456,3 +4456,12 @@ rule), so the card can be re-rendered without rewriting it inline. The scratchpa
 wiped once this session, so if it is gone: the wordmark source is the base64 PNG inside the
 retired html/logo.svg (`git show c91b0b6^:html/logo.svg`), navy pixels recoloured to --ink.
 Say the word and the script moves into gen/ as a tracked file.
+
+## State on 2026-09-20 (og card: URL bright but back to a small size; not deployed)
+Ram on the heading-sized URL: "it got bigger - that's not good". The fix he was after was the
+DULLNESS, not the size - so search2o.com is now Helvetica Neue BOLD 30 in --ink (bright and
+solid, like the headline's treatment) instead of Bold 58. The layout returns to where it was:
+headline lines at y 286/356/426, hairline at 530, URL at 548. Three variants were rendered
+and compared before choosing: 26 Medium in ink, 30 Bold in ink (chosen), 38 Bold in ink.
+<scratchpad>/ogcard.py's build() now takes url_size and url_face, so another size is one
+argument away.
