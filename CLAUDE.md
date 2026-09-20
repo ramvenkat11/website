@@ -4310,3 +4310,25 @@ notification TTL is 90 days in code, unrelated to the plans). 137 pages built. N
 retention figures come from the pricing page, not from code - the server still writes
 Epoch.s90 for conversations and has no per-plan TTL that I can see; the docs now state the
 promise, as with the earlier one-year/three-month figures.
+
+## State on 2026-09-19 (social card: html/og.png 1200x630 + og/twitter tags everywhere; not deployed)
+Ram asked whether the site needs og:image 1200x630 / width / height / twitter:card - yes:
+og:image had been the 336x61 logo.png since the SEO pass (flagged open since 09-11), and the
+legal pages and 404 carried no og:image at all. Then "generate the card". NEW html/og.png
+(86 KB, 1200x630): dark-bg navy #090f1d with a soft blue glow top-left and a faint 60px grid
+(composited at alpha 12 - a first render drew the grid straight onto the RGBA image and the
+lines came out solid white), the wordmark at 440px wide from the 1810x331 PNG that the
+retired html/logo.svg embedded (recovered with `git show c91b0b6^:html/logo.svg`, navy
+pixels recoloured to --ink, the slate "o" kept - the same transform as logo-dark.png), the
+hero headline in Helvetica Neue Bold 58 ("A platform to build, run, / and use AI agents —")
+with "with a search interface" in the blue-to-teal gradient, a hairline and "search2o.com"
+in muted 26px. Helvetica Neue stands in for Inter: PIL cannot read the site's woff2 and no
+Inter TTF or fontTools is on the machine. Generator script is in the session scratchpad
+(og card block); the wordmark source is scratchpad/wordmark_1810.png.
+TAGS on all nine hand-written pages and gen/build.py's docs template (rebuilt, 137 pages):
+og:image https://search2o.com/og.png, og:image:width 1200, og:image:height 630, og:image:alt
+"Search2o: a platform to build, run, and use AI agents, with a search interface",
+twitter:card summary_large_image - 146 of 147 html files (the Search Console file is the
+exception, as always). The legal pages and 404 gained the block before their icon link. No
+page points at logo.png as og:image any more. deploy.sh's image pass (*.png, 30-day cache)
+picks og.png up on the next deploy without changes.
