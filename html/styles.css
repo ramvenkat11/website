@@ -680,14 +680,15 @@ p { margin: 0; }
 .plans thead th:first-child { width: 26%; }
 .plans thead th .plan { display: block; }
 .plans thead th .price { display: block; margin-top: 10px; color: var(--ink); font-size: 36px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
-.plans thead th .per, .plans thead th .how { display: block; margin-top: 6px; color: var(--muted); font-size: 14.5px; font-weight: 500; letter-spacing: 0; text-transform: none; }
-.plans thead th .how { color: var(--body); font-weight: 600; }
-.plans thead th .btn { margin-top: 16px; letter-spacing: 0; text-transform: none; }
+.plans thead th .how { display: block; margin-top: 8px; color: var(--body); font-size: 14.5px; font-weight: 600; letter-spacing: 0; text-transform: none; }
+.plans thead th .permo { margin-left: 2px; color: var(--muted); font-size: 16px; font-weight: 600; letter-spacing: 0; text-transform: none; }
 .plans tbody th { color: var(--ink); font-weight: 650; }
+.plans tbody th sup { color: var(--muted); font-weight: 500; }
 .plans tbody th small { display: block; color: var(--muted); font-size: 13px; font-weight: 500; line-height: 1.4; }
 .plans td { color: var(--body); }
 .plans .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.price-freeze { margin-top: 18px; color: var(--muted); font-size: 14.5px; }
+.price-freeze { margin-top: 18px; display: grid; grid-template-columns: 22px 1fr; color: var(--muted); font-size: 14.5px; }
+.price-freeze + .price-freeze { margin-top: 8px; }
 .help-line { margin-top: 40px; color: var(--ink); font-size: 15.5px; }
 
 .contact-card {
