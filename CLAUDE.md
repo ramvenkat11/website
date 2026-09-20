@@ -4236,3 +4236,19 @@ structure, reproduced. The docs still name Individual / Evaluation / Team (regis
 downloading, running-the-server, the-gui, gui/account, license, usage-limits) and billing.html
 speaks of a platform fee - a separate sweep once he says so. site.js's individualAccountExists
 message is stale too (see the notes above).
+
+## State on 2026-09-19 (pricing: one merged table; Paid 30 indexes and 100 AI assists per member; not deployed)
+Ram: Paid indexes 10 -> 30 / member / month; Paid AI assistance 50 -> 100 / member / month;
+the two tables repeated rows - merge them. ONE `table.plans` now, fourteen rows: Members /
+Agents (30 indexes / month vs 30 indexes / member / month - this row absorbs "Indexed agents")
+/ Executions / AI assistance (100 vs 100 / member / month) / Capacity / the four report rows
+from the limits table (performance and errors with details 7 vs 90 days; LLM cost Not
+included vs 90 days; User usage Not included vs Summary, 90 days - these replace the Plans
+table's one-line Reports row, which said "all four reports with details" and contradicted the
+usage report's "summary") / Conversations (the one-line form covers inactive + pinned) /
+Long-term memory / Agent version history / Dormant workspace / Support. The "Limits and
+retention by tier" h2 and its "Retention is a fair gate..." sentence are GONE with the second
+table (flagged - Ram's sentence, no section left to carry it); the price-freeze line follows
+the table, then Enterprise. The `.plans.limits` rule is removed. Tags balanced (1 table, 15
+tr, 17 th, 28 td). The layout CSS is unchanged, so the earlier desktop/phone measurements
+hold for the added rows.
