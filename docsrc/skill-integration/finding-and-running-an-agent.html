@@ -1,6 +1,6 @@
 <p class="lead">The skill does two things. It gives the assistant one entry in its list of skills that stands for every published agent, and it makes two calls on the Search2o REST API: <code>search</code> to find the agent for a request, and <code>execAgent</code> to run it. A request with several parts is handled as a series of those calls in one conversation, with the assistant as the orchestrator.</p>
 
-<h2>One skill for every agent</h2>
+<h2>One skill for all the agents in Search2o</h2>
 <p>Every client loads the name and description of each installed skill into the assistant's context, and the assistant chooses among them by reading those descriptions. Anthropic recommends keeping the number small because selection gets less reliable as the list grows. Its API allows 20 skills per request; for more capabilities, it recommends routing requests to different skill sets by task type.</p>
 <p>Search2o does that routing. The skill takes one slot in the assistant's list, and behind it Search2o matches the request against the descriptions of every published agent, with accuracy measured and published at a thousand agents; see <a href="../search/search-quality.html">Search quality</a>. The assistant decides whether a request is for the company's systems at all. Search2o decides which agent.</p>
 

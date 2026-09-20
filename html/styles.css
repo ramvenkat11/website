@@ -671,41 +671,23 @@ p { margin: 0; }
 .legal-body strong { color: var(--ink); }
 .legal-body code { font-family: var(--mono); font-size: .9em; }
 
-.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
-.price-card {
-  position: relative; display: flex; flex-direction: column; padding: 34px; border-radius: 18px;
-  border: 1px solid var(--line); background: var(--card); box-shadow: var(--card-shadow-lg);
-}
-.price-card.featured { border-color: var(--feat-border); background: var(--feat-bg); }
-.price-card .plan { color: var(--muted); font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.price-card .price { margin: 14px 0 4px; color: var(--ink); font-size: 44px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.15; }
-.price-card .per { color: var(--muted); font-size: 15px; }
-.price-card .desc { margin-top: 16px; color: var(--body); font-size: 15.5px; }
-.price-card .price-head { min-height: 113px; }
-.checklist { list-style: none; margin: 24px 0 24px; padding: 0; display: grid; gap: 12px; }
-.checklist li { display: flex; gap: 12px; align-items: flex-start; color: var(--body); font-size: 15px; }
-.checklist svg { flex: 0 0 auto; margin-top: 3px; color: var(--ok); }
-.checklist.neutral svg { color: var(--slate); }
-.badge {
-  position: absolute; top: 22px; right: 22px;
-  padding: 5px 12px; border-radius: 999px;
-  background: var(--badge-bg); color: var(--ok); font-size: 12px; font-weight: 700; letter-spacing: .04em;
-}
-.price-card .actions, .price-card .action-note { margin-top: auto; }
-.price-card .actions { padding-top: 28px; }
-.price-card .actions .btn { min-height: 50px; }
-.price-card .action-note {
-  padding: 13px 15px; border-radius: 10px;
-  background: var(--tag-match-bg); border: 1px solid var(--feat-border);
-  color: var(--ink); font-size: 14.5px; font-weight: 600; line-height: 1.55;
-}
-.price-card .permo { margin-left: 2px; font-size: 15px; font-weight: 600; letter-spacing: 0; color: var(--muted); }
-.price-card .price + .price { margin-top: 0; }
-.price-card .price.duo { font-size: 28px; }
-.price-card .duo .permo { font-size: 14px; }
-.badge.soon { background: var(--tag-state-bg); color: var(--tag-state-fg); }
-.price-para { margin-top: 26px; color: var(--muted); font-size: 15px; }
-.price-note { margin-top: 22px; }
+.pricing h2 { margin: 56px 0 0; font-size: 22px; letter-spacing: -0.015em; }
+.pricing h2 + p { margin-top: 12px; max-width: 70ch; color: var(--body); font-size: 15.5px; }
+.plans-wrap { margin-top: 26px; }
+.plans { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid var(--line); border-radius: 16px; background: var(--card); box-shadow: var(--card-shadow-lg); overflow: hidden; }
+.plans th, .plans td { padding: 14px 20px; text-align: left; vertical-align: top; border-top: 1px solid var(--line-soft); font-size: 15px; line-height: 1.5; }
+.plans thead th { border-top: 0; vertical-align: top; padding-top: 26px; padding-bottom: 22px; background: var(--bg-soft); color: var(--muted); font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.plans thead th:first-child { width: 26%; }
+.plans thead th .plan { display: block; }
+.plans thead th .price { display: block; margin-top: 10px; color: var(--ink); font-size: 36px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
+.plans thead th .per, .plans thead th .how { display: block; margin-top: 6px; color: var(--muted); font-size: 14.5px; font-weight: 500; letter-spacing: 0; text-transform: none; }
+.plans thead th .how { color: var(--body); font-weight: 600; }
+.plans thead th .btn { margin-top: 16px; letter-spacing: 0; text-transform: none; }
+.plans tbody th { color: var(--ink); font-weight: 650; }
+.plans tbody th small { display: block; color: var(--muted); font-size: 13px; font-weight: 500; line-height: 1.4; }
+.plans td { color: var(--body); }
+.plans .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.price-freeze { margin-top: 18px; color: var(--muted); font-size: 14.5px; }
 .help-line { margin-top: 40px; color: var(--ink); font-size: 15.5px; }
 
 .contact-card {
@@ -755,12 +737,21 @@ p { margin: 0; }
   .hero-grid .demo, .hero-grid .hero-convo { margin-top: 0; }
   .cardgrid { grid-template-columns: repeat(2, 1fr); }
   .factrow { grid-template-columns: 1fr; }
-  .pricing-grid, .tworow { grid-template-columns: 1fr; }
+  .tworow { grid-template-columns: 1fr; }
   .hero { padding: 60px 0 72px; }
   .section { padding: 68px 0; border-top: 1px solid var(--line); }
   .section.soft { border-color: var(--line); border-bottom: 0; }
 }
 @media (max-width: 640px) {
+  .plans, .plans thead, .plans tbody { display: block; }
+  .plans thead tr, .plans tbody tr { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .plans thead th:first-child { display: none; }
+  .plans thead th { padding: 18px 14px; }
+  .plans thead th .price { font-size: 30px; }
+  .plans tbody th, .plans tbody td { padding-left: 14px; padding-right: 14px; }
+  .plans tbody th { grid-column: 1 / -1; padding-bottom: 4px; }
+  .plans tbody td { border-top: 0; padding-top: 0; padding-bottom: 14px; }
+  .plans tbody td::before { content: attr(data-plan); display: block; color: var(--faint); font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
   .arch { padding: 24px 16px; }
   .arch-flow { grid-template-columns: minmax(0, 1fr); }
   .arch-org { min-width: 0; }

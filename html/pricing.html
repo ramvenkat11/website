@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Pricing — Search2o</title>
-<meta name="description" content="Individual and team evaluations are free. Team service, at $100/month plus $40/user/month, is coming soon.">
+<meta name="description" content="Free for up to 10 members, or $30 per member per month with pooled executions. Enterprise arrives at general availability.">
 <meta property="og:title" content="Pricing — Search2o">
-<meta property="og:description" content="Individual and team evaluations are free. Team service, at $100/month plus $40/user/month, is coming soon.">
+<meta property="og:description" content="Free for up to 10 members, or $30 per member per month with pooled executions. Enterprise arrives at general availability.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://search2o.com/pricing.html">
 <meta property="og:url" content="https://search2o.com/pricing.html">
@@ -42,56 +42,42 @@
     <div class="container">
       <span class="kicker">Pricing</span>
       <h1 class="status">Search2o is in open beta</h1>
+      <p class="lead">Two plans during the public beta. A member is a person, a developer, or a service account. Enterprise arrives at general availability.</p>
     </div>
   </section>
 
-  <section class="page-body">
+  <section class="page-body pricing">
     <div class="container">
-      <div class="pricing-grid">
-
-        <article class="price-card">
-          <div class="price-head">
-            <span class="plan">Individual</span>
-            <div class="price">Free</div>
-          </div>
-          <ul class="checklist">
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Full product access for one user</span></li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Build and run agents from your laptop</span></li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Usage limits sized for a single user</span></li>
-          </ul>
-          <div class="actions">
-            <a class="btn btn-blue btn-lg" href="gettingstarted.html">Get started <span class="arrow" aria-hidden="true">&rarr;</span></a>
-          </div>
-        </article>
-
-        <article class="price-card">
-          <div class="price-head">
-            <span class="plan">Evaluation</span>
-            <div class="price">Free</div>
-          </div>
-          <ul class="checklist">
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Deploy Search2o on your servers and bring others in</span></li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Publish agents, describe them, and let others discover them dynamically</span></li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Generous usage limits for real-world evaluation</span></li>
-          </ul>
-          <p class="action-note">Request Evaluation from the UI.</p>
-        </article>
-
-        <article class="price-card">
-          <div class="price-head">
-            <span class="plan">Team</span>
-            <div class="price duo">$100<span class="permo">/month platform fee&nbsp;+</span></div>
-            <div class="price duo">$40<span class="permo">/user/month</span></div>
-          </div>
-          <ul class="checklist">
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>No feature tiers, premium seats, per-agent or per-server charges</span></li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Usage limits are shared across the organization, not assigned per user</span></li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg><span>Direct support from the Search2o engineering team</span></li>
-          </ul>
-          <p class="action-note">SLAs will be provided at GA.</p>
-        </article>
-
+      <div class="plans-wrap">
+      <table class="plans">
+        <thead>
+          <tr>
+            <th scope="col"><span class="sr">Plan</span></th>
+            <th scope="col"><span class="plan">Free</span><span class="price">$0</span><span class="per">for up to 10 members</span><a class="btn btn-blue" href="gettingstarted.html">Get started <span class="arrow" aria-hidden="true">&rarr;</span></a></th>
+            <th scope="col"><span class="plan">Paid</span><span class="price">$30</span><span class="per">per member per month, billed monthly</span><span class="how">Upgrade from the Account page in the GUI.</span></th>
+          </tr>
+        </thead>
+        <tbody>
+        <tr><th scope="row">Members</th><td data-plan="Free">Up to 10</td><td data-plan="Paid">Unlimited</td></tr>
+        <tr><th scope="row">Agent executions</th><td data-plan="Free">300 / workspace / month, pooled</td><td data-plan="Paid">300 / member / month, pooled; $15 per extra 300</td></tr>
+        <tr><th scope="row">Agent indexing</th><td data-plan="Free">30 indexes / month</td><td data-plan="Paid">30 indexes / member / month</td></tr>
+        <tr><th scope="row">Searches</th><td data-plan="Free">300 / workspace / month, pooled</td><td data-plan="Paid">300 / member / month, pooled; $15 per extra 300</td></tr>
+        <tr><th scope="row">Long-term memory entries</th><td data-plan="Free">100 memories / user</td><td data-plan="Paid">500 memories / user</td></tr>
+        <tr><th scope="row">Long-term memory searches</th><td data-plan="Free">300 / workspace / month, pooled</td><td data-plan="Paid">300 / member / month, pooled; $15 per extra 300</td></tr>
+        <tr><th scope="row">AI assistance<small>drafting, doc questions, description validation</small></th><td data-plan="Free">100 / month</td><td data-plan="Paid">100 / member / month</td></tr>
+        <tr><th scope="row">System performance</th><td data-plan="Free">Shared, best-effort</td><td data-plan="Paid">Priority</td></tr>
+        <tr><th scope="row">Reports</th><td data-plan="Free">Last 7 days</td><td data-plan="Paid">Last 90 days</td></tr>
+        <tr><th scope="row">Conversations</th><td data-plan="Free">Last 7 days</td><td data-plan="Paid">Last 90 days</td></tr>
+        <tr><th scope="row">Agent version history</th><td data-plan="Free">Last 7 days</td><td data-plan="Paid">Last 90 days</td></tr>
+        <tr><th scope="row">Dormant workspace</th><td data-plan="Free">Deleted after 1 month of inactivity</td><td data-plan="Paid">Not applicable</td></tr>
+        <tr><th scope="row">Support</th><td data-plan="Free">Community</td><td data-plan="Paid">Email</td></tr>
+        </tbody>
+      </table>
       </div>
+      <p class="price-freeze">Pay during the beta and each paid member keeps the $30 price for 24 months. Members added after the beta pay the then-current price.</p>
+
+      <h2>Enterprise</h2>
+      <p>Available at general availability. Includes SSO, an audit trail, flexible retention, and a support contract with an SLA. Pricing will be announced at GA.</p>
 
       <p class="help-line"><strong>Need help? Contact Search2o directly from the UI.</strong></p>
     </div>
