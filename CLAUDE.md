@@ -4432,3 +4432,14 @@ trick from the previous pass could not align a one-star and a two-star note, a g
 `.legend` class and the `.price-freeze sup` colour rule are gone; `.plans tbody th sup` still
 mutes the marks in the table. Measured at 1920 and 375: both notes' text starts at the same
 x, five marks in the table, no sideways scroll.
+
+## State on 2026-09-20 (tagline loses its full stop in the footer; not deployed)
+Ram: remove the period after "Search that executes". The footer brand line under the wordmark
+on all NINE non-docs pages (index, gettingstarted, pricing, about, 404, legal x4) is now
+"Search that executes" with no stop. This REVERSES the "Tagline 'Search that executes.' is
+DECIDED" note in the Site facts section above - his call, and the stop is what changed, not
+the words. Already without a stop and untouched: index.html's <title> and og:title
+("Search2o — Search that executes"), and legal/intellectual.html's trademark sentence
+("Search that executes™ is a trademark of Search2o"), where the ™ takes the position. The
+docs template has no brand line, so gen/build.py and the 137 built pages needed nothing. A
+sweep for "Search that executes." over html, gen and docsrc is clean.
