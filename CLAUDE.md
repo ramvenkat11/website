@@ -4477,3 +4477,13 @@ assistance parenthetical follows its marker. content/pricing.md (Ram's own sourc
 Parts 1 and 2) is UNTOUCHED - the new file is a separate snapshot, and the two will drift as
 he edits the page. The generator was a throwaway in the session, so a later snapshot means
 re-extracting from the html.
+
+## State on 2026-09-20 (pricing: new Agents row, the cap on how many an account may hold; not deployed)
+Ram: second row, Agents, Free 25 and Paid 250 - the maximum number of agents an account can
+have. NEW row directly under Members: "Agents | Up to 25 | Up to 250", phrased like the
+Members row above it ("Up to 10") since both are caps rather than monthly meters. No footnote
+marker: it is neither the member definition nor a pooled allowance. content/pricing_table.md
+regenerated from the page so the snapshot keeps up. Checked in the browser.
+NOTE, not acted on: this contradicts content/pricing.md Part 1, whose "Unlimited everywhere"
+table says "Agents (drafts) - Unlimited; only indexing is limited". No docs page claims agents
+are unlimited (swept), so nothing else needed changing.
