@@ -4348,3 +4348,15 @@ table. NOTE: the pricing page now has NO call-to-action button at all - the rout
 Getting started are the nav and the footer.
 SESSION NOTE: the scratchpad nocache.py had vanished (scratchpad cleared); rewritten at
 <scratchpad>/nocache.py - it chdirs to html/ itself and takes the port as argv[1].
+
+## State on 2026-09-20 (pricing: lead removed, member definition in the footnote; not deployed)
+Ram's four edits. The hero's whole `.lead` is GONE - "Two plans during the public beta."
+removed, "Enterprise arrives at general availability." removed from the top, and "A member is
+a person, a developer, or a service account." moved down. The hero is kicker + the status h1
+only, like the other inner pages. The footnote under the table (`.price-freeze`) now carries
+both facts: "A member is a person, a developer, or a service account. Pay during the beta and
+each paid member keeps the $30 price for 24 months. Members added after the beta pay the
+then-current price." The Enterprise paragraph lost "Pricing will be announced at GA." and ends
+at "...a support contract with an SLA." Checked in the browser, top and bottom. NOT TOUCHED:
+the page's meta and og descriptions still end "Enterprise arrives at general availability." -
+accurate, and he asked about the page body; say the word to trim them.
