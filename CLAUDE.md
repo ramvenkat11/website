@@ -4201,3 +4201,38 @@ as the other steps' text. The success note under the key box is unchanged.
 Ram: on "What the skill does" (skill-integration/finding-and-running-an-agent.html) the h2
 "One skill for every agent" is now "One skill for all the agents in Search2o". Its anchor id
 follows the text (no page linked the old anchor). Docs rebuilt, 137 pages.
+
+## State on 2026-09-19 (PRICING PAGE REDONE from content/pricing.md Part 2: Free and Paid; NOT DEPLOYED)
+Ram: pricing has two levels now; redo the page from Part 2 of the new pricing.md (Part 1 is
+motivation and decisions - not for the page). html/pricing.html: the three cards are GONE.
+Hero: kicker, the "Search2o is in open beta" status line, and Part 2's intro as the .lead
+("Two plans during the public beta. A member is a person, a developer, or a service account.
+Enterprise arrives at general availability."). Then ONE comparison table (`table.plans`) whose
+header cells are the plan heads - FREE $0 "for up to 10 members" + the Get started button;
+PAID $30 "per member per month, billed monthly" + "Upgrade from the Account page in the GUI."
+(that upgrade line is MINE, from the existing Account-page docs - flagged) - and nine rows:
+Members / Agents / Executions (small "including searches") / AI assistance (small "drafting,
+doc questions, description validation") / Capacity / Reports / Conversations / Agent version
+history / Support, cells = Part 2's Plans bullets verbatim, sentence-capitalised. Under it the
+price-freeze line verbatim (muted). h2 "Limits and retention by tier" + its sentence + a
+second `table.plans.limits` with the twelve rows (Pinned conversations: "Never expire" in both
+cells; Dormant workspace Paid: "Not applicable"; "Not included" / "None" as written). h2
+"Enterprise" + its paragraph. The help-line stays. Metas: "Free for up to 10 members, or $30
+per member per month with pooled executions. Enterprise arrives at general availability."
+CSS: the whole card block (.pricing-grid, .price-card*, .checklist, .badge*, .price-para,
+.price-note - all pricing-only, checked) is REPLACED by .pricing h2, .plans-wrap, .plans
+(card-styled table: --card bg, --line border, radius 16, header row on --bg-soft with the
+uppercase plan label, 36px price, muted per-line), .plans tbody th small, .price-freeze.
+PHONE (<=640): .plans/thead/tbody display block, every tr a 2-column grid (minmax(0,1fr)),
+the empty first header cell hidden, each row's label spans both columns and each cell shows
+a small uppercase FREE / PAID caption from its data-plan attribute via ::before. Measured:
+desktop table 1072px, header labels level (top-aligned - bottom alignment had put FREE and
+PAID at different heights), one h1; at 375 the table is 312px in a 360 viewport, cells 155/
+155, no overflow anywhere. Screenshots of both, top and bottom, checked.
+OPEN FROM THE MD: the beta END DATE is meant to be on the page (Part 1 "Open decisions") and
+is not decided - nothing on the page says when the beta ends. Part 2's two tables overlap on
+six rows (executions, AI assistance, indexes, reports, conversations, version history) - his
+structure, reproduced. The docs still name Individual / Evaluation / Team (registering-and-
+downloading, running-the-server, the-gui, gui/account, license, usage-limits) and billing.html
+speaks of a platform fee - a separate sweep once he says so. site.js's individualAccountExists
+message is stale too (see the notes above).
