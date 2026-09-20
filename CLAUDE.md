@@ -4252,3 +4252,35 @@ table (flagged - Ram's sentence, no section left to carry it); the price-freeze 
 the table, then Enterprise. The `.plans.limits` rule is removed. Tags balanced (1 table, 15
 tr, 17 th, 28 td). The layout CSS is unchanged, so the earlier desktop/phone measurements
 hold for the added rows.
+
+## State on 2026-09-19 (docs: Individual / Evaluation / Team replaced by Free and Paid; not deployed)
+Ram: update the docs pages that still mention the three tiers. Seven edits in six docsrc
+pages, all stated from the new pricing page's facts (Free up to 10 members, Paid per member,
+monthly allowances, executions pooled with a billed overage on Paid):
+- system-management/usage-limits.html REWRITTEN: lead says each plan has monthly allowances
+  for executions, indexing and AI assistance and points at Pricing (the old "counted daily,
+  on the UTC day" is gone - the allowances are monthly now); "What sets your limits" is the
+  plan (Free per account; Paid grows with members, executions pooled) - the three-level table
+  is gone; the "Why the numbers are not published" section is DELETED (the pricing page now
+  publishes them); "If you reach a limit": Free holds until the month resets, Paid executions
+  continue and are billed at the Pricing-page rate, indexing/AI allowances grow by adding
+  members, "if you see a limit you did not expect, please reach out".
+- getting-started/the-gui.html: "Add developers and users from the Users page." (the
+  Individual-single-user / from-Evaluation clause cut).
+- getting-started/registering-and-downloading.html: "opens an account on the Free plan with
+  you as its first user".
+- gui/account.html: Users - "Add users by email; a Free account holds up to 10 members, and
+  a Paid account any number."; Account - "upgrade to the Paid plan, or delete the account"
+  (the Evaluation request and the one-business-day approval email are gone).
+- getting-started/running-the-server.html: "To let colleagues try Search2o, add them to the
+  account and start one server in a common place" (no upgrade needed under 10 members).
+- support-licensing/license.html Pricing: "The Free plan covers up to 10 members, and the
+  Paid plan is priced per member. See Pricing."
+- support-licensing/billing.html: "per-member charge ... each member"; the platform-fee
+  bullet DELETED (no platform fee).
+Docs rebuilt (137 pages); sweep of docsrc and html/docs for Individual / Evaluation / Team /
+platform fee / service level: clean. ASSUMED, flagged: "upgrade to the Paid plan" from the
+Account page (the GUI's upgrade path under the new model is not verified in code) and the
+"billed at the rate on the Pricing page" overage behaviour (from pricing.md Part 1, not yet
+seen in the server). NOT TOUCHED: site.js's individualAccountExists message (Ram's wording
+wanted) and the server's freeAccountExists key mismatch.
