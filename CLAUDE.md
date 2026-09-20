@@ -4462,6 +4462,7 @@ Ram on the heading-sized URL: "it got bigger - that's not good". The fix he was 
 DULLNESS, not the size - so search2o.com is now Helvetica Neue BOLD 30 in --ink (bright and
 solid, like the headline's treatment) instead of Bold 58. The layout returns to where it was:
 headline lines at y 286/356/426, hairline at 530, URL at 548. Three variants were rendered
-and compared before choosing: 26 Medium in ink, 30 Bold in ink (chosen), 38 Bold in ink.
-<scratchpad>/ogcard.py's build() now takes url_size and url_face, so another size is one
+and compared: 26 Medium in ink, 30 Bold in ink, 38 Bold in ink. Ram then said "smaller",
+so the shipped card is BOLD 26 in --ink - the original size, the new brightness.
+<scratchpad>/ogcard.py's build() takes url_size and url_face, so another size is one
 argument away.
