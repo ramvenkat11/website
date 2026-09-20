@@ -4360,3 +4360,18 @@ then-current price." The Enterprise paragraph lost "Pricing will be announced at
 at "...a support contract with an SLA." Checked in the browser, top and bottom. NOT TOUCHED:
 the page's meta and og descriptions still end "Enterprise arrives at general availability." -
 accurate, and he asked about the page body; say the word to trim them.
+
+## State on 2026-09-20 (pricing: "workspace" is gone from the Free meters; not deployed)
+Ram: "300 / workspace / month" is wrong - nobody has more than one workspace, so the unit
+means nothing; this is simply all they get per month. The three Free meter cells (Agent
+executions, Searches, Long-term memory searches) now read "300 / month for all members" -
+"workspace" and "pooled" both dropped, since there is one bucket on Free and nothing to pool;
+"for all members" keeps it from being read as per person. The Paid cells are unchanged
+("300 / member / month, pooled; $15 per extra 300"), where pooled is the real behaviour.
+Verified in the browser: one line per cell at desktop, and the new text is shorter than what
+it replaced, so phone wrapping cannot get worse.
+FLAGGED, NOT CHANGED (both Ram's call): (1) the row label "Dormant workspace" is the last
+"workspace" on the site - the vocabulary everywhere else is "account", so "Dormant account"
+would match; (2) the Free cells for Agent indexing ("30 indexes / month") and AI assistance
+("100 / month") are account-wide too but do not say so - the same three-explicit /
+two-implicit split the page had before, left as it was.
