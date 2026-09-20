@@ -4466,3 +4466,14 @@ and compared: 26 Medium in ink, 30 Bold in ink, 38 Bold in ink. Ram then said "s
 so it went to Bold 26, then to BOLD 24 on his "Try 24" - the shipped size, in --ink.
 <scratchpad>/ogcard.py's build() takes url_size and url_face, so another size is one
 argument away.
+
+## State on 2026-09-20 (pricing table written to content/pricing_table.md; not deployed)
+Ram: write the pricing table to an md file. NEW content/pricing_table.md, generated FROM
+html/pricing.html (not retyped), so it is the page as it stands: the two plan columns with
+their price and how-to-get-it lines, all thirteen rows in page order, the two footnotes, and
+the Enterprise paragraph. The row markers are escaped (`**Members**\*`,
+`**Agent executions**\*\*`) because a bare asterisk after bold breaks markdown; the AI
+assistance parenthetical follows its marker. content/pricing.md (Ram's own source document,
+Parts 1 and 2) is UNTOUCHED - the new file is a separate snapshot, and the two will drift as
+he edits the page. The generator was a throwaway in the session, so a later snapshot means
+re-extracting from the html.
