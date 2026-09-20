@@ -4379,3 +4379,25 @@ FLAGGED, NOT CHANGED (both Ram's call): (1) the row label "Dormant workspace" is
 would match; (2) the Free cells for Agent indexing ("30 indexes / month") and AI assistance
 ("100 / month") are account-wide too but do not say so - the same three-explicit /
 two-implicit split the page had before, left as it was.
+
+## State on 2026-09-20 (pricing: a * marks the pooled rows, explained in the footnote; not deployed)
+Ram had meanwhile edited the table himself: "pooled" is gone from every Paid cell, the
+Long-term memory searches row is gone, Long-term memory is now one row (memories / user), and
+Agent indexing reads "30 / month" / "30 / member / month". He then asked for the pooling fact
+in the footnote, and, mid-task, for "a * or something" on the rows instead of the word.
+APPLIED: `<sup>*</sup>` after the row LABEL (not in the cells - pooling is a property of the
+meter, and the Paid cell is already a compound with the overage price) on the four monthly
+allowance rows: Agent executions, Agent indexing, Searches, AI assistance. Long-term memory
+carries NO star - it is a standing per-user cap, not a monthly allowance, so nothing pools.
+The footnote is TWO `.price-freeze` paragraphs now: the legend first, directly under the
+table - "* On the Paid plan, these allowances are pooled across the whole account, so what
+one member does not use is available to the others." - then the existing member definition
+plus the beta price freeze. styles.css: `.plans tbody th sup, .price-freeze sup { color:
+var(--muted); font-weight: 500; }` so the mark is quiet. Checked at desktop and 375: four
+stars, both notes, no sideways scroll.
+FLAGGED: which four rows pool is MY reading of pricing.md (the monthly per-member allowances;
+the md states pooling for executions and searches, and implies it for indexing with "the
+remedy is more members" - it says nothing about AI assistance). Veto any of the four.
+ALSO STALE NOW, not touched: docsrc/system-management/usage-limits.html still lists
+"long-term memory searches" as a meter and calls the allowances pooled in the plural - that
+row left the pricing page in Ram's edit.
