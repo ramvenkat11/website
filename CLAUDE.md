@@ -4332,3 +4332,19 @@ twitter:card summary_large_image - 146 of 147 html files (the Search Console fil
 exception, as always). The legal pages and 404 gained the block before their icon link. No
 page points at logo.png as og:image any more. deploy.sh's image pass (*.png, 30-day cache)
 picks og.png up on the next deploy without changes.
+
+## State on 2026-09-20 (pricing heads: $30/user/month, no Get started button; not deployed)
+Ram: drop "for up to 10 members" under Free; drop "billed monthly" and move /user/month up
+into the price; remove the Get started button and say it is the default when signing up.
+The two header cells are now: FREE / $0 / "Default when signing up." and PAID /
+$30<span class="permo">/user/month</span> / "Upgrade from the Account page in the GUI."
+styles.css: the `.per` and `.btn` header rules are gone; `.plans thead th .how` carries the
+line under the price (14.5px w600 --body, margin-top 8) and NEW `.plans thead th .permo`
+(16px w600 --muted, margin-left 2) is the price suffix - it needs `text-transform: none`
+because the header th uppercases everything, and the first render showed "/USER/MONTH".
+Measured: desktop suffix on the price's line, one line; at 375 the price wraps to two lines
+($30 then /user/month), both header cells 173px tall, no sideways scroll, zero buttons in the
+table. NOTE: the pricing page now has NO call-to-action button at all - the routes to
+Getting started are the nav and the footer.
+SESSION NOTE: the scratchpad nocache.py had vanished (scratchpad cleared); rewritten at
+<scratchpad>/nocache.py - it chdirs to html/ itself and takes the port as argv[1].
