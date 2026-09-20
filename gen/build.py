@@ -490,7 +490,11 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
 <meta property="og:description" content="{html.escape(description)}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{SITE}/{path}">
-<meta property="og:image" content="{SITE}/logo.png">
+<meta property="og:image" content="{SITE}/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Search2o: a platform to build, run, and use AI agents, with a search interface">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="{r}favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="{r}fonts/inter-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="{r}fonts/jetbrains-mono-latin.woff2" crossorigin>
