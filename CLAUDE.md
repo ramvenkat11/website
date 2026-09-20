@@ -4363,13 +4363,17 @@ accurate, and he asked about the page body; say the word to trim them.
 
 ## State on 2026-09-20 (pricing: "workspace" is gone from the Free meters; not deployed)
 Ram: "300 / workspace / month" is wrong - nobody has more than one workspace, so the unit
-means nothing; this is simply all they get per month. The three Free meter cells (Agent
-executions, Searches, Long-term memory searches) now read "300 / month for all members" -
-"workspace" and "pooled" both dropped, since there is one bucket on Free and nothing to pool;
-"for all members" keeps it from being read as per person. The Paid cells are unchanged
-("300 / member / month, pooled; $15 per extra 300"), where pooled is the real behaviour.
-Verified in the browser: one line per cell at desktop, and the new text is shorter than what
-it replaced, so phone wrapping cannot get worse.
+means nothing; this is simply all they get per month. My first attempt, "300 / month for all
+members", he rejected ("not a good change") and asked for options to pick from. FOUR OFFERED
+(nothing applied until he chose): "300 / month, total" / bare "300 / month" / "300 / month,
+shared" / moving "/ month" into the row label so both cells shorten. HIS PICK: the bare
+"300 / month". So the three Free meter cells (Agent executions, Searches, Long-term memory
+searches) read "300 / month" - "workspace" and "pooled" both dropped, and the missing
+"/ member" against the Paid cell is what carries the meaning. The whole Free column now has
+one shape: a number and a period (300 / month, 30 indexes / month, 100 / month). The Paid
+cells are unchanged ("300 / member / month, pooled; $15 per extra 300"), where pooled is the
+real behaviour. Verified in the browser at desktop; the text is shorter than what it replaced,
+so phone wrapping cannot get worse.
 FLAGGED, NOT CHANGED (both Ram's call): (1) the row label "Dormant workspace" is the last
 "workspace" on the site - the vocabulary everywhere else is "account", so "Dormant account"
 would match; (2) the Free cells for Agent indexing ("30 indexes / month") and AI assistance
