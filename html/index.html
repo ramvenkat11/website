@@ -135,7 +135,7 @@
             </li>
             <li>
               <h3>Agent server</h3>
-              <p>A stateless server designed to run standalone or in a cluster. Uses the agent framework to run agents in a controlled runtime. Encrypts sensitive information before it leaves the server. <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">GitHub</a>.
+              <p>A stateless server that runs standalone or in a cluster in your organization. Uses the agent framework to run agents in a controlled runtime. Encrypts sensitive information before it leaves the server. <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">GitHub</a>.
               </p>
             </li>
             <li>
@@ -189,55 +189,24 @@
         <div>
           <span class="kicker">Agent framework</span>
           <h2>JSON DSL designed for agents</h2>
-          <p style="margin-top: 14px; color: var(--body); font-size: 14.5px; line-height: 1.6;">An agent is built using <a href="docs/commands/index.html">23 commands</a>. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with built-in safeguards. <a href="docs/introduction/why-not-python.html">Why not Python?</a></p>
-          <h3 class="agen-title">Build agents with AI assistance</h3>
-          <div class="agen">
-            <div class="agen-ex" aria-label="Example descriptions">
-              <span>Try one:</span>
-              <button type="button" class="agen-chip" data-prompt="Answer questions about our HR policies from the policy documents in our intranet API, and cite the section each answer comes from.">RAG</button>
-              <button type="button" class="agen-chip" data-prompt="Look up a customer&rsquo;s open orders from our orders API. Before cancelling an order, ask the user to confirm.">Tool calling with confirmation</button>
-              <button type="button" class="agen-chip" data-prompt="Open a Jira ticket through our Jira MCP server from a one-line problem description, and reply with the ticket key.">MCP</button>
-            </div>
-            <textarea id="agen-text" rows="6" maxlength="400" placeholder="A tool-calling agent that fetches a customer&rsquo;s orders from our orders API." aria-label="Describe the agent you want"></textarea>
-            <p class="agen-count" id="agen-count" aria-live="polite">40 more characters</p>
-            <div class="actions">
-              <button class="btn btn-blue" type="button" id="agen-go" disabled>Generate agent</button>
-              <div class="recaptcha-v3" data-sitekey="6Leg9r0tAAAAAKjlTLpFY352CKMKdIhZPvk-WrQj"></div>
-            </div>
-            <div class="reg-out" id="agen-out" hidden></div>
-          </div>
+          <p style="margin-top: 14px; color: var(--body); font-size: 14.5px; line-height: 1.6;">An agent is built in JSON, using 23 commands. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with built-in safeguards.</p>
+            <p style="margin-top: 14px; color: var(--body); font-size: 14.5px; line-height: 1.6;">Profiles keep LLMs, prompts, APIs, Databases and MCPs out of agent code.</p>
+          <p style="margin-top: 14px; color: var(--body); font-size: 14.5px; line-height: 1.6;">Agents are built with AI assistance. <a href="demo.html">Try it on the demo page <span class="arrow" aria-hidden="true">&rarr;</span></a></p>
         </div>
 
-        <div class="codecard" aria-label="Example agent definition">
-          <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname" id="agen-fname">hr_policy &middot; agent definition</span><button type="button" class="copy" id="agen-copy" aria-label="Copy the agent definition" hidden><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg></button></div>
-<pre><code id="agen-code"><span class="tk-pun">{</span>
-  <span class="tk-com">// An agent is a set of functions. Execution starts in main.</span>
-  <span class="tk-key">&quot;functions&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
-    <span class="tk-key">&quot;main&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
-      <span class="tk-com">// A function is an ordered list of commands.</span>
-      <span class="tk-key">&quot;commands&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
-        <span class="tk-com">// API profile: base URL, auth, pool. Secrets stay out.</span>
-        <span class="tk-com">// sys.query is the user&#x27;s request.</span>
-        <span class="tk-key">&quot;api&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
-          <span class="tk-key">&quot;profile&quot;</span><span class="tk-pun">:</span> <span class="tk-str">&quot;intranet&quot;</span><span class="tk-pun">,</span>
-          <span class="tk-key">&quot;url&quot;</span><span class="tk-pun">:</span> <span class="tk-str">&quot;/policies/search&quot;</span><span class="tk-pun">,</span>
-          <span class="tk-key">&quot;queryParams&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span> <span class="tk-key">&quot;q&quot;</span><span class="tk-pun">:</span> <span class="tk-expr">&quot;{ sys.query }&quot;</span> <span class="tk-pun">}</span>
-        <span class="tk-pun">}</span><span class="tk-pun">,</span>
-        <span class="tk-key">&quot;prompt&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span>
-          <span class="tk-com">// Inside { } is Python, run in a controlled runtime.</span>
-          <span class="tk-com">// result is the previous command&#x27;s parsed response.</span>
-          <span class="tk-key">&quot;system&quot;</span><span class="tk-pun">:</span> <span class="tk-expr">&quot;{ f&#x27;Use only these sections: {result}&#x27; }&quot;</span><span class="tk-pun">,</span>
-          <span class="tk-key">&quot;user&quot;</span><span class="tk-pun">:</span> <span class="tk-expr">&quot;{ sys.query }&quot;</span>
-        <span class="tk-pun">}</span><span class="tk-pun">,</span>
-        <span class="tk-com">// A profile holds the vendor, model and key.</span>
-        <span class="tk-key">&quot;llm&quot;</span><span class="tk-pun">:</span> <span class="tk-pun">{</span> <span class="tk-key">&quot;profile&quot;</span><span class="tk-pun">:</span> <span class="tk-str">&quot;claude_haiku&quot;</span><span class="tk-pun">,</span> <span class="tk-key">&quot;streamOutput&quot;</span><span class="tk-pun">:</span> <span class="tk-bool">true</span> <span class="tk-pun">}</span>
-      <span class="tk-pun">}</span>
-    <span class="tk-pun">}</span>
-  <span class="tk-pun">}</span>
-<span class="tk-pun">}</span></code></pre>
+        <div class="cmdcard" aria-label="The 23 commands, by group">
+          <div class="cmdcard-head"><span>23 commands</span><a href="docs/commands/index.html">Command reference &rarr;</a></div>
+          <div class="cg"><span class="cg-l">Variables</span><span class="cg-c"><a href="docs/commands/var.html"><code>var</code></a></span></div>
+          <div class="cg"><span class="cg-l">Flow control</span><span class="cg-c"><a href="docs/commands/if.html"><code>if</code></a><a href="docs/commands/while.html"><code>while</code></a><a href="docs/commands/for.html"><code>for</code></a><a href="docs/commands/break.html"><code>break</code></a><a href="docs/commands/continue.html"><code>continue</code></a><a href="docs/commands/func.html"><code>func</code></a><a href="docs/commands/return.html"><code>return</code></a><a href="docs/commands/parallel.html"><code>parallel</code></a></span></div>
+          <div class="cg"><span class="cg-l">LLM interaction</span><span class="cg-c"><a href="docs/commands/prompt.html"><code>prompt</code></a><a href="docs/commands/llm.html"><code>llm</code></a><a href="docs/commands/memory.html"><code>memory</code></a></span></div>
+          <div class="cg"><span class="cg-l">External systems</span><span class="cg-c"><a href="docs/commands/api.html"><code>api</code></a><a href="docs/commands/db.html"><code>db</code></a></span></div>
+          <div class="cg"><span class="cg-l">Deep agents</span><span class="cg-c"><a href="docs/commands/search.html"><code>search</code></a><a href="docs/commands/invoke.html"><code>invoke</code></a></span></div>
+          <div class="cg"><span class="cg-l">Human-in-the-loop</span><span class="cg-c"><a href="docs/commands/ask.html"><code>ask</code></a></span></div>
+          <div class="cg"><span class="cg-l">Agent output</span><span class="cg-c"><a href="docs/commands/output.html"><code>output</code></a></span></div>
+          <div class="cg"><span class="cg-l">Agent termination</span><span class="cg-c"><a href="docs/commands/end.html"><code>end</code></a><a href="docs/commands/fail.html"><code>fail</code></a></span></div>
+          <div class="cg"><span class="cg-l">Observability</span><span class="cg-c"><a href="docs/commands/progress.html"><code>progress</code></a><a href="docs/commands/trace.html"><code>trace</code></a><a href="docs/commands/log.html"><code>log</code></a></span></div>
         </div>
       </div>
-
     </div>
   </section>
   <section class="section soft" id="platform">
