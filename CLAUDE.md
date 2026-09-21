@@ -4588,3 +4588,23 @@ this Mac is 3.2.57) rejects - rewritten as a plain key=value list and exercised 
 (each fails naming the key). A --dry-run --skip-build preflight passed. website_deploy.md's
 "points at a local server" sentence now names both URLs and the live re-check. Nothing reads
 demoUrl yet - the demo pages will (site.js reads SEARCH2O_CONFIG).
+
+## State on 2026-09-21 (no bare inputs/query; getattr/setattr gone; sys.exists documented; not deployed)
+Ram: (1) somewhere the docs said inputs and query can be used without sys - wrong; (2) getattr
+and setattr are no longer provided - remove every reference; (3) sys.exists is new - document
+it. VERIFIED in ../search2o/search2o/execution/agent_executor.py: create_dict puts only sys,
+agent, conv, command and the allowlist (__builtins__) into the expression namespace - no bare
+inputs or query; safe_getattr/safe_setattr appear nowhere in the package; sys.exists(scope,
+name) is exists_function (line 437): scopes local / agent / conv / allowlist, a non-string
+name and any other scope raise a ShowMessage. (1) The claim was ONE bullet, variables.html
+"Other names": "inputs and query - the same as sys.inputs and sys.query" - DELETED (the list
+is result and exc now). (2) allowlist.html's "Two names that are always present" h2 and its
+three paragraphs DELETED (no page linked its anchor); the getattr seed examples on var.html
+and variables.html are sys.exists examples now. Sweep of docsrc for getattr/setattr: 0.
+(3) sys.exists is documented in three places: python-expressions.html already had Ram's
+"Checking whether a variable exists" section (from his md); variables.html's always-present
+sys list gained an exists bullet and its seed sentence uses it; system-variables.html's lead
+says FOUR names are always there and its Always-present list gained sys.exists; both link
+python-expressions.html#checking-whether-a-variable-exists. var.html's example line became
+93 chars with callCount (past the ~91 the 770px pre fits), so the variable is agent.calls
+there (three mentions). 138 pages, 34 examples valid.
