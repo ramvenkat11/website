@@ -4795,3 +4795,15 @@ Ram to choose between concept 2 (on disk) and the fallback.
 index.html and styles.css restored from the saved fallback: Live demo (blue) / Get started
 (ghost) / the faint mono `pip install search2o` with the package icon, linking PyPI, on one
 row. No btn-stack markup or CSS remains.
+
+## State on 2026-09-21 (hero concept 3, ON DISK: the pip command IS the Get started button; not deployed)
+Ram: drop the Get started button and make the pip install the link to Getting started.
+.hero-actions is two buttons: "Live demo ->" (blue) and `<a class="btn btn-ghost btn-lg
+hero-pip" href="gettingstarted.html" aria-label="Get started: pip install search2o">` holding
+the 16px package icon and `<code>pip install search2o</code>` (mono 14px w500 --ink; the icon
+--muted). styles.css: `.hero-pip { gap: 9px; color: var(--muted) }`, `.hero-pip code`,
+`.hero-pip svg { flex: none }` (the ghost button rules do the rest). Measured at 1920: 156
+and 247px wide, both 46px on one midline (407); at 390 they stack, no sideways scroll. The
+fallback (three-item row) is still in <scratchpad>/fallback_hero and described in the note
+above; concept 2 (stacked label) was rejected. The word "Get started" survives in the nav,
+the footer and the aria-label.
