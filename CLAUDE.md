@@ -4807,3 +4807,11 @@ and 247px wide, both 46px on one midline (407); at 390 they stack, no sideways s
 fallback (three-item row) is still in <scratchpad>/fallback_hero and described in the note
 above; concept 2 (stacked label) was rejected. The word "Get started" survives in the nav,
 the footer and the aria-label.
+
+## State on 2026-09-21 (hero pip button lighter in dark theme; not deployed)
+Ram: make the ghost button lighter. In the dark theme the ghost fill (--card, #0f1930) was
+almost the hero background; `.hero-pip` now gets `background: rgba(255,255,255,.07);
+border-color: rgba(255,255,255,.16)` (hover .11 / .24) in BOTH dark blocks (styles.css:485
+and inside the prefers-color-scheme block) - the same double-emission the other dark
+overrides use. The light theme is untouched (white card on a near-white hero already reads
+light). Only this button changed; the generic .btn-ghost is as it was.
