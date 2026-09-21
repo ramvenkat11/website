@@ -4674,3 +4674,49 @@ search2o` chip now sits on its own row under the buttons (buttons 384-430, chip 
 row wraps the same way at 1100 and 390, no sideways scroll. Read as intended in the zoomed
 crop: two buttons, the install command beneath. The left column is ~48px taller, so the hero
 card hangs less below it; the card's top anchor is unchanged.
+
+## State on 2026-09-21 (Notifications -> Audit log: DOCS DONE; UI COLLIDED with the ui1 session; not deployed)
+Ram: rename notifications to Audit log everywhere (UI, uitext, docs) and show the icon only
+to admin users. DOCS (this repo, complete): docsrc/system-management/notifications.html git
+mv'd to audit-log.html (html/docs old copy git rm'd; toc "Audit log"; the --delete sync
+removes the old object) and rewritten: lead ("Administrators read it in the GUI; developers
+can read it through the API"), "What produces an entry", "Reading it" (the icon in the
+header is shown to administrators and the owner; getNotifications returns the same entries
+to developers and above through the REST API - the server route is unchanged), "Why the
+values are not shown". Every mention followed: docs home card, system-management lead,
+data-privacy row ("Audit log"; readers "Administrators in the GUI; developers and above
+through the API"), what-search2o-provides, support.html x2 (its notifications.html link -
+the ONE pre-existing broken link in the docs - now points at ../system-management/
+audit-log.html, so the link check is finally clean), rest-api/overview, automating-with-an-
+llm, authentication ("an audit log entry"), runtime/overview, profiles/overview,
+describing-an-agent (the toast sentence stays; "and the audit log keeps the record" added),
+gui/index ("the audit log for administrators"), gui/personal (section REMOVED, lead "the
+profile, and docs and help", toc title "Profile and docs"), gui/account (NEW "Audit log" h2
+with the gui-notifications screenshot placeholder, caption "The Audit log page"; lead
+mentions it). KEPT as "notification" on purpose: the toast sense (your-first-agent,
+describing-an-agent, how-the-gui-runs notificationDurationSeconds, figures.py "a
+notification says when it is done" - the GUI toasts the indexing outcome, which is what a
+developer without the icon sees) and the API name getNotifications. 138 pages, 34 examples.
+UI (../ui1) - STOPPED HALF WAY, RAM TO RECONCILE: while I was editing, ANOTHER SESSION was
+doing the same rename in ui1 (new src/shared/auditLogText.ts + test, the defaults key
+renamed to welcome.icon.auditLog.*, ~25 files modified in 15 minutes, many I never touched).
+My edits that are IN the ui1 tree: git mv NotificationsModule.tsx -> AuditLogModule.tsx with
+its labels ("Audit log" title, "All entries", "No entries" via uitext, ids audit-log-user,
+persisted keys auditLog.*), moduleRegistry "AuditLog", NavigationModule (crumb "Audit log";
+the band icon is ScrollText, wrapped in `canSeeAdminActions &&` - admin + owner - while Docs
+and Help stay under canSeeDevActions; comment updated), pageHelp key "audit-log",
+uiTextDefaults values (welcome.icon title "Audit log", empty "No entries in this period.",
+indexResult "The result will appear in the audit log."), comment lines in AgentViewModule /
+indexingMonitor / UsersModule. REVERSED exactly (my strings only): the welcome-tour role-
+aware icon count (welcomeTour.ts bandIcons()/count, welcomeLayout.ts, WelcomeSchematic.tsx,
+welcomeSeen.test.ts) - the other session's version of those files stands, and its tour still
+draws THREE band icons for every role; a developer's band now has two, so the ring for Docs
+lands one slot off unless that session fixes it (design in this note: bandIconBox(index,
+count) with the icons list from the role). ../s2oserver/maintenance/data/uitext.json (the
+published catalogue, THE AUTHORITY over the defaults): values set to "Audit log" / "No
+entries in this period." / "The result will appear in the audit log."; key
+pageHelp.notifications -> pageHelp.audit-log with the new text. The catalogue still carries
+welcome.icon.notifications.* while the ui1 defaults now read welcome.icon.auditLog.* - the
+catalogue key must follow whatever ui1 settles on, then uitext_upload.py. LESSON: `git
+status` in ui1 showed a dozen modified files before I started - a live session's
+fingerprint; check `find src -mmin -15` before touching a repo another session owns.
