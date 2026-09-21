@@ -12,8 +12,10 @@ bucket `search2o.com` (static-website hosting) behind the CloudFront distributio
 `scripts/deploy.sh` runs the whole procedure below: it rebuilds the docs, uploads what changed,
 deletes every bucket object that no longer exists locally, invalidates, waits for the
 invalidation to complete and verifies with curl. `--dry-run` shows what would be uploaded and
-deleted and touches nothing; `--skip-build` leaves the docs as they are. The script refuses to run with credentials for another AWS account, or while
-`html/config.js` points at a local server.
+deleted and touches nothing; `--skip-build` leaves the docs as they are. The script refuses to run with credentials for another AWS account, or unless
+`html/config.js` carries exactly the production URLs: `apiUrl` https://reg.api.search2o.com
+and `demoUrl` https://demo.api.search2o.com. After the invalidation it fetches the live
+config.js and fails if either value differs.
 The `docsweb/` prefix is excluded from the sync: it is the in-app docs data that s2oserver's
 uploader maintains, not website content, and the script never uploads to it or deletes from it.
 

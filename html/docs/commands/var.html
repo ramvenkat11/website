@@ -68,14 +68,14 @@
   <span class=key>&quot;city&quot;</span>: <span class=str>&quot;Reston&quot;</span>,
   <span class=key>&quot;now&quot;</span>: <span class=str>&quot;{ datetime.now().isoformat() }&quot;</span>,
   <span class=key>&quot;greeting&quot;</span>: <span class=str>&quot;{ f&#x27;Hello from {city}&#x27; }&quot;</span>,
-  <span class=key>&quot;agent.callCount&quot;</span>: <span class=str>&quot;{ getattr(agent, &#x27;callCount&#x27;, 0) + 1 }&quot;</span>,
+  <span class=key>&quot;agent.calls&quot;</span>: <span class=str>&quot;{ (agent.calls if sys.exists(&#x27;agent&#x27;, &#x27;calls&#x27;) else 0) + 1 }&quot;</span>,
   <span class=key>&quot;conv.lastCity&quot;</span>: <span class=str>&quot;{ city }&quot;</span>
 }</code></pre></figure>
 
 <h2 id="rules">Rules</h2>
 <ul>
   <li>Assignments run top to bottom. In the example, <code>greeting</code> can use <code>city</code> because <code>city</code> is set earlier in the same command.</li>
-  <li>Reading an agent or conversation variable that has never been set raises an error. Seed the variable first, as the example does for <code>agent.callCount</code> with <code>getattr</code>.</li>
+  <li>Reading an agent or conversation variable that has never been set raises an error. Seed the variable first, as the example does for <code>agent.calls</code> with <code>sys.exists</code>.</li>
   <li>The loop variables of an enclosing <code>for</code> are ordinary locals and can be read here. A <code>for</code> command may not reuse a name that an enclosing <code>for</code> already binds.</li>
 </ul>
 

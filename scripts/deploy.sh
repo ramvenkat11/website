@@ -49,12 +49,26 @@ identity="$(aws sts get-caller-identity --query Account --output text 2>/dev/nul
 [[ "$identity" == "$AWS_ACCOUNT" ]] || fail "AWS credentials are for account '${identity:-none}', expected $AWS_ACCOUNT"
 echo "AWS account $identity"
 
-# STANDING RULE (Ram, 2026-09-13): the website is never published unless config.js carries exactly the
-# production registration URL. A test or local URL here has gone live before; it must not again.
-PRODUCTION_API_URL="https://reg.api.search2o.com"
-api_url="$(grep -E '^\s*apiUrl:' "$HTML/config.js" | sed -E 's/.*apiUrl: *"([^"]*)".*/\1/')"
-[[ "$api_url" == "$PRODUCTION_API_URL" ]] || fail "html/config.js apiUrl is '${api_url:-missing}', not $PRODUCTION_API_URL - nothing is published"
-echo "config.js apiUrl: $api_url"
+# STANDING RULE (Ram, 2026-09-13; demoUrl added 2026-09-21): the website is never published unless
+# config.js carries exactly the production URLs. A test or local URL here has gone live before; it
+# must not again. Every key in PRODUCTION_URLS is checked, locally before the upload and live after it.
+PRODUCTION_URLS=(
+    "apiUrl=https://reg.api.search2o.com"
+    "demoUrl=https://demo.api.search2o.com"
+)
+config_value() {   # config_value <key> <config.js text>: the string assigned to the key, or nothing
+    printf '%s\n' "$2" | grep -E "^[[:space:]]*$1:" | sed -E "s/.*$1: *\"([^\"]*)\".*/\\1/"
+}
+check_config() {   # check_config <label> <config.js text>: fail on the first key that is not production
+    local entry key expected value
+    for entry in "${PRODUCTION_URLS[@]}"; do
+        key="${entry%%=*}"; expected="${entry#*=}"
+        value="$(config_value "$key" "$2")"
+        [[ "$value" == "$expected" ]] || fail "$1 $key is '${value:-missing}', not $expected - nothing is published"
+        echo "$1 $key: $value"
+    done
+}
+check_config "html/config.js" "$(cat "$HTML/config.js")"
 
 if [[ -n "$(git -C "$ROOT" status --porcelain -- html docsrc gen)" ]]; then
     echo "note: uncommitted changes under html/, docsrc/ or gen/ - they will be deployed as they are on disk"
@@ -103,12 +117,11 @@ echo "Completed"
 step "Verifying"
 home_status="$(curl -s -o /dev/null -w '%{http_code}' "$SITE_URL/")"
 docs_title="$(curl -s "$SITE_URL/docs/index.html" | grep -o '<title>[^<]*' | head -1)"
-live_api_url="$(curl -s "$SITE_URL/config.js" | grep -E '^\s*apiUrl:' | sed -E 's/.*apiUrl: *"([^"]*)".*/\1/')"
+live_config="$(curl -s "$SITE_URL/config.js")"
 echo "$SITE_URL/            $home_status"
 echo "$SITE_URL/docs/index.html  ${docs_title:-no title found}"
-echo "$SITE_URL/config.js   apiUrl: ${live_api_url:-missing}"
 [[ "$home_status" == "200" ]] || fail "home page returned $home_status"
-[[ "$live_api_url" == "$PRODUCTION_API_URL" ]] || fail "the LIVE config.js apiUrl is '${live_api_url:-missing}', not $PRODUCTION_API_URL - fix it now"
+check_config "LIVE $SITE_URL/config.js" "$live_config"
 
 echo
 echo "Deployed. If the docs changed, regenerate the in-app summaries with s2oserver's maintenance/docs_create.py."

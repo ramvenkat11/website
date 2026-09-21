@@ -59,7 +59,7 @@
 
 <h2 id="conversation-variables">Conversation variables</h2>
 <p>Conversation variables are written <code>conv.name</code>. A conversation variable lives for the whole conversation, and any agent that runs in the conversation can read and write the variable. Conversation variables are how agents hand work to each other: one agent leaves a result in <code>conv.order</code>, and the next agent picks the result up.</p>
-<p>Agent and conversation variables are saved with the conversation, so their values must be JSON serializable. Reading a variable that has never been set raises an error. Seed the variable before use, for example <code>"{ getattr(agent, 'count', 0) + 1 }"</code>.</p>
+<p>Agent and conversation variables are saved with the conversation, so their values must be JSON serializable. Reading a variable that has never been set raises an error. <code>sys.exists(scope, name)</code> answers whether the variable exists first, so a variable can be seeded on first use: <code>"{ (agent.count if sys.exists('agent', 'count') else 0) + 1 }"</code>.</p>
 
 <h2 id="setting-variables">Setting variables</h2>
 <p>The <a href="../commands/var.html"><code>var</code></a> command sets variables of all three kinds. The command can also set one element of an existing list or dict: <code>"totals['q3']": "{ ... }"</code>. Once set, a variable can be read in any dynamic string.</p>
@@ -71,6 +71,7 @@
   <li><code>sys.inputs</code> — the inputs the agent was started with, as a dict. For a search the dict is <code>{ "query": ... }</code>. An <code>invoke</code> command passes any inputs it likes.</li>
   <li><code>sys.query</code> — the user's query, the same as <code>sys.inputs['query']</code>.</li>
   <li><code>sys.secret[name]</code> — reads a secret from the agent server's environment; see <a href="../security/secret-vault.html">Security</a>.</li>
+  <li><code>sys.exists(scope, name)</code> — whether a variable exists, before reading it. The scope is <code>local</code>, <code>agent</code>, <code>conv</code> or <code>allowlist</code>; see <a href="python-expressions.html#checking-whether-a-variable-exists">Python expressions</a>.</li>
 </ul>
 <p>The following names are present only when an administrator enables them in the <a href="../runtime/system-variables.html">system variables</a> configuration:</p>
 <ul>
@@ -84,7 +85,6 @@
 
 <h3 id="other-names">Other names</h3>
 <ul>
-  <li><code>inputs</code> and <code>query</code> — the same as <code>sys.inputs</code> and <code>sys.query</code>.</li>
   <li><code>result</code> — the result of the most recent command that produces one.</li>
   <li><code>exc</code> — inside an <code>onError</code> block, the exception being handled.</li>
 </ul>

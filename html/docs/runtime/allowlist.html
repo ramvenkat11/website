@@ -116,11 +116,6 @@ datetime.datetime as datetime    # datetime(2026, 1, 2)</code></pre></figure>
 </ul>
 <p>No other variables, objects or runtime state are accessible. See <a href="../agent-definition/variables.html">Variables and namespaces</a>.</p>
 
-<h2 id="two-names-that-are-always-present">Two names that are always present</h2>
-<p><code>getattr</code> and <code>setattr</code> are available in every expression, with no entry.</p>
-<p>The agent server provides its own versions. They accept only a public attribute name: a name that starts with an underscore is refused, and so are <code>format</code> and <code>format_map</code>. An attribute reached through <code>getattr</code> therefore obeys the same rules as one reached with a dot.</p>
-<p>These versions take precedence. An allowlist entry named <code>getattr</code> or <code>setattr</code> does not replace them.</p>
-
 <h2 id="functions-must-not-block">Functions must not block</h2>
 <p>Expressions run on the agent server's shared event loop. A function that blocks that loop holds up every agent on the server, so such a function does not belong on the allowlist. <code>time.sleep</code> and synchronous network calls are examples.</p>
 <p>Async functions are welcome. When the whole expression is a call to an async function, the result is awaited for you. Inside a larger expression, use <code>await</code>; see <a href="../agent-definition/python-expressions.html#awaiting">Awaiting</a>.</p>
@@ -146,7 +141,7 @@ math.* as m        A star import cannot be renamed with &#x27;as&#x27;.</code></
     </article>
     <nav class=prevnext><a class=prev href='../runtime/overview.html'><small>Previous</small>Overview</a><a class=next href='../runtime/system-variables.html'><small>Next</small>System variables</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#how-expressions-are-contained'>How expressions are contained</a></li><li class=l2><a href='#one-entry-per-line'>One entry per line</a></li><li class=l2><a href='#what-an-entry-can-be'>What an entry can be</a></li><li class=l3><a href='#renaming-an-entry-with-as'>Renaming an entry with as</a></li><li class=l3><a href='#choosing-between-the-forms'>Choosing between the forms</a></li><li class=l2><a href='#what-a-name-gives-an-agent'>What a name gives an agent</a></li><li class=l3><a href='#a-module-does-not-open-the-modules-it-uses'>A module does not open the modules it uses</a></li><li class=l3><a href='#what-is-always-refused'>What is always refused</a></li><li class=l2><a href='#scope-of-an-expression'>Scope of an expression</a></li><li class=l2><a href='#two-names-that-are-always-present'>Two names that are always present</a></li><li class=l2><a href='#functions-must-not-block'>Functions must not block</a></li><li class=l2><a href='#when-an-entry-is-wrong'>When an entry is wrong</a></li><li class=l2><a href='#registering-your-own-code'>Registering your own code</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#how-expressions-are-contained'>How expressions are contained</a></li><li class=l2><a href='#one-entry-per-line'>One entry per line</a></li><li class=l2><a href='#what-an-entry-can-be'>What an entry can be</a></li><li class=l3><a href='#renaming-an-entry-with-as'>Renaming an entry with as</a></li><li class=l3><a href='#choosing-between-the-forms'>Choosing between the forms</a></li><li class=l2><a href='#what-a-name-gives-an-agent'>What a name gives an agent</a></li><li class=l3><a href='#a-module-does-not-open-the-modules-it-uses'>A module does not open the modules it uses</a></li><li class=l3><a href='#what-is-always-refused'>What is always refused</a></li><li class=l2><a href='#scope-of-an-expression'>Scope of an expression</a></li><li class=l2><a href='#functions-must-not-block'>Functions must not block</a></li><li class=l2><a href='#when-an-entry-is-wrong'>When an entry is wrong</a></li><li class=l2><a href='#registering-your-own-code'>Registering your own code</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

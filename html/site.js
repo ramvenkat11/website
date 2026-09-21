@@ -105,6 +105,84 @@ window.s2oCaptchaReady = function () {
   if (captchaLoadedResolve) captchaLoadedResolve(true);
 };
 
+var ALTCHA_SCRIPT = "https://cdn.jsdelivr.net/npm/altcha@3.2.3/dist/main/altcha.min.js";
+var ALTCHA_INTEGRITY = "sha384-MFz2FEOy9hhUgvaoYC2XcPN85++0YMPRCXPoGFrBDgBnivZCTF/z/hSq7DUtBEqe";
+var ALTCHA_TAG = "altcha-widget";
+var ALTCHA_LOAD_TIMEOUT = 10000;
+var altchaLoaded = null;
+
+function demoUrl() {
+  var cfg = window.SEARCH2O_CONFIG || {};
+  return String(cfg.demoUrl || "https://demo.api.search2o.com").replace(/\/+$/, "");
+}
+
+function challengeUrl() {
+  return demoUrl() + "/api/challenge";
+}
+
+function altchaReady() {
+  return !!(window.customElements && window.customElements.get(ALTCHA_TAG));
+}
+
+function loadAltcha() {
+  if (altchaLoaded) return altchaLoaded;
+  altchaLoaded = new Promise(function (resolve) {
+    if (altchaReady()) return resolve(true);
+    if (!window.customElements) return resolve(false);
+    var s = document.createElement("script");
+    s.type = "module";
+    s.src = ALTCHA_SCRIPT;
+    s.integrity = ALTCHA_INTEGRITY;
+    s.crossOrigin = "anonymous";
+    s.async = true;
+    s.onerror = function () { resolve(false); };
+    document.head.appendChild(s);
+    window.customElements.whenDefined(ALTCHA_TAG).then(function () { resolve(true); });
+    setTimeout(function () { resolve(altchaReady()); }, ALTCHA_LOAD_TIMEOUT);
+  });
+  return altchaLoaded;
+}
+
+function renderAltcha(container, options) {
+  var opts = options || {};
+  return loadAltcha().then(function (ok) {
+    if (!ok || !container) return null;
+    var existing = container.querySelector(ALTCHA_TAG);
+    if (existing) return existing;
+    var w = document.createElement(ALTCHA_TAG);
+    w.setAttribute("challenge", challengeUrl());
+    w.setAttribute("display", opts.display || "invisible");
+    w.setAttribute("auto", opts.auto || "off");
+    w.setAttribute("name", opts.name || "altcha");
+    if (opts.configuration) w.setAttribute("configuration", JSON.stringify(opts.configuration));
+    return new Promise(function (resolve) {
+      var done = false;
+      var finish = function () { if (!done) { done = true; resolve(w); } };
+      w.addEventListener("load", finish);
+      container.appendChild(w);
+      if (typeof w.verify === "function") finish();
+      setTimeout(finish, ALTCHA_LOAD_TIMEOUT);
+    });
+  });
+}
+
+function altchaState(widget) {
+  try { return widget && typeof widget.getState === "function" ? widget.getState() : ""; } catch (e) { return ""; }
+}
+
+function altchaPayload(widget) {
+  if (!widget || typeof widget.verify !== "function") return Promise.resolve("");
+  if (altchaState(widget) === "verified") {
+    var input = widget.querySelector("input[type=hidden]");
+    if (input && input.value) return Promise.resolve(input.value);
+  }
+  return widget.verify().then(function (r) { return (r && r.payload) || ""; }, function () { return ""; });
+}
+
+function resetAltcha(widget) {
+  try { if (widget && typeof widget.reset === "function") widget.reset(); } catch (e) {}
+}
+
 (function () {
   if (!document.getElementById("reg-go1")) return;
   var BASE = (window.SEARCH2O_CONFIG && window.SEARCH2O_CONFIG.apiUrl) || "https://reg.api.search2o.com";

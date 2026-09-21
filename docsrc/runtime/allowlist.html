@@ -72,11 +72,6 @@ json                # json.dumps and json.loads are allowed
 </ul>
 <p>No other variables, objects or runtime state are accessible. See <a href="../agent-definition/variables.html">Variables and namespaces</a>.</p>
 
-<h2>Two names that are always present</h2>
-<p><code>getattr</code> and <code>setattr</code> are available in every expression, with no entry.</p>
-<p>The agent server provides its own versions. They accept only a public attribute name: a name that starts with an underscore is refused, and so are <code>format</code> and <code>format_map</code>. An attribute reached through <code>getattr</code> therefore obeys the same rules as one reached with a dot.</p>
-<p>These versions take precedence. An allowlist entry named <code>getattr</code> or <code>setattr</code> does not replace them.</p>
-
 <h2>Functions must not block</h2>
 <p>Expressions run on the agent server's shared event loop. A function that blocks that loop holds up every agent on the server, so such a function does not belong on the allowlist. <code>time.sleep</code> and synchronous network calls are examples.</p>
 <p>Async functions are welcome. When the whole expression is a call to an async function, the result is awaited for you. Inside a larger expression, use <code>await</code>; see <a href="../agent-definition/python-expressions.html#awaiting">Awaiting</a>.</p>

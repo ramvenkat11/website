@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>System variables — Search2o docs</title>
-<meta name="description" content="The sys namespace carries what the runtime knows about a run. Three names are always there. Four more reach an agent only when a developer lists them here, s…">
+<meta name="description" content="The sys namespace carries what the runtime knows about a run. Four names are always there. Four more reach an agent only when a developer lists them here, so…">
 <link rel="canonical" href="https://search2o.com/docs/runtime/system-variables.html">
 <meta property="og:title" content="System variables — Search2o docs">
-<meta property="og:description" content="The sys namespace carries what the runtime knows about a run. Three names are always there. Four more reach an agent only when a developer lists them here, s…">
+<meta property="og:description" content="The sys namespace carries what the runtime knows about a run. Four names are always there. Four more reach an agent only when a developer lists them here, so…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/runtime/system-variables.html">
 <meta property="og:image" content="https://search2o.com/og.png">
@@ -48,13 +48,14 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../runtime/index.html'>Agent runtime</a></div>
     <article class="docs-article">
       <h1>System variables</h1>
-      <p class="lead">The <code>sys</code> namespace carries what the runtime knows about a run. Three names are always there. Four more reach an agent only when a developer lists them here, so by default an agent sees nothing about the user or the server. See <a href="../agent-definition/variables.html">Variables and namespaces</a> for how an expression reads them.</p>
+      <p class="lead">The <code>sys</code> namespace carries what the runtime knows about a run. Four names are always there. Four more reach an agent only when a developer lists them here, so by default an agent sees nothing about the user or the server. See <a href="../agent-definition/variables.html">Variables and namespaces</a> for how an expression reads them.</p>
 
 <h2 id="always-present">Always present</h2>
 <ul>
   <li><code>sys.inputs</code> is the inputs the agent was called with.</li>
   <li><code>sys.query</code> is the user's query.</li>
   <li><code>sys.secret</code> reads a secret by name, as <code>sys.secret['name']</code>; see <a href="../security/secret-vault.html">Secret vault</a>.</li>
+  <li><code>sys.exists</code> answers whether a variable exists, as <code>sys.exists(scope, name)</code>; see <a href="../agent-definition/python-expressions.html#checking-whether-a-variable-exists">Python expressions</a>.</li>
 </ul>
 
 <h2 id="enabled-here">Enabled here</h2>
