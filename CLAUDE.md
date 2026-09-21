@@ -4773,3 +4773,20 @@ midline (407 at 1920): blue Live demo, ghost Get started, faint mono hint; it en
 against the column's 935. At 1100 and 390 the hint wraps under the buttons, left-aligned
 (the row's 14px gap; the 6px margin-left was removed for that). aria-label "search2o on
 PyPI". The PyPI link and the package icon are mine - veto either.
+
+## State on 2026-09-21 (hero concept 2: pip install MERGED into the Get started button; fallback saved; not deployed)
+Ram: the three-tier row is good - keep it as the FALLBACK (saved verbatim at
+<scratchpad>/fallback_hero/index.html + styles.css; the scratchpad can be wiped, so the
+fallback markup is: the row's third item `<a class="hero-pip" href="https://pypi.org/
+project/search2o/" target="_blank" rel="noopener" aria-label="search2o on PyPI">[Lucide
+package svg]<code>pip install search2o</code></a>` with CSS .hero-pip { inline-flex; gap 7;
+mono 13px --faint; no decoration } / .hero-pip svg { flex none } / :hover --muted) - and
+try merging pip install with Get started. CONCEPT 2, on disk now: the ghost button is a
+two-line STACK - `<a class="btn btn-ghost btn-lg btn-stack" href="gettingstarted.html">
+<span>Get started</span><code>pip install search2o</code></a>`; styles.css `.hero-actions
+.btn { min-height: 54px }` (so the blue Live demo matches the stack's height), `.btn-stack {
+column; align-items flex-start; justify-content center; gap 3px; padding 8px 18px;
+line-height 1.2 }`, `.btn-stack code` mono 12px w500 --faint (hover --muted). The .hero-pip
+rules are gone from styles.css in this concept. Measured at 1920: 156x54 and 182x55 on one
+midline (412), the hero card hangs 113px; at 390 the two buttons stack, no sideways scroll.
+Ram to choose between concept 2 (on disk) and the fallback.
