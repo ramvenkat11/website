@@ -4752,3 +4752,14 @@ apart; at 390 still one row, no sideways scroll; the card hangs 122px below the 
 gettingstarted.html. ALTERNATIVE offered, not applied: keep the command as the secondary
 element itself (a ghost chip reading `pip install search2o` that links to Getting started,
 with the copy icon) instead of the word "Get started".
+
+## State on 2026-09-21 (hero: quiet `pip install search2o` line under the buttons; not deployed)
+Ram: the pip install must stay - it communicates the source-available / on-PyPI nature - but
+subtly, with no copy button or box. index.html:76: `<p class="hero-pip">` under .hero-actions
+holding `<a href="https://pypi.org/project/search2o/" target="_blank" rel="noopener"><code>pip
+install search2o</code></a>` - plain mono 13px in --faint, no background, no border, no
+icon; hover turns it --muted with an underline. The PyPI link is MINE (the line says "this
+is on PyPI", so it points there) - flagged; drop the anchor if he wants pure text. The old
+.hero-pip chip/copy rules are replaced by three small rules (styles.css:173-175). Measured:
+16px under the buttons, left-aligned with them at 417, card hangs 84px below the left
+column, no sideways scroll.
