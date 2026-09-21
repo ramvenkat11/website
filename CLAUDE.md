@@ -4640,3 +4640,26 @@ null. NOT tested: a real challenge from demo.api.search2o.com (not live), and th
 verification of the payload (its side - the payload is single use, so a form must call
 resetAltcha before asking for another). The demo pages will load site.js and call
 renderAltcha + altchaPayload; nothing on the current pages calls them.
+
+## State on 2026-09-21 (demo.html incorporated: nav, footers, sitemap, chrome; NOT DEPLOYED, demo untested)
+Ram added html/demo.html (his page: hero "Search that executes. Try it three ways.", a
+#s2o-demo mount, and html/demo/demo.js (385 KB module) + demo.css) and asked for it to be
+incorporated, not tested. DONE: (1) NAV "Demo" between Home and Getting started on every
+page - the four site pages, 404 (/demo.html), the four legal pages (../demo.html), demo.html
+itself (aria-current) and gen/build.py's docs template ({r}demo.html; 138 pages rebuilt).
+Position is MY choice (Home / Demo / Getting started / Docs / Pricing / About - the try-
+before-you-install funnel); say the word to move it. (2) FOOTER Resources column gains "Demo"
+first (before Getting started) on the ten hand-written pages; the docs footer is minimal by
+design and untouched. (3) demo.html's chrome brought in line with the other pages: og:image
+og.png + width/height/alt + twitter:card (it had logo.png), the Google Analytics tag before
+</head>, footer brand line without the full stop, the footer-base sentence updated to "A
+platform to build, run, and use AI agents - with a search interface." (it carried the old
+"creating and running" wording). Its title, metas, hero text and demo assets are Ram's,
+untouched. (4) gen/build.py SITE_PAGES gains "demo.html" -> sitemap 142 URLs. The home
+page's framework link (demo.html) now resolves. MEASURED on the no-cache server: header
+68px at 1920 with the six links on one line, 34px between the nav and the theme toggle; at
+390 the nav wraps to two lines and the row is 142px - the same as with five links; demo.html
+at 1280 and 390: loads with its module and stylesheet (200s), aria-current on Demo, no
+sideways scroll. NOT TESTED: the demo itself (its calls, ALTCHA wiring, config demoUrl
+usage) - Ram: not yet. deploy.sh needs nothing: demo/demo.js and demo.css fall in the
+10-minute pass with the other JS/CSS.
