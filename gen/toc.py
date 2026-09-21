@@ -105,7 +105,7 @@ TOC = [
         ("agent-server-sizing", "Agent server sizing"),
         ("authentication", "Authentication"),
         ("single-sign-on", "Single sign-on"),
-        ("notifications", "Notifications"),
+        ("audit-log", "Audit log"),
         ("usage-limits", "Usage limits"),
     ]),
     ("security", "Security and privacy", [
@@ -124,7 +124,7 @@ TOC = [
         ("operations", "Operations"),
         ("reports", "Reports"),
         ("account", "Admin and billing"),
-        ("personal", "Profile, notifications and docs"),
+        ("personal", "Profile and docs"),
     ]),
     ("rest-api", "REST API", [
         ("overview", "Overview"),
