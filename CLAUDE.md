@@ -4663,3 +4663,14 @@ at 1280 and 390: loads with its module and stylesheet (200s), aria-current on De
 sideways scroll. NOT TESTED: the demo itself (its calls, ALTCHA wiring, config demoUrl
 usage) - Ram: not yet. deploy.sh needs nothing: demo/demo.js and demo.css fall in the
 10-minute pass with the other JS/CSS.
+
+## State on 2026-09-21 (hero: "Live demo" button; not deployed)
+Ram: a live demo button in the hero. index.html .hero-actions now holds `<a class="btn
+btn-ghost btn-lg" href="demo.html">Live demo</a>` right after Get started - the existing
+ghost style (card fill, --line border, ink text), so the blue Get started stays the primary
+action; no new CSS. CONSEQUENCE, measured at 1920: the two buttons (163 + 133px) leave no room
+for the 220px pip chip on the same line of the 518px column, so the copyable `pip install
+search2o` chip now sits on its own row under the buttons (buttons 384-430, chip 444-478); the
+row wraps the same way at 1100 and 390, no sideways scroll. Read as intended in the zoomed
+crop: two buttons, the install command beneath. The left column is ~48px taller, so the hero
+card hangs less below it; the card's top anchor is unchanged.
