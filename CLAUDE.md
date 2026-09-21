@@ -4736,3 +4736,19 @@ in ../ui1 (AuditLogModule rename, NavigationModule icon gating, registry, pageHe
 uiTextDefaults values, three comments) and in ../s2oserver/maintenance/data/uitext.json (four
 values, pageHelp key) - listed in the note above; his ui1 session can keep or discard them.
 The website docs side of the rename stands unless he says otherwise.
+
+## State on 2026-09-21 (hero actions redesigned: Live demo primary, Get started secondary, pip chip gone; not deployed)
+Ram: the buttons and the pip chip needed a design, not a shuffle - Live demo is the most
+important button now, and Get started and pip install are the same thing. Applied:
+.hero-actions is TWO buttons - "Live demo ->" (btn-blue btn-lg, the arrow moved to it, since
+the arrow marks the primary action) and "Get started" (btn-ghost btn-lg, no arrow). The
+copyable `pip install search2o` chip is REMOVED from the hero: it duplicated Get started
+(the command is the second step on that page), and it was the element that had wrapped onto
+its own row. Measured at 1920: both buttons 46px on one midline (407), 156 + 140px, 14px
+apart; at 390 still one row, no sideways scroll; the card hangs 122px below the left column
+(the top anchor rule still governs). NOW DEAD in styles.css: the four .hero-pip rules and
+`.hero-pip code`, on top of the earlier dead .eyebrow / .band / .btn-onnavy / .demo* /
+.pip rules - reported, not removed. The only pip install on the site is now the codecard on
+gettingstarted.html. ALTERNATIVE offered, not applied: keep the command as the secondary
+element itself (a ghost chip reading `pip install search2o` that links to Getting started,
+with the copy icon) instead of the word "Get started".
