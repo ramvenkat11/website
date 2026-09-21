@@ -4562,3 +4562,7 @@ python-expressions.html. The agent-definition section lead and the docs home car
 said "Python expression"/"dynamic strings" and are untouched. 34 examples valid (3 new); the
 four touched pages have no broken link or anchor. In-app summaries (s2oserver
 docs_create.py) need the new page on Ram's side.
+
+## State on 2026-09-21 (home page: "Python expressions" linked; not deployed)
+index.html:192, the framework paragraph: "Python expressions" now links
+docs/agent-definition/python-expressions.html (the new topic). Text unchanged.
