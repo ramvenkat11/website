@@ -4513,3 +4513,13 @@ its toc entry (only the home-page link was asked for - say the word to retire th
 Measured on the no-cache server at 1920: card 549x494, top 2px under the h2 glyph top (the
 .split 36px rule), the left column ends 374px above the card's bottom; at 375: card 327 wide,
 labels stacked over chips, no sideways scroll. Both themes screenshotted.
+
+## State on 2026-09-21 (docs title "Why not just Python?"; home Profiles line linked; not deployed)
+gen/toc.py: introduction/why-not-python is titled "Why not just Python?" (Ram wrote it
+without the question mark; the mark was kept since the title is a question - flagged). Slug
+and URL unchanged; h1, <title>, sidebar, cards and prev/next follow the toc (137 pages
+rebuilt; no other page says "Why not Python?"). Home page: Ram had edited the framework
+section himself (h2 "JSON DSL for agents", the paragraph, and a new line "Profiles keep LLMs,
+prompts, APIs, databases and MCPs out of agent definition.") - "Profiles" in that line now
+links docs/profiles/index.html, and the line's stray indentation was aligned with its
+neighbours. Nothing else touched.
