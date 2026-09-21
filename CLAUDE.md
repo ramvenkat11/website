@@ -4815,3 +4815,8 @@ border-color: rgba(255,255,255,.16)` (hover .11 / .24) in BOTH dark blocks (styl
 and inside the prefers-color-scheme block) - the same double-emission the other dark
 overrides use. The light theme is untouched (white card on a near-white hero already reads
 light). Only this button changed; the generic .btn-ghost is as it was.
+
+## State on 2026-09-21 (hero pip button: only the BORDER is lighter; not deployed)
+Ram: "just the border". The dark-theme fill override is gone - the button keeps the ghost
+fill (--card) - and only its border is lighter: rgba(255,255,255,.22), hover .34, in both
+dark blocks. Light theme untouched.
