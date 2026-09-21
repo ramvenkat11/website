@@ -4566,3 +4566,8 @@ docs_create.py) need the new page on Ram's side.
 ## State on 2026-09-21 (home page: "Python expressions" linked; not deployed)
 index.html:192, the framework paragraph: "Python expressions" now links
 docs/agent-definition/python-expressions.html (the new topic). Text unchanged.
+
+## State on 2026-09-21 (Why not just Python? is the LAST Introduction topic; not deployed)
+gen/toc.py: introduction order is What is Search2o / Parts of the system / How it fits
+together / Why not just Python? (was second). Sidebar, section cards and prev/next follow the
+toc; slug and URL unchanged, so the home page's link still resolves. 138 pages rebuilt.
