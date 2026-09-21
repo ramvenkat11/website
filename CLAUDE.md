@@ -4790,3 +4790,8 @@ line-height 1.2 }`, `.btn-stack code` mono 12px w500 --faint (hover --muted). Th
 rules are gone from styles.css in this concept. Measured at 1920: 156x54 and 182x55 on one
 midline (412), the hero card hangs 113px; at 390 the two buttons stack, no sideways scroll.
 Ram to choose between concept 2 (on disk) and the fallback.
+
+## State on 2026-09-21 (concept 2 rejected - "looks silly"; the fallback row is back; not deployed)
+index.html and styles.css restored from the saved fallback: Live demo (blue) / Get started
+(ghost) / the faint mono `pip install search2o` with the package icon, linking PyPI, on one
+row. No btn-stack markup or CSS remains.
