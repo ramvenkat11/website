@@ -4608,3 +4608,35 @@ says FOUR names are always there and its Always-present list gained sys.exists; 
 python-expressions.html#checking-whether-a-variable-exists. var.html's example line became
 93 chars with callCount (past the ~91 the 770px pre fits), so the variable is agent.calls
 there (three mentions). 138 pages, 34 examples valid.
+
+## State on 2026-09-21 (ALTCHA helpers in site.js, nothing wired; not deployed)
+Ram: no wiring; write the helper functions - the interfaces - for the ALTCHA challenge, which
+will be served at config.js demoUrl + /api/challenge. WRITTEN AGAINST THE REAL 3.2.3 API
+(README and dist/types/index.d.ts fetched from jsdelivr - my memory of ALTCHA was the v1 API
+and WRONG: the attribute is `challenge`, not `challengeurl`; `display="invisible"` replaces
+the old floating/hidden tricks; hideLogo/hideFooter are configuration, not attributes;
+`verify()` returns Promise<{payload}>). html/site.js, after the reCAPTCHA helpers, NO
+COMMENTS: constants ALTCHA_SCRIPT (cdn.jsdelivr.net/npm/altcha@3.2.3/dist/main/altcha.min.js,
+the single-file bundle with styles + workers), ALTCHA_INTEGRITY (sha384 of that file,
+computed locally), ALTCHA_TAG, ALTCHA_LOAD_TIMEOUT 10 s; demoUrl() (SEARCH2O_CONFIG.demoUrl,
+fallback https://demo.api.search2o.com, trailing slash stripped); challengeUrl() = demoUrl()
++ "/api/challenge"; loadAltcha() -> Promise<bool> (injects the module script once with
+integrity + crossorigin, resolves on customElements.whenDefined, false on error/timeout);
+renderAltcha(container, {display, auto, name, configuration}) -> Promise<widget|null>
+(creates <altcha-widget challenge=... display="invisible" auto="off" name="altcha">, returns
+the existing widget if the container already has one, resolves once verify() is callable or
+the widget's load event fires); altchaState(widget); altchaPayload(widget) -> Promise<string>
+(the verified payload from the hidden input if already verified, else widget.verify() ->
+r.payload, "" on any failure); resetAltcha(widget). TESTED on the no-cache server with a FAKE
+/api/challenge added to <scratchpad>/nocache.py (SHA-256 v1 challenge: salt, maxnumber 50000,
+challenge = sha256(salt+number), HMAC signature) and demoUrl overridden in-page: the script
+loads with the integrity hash, the widget renders (94 ms), verify solves the challenge (number
+found in 132 ms, payload 324 chars, base64 JSON algorithm/challenge/number/salt/signature/
+took), the hidden input name=altcha carries the same payload, a second altchaPayload returns
+the same payload without re-solving, reset -> unverified, a second renderAltcha on the same
+container returns the same widget; display "invisible" renders a 0x0 element and still
+yields a payload; a wrong URL -> state "error", payload "" in 11 ms; renderAltcha(null) ->
+null. NOT tested: a real challenge from demo.api.search2o.com (not live), and the server's
+verification of the payload (its side - the payload is single use, so a form must call
+resetAltcha before asking for another). The demo pages will load site.js and call
+renderAltcha + altchaPayload; nothing on the current pages calls them.
