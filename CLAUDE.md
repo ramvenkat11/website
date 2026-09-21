@@ -1408,10 +1408,12 @@ works on the auto-render page too).
 - Cite files as `path/file.html:123` (Ram runs Claude in a JetBrains terminal).
 - Ask before anything irreversible; deleting from the S3 bucket is irreversible.
 - NEVER PUBLISH UNLESS config.js IS PRODUCTION (Ram, 2026-09-13, absolute: "you can never
-  forget this"): html/config.js apiUrl must be exactly https://reg.api.search2o.com (the BASE - site.js
-  appends /register itself; Ram first wrote it with /register, then removed it) or nothing
-  goes to the bucket. The test-environment URL went live in the deploys of 09-11/09-13.
-  scripts/deploy.sh compares the line exactly and stops in preflight; any deploy by hand reads
+  forget this"; demoUrl added 2026-09-21): html/config.js apiUrl must be exactly
+  https://reg.api.search2o.com (the BASE - site.js appends /register itself; Ram first wrote it
+  with /register, then removed it) AND demoUrl must be exactly https://demo.api.search2o.com,
+  or nothing goes to the bucket. The test-environment URL went live in the deploys of
+  09-11/09-13. scripts/deploy.sh compares both lines exactly (PRODUCTION_URLS) and stops in
+  preflight, and re-checks the LIVE config.js after the invalidation; any deploy by hand reads
   config.js first.
 
 ## How Ram wants the writing (he judges every line)
@@ -4571,3 +4573,18 @@ docs/agent-definition/python-expressions.html (the new topic). Text unchanged.
 gen/toc.py: introduction order is What is Search2o / Parts of the system / How it fits
 together / Why not just Python? (was second). Sidebar, section cards and prev/next follow the
 toc; slug and URL unchanged, so the home page's link still resolves. 138 pages rebuilt.
+
+## State on 2026-09-21 (config.js demoUrl, checked by deploy.sh like apiUrl; not deployed)
+Ram: add a demo URL to config.js, checked at deploy time like apiUrl, always
+https://demo.api.search2o.com on the deployed site. html/config.js now carries
+`demoUrl: "https://demo.api.search2o.com"` under apiUrl (no comments). scripts/deploy.sh: the
+single PRODUCTION_API_URL check is now a PRODUCTION_URLS list ("apiUrl=..." / "demoUrl=...")
+with config_value() and check_config(); preflight runs check_config over html/config.js and
+the verify step runs it over the LIVE https://search2o.com/config.js - every key must match
+exactly, a missing key reads as 'missing' and fails. NO ASSOCIATIVE ARRAYS: the first version
+used declare -A, which /bin/bash 3.2 (the shebang is /usr/bin/env bash, and the only bash on
+this Mac is 3.2.57) rejects - rewritten as a plain key=value list and exercised under bash
+3.2 with the real file (both pass), a localhost demoUrl, a missing demoUrl and a test apiUrl
+(each fails naming the key). A --dry-run --skip-build preflight passed. website_deploy.md's
+"points at a local server" sentence now names both URLs and the live re-check. Nothing reads
+demoUrl yet - the demo pages will (site.js reads SEARCH2O_CONFIG).
