@@ -1,6 +1,8 @@
 # Python expressions
 
-An agent is written in JSON. The values in that JSON can be Python expressions. This page
+An agent is written in JSON. The string values in that JSON can be Python expressions. A key cannot be an expression. 
+
+This page
 explains what Search2o does with those expressions, from the moment a developer saves an agent
 to the moment the expression runs.
 
@@ -38,7 +40,7 @@ the URL and headers of an API profile, and the connection string of a database p
 Profiles are shared by every agent in the account, so a secret usually appears there, for
 example `"{ f'Bearer {sys.secret[\"OPENAI_API_KEY\"]}' }"`.
 
-Prompt profiles are an exception. The text of a prompt profile is always literal.
+Prompt profiles are an exception. The text of a prompt profile is always literal. This has to be done so end to end encryption works for prompt profiles. 
 
 ## Two stages
 

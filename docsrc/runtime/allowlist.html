@@ -79,7 +79,7 @@ json                # json.dumps and json.loads are allowed
 
 <h2>Functions must not block</h2>
 <p>Expressions run on the agent server's shared event loop. A function that blocks that loop holds up every agent on the server, so such a function does not belong on the allowlist. <code>time.sleep</code> and synchronous network calls are examples.</p>
-<p>Async functions are welcome. When the whole expression is a call to an async function, the result is awaited for you. Inside a larger expression, use <code>await</code>; see <a href="../agent-definition/syntax.html#awaiting">Awaiting</a>.</p>
+<p>Async functions are welcome. When the whole expression is a call to an async function, the result is awaited for you. Inside a larger expression, use <code>await</code>; see <a href="../agent-definition/python-expressions.html#awaiting">Awaiting</a>.</p>
 
 <h2>When an entry is wrong</h2>
 <p>Every entry is resolved when the allowlist is saved. If any line fails, the allowlist is not saved, and each failing line is reported with its own message.</p>

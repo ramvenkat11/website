@@ -1,0 +1,130 @@
+<p class="lead">An agent is written in JSON. The string values in that JSON can be Python expressions; a key cannot be an expression. This page explains what Search2o does with those expressions, from the moment a developer saves an agent to the moment the expression runs.</p>
+
+<h2>What counts as an expression</h2>
+<p>A string value is an expression when the whole string is wrapped in braces.</p>
+
+<x-code lang="jsonc" title="Expressions and plain text in a var command">
+"var": {
+  "total": "{ price * quantity }",
+  "label": "Order total",
+  "greeting": "{ f'Hello {sys.inputs[\"name\"]}' }"
+}
+</x-code>
+
+<p><code>total</code> is an expression. <code>label</code> is plain text. <code>greeting</code> is an expression that builds a string with an f-string.</p>
+<p>The braces must enclose the whole value. <code>"Hello {name}"</code> is plain text, and the agent sees the braces literally. To mix text and values, write an f-string inside the braces.</p>
+<p>A value that starts with <code>{</code> and ends with <code>}</code> is always read as an expression. So the string <code>'{"a": 1}'</code> is not text: that value is the Python dict <code>{"a": 1}</code>. To keep a leading brace literal, make sure the string does not end with a closing brace.</p>
+<p>An expression is one Python expression. Statements are not allowed: there is no assignment, no <code>import</code>, no <code>def</code> and no semicolon. The <a href="../commands/var.html">var</a> command is how an agent sets a variable.</p>
+<p>The result of an expression can be of any Python type: a number, a list, a dict, an object. A field that may hold either plain text or an expression is called a <em>dynamic string</em> in the command reference.</p>
+
+<x-code lang="jsonc" title="Dynamic strings in a var command">
+"var": {
+  "greeting": "Hello, world!",                  // plain text
+  "now": "{ datetime.now().isoformat() }",      // datetime must be in the allowlist
+  "weather": "{ f'{city}: {temperature}' }",    // f-strings are common
+  "squares": "{ [n * n for n in numbers] }",
+  "square_map": "{ {n: n * n for n in numbers} }",
+  "profile1": "{ await fetch_url_profile(user_id) }",
+  "profile2": "{ fetch_user_profile(user_id) }", // a bare async call is awaited for you
+  "lines": "{ [line async for line in stream_lines(url)] }"
+}
+</x-code>
+
+<h2>Where expressions can be used</h2>
+<p>Expressions can be used in most command fields. The fields of the <a href="../commands/var.html">var</a>, <a href="../commands/if.html">if</a>, <a href="../commands/output.html">output</a> and <a href="../commands/api.html">api</a> commands are typical examples.</p>
+<p>Expressions can also be used in a few fields of the profiles in the configuration. Examples are the URL and headers of an API profile, and the connection string of a database profile. Profiles are shared by every agent in the account, so a secret usually appears there, for example <code>"{ f'Bearer {sys.secret[\"OPENAI_API_KEY\"]}' }"</code>.</p>
+<p>Prompt profiles are an exception. The text of a prompt profile is always literal, so that end-to-end encryption works for prompt profiles. See <a href="../profiles/prompt-profiles.html">Prompt profiles</a>.</p>
+
+<h2>Two stages</h2>
+<p>An expression is checked twice and run once.</p>
+<ol>
+  <li><strong>When the agent is validated.</strong> Search2o Cloud reads each expression and refuses the agent if an expression breaks a rule. The agent server then checks that the names and secrets the expressions use exist.</li>
+  <li><strong>When the agent runs.</strong> The agent server evaluates the expression in the controlled runtime.</li>
+</ol>
+<p>The agent server runs the version of each expression that passed the first stage. The controlled runtime adds its own protection: an expression sees only the allowlist, never Python's builtins.</p>
+
+<h2>Stage one: validation</h2>
+
+<h3>What the cloud refuses</h3>
+<p>The cloud parses each expression with Python's own parser. An expression that is not valid Python is refused with the line and column of the error.</p>
+<p>The cloud then refuses these constructs:</p>
+
+<div class="tablewrap">
+<table class="fields compare">
+<thead><tr><th>Construct</th><th>Example</th><th>Why</th></tr></thead>
+<tbody>
+<tr><td>A name or attribute that starts with an underscore</td><td><code>x.__class__</code>, <code>obj._cache</code></td><td>Private and special members lead out of the agent's data.</td></tr>
+<tr><td><code>str.format</code> and <code>str.format_map</code></td><td><code>'{0.x}'.format(v)</code></td><td>A format string reads attributes at run time. Use an f-string instead.</td></tr>
+<tr><td><code>lambda</code></td><td><code>lambda x: x + 1</code></td><td>An expression cannot define a function.</td></tr>
+<tr><td>The walrus operator</td><td><code>(n := len(items))</code></td><td>An expression cannot assign.</td></tr>
+<tr><td>Calling the result of an expression</td><td><code>handlers[0](x)</code>, <code>f()()</code></td><td>Only a function called by name, or a method, can be called.</td></tr>
+<tr><td>A keyword argument that starts with an underscore</td><td><code>f(_x=1)</code></td><td>Same reason as private members.</td></tr>
+<tr><td>Characters outside printable ASCII</td><td><code>'café'</code></td><td>Use a Python escape. In the JSON the backslash is doubled: <code>"{ 'caf\\u00e9' }"</code>.</td></tr>
+<tr><td>Deep comprehensions</td><td>four nested list comprehensions</td><td>The account sets the limits. The defaults are a depth of 4 and 3 <code>for</code> clauses.</td></tr>
+<tr><td>An operator the account has turned off</td><td><code>a &lt;&lt; b</code></td><td>The account decides which operators are allowed.</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>The account's settings for comprehensions and operators are described under <a href="../runtime/compile-rules.html">Compile rules</a>.</p>
+
+<h3>Rules for sys</h3>
+<p><code>sys</code> holds what the runtime provides. <code>sys</code> can only be used as <code>sys.&lt;member&gt;</code>. An expression cannot pass <code>sys</code> to a function or store <code>sys</code> in a variable.</p>
+<p>A secret can only be read as <code>sys.secret['NAME']</code>, with the name written out. A key held in a variable is refused. So is <code>sys.secret</code> on its own. This rule means every secret an agent uses is visible in the agent's definition.</p>
+<p>A member of <code>sys</code> that does not exist is refused. <code>sys.inputs</code>, <code>sys.query</code>, <code>sys.secret</code> and <code>sys.exists</code> are always present. <code>sys.userEmail</code>, <code>sys.userSession</code>, <code>sys.serverIp</code> and <code>sys.cookies</code> are present only when an administrator enables them. See <a href="../runtime/system-variables.html">System variables</a>.</p>
+<p>Inside a command, <code>command.&lt;field&gt;</code> reads a field that the same command has already set. A field that the command does not have is refused.</p>
+
+<h3>Operator rewriting</h3>
+<p>The account can map an operator to a function. When <code>**</code> is mapped to <code>bounded_pow</code>, the expression <code>a ** b</code> runs as <code>bounded_pow(a, b)</code>. This is how an account puts a limit on an operation such as a very large power. The function must be in the allowlist and take two values.</p>
+
+<h3>What the agent server checks</h3>
+<p>The cloud does not know which functions the agent server provides or which secrets the agent server holds. So the cloud hands two lists to the agent server: the names the expressions use, and the secrets the expressions read.</p>
+<p>The agent server refuses the agent when a name is not in the allowlist or a secret cannot be found. Each message gives the path of the first place the name or secret is used.</p>
+<p>Secrets from environment variables and files live on one machine. The check therefore tells a developer that the secret exists on the agent server that validated the agent. Another agent server in the same account must have the same secrets. Hosted secrets are shared by the whole account.</p>
+
+<h3>The validation run</h3>
+<p>Validation also runs the agent once with the developer's validation query. An expression that fails on real data fails here, before the agent can be published. See <a href="../development/trace-and-validation.html">Trace and validation</a>.</p>
+
+<h2>Stage two: running</h2>
+
+<h3>The names an expression can see</h3>
+<p>An expression runs inside the function that contains it. The expression can read:</p>
+<ul>
+  <li>The function's local variables and arguments, by name.</li>
+  <li>Agent variables, as <code>agent.name</code>.</li>
+  <li>Conversation variables, as <code>conv.name</code>.</li>
+  <li><code>sys</code> and <code>command</code>.</li>
+  <li><code>result</code>, which holds the result of the last command that produces one.</li>
+  <li><code>exc</code>, which holds the error being handled inside an <code>onError</code> block.</li>
+  <li>The names in the allowlist.</li>
+</ul>
+<p>Nothing else is available. The allowlist takes the place of Python's builtins, so <code>len</code> or <code>sorted</code> works only when the allowlist lists <code>len</code> or <code>sorted</code>. The namespaces are described under <a href="variables.html">Variables and namespaces</a>.</p>
+
+<h3>Checking whether a variable exists</h3>
+<p>Reading a variable that was never set is an error. <code>sys.exists(scope, name)</code> answers whether the variable exists first. The scope is one of <code>local</code>, <code>agent</code>, <code>conv</code> or <code>allowlist</code>.</p>
+
+<x-code lang="jsonc" title="Counting visits with sys.exists">
+"var": {
+  "agent.visits": "{ (agent.visits if sys.exists('agent', 'visits') else 0) + 1 }"
+}
+</x-code>
+
+<p><code>sys.exists('allowlist', 'json')</code> answers whether the allowlist grants <code>json</code>.</p>
+
+<h3>What the allowlist hands over</h3>
+<p>A function or class in the allowlist is the real Python object. A method on a value works as in Python, so <code>'abc'.upper()</code> and <code>items.append(x)</code> work.</p>
+<p>A module in the allowlist is not handed over as a module. The agent gets the module's functions, classes and constants. The agent does not get the other modules that the module imports. So granting <code>json</code> does not also grant the modules that <code>json</code> uses internally.</p>
+<p>A name under a granted module that the allowlist does not list is refused when the line runs. The entry forms are described under <a href="../runtime/allowlist.html">Allowlist</a>.</p>
+
+<h3>Awaiting</h3>
+<p>An expression can <code>await</code> an async function from the allowlist. The runtime detects the <code>await</code> and runs the expression as a coroutine. When the whole expression is a call to an async function, the result is awaited for you, so <code>await</code> is optional there; inside a larger expression, an async call must be awaited explicitly. To run several calls at once, use the <a href="../commands/parallel.html">parallel</a> command.</p>
+
+<h3>The value an expression produces</h3>
+<p>An expression produces any Python value. Each field expects a type, and a value of the wrong type is an error that names the type the field expected. For example, the <code>timeout</code> of an <code>api</code> command must be a whole number.</p>
+<p>Agent variables and conversation variables are saved with the conversation. Their values must be JSON. A JSON value is a string, a number, a boolean or <code>None</code>. A list or dict of JSON values is also JSON. A local variable can hold any value.</p>
+
+<h3>Errors</h3>
+<p>An expression that raises an error stops the command. The message gives the path of the command and the Python error. An <code>onError</code> block on the command or the function can handle the error instead. Inside that block <code>exc</code> holds the error.</p>
+
+<h3>Limits</h3>
+<p>The rules on this page decide what an expression can reach. The rules do not limit how much work an expression does. An expression runs on the agent server alongside every other agent run, so a very long computation delays the other runs. The limits that apply are those set in the configuration: run time, loop iterations, database rows and the operator rewrites described above. See <a href="../runtime/runtime-limits.html">Runtime limits</a>.</p>

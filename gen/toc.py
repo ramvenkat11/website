@@ -7,9 +7,9 @@ docsrc/<section>/<page>.html. A section's own landing page is docsrc/<section>/i
 TOC = [
     ("introduction", "Introduction", [
         ("what-is-search2o", "What is Search2o"),
-        ("why-not-python", "Why not just Python?"),
         ("parts-of-the-system", "Parts of the system"),
         ("how-it-fits-together", "How it fits together"),
+        ("why-not-python", "Why not just Python?"),
     ]),
     ("getting-started", "Getting started", [
         ("registering-and-downloading", "Creating an account and downloading"),
@@ -19,7 +19,8 @@ TOC = [
         ("your-first-agent", "Your first agent"),
     ]),
     ("agent-definition", "Agent definition", [
-        ("syntax", "Syntax and dynamic strings"),
+        ("syntax", "Syntax"),
+        ("python-expressions", "Python expressions"),
         ("structure", "Agent structure"),
         ("functions", "Functions"),
         ("commands", "Commands"),
