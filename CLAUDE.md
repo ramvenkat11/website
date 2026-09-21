@@ -4523,3 +4523,42 @@ section himself (h2 "JSON DSL for agents", the paragraph, and a new line "Profil
 prompts, APIs, databases and MCPs out of agent definition.") - "Profiles" in that line now
 links docs/profiles/index.html, and the line's stray indentation was aligned with its
 neighbours. Nothing else touched.
+
+## State on 2026-09-21 (NEW topic Python expressions; Syntax trimmed; NOT DEPLOYED)
+Ram: write a topic from content/python_expressions.md as the SECOND item of Agent definition;
+rename the first item to just "Syntax", covering the JSONC syntax and mentioning that dynamic
+strings exist without the details; move the examples and anything not already in the md from
+the old syntax page to the new topic. Done: gen/toc.py agent-definition is ("syntax",
+"Syntax"), ("python-expressions", "Python expressions"), then structure/functions/commands/
+variables (138 pages). NEW docsrc/agent-definition/python-expressions.html follows the md
+section for section (What counts as an expression / Where expressions can be used / Two
+stages / Stage one: validation with What the cloud refuses (the nine-row table as
+`fields compare`), Rules for sys, Operator rewriting, What the agent server checks, The
+validation run / Stage two: running with The names an expression can see, Checking whether a
+variable exists, What the allowlist hands over, Awaiting, The value an expression produces,
+Errors, Limits). MOVED IN from the old syntax page, not in the md: the eight-line dynamic-
+strings var example (its comments shortened - the block overflowed the 770px pre by 45px, on
+the old page too, unnoticed), the "result can be of any Python type" line, the "keep a leading
+brace literal" advice, and "when the whole expression is a call to an async function the
+result is awaited for you" - VERIFIED at ../search2o/search2o/execution/runtime.py:157
+(isinstance(ret, Awaitable) -> awaited); sys.exists and its four scopes verified at
+agent_executor.py:437. ADDED, not in the md: cross-links to var/if/output/api, Prompt
+profiles, Compile rules, System variables, Trace and validation, Variables and namespaces,
+Allowlist, parallel, Runtime limits. WORDING departures from the md: "The Search2o Cloud" ->
+"Search2o Cloud"; "This has to be done so end to end encryption works for prompt profiles"
+-> "so that end-to-end encryption works for prompt profiles"; "Nothing else exists. Python's
+builtins are not available. The allowlist takes their place" -> "Nothing else is available.
+The allowlist takes the place of Python's builtins" (say-what-to-do); "There is no
+assignment, no import, no def and no semicolons" kept as "Statements are not allowed: there
+is no assignment, no import, no def and no semicolon" (Ram's list). 1,612 words; the table
+and all three code blocks fit at 770px; 17 on-page toc entries; no sideways scroll at 390.
+syntax.html is now 4 short sections: lead (JSONC + the one extension), Comments, Keys and
+values (keys are plain names; links to structure/functions/commands), Dynamic strings (a
+two-line example and a pointer to Python expressions). Its old h2 anchors #dynamic-strings,
+#what-an-expression-can-use, #awaiting, #characters are gone - the ONE inbound anchor link
+(runtime/allowlist.html -> syntax.html#awaiting) now points at python-expressions.html#awaiting,
+and commands/index.html's "Syntax and dynamic strings" link text is "Python expressions" ->
+python-expressions.html. The agent-definition section lead and the docs home card already
+said "Python expression"/"dynamic strings" and are untouched. 34 examples valid (3 new); the
+four touched pages have no broken link or anchor. In-app summaries (s2oserver
+docs_create.py) need the new page on Ram's side.
