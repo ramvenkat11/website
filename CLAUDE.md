@@ -4487,3 +4487,29 @@ regenerated from the page so the snapshot keeps up. Checked in the browser.
 NOTE, not acted on: this contradicts content/pricing.md Part 1, whose "Unlimited everywhere"
 table says "Agents (drafts) - Unlimited; only indexing is limited". No docs page claims agents
 are unlimited (swept), so nothing else needed changing.
+
+## State on 2026-09-21 (home framework section: 23-command card on the right, demo link on the left; TRIAL, not deployed)
+Ram: ALTCHA goes only on the coming demo pages and the new demoAgentGen endpoint; registration
+stays on reCAPTCHA v3. So the home page's generate block is OUT for now (the .agen textarea,
+example chips, counter, Generate button, its reCAPTCHA key and the generated-code card), to
+be integrated into the demo pages. TRIAL he asked to see: the 23 commands are on the RIGHT
+side, in a card, instead of the hr_policy JSON. index.html #framework: left column is kicker
++ h2 "JSON DSL designed for agents" + the 23-commands paragraph WITHOUT "Why not Python?"
+(Ram: not an appropriate question, the industry is standardising on this approach) + a new
+line "Agents are built with AI assistance. Try it on the demo page ->" linking demo.html
+(MY wording, and demo.html DOES NOT EXIST yet - flagged). Right column: `.cmdcard` (card
+tokens: --card, --line, radius 16, --card-shadow) with a head row "23 commands" / "Command
+reference ->" (docs/commands/index.html) and nine `.cg` rows in the CURRENT group order from
+toc.py (Variables / Flow control / LLM interaction / External systems / Deep agents /
+Human-in-the-loop / Agent output / Agent termination / Observability), every chip linked to
+docs/commands/<cmd>.html (23 links, 23 files). CSS: the .agen* rules, #agen-go, .agen-count,
+.agen textarea and `#framework .codecard pre { height: 583px }` are gone from styles.css;
+the generic `.recaptcha-v3` rules and `.btn[disabled]` stay (registration uses the first;
+the demo page will want the second); new .cmdcard/.cmdcard-head/.cg/.cg-l/.cg-c rules plus
+`.cg { grid-template-columns: 1fr }` in the <=640px block. NOT TOUCHED: site.js's generate
+IIFE (guarded by getElementById("agen-go"), costs nothing, and is the reference for the
+demo page - say the word to remove it); the docs topic introduction/why-not-python.html and
+its toc entry (only the home-page link was asked for - say the word to retire the topic).
+Measured on the no-cache server at 1920: card 549x494, top 2px under the h2 glyph top (the
+.split 36px rule), the left column ends 374px above the card's bottom; at 375: card 327 wide,
+labels stacked over chips, no sideways scroll. Both themes screenshotted.
