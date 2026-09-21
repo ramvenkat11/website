@@ -4763,3 +4763,13 @@ is on PyPI", so it points there) - flagged; drop the anchor if he wants pure tex
 .hero-pip chip/copy rules are replaced by three small rules (styles.css:173-175). Measured:
 16px under the buttons, left-aligned with them at 417, card hangs 84px below the left
 column, no sideways scroll.
+
+## State on 2026-09-21 (hero: the pip hint is the third item on the button row; not deployed)
+Ram: "Surely, you can do better" than a dangling line. NOW: the hint sits IN the button row
+as the third, quietest item - `<a class="hero-pip" href="https://pypi.org/project/search2o/"
+target="_blank">` holding a 15px package outline icon (Lucide "package" path, inline SVG) and
+`pip install search2o` in mono 13px --faint, no box; hover --muted. Three tiers on one
+midline (407 at 1920): blue Live demo, ghost Get started, faint mono hint; it ends at 925
+against the column's 935. At 1100 and 390 the hint wraps under the buttons, left-aligned
+(the row's 14px gap; the 6px margin-left was removed for that). aria-label "search2o on
+PyPI". The PyPI link and the package icon are mine - veto either.
