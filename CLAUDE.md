@@ -1356,6 +1356,14 @@ post with "Please complete the hCaptcha." when unsolved (so getResponse via the 
 works on the auto-render page too).
 
 ## Standing instructions
+- NEVER CHANGE ANOTHER PROJECT (Ram, 2026-09-21, absolute): this session edits files ONLY in
+  this repo. ../ui1, ../s2oserver, ../search2o and everything else are read-only here - read
+  them to verify a docs fact, never write. If a request seems meant for another project (UI,
+  uitext, server code, GUI behaviour), SAY SO AND STOP - do not do "the website part" either
+  until he confirms. His words, after a UI prompt landed in this session by mistake and I
+  edited ui1 alongside his ui1 session: "You are not allowed to change any other project. If
+  something I ask seems like intended for another project, say so and stop." The 2026-09-16
+  starterFields edit in s2oserver is no longer a precedent.
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
   DISCUSSION - propose only, apply NOTHING until an explicit go. A veto of one detail
@@ -4720,3 +4728,11 @@ welcome.icon.notifications.* while the ui1 defaults now read welcome.icon.auditL
 catalogue key must follow whatever ui1 settles on, then uitext_upload.py. LESSON: `git
 status` in ui1 showed a dozen modified files before I started - a live session's
 fingerprint; check `find src -mmin -15` before touching a repo another session owns.
+
+## State on 2026-09-21 (the Audit log prompt was meant for the ui1 session)
+Ram: the rename prompt was for the UI session. Rule recorded above and in memory
+(feedback-never-edit-other-projects). NOT reversed by me, awaiting his word: my edits still
+in ../ui1 (AuditLogModule rename, NavigationModule icon gating, registry, pageHelp,
+uiTextDefaults values, three comments) and in ../s2oserver/maintenance/data/uitext.json (four
+values, pageHelp key) - listed in the note above; his ui1 session can keep or discard them.
+The website docs side of the rename stands unless he says otherwise.
