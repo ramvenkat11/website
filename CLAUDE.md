@@ -5138,3 +5138,13 @@ the closing Cursor line.
 Row 3's Claude Code box and row 2's Agent gateway box have no sub-line now; the only subs
 are "agent code · dynamic" (rows 1-2) and "agent code · controlled runtime" (row 3). The
 label positions come from f.box (centred when there is no sub), so nothing else moved.
+
+## State on 2026-09-22 (Skills page: the figure's third row is gone; paragraph 3 leads into the skill-flow figure; not deployed)
+Ram: the third row (Search2o) duplicated the big skill-flow picture. assistant-connections
+is TWO rows now (720x170; caption "With MCP servers or an agent gateway, the agent code runs
+in Claude Code either way") and sits after paragraph 2; paragraph 3 ("Search2o is the
+gateway... The agent code runs inside Search2o, in a controlled runtime, and the routing and
+the code are no longer Claude Code's.") follows it and is followed by the skill-flow figure,
+which moved up from "Why an agent, not code". Order: lead / h2 How we got here / p1 / p2 /
+two-row figure / p3 / skill-flow / h2 Why an agent, not code. Rebuilt; the two-row figure's
+texts are the same ones measured before, so no re-measure.
