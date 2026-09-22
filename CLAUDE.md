@@ -4939,3 +4939,18 @@ today; try a smaller wordmark. Mocked five stacked headers, both themes, all 68p
 L 124px, 12.5px muted, no hairline, 14px gap. The brand image is `clamp(136px, 13vw, 168px)`
 today (styles.css .brand img), 31px tall; at 124 it is 23px tall. Nothing on disk; awaiting
 his pick.
+
+## State on 2026-09-22 (header tagline sits on the wordmark's baseline; not deployed)
+Ram: align the tagline to the bottom of the logo. The `<span class="tagline">` moved INSIDE
+the `.brand` anchor (after the two imgs) on the nine hand-written pages and the docs
+template (138 pages rebuilt), so it is positioned against the logo, not the 68px row -
+which matters because the wordmark is `clamp(136px, 13vw, 168px)` wide and its bottom moves
+with the viewport. styles.css: `.brand { align-items: flex-end }`, `.brand:hover {
+text-decoration: none }` (the global a:hover underline would otherwise underline the tagline
+when the logo is hovered), and `.tagline { margin: 0 0 -2px 16px; line-height: 1; ... }` -
+with line-height 1 the text box ends 2px under the baseline, so -2px puts the baseline
+exactly on the image's bottom edge (the wordmark PNG's ink fills its canvas and "Search" has
+no descenders, so the image bottom IS the baseline). Measured: baseline == image bottom at
+1920 (49.25/49.25) on the home and a docs page, and at 1100 where the logo is smaller
+(46.98/46.98); hidden at 390 as before. The hairline is now 13px tall (the text box) and
+sits low with the text.
