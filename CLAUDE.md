@@ -5183,3 +5183,11 @@ home page no longer carries an api example (the code card left this morning). Ev
 vendors, db-profiles, secret-vault, python-expressions, trace input row) and stays. 139
 pages, 35 examples valid. FLAG (Ram's model text): the api table's headers description
 still says "Use secret(...)" - the syntax is sys.secret[...].
+
+## State on 2026-09-22 (Skills page: paragraph 3 is Ram's text; not deployed)
+The third "How we got here" paragraph is Ram's, verbatim but for a lowercase after the colon
+and a comma before "and Search2o finds": "Search2o becomes the gateway between your enterprise
+systems and Claude Code, with one big difference: the routing and the code are no longer
+dynamic in Claude Code. It is Search2o that routes the request and runs the agents. Claude
+Code makes requests to Search2o, and Search2o finds and runs an agent built for that
+request."
