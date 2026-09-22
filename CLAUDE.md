@@ -4854,6 +4854,8 @@ docs/skill-integration/overview.html. Text unchanged.
 Ram: replace "End to end from a browser at low load" with a from-the-agent-server wording
 that assumes a high-speed connection to the cloud (paraphrased). The Speed table's third
 row label is now "From the agent server, over a fast connection to Search2o Cloud, at low
-load"; the figures (230-260 ms, under 600 ms at the 95th percentile) are unchanged. The
-table is class "fields", so its first column is nowrap - the longer label still fits the
-770px column (checked by the build only; no layout change elsewhere).
+load"; the figures (230-260 ms, under 600 ms at the 95th percentile) are unchanged.
+MEASURED: with class "fields" (first column nowrap) the table became 764px in a 702px box
+and scrolled sideways; the Speed table is now `class="fields data"`, whose first column
+wraps - the label takes two lines, the table is 770 in 770, no scroll. (The other tables on
+the page are untouched.)
