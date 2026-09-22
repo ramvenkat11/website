@@ -4838,3 +4838,10 @@ level with the Search2o box. The right group was first "BEHIND SEARCH2O" - the b
 caps, banned - renamed. Measured with getBBox in both themes: 15 texts, 0 overruns. The
 figure checker: pick the svg whose innerHTML contains the figure name - a bare
 querySelector('svg') returns a 24px icon.
+
+## State on 2026-09-21 (skill-flow: one "YOUR ORGANIZATION" box around everything; not deployed)
+Ram: remove "inside your organization" - the whole thing is inside the organization, so box
+it and say so. The figure (now 720x276) has an outer dashed group "YOUR ORGANIZATION"
+(8,12,704,252) around the assistant group, the Search2o box and the reached-only-by-agents
+group (all shifted down 12px to clear the outer label); the line under Search2o is just
+"agents run here". Measured: every text inside its box in both directions, 0 overruns.
