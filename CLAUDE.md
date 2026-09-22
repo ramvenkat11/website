@@ -4890,3 +4890,13 @@ nowrap, hidden below 900px. Measured: tagline on the wordmark's midline (34/34),
 nav starts at 1023, header 68px; at 820 the tagline is hidden and the nav is one line; at
 390 hidden, nav two lines, 142px as today. Awaiting his verdict; applying means the nine
 hand-written pages + gen/build.py's template (and the aria-current mark for Home goes).
+
+## State on 2026-09-22 (header tagline: SIX variants mocked side by side; nothing on disk; awaiting Ram's pick)
+Ram: decide the look first, show ideas. Mocked as six cloned headers stacked in a fixed
+overlay on the home page (Home dropped in all), dark and light, every one 68px: A hairline +
+muted 13.5px (the first mock); B hairline + ink 13px; C kicker style - 11.5px uppercase
+blue, letter-spaced, no hairline; D under the wordmark inside the brand link (11px muted,
+the brand becomes a column - still 68px because the wordmark is 31px); E centred between
+the brand and the nav; F italic 14px --faint, no hairline. My recommendation: A (or B if it
+should read more firmly); C shouts, D is too small to read, E floats, F looks like a
+placeholder. No file changed.
