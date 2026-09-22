@@ -437,9 +437,8 @@ def header(depth) -> str:
     r = rel(depth) + "../"
     return f"""<header class="site-header">
   <div class="container header-row">
-    <a class="brand" href="{r}index.html" aria-label="Search2o home"><img class="logo-light" src="{r}logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="{r}logo-dark.png" alt="Search2o" width="336" height="61"></a>
+    <a class="brand" href="{r}index.html" aria-label="Search2o home"><img class="logo-light" src="{r}logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="{r}logo-dark.png" alt="Search2o" width="336" height="61"><span class="tagline">Search that executes</span></a>
     <nav class="site-nav" aria-label="Main">
-      <a class="navlink" href="{r}index.html">Home</a>
       <a class="navlink" href="{r}demo.html">Demo</a>
       <a class="navlink" href="{r}gettingstarted.html">Getting started</a>
       <a class="navlink" href="{rel(depth)}index.html" aria-current="page">Docs</a>

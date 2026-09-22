@@ -92,10 +92,13 @@ p { margin: 0; }
   border-bottom: 1px solid var(--line-soft);
 }
 .header-row { display: flex; align-items: center; gap: 28px; min-height: 68px; }
-.brand { display: flex; align-items: center; flex: 0 0 auto; }
+.brand { display: flex; align-items: flex-end; flex: 0 0 auto; }
+.brand:hover { text-decoration: none; }
 .brand img { width: clamp(136px, 13vw, 168px); height: auto; }
 .brand .logo-light { display: var(--logo-light); }
 .brand .logo-dark { display: var(--logo-dark); }
+.tagline { margin: 0 0 -2px 16px; padding-left: 16px; border-left: 1px solid var(--line); font-size: 13px; line-height: 1; font-weight: 500; color: var(--muted); white-space: nowrap; }
+@media (max-width: 900px) { .tagline { display: none; } }
 .site-nav { display: flex; align-items: center; gap: 2px; margin-left: auto; }
 .navlink {
   padding: 8px 12px; border-radius: 9px;
@@ -675,7 +678,7 @@ p { margin: 0; }
 .plans tbody th small { display: block; color: var(--muted); font-size: 13px; font-weight: 500; line-height: 1.4; }
 .plans td { color: var(--body); }
 .plans .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.price-freeze { margin-top: 18px; display: grid; grid-template-columns: 22px 1fr; color: var(--muted); font-size: 14.5px; }
+.price-freeze { margin-top: 18px; display: grid; grid-template-columns: 30px 1fr; color: var(--muted); font-size: 14.5px; }
 .price-freeze + .price-freeze { margin-top: 8px; }
 .help-line { margin-top: 40px; color: var(--ink); font-size: 15.5px; }
 
