@@ -4998,3 +4998,16 @@ index.html step 2 (Agent server): "controlled runtime" links docs/agent-executio
 controlled-runtime.html and "Encrypts" links docs/security/encryption.html (the verb is the
 link text - "Encrypts sensitive information..." - flagged as a choice). Ram asked for a list
 of other home-page phrases worth linking; he picks.
+
+## State on 2026-09-22 (home page: Ram's picks linked; not deployed)
+From my list Ram picked 2, 4, 6, 10, 11, 12, 13, 14, 15, 16, 17 - body text only, never a
+heading. Applied in index.html: step 3 "search" -> search/how-matching-works, "reporting" ->
+reports/index; framework paragraph "built-in safeguards" -> agent-definition/python-
+expressions (and the earlier "Python expressions" link in the same sentence REMOVED, per
+Ram); Model neutrality "small adapter" -> llm/llm-adapters; Operational continuity "live on
+the next agent run" -> runtime/overview.html#how-a-change-reaches-every-server; API &
+automation "REST API" -> rest-api/overview and "event-driven or in batch" -> rest-api/
+running-agents (MY choice between the two I had offered - flagged); Access & roles "Four
+roles" -> users-and-roles, "Service accounts" -> service-accounts, "single sign-on" ->
+single-sign-on; Reports card: the "Reports" that opens the second sentence -> reports/index
+(the card's h3 untouched). Every target exists; no heading carries a link.
