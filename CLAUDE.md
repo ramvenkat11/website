@@ -5119,3 +5119,17 @@ closing line. NOT REBUILT - gen/build.py still fails on s2oserver's api starterF
 (url) mismatch; the subs' widths are estimated to fit (31 chars at 10.5px in a 200px box)
 and must be MEASURED once the build works. The other four pages of the section still say
 "the assistant" (Ram: "on this page").
+
+## State on 2026-09-22 (build unblocked; api examples on profile + path; figures measured; not deployed)
+Ram fixed starterFields in s2oserver; the api command model now has `path` ("a relative
+path added to the end of the profile's URL") and no `url`. Rebuilt: 139 pages. THREE
+examples had become invalid and are now profile + path: functions.html ("orders" profile,
+path f'/orders/{orderId}'), progress.html ("weather" profile, path "{ forecastPath }" - the
+variable renamed from forecastUrl), api.html (two profiles, "ip2location" with the query
+params and "weather" with path f'/points/{lat},{lon}'); api.html's Fields paragraph now says
+every call goes through an API profile, path is added to the profile's URL, and the hosts an
+agent can reach are the ones the profiles name. 35 examples valid. FLAG for Ram (his model
+text): the generated api table's `profile` description still says "Either this or 'url' must
+be specified". MEASURED on the no-cache server: assistant-connections 19 texts and
+skill-flow 15 texts, 0 overruns in both directions; the page's only "assistant" word is in
+the closing Cursor line.
