@@ -5099,3 +5099,23 @@ still lists "url". His repo, his fix (per the never-edit-other-projects rule); h
 still carries the previous build. WHEN THE MODEL LANDS: docsrc/commands/api.html and
 while.html and the home card example (index.html hr_policy) use "url" in api commands and
 will need "path" (check_examples will flag them), and the figure/page above then rebuild.
+
+## State on 2026-09-22 (Skills + Search2o: figure notes -> in-box subs; Claude Code everywhere; SOURCES ONLY, build still blocked)
+Ram: drop the small text under the rows and show IN the boxes that the agent code is dynamic
+and runs in Claude Code (rows 1-2) while in row 3 it runs inside Search2o in a controlled
+runtime - the key difference; and (b) say "Claude Code" everywhere on this page, with one
+line at the end that Claude Code stands for other assistants, Cursor included. gen/figures.py
+assistant-connections REDRAWN (720x250, no notes): the Claude Code box carries the sub
+"agent code · dynamic" in rows 1 and 2 and "one skill" in row 3; the middle box is 200px -
+"MCP servers", "Agent gateway / an intermediary", and the dark "Search2o / agent code ·
+controlled runtime"; the right boxes moved to 500-700. The skill-flow figure's left group is
+"CLAUDE CODE" with the top box "Claude Code" (was "AI assistant / Claude Code and others")
+and its caption says "A skill in Claude Code asks Search2o...". overview.html: every "the
+assistant" is "Claude Code" (lead, the three history paragraphs, the four Why-an-agent
+paragraphs); the lead's "this section calls these clients the assistant" sentence is gone;
+the closing line "Claude Code stands here for every assistant that supports Agent Skills,
+Cursor among them. The skill is the same." The only remaining "assistant" words are in that
+closing line. NOT REBUILT - gen/build.py still fails on s2oserver's api starterFields
+(url) mismatch; the subs' widths are estimated to fit (31 chars at 10.5px in a 200px box)
+and must be MEASURED once the build works. The other four pages of the section still say
+"the assistant" (Ram: "on this page").
