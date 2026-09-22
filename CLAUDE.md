@@ -5064,3 +5064,23 @@ architecture step). Shield icon kept.
 ## State on 2026-09-22 (home architecture step 1: "chat application" linked; not deployed)
 index.html step 1: "chat application" -> docs/chat-integrations/index.html (the section
 index; "agent skill" beside it already links the skill section).
+
+## State on 2026-09-22 (Skills + Search2o: "How we got here" + the three-row figure; not deployed)
+Ram's three paragraphs (MCP servers first and still most common; then agent gateways
+gatekeeping Claude Code's LLM and system calls while Claude Code still routes and writes
+the code; now Search2o as the gateway with a single skill that says when to use it) are the
+new FIRST h2 "How we got here" on skill-integration/overview.html, tidied into docs English
+("Claude Code" kept as he wrote it; "the assistant" where the lead's term fits). NEW figure
+`assistant-connections` (720x318, "Three ways to connect Claude Code to your systems"):
+three numbered rows - 1 Claude Code -> MCP servers -> Your systems; 2 Claude Code -> Agent
+gateway -> Your systems + LLMs; 3 Claude Code (sub "one skill") -> Search2o (dark, sub
+"search · agents") -> Your systems + LLMs - each with a one-line note under the row (the
+assistant routes and writes the code / the gateway checks the calls, the assistant still
+routes and writes / one skill says when, Search2o finds and runs an agent a developer
+wrote). FIRST DRAFT put the two right-hand boxes side by side and the arrow to LLMs ran
+THROUGH the Your-systems box - now the two are stacked (23px each) with one arrow each. The
+skill-flow figure moved from under the lead to the top of "Why an agent, not code". 19
+texts, 0 overruns in both directions. ASSUMPTIONS, flagged: "agent gateway" is named as a
+category, no product; in row 1 Claude Code's own LLM is not drawn (it is the assistant's
+model, not a system the person connects); MCP is not said to be gone (agents reach MCP
+servers through profiles - not added to the text).
