@@ -5148,3 +5148,12 @@ the code are no longer Claude Code's.") follows it and is followed by the skill-
 which moved up from "Why an agent, not code". Order: lead / h2 How we got here / p1 / p2 /
 two-row figure / p3 / skill-flow / h2 Why an agent, not code. Rebuilt; the two-row figure's
 texts are the same ones measured before, so no re-measure.
+
+## State on 2026-09-22 (Skills page history paragraphs in documentation register; not deployed)
+Ram: "Then people saw how messy that is" was his note, not documentation prose. Paragraphs 1
+and 2 of "How we got here" rewritten neutrally: "Claude Code first reached company systems
+through MCP servers, and most installations still do. ..." and "Agent gateways came next: an
+intermediary between Claude Code and the calls it makes, to LLMs and to enterprise systems
+alike. A gateway checks the calls. The routing, and the agent code, remain Claude Code's."
+Paragraph 3 unchanged. LESSON: his notes are the facts, never the sentences - the same rule
+as NEVER DOCUMENT AN ABSENCE; write the docs sentence from the fact.
