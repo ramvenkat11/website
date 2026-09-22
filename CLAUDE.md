@@ -4864,3 +4864,12 @@ the page are untouched.)
 The Speed table's third row is "From the agent server, fast link to the cloud, low load"
 (Ram's pick of my suggestion), and the table is back to `class="fields"` - the short label
 fits on one line, so the wrapping variant is not needed.
+
+## State on 2026-09-22 (search quality: the end-to-end row is gone; one sentence under the table; not deployed)
+Ram: remove the whole row and say under the table that an end user can expect search latency
+under a second. The Speed table has three rows now (server-side up to ~120 agents, server-
+side at 1,000, throughput); directly under it: "Overall, an end user can expect search latency
+under a second." then the existing capacity paragraph. NOTE, not changed: the home page
+Search section and search/how-matching-works still say matches come back "in less than 0.5
+seconds" (the match time, not the end-user round trip) - consistent with the table's
+server-side figures, flagged in case Ram wants one number everywhere.
