@@ -4954,3 +4954,12 @@ no descenders, so the image bottom IS the baseline). Measured: baseline == image
 1920 (49.25/49.25) on the home and a docs page, and at 1100 where the logo is smaller
 (46.98/46.98); hidden at 390 as before. The hairline is now 13px tall (the text box) and
 sits low with the text.
+
+## State on 2026-09-22 (pricing: third footnote's marker column; not deployed)
+Ram added a THIRD footnote to pricing.html himself ("*** Overages are rounded up to the next
+user. Service stops when usage reaches double your user count.") and asked for the spacing
+at its start to be fixed: the `.price-freeze` grid's marker column was 22px, which "***"
+filled with no gap before the text. styles.css: the column is 30px now (all three notes'
+text starts at the same x, 447 at 1920). His line's stray 8-space indentation in the html
+was aligned with its neighbours. FLAGGED, not changed: no table row carries `<sup>***</sup>`,
+so the third note is keyed to nothing.
