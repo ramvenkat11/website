@@ -4963,3 +4963,27 @@ filled with no gap before the text. styles.css: the column is 30px now (all thre
 text starts at the same x, 447 at 1920). His line's stray 8-space indentation in the html
 was aligned with its neighbours. FLAGGED, not changed: no table row carries `<sup>***</sup>`,
 so the third note is keyed to nothing.
+
+## State on 2026-09-22 (NEW topic: Controlled runtime, first under Agent execution; NOT DEPLOYED; iteration pending)
+Ram: write it; scope = what an agent can and cannot do (not the server process); on CPU/
+memory say two things - operator overriding exists for this, and users are free to run the
+agent server in isolation; the api command's `url` is being replaced by `path`, so say APIs
+are reachable only from what the profile sets. docsrc/agent-execution/controlled-runtime.html
+(139 pages), a SUMMARY page that links out: lead; The agent is fixed (validated, versioned,
+unchanged while it runs; the person chooses which agent, the definition decides what runs);
+What an expression can reach (allowlist in place of builtins, a module without its imports,
+the names it sees, the refused constructs, operators allowed/denied/rewritten); What an agent
+cannot see (secrets resolved on the server, names visible and values never; agent variables
+per agent, conv variables the one channel, by design); Where an agent's calls can go
+(profiles; "an api command calls an API profile, so the hosts an agent can reach are the ones
+set in the profiles" - written for the coming url->path change, no field named; connection
+pools); How much an agent may do (the runtime limits, timedOut, loops fail the run; then the
+processor/memory paragraph: the runtime bounds what an expression may do, not how much work
+one line does - two controls: operator rewriting with the bounded_pow example, and isolating
+the server "inside whatever isolation your organization uses: a container with processor and
+memory limits, a separate host, a restricted account" - Ram said "sandbox"; the word is banned
+in my writing, so it is not used - flagged); The same runtime on every server; What leaves the
+server (search request + encrypted state to the cloud; traffic where profiles point; the rest
+stays on the server); When something fails (onError; reports). Section lead and the docs home
+card mention the controlled runtime. All links resolve; 34 examples valid. Ram: another
+iteration once done.
