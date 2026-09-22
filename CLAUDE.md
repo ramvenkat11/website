@@ -4873,3 +4873,7 @@ under a second." then the existing capacity paragraph. NOTE, not changed: the ho
 Search section and search/how-matching-works still say matches come back "in less than 0.5
 seconds" (the match time, not the end-user round trip) - consistent with the table's
 server-side figures, flagged in case Ram wants one number everywhere.
+
+## State on 2026-09-22 (home architecture step 1 sentence, Ram's wording; not deployed)
+index.html:135 now reads "Users can submit requests from a browser, chat application, or
+agent skill." (agent skill still links the Skills + Search2o page; the full stop kept).
