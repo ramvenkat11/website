@@ -4931,3 +4931,11 @@ three stacked headers (current text A / G / H) in both themes, all 68px; the scr
 server nocache.py gained a /_mock/<file> route that serves scratchpad PNGs. NOTHING on disk
 in html/. Awaiting Ram's pick; applying = new logo.png/logo-dark.png (and og.png to match),
 the 38 img width/height attributes, the .tagline span and CSS removed.
+
+## State on 2026-09-22 (MOCK: smaller wordmark beside the text tagline; nothing on disk)
+Ram on the drawn-in versions: G (beneath) has too many "search" in it; H looks just like
+today; try a smaller wordmark. Mocked five stacked headers, both themes, all 68px: current
+(168px wordmark, 13px muted tagline); I 140px; J 124px; K 124px with the tagline in ink;
+L 124px, 12.5px muted, no hairline, 14px gap. The brand image is `clamp(136px, 13vw, 168px)`
+today (styles.css .brand img), 31px tall; at 124 it is 23px tall. Nothing on disk; awaiting
+his pick.
