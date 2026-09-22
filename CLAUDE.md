@@ -4849,3 +4849,11 @@ group (all shifted down 12px to clear the outer label); the line under Search2o 
 ## State on 2026-09-21 (home architecture step 1: "agent skill" links the Skills + Search2o page; not deployed)
 index.html:135 - "an agent skill" in the first System architecture step now links
 docs/skill-integration/overview.html. Text unchanged.
+
+## State on 2026-09-22 (search quality: the end-to-end row is measured from the agent server; not deployed)
+Ram: replace "End to end from a browser at low load" with a from-the-agent-server wording
+that assumes a high-speed connection to the cloud (paraphrased). The Speed table's third
+row label is now "From the agent server, over a fast connection to Search2o Cloud, at low
+load"; the figures (230-260 ms, under 600 ms at the 95th percentile) are unchanged. The
+table is class "fields", so its first column is nowrap - the longer label still fits the
+770px column (checked by the build only; no layout change elsewhere).
