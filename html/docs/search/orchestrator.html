@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Orchestrator — Search2o docs</title>
+<meta name="description" content="An orchestrator is an agent that every request goes to. Instead of the interface searching for an agent and running it, the interface always runs the orchest…">
+<link rel="canonical" href="https://search2o.com/docs/search/orchestrator.html">
+<meta property="og:title" content="Orchestrator — Search2o docs">
+<meta property="og:description" content="An orchestrator is an agent that every request goes to. Instead of the interface searching for an agent and running it, the interface always runs the orchest…">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://search2o.com/docs/search/orchestrator.html">
+<meta property="og:image" content="https://search2o.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Search2o: a platform to build, run, and use AI agents, with a search interface">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="../../fonts/inter-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../../fonts/jetbrains-mono-latin.woff2" crossorigin>
+<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="../docs.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYRX3801TG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYRX3801TG');</script>
+</head>
+<body class="docs">
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="../../index.html" aria-label="Search2o home"><img class="logo-light" src="../../logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="../../logo-dark.png" alt="Search2o" width="336" height="61"><span class="tagline">Search that executes</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="navlink" href="../../demo.html">Demo</a>
+      <a class="navlink" href="../../gettingstarted.html">Getting started</a>
+      <a class="navlink" href="../index.html" aria-current="page">Docs</a>
+      <a class="navlink" href="../../pricing.html">Pricing</a>
+      <a class="navlink" href="../../about.html">About</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch theme">
+      <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg>
+      <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+<div class="container docs-layout">
+  <button class="sb-toggle" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  <div id="sidebar" class="sb-wrap"><nav class=sidebar aria-label='Documentation'><a class='sb-home' href='../index.html'>Documentation</a><details><summary><a href='../introduction/index.html'>Introduction</a></summary><ul><li><a href='../introduction/what-is-search2o.html'>What is Search2o</a></li><li><a href='../introduction/parts-of-the-system.html'>Parts of the system</a></li><li><a href='../introduction/how-it-fits-together.html'>How it fits together</a></li><li><a href='../introduction/why-not-python.html'>Why not just Python?</a></li></ul></details><details><summary><a href='../getting-started/index.html'>Getting started</a></summary><ul><li><a href='../getting-started/registering-and-downloading.html'>Creating an account and downloading</a></li><li><a href='../getting-started/license-key.html'>License key</a></li><li><a href='../getting-started/running-the-server.html'>Running the server</a></li><li><a href='../getting-started/the-gui.html'>Opening the GUI</a></li><li><a href='../getting-started/your-first-agent.html'>Your first agent</a></li></ul></details><details><summary><a href='../agent-definition/index.html'>Agent definition</a></summary><ul><li><a href='../agent-definition/syntax.html'>Syntax</a></li><li><a href='../agent-definition/python-expressions.html'>Python expressions</a></li><li><a href='../agent-definition/structure.html'>Agent structure</a></li><li><a href='../agent-definition/functions.html'>Functions</a></li><li><a href='../agent-definition/commands.html'>Commands</a></li><li><a href='../agent-definition/variables.html'>Variables and namespaces</a></li></ul></details><details><summary><a href='../agent-execution/index.html'>Agent execution</a></summary><ul><li><a href='../agent-execution/controlled-runtime.html'>Controlled runtime</a></li><li><a href='../agent-execution/output.html'>Agent output</a></li><li><a href='../agent-execution/order-of-execution.html'>Order of execution</a></li><li><a href='../agent-execution/conversation-state.html'>Conversation state</a></li></ul></details><details><summary><a href='../llm/index.html'>LLM</a></summary><ul><li><a href='../llm/vendors.html'>LLM vendors</a></li><li><a href='../llm/llm-adapters.html'>Connecting to other LLMs</a></li><li><a href='../llm/code-from-llm.html'>Executing code from an LLM</a></li></ul></details><details><summary><a href='../commands/index.html'>Command reference</a></summary><ul><li class=sb-group>Variables</li><li><a href='../commands/var.html'>var</a></li><li class=sb-group>Flow control</li><li><a href='../commands/if.html'>if</a></li><li><a href='../commands/while.html'>while</a></li><li><a href='../commands/for.html'>for</a></li><li><a href='../commands/break.html'>break</a></li><li><a href='../commands/continue.html'>continue</a></li><li><a href='../commands/func.html'>func</a></li><li><a href='../commands/return.html'>return</a></li><li><a href='../commands/parallel.html'>parallel</a></li><li class=sb-group>LLM interaction</li><li><a href='../commands/prompt.html'>prompt</a></li><li><a href='../commands/llm.html'>llm</a></li><li><a href='../commands/memory.html'>memory</a></li><li class=sb-group>External systems</li><li><a href='../commands/api.html'>api</a></li><li><a href='../commands/db.html'>db</a></li><li class=sb-group>Deep agents</li><li><a href='../commands/search.html'>search</a></li><li><a href='../commands/invoke.html'>invoke</a></li><li class=sb-group>Human-in-the-loop</li><li><a href='../commands/ask.html'>ask</a></li><li class=sb-group>Agent output</li><li><a href='../commands/output.html'>output</a></li><li class=sb-group>Agent termination</li><li><a href='../commands/end.html'>end</a></li><li><a href='../commands/fail.html'>fail</a></li><li class=sb-group>Observability</li><li><a href='../commands/progress.html'>progress</a></li><li><a href='../commands/trace.html'>trace</a></li><li><a href='../commands/log.html'>log</a></li></ul></details><details open><summary><a href='../search/index.html'>Search</a></summary><ul><li><a href='../search/describing-an-agent.html'>Describing an agent</a></li><li><a href='../search/how-matching-works.html'>How matching behaves</a></li><li><a href='../search/tags.html'>Tags</a></li><li><a href='../search/search-settings.html'>Search settings</a></li><li><a href='../search/search-quality.html'>Search quality</a></li><li><a href='../search/orchestrator.html' aria-current=page>Orchestrator</a></li></ul></details><details><summary><a href='../development/index.html'>Development process</a></summary><ul><li><a href='../development/drafts.html'>Drafts</a></li><li><a href='../development/code-editor.html'>Agent editor</a></li><li><a href='../development/draft-with-ai.html'>Draft with AI</a></li><li><a href='../development/trace-and-validation.html'>Trace and validation</a></li><li><a href='../development/publishing.html'>Publishing</a></li></ul></details><details><summary><a href='../runtime/index.html'>Agent runtime</a></summary><ul><li><a href='../runtime/overview.html'>Overview</a></li><li><a href='../runtime/allowlist.html'>Allowlist</a></li><li><a href='../runtime/system-variables.html'>System variables</a></li><li><a href='../runtime/compile-rules.html'>Compile rules</a></li><li><a href='../runtime/runtime-limits.html'>Runtime limits</a></li><li><a href='../runtime/connection-pools.html'>Connection pools</a></li></ul></details><details><summary><a href='../profiles/index.html'>Profiles</a></summary><ul><li><a href='../profiles/overview.html'>How profiles work</a></li><li><a href='../profiles/llm-profiles.html'>LLM profiles</a></li><li><a href='../profiles/prompt-profiles.html'>Prompt profiles</a></li><li><a href='../profiles/api-profiles.html'>API profiles</a></li><li><a href='../profiles/db-profiles.html'>Database profiles</a></li><li><a href='../profiles/mcp-servers.html'>MCP servers</a></li></ul></details><details><summary><a href='../reports/index.html'>Reports</a></summary><ul><li><a href='../reports/performance.html'>Agent performance</a></li><li><a href='../reports/errors.html'>Agent errors</a></li><li><a href='../reports/cost.html'>LLM cost</a></li><li><a href='../reports/usage.html'>User usage</a></li></ul></details><details><summary><a href='../system-management/index.html'>System management</a></summary><ul><li><a href='../system-management/users-and-roles.html'>Users and roles</a></li><li><a href='../system-management/service-accounts.html'>Service accounts</a></li><li><a href='../system-management/agent-servers.html'>Agent servers</a></li><li><a href='../system-management/agent-server-sizing.html'>Agent server sizing</a></li><li><a href='../system-management/authentication.html'>Authentication</a></li><li><a href='../system-management/single-sign-on.html'>Single sign-on</a></li><li><a href='../system-management/audit-log.html'>Audit log</a></li><li><a href='../system-management/usage-limits.html'>Usage limits</a></li></ul></details><details><summary><a href='../security/index.html'>Security and privacy</a></summary><ul><li><a href='../security/license-rotation.html'>License key rotation</a></li><li><a href='../security/secret-vault.html'>Secret vault</a></li><li><a href='../security/encryption.html'>Encryption</a></li><li><a href='../security/data-privacy.html'>Data privacy</a></li><li><a href='../security/multiple-environments.html'>Running multiple environments</a></li></ul></details><details><summary><a href='../gui/index.html'>GUI</a></summary><ul><li><a href='../gui/how-the-gui-runs.html'>How the GUI runs</a></li><li><a href='../gui/search.html'>Search and conversations</a></li><li><a href='../gui/agents.html'>Agents</a></li><li><a href='../gui/profiles.html'>Profiles</a></li><li><a href='../gui/guardrails.html'>Guardrails</a></li><li><a href='../gui/operations.html'>Operations</a></li><li><a href='../gui/reports.html'>Reports</a></li><li><a href='../gui/account.html'>Admin and billing</a></li><li><a href='../gui/personal.html'>Profile and docs</a></li></ul></details><details><summary><a href='../rest-api/index.html'>REST API</a></summary><ul><li><a href='../rest-api/overview.html'>Overview</a></li><li><a href='../rest-api/authentication.html'>Authentication</a></li><li><a href='../rest-api/running-agents.html'>Running agents</a></li><li><a href='../rest-api/streaming.html'>Streaming</a></li><li><a href='../rest-api/search.html'>Search</a></li><li><a href='../rest-api/conversations.html'>Conversations</a></li><li><a href='../rest-api/workflows.html'>Workflows</a></li><li><a href='../rest-api/automating-with-an-llm.html'>Automating tasks with an LLM</a></li><li><a href='../rest-api/clients.html'>Creating your own client</a></li></ul></details><details><summary><a href='../chat-integrations/index.html'>Chat integrations</a></summary><ul><li><a href='../chat-integrations/overview.html'>How a chat integration works</a></li><li><a href='../chat-integrations/connecting-a-person.html'>Connecting a person</a></li><li><a href='../chat-integrations/integration-tokens.html'>Integration tokens</a></li><li><a href='../chat-integrations/finding-an-agent.html'>Finding an agent</a></li><li><a href='../chat-integrations/running-an-agent.html'>Running an agent</a></li><li><a href='../chat-integrations/showing-the-answer.html'>Showing the answer</a></li><li><a href='../chat-integrations/chat-applications.html'>Slack, Teams and Google Chat</a></li><li><a href='../chat-integrations/ai-prompts.html'>Building a bot with an AI assistant</a></li></ul></details><details><summary><a href='../skill-integration/index.html'>Skill integration</a></summary><ul><li><a href='../skill-integration/overview.html'>Skills + Search2o</a></li><li><a href='../skill-integration/what-search2o-provides.html'>What Search2o adds</a></li><li><a href='../skill-integration/finding-and-running-an-agent.html'>What the skill does</a></li><li><a href='../skill-integration/installing-the-skill.html'>Installing the skill</a></li><li><a href='../skill-integration/operating-notes.html'>Operating notes</a></li></ul></details><details><summary><a href='../support-licensing/index.html'>Support and licensing</a></summary><ul><li><a href='../support-licensing/asking-the-docs.html'>Asking the docs</a></li><li><a href='../support-licensing/support.html'>Support</a></li><li><a href='../support-licensing/license.html'>License</a></li><li><a href='../support-licensing/billing.html'>Billing</a></li></ul></details></nav></div>
+  <main class="docs-main">
+    <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../search/index.html'>Search</a></div>
+    <article class="docs-article">
+      <h1>Orchestrator</h1>
+      <p class="lead">An orchestrator is an agent that every request goes to. Instead of the interface searching for an agent and running it, the interface always runs the orchestrator, and the orchestrator finds and runs the other agents itself. One agent then stands in front of the whole catalogue, and everything that should happen to every request &mdash; a check, a split, a summary &mdash; is written once, in that agent.</p>
+
+<h2 id="how-it-works">How it works</h2>
+<p>An interface built on the REST API &mdash; a page of your own, a chat bot, an <a href="../skill-integration/overview.html">agent skill</a> &mdash; calls <a href="../rest-api/running-agents.html"><code>execAgent</code></a> with the orchestrator's name and the user's request. The interface never calls <code>search</code> itself. The bundled GUI searches and runs the match itself, so an orchestrator is used from an interface of your own.</p>
+<p>Inside the orchestrator, the <a href="../commands/search.html"><code>search</code></a> command matches the request to the agents in the catalogue, and the <a href="../commands/invoke.html"><code>invoke</code></a> command runs the best match. The invoked agent runs in the same conversation: what the invoked agent writes with <code>output</code> streams to the user as it runs, and what the invoked agent <code>return</code>s comes back to the orchestrator as <code>result</code>. Every agent in the chain sees the conversation's <code>conv</code> variables, so an agent can build on what an earlier one left behind.</p>
+
+<figure class=code data-lang=jsonc><div class=bar><span>The smallest orchestrator: a check, a search, an invoke</span></div><pre><code><span class=key>&quot;prompt&quot;</span>: {
+  <span class=key>&quot;system&quot;</span>: <span class=str>&quot;Answer yes or no: is this a request about our company&#x27;s work?&quot;</span>,
+  <span class=key>&quot;user&quot;</span>: <span class=str>&quot;{ sys.query }&quot;</span>
+},
+<span class=key>&quot;llm&quot;</span>: { <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;claude_haiku&quot;</span> },
+<span class=key>&quot;if&quot;</span>: {
+  <span class=key>&quot;condition&quot;</span>: <span class=str>&quot;{ result.strip().lower().startswith(&#x27;no&#x27;) }&quot;</span>,
+  <span class=key>&quot;then&quot;</span>: { <span class=key>&quot;end&quot;</span>: <span class=str>&quot;I can help with requests about our company&#x27;s work.&quot;</span> }
+},
+<span class=key>&quot;search&quot;</span>: { <span class=key>&quot;query&quot;</span>: <span class=str>&quot;{ sys.query }&quot;</span> },
+<span class=key>&quot;if&quot;</span>: {
+  <span class=key>&quot;condition&quot;</span>: <span class=str>&quot;{ not result }&quot;</span>,
+  <span class=key>&quot;then&quot;</span>: { <span class=key>&quot;end&quot;</span>: <span class=str>&quot;No agent handles that request yet.&quot;</span> }
+},
+<span class=key>&quot;invoke&quot;</span>: {
+  <span class=key>&quot;agent&quot;</span>: <span class=str>&quot;{ result[0][&#x27;agentName&#x27;] }&quot;</span>,
+  <span class=key>&quot;inputs&quot;</span>: { <span class=key>&quot;query&quot;</span>: <span class=str>&quot;{ sys.query }&quot;</span> }
+}</code></pre></figure>
+
+<h2 id="what-an-orchestrator-can-do">What an orchestrator can do</h2>
+<p>Everything below is an ordinary agent definition; the orchestrator is powerful because it runs before, between and after the other agents.</p>
+
+<h3 id="check-the-request-first">Check the request first</h3>
+<p>An <a href="../commands/llm.html"><code>llm</code></a> call can judge the request before any agent runs: whether the request is on topic, whether it carries data that should not be sent anywhere, whether it looks like an attempt to steer an agent. The orchestrator can then refuse with <a href="../commands/end.html"><code>end</code></a>, or ask what the user meant with <a href="../commands/ask.html"><code>ask</code></a>. The rule is written once and applies to every agent behind the orchestrator.</p>
+
+<h3 id="split-a-request-into-parts">Split a request into parts</h3>
+<p>A request such as <em>"Has order 48812 shipped? If not, open a ticket with the warehouse"</em> is two requests. An LLM can split it into parts, and the orchestrator can take the parts one at a time in a <a href="../commands/while.html"><code>while</code></a> loop: search, invoke, next part. Each agent sees what the earlier ones left in <code>conv</code> variables, so the warehouse agent can read the order the first agent looked up. <code>invoke</code> cannot sit inside a <code>for</code> loop, because an invoked agent may pause on <code>ask</code>; a <code>while</code> loop can be paused and resumed.</p>
+<p>Parts that do not depend on each other can run at the same time: put each <code>invoke</code> in its own function and run the functions with <a href="../commands/parallel.html"><code>parallel</code></a>. An agent invoked this way cannot ask the user; an <code>ask</code> there fails the run.</p>
+
+<h3 id="choose-among-matches">Choose among matches</h3>
+<p>Search returns one, two or three agents when descriptions overlap or the request is ambiguous; see <a href="how-matching-works.html">How matching behaves</a>. The orchestrator can run the first match, ask the user to choose with <code>ask</code> and a <code>chooseOne</code> input, or let an LLM choose from the agents' titles.</p>
+
+<h3 id="check-the-answer-and-speak-with-one-voice">Check the answer and speak with one voice</h3>
+<p>An invoked agent's <code>output</code> streams straight to the user. For an answer that is checked or summarised first, let the specialist agents <code>return</code> their results instead of writing output, and let the orchestrator compose the final answer with an LLM and write it with <a href="../commands/output.html"><code>output</code></a>. The orchestrator can then check a result against policy before the user sees it, join the results of several agents into one answer, or close with a summary. Every answer comes out in one voice, whichever agents produced it.</p>
+
+<h3 id="handle-the-request-nobody-covers">Handle the request nobody covers</h3>
+<p>When search returns nothing, the orchestrator decides what happens: answer from an LLM directly, ask a clarifying question, or say what the catalogue covers. Without an orchestrator, that decision is left to the interface.</p>
+
+<h3 id="confirm-before-acting">Confirm before acting</h3>
+<p>Before invoking an agent that sends, books or pays, the orchestrator can <code>ask</code> for confirmation. An invoked agent may ask too; the whole chain pauses on the question and continues with the answer.</p>
+
+<h3 id="route-by-catalogue">Route by catalogue</h3>
+<p>The <code>search</code> command takes a <a href="tags.html">tag</a>, so the orchestrator can search one catalogue for one kind of request and another for the next, or choose the catalogue by who is asking when <a href="../runtime/system-variables.html"><code>sys.userEmail</code></a> is enabled.</p>
+
+<h3 id="remember">Remember</h3>
+<p>With the <a href="../commands/memory.html"><code>memory</code></a> command the orchestrator can keep what it learns about a user &mdash; a preferred office, a usual project &mdash; and pass it to the agents it invokes, across conversations.</p>
+
+<h2 id="what-to-keep-in-mind">What to keep in mind</h2>
+<ul>
+  <li>Each <code>search</code> is a round trip to Search2o Cloud, and each LLM call takes the model's time. A request that is checked, split, answered and summarised costs the sum of those steps.</li>
+  <li>The <a href="../reports/index.html">reports</a> record the orchestrator's run and every invoked agent's run, so what each agent did and cost stays visible.</li>
+  <li>An agent cannot invoke itself or any agent already running in the chain, and <code>invoke</code> is not allowed inside a <code>for</code> loop or an <code>onError</code> block. See <a href="../commands/invoke.html">invoke</a>.</li>
+</ul>
+
+    </article>
+    <nav class=prevnext><a class=prev href='../search/search-quality.html'><small>Previous</small>Search quality</a><a class=next href='../development/index.html'><small>Next</small>Development process</a></nav>
+  </main>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#how-it-works'>How it works</a></li><li class=l2><a href='#what-an-orchestrator-can-do'>What an orchestrator can do</a></li><li class=l3><a href='#check-the-request-first'>Check the request first</a></li><li class=l3><a href='#split-a-request-into-parts'>Split a request into parts</a></li><li class=l3><a href='#choose-among-matches'>Choose among matches</a></li><li class=l3><a href='#check-the-answer-and-speak-with-one-voice'>Check the answer and speak with one voice</a></li><li class=l3><a href='#handle-the-request-nobody-covers'>Handle the request nobody covers</a></li><li class=l3><a href='#confirm-before-acting'>Confirm before acting</a></li><li class=l3><a href='#route-by-catalogue'>Route by catalogue</a></li><li class=l3><a href='#remember'>Remember</a></li><li class=l2><a href='#what-to-keep-in-mind'>What to keep in mind</a></li></ul></aside>
+</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-base">
+      <span>&copy; <span id="year">2026</span> Search2o &middot; Virginia, USA</span>
+      <span><a href="../../about.html#contact">Contact</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../../site.js"></script>
+<script src="../docs.js"></script>
+</body>
+</html>
