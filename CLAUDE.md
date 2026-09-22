@@ -5011,3 +5011,32 @@ running-agents (MY choice between the two I had offered - flagged); Access & rol
 roles" -> users-and-roles, "Service accounts" -> service-accounts, "single sign-on" ->
 single-sign-on; Reports card: the "Reports" that opens the second sentence -> reports/index
 (the card's h3 untouched). Every target exists; no heading carries a link.
+
+## State on 2026-09-22 (Custom search -> ORCHESTRATOR topic; catalogue section moved to Tags; NOT DEPLOYED)
+Ram: move "Letting users pick a catalogue" to the Tags topic and add how an agent skill uses
+it; make the whole Custom search page about the orchestrator, remove everything else, expand
+it - the UI can always call just the orchestrator; guardrails on input/output with an LLM,
+splitting with an LLM, a summary at the end. DONE: docsrc/search/custom-search.html RETIRED
+(git rm -f, docsrc + the html/docs copy - the --delete sync removes it from the bucket) and
+docsrc/search/orchestrator.html is NEW at the same toc position (slug orchestrator, title
+"Orchestrator"; 139 pages): lead; How it works (an API-built interface - a page of your own,
+a bot, a skill - calls execAgent with the orchestrator's name and never calls search; inside,
+search + invoke; the invoked agent's output streams to the user, its return comes back as
+result; conv variables shared) with a validated example (prompt/llm yes-no gate, search,
+if-not-result end, invoke result[0]); "What an orchestrator can do" as seven h3s: Check the
+request first (llm judge -> end or ask), Split a request into parts (LLM splits; one part at
+a time in a WHILE loop - invoke may not sit in a for loop because an invoked agent may pause
+on ask, VERIFIED at s2oserver/compiler/agentcompiler.py:36/60), Choose among matches (first /
+ask chooseOne / LLM picks by title), Check the answer and speak with one voice (an invoked
+agent's output streams straight to the user, so for a checked or summarised answer the
+specialists RETURN and the orchestrator composes with an LLM and outputs - the nuance that
+makes output guardrails possible), Handle the request nobody covers, Confirm before acting,
+Route by catalogue (tag; sys.userEmail when enabled), Remember (memory); "What to keep in
+mind" (round trips + LLM time; reports record every run in the chain; invoke's rules).
+Deliberately NOT said, because unverified: how the BUNDLED GUI can be made to always call the
+orchestrator (no setting is known to me) - asked Ram; and whether invoke may run inside a
+parallel function. TAGS: new h2 "Letting users pick a catalogue" before Shape - the moved
+paragraph (now naming the REST API's search call) plus a skill paragraph (the skill's search
+call can name a tag; one skill per catalogue; links operating-notes.html#tag-scoping). The
+Search section lead and the docs home card now point at the orchestrator instead of custom
+search. 35 examples valid (+1), links resolve, no "custom-search" reference remains.
