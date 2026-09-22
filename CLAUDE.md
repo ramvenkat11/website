@@ -5047,3 +5047,14 @@ interface of your own (the agent server once had a route-everything feature, rem
 back later - NOT on the page). Sentence added to "How it works". (2) invoke CAN run inside a
 function run by parallel; an agent invoked that way must not ask - an ask there fails the
 run. New paragraph under "Split a request into parts". Rebuilt.
+
+## State on 2026-09-22 (home Platform card: "Security & privacy" replaces Agent security; not deployed)
+Ram: rename the card and write three lines summarising the docs' Security and privacy
+section, with links. index.html card now: h3 "Security & privacy" (sentence case like the
+other cards - Ram wrote "Security & Privacy"; flagged) and "Secrets live in a vault, never in
+an agent. Conversations and memories are encrypted before they leave your organization, end
+to end if you hold the key. Data privacy says where every kind of data ends up and who can
+read it." - "vault" -> security/secret-vault, "encrypted" -> security/encryption, "Data
+privacy" -> security/data-privacy. The allowlist / unsafe-constructs sentences left the card
+(the controlled runtime is linked from the architecture step). Shield icon kept. The text is
+~210 characters, in the range of the other cards.
