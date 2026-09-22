@@ -4845,3 +4845,7 @@ it and say so. The figure (now 720x276) has an outer dashed group "YOUR ORGANIZA
 (8,12,704,252) around the assistant group, the Search2o box and the reached-only-by-agents
 group (all shifted down 12px to clear the outer label); the line under Search2o is just
 "agents run here". Measured: every text inside its box in both directions, 0 overruns.
+
+## State on 2026-09-21 (home architecture step 1: "agent skill" links the Skills + Search2o page; not deployed)
+index.html:135 - "an agent skill" in the first System architecture step now links
+docs/skill-integration/overview.html. Text unchanged.
