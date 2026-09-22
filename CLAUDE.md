@@ -5040,3 +5040,10 @@ paragraph (now naming the REST API's search call) plus a skill paragraph (the sk
 call can name a tag; one skill per catalogue; links operating-notes.html#tag-scoping). The
 Search section lead and the docs home card now point at the orchestrator instead of custom
 search. 35 examples valid (+1), links resolve, no "custom-search" reference remains.
+
+## State on 2026-09-22 (Orchestrator: Ram's two answers applied; not deployed)
+(1) The bundled GUI searches and runs the match itself - an orchestrator is used from an
+interface of your own (the agent server once had a route-everything feature, removed, maybe
+back later - NOT on the page). Sentence added to "How it works". (2) invoke CAN run inside a
+function run by parallel; an agent invoked that way must not ask - an ask there fails the
+run. New paragraph under "Split a request into parts". Rebuilt.
