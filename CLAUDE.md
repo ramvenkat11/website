@@ -5157,3 +5157,12 @@ intermediary between Claude Code and the calls it makes, to LLMs and to enterpri
 alike. A gateway checks the calls. The routing, and the agent code, remain Claude Code's."
 Paragraph 3 unchanged. LESSON: his notes are the facts, never the sentences - the same rule
 as NEVER DOCUMENT AN ABSENCE; write the docs sentence from the fact.
+
+## State on 2026-09-22 (Skills page: "Why an agent, not code" opens from the history; not deployed)
+The section's first paragraph no longer restates what "How we got here" now says; it builds
+on it: "The first two arrangements share one property: the agent code is written at run
+time, by the model, and runs with the person's access. A skill guides that code but does not
+define it. For the resources a person chooses to expose to Claude Code, that is a fair
+boundary. For company systems it is a poor one." Also in paragraph 2: "runs on an agent
+server inside your organization, in a controlled runtime" (linked to the new topic; was
+"on a server ... within a runtime").
