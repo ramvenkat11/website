@@ -5166,3 +5166,20 @@ define it. For the resources a person chooses to expose to Claude Code, that is 
 boundary. For company systems it is a poor one." Also in paragraph 2: "runs on an agent
 server inside your organization, in a controlled runtime" (linked to the new topic; was
 "on a server ... within a runtime").
+
+## State on 2026-09-22 (api: profile + path only; db: profile only - docs swept; not deployed)
+Ram: api can no longer name a url (a profile is required; path is added to the profile's
+URL) and db can no longer name a connectionString. The generated field tables already show
+it (profile required on both; api has path). Prose and examples updated: commands/api.html
+(done earlier today: every call through an API profile, path added to the profile's URL, the
+hosts an agent can reach are the ones the profiles name; the two examples on profiles
+ip2location and weather), commands/db.html ("Every db command names a database profile... The
+databases an agent can reach are therefore the ones the profiles name."; the driver rule
+says "The profile's connection string names an async driver"), progress.html and
+functions.html examples (profile + path), and development/code-editor.html's starter-field
+sentence (api arrives with profile, path, queryParams and body - agentschema.py:38). The
+home page no longer carries an api example (the code card left this morning). Every other
+"url" / "connection string" in docsrc is a PROFILE field (api-profiles, llm-profiles,
+vendors, db-profiles, secret-vault, python-expressions, trace input row) and stays. 139
+pages, 35 examples valid. FLAG (Ram's model text): the api table's headers description
+still says "Use secret(...)" - the syntax is sys.secret[...].
