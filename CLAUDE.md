@@ -5133,3 +5133,8 @@ text): the generated api table's `profile` description still says "Either this o
 be specified". MEASURED on the no-cache server: assistant-connections 19 texts and
 skill-flow 15 texts, 0 overruns in both directions; the page's only "assistant" word is in
 the closing Cursor line.
+
+## State on 2026-09-22 (assistant-connections: "one skill" and "an intermediary" subs removed; not deployed)
+Row 3's Claude Code box and row 2's Agent gateway box have no sub-line now; the only subs
+are "agent code · dynamic" (rows 1-2) and "agent code · controlled runtime" (row 3). The
+label positions come from f.box (centred when there is no sub), so nothing else moved.
