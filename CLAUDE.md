@@ -4820,3 +4820,21 @@ light). Only this button changed; the generic .btn-ghost is as it was.
 Ram: "just the border". The dark-theme fill override is gone - the button keeps the ghost
 fill (--card) - and only its border is lighter: rgba(255,255,255,.22), hover .34, in both
 dark blocks. Light theme untouched.
+
+## State on 2026-09-21 (Skills + Search2o: new figure "skill-flow"; not deployed)
+Ram: an image on docs/skill-integration/overview.html showing a skill in an assistant calling
+Search2o (which runs agents) with the company's systems and LLMs behind it. gen/figures.py
+gained `skill-flow` (720x262), placed as <!--figure:skill-flow--> right under the page's
+lead: dashed group "THE ASSISTANT" with "AI assistant / Claude Code and others" (soft) over
+"Search2o skill / search · execAgent" (card) joined by a down arrow; a level two-way arrow
+labelled request / answer (two text lines under it, not the pill label - the pill would have
+covered the 65px arrow) into the dark "Search2o / search · agent server · runtime" box;
+from its right edge two arrows into the dashed group "REACHED ONLY BY AGENTS" holding "Your
+systems / APIs · databases · MCP" and "LLMs / any vendor, per profile"; under Search2o the
+line "agents run here, inside your organization". Caption: "A skill in the assistant asks
+Search2o; the systems and models stay behind Search2o". FIRST DRAFT had the skill-to-
+Search2o arrow diagonal with its labels crowding the caption - re-laid so the skill box sits
+level with the Search2o box. The right group was first "BEHIND SEARCH2O" - the brand in
+caps, banned - renamed. Measured with getBBox in both themes: 15 texts, 0 overruns. The
+figure checker: pick the svg whose innerHTML contains the figure name - a bare
+querySelector('svg') returns a 24px icon.
