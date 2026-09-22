@@ -5060,3 +5060,7 @@ end clause and "who can read it" cut; 162 chars). Links: "vault" -> security/sec
 "encrypted" -> security/encryption, "Data privacy" -> security/data-privacy. The allowlist /
 unsafe-constructs sentences left the card (the controlled runtime is linked from the
 architecture step). Shield icon kept.
+
+## State on 2026-09-22 (home architecture step 1: "chat application" linked; not deployed)
+index.html step 1: "chat application" -> docs/chat-integrations/index.html (the section
+index; "agent skill" beside it already links the skill section).
