@@ -160,6 +160,27 @@ def _architecture():
     return f.render()
 
 
+@figure("skill-flow")
+def _skill_flow():
+    f = Fig("skill-flow", 276, "A skill in the assistant asks Search2o; the systems and models stay behind Search2o")
+    f.group(8, 12, 704, 252, "YOUR ORGANIZATION")
+    f.group(24, 42, 206, 210, "THE ASSISTANT")
+    f.box(42, 70, 170, 52, "AI assistant", "Claude Code and others", kind="soft")
+    f.box(42, 144, 170, 52, "Search2o skill", "search · execAgent", kind="card")
+    f.arrow(127, 122, 127, 144)
+    f.box(275, 115, 200, 110, "Search2o", "search · agent server · runtime", kind="dark")
+    f.arrow(212, 170, 275, 170, both=True)
+    f.text(243.5, 188, "request", size=11, anchor="middle")
+    f.text(243.5, 202, "answer", size=11, anchor="middle")
+    f.group(491, 42, 205, 210, "REACHED ONLY BY AGENTS")
+    f.box(511, 70, 165, 52, "Your systems", "APIs · databases · MCP", kind="soft")
+    f.box(511, 170, 165, 52, "LLMs", "any vendor, per profile", kind="soft")
+    f.arrow(475, 152, 511, 108)
+    f.arrow(475, 188, 511, 196)
+    f.text(375, 244, "agents run here", size=11, anchor="middle")
+    return f.render()
+
+
 @figure("request-lifecycle")
 def _request_lifecycle():
     f = Fig("request-lifecycle", 210, "From a query to an answer")
