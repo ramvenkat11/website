@@ -5191,3 +5191,8 @@ systems and Claude Code, with one big difference: the routing and the code are n
 dynamic in Claude Code. It is Search2o that routes the request and runs the agents. Claude
 Code makes requests to Search2o, and Search2o finds and runs an agent built for that
 request."
+
+## State on 2026-09-22 (Skills page: h2 "Current architectures"; paragraph 3 has a lead-in; not deployed)
+"How we got here" is "Current architectures" (Ram: "or something like that"). Paragraph 3
+opens "Search2o is the third arrangement. It becomes the gateway..." so it follows the
+two-row figure instead of starting cold. Anchor id changed (no inbound links).
