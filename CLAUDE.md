@@ -4859,3 +4859,8 @@ MEASURED: with class "fields" (first column nowrap) the table became 764px in a 
 and scrolled sideways; the Speed table is now `class="fields data"`, whose first column
 wraps - the label takes two lines, the table is 770 in 770, no scroll. (The other tables on
 the page are untouched.)
+
+## State on 2026-09-22 (search quality: Ram's shorter row label; plain fields table again; not deployed)
+The Speed table's third row is "From the agent server, fast link to the cloud, low load"
+(Ram's pick of my suggestion), and the table is back to `class="fields"` - the short label
+fits on one line, so the wrapping variant is not needed.
