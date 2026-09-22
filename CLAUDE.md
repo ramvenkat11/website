@@ -5084,3 +5084,18 @@ texts, 0 overruns in both directions. ASSUMPTIONS, flagged: "agent gateway" is n
 category, no product; in row 1 Claude Code's own LLM is not drawn (it is the assistant's
 model, not a system the person connects); MCP is not said to be gone (agents reach MCP
 servers through profiles - not added to the text).
+
+## State on 2026-09-22 (How-we-got-here wording applied in the SOURCES; docs BUILD BLOCKED by s2oserver)
+Ram's wording applied in gen/figures.py (row 2 note "an intermediary: the assistant still
+routes and still writes the agent code"; row 3 note "one skill says when; the agents run in
+Search2o") and in overview.html's two paragraphs ("The gateway is an intermediary: it checks
+the calls, but Claude Code still does all the routing, and still writes the agent code." /
+"Search2o becomes the place where agents run; the routing and the code are no longer the
+assistant's."). NOT REBUILT: gen/build.py now fails in ../s2oserver/models/agentschema.py
+check_starter_fields - "api (APICommandModel): ['url'] - the model has [body, headers,
+method, onError, profile, queryParams, timeout]": Ram is mid-way through the url -> path
+change (models/agentmodels.py modified, uncommitted) and starterFields (agentschema.py:38)
+still lists "url". His repo, his fix (per the never-edit-other-projects rule); html/docs
+still carries the previous build. WHEN THE MODEL LANDS: docsrc/commands/api.html and
+while.html and the home card example (index.html hr_policy) use "url" in api commands and
+will need "path" (check_examples will flag them), and the figure/page above then rebuild.
