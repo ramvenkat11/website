@@ -4900,3 +4900,19 @@ the brand becomes a column - still 68px because the wordmark is 31px); E centred
 the brand and the nav; F italic 14px --faint, no hairline. My recommendation: A (or B if it
 should read more firmly); C shouts, D is too small to read, E floats, F looks like a
 placeholder. No file changed.
+
+## State on 2026-09-22 (APPLIED: Home dropped, tagline A at 13px beside the wordmark, site-wide; not deployed)
+Ram: go with A, no TM, at B's smaller size - "not fully happy, but no ideas". Applied on
+the nine hand-written pages (index, demo, gettingstarted, pricing, about, 404, legal x4) and
+gen/build.py's docs template (138 pages rebuilt): the `Home` navlink is REMOVED from every
+nav (the wordmark is the home link; 404.html's body link list still says Home - that is
+content, kept), and `<span class="tagline">Search that executes</span>` follows the .brand
+anchor. styles.css after the .brand rules: `.tagline { margin-left: 16px; padding-left:
+16px; border-left: 1px solid var(--line); font-size: 13px; font-weight: 500; color:
+var(--muted); white-space: nowrap }` and `@media (max-width: 900px) { .tagline { display:
+none } }`. Measured: home and a docs page at 1920 - header 68px, tagline on the wordmark's
+midline (34/34), nav Demo / Getting started / Docs / Pricing / About on one line; 820 -
+tagline hidden, one nav line, 68px; 390 - hidden, two nav lines, 142px (as before). The nav
+no longer marks Home with aria-current on the home page. OPEN: Ram is not fully satisfied
+with the treatment - a stronger idea is welcome (the logo artwork carrying the tagline is
+the one that would look designed rather than appended).
