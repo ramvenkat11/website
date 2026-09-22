@@ -5054,7 +5054,9 @@ section, with links. index.html card now: h3 "Security & privacy" (sentence case
 other cards - Ram wrote "Security & Privacy"; flagged) and "Secrets live in a vault, never in
 an agent. Conversations and memories are encrypted before they leave your organization, end
 to end if you hold the key. Data privacy says where every kind of data ends up and who can
-read it." - "vault" -> security/secret-vault, "encrypted" -> security/encryption, "Data
-privacy" -> security/data-privacy. The allowlist / unsafe-constructs sentences left the card
-(the controlled runtime is linked from the architecture step). Shield icon kept. The text is
-~210 characters, in the range of the other cards.
+read it." - then TRIMMED to match the other cards' ~150 characters ("... encrypted before they
+leave your organization. Data privacy says where every kind of data ends up." - the end-to-
+end clause and "who can read it" cut; 162 chars). Links: "vault" -> security/secret-vault,
+"encrypted" -> security/encryption, "Data privacy" -> security/data-privacy. The allowlist /
+unsafe-constructs sentences left the card (the controlled runtime is linked from the
+architecture step). Shield icon kept.
