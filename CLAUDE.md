@@ -4877,3 +4877,16 @@ server-side figures, flagged in case Ram wants one number everywhere.
 ## State on 2026-09-22 (home architecture step 1 sentence, Ram's wording; not deployed)
 index.html:135 now reads "Users can submit requests from a browser, chat application, or
 agent skill." (agent skill still links the Skills + Search2o page; the full stop kept).
+
+## State on 2026-09-22 (MOCK ONLY: Home dropped, tagline beside the wordmark; nothing on disk)
+Ram asked how "Search that executes" could go in the header (ideas given: beside the
+wordmark after a hairline; under the wordmark; in the logo artwork; freeing space by
+dropping Home; the home hero eyebrow) and whether sites still use "Home" (about half; the
+software trend is to drop it). He said: drop Home and mock the tagline beside the wordmark.
+MOCKED IN THE LIVE DOM on the home page, both themes, NOT applied to any file: the Home nav
+link removed; after `.brand` a `<span class="tagline">Search that executes</span>` -
+margin-left 16, padding-left 16, 1px --line left border as the hairline, 13.5px w500 --muted,
+nowrap, hidden below 900px. Measured: tagline on the wordmark's midline (34/34), 629-783px,
+nav starts at 1023, header 68px; at 820 the tagline is hidden and the nav is one line; at
+390 hidden, nav two lines, 142px as today. Awaiting his verdict; applying means the nine
+hand-written pages + gen/build.py's template (and the aria-current mark for Home goes).
