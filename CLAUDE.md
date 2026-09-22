@@ -4916,3 +4916,18 @@ tagline hidden, one nav line, 68px; 390 - hidden, two nav lines, 142px (as befor
 no longer marks Home with aria-current on the home page. OPEN: Ram is not fully satisfied
 with the treatment - a stronger idea is welcome (the logo artwork carrying the tagline is
 the one that would look designed rather than appended).
+
+## State on 2026-09-22 (MOCK: the tagline DRAWN INTO the wordmark, two placements; nothing on disk)
+Ram, on my "that's your artwork" line: "You created those images" - true (logo-dark, the
+336px wordmarks and og.png were all made with PIL from his 1810x331 art inside the retired
+logo.svg, `git show c91b0b6^:html/logo.svg`). So two candidates were RENDERED
+(<scratchpad>/tag_{below,right}_{light,dark}.png, 2x): G - "Search that executes" beneath
+the word, left-aligned with the S, 11.5px-equivalent, in the mark's slate #8fa1bd (image
+336x96, displayed 168x48 - still inside the 68px header); H - to the right of "2o" on the
+"Search" baseline, 13px-equivalent, 14px gap (618x61, displayed 309x30). Font Helvetica Neue
+Medium (index 10 of the system .ttc; PIL cannot read the site's woff2, and the wordmark's
+own face is unknown). Dark versions recolour the navy to #eef3fb, slate kept. Mocked as
+three stacked headers (current text A / G / H) in both themes, all 68px; the scratchpad
+server nocache.py gained a /_mock/<file> route that serves scratchpad PNGs. NOTHING on disk
+in html/. Awaiting Ram's pick; applying = new logo.png/logo-dark.png (and og.png to match),
+the 38 img width/height attributes, the .tagline span and CSS removed.
