@@ -4992,3 +4992,9 @@ iteration once done.
 Ram: don't say "server", say "agent server". Five spots on controlled-runtime.html fixed (two
 h2s, the isolating bullet's lead-in, and two sentences); the only "server" left alone is in
 "MCP servers". Rule applies to my writing on every page from now on.
+
+## State on 2026-09-22 (home architecture step 2: two links; not deployed)
+index.html step 2 (Agent server): "controlled runtime" links docs/agent-execution/
+controlled-runtime.html and "Encrypts" links docs/security/encryption.html (the verb is the
+link text - "Encrypts sensitive information..." - flagged as a choice). Ram asked for a list
+of other home-page phrases worth linking; he picks.
