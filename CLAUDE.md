@@ -4987,3 +4987,8 @@ server (search request + encrypted state to the cloud; traffic where profiles po
 stays on the server); When something fails (onError; reports). Section lead and the docs home
 card mention the controlled runtime. All links resolve; 34 examples valid. Ram: another
 iteration once done.
+
+## State on 2026-09-22 (Controlled runtime: "agent server", never bare "server"; not deployed)
+Ram: don't say "server", say "agent server". Five spots on controlled-runtime.html fixed (two
+h2s, the isolating bullet's lead-in, and two sentences); the only "server" left alone is in
+"MCP servers". Rule applies to my writing on every page from now on.
