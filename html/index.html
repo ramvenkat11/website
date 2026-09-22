@@ -131,16 +131,16 @@
           <ol class="steps">
             <li>
               <h3>Browser, chat application, or skill</h3>
-              <p>Users can submit requests from a browser, chat application, or <a href="docs/skill-integration/overview.html">agent skill</a>. The browser UI also provides a complete workspace for agent development and system administration.</p>
+              <p>Users can submit requests from a browser, <a href="docs/chat-integrations/index.html">chat application</a>, or <a href="docs/skill-integration/overview.html">agent skill</a>. The browser UI also provides a complete workspace for agent development and system administration.</p>
             </li>
             <li>
               <h3>Agent server</h3>
-              <p>A stateless server that runs standalone or in a cluster in your organization. Uses the agent framework to run agents in a controlled runtime. Encrypts sensitive information before it leaves the server. <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">GitHub</a>.
+              <p>A stateless server that runs standalone or in a cluster in your organization. Uses the agent framework to run agents in a <a href="docs/agent-execution/controlled-runtime.html">controlled runtime</a>. <a href="docs/security/encryption.html">Encrypts</a> sensitive information before it leaves the server. <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">GitHub</a>.
               </p>
             </li>
             <li>
               <h3>Search2o Cloud</h3>
-              <p>The shared service behind every agent server. The cloud provides platform services including search, state management, and reporting.</p>
+              <p>The shared service behind every agent server. The cloud provides platform services including <a href="docs/search/how-matching-works.html">search</a>, state management, and <a href="docs/reports/index.html">reporting</a>.</p>
             </li>
           </ol>
         </div>
@@ -189,7 +189,7 @@
         <div>
           <span class="kicker">Agent framework</span>
           <h2>JSON DSL for agents</h2>
-          <p style="margin-top: 14px; color: var(--body); font-size: 14.5px; line-height: 1.6;">An agent is defined in JSON, using 23 commands. JSON strings enclosed in <code>{ }</code> are evaluated as <a href="docs/agent-definition/python-expressions.html">Python expressions</a>, with built-in safeguards.</p>
+          <p style="margin-top: 14px; color: var(--body); font-size: 14.5px; line-height: 1.6;">An agent is defined in JSON, using 23 commands. JSON strings enclosed in <code>{ }</code> are evaluated as Python expressions, with <a href="docs/agent-definition/python-expressions.html">built-in safeguards</a>.</p>
           <p style="margin-top: 14px; color: var(--body); font-size: 14.5px; line-height: 1.6;"><a href="docs/profiles/index.html">Profiles</a> keep LLMs, prompts, APIs, databases and MCPs out of agent definitions.</p>
           <p style="margin-top: 14px; color: var(--body); font-size: 14.5px; line-height: 1.6;">Agents are built with AI assistance. <a href="demo.html">Try it on the demo page <span class="arrow" aria-hidden="true">&rarr;</span></a></p>
         </div>
@@ -218,33 +218,33 @@
       <div class="cardgrid">
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-3.5 8-10V5l-8-3-8 3v7c0 6.5 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
-          <h3>Agent security</h3>
-          <p>Agents can only call what&rsquo;s on your allowlist. Unsafe Python constructs are blocked. Sensitive information can be end-to-end encrypted.</p>
+          <h3>Security &amp; privacy</h3>
+          <p>Secrets live in a <a href="docs/security/secret-vault.html">vault</a>. Conversations are <a href="docs/security/encryption.html">encrypted</a> before they leave your organization. <a href="docs/security/data-privacy.html">Data privacy</a> says where every kind of data ends up.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></div>
           <h3>Model neutrality</h3>
-          <p>Bring your own keys. OpenAI, Anthropic, and Gemini are supported out of the box, along with any compatible LLM. Others need only a small adapter.</p>
+          <p>Bring your own keys. OpenAI, Anthropic, and Gemini are supported out of the box, along with any compatible LLM. Others need only a <a href="docs/llm/llm-adapters.html">small adapter</a>.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-15.5 6.2M3 12a9 9 0 0 1 15.5-6.2"/><path d="M3 21v-5h5M21 3v5h-5"/></svg></div>
           <h3>Operational continuity</h3>
-          <p>Never have to restart agent servers. A change to configuration is live on the next agent run. A running agent keeps running with the old configuration.</p>
+          <p>Never have to restart agent servers. A change to configuration is <a href="docs/runtime/overview.html#how-a-change-reaches-every-server">live on the next agent run</a>. A running agent keeps running with the old configuration.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 4-4 16"/></svg></div>
           <h3>API &amp; automation</h3>
-          <p>The agent server exposes a REST API. Use it to run non-interactive agent workflows &mdash; event-driven or in batch. The bundled search UI uses the same API.</p>
+          <p>The agent server exposes a <a href="docs/rest-api/overview.html">REST API</a>. Use it to run non-interactive agent workflows &mdash; <a href="docs/rest-api/running-agents.html">event-driven or in batch</a>. The bundled search UI uses the same API.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M17.5 13.5a6.5 6.5 0 0 1 4 6.5"/></svg></div>
           <h3>Access &amp; roles</h3>
-          <p>Four roles: users, developers, administrators and owners. Service accounts for bots and scripts. Built-in authentication as well as single sign-on.</p>
+          <p><a href="docs/system-management/users-and-roles.html">Four roles</a>: users, developers, administrators and owners. <a href="docs/system-management/service-accounts.html">Service accounts</a> for bots and scripts. Built-in authentication as well as <a href="docs/system-management/single-sign-on.html">single sign-on</a>.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15v-4"/><path d="M12 15V7"/><path d="M17 15v-6"/></svg></div>
           <h3>Reports</h3>
-          <p>What ran, what failed, what it cost. Reports show trends in agent usage, performance, errors and LLM cost, then drill into any result for details.</p>
+          <p>What ran, what failed, what it cost. <a href="docs/reports/index.html">Reports</a> show trends in agent usage, performance, errors and LLM cost, then drill into any result for details.</p>
         </article>
       </div>
     </div>

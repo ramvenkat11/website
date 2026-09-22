@@ -27,6 +27,7 @@ TOC = [
         ("variables", "Variables and namespaces"),
     ]),
     ("agent-execution", "Agent execution", [
+        ("controlled-runtime", "Controlled runtime"),
         ("output", "Agent output"),
         ("order-of-execution", "Order of execution"),
         ("conversation-state", "Conversation state"),
@@ -67,7 +68,7 @@ TOC = [
         ("tags", "Tags"),
         ("search-settings", "Search settings"),
         ("search-quality", "Search quality"),
-        ("custom-search", "Custom search"),
+        ("orchestrator", "Orchestrator"),
     ]),
     ("development", "Development process", [
         ("drafts", "Drafts"),

@@ -1,0 +1,32 @@
+<p class="lead">The controlled runtime is the environment the agent server builds from the account's configuration and runs every agent in. It decides what an agent can reach, how much an agent may do, and where an agent's data may go. This page is the summary; each control has its own page.</p>
+
+<h2>The agent is fixed</h2>
+<p>An agent is a definition: written by a developer, validated by a real run before it is <a href="../development/publishing.html">published</a>, versioned, and unchanged while it runs. A person, a chat bot or an assistant chooses which agent runs. The definition decides what runs.</p>
+
+<h2>What an expression can reach</h2>
+<p>The Python expressions in a definition run with the account's <a href="../runtime/allowlist.html">allowlist</a> in place of Python's builtins. A function, class or module is available to an expression only when the allowlist names it, and a module comes without the modules it imports. Besides the allowlist, an expression sees the variables of its own function, the agent's variables, the conversation's variables, and the <code>sys</code>, <code>command</code>, <code>result</code> and <code>exc</code> names. See <a href="../agent-definition/python-expressions.html">Python expressions</a>.</p>
+<p>Search2o Cloud checks every expression when the agent is validated and refuses the constructs that lead out of the agent's data: <code>import</code>, names and attributes that start with an underscore, <code>lambda</code>, the walrus operator, calling the result of an expression, and the others listed under <a href="../runtime/compile-rules.html">Compile rules</a>. Each Python operator is allowed, denied or rewritten to a function of the account's own.</p>
+
+<h2>What an agent cannot see</h2>
+<p>Credentials stay out of the definition. A secret is read as <code>sys.secret['NAME']</code>, with the name written out, and the agent server resolves it at run time; the definition shows which secrets an agent uses, never their values. See <a href="../security/secret-vault.html">Secret vault</a>.</p>
+<p>An agent's variables belong to that agent. The one channel between agents is the conversation: a <code>conv</code> variable set by one agent can be read by the next agent in the same conversation, by design. See <a href="../agent-definition/variables.html">Variables and namespaces</a>.</p>
+
+<h2>Where an agent's calls can go</h2>
+<p>APIs, databases, MCP servers and LLMs are reached through <a href="../profiles/index.html">profiles</a>, which administrators define and share across the account. An <code>api</code> command calls an API profile, so the hosts an agent can reach are the ones set in the profiles. Every HTTP call goes through a <a href="../runtime/connection-pools.html">connection pool</a> that administrators size.</p>
+
+<h2>How much an agent may do</h2>
+<p>The <a href="../runtime/runtime-limits.html">runtime limits</a> bound a run: how long an agent may run, how many times a loop may iterate, how many rows a database call may return, how much an agent may spend on LLM calls, and how long a definition may be. A run past its time limit ends with the result code <code>timedOut</code>; a loop past its limit fails the run. The limits apply to every agent in the account.</p>
+<p>The runtime bounds what an expression may do, not how much work one line of Python does. An expression runs on the agent server alongside every other run, so a very long computation delays the other runs. Two controls cover this:</p>
+<ul>
+  <li><strong>Operator rewriting.</strong> The account can map an operator to a function of its own, so that <code>a ** b</code> runs as <code>bounded_pow(a, b)</code> and a very large power is refused before it is computed. See <a href="../runtime/compile-rules.html">Compile rules</a>.</li>
+  <li><strong>Isolating the agent server.</strong> The agent server is a stateless process, so it can run inside whatever isolation your organization uses: a container with processor and memory limits, a separate host, a restricted account. See <a href="../system-management/agent-servers.html">Agent servers</a>.</li>
+</ul>
+
+<h2>The same runtime on every agent server</h2>
+<p>Every agent server builds its runtime from the same configuration, so an agent behaves the same wherever it runs. A change to the configuration, the profiles or the allowlist reaches every agent server and is live on the next run. An agent that is already running keeps the runtime it started with until it finishes. See <a href="../runtime/overview.html">Agent runtime</a>.</p>
+
+<h2>What leaves the agent server</h2>
+<p>Search2o Cloud receives the search request and the conversation state, and the state is encrypted before it leaves the agent server. API, database, MCP and LLM traffic goes where the profiles point. Everything else an agent handles &mdash; API responses, database rows, credentials, variables &mdash; stays on the agent server for the life of the run. See <a href="../security/data-privacy.html">Data privacy</a>.</p>
+
+<h2>When something fails</h2>
+<p>An expression that raises an error stops its command, and the message names the command's path and the Python error. An <code>onError</code> block on the command or the function can handle the error instead. Every run, with its result, its duration and its LLM cost, is recorded in the <a href="../reports/index.html">reports</a>.</p>

@@ -29,6 +29,7 @@
   <url><loc>https://search2o.com/docs/agent-definition/commands.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-definition/variables.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-execution/index.html</loc></url>
+  <url><loc>https://search2o.com/docs/agent-execution/controlled-runtime.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-execution/output.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-execution/order-of-execution.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-execution/conversation-state.html</loc></url>
@@ -66,7 +67,7 @@
   <url><loc>https://search2o.com/docs/search/tags.html</loc></url>
   <url><loc>https://search2o.com/docs/search/search-settings.html</loc></url>
   <url><loc>https://search2o.com/docs/search/search-quality.html</loc></url>
-  <url><loc>https://search2o.com/docs/search/custom-search.html</loc></url>
+  <url><loc>https://search2o.com/docs/search/orchestrator.html</loc></url>
   <url><loc>https://search2o.com/docs/development/index.html</loc></url>
   <url><loc>https://search2o.com/docs/development/drafts.html</loc></url>
   <url><loc>https://search2o.com/docs/development/code-editor.html</loc></url>

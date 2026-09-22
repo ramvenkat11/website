@@ -6,5 +6,9 @@
 <h2>Using tags</h2>
 <p>Give agents a tag to put them in a separate pool: <code>corporate</code> for internal-only agents, <code>support</code> for the help desk, <code>pilot</code> for agents under evaluation. The search box searches the tag set in <a href="search-settings.html">Search settings</a>. An agent that uses the <code>search</code> command names the tag the command should search. An agent's tag is changed from the agent's page, and the change is live at once.</p>
 
+<h2>Letting users pick a catalogue</h2>
+<p>The <a href="../rest-api/search.html"><code>search</code></a> call of the REST API takes a <code>tag</code>, so an interface of your own can offer tags to its users, as a drop-down of catalogues for example, or search every tag with an empty string. Without a tag, the tag in the <a href="search-settings.html">Search settings</a> applies.</p>
+<p>An <a href="../skill-integration/overview.html">agent skill</a> searches the same way: the skill's search call can name a tag, so a company can install one skill per catalogue &mdash; one for support agents, one for finance agents &mdash; each searching its own tag. See <a href="../skill-integration/operating-notes.html#tag-scoping">Tag scoping</a>.</p>
+
 <h2>Shape</h2>
 <p>A tag is up to 16 characters of lowercase letters, digits and underscores: <code>general</code>, <code>hr_internal</code>, <code>eu_support</code>.</p>
