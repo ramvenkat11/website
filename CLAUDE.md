@@ -5257,3 +5257,10 @@ replaces "a notification says when it is done"). FLAGGED, not changed: audit-log
 failure reasons "(contention, or the indexing service being down)" may not match the redone
 indexing; and "the reason is shown" assumes the GUI shows the outcome of a synchronous
 index - Ram to confirm. The GUI's own "may take a few minutes... notification" text is ui1's.
+
+## State on 2026-09-22 (indexing: "15 to 30 seconds" where a number belongs; not deployed)
+Ram: say 15 to 30 seconds, and not everywhere - getting started just says wait for it.
+Now: describing-an-agent "Indexing takes 15 to 30 seconds, and the agent is searchable as
+soon as it completes."; the request-lifecycle figure line "15 to 30 seconds";
+your-first-agent "Publishing the description indexes the agent; wait for the indexing to
+finish."; html/gettingstarted.html step 5 back to "...and wait for the indexing to finish."
