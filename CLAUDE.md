@@ -5275,3 +5275,15 @@ executes" in Helvetica Neue Medium 34 in --muted #8a9ab6, on the wordmark's base
 right of the hairline (ends at x 935 of 1200). Headline, gradient, rule and URL untouched.
 Preview viewed before saving; html/og.png is 1200x630 RGB, optimized. The og:image tags need
 no change (same file, same size).
+
+## State on 2026-09-23 (site images moved to html/images/; not deployed)
+Ram: create an images directory and move all the images there. git mv'd the four root images
+(logo.png, logo-dark.png, og.png, favicon.svg) into html/images/. References rewritten in the
+ten hand-written pages (relative, ../ on legal, /images/ on 404, and the absolute
+https://search2o.com/images/og.png og:image and JSON-LD logo URLs), gen/build.py's docs
+template ({r}images/..., {SITE}/images/og.png; 139 pages rebuilt) and website_deploy.md. The
+docs screenshots stay in html/docs/img/ (already their own directory). Checked: 648 png/svg
+references across html/, 0 broken. deploy.sh needs nothing (its image globs match any depth);
+the next deploy's --delete sync removes the four old root objects - the OLD og.png URL stops
+working, so social caches that hold it refetch on their own schedule. FLAGGED: demo.html's
+og:image is logo.png (now images/logo.png) rather than og.png, and it has no width/height.
