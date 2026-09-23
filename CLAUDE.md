@@ -5243,3 +5243,17 @@ former "Why a Search2o agent..." paragraphs and the Cursor line). Rebuilt.
 ## State on 2026-09-22 (skill-flow: the right group's label removed; not deployed)
 Ram: "REACHED ONLY BY AGENTS" is obvious from the picture. The right-hand dashed box stays
 (f.box kind="none") without a label; the Your systems and LLMs boxes are unchanged.
+
+## State on 2026-09-22 (indexing: about fifteen seconds, not a background job; not deployed)
+Ram: indexing is fast now (~15 s) and no longer a background process. Four spots changed:
+search/describing-an-agent ("Indexing takes about fifteen seconds, and the agent is
+searchable as soon as it completes. If indexing fails, the reason is shown, and the audit
+log keeps the record." - the "runs in the background... well under a minute... a
+notification reports" sentence is gone); getting-started/your-first-agent ("Publishing the
+description indexes the agent, which takes about fifteen seconds."); html/gettingstarted.html
+step 5 ("Indexing takes about fifteen seconds." replaces "wait for the indexing to finish");
+gen/figures.py request-lifecycle second line under the index step ("about fifteen seconds"
+replaces "a notification says when it is done"). FLAGGED, not changed: audit-log.html's
+failure reasons "(contention, or the indexing service being down)" may not match the redone
+indexing; and "the reason is shown" assumes the GUI shows the outcome of a synchronous
+index - Ram to confirm. The GUI's own "may take a few minutes... notification" text is ui1's.
