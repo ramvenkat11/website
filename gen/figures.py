@@ -239,7 +239,7 @@ def _build_pipeline():
     f.text(160, 130, "the cloud checks the definition and its expressions;", size=11.5)
     f.text(160, 146, "the agent server runs the validation query with tracing on", size=11.5)
     f.text(520, 130, "cloud indexes the description;", size=11.5)
-    f.text(520, 146, "a notification says when it is done", size=11.5)
+    f.text(520, 146, "about fifteen seconds", size=11.5)
     f.arrow(300, 104, 300, 120, dashed=True)
     f.arrow(640, 104, 640, 120, dashed=True)
     f.arrow(82, 104, 82, 190, dashed=True)
