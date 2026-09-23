@@ -5264,3 +5264,14 @@ Now: describing-an-agent "Indexing takes 15 to 30 seconds, and the agent is sear
 soon as it completes."; the request-lifecycle figure line "15 to 30 seconds";
 your-first-agent "Publishing the description indexes the agent; wait for the indexing to
 finish."; html/gettingstarted.html step 5 back to "...and wait for the indexing to finish."
+
+## State on 2026-09-23 (og.png carries the tagline beside the wordmark; not deployed)
+Ram: include the tagline in og.png too. The card was edited in place with PIL (the old
+generator ogcard.py had been wiped from the scratchpad; the pre-change card is saved at
+<scratchpad>/og_before_tagline.png): the wordmark's ink box was measured (97-534 x 96-175,
+baseline 175 - the slate "2o" needs a looser threshold than the white letters), then a 2px
+hairline (#3a4a6e) 34px right of the mark, spanning the cap height, and "Search that
+executes" in Helvetica Neue Medium 34 in --muted #8a9ab6, on the wordmark's baseline, 34px
+right of the hairline (ends at x 935 of 1200). Headline, gradient, rule and URL untouched.
+Preview viewed before saving; html/og.png is 1200x630 RGB, optimized. The og:image tags need
+no change (same file, same size).
