@@ -5229,3 +5229,6 @@ improving search quality and speed." - the old commitment line merged with the m
 labels sentence-cased; the md's bold 1,000 row is a plain row. No other page quoted the old
 figures (swept); the home page's "less than 0.5 seconds" and how-matching-works agree with
 200 ms. 139 pages.
+
+## State on 2026-09-22 (Skills page h2: "Why a Search2o agent and not dynamic code"; not deployed)
+Ram's title for the second section (was "Why an agent, not code"). No inbound anchor links.
