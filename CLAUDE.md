@@ -1416,7 +1416,7 @@ works on the auto-render page too).
 - Cite files as `path/file.html:123` (Ram runs Claude in a JetBrains terminal).
 - Ask before anything irreversible; deleting from the S3 bucket is irreversible.
 - NEVER PUBLISH UNLESS config.js IS PRODUCTION (Ram, 2026-09-13, absolute: "you can never
-  forget this"; demoUrl added 2026-09-21): html/config.js apiUrl must be exactly
+  forget this"; demoUrl added 2026-09-21): html/js/config.js (was html/config.js) apiUrl must be exactly
   https://reg.api.search2o.com (the BASE - site.js appends /register itself; Ram first wrote it
   with /register, then removed it) AND demoUrl must be exactly https://demo.api.search2o.com,
   or nothing goes to the bucket. The test-environment URL went live in the deploys of
@@ -5290,3 +5290,15 @@ og:image is logo.png (now images/logo.png) rather than og.png, and it has no wid
 Then Ram: keep og.png in the root too, since outside places may point at it. html/og.png is
 a copy of html/images/og.png (identical bytes); the pages still reference images/og.png. The
 two must be kept in step if the card changes.
+
+## State on 2026-09-23 (CSS and JS moved to html/styles/ and html/js/; not deployed)
+Ram: create styles and js. git mv html/styles.css -> html/styles/styles.css; html/site.js and
+html/config.js -> html/js/. styles.css's @font-face urls are ../fonts/ now (relative to the
+stylesheet). References rewritten on the ten hand-written pages, in gen/build.py's template
+(139 docs pages rebuilt), scripts/deploy.sh (preflight reads html/js/config.js; the live check
+fetches $SITE_URL/js/config.js; bash -n clean) and website_deploy.md. NOT moved: html/demo/
+(demo.css, demo.js - Ram's own folder) and html/docs/docs.css + docs.js (the docs' own
+assets, referenced by build.py relative to the docs root). Checked: 875 css/js/font
+references, 0 broken. The next deploy's --delete sync removes the root styles.css, site.js
+and config.js from the bucket - anything outside the site that loads /config.js would break
+(asked Ram, as with og.png).
