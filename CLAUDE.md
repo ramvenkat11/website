@@ -5206,3 +5206,26 @@ runtime / agents run here" (the old sub "search · agent server · runtime" and 
 "agents run here" line under the box are gone). 15 texts, 0 overruns. LESSON: a box that
 names a product part uses the part's name as the home diagram does (Agent server, Search2o
 Cloud, Agent framework) - never an invented sub-line listing what it "contains".
+
+## State on 2026-09-22 (Search quality REWRITTEN from content/search_testing.md - search redone, new results; NOT DEPLOYED)
+Ram: search has been completely redone; update the page from search_testing.md. The old
+page (99.2% well-separated, 86/94.3 pooled, 40/100/1,000 scale table, the confidence trade,
+six-language table, 70-130 ms, "why believable") is GONE entirely - every old number with it.
+New page follows the md section for section: lead (measured against the live search
+SERVICE - the md says "live search index"; "search index" is banned since 09-07); What we
+test against (the six-catalogue table: university 50/500, clinic 50/500, software company
+100/2,000, corporation 100/1,000, retailer 100/1,000, fifty business areas 1,000/10,000;
+15,000 questions; the overlap paragraph); How often it finds the right agent (table: right
+agent first / among the first three - 91.0/97.6, 90.6/98.2, 89.0/98.2, 85.4/94.9,
+83.8/95.6, 85.5/94.1; the two bold points, with the Describing-an-agent link added to the
+first); Saying "no match" when nothing fits (100% for unrelated questions; 82-86% for
+uncovered questions in the customer's own world; the sourdough line; a How-matching-behaves
+link added); How fast it is (about 200 ms; a thousand agents a little over 200 ms; does not
+get slower; the "under a second for the end user" sentence Ram asked for yesterday kept) -
+the md's "compares the question against everything in the catalogue" clause DROPPED (the
+no-mechanism rule); Across languages (the md paragraph); What we do not claim; Where we go
+from here ("We have lived and breathed search for the past twenty years, and we will keep
+improving search quality and speed." - the old commitment line merged with the md's). Row
+labels sentence-cased; the md's bold 1,000 row is a plain row. No other page quoted the old
+figures (swept); the home page's "less than 0.5 seconds" and how-matching-works agree with
+200 ms. 139 pages.
