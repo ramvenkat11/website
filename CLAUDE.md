@@ -5232,3 +5232,10 @@ figures (swept); the home page's "less than 0.5 seconds" and how-matching-works 
 
 ## State on 2026-09-22 (Skills page h2: "Why a Search2o agent and not dynamic code"; not deployed)
 Ram's title for the second section (was "Why an agent, not code"). No inbound anchor links.
+
+## State on 2026-09-22 (Skills page: two sections; not deployed)
+Ram: the Search2o paragraph and box get their own title "Skills + Search2o architecture";
+the third title goes and its paragraphs merge in. Structure now: lead / h2 Current
+architectures (MCP paragraph, gateway paragraph, two-row figure) / h2 Skills + Search2o
+architecture (the "third arrangement" paragraph, the skill-flow figure, then the four
+former "Why a Search2o agent..." paragraphs and the Cursor line). Rebuilt.
