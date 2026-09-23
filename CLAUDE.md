@@ -5196,3 +5196,13 @@ request."
 "How we got here" is "Current architectures" (Ram: "or something like that"). Paragraph 3
 opens "Search2o is the third arrangement. It becomes the gateway..." so it follows the
 two-row figure instead of starting cold. Anchor id changed (no inbound links).
+
+## State on 2026-09-22 (skill-flow: the middle box is "Search2o Agent Server" holding "Controlled runtime"; not deployed)
+Ram: the box's title is Search2o Agent Server and the controlled runtime is what is within
+it - "don't make up things like what you did in the box; refer to the home page architecture
+box". The dark box in gen/figures.py skill-flow now has no label of its own: a white 13px
+bold title "Search2o Agent Server" across its top and, inside it, a soft box "Controlled
+runtime / agents run here" (the old sub "search · agent server · runtime" and the loose
+"agents run here" line under the box are gone). 15 texts, 0 overruns. LESSON: a box that
+names a product part uses the part's name as the home diagram does (Agent server, Search2o
+Cloud, Agent framework) - never an invented sub-line listing what it "contains".
