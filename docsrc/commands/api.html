@@ -1,7 +1,7 @@
 <p class="lead">Calls a REST API and returns the response. Use <code>api</code> for anything reachable over HTTP: your own services, public APIs, or a vendor's endpoints.</p>
 
 <h2>Fields</h2>
-<p>Either <code>profile</code> or <code>url</code> must be given. A profile is an <a href="../profiles/api-profiles.html">API profile</a> from the configuration. The profile carries the base URL, the headers sent on every call, and the connection pool to use. Headers and parameters set on the command are added to the profile's headers and parameters.</p>
+<p>Every call goes through an <a href="../profiles/api-profiles.html">API profile</a> from the configuration. The profile carries the base URL, the headers sent on every call, and the connection pool to use; <code>path</code> is added to the end of the profile's URL. Headers and parameters set on the command are added to the profile's headers and parameters. The hosts an agent can reach are therefore the ones the profiles name.</p>
 <!--fields:command:api-->
 
 <h2>Result</h2>
@@ -10,7 +10,7 @@
 <h2>Example</h2>
 <x-code lang="jsonc" title="Look up the caller's location, then the hourly forecast">
 "api": {
-  "url": "https://api.ip2location.io",
+  "profile": "ip2location",
   "queryParams": {
     "ip": "{ result }",
     "key": "{ sys.secret['IP2LOCATION_KEY'] }"
@@ -20,7 +20,8 @@
   "location": "{ result }"
 },
 "api.forecast": {
-  "url": "{ f'https://api.weather.gov/points/{location['latitude']},{location['longitude']}' }"
+  "profile": "weather",
+  "path": "{ f'/points/{location['latitude']},{location['longitude']}' }"
 }
 </x-code>
 

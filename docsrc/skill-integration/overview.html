@@ -1,9 +1,16 @@
-<p class="lead">Search2o gives an Agent Skills client like Claude Code a controlled way to use your company's systems. This section calls these clients "the assistant". The assistant chooses which agent runs; it does not write what runs.</p>
+<p class="lead">Search2o gives Claude Code a controlled way to use your company's systems. Claude Code chooses which agent runs; it does not write what runs.</p>
+
+<h2>Current architectures</h2>
+<p>Claude Code first reached company systems through MCP servers, and most installations still do. Claude Code routes every request itself and writes, at run time, the agent code that calls the systems, with the person's access.</p>
+<p>Agent gateways came next: an intermediary between Claude Code and the calls it makes, to LLMs and to enterprise systems alike. A gateway checks the calls. The routing, and the agent code, remain Claude Code's.</p>
+<!--figure:assistant-connections-->
+
+<h2>Skills + Search2o architecture</h2>
+<p>Search2o is the third arrangement. It becomes the gateway between your enterprise systems and Claude Code, with one big difference: the routing and the code are no longer dynamic in Claude Code. It is Search2o that routes the request and runs the agents. Claude Code makes requests to Search2o, and Search2o finds and runs an agent built for that request.</p>
 
 <!--figure:skill-flow-->
-
-<h2>Why an agent, not code</h2>
-<p>In the assistant, the model can write code at run time and execute it with the person's access. A skill guides but does not define what will run. That works for resources the person chooses to expose to the assistant. It is a poor boundary for company systems.</p>
-<p>Search2o gives the assistant access to published agents instead. An agent is a fixed definition, written by a company developer, validated by execution before publication, versioned, and unchanged at run time. The agent runs on a server inside your organization, within a runtime that limits what it can do. Code the assistant writes locally cannot access the systems behind the agents.</p>
-<p>The assistant sees the request and the agent's output. Everything in between &mdash; API responses, database rows, credentials and agent variables &mdash; stays inside Search2o. Conversation state is encrypted and saved for follow-up requests. Every run is recorded by agent, version and person.</p>
-<p>Together, Agent Skills provide the interface and Search2o provides the controlled execution behind it. People work with the assistant they already use, while the company defines what its agents can do and which systems they can access.</p>
+<p>The first two arrangements share one property: the agent code is written at run time, by the model, and runs with the person's access. A skill guides that code but does not define it. For the resources a person chooses to expose to Claude Code, that is a fair boundary. For company systems it is a poor one.</p>
+<p>Search2o gives Claude Code access to published agents instead. An agent is a fixed definition, written by a company developer, validated by execution before publication, versioned, and unchanged at run time. The agent runs on an agent server inside your organization, in a <a href="../agent-execution/controlled-runtime.html">controlled runtime</a> that limits what it can do. Code Claude Code writes locally cannot access the systems behind the agents.</p>
+<p>Claude Code sees the request and the agent's output. Everything in between &mdash; API responses, database rows, credentials and agent variables &mdash; stays inside Search2o. Conversation state is encrypted and saved for follow-up requests. Every run is recorded by agent, version and person.</p>
+<p>Together, Agent Skills provide the interface and Search2o provides the controlled execution behind it. People work with Claude Code as they already do, while the company defines what its agents can do and which systems they can access.</p>
+<p>Claude Code stands here for every assistant that supports Agent Skills, Cursor among them. The skill is the same.</p>

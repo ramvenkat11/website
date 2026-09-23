@@ -20,7 +20,7 @@
     "orderId": { "type": "str", "description": "The order id, such as ORD-1042." }
   },
   "commands": {
-    "api": { "profile": "orders", "url": "{ f'/orders/{orderId}' }" },
+    "api": { "profile": "orders", "path": "{ f'/orders/{orderId}' }" },
     "return": "{ {'status': result['status'], 'total': result['total']} }"
   },
   "onError": {

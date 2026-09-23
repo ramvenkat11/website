@@ -162,22 +162,47 @@ def _architecture():
 
 @figure("skill-flow")
 def _skill_flow():
-    f = Fig("skill-flow", 276, "A skill in the assistant asks Search2o; the systems and models stay behind Search2o")
+    f = Fig("skill-flow", 276, "A skill in Claude Code asks Search2o; the systems and models stay behind Search2o")
     f.group(8, 12, 704, 252, "YOUR ORGANIZATION")
-    f.group(24, 42, 206, 210, "THE ASSISTANT")
-    f.box(42, 70, 170, 52, "AI assistant", "Claude Code and others", kind="soft")
+    f.group(24, 42, 206, 210, "CLAUDE CODE")
+    f.box(42, 70, 170, 52, "Claude Code", "", kind="soft")
     f.box(42, 144, 170, 52, "Search2o skill", "search · execAgent", kind="card")
     f.arrow(127, 122, 127, 144)
-    f.box(275, 115, 200, 110, "Search2o", "search · agent server · runtime", kind="dark")
+    f.box(275, 115, 200, 110, kind="dark")
+    f.text(375, 133, "Search2o Agent Server", size=13, fill="white", weight=700, anchor="middle")
+    f.box(290, 147, 170, 64, "Controlled runtime", "agents run here", kind="soft")
     f.arrow(212, 170, 275, 170, both=True)
     f.text(243.5, 188, "request", size=11, anchor="middle")
     f.text(243.5, 202, "answer", size=11, anchor="middle")
-    f.group(491, 42, 205, 210, "REACHED ONLY BY AGENTS")
+    f.box(491, 42, 205, 210, kind="none", r=14)
     f.box(511, 70, 165, 52, "Your systems", "APIs · databases · MCP", kind="soft")
     f.box(511, 170, 165, 52, "LLMs", "any vendor, per profile", kind="soft")
     f.arrow(475, 152, 511, 108)
     f.arrow(475, 188, 511, 196)
-    f.text(375, 244, "agents run here", size=11, anchor="middle")
+    return f.render()
+
+
+@figure("assistant-connections")
+def _assistant_connections():
+    f = Fig("assistant-connections", 170, "With MCP servers or an agent gateway, the agent code runs in Claude Code either way")
+    rows = [
+        ("1", "agent code · dynamic", "MCP servers", "", "soft", ["Your systems"]),
+        ("2", "agent code · dynamic", "Agent gateway", "", "soft", ["Your systems", "LLMs"]),
+    ]
+    for i, (n, left_sub, mid, mid_sub, kind, right) in enumerate(rows):
+        y = 20 + i * 80
+        f.text(22, y + 25, n, size=13, fill="faint", weight=700)
+        f.box(44, y, 150, 50, "Claude Code", left_sub, kind="soft")
+        f.arrow(194, y + 25, 250, y + 25)
+        f.box(250, y, 200, 50, mid, mid_sub, kind=kind)
+        if len(right) == 1:
+            f.box(500, y, 200, 50, right[0], kind="soft")
+            f.arrow(450, y + 25, 500, y + 25)
+        else:
+            f.box(500, y, 200, 23, right[0], kind="soft", size=12, r=7)
+            f.box(500, y + 27, 200, 23, right[1], kind="soft", size=12, r=7)
+            f.arrow(450, y + 18, 500, y + 11)
+            f.arrow(450, y + 32, 500, y + 39)
     return f.render()
 
 
