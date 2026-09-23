@@ -5239,3 +5239,7 @@ the third title goes and its paragraphs merge in. Structure now: lead / h2 Curre
 architectures (MCP paragraph, gateway paragraph, two-row figure) / h2 Skills + Search2o
 architecture (the "third arrangement" paragraph, the skill-flow figure, then the four
 former "Why a Search2o agent..." paragraphs and the Cursor line). Rebuilt.
+
+## State on 2026-09-22 (skill-flow: the right group's label removed; not deployed)
+Ram: "REACHED ONLY BY AGENTS" is obvious from the picture. The right-hand dashed box stays
+(f.box kind="none") without a label; the Your systems and LLMs boxes are unchanged.
