@@ -437,7 +437,7 @@ def header(depth) -> str:
     r = rel(depth) + "../"
     return f"""<header class="site-header">
   <div class="container header-row">
-    <a class="brand" href="{r}index.html" aria-label="Search2o home"><img class="logo-light" src="{r}logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="{r}logo-dark.png" alt="Search2o" width="336" height="61"><span class="tagline">Search that executes</span></a>
+    <a class="brand" href="{r}index.html" aria-label="Search2o home"><img class="logo-light" src="{r}images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="{r}images/logo-dark.png" alt="Search2o" width="336" height="61"><span class="tagline">Search that executes</span></a>
     <nav class="site-nav" aria-label="Main">
       <a class="navlink" href="{r}demo.html">Demo</a>
       <a class="navlink" href="{r}gettingstarted.html">Getting started</a>
@@ -490,15 +490,15 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
 <meta property="og:description" content="{html.escape(description)}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{SITE}/{path}">
-<meta property="og:image" content="{SITE}/og.png">
+<meta property="og:image" content="{SITE}/images/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Search2o: a platform to build, run, and use AI agents, with a search interface">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="icon" type="image/svg+xml" href="{r}favicon.svg">
+<link rel="icon" type="image/svg+xml" href="{r}images/favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="{r}fonts/inter-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="{r}fonts/jetbrains-mono-latin.woff2" crossorigin>
-<link rel="stylesheet" href="{r}styles.css">
+<link rel="stylesheet" href="{r}styles/styles.css">
 <link rel="stylesheet" href="{rel(depth)}docs.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DYRX3801TG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-DYRX3801TG');</script>
@@ -519,7 +519,7 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
   {page_toc(toc)}
 </div>
 {footer(depth)}
-<script src="{r}site.js"></script>
+<script src="{r}js/site.js"></script>
 <script src="{rel(depth)}docs.js"></script>
 </body>
 </html>

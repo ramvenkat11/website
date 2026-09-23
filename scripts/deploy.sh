@@ -68,7 +68,7 @@ check_config() {   # check_config <label> <config.js text>: fail on the first ke
         echo "$1 $key: $value"
     done
 }
-check_config "html/config.js" "$(cat "$HTML/config.js")"
+check_config "html/js/config.js" "$(cat "$HTML/js/config.js")"
 
 if [[ -n "$(git -C "$ROOT" status --porcelain -- html docsrc gen)" ]]; then
     echo "note: uncommitted changes under html/, docsrc/ or gen/ - they will be deployed as they are on disk"
@@ -117,11 +117,11 @@ echo "Completed"
 step "Verifying"
 home_status="$(curl -s -o /dev/null -w '%{http_code}' "$SITE_URL/")"
 docs_title="$(curl -s "$SITE_URL/docs/index.html" | grep -o '<title>[^<]*' | head -1)"
-live_config="$(curl -s "$SITE_URL/config.js")"
+live_config="$(curl -s "$SITE_URL/js/config.js")"
 echo "$SITE_URL/            $home_status"
 echo "$SITE_URL/docs/index.html  ${docs_title:-no title found}"
 [[ "$home_status" == "200" ]] || fail "home page returned $home_status"
-check_config "LIVE $SITE_URL/config.js" "$live_config"
+check_config "LIVE $SITE_URL/js/config.js" "$live_config"
 
 echo
 echo "Deployed. If the docs changed, regenerate the in-app summaries with s2oserver's maintenance/docs_create.py."

@@ -13,7 +13,7 @@ bucket `search2o.com` (static-website hosting) behind the CloudFront distributio
 deletes every bucket object that no longer exists locally, invalidates, waits for the
 invalidation to complete and verifies with curl. `--dry-run` shows what would be uploaded and
 deleted and touches nothing; `--skip-build` leaves the docs as they are. The script refuses to run with credentials for another AWS account, or unless
-`html/config.js` carries exactly the production URLs: `apiUrl` https://reg.api.search2o.com
+`html/js/config.js` carries exactly the production URLs: `apiUrl` https://reg.api.search2o.com
 and `demoUrl` https://demo.api.search2o.com. After the invalidation it fetches the live
 config.js and fails if either value differs.
 The `docsweb/` prefix is excluded from the sync: it is the in-app docs data that s2oserver's
@@ -83,7 +83,7 @@ Objects are uploaded with `--acl public-read`; the bucket has ACLs enabled for t
 
 ## Notes
 
-- `logo.png` is the light wordmark and `logo-dark.png` the dark one; the pages carry both and the
+- `images/logo.png` is the light wordmark and `images/logo-dark.png` the dark one; the pages carry both and the
   theme tokens show one.
 - The script syncs with `--delete`, so a retired page leaves the bucket at the next deploy. Only
   `docsweb/` is kept, being excluded from the sync.
