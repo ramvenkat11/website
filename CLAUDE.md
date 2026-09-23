@@ -5302,3 +5302,8 @@ assets, referenced by build.py relative to the docs root). Checked: 875 css/js/f
 references, 0 broken. The next deploy's --delete sync removes the root styles.css, site.js
 and config.js from the bucket - anything outside the site that loads /config.js would break
 (asked Ram, as with og.png).
+
+## State on 2026-09-23 (framework "Try it on the demo page" opens the Generate card; not deployed)
+index.html:194 links demo.html#generate. demo.js selects its tab from location.hash (keys
+search / developer / generate; an unknown hash falls back to the first), so no page change was
+needed. The hero "Live demo" button and the nav still open the demo's default tab.
