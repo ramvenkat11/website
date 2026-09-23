@@ -5287,3 +5287,6 @@ references across html/, 0 broken. deploy.sh needs nothing (its image globs matc
 the next deploy's --delete sync removes the four old root objects - the OLD og.png URL stops
 working, so social caches that hold it refetch on their own schedule. FLAGGED: demo.html's
 og:image is logo.png (now images/logo.png) rather than og.png, and it has no width/height.
+Then Ram: keep og.png in the root too, since outside places may point at it. html/og.png is
+a copy of html/images/og.png (identical bytes); the pages still reference images/og.png. The
+two must be kept in step if the card changes.
