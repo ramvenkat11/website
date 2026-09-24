@@ -5413,3 +5413,37 @@ group / section / where / finding / current text on the page (the cited lines' v
 pulled from the files by <scratchpad>/mkcsv.py; table rows for group F from the built html)
 / suggested fix (filled for A, B and the C list) / your decision (empty). The generator and
 suggest.py live in the session scratchpad; the md stays the readable version.
+
+## State on 2026-09-24 (REVIEW FIXES APPLIED: groups A-E and the privacy contact block; NOT DEPLOYED)
+Ram: "Make the changes that you recommend. Ask me questions about unsure ones." Applied ~120
+of the 146 review findings across ~70 docsrc pages and index/gettingstarted/pricing/about/
+404/legal-privacy (the CSV's "your decision" column now says applied / question / other repo
+per row). Highlights: api-profiles header-merge rule rewritten to the code's three rules;
+comprehension example five-deep; search-quality "both 100-agent" dropped; end-in-tool is a
+rule on llm.html; progress example key progress.done; draft-with-ai's three claims fixed;
+runtime overview names the compile-rules exception; trace lead says cloud checks then agent
+server runs; compile-rules "install the package on every agent server"; sys.cookies added to
+variables.html; conversation-state lead includes the ask pause; end-to-end no longer claims
+"the queries"; secret-vault "every profile other than a prompt profile"; support.html bullet
+-> the agent server's log; workflows.html fan-out is the while-loop invoke pattern;
+getConversation under /api/user/; "every call under /api/ is a POST" (3 places); automating-
+with-an-llm uses service account + developer role, no audit-log claim; usage-limits matches
+the pricing meters (four pooled); integration-tokens connect-flow sentence un-inverted;
+running-an-agent "the ask arrives"; ai-prompts files.uploadV2 and a mustLogin line;
+finding-an-agent's contradicting picker bullet deleted; what-is-search2o:12 bullet rewritten;
+empty Limits h2 gone; search-settings stub -> "Your own interface"; encryption lead de-
+saled; runtime overview loses source-file names; UI -> the GUI everywhere (9 spots); the
+absence sentences cut (9); ~60 grammar/usage fixes; link texts follow the 09-18 titles;
+breadcrumbs use ›; search-quality row labels unified; JSONC; var.1; Ctrl+Enter exception;
+allowlist save-check clause; gui/personal says integration tokens are created from the
+profile (from the skill README); how-the-gui-runs 15-30 s; pricing "next member", "Offered
+from general availability", "Dormant account"; 404 aria-current removed; index.html "each
+row opens the details", "MCP servers", "Source on GitHub", the GUI; legal/privacy Contact
+block on three lines with <br>. BARE "server" -> "agent server": 65 replacements across 14
+pages by regex (code spans and tags protected); FIVE h2 anchors changed (how-a-change-
+reaches-every-agent-server, what-an-agent-server-serves, named-agent-server-configurations,
+running-many-agent-servers, what-the-agent-server-does-with-a-secret) and the two inbound
+links (allowlist.html:87, html/index.html:228) follow. 138 pages, 35 examples valid, 0
+broken links/anchors, banned-word sweep clean. OPEN, awaiting Ram: items 4, 7, 32, 33, 39/49,
+40, 41 (Community), 50, 56, 58, 61 (index:108), 78, 92, 119 (British spelling), 126, 144-146
+(legal), the F group (model docstrings in search2o/s2oserver), index.html metas (116).
