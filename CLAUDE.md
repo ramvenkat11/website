@@ -5378,3 +5378,10 @@ as the cloud's checks followed by the agent server's; the other "schema ... agen
 mentions in rest-api are the OpenAPI schema, a different thing, and are correct.
 Then Ram: line 79 says the cloud - "Validation in the cloud has the final say when you
 validate and publish." Rebuilt.
+
+## State on 2026-09-24 (pricing: *** on the Paid price; "Service stops..." removed; not deployed)
+html/pricing.html: the Paid price reads $30/member/month<sup>***</sup> (the mark inside the
+.permo suffix), keying the third footnote, which now reads only "Overages are rounded up to
+the next user." ("Service stops when usage reaches double your user count." removed). The
+muted-mark rule is `.plans th sup` (was tbody-only) so the header mark matches the row
+marks. content/pricing_table.md predates the third footnote and was left as is.
