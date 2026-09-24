@@ -5335,3 +5335,30 @@ hairline, 12.5px) on the docs at <=900px (`.docs .brand` - body class, NOT :has(
 iOS before 15.4 lacks) and on every page below 360px (a 320px phone overflowed 19px beside).
 Measured 320-1920 on index, legal/terms and a docs page: no sideways scroll anywhere; site
 header 133px at phone width (was 142), 91 at 641-767, 68 from 768; docs 150/108/68.
+
+## State on 2026-09-23 (Skill integration updated from github.com/Search2o/search2o-skill; Operating notes retired; NOT DEPLOYED)
+Ram: the skill is published at https://github.com/Search2o/search2o-skill (README, search2o/
+SKILL.md with EIGHT rules, reference.md, scripts/s2o.py) - update the docs, remove topics if
+needed. Read via raw.githubusercontent (git clone and gh were refused / unauthenticated).
+FACTS THE PAGES HAD WRONG, now fixed: search returns name + TITLE only, no description
+(verified: search2o/api/exec.py SearchResponseModel -> AgentTitleModel {agentName,
+agentTitle}), so the assistant chooses on titles; a query under 8 characters is refused;
+follow-ups: continue with the same agent or search again, same convid either way; a pending
+ask blocks every other agent in the conversation; the skill ignores searchBehavior/
+followupBehavior (guidance for interfaces that cannot judge); output parts are text / html /
+image; the server address can also come from ~/.search2o/server; the example's second call
+passed the convid to search (search takes none) - now execAgent carries it.
+PAGES: "What the skill does" (finding-and-running-an-agent.html) rewritten - two calls,
+step by step, new h2 "Follow-up requests", the separate-part rule under the orchestrator,
+the example corrected. "Installing the skill" rewritten to POINT AT THE REPO instead of
+carrying copies of SKILL.md and the script (the copies had already drifted): the folder, what
+reference.md holds, Authorization, Installing (cp + env vars or files), Trying it, Where it
+works, and "Fitting it to your company" with h3s The description / Tag scoping / Long-running
+agents (600 s = maxAgentRuntime; raise TIMEOUT in the script). operating-notes.html RETIRED
+(git rm docsrc + html/docs; toc entry gone; the live object leaves at the next --delete
+sync); its refusal note lives in step 2 of What the skill does, the rest in Fitting it to
+your company; search/tags.html now links installing-the-skill.html#tag-scoping. Dropped as
+unsupported by the repo: pasting a token at the start of a chat as a method, and the
+streaming endpoint / GUI-link advice for long runs. 138 pages, 35 examples valid, links
+clean. FLAG: the repo README calls the docs section "Using Search2o from an assistant"; the
+section's title is "Skill integration" (Ram's repo - not edited).
