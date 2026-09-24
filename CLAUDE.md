@@ -5317,3 +5317,21 @@ flex-start; gap: 5px }`, `.tagline { margin: 0; padding-left: 0; border-left: 0;
 12.5px }`; desktop (>900) unchanged, beside the logo on its baseline. Measured 360-1100: no
 sideways scroll; tablet header still 68px; phone header 150px (was 142); tagline left edge
 == logo left edge. Screenshot at 390 checked (dark).
+
+## State on 2026-09-23 (theme toggle off the site pages; tagline beside the logo on phones; not deployed)
+Ram: remove the dark/light toggle from the site pages, keep it in the docs, and keep the
+tagline with the logo if that frees room; then "only do what's safe across mobile phones".
+The <button class="theme-toggle"> is REMOVED from the ten hand-written pages (index, demo,
+gettingstarted, pricing, about, 404, legal x4); the docs template keeps it. site.js's theme
+code is guarded by querySelector, so nothing else changed; the head bootstrap still applies
+a theme chosen in the docs (s2o-theme in localStorage) on the site pages - so a docs choice
+carries over and cannot be undone from a site page (flagged). The site pages otherwise follow
+the device setting.
+styles.css header: the nav drops to its own row at <=767px (was <=640 - between 641 and 767
+the nav shared the logo's row and overflowed by up to 123px with the tagline beside the
+logo); `.theme-toggle { margin-left: auto }` moved into that 767 block too. The tagline sits
+BESIDE the logo everywhere on site pages from 360px up; it STACKS under the wordmark (no
+hairline, 12.5px) on the docs at <=900px (`.docs .brand` - body class, NOT :has(), which
+iOS before 15.4 lacks) and on every page below 360px (a 320px phone overflowed 19px beside).
+Measured 320-1920 on index, legal/terms and a docs page: no sideways scroll anywhere; site
+header 133px at phone width (was 142), 91 at 641-767, 68 from 768; docs 150/108/68.
