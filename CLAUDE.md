@@ -5385,3 +5385,5 @@ html/pricing.html: the Paid price reads $30/member/month<sup>***</sup> (the mark
 the next user." ("Service stops when usage reaches double your user count." removed). The
 muted-mark rule is `.plans th sup` (was tbody-only) so the header mark matches the row
 marks. content/pricing_table.md predates the third footnote and was left as is.
+Then Ram: swap the AI assistance and Long-term memory rows - AI assistance now follows
+Searches, Long-term memory follows it (pricing.html:65-66).
