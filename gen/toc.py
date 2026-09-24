@@ -153,7 +153,6 @@ TOC = [
         ("what-search2o-provides", "What Search2o adds"),
         ("finding-and-running-an-agent", "What the skill does"),
         ("installing-the-skill", "Installing the skill"),
-        ("operating-notes", "Operating notes"),
     ]),
     ("support-licensing", "Support and licensing", [
         ("asking-the-docs", "Asking the docs"),

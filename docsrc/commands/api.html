@@ -1,11 +1,11 @@
-<p class="lead">Calls a REST API and returns the response. Use <code>api</code> for anything reachable over HTTP: your own services, public APIs, or a vendor's endpoints.</p>
+<p class="lead">Calls a REST API and returns the response. Use <code>api</code> for any HTTP endpoint an API profile names: your own services, public APIs, or a vendor's endpoints.</p>
 
 <h2>Fields</h2>
 <p>Every call goes through an <a href="../profiles/api-profiles.html">API profile</a> from the configuration. The profile carries the base URL, the headers sent on every call, and the connection pool to use; <code>path</code> is added to the end of the profile's URL. Headers and parameters set on the command are added to the profile's headers and parameters. The hosts an agent can reach are therefore the ones the profiles name.</p>
 <!--fields:command:api-->
 
 <h2>Result</h2>
-<p>The response body is the command's result, available as <code>result</code> in the next command. A JSON response is parsed into a Python object. A text response is returned as a string, and a binary response as bytes. An empty body returns the HTTP status code as a number. The command does not check the status code. A timeout or a connection failure raises an error, which <code>onError</code> can catch.</p>
+<p>The response body is the command's result, available as <code>result</code> in the next command. A JSON response is parsed into a Python object. A text response is returned as a string, and a binary response as bytes. An empty body returns the HTTP status code as a number instead. The command does not check the status code. A timeout or a connection failure raises an error, which <code>onError</code> can catch.</p>
 
 <h2>Example</h2>
 <x-code lang="jsonc" title="Look up the caller's location, then the hourly forecast">

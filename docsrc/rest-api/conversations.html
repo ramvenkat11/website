@@ -1,4 +1,4 @@
-<p class="lead">A conversation is identified by its <code>convid</code>. The <code>/api/user/</code> and <code>/api/exec/</code> groups list, read, rename, pin and delete the caller's conversations.</p>
+<p class="lead">A conversation is identified by its <code>convid</code>. The <code>/api/user/</code> group lists, reads, renames, pins and deletes the caller's conversations.</p>
 
 <h2>Reading a conversation</h2>
 <p><code>POST /api/user/getConversation</code> with a <code>convid</code> returns the exchanges so far: for each run, the <code>query</code>, the <code>response</code> (the agent's name and its output parts) and <code>respondedAt</code> in epoch milliseconds. The state is decrypted on the agent server for this call; the cloud only ever holds the ciphertext.</p>

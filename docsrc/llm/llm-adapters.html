@@ -2,7 +2,7 @@
 
 <h2>First, try a bundled adapter</h2>
 <p>Many LLMs are reachable with the adapters that are already there. A private deployment, a gateway, or a vendor that offers an OpenAI-compatible API needs no code at all: create an <a href="../profiles/llm-profiles.html">LLM profile</a> under <strong>Profiles &rsaquo; LLM</strong>, pick the adapter that matches the protocol (<code>openai</code>, <code>anthropic</code> or <code>gemini</code>), and set the URL, the headers and the model. See <a href="vendors.html">LLM vendors</a>.</p>
-<p>Each bundled adapter says so itself. The GUI shows the adapter's description when a profile is created &mdash; the OpenAI one reads &ldquo;Adapter for OpenAI ChatGPT responses API or any vendor that is compatible with it&rdquo;.</p>
+<p>Each bundled adapter's description says which protocol the adapter speaks. The GUI shows the adapter's description when a profile is created &mdash; the OpenAI one reads &ldquo;Adapter for OpenAI ChatGPT responses API or any vendor that is compatible with it&rdquo;.</p>
 
 <h2>When you need an adapter of your own</h2>
 <p>An adapter turns the request that Search2o builds &mdash; prompt, tools, model and limits &mdash; into the vendor's request body, and turns the vendor's response back into Search2o's form. Write one only when the vendor's protocol matches none of the three.</p>
@@ -36,6 +36,6 @@
 <ol>
   <li>The class belongs in the Python environment that the agent server runs in.</li>
   <li>Add the class to the <a href="../runtime/allowlist.html">allowlist</a> as <code>mypackage.myadapter.MyAdapter</code> and save.</li>
-  <li>The agent server instantiates every allowlisted subclass of <code>LlmAdapter</code> when the server loads the allowlist, and lists those adapters under <em>Adapters</em> when a new LLM profile is created. An adapter whose constructor fails is written to the server's log.</li>
+  <li>The agent server instantiates every allowlisted subclass of <code>LlmAdapter</code> when the agent server loads the allowlist, and lists those adapters under <em>Adapters</em> when a new LLM profile is created. When an adapter's constructor fails, the failure is written to the agent server's log.</li>
 </ol>
 <p>The class needs a constructor that takes no arguments. Reports group spend under the profile's <em>vendor</em> field, so set that field to the vendor's name, whatever the adapter is called.</p>

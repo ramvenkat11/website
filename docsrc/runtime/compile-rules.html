@@ -4,13 +4,13 @@
 <p>The operators are <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>//</code>, <code>%</code>, <code>**</code>, <code>&lt;&lt;</code>, <code>&gt;&gt;</code> and <code>@</code>. Each is set to one of three options.</p>
 <ul>
   <li><strong>Allow.</strong> The operator works as Python defines it. This is the default for every operator.</li>
-  <li><strong>Deny.</strong> An expression that uses the operator fails validation, with the path of the expression.</li>
+  <li><strong>Deny.</strong> An expression that uses the operator fails validation, with the path of the command that holds the expression.</li>
   <li><strong>Rewrite.</strong> The operator is replaced by a call to a function you name. Choosing rewrite asks for the function name.</li>
 </ul>
 
 <h2>Rewriting an operator</h2>
-<p>Every use of a rewritten operator becomes a call to the named function with the operator's two operands: <code>a ** b</code> becomes <code>bounded_pow(a, b)</code>. Write the function yourself, and put the function on the <a href="allowlist.html">allowlist</a> under the name you enter, on every agent server.</p>
-<p>The function must keep the operator's shape: two arguments, the left operand and the right operand, both numbers. A function that takes one argument cannot stand in for an operator. When the settings are saved, the agent server checks each named function: the function must be on the allowlist, and must accept two numbers. A function that fails the check refuses the save, and the reason is shown. Matrix multiplication, <code>@</code>, is not checked.</p>
+<p>Every use of a rewritten operator becomes a call to the named function with the operator's two operands: <code>a ** b</code> becomes <code>bounded_pow(a, b)</code>. Write the function yourself, install the package on every agent server, and put the function on the <a href="allowlist.html">allowlist</a> under the name you enter.</p>
+<p>The function must keep the operator's shape: two arguments, the left operand and the right operand, both numbers. A function that takes one argument cannot stand in for an operator. When the settings are saved, the agent server checks each named function: the function must be on the allowlist, and must accept two numbers. If a function fails the check, the save is refused and the reason is shown. Matrix multiplication, <code>@</code>, is not checked.</p>
 <p>Rewriting is how an expensive operation is kept within bounds. A function that stands in for <code>**</code> can refuse an exponent above a limit, and a function that stands in for <code>*</code> can refuse a result that would not fit in 64 bits.</p>
 
 <h2>Comprehensions</h2>

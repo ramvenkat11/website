@@ -66,8 +66,9 @@ RUNNING AN AGENT
   resultCode is one of:
       success                     finished; show output.parts
       ask                         it needs input; see ASKING below
-      unknownConversation  the conversation is gone; start a new one
-      failCommand, errorInAgent, callFailed, timedOut, stopped, unexpected, mustLogin
+      unknownConversation         the conversation is gone; start a new one
+      mustLogin                   the token no longer works; forget it and run CONNECTING A PERSON again
+      failCommand, errorInAgent, callFailed, timedOut, stopped, unexpected
                                   failed; tell the person, using error.message when present
 
   output.parts is a list. Each part is one of:
@@ -136,7 +137,7 @@ Write a Slack bot in <your language> using the reference above.
   - Show search results as buttons in a message, one per agent, and update that message once
     somebody chooses.
   - Convert markdown to Slack mrkdwn. Bold is *text*, links are <url|label>.
-  - Upload image parts with files.upload and post them in the thread.
+  - Upload image parts with files.uploadV2 and post them in the thread.
 </x-code>
 
 <h2>The prompt for Microsoft Teams</h2>
@@ -145,10 +146,10 @@ Write a Microsoft Teams bot in <your language> using the reference above.
 
   - Use the Bot Framework. The bot needs a public HTTPS endpoint, or a tunnel into the
     network where the agent server runs.
-  - Respond to messages in channels and in one to one chats.
+  - Respond to messages in channels and in one-to-one chats.
   - Key the conversation record on the Teams conversation id and the reply chain id.
   - On first use by a person, run the connect flow. Send the button as an Adaptive Card,
-    in a one to one chat rather than a channel.
+    in a one-to-one chat rather than a channel.
   - Acknowledge the activity at once. Keep the conversation reference, and send the answer
     as a proactive message when it arrives, or update the activity. An agent can take a
     minute, which is longer than the connector will wait, so never answer inline.

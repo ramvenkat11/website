@@ -13,7 +13,7 @@ Search2o is in open beta. This table is the pricing page as it stands on
 | **Agent indexing**\*\* | 30 / month | 30 / member / month |
 | **Searches**\*\* | 300 / month | 300 / member / month; $15 per extra 300 |
 | **Long-term memory** | 100 memories / member | 500 memories / member |
-| **AI assistance**\*\* (drafting, doc questions, description validation) | 100 / month | 100 / member / month |
+| **AI assistance**\*\* (drafting, doc questions) | 100 / month | 100 / member / month |
 | **System performance** | Shared, best-effort | Priority |
 | **Reports** | Last 7 days | Last 90 days |
 | **Conversations** | Last 7 days | Last 90 days |

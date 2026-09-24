@@ -1,7 +1,7 @@
 <p class="lead">The allowlist is the complete set of names that an agent's Python expressions may use. Expressions do not get Python's builtins; the allowlist takes their place, so a name that is not on the allowlist does not exist for an agent, and an expression that uses it is refused before the agent ever runs. The allowlist applies to every agent in the account, and developers edit it in the GUI under Guardrails.</p>
 
 <h2>How expressions are contained</h2>
-<p>Expressions are contained at the application level, not by the operating system. Four things decide what an expression may do: the allowlist decides which names the expression can reach; the <a href="compile-rules.html">compile rules</a> decide which operators and which shapes of expression are accepted; the <a href="runtime-limits.html">runtime limits</a> bound a run in time, iterations, rows and LLM spend; and the scope rules below decide which variables are visible. The runtime does not limit memory or CPU. Rewriting an operator to a function of your own is the tool for operations that could load the server.</p>
+<p>Expressions are contained at the application level, not by the operating system. Four things decide what an expression may do: the allowlist decides which names the expression can reach; the <a href="compile-rules.html">compile rules</a> decide which operators and which shapes of expression are accepted; the <a href="runtime-limits.html">runtime limits</a> bound a run in time, iterations, rows and LLM spend; and the scope rules below decide which variables are visible. The runtime does not limit memory or CPU. Rewriting an operator to a function of your own is the tool for operations that could load the agent server.</p>
 <!--figure:expression-bounds-->
 
 <h2>One entry per line</h2>
@@ -35,7 +35,7 @@ math.sqrt as sqrt                # sqrt(16)
 datetime.datetime as datetime    # datetime(2026, 1, 2)
 </x-code>
 <p>Without <code>as</code>, an expression uses the entry as written. <code>math.sqrt</code> is used as <code>math.sqrt(16)</code>.</p>
-<p>An entry that ends in <code>.*</code> cannot be renamed. There is nothing to rename, because that form brings in many names at once. An <code>as</code> on such a line is refused when the allowlist is saved.</p>
+<p>An entry that ends in <code>.*</code> cannot be renamed, because that form brings in many names at once. An <code>as</code> on such a line is refused when the allowlist is saved.</p>
 
 <h3>Choosing between the forms</h3>
 <p>Naming one function is the narrowest choice, and it is the one we would suggest. <code>math.sqrt</code> allows that function and nothing else in the module.</p>
@@ -70,22 +70,22 @@ json                # json.dumps and json.loads are allowed
   <li>agent and conversation variables set earlier, as <code>agent.x</code> and <code>conv.x</code>;</li>
   <li>the read-only <code>sys</code> and <code>command</code> namespaces. Which <code>sys</code> variables are present is decided in <a href="system-variables.html">System variables</a>.</li>
 </ul>
-<p>No other variables, objects or runtime state are accessible. See <a href="../agent-definition/variables.html">Variables and namespaces</a>.</p>
+<p>See <a href="../agent-definition/variables.html">Variables and namespaces</a>.</p>
 
 <h2>Functions must not block</h2>
-<p>Expressions run on the agent server's shared event loop. A function that blocks that loop holds up every agent on the server, so such a function does not belong on the allowlist. <code>time.sleep</code> and synchronous network calls are examples.</p>
+<p>Expressions run on the agent server's shared event loop. A function that blocks that loop holds up every agent on the agent server, so such a function does not belong on the allowlist. <code>time.sleep</code> and synchronous network calls are examples.</p>
 <p>Async functions are welcome. When the whole expression is a call to an async function, the result is awaited for you. Inside a larger expression, use <code>await</code>; see <a href="../agent-definition/python-expressions.html#awaiting">Awaiting</a>.</p>
 
 <h2>When an entry is wrong</h2>
-<p>Every entry is resolved when the allowlist is saved. If any line fails, the allowlist is not saved, and each failing line is reported with its own message.</p>
+<p>Every entry is resolved when the allowlist is saved, on the agent server behind the GUI. If any line fails, the allowlist is not saved, and each failing line is reported with its own message.</p>
 <x-code lang="text">
 nosuchmodule       Could not be imported.
 math.nope          Could not be imported.
 math.* as m        A star import cannot be renamed with 'as'.
 </x-code>
 <p>The line is reported exactly as it was written, so a long allowlist shows which rows to fix.</p>
-<p>Once the allowlist is saved, every agent server rebuilds its names before the next agent run. No restart is needed; see <a href="overview.html#how-a-change-reaches-every-server">How a change reaches every server</a>.</p>
-<p>Each server resolves each entry in its own Python environment. An entry that cannot be imported on one server is skipped there, a message is written to that server's log, and the rest of the allowlist still loads. A package installed on one server and missing on another shows up this way, so it is worth keeping the environments of your servers the same.</p>
+<p>Once the allowlist is saved, every agent server rebuilds its names before the next agent run. No restart is needed; see <a href="overview.html#how-a-change-reaches-every-agent-server">How a change reaches every agent server</a>.</p>
+<p>Each agent server resolves each entry in its own Python environment. An entry that cannot be imported on one agent server is skipped there, a message is written to that agent server's log, and the rest of the allowlist still loads. A package installed on one agent server and missing on another shows up this way, so it is worth keeping the environments of your agent servers the same.</p>
 
 <h2>Registering your own code</h2>
 <p>The allowlist is also how your own code enters the runtime. Install the package beside the agent server, on every agent server, and name it in the allowlist.</p>

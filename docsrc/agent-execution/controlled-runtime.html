@@ -15,11 +15,11 @@
 <p>APIs, databases, MCP servers and LLMs are reached through <a href="../profiles/index.html">profiles</a>, which administrators define and share across the account. An <code>api</code> command calls an API profile, so the hosts an agent can reach are the ones set in the profiles. Every HTTP call goes through a <a href="../runtime/connection-pools.html">connection pool</a> that administrators size.</p>
 
 <h2>How much an agent may do</h2>
-<p>The <a href="../runtime/runtime-limits.html">runtime limits</a> bound a run: how long an agent may run, how many times a loop may iterate, how many rows a database call may return, how much an agent may spend on LLM calls, and how long a definition may be. A run past its time limit ends with the result code <code>timedOut</code>; a loop past its limit fails the run. The limits apply to every agent in the account.</p>
+<p>The <a href="../runtime/runtime-limits.html">runtime limits</a> bound a run: how long an agent may run, how many times a loop may iterate, how many rows a database call may return, and how much an agent may spend on LLM calls. A run past its time limit ends with the result code <code>timedOut</code>; a loop past its limit fails the run. The limits apply to every agent in the account.</p>
 <p>The runtime bounds what an expression may do, not how much work one line of Python does. An expression runs on the agent server alongside every other run, so a very long computation delays the other runs. Two controls cover this:</p>
 <ul>
   <li><strong>Operator rewriting.</strong> The account can map an operator to a function of its own, so that <code>a ** b</code> runs as <code>bounded_pow(a, b)</code> and a very large power is refused before it is computed. See <a href="../runtime/compile-rules.html">Compile rules</a>.</li>
-  <li><strong>Isolating the agent server.</strong> The agent server is a stateless process, so it can run inside whatever isolation your organization uses: a container with processor and memory limits, a separate host, a restricted account. See <a href="../system-management/agent-servers.html">Agent servers</a>.</li>
+  <li><strong>Isolating the agent server.</strong> The agent server is a stateless process, so it can run inside whatever isolation your organization uses: a container with processor and memory limits, a separate host, a restricted operating-system user. See <a href="../system-management/agent-servers.html">Agent servers</a>.</li>
 </ul>
 
 <h2>The same runtime on every agent server</h2>

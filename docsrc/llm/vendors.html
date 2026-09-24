@@ -1,13 +1,13 @@
 <p class="lead">Search2o ships with adapters for OpenAI, Anthropic and Google Gemini. One API key is enough to start, and a new account already has a profile for each vendor.</p>
 
 <h2>The key</h2>
-<p>Each seeded profile reads its key from the agent server's environment. Set the key for the vendor you use before starting the server:</p>
+<p>Each seeded profile reads its key from the agent server's environment. Set the key for the vendor you use before starting the agent server:</p>
 <x-code lang="bash">
 $ export OPENAI_API_KEY=...        # OpenAI
 $ export ANTHROPIC_API_KEY=...     # Anthropic
 $ export GEMINI_API_KEY=...        # Google Gemini
 </x-code>
-<p>Where a key is read from is configurable; see <a href="../security/secret-vault.html">Secrets</a>.</p>
+<p>Where a key is read from is configurable; see <a href="../security/secret-vault.html">Secret vault</a>.</p>
 
 <h2>The seeded profiles</h2>
 <p>A new account has these <a href="../profiles/llm-profiles.html">LLM profiles</a>. An agent names one of them in its <code>llm</code> command.</p>

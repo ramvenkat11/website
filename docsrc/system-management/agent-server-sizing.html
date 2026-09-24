@@ -1,4 +1,4 @@
-<p class="lead">An agent server is the part of Search2o that a company runs. This page says how many to run and how to configure them. The figures come from our own load tests, on an Intel i9 at 2.40 GHz. A faster processor does proportionally more, so these are a conservative starting point.</p>
+<p class="lead">An agent server is the part of Search2o that a company runs. This page says how many to run and how to configure them. The figures come from our own load tests, on an Intel i9 at 2.40 GHz. A faster processor does proportionally more, so these figures are a conservative starting point.</p>
 
 <h2>Running one agent server for every processor core</h2>
 <p>An agent server is a single Python process. Python holds a global interpreter lock, so one process uses one core however many threads it has. A larger machine therefore does nothing for a single agent server, and capacity comes from running more of them.</p>
@@ -40,8 +40,8 @@ agent runs at the same time  =  50 per second  x  seconds per run
 <h2>Watching a deployment that is already busy</h2>
 <p>Two things tell you whether another agent server will help. Neither needs any extra load put on the system.</p>
 <p>The first is the processor use of each agent server, which ordinary monitoring reports.</p>
-<p>The second is how long an agent server takes to answer a request it handles by itself. <strong><code>GET /health</code> is the one to use.</strong> It returns a fixed answer, it needs no sign in, and it reaches nothing outside the agent server, so its response time reflects that server's own health and nothing else. Any uptime monitor can poll it.</p>
-<p>It answers in about 0.003s on a server with capacity to spare, and stays there while the server has room. It passes 0.01s when the server is running out.</p>
+<p>The second is how long an agent server takes to answer a request it handles by itself. <strong><code>GET /health</code> is the one to use.</strong> It returns a fixed answer, it needs no sign-in, and it reaches nothing outside the agent server, so its response time reflects that server's own health and nothing else. Any uptime monitor can poll it.</p>
+<p>It answers in about 0.003s on a server with capacity to spare, and stays there while the server has room. It passes 0.01s when the agent server is running out of capacity.</p>
 <div class="tablewrap"><table class="fields compare">
 <thead><tr><th>What you see at a busy time</th><th>What it means</th><th>What to do</th></tr></thead>
 <tbody>

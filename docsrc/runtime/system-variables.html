@@ -1,4 +1,4 @@
-<p class="lead">The <code>sys</code> namespace carries what the runtime knows about a run. Four names are always there. Four more reach an agent only when a developer lists them here, so by default an agent sees nothing about the user or the server. See <a href="../agent-definition/variables.html">Variables and namespaces</a> for how an expression reads them.</p>
+<p class="lead">The <code>sys</code> namespace carries what the runtime knows about a run. Four names are always there. Four more reach an agent only when a developer lists them here, so by default an agent sees nothing about the user or the agent server. See <a href="../agent-definition/variables.html">Variables and namespaces</a> for how an expression reads them.</p>
 
 <h2>Always present</h2>
 <ul>
@@ -10,5 +10,5 @@
 
 <h2>Enabled here</h2>
 <!--enum:SysVariables-->
-<p><code>cookies</code> deserves care. The cookies carry the user's raw session ID, and an agent that writes the cookies into its output, a variable or a call to an outside system has given that session away. We would suggest enabling <code>cookies</code> only for an agent that needs them, and never letting the value leave the server.</p>
+<p><code>cookies</code> deserves care. The cookies carry the user's raw session ID, and an agent that writes the cookies into its output, a variable or a call to an outside system has given that session away. We would suggest enabling <code>cookies</code> only for an agent that needs them, and never letting the value leave the agent server.</p>
 <!--fields:model:SysVar-->

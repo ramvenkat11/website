@@ -25,4 +25,4 @@
 <p>Closing the connection stops the agent. The run is recorded with the result code <code>stopped</code>, and the conversation keeps the state it had before the run. The GUI's stop button does nothing more than this.</p>
 
 <h2>When to stream</h2>
-<p>Stream when a person is watching: the first output appears as soon as the agent produces it, and progress messages show that a long call is still working. Do not stream from a scheduler or a pipeline step; a single response is simpler to handle and carries the whole output.</p>
+<p>Stream when a person is watching: the first output appears as soon as the agent produces it, and progress messages show that a long call is still working. A scheduler or a pipeline step is better served by a single response, which is simpler to handle and carries the whole output.</p>

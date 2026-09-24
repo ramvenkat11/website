@@ -1,4 +1,4 @@
-<p class="lead">Each time an agent completes successfully, the conversation state is encrypted and stored in Search2o Cloud. A follow-up query in the same conversation restores the state and runs the selected agent with that context.</p>
+<p class="lead">Each time an agent ends successfully or pauses on an <code>ask</code>, the conversation state is encrypted and stored in Search2o Cloud. A follow-up query in the same conversation restores the state and runs the selected agent with that context.</p>
 
 <h2>What the state holds</h2>
 <!--figure:conversation-state-->
@@ -14,7 +14,7 @@
 <p>State is saved when a run ends with <code>end</code>, with <code>return</code> from <code>main</code>, or by pausing on <code>ask</code>. State is <em>not</em> saved when the run ends with <code>fail</code> or with an error. A follow-up therefore sees the state as it was before the failed run.</p>
 
 <h2>Encryption</h2>
-<p>State is encrypted before the state leaves the agent server, and the cloud never decrypts the state. By default Search2o manages the key for your account. An administrator can switch to keys held entirely in your organization. See <a href="../security/encryption.html">Security</a>.</p>
+<p>State is encrypted before the state leaves the agent server, and the cloud never decrypts the state. By default Search2o manages the key for your account. An administrator can switch to keys held entirely in your organization. See <a href="../security/encryption.html">Encryption</a>.</p>
 
 <h2>Retention</h2>
 <p>A conversation is deleted after a period without use: 7 days on the Free plan, 90 days on the Paid plan, counted from the last time an agent ran in the conversation or the conversation was read, whichever is later. A user can pin a conversation to keep the conversation, and can delete a conversation at any time.</p>

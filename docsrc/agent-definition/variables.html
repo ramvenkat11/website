@@ -5,7 +5,7 @@
 <p>Local variables are set and read without a prefix. A local variable lives in the function that set it and disappears when that function returns. Function arguments and <code>for</code> loop variables are local variables. A local variable can hold any Python value.</p>
 
 <h2>Agent variables</h2>
-<p>Agent variables are written <code>agent.name</code>. An agent variable lives for the whole conversation. Every function of the agent that set the variable can read and write the variable; other agents cannot. Use agent variables for state that a follow-up query should find again: whether initialization has run, a cached lookup, the user's last choice.</p>
+<p>Agent variables are written <code>agent.name</code>. An agent variable lives for the whole conversation. Every function of the agent can read and write the variable; other agents cannot. Use agent variables for state that a follow-up query should find again: whether initialization has run, a cached lookup, the user's last choice.</p>
 
 <h2>Conversation variables</h2>
 <p>Conversation variables are written <code>conv.name</code>. A conversation variable lives for the whole conversation, and any agent that runs in the conversation can read and write the variable. Conversation variables are how agents hand work to each other: one agent leaves a result in <code>conv.order</code>, and the next agent picks the result up.</p>
@@ -20,7 +20,7 @@
 <ul>
   <li><code>sys.inputs</code> — the inputs the agent was started with, as a dict. For a search the dict is <code>{ "query": ... }</code>. An <code>invoke</code> command passes any inputs it likes.</li>
   <li><code>sys.query</code> — the user's query, the same as <code>sys.inputs['query']</code>.</li>
-  <li><code>sys.secret[name]</code> — reads a secret from the agent server's environment; see <a href="../security/secret-vault.html">Security</a>.</li>
+  <li><code>sys.secret[name]</code> — reads a secret by name. Where secrets come from — the environment, a file, the vault or your own function — is on <a href="../security/secret-vault.html">Secret vault</a>.</li>
   <li><code>sys.exists(scope, name)</code> — whether a variable exists, before reading it. The scope is <code>local</code>, <code>agent</code>, <code>conv</code> or <code>allowlist</code>; see <a href="python-expressions.html#checking-whether-a-variable-exists">Python expressions</a>.</li>
 </ul>
 <p>The following names are present only when an administrator enables them in the <a href="../runtime/system-variables.html">system variables</a> configuration:</p>
@@ -28,6 +28,7 @@
   <li><code>sys.userEmail</code> — the email address of the user running the agent.</li>
   <li><code>sys.userSession</code> — a hash of the user's session, for keying per-session data.</li>
   <li><code>sys.serverIp</code> — the agent server's address as seen by the cloud, for logging.</li>
+  <li><code>sys.cookies</code> — the cookies of the request that started the run.</li>
 </ul>
 
 <h3>command</h3>

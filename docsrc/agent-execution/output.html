@@ -38,4 +38,4 @@
 <p>A list appends each element as a part. A string in the list becomes a text part.</p>
 
 <h2>Progress, trace and log are not output</h2>
-<p><code>progress</code> sends a transient message that the user sees while the agent runs. The message is not saved with the conversation. <code>trace</code> writes to the developer's execution trace during validation and does nothing in production. <code>log</code> writes to the agent server's log. Only <code>output</code> becomes part of the answer, plus <code>end</code>, which appends its value to the output.</p>
+<p><code>progress</code> sends a transient message that the user sees while the agent runs. The message is not saved with the conversation. <code>trace</code> writes to the developer's execution trace during validation and does nothing in production. <code>log</code> writes to the agent server's log. <code>output</code> and <code>end</code> are the two commands that add to the answer: <code>end</code> appends its value to the output.</p>

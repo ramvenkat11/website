@@ -1,11 +1,11 @@
-<p class="lead">Every call is an HTTP POST with a JSON body, under <code>/api/</code> on the agent server. The GUI uses nothing else, so everything the GUI does is available to your own code.</p>
+<p class="lead">Every call under <code>/api/</code> on the agent server is an HTTP POST with a JSON body. The GUI uses nothing else, so everything the GUI does is available to your own code.</p>
 
 <h2>Endpoint groups</h2>
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Prefix</th><th>What is there</th><th>Who may call it</th></tr></thead>
 <tbody>
 <tr><td><code>/api/auth/</code></td><td>Sign-in, password reset, the account name</td><td>Anyone</td></tr>
-<tr><td><code>/api/exec/</code></td><td>Search, run an agent, read a conversation</td><td>Any signed-in user</td></tr>
+<tr><td><code>/api/exec/</code></td><td>Search and run an agent</td><td>Any signed-in user</td></tr>
 <tr><td><code>/api/user/</code></td><td>The caller's profile, password and conversations</td><td>Any signed-in user</td></tr>
 <tr><td><code>/api/dev/</code></td><td>Drafts and draft validation, agents, descriptions, the audit log, help messages</td><td>Developers and above</td></tr>
 <tr><td><code>/api/admin/</code></td><td>Users, roles, configuration, profiles, the license, freezing the account</td><td>Administrators and the owner</td></tr>

@@ -1,4 +1,4 @@
-<p class="lead">Appends to the agent's output. Output is streamed to the user as the agent writes it. An agent that runs to answer a query must set its output.</p>
+<p class="lead">Appends to the agent's output. Output is streamed to the user as the agent writes it. An agent that runs to answer a query must write output.</p>
 
 <h2>Value</h2>
 <!--fields:command:output-->
@@ -11,7 +11,7 @@
   <li>An object <code>{ "contentType": "html", "text": "..." }</code> is an HTML part. The part is rendered after harmful content is removed; Markdown is not applied.</li>
   <li>An object <code>{ "contentType": "image", "text": "&lt;base64&gt;", "mimeType": "image/png" }</code> is an image.</li>
   <li>A <strong>list</strong> appends several parts at once.</li>
-  <li>The <strong>result of an <code>llm</code> command</strong> may be assigned directly. The answer's text and any images become parts. The <code>streamOutput</code> flag on the <code>llm</code> command does the same thing automatically.</li>
+  <li>The <strong>result of an <code>llm</code> command</strong> may be given as the value directly. The answer's text and any images become parts. The <code>streamOutput</code> flag on the <code>llm</code> command does the same thing automatically.</li>
 </ul>
 <p>Output is append-only and keeps its order. Output is saved with the conversation, so the user sees the same output again when the conversation is opened later.</p>
 

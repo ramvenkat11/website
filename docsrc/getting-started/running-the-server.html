@@ -17,7 +17,7 @@ $ export OPENAI_API_KEY=sk-...
 $ export ANTHROPIC_API_KEY=sk-ant-...
 $ export GEMINI_API_KEY=...
 </x-code>
-<p>One key is enough to start. Search2o is not limited to these three vendors; see <a href="../llm/llm-adapters.html">Connecting to other LLMs</a>. Where secrets come from is configurable; see <a href="../security/secret-vault.html">Secrets</a>.</p>
+<p>One key is enough to start. Search2o is not limited to these three vendors; see <a href="../llm/llm-adapters.html">Connecting to other LLMs</a>. Where secrets come from is configurable; see <a href="../security/secret-vault.html">Secret vault</a>.</p>
 
 <h2>What starts up</h2>
 <p>At startup the server validates the license and downloads the account's configuration from Search2o Cloud. The server then checks every entry of the expression allowlist against its own Python environment and builds its connection pools. After that the server serves:</p>
@@ -26,7 +26,7 @@ $ export GEMINI_API_KEY=...
   <li>the OpenAPI schema at <code>/openapi.json</code>, Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>,</li>
   <li>the REST API under <code>/api/</code>.</li>
 </ul>
-<p>The three documentation paths, the UI path and the allowed CORS origins are set in the <a href="../system-management/agent-servers.html">Agent servers</a> configuration. Each path can also be removed: a server can run with no GUI and no interactive API documentation.</p>
+<p>The three documentation paths, the GUI path and the allowed CORS origins are set in the <a href="../system-management/agent-servers.html">Agent servers</a> configuration. Each path can also be removed: a server can run with no GUI and no interactive API documentation.</p>
 
 <h2>Running in production</h2>
 <p>The server holds no state. Moving from a laptop to a shared server, or from one server to a cluster, changes nothing in the agents or in the configuration. Start as many servers as you need with the same license key and put them behind any load balancer. Each server brings itself up to date with the account's configuration on every agent run.</p>

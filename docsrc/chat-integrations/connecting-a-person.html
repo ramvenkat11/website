@@ -3,7 +3,7 @@
 <p>There are two ways to create the token. Both produce the same kind of token.</p>
 
 <h2>Pasting a token</h2>
-<p>The person signs in to the GUI and creates an integration token. The GUI shows the token once. The person copies the token into the bot, usually with a slash command in a private message.</p>
+<p>The person signs in to the GUI and creates an integration token from their profile. The GUI shows the token once. The person copies the token into the bot, usually with a slash command in a private message.</p>
 <p>This needs nothing from the bot beyond somewhere to store the token, and it suits a small team. It does not suit a large one: a token pasted into a public chat message stays in that workspace&rsquo;s history.</p>
 
 <h2>The connect flow</h2>
@@ -30,5 +30,5 @@ $ curl -s -X POST http://127.0.0.1:9020/api/auth/startConnect \
 <p>The secret from the first call belongs to the bot. The secret should never be shown to the person, and never appear in a link.</p>
 
 <h2>Where the approval page lives</h2>
-<p>The address comes from a setting on the agent server. Leave the setting empty when the agent server serves the GUI, and the address follows wherever the GUI is served. Set a page for a GUI of your own, or a full address for a GUI hosted somewhere else. The agent server does not have to serve the GUI at all, and the GUI is a set of static pages that can be hosted anywhere, so a GUI hosted elsewhere needs an address here.</p>
+<p>The address comes from a setting on the agent server. Leave the setting empty when the agent server serves the GUI, and the address follows wherever the GUI is served. Set a path for a GUI of your own, or a full address for a GUI hosted somewhere else; the GUI is a set of static pages that can be hosted anywhere.</p>
 <p>The agent server adds the request to whatever address is set, as a query parameter, so a page that reads that parameter works whichever way the GUI is built. What a bot receives is therefore a full address or a path. A full address is used as it is, and a path is joined to the address of the agent server.</p>

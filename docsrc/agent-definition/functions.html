@@ -4,7 +4,7 @@
 <!--fields:model:FunctionModel-->
 
 <h2>Arguments</h2>
-<p><code>args</code> maps each argument name to a description of that argument. When another function calls this function with <code>func</code>, only the names matter: the arguments arrive as local variables, and an argument the caller omits is <code>None</code>. When the function is offered to an LLM as a tool, the model reads the type and description of each argument, so fill them in:</p>
+<p><code>args</code> maps each argument name to the argument's type and description. When another function calls this function with <code>func</code>, only the names matter: the arguments arrive as local variables, and an argument the caller omits is <code>None</code>. When the function is offered to an LLM as a tool, the model reads the type and description of each argument, so fill them in:</p>
 <!--fields:model:FunctionArgModel-->
 
 <h2>Description</h2>
@@ -31,4 +31,4 @@
 </x-code>
 
 <h2>Reentrancy</h2>
-<p>A function cannot call itself while it is running, directly or through other functions. Recursion is not available. A loop is the way to repeat work.</p>
+<p>A function cannot call itself while it is running, directly or through other functions. A loop is the way to repeat work.</p>

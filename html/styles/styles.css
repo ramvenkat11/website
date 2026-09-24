@@ -681,7 +681,7 @@ p { margin: 0; }
 .plans thead th .how { display: block; margin-top: 8px; color: var(--body); font-size: 14.5px; font-weight: 600; letter-spacing: 0; text-transform: none; }
 .plans thead th .permo { margin-left: 2px; color: var(--muted); font-size: 16px; font-weight: 600; letter-spacing: 0; text-transform: none; }
 .plans tbody th { color: var(--ink); font-weight: 650; }
-.plans tbody th sup { color: var(--muted); font-weight: 500; }
+.plans th sup { color: var(--muted); font-weight: 500; }
 .plans tbody th small { display: block; color: var(--muted); font-size: 13px; font-weight: 500; line-height: 1.4; }
 .plans td { color: var(--body); }
 .plans .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

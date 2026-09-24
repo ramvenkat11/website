@@ -1,7 +1,7 @@
-<p class="lead">An agent is written as a definition: a JSON document with a <code>functions</code> object, each function holding the commands it runs. The <strong>Agent definition</strong> editor on the draft page is where you write it. The editor is built on Monaco, the editor inside Visual Studio Code, and it knows the Search2o agent language, so it suggests what comes next and points out mistakes as you type.</p>
+<p class="lead">An agent is written as a definition: a JSONC document with a <code>functions</code> object, each function holding the commands it runs. The <strong>Agent definition</strong> editor on the draft page is where you write it. The editor is built on Monaco, the editor inside Visual Studio Code, and it knows the Search2o agent language, so it suggests what comes next and points out mistakes as you type.</p>
 
 <h2>What the editor knows</h2>
-<p>The editor learns the agent language from the agent schema that your agent server publishes: the same description validation checks your agent against. The schema covers every command, the fields each command takes, what type each field holds, and a sentence describing each one. So a command or field added to Search2o appears in the editor at once, and what the editor suggests is what validation accepts.</p>
+<p>The editor learns the agent language from the agent schema that the cloud publishes: the same schema that validation checks your agent against. The schema covers every command, the fields each command takes, what type each field holds, and a sentence describing each one. So a command or field added to Search2o appears in the editor at once, and what the editor suggests is what validation accepts.</p>
 <p>The schema is loaded the first time you open the editor and kept for the rest of the session. If the schema cannot be loaded, the editor still works as a plain JSON editor, without the suggestions and checks described below.</p>
 
 <h2>Adding a command</h2>
@@ -67,14 +67,14 @@
 <h2>Around the editor</h2>
 <ul>
   <li><strong>Save</strong> with Ctrl+S (&#8984;S on a Mac) from anywhere on the page, including while typing in the editor. <em>Saved</em> appears briefly beside the Agent definition heading.</li>
-  <li><strong>Validate</strong> with Ctrl+Enter (&#8984;&#9166;) from anywhere on the page except inside the editor, where that key belongs to the editor; there, use the <strong>Validate/Trace</strong> button or click outside the editor first.</li>
+  <li><strong>Validate</strong> with Ctrl+Enter (&#8984;&#9166;) from anywhere on the page except inside the editor, where that key belongs to the editor, and inside the Draft with AI box, where it sends the request; there, use the <strong>Validate/Trace</strong> button or click outside the editor first.</li>
   <li><strong>Jump to a problem.</strong> Validation errors and lines in the validation output show where in the agent they happened, such as <code>main.commands.llm</code>. Select one to scroll to that command and select the whole of it. If you have since removed or renamed the command, you are told so.</li>
   <li><strong>Two kinds of undo.</strong> The editor's own Undo steps back through your typing. <strong>Undo AI edit</strong>, beside the heading, steps back through changes made by <a href="draft-with-ai.html">Draft with AI</a>, up to the last ten.</li>
 </ul>
 
 <h2>What the editor leaves to others</h2>
 <ul>
-  <li>Hovering shows a problem's message, never a description of the command or field under the pointer; the box under the command list describes each command, and the Docs icon answers questions about the language.</li>
+  <li>Hovering shows a problem's message; the box under the command list describes each command, and the Docs icon answers questions about the language.</li>
   <li>Profile names, secret names and functions on your allowlist are typed, not suggested; validation checks that each one exists.</li>
-  <li>The editor is a first line of defence. Validation on the agent server has the final say when you validate and publish.</li>
+  <li>The editor is a first line of defence. Validation in the cloud has the final say when you validate and publish.</li>
 </ul>

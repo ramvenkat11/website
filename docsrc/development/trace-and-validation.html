@@ -1,9 +1,9 @@
-<p class="lead">Before a draft can be <a href="publishing.html">published</a>, it has to validate: the agent server checks the draft and then runs it against a sample question. Validation proves that the agent passes the schema and security checks, finds everything it needs in your account, and runs to the end. Publish stays unavailable until it does. Validation happens in the draft editor, on the <strong>Validate</strong> tab below the agent definition.</p>
+<p class="lead">Before a draft can be <a href="publishing.html">published</a>, it has to validate: Search2o Cloud checks the definition, and the agent server then runs it against a sample question. Validation proves that the agent passes the schema and security checks, finds everything it needs in your account, and runs to the end. Publish stays unavailable until it does. Validation happens in the draft editor, on the <strong>Validate</strong> tab below the agent definition.</p>
 
 <h2>What validation checks</h2>
 <p>Validation runs in three stages. Problems from the first two are reported together, and the agent runs only if neither finds any.</p>
 <ol>
-  <li><strong>Definition and security checks.</strong> The definition is checked fresh, with the account's current settings. Every command and field must be one the agent schema allows. Every Python expression must pass the security checks: no dunders, and no operator the <a href="../runtime/compile-rules.html">compile rules</a> disallow. The agent may read only the <code>sys</code> variables the account makes available, and every profile the agent names must exist.</li>
+  <li><strong>Definition and security checks.</strong> The definition is checked again from scratch, with the account's current settings. Every command and field must be one the agent schema allows. Every Python expression must pass the security checks: no names that start with an underscore, and no operator the <a href="../runtime/compile-rules.html">compile rules</a> disallow. The agent may read only the <code>sys</code> variables the account makes available, and every profile the agent names must exist.</li>
   <li><strong>What the agent server can find.</strong> Every name an expression calls must be on the account's <a href="../runtime/allowlist.html">allowlist</a>, and every secret the agent reads must exist.</li>
   <li><strong>A real run.</strong> The agent runs against the draft's validation query, exactly as it would for a user, with tracing on, so that every step is visible.</li>
 </ol>
@@ -85,7 +85,7 @@
 <p><strong>Clear</strong> empties the console and removes the errors shown for the last run. It does not change whether the draft is validated: if the last run failed, the Validate tab goes back to showing the stored status. Validation runs are your own testing and are not counted in the agent's execution, cost or performance reports.</p>
 
 <h2>Why validation errors are not fixed by AI</h2>
-<p>The draft editor has Draft with AI, which can write and edit the agent. It would be easy to add a button that sends a failed validation to the AI. We deliberately do not.</p>
+<p>The draft editor has Draft with AI, which can write and edit the agent. It would be easy to add a button that sends a failed validation to the AI. We have deliberately left that out.</p>
 <p>A validation run is a real run against your own systems. Its output, trace and runtime errors carry whatever those systems returned: rows from your databases and bodies from your APIs; what your LLMs said, and the prompts that were sent to them; the validation query, and values such as the user's email address or cookies when the agent reads them; error messages, which often quote the value that caused them.</p>
 <p>Search2o does not send your agent's output to an LLM. Draft with AI receives the draft's definition, your request, the profiles the draft uses with their notes, and the account's allowlist, disallowed operators and available <code>sys</code> variables. Nothing produced by running the agent is included: no output, no trace, no runtime error, and no validation query. An automatic fix would have to break that, so it is not offered. Instead:</p>
 <ul>
