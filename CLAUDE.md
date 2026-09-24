@@ -5376,3 +5376,5 @@ checks your agent against." Rebuilt. FLAGGED, not changed: code-editor.html:79 s
 "Validation on the agent server has the final say" - python-expressions describes validation
 as the cloud's checks followed by the agent server's; the other "schema ... agent server"
 mentions in rest-api are the OpenAPI schema, a different thing, and are correct.
+Then Ram: line 79 says the cloud - "Validation in the cloud has the final say when you
+validate and publish." Rebuilt.
