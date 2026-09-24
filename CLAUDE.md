@@ -5307,3 +5307,13 @@ and config.js from the bucket - anything outside the site that loads /config.js 
 index.html:194 links demo.html#generate. demo.js selects its tab from location.hash (keys
 search / developer / generate; an unknown hash falls back to the first), so no page change was
 needed. The hero "Live demo" button and the nav still open the demo's default tab.
+
+## State on 2026-09-23 (header tagline shown on phones and tablets, under the wordmark; not deployed)
+Ram: the tagline did not appear on mobile (it was display:none <=900px). Beside the logo it
+cannot fit there: measured, at <=390 it pushes the theme toggle to a second row, and at
+641-900 (nav on the same row) the page scrolls sideways (817px at 700). So <=900px it now
+STACKS under the wordmark: styles.css `.brand { flex-direction: column; align-items:
+flex-start; gap: 5px }`, `.tagline { margin: 0; padding-left: 0; border-left: 0; font-size:
+12.5px }`; desktop (>900) unchanged, beside the logo on its baseline. Measured 360-1100: no
+sideways scroll; tablet header still 68px; phone header 150px (was 142); tagline left edge
+== logo left edge. Screenshot at 390 checked (dark).
