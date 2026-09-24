@@ -5454,3 +5454,5 @@ note ("On the Paid plan, these allowances are pooled ... Overages are rounded up
 next member."), and the marks were renumbered so they run * and ** with no gap: the four
 pooled rows keep <sup>**</sup> and the Paid price mark is <sup>**</sup> (was ***). Two
 footnotes remain. Flip the price mark back to *** if Ram wants his numbering literally.
+Then Ram: the ** marks on the four row labels are removed; the only marks left are * on
+Members and ** on the Paid price, each keyed to its footnote.
