@@ -5456,3 +5456,7 @@ pooled rows keep <sup>**</sup> and the Paid price mark is <sup>**</sup> (was ***
 footnotes remain. Flip the price mark back to *** if Ram wants his numbering literally.
 Then Ram: the ** marks on the four row labels are removed; the only marks left are * on
 Members and ** on the Paid price, each keyed to its footnote.
+Then Ram: the 16 open questions written to review-questions-2026-09-24.md at the repo root
+(untracked, beside the review md and csv): each with its CSV row, the text as it stands, the
+question, my suggestion and an "Answer:" line, plus the for-the-record items (group F,
+legal 144/145, index metas, $TOKEN samples).
