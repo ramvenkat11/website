@@ -5362,3 +5362,9 @@ unsupported by the repo: pasting a token at the start of a chat as a method, and
 streaming endpoint / GUI-link advice for long runs. 138 pages, 35 examples valid, links
 clean. FLAG: the repo README calls the docs section "Using Search2o from an assistant"; the
 section's title is "Skill integration" (Ram's repo - not edited).
+
+## State on 2026-09-24 (pricing: "description validation" removed; not deployed)
+Ram: remove it. html/pricing.html AI assistance row's small line is "drafting, doc questions";
+content/pricing_table.md follows. Swept docsrc, gen and the site pages: no other page speaks
+of validating a description (code-editor.html:4 says "the same description validation checks
+your agent against" - "description" there is the agent schema, a different sense).
