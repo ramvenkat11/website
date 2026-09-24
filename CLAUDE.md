@@ -5407,3 +5407,9 @@ Skill integration card still promised the retired Operating notes page (now "wha
 does, what Search2o adds to it, and how to install it"); rebuilt. Nothing else changed -
 Ram picks what to fix. Reviewer claims NOT adopted: "the agent server publishes the schema"
 (Ram said the cloud, 09-24).
+Then Ram: write the findings to a CSV so he can give a fix for each without opening the docs.
+review-2026-09-24.csv at the repo root (untracked, alongside the md): 146 rows, columns id /
+group / section / where / finding / current text on the page (the cited lines' visible text,
+pulled from the files by <scratchpad>/mkcsv.py; table rows for group F from the built html)
+/ suggested fix (filled for A, B and the C list) / your decision (empty). The generator and
+suggest.py live in the session scratchpad; the md stays the readable version.
