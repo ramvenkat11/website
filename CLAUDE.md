@@ -5368,3 +5368,11 @@ Ram: remove it. html/pricing.html AI assistance row's small line is "drafting, d
 content/pricing_table.md follows. Swept docsrc, gen and the site pages: no other page speaks
 of validating a description (code-editor.html:4 says "the same description validation checks
 your agent against" - "description" there is the agent schema, a different sense).
+
+## State on 2026-09-24 (agent editor: the schema is published by the cloud; not deployed)
+docsrc/development/code-editor.html:4 now reads Ram's sentence: "The editor learns the agent
+language from the agent schema that the cloud publishes: the same schema that validation
+checks your agent against." Rebuilt. FLAGGED, not changed: code-editor.html:79 still says
+"Validation on the agent server has the final say" - python-expressions describes validation
+as the cloud's checks followed by the agent server's; the other "schema ... agent server"
+mentions in rest-api are the OpenAPI schema, a different thing, and are correct.
