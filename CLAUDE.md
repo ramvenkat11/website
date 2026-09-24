@@ -5447,3 +5447,10 @@ links (allowlist.html:87, html/index.html:228) follow. 138 pages, 35 examples va
 broken links/anchors, banned-word sweep clean. OPEN, awaiting Ram: items 4, 7, 32, 33, 39/49,
 40, 41 (Community), 50, 56, 58, 61 (index:108), 78, 92, 119 (British spelling), 126, 144-146
 (legal), the F group (model docstrings in search2o/s2oserver), index.html metas (116).
+
+## State on 2026-09-24 (pricing: two footnotes, the pooled note merged into the overage note; not deployed)
+Ram: remove the ** footnote and add it to the ***. The ** note's text now opens the overage
+note ("On the Paid plan, these allowances are pooled ... Overages are rounded up to the
+next member."), and the marks were renumbered so they run * and ** with no gap: the four
+pooled rows keep <sup>**</sup> and the Paid price mark is <sup>**</sup> (was ***). Two
+footnotes remain. Flip the price mark back to *** if Ram wants his numbering literally.
