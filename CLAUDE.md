@@ -5460,3 +5460,17 @@ Then Ram: the 16 open questions written to review-questions-2026-09-24.md at the
 (untracked, beside the review md and csv): each with its CSV row, the text as it stands, the
 question, my suggestion and an "Answer:" line, plus the for-the-record items (group F,
 legal 144/145, index metas, $TOKEN samples).
+
+## State on 2026-09-24 (Skills + Search2o: Ram's four points as a bullet list; not deployed)
+Ram's four points (small discovery responses / reusable workflows / contained execution /
+central visibility) are on docsrc/skill-integration/overview.html in the "Skills + Search2o
+architecture" section, as a four-item list introduced by "Four things follow from that
+arrangement." It REPLACES the paragraph "Claude Code sees the request and the agent's
+output. Everything in between ... stays inside Search2o. ... Every run is recorded by agent,
+version and person." - its facts moved into the Contained execution and Central visibility
+bullets, and "Conversation state is encrypted and saved for follow-up requests." stands as
+its own line after the list. Wording departures from his text: "Claude" is "Claude Code"
+(the page's rule - the closing line covers other assistants), his em dash is a semicolon,
+and "not intermediate steps" is spelled out as "API responses, database rows and agent
+variables stay inside Search2o". "Administrators can monitor" kept as he wrote it. Rebuilt,
+138 pages.
