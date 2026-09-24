@@ -5474,3 +5474,27 @@ its own line after the list. Wording departures from his text: "Claude" is "Clau
 and "not intermediate steps" is spelled out as "API responses, database rows and agent
 variables stay inside Search2o". "Administrators can monitor" kept as he wrote it. Rebuilt,
 138 pages.
+
+## State on 2026-09-24 (Skills + Search2o REWRITTEN as one argument; not deployed)
+Ram: the page had lost its flow (each paragraph from a different instruction); rewrite it
+coherently around context bloat avoided by dynamic discovery, and repeatable workflows
+saving tokens. docsrc/skill-integration/overview.html is now: lead (one skill reaches every
+published agent; Claude Code chooses which agent runs, it does not write what runs);
+h2 Current architectures - MCP servers (tool definitions take room in the context before a
+request begins, the room grows with every server; code written at run time with the person's
+access; the same request tomorrow is routed and written again) and agent gateways (checks
+the calls; context, routing and code remain Claude Code's), then the two-row figure;
+h2 Skills + Search2o architecture - the third arrangement paragraph (skill carries no list
+of agents, no knowledge of your systems), the skill-flow figure, "Four things follow from
+that arrangement." and FOUR h3s: Discovery without context bloat (search returns names and
+titles, at most three lines for ten or a thousand agents, no model tokens, a definition
+never loads into Claude Code); Repeatable workflows, fewer tokens (fixed definition,
+validated, versioned; invoked, not generated, so the code-writing tokens are not spent and
+the workflow repeats; each step uses the developer's LLM); Contained execution (agent
+server, controlled runtime link, credentials out of Claude Code's context, only the output
+returns, local code cannot reach the systems); Central visibility (every run recorded;
+administrators monitor executions and LLM costs in the reports, link). Closing: Agent
+Skills the interface, Search2o the execution; conversation state saved so a follow-up
+continues; the Cursor line. 565 words. NOT said, on purpose: how search works ("not an LLM
+call" was cut to "costs no model tokens"); the bullet list from the earlier note is gone.
+No inbound anchor links to the page existed. Rebuilt, 138 pages.
