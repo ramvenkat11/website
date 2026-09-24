@@ -98,7 +98,14 @@ p { margin: 0; }
 .brand .logo-light { display: var(--logo-light); }
 .brand .logo-dark { display: var(--logo-dark); }
 .tagline { margin: 0 0 -2px 16px; padding-left: 16px; border-left: 1px solid var(--line); font-size: 13px; line-height: 1; font-weight: 500; color: var(--muted); white-space: nowrap; }
-@media (max-width: 900px) { .tagline { display: none; } }
+@media (max-width: 900px) {
+  .docs .brand { flex-direction: column; align-items: flex-start; gap: 5px; }
+  .docs .tagline { margin: 0; padding-left: 0; border-left: 0; font-size: 12.5px; }
+}
+@media (max-width: 359px) {
+  .brand { flex-direction: column; align-items: flex-start; gap: 5px; }
+  .tagline { margin: 0; padding-left: 0; border-left: 0; font-size: 12.5px; }
+}
 .site-nav { display: flex; align-items: center; gap: 2px; margin-left: auto; }
 .navlink {
   padding: 8px 12px; border-radius: 9px;
@@ -734,6 +741,11 @@ p { margin: 0; }
   .section { padding: 68px 0; border-top: 1px solid var(--line); }
   .section.soft { border-color: var(--line); border-bottom: 0; }
 }
+@media (max-width: 767px) {
+  .header-row { flex-wrap: wrap; gap: 6px 14px; padding-block: 10px; }
+  .site-nav { order: 3; width: 100%; margin-left: 0; flex-wrap: wrap; }
+  .theme-toggle { margin-left: auto; }
+}
 @media (max-width: 640px) {
   .cg { grid-template-columns: 1fr; gap: 4px; }
   .plans, .plans thead, .plans tbody { display: block; }
@@ -752,16 +764,12 @@ p { margin: 0; }
   .arch-org-lbl, .arch-cloud-lbl { position: static; transform: none; display: inline-block; margin: 0 0 12px; justify-self: start; }
   .arch-org { padding-top: 16px; }
   .arch-node.cloud { padding-top: 16px; }
-  .header-row { flex-wrap: wrap; gap: 6px 14px; padding-block: 10px; }
-  .site-nav { order: 3; width: 100%; margin-left: 0; flex-wrap: wrap; }
-
   .demo-search, .demo-search span { white-space: normal; overflow-wrap: anywhere; }
   .demo-row, .demo-form { flex-wrap: wrap; }
 
   .arch-row { grid-template-columns: minmax(0, 1fr); }
   .arch-hlink, .arch-sys::before, .arch-branch::before, .arch-branch::after { display: none; }
   .arch-sys { display: flex; flex-wrap: wrap; gap: 6px; padding-left: 0; margin-top: 10px; }
-  .theme-toggle { margin-left: auto; }
   .header-cta { display: none; }
   .cardgrid, .form-grid { grid-template-columns: 1fr; }
   .footer-main { flex-direction: column; gap: 32px; }
