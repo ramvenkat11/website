@@ -5387,3 +5387,23 @@ muted-mark rule is `.plans th sup` (was tbody-only) so the header mark matches t
 marks. content/pricing_table.md predates the third footnote and was left as is.
 Then Ram: swap the AI assistance and Long-term memory rows - AI assistance now follows
 Searches, Long-term memory follows it (pricing.html:65-66).
+
+## State on 2026-09-24 (FULL PROOFREAD of site + docs + tables + legal: findings in review-2026-09-24.md; not deployed)
+Ram: go through the entire website and docs and point out anything incorrect, embarrassing,
+bad grammar or non-native. Nine parallel reviewers (site+intro+getting-started; agent-
+definition/execution/profiles/llm; commands/reports/support; development/runtime; search/
+security/gui; system-management/rest-api; chat/skill; legal; the 86 generated tables
+extracted to text). 146 consolidated findings in review-2026-09-24.md at the repo root
+(UNTRACKED - Ram's to keep or delete; NOT under html/, so the deploy never sees it), in
+seven groups: A wrong/contradictory (45), B embarrassing/leftovers, C house vocabulary,
+D grammar/usage, E consistency, F model docstrings (search2o/s2oserver - not this repo),
+G legal. VERIFIED against code myself: api-profiles.html:6 header merge is WRONG (a command
+header replaces only an `override` profile header, else the call fails; adding needs
+canAddHeaders); python-expressions.html:63 "four nested comprehensions" is ALLOWED (refused
+is > 4); search-quality.html:31 "both are 100-agent catalogues" is wrong (university = 50).
+TWO OF MY OWN LEFTOVERS FIXED in the same pass: html/demo.html og:image pointed at the
+moved /logo.png (now images/og.png + width/height/alt/twitter:card); docsrc/index.html
+Skill integration card still promised the retired Operating notes page (now "what the skill
+does, what Search2o adds to it, and how to install it"); rebuilt. Nothing else changed -
+Ram picks what to fix. Reviewer claims NOT adopted: "the agent server publishes the schema"
+(Ram said the cloud, 09-24).
