@@ -5568,3 +5568,11 @@ rewrite (the heading and the lead's context make the platform clear; flagged).
 ## State on 2026-09-24 (hero bullet 1 ends "not a skill per API/MCP."; not deployed)
 Ram: "API/MCP". index.html:77. Four characters longer than the measured 422px, well
 inside the 489px line.
+
+## State on 2026-09-24 (hero bullet 2: "Agents run on your servers. Laptops need no enterprise access."; not deployed)
+Ram's point: only the agent servers need network access to enterprise systems, not
+people's laptops - a security advantage; "not on laptops" alone read abrupt without saying
+that agents run on servers. Picked option 1 of five measured (470px of 489, one line).
+The three hero-more bullets now: One skill discovers agents dynamically, not a skill per
+API/MCP. / Agents run on your servers. Laptops need no enterprise access. / Claude's
+context holds results, not tool definitions or agent code.
