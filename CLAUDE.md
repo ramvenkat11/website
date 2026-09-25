@@ -5636,6 +5636,6 @@ catalogues of up to 1,000 agents." ("agetns" -> agents; "1000" -> 1,000 as elsew
 the page; "ms" -> milliseconds as the paragraph already did); "...under a second, including
 the network hops. Search2o Cloud is currently served from the US East, and we will expand
 to other regions as demand grows." ("areas" -> regions, matching license.html's line; "the
-US East" as there). Rebuilt. NOTE: the Speed TABLE above the paragraph still carries the
-old figures (server-side up to ~120 agents / at 1,000 / throughput) - not touched; and the
-home page and how-matching-works say "less than 0.5 seconds", consistent with 300 ms.
+US East" as there). Rebuilt. "How fast it is" is that one paragraph - there is NO speed table on the
+page (the tables went with the 09-22 rewrite; I wrongly told Ram one remained). The home
+page and how-matching-works say "less than 0.5 seconds", consistent with 300 ms.
