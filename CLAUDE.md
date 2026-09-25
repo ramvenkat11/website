@@ -5581,3 +5581,19 @@ context holds results, not tool definitions or agent code.
 Ram: bullet 2 ("Agents run on your servers. Laptops need no enterprise access.") stays as
 is for now (ten alternatives for the second sentence were measured and offered, none
 taken). Bullet 1 is back to "not a skill per API." (index.html:77) - the "/MCP" removed.
+
+## State on 2026-09-24 (hero card restored to the left column's height; not deployed)
+Ram: the card had been made short by trimming its content; make it as tall as the (now
+longer) left column, with more content and looser spacing. CONTENT (index.html): the ask
+reads "UA1191: out Tuesday 08:05, back 18:30, $640 on the company card. <b>Book it?</b>"
+(the bold question is back), the booking reply "Booked UA1191 for Tuesday. The confirmation
+is in your inbox." (the inbox line is back), the expense reply "Filed the New York trip,
+$640, against your cost center. Sent to your manager for approval." ($640 appears twice
+now - once in the offer, once in the filing - the 09-17 no-repeat ruling was about the
+whole flight-and-hotel phrase; flagged). Still a day trip, no hotel. SPACING (styles.css
+.hero-convo overrides): title 11px 18px, body 22px/22/26 bottom with gap 16, turn-agent
+gap 8, msg 12px 14px, turn-user 10px 14px, ask 12px 14px gap 8px 10px, pills 4px 10px.
+MEASURED at 1920: card bottom - left column bottom = +0.2px (was -146), card top still 158
+(anchor unchanged), card 540px; 390: card 654, no sideways scroll. Zoomed crop checked
+(dark). The 4px bottom padding is the fine-tune - any change to the left column's text
+moves the target again.
