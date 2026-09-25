@@ -41,7 +41,6 @@ decides how many runs fit. These are the medians we measured with small fast mod
 | gemini-3.6-flash | 3.9s |
 | gpt-5-mini | 4.5s |
 
-A model at 1.5s per run fills an agent server with three times as many runs as one at 4.5s.
 
 Agents that stream their answers hold a connection for the life of the run, so a deployment that
 streams heavily holds fewer runs at the same time than these figures suggest.
@@ -49,8 +48,9 @@ streams heavily holds fewer runs at the same time than these figures suggest.
 ## Raise the API connection pool if your agents call anything
 
 This is the pool the agents themselves use, for calls to language models and to your own services.
-Its default of 20 connections is far too small for that work, because each waiting run holds a
-connection for the whole call. Twenty connections therefore serve about twenty runs.
+The default of 20 connections suits an agent server that mostly computes. When agents call
+anything, size the pool above the number of runs at once, because each waiting run holds a
+connection for the whole call. Twenty connections serve about twenty runs.
 
 In our tests, 100 model-calling runs at the same time gave **1 run per second and 82 failures** on
 the default pool, and **24 runs per second with no failures** on a wide one. Size the pool above the

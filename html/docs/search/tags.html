@@ -56,9 +56,9 @@
 <h2 id="using-tags">Using tags</h2>
 <p>Give agents a tag to put them in a separate pool: <code>corporate</code> for internal-only agents, <code>support</code> for the help desk, <code>pilot</code> for agents under evaluation. The search box searches the tag chosen in <a href="search-settings.html">Search settings</a>. An agent that uses the <code>search</code> command names the tag the command should search. An agent's tag is changed from the agent's page, and the change is live at once.</p>
 
-<h2 id="letting-users-pick-a-catalogue">Letting users pick a catalogue</h2>
-<p>The <a href="../rest-api/search.html"><code>search</code></a> call of the REST API takes a <code>tag</code>, so an interface of your own can offer tags to its users, as a drop-down of catalogues for example, or search every tag with an empty string. Without a tag, the tag in the <a href="search-settings.html">Search settings</a> applies.</p>
-<p>An <a href="../skill-integration/overview.html">agent skill</a> searches the same way: the skill's search call can name a tag, so a company can install one skill per catalogue &mdash; one for support agents, one for finance agents &mdash; each searching its own tag. See <a href="../skill-integration/installing-the-skill.html#tag-scoping">Tag scoping</a>.</p>
+<h2 id="letting-users-pick-a-catalog">Letting users pick a catalog</h2>
+<p>The <a href="../rest-api/search.html"><code>search</code></a> call of the REST API takes a <code>tag</code>, so an interface of your own can offer tags to its users, as a drop-down of catalogs for example, or search every tag with an empty string. Without a tag, the tag in the <a href="search-settings.html">Search settings</a> applies.</p>
+<p>An <a href="../skill-integration/overview.html">agent skill</a> searches the same way: the skill's search call can name a tag, so a company can install one skill per catalog &mdash; one for support agents, one for finance agents &mdash; each searching its own tag. See <a href="../skill-integration/installing-the-skill.html#tag-scoping">Tag scoping</a>.</p>
 
 <h2 id="shape">Shape</h2>
 <p>A tag is up to 16 characters of lowercase letters, digits and underscores: <code>general</code>, <code>hr_internal</code>, <code>eu_support</code>.</p>
@@ -66,7 +66,7 @@
     </article>
     <nav class=prevnext><a class=prev href='../search/how-matching-works.html'><small>Previous</small>How matching behaves</a><a class=next href='../search/search-settings.html'><small>Next</small>Search settings</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#the-general-tag'>The general tag</a></li><li class=l2><a href='#using-tags'>Using tags</a></li><li class=l2><a href='#letting-users-pick-a-catalogue'>Letting users pick a catalogue</a></li><li class=l2><a href='#shape'>Shape</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#the-general-tag'>The general tag</a></li><li class=l2><a href='#using-tags'>Using tags</a></li><li class=l2><a href='#letting-users-pick-a-catalog'>Letting users pick a catalog</a></li><li class=l2><a href='#shape'>Shape</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

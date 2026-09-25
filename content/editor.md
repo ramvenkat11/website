@@ -65,7 +65,7 @@ Choosing a command inserts it **ready to fill in**, not just its name:
 
 ## Suggestions as you type
 
-Everywhere else a key belongs, the editor shows the next likely key as **grey text** ahead of the
+Everywhere else a key belongs, the editor shows the next likely key as **gray text** ahead of the
 cursor. Press **Tab** or **Enter** to accept it, or keep typing to ignore it.
 
 - **Inside a function:** `description`, `args`, `commands` and `onError`.
@@ -121,7 +121,7 @@ location. See the **Validating a draft** page.
 - **Expressions stand out.** A value written as a Python expression, like `"{ total + 1 }"`, is shown
   with bold braces and its contents in a monospace font, so expressions are easy to tell apart from
   plain text values.
-- **Matching brackets share a colour**, and **indent guides** show how blocks nest.
+- **Matching brackets share a color**, and **indent guides** show how blocks nest.
 - **Folding.** Collapse a function or command with the arrow beside its line number.
 - **The editor grows with the definition** rather than scrolling inside a box. The page scrolls
   instead.
@@ -173,5 +173,5 @@ The toolbar above the editor holds every action. Hover over a button to see its 
   command list describes each command, and the Docs page answers questions about the language.
 - **No suggestions for values from your account.** Profile names, secret names and functions on your
   expression allowlist are not suggested; you type them. Validation checks that each one exists.
-- **It does not decide what is valid.** The editor is a first line of defence. The compiler on the
+- **It does not decide what is valid.** The editor is a first line of defense. The compiler on the
   agent server has the final say when you validate and publish.

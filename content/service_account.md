@@ -36,7 +36,7 @@ Search2o has two kinds of long-lived credential. Use the one that matches what t
    a real address, it must not already belong to a user.
 5. Select **Create**.
 
-The key appears in a highlighted panel at the top of the list, labelled with the service
+The key appears in a highlighted panel at the top of the list, labeled with the service
 account's name.
 
 **Copy the key now. It is shown only this once and is stored nowhere in Search2o.** Select
@@ -85,7 +85,7 @@ Rotate a key when it has been lost, when it may have been exposed, or as routine
 1. In the list, select **Rotate key** on the service account's row.
 2. Confirm. **The current key stops working immediately**, so anything still using it is
    refused until it is given the new one.
-3. The new key appears in the panel, labelled **New key for** the service account. Copy it,
+3. The new key appears in the panel, labeled **New key for** the service account. Copy it,
    as when the account was created, and update the program.
 
 A service account has one key at a time. If a program must keep running without a gap,

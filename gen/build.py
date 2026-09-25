@@ -47,7 +47,7 @@ sys.path.insert(0, str(ROOT / "gen"))
 from toc import TOC  # noqa: E402
 import figures  # noqa: E402
 
-from pydantic import BaseModel  # noqa: E402
+from pydantic import BaseModel, RootModel  # noqa: E402
 from pydantic_core import PydanticUndefined  # noqa: E402
 
 from models import agentmodels, systemconfig, schemaobjects, reportmodels  # noqa: E402
@@ -199,7 +199,7 @@ def command_model(alias: str) -> type[BaseModel] | None:
     _, field = _COMMAND_FIELDS[alias]
     t = field.annotation
     for cand in (t, *get_args(t)):
-        if isinstance(cand, type) and issubclass(cand, BaseModel):
+        if isinstance(cand, type) and issubclass(cand, BaseModel) and not issubclass(cand, RootModel):
             return cand
     return None
 

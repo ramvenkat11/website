@@ -57,7 +57,6 @@
   <li><code>ask</code> and <code>invoke</code> cannot go inside a <code>for</code> loop or an <code>onError</code> block. When the work needs them, the AI uses a <code>while</code> loop, or has the handler set a variable and asks afterwards.</li>
   <li>A function used as a tool cannot <code>end</code>. The AI uses <code>fail</code>, or returns a value for the LLM to explain.</li>
   <li>An agent runs again on every turn. <code>agent.</code> and <code>conv.</code> variables carry over, and a variable that was never set is read safely.</li>
-  <li>An <code>ask</code> that always runs could never finish validation, so the AI guards it.</li>
 </ul>
 <p><strong>Your current draft.</strong> Every request edits the draft you have open. The AI keeps every function, command, name, expression and comment that your request does not touch, exactly as you wrote them. It changes only what you asked for, and leaves working parts in your style. On a new, empty draft, it builds the agent from scratch.</p>
 <p><strong>This account's configuration.</strong></p>

@@ -53,7 +53,7 @@
 <h2 id="the-request">The request</h2>
 <p><code>query</code> is the user's text. <code>tag</code> is optional: omit it to use the tag in the <a href="../search/search-settings.html">Search settings</a>, send an empty string to search every tag, or name a tag to search only that tag.</p>
 <figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>curl -s -X POST http://127.0.0.1:9020/api/exec/search \
-    -H <span class=str>&quot;Authorization: Bearer $TOKEN&quot;</span> -H <span class=str>&quot;Content-Type: application/json&quot;</span> \
+    -H <span class=str>&quot;Authorization: Bearer $SEARCH2O_SERVICE_KEY&quot;</span> -H <span class=str>&quot;Content-Type: application/json&quot;</span> \
     -d <span class=str>&#x27;{&quot;query&quot;: &quot;how many vacation days do I have left&quot;}&#x27;</span>
 {<span class=str>&quot;success&quot;</span>: true,
  <span class=str>&quot;searchResults&quot;</span>: [{<span class=str>&quot;agentName&quot;</span>: <span class=str>&quot;hr_policy&quot;</span>, <span class=str>&quot;agentTitle&quot;</span>: <span class=str>&quot;HR policies and entitlements&quot;</span>}],

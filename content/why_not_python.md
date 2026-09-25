@@ -10,6 +10,6 @@ The platform can check what a program cannot know about itself. An `ask` command
 
 Every profile, whether LLM, MCP, prompt, API or database, knows which agents use it, and cannot be deleted while one does.
 
-Administrators set limits once. Every agent obeys them. Developers write only the agent logic.
+Developers set limits once, and every agent obeys them. An agent carries only its own logic.
 
 Python is still inside every command, doing what it is good at: computing. Every expression is parsed and checked before publication. The structure around it does everything else.

@@ -10,15 +10,13 @@ takes the suggestion.
 docsrc/introduction/why-not-python.html:7 — "Administrators set limits once. Every agent
 obeys them. Developers write only the agent logic."
 
-Wrong. Developers set them. Admins set only 
-
 docsrc/introduction/what-is-search2o.html:11 and runtime/overview.html:33-36 say the
 allowlist, compile rules and runtime limits belong to the developer role.
 
 Question: which is right? Suggestion: "Developers set limits once." on Why not Python. If
 administrators own them, the runtime pages change instead.
 
-Answer:
+Answer: Wrong. Developers set them.
 
 ## 2. Draft with AI and `ask` (row 7)
 
@@ -30,7 +28,7 @@ and the developer answers it in the GUI.
 
 Question: what does Draft with AI actually do with asks? Suggestion: delete the sentence.
 
-Answer:
+Answer: Delete the sentence
 
 ## 3. Passwords in a Slack form (row 33)
 
@@ -45,7 +43,7 @@ Suggestion: one rule on all three pages — a form may carry a password field, b
 shows it in plain text, so the Slack prompt sends the person to the GUI for a password input,
 as the skill does.
 
-Answer:
+Answer: This is a slack issue, right. We can leave it as is, for now. No testing has been done on chat integrations. 
 
 ## 4. The "Executing code from an LLM" page (rows 39, 49)
 
@@ -58,7 +56,7 @@ toc title is "Executing code from an LLM".
 Question: retire the page, or cut it to the tool-calling advice under a title such as "Tool
 calling instead of generated code"? Either way the section lead and toc title follow.
 
-Answer:
+Answer: It can stay for now
 
 ## 5. Getting started h1 (row 40)
 
@@ -68,7 +66,9 @@ the laptop; the production and team steps were removed.
 Suggestion: "Up and running on your laptop" (the title you used on 09-07) or "From install to
 your first search".
 
-Answer:
+Answer: From install to your first search
+
+Also this page should mention the search2o-skill at the end. 
 
 ## 6. "Community" support on the Free plan (row 41)
 
@@ -77,7 +77,7 @@ on the site or in the docs; the docs say support is the help icon and info@searc
 
 Question: is a community channel planned? If not, "Email" or "Help icon".
 
-Answer:
+Answer: During beta they get email support also - but no need to mention this. Just leave it as is. 
 
 ## 7. Sizing sentence (row 32)
 
@@ -89,7 +89,7 @@ times as many runs at once. Question: which quantity did you mean? Suggestion: "
 throughput, a model that answers in 1.5 s keeps a third as many runs in flight as one that
 takes 4.5 s."
 
-Answer:
+Answer: Don't understand. This is someething you wrote. 
 
 ## 8. "Far too small" (row 50)
 
@@ -101,7 +101,7 @@ connections suits an agent server that mostly computes. When agents call anythin
 pool above the number of runs at once, because each waiting run holds a connection for the
 whole call."
 
-Answer:
+Answer: ok
 
 ## 9. Home Platform card (row 56)
 
@@ -110,7 +110,7 @@ on the next agent run. A running agent keeps running with the old configuration.
 
 The first sentence has no subject. Suggestion: "Agent servers never need a restart."
 
-Answer:
+Answer: ok
 
 ## 10. Demo page h1 (row 58)
 
@@ -119,7 +119,7 @@ that executes", so the phrase appears twice within a few lines.
 
 Suggestion: change the h1, e.g. "Try Search2o three ways".
 
-Answer:
+Answer: ok
 
 ## 11. Home page Search line (row 61)
 
@@ -129,7 +129,7 @@ returns results in under a second — see search quality."
 
 Your line. It describes the mechanism ("builds an index"), which the docs avoid. Leave?
 
-Answer:
+Answer: Leave it. I talk about the index deliberately as people need to understand that this is not LLM doing the matching. 
 
 ## 12. "The US East" (row 78)
 
@@ -139,7 +139,7 @@ East. You will see the lowest latency if you run the agent server in the US East
 Your wording. "The US East" is not a place name in English. Suggestion: "the eastern United
 States" or "the US East region" (both places).
 
-Answer:
+Answer: the US East region
 
 ## 13. How the editor shows an expression (row 92)
 
@@ -150,7 +150,15 @@ font."
 The whole editor is monospace, so the distinction does not read. Question: what does the
 editor actually do to an expression (a colour, a weight)?
 
-Answer:
+Answer: 
+
+- Monospace type at 13px, so the value reads as code rather than prose.
+- A petrol tint: border at 45% primary, background at 5% primary (9% in dark mode).
+- A 3px accent stripe on the left edge, at 80% primary.
+- A { } glyph watermark inside the right edge, drawn as an inline SVG background image. Light mode uses the light primary teal #0d7d72, dark mode the dark primary #63c1b4. The input gets 42px of right padding so typed text never  
+  runs under the glyph.
+
+The rule is deliberately unlayered so it beats the Tailwind utility classes on the same element.
 
 ## 14. British or American spelling (row 119)
 
@@ -162,7 +170,7 @@ organization.
 "catalogue" appears about thirty times in the search-quality text. Question: standardise on
 American? Yes/no.
 
-Answer:
+Answer: Everything in the web pages and docs MUST use american spelling. 
 
 ## 15. Can the owner send a help message? (row 126)
 
@@ -172,7 +180,7 @@ can ask."
 
 Question: can the owner also send a help message? If yes, support.html adds the owner.
 
-Answer:
+Answer: Yes, the owner also
 
 ## 16. Northern Virginia (row 117)
 
@@ -182,22 +190,30 @@ Every footer says "Virginia, USA".
 
 You left this once before. Leave again, or change About to "Virginia"?
 
-Answer:
+Answer: This discrepancy is fine. 
 
 ## For the record, not questions
 
 - Group F (14 rows): docstrings in the search2o / s2oserver models — the api `headers`
-  docstring still says `secret(...)`, `profile` still says "Either this or 'url'", the
-  `return` command's table has one empty row named "root", the encryption `keys` docstring
-  still says only three months of keys need keeping, "UI" and "the Search2o cloud" in several
-  docstrings, missing units on the numeric limits. Not editable from this repo.
+  docstring still says `secret(...)` - fix. This should be secret[], 
+- `profile` still says "Either this or 'url'", fix
+- 
+  `return` command's table has one empty row named "root", - What is this?
+- the encryption `keys` docstring
+  still says only three months of keys need keeping - Remove that
+- "UI" and "the Search2o cloud" in several
+  docstrings, missing units on the numeric limits. Not editable from this repo. - What are you talking about?
+- 
 - Rows 144 and 145: the Terms send every dispute to arbitration while the License sends
   Software disputes to court (License §18 has a conflict rule); the License's no-third-party
   clause has no carve-out for the people it indemnifies, where the Terms have one. A lawyer's
-  call.
+  call. - Ignore legal stuff
+- 
 - Row 116: html/index.html:8 and :10, the meta and og descriptions, still say "built around a
   search interface"; the hero, footer and og:image alt say "with a search interface". Say
-  the word and they match.
+  the word and they match. Everything should say "with a"
+
 - Row 125: the REST samples use $TOKEN on search.html and running-agents.html and
   $SEARCH2O_SERVICE_KEY on authentication.html and service-accounts.html for the same header.
   Left as is.
+Use one consistently - TOKEN is vague

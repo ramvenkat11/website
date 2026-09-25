@@ -121,8 +121,8 @@ showing the error.
 
 ## Letting the person choose
 
-When the behaviour says to show the results, show them as buttons. One button per agent,
-labelled with the agent title. Search returns at most three, so they fit in a single row.
+When the behavior says to show the results, show them as buttons. One button per agent,
+labeled with the agent title. Search returns at most three, so they fit in a single row.
 
 Four things make a picker work properly.
 
@@ -136,7 +136,7 @@ click starts a second conversation on the same question. Show which agent was ch
 Accept the click only from the person who asked. In a channel anybody can click. A click from
 somebody else would run that question under their account and put it in their history.
 
-Let the behaviour decide whether to show a picker at all. Do not invent a rule of your own.
+Let the behavior decide whether to show a picker at all. Do not invent a rule of your own.
 
 ## Running an agent
 

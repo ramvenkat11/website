@@ -20,11 +20,10 @@ agent runs at the same time  =  50 per second  x  seconds per run
 <tr><td><code>gemini-3.6-flash</code></td><td>3.9s</td></tr>
 <tr><td><code>gpt-5-mini</code></td><td>4.5s</td></tr>
 </tbody></table></div>
-<p>A model at 1.5s per run fills an agent server with three times as many runs as one at 4.5s.</p>
 <p>Agents that stream their answers hold a connection for the life of the run, so a deployment that streams heavily holds fewer runs at the same time than these figures suggest.</p>
 
 <h2>Raising the API connection pool if your agents call anything</h2>
-<p>This is the pool the agents themselves use, for calls to language models and to your own services. Its default of 20 connections is far too small for that work, because each waiting run holds a connection for the whole call. Twenty connections therefore serve about twenty runs.</p>
+<p>This is the pool the agents themselves use, for calls to language models and to your own services. The default of 20 connections suits an agent server that mostly computes. When agents call anything, the pool is best sized above the number of runs at once, because each waiting run holds a connection for the whole call. Twenty connections serve about twenty runs.</p>
 <p>In our tests, 100 model-calling runs at the same time gave <strong>1 run per second and 82 failures</strong> on the default pool, and <strong>24 runs per second with no failures</strong> on a wide one. The pool is best sized above the number of runs you expect at the same time. See <a href="../runtime/connection-pools.html">Connection pools</a>.</p>
 
 <h2>Leaving the cloud connection pool alone</h2>

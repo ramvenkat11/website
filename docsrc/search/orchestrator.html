@@ -1,8 +1,8 @@
-<p class="lead">An orchestrator is an agent that every request goes to. Instead of the interface searching for an agent and running it, the interface always runs the orchestrator, and the orchestrator finds and runs the other agents itself. One agent then stands in front of the whole catalogue, and everything that should happen to every request &mdash; a check, a split, a summary &mdash; is written once, in that agent.</p>
+<p class="lead">An orchestrator is an agent that every request goes to. Instead of the interface searching for an agent and running it, the interface always runs the orchestrator, and the orchestrator finds and runs the other agents itself. One agent then stands in front of the whole catalog, and everything that should happen to every request &mdash; a check, a split, a summary &mdash; is written once, in that agent.</p>
 
 <h2>How it works</h2>
 <p>An interface built on the REST API &mdash; a page of your own, a chat bot, an <a href="../skill-integration/overview.html">agent skill</a> &mdash; calls <a href="../rest-api/running-agents.html"><code>execAgent</code></a> with the orchestrator's name and the user's request. The interface never calls <code>search</code> itself. The bundled GUI searches and runs the match itself, so an orchestrator is used from an interface of your own.</p>
-<p>Inside the orchestrator, the <a href="../commands/search.html"><code>search</code></a> command matches the request to the agents in the catalogue, and the <a href="../commands/invoke.html"><code>invoke</code></a> command runs the best match. The invoked agent runs in the same conversation: what the invoked agent writes with <code>output</code> streams to the user as it runs, and the value the invoked agent returns with <code>return</code> comes back to the orchestrator as <code>result</code>. Every agent in the chain sees the conversation's <code>conv</code> variables, so an agent can build on what an earlier one left behind.</p>
+<p>Inside the orchestrator, the <a href="../commands/search.html"><code>search</code></a> command matches the request to the agents in the catalog, and the <a href="../commands/invoke.html"><code>invoke</code></a> command runs the best match. The invoked agent runs in the same conversation: what the invoked agent writes with <code>output</code> streams to the user as it runs, and the value the invoked agent returns with <code>return</code> comes back to the orchestrator as <code>result</code>. Every agent in the chain sees the conversation's <code>conv</code> variables, so an agent can build on what an earlier one left behind.</p>
 
 <x-code lang="jsonc" title="The smallest orchestrator: a check, a search, an invoke">
 "prompt": {
@@ -39,23 +39,23 @@
 <p>Search returns one, two or three agents when descriptions overlap or the request is ambiguous; see <a href="how-matching-works.html">How matching behaves</a>. The orchestrator can run the first match, ask the user to choose with <code>ask</code> and a <code>chooseOne</code> input, or let an LLM choose from the agents' titles.</p>
 
 <h3>Check the answer and speak with one voice</h3>
-<p>An invoked agent's <code>output</code> streams straight to the user. For an answer that is checked or summarised first, let the specialist agents <code>return</code> their results instead of writing output, and let the orchestrator compose the final answer with an LLM and write it with <a href="../commands/output.html"><code>output</code></a>. The orchestrator can then check a result against policy before the user sees it, join the results of several agents into one answer, or close with a summary. Every answer comes out in one voice, whichever agents produced it.</p>
+<p>An invoked agent's <code>output</code> streams straight to the user. For an answer that is checked or summarized first, let the specialist agents <code>return</code> their results instead of writing output, and let the orchestrator compose the final answer with an LLM and write it with <a href="../commands/output.html"><code>output</code></a>. The orchestrator can then check a result against policy before the user sees it, join the results of several agents into one answer, or close with a summary. Every answer comes out in one voice, whichever agents produced it.</p>
 
 <h3>Handle the request nobody covers</h3>
-<p>When search returns nothing, the orchestrator decides what happens: answer from an LLM directly, ask a clarifying question, or say what the catalogue covers. Without an orchestrator, that decision is left to the interface.</p>
+<p>When search returns nothing, the orchestrator decides what happens: answer from an LLM directly, ask a clarifying question, or say what the catalog covers. Without an orchestrator, that decision is left to the interface.</p>
 
 <h3>Confirm before acting</h3>
 <p>Before invoking an agent that sends, books or pays, the orchestrator can <code>ask</code> for confirmation. An invoked agent may ask too; the whole chain pauses on the question and continues with the answer.</p>
 
-<h3>Route by catalogue</h3>
-<p>The <code>search</code> command takes a <a href="tags.html">tag</a>, so the orchestrator can search one catalogue for one kind of request and another for the next, or choose the catalogue by who is asking when <a href="../runtime/system-variables.html"><code>sys.userEmail</code></a> is enabled.</p>
+<h3>Route by catalog</h3>
+<p>The <code>search</code> command takes a <a href="tags.html">tag</a>, so the orchestrator can search one catalog for one kind of request and another for the next, or choose the catalog by who is asking when <a href="../runtime/system-variables.html"><code>sys.userEmail</code></a> is enabled.</p>
 
 <h3>Remember</h3>
 <p>With the <a href="../commands/memory.html"><code>memory</code></a> command the orchestrator can keep what it learns about a user &mdash; a preferred office, a usual project &mdash; and pass it to the agents it invokes, across conversations.</p>
 
 <h2>What to keep in mind</h2>
 <ul>
-  <li>Each <code>search</code> is a round trip to Search2o Cloud, and each LLM call takes the model's time. A request that is checked, split, answered and summarised costs the sum of those steps.</li>
+  <li>Each <code>search</code> is a round trip to Search2o Cloud, and each LLM call takes the model's time. A request that is checked, split, answered and summarized costs the sum of those steps.</li>
   <li>The <a href="../reports/index.html">reports</a> record the orchestrator's run and every invoked agent's run, so what each agent did and cost stays visible.</li>
   <li>An agent cannot invoke itself or any agent already running in the chain, and <code>invoke</code> is not allowed inside a <code>for</code> loop or an <code>onError</code> block. See <a href="../commands/invoke.html">invoke</a>.</li>
 </ul>

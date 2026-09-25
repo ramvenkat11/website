@@ -22,7 +22,6 @@ it avoids writing what would be refused. For example:
   explain.
 - An agent runs again on every turn. `agent.` and `conv.` variables carry over, and one that
   was never set is read safely.
-- An `ask` that always runs could never finish validation, so it is guarded.
 
 **Your current draft.** Every request edits the draft you have open. The AI keeps every
 function, command, name, expression and comment that your request does not touch, exactly as

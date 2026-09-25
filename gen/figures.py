@@ -1,7 +1,7 @@
 """Illustrations for the docs, emitted as inline SVG so they take the page's light/dark tokens.
 
 A figure is referenced from a page body as <!--figure:NAME-->. Everything is drawn with a
-handful of primitives on a fixed-width canvas; colours are CSS variables from styles.css, so
+handful of primitives on a fixed-width canvas; colors are CSS variables from styles.css, so
 the same SVG is right in both themes and scales with the column.
 """
 from __future__ import annotations
