@@ -5516,3 +5516,20 @@ at 1920 the h2 is one line and the left column now ends 123px BELOW the card (be
 card hung 122px below the column); at 390 no sideways scroll, h2 two lines. No links in the
 new text (the docs skill page docs/skill-integration/overview.html is the obvious target
 for "One skill" - Ram picks). Screenshot checked (dark).
+
+## State on 2026-09-24 (hero second part reshaped like the first: heading, lead, three icon bullets; not deployed)
+Ram: link "One skill"; the two-paragraph block looked crowded - make it look like the first
+section, rewrite allowed. index.html .hero-more is now h2 "Put the same agents to work in
+Claude Code" / `p.sub` "Keep the agentic loop. Skip the context bloat." (muted) / a second
+`ul.hero-points` with three icon bullets (MY rewrite of his two paragraphs): "One skill
+discovers predefined agents through Search2o." (plug icon; "One skill" links
+docs/skill-integration/overview.html) / "Agents run on your servers in a controlled runtime,
+monitored." (shield icon) / "Claude receives only the outputs, not intermediate results."
+(inbox icon). DROPPED from his text in the rewrite: "from tool definitions, intermediate
+results, and runtime-generated workflows" (the bloat list - intermediate results survive in
+bullet 3, predefined agents cover runtime-generated workflows) and "real-time" before
+monitoring (one-line bullets; "monitored" alone). CSS: .hero-more margin-top 44 / padding-top
+36 over the hairline, .sub 15.5px --muted, the list margin-top 22; NEW `.hero-points a`
+(ink, w600, hairline underline offset 3px; hover --blue-ink) - the first site rule for a link
+inside the hero bullets. Measured at 1920: all three bullets one line, the left column ends
+146px below the card; 390: no sideways scroll. Zoomed crop checked (dark).
