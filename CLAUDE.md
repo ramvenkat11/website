@@ -5549,3 +5549,9 @@ All three bullets one line at 1920.
 Ram's line, verbatim (index.html:81) - the contrast with code that runs on the developer's
 laptop is the point. "in a controlled runtime" and "monitored" left the bullet with it (44
 characters, one line without measuring).
+
+## State on 2026-09-24 (hero bullet 3: "Claude's context holds results, not tool definitions or agent code."; not deployed)
+Ram picked option 1 of six measured wordings (476px of the bullet's 489, one line; the
+"X, not Y" shape of bullet 2). The three hero-more bullets: One skill discovers predefined
+agents through Search2o. / Agents run on your servers, not on laptops. / Claude's context
+holds results, not tool definitions or agent code.
