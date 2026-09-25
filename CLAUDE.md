@@ -5622,3 +5622,9 @@ two replies unchanged. MEASURED at 1920: request one line, card bottom - left co
 bottom = +0.4px, card top 158, card 540; 390: no sideways scroll. Zoomed crop checked
 (dark). "trip" in the request is deliberate - the reply books a flight and a hotel, so
 "flight" would have been the same inconsistency.
+
+## State on 2026-09-24 (hero: "One skill" links the GitHub repo; not deployed)
+Ram: "One skill" takes them to github.com/Search2o/search2o-skill (index.html:77,
+target=_blank rel=noopener like the other external links on the page) instead of the docs'
+Skills + Search2o page. The docs page is still reachable from the architecture step's
+"agent skill" link.
