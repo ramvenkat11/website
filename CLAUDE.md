@@ -5576,3 +5576,8 @@ that agents run on servers. Picked option 1 of five measured (470px of 489, one 
 The three hero-more bullets now: One skill discovers agents dynamically, not a skill per
 API/MCP. / Agents run on your servers. Laptops need no enterprise access. / Claude's
 context holds results, not tool definitions or agent code.
+
+## State on 2026-09-24 (hero: "per API" again; bullet 2 stays; not deployed)
+Ram: bullet 2 ("Agents run on your servers. Laptops need no enterprise access.") stays as
+is for now (ten alternatives for the second sentence were measured and offered, none
+taken). Bullet 1 is back to "not a skill per API." (index.html:77) - the "/MCP" removed.
