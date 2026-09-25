@@ -5639,3 +5639,10 @@ to other regions as demand grows." ("areas" -> regions, matching license.html's 
 US East" as there). Rebuilt. "How fast it is" is that one paragraph - there is NO speed table on the
 page (the tables went with the 09-22 rewrite; I wrongly told Ram one remained). The home
 page and how-matching-works say "less than 0.5 seconds", consistent with 300 ms.
+
+## State on 2026-09-24 (What Search2o adds: agent versioning bullet; not deployed)
+Ram: add agent versioning. docsrc/skill-integration/what-search2o-provides.html gains a
+bullet after "Validated before anyone runs it.": "<strong>Versioned.</strong> Every publish
+creates a new version of the agent (link publishing.html#versions), and every run is
+recorded against the version that ran." (both facts already on publishing.html and the
+skills overview); the lead's list gains "versions". Ten bullets now. Rebuilt, 138 pages.
