@@ -5533,3 +5533,14 @@ monitoring (one-line bullets; "monitored" alone). CSS: .hero-more margin-top 44 
 (ink, w600, hairline underline offset 3px; hover --blue-ink) - the first site rule for a link
 inside the hero bullets. Measured at 1920: all three bullets one line, the left column ends
 146px below the card; 390: no sideways scroll. Zoomed crop checked (dark).
+
+## State on 2026-09-24 (hero third bullet = all the savings; not deployed)
+Ram: "Claude receives only the outputs, not intermediate results." did not deserve its own
+bullet - generalise it to all the savings taken out. index.html:85 is now "No tool
+definitions, intermediate results or generated code." (a fragment, read as the list under
+the lead "Skip the context bloat."). MEASURED with canvas measureText in the bullet's font:
+the span has 489px (518 column - icon - gap); every full-sentence form ("Claude sees no
+tool definitions, intermediate results or generated code." 523px, "No ... in Claude's
+context." 576px, "... in context." 507px) wraps, and the fragment is 431px - so the
+fragment is the only one-line form. His "runtime-generated workflows" is "generated code".
+All three bullets one line at 1920.
