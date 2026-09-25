@@ -5669,3 +5669,42 @@ reported.
 ## State on 2026-09-24 (skills intro: "OIDC or SAML"; not deployed)
 Ram: the Identity bullet says "A skill cannot sign in through OIDC or SAML on its own"
 (was "carry out OAuth, SAML or multi-factor sign-in"). Rebuilt.
+
+## State on 2026-09-24 (REVIEW QUESTIONS ANSWERED AND APPLIED; not deployed)
+Ram answered review-questions-2026-09-24.md; applied in one pass (his later answers: 1 sure,
+2 delete, 6 mds too, 7 ok, server-side docstrings are his):
+- Why not Python: "Developers set limits once, and every agent obeys them. An agent carries
+  only its own logic." - page AND content/why_not_python.md (he allowed the md edit).
+- draft-with-ai: the "ask that always runs" sentence deleted (page and content/ai_assist.md).
+- gettingstarted.html: h1 "From install to your first search"; a closing line in step 5
+  "The same agents work in Claude Code through the search2o-skill." (GitHub link).
+- Sizing: the 1.5s/4.5s sentence (his, inverted against his own formula) DELETED; "far too
+  small" paragraph now "The default of 20 connections suits an agent server that mostly
+  computes. When agents call anything, the pool is best sized above the number of runs at
+  once, because each waiting run holds a connection for the whole call. Twenty connections
+  serve about twenty runs." - page and content/agent_server_sizing.md (the md keeps
+  "size the pool" imperative, the page the polite form).
+- index.html: Platform card "Agent servers never need a restart."; meta + og descriptions
+  "with a search interface" (row 116).
+- demo.html h1 "Try Search2o three ways" (his "ok" to my suggestion).
+- "the US East region" on license.html (x2) and search-quality.html.
+- code-editor.html:37: an expression "is shown in a tinted box with a stripe on its left edge
+  and a braces mark at its right edge." (from his description of the editor's styling).
+- support.html: "Developers, administrators and the owner can use the form."
+- REST samples: $SEARCH2O_SERVICE_KEY on search.html and running-agents.html (was $TOKEN).
+- gen/build.py command_model(): a pydantic RootModel is a scalar, not a fields model - the
+  return command's table now says "the command's value" (was a bare "root" row).
+- AMERICAN SPELLING everywhere (his rule: web pages and docs MUST be American): 80
+  replacements by word-boundary regex, case preserved - catalogue(s) -> catalog(s),
+  neighbourhood, modelled, summarised, behaviour, labelled, colour(s), cancelling, defence,
+  grey - across docsrc (search-quality 25, orchestrator 8, tags 3, code-editor 3, service-
+  accounts 2, finding-an-agent 2, license-rotation 1, search/index 1), gen/figures.py (a
+  comment) and the source mds (search_testing 26, chat_integration 3, editor 3,
+  service_account 2). NOT touched: content/legal (his), content/why_not_skills.md (Claude's
+  reproduced text), the legal pages. Sweep clean.
+LEFT AS HE RULED: Slack password forms, the code-from-llm page, "Community" support,
+the home Search line's "builds an index", Northern Virginia, legal rows 144/145. HIS TO DO in
+the model repos: agentmodels.py headers "Use secret(...)" -> sys.secret[...], the api profile
+"Either this or 'url'", systemconfig.py keys "three months", and the UI / "Search2o cloud" /
+missing-units docstrings (rows 137/138/142) - a rebuild here picks them up.
+138 pages, 35 examples valid.
