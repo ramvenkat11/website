@@ -5665,3 +5665,7 @@ arrangement / gateway: only "Four things follow from that arrangement." remains,
 refers to the Search2o paragraph above it. 686 words, rebuilt. NOW UNUSED: the
 assistant-connections figure in gen/figures.py (no page references it) - left in place,
 reported.
+
+## State on 2026-09-24 (skills intro: "OIDC or SAML"; not deployed)
+Ram: the Identity bullet says "A skill cannot sign in through OIDC or SAML on its own"
+(was "carry out OAuth, SAML or multi-factor sign-in"). Rebuilt.
