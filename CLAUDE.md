@@ -5597,3 +5597,16 @@ MEASURED at 1920: card bottom - left column bottom = +0.2px (was -146), card top
 (anchor unchanged), card 540px; 390: card 654, no sideways scroll. Zoomed crop checked
 (dark). The 4px bottom padding is the fine-tune - any change to the left column's text
 moves the target again.
+
+## State on 2026-09-24 (hero card: the hotel is back, two-night trip, still level; not deployed)
+Ram: there is room now, make it a multi-day trip (the hotel was cut for vertical space on
+09-17). index.html: the ask reads "UA1191: out Tuesday 08:05, back Thursday 18:30, and two
+nights at the Marriott near the office. $1,240 on the company card. <b>Book it?</b>"; the
+booking reply "Booked UA1191 and the two hotel nights. The confirmation is in your inbox.";
+the filing "Filed the New York trip, $1,240, against your cost center. Sent to your manager
+for approval." ($1,240 is MY figure - the old $640 was flagged low for a flight alone).
+The extra lines made the card 46px too tall, so the spacing went back to the previous
+step's values: body 18px gap 12, turn-agent gap 6, msg 10px 14px, turn-user 9px 14px, ask
+10px 14px (title stays 11px 18px, pills 4px 10px). MEASURED at 1920: card bottom - left
+column bottom = +0.4px, card top 158 (anchor unchanged), card 540px; 390: no sideways
+scroll. Screenshot checked (dark).
