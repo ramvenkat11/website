@@ -1,16 +1,32 @@
-<p class="lead">Search2o gives Claude Code a controlled way to use your company's systems. Claude Code chooses which agent runs; it does not write what runs.</p>
+<p class="lead">Search2o gives Claude Code one skill through which it reaches every agent your company publishes. Claude Code chooses which agent runs; it does not write what runs.</p>
 
-<h2>Current architectures</h2>
-<p>Claude Code first reached company systems through MCP servers, and most installations still do. Claude Code routes every request itself and writes, at run time, the agent code that calls the systems, with the person's access.</p>
-<p>Agent gateways came next: an intermediary between Claude Code and the calls it makes, to LLMs and to enterprise systems alike. A gateway checks the calls. The routing, and the agent code, remain Claude Code's.</p>
-<!--figure:assistant-connections-->
+<h2>Connecting Claude Code to enterprise systems</h2>
+<p>The usual ways to give Claude Code a company system are an MCP server, or a skill that calls the system directly. Both carry costs that are well known by now.</p>
+<p>An MCP server runs as a child process of the assistant and brings its own sign-in, so a person authenticates to every server separately. When something goes wrong, the trace is a JSON transport log rather than a command anyone can rerun. Permissions are granted per tool, with no way to allow a read and refuse a write. Eric Holmes sets these out in <a href="https://ejholmes.github.io/2026/02/28/mcp-is-dead-long-live-the-cli.html" target="_blank" rel="noopener">MCP is Dead. Long Live the CLI</a>.</p>
+<p>A skill that reaches an enterprise system directly raises harder questions.</p>
+<ul>
+  <li><strong>Identity.</strong> The connection bypasses the company's identity provider. A skill cannot sign in through OIDC or SAML on its own, so credentials end up hard-coded, or one service account is shared by everyone, against the principle of least privilege.</li>
+  <li><strong>Injection.</strong> A skill that queries a database or an API can be steered by text hidden in an email or a document into running commands nobody asked for, or sending data to an outside server.</li>
+  <li><strong>Governance.</strong> Skills are uploaded by individual people to individual assistants. The company has no central audit log, no version control and no security patching, and cannot see what is connected to what.</li>
+  <li><strong>Actions.</strong> A skill with write access or code execution lets a mistaken or manipulated agent change live tables, delete data or trigger external actions, with no person in the loop.</li>
+</ul>
 
 <h2>Skills + Search2o architecture</h2>
-<p>Search2o is the third arrangement. It becomes the gateway between your enterprise systems and Claude Code, with one big difference: the routing and the code are no longer dynamic in Claude Code. It is Search2o that routes the request and runs the agents. Claude Code makes requests to Search2o, and Search2o finds and runs an agent built for that request.</p>
-
+<p>Search2o sits between your enterprise systems and Claude Code. Claude Code sends the request to Search2o, and Search2o finds and runs an agent built for that request. One skill tells Claude Code when to do so. The skill carries no list of agents and no knowledge of your systems.</p>
 <!--figure:skill-flow-->
-<p>Compared with the first two arrangements, the difference is where the code comes from. Those two share one property: the agent code is written at run time, by the model, and runs with the person's access. A skill guides that code but does not define it. For the resources a person chooses to expose to Claude Code, that is a fair boundary. For company systems it is a poor one.</p>
-<p>Search2o gives Claude Code access to published agents instead. An agent is a fixed definition, written by a company developer, validated by execution before publication, versioned, and unchanged at run time. The agent runs on an agent server inside your organization, in a <a href="../agent-execution/controlled-runtime.html">controlled runtime</a> that limits what it can do. Code that Claude Code writes locally cannot access the systems behind the agents.</p>
-<p>Claude Code sees the request and the agent's output. Everything in between &mdash; API responses, database rows, credentials and agent variables &mdash; stays inside Search2o. Conversation state is encrypted and saved for follow-up requests. Every run is recorded by agent, version and person.</p>
-<p>Together, Agent Skills provides the interface and Search2o provides the controlled execution behind it. People work with Claude Code as they already do, while the company defines what its agents can do and which systems they can access.</p>
+<p>Four things follow from that arrangement.</p>
+
+<h3>Discovery without context bloat</h3>
+<p>Claude Code does not hold the agents in its context. When a request arrives, the skill asks Search2o, and search returns the names and titles of the agents that match: at most three lines, whether the company has published ten agents or a thousand. Discovery costs no model tokens. An agent definition never loads into Claude Code at all; the definition stays on the agent server, where the agent runs.</p>
+
+<h3>Repeatable workflows, fewer tokens</h3>
+<p>An agent is a fixed definition. A company developer writes it, a validation run proves it before publication, and every publish is a version. Nothing about the agent changes at run time. Claude Code invokes the agent instead of generating an implementation for each request, so the tokens that went into writing and correcting that code are not spent, and the same request produces the same workflow every time. Inside the agent, each step uses the LLM the developer chose for it.</p>
+
+<h3>Contained execution</h3>
+<p>The agent runs on an agent server inside your organization, in a <a href="../agent-execution/controlled-runtime.html">controlled runtime</a> that limits what it can do. Credentials stay on the agent server, out of Claude Code's context. API responses, database rows and agent variables stay inside Search2o as well. Only the agent's output returns to Claude Code. Code that Claude Code writes locally cannot reach the systems behind the agents.</p>
+
+<h3>Central visibility</h3>
+<p>Every run is recorded by agent, version and person. Administrators can monitor agent executions and their LLM costs in the <a href="../reports/index.html">reports</a>, whether the request came from Claude Code, the GUI or a chat application.</p>
+
+<p>Together, Agent Skills provides the interface and Search2o provides the controlled execution behind it. People work with Claude Code as they already do, while the company defines what its agents can do and which systems they can access. Conversation state is encrypted and saved, so a follow-up request continues where the previous one ended.</p>
 <p>Claude Code stands here for every assistant that supports Agent Skills, Cursor among them. The skill is the same.</p>

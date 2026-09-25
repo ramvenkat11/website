@@ -88,7 +88,7 @@
 <p>The second case is the one that matters in practice. People do not type a sourdough recipe into a company's search box; they ask about the one thing nobody has built an agent for yet. What the user sees when search offers several agents, or none, is covered in <a href="how-matching-works.html">How matching behaves</a>.</p>
 
 <h2 id="how-fast-it-is">How fast it is</h2>
-<p>A search returns the best matches in about 200 milliseconds. A catalogue of a thousand agents takes about the same, a little over 200 milliseconds. That is the point worth remembering: search does not get slower as your catalogue grows. Overall, an end user can expect search latency under a second.</p>
+<p>A search returns the best matches in less than 300 milliseconds on the cloud side, regardless of catalogue size. We have tested catalogues of up to 1,000 agents. That is the point worth remembering: search does not get slower as your catalogue grows. Overall, an end user can expect search latency under a second, including the network hops. Search2o Cloud is currently served from the US East, and we will expand to other regions as demand grows.</p>
 
 <h2 id="across-languages">Across languages</h2>
 <p>Search works on meaning rather than on words, so it handles languages other than English, and it handles a question asked in one language against agents described in another. Accuracy in a non-English catalogue is within about three points of English, and asking across two different languages costs about three points more.</p>

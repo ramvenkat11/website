@@ -188,6 +188,12 @@ p { margin: 0; }
 .hero-points svg { flex: 0 0 auto; margin-top: 4px; color: var(--blue); }
 .hero-points strong { color: var(--ink); font-weight: 600; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 34px; }
+.hero-more { margin-top: 44px; padding-top: 36px; border-top: 1px solid var(--line); }
+.hero-more h2 { font-size: 22px; line-height: 1.25; letter-spacing: -.01em; margin: 0; }
+.hero-more .sub { margin: 10px 0 0; font-size: 15.5px; line-height: 1.6; color: var(--muted); }
+.hero-more .hero-points { margin-top: 22px; }
+.hero-points a { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.hero-points a:hover { color: var(--blue-ink); text-decoration-color: currentColor; }
 .pip {
   display: inline-flex; align-items: center; gap: 12px;
   padding: 10px 8px 10px 16px; border: 1px solid var(--line); border-radius: 11px;
@@ -273,14 +279,14 @@ p { margin: 0; }
   border: 1px solid var(--line); background: var(--card); color: var(--muted);
   font-size: 12.5px; font-weight: 600;
 }
-.hero-convo .convo-title { padding: 9px 16px; }
-.hero-convo .convo-body { padding: 14px; gap: 8px; }
-.hero-convo .turn-agent { gap: 4px; max-width: 100%; }
-.hero-convo .turn-agent .msg { padding: 8px 12px; font-size: 14px; }
-.hero-convo .turn-user { padding: 7px 12px; max-width: 92%; font-size: 14px; }
-.hero-convo .turn-agent .msg.ask { padding: 8px 12px; gap: 6px 8px; }
+.hero-convo .convo-title { padding: 11px 18px; }
+.hero-convo .convo-body { padding: 18px; gap: 12px; }
+.hero-convo .turn-agent { gap: 6px; max-width: 100%; }
+.hero-convo .turn-agent .msg { padding: 10px 14px; font-size: 14px; }
+.hero-convo .turn-user { padding: 9px 14px; max-width: 92%; font-size: 14px; }
+.hero-convo .turn-agent .msg.ask { padding: 10px 14px; gap: 8px 10px; }
 .hero-convo .turn-agent .ask .q { font-size: 14px; }
-.hero-convo .turn-agent .ask .opts i, .hero-convo .turn-agent .ask .submit { padding: 3px 9px; }
+.hero-convo .turn-agent .ask .opts i, .hero-convo .turn-agent .ask .submit { padding: 4px 10px; }
 .hero-convo .st { opacity: 0; animation: rise .45s ease forwards; }
 .hero-convo .st1 { animation-delay: .2s; }
 .hero-convo .st2 { animation-delay: .6s; animation-duration: .3s; }
