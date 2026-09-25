@@ -5555,3 +5555,12 @@ Ram picked option 1 of six measured wordings (476px of the bullet's 489, one lin
 "X, not Y" shape of bullet 2). The three hero-more bullets: One skill discovers predefined
 agents through Search2o. / Agents run on your servers, not on laptops. / Claude's context
 holds results, not tool definitions or agent code.
+
+## State on 2026-09-24 (hero bullet 1: "One skill discovers agents dynamically, not a skill per API."; not deployed)
+Ram's point: with APIs, every employee edits or adds a skill whenever an API changes or
+appears; here discovery is dynamic. He picked option 1 of six measured wordings (422px of
+489, one line, the "X, not Y" shape). "One skill" still links docs/skill-integration/
+overview.html. The three hero-more bullets now: One skill discovers agents dynamically, not
+a skill per API. / Agents run on your servers, not on laptops. / Claude's context holds
+results, not tool definitions or agent code. "through Search2o" left bullet 1 with the
+rewrite (the heading and the lead's context make the platform clear; flagged).
