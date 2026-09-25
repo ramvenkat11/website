@@ -5646,3 +5646,22 @@ bullet after "Validated before anyone runs it.": "<strong>Versioned.</strong> Ev
 creates a new version of the agent (link publishing.html#versions), and every run is
 recorded against the version that ran." (both facts already on publishing.html and the
 skills overview); the lead's list gains "versions". Ten bullets now. Rebuilt, 138 pages.
+
+## State on 2026-09-24 (Skills + Search2o: "Current architectures" replaced by an introduction; not deployed)
+Ram: remove the Current architectures section (and its figure); instead an introduction
+from two sources - the disadvantages of MCP in Eric Holmes's "MCP is Dead. Long Live the
+CLI" (ejholmes.github.io, 2026-02-28; read via WebFetch: child-process servers, per-server
+sign-in, JSON transport logs instead of rerunnable commands, tool-level permissions only)
+and his four notes on skills that connect directly to enterprise systems. docsrc/
+skill-integration/overview.html now: lead / h2 "Connecting Claude Code to enterprise
+systems" - the two usual ways (MCP server, direct skill); one MCP paragraph ending with a
+link to the article (the utm_source parameter dropped from the URL); "A skill that reaches
+an enterprise system directly raises harder questions." + four bullets Identity /
+Injection / Governance / Actions, written from his notes in docs English (his notes were
+the facts, not the sentences); NO figure. The Skills + Search2o section opens "Search2o
+sits between your enterprise systems and Claude Code." (the "third arrangement" and "one
+big difference" clauses gone); the rest of the page is unchanged. Sweep for third /
+arrangement / gateway: only "Four things follow from that arrangement." remains, which
+refers to the Search2o paragraph above it. 686 words, rebuilt. NOW UNUSED: the
+assistant-connections figure in gen/figures.py (no page references it) - left in place,
+reported.
