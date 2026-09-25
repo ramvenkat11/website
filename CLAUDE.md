@@ -5610,3 +5610,15 @@ step's values: body 18px gap 12, turn-agent gap 6, msg 10px 14px, turn-user 9px 
 10px 14px (title stays 11px 18px, pills 4px 10px). MEASURED at 1920: card bottom - left
 column bottom = +0.4px, card top 158 (anchor unchanged), card 540px; 390: no sideways
 scroll. Screenshot checked (dark).
+
+## State on 2026-09-24 (hero card: all-day meeting, out Monday evening, back Wednesday morning; not deployed)
+Ram: a request "for Tuesday" with two hotel nights was inconsistent - make it an all-day
+meeting, travelling the evening before and leaving the next morning. index.html: the
+request is "Book my trip for Tuesday's all-day meeting in New York" (a first form, "...the
+all-day meeting in New York next Tuesday", wrapped to two lines with "Tuesday" alone and
+made the card 24px too tall); the offer "UA1191 out Monday 18:40, back Wednesday 07:15,
+and two nights at the Marriott near the office. $1,240 on the company card. Book it?"; the
+two replies unchanged. MEASURED at 1920: request one line, card bottom - left column
+bottom = +0.4px, card top 158, card 540; 390: no sideways scroll. Zoomed crop checked
+(dark). "trip" in the request is deliberate - the reply books a flight and a hotel, so
+"flight" would have been the same inconsistency.
