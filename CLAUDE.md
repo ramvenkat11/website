@@ -5544,3 +5544,8 @@ tool definitions, intermediate results or generated code." 523px, "No ... in Cla
 context." 576px, "... in context." 507px) wraps, and the fragment is 431px - so the
 fragment is the only one-line form. His "runtime-generated workflows" is "generated code".
 All three bullets one line at 1920.
+
+## State on 2026-09-24 (hero bullet 2: "Agents run on your servers, not on laptops."; not deployed)
+Ram's line, verbatim (index.html:81) - the contrast with code that runs on the developer's
+laptop is the point. "in a controlled runtime" and "monitored" left the bullet with it (44
+characters, one line without measuring).
