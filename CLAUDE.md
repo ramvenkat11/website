@@ -5564,3 +5564,7 @@ overview.html. The three hero-more bullets now: One skill discovers agents dynam
 a skill per API. / Agents run on your servers, not on laptops. / Claude's context holds
 results, not tool definitions or agent code. "through Search2o" left bullet 1 with the
 rewrite (the heading and the lead's context make the platform clear; flagged).
+
+## State on 2026-09-24 (hero bullet 1 ends "not a skill per API/MCP."; not deployed)
+Ram: "API/MCP". index.html:77. Four characters longer than the measured 422px, well
+inside the 489px line.
