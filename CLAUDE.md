@@ -5708,3 +5708,18 @@ the model repos: agentmodels.py headers "Use secret(...)" -> sys.secret[...], th
 "Either this or 'url'", systemconfig.py keys "three months", and the UI / "Search2o cloud" /
 missing-units docstrings (rows 137/138/142) - a rebuild here picks them up.
 138 pages, 35 examples valid.
+
+## State on 2026-09-24 (docs rebuilt against the updated model docstrings; not deployed)
+Ram applied the group F docstring fixes in s2oserver/search2o; rebuilt here (138 pages, 35
+examples valid, 0 broken links). The generated tables now carry: sys.secret['NAME'] in the
+api headers row, "API profile from the configuration, which supplies the server's URL.",
+units on maxAgentRuntime / the TimeoutModel rows etc., "shown to the person" instead of
+"shown in the UI", progress "Sends a progress message to the Search2o application". No
+docsrc prose contradicts the new text, so nothing else changed here. REPORTED TO RAM, his
+call: (1) the new keys docstring says memories are kept "for a year after their last use",
+while memory.html:34, data-privacy's memories row and encryption.html:18 say "until the
+agent that stored it is deleted" (his 09-05 ruling; the code's TTL is s365) - one of the
+two must give; the docstring also omits hosted secrets, which encryption.html lists among
+the things an old key still protects. (2) systemconfig.py:412's allowlist description still
+says "must not block it - asyncio.run, for example" (row 136). (3) "the Search2o
+application" in the progress docstring is a term the docs never use (they say "the GUI").
