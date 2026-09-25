@@ -5498,3 +5498,21 @@ Skills the interface, Search2o the execution; conversation state saved so a foll
 continues; the Cursor line. 565 words. NOT said, on purpose: how search works ("not an LLM
 call" was cut to "costs no model tokens"); the bullet list from the earlier note is gone.
 No inbound anchor links to the page existed. Rebuilt, 138 pages.
+
+## State on 2026-09-24 (hero: second part "Put the same agents to work in Claude Code"; not deployed)
+Ram's new hero text: the first part stays (h1, three bullets, buttons) and a SECOND PART
+follows it. index.html: under .hero-actions in the left column, `<div class="hero-more">`
+with h2 "Put the same agents to work in Claude Code" and his two paragraphs verbatim ("Keep
+the agentic loop. Skip the context bloat from tool definitions, intermediate results, and
+runtime-generated workflows." / "One skill lets Claude Code discover predefined agents
+through Search2o and run them on your servers in a controlled runtime, with real-time
+monitoring. Claude receives only their outputs."). Bullet 3 follows his paste: "or an agent
+skill." (was "or agent skill."). styles.css after .hero-actions: .hero-more (margin-top 40,
+padding-top 28, 1px --line top border, max-width 54ch), h2 22px/1.25 (the site's column-h2
+size), p 15.5px --body. PLACEMENT IS MINE - in the left column under the buttons, the
+conversation card still top-anchored on the right; a full-width band under the grid is the
+alternative. Measured on the no-cache server (scratchpad nocache.py recreated, port 8941):
+at 1920 the h2 is one line and the left column now ends 123px BELOW the card (before, the
+card hung 122px below the column); at 390 no sideways scroll, h2 two lines. No links in the
+new text (the docs skill page docs/skill-integration/overview.html is the obvious target
+for "One skill" - Ram picks). Screenshot checked (dark).
