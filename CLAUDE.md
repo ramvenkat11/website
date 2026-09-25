@@ -5723,3 +5723,14 @@ two must give; the docstring also omits hosted secrets, which encryption.html li
 the things an old key still protects. (2) systemconfig.py:412's allowlist description still
 says "must not block it - asyncio.run, for example" (row 136). (3) "the Search2o
 application" in the progress docstring is a term the docs never use (they say "the GUI").
+
+## State on 2026-09-24 (memory lifetime: a year after last use, or the agent's deletion; asyncio point withdrawn; not deployed)
+Ram: memories are deleted immediately when the agent is deleted, and otherwise one year
+after their last use in a query - both rules. Applied on commands/memory.html:34 ("kept for
+a year after it was last used in a query, or until the agent that stored it is deleted,
+whichever comes first"), data-privacy's memories row, and encryption.html:18's old-key list.
+This supersedes the 09-05 "until the agent is deleted" ruling. Rebuilt. WITHDRAWN: my
+"asyncio left the product" remark - asyncio is the standard library; the 09-10 finding was
+only that the gather/sleep helpers had no code; asyncio.run stays a fair example of a
+blocking call in the allowlist docstring. The 09-18 allowlist note's "asyncio left the
+product" is wrong for the same reason.
