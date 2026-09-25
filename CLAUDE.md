@@ -5628,3 +5628,14 @@ Ram: "One skill" takes them to github.com/Search2o/search2o-skill (index.html:77
 target=_blank rel=noopener like the other external links on the page) instead of the docs'
 Skills + Search2o page. The docs page is still reachable from the architecture step's
 "agent skill" link.
+
+## State on 2026-09-24 (search quality: speed paragraph, Ram's text; not deployed)
+docsrc/search/search-quality.html:41 is Ram's new paragraph with the errors fixed: "less
+than 300 milliseconds on the cloud side, regardless of catalogue size. We have tested
+catalogues of up to 1,000 agents." ("agetns" -> agents; "1000" -> 1,000 as elsewhere on
+the page; "ms" -> milliseconds as the paragraph already did); "...under a second, including
+the network hops. Search2o Cloud is currently served from the US East, and we will expand
+to other regions as demand grows." ("areas" -> regions, matching license.html's line; "the
+US East" as there). Rebuilt. NOTE: the Speed TABLE above the paragraph still carries the
+old figures (server-side up to ~120 agents / at 1,000 / throughput) - not touched; and the
+home page and how-matching-works say "less than 0.5 seconds", consistent with 300 ms.
