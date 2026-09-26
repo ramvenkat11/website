@@ -5862,3 +5862,11 @@ fit (longest line 91). PRE-EXISTING CODE OVERFLOWS, not mine, reported: running-
 prompt block (the mustLogin line, 104) - each scrolls sideways in its pre. RAM'S SIDE: the
 search2o-skill repo's reference.md/script must send answers in the block shape (the docs now
 say so); the GUI (ui1) renders blocks per the same md.
+
+## State on 2026-09-26 (the three pre-existing code overflows reflowed; not deployed)
+Ram: reflow them. rest-api/running-agents.html's morning_briefing curl (the -d payload split
+after the agentName), commands/ask.html's seat input (options/default on a second line) and
+chat-integrations/ai-prompts.html's mustLogin line (the "CONNECTING A PERSON again" clause on a
+continuation line - the page's prompt block only; content/chat_integration.md never had that
+line) are now 90-92 characters at most. Measured in the browser: every pre on the three pages
+has 0 overflow. 35 examples valid.
