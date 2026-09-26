@@ -5805,3 +5805,22 @@ the HooksModel docstring says every dict includes isValidation, but onStart/onEn
 onAgentPublish/onAgentDelete/vault/encryptionKey dicts do not (documented per the code, the
 model table still carries the docstring); the prompt's `{secret("MY_API_KEY")}` form is not used
 - the docs say sys.secret['NAME'] (Ram confirmed).
+
+## State on 2026-09-25 (HOOKS IS ITS OWN SECTION, after Profiles, six topics; NOT DEPLOYED)
+Ram: make Hooks a section after Profiles and split it. gen/toc.py: ("hooks", "Hooks") between
+profiles and reports, with overview "How hooks work" (lead, the gui-hooks shot, How hooks are
+loaded, Writing a hook, the HooksModel Settings table), lifecycle "Server and agent runs"
+(onStart/onEnd, the three agent-run hooks, publish/delete - the first title "Agent server and
+agent runs" wrapped in the sidebar and was shortened), conversation-state "Conversation state"
+(save/restore/deleteConversation and the plain-form / ownership / deletion facts),
+secrets-and-encryption "Secrets and encryption" (vault, encryptionKey), llm-and-api-calls "LLM
+and API calls", adapters-and-validators "Adapters and validators". docsrc/hooks/index.html
+carries the section lead + cards; docsrc/index.html has a Hooks card after Profiles; the
+System management lead and card no longer mention hooks; docsrc/system-management/hooks.html
+and its generated copy are gone (both were untracked, so no git rm). Every inbound link
+retargeted (llm-adapters, encryption x2, data-privacy, secret-vault, runtime/overview x2,
+agent-servers, allowlist, gui/operations, conversation-state, controlled-runtime); the
+overview's "tables below" now says "the other pages of this section". 145 pages, 35 examples
+valid, 0 broken links or anchors, sitemap +7 (the section index and six pages), every page's
+tables and pre fit at 770 and no sideways scroll at 390. The in-app summaries need the seven
+new pages on Ram's side.
