@@ -5734,3 +5734,74 @@ This supersedes the 09-05 "until the agent is deleted" ruling. Rebuilt. WITHDRAW
 only that the gather/sleep helpers had no code; asyncio.run stays a fair example of a
 blocking call in the allowlist docstring. The 09-18 allowlist note's "asyncio left the
 product" is wrong for the same reason.
+
+## State on 2026-09-25 (HOOKS: new topic; secrets vault / encryption key / conversation state on the customer's side; NOT DEPLOYED)
+From ../ui1/docs-prompt-hooks.md (agent server 0.6.2), VERIFIED against ../search2o/search2o/models/
+systemconfig.py HooksModel, execution/hooks.py and every call site (conversationrun, exec, user,
+admin, dev, llm, api, init, secretsmanager, encryptor) and against s2oserver persistence/
+conversations.py for the cloud side. Ram's answers: Hooks lives under System management; the
+customer is free to encrypt hook-held state; customers decide when to delete it; adapters and
+validators move off the allowlist; the FULL arg list per hook from the code; sys.secret['NAME']
+stays; the screenshot comes from his :9020 GUI.
+NEW docsrc/system-management/hooks.html, toc right after Agent server sizing (139 pages): lead;
+How hooks are loaded (dotted import path, installed on every agent server; imported at START, so a
+change takes effect only after a restart - the one part besides compile rules that does not reach
+a running agent server; a path that cannot be imported / a non-async function / an adapter that
+cannot be built is logged and the agent server REFUSES TO RUN AGENTS until fixed; audit log
+"Hooks were updated"); Writing a hook (async, one dict, isValidation, only vault/encryptionKey/
+restore return; raise to refuse, message shown as is; a python example); then the six groups as
+the GUI draws them, each a fields-data table Hook / When it is called / The dict holds, with the
+keys straight from the code: onStart/onEnd {}; onAgentStart/End/Error convid, agentName,
+agentVersion, userEmail, query, inputs, isValidation + isNewConversation/startFromAsk |
+resultCode/endWithAsk/output | resultCode/errorMessage/path (top-level agents only);
+onAgentPublish agentName/agentVersion/agentDefinition/agentTitle/agentTag/userEmail;
+onAgentDelete agentName; save convid/state(JSON string)/userEmail/agentName/isValidation;
+restore convid/userEmail/isValidation -> the string or None; deleteConversation convid/
+isValidation; vault name -> value (None = not found; kept 15 min = CACHE_SECONDS); encryptionKey
+keyName -> 16/24/32 bytes (the save calls it once for the current key and refuses on failure -
+admin.py:441); beforeLlmCall/afterLlmCall convid/agentName/userEmail/profile/isValidation +
+request|response; beforeApiCall + method/url/headers/queryParams/body; llmAdapters (one path per
+line); agentConfigValidators ({profile}). Then the HooksModel table. CONVERSATION STATE FACTS
+(hooks page + conversation-state + data-privacy + encryption + controlled-runtime + how-it-fits-
+together): with save/restore/deleteConversation set (together or none - model validator) the
+state never leaves the organization, is handed to save IN PLAIN FORM (encrypting it is the
+customer's choice), the cloud does NOT check who continues a hook-held conversation (restore gets
+userEmail for that), the cloud keeps only the entry (encrypted title, last run, a stateInHook
+flag) and STILL applies the plan's retention to that entry (conversations.py expiresAt), so the
+conversation leaves the list after 7/90 days while the stored state is deleted only by
+deleteConversation (called when a user deletes) - "expiring anything else is your decision";
+validation runs keep state in the cloud; the GUI's past-conversation view reads through restore
+(user.py getConversation).
+OTHER PAGES: secret-vault - "Hosted secrets" section GONE (the hosted source no longer exists;
+nothing secret is typed into the GUI), "Your own vault" replaced by "A vault of your own"
+(secretSource vault + the vault hook; the name reaches the hook untransformed), secrets are kept
+15 minutes whatever the source (was "cached until restart"). encryption - keyFunction is the
+encryptionKey hook (loaded at start, refuses to run agents on a failed import; the save checks
+the hook once), no hosted secrets anywhere, the key-retention list lost "the life of a hosted
+secret", and a sentence points at the state hooks; figures.py encryption box "encryptionKey /
+hook" (was "keyFunction / on the allowlist"; measured 85px in 120). connection-pools - the
+generated table follows the model (caCertFile / clientCertFile / privateKeyFile, no password
+field); no prose change was needed. allowlist - "Registering your own code" h2 and its three
+bullets replaced by "Your own code" (operator-rewrite functions stay on the allowlist; adapters,
+vault and key functions are hooks); the mycompany.vault.get_secret example is
+mycompany.pricing.discount. llm-adapters - "named on the Hooks page"; Registering it = install,
+add a line under LLM adapters, RESTART. data-privacy - Hosted secrets row GONE; the never-leaves
+paragraph covers the vault hook and hook-held state; the state row's small says "not stored in
+the cloud at all when the conversation state hooks are set". gui/operations - Hooks h2 added,
+"Nothing secret is typed here". agent-servers Startup errors, support.html, variables.html:23,
+python-expressions:83 ("the same vault"), runtime/overview (holds list, the restart exception,
+a Hooks row in the where-configured table), audit-log (hooks part), the section lead and the
+docs home card. SCREENSHOTS html/docs/img/gui-hooks-light.png + gui-hooks-dark.png (1329x896,
+the same size as the other gui shots): captured from Ram's :9020 GUI (account QuantumBytes,
+user Magnus) through a 1200x810 same-origin iframe injected into a tab of my own (a full-screen
+Chrome ignores resize_window; the zoom action on the iframe's region returns 1329x896), the
+rail scrolled so Hooks is visible; the dark shot by POST /api/user/updateUserProfile
+{userName:"Magnus", uiPref:{theme:"dark", lang:"en"}} then reload, RESTORED to light afterwards
+(verified via getUserProfile). UNTRACKED: the two pngs (Ram commits). 35 examples valid; 0
+broken links/anchors in html/docs (the checker's about.html#contact rows are the footer link to
+a page outside html/docs); hooks page: 7 tables fit at 770, pre fits, 390px no sideways scroll;
+sitemap +1. NOT DONE / RAM'S SIDE: the in-app docs summaries (docs_create.py) for the new page;
+the HooksModel docstring says every dict includes isValidation, but onStart/onEnd/
+onAgentPublish/onAgentDelete/vault/encryptionKey dicts do not (documented per the code, the
+model table still carries the docstring); the prompt's `{secret("MY_API_KEY")}` form is not used
+- the docs say sys.secret['NAME'] (Ram confirmed).
