@@ -162,10 +162,12 @@ Start a new conversation and carry on. Do not treat it as an error.
 
 ## When an agent asks a question
 
-An agent can pause and ask the person for input. The response then carries the message to show
-and the list of inputs to collect. Each input has a type: a line of text, a password, a longer
-block of text, a choice of one, or a choice of several. Every chat application can render all
-five in a form.
+An agent can pause and ask the person for input. The response then carries one or more blocks,
+each a form of its own: the message to show and the list of inputs to collect. An agent usually
+sends one block; an agent whose parallel branches asked sends one block per branch. Each input
+has a type: a line of text, a password, a longer block of text, a choice of one, or a choice of
+several. Every chat application can render all five in a form, and several blocks as several
+sections of one form. The answers go back under the block's key.
 
 Collect the answers and call `execAgent` again, with the same conversation identifier and the
 answers as inputs. The agent continues from where it paused.
@@ -331,15 +333,20 @@ RUNNING AN AGENT
       { "contentType": "image", "text": "<base64>", "mimeType": "image/png" }
 
 ASKING THE PERSON FOR INPUT
-  When resultCode is "ask", askInput is:
-      { "message": "shown above the fields",
-        "inputs": [ { "name": "...", "type": "...", "label": "...",
-                      "description": "...", "options": [], "default": null,
-                      "hidden": false } ] }
+  When resultCode is "ask", askInput is a dictionary of blocks, one form each:
+      { "<key>": { "message": "shown above the fields",
+                   "inputs": [ { "name": "...", "type": "...", "label": "...",
+                                 "description": "...", "options": [], "default": null,
+                                 "hidden": false } ] } }
+  The key is "ask_" for an ordinary ask. When the agent asked from several
+  parallel branches there is one block per branch, keyed by the branch name;
+  a value whose "inputs" is not a list is a nested group of blocks.
   type is one of str, password, text, chooseOne, chooseMany.
   A hidden input is not shown to the person. Send it back unchanged.
-  Collect the answers and call execAgent again with the same convid and
-  inputs set to { "<name>": "<answer>", ... }.
+  Show each block as its own form section. Collect the answers and call
+  execAgent again with the same convid and inputs set to
+  { "<key>": { "<name>": "<answer>", ... }, ... } using the same keys.
+  Blocks may be answered one at a time; the agent asks again for the rest.
 
 CONVERSATIONS
   POST BASE/api/user/getConversation        { "convid": "..." }

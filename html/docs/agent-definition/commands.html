@@ -68,7 +68,6 @@
 <tbody>
 <tr><td>Inside a <code>for</code> block</td><td><code>ask</code>, <code>invoke</code></td><td>A pause cannot be resumed mid-iteration.</td></tr>
 <tr><td>Inside <code>onError</code></td><td><code>ask</code>, <code>invoke</code></td><td>Error handling must complete.</td></tr>
-<tr><td>A function run by <code>parallel</code></td><td><code>ask</code></td><td>Parallel branches cannot pause.</td></tr>
 <tr><td>A function used as an LLM tool</td><td><code>end</code></td><td>A tool must return to the model.</td></tr>
 <tr><td>Outside a loop</td><td><code>break</code>, <code>continue</code></td><td>Nothing to break out of.</td></tr>
 </tbody></table></div>

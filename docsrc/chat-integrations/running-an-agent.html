@@ -24,8 +24,8 @@
 <p>Conversations expire, so a stored identifier that is no longer known is ordinary and expected.</p>
 
 <h2>When an agent asks a question</h2>
-<p>An agent can pause and ask the person for input. The response then carries the message to show and the list of inputs to collect. Each input has a type: a line of text, a password, a longer block of text, a choice of one, or a choice of several. Every chat application can render all five in a form.</p>
-<p>Collect the answers and call <code>execAgent</code> again, with the same <code>convid</code> and the answers as <code>inputs</code>, keyed by input name. The agent continues from where it paused. An input marked as hidden is not shown to the person; send it back unchanged. See the <a href="../commands/ask.html"><code>ask</code></a> command.</p>
+<p>An agent can pause and ask the person for input. The response then carries one or more blocks, each a form of its own: the message to show and the list of inputs to collect. An agent usually sends one block; an agent whose <code>parallel</code> branches asked sends one block per branch. Each input has a type: a line of text, a password, a longer block of text, a choice of one, or a choice of several. Every chat application can render all five in a form, and several blocks as several sections of one form.</p>
+<p>Collect the answers and call <code>execAgent</code> again, with the same <code>convid</code> and the answers as <code>inputs</code>, under the block's key, as input name to answer; see <a href="../rest-api/running-agents.html#answering-an-ask">Answering an ask</a>. The agent continues from where it paused. An input marked as hidden is not shown to the person; send it back unchanged. See the <a href="../commands/ask.html"><code>ask</code></a> command.</p>
 <p>Slack needs one extra step. A form there can only be opened in response to a click, and the ask arrives while the bot is handling a message event. The usual way round it is a message with an Answer button, with the form opening when that button is pressed.</p>
 
 <h2>Slow answers</h2>

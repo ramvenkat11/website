@@ -18,6 +18,7 @@
 <h2>Pausing on ask</h2>
 <!--figure:ask-pause-->
 <p>When an <code>ask</code> command runs, the agent's complete position is saved with the conversation and the run ends. The position includes the function call chain, the loop iteration and any LLM tool loop in progress. When the user answers, the agent is restored to that position and continues from the <code>ask</code> command. The <code>ask</code> command's result is the user's answers. Commands before the pause are not run again; their variables are restored.</p>
+<p>Inside a <code>parallel</code> command, every branch runs until it finishes or pauses. The questions of all the paused branches are sent to the user together, and when the answers arrive each paused branch resumes at its own <code>ask</code>, while the branches that had finished keep their results.</p>
 
 <h2>Limits</h2>
 <p>A run is stopped when the run exceeds the maximum agent runtime. An LLM call is refused once the run's spend passes the maximum LLM cost. Long loops yield periodically so that these limits can be enforced while the loop runs.</p>

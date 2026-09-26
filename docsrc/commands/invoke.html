@@ -22,7 +22,7 @@
 <ul>
   <li>The agent name may be an expression. Use an expression to invoke a <code>search</code> result. A literal name is checked at validation time: the agent must exist.</li>
   <li>An agent cannot invoke itself, nor any agent that is already running in the chain that led here. A literal invocation also protects the invoked agent from being deleted while this agent refers to it.</li>
-  <li>If the invoked agent pauses on <code>ask</code>, the whole chain pauses. The user's answers resume the invoked agent.</li>
+  <li>If the invoked agent pauses on <code>ask</code>, the whole chain pauses. The user's answers resume the invoked agent. This holds inside a function run by <a href="parallel.html#asking-from-a-branch"><code>parallel</code></a> too: the command waits for every branch, and the questions of every agent that paused are sent together.</li>
   <li>If the invoked agent fails with <code>fail</code>, this command raises an error with the same message.</li>
   <li><code>invoke</code> is not allowed inside a <code>for</code> block or in error handling, nor in any function called from those places.</li>
 </ul>

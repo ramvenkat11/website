@@ -12,7 +12,8 @@
 <x-code lang="bash">
 $ curl -s -X POST http://127.0.0.1:9020/api/exec/execAgent \
     -H "Authorization: Bearer $SEARCH2O_SERVICE_KEY" -H "Content-Type: application/json" \
-    -d '{"agentName": "morning_briefing", "inputs": {"query": "what changed overnight", "team": "payments"}}'
+    -d '{"agentName": "morning_briefing",
+         "inputs": {"query": "what changed overnight", "team": "payments"}}'
 </x-code>
 
 <h2>The response</h2>
@@ -23,23 +24,42 @@ $ curl -s -X POST http://127.0.0.1:9020/api/exec/execAgent \
 <tr><td><code>convid</code></td><td>The conversation. Send it back to continue.</td></tr>
 <tr><td><code>agentName</code></td><td>The agent that ran.</td></tr>
 <tr><td><code>output</code></td><td>The agent's output as a list of parts: text (Markdown), html, or image with a <code>mimeType</code>. Present only when the call did not stream.</td></tr>
-<tr><td><code>askInput</code></td><td>Present when the agent paused on <code>ask</code>: a message and the list of inputs to collect. See below.</td></tr>
+<tr><td><code>askInput</code></td><td>Present when the agent paused on <code>ask</code>: one or more blocks, each with a message and the list of inputs to collect. See below.</td></tr>
 </tbody></table></div>
 
 <h2>Result codes</h2>
 <!--enum:AgentExecResult-->
-<p><code>success</code> and <code>ask</code> are the two normal endings. Every other code is recorded in the <a href="../reports/errors.html">error report</a>. <code>unknownConversation</code> is what a client receives when the conversation is unknown or has expired, or when it is paused on an <code>ask</code> recorded by a different agent.</p>
+<p><code>success</code> and <code>ask</code> are the two normal endings. Every other code is recorded in the <a href="../reports/errors.html">error report</a>. <code>unknownConversation</code> is what a client receives when the conversation is unknown or has expired, or when it is paused on an <code>ask</code> recorded by a different agent, or when the agent that asked has been republished since, so that the answers can no longer be used; the message says which, and a new conversation is the way on.</p>
 
 <h2>Answering an ask</h2>
-<p>When <code>resultCode</code> is <code>ask</code>, the agent has paused. <code>askInput.inputs</code> lists the inputs. Each input has a <code>name</code>, a <code>type</code>, a label, a description, the options and a default; the types are <code>str</code>, <code>password</code>, <code>text</code>, <code>chooseOne</code> and <code>chooseMany</code>. Collect the answers. Then call <code>execAgent</code> again with the same <code>agentName</code> and <code>convid</code>, and the answers as <code>inputs</code>, keyed by input name. The agent resumes at the <code>ask</code> command. The pause survives any delay: the answers may arrive the next day, from another client.</p>
+<p>When <code>resultCode</code> is <code>ask</code>, the agent has paused. <code>askInput</code> is a dictionary of <em>blocks</em>. A block is one form: a <code>message</code> to show and <code>inputs</code>, the list of inputs to collect. Each input has a <code>name</code>, a <code>type</code>, a label, a description, the options and a default; the types are <code>str</code>, <code>password</code>, <code>text</code>, <code>chooseOne</code> and <code>chooseMany</code>. An agent that asked outside a <code>parallel</code> command sends one block, under the key <code>ask_</code>. An agent whose <code>parallel</code> branches asked sends one block per branch, keyed by the branch's name in the command, such as <code>askme</code> and <code>askme.2</code>; a branch that ran a <code>parallel</code> command of its own nests its blocks under its key. A block is told from a nested group by its <code>inputs</code> value, which is a list.</p>
+<x-code lang="json" title="An ask outside a parallel command">
+{ "success": true, "convid": "7mMA1nl1QmwwGw1teIQe3r", "agentName": "travel_booking",
+  "resultCode": "ask",
+  "askInput": {
+    "ask_": {
+      "message": "A few details to book the trip:",
+      "inputs": [
+        { "name": "departure", "type": "str", "label": "Departure city", "description": "",
+          "options": [], "default": null, "hidden": false },
+        { "name": "seat", "type": "chooseOne", "label": "Seat", "description": "",
+          "options": ["aisle", "window"], "default": "aisle", "hidden": false } ] } } }
+</x-code>
+<p>Collect the answers. Then call <code>execAgent</code> again with the same <code>agentName</code> and <code>convid</code>, and the answers as <code>inputs</code>, under the same keys: one dictionary of input name to answer per block. The agent resumes at the <code>ask</code> command, or at every paused branch when the blocks came from a <code>parallel</code> command. Answers sent without their block key are not applied, and the same ask comes back. The pause survives any delay: the answers may arrive the next day, from another client.</p>
 <x-code lang="bash">
 $ curl -s -X POST http://127.0.0.1:9020/api/exec/execAgent \
     -H "Authorization: Bearer $SEARCH2O_SERVICE_KEY" -H "Content-Type: application/json" \
-    -d '{"agentName": "travel_booking", "convid": "'$CONVID'", "inputs": {"departure": "Boston", "seat": "aisle"}}'
+    -d '{"agentName": "travel_booking", "convid": "'$CONVID'",
+         "inputs": {"ask_": {"departure": "Boston", "seat": "aisle"}}}'
+</x-code>
+<p>Two blocks from a <code>parallel</code> command are answered together, or one at a time: the agent asks again for the blocks it did not get, and keeps the answers it did. A hidden input is sent back unchanged, inside its block.</p>
+<x-code lang="json" title="Answering two branches at once">
+{ "agentName": "city_lookup", "convid": "55Di6Y8xy3KKozbwDsUOAc",
+  "inputs": { "askme": { "city": "Paris" }, "askme.2": { "city": "Oslo" } } }
 </x-code>
 
 <h2>Continuing a conversation</h2>
 <p>A call with a <code>convid</code> restores the conversation's state before the agent runs, so agent and conversation variables and prompt history are available. The agent named in the call need not be the agent that ran before; a conversation can move from one agent to another, as it does after a follow-up search. A conversation expires after its last use, 7 days on the Free plan and 90 days on Paid, unless the user pinned it.</p>
 
 <h2>Validating a draft</h2>
-<p><code>POST /api/dev/validateDraftStream</code> runs a developer's draft against its validation query, with tracing on. The request names the <code>draftid</code>; the response adds <code>validationSuccess</code>, <code>compileErrors</code> and <code>runtimeError</code> to the fields above. The GUI's validation view is this call with <code>stream: true</code>.</p>
+<p><code>POST /api/dev/validateDraftStream</code> runs a developer's draft against its validation query, with tracing on. The request names the <code>draftid</code>; the response adds <code>validationSuccess</code>, <code>compileErrors</code> and <code>runtimeError</code> to the fields above. The GUI's validation view is this call with <code>stream: true</code>. An ask during validation arrives as the same blocks, and a follow-up run answers it with <code>inputs</code> in the same block shape.</p>

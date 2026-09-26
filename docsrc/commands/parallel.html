@@ -20,6 +20,10 @@
 <ul>
   <li>The result is keyed by the names used in the command, so the order in which the calls finish does not matter.</li>
   <li>Each function runs in its own scope with its own locals. Agent and conversation variables are shared, so two parallel functions should not write the same variable.</li>
-  <li>A function that runs in parallel cannot use <code>ask</code>, and cannot call a function that uses <code>ask</code>.</li>
+  <li>A function that runs in parallel may <code>ask</code>, may call a function that asks, and may <code>invoke</code> an agent that asks; see below.</li>
   <li>If any call fails, the whole command fails with that error. <code>onError</code> on the calling function can handle the error.</li>
 </ul>
+
+<h2>Asking from a branch</h2>
+<p>A branch may pause on <a href="ask.html"><code>ask</code></a>, at any depth: in the function itself, in a function it calls, or in an agent it invokes. <code>parallel</code> waits until every branch has either finished or paused. Then the questions of every paused branch are sent to the user together, one form per branch, each keyed by the branch's name in the command, such as <code>lookup</code> and <code>lookup.2</code>. When the user answers, the command runs again: the branches that had finished keep their results and do not run again, and each paused branch resumes at its own <code>ask</code> with its own answers. A branch whose answers have not arrived asks again, so the user may answer one form at a time. A branch that runs a <code>parallel</code> command of its own nests its branches' forms under its key.</p>
+<p>This is what lets an <a href="../search/orchestrator.html">orchestrator</a> run several agents at once, whether or not any of them stops to ask. How the questions reach a client of your own is on <a href="../rest-api/running-agents.html#answering-an-ask">Running agents</a>.</p>

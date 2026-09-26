@@ -116,7 +116,8 @@ RUNNING AN AGENT
       success                     finished; show output.parts
       ask                         it needs input; see ASKING below
       unknownConversation         the conversation is gone; start a new one
-      mustLogin                   the token no longer works; forget it and run CONNECTING A PERSON again
+      mustLogin                   the token no longer works; forget it and run
+                                  CONNECTING A PERSON again
       failCommand, errorInAgent, callFailed, timedOut, stopped, unexpected
                                   failed; tell the person, using error.message when present
 
@@ -126,15 +127,20 @@ RUNNING AN AGENT
       { &quot;contentType&quot;: &quot;image&quot;, &quot;text&quot;: &quot;&lt;base64&gt;&quot;, &quot;mimeType&quot;: &quot;image/png&quot; }
 
 ASKING THE PERSON FOR INPUT
-  When resultCode is &quot;ask&quot;, askInput is:
-      { &quot;message&quot;: &quot;shown above the fields&quot;,
-        &quot;inputs&quot;: [ { &quot;name&quot;: &quot;...&quot;, &quot;type&quot;: &quot;...&quot;, &quot;label&quot;: &quot;...&quot;,
-                      &quot;description&quot;: &quot;...&quot;, &quot;options&quot;: [], &quot;default&quot;: null,
-                      &quot;hidden&quot;: false } ] }
+  When resultCode is &quot;ask&quot;, askInput is a dictionary of blocks, one form each:
+      { &quot;&lt;key&gt;&quot;: { &quot;message&quot;: &quot;shown above the fields&quot;,
+                   &quot;inputs&quot;: [ { &quot;name&quot;: &quot;...&quot;, &quot;type&quot;: &quot;...&quot;, &quot;label&quot;: &quot;...&quot;,
+                                 &quot;description&quot;: &quot;...&quot;, &quot;options&quot;: [], &quot;default&quot;: null,
+                                 &quot;hidden&quot;: false } ] } }
+  The key is &quot;ask_&quot; for an ordinary ask. When the agent asked from several
+  parallel branches there is one block per branch, keyed by the branch name;
+  a value whose &quot;inputs&quot; is not a list is a nested group of blocks.
   type is one of str, password, text, chooseOne, chooseMany.
   A hidden input is not shown to the person. Send it back unchanged.
-  Collect the answers and call execAgent again with the same convid and
-  inputs set to { &quot;&lt;name&gt;&quot;: &quot;&lt;answer&gt;&quot;, ... }.
+  Show each block as its own form section. Collect the answers and call
+  execAgent again with the same convid and inputs set to
+  { &quot;&lt;key&gt;&quot;: { &quot;&lt;name&gt;&quot;: &quot;&lt;answer&gt;&quot;, ... }, ... } using the same keys.
+  Blocks may be answered one at a time; the agent asks again for the rest.
 
 CONVERSATIONS
   POST BASE/api/user/getConversation        { &quot;convid&quot;: &quot;...&quot; }
