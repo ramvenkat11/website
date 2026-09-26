@@ -1,0 +1,27 @@
+<p class="lead">Seven hooks follow the life of the agent server and of the agents it runs: one call when the agent server starts and one when it stops, three around each top-level agent run, and one each when an agent is published or deleted. They are the place for your own audit trail, for a check that stops an agent before it runs, and for anything that must happen when a new version goes live.</p>
+
+<h2>Agent server</h2>
+<div class="tablewrap"><table class="fields data">
+<thead><tr><th>Hook</th><th>When it is called</th><th>The dict holds</th></tr></thead>
+<tbody>
+<tr><td><code>onStart</code><small>On server start</small></td><td>Once, when the agent server starts. If it raises, the agent server does not start.</td><td>Nothing.</td></tr>
+<tr><td><code>onEnd</code><small>On server stop</small></td><td>When the agent server shuts down normally. It is not called when the process is killed. If it raises, the message is logged.</td><td>Nothing.</td></tr>
+</tbody></table></div>
+
+<h2>Agent runs</h2>
+<p>These three are called for a top-level agent only: the agent that search matched or that <code>execAgent</code> named. They are not called for an agent that another agent invokes.</p>
+<div class="tablewrap"><table class="fields data">
+<thead><tr><th>Hook</th><th>When it is called</th><th>The dict holds</th></tr></thead>
+<tbody>
+<tr><td><code>onAgentStart</code><small>On agent start</small></td><td>Before the agent runs. If it raises, the agent stops and the user sees the message.</td><td><code>convid</code>, <code>agentName</code>, <code>agentVersion</code>, <code>userEmail</code>, <code>query</code>, <code>inputs</code>, <code>isValidation</code>, <code>isNewConversation</code>, and <code>startFromAsk</code>, which is true when the run answers an <code>ask</code>.</td></tr>
+<tr><td><code>onAgentEnd</code><small>On agent end</small></td><td>After the agent finishes successfully or pauses on an <code>ask</code>, before the run is recorded. If it raises, the agent fails.</td><td>The same keys, plus <code>resultCode</code>, <code>endWithAsk</code> and <code>output</code>, the agent's output as JSON.</td></tr>
+<tr><td><code>onAgentError</code><small>On agent error</small></td><td>After the agent fails, before the run is recorded. If it raises, its message is reported as the error instead.</td><td>The same keys, plus <code>resultCode</code>, <code>errorMessage</code> and <code>path</code>, the command path where the agent failed.</td></tr>
+</tbody></table></div>
+
+<h2>Publishing</h2>
+<div class="tablewrap"><table class="fields data">
+<thead><tr><th>Hook</th><th>When it is called</th><th>The dict holds</th></tr></thead>
+<tbody>
+<tr><td><code>onAgentPublish</code><small>On agent publish</small></td><td>After an agent is published. If it raises, the developer gets an error that says the agent was published and the hook failed.</td><td><code>agentName</code>, <code>agentVersion</code>, <code>agentDefinition</code>, <code>agentTitle</code>, <code>agentTag</code> and <code>userEmail</code>, the publisher.</td></tr>
+<tr><td><code>onAgentDelete</code><small>On agent delete</small></td><td>After an agent is deleted. If it raises, the developer gets an error that says the agent was deleted and the hook failed.</td><td><code>agentName</code>.</td></tr>
+</tbody></table></div>

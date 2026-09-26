@@ -1,15 +1,14 @@
 <p class="lead">Data falls into four categories: what never leaves your organization, what leaves only in encrypted form, what leaves in plain form but is stored encrypted, and what leaves and is stored in plain form. For each category, the tables below say who can read the data and how long the cloud keeps it.</p>
 
 <h2>What never leaves your organization</h2>
-<p>Secrets read with <code>sys.secret</code> from the agent server's environment or from files never leave the agent server. Agents run on the agent server, and every call to your APIs, databases, LLM providers and MCP servers leaves from there. The data those calls return stays on the agent server, unless an agent writes the data into its output or into a conversation variable. The <code>log</code> command writes to the agent server's own log, and nothing in that log is sent to the cloud.</p>
+<p>Secrets read with <code>sys.secret</code> never leave the agent server, whichever source they come from: the environment, files, or your vault through the <code>vault</code> hook. Conversation state never leaves either when the account uses the <a href="../hooks/conversation-state.html">conversation state hooks</a>; the agent server then hands each conversation's state to your own code, in plain form, and reads it back from there. Agents run on the agent server, and every call to your APIs, databases, LLM providers and MCP servers leaves from there. The data those calls return stays on the agent server, unless an agent writes the data into its output or into a conversation variable. The <code>log</code> command writes to the agent server's own log, and nothing in that log is sent to the cloud.</p>
 
 <h2>What leaves only in encrypted form</h2>
 <p>The agent server encrypts these before sending them, and the cloud stores the ciphertext without ever decrypting it. See <a href="encryption.html">Encryption</a> for who holds the key.</p>
 <div class="tablewrap"><table class="fields data">
 <thead><tr><th>Data</th><th>Who can read it</th><th>Kept for</th></tr></thead>
 <tbody>
-<tr><td>Conversation state<br><small>variables, prompt history, output, where an agent paused</small></td><td>Only the user whose conversation it is; the account's agent servers decrypt it to answer that user's next request</td><td>7 days after the last use on the Free plan, 90 days on Paid; pinned conversations indefinitely</td></tr>
-<tr><td>Hosted secrets<br><small>available only with end-to-end encryption</small></td><td>The agent server, at runtime</td><td>Life of the account</td></tr>
+<tr><td>Conversation state<br><small>variables, prompt history, output, where an agent paused; not stored in the cloud at all when the conversation state hooks are set</small></td><td>Only the user whose conversation it is; the account's agent servers decrypt it to answer that user's next request</td><td>7 days after the last use on the Free plan, 90 days on Paid; pinned conversations indefinitely</td></tr>
 <tr><td>Prompt profiles<br><small>the system and user prompt text; a prompt written in an agent is stored in plain form with the agent</small></td><td>Developers and above, through the GUI; the account's agent servers decrypt them at runtime</td><td>Life of the profile</td></tr>
 </tbody></table></div>
 

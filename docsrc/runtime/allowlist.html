@@ -26,7 +26,7 @@ re.sub              # replace matches in a string
 <tr><td>Everything public in a module</td><td><code>math.*</code></td><td><code>sqrt(16)</code></td></tr>
 </tbody></table></div>
 <p>A module inside a package is named in full. <code>urllib.parse</code> allows that module, and <code>xml.etree.ElementTree</code> allows that one.</p>
-<p>The same forms allow your own code. <code>mycompany.vault.get_secret</code> is resolved the same way as <code>math.sqrt</code>, as long as the package is installed beside the agent server.</p>
+<p>The same forms allow your own code. <code>mycompany.pricing.discount</code> is resolved the same way as <code>math.sqrt</code>, as long as the package is installed beside the agent server.</p>
 
 <h3>Renaming an entry with <code>as</code></h3>
 <p>Any entry can be given the name that expressions will use.</p>
@@ -87,11 +87,6 @@ math.* as m        A star import cannot be renamed with 'as'.
 <p>Once the allowlist is saved, every agent server rebuilds its names before the next agent run. No restart is needed; see <a href="overview.html#how-a-change-reaches-every-agent-server">How a change reaches every agent server</a>.</p>
 <p>Each agent server resolves each entry in its own Python environment. An entry that cannot be imported on one agent server is skipped there, a message is written to that agent server's log, and the rest of the allowlist still loads. A package installed on one agent server and missing on another shows up this way, so it is worth keeping the environments of your agent servers the same.</p>
 
-<h2>Registering your own code</h2>
-<p>The allowlist is also how your own code enters the runtime. Install the package beside the agent server, on every agent server, and name it in the allowlist.</p>
-<ul>
-  <li>An <a href="../llm/llm-adapters.html">LLM adapter</a> is a class that extends <code>LlmAdapter</code>. Each such class on the allowlist is constructed once, with no arguments, when the names are built. A class that cannot be constructed is reported.</li>
-  <li>A function that reads your own <a href="../security/secret-vault.html">vault</a> can be called from expressions and from the dynamic strings of a profile.</li>
-  <li>A function that a <a href="compile-rules.html#rewriting-an-operator">Python operator</a> is rewritten to must be on the allowlist, and it must take the two values that operator works on.</li>
-</ul>
+<h2>Your own code</h2>
+<p>The allowlist is how your own code becomes callable from expressions. Install the package beside the agent server, on every agent server, and name the function in the allowlist. A function that a <a href="compile-rules.html#rewriting-an-operator">Python operator</a> is rewritten to must be on the allowlist, and it must take the two values that operator works on. Code that the agent server itself calls &mdash; an <a href="../llm/llm-adapters.html">LLM adapter</a>, a vault function, an encryption key function &mdash; is not an allowlist entry; it is named on the Hooks page. See <a href="../hooks/index.html">Hooks</a>.</p>
 <!--fields:model:EvalAllowlistModel-->

@@ -1,4 +1,4 @@
-<p class="lead">Each time an agent ends successfully or pauses on an <code>ask</code>, the conversation state is encrypted and stored in Search2o Cloud. A follow-up query in the same conversation restores the state and runs the selected agent with that context.</p>
+<p class="lead">Each time an agent ends successfully or pauses on an <code>ask</code>, the conversation state is encrypted and stored in Search2o Cloud, or handed to your own code when the account keeps state on its side. A follow-up query in the same conversation restores the state and runs the selected agent with that context.</p>
 
 <h2>What the state holds</h2>
 <!--figure:conversation-state-->
@@ -16,5 +16,8 @@
 <h2>Encryption</h2>
 <p>State is encrypted before the state leaves the agent server, and the cloud never decrypts the state. By default Search2o manages the key for your account. An administrator can switch to keys held entirely in your organization. See <a href="../security/encryption.html">Encryption</a>.</p>
 
+<h2>Keeping the state in your organization</h2>
+<p>With the <a href="../hooks/conversation-state.html">conversation state hooks</a> set, the agent server stores each conversation's state through your own code instead of the cloud: a <code>save</code> function receives the state, a <code>restore</code> function returns it for a follow-up or for the GUI's conversation view, and a <code>deleteConversation</code> function is called when a user deletes the conversation. The state never leaves your organization. It is handed over in plain form, so encrypting what you store is your choice, and <code>restore</code> receives the user's email so that your code can check who the conversation belongs to. The cloud keeps only the conversation's entry: its encrypted title and when it was last used. Validation runs keep their state in the cloud.</p>
+
 <h2>Retention</h2>
-<p>A conversation is deleted after a period without use: 7 days on the Free plan, 90 days on the Paid plan, counted from the last time an agent ran in the conversation or the conversation was read, whichever is later. A user can pin a conversation to keep the conversation, and can delete a conversation at any time.</p>
+<p>A conversation is deleted after a period without use: 7 days on the Free plan, 90 days on the Paid plan, counted from the last time an agent ran in the conversation or the conversation was read, whichever is later. A user can pin a conversation to keep the conversation, and can delete a conversation at any time. When the state is kept in your organization, that retention still removes the conversation from the list; the stored state itself is deleted by your <code>deleteConversation</code> function when the user deletes the conversation, and expiring anything else is your decision.</p>

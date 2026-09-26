@@ -9,7 +9,8 @@
   <li>the <a href="../search/search-settings.html">search settings</a>;</li>
   <li>the <a href="connection-pools.html">connection pools</a>, as open HTTP clients;</li>
   <li>every profile, with the open connections of the LLM profiles and the database engines of the database profiles; profiles are described in the <a href="../profiles/index.html">Profiles</a> section;</li>
-  <li>the secrets source and the encryption settings; both are described under <a href="../security/index.html">Security and privacy</a>.</li>
+  <li>the secrets source and the encryption settings; both are described under <a href="../security/index.html">Security and privacy</a>;</li>
+  <li>the <a href="../hooks/index.html">hooks</a>, imported once when the agent server starts.</li>
 </ul>
 <p>Alongside the runtime the agent server caches the agents it has run. A cached agent is dropped as soon as the cloud reports a newer version, so a republished agent runs in its new form on its next request.</p>
 
@@ -21,7 +22,7 @@
   <li>If that time is newer than the agent server's runtime, the agent server asks the cloud for what changed since the agent server last asked, and receives only those parts.</li>
   <li>The agent server builds a new runtime from the changed parts and the unchanged pieces of the old runtime, then swaps the new runtime in. The agent runs against it.</li>
 </ol>
-<p>A change is therefore live on the very next run, on every agent server, and two agent servers starting the same agent at the same moment run with the same runtime. The compile rules are the exception: a changed rule applies when a draft is next validated or published, and does not touch an agent that is already published. Only the changed pieces are rebuilt. A new allowlist is resolved when the allowlist changes. Connection pools are reopened when the pools change, database engines when a database profile changes, and LLM connections when an LLM profile or the allowlist changes.</p>
+<p>A change is therefore live on the very next run, on every agent server, and two agent servers starting the same agent at the same moment run with the same runtime. Two parts are exceptions. A changed compile rule applies when a draft is next validated or published, and does not touch an agent that is already published. A changed hook is imported when the agent server next starts, so it takes effect only after a restart. Only the changed pieces are rebuilt. A new allowlist is resolved when the allowlist changes. Connection pools are reopened when the pools change, database engines when a database profile changes, and LLM connections when an LLM profile or the allowlist changes.</p>
 
 <h2>Running agents are not disturbed</h2>
 <p>An agent keeps the runtime it started with, for its whole run. When a runtime is replaced, the connection pools and database engines of the old runtime stay open until the last agent using them finishes, and are closed then. A configuration change can therefore never break an agent in the middle of a call.</p>
@@ -38,6 +39,7 @@
 <tr><td><a href="connection-pools.html">Connection pools</a></td><td>Operations &rsaquo; Connection pools</td><td>Administrator</td></tr>
 <tr><td><a href="../profiles/index.html">Profiles</a></td><td>Profiles</td><td>Developer</td></tr>
 <tr><td><a href="../security/secret-vault.html">Secrets</a> and <a href="../security/encryption.html">encryption</a></td><td>Operations &rsaquo; Secrets &amp; encryption</td><td>Administrator</td></tr>
+<tr><td><a href="../hooks/index.html">Hooks</a></td><td>Operations &rsaquo; Hooks</td><td>Administrator</td></tr>
 </tbody></table></div>
 
 <h2>Versions and concurrency</h2>

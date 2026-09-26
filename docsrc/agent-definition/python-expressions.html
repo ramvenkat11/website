@@ -80,7 +80,7 @@
 <h3>What the agent server checks</h3>
 <p>The cloud does not know which functions the agent server provides or which secrets the agent server holds. So the cloud hands two lists to the agent server: the names the expressions use, and the secrets the expressions read.</p>
 <p>The agent server refuses the agent when a name is not in the allowlist or a secret cannot be found. Each message gives the path of the first place the name or secret is used.</p>
-<p>Secrets from environment variables and files live on one machine. The check therefore tells a developer that the secret exists on the agent server that validated the agent. Another agent server in the same account must have the same secrets. Hosted secrets are shared by the whole account.</p>
+<p>Secrets from environment variables and files live on one machine. The check therefore tells a developer that the secret exists on the agent server that validated the agent. Another agent server in the same account must have the same secrets, and the same vault when secrets come from one.</p>
 
 <h3>The validation run</h3>
 <p>Validation also runs the agent once with the developer's validation query. An expression that fails on real data fails here, before the agent can be published. See <a href="../development/trace-and-validation.html">Trace and validation</a>.</p>

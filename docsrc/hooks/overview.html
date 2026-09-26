@@ -1,0 +1,22 @@
+<p class="lead">Hooks are Python functions and classes of your own that the agent server calls at set points: when the agent server starts and stops, before and after an agent runs, when an agent is published or deleted, before an LLM or API call, and when the agent server needs a secret, an encryption key, or the state of a conversation. Administrators name them on the Hooks page in the GUI, under Operations &rsaquo; Hooks.</p>
+<!--shot:gui-hooks|560|The Hooks page|Operations › Hooks: one import path per hook, in the groups the page draws them in.-->
+
+<h2>How hooks are loaded</h2>
+<p>Each hook is a dotted Python import path, such as <code>mycompany.hooks.on_agent_end</code>, naming a function or class. The code must be installed in the Python environment of every agent server of the account. An empty box means the hook is not set.</p>
+<p>Hooks are imported when the agent server starts, so a change on the Hooks page takes effect only after the agent servers restart. Every other configuration part reaches a running agent server before its next run; this one does not, and the page says so when it saves. A path that cannot be imported, a function that is not <code>async</code>, or an adapter class that cannot be built is written to the agent server's log, and that agent server refuses to run agents until the hook is fixed and the agent server restarted. A save is recorded in the <a href="../system-management/audit-log.html">audit log</a> as &ldquo;Hooks were updated&rdquo;, with the names of the fields that changed.</p>
+
+<h2>Writing a hook</h2>
+<p>Every hook is an <code>async</code> function that takes one <code>dict</code>. The dict holds what is relevant to the call; the other pages of this section list its keys, hook by hook. Most calls include <code>isValidation</code>, which is <code>True</code> during a <a href="../development/trace-and-validation.html">validation run</a>. Only <code>vault</code>, <code>encryptionKey</code> and <code>restore</code> return a value; what the other hooks return is ignored.</p>
+<p>To refuse, a hook raises an exception. The exception's message is shown as it is: to the user when an agent is stopped, to the developer when a save is refused. Choose the words accordingly.</p>
+<x-code lang="python" title="mycompany/hooks.py">
+async def before_api_call(args):
+    if args["method"] != "GET" and args["userEmail"].endswith("@contractor.example.com"):
+        raise Exception("Contractors may read from this API but not write to it.")
+
+async def on_agent_end(args):
+    await audit.record(args["userEmail"], args["agentName"], args["agentVersion"],
+                       args["resultCode"], validation=args["isValidation"])
+</x-code>
+
+<h2>Settings</h2>
+<!--fields:model:HooksModel-->

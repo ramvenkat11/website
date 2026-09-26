@@ -93,6 +93,14 @@ TOC = [
         ("db-profiles", "Database profiles"),
         ("mcp-servers", "MCP servers"),
     ]),
+    ("hooks", "Hooks", [
+        ("overview", "How hooks work"),
+        ("lifecycle", "Server and agent runs"),
+        ("conversation-state", "Conversation state"),
+        ("secrets-and-encryption", "Secrets and encryption"),
+        ("llm-and-api-calls", "LLM and API calls"),
+        ("adapters-and-validators", "Adapters and validators"),
+    ]),
     ("reports", "Reports", [
         ("performance", "Agent performance"),
         ("errors", "Agent errors"),

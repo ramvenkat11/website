@@ -88,6 +88,13 @@
   <url><loc>https://search2o.com/docs/profiles/api-profiles.html</loc></url>
   <url><loc>https://search2o.com/docs/profiles/db-profiles.html</loc></url>
   <url><loc>https://search2o.com/docs/profiles/mcp-servers.html</loc></url>
+  <url><loc>https://search2o.com/docs/hooks/index.html</loc></url>
+  <url><loc>https://search2o.com/docs/hooks/overview.html</loc></url>
+  <url><loc>https://search2o.com/docs/hooks/lifecycle.html</loc></url>
+  <url><loc>https://search2o.com/docs/hooks/conversation-state.html</loc></url>
+  <url><loc>https://search2o.com/docs/hooks/secrets-and-encryption.html</loc></url>
+  <url><loc>https://search2o.com/docs/hooks/llm-and-api-calls.html</loc></url>
+  <url><loc>https://search2o.com/docs/hooks/adapters-and-validators.html</loc></url>
   <url><loc>https://search2o.com/docs/reports/index.html</loc></url>
   <url><loc>https://search2o.com/docs/reports/performance.html</loc></url>
   <url><loc>https://search2o.com/docs/reports/errors.html</loc></url>

@@ -1,4 +1,4 @@
-<p class="lead">An adapter is what connects Search2o to an LLM. Three adapters are bundled, and they already cover every endpoint that speaks the OpenAI, Anthropic or Gemini protocol. An LLM with an interface of its own needs an adapter class, written in Python and registered through the allowlist.</p>
+<p class="lead">An adapter is what connects Search2o to an LLM. Three adapters are bundled, and they already cover every endpoint that speaks the OpenAI, Anthropic or Gemini protocol. An LLM with an interface of its own needs an adapter class, written in Python and named on the Hooks page.</p>
 
 <h2>First, try a bundled adapter</h2>
 <p>Many LLMs are reachable with the adapters that are already there. A private deployment, a gateway, or a vendor that offers an OpenAI-compatible API needs no code at all: create an <a href="../profiles/llm-profiles.html">LLM profile</a> under <strong>Profiles &rsaquo; LLM</strong>, pick the adapter that matches the protocol (<code>openai</code>, <code>anthropic</code> or <code>gemini</code>), and set the URL, the headers and the model. See <a href="vendors.html">LLM vendors</a>.</p>
@@ -34,8 +34,8 @@
 
 <h2>Registering it</h2>
 <ol>
-  <li>The class belongs in the Python environment that the agent server runs in.</li>
-  <li>Add the class to the <a href="../runtime/allowlist.html">allowlist</a> as <code>mypackage.myadapter.MyAdapter</code> and save.</li>
-  <li>The agent server instantiates every allowlisted subclass of <code>LlmAdapter</code> when the agent server loads the allowlist, and lists those adapters under <em>Adapters</em> when a new LLM profile is created. When an adapter's constructor fails, the failure is written to the agent server's log.</li>
+  <li>Install the class in the Python environment of every agent server.</li>
+  <li>On the <a href="../hooks/adapters-and-validators.html">Hooks</a> page, under LLM adapters, add a line <code>mypackage.myadapter.MyAdapter</code> and save.</li>
+  <li>Restart the agent servers. Each builds the class once when it starts, and lists the adapter under <em>Adapters</em> when a new LLM profile is created. A class that cannot be imported or built is written to the agent server's log, and the agent server refuses to run agents until the line is fixed.</li>
 </ol>
 <p>The class needs a constructor that takes no arguments. Reports group spend under the profile's <em>vendor</em> field, so set that field to the vendor's name, whatever the adapter is called.</p>

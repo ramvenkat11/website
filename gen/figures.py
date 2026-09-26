@@ -539,7 +539,7 @@ def _encryption():
     f.arrow(170, 175, 270, 120, "ciphertext only", dashed=True)
     f.group(370, 20, 330, 210, "END-TO-END (CLIENT)")
     f.box(390, 60, 130, 50, "agent server", kind="dark", size=12)
-    f.box(560, 60, 120, 50, "keyFunction", "on the allowlist", kind="card", size=12)
+    f.box(560, 60, 120, 50, "encryptionKey", "hook", kind="card", size=12)
     f.arrow(520, 78, 560, 78, both=True)
     f.text(540, 50, "key by name", size=10.5, anchor="middle")
     f.arrow(455, 110, 455, 150)

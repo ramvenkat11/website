@@ -1,0 +1,7 @@
+<p class="lead">Two boxes on the Hooks page take classes and functions that extend what the agent server accepts: adapter classes for language model vendors the bundled adapters do not speak to, and one validator function per kind of profile, called before a profile is saved.</p>
+
+<h2>LLM adapters</h2>
+<p>The <code>llmAdapters</code> box takes one import path per line, each naming a class that extends <code>LlmAdapter</code>. Each class is built once with no arguments when the agent server starts, and the adapters are then offered when an LLM profile is created. See <a href="../llm/llm-adapters.html">Connecting to other LLMs</a>.</p>
+
+<h2>Agent configuration validators</h2>
+<p>One function for each kind of profile: LLM, API, MCP server, database and prompt. The function is called before a profile of that kind is saved, with one key, <code>profile</code>, holding the profile as JSON. If it raises, the save is refused and the developer sees the message. A validator can hold a profile to a company rule, for example that every API profile's URL is inside the company's domains, or that every LLM profile names a connection pool of its own.</p>

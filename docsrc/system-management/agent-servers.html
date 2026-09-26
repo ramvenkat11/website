@@ -29,7 +29,7 @@
 <p>These settings are read once, at startup, so a change takes effect when the agent server restarts. The <code>logs</code> object is a standard Python logging configuration dictionary. The GUI path may point anywhere the agent server can read; leave the GUI path empty to serve no GUI. The documentation paths can be moved or set to nothing to switch the interactive API documentation off.</p>
 
 <h2>Startup errors</h2>
-<p>Problems found at startup &mdash; an allowlist entry the agent server cannot import, or an LLM adapter that fails to instantiate &mdash; are written to the agent server's log.</p>
+<p>Problems found at startup are written to the agent server's log. An allowlist entry the agent server cannot import is skipped, and the rest of the allowlist loads. A <a href="../hooks/index.html">hook</a> or an LLM adapter that cannot be loaded stops the agent server from running agents until the hook is fixed and the agent server restarted.</p>
 
 <h2>Running many agent servers</h2>
 <p>The agent server is stateless, so you are free to containerize it and run it load balanced; nothing more is needed. Run as many as you need. Every agent server picks up a configuration or profile change before its next agent run, so agent servers never drift from each other; see <a href="../runtime/overview.html">Agent runtime</a>. The exceptions are the settings on this page, which need a restart, and the license key: after a <a href="../security/license-rotation.html">rotation</a>, every agent server is restarted with the new key.</p>

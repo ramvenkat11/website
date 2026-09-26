@@ -1,0 +1,8 @@
+<p class="lead">These hooks see every call and can refuse it; they cannot change it. A refused call stops the agent with the hook's message.</p>
+<div class="tablewrap"><table class="fields data">
+<thead><tr><th>Hook</th><th>When it is called</th><th>The dict holds</th></tr></thead>
+<tbody>
+<tr><td><code>beforeLlmCall</code><small>Before an LLM call</small></td><td>Before each request is sent to a language model.</td><td><code>convid</code>, <code>agentName</code>, <code>userEmail</code>, <code>profile</code>, the LLM profile's name, <code>isValidation</code> and <code>request</code>, the request as JSON: the model, the prompt, the tools and the limits.</td></tr>
+<tr><td><code>afterLlmCall</code><small>After an LLM call</small></td><td>After each response from a language model.</td><td>The same keys, with <code>response</code> in place of <code>request</code>.</td></tr>
+<tr><td><code>beforeApiCall</code><small>Before an API call</small></td><td>Before an <code>api</code> command sends its request. If it raises, the request is not sent.</td><td><code>convid</code>, <code>agentName</code>, <code>userEmail</code>, <code>profile</code>, the API profile's name, <code>method</code>, <code>url</code>, <code>headers</code>, <code>queryParams</code>, <code>body</code> and <code>isValidation</code>.</td></tr>
+</tbody></table></div>

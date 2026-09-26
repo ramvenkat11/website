@@ -20,7 +20,7 @@
 <ul>
   <li><code>sys.inputs</code> — the inputs the agent was started with, as a dict. For a search the dict is <code>{ "query": ... }</code>. An <code>invoke</code> command passes any inputs it likes.</li>
   <li><code>sys.query</code> — the user's query, the same as <code>sys.inputs['query']</code>.</li>
-  <li><code>sys.secret[name]</code> — reads a secret by name. Where secrets come from — the environment, a file, the vault or your own function — is on <a href="../security/secret-vault.html">Secret vault</a>.</li>
+  <li><code>sys.secret[name]</code> — reads a secret by name. Where secrets come from — the environment, a file, or your own vault — is on <a href="../security/secret-vault.html">Secret vault</a>.</li>
   <li><code>sys.exists(scope, name)</code> — whether a variable exists, before reading it. The scope is <code>local</code>, <code>agent</code>, <code>conv</code> or <code>allowlist</code>; see <a href="python-expressions.html#checking-whether-a-variable-exists">Python expressions</a>.</li>
 </ul>
 <p>The following names are present only when an administrator enables them in the <a href="../runtime/system-variables.html">system variables</a> configuration:</p>
