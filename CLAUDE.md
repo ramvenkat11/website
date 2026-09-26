@@ -5824,3 +5824,41 @@ overview's "tables below" now says "the other pages of this section". 145 pages,
 valid, 0 broken links or anchors, sitemap +7 (the section index and six pages), every page's
 tables and pre fit at 770 and no sideways scroll at 390. The in-app summaries need the seven
 new pages on Ram's side.
+
+## State on 2026-09-26 (ask INSIDE parallel is allowed; every ask arrives as BLOCKS; NOT DEPLOYED)
+Ram: a parallel command may hold an ask at any depth; parallel waits for every branch, sends all
+the asks together, and on the answers resumes the branches in parallel; fix every docs place.
+Source: ../search2o/tests/docs/ui_prompt_ask_blocks.md, VERIFIED against
+search2o/commands/parallel.py (finished branches keep their results - "already finished" in the
+trace - paused ones resume from their nodes with their own answers; nested parallel nests the
+blocks), models/apimodels.py (AskBlocks, ASK_KEY "ask_", the askInput description),
+schemaobjects.py AskInputsModel, api/exec.py:147 (the republished-agent refusal) and
+s2oserver/compiler/agentcompiler.py (commandsNotInFor / NotInErrorHandling still hold ask and
+invoke; there is NO parallel prohibition any more). FIXED: commands/parallel.html (the "cannot
+use ask" rule replaced; NEW h2 "Asking from a branch" - one form per branch keyed by the
+branch name, finished branches keep results, partial answers, nested parallel); commands/
+ask.html (rule split: for/onError still refused, parallel allowed with a link; a sentence in
+How a pause works); agent-definition/commands.html (the parallel row is GONE from the
+restrictions table); commands/invoke.html (holds inside parallel too); search/orchestrator.html
+("An agent invoked this way cannot ask... fails the run" - Ram's 09-22 answer, now REVERSED -
+replaced: it may ask, parallel waits and resumes); agent-execution/order-of-execution.html (a
+paragraph on parallel pauses); rest-api/running-agents.html (askInput row; unknownConversation
+also for a republished agent; "Answering an ask" REWRITTEN for blocks: ask_ key, one block per
+branch, nesting, inputs under the same keys, answers without a block key are not applied and
+the ask comes back, partial answers; a JSON example of the ask, the curl answer now
+{"ask_": {...}}, a two-branch answer example; validateDraftStream follows the same contract);
+chat-integrations/running-an-agent.html (blocks, one section per block, link to Answering an
+ask); chat-integrations/ai-prompts.html ASKING section (blocks, keys, nested groups, answer
+shape, one block at a time) AND the same text in content/chat_integration.md (its prose
+paragraph and the prompt block; NOTE the md and the page had already drifted on the mustLogin
+line, so they are no longer byte-identical anyway); skill-integration/finding-and-running-an-
+agent.html ("under the keys the questions arrived under"); gui/search.html and development/
+trace-and-validation.html (one form section per branch); reports/index.html
+unknownConversation row (republished agent). NOT CHANGED, still true: ask/invoke not in for or
+onError; why-not-python's while-not-for argument; rest-api/streaming "answered exactly as in a
+non-streaming call". 145 pages, 35 examples valid, 0 broken links; the three new code blocks
+fit (longest line 91). PRE-EXISTING CODE OVERFLOWS, not mine, reported: running-agents pre 1
+(the morning_briefing curl, 109 chars), commands/ask example (the seat line, 113), ai-prompts
+prompt block (the mustLogin line, 104) - each scrolls sideways in its pre. RAM'S SIDE: the
+search2o-skill repo's reference.md/script must send answers in the block shape (the docs now
+say so); the GUI (ui1) renders blocks per the same md.
