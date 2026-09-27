@@ -5942,3 +5942,5 @@ noun; flagged). Links: vault -> secret-vault, encrypted -> encryption, the last 
 data-privacy. Three lines now, shorter than the other cards' four.
 Then Ram: the third sentence is "See how each kind of data is stored." (the whole sentence
 bar the full stop is the data-privacy link).
+Correction: only the word "See" is the data-privacy link (Ram: linking the whole sentence
+was bad).
