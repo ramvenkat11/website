@@ -6036,3 +6036,13 @@ bottom nodes carry PLAIN TEXT lines instead of chips ("APIs · databases · MCP 
 still land on their nodes; 390px: no overflow. LESSON: when Ram says a box "says X", the box
 IS X - do not keep a sub-label or an inner bar; and a diagram carries only what the text
 beside it says.
+Then Ram: the WHOLE picture is the organization, laptops included; show several Claude Codes;
+request/results on one line (the stacked two-line label read inverted). NOW: one outer
+dashed "Your organization" box holds everything: an inner dashed `.cc-laptops` box tagged
+"Laptops" (its tag on the RIGHT edge, `left: auto; right: 18px`, so it does not stack under
+the outer tag) with THREE `.cc-cc` nodes in a row ("Claude Code" + chip "search2o skill",
+128px each, centred text), the two-way link labelled "request · results" on one line, the
+Agent server node with the three agent chips, and the Enterprise systems / LLMs row with an
+arrow each. CSS: `.cc-arch .cc-laptops`, `.cc-ccs` (3-column grid; ONE column in the <=1000
+block so the 72px nodes do not overflow on a phone), `.cc-cc` rules. Card 420px; arrows land
+on their nodes; 390px: no overflow, no sideways scroll.
