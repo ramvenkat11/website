@@ -6053,3 +6053,8 @@ full-width Agent server node (`.cc-arch .arch-flow > .arch-node { width: 100% }`
 Enterprise systems / LLMs row. `.cc-laptops` and the card's `.arch-org` override are
 removed. Card 346px (from 420); every arrow lands on its node; 390px: no overflow. The
 card now hangs ~100px below the three bullets at 1920.
+Then Ram: fill the Agent server box with as many agents as the space permits. Packed
+greedily in the browser (adding a chip while the row count stayed at two): ELEVEN chips in
+two full rows (405 and 426px of the 432px inner width) - travel_desk, reimbursements,
+hr_policy, it_helpdesk, payroll, calendar, onboarding, contracts, invoices, time_off,
+facilities. Card 346 -> 375px; arrows still land; 390px: four rows, no overflow.
