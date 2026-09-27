@@ -6064,3 +6064,8 @@ centred under each Claude Code node (measured: each arrow's x on its node's cent
 at both ends); the "request · results" label sits on the middle arrow, 52px clear of the
 third. At <=1000px the boxes stack, so only the middle arrow shows (`.cc-links .arch-link:
 not(:nth-child(2)) { display: none }`).
+
+## State on 2026-09-27 (hero bullets: Build before See; not deployed)
+Ram: swap the "Build a working agent in minutes..." and "See every agent run in real
+time..." bullets. Order now: One conversation / Agents run in a controlled runtime / Build a
+working agent / See every agent run / Use from a browser. Icons moved with their lines.
