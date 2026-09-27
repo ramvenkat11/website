@@ -5907,3 +5907,12 @@ ogcard.py` (system python, PIL). The OLD html/og.png and html/images/og.png are 
 links held elsewhere keep working; nothing on the site references them any more (the --delete
 sync would remove them - if they must stay live, exclude them or keep them referenced).
 UNTRACKED for Ram to commit: html/images/og-2.png, gen/ogcard.py, gen/assets/wordmark.png.
+
+## State on 2026-09-27 (Platform card: Reports -> Hooks; not deployed)
+Ram: the hero's third bullet now carries the reports story, so the Platform "Reports" card
+is replaced. His pick of my two drafts (B): h3 "Hooks", plug icon (the hero's "one skill"
+icon at 22px), text "Policy in your own code. Hooks approve or refuse every agent run, LLM
+call and API call. Keep conversation state, secrets and encryption keys inside your
+organization." - "Hooks" links docs/hooks/index.html, "conversation state" links
+docs/hooks/conversation-state.html. The home page no longer links docs/reports (the footer
+Product column never did); the reports pages are reached from the docs.
