@@ -6023,3 +6023,16 @@ kept the card tall), links 32px, nodes 12px 14px, `.arch-fw` 10px/9px 12px, chip
 8px gap 5 (the agents now on ONE row), `.cc-ctx` 8px 10px. Card 694 -> 576px; the left
 column ends 350px above the card's bottom at 1920 (the text is three bullets). 390px: no
 overflow. Both bottom nodes' chips wrap to two rows in the narrow column.
+Then Ram (annoyed - his "Agent server" instruction had meant the box holding the agents IS
+the agent server): the picture is stripped to what the bullets need. Laptop box: node
+"Claude Code" + one chip "search2o skill" (the sub-line and the "In context" strip are GONE
+- "I don't even understand what In context means in Claude Code"); the two-way link says
+"request / results"; organization box: node "Agent server" with the three agent chips
+directly inside (no "Agents" bar, no "added any time" - "that's not an agent"); the two
+bottom nodes carry PLAIN TEXT lines instead of chips ("APIs · databases · MCP servers",
+"OpenAI · Anthropic · Gemini") so each is one line. `.cc-ctx`, `.arch-chips span.more`,
+`.arch-fw .arch-chips` and the card's .arch-fw override are removed from styles.css;
+`.cc-arch .arch-node > span { font-size: 12px }` added. Card 576 -> 425px; both arrows
+still land on their nodes; 390px: no overflow. LESSON: when Ram says a box "says X", the box
+IS X - do not keep a sub-label or an inner bar; and a diagram carries only what the text
+beside it says.
