@@ -5935,3 +5935,8 @@ Then Ram: no need to explain end-to-end to this audience - the Security card's m
 sentence is "Sensitive information is encrypted end to end before it leaves your
 organization." (the key clause gone; the last sentence back to "where every kind of data
 ends up"; measured four lines earlier as variant s3).
+Then Ram's own three sentences for the Security card: "Secrets live in your vault. Sensitive
+information can be encrypted end to end. We publish how each kind of data is stored." - his
+"how each data is stored" written as "how each kind of data is stored" (data is a mass
+noun; flagged). Links: vault -> secret-vault, encrypted -> encryption, the last clause ->
+data-privacy. Three lines now, shorter than the other cards' four.
