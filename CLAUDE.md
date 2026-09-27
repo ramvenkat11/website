@@ -6078,3 +6078,7 @@ servers out of agent definitions." / sparkle icon "Agents are built with AI assi
 on the demo page ->". The three links now take the bullet-link style (ink, 600, hairline
 underline) instead of the plain blue paragraph link. The card top still sits 3px under the
 h2 top (the .split 36px rule); 390px: no sideways scroll.
+Then Ram: grammar on the Hooks card - the first verb phrase held its own comma list, so the
+three-verb series read as one run-on. Now two sentences, same words: "Hooks approve or refuse
+every agent run, LLM call and API call. They keep conversation state in your own store and
+feed your audit trail."
