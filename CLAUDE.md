@@ -6058,3 +6058,9 @@ greedily in the browser (adding a chip while the row count stayed at two): ELEVE
 two full rows (405 and 426px of the 432px inner width) - travel_desk, reimbursements,
 hr_policy, it_helpdesk, payroll, calendar, onboarding, contracts, invoices, time_off,
 facilities. Card 346 -> 375px; arrows still land; 390px: four rows, no overflow.
+Then Ram: connect all three Claude Codes to the agent server. The single link is a
+`.cc-links` 3-column grid (same columns as `.cc-ccs`) of three two-way `.arch-link`s, one
+centred under each Claude Code node (measured: each arrow's x on its node's centre, 0px gaps
+at both ends); the "request · results" label sits on the middle arrow, 52px clear of the
+third. At <=1000px the boxes stack, so only the middle arrow shows (`.cc-links .arch-link:
+not(:nth-child(2)) { display: none }`).
