@@ -6082,3 +6082,9 @@ Then Ram: grammar on the Hooks card - the first verb phrase held its own comma l
 three-verb series read as one run-on. Now two sentences, same words: "Hooks approve or refuse
 every agent run, LLM call and API call. They keep conversation state in your own store and
 feed your audit trail."
+Then Ram (rightly annoyed - I had reported the style change instead of fixing it): the links
+in the framework bullets had taken the `.hero-points a` style (ink, 600, hairline underline)
+made on 09-24 for the hero's "one skill" link, unlike every other link on the page. BOTH
+`.hero-points a` rules are DELETED; every link in every bullet list (framework, Claude Code)
+now uses the site's default `a` rule: --blue-ink, no underline, underline on hover. RULE: a
+new element takes the page's existing link style; never a bespoke one for one list.
