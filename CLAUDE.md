@@ -5871,7 +5871,7 @@ continuation line - the page's prompt block only; content/chat_integration.md ne
 line) are now 90-92 characters at most. Measured in the browser: every pre on the three pages
 has 0 overflow. 35 examples valid.
 
-## State on 2026-09-27 (HERO from prompt_demo.txt; new social card images/og-2.png; footer line shortened; not deployed)
+## State on 2026-09-27 (HERO from prompt_demo.txt; new social card images/og2.png; footer line shortened; not deployed)
 Ram's IDE scratch prompt_demo.txt is the hero now (his answers: whole file; headline 26px or
 smaller to reach two lines; bullets may wrap, try 16px; the pip button stays; card level again;
 og-2 yes; footer keeps only the first clause; "other agent frameworks" stays; the dash spaced).
@@ -5895,9 +5895,9 @@ use AI agents." (first clause only, Ram); og:image:alt on all ten pages + the do
 ends "where search finds the right agent for each request"; index.html meta description and
 og:description open "Search2o is a platform to build, run, and use AI agents, where search
 finds the right agent for each request."; og:image everywhere (ten pages, build.py template,
-145 docs pages rebuilt) is https://search2o.com/images/og-2.png. demo.html's og:image had
+145 docs pages rebuilt) is https://search2o.com/images/og2.png. demo.html's og:image had
 REVERTED to logo.png (Ram's copy of the file) - now og-2 with width/height/alt/twitter:card.
-OG-2: html/images/og-2.png (1200x630, 89 KB) drawn by NEW gen/ogcard.py from
+OG2: html/images/og2.png (1200x630, 89 KB) drawn by NEW gen/ogcard.py from
 gen/assets/wordmark.png (the 1810x331 art out of the retired logo.svg, `git show
 c91b0b6^:html/logo.svg`): navy #090f1d, top-left glow, 60px grid at alpha 12, wordmark 440px
 at (97,96) with navy recoloured to --ink, hairline + "Search that executes" (Helvetica Neue
@@ -5906,7 +5906,7 @@ Medium 34, --muted) on its baseline, the headline in Bold 46 on three lines (ink
 ogcard.py` (system python, PIL). The OLD html/og.png and html/images/og.png are UNTOUCHED so
 links held elsewhere keep working; nothing on the site references them any more (the --delete
 sync would remove them - if they must stay live, exclude them or keep them referenced).
-UNTRACKED for Ram to commit: html/images/og-2.png, gen/ogcard.py, gen/assets/wordmark.png.
+UNTRACKED for Ram to commit: html/images/og2.png, gen/ogcard.py, gen/assets/wordmark.png.
 
 ## State on 2026-09-27 (Platform card: Reports -> Hooks; not deployed)
 Ram: the hero's third bullet now carries the reports story, so the Platform "Reports" card
