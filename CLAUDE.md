@@ -5870,3 +5870,40 @@ chat-integrations/ai-prompts.html's mustLogin line (the "CONNECTING A PERSON aga
 continuation line - the page's prompt block only; content/chat_integration.md never had that
 line) are now 90-92 characters at most. Measured in the browser: every pre on the three pages
 has 0 overflow. 35 examples valid.
+
+## State on 2026-09-27 (HERO from prompt_demo.txt; new social card images/og-2.png; footer line shortened; not deployed)
+Ram's IDE scratch prompt_demo.txt is the hero now (his answers: whole file; headline 26px or
+smaller to reach two lines; bullets may wrap, try 16px; the pip button stays; card level again;
+og-2 yes; footer keeps only the first clause; "other agent frameworks" stays; the dash spaced).
+index.html hero: h1 "A platform to build, run, and use AI agents &mdash; <span class=grad>where
+search finds the right agent for each request</span>" - 98 characters; MEASURED two lines only
+at <=22px in the 518px column (23-26px give three), so `.hero h1 { font-size: 22px;
+line-height: 1.25 }` and `.grad` lost its nowrap (the accent spans both lines). FLAG: at 22px
+the h1 is barely larger than the 16px bullets - 26px/three lines is the alternative. FIVE
+bullets (chat / shield / activity / braces / layers icons) and the Claude Code part's THREE
+bullets (inbox / plug / server; "one skill" links the GitHub repo; the .sub line is gone, its
+CSS too), verbatim from the file except the spaced dash and straight apostrophes ("Claude's",
+"Users'" - the page uses straight ones elsewhere; his file had curly). `.hero-points li` 16px;
+all eight bullets wrap to two lines at 1920. CARD LEVEL AGAIN: a THIRD exchange (user "Block my
+calendar for the trip and tell the team I'm out" / Matched calendar / "Blocked Monday 17:00 to
+Wednesday 09:00, and posted your out-of-office note to the team channel."; st8-st10 at 6 /
+6.4 / 7.3 s) plus looser spacing (title 12px 18px, body 28px 22px gap 16, turn-agent gap 8,
+msg 12px 14px, turn-user 10px 14px, ask 12px 14px): card bottom within 1px of the left column
+at 1920; card top anchor 6px (cap top 159.2 vs card top 159.0). 390px: h1 three lines, no
+sideways scroll. SITE-WIDE: footer sentence on all ten pages is "A platform to build, run, and
+use AI agents." (first clause only, Ram); og:image:alt on all ten pages + the docs template
+ends "where search finds the right agent for each request"; index.html meta description and
+og:description open "Search2o is a platform to build, run, and use AI agents, where search
+finds the right agent for each request."; og:image everywhere (ten pages, build.py template,
+145 docs pages rebuilt) is https://search2o.com/images/og-2.png. demo.html's og:image had
+REVERTED to logo.png (Ram's copy of the file) - now og-2 with width/height/alt/twitter:card.
+OG-2: html/images/og-2.png (1200x630, 89 KB) drawn by NEW gen/ogcard.py from
+gen/assets/wordmark.png (the 1810x331 art out of the retired logo.svg, `git show
+c91b0b6^:html/logo.svg`): navy #090f1d, top-left glow, 60px grid at alpha 12, wordmark 440px
+at (97,96) with navy recoloured to --ink, hairline + "Search that executes" (Helvetica Neue
+Medium 34, --muted) on its baseline, the headline in Bold 46 on three lines (ink / gradient
+#4d8dff->#2dd4bf on lines 2-3), rule at 530, search2o.com Bold 24. Run `cd gen && python3
+ogcard.py` (system python, PIL). The OLD html/og.png and html/images/og.png are UNTOUCHED so
+links held elsewhere keep working; nothing on the site references them any more (the --delete
+sync would remove them - if they must stay live, exclude them or keep them referenced).
+UNTRACKED for Ram to commit: html/images/og-2.png, gen/ogcard.py, gen/assets/wordmark.png.
