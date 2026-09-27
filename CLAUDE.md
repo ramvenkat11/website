@@ -6088,3 +6088,9 @@ made on 09-24 for the hero's "one skill" link, unlike every other link on the pa
 `.hero-points a` rules are DELETED; every link in every bullet list (framework, Claude Code)
 now uses the site's default `a` rule: --blue-ink, no underline, underline on hover. RULE: a
 new element takes the page's existing link style; never a bespoke one for one list.
+Then Ram: the icon/bullet style did not work for the Agent framework section - do something
+else. The three points are now `ol.steps.plain`: the System architecture steps' typography
+(17px h3 + 14.5px muted paragraph) WITHOUT the number chips and connector (`.steps.plain
+li::before/::after { display: none }`, padding 0 0 22px, list margin-top 22). Headings are
+mine: "JSON with Python expressions" / "Profiles" / "Built with AI"; the sentences are
+unchanged. Left column ends 139px above the commands card at 1920.
