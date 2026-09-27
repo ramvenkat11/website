@@ -6096,3 +6096,4 @@ mine: "JSON with Python expressions" / "Profiles" / "Built with AI"; the sentenc
 unchanged. Left column ends 139px above the commands card at 1920.
 The "Try it on the demo page ->" arrow had wrapped alone onto a second line; a no-break space
 now binds it to "page".
+Then Ram: the link is "Try it live ->" (one line).
