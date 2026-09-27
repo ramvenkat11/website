@@ -5973,3 +5973,39 @@ labels hidden; 390: no sideways scroll, card 254px tall. Measured at 1920: convo
 actions bottom; arch 713-938 == h2 cap top..column bottom; node widths 119/150/119; chips on
 one line; "Enterprise systems" wraps to two lines (the only wrap). Light theme not yet
 screenshotted. Ram to judge; revert = restore the two saved files.
+
+## State on 2026-09-27 (CLAUDE CODE IS ITS OWN SECTION, first below the hero; the two-card hero trial is over; not deployed)
+Ram: move Claude Code out of the hero into the first section below it; the trial image was
+low quality and must convey the three bullets on the left. HERO is back to ONE card: h1 +
+five bullets + Live demo / pip button on the left, the two-exchange conversation card on the
+right (tight spacing from the trial: title 9px 16px, body 17px 14px gap 9, msg 9px 13px,
+user 8px 13px, ask 9px 13px, pills 3px 9px; the offer ends "$1,240. Book it?" and the
+booking reply is "Booked UA1191 and the two hotel nights."), card 159-626 == cap top .. hero-
+actions bottom at 1920. `.hero-side`, `.hero-arch`, the `.ha-*` rules and the `.hero-more`
+rules are GONE from styles.css; the anchor rule is `.hero-grid .demo, .hero-grid
+.hero-convo { margin-top: 6px }` again (and 0 at <=1000). TRAP HIT: lifting the block also
+took the left column's closing </div>, so the card rendered under the left column until the
+tag was restored - check `.hero-grid` has exactly two children after any hero surgery.
+NEW `<section class="section soft" id="claude-code">` right after the hero (sections now
+hero > claude-code(soft) > description(plain) > system-architecture(soft) > framework(plain)
+> platform(soft) - the alternation holds): `.howgrid` with kicker "Claude Code", h2 "Put the
+same agents to work in Claude Code", the three bullets as `ul.hero-points.points` (the
+hero's bullet style reused; `.points { margin-top: 22px }`), and `aside.arch.cc-arch` - a
+VERTICAL diagram in the architecture diagram's vocabulary: dashed box "Your laptop" holding
+the node "Claude Code / the search2o skill, installed once" with a dashed `.cc-ctx` strip
+"In context: [your request] [results]" (bullet 1); two-way `.arch-link` labelled "request /
+results, nothing else"; dashed box "Your organization" holding the node "Agent server / finds
+the right agent, runs it in a controlled runtime" with an `.arch-fw` bar "Agents" and chips
+travel_desk · reimbursements · hr_policy · [added any time] (dashed `.more` chip; bullet 2),
+a down `.arch-link` "calls", and a `.cc-systems` node "Enterprise systems" with chips APIs ·
+Databases · MCP servers · LLMs. The laptop OUTSIDE the organization box and its only line
+ending on the agent server is what carries bullet 3 (a caption saying so was tried and
+dropped). Tried and dropped on the way: the systems as a fan-out beside the server (the
+narrow 410px column stacked the agent chips one per row and made the card 720px). CSS:
+`.cc-arch { padding: 26px 24px }`, `.cc-arch .arch-link { height: 44px }`, `.cc-ctx`,
+`.arch-fw .arch-chips`, `.arch-chips span.more`, `.cc-systems` flex row. ALIGNMENT: the
+picture is 704px against a 262px text column, so `#claude-code .howgrid { align-items:
+center }` (margin-top 0 on the aside) - the Reports-style exception for a short text beside a
+tall picture (measured: both midpoints at 1159). 390px: no sideways scroll, no overflow in
+the card. FOOTERS: the Product column on all ten pages gained "Claude Code" (#claude-code)
+before Search, keeping the sections-in-order rule. Light theme not screenshotted yet.
