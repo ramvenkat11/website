@@ -5911,7 +5911,7 @@ UNTRACKED for Ram to commit: html/images/og-2.png, gen/ogcard.py, gen/assets/wor
 ## State on 2026-09-27 (Platform card: Reports -> Hooks; not deployed)
 Ram: the hero's third bullet now carries the reports story, so the Platform "Reports" card
 is replaced. His pick of my two drafts (B): h3 "Hooks", plug icon (the hero's "one skill"
-icon at 22px), text "Policy in your own Python code at set points. Hooks approve or refuse every agent run, LLM
+icon at 22px), text "Policy in your own Python code. Hooks approve or refuse every agent run, LLM
 call and API call. Keep conversation state, secrets and encryption keys inside your
 organization." - "Hooks" links docs/hooks/index.html, "conversation state" links
 docs/hooks/conversation-state.html. The home page no longer links docs/reports (the footer
