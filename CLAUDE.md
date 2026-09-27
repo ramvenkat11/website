@@ -5920,3 +5920,14 @@ Then (Ram, "4 lines"): the card ran to FIVE lines while the other five cards run
 every width; "encryption" dropped ("...secrets and keys inside your organization.") - measured
 four lines at 1100/1280/1440/1600/1920, level with the others. The first sentence is "Policy
 in your own Python code." (his wording; "at set points" tried and removed for length).
+Then Ram: "Keep conversation state, secrets and keys inside your organization" was a BAD line
+(secrets always stay in the organization - never suggest that as a feature); LLM adapters are
+the Model neutrality card's; the Security card covers vault and encryption, so Hooks must
+cover something else; and the Security card must say "sensitive information" and end-to-end.
+His pick (A) trimmed to FOUR LINES (measured; every longer form gave five): Hooks card
+"Policy in your own Python code. Hooks approve or refuse every agent run, LLM call and API
+call, keep conversation state in your own store, and feed your audit trail."; Security card
+"Secrets live in a vault. Sensitive information is encrypted before it leaves your
+organization, end to end with your key. Data privacy says where each kind of data goes."
+(the "with your key" clause keeps the 09-05 fact that end-to-end needs the customer's key;
+"where each kind of data goes" replaced "where every kind of data ends up" for length).
