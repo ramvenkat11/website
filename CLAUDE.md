@@ -6094,3 +6094,5 @@ else. The three points are now `ol.steps.plain`: the System architecture steps' 
 li::before/::after { display: none }`, padding 0 0 22px, list margin-top 22). Headings are
 mine: "JSON with Python expressions" / "Profiles" / "Built with AI"; the sentences are
 unchanged. Left column ends 139px above the commands card at 1920.
+The "Try it on the demo page ->" arrow had wrapped alone onto a second line; a no-break space
+now binds it to "page".
