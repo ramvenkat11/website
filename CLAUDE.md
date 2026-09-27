@@ -6046,3 +6046,10 @@ Agent server node with the three agent chips, and the Enterprise systems / LLMs 
 arrow each. CSS: `.cc-arch .cc-laptops`, `.cc-ccs` (3-column grid; ONE column in the <=1000
 block so the 72px nodes do not overflow on a phone), `.cc-cc` rules. Card 420px; arrows land
 on their nodes; 390px: no overflow, no sideways scroll.
+Then Ram: the "Your organization" outline is not needed (the whole thing obviously is), and
+the laptops are individual boxes. BOTH dashed boxes are gone: the `.arch-flow` now holds the
+`.cc-ccs` row of three "Claude Code" nodes, the two-way link "request · results", the
+full-width Agent server node (`.cc-arch .arch-flow > .arch-node { width: 100% }`), and the
+Enterprise systems / LLMs row. `.cc-laptops` and the card's `.arch-org` override are
+removed. Card 346px (from 420); every arrow lands on its node; 390px: no overflow. The
+card now hangs ~100px below the three bullets at 1920.
