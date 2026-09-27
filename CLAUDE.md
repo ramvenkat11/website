@@ -5931,3 +5931,7 @@ call, keep conversation state in your own store, and feed your audit trail."; Se
 organization, end to end with your key. Data privacy says where each kind of data goes."
 (the "with your key" clause keeps the 09-05 fact that end-to-end needs the customer's key;
 "where each kind of data goes" replaced "where every kind of data ends up" for length).
+Then Ram: no need to explain end-to-end to this audience - the Security card's middle
+sentence is "Sensitive information is encrypted end to end before it leaves your
+organization." (the key clause gone; the last sentence back to "where every kind of data
+ends up"; measured four lines earlier as variant s3).
