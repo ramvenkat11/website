@@ -5940,3 +5940,5 @@ information can be encrypted end to end. We publish how each kind of data is sto
 "how each data is stored" written as "how each kind of data is stored" (data is a mass
 noun; flagged). Links: vault -> secret-vault, encrypted -> encryption, the last clause ->
 data-privacy. Three lines now, shorter than the other cards' four.
+Then Ram: the third sentence is "See how each kind of data is stored." (the whole sentence
+bar the full stop is the data-privacy link).
