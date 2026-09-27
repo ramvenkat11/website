@@ -5944,3 +5944,32 @@ Then Ram: the third sentence is "See how each kind of data is stored." (the whol
 bar the full stop is the data-privacy link).
 Correction: only the word "See" is the data-privacy link (Ram: linking the whole sentence
 was bad).
+
+## State on 2026-09-27 (HERO TRIAL: two cards on the right - conversation + Claude Code architecture; not deployed)
+Ram: experiment with two images in the hero: the conversation on top, and below it Claude
+Code + agent server + enterprise systems. Files before the trial are saved at
+<scratchpad>/index_before_two_cards.html and styles_before_two_cards.css (the scratchpad can
+be wiped; the single-card state is also the previous git-tracked diff of today). BUILT: the
+right grid cell is `<div class="hero-side">` (flex column, align-self stretch, margin-top 6px
+- the anchor rule moved from .hero-convo to .hero-side, in the desktop rule and the <=1000
+reset) holding (1) .hero-convo back to TWO exchanges (the third "calendar" exchange and
+st8-st10 removed; the ask is "...two nights at the Marriott near the office. $1,240. Book
+it?" and the booking reply "Booked UA1191 and the two hotel nights." - the company-card and
+inbox clauses cut again for height), spacing title 9px 16px / body 17px 14px gap 9 / agent
+gap 6 / msg 9px 13px / user 8px 13px / ask 9px 13px / pills 3px 9px, so the card ends at 626
+== the hero-actions bottom at 1920; and (2) NEW `.convo.hero-arch` (margin-top auto, fixed
+height 225px = from the "Put the same agents..." h2 cap top at 713 to the column bottom at
+938): title bar with a terminal icon "Claude Code · one skill, every agent", body a flex row
+of three .arch-node.ha-node columns (Claude Code / on a laptop / chip search2o skill;
+Agent server .mid (flex-grow 1.3) / in your organization / chip controlled runtime;
+Enterprise systems / reached only from here / em "APIs · databases · MCP · LLMs") joined by
+.ha-link arrows (36px, two-way with the label "request / answer", one-way "calls"). The
+compact node rules are prefixed `.hero-arch` - the generic `.arch-node strong` (15px) and
+`> span` (13px) rules sit later in the stylesheet and won at equal specificity on the first
+render (the text was oversized and wrapped; the LESSON: a later generic rule beats an
+earlier specific-looking one at the same specificity). At <=1000px: .hero-arch height auto,
+margin-top 24, nodes stacked full width with a short vertical stub between them and the
+labels hidden; 390: no sideways scroll, card 254px tall. Measured at 1920: convo bottom 626 ==
+actions bottom; arch 713-938 == h2 cap top..column bottom; node widths 119/150/119; chips on
+one line; "Enterprise systems" wraps to two lines (the only wrap). Light theme not yet
+screenshotted. Ram to judge; revert = restore the two saved files.
