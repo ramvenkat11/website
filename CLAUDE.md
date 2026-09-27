@@ -6069,3 +6069,12 @@ not(:nth-child(2)) { display: none }`).
 Ram: swap the "Build a working agent in minutes..." and "See every agent run in real
 time..." bullets. Order now: One conversation / Agents run in a controlled runtime / Build a
 working agent / See every agent run / Use from a browser. Icons moved with their lines.
+
+## State on 2026-09-27 (framework section: three icon bullets instead of paragraphs; not deployed)
+Ram: the JSON DSL section was the only one with plain paragraphs. Its three paragraphs are
+now a `ul.hero-points.points` list, text unchanged: braces icon "An agent is defined in JSON,
+using 23 commands..." / sliders icon "Profiles keep LLMs, prompts, APIs, databases and MCP
+servers out of agent definitions." / sparkle icon "Agents are built with AI assistance. Try it
+on the demo page ->". The three links now take the bullet-link style (ink, 600, hairline
+underline) instead of the plain blue paragraph link. The card top still sits 3px under the
+h2 top (the .split 36px rule); 390px: no sideways scroll.
