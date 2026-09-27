@@ -6009,3 +6009,17 @@ center }` (margin-top 0 on the aside) - the Reports-style exception for a short 
 tall picture (measured: both midpoints at 1159). 390px: no sideways scroll, no overflow in
 the card. FOOTERS: the Product column on all ten pages gained "Claude Code" (#claude-code)
 before Search, keeping the sections-in-order rule. Light theme not screenshotted yet.
+Then Ram: top-align the text like the other sections; compress the picture; the server node
+says just "Agent server" (the "finds the right agent..." sub-line is gone); LLMs OUTSIDE the
+Enterprise systems box; other improvements welcome. APPLIED: the centring rules are gone
+(the howgrid default puts the picture's top on the h2 glyph top again); the organization
+box's bottom is a two-column `.cc-row` (1.2fr 1fr) - "Enterprise systems" (APIs · Databases ·
+MCP servers) and "LLMs" (OpenAI · Anthropic · Gemini) - each column a `.cc-col` grid of a
+down `.arch-link` (32px) over its node, both arrows starting on the full-width Agent server
+node and ending on their node (0px gaps both ends), the two nodes equal height (grid rows
+auto 1fr, align-content start). Compression in this card only: `.cc-arch { padding: 22px
+20px }`, `.cc-arch .arch-org { padding: 16px 14px }` (the diagram's 24px padding was what
+kept the card tall), links 32px, nodes 12px 14px, `.arch-fw` 10px/9px 12px, chips 11px 2px
+8px gap 5 (the agents now on ONE row), `.cc-ctx` 8px 10px. Card 694 -> 576px; the left
+column ends 350px above the card's bottom at 1920 (the text is three bullets). 390px: no
+overflow. Both bottom nodes' chips wrap to two rows in the narrow column.
