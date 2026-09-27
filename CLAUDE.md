@@ -5916,3 +5916,7 @@ call and API call. Keep conversation state, secrets and encryption keys inside y
 organization." - "Hooks" links docs/hooks/index.html, "conversation state" links
 docs/hooks/conversation-state.html. The home page no longer links docs/reports (the footer
 Product column never did); the reports pages are reached from the docs.
+Then (Ram, "4 lines"): the card ran to FIVE lines while the other five cards run to four at
+every width; "encryption" dropped ("...secrets and keys inside your organization.") - measured
+four lines at 1100/1280/1440/1600/1920, level with the others. The first sentence is "Policy
+in your own Python code." (his wording; "at set points" tried and removed for length).
