@@ -6210,3 +6210,9 @@ Claude Code changes nothing in your agents." (my sentence from his point; the "i
 once / add agents any time" line is gone).
 Then Ram: "changes nothing in your agents" was not clear - the bullet ends "so your agents
 keep working unchanged when Claude Code moves to a new model."
+Then Ram's own bullet 2, verbatim: "Portable across models: Workflows live in Search2o.
+Change Claude models without rewriting your skill instructions." ("skill" carries the
+GitHub link). I had argued the benefit was not rewriting agents - WRONG: in plain Claude
+Code the person writes skill instructions and the model builds the behaviour at run time,
+so a model change means re-tuning the instructions; with Search2o they stand. LESSON: in
+the Claude Code section the reader's artifact is the skill instructions, not agents.
