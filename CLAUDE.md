@@ -6192,3 +6192,7 @@ Ram: highlight a key word or phrase per hero bullet for skimmers. Bolded (existi
 runtime" / "Build a working agent in minutes" / "See every agent run in real time" /
 "browser, Slack, Teams, Google Chat". Words unchanged. The Claude Code and framework
 sections were not touched (he said the hero).
+Then Ram bolded bullet 2 from its start ("Agents run in a controlled runtime") and rewrote
+bullet 5; on my readability note the last bullet is now "Use it anywhere: a browser, Slack,
+Teams, Google Chat, agent frameworks, and AI assistants." (bold lead, serial comma). All five
+bullets open with their bold phrase.
