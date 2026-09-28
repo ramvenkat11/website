@@ -6208,3 +6208,5 @@ lives in Search2o, independent of the assistant's model. Bullet 2 is now "Indepe
 model: the agent logic lives in Search2o, not in the skill [link], so a model update in
 Claude Code changes nothing in your agents." (my sentence from his point; the "installed
 once / add agents any time" line is gone).
+Then Ram: "changes nothing in your agents" was not clear - the bullet ends "so your agents
+keep working unchanged when Claude Code moves to a new model."
