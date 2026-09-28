@@ -6133,3 +6133,15 @@ Then Ram: the $30 need not stand out. The price line is gone; the Prod paragraph
 Then Ram: the "contact page" of the md is the help icon in the GUI - the Eval paragraph ends
 "Just send us a message from the help icon in the GUI." (no link). The closing "Get in
 touch" button still goes to about.html#contact (the website's email contact).
+
+## State on 2026-09-27 (help icon -> message icon, site and docs; not deployed)
+Ram: the GUI's help icon is now the Message icon - users just message us. Every "help icon"
+on the website and in the docs is "message icon": support.html (lead "You reach us from
+inside the GUI, with the message icon in the header."; "The message icon in the header
+opens a form..."), asking-the-docs, gui/index (header icons), gui/personal (lead "the
+profile, the docs, and messages to Search2o"; h2 "Docs and messages"), data-privacy row
+"Messages to Search2o", rest-api/overview "messages to Search2o", gettingstarted.html
+("To reach us, click on the message icon" with a chat-bubble inline SVG in place of the
+HelpCircle - the exact Lucide icon the GUI uses is unverified; and the callout "from the
+message icon in the GUI"), pricing.html Eval paragraph. Rebuilt; sweep for "help icon" /
+"help messages" over docsrc, html and gen: clean.
