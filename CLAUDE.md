@@ -6145,3 +6145,8 @@ profile, the docs, and messages to Search2o"; h2 "Docs and messages"), data-priv
 HelpCircle - the exact Lucide icon the GUI uses is unverified; and the callout "from the
 message icon in the GUI"), pricing.html Eval paragraph. Rebuilt; sweep for "help icon" /
 "help messages" over docsrc, html and gen: clean.
+Correction to the note above: pricing.html's sentence had already been changed by Ram
+himself (he also wrote "Eval mode has usage limits"), so my edit there found nothing; two
+more spots were then done - gui/index.html header line ("and the message icon for reaching
+Search2o") and gui/personal.html:7 ("The message icon opens a form..."). Rebuilt; the sweep
+over docsrc, html and gen for "help icon" / "help messages" / "Help opens" is clean.
