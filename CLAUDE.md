@@ -6161,3 +6161,10 @@ writes content/linkedin-banner.png (~175 KB PNG). The composition starts at x=76
 clears the page-logo overlay LinkedIn puts on the banner's bottom-left, and ends at ~3780,
 so it sits centred with wide margins for LinkedIn's mobile crop. Not referenced by any page,
 not under html/, so the deploy never sees it; Ram uploads it to LinkedIn by hand.
+
+## State on 2026-09-28 (Usage limits docs page retired; not deployed)
+Ram: remove the usage limits page. docsrc/system-management/usage-limits.html and its
+generated copy git rm'd, the toc entry removed (144 pages). No page linked it (the
+09-13 sweep had already confined the mentions to the page itself); the sitemap lost its
+URL; the --delete sync removes the live object at the next deploy. The System management
+lead and the docs home card never named it.
