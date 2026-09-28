@@ -115,7 +115,6 @@ TOC = [
         ("authentication", "Authentication"),
         ("single-sign-on", "Single sign-on"),
         ("audit-log", "Audit log"),
-        ("usage-limits", "Usage limits"),
     ]),
     ("security", "Security and privacy", [
         ("license-rotation", "License key rotation"),
