@@ -6202,3 +6202,9 @@ the bold: "Skip the context bloat: Claude's context holds results, not tool defi
 agent code." / "One skill, installed once. Add or update agents at any time - the skill
 [link] finds the right one for each request." / "The agent server is the agent gateway: it
 runs the agents, and users' laptops never access enterprise systems directly."
+Then Ram on bullet 2's real point: an ordinary skill has the model generate the agentic
+algorithm each time, so a model update means updating the skill; with Search2o the logic
+lives in Search2o, independent of the assistant's model. Bullet 2 is now "Independent of the
+model: the agent logic lives in Search2o, not in the skill [link], so a model update in
+Claude Code changes nothing in your agents." (my sentence from his point; the "installed
+once / add agents any time" line is gone).
