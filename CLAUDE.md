@@ -6130,3 +6130,6 @@ building" + paragraphs + the Get in touch button. `.plan-cards`/`.plan` rules re
 `.pricing .plan-price` remain.
 Then Ram: the $30 need not stand out. The price line is gone; the Prod paragraph opens
 "Prod is $30 per user per month." in ordinary text; the `.plan-price` rules are removed.
+Then Ram: the "contact page" of the md is the help icon in the GUI - the Eval paragraph ends
+"Just send us a message from the help icon in the GUI." (no link). The closing "Get in
+touch" button still goes to about.html#contact (the website's email contact).
