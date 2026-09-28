@@ -6181,3 +6181,7 @@ the pricing page's word). Rebuilt. STILL ON THE OLD MODEL, not touched, awaiting
 conversation-state, publishing, running-agents, conversations, data-privacy (4 rows),
 gui/search, hooks/conversation-state; memory.html's 100/500 memories per plan;
 registering-and-downloading's "opens an account on the Free plan".
+Then Ram: "member" in the account sense is "user" everywhere - service-accounts.html
+("Itself, as a user of the account") and single-sign-on.html's lead ("whether the person is
+a user of your account"). The remaining "member(s)" are Python object members and the legal
+texts' "class member".
