@@ -6128,3 +6128,5 @@ bold billing line, h2 "Prod - paid" + the $30 price line + paragraph, h2 "Tell u
 building" + paragraphs + the Get in touch button. `.plan-cards`/`.plan` rules removed;
 `.pricing h2` margin 44 (8 for the first), `.pricing h2 .dash`, `.pricing .stress`,
 `.pricing .plan-price` remain.
+Then Ram: the $30 need not stand out. The price line is gone; the Prod paragraph opens
+"Prod is $30 per user per month." in ordinary text; the `.plan-price` rules are removed.
