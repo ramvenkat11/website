@@ -186,8 +186,6 @@ p { margin: 0; }
 .hero-points svg { flex: 0 0 auto; margin-top: 4px; color: var(--blue); }
 .hero-points strong { color: var(--ink); font-weight: 600; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 34px; }
-.hero-points a { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
-.hero-points a:hover { color: var(--blue-ink); text-decoration-color: currentColor; }
 .pip {
   display: inline-flex; align-items: center; gap: 12px;
   padding: 10px 8px 10px 16px; border: 1px solid var(--line); border-radius: 11px;
@@ -324,6 +322,9 @@ p { margin: 0; }
   background: linear-gradient(var(--line), var(--line-soft));
 }
 .steps li:last-child::after { display: none; }
+.steps.plain { margin-top: 22px; }
+.steps.plain li { padding: 0 0 22px; }
+.steps.plain li::before, .steps.plain li::after { display: none; }
 .steps h3 { margin-bottom: 6px; font-size: 17px; }
 .steps p { color: var(--muted); font-size: 14.5px; max-width: 46ch; }
 
@@ -687,25 +688,13 @@ p { margin: 0; }
 .legal-body strong { color: var(--ink); }
 .legal-body code { font-family: var(--mono); font-size: .9em; }
 
-.pricing h2 { margin: 56px 0 0; font-size: 22px; letter-spacing: -0.015em; }
-.pricing h2 + p { margin-top: 12px; max-width: 70ch; color: var(--body); font-size: 15.5px; }
-.plans-wrap { margin-top: 26px; }
-.plans { width: 100%; border-collapse: separate; border-spacing: 0; border: 1px solid var(--line); border-radius: 16px; background: var(--card); box-shadow: var(--card-shadow-lg); overflow: hidden; }
-.plans th, .plans td { padding: 14px 20px; text-align: left; vertical-align: top; border-top: 1px solid var(--line-soft); font-size: 15px; line-height: 1.5; }
-.plans thead th { border-top: 0; vertical-align: top; padding-top: 26px; padding-bottom: 22px; background: var(--bg-soft); color: var(--muted); font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
-.plans thead th:first-child { width: 26%; }
-.plans thead th .plan { display: block; }
-.plans thead th .price { display: block; margin-top: 10px; color: var(--ink); font-size: 36px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; }
-.plans thead th .how { display: block; margin-top: 8px; color: var(--body); font-size: 14.5px; font-weight: 600; letter-spacing: 0; text-transform: none; }
-.plans thead th .permo { margin-left: 2px; color: var(--muted); font-size: 16px; font-weight: 600; letter-spacing: 0; text-transform: none; }
-.plans tbody th { color: var(--ink); font-weight: 650; }
-.plans th sup { color: var(--muted); font-weight: 500; }
-.plans tbody th small { display: block; color: var(--muted); font-size: 13px; font-weight: 500; line-height: 1.4; }
-.plans td { color: var(--body); }
-.plans .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.price-freeze { margin-top: 18px; display: grid; grid-template-columns: 30px 1fr; color: var(--muted); font-size: 14.5px; }
-.price-freeze + .price-freeze { margin-top: 8px; }
-.help-line { margin-top: 40px; color: var(--ink); font-size: 15.5px; }
+.pricing h2 { margin: 44px 0 0; font-size: 22px; letter-spacing: -0.015em; }
+.pricing h2:first-child { margin-top: 8px; }
+.pricing h2 ~ p { margin-top: 12px; max-width: 70ch; color: var(--body); font-size: 15.5px; line-height: 1.65; }
+.page-hero .hero-actions { margin-top: 26px; }
+.pricing h2 .dash { color: var(--faint); font-weight: 500; }
+.pricing .stress { color: var(--ink); font-weight: 600; }
+.pricing .cta { margin-top: 26px; }
 
 .contact-card {
   display: inline-grid; gap: 8px;
@@ -769,15 +758,6 @@ p { margin: 0; }
 }
 @media (max-width: 640px) {
   .cg { grid-template-columns: 1fr; gap: 4px; }
-  .plans, .plans thead, .plans tbody { display: block; }
-  .plans thead tr, .plans tbody tr { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
-  .plans thead th:first-child { display: none; }
-  .plans thead th { padding: 18px 14px; }
-  .plans thead th .price { font-size: 30px; }
-  .plans tbody th, .plans tbody td { padding-left: 14px; padding-right: 14px; }
-  .plans tbody th { grid-column: 1 / -1; padding-bottom: 4px; }
-  .plans tbody td { border-top: 0; padding-top: 0; padding-bottom: 14px; }
-  .plans tbody td::before { content: attr(data-plan); display: block; color: var(--faint); font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
   .arch { padding: 24px 16px; }
   .arch-flow { grid-template-columns: minmax(0, 1fr); }
   .arch-org { min-width: 0; }

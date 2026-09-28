@@ -60,12 +60,12 @@
             <span>Agents run in a controlled runtime on an agent server you deploy in your organization.</span>
           </li>
           <li>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-            <span>See every agent run in real time: who requested it, what ran, duration, errors, and LLM cost.</span>
-          </li>
-          <li>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg>
             <span>Build a working agent in minutes: structured definitions, AI-assisted, and versioned.</span>
+          </li>
+          <li>
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <span>See every agent run in real time: who requested it, what ran, duration, errors, and LLM cost.</span>
           </li>
           <li>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 9 5-9 5-9-5 9-5z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>
@@ -249,9 +249,20 @@
         <div>
           <span class="kicker">Agent framework</span>
           <h2>JSON DSL for agents</h2>
-          <p style="margin-top: 14px; color: var(--body); font-size: 14.5px; line-height: 1.6;">An agent is defined in JSON, using 23 commands. JSON strings enclosed in <code>{ }</code> are evaluated as Python expressions, with <a href="docs/agent-definition/python-expressions.html">built-in safeguards</a>.</p>
-          <p style="margin-top: 14px; color: var(--body); font-size: 14.5px; line-height: 1.6;"><a href="docs/profiles/index.html">Profiles</a> keep LLMs, prompts, APIs, databases and MCP servers out of agent definitions.</p>
-          <p style="margin-top: 14px; color: var(--body); font-size: 14.5px; line-height: 1.6;">Agents are built with AI assistance. <a href="demo.html#generate">Try it on the demo page <span class="arrow" aria-hidden="true">&rarr;</span></a></p>
+          <ol class="steps plain">
+            <li>
+              <h3>JSON with Python expressions</h3>
+              <p>An agent is defined in JSON, using 23 commands. JSON strings enclosed in <code>{ }</code> are evaluated as Python expressions, with <a href="docs/agent-definition/python-expressions.html">built-in safeguards</a>.</p>
+            </li>
+            <li>
+              <h3>Profiles</h3>
+              <p><a href="docs/profiles/index.html">Profiles</a> keep LLMs, prompts, APIs, databases and MCP servers out of agent definitions.</p>
+            </li>
+            <li>
+              <h3>Built with AI</h3>
+              <p>Agents are built with AI assistance. <a href="demo.html#generate">Try it live&nbsp;<span class="arrow" aria-hidden="true">&rarr;</span></a></p>
+            </li>
+          </ol>
         </div>
 
         <div class="cmdcard" aria-label="The 23 commands, by group">
@@ -304,7 +315,7 @@
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg></div>
           <h3>Hooks</h3>
-          <p>Policy in your own Python code. <a href="docs/hooks/index.html">Hooks</a> approve or refuse every agent run, LLM call and API call, keep <a href="docs/hooks/conversation-state.html">conversation state</a> in your own store, and feed your audit trail.</p>
+          <p>Policy in your own Python code. <a href="docs/hooks/index.html">Hooks</a> approve or refuse every agent run, LLM call and API call. They keep <a href="docs/hooks/conversation-state.html">conversation state</a> in your own store and feed your audit trail.</p>
         </article>
       </div>
     </div>
@@ -322,8 +333,8 @@
       <div class="footer-cols">
         <div class="fcol">
           <h4>Product</h4>
-          <a href="index.html#claude-code">Claude Code</a></li>
-          <li><a href="index.html#description">Search</a>
+          <a href="index.html#claude-code">Claude Code</a>
+          <a href="index.html#description">Search</a>
           <a href="index.html#system-architecture">System architecture</a>
           <a href="index.html#framework">Agent framework</a>
           <a href="index.html#platform">Platform</a>
