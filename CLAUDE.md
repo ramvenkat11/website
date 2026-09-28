@@ -6196,3 +6196,9 @@ Then Ram bolded bullet 2 from its start ("Agents run in a controlled runtime") a
 bullet 5; on my readability note the last bullet is now "Use it anywhere: a browser, Slack,
 Teams, Google Chat, agent frameworks, and AI assistants." (bold lead, serial comma). All five
 bullets open with their bold phrase.
+Then Ram: the same for the Claude Code section, lines redone with the same meaning, the
+third flipped to lead with the agent server as the gateway (bold), the skill link outside
+the bold: "Skip the context bloat: Claude's context holds results, not tool definitions or
+agent code." / "One skill, installed once. Add or update agents at any time - the skill
+[link] finds the right one for each request." / "The agent server is the agent gateway: it
+runs the agents, and users' laptops never access enterprise systems directly."
