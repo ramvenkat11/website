@@ -6168,3 +6168,16 @@ generated copy git rm'd, the toc entry removed (144 pages). No page linked it (t
 09-13 sweep had already confined the mentions to the page itself); the sitemap lost its
 URL; the --delete sync removes the live object at the next deploy. The System management
 lead and the docs home card never named it.
+
+## State on 2026-09-28 (license / gui-account / billing follow the Eval-Prod pricing; not deployed)
+Ram's three: license.html Pricing h2 now "An account starts in Eval, which is free for one
+month. Prod is priced per user per month, and billing starts only when the owner switches to
+Prod from the Account page. See Pricing."; gui/account.html Users "Add users by email." (the
+10-member cap clause gone) and Account "switch from Eval to Prod, or delete the account.
+Billing starts only with that switch; agents and configuration carry over."; billing.html
+"The per-user charge is prorated by the days each user was on the account." (member -> user,
+the pricing page's word). Rebuilt. STILL ON THE OLD MODEL, not touched, awaiting Ram: the
+"7 days on the Free plan, 90 days on Paid" retention on reports/index, gui/reports,
+conversation-state, publishing, running-agents, conversations, data-privacy (4 rows),
+gui/search, hooks/conversation-state; memory.html's 100/500 memories per plan;
+registering-and-downloading's "opens an account on the Free plan".
