@@ -6150,3 +6150,14 @@ himself (he also wrote "Eval mode has usage limits"), so my edit there found not
 more spots were then done - gui/index.html header line ("and the message icon for reaching
 Search2o") and gui/personal.html:7 ("The message icon opens a form..."). Rebuilt; the sweep
 over docsrc, html and gen for "help icon" / "help messages" / "Help opens" is clean.
+
+## State on 2026-09-28 (LinkedIn company banner drawn; not a site asset)
+Ram: a LinkedIn cover from the hero line (4200x700, 6:1, shown at 1128x191, max 3 MB). NEW
+gen/linkedin_banner.py (same approach as gen/ogcard.py: navy, top-left glow, faint 120px
+grid, the wordmark art from gen/assets/wordmark.png recoloured to ink, the tagline beneath,
+a vertical hairline, then the headline in Helvetica Neue Bold 88 on two lines - line 1 ink,
+line 2 "where search finds the right agent for each request." in the blue-to-teal gradient)
+writes content/linkedin-banner.png (~175 KB PNG). The composition starts at x=760 so it
+clears the page-logo overlay LinkedIn puts on the banner's bottom-left, and ends at ~3780,
+so it sits centred with wide margins for LinkedIn's mobile crop. Not referenced by any page,
+not under html/, so the deploy never sees it; Ram uploads it to LinkedIn by hand.
