@@ -6122,3 +6122,9 @@ pages that describe Free/Paid allowances (usage-limits, billing, license, gui/ac
 registering, running-the-server, the-gui, and the 7/90-day retention statements on
 conversation-state, publishing, reports, data-privacy, memory) - they follow the OLD plan
 model and need Ram's word on Eval/Prod before a sweep.
+Then Ram: no two horizontal blocks, Prod follows Eval, it is a casual page. The cards are
+gone: the body is one column of prose - h2 "Eval - free for one month" + paragraphs + the
+bold billing line, h2 "Prod - paid" + the $30 price line + paragraph, h2 "Tell us what you're
+building" + paragraphs + the Get in touch button. `.plan-cards`/`.plan` rules removed;
+`.pricing h2` margin 44 (8 for the first), `.pricing h2 .dash`, `.pricing .stress`,
+`.pricing .plan-price` remain.
