@@ -6097,3 +6097,28 @@ unchanged. Left column ends 139px above the commands card at 1920.
 The "Try it on the demo page ->" arrow had wrapped alone onto a second line; a no-break space
 now binds it to "page".
 Then Ram: the link is "Try it live ->" (one line).
+
+## State on 2026-09-27 (PRICING PAGE REDONE from content/pricing2.md - Eval and Prod, no table; NOT DEPLOYED)
+Ram: redo the pricing page like pricing2.md, no table. html/pricing.html: hero kicker
+"Pricing", h1 "Try Search2o in your organization", lead "Build agents for your systems and
+let your team use them at your own pace.", a blue "Start your evaluation ->" button
+(gettingstarted.html; `.page-hero .hero-actions { margin-top: 26px }`). Body: `.plan-cards`
+(two `.pcard.plan` cards, one column <=1000): "Eval - free for one month" (his two
+paragraphs; "contact page" links about.html#contact; the bold billing line as `.stress`)
+and "Prod - paid" with the price line `$30 per user per month` (his note "(We need to say
+$30/user/month)" - written as a price line, "user" as he wrote it although the old page
+said member - FLAGGED) and his paragraph. Then h2 "Tell us what you're building", his two
+paragraphs (`.pricing h2 ~ p`, 70ch, 15.5px) and a ghost "Get in touch" button
+(about.html#contact). Apostrophes straight, dashes &mdash;. Metas/og:description rewritten
+("an evaluation that is free for one month, then $30 per user per month in production").
+The whole `.plans` table CSS, `.price-freeze`, `.help-line` and the phone `.plans` rules
+are GONE from styles.css; new `.plan*` and `.pricing .cta` rules. Measured: two equal cards
+(339px) at 1920, one column at 390 with no sideways scroll, one h1, no table.
+FOOTER BUG FIXED on all ten pages: the 09-27 "Claude Code" insertion had left `</li>` and
+`<li>` fragments in the plain-anchor Product column (found reading pricing.html) - both
+anchors are plain again.
+STALE, not touched: content/pricing_table.md (my snapshot of the old table) and the docs
+pages that describe Free/Paid allowances (usage-limits, billing, license, gui/account,
+registering, running-the-server, the-gui, and the 7/90-day retention statements on
+conversation-state, publishing, reports, data-privacy, memory) - they follow the OLD plan
+model and need Ram's word on Eval/Prod before a sweep.
