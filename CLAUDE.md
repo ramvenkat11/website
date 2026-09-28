@@ -6185,3 +6185,10 @@ Then Ram: "member" in the account sense is "user" everywhere - service-accounts.
 ("Itself, as a user of the account") and single-sign-on.html's lead ("whether the person is
 a user of your account"). The remaining "member(s)" are Python object members and the legal
 texts' "class member".
+
+## State on 2026-09-28 (hero bullets: a key phrase in bold on each; not deployed)
+Ram: highlight a key word or phrase per hero bullet for skimmers. Bolded (existing
+`.hero-points strong` rule, --ink 600): "One conversation, many agents" / "controlled
+runtime" / "Build a working agent in minutes" / "See every agent run in real time" /
+"browser, Slack, Teams, Google Chat". Words unchanged. The Claude Code and framework
+sections were not touched (he said the hero).
