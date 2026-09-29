@@ -6258,3 +6258,17 @@ catalogs we built" paragraph) and Where we go from here - his five paragraphs ve
 (straight quotes, the dash as a spaced &mdash;, "20%-75%" as "20% to 75%" like the page's
 other ranges); the old h3 and the "fastest way to find out" sentence are gone (his last
 paragraph carries that point).
+
+## State on 2026-09-29 (hero: "one conversation, many agents" moved into the card, with the LLM per agent; not deployed)
+Ram: show the one-conversation-many-agents concept on the right-hand card with annotations,
+remove the bullet on the left, and say what we never had: each agent can use a different
+LLM, paid or local/free. FIRST SHOT: the card's title bar is "One conversation, many agents ·
+each with its own LLM"; each "Matched" line has a second chip after the agent chip -
+travel_desk gets a cloud icon + "GPT-5 mini · API", reimbursements a server icon + "Llama ·
+local, free" (`.hero-convo .who .chip.llm`: muted text on --bg-soft with the --line border,
+slate icon; the rule is 4 classes deep because the generic `.turn-agent .who .chip` sits
+later in the stylesheet; `.who` wraps with row-gap 6). The "One conversation, many agents,
+each picking up..." bullet is gone from the left (four bullets; Ram had meanwhile reordered
+them himself: Build / controlled runtime / Use it anywhere / See every run). The card keeps
+its top anchor and now ends 65px below the left column (Ram: a bigger picture is fine).
+Both who lines stay on one row at 1920. Ram to judge the strength of the annotation.
