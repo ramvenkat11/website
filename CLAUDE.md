@@ -6365,3 +6365,6 @@ its own LLM."
 Then Ram: the travel_desk note is "Books travel. Runs on Gemini." (consistent with Claude in
 the other note); my "Each agent knows only its own job..." line was bad - Ram writes the
 first bullet's draft himself; the bullet stands as is until then.
+Ram's draft applied: "Build a working agent in minutes, with AI assistance. Each agent is an
+isolated unit focused on one or two systems and LLM models." ("focussed" -> "focused",
+American; his comma before "and LLM models" dropped - flagged).
