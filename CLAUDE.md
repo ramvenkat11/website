@@ -6244,3 +6244,11 @@ quarters of the reviewed misses had a no-better answer key; real people ask what
 Row labels use the page's sentence-case forms. DISCREPANCY in the md: its overall-table row
 "a large corporation's departments" says 85.5% for search alone while the page's first table
 (and the md's own) says 85.4% - the page uses 85.4 in both places; flagged to Ram.
+Then Ram named the model: the experiment section is "An experiment: letting Jev choose
+between the two or three" - "Jev, a fast System 1 model from typesafe.ai ... built to make
+one quick decision from a fixed list of options"; table headers "Jev's choice right" / "With
+Jev choosing"; the quarter-second sentence replaced by his timing paragraph (one extra call
+only on multi-agent searches; median 159 ms, 90% under 215 with kept-open connections; 223 /
+268 otherwise; Jev's own processing median 62 ms, the rest network); "Jev needs each agent's
+description"; the subsection says "nor Jev's choice". The 85.5/85.4 discrepancy is still in
+the md; the page keeps 85.4.
