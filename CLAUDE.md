@@ -6252,3 +6252,9 @@ only on multi-agent searches; median 159 ms, 90% under 215 with kept-open connec
 268 otherwise; Jev's own processing median 62 ms, the rest network); "Jev needs each agent's
 description"; the subsection says "nor Jev's choice". The 85.5/85.4 discrepancy is still in
 the md; the page keeps 85.4.
+Then Ram's rewrite of the caveat, pasted: it is its own h2 "Why we expect better results in
+real use" between What we do not claim (which keeps its "Every number above comes from
+catalogs we built" paragraph) and Where we go from here - his five paragraphs verbatim
+(straight quotes, the dash as a spaced &mdash;, "20%-75%" as "20% to 75%" like the page's
+other ranges); the old h3 and the "fastest way to find out" sentence are gone (his last
+paragraph carries that point).
