@@ -6319,3 +6319,10 @@ align-self end so each note's bottom sits on its reply's bottom (measured 0px). 
 agent name on its own line, then "a focused agent, running on GPT-5 mini" / "another agent,
 on a local Llama. Same conversation, so it knows the trip". At <=1000px: one column, notes
 under their replies with the tail on top. Card 485px; 390px: no sideways scroll.
+Then Ram: right approach; title "One conversation, many focused agents"; classier colours;
+fewer words, minding the difference between our many-agents claim and a chat box (one
+general model answering in words vs purpose-built agents doing the job in your systems, each
+on its own model, the conversation carrying context between them). Callouts now: ivory
+#f7f2e8, border #d6cdbb, text #26304a, shadow .18; the agent name in the mono face 11.5px
+bold on its own line, then one short line: "Books travel. Runs on GPT-5 mini." /
+"Files expenses. Runs on a local Llama. Knows the trip."
