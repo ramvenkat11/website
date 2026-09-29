@@ -6373,3 +6373,6 @@ and a NEW FIRST bullet (chat-bubble icon, beside the card it describes) carries 
 sentences: "Each agent handles a short task independently, with its own systems and models.
 Conversations bring agents together as needed without any prewiring." (bold lead on the
 first clause, like the other bullets). Four bullets.
+Then Ram's first bullet, verbatim: "Each agent handles a short, well-defined task within its
+time and cost budgets. Conversations bring agents together as needed, without prewiring."
+(bold through "well-defined task", as he marked it).
