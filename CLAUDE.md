@@ -6309,3 +6309,13 @@ chip.llm rules are gone. 390px: no sideways scroll.
 The bubbles' fill is `color-mix(in srgb, var(--blue) 12%, var(--card))` (opaque) rather than
 the translucent --tag-match-bg, because the translucent tint let the bubble's own top border
 show through the tail and drew a full diamond.
+Then Ram: right direction, but draw the bubbles like the callouts in a book. FOURTH SHOT: the
+card body is a two-column grid (`minmax(0,1fr) 150px`, column-gap 14): the transcript in
+column 1, and the two `.note-bubble`s in column 2 as PAPER CALLOUTS - #fff8d6 fill, #d8c77c
+border, #1e2740 text 12px 500 (deliberately outside the UI palette so they read as
+annotations, in both themes), a small shadow, a tail (rotated square, left edge, 14px from
+the bottom) pointing left at the reply, `grid-row: 2` / `grid-row: 4` (.r2/.r4) with
+align-self end so each note's bottom sits on its reply's bottom (measured 0px). Text: bold
+agent name on its own line, then "a focused agent, running on GPT-5 mini" / "another agent,
+on a local Llama. Same conversation, so it knows the trip". At <=1000px: one column, notes
+under their replies with the tail on top. Card 485px; 390px: no sideways scroll.
