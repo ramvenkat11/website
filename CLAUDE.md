@@ -6347,3 +6347,7 @@ icon, "What ran, what failed, what it cost. Reports show trends in agent usage, 
 errors and LLM cost; each row opens the details." with Reports -> docs/reports/index.html);
 the "See every agent run in real time" bullet leaves the hero (three bullets: Build /
 controlled runtime / Use it anywhere).
+MISTAKE AND RECOVERY: the bullet removal regex spanned two list items (the reports item's
+indentation differed after Ram's reorder), so "Use it anywhere" went too; restored from git
+HEAD after the controlled-runtime bullet. LESSON (again): after deleting one item from a
+list, count the items that remain before moving on.
