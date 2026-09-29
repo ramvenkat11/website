@@ -6326,3 +6326,8 @@ on its own model, the conversation carrying context between them). Callouts now:
 #f7f2e8, border #d6cdbb, text #26304a, shadow .18; the agent name in the mono face 11.5px
 bold on its own line, then one short line: "Books travel. Runs on GPT-5 mini." /
 "Files expenses. Runs on a local Llama. Knows the trip."
+Then Ram: the second callout is "Files expenses. Runs on a local Llama, but knows about the
+trip from the context." (his words). Title stays "One conversation, many focused agents" -
+"any model" would dilute it (Ram); "many focused, independent agents" was floated and my
+view given: the comma list reads as two adjectives stacked, and the callouts already show
+the independence.
