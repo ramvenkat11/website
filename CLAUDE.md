@@ -6306,3 +6306,6 @@ reply "[travel_desk] a focused agent, running on GPT-5 mini", after the filing r
 (the agent name as a small chip with the bolt icon). Title bar "One conversation, many
 agents". Beats retimed st1-st7 (.2 / 1 / 2.4 / 3.1 / 3.8 / 4.6 / 5.4 s). The turn-note and
 chip.llm rules are gone. 390px: no sideways scroll.
+The bubbles' fill is `color-mix(in srgb, var(--blue) 12%, var(--card))` (opaque) rather than
+the translucent --tag-match-bg, because the translucent tint let the bubble's own top border
+show through the tail and drew a full diamond.
