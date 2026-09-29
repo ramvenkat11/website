@@ -6230,3 +6230,17 @@ need"; "We can extend the evaluation period as long as you need"). Synced: licen
 own meta + og descriptions ("an evaluation that is free for as long as you need, then $30
 per user per month in production"), which his body edit had not touched. Rebuilt; "one
 month" remains nowhere on the site or in the docs.
+
+## State on 2026-09-29 (search quality: the second-model experiment and the "numbers are likely lower" note; NOT DEPLOYED)
+Ram added two blocks to content/search_testing.md; both are on docsrc/search/search-quality.html
+following the md: NEW h2 "An experiment: choosing between the two or three" after Across
+languages (his "Not yet in the product..." sentence; a second, small model picks among the
+two or three offered agents from their descriptions; two `fields` tables - the choice on the
+questions where search offered several, and the overall right-agent-first figures; the gain
+largest where agents overlap; about a quarter of a second, only on those searches; titles
+alone do worse) and NEW h3 "The numbers are likely lower than real use" inside What we do not
+claim (LLM-written, deliberately hard questions; the incident-date example; a fifth to three
+quarters of the reviewed misses had a no-better answer key; real people ask what they mean).
+Row labels use the page's sentence-case forms. DISCREPANCY in the md: its overall-table row
+"a large corporation's departments" says 85.5% for search alone while the page's first table
+(and the md's own) says 85.4% - the page uses 85.4 in both places; flagged to Ram.
