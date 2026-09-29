@@ -6336,3 +6336,6 @@ the JSON waits for the user's input without using system resources. A third `.no
 .r2.top` (align-self start, tail 14px from the top) sits beside the ask panel: mono "ask" /
 "Waits for the answer. Holds no server resources meanwhile." (a longer first form overlapped
 the travel_desk note by 38px).
+Final form: the ask note reads "Waits for the answer, holding no server resources." and the
+margin column is 162px (was 150), which leaves 15px between the ask note and the travel_desk
+note; card 486px; 390px: no sideways scroll.
