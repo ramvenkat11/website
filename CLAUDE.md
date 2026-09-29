@@ -6362,3 +6362,6 @@ and independent - each knows only its own systems (APIs, DBs, MCPs) and LLM, unl
 general assistant that knows everything. Applied (my phrasing): "Build a working agent in
 minutes, written with AI assistance. Each agent knows only its own job, its own systems, and
 its own LLM."
+Then Ram: the travel_desk note is "Books travel. Runs on Gemini." (consistent with Claude in
+the other note); my "Each agent knows only its own job..." line was bad - Ram writes the
+first bullet's draft himself; the bullet stands as is until then.
