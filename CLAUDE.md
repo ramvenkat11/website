@@ -6339,3 +6339,11 @@ the travel_desk note by 38px).
 Final form: the ask note reads "Waits for the answer, holding no server resources." and the
 margin column is 162px (was 150), which leaves 15px between the ask note and the travel_desk
 note; card 486px; 390px: no sideways scroll.
+
+## State on 2026-09-29 (Platform: Hooks card -> Reports again; hooks line on Security; reports bullet off the hero; not deployed)
+Ram: the Security & privacy card gains "Hooks help with custom policies." (Hooks ->
+docs/hooks/index.html); the Hooks card is replaced by the Reports card as before (bar-chart
+icon, "What ran, what failed, what it cost. Reports show trends in agent usage, performance,
+errors and LLM cost; each row opens the details." with Reports -> docs/reports/index.html);
+the "See every agent run in real time" bullet leaves the hero (three bullets: Build /
+controlled runtime / Use it anywhere).
