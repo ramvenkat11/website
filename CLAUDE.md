@@ -6272,3 +6272,14 @@ each picking up..." bullet is gone from the left (four bullets; Ram had meanwhil
 them himself: Build / controlled runtime / Use it anywhere / See every run). The card keeps
 its top anchor and now ends 65px below the left column (Ram: a bigger picture is fine).
 Both who lines stay on one row at 1920. Ram to judge the strength of the annotation.
+Then Ram: the title must not say "each with its own LLM"; the point is the paradigm - many
+focused agents, each doing one thing right, each on the LLM appropriate to its work,
+minimal tokens - with the example muted and the attention on that. SECOND SHOT: title bar
+"One conversation, many agents"; three `.turn-note` annotation rows inside the card (13px
+--ink 600, a 2px --blue left bar), placed after each user turn and at the end: "Search picks
+one focused agent for the request. It books travel, and nothing else." / "Same conversation,
+another focused agent. It already knows the trip." / "Each agent runs on the LLM that suits
+its job, paid or local, and spends only the tokens the job needs."; the transcript (user
+bubbles, agent messages, Matched lines) at opacity .78 so the notes lead. The model chips
+stay as the concrete detail. Card 601px, ending 200px below the left column (Ram: bigger is
+fine); 390px: no sideways scroll. The notes reuse the st2/st6/st7 animation delays.
