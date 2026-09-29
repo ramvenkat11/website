@@ -6222,3 +6222,11 @@ Ram: change "executable" to "workflow" on the About page. Four places: the meta 
 descriptions ("search that retrieves workflows instead of documents"), the bold question
 ("what if search found and ran a workflow to fulfill the user's request?") and "In Search2o,
 those workflows are agents". No "executable" remains on the page.
+
+## State on 2026-09-29 (Eval is free for as long as you need; not deployed)
+Ram changed the pricing page's Eval heading and paragraph himself ("free for as long as you
+need"; "We can extend the evaluation period as long as you need"). Synced: license.html
+"An account starts in Eval, which is free for as long as you need." and the pricing page's
+own meta + og descriptions ("an evaluation that is free for as long as you need, then $30
+per user per month in production"), which his body edit had not touched. Rebuilt; "one
+month" remains nowhere on the site or in the docs.
