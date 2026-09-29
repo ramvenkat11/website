@@ -6357,3 +6357,8 @@ Then Ram: the ask note is removed; the travel_desk note is centred on the first 
 (`.r2 { align-self: center }`, tail at 50%) so it points at the offer and the booking reply
 together; "a local Llama" is "Claude" (Llama is not supported yet): "Files expenses. Runs on
 Claude, but knows about the trip from the context."
+Then Ram: the first bullet should say written with AI assistance, and that agents are focused
+and independent - each knows only its own systems (APIs, DBs, MCPs) and LLM, unlike a
+general assistant that knows everything. Applied (my phrasing): "Build a working agent in
+minutes, written with AI assistance. Each agent knows only its own job, its own systems, and
+its own LLM."
