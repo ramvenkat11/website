@@ -6331,3 +6331,8 @@ trip from the context." (his words). Title stays "One conversation, many focused
 "any model" would dilute it (Ram); "many focused, independent agents" was floated and my
 view given: the comma list reads as two adjectives stacked, and the callouts already show
 the independence.
+Then Ram: use the free space at the top of the margin for a note on ask - one command in
+the JSON waits for the user's input without using system resources. A third `.note-bubble
+.r2.top` (align-self start, tail 14px from the top) sits beside the ask panel: mono "ask" /
+"Waits for the answer. Holds no server resources meanwhile." (a longer first form overlapped
+the travel_desk note by 38px).
