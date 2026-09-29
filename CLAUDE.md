@@ -6368,3 +6368,8 @@ first bullet's draft himself; the bullet stands as is until then.
 Ram's draft applied: "Build a working agent in minutes, with AI assistance. Each agent is an
 isolated unit focused on one or two systems and LLM models." ("focussed" -> "focused",
 American; his comma before "and LLM models" dropped - flagged).
+Then Ram: the first bullet is just "Build a working agent in minutes, with AI assistance.";
+and a NEW FIRST bullet (chat-bubble icon, beside the card it describes) carries his two
+sentences: "Each agent handles a short task independently, with its own systems and models.
+Conversations bring agents together as needed without any prewiring." (bold lead on the
+first clause, like the other bullets). Four bullets.
