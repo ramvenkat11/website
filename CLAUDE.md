@@ -6283,3 +6283,6 @@ its job, paid or local, and spends only the tokens the job needs."; the transcri
 bubbles, agent messages, Matched lines) at opacity .78 so the notes lead. The model chips
 stay as the concrete detail. Card 601px, ending 200px below the left column (Ram: bigger is
 fine); 390px: no sideways scroll. The notes reuse the st2/st6/st7 animation delays.
+Then Ram: too busy, too much text, no one would read it. The three annotations are labels
+now: "One focused agent for the request" / "Another agent, same conversation" / "Each agent
+on the LLM that fits its job".
