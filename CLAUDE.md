@@ -6216,3 +6216,9 @@ GitHub link). I had argued the benefit was not rewriting agents - WRONG: in plai
 Code the person writes skill instructions and the model builds the behaviour at run time,
 so a model change means re-tuning the instructions; with Search2o they stand. LESSON: in
 the Claude Code section the reader's artifact is the skill instructions, not agents.
+
+## State on 2026-09-29 (About page: "executable" -> "workflow"; not deployed)
+Ram: change "executable" to "workflow" on the About page. Four places: the meta and og
+descriptions ("search that retrieves workflows instead of documents"), the bold question
+("what if search found and ran a workflow to fulfill the user's request?") and "In Search2o,
+those workflows are agents". No "executable" remains on the page.
