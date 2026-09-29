@@ -6351,3 +6351,5 @@ MISTAKE AND RECOVERY: the bullet removal regex spanned two list items (the repor
 indentation differed after Ram's reorder), so "Use it anywhere" went too; restored from git
 HEAD after the controlled-runtime bullet. LESSON (again): after deleting one item from a
 list, count the items that remain before moving on.
+Then Ram: the first hero bullet ends "structured definitions written with AI assistance."
+(was "structured definitions, AI-assisted, and versioned.").
