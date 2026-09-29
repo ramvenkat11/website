@@ -6293,3 +6293,16 @@ TRAP: the transcript's opacity .5 never applied - the `rise` keyframe animation 
 opacity 1 with fill-mode forwards on the same `.st` elements and wins; the fade is now
 `filter: opacity(.55)` on the user bubbles, agent messages and Matched lines, which the
 animation does not touch.
+Then Ram: the picture has two layers - what the user sees and what happens behind the
+scenes - and each text must obviously belong to one; show only what the user sees and
+annotate it with bubbles. THIRD SHOT: the card body is the user's transcript at full
+strength (the request, the ask form, the booking reply, the second request, the filing
+reply - no Matched rows, no model chips, no fade) plus two `.note-bubble` callouts
+(dashed --blue border, --tag-match-bg fill, a rotated-square tail pointing up at the reply
+above, 12.5px --ink 500, `justify-self: start` in the grid body with max-width calc(100% -
+18px) - `align-self` had stretched them to 450px past the card's edge): after the booking
+reply "[travel_desk] a focused agent, running on GPT-5 mini", after the filing reply
+"[reimbursements] another agent, on a local Llama · same conversation, so it knows the trip"
+(the agent name as a small chip with the bolt icon). Title bar "One conversation, many
+agents". Beats retimed st1-st7 (.2 / 1 / 2.4 / 3.1 / 3.8 / 4.6 / 5.4 s). The turn-note and
+chip.llm rules are gone. 390px: no sideways scroll.
