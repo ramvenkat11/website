@@ -6353,3 +6353,7 @@ HEAD after the controlled-runtime bullet. LESSON (again): after deleting one ite
 list, count the items that remain before moving on.
 Then Ram: the first hero bullet ends "structured definitions written with AI assistance."
 (was "structured definitions, AI-assisted, and versioned.").
+Then Ram: the ask note is removed; the travel_desk note is centred on the first agent block
+(`.r2 { align-self: center }`, tail at 50%) so it points at the offer and the booking reply
+together; "a local Llama" is "Claude" (Llama is not supported yet): "Files expenses. Runs on
+Claude, but knows about the trip from the context."
