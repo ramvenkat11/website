@@ -6289,3 +6289,7 @@ on the LLM that fits its job".
 Then Ram: the annotations were all shouting; the example is only context and can be much
 lighter. Now `.turn-note` is 13.5px weight 500 --ink (bar kept) and the transcript (user
 bubbles, agent messages, Matched lines) sits at opacity .5.
+TRAP: the transcript's opacity .5 never applied - the `rise` keyframe animation ends at
+opacity 1 with fill-mode forwards on the same `.st` elements and wins; the fade is now
+`filter: opacity(.55)` on the user bubbles, agent messages and Matched lines, which the
+animation does not touch.
