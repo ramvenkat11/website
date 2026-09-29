@@ -6286,3 +6286,6 @@ fine); 390px: no sideways scroll. The notes reuse the st2/st6/st7 animation dela
 Then Ram: too busy, too much text, no one would read it. The three annotations are labels
 now: "One focused agent for the request" / "Another agent, same conversation" / "Each agent
 on the LLM that fits its job".
+Then Ram: the annotations were all shouting; the example is only context and can be much
+lighter. Now `.turn-note` is 13.5px weight 500 --ink (bar kept) and the transcript (user
+bubbles, agent messages, Matched lines) sits at opacity .5.
