@@ -93,9 +93,43 @@
 <h2 id="across-languages">Across languages</h2>
 <p>Search works on meaning rather than on words, so it handles languages other than English, and it handles a question asked in one language against agents described in another. Accuracy in a non-English catalog is within about three points of English, and asking across two different languages costs about three points more.</p>
 
+<h2 id="an-experiment-letting-jev-choose-between-the-two-or-three">An experiment: letting Jev choose between the two or three</h2>
+<p>Not yet in the product. The numbers in this section come from a test, not from the search we ship.</p>
+<p>When search is not sure, it offers two or three agents and the user picks. We tested handing that choice to Jev, a fast System 1 model from typesafe.ai. Jev is built to make one quick decision from a fixed list of options. It reads the question and each offered agent's description, and picks one.</p>
+<p>On the questions where search offered two or three agents:</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Catalog</th><th>Search's first choice right</th><th>Jev's choice right</th></tr></thead>
+<tbody>
+<tr><td>A university</td><td>72.4%</td><td>79.0%</td></tr>
+<tr><td>A clinic group</td><td>74.2%</td><td>82.2%</td></tr>
+<tr><td>A software company's internal agents</td><td>69.9%</td><td>77.4%</td></tr>
+<tr><td>A large corporation's departments</td><td>66.9%</td><td>75.0%</td></tr>
+<tr><td>A retailer's supply chain and merchandising</td><td>65.3%</td><td>75.9%</td></tr>
+<tr><td>A catalog spanning fifty business areas</td><td>67.0%</td><td>73.6%</td></tr>
+</tbody></table></div>
+<p>Counted over every question, as in the first table on this page, the right agent comes first more often:</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Catalog</th><th>Right agent first, search alone</th><th>With Jev choosing</th></tr></thead>
+<tbody>
+<tr><td>A university</td><td>91.0%</td><td>92.4%</td></tr>
+<tr><td>A clinic group</td><td>90.6%</td><td>93.2%</td></tr>
+<tr><td>A software company's internal agents</td><td>89.0%</td><td>91.4%</td></tr>
+<tr><td>A large corporation's departments</td><td>85.4%</td><td>87.6%</td></tr>
+<tr><td>A retailer's supply chain and merchandising</td><td>83.8%</td><td>88.1%</td></tr>
+<tr><td>A catalog spanning fifty business areas</td><td>85.5%</td><td>88.3%</td></tr>
+</tbody></table></div>
+<p>The gain is largest where agents overlap most, which is where search needs the help.</p>
+<p>Speed is what makes this usable. Jev adds one call, and only to the searches that offered more than one agent. Measured over thousands of calls, that call takes a median of 159 milliseconds (90% under 215 ms) when connections are kept open, and 223 milliseconds (90% under 268 ms) when each call opens its own. Jev's own processing time is a median of 62 milliseconds; the rest is the network.</p>
+<p>Jev needs each agent's description to do this well. Given only the agents' titles, it chose worse than search's own first choice.</p>
+
 <h2 id="what-we-do-not-claim">What we do not claim</h2>
 <p>Every number above comes from catalogs we built, and a real catalog will differ. The honest way to read them is as a range: a well-separated catalog lands at the top of it, a catalog full of near-duplicate agents at the bottom, and the difference is mostly in how the agents are described.</p>
-<p>The fastest way to find out where yours sits is to put your own agents in and ask your own questions.</p>
+<h2 id="why-we-expect-better-results-in-real-use">Why we expect better results in real use</h2>
+<p>We expect search quality in real use to be substantially higher than these test scores suggest. The tests deliberately use difficult, sometimes conflicting questions, and some reasonable matches are counted as wrong.</p>
+<p>A language model generated both the questions and their expected answers. Some questions mix one agent's terminology with another agent's purpose. For example, "What are the top drivers behind incident date by severity?" is assigned to an insurance-claims agent because it has an "incident date" field &mdash; even though an incident-report agent could be a more natural match.</p>
+<p>We reviewed cases where the expected agent appeared among the search results, but neither search nor Jev selected it. Depending on the catalog, 20% to 75% of those cases had an expected answer that we judged no better than the selected agent, and often worse. These percentages apply to that reviewed subset, not to all test questions.</p>
+<p>We expect real requests to align more closely with what users want an agent to do, without the deliberate conflicts built into these tests. That gives us reason to expect substantially better results, though it does not establish how much better.</p>
+<p>Your results will also depend on how clearly your agents are described and how much their purposes overlap. The best test is to use your own agents and ask your own questions.</p>
 
 <h2 id="where-we-go-from-here">Where we go from here</h2>
 <p>We have lived and breathed search for the past twenty years, and we will keep improving search quality and speed.</p>
@@ -103,7 +137,7 @@
     </article>
     <nav class=prevnext><a class=prev href='../search/search-settings.html'><small>Previous</small>Search settings</a><a class=next href='../search/orchestrator.html'><small>Next</small>Orchestrator</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#what-we-test-against'>What we test against</a></li><li class=l2><a href='#how-often-it-finds-the-right-agent'>How often it finds the right agent</a></li><li class=l2><a href='#saying-no-match-when-nothing-fits'>Saying "no match" when nothing fits</a></li><li class=l2><a href='#how-fast-it-is'>How fast it is</a></li><li class=l2><a href='#across-languages'>Across languages</a></li><li class=l2><a href='#what-we-do-not-claim'>What we do not claim</a></li><li class=l2><a href='#where-we-go-from-here'>Where we go from here</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#what-we-test-against'>What we test against</a></li><li class=l2><a href='#how-often-it-finds-the-right-agent'>How often it finds the right agent</a></li><li class=l2><a href='#saying-no-match-when-nothing-fits'>Saying "no match" when nothing fits</a></li><li class=l2><a href='#how-fast-it-is'>How fast it is</a></li><li class=l2><a href='#across-languages'>Across languages</a></li><li class=l2><a href='#an-experiment-letting-jev-choose-between-the-two-or-three'>An experiment: letting Jev choose between the two or three</a></li><li class=l2><a href='#what-we-do-not-claim'>What we do not claim</a></li><li class=l2><a href='#why-we-expect-better-results-in-real-use'>Why we expect better results in real use</a></li><li class=l2><a href='#where-we-go-from-here'>Where we go from here</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

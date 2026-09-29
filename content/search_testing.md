@@ -97,12 +97,75 @@ languages costs about three points more.
 
 ---
 
+## An experiment: letting Jev choose between the two or three
+
+Not yet in the product. The numbers in this section come from a test, not from the search we ship.
+
+When search is not sure, it offers two or three agents and the user picks. We tested handing
+that choice to Jev, a fast System 1 model from typesafe.ai. Jev is built to make one quick
+decision from a fixed list of options. It reads the question and each offered agent's
+description, and picks one.
+
+On the questions where search offered two or three agents:
+
+| catalog | search's first choice right | Jev's choice right |
+|---|---|---|
+| a university | 72.4% | 79.0% |
+| a clinic group | 74.2% | 82.2% |
+| a software company's internal agents | 69.9% | 77.4% |
+| a large corporation's departments | 66.9% | 75.0% |
+| a retailer's supply chain | 65.3% | 75.9% |
+| a catalog of 1,000 agents | 67.0% | 73.6% |
+
+Counted over every question, as in the first table on this page, the right agent comes first
+more often:
+
+| catalog | right agent first, search alone | with Jev choosing |
+|---|---|---|
+| a university | 91.0% | 92.4% |
+| a clinic group | 90.6% | 93.2% |
+| a software company's internal agents | 89.0% | 91.4% |
+| a large corporation's departments | 85.5% | 87.6% |
+| a retailer's supply chain | 83.8% | 88.1% |
+| a catalog of 1,000 agents | 85.5% | 88.3% |
+
+The gain is largest where agents overlap most, which is where search needs the help.
+
+Speed is what makes this usable. Jev adds one call, and only to the searches that offered more
+than one agent. Measured over thousands of calls, that call takes a median of 159 milliseconds
+(90% under 215 ms) when connections are kept open, and 223 milliseconds (90% under 268 ms) when
+each call opens its own. Jev's own processing time is a median of 62 milliseconds; the rest is
+the network.
+
+Jev needs each agent's description to do this well. Given only the agents' titles, it chose
+worse than search's own first choice.
+
+---
+
 ## What we do not claim
 
 Every number above comes from catalogs we built, and a real catalog will differ. The honest
 way to read them is as a range: a well-separated catalog lands at the top of it, a catalog
 full of near-duplicate agents at the bottom, and the difference is mostly in how the agents are
 described.
+
+### The numbers are likely lower than real use
+
+The test questions, and the answer each one is marked against, were written by a language
+model, and they were made hard on purpose. Many name something that belongs to one agent while
+asking for what another agent does: "What are the top drivers behind incident date by
+severity?" is marked as belonging to an insurance-claims agent, because "incident date" is one
+of its fields, though most people asking it would want the incident-report agent.
+
+So a question counted as wrong is often one a person would have answered the same way. We
+reviewed the questions where the right agent was among the choices search offered, but neither
+search's first choice nor Jev's choice was that agent. Depending on the catalog,
+between a fifth and three quarters of them had an answer key that was no better than the agent
+chosen, and often worse. Some of the questions are confusing
+enough that we would get them wrong ourselves.
+
+Real people ask what they mean, in their own words. We expect search to do better on those
+questions than on ours.
 
 The fastest way to find out where yours sits is to put your own agents in and ask your own
 questions.
