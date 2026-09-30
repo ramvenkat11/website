@@ -6535,3 +6535,7 @@ Also on phones: the first note's tail was drawn mid-height INSIDE the note (the 
 `.note-bubble.r2::before` too (top -6px, margin-top 0). Verified in a 390 frame: both notes
 13px under their replies with the tail on top; the three lean Claude Code boxes 92px wide in
 a row with their chips inside.
+Phone polish on the "With Search2o" card: the lean boxes are 92px wide in the row, so
+`.cc-after .cc-cc` padding 9px 4px, strong 12.5px nowrap, chip 10.5px nowrap (measured: one
+line each, no overflow), and the "request · results" label is hidden on phones (it ran into
+the third arrow).
