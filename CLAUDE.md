@@ -6437,3 +6437,23 @@ boxes - `.cc-title` is now a HEADER BAR across the card (negative margins to the
 device as the hero card's title bar.
 Then Ram: the Search2o Cloud step says "sub-second search" and links it to
 docs/search/search-quality.html (was "search" -> how-matching-works).
+
+## State on 2026-09-30 (AGENT FRAMEWORK SECTION REDONE: definition + description; not deployed)
+Ram: the 23 commands on the left, the description from the old "How search works" on the
+right, joined by a "+" like the Claude Code section's "vs", to say that a task-specific agent
+is a JSON DSL definition plus a description used by search; the "Build with AI" part may go;
+the two small titles combined into "Agent DSL: JSONC with Python expressions". BUILT: a
+centred head (kicker Agent framework; h2 "A task-specific agent is a definition and a
+description" - MY line; the 26px centred size shared with the Claude Code head via
+`#claude-code .section-head, #framework .section-head`), then `.cc-compare.fw-compare`:
+LEFT `.arch.cc-arch.fw-card` with the header bar "Agent DSL: JSONC with Python expressions",
+a `.fw-lead` ("An agent is defined in JSON, using 23 commands. Strings enclosed in { } are
+evaluated as Python expressions, with built-in safeguards [link]."), the nine `.cg` command
+rows in a `.fw-cmds` grid, and a `.fw-foot` "Command reference ->"; the "+" as the round
+`.cc-vs` badge; RIGHT `.fw-card` with the header bar "Description, indexed by search", a
+lead ("A plain-language description of what the agent does. Search matches each request
+against these descriptions, so matching is predictable and scales to thousands of agents -
+see search quality [link]."), and the old hr_policy description `.codecard` (box-shadow
+none inside the card, pre 13px). GONE from the page: the Profiles line and "Build with AI /
+Try it live" (the demo is linked from the hero); the `.cmdcard*` and `.steps.plain` rules
+are now unused in styles.css (reported, not removed).
