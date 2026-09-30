@@ -6395,3 +6395,22 @@ right one for each request.": the footer sentence on the ten hand-written pages 
 og:image:alt on every page and the docs template (gen/build.py), html/images/og2.png (a NEW
 file name again, so caches refetch - gen/ogcard.py), and content/linkedin-banner.png
 (gen/linkedin_banner.py). Not before Ram says the hero is final.
+
+## State on 2026-09-30 (CLAUDE CODE SECTION AS A "VS" COMPARISON, trial; not deployed)
+Ram: remove the text on the left; show a typical Claude Code setup instead (each instance
+with many skills, connecting to APIs, MCPs and databases directly), a "vs" in the middle,
+so the difference between plain Claude Code and Claude Code with Search2o is visible. The
+pre-trial page is saved at <scratchpad>/index_before_vs.html. BUILT: the section head is
+centred above (`section-head center`, `#claude-code .section-head { max-width: none }` so
+the h2 stays on one line); `.cc-compare` grid (minmax(0,1fr) auto minmax(0,1fr), gap 18,
+stretch; one column <=1000) holding: LEFT `.arch.cc-arch.cc-before` titled "Claude Code
+today" (`.cc-title`, 13px muted 700): three `.cc-cc.cc-fat` boxes each stuffed with chips
+jira · orders · hr_policy · expenses · calendar · "+14 skills" (dashed `.more`), three
+one-way arrows down (the middle one labelled "direct access"), and a bottom `.cc-row`
+(1.6fr 1fr) of "Enterprise systems / APIs · databases · MCP servers, from every laptop" and
+"LLMs / Claude only" - the arrows land on the two boxes; MIDDLE a 44px round `.cc-vs` badge
+"vs"; RIGHT the existing Search2o diagram as `.cc-after` titled "With Search2o". The cards
+are flex columns so they stretch to the same height (`.cc-compare .arch-flow { flex: 1;
+align-content: start }` - space-between had left 5px gaps at the arrow ends). The three
+bullets that were on the left (portable across models / one skill / gateway) are GONE from
+the page with this trial - they live only in the saved copy.
