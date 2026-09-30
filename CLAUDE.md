@@ -6482,3 +6482,21 @@ with UI" (his words; "UI" rather than the docs' "the GUI" - his choice on the ho
 with "browser UI" in step 1).
 Then: "..., backed by Search2o Cloud" appended (Ram wrote "cloud" lowercase; the product
 name is Search2o Cloud everywhere else, so capitalised - flagged).
+
+## State on 2026-09-30 (HEADLINE DEPENDENCIES UPDATED; og3.png; not deployed)
+Ram: the hero is done - update the dependencies; the card is og3. Headline everywhere is
+"Build hundreds of task-specific AI agents. Search runs the right one for each request.":
+the footer sentence on all ten pages carries BOTH sentences (the old one carried the first
+clause only - the first sentence alone reads as a bare imperative; flagged); index.html
+meta description = the two sentences + "Agents run in a controlled runtime on your own agent
+servers, with one conversation carrying context between them."; og:description = the two
+sentences; og:image:alt on the ten pages and gen/build.py = "Search2o: build hundreds of
+task-specific AI agents; search runs the right one for each request" (demo.html had lost its
+alt/width/height/twitter tags again - restored); og:image everywhere = images/og3.png
+(og2.png and og.png stay on disk for old links). gen/ogcard.py now draws TWO headline
+lines and picks the largest Bold size (<=60) whose longest line fits 1006px (56 chosen:
+line 1 977px), line 2 in the gradient; writes og3.png. gen/linkedin_banner.py has the two
+new lines (right edge 3400 of 4200). Both regenerated, 144 docs pages rebuilt; sweep for
+og2.png / the old platform sentence / "with a search interface" over html and gen: clean.
+System architecture heading is Ram's own "Stateless agent servers. State managed in
+Search2o Cloud." with kicker "Hybrid architecture" and step 1 "User interface".
