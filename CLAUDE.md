@@ -6470,3 +6470,5 @@ Ram: section headings must match ("Built for the enterprise" was the 36px banner
 #system-architecture .section-head h2 { font-size: 26px }` - measured 26px/750 on all four.
 NOTE: the hero h1 is also 26px (weight 800), so the page's headline is the same size as its
 section headings - flagged to Ram with the survey.
+Then Ram: the hero h1 and the four section h2s are 24px (were 26). The hero card anchor
+(7px) was set for 26px; at 24px the cap-top offset is ~6.6px, within a pixel - left as is.
