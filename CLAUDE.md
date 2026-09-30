@@ -6376,3 +6376,15 @@ first clause, like the other bullets). Four bullets.
 Then Ram's first bullet, verbatim: "Each agent handles a short, well-defined task within its
 time and cost budgets. Conversations bring agents together as needed, without prewiring."
 (bold through "well-defined task", as he marked it).
+
+## State on 2026-09-30 (HERO from Ram's paste: new headline and four bullets; not deployed)
+Ram's text: h1 "Build hundreds of task-specific AI agents. Search runs the right one for
+each request." (gradient on the second sentence) and bullets "Build a working agent in
+minutes, with AI assistance." (braces) / "Conversations bring agents together as needed,
+without prewiring." (chat; bold lead added on the first clause for consistency - his paste
+had no bold on this one, flagged) / "Agents run in a controlled runtime on your servers."
+(shield) / "Use it anywhere: a browser, Slack/Teams or Claude Code." (layers; "Claude code"
+capitalised as the product name, flagged). The 87-character headline holds two lines up to
+26px in the column (three at 28), so `.hero h1` is 26px / 1.22 (was 22) and the card
+anchor 7px. NOT CHANGED, awaiting Ram: the footer sentence, index metas/og descriptions,
+og2.png and the LinkedIn banner still carry the previous headline.
