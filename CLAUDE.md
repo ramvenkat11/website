@@ -6503,3 +6503,9 @@ Search2o Cloud." with kicker "Hybrid architecture" and step 1 "User interface".
 demo.html's og:image was https://search2o.com/logo.png AGAIN (Ram's copy of the file
 overwrites my head edits; second time) - replaced with the og3 block (image, width, height,
 alt, twitter:card). WATCH: re-check demo.html's head after every edit of his.
+Then Ram asked whether demo.html (his other session's page) is in order. Checked against
+about.html: header identical bar aria-current, footer identical, no comments, both font
+preloads, the tagline, no theme toggle, canonical + og tags + twitter:card present, every
+local reference resolves. MISSING: the Google Analytics tag (lost with his copy) - added
+before </head> again. His h1 is back to "Search that executes" (the 09-24 "Try Search2o
+three ways" is gone with his copy) - his page, left alone, flagged.
