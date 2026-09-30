@@ -6472,3 +6472,8 @@ NOTE: the hero h1 is also 26px (weight 800), so the page's headline is the same 
 section headings - flagged to Ram with the survey.
 Then Ram: the hero h1 and the four section h2s are 24px (were 26). The hero card anchor
 (7px) was set for 26px; at 24px the cap-top offset is ~6.6px, within a pixel - left as is.
+Then Ram: the System architecture head is centred above the grid like the other sections
+(`section-head center` moved out of the howgrid's left column; `#system-architecture
+.howgrid > :last-child { margin-top: 0 }` so the diagram tops the steps instead of the
+old h2-glyph offset). A better heading than "Stateless execution, cloud management" is
+wanted - alternatives offered, none applied.
