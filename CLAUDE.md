@@ -6416,3 +6416,12 @@ bullets that were on the left (portable across models / one skill / gateway) are
 the page with this trial - they live only in the saved copy.
 Then Ram: the LLMs box ("Claude only") is removed from the Claude-Code-today card; its
 bottom row is the single full-width Enterprise systems node, which all three arrows land on.
+
+## State on 2026-09-30 (Search section removed; framework before architecture; not deployed)
+Ram: remove "How search works" (#description) and swap Agent framework and System
+architecture. index.html sections are now hero > claude-code(soft) > framework(plain) >
+system-architecture(soft) > platform(PLAIN - was soft, changed to keep the alternation) >
+footer. The hr_policy description card and the "less than 0.5 seconds - see search quality"
+line left the page with the section. Footers on all ten pages: Product column is Claude Code
+/ Agent framework / System architecture / Platform / Pricing (Search removed, the two
+swapped). No #description link remains anywhere.
