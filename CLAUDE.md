@@ -6425,3 +6425,7 @@ footer. The hr_policy description card and the "less than 0.5 seconds - see sear
 line left the page with the section. Footers on all ten pages: Product column is Claude Code
 / Agent framework / System architecture / Platform / Pricing (Search removed, the two
 swapped). No #description link remains anywhere.
+Then Ram retitled the Claude Code section himself ("Search2o agent server is the gateway in
+Claude code") and asked for a smaller title and alternatives: `#claude-code .section-head h2
+{ font-size: 26px }` (the banner size was 36), head margin-bottom 36. Titles offered, none
+applied.
