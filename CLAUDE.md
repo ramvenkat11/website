@@ -6514,3 +6514,19 @@ here; report what it needs so the other session changes its source. My GA additi
 only uncommitted change on the file and is reverted (`git checkout -- html/demo.html`); the
 og3 block and footer text were already in HEAD. LIST FOR THE OTHER SESSION is in the reply.
 RULE: demo.html and html/demo/* belong to the demo session, like ui1 belongs to the UI one.
+
+## State on 2026-09-30 (PHONE AUDIT of the home page: hero callouts and the Claude Code section; not deployed)
+Ram: the home page was wrong on his phone - the hero image and the Claude Code section.
+Audited in 360/390/412 iframes: no element wider than the viewport, no sideways scroll -
+the faults were inside the cards. HERO: on phones the callouts kept their desktop
+`grid-row: 2/4` (the phone rule `.hero-convo .note-bubble { grid-row: auto }` lost to the
+more specific `.r2/.r4` rules), so each note landed ABOVE the message it annotates with
+its tail pointing at nothing; the phone rule now names `.note-bubble.r2, .note-bubble.r4`
+too (grid-row auto, align-self start, max-width calc(100% - 18px)), so the notes flow in
+document order under their replies. CLAUDE CODE: the card header bars were cut for the
+desktop card padding (-22/-20) and stuck out 3px past the phone card (24/16) - a phone rule
+`.cc-title { margin: -24px -16px 16px; padding: 11px 16px }`; the "With Search2o" card keeps
+its three lean Claude Code boxes IN A ROW on phones (`.cc-after .cc-ccs/.cc-links` 3 columns,
+all three arrows shown, node padding 10px 6px) instead of stacking - the fat boxes of the
+"today" card still stack. The framework and architecture sections were checked (cards 24..351
+in 375, chips and pre inside, titles wrap).
