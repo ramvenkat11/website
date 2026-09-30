@@ -6477,3 +6477,6 @@ Then Ram: the System architecture head is centred above the grid like the other 
 .howgrid > :last-child { margin-top: 0 }` so the diagram tops the steps instead of the
 old h2-glyph offset). A better heading than "Stateless execution, cloud management" is
 wanted - alternatives offered, none applied.
+Ram's heading for System architecture: "Horizontally scalable, source-available agent server
+with UI" (his words; "UI" rather than the docs' "the GUI" - his choice on the home page, as
+with "browser UI" in step 1).
