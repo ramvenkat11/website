@@ -1,0 +1,14 @@
+<p class="lead">A task-specific agent specializes in a single task with clear boundaries: the systems it can reach, and its time and LLM cost budgets. It has every feature of an agent; its workflow is built for that one task. In Search2o, a task-specific agent also carries a plain-language description of the task and its boundaries.</p>
+
+<h2>How a task-specific agent runs</h2>
+<p>A user's request that matches the agent's description triggers the agent. The agent runs for a short time, may ask the user for inputs or an approval on the way, and produces a response. Search reads the descriptions, so the agent that runs is the one whose description fits the request; see <a href="../search/how-matching-works.html">How matching behaves</a>.</p>
+
+<h2>What the restriction buys</h2>
+<p><strong>Validation.</strong> A task-specific agent has a few specific paths, like a workflow, rather than an open-ended set. That is what makes it possible to validate the agent before it is published: a real run against a validation query, with every step in the trace. See <a href="../development/trace-and-validation.html">Trace and validation</a>.</p>
+<p><strong>Dependability.</strong> The same request takes the same path through the same commands, so the agent behaves the same way on every run, and a failure has a place: the command it failed at, in the run's record.</p>
+<p><strong>Safety.</strong> The agent reaches only the systems its profiles name, runs inside the <a href="../agent-execution/controlled-runtime.html">controlled runtime</a>, and stops at its <a href="../runtime/runtime-limits.html">time and cost budgets</a>. A task with clear boundaries is a task whose worst case is known.</p>
+<p><strong>Observability.</strong> Every run is recorded: who requested it, what ran, how long it took, what failed, and what the LLM calls cost. The <a href="../reports/index.html">reports</a> show these per agent and per user.</p>
+
+<h2>How task-specific agents work together</h2>
+<p>Task-specific agents do not talk to each other. They build on each other's work through the shared context of a <a href="../agent-execution/conversation-state.html">conversation</a>: the prompts and the conversation variables.</p>
+<p>The prompts in the shared context are model-neutral, so a second agent in the same conversation, using a different LLM, continues with the same prompt history as its short-term memory. <a href="../agent-definition/variables.html">Conversation variables</a> carry the context that is not in a prompt, such as the user's authorization.</p>
