@@ -6430,3 +6430,8 @@ Claude code") and asked for a smaller title and alternatives: `#claude-code .sec
 { font-size: 26px }` (the banner size was 36), head margin-bottom 36. Titles offered, none
 applied.
 Ram picked title 1: "One skill, every agent: Search2o as the agent gateway for Claude Code".
+Then Ram: the right card's node is "Search2o agent server" (the server has not been
+introduced yet at that point of the page); the two card titles were too quiet inside the
+boxes - `.cc-title` is now a HEADER BAR across the card (negative margins to the card edge,
+--bg-soft, --line-soft bottom border, rounded top corners, 13.5px --ink 700), the same
+device as the hero card's title bar.
