@@ -6480,3 +6480,5 @@ wanted - alternatives offered, none applied.
 Ram's heading for System architecture: "Horizontally scalable, source-available agent server
 with UI" (his words; "UI" rather than the docs' "the GUI" - his choice on the home page, as
 with "browser UI" in step 1).
+Then: "..., backed by Search2o Cloud" appended (Ram wrote "cloud" lowercase; the product
+name is Search2o Cloud everywhere else, so capitalised - flagged).
