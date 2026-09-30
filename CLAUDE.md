@@ -6500,3 +6500,6 @@ new lines (right edge 3400 of 4200). Both regenerated, 144 docs pages rebuilt; s
 og2.png / the old platform sentence / "with a search interface" over html and gen: clean.
 System architecture heading is Ram's own "Stateless agent servers. State managed in
 Search2o Cloud." with kicker "Hybrid architecture" and step 1 "User interface".
+demo.html's og:image was https://search2o.com/logo.png AGAIN (Ram's copy of the file
+overwrites my head edits; second time) - replaced with the og3 block (image, width, height,
+alt, twitter:card). WATCH: re-check demo.html's head after every edit of his.
