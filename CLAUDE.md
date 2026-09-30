@@ -6561,3 +6561,7 @@ history; conversation variables carry context not in prompts, e.g. the user's
 authorization). The three blank headings are filled from facts already in the docs -
 flagged for Ram's veto. Section lead and the docs home card mention it. 0 broken links,
 sitemap +1.
+Then Ram: What is Search2o says the agents are task-specific - its lead opens "Search2o is a
+platform for building task-specific AI agents [link to the new topic] and running them from
+a search interface", and the orchestration bullet says "many task-specific agents" (was
+"many focused agents").
