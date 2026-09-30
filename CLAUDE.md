@@ -6565,3 +6565,6 @@ Then Ram: What is Search2o says the agents are task-specific - its lead opens "S
 platform for building task-specific AI agents [link to the new topic] and running them from
 a search interface", and the orchestration bullet says "many task-specific agents" (was
 "many focused agents").
+Then Ram: the lead's second sentence is "It has every feature of an agent, but its workflow
+is built for that one task." (his "but"; the comma before it added - two independent
+clauses).
