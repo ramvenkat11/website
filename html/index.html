@@ -49,7 +49,7 @@
     <div class="hero-bg"></div>
     <div class="container hero-grid">
       <div>
-        <h1>Build hundreds of task-specific AI agents. <span class="grad">Search runs the right one for each request.</span></h1>
+        <h1>Build hundreds of task-specific AI agents. <span class="grad">Search runs the right agent for each request.</span></h1>
         <ul class="hero-points">
           <li>
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg>
@@ -94,7 +94,7 @@
           <div class="turn-agent">
             <div class="msg st st6">Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
           </div>
-          <div class="note-bubble r4 st st7"><b>reimbursements</b>Files expenses. Knows about the trip from the shared context.</div>
+          <div class="note-bubble r4 st st7"><b>reimbursements</b>Files expenses. Knows about the trip from the conversation context.</div>
         </div>
       </div>
       </div>
@@ -102,29 +102,32 @@
   </section>
   <section class="section soft" id="claude-code">
     <div class="container">
-      <div class="howgrid">
-        <div>
-          <div class="section-head">
-            <span class="kicker">Claude Code</span>
-            <h2>Put the same agents to work in Claude Code</h2>
+      <div class="section-head center">
+        <span class="kicker">Claude Code</span>
+        <h2>Search2o as the agent gateway for Claude Code</h2>
+      </div>
+      <div class="cc-compare">
+        <aside class="arch cc-arch cc-before">
+          <p class="cc-title">Claude Code today</p>
+          <div class="arch-flow">
+            <div class="cc-ccs">
+              <div class="arch-node cc-cc cc-fat"><strong>Claude Code</strong><div class="arch-chips"><span>jira</span><span>orders</span><span>hr_policy</span><span>expenses</span><span>calendar</span><span class="more">+14 skills</span></div></div>
+              <div class="arch-node cc-cc cc-fat"><strong>Claude Code</strong><div class="arch-chips"><span>jira</span><span>orders</span><span>hr_policy</span><span>expenses</span><span>calendar</span><span class="more">+14 skills</span></div></div>
+              <div class="arch-node cc-cc cc-fat"><strong>Claude Code</strong><div class="arch-chips"><span>jira</span><span>orders</span><span>hr_policy</span><span>expenses</span><span>calendar</span><span class="more">+14 skills</span></div></div>
+            </div>
+            <div class="cc-links" aria-hidden="true">
+              <div class="arch-link"></div>
+              <div class="arch-link"><span class="arch-lbl">direct access</span></div>
+              <div class="arch-link"></div>
+            </div>
+            <div class="cc-row">
+              <div class="arch-node"><strong>Enterprise systems</strong><span>APIs &middot; databases &middot; MCP servers, from every laptop</span></div>
+            </div>
           </div>
-        <ul class="hero-points points">
-            <li>
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22v-5"/><path d="M9 8V2"/><path d="M15 8V2"/><path d="M18 8v5a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4V8Z"/></svg>
-                <span><strong>Portable across models</strong>: Workflows live in Search2o. Change models without rewriting your <a href="https://github.com/Search2o/search2o-skill" target="_blank" rel="noopener">skill</a> instructions.</span>
-            </li>
-          <li>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 16 12 14 15 10 15 8 12 2 12"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/></svg>
-            <span><strong>Skip the context bloat</strong>: Claude's context holds results, not tool definitions or agent code.</span>
-          </li>
-          <li>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><path d="M6 6h.01"/><path d="M6 18h.01"/></svg>
-            <span><strong>Search2o acts as the agent gateway</strong>: users' laptops never access enterprise systems directly.</span>
-          </li>
-        </ul>
-        </div>
-
-        <aside class="arch cc-arch">
+        </aside>
+        <div class="cc-vs" aria-hidden="true">vs</div>
+        <aside class="arch cc-arch cc-after">
+          <p class="cc-title">With Search2o</p>
           <div class="arch-flow">
             <div class="cc-ccs">
               <div class="arch-node cc-cc"><strong>Claude Code</strong><div class="arch-chips"><span>search2o skill</span></div></div>
@@ -137,7 +140,7 @@
               <div class="arch-link two"></div>
             </div>
             <div class="arch-node">
-              <strong>Agent server</strong>
+              <strong>Search2o agent server</strong>
               <div class="arch-chips"><span>travel_desk</span><span>reimbursements</span><span>hr_policy</span><span>it_helpdesk</span><span>payroll</span><span>calendar</span><span>onboarding</span><span>contracts</span><span>invoices</span><span>time_off</span><span>facilities</span></div>
             </div>
             <div class="cc-row">
@@ -155,20 +158,38 @@
       </div>
     </div>
   </section>
-  <section class="section" id="description">
+  <section class="section" id="framework">
     <div class="container">
-      <div class="split">
-        <div>
-          <span class="kicker">Search</span>
-          <h2>How search works</h2>
-          <p style="margin-top: 14px; color: var(--body); font-size: 14.5px; line-height: 1.6;">Search builds an index using natural-language descriptions written by developers. This makes matching predictable, lets it scale to thousands of agents, and returns results in under a second &mdash; see <a href="docs/search/search-quality.html">search quality</a>.
-          </p>
-        </div>
-
-        <div class="codecard" aria-label="Example agent description">
-          <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">hr_policy &middot; description</span></div>
+      <div class="section-head center">
+        <span class="kicker">Agent framework</span>
+        <h2>A task-specific agent is a definition and a description</h2>
+      </div>
+      <div class="cc-compare fw-compare">
+        <aside class="arch cc-arch fw-card" aria-label="The agent definition language">
+          <p class="cc-title">Agent DSL: JSONC with Python expressions</p>
+          <p class="fw-lead">An agent is defined in JSONC, using <a href="docs/commands/index.html">23 commands</a>. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with <a href="docs/agent-definition/python-expressions.html">built-in safeguards</a>.</p>
+          <div class="fw-cmds">
+            <div class="cg"><span class="cg-l">Variables</span><span class="cg-c"><a href="docs/commands/var.html"><code>var</code></a></span></div>
+            <div class="cg"><span class="cg-l">Flow control</span><span class="cg-c"><a href="docs/commands/if.html"><code>if</code></a><a href="docs/commands/while.html"><code>while</code></a><a href="docs/commands/for.html"><code>for</code></a><a href="docs/commands/break.html"><code>break</code></a><a href="docs/commands/continue.html"><code>continue</code></a><a href="docs/commands/func.html"><code>func</code></a><a href="docs/commands/return.html"><code>return</code></a><a href="docs/commands/parallel.html"><code>parallel</code></a></span></div>
+            <div class="cg"><span class="cg-l">LLM interaction</span><span class="cg-c"><a href="docs/commands/prompt.html"><code>prompt</code></a><a href="docs/commands/llm.html"><code>llm</code></a><a href="docs/commands/memory.html"><code>memory</code></a></span></div>
+            <div class="cg"><span class="cg-l">External systems</span><span class="cg-c"><a href="docs/commands/api.html"><code>api</code></a><a href="docs/commands/db.html"><code>db</code></a></span></div>
+            <div class="cg"><span class="cg-l">Deep agents</span><span class="cg-c"><a href="docs/commands/search.html"><code>search</code></a><a href="docs/commands/invoke.html"><code>invoke</code></a></span></div>
+            <div class="cg"><span class="cg-l">Human-in-the-loop</span><span class="cg-c"><a href="docs/commands/ask.html"><code>ask</code></a></span></div>
+            <div class="cg"><span class="cg-l">Agent output</span><span class="cg-c"><a href="docs/commands/output.html"><code>output</code></a></span></div>
+            <div class="cg"><span class="cg-l">Agent termination</span><span class="cg-c"><a href="docs/commands/end.html"><code>end</code></a><a href="docs/commands/fail.html"><code>fail</code></a></span></div>
+            <div class="cg"><span class="cg-l">Observability</span><span class="cg-c"><a href="docs/commands/progress.html"><code>progress</code></a><a href="docs/commands/trace.html"><code>trace</code></a><a href="docs/commands/log.html"><code>log</code></a></span></div>
+          </div>
+          <p class="fw-foot"><a href="demo.html#generate">Try it in the live demo&nbsp;<span class="arrow" aria-hidden="true">&rarr;</span></a></p>
+        </aside>
+        <div class="cc-vs" aria-hidden="true">+</div>
+        <aside class="arch cc-arch fw-card" aria-label="The agent description">
+          <p class="cc-title">Description, indexed by search</p>
+          <p class="fw-lead">A plain-language description of what the agent does. Search matches each request against these descriptions, so matching is predictable and scales to thousands of agents &mdash; see <a href="docs/search/search-quality.html">search quality</a>.</p>
+          <div class="codecard" aria-label="Example agent description">
+            <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">hr_policy &middot; description</span></div>
 <pre style="white-space: pre-wrap;"><code>Answers employee questions about Acme Corp workforce policies: vacation and leave, benefits eligibility, remote-work rules, expense limits and the code of conduct. It explains what the policy says and where to find the form. It cannot approve requests, change records or make exceptions.</code></pre>
-        </div>
+          </div>
+        </aside>
       </div>
     </div>
   </section>
@@ -192,7 +213,7 @@
             </li>
             <li>
               <h3>Search2o Cloud</h3>
-              <p>The shared service behind every agent server. The cloud provides platform services including <a href="docs/search/how-matching-works.html">search</a>, state management, and <a href="docs/reports/index.html">reporting</a>.</p>
+              <p>The shared service behind every agent server. The cloud provides platform services including <a href="docs/search/index.html">search</a>, state management, and <a href="docs/reports/index.html">reporting</a>.</p>
             </li>
           </ol>
         </div>
@@ -235,44 +256,7 @@
       </div>
     </div>
   </section>
-  <section class="section" id="framework">
-    <div class="container">
-      <div class="split">
-        <div>
-          <span class="kicker">Agent framework</span>
-          <h2>JSON DSL for agents</h2>
-          <ol class="steps plain">
-            <li>
-              <h3>JSON with Python expressions</h3>
-              <p>An agent is defined in JSON, using 23 commands. JSON strings enclosed in <code>{ }</code> are evaluated as Python expressions, with <a href="docs/agent-definition/python-expressions.html">built-in safeguards</a>.</p>
-            </li>
-            <li>
-              <h3>Profiles</h3>
-              <p><a href="docs/profiles/index.html">Profiles</a> keep LLMs, prompts, APIs, databases and MCP servers out of agent definitions.</p>
-            </li>
-            <li>
-              <h3>Build with AI</h3>
-              <p>Agents are built with AI assistance. <a href="demo.html#generate">Try it live&nbsp;<span class="arrow" aria-hidden="true">&rarr;</span></a></p>
-            </li>
-          </ol>
-        </div>
-
-        <div class="cmdcard" aria-label="The 23 commands, by group">
-          <div class="cmdcard-head"><span>Commands</span><a href="docs/commands/index.html">Command reference &rarr;</a></div>
-          <div class="cg"><span class="cg-l">Variables</span><span class="cg-c"><a href="docs/commands/var.html"><code>var</code></a></span></div>
-          <div class="cg"><span class="cg-l">Flow control</span><span class="cg-c"><a href="docs/commands/if.html"><code>if</code></a><a href="docs/commands/while.html"><code>while</code></a><a href="docs/commands/for.html"><code>for</code></a><a href="docs/commands/break.html"><code>break</code></a><a href="docs/commands/continue.html"><code>continue</code></a><a href="docs/commands/func.html"><code>func</code></a><a href="docs/commands/return.html"><code>return</code></a><a href="docs/commands/parallel.html"><code>parallel</code></a></span></div>
-          <div class="cg"><span class="cg-l">LLM interaction</span><span class="cg-c"><a href="docs/commands/prompt.html"><code>prompt</code></a><a href="docs/commands/llm.html"><code>llm</code></a><a href="docs/commands/memory.html"><code>memory</code></a></span></div>
-          <div class="cg"><span class="cg-l">External systems</span><span class="cg-c"><a href="docs/commands/api.html"><code>api</code></a><a href="docs/commands/db.html"><code>db</code></a></span></div>
-          <div class="cg"><span class="cg-l">Deep agents</span><span class="cg-c"><a href="docs/commands/search.html"><code>search</code></a><a href="docs/commands/invoke.html"><code>invoke</code></a></span></div>
-          <div class="cg"><span class="cg-l">Human-in-the-loop</span><span class="cg-c"><a href="docs/commands/ask.html"><code>ask</code></a></span></div>
-          <div class="cg"><span class="cg-l">Agent output</span><span class="cg-c"><a href="docs/commands/output.html"><code>output</code></a></span></div>
-          <div class="cg"><span class="cg-l">Agent termination</span><span class="cg-c"><a href="docs/commands/end.html"><code>end</code></a><a href="docs/commands/fail.html"><code>fail</code></a></span></div>
-          <div class="cg"><span class="cg-l">Observability</span><span class="cg-c"><a href="docs/commands/progress.html"><code>progress</code></a><a href="docs/commands/trace.html"><code>trace</code></a><a href="docs/commands/log.html"><code>log</code></a></span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="section soft" id="platform">
+  <section class="section" id="platform">
     <div class="container">
       <div class="section-head center">
         <span class="kicker">Platform</span>
@@ -326,9 +310,8 @@
         <div class="fcol">
           <h4>Product</h4>
           <a href="index.html#claude-code">Claude Code</a>
-          <a href="index.html#description">Search</a>
-          <a href="index.html#system-architecture">System architecture</a>
           <a href="index.html#framework">Agent framework</a>
+          <a href="index.html#system-architecture">System architecture</a>
           <a href="index.html#platform">Platform</a>
           <a href="pricing.html">Pricing</a>
         </div>

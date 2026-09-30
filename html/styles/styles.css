@@ -166,7 +166,7 @@ p { margin: 0; }
 }
 .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 56px; align-items: start; }
 .hero-grid .demo, .hero-grid .hero-convo { margin-top: 7px; }
-.hero h1 { font-size: 26px; line-height: 1.22; }
+.hero h1 { font-size: 24px; line-height: 1.22; }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   margin-bottom: 22px; padding: 6px 13px;
@@ -339,6 +339,25 @@ p { margin: 0; }
 .arch { border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: var(--card-shadow-lg); padding: 32px 28px; }
 .arch .note { margin-top: 20px; color: var(--faint); font-size: 13px; }
 .points { margin-top: 22px; }
+.cc-compare { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); gap: 18px; align-items: stretch; margin-top: 40px; }
+.cc-compare .arch { display: flex; flex-direction: column; }
+.cc-compare .arch-flow { flex: 1; align-content: start; }
+#claude-code .section-head, #framework .section-head { max-width: none; margin-bottom: 36px; }
+#claude-code .section-head h2, #framework .section-head h2, #platform .section-head h2, #system-architecture .section-head h2 { font-size: 24px; }
+.fw-lead { margin: 0 0 16px; color: var(--body); font-size: 14px; line-height: 1.6; }
+.fw-cmds { display: grid; gap: 10px; }
+.fw-foot { margin: 18px 0 0; font-size: 12.5px; font-weight: 600; }
+.fw-foot a { color: var(--muted); }
+.fw-foot a:hover { color: var(--blue-ink); }
+.fw-card .codecard { box-shadow: none; flex: 1; display: flex; flex-direction: column; }
+.fw-card .codecard pre { flex: 1; }
+.fw-compare .cc-vs { font-size: 22px; font-weight: 600; }
+.fw-card .codecard pre { font-size: 13px; line-height: 1.6; }
+.cc-title { margin: -22px -20px 18px; padding: 11px 20px; border-bottom: 1px solid var(--line-soft); border-radius: 18px 18px 0 0; background: var(--bg-soft); color: var(--ink); font-size: 13.5px; font-weight: 700; }
+.cc-vs { align-self: center; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: var(--bg-soft); color: var(--muted); font-size: 13px; font-weight: 800; }
+.cc-before .cc-fat .arch-chips { justify-content: center; }
+.cc-before .cc-row { grid-template-columns: 1fr; }
+.arch-chips span.more { border-style: dashed; color: var(--faint); }
 .cc-arch { padding: 22px 20px; }
 .cc-arch .arch-link { height: 32px; }
 .cc-arch .arch-node { padding: 12px 14px; }
@@ -753,6 +772,8 @@ p { margin: 0; }
   .hero-convo .note-bubble { grid-column: 1; grid-row: auto; margin: 4px 0 0 18px; justify-self: start; }
   .hero-convo .note-bubble::before { left: 16px; bottom: auto; top: -6px; border: 0; border-left: 1px solid #d6cdbb; border-top: 1px solid #d6cdbb; }
   .cc-ccs { grid-template-columns: 1fr; }
+  .cc-compare { grid-template-columns: 1fr; }
+  .cc-vs { justify-self: center; }
   .cc-links { grid-template-columns: 1fr; }
   .cc-links .arch-link:not(:nth-child(2)) { display: none; }
   .cardgrid { grid-template-columns: repeat(2, 1fr); }
