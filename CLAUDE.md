@@ -6530,3 +6530,8 @@ its three lean Claude Code boxes IN A ROW on phones (`.cc-after .cc-ccs/.cc-link
 all three arrows shown, node padding 10px 6px) instead of stacking - the fat boxes of the
 "today" card still stack. The framework and architecture sections were checked (cards 24..351
 in 375, chips and pre inside, titles wrap).
+Also on phones: the first note's tail was drawn mid-height INSIDE the note (the desktop
+`.r2::before { top: 50% }` outranked the phone tail rule) - the phone rule now names
+`.note-bubble.r2::before` too (top -6px, margin-top 0). Verified in a 390 frame: both notes
+13px under their replies with the tail on top; the three lean Claude Code boxes 92px wide in
+a row with their chips inside.
