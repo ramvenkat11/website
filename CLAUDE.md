@@ -6414,3 +6414,5 @@ are flex columns so they stretch to the same height (`.cc-compare .arch-flow { f
 align-content: start }` - space-between had left 5px gaps at the arrow ends). The three
 bullets that were on the left (portable across models / one skill / gateway) are GONE from
 the page with this trial - they live only in the saved copy.
+Then Ram: the LLMs box ("Claude only") is removed from the Claude-Code-today card; its
+bottom row is the single full-width Enterprise systems node, which all three arrows land on.
