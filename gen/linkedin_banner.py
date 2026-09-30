@@ -51,7 +51,7 @@ d.rectangle([xh, wm_top - 10, xh + 3, wm_top + block_h + 10], fill=HAIR)
 
 # headline: line 1 in ink, line 2 in the blue-to-teal gradient
 size = 88; f = bold(size); pitch = 112
-lines = ["A platform to build, run, and use AI agents —", "where search finds the right agent for each request."]
+lines = ["Build hundreds of task-specific AI agents.", "Search runs the right one for each request."]
 x0 = xh + 120
 top = round((H - (pitch + size * 1.0)) / 2) - 4
 d.text((x0, top), lines[0], font=f, fill=INK)
