@@ -6539,3 +6539,25 @@ Phone polish on the "With Search2o" card: the lean boxes are 92px wide in the ro
 `.cc-after .cc-cc` padding 9px 4px, strong 12.5px nowrap, chip 10.5px nowrap (measured: one
 line each, no overflow), and the "request · results" label is hidden on phones (it ran into
 the third arrow).
+
+## State on 2026-09-30 (NEW Introduction topic: Task-specific agents; not deployed)
+Ram: an early Introduction topic from ../s2oserver/docs/faq/task_specific_agent.md (a partial
+draft: Dependability/Safety/Observability were blank, "Anything else?", a trailing "T").
+docsrc/introduction/task-specific-agents.html is SECOND in the Introduction toc (145 pages):
+lead (single task with clear boundaries - systems, time and LLM cost budgets; every feature
+of an agent, the workflow built for the task; carries a plain-language description of the
+task and its boundaries); "How a task-specific agent runs" (triggered by a matching request,
+short run, may ask, produces a response; link how-matching-works); "What the restriction
+buys" - Validation (his: a few specific paths like a workflow, validated before publishing;
+link trace-and-validation), Dependability (MINE: the same request takes the same path, a
+failure has a place - the command, in the run's record), Safety (MINE from the existing
+docs: only the systems its profiles name, the controlled runtime, time and cost budgets;
+"a task with clear boundaries is a task whose worst case is known"), Observability (MINE:
+every run recorded - who, what ran, duration, failures, LLM cost; reports); "How
+task-specific agents work together" (his: they do not talk to each other, they build on each
+other's work through the conversation's shared context - prompts and conversation variables;
+prompts are model-neutral so a second agent on another LLM continues the same prompt
+history; conversation variables carry context not in prompts, e.g. the user's
+authorization). The three blank headings are filled from facts already in the docs -
+flagged for Ram's veto. Section lead and the docs home card mention it. 0 broken links,
+sitemap +1.
