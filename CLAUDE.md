@@ -6460,3 +6460,6 @@ are now unused in styles.css (reported, not removed).
 Polish: the description `.codecard` is a flex column with `flex: 1` (and its pre `flex: 1`)
 so it fills the card to the bottom instead of leaving the right card mostly empty; the "+"
 badge is 22px/600 (`.fw-compare .cc-vs`).
+Then Ram: "23 commands" in the DSL card's lead links docs/commands/index.html, and the
+card's foot link is "Try it in the live demo ->" (demo.html#generate) instead of Command
+reference.
