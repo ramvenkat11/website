@@ -6435,3 +6435,5 @@ introduced yet at that point of the page); the two card titles were too quiet in
 boxes - `.cc-title` is now a HEADER BAR across the card (negative margins to the card edge,
 --bg-soft, --line-soft bottom border, rounded top corners, 13.5px --ink 700), the same
 device as the hero card's title bar.
+Then Ram: the Search2o Cloud step says "sub-second search" and links it to
+docs/search/search-quality.html (was "search" -> how-matching-works).
