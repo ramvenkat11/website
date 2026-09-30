@@ -6457,3 +6457,6 @@ see search quality [link]."), and the old hr_policy description `.codecard` (box
 none inside the card, pre 13px). GONE from the page: the Profiles line and "Build with AI /
 Try it live" (the demo is linked from the hero); the `.cmdcard*` and `.steps.plain` rules
 are now unused in styles.css (reported, not removed).
+Polish: the description `.codecard` is a flex column with `flex: 1` (and its pre `flex: 1`)
+so it fills the card to the bottom instead of leaving the right card mostly empty; the "+"
+badge is 22px/600 (`.fw-compare .cc-vs`).
