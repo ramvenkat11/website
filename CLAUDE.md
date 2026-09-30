@@ -6463,3 +6463,10 @@ badge is 22px/600 (`.fw-compare .cc-vs`).
 Then Ram: "23 commands" in the DSL card's lead links docs/commands/index.html, and the
 card's foot link is "Try it in the live demo ->" (demo.html#generate) instead of Command
 reference.
+
+## State on 2026-09-30 (all section headings 26px; text-size survey; not deployed)
+Ram: section headings must match ("Built for the enterprise" was the 36px banner size). Rule
+`#claude-code .section-head h2, #framework .section-head h2, #platform .section-head h2,
+#system-architecture .section-head h2 { font-size: 26px }` - measured 26px/750 on all four.
+NOTE: the hero h1 is also 26px (weight 800), so the page's headline is the same size as its
+section headings - flagged to Ram with the survey.
