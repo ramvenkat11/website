@@ -77,7 +77,7 @@
       <div class="convo hero-convo" aria-label="One conversation across two agents, each on its own LLM, with a confirmation before the booking">
         <div class="convo-title">
           <svg class="lock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-          One conversation, many task-specific agents
+          One conversation, many agents
         </div>
         <div class="convo-body">
           <div class="turn-user st st1">Book my trip for Tuesday's all-day meeting in New York</div>
@@ -167,7 +167,7 @@
       <div class="cc-compare fw-compare">
         <aside class="arch cc-arch fw-card" aria-label="The agent definition language">
           <p class="cc-title">Agent DSL: JSONC with Python expressions</p>
-          <p class="fw-lead">An agent is defined in JSONC, using <a href="docs/commands/index.html">23 commands</a>. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with <a href="docs/agent-definition/python-expressions.html">built-in safeguards</a>.</p>
+          <p class="fw-lead">An agent is defined using <a href="docs/commands/index.html">23 commands</a>. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with <a href="docs/agent-definition/python-expressions.html">built-in safeguards</a>.</p>
           <div class="fw-cmds">
             <div class="cg"><span class="cg-l">Variables</span><span class="cg-c"><a href="docs/commands/var.html"><code>var</code></a></span></div>
             <div class="cg"><span class="cg-l">Flow control</span><span class="cg-c"><a href="docs/commands/if.html"><code>if</code></a><a href="docs/commands/while.html"><code>while</code></a><a href="docs/commands/for.html"><code>for</code></a><a href="docs/commands/break.html"><code>break</code></a><a href="docs/commands/continue.html"><code>continue</code></a><a href="docs/commands/func.html"><code>func</code></a><a href="docs/commands/return.html"><code>return</code></a><a href="docs/commands/parallel.html"><code>parallel</code></a></span></div>
@@ -184,7 +184,7 @@
         <div class="cc-vs" aria-hidden="true">+</div>
         <aside class="arch cc-arch fw-card" aria-label="The agent description">
           <p class="cc-title">Description, indexed by search</p>
-          <p class="fw-lead">A plain-language description of what the agent does. Search matches each request against these descriptions, so matching is predictable and scales to thousands of agents &mdash; see <a href="docs/search/search-quality.html">search quality</a>.</p>
+          <p class="fw-lead">A plain-language description of what the agent does. Search indexes this to match requests to agents &mdash; see <a href="docs/search/search-quality.html">search quality</a>.</p>
           <div class="codecard" aria-label="Example agent description">
             <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">hr_policy &middot; description</span></div>
 <pre style="white-space: pre-wrap;"><code>Answers employee questions about Acme Corp workforce policies: vacation and leave, benefits eligibility, remote-work rules, expense limits and the code of conduct. It explains what the policy says and where to find the form. It cannot approve requests, change records or make exceptions.</code></pre>
@@ -195,16 +195,16 @@
   </section>
   <section class="section soft" id="system-architecture">
     <div class="container">
+      <div class="section-head center">
+        <span class="kicker">Hybrid architecture</span>
+        <h2>Stateless agent servers. State managed in Search2o Cloud.</h2>
+      </div>
       <div class="howgrid">
         <div>
-          <div class="section-head">
-            <span class="kicker">System architecture</span>
-            <h2>Stateless execution, cloud management</h2>
-          </div>
           <ol class="steps">
             <li>
-              <h3>Browser, chat application, or skill</h3>
-              <p>Users can submit requests from a browser, <a href="docs/chat-integrations/index.html">chat application</a>, or <a href="docs/skill-integration/overview.html">agent skill</a>. The GUI also provides a complete workspace for agent development and system administration.</p>
+              <h3>User interface</h3>
+              <p>Users can submit requests from a browser, <a href="docs/chat-integrations/index.html">chat application</a>, or <a href="docs/skill-integration/overview.html">agent skill</a>. The browser UI also provides a complete workspace for agent development and system administration.</p>
             </li>
             <li>
               <h3>Agent server</h3>
