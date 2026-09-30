@@ -6388,3 +6388,10 @@ capitalised as the product name, flagged). The 87-character headline holds two l
 26px in the column (three at 28), so `.hero h1` is 26px / 1.22 (was 22) and the card
 anchor 7px. NOT CHANGED, awaiting Ram: the footer sentence, index metas/og descriptions,
 og2.png and the LinkedIn banner still carry the previous headline.
+TODO WHEN THE HERO SETTLES (Ram, 2026-09-30): once the hero changes are done, make ALL of
+these follow the new headline "Build hundreds of task-specific AI agents. Search runs the
+right one for each request.": the footer sentence on the ten hand-written pages (currently
+"A platform to build, run, and use AI agents."), index.html's meta and og descriptions, the
+og:image:alt on every page and the docs template (gen/build.py), html/images/og2.png (a NEW
+file name again, so caches refetch - gen/ogcard.py), and content/linkedin-banner.png
+(gen/linkedin_banner.py). Not before Ram says the hero is final.
