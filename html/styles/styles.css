@@ -165,8 +165,8 @@ p { margin: 0; }
   -webkit-mask-image: radial-gradient(720px 460px at 62% 0%, #000 25%, transparent 72%);
 }
 .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 56px; align-items: start; }
-.hero-grid .demo, .hero-grid .hero-convo { margin-top: 6px; }
-.hero h1 { font-size: 22px; line-height: 1.25; }
+.hero-grid .demo, .hero-grid .hero-convo { margin-top: 7px; }
+.hero h1 { font-size: 26px; line-height: 1.22; }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   margin-bottom: 22px; padding: 6px 13px;
