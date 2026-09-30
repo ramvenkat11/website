@@ -6568,3 +6568,10 @@ a search interface", and the orchestration bullet says "many task-specific agent
 Then Ram: the lead's second sentence is "It has every feature of an agent, but its workflow
 is built for that one task." (his "but"; the comma before it added - two independent
 clauses).
+
+## State on 2026-09-30 (Why not just Python? retired; not deployed)
+Ram: remove the topic and every reference. docsrc/introduction/why-not-python.html and its
+generated copy git rm'd; the toc entry removed (144 pages); the sitemap lost the URL. The
+only reference anywhere was the toc (the home page's link to it went with the framework
+section's redo). content/why_not_python.md (Ram's source) is untouched. The live object
+leaves the bucket at the next --delete sync.
