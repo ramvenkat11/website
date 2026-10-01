@@ -6669,3 +6669,27 @@ card is 540px, both stylesheets load, SEARCH2O_CONFIG.demoUrl is the production 
 sideways scroll at 1920. No card was exercised (no request sent to the demo server). The h1
 "Search that executes" and the note line are Ram's, untouched. NOTE: ui1's deploy-demo.sh
 looks for pages that load demo/demo.js - the tag is still `src="demo/demo.js"`, only moved.
+
+## State on 2026-10-01 (Claude Code section diagrams: real enterprise skills, short arrow; search2o-skill link, two calls; not deployed)
+Ram's notes (prompt_demo.txt). LEFT CARD "Claude Code today": the box shows MANY skills named
+for real enterprise systems, in the kebab-case skills use, none paralleling a Search2o agent
+name on the right (so no expenses/payroll/contracts/invoices/time-off/calendar/hr): 
+salesforce-pipeline, servicenow-incidents, jira-triage, snowflake-queries,
+sap-purchase-orders, confluence-search, okta-access-review, github-pr-review, datadog-alerts,
+netsuite-ledger, zendesk-macros, pagerduty-escalation, tableau-dashboards, sharepoint-search,
+stripe-refunds, splunk-log-search, hubspot-campaigns + a dashed "+40 more" (17 names, six
+rows of three at 1920). THE LONG ARROW IS GONE: the stretch moved from the arrow to the box
+(`.cc-before .arch-flow { grid-template-rows: 1fr auto auto }`, `.cc-before .cc-fat {
+align-content: center }`), the arrow is the standard 32px; the chip count was tuned so the
+box is 224px naturally (24 names gave eight rows and made the left card 57px taller than the
+right) - both cards 417px, content ending on the same y, Enterprise systems level. RIGHT CARD
+"With Search2o": the chip is `<span><a href="https://github.com/Search2o/search2o-skill"
+target="_blank" rel="noopener">search2o-skill</a></span>` (the site's default link style);
+the single "request · results" arrow is replaced by `.cc-calls` (flex, centred, gap 28px)
+holding TWO two-way `.arch-link`s labelled "search" (label on the LEFT of its arrow:
+`.cc-calls .arch-link:first-child .arch-lbl { left: auto; right: 12px }`) and "execAgent"
+(right), labels in the mono face 11.5px since they are call names. MEASURED: all arrows land
+on their nodes, no element outside its card, no sideways scroll at 360/390 (left card 639 /
+522px tall there - the skills wrap to 13 / 9 rows). Dark screenshot checked. FLAGGED TO RAM:
+the skill names carry real vendor names (my reading of "real enterprise"), and "+40 more"
+is my figure.
