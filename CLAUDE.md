@@ -6595,3 +6595,6 @@ docs template (144 pages rebuilt), index.html's metas, gen/ogcard.py and
 gen/linkedin_banner.py; the card is regenerated as html/images/og4.png (new name per his
 cache rule) and every og:image points at it; the banner regenerated. demo.html still carries
 og3.png and the old alt - for the other session's list.
+index.html's meta description and og:description had reverted to the old "platform to build,
+run, and use" line with Ram's edit of the file - rewritten with the new headline again.
+WATCH: after any edit of his to index.html, re-check lines 8 and 10.
