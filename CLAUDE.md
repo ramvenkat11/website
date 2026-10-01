@@ -6751,3 +6751,14 @@ rules in styles.css are unused while the trial stands (not removed). REVERT: the
 hero is in git HEAD (commit before this change) - restore the `.convo.hero-convo` block,
 drop the two demo tags and `.hero-demo` from the two rules (do not restore the stray
 `</div>`).
+
+## State on 2026-10-01 (demo widget text is INLINE on the pages; Ram's change, committed)
+Ram: all the text of the demo widgets now comes from `data-*` attributes on the placeholder,
+so the wording is edited in OUR pages, not in ui1's build. index.html:78 (hero, the search
+card): data-search-title / -placeholder / -hint / -empty. demo.html:52 (`all`): the four
+tab labels and details (data-mode-<card>-label / -detail), and per card data-search-*,
+data-developer-* (title, placeholder, hint, empty), data-generate-* (title, label,
+placeholder, hint, button, example1-3), data-ask-* (title, label, placeholder, hint,
+button). The hero trial (search card in the hero) is now committed by Ram, so it stands.
+FLAGGED, not changed: demo.html's data-generate-example3 says "summarises" (the site rule
+is American spelling: "summarizes").
