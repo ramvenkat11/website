@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Live demo — Search2o</title>
-<meta name="description" content="Try Search2o three ways: ask as a user and the right agent answers, look at the agent behind the answer as a developer, or describe an agent and have it written. A live demo on a real account.">
+<meta name="description" content="Try Search2o four ways: ask as a user and the right agent answers, look at the agent behind the answer as a developer, describe an agent and have it written, or ask a question about Search2o. A live demo on a real account.">
 <meta property="og:title" content="Live demo — Search2o">
-<meta property="og:description" content="Try Search2o three ways: ask as a user, inspect as a developer, or have an agent written from a description. A live demo on a real account.">
+<meta property="og:description" content="Try Search2o four ways: ask as a user, inspect as a developer, have an agent written from a description, or ask a question about Search2o. A live demo on a real account.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://search2o.com/demo.html">
 <meta property="og:url" content="https://search2o.com/demo.html">
@@ -20,13 +20,11 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/jetbrains-mono-latin.woff2" crossorigin>
 <link rel="stylesheet" href="styles/styles.css">
+<link rel="stylesheet" href="demo/demo.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DYRX3801TG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYRX3801TG');</script>
-  <script type="module" crossorigin src="./demo/demo.js"></script>
-  <link rel="stylesheet" crossorigin href="./demo/demo.css">
 </head>
 <body>
-
 
 <header class="site-header">
   <div class="container header-row">
@@ -52,7 +50,7 @@
 
   <section class="page-body s2o-demo-body">
     <div class="container">
-      <div id="s2o-demo"></div>
+      <div data-s2o-demo="all"></div>
     </div>
   </section>
 </main>
@@ -102,6 +100,7 @@
 
 <script src="js/config.js"></script>
 <script src="js/site.js"></script>
+<script type="module" src="demo/demo.js"></script>
 
 </body>
 </html>
