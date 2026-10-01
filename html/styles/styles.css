@@ -357,8 +357,17 @@ p { margin: 0; }
 .cc-vs { align-self: center; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: var(--bg-soft); color: var(--muted); font-size: 13px; font-weight: 800; }
 .cc-before .cc-fat .arch-chips { justify-content: center; }
 .cc-before .cc-row { grid-template-columns: 1fr; }
-.cc-before .arch-flow { grid-template-rows: auto 1fr auto; align-content: stretch; }
-.cc-before .arch-flow > .arch-link { height: auto; min-height: 32px; }
+.cc-after .cc-row { grid-template-columns: 1fr 1.1fr; gap: 8px; }
+.cc-before .arch-flow { grid-template-rows: 1fr auto auto; align-content: stretch; }
+.cc-before .cc-fat { align-content: center; }
+.cc-arch .cc-fat .arch-chips { gap: 7px; }
+.cc-arch .cc-fat .arch-chips span { font-size: 12px; padding: 3px 10px; }
+.cc-arch.cc-after .cc-cc { padding-bottom: 22px; }
+.cc-arch .cc-skill { position: relative; z-index: 1; margin-top: -13px; }
+.cc-arch .cc-skill span { font-size: 12px; padding: 3px 11px; background: var(--card); }
+.cc-calls { display: flex; justify-content: center; gap: 36px; }
+.cc-calls .arch-lbl { font-family: var(--mono); font-size: 11.5px; }
+.cc-calls .arch-link:first-child .arch-lbl { left: auto; right: 12px; }
 .arch-chips span.more { border-style: dashed; color: var(--faint); }
 .cc-arch { padding: 22px 20px; }
 .cc-arch .arch-link { height: 32px; }
