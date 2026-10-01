@@ -6762,3 +6762,72 @@ placeholder, hint, button, example1-3), data-ask-* (title, label, placeholder, h
 button). The hero trial (search card in the hero) is now committed by Ram, so it stands.
 FLAGGED, not changed: demo.html's data-generate-example3 says "summarises" (the site rule
 is American spelling: "summarizes").
+
+## State on 2026-10-01 (HOME PAGE RESTRUCTURED from Ram's prompt.txt: three live demos, Demo link gone, Get started button; NOT DEPLOYED)
+Source: IDE scratch prompt.txt + Ram's 13 answers (layout = my call for mobile; only the
+"With Search2o" diagram survives; ONE arrow "search/execAgent"; no links on the three
+attributes, placement to be revisited; I write the demo text; framework h2 = the old first
+bullet; Developers/Admins label "ok for now"; Skill links the GitHub repo; "Remove demo
+everywhere", he will find a place for the Developer view; Get started button ok).
+SITE-WIDE (10 hand-written pages + gen/build.py template, 144 docs pages rebuilt, 35
+examples valid): the "Demo" nav link and the footer Resources "Demo" link are GONE; the
+footer Product "Claude Code" link is gone (Product = Agent framework / System architecture /
+Platform / Pricing); the "Getting started" nav link is now the LAST nav item, a button
+`<a class="btn btn-blue nav-cta" href="gettingstarted.html">Get started</a>` (aria-current
+on gettingstarted.html). styles.css `.nav-cta { margin-left: 10px; padding: 9px 16px;
+font-size: 14.5px }`; <=767px `margin-left: auto; padding: 8px 12px; font-size: 14px` (the
+nav is one row on phones now: header 92px on site pages, 109 on docs). The footer
+Resources "Getting started" link stays. html/demo.html STILL EXISTS, linked from nowhere,
+and is still in sitemap.xml (SITE_PAGES) - Ram decides its fate.
+HERO (index.html): bullets, "Live demo" button and the pip button are gone. Left column
+(`.hero-left`, flex column) = the h1 + `aside.arch.cc-arch.hero-arch`: a `.cc-clients` row
+of three boxes (Claude Code with the linked search2o-skill chip INSIDE the box / Browser /
+Slack/Teams), a `.cc-join` connector (three stubs `<i>` with up arrowheads on the boxes and a
+trunk `<b>`), ONE down `.arch-link` labelled "search / execAgent" (mono) onto the "Search2o
+agent server" node, which holds `.arch-fw.cc-runtime` "Controlled runtime" with ten agent
+chips (facilities dropped to keep two rows) and `ul.cc-attrs` = Validated / Bounded /
+Observable (green check icons, plain text), then the Enterprise systems + LLMs row. No
+title bar. Right column = the search demo with MY text: title "Live demo · request an
+outcome", empty "Type a request. Search finds and runs the agent built to handle it. If
+multiple agents match, you choose which one to run. Then ask for more: conversations bring
+agents together as needed, without prewiring." `.hero-grid` is align-items stretch and the
+diagram card flexes, so at 1920 diagram bottom == demo card bottom (700/700); at 1100 the
+chips take three rows and the diagram ends 27px lower (not fixed). KEPT against "no links in
+the hero": the search2o-skill chip's GitHub link (asked for earlier today) - flagged.
+CLAUDE CODE SECTION: deleted with the "Claude Code today" comparison; its CSS
+(.cc-compare, .cc-vs, .cc-before, .cc-fat, .cc-skill, .cc-calls, .fw-foot, .fw-compare,
+.fw-card .codecard) removed.
+AGENT FRAMEWORK: h2 "Build a working agent in minutes, in your browser with AI assistance";
+`.fw-grid` (two equal columns, one <=1000px): the definition card (demo link line removed,
+`.fw-cmds` flex 1 / space-between so the rows fill the card) and `.fw-demo` with
+`data-s2o-demo="generate"` (demo.html's text; "summarizes" spelled American here). Both 540.
+The description card, the "+" and the hr_policy description are gone from the page.
+HYBRID ARCHITECTURE: the three text steps are gone; `.howgrid` here is 1.2fr/1fr, gap 48,
+stretch: LEFT the diagram, RIGHT `.arch-demo` with `data-s2o-demo="ask"` (title "Ask a
+question about Search2o"; label "What would you like to know?" - WITHOUT the brand, because
+demo.css uppercases `.s2o-label`). Diagram: `.arch-grid` (1fr auto auto) inside the org
+box; `.arch-actors` (two cells spanning the server + connector columns) holds Users
+("Browser · Chat · Skill", Chat -> docs/chat-integrations/index.html, Skill ->
+github.com/Search2o/search2o-skill) and NEW "Developers · Admins" ("Browser", code icon),
+each pill over its own two-way arrow onto the server (users' labelled "search interface");
+server sub-line "Stateless · Controlled runtime · GitHub" (links: controlled-runtime docs,
+agent-server repo; 234px text in a 266px box); "Profiles" title (`a.arch-sys-title`,
+docs/profiles/index.html) above the chips LLMs/Prompts, APIs, Databases, MCP; the cloud
+arrow's label is `<a class="arch-lbl">` to docs/security/encryption.html on `.arch-link.lnk`
+(opacity moved off the element so the link is not dimmed); cloud parts Search ->
+search-quality, Reports -> reports/index, State plain (`.arch-part a { color: #a9c6ff }` -
+the cloud is navy in both themes). Phones: one column, title + chips under the server,
+actor pills wrap with equal heights (`.arch-actorcol` rows 1fr auto), client boxes
+1.25fr/1fr/1fr with 11.5px labels and the down arrow shifted onto the middle stub.
+MEASURED (no-cache server, installed demo build): 1920 - every arrow end on its node, hero /
+framework / architecture pairs level (700/700, 540/540, 540/540), no element outside its
+card; 360/390/768/1100/1280 - no sideways scroll; both themes screenshotted; all index
+links and footer anchors resolve; no comments in served files. No demo request was sent.
+FOR THE ui1 SESSION (not fixable here): (1) the search card calls
+`scrollIntoView({block:"nearest"})` on mount, so on a PHONE the home page scrolls ~160px
+down to the demo card on load (measured in 375px frames; desktop unaffected because the
+card is in view) - present since the hero trial; (2) demo.css uppercases `.s2o-label`, so
+demo.html's "What would you like to know about Search2o?" renders the brand in capitals.
+DEAD CSS left in styles.css, reported: .hero-points, .hero-actions, .hero-pip, .steps*,
+.arch-row, .header-cta, plus the older .eyebrow/.band/.demo*/.hero-convo/.note-bubble sets.
+Pre-change files are in git HEAD (commit ec0a564 and its follow-ups).
