@@ -6598,3 +6598,24 @@ og3.png and the old alt - for the other session's list.
 index.html's meta description and og:description had reverted to the old "platform to build,
 run, and use" line with Ram's edit of the file - rewritten with the new headline again.
 WATCH: after any edit of his to index.html, re-check lines 8 and 10.
+
+## State on 2026-10-01 (Claude Code section: ONE Claude Code box per card; not deployed)
+Ram: replace the multiple Claude Code boxes with a single one. index.html #claude-code: both
+cards now hold ONE `.arch-node.cc-cc` directly in `.arch-flow` (full width via the existing
+`.cc-arch .arch-flow > .arch-node { width: 100% }`) and ONE `.arch-link` under it - "Claude
+Code today": the fat box (jira · orders · hr_policy · expenses · calendar · +14 skills, one
+row now) and a one-way arrow "direct access"; "With Search2o": the lean box (search2o skill)
+and a two-way arrow "request · results". The `.cc-ccs` and `.cc-links` wrappers are gone
+from the markup and every rule for them from styles.css (the two desktop grid rules and the
+nine phone rules, incl. the 92px lean-box overrides). CONSEQUENCE FIXED: one box is ~77px
+tall where the three wrapped ones were much taller, so the stretched left card showed a
+170px empty band under Enterprise systems; `.cc-before .arch-flow { grid-template-rows:
+auto 1fr auto; align-content: stretch }` and `.cc-before .arch-flow > .arch-link { height:
+auto; min-height: 32px }` let the "direct access" arrow take the slack, so the left card's
+Enterprise systems box sits at the card bottom, level with the right card's bottom row
+(both end at the same y at 1920; the long direct arrow against the right card's hop through
+the agent server reads as the comparison). MEASURED on a no-cache server: arrows land on
+their nodes (0px) in both cards; at 360/390 the cards stack, the arrow is its 32px minimum,
+no element outside its card, no sideways scroll. Dark screenshot checked; light not taken.
+NOT CHANGED, flagged: the left card's "from every laptop" sub-line now sits under a single
+Claude Code box.
