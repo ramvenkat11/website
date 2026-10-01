@@ -357,6 +357,8 @@ p { margin: 0; }
 .cc-vs { align-self: center; width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid var(--line); border-radius: 50%; background: var(--bg-soft); color: var(--muted); font-size: 13px; font-weight: 800; }
 .cc-before .cc-fat .arch-chips { justify-content: center; }
 .cc-before .cc-row { grid-template-columns: 1fr; }
+.cc-before .arch-flow { grid-template-rows: auto 1fr auto; align-content: stretch; }
+.cc-before .arch-flow > .arch-link { height: auto; min-height: 32px; }
 .arch-chips span.more { border-style: dashed; color: var(--faint); }
 .cc-arch { padding: 22px 20px; }
 .cc-arch .arch-link { height: 32px; }
@@ -366,8 +368,6 @@ p { margin: 0; }
 .cc-arch .arch-chips { gap: 5px; }
 .cc-arch .arch-chips span { font-size: 11px; padding: 2px 8px; }
 .cc-arch .arch-flow > .arch-node { width: 100%; }
-.cc-ccs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: 100%; }
-.cc-links { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: 100%; justify-items: center; }
 .cc-arch .cc-cc { padding: 10px 10px; justify-items: center; text-align: center; }
 .cc-arch .cc-cc strong { font-size: 13px; }
 .cc-arch .cc-cc .arch-chips { margin-top: 6px; justify-content: center; }
@@ -772,18 +772,9 @@ p { margin: 0; }
   .hero-convo .convo-body { grid-template-columns: minmax(0, 1fr); }
   .hero-convo .note-bubble, .hero-convo .note-bubble.r2, .hero-convo .note-bubble.r4 { grid-column: 1; grid-row: auto; align-self: start; margin: 4px 0 0 18px; justify-self: start; max-width: calc(100% - 18px); }
   .hero-convo .note-bubble::before, .hero-convo .note-bubble.r2::before { left: 16px; bottom: auto; top: -6px; margin-top: 0; border: 0; border-left: 1px solid #d6cdbb; border-top: 1px solid #d6cdbb; }
-  .cc-ccs { grid-template-columns: 1fr; }
   .cc-compare { grid-template-columns: 1fr; }
   .cc-title { margin: -24px -16px 16px; padding: 11px 16px; }
   .cc-vs { justify-self: center; }
-  .cc-links { grid-template-columns: 1fr; }
-  .cc-links .arch-link:not(:nth-child(2)) { display: none; }
-  .cc-after .cc-ccs, .cc-after .cc-links { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
-  .cc-after .cc-links .arch-link:not(:nth-child(2)) { display: block; }
-  .cc-after .cc-cc { padding: 9px 4px; }
-  .cc-after .cc-cc strong { font-size: 12.5px; white-space: nowrap; }
-  .cc-after .cc-cc .arch-chips span { font-size: 10.5px; padding: 2px 6px; white-space: nowrap; }
-  .cc-after .cc-links .arch-lbl { display: none; }
   .cardgrid { grid-template-columns: repeat(2, 1fr); }
   .factrow { grid-template-columns: 1fr; }
   .tworow { grid-template-columns: 1fr; }
