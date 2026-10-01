@@ -6586,3 +6586,12 @@ month-end close as a sequence of tasks, an analysis workbench whose path is deci
 time); closing line: the boundary you can write down on systems, time and cost, and a small
 set of validatable paths, is also what makes a description precise enough for search. The
 "worst case is known" sentence under Safety is cut (said by the closing line). 596 words.
+
+## State on 2026-09-30 (headline: "Search runs the right agent for each request."; og4; not deployed)
+Ram changed the headline's second sentence ("the right one" -> "the right agent") - he had
+already edited index.html's hero/footer himself. Synced everywhere else: the footer sentence
+and og:image:alt on the nine hand-written pages (not demo.html - the other session's), the
+docs template (144 pages rebuilt), index.html's metas, gen/ogcard.py and
+gen/linkedin_banner.py; the card is regenerated as html/images/og4.png (new name per his
+cache rule) and every og:image points at it; the banner regenerated. demo.html still carries
+og3.png and the old alt - for the other session's list.
