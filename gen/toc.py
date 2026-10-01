@@ -10,7 +10,6 @@ TOC = [
         ("task-specific-agents", "Task-specific agents"),
         ("parts-of-the-system", "Parts of the system"),
         ("how-it-fits-together", "How it fits together"),
-        ("why-not-python", "Why not just Python?"),
     ]),
     ("getting-started", "Getting started", [
         ("registering-and-downloading", "Creating an account and downloading"),

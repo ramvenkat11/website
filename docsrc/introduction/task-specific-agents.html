@@ -1,4 +1,24 @@
-<p class="lead">A task-specific agent specializes in a single task with clear boundaries: the systems it can reach, and its time and LLM cost budgets. It has every feature of an agent; its workflow is built for that one task. In Search2o, a task-specific agent also carries a plain-language description of the task and its boundaries.</p>
+<p class="lead">A task-specific agent specializes in a single task with clear boundaries: the systems it can reach, and its time and LLM cost budgets. It has every feature of an agent, but its workflow is built for that one task. In Search2o, a task-specific agent also carries a plain-language description of the task and its boundaries.</p>
+
+<h2>Examples</h2>
+<p>Task-specific agents:</p>
+<ul>
+  <li><strong>Vacation request</strong> &mdash; takes the dates, checks the balance, files the request, reports the result.</li>
+  <li><strong>Invoice status</strong> &mdash; an invoice number in, where it stands in accounts payable out.</li>
+  <li><strong>Expense filing for a trip</strong> &mdash; pulls the trip's amounts, files the claim, asks before submitting.</li>
+  <li><strong>Meeting-room booking</strong> &mdash; a time and a head count in, a booked room out.</li>
+  <li><strong>Expense policy questions</strong> &mdash; answers from the policy documents and points to the form; it approves nothing.</li>
+  <li><strong>Contract renewal</strong> &mdash; drafts the renewal at agreed terms and sends it for signature after an approval.</li>
+</ul>
+<p>Each is one verb, one or two systems, and a run measured in seconds.</p>
+<p>Not task-specific, and useful for other reasons:</p>
+<ul>
+  <li><strong>A general assistant</strong> &mdash; the chat box that takes any question about the company. Broad by intent, so there is no single boundary to validate against.</li>
+  <li><strong>An HR assistant</strong> that covers vacation, payroll, onboarding and benefits in one agent &mdash; a department's worth of tasks behind one description. In Search2o that is several agents, one per task, sharing a conversation.</li>
+  <li><strong>Month-end close</strong> &mdash; a process that runs for days, with approvals from several people. It is a sequence of tasks; each step can be a task-specific agent, the whole is not one.</li>
+  <li><strong>An analysis workbench</strong> that writes and runs queries against the warehouse on request &mdash; the path is decided at run time, so neither the cost nor the reach is known in advance.</li>
+</ul>
+<p>The line between the two is the same in every case: a task-specific agent has a boundary you can write down, on systems, time and cost, and a small set of paths that can be validated. That boundary is also what makes a description precise enough for search to match.</p>
 
 <h2>How a task-specific agent runs</h2>
 <p>A user's request that matches the agent's description triggers the agent. The agent runs for a short time, may ask the user for inputs or an approval on the way, and produces a response. Search reads the descriptions, so the agent that runs is the one whose description fits the request; see <a href="../search/how-matching-works.html">How matching behaves</a>.</p>
@@ -6,7 +26,7 @@
 <h2>What the restriction buys</h2>
 <p><strong>Validation.</strong> A task-specific agent has a few specific paths, like a workflow, rather than an open-ended set. That is what makes it possible to validate the agent before it is published: a real run against a validation query, with every step in the trace. See <a href="../development/trace-and-validation.html">Trace and validation</a>.</p>
 <p><strong>Dependability.</strong> The same request takes the same path through the same commands, so the agent behaves the same way on every run, and a failure has a place: the command it failed at, in the run's record.</p>
-<p><strong>Safety.</strong> The agent reaches only the systems its profiles name, runs inside the <a href="../agent-execution/controlled-runtime.html">controlled runtime</a>, and stops at its <a href="../runtime/runtime-limits.html">time and cost budgets</a>. A task with clear boundaries is a task whose worst case is known.</p>
+<p><strong>Safety.</strong> The agent reaches only the systems its profiles name, runs inside the <a href="../agent-execution/controlled-runtime.html">controlled runtime</a>, and stops at its <a href="../runtime/runtime-limits.html">time and cost budgets</a>.</p>
 <p><strong>Observability.</strong> Every run is recorded: who requested it, what ran, how long it took, what failed, and what the LLM calls cost. The <a href="../reports/index.html">reports</a> show these per agent and per user.</p>
 
 <h2>How task-specific agents work together</h2>
