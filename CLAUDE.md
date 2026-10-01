@@ -6726,3 +6726,28 @@ sub-lines one line at 1920 and 1280 with 4-5px to spare (178 in 182, 199 in 204)
 any longer text in either box wraps; at 1100 and on phones both wrap to two lines and the
 two boxes stay equal height. Arrows still land on their nodes; cards 407px, level; no
 sideways scroll at 390. Dark screenshot checked.
+
+## State on 2026-10-01 (HERO TRIAL: the demo's search card replaces the conversation card; not deployed)
+Ram: "Replace the right side image in the hero with demo. Let's see how it looks."
+index.html: the whole `.convo.hero-convo` block (the travel/expenses conversation with the
+two paper callouts) is replaced by `<div class="hero-demo"><div data-s2o-demo="search">
+</div></div>`; the page now loads `demo/demo.css` after styles/styles.css and
+`<script type="module" src="demo/demo.js">` after js/config.js and js/site.js (the widget
+contract). styles.css: `.hero-demo` added to the hero card anchor rule (7px, 0 at <=1000).
+I CHOSE THE `search` CARD, not `all`: demo.css switches layout on VIEWPORT media queries
+(1100/720/640), so the four-tab switcher in the ~500px hero column would keep its desktop
+layout; the search card is also what the old picture depicted. Say the word for `all` or
+another card. MEASURED on the no-cache server with the installed build: the card mounts,
+497x540 at 1920 (the widget's fixed 540px minimum), top on the anchor (160), hanging 187px
+below the left column (which ends at 513); hero 723px tall; 1100: 481px wide, fits; 390:
+one column, card 327x540 under the text, no sideways scroll. Nothing was typed into the card
+(no request sent to the demo server). The card is the EMPTY STATE at load: a search box and
+a hint - the story the old card told (two agents, one conversation, the ask form) is no
+longer visible until a visitor types. ALSO FIXED in the block: a pre-existing stray
+`</div>` after the hero card (page was 99 opening / 100 closing divs; now 89/89).
+CONSEQUENCES, flagged: the home page now loads demo.js (393 KB) and demo.css; the "Live
+demo" hero button sits beside a live demo; the `.hero-convo` / `.note-bubble` / st1-st7
+rules in styles.css are unused while the trial stands (not removed). REVERT: the previous
+hero is in git HEAD (commit before this change) - restore the `.convo.hero-convo` block,
+drop the two demo tags and `.hero-demo` from the two rules (do not restore the stray
+`</div>`).
