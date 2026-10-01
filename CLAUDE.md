@@ -6831,3 +6831,26 @@ demo.html's "What would you like to know about Search2o?" renders the brand in c
 DEAD CSS left in styles.css, reported: .hero-points, .hero-actions, .hero-pip, .steps*,
 .arch-row, .header-cta, plus the older .eyebrow/.band/.demo*/.hero-convo/.note-bubble sets.
 Pre-change files are in git HEAD (commit ec0a564 and its follow-ups).
+
+## State on 2026-10-01 (left boxes keep their size when a demo answers; hero heading spans both columns; not deployed)
+Ram: when the right-hand demo box responds and grows, the left box grew with it and its
+formatting broke; and the hero title did not look good on the left - try it across both
+sides. CAUSE of the first: the three grids were `align-items: stretch` with flexing left
+cards (my levelling from the restructure). NOW all three grids are `align-items: start`
+(.hero-grid, .fw-grid, #system-architecture .howgrid) and the left cards carry a FIXED
+starting height instead: `@media (min-width: 1001px) { .hero-arch, .fw-card,
+#system-architecture .arch { min-height: 540px } }` - 540px is the demo widget's own
+minimum card height (the ui1 contract), so the pairs start level and the left card no
+longer follows the demo. VERIFIED by forcing every .s2o-card to 800px: the left cards stay
+540 at 1100/1280/1920; one column below 1001px, natural heights.
+HERO: the h1 is out of the left column - `<div class="container"><h1>…</h1><div
+class="hero-grid">[diagram][demo]</div></div>` (`.hero-left` gone). `.hero h1 { margin-bottom:
+30px; text-align: center }` and `.hero h1 .grad { display: block }`: two centred lines at
+every desktop width (white sentence, gradient sentence), still 24px like the section h2s.
+.hero-grid is two equal columns, gap 40; the 7px cap-top anchor no longer applies to
+.hero-demo. To fill the fixed 540px the diagram was scaled up rather than padded: chips
+12px / 3px 9px (`.cc-arch.hero-arch .arch-chips span` - the plain `.hero-arch` form lost to
+the later `.cc-arch .arch-chips span`), "facilities" is back (11 agents, three rows), the
+runtime box 13px 14px, stubs 16px, down arrow 28px, card padding back to 22px. MEASURED:
+diagram and demo both 242-782 at 1100, 1280 and 1920; every arrow end on its node; 375 and
+768: one column, no sideways scroll. Dark screenshots checked.
