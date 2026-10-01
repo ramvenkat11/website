@@ -6854,3 +6854,25 @@ the later `.cc-arch .arch-chips span`), "facilities" is back (11 agents, three r
 runtime box 13px 14px, stubs 16px, down arrow 28px, card padding back to 22px. MEASURED:
 diagram and demo both 242-782 at 1100, 1280 and 1920; every arrow end on its node; 375 and
 768: one column, no sideways scroll. Dark screenshots checked.
+
+## State on 2026-10-01 (hero diagram: pip install in the server title; skill chip unlinked, on the box border; not deployed)
+Ram's four: (1) the hero server node's title is `.cc-server-head` = "Search2o agent server
+&mdash; pip install search2o" (strong + a faint dash span + mono 12.5px muted code; flex
+wrap; on phones the dash is hidden and the command drops to its own line). (2) The
+search2o-skill chip has NO link (plain span) - so the hero diagram carries no links at all.
+(3) The chip sits ON the Claude Code box's bottom border again: `.cc-arch .cc-clients
+.cc-skill` is absolute (left 50%, bottom 0, translate(-50%, 50%), width max-content, nowrap -
+without nowrap it shrank to half the box and wrapped), the three client boxes are
+title-only with `padding: 18px 10px`, so "Claude Code", "Browser" and "Slack/Teams" sit on
+one line (titles at the same y, measured). The connector follows the chip: stubs are 26px
+and the first is 13px with a 13px top margin, so its arrowhead lands on the chip's bottom
+edge while the other two land on their boxes; phones 16px + 10px. Card still 540 == demo
+at 1100/1280/1920. Zoomed screenshot checked (dark).
+(4) NOT DONE, ASKED: "'Developers · Admins' is not centered in the box, there is plenty of
+space here." MEASURED: the text is centred inside its pill (13px each side, "Browser"
+centred under it). What is off-centre is the PAIR of pills in the organization box: they
+sit left (34px to the box's left edge, 133px free on the right above Profiles), 14px apart,
+and the Developers arrow lands 40px from the Agent server's right edge against 83px on the
+left for Users. CONSTRAINT: both arrows must land on the Agent server, which is 304px wide
+while the two pills total 331px - so the pills cannot both be centred over the server, and
+moving Developers right takes its arrow off the server. Options put to Ram.
