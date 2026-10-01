@@ -1364,6 +1364,12 @@ works on the auto-render page too).
   edited ui1 alongside his ui1 session: "You are not allowed to change any other project. If
   something I ask seems like intended for another project, say so and stop." The 2026-09-16
   starterFields edit in s2oserver is no longer a precedent.
+- demo.html IS THIS PROJECT'S PAGE (Ram, 2026-10-01; supersedes the 2026-09-30 "demo.html
+  belongs to the demo session" rule): html/demo.html is edited here like any other site page -
+  head tags, metas, analytics, header, footer, hero text, where the cards sit. The ui1 session
+  generates ONLY the build output in html/demo/ (demo.js, and demo.css with it) - never edit
+  those two by hand; they are overwritten by ui1's ./deploy-demo.sh. The contract is in
+  ../ui1/website-prompt-demo-widget.md (see the 2026-10-01 state entry).
 - DISCUSSING vs DOING (Ram, 2026-09-07, annoyed): when Ram is iterating on wording or design
   ("suggest your changes", counter-proposals, "not satisfactory", "nah..."), that is a
   DISCUSSION - propose only, apply NOTHING until an explicit go. A veto of one detail
@@ -6619,3 +6625,32 @@ their nodes (0px) in both cards; at 360/390 the cards stack, the arrow is its 32
 no element outside its card, no sideways scroll. Dark screenshot checked; light not taken.
 NOT CHANGED, flagged: the left card's "from every laptop" sub-line now sits under a single
 Claude Code box.
+
+## State on 2026-10-01 (demo.html is OURS; the demo is a widget; nothing changed on the page yet)
+Ram: "From now on, you take over demo.html... The other claude session would generate demo.js
+only." Source: ../ui1/website-prompt-demo-widget.md. THE CONTRACT: ui1 builds only
+html/demo/demo.js and html/demo/demo.css (never hand-edited here); every page that shows the
+demo, demo.html included, is this project's. A card is any element with `data-s2o-demo` =
+search | developer | generate | ask | all (all = the four behind the card switcher; the
+switcher reads and writes the URL hash #search / #developer / #generate / #ask, standalone
+cards ignore the hash; an unknown name stays empty and logs to the console; any mix on one
+page works, cards share no state; each card has a 540px minimum height). The old
+`<div id="s2o-demo">` mount is still supported. A page that places a card loads, with paths
+relative to the page (../ in a subfolder): styles/styles.css, demo/demo.css, then
+js/config.js (SEARCH2O_CONFIG.demoUrl), js/site.js (renderAltcha / altchaPayload /
+resetAltcha - all cards share one invisible ALTCHA widget) and
+`<script type="module" src="demo/demo.js">` (module, so the two plain scripts are ready
+first). demo.css still carries .s2o-demo-page and .s2o-demo-body (the demo page's hero and
+body spacing); ui1 drops them if we say we own that spacing in styles.css. DEPLOYS: Ram runs
+./deploy-demo.sh in ui1 - it writes only the two files, refuses if any .html in the site
+changed, and checks every page under html/ that loads demo/demo.js (both files resolve from
+that page's folder; every data-s2o-demo value is a real card) - a wrong relative path or a
+misspelt card name on one of OUR pages fails the demo deploy. Preview against unreleased
+demo source: ui1's `npm run dev:demo` serves this html/ on :5174.
+demo.html AS FOUND (already has the og4 block, GA tag, current header/footer): still to do
+from the prompt, NOT DONE, awaiting Ram's go: (1) the description and og:description say
+"three ways" - there are four cards now, the fourth is Ask a question (anything about
+Search2o, answered from the docs); (2) optional: replace `<div id="s2o-demo">` with
+`<div data-s2o-demo="all">`; (3) tidy: the demo.js/demo.css tags sit in the head with
+`crossorigin` and `./` paths (build leftovers; they work). The h1 "Search that executes" and
+the note line are Ram's text.
