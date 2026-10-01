@@ -26,6 +26,7 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/jetbrains-mono-latin.woff2" crossorigin>
 <link rel="stylesheet" href="styles/styles.css">
+<link rel="stylesheet" href="demo/demo.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DYRX3801TG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYRX3801TG');</script>
 </head>
@@ -74,29 +75,14 @@
         </div>
       </div>
 
-      <div class="convo hero-convo" aria-label="One conversation across two agents, each on its own LLM, with a confirmation before the booking">
-        <div class="convo-title">
-          <svg class="lock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-          One conversation, many agents
-        </div>
-        <div class="convo-body">
-          <div class="turn-user st st1">Book my trip for Tuesday's all-day meeting in New York</div>
-          <div class="turn-agent">
-            <div class="msg ask st st2" aria-label="The agent asks before booking">
-              <span class="q">UA1191 out Monday 18:40, back Wednesday 07:15, and two nights at the Marriott near the office. $1,240. <b>Book it?</b></span>
-              <span class="opts"><i class="on">Book</i><i>Hold</i></span>
-              <span class="submit">Submit</span>
-            </div>
-            <div class="msg st st3">Booked UA1191 and the two hotel nights.</div>
-          </div>
-          <div class="note-bubble r2 st st4"><b>travel_desk</b>Books travel.</div>
-          <div class="turn-user st st5">File the expenses for that trip</div>
-          <div class="turn-agent">
-            <div class="msg st st6">Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
-          </div>
-          <div class="note-bubble r4 st st7"><b>reimbursements</b>Files expenses. Knows about the trip from the conversation context.</div>
-        </div>
-      </div>
+      <div class="hero-demo">
+        <div
+          data-s2o-demo="search"
+          data-search-title="End-user view · request an outcome"
+          data-search-placeholder="Ask for something…"
+          data-search-hint="Enter to send · Shift+Enter for a new line"
+          data-search-empty="Type a request. Search finds and runs the agent built to handle it. If multiple agents match, you choose which one to run."
+        ></div>
       </div>
     </div>
   </section>
@@ -332,5 +318,6 @@
 
 <script src="js/config.js"></script>
 <script src="js/site.js"></script>
+<script type="module" src="demo/demo.js"></script>
 </body>
 </html>

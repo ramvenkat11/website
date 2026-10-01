@@ -165,7 +165,7 @@ p { margin: 0; }
   -webkit-mask-image: radial-gradient(720px 460px at 62% 0%, #000 25%, transparent 72%);
 }
 .hero-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 56px; align-items: start; }
-.hero-grid .demo, .hero-grid .hero-convo { margin-top: 7px; }
+.hero-grid .demo, .hero-grid .hero-convo, .hero-grid .hero-demo { margin-top: 7px; }
 .hero h1 { font-size: 24px; line-height: 1.22; }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
@@ -777,7 +777,7 @@ p { margin: 0; }
 
   .hero-grid, .howgrid, .convo-wrap, .split { grid-template-columns: minmax(0, 1fr); gap: 44px; }
   .hero-grid > *, .howgrid > *, .convo-wrap > *, .split > * { min-width: 0; }
-  .hero-grid .demo, .hero-grid .hero-convo { margin-top: 0; }
+  .hero-grid .demo, .hero-grid .hero-convo, .hero-grid .hero-demo { margin-top: 0; }
   .hero-convo .convo-body { grid-template-columns: minmax(0, 1fr); }
   .hero-convo .note-bubble, .hero-convo .note-bubble.r2, .hero-convo .note-bubble.r4 { grid-column: 1; grid-row: auto; align-self: start; margin: 4px 0 0 18px; justify-self: start; max-width: calc(100% - 18px); }
   .hero-convo .note-bubble::before, .hero-convo .note-bubble.r2::before { left: 16px; bottom: auto; top: -6px; margin-top: 0; border: 0; border-left: 1px solid #d6cdbb; border-top: 1px solid #d6cdbb; }
