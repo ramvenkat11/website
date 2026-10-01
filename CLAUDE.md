@@ -6714,3 +6714,15 @@ arrows start on the chip's bottom edge (chip 1194-1287, arrows at 1221 and 1259)
 the agent server (0px gaps). MEASURED: both cards 406px at 1920, bottom rows level; 360/390:
 nothing outside its card, no sideways scroll, the chip still on the border. Dark screenshot
 checked.
+
+## State on 2026-10-01 (Claude Code diagrams: "from every laptop" gone; LLMs list ends "Other"; not deployed)
+Ram: on the left remove "from each laptop"; on the right add "Other" to the LLM list. The
+left card's Enterprise systems sub-line is "APIs · databases · MCP servers" (same as the
+right card's); the right card's LLMs sub-line is "OpenAI · Anthropic · Gemini · Other". The
+longer line (199px) WRAPPED in its 171px box under the shared `.cc-row` 1.2fr/1fr split, so
+`.cc-after .cc-row { grid-template-columns: 1fr 1.1fr; gap: 8px }` (probed live: 1fr 1fr
+still wrapped it, 1fr 1.15fr wrapped the Enterprise systems line instead). MEASURED: both
+sub-lines one line at 1920 and 1280 with 4-5px to spare (178 in 182, 199 in 204) - TIGHT:
+any longer text in either box wraps; at 1100 and on phones both wrap to two lines and the
+two boxes stay equal height. Arrows still land on their nodes; cards 407px, level; no
+sideways scroll at 390. Dark screenshot checked.
