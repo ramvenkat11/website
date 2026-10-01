@@ -6575,3 +6575,14 @@ generated copy git rm'd; the toc entry removed (144 pages); the sitemap lost the
 only reference anywhere was the toc (the home page's link to it went with the framework
 section's redo). content/why_not_python.md (Ram's source) is untouched. The live object
 leaves the bucket at the next --delete sync.
+Then Ram: business examples of what is and is not a task-specific agent (his first reaction
+to my draft: correct but artificial and self-serving, the "not" side especially - rewritten
+neutrally, "useful for other reasons"). NEW h2 "Examples" after the lead: six task-specific
+agents (vacation request, invoice status, expense filing, meeting-room booking, expense
+policy questions, contract renewal) + "Each is one verb, one or two systems, and a run
+measured in seconds."; four that are not (a general assistant, an HR assistant covering a
+department - "in Search2o that is several agents, one per task, sharing a conversation",
+month-end close as a sequence of tasks, an analysis workbench whose path is decided at run
+time); closing line: the boundary you can write down on systems, time and cost, and a small
+set of validatable paths, is also what makes a description precise enough for search. The
+"worst case is known" sentence under Safety is cut (said by the closing line). 596 words.
