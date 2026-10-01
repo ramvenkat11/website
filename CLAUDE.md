@@ -6693,3 +6693,24 @@ on their nodes, no element outside its card, no sideways scroll at 360/390 (left
 522px tall there - the skills wrap to 13 / 9 rows). Dark screenshot checked. FLAGGED TO RAM:
 the skill names carry real vendor names (my reading of "real enterprise"), and "+40 more"
 is my figure.
+
+## State on 2026-10-01 (Claude Code diagrams: "-skill" names, fewer of them; search2o-skill sits on the box border; not deployed)
+Ram: on the left make it obvious the chips are skills (the name ends in -skill, like
+search2o-skill) and show only a few, then "40 more"; on the right move search2o-skill onto
+the border so search and execAgent leave from the skill. LEFT: eight chips salesforce-skill,
+sap-skill, servicenow-skill, jira-skill, snowflake-skill, workday-skill, github-skill,
+confluence-skill + the dashed "+40 more" (two rows of four and the "+40 more" alone on a
+third row at 1920); the chips in this box are 12px / 3px 10px, gap 7 (`.cc-arch .cc-fat
+.arch-chips` rules) since they are the card's content. The box still takes the slack (1fr
+row) with its content centred, so the arrow stays 32px; the box is 214px for ~120px of
+content, i.e. ~47px of air above the title and below the chips - reported to Ram. RIGHT: the
+Claude Code box holds only its title (`.cc-arch.cc-after .cc-cc { padding-bottom: 22px }` -
+the plain `.cc-after .cc-cc` form LOST to the later `.cc-arch .cc-cc` padding rule, and the
+chip overlapped the title until the selector was strengthened); the chip is a flow child
+after the box, `<div class="arch-chips cc-skill">`, pulled up by `margin-top: -13px`
+(position relative, z-index 1, 12px, --card fill) so its centre sits on the box's bottom
+border (measured 1029.9 vs 1030.8); `.cc-calls` follows it with gap 36px, so both two-way
+arrows start on the chip's bottom edge (chip 1194-1287, arrows at 1221 and 1259) and end on
+the agent server (0px gaps). MEASURED: both cards 406px at 1920, bottom rows level; 360/390:
+nothing outside its card, no sideways scroll, the chip still on the border. Dark screenshot
+checked.
