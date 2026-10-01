@@ -6654,3 +6654,18 @@ Search2o, answered from the docs); (2) optional: replace `<div id="s2o-demo">` w
 `<div data-s2o-demo="all">`; (3) tidy: the demo.js/demo.css tags sit in the head with
 `crossorigin` and `./` paths (build leftovers; they work). The h1 "Search that executes" and
 the note line are Ram's text.
+
+## State on 2026-10-01 (demo.html: four ways, the new placeholder, tags tidied; not deployed)
+Ram: "go ahead" on the three items from the widget prompt. html/demo.html: (1) the meta
+description and og:description say "Try Search2o four ways" and gain the fourth card ("...or
+ask a question about Search2o."); (2) the mount is `<div data-s2o-demo="all"></div>` (was
+`<div id="s2o-demo">`); (3) the build-leftover tags are gone from the head - `<link
+rel="stylesheet" href="demo/demo.css">` now follows styles/styles.css, and `<script
+type="module" src="demo/demo.js">` follows js/config.js and js/site.js at the end of the
+body, the order the widget prompt gives (no `crossorigin`, no `./`). VERIFIED on the
+no-cache server with the installed build: demo.html#ask mounts the switcher with four cards
+(Search / Developer view / Generate an agent / Ask a question), the hash selects Ask, the
+card is 540px, both stylesheets load, SEARCH2O_CONFIG.demoUrl is the production URL, no
+sideways scroll at 1920. No card was exercised (no request sent to the demo server). The h1
+"Search that executes" and the note line are Ram's, untouched. NOTE: ui1's deploy-demo.sh
+looks for pages that load demo/demo.js - the tag is still `src="demo/demo.js"`, only moved.
