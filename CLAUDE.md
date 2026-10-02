@@ -7105,3 +7105,20 @@ Ram: make Validated... back to bolded. `.cc-attrs` is `color: var(--ink); font-w
 gap: 6px 10px` again - the exact "bolded" form measured earlier (one row at 1100 and 1920
 with Human-in-the-loop; the fourth item is now the shorter Model-neutral, so the fit only
 improves; not re-measured). Still the plain checked row under the hairline, no badges.
+
+## State on 2026-10-02 (hero attributes: larger, in the headline gradient - Ram's pick; not deployed)
+Ram: the Validated... line is the most important thing in the hero picture, yet it stood out
+no more than the box titles; a skimmer would not see it. After three misses on this line
+(badges rejected, bold, plain, bold) I ASKED with two questions instead of redrawing; his
+answers: "Larger, headline gradient" and "Where it is now". APPLIED: `.cc-attrs` is 14px,
+weight 800, letter-spacing -0.01em, with the hero headline's gradient
+(`linear-gradient(94deg, var(--blue) 4%, var(--teal) 96%)` + background-clip: text on the
+ul, so one gradient runs across the four words); `@media (min-width: 1200px) { .cc-attrs {
+font-size: 15px } }` - 15px wraps the row at 1100 (measured), so 15px only where it fits;
+checks 15px in --ok green; gap 6px 9px; the hairline above stays. It is the only coloured
+text in the diagram and at >=1200px the same size as the largest box title. MEASURED: one
+row at 1100 (14px, 14px to spare), 1215/1280/1920 (15px, 10px to spare - tight); two rows on
+a phone; diagram and demo level (811/811); nothing outside the card. Both themes
+screenshotted. ALSO SEEN, Ram's own edits: the h1's third line is "Avoid context rot." and
+the hero demo's empty text is his new wording (models from OpenAI, Anthropic, and Google;
+follow-ups retain the conversation's context).
