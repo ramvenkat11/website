@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Controlled runtime — Search2o docs</title>
-<meta name="description" content="The controlled runtime is the environment the agent server builds from the account&#x27;s configuration and runs every agent in. It decides what an agent can reac…">
+<meta name="description" content="The controlled runtime is the environment the agent server builds from the account&#x27;s configuration and runs every agent in. It bounds every agent in time and…">
 <link rel="canonical" href="https://search2o.com/docs/agent-execution/controlled-runtime.html">
 <meta property="og:title" content="Controlled runtime — Search2o docs">
-<meta property="og:description" content="The controlled runtime is the environment the agent server builds from the account&#x27;s configuration and runs every agent in. It decides what an agent can reac…">
+<meta property="og:description" content="The controlled runtime is the environment the agent server builds from the account&#x27;s configuration and runs every agent in. It bounds every agent in time and…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/agent-execution/controlled-runtime.html">
 <meta property="og:image" content="https://search2o.com/images/og4.png">
@@ -47,10 +47,25 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../agent-execution/index.html'>Agent execution</a></div>
     <article class="docs-article">
       <h1>Controlled runtime</h1>
-      <p class="lead">The controlled runtime is the environment the agent server builds from the account's configuration and runs every agent in. It decides what an agent can reach, how much an agent may do, and where an agent's data may go. This page is the summary; each control has its own page.</p>
+      <p class="lead">The controlled runtime is the environment the agent server builds from the account's configuration and runs every agent in. It bounds every agent in time and in cost, and it decides what an agent can reach and where an agent's data may go. This page is the summary; each control has its own page.</p>
 
 <h2 id="the-agent-is-fixed">The agent is fixed</h2>
 <p>An agent is a definition: written by a developer, validated by a real run before it is <a href="../development/publishing.html">published</a>, versioned, and unchanged while it runs. A person, a chat bot or an assistant chooses which agent runs. The definition decides what runs.</p>
+
+<h2 id="two-bounds-on-every-agent-time-and-cost">Two bounds on every agent: time and cost</h2>
+<p>Every agent carries two bounds of its own. An agent is published and run with both.</p>
+<ul>
+  <li><strong>Time.</strong> The number of seconds a run of the agent may take. A run past the bound ends with the result code <code>timedOut</code>, and the message names the limit.</li>
+  <li><strong>Cost.</strong> The LLM spend, in US dollars, that a run of the agent may reach. The agent server adds up the cost after each LLM call, from the prices in the <a href="../profiles/llm-profiles.html">LLM profile</a>, and stops the run once the total passes the bound. The run ends with the result code <code>errorInAgent</code>, and the person is told that the request reached the agent's cost limit.</li>
+</ul>
+<p>The bounds belong to the agent, not to the account. An agent that looks up one record can be held to a few seconds and a few cents, while an agent that researches a question is given more of both.</p>
+
+<h3 id="what-a-bound-covers">What a bound covers</h3>
+<p>A bound covers one run: from the request to the answer, or to the point where the agent pauses on an <a href="../commands/ask.html"><code>ask</code></a>. The run that continues after the answer starts with the full bounds again. An agent that the agent <a href="../commands/invoke.html">invokes</a> runs inside the same run, so its time and its LLM spend count toward the bounds of the agent that received the request.</p>
+
+<h3 id="setting-the-bounds">Setting the bounds</h3>
+<p>A new draft starts with default bounds, and a draft made from a published agent starts with that agent's bounds. The bounds are saved with the draft, the validation run is held to them, and publishing carries them to the agent. A developer can also change the bounds of a published agent directly. That change applies from the next run, does not make a new version, and is recorded in the <a href="../system-management/audit-log.html">audit log</a>.</p>
+<p>The cost bound relies on the prices in the LLM profiles: a profile without prices adds nothing to the total. The <a href="../reports/index.html">reports</a> show the duration and the LLM cost of each agent's runs, which is the evidence for choosing both bounds.</p>
 
 <h2 id="what-an-expression-can-reach">What an expression can reach</h2>
 <p>The Python expressions in a definition run with the account's <a href="../runtime/allowlist.html">allowlist</a> in place of Python's builtins. A function, class or module is available to an expression only when the allowlist names it, and a module comes without the modules it imports. Besides the allowlist, an expression sees the variables of its own function, the agent's variables, the conversation's variables, and the <code>sys</code>, <code>command</code>, <code>result</code> and <code>exc</code> names. See <a href="../agent-definition/python-expressions.html">Python expressions</a>.</p>
@@ -63,9 +78,8 @@
 <h2 id="where-an-agent-s-calls-can-go">Where an agent's calls can go</h2>
 <p>APIs, databases, MCP servers and LLMs are reached through <a href="../profiles/index.html">profiles</a>, which administrators define and share across the account. An <code>api</code> command calls an API profile, so the hosts an agent can reach are the ones set in the profiles. Every HTTP call goes through a <a href="../runtime/connection-pools.html">connection pool</a> that administrators size.</p>
 
-<h2 id="how-much-an-agent-may-do">How much an agent may do</h2>
-<p>Every agent has two bounds of its own: time and cost. The time bound is the number of seconds a run of the agent may take, and a run past it ends with the result code <code>timedOut</code>. The cost bound is the LLM spend, in US dollars, that a run of the agent may reach; the spend is counted after each LLM call from the prices in the <a href="../profiles/llm-profiles.html">LLM profile</a>, and a run past the bound is stopped. Both bounds are set on the draft and published with the agent. A developer can change them on a published agent, and the change does not make a new version.</p>
-<p>The <a href="../runtime/runtime-limits.html">runtime limits</a> bound every agent in the account alike: how many times a loop may iterate, how many rows a database call may return, and how long a definition may be. A loop past its limit fails the run.</p>
+<h2 id="the-limits-every-agent-shares">The limits every agent shares</h2>
+<p>Besides its own two bounds, an agent runs under the account's <a href="../runtime/runtime-limits.html">runtime limits</a>, which are the same for every agent: how many times a loop may iterate, how many rows a database call may return, and how long a definition may be. A loop past its limit fails the run.</p>
 <p>The runtime bounds what an expression may do, not how much work one line of Python does. An expression runs on the agent server alongside every other run, so a very long computation delays the other runs. Two controls cover this:</p>
 <ul>
   <li><strong>Operator rewriting.</strong> The account can map an operator to a function of its own, so that <code>a ** b</code> runs as <code>bounded_pow(a, b)</code> and a very large power is refused before it is computed. See <a href="../runtime/compile-rules.html">Compile rules</a>.</li>
@@ -84,7 +98,7 @@
     </article>
     <nav class=prevnext><a class=prev href='../agent-execution/index.html'><small>Previous</small>Agent execution</a><a class=next href='../agent-execution/output.html'><small>Next</small>Agent output</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#the-agent-is-fixed'>The agent is fixed</a></li><li class=l2><a href='#what-an-expression-can-reach'>What an expression can reach</a></li><li class=l2><a href='#what-an-agent-cannot-see'>What an agent cannot see</a></li><li class=l2><a href='#where-an-agent-s-calls-can-go'>Where an agent's calls can go</a></li><li class=l2><a href='#how-much-an-agent-may-do'>How much an agent may do</a></li><li class=l2><a href='#the-same-runtime-on-every-agent-server'>The same runtime on every agent server</a></li><li class=l2><a href='#what-leaves-the-agent-server'>What leaves the agent server</a></li><li class=l2><a href='#when-something-fails'>When something fails</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#the-agent-is-fixed'>The agent is fixed</a></li><li class=l2><a href='#two-bounds-on-every-agent-time-and-cost'>Two bounds on every agent: time and cost</a></li><li class=l3><a href='#what-a-bound-covers'>What a bound covers</a></li><li class=l3><a href='#setting-the-bounds'>Setting the bounds</a></li><li class=l2><a href='#what-an-expression-can-reach'>What an expression can reach</a></li><li class=l2><a href='#what-an-agent-cannot-see'>What an agent cannot see</a></li><li class=l2><a href='#where-an-agent-s-calls-can-go'>Where an agent's calls can go</a></li><li class=l2><a href='#the-limits-every-agent-shares'>The limits every agent shares</a></li><li class=l2><a href='#the-same-runtime-on-every-agent-server'>The same runtime on every agent server</a></li><li class=l2><a href='#what-leaves-the-agent-server'>What leaves the agent server</a></li><li class=l2><a href='#when-something-fails'>When something fails</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">
