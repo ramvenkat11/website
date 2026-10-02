@@ -376,9 +376,12 @@ p { margin: 0; }
   border: 5px solid transparent; border-bottom-color: var(--slate); border-top: 0;
 }
 .cc-join b { grid-column: 1 / -1; justify-self: stretch; height: 2px; margin: 0 calc((100% - 2 * var(--g)) / 6 - 1px); background: var(--slate); opacity: .55; }
-.cc-attrs { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 14px 0 0; padding: 12px 0 0; border-top: 1px solid var(--line-soft); list-style: none; color: var(--muted); font-size: 12px; font-weight: 600; }
+.cc-attrs { display: flex; flex-wrap: wrap; gap: 6px 9px; margin: 14px 0 0; padding: 12px 0 0; border-top: 1px solid var(--line-soft); list-style: none; font-size: 14px; font-weight: 800; letter-spacing: -0.01em; background: linear-gradient(94deg, var(--blue) 4%, var(--teal) 96%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .cc-attrs li { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
-.cc-attrs svg { color: var(--ok); flex: none; }
+.cc-attrs svg { width: 15px; height: 15px; color: var(--ok); flex: none; }
+@media (min-width: 1200px) {
+  .cc-attrs { font-size: 15px; }
+}
 .arch-chips span.more { border-style: dashed; color: var(--faint); }
 .cc-arch { padding: 22px 20px; }
 .cc-arch .arch-link { height: 32px; }
