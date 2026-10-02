@@ -7058,3 +7058,12 @@ maxAgentRuntime" - that setting no longer exists; (3) gui/guardrails and any pag
 what "Guardrails > Runtime" holds may be stale the same way (not checked); (4)
 data-privacy / users-and-roles still list "search settings" among the configuration parts,
 which is true and unrelated to the runtime pages.
+
+## State on 2026-10-02 (hero attributes back to the ORIGINAL style; not deployed)
+Ram: remove the highlighting/bolding of Validated / Bounded / Observable and the fourth,
+back to the original format. `.cc-attrs` is `color: var(--muted); font-weight: 600; gap: 6px
+18px` again (was --ink / 700 / 10px since the "a little bolded" step) - the first form: a
+hairline, then muted 12px words with green checks. The four items are Validated, Bounded,
+Observable, Model-neutral. One row at 1100 (41px to spare) and 1920; two rows on a phone;
+diagram and demo level (811/811). The spacing values (margin 14 / padding 12) stay from the
+later layout pass.
