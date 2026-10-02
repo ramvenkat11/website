@@ -50,7 +50,7 @@
     <div class="container">
       <h1>Build hundreds of task-specific AI agents. <span class="grad">Search runs the right agent for each request.</span></h1>
       <div class="hero-grid">
-        <aside class="arch cc-arch hero-arch" aria-label="Claude Code, a browser and Slack or Teams send requests to the Search2o agent server. The agent server runs agents in a controlled runtime and calls enterprise systems and LLMs.">
+        <aside class="arch cc-arch hero-arch" aria-label="Claude Code, a browser and Slack or Teams send requests to the Search2o agent server. The agent server runs the agents and calls enterprise systems and LLMs.">
           <div class="arch-flow">
             <div class="cc-clients">
               <div class="arch-node cc-cc"><strong>Claude Code</strong><div class="arch-chips cc-skill"><span>search2o-skill</span></div></div>
@@ -61,11 +61,8 @@
             <div class="arch-link" aria-hidden="true"><span class="arch-lbl">search / execAgent</span></div>
             <div class="arch-node">
               <div class="cc-server-head"><strong>Search2o agent server</strong><span aria-hidden="true">&mdash;</span><code>pip install search2o</code></div>
-              <div class="arch-fw cc-runtime">
-                <strong>Controlled runtime</strong>
-                <div class="arch-chips"><span>travel_desk</span><span>reimbursements</span><span>hr_policy</span><span>it_helpdesk</span><span>payroll</span><span>calendar</span><span>onboarding</span><span>contracts</span><span>invoices</span><span>time_off</span><span>facilities</span></div>
-                <ul class="cc-attrs"><li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Validated</li><li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Bounded</li><li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Observable</li><li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Human-in-the-loop</li></ul>
-              </div>
+              <div class="arch-chips"><span>leave_balance</span><span>fx_rates</span><span>product_recalls</span><span>printer_help</span><span>feature_flags</span><span>trademarks</span><span>cafeteria_menu</span><span>rfp_writer</span><span>battlecards</span><span>rice_scoring</span><span>exec_travel</span><span class="more">+189 more agents</span></div>
+              <ul class="cc-attrs"><li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Validated</li><li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Bounded</li><li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Observable</li><li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Human-in-the-loop</li></ul>
             </div>
             <div class="cc-row">
               <div class="cc-col">
@@ -85,7 +82,7 @@
           data-s2o-demo="search"
           data-search-title="Live demo &middot; request an outcome"
           data-search-placeholder="Ask for something&hellip;"
-          data-search-hint="Enter to send &middot; Shift+Enter for a new line"
+          data-search-hint=""
           data-search-empty="Type a request. Search finds and runs the agent built to handle it. If multiple agents match, you choose which one to run. Then ask for more: conversations bring agents together as needed, without prewiring."
         ></div>
       </div>
@@ -120,7 +117,7 @@
             data-generate-title="Generate an agent &middot; written by AI, from your description"
             data-generate-label="What should the agent do?"
             data-generate-placeholder="Describe the agent: what it takes in, which systems it talks to, what it returns."
-            data-generate-hint="Describe the agent to write"
+            data-generate-hint=""
             data-generate-button="Write the agent"
             data-generate-example1="An agent that looks up an order by its number, checks whether it has shipped, and drafts a status email to the customer."
             data-generate-example2="An agent that takes a job title and a country and returns the salary band from our HR database, asking which currency to show."
@@ -158,7 +155,6 @@
                     <div class="arch-link two" aria-hidden="true"></div>
                   </div>
                 </div>
-                <a class="arch-sys-title" href="docs/profiles/index.html">Profiles</a>
                 <div class="arch-node arch-server">
                   <strong>Agent server</strong>
                   <span><a href="docs/runtime/overview.html">Stateless</a> &middot; <a href="docs/agent-execution/controlled-runtime.html">Controlled runtime</a> &middot; <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">GitHub</a></span>
@@ -175,10 +171,10 @@
             </div>
             <div class="arch-link two lnk"><a class="arch-lbl" href="docs/security/encryption.html">sensitive data encrypted</a></div>
             <div class="arch-node cloud">
-              <span class="arch-cloud-lbl">Search2o Cloud</span>
+              <a class="arch-cloud-lbl" href="docs/security/data-privacy.html">Search2o Cloud</a>
               <div class="arch-parts">
                 <div class="arch-part"><a href="docs/search/index.html">Search</a></div>
-                <div class="arch-part">State</div>
+                <div class="arch-part"><a href="docs/security/data-privacy.html">State</a></div>
                 <div class="arch-part"><a href="docs/reports/index.html">Reports</a></div>
               </div>
             </div>
@@ -191,7 +187,7 @@
             data-ask-title="Ask a question about Search2o"
             data-ask-label="What would you like to know?"
             data-ask-placeholder="e.g. How do I use the ask command inside a while loop?"
-            data-ask-hint="Enter to ask, Shift+Enter for a new line"
+            data-ask-hint=""
             data-ask-button="Ask"
           ></div>
         </div>
