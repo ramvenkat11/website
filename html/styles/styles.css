@@ -125,6 +125,8 @@ p { margin: 0; }
 .theme-toggle:hover { color: var(--ink); border-color: var(--pcard-hover); }
 .theme-toggle .sun { display: none; }
 .theme-toggle .moon { display: block; }
+.docs .theme-toggle { order: 1; margin-left: auto; }
+.docs .site-nav { order: 2; margin-left: 0; }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
