@@ -7169,3 +7169,17 @@ demo.js); demo.html is live but linked from nowhere and still in the sitemap; th
 summaries need regenerating on the s2oserver side (docs_create.py) for the Ask-a-question
 answers to follow the docs; runtime-limits.html and installing-the-skill.html:52 still
 describe the old account-wide time and cost limits.
+
+## State on 2026-10-02 (hero diagram: smaller client boxes, bigger agent server title; NOT DEPLOYED - the live site has the previous version)
+Ram: the top three boxes were unnecessarily big; the main thing in the picture is the
+Search2o agent server, so its title must stand out more. `.cc-arch .cc-clients .cc-cc`
+padding 26px 10px -> `15px 10px 18px` (boxes 57px tall, were 76; the 18px bottom keeps 4px
+between a title and the search2o-skill chip that straddles the border). The server title:
+`.cc-arch.hero-arch .cc-server-head strong { font-size: 19px; font-weight: 800;
+letter-spacing: -0.02em }` (was 15px/700) - now the largest text in the picture, above the
+15px gradient attribute line and the 15px bottom-box titles; "- pip install search2o" stays
+muted mono on the same line (fits at 1100: 388 of 419px). Server node padding 24px 18px.
+MEASURED: card 540 == demo at 1100/1920; flow padded 48/49px top and bottom (airier again -
+the boxes shrank and the card height is fixed by the demo card); arrows on their nodes; phone:
+the command wraps under the title, nothing outside the card. Dark screenshot checked.
+OFFERED, not done: an accent border or tint on the server box itself.
