@@ -7198,3 +7198,12 @@ ui1's demo.css) - only the hero card; the Generate and Ask cards keep the quiet 
 MEASURED: card 540 == demo at 1100/1920; one chip row, one attribute row (6px to spare at
 1920 before the server node's side padding went back to 16px for 4px more); nothing outside
 the card; phone two rows each. Dark screenshot checked.
+
+## State on 2026-10-02 ("hundreds more" is plain text, not a chip; not deployed)
+Ram: "hundreds more" should not look like another agent name. In the hero's agents row the
+`.more` item now has no pill: `.cc-arch.hero-arch .cc-agents .arch-chips span.more {
+padding-left: 3px; padding-right: 0; border-color: transparent; background: none; color:
+var(--muted) }` - plain muted words after the three agent chips (the transparent border keeps
+its height and baseline level with the chips). MEASURED after the earlier 16px side-padding
+tweak too: one chip row, one attribute row (10px to spare at 1920, 14px at 1100), card 540 ==
+demo. Zoomed dark screenshot checked.
