@@ -7025,3 +7025,36 @@ Pricing / About + the button): "Try it free" is 91px and keeps the nav on ONE ro
 375 and 390 (header 92px); "Eval for free" (108px) and "Evaluate free" (115) wrap the button
 to a second row at 360 (header 126px); "Free evaluation" (129) and "Evaluate for free"
 (137) wrap at 360 and 375. Alternatives offered to Ram with these numbers.
+
+## State on 2026-10-02 (docs: every agent has two bounds, time and cost; search settings out of the runtime overview; NOT DEPLOYED)
+Ram: every agent has two bounds, time and cost - say so in the controlled runtime docs; the
+controlled runtime should not talk about search settings. VERIFIED in code first:
+configtypes AgentMaxTime (int >= 1, seconds) and AgentMaxCost (float > 0, US dollars of LLM
+spend per run) in both ../search2o and ../s2oserver; drafts and agents carry maxTime /
+maxCost (api/dev.py updateDraft fields; `updateAgentBudget` changes them on a PUBLISHED
+agent - "Both are required: an agent is never unlimited. This does not make a new version");
+execution/agentexec.py refuses to run an agent whose limits were not sent;
+conversationrun.py wraps the run in asyncio.timeout(max_time) -> result code timedOut, and
+after each LLM call adds the cost from the profile's per-million-token prices and stops the
+run once llmCost > max_cost ("This request was stopped because it reached the cost limit set
+for this agent."). The account-wide AgentValidationModel NO LONGER HAS a run time or an LLM
+cost field (it is loop iterations, yield, db rows, definition length, stream heartbeat).
+DONE: agent-execution/controlled-runtime.html, "How much an agent may do" now opens "Every
+agent has two bounds of its own: time and cost." (seconds, timedOut; LLM spend in US
+dollars counted after each call from the LLM profile prices, run stopped; both set on the
+draft and published with the agent; a developer can change them on a published agent
+without a new version), followed by the account-wide runtime limits (loops, db rows,
+definition length). runtime/overview.html lost the search settings bullet from "What the
+runtime holds" and the Search settings row from "Where the parts are configured" (the only
+"search settings" left on that built page is the sidebar entry). 144 pages, 35 examples
+valid. NOT SAID, unverified: where the two bounds are edited in the GUI (ui1), and the
+default values (GlobalConst defaultAgentMaxTime / defaultAgentMaxCost).
+STALE NEIGHBOURS, REPORTED NOT FIXED (one-page rule): (1) runtime/runtime-limits.html - its
+lead and "How the limits are checked" still describe run time and LLM cost as ACCOUNT-wide
+limits ("The LLM cost limit is checked after each call...", "A run past the limit ends with
+timedOut") although the generated table no longer has those fields; (2)
+skill-integration/installing-the-skill.html:52 cites "600 seconds, the default of
+maxAgentRuntime" - that setting no longer exists; (3) gui/guardrails and any page that lists
+what "Guardrails > Runtime" holds may be stale the same way (not checked); (4)
+data-privacy / users-and-roles still list "search settings" among the configuration parts,
+which is true and unrelated to the runtime pages.
