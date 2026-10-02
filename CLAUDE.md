@@ -6950,3 +6950,13 @@ hazmat_handling, restricted_areas, ab_test_results, customs_clearance,
 sanctions_screening, invention_disclosures, crisis_statements, accessibility_testing (the
 long names cost a chip per row). ALSO SEEN: html/demo/demo.js and demo.css are modified in
 the working tree (a ui1 demo deploy) - not mine.
+
+## State on 2026-10-01 (architecture: State linked, "Profiles" title removed; not deployed)
+Ram: link State to Data privacy; remove Profiles. The cloud's "State" part is `<a
+href="docs/security/data-privacy.html">State</a>` (all three cloud parts and the cloud tag
+are links now; the tag and State share the Data privacy target). The "Profiles" title above
+the chip column (`a.arch-sys-title`) is REMOVED with its two CSS rules; the four chips
+(LLMs/Prompts, APIs, Databases, MCP) stay, each still linked to its profile page, so
+docs/profiles/index.html is no longer linked from the diagram. On phones the chips row sits
+12px under the server. Card still 540 == the Ask card at 1100/1920; arrows on their nodes;
+nothing outside the card at 375. Dark screenshot checked.
