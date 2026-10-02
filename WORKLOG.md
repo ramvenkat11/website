@@ -12,3 +12,9 @@
 - Phones (under 500px): one row would need about 9px text, so the list is a fixed 2 × 2 grid (Validated, Bounded / Observable, Model-neutral), shrinking below 360px.
 - Checked with screenshots at 1440, 1001, 498, 460, 412, 390, 360 and 320px, dark theme only.
 - State: not committed, not uploaded.
+
+## 2026-10-02 — Hero figure: phone arrow under search2o-skill
+
+- Done: in the `@media (max-width: 640px)` block of `html/styles/styles.css`, `.cc-join i:first-child` had `height: 16px; margin-top: 10px`, 4px short of the 30px row, so that the arrow under the search2o-skill chip stopped above the horizontal line. Height is now 20px. The arrow was already short before today's changes.
+- Checked with a 3x screenshot at 500px wide, cropped with `sips -c … --cropOffset`. An iframe page is not usable for this crop: the demo input takes focus and scrolls the frame.
+- State: not committed, not uploaded.
