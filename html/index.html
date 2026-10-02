@@ -36,11 +36,10 @@
   <div class="container header-row">
     <a class="brand" href="index.html" aria-label="Search2o home"><img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61"><span class="tagline">Search that executes</span></a>
     <nav class="site-nav" aria-label="Main">
-      <a class="navlink" href="demo.html">Demo</a>
-      <a class="navlink" href="gettingstarted.html">Getting started</a>
       <a class="navlink" href="docs/index.html">Docs</a>
       <a class="navlink" href="pricing.html">Pricing</a>
       <a class="navlink" href="about.html">About</a>
+      <a class="btn btn-blue nav-cta" href="gettingstarted.html">Get started</a>
     </nav>
   </div>
 </header>
@@ -48,74 +47,25 @@
 <main>
   <section class="hero">
     <div class="hero-bg"></div>
-    <div class="container hero-grid">
-      <div>
-        <h1>Build hundreds of task-specific AI agents. <span class="grad">Search runs the right agent for each request.</span></h1>
-        <ul class="hero-points">
-          <li>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg>
-            <span><strong>Build a working agent in minutes</strong>, in your browser with AI assistance.</span>
-          </li>
-          <li>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-            <span><strong>Conversations bring agents together</strong> as needed, without prewiring.</span>
-          </li>
-          <li>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg>
-            <span><strong>Agents run in a controlled runtime</strong> on your servers.</span>
-          </li>
-          <li>
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 9 5-9 5-9-5 9-5z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg>
-            <span><strong>Use it anywhere</strong>: a browser, Slack/Teams or Claude Code.</span>
-          </li>
-        </ul>
-        <div class="hero-actions">
-          <a class="btn btn-blue btn-lg" href="demo.html">Live demo</a>
-          <a class="btn btn-ghost btn-lg hero-pip" href="gettingstarted.html" aria-label="Get started: pip install search2o"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg><code>pip install search2o</code></a>
-        </div>
-      </div>
-
-      <div class="hero-demo">
-        <div
-          data-s2o-demo="search"
-          data-search-title="End-user view · request an outcome"
-          data-search-placeholder="Ask for something…"
-          data-search-hint="Enter to send · Shift+Enter for a new line"
-          data-search-empty="Type a request. Search finds and runs the agent built to handle it. If multiple agents match, you choose which one to run."
-        ></div>
-      </div>
-    </div>
-  </section>
-  <section class="section soft" id="claude-code">
     <div class="container">
-      <div class="section-head center">
-        <span class="kicker">Claude Code</span>
-        <h2>Search2o as the agent gateway for Claude Code</h2>
-      </div>
-      <div class="cc-compare">
-        <aside class="arch cc-arch cc-before">
-          <p class="cc-title">Claude Code today</p>
+      <h1>Build hundreds of task-specific AI agents. <span class="grad">Search runs the right agent for each request.</span></h1>
+      <div class="hero-grid">
+        <aside class="arch cc-arch hero-arch" aria-label="Claude Code, a browser and Slack or Teams send requests to the Search2o agent server. The agent server runs agents in a controlled runtime and calls enterprise systems and LLMs.">
           <div class="arch-flow">
-            <div class="arch-node cc-cc cc-fat"><strong>Claude Code</strong><div class="arch-chips"><span>salesforce-skill</span><span>sap-skill</span><span>servicenow-skill</span><span>jira-skill</span><span>snowflake-skill</span><span>workday-skill</span><span>github-skill</span><span>confluence-skill</span><span class="more">+40 more</span></div></div>
-            <div class="arch-link" aria-hidden="true"><span class="arch-lbl">direct access</span></div>
-            <div class="cc-row">
-              <div class="arch-node"><strong>Enterprise systems</strong><span>APIs &middot; databases &middot; MCP servers</span></div>
+            <div class="cc-clients">
+              <div class="arch-node cc-cc"><strong>Claude Code</strong><div class="arch-chips cc-skill"><span>search2o-skill</span></div></div>
+              <div class="arch-node cc-cc"><strong>Browser</strong></div>
+              <div class="arch-node cc-cc"><strong>Slack/Teams</strong></div>
             </div>
-          </div>
-        </aside>
-        <div class="cc-vs" aria-hidden="true">vs</div>
-        <aside class="arch cc-arch cc-after">
-          <p class="cc-title">With Search2o</p>
-          <div class="arch-flow">
-            <div class="arch-node cc-cc"><strong>Claude Code</strong></div>
-            <div class="arch-chips cc-skill"><span><a href="https://github.com/Search2o/search2o-skill" target="_blank" rel="noopener">search2o-skill</a></span></div>
-            <div class="cc-calls" aria-hidden="true">
-              <div class="arch-link two"><span class="arch-lbl">search</span></div>
-              <div class="arch-link two"><span class="arch-lbl">execAgent</span></div>
-            </div>
+            <div class="cc-join" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+            <div class="arch-link" aria-hidden="true"><span class="arch-lbl">search / execAgent</span></div>
             <div class="arch-node">
-              <strong>Search2o agent server</strong>
-              <div class="arch-chips"><span>travel_desk</span><span>reimbursements</span><span>hr_policy</span><span>it_helpdesk</span><span>payroll</span><span>calendar</span><span>onboarding</span><span>contracts</span><span>invoices</span><span>time_off</span><span>facilities</span></div>
+              <div class="cc-server-head"><strong>Search2o agent server</strong><span aria-hidden="true">&mdash;</span><code>pip install search2o</code></div>
+              <div class="arch-fw cc-runtime">
+                <strong>Controlled runtime</strong>
+                <div class="arch-chips"><span>travel_desk</span><span>reimbursements</span><span>hr_policy</span><span>it_helpdesk</span><span>payroll</span><span>calendar</span><span>onboarding</span><span>contracts</span><span>invoices</span><span>time_off</span><span>facilities</span></div>
+                <ul class="cc-attrs"><li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Validated</li><li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Bounded</li><li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Observable</li><li><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Human-in-the-loop</li></ul>
+              </div>
             </div>
             <div class="cc-row">
               <div class="cc-col">
@@ -129,16 +79,26 @@
             </div>
           </div>
         </aside>
+
+      <div class="hero-demo">
+        <div
+          data-s2o-demo="search"
+          data-search-title="Live demo &middot; request an outcome"
+          data-search-placeholder="Ask for something&hellip;"
+          data-search-hint="Enter to send &middot; Shift+Enter for a new line"
+          data-search-empty="Type a request. Search finds and runs the agent built to handle it. If multiple agents match, you choose which one to run. Then ask for more: conversations bring agents together as needed, without prewiring."
+        ></div>
       </div>
+    </div>
     </div>
   </section>
   <section class="section" id="framework">
     <div class="container">
       <div class="section-head center">
         <span class="kicker">Agent framework</span>
-        <h2>A task-specific agent is a definition and a description</h2>
+        <h2>Build a working agent in minutes, in your browser with AI assistance</h2>
       </div>
-      <div class="cc-compare fw-compare">
+      <div class="fw-grid">
         <aside class="arch cc-arch fw-card" aria-label="The agent definition language">
           <p class="cc-title">Definition in JSONC with Python expressions</p>
           <p class="fw-lead">An agent is built in JSONC using <a href="docs/commands/index.html">23 commands</a>. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with <a href="docs/agent-definition/python-expressions.html">built-in safeguards</a>.</p>
@@ -153,17 +113,20 @@
             <div class="cg"><span class="cg-l">Agent termination</span><span class="cg-c"><a href="docs/commands/end.html"><code>end</code></a><a href="docs/commands/fail.html"><code>fail</code></a></span></div>
             <div class="cg"><span class="cg-l">Observability</span><span class="cg-c"><a href="docs/commands/progress.html"><code>progress</code></a><a href="docs/commands/trace.html"><code>trace</code></a><a href="docs/commands/log.html"><code>log</code></a></span></div>
           </div>
-          <p class="fw-foot"><a href="demo.html#generate">Try it in the live demo&nbsp;<span class="arrow" aria-hidden="true">&rarr;</span></a></p>
         </aside>
-        <div class="cc-vs" aria-hidden="true">+</div>
-        <aside class="arch cc-arch fw-card" aria-label="The agent description">
-          <p class="cc-title">Description, indexed by search</p>
-          <p class="fw-lead">A plain-language description of what the agent does. Search indexes this to match requests to agents &mdash; see <a href="docs/search/search-quality.html">search quality</a>.</p>
-          <div class="codecard" aria-label="Example agent description">
-            <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">hr_policy &middot; description</span></div>
-<pre style="white-space: pre-wrap;"><code>Answers employee questions about Acme Corp workforce policies: vacation and leave, benefits eligibility, remote-work rules, expense limits and the code of conduct. It explains what the policy says and where to find the form. It cannot approve requests, change records or make exceptions.</code></pre>
-          </div>
-        </aside>
+        <div class="fw-demo">
+          <div
+            data-s2o-demo="generate"
+            data-generate-title="Generate an agent &middot; written by AI, from your description"
+            data-generate-label="What should the agent do?"
+            data-generate-placeholder="Describe the agent: what it takes in, which systems it talks to, what it returns."
+            data-generate-hint="Describe the agent to write"
+            data-generate-button="Write the agent"
+            data-generate-example1="An agent that looks up an order by its number, checks whether it has shipped, and drafts a status email to the customer."
+            data-generate-example2="An agent that takes a job title and a country and returns the salary band from our HR database, asking which currency to show."
+            data-generate-example3="An agent that summarizes today&#x27;s support tickets by product area and flags any that mention an outage."
+          ></div>
+        </div>
       </div>
     </div>
   </section>
@@ -174,59 +137,64 @@
         <h2>Stateless agent servers. State managed in Search2o Cloud.</h2>
       </div>
       <div class="howgrid">
-        <div>
-          <ol class="steps">
-            <li>
-              <h3>User interface</h3>
-              <p>Users can submit requests from a browser, <a href="docs/chat-integrations/index.html">chat application</a>, or <a href="docs/skill-integration/overview.html">agent skill</a>. The browser UI also provides a complete workspace for agent development and system administration.</p>
-            </li>
-            <li>
-              <h3>Agent server</h3>
-              <p>A stateless server that runs standalone or in a cluster in your organization. Uses the agent framework to run agents in a <a href="docs/agent-execution/controlled-runtime.html">controlled runtime</a>. <a href="docs/security/encryption.html">Encrypts</a> sensitive information before it leaves the server. <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">Source on GitHub</a>.
-              </p>
-            </li>
-            <li>
-              <h3>Search2o Cloud</h3>
-              <p>The shared service behind every agent server. The cloud provides platform services including <a href="docs/search/index.html">search</a>, state management, and <a href="docs/reports/index.html">reporting</a>.</p>
-            </li>
-          </ol>
-        </div>
-
         <aside class="arch">
           <div class="arch-flow">
             <div class="arch-org">
               <span class="arch-org-lbl">Your organization</span>
-              <div class="arch-actor">
-                <span class="arch-actor-name"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>Users</span>
-                <em>Browser &middot; Chat &middot; Skill</em>
-              </div>
-              <div class="arch-link two" aria-hidden="true"><span class="arch-lbl">search interface</span></div>
-              <div class="arch-row">
-                <div class="arch-node">
+              <div class="arch-grid">
+                <div class="arch-actors">
+                  <div class="arch-actorcol">
+                    <div class="arch-actor">
+                      <span class="arch-actor-name"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg>Users</span>
+                      <em><a href="docs/gui/index.html">Browser</a> &middot; <a href="docs/chat-integrations/index.html">Chat</a> &middot; <a href="https://github.com/Search2o/search2o-skill" target="_blank" rel="noopener">Skill</a></em>
+                    </div>
+                    <div class="arch-link two"><span class="arch-lbl" aria-hidden="true">search interface</span></div>
+                  </div>
+                  <div class="arch-actorcol">
+                    <div class="arch-actor">
+                      <span class="arch-actor-name"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg>Developers &middot; Admins</span>
+                      <em><a href="docs/gui/index.html">Browser</a></em>
+                    </div>
+                    <div class="arch-link two" aria-hidden="true"></div>
+                  </div>
+                </div>
+                <a class="arch-sys-title" href="docs/profiles/index.html">Profiles</a>
+                <div class="arch-node arch-server">
                   <strong>Agent server</strong>
-                  <span>Stateless &middot; GitHub</span>
+                  <span><a href="docs/runtime/overview.html">Stateless</a> &middot; <a href="docs/agent-execution/controlled-runtime.html">Controlled runtime</a> &middot; <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">GitHub</a></span>
                   <div class="arch-fw"><strong>Agent framework</strong></div>
                 </div>
                 <div class="arch-hlink" aria-hidden="true"></div>
                 <div class="arch-sys">
-                  <div class="arch-branch"><span>LLMs</span></div>
-                  <div class="arch-branch"><span>APIs</span></div>
-                  <div class="arch-branch"><span>Databases</span></div>
-                  <div class="arch-branch"><span>Tools / MCP</span></div>
+                  <div class="arch-branch"><span><a href="docs/profiles/llm-profiles.html">LLMs</a>/<a href="docs/profiles/prompt-profiles.html">Prompts</a></span></div>
+                  <div class="arch-branch"><span><a href="docs/profiles/api-profiles.html">APIs</a></span></div>
+                  <div class="arch-branch"><span><a href="docs/profiles/db-profiles.html">Databases</a></span></div>
+                  <div class="arch-branch"><span><a href="docs/profiles/mcp-servers.html">MCP</a></span></div>
                 </div>
               </div>
             </div>
-            <div class="arch-link two" aria-hidden="true"><span class="arch-lbl">sensitive data encrypted</span></div>
+            <div class="arch-link two lnk"><a class="arch-lbl" href="docs/security/encryption.html">sensitive data encrypted</a></div>
             <div class="arch-node cloud">
               <span class="arch-cloud-lbl">Search2o Cloud</span>
               <div class="arch-parts">
-                <div class="arch-part">Search</div>
+                <div class="arch-part"><a href="docs/search/index.html">Search</a></div>
                 <div class="arch-part">State</div>
-                <div class="arch-part">Reports</div>
+                <div class="arch-part"><a href="docs/reports/index.html">Reports</a></div>
               </div>
             </div>
           </div>
         </aside>
+
+        <div class="arch-demo">
+          <div
+            data-s2o-demo="ask"
+            data-ask-title="Ask a question about Search2o"
+            data-ask-label="What would you like to know?"
+            data-ask-placeholder="e.g. How do I use the ask command inside a while loop?"
+            data-ask-hint="Enter to ask, Shift+Enter for a new line"
+            data-ask-button="Ask"
+          ></div>
+        </div>
       </div>
     </div>
   </section>
@@ -283,7 +251,6 @@
       <div class="footer-cols">
         <div class="fcol">
           <h4>Product</h4>
-          <a href="index.html#claude-code">Claude Code</a>
           <a href="index.html#framework">Agent framework</a>
           <a href="index.html#system-architecture">System architecture</a>
           <a href="index.html#platform">Platform</a>
@@ -291,7 +258,6 @@
         </div>
         <div class="fcol">
           <h4>Resources</h4>
-          <a href="demo.html">Demo</a>
           <a href="gettingstarted.html">Getting started</a>
           <a href="docs/index.html">Docs</a>
         </div>

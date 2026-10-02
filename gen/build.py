@@ -439,11 +439,10 @@ def header(depth) -> str:
   <div class="container header-row">
     <a class="brand" href="{r}index.html" aria-label="Search2o home"><img class="logo-light" src="{r}images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="{r}images/logo-dark.png" alt="Search2o" width="336" height="61"><span class="tagline">Search that executes</span></a>
     <nav class="site-nav" aria-label="Main">
-      <a class="navlink" href="{r}demo.html">Demo</a>
-      <a class="navlink" href="{r}gettingstarted.html">Getting started</a>
       <a class="navlink" href="{rel(depth)}index.html" aria-current="page">Docs</a>
       <a class="navlink" href="{r}pricing.html">Pricing</a>
       <a class="navlink" href="{r}about.html">About</a>
+      <a class="btn btn-blue nav-cta" href="{r}gettingstarted.html">Get started</a>
     </nav>
     <button class="theme-toggle" type="button" aria-label="Switch theme">
       <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg>
