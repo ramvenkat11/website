@@ -7183,3 +7183,18 @@ MEASURED: card 540 == demo at 1100/1920; flow padded 48/49px top and bottom (air
 the boxes shrank and the card height is fixed by the demo card); arrows on their nodes; phone:
 the command wraps under the title, nothing outside the card. Dark screenshot checked.
 OFFERED, not done: an accent border or tint on the server box itself.
+
+## State on 2026-10-02 (hero: "hundreds more"; attributes grouped under "Agents"; Live demo title a little stronger; NOT DEPLOYED)
+Ram's three. (1) The last agent chip reads "hundreds more" (was "+197 more agents").
+(2) "Search2o agent server is the title of the box. It's the agents that are validated..."
+- the attribute line must read as being about the AGENTS. The server node is now: the title
+line, a hairline, then `.cc-agents` = a small muted "Agents" label (12.5px/700), the chip
+row, and the gradient attribute row directly under the chips with NO divider between them
+(the hairline moved from above the attributes to above the "Agents" label, so title | agents
+block). `.cc-attrs` margin 14px, no padding or border. (3) The hero demo card's title bar:
+`.hero-demo .convo-title { color: var(--ink); font-size: 14.5px; font-weight: 700 }` (the
+shared `.convo-title` is 13px/600 muted; the bar uses OUR class, so this is styles.css, not
+ui1's demo.css) - only the hero card; the Generate and Ask cards keep the quiet title.
+MEASURED: card 540 == demo at 1100/1920; one chip row, one attribute row (6px to spare at
+1920 before the server node's side padding went back to 16px for 4px more); nothing outside
+the card; phone two rows each. Dark screenshot checked.
