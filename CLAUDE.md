@@ -7236,3 +7236,16 @@ linked the old #publishing-a-description anchor); gui/how-the-gui-runs ("submitt
 description indexes the agent"). Sweep for publish + description: clean. 144 pages, 35
 examples. NOT VERIFIED: the GUI's own button label for the description (ui1). RAM'S SIDE:
 regenerate the in-app summaries (docs_create.py) and deploy for the answers to follow.
+
+## State on 2026-10-02 (docs header: the theme switch sits LEFT of the nav, so the nav no longer jumps; not deployed)
+Ram: why does the header jump on the docs pages? MEASURED at 1440: logo, tagline and header
+height are identical everywhere; the NAV and the "Try it free" button sat 68px further left
+on docs pages (button right edge 1180 vs 1248), because the theme toggle exists only in the
+docs header, at the far right (34px + 6px margin + the row's 28px gap) - a consequence of
+removing the toggle from the site pages on 09-23, made obvious by the blue button. Ram chose
+option 1. FIX in styles.css, right after the .theme-toggle rules: `.docs .theme-toggle {
+order: 1; margin-left: auto }` and `.docs .site-nav { order: 2; margin-left: 0 }` - on docs
+pages the row is brand, toggle, nav, so the nav and the button occupy exactly the same
+pixels as on the site pages and the switch sits just before "Docs". No markup change, no
+docs rebuild. MEASURED docs vs pricing: nav and button x identical at 820, 1100 and 1440;
+phone unchanged (switch top right, nav on its own row, header 109px); no sideways scroll.
