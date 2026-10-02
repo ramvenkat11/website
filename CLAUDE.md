@@ -6902,3 +6902,15 @@ to pay for the extra row: nine agents in two rows; card still 540 == demo at
 1100/1280/1920. Phones: the badges wrap as flex (three rows) - the 2x2 grid's nowrap cells
 had pushed the runtime box out of the card at 375 until that rule was added. All index
 links resolve; no element outside its card at 375/768/1100/1280/1920. Dark screenshots.
+
+## State on 2026-10-01 (hero attributes: the green badges REJECTED; plain checked row, bold; not deployed)
+Ram: "Don't like this. I liked the previous way better. I just wanted it a little bolded or
+something." The four green-tinted badges are gone. `ul.cc-attrs` is the earlier form again -
+a hairline, then ONE row of check + word - now in --ink at weight 700 (was --muted 600):
+Validated, Bounded, Observable, Human-in-the-loop; `gap: 6px 10px` (14px wrapped the row at
+1100). The two agent chips dropped for the badges (time_off, facilities) are back: eleven
+agents, three rows. MEASURED: one row with 23px to spare at 1920 and 6px at 1100; card 540 ==
+demo at 1100/1280/1920; between about 1001 and 1090px wide the row wraps and the diagram is
+35px taller than the demo card (not fixed); phones wrap to three rows, nothing outside the
+card. LESSON: "make it stand out" from Ram means a small step (weight, colour), not a new
+component - offer the small step first.
