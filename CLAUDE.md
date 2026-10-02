@@ -7122,3 +7122,19 @@ a phone; diagram and demo level (811/811); nothing outside the card. Both themes
 screenshotted. ALSO SEEN, Ram's own edits: the h1's third line is "Avoid context rot." and
 the hero demo's empty text is his new wording (models from OpenAI, Anthropic, and Google;
 follow-ups retain the conversation's context).
+
+## State on 2026-10-02 (how-matching-works: the "situations, needs and outcomes" clause removed; NOT DEPLOYED)
+Ram got "Search2o matches on meaning - the situations, needs and outcomes implied by an
+agent's description - not on exact words" from the Ask-a-question demo and ruled it too close
+to the algorithm. RULING: "Semantic search" is FINE to say; "the situations, needs and
+outcomes implied by an agent's description" is NOT. The source was
+docsrc/search/how-matching-works.html "What it matches on", which now reads: "Matching is
+semantic: a query does not have to share words with a description. Search works from the
+meaning of the description. A description written in terms of what the user gets matches
+better than a description written in terms of how the agent works." (the clause is gone, and
+"therefore" with it). Sweep of docsrc for situations / implies: clean. LEFT, allowed by the
+ruling: search-quality "Search works on meaning rather than on words", memory.html "Matching
+is semantic", data-privacy "Embeds the memory text for semantic search" (the word "Embeds"
+names a technique - flagged to Ram). RAM'S SIDE: the Ask-a-question answers come from the
+in-app docs summaries (s2oserver maintenance/docs_create.py), which must be regenerated for
+the answer to change, and the page must be deployed.
