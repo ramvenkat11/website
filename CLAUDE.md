@@ -6876,3 +6876,29 @@ and the Developers arrow lands 40px from the Agent server's right edge against 8
 left for Users. CONSTRAINT: both arrows must land on the Agent server, which is 304px wide
 while the two pills total 331px - so the pills cannot both be centred over the server, and
 moving Developers right takes its arrow off the server. Options put to Ram.
+
+## State on 2026-10-01 (architecture: pills spread, more links; hero: four attribute badges; not deployed)
+Ram: "Do 1" (spread the two actor pills across the organization box and widen the Agent
+server), plus links and the attributes. ARCHITECTURE DIAGRAM: `.arch-actors` now spans all
+three grid columns as a centred flex row (gap 32px), so the Users and Developers · Admins
+pills sit centred in the org box (equal margins: 94/95px at 1920, 84/84 at 1100); to keep
+the Developers arrow on the server, the server column was widened - the section grid is
+1.4fr/1fr (diagram 597px, Ask card 426px), the connector `.arch-grid .arch-hlink` is 12px
+(was 34), the chips' left padding 22px (was 30; `.arch-grid .arch-branch::before { left:
+-22px; width: 13px }`, title padding 22). MEASURED: Developers arrow 30px inside the
+server's right edge at 1920 and 1280, 21px at 1100; both arrows end on the server; pair
+540/540 with the Ask card; phones keep the two-column pill grid. LINKS added: "Stateless" ->
+docs/runtime/overview.html; "Browser" (both pills) -> docs/gui/index.html; cloud "Search" ->
+docs/search/index.html (was search-quality); the profile chips: LLMs -> llm-profiles,
+Prompts -> prompt-profiles (two links in the one "LLMs/Prompts" chip), APIs -> api-profiles,
+Databases -> db-profiles, MCP -> mcp-servers (all under docs/profiles/). So every sub-line
+word in the diagram except "State" and "Agent framework" is a link.
+HERO ATTRIBUTES: `ul.cc-attrs` is four BADGES - Validated, Bounded, Observable,
+Human-in-the-loop (hyphenated, as the command group is named) - each a green-tinted box
+(border color-mix --ok 45%, fill --ok 13% over --card, ink text 12px/700, green check) in a
+2x2 grid inside the Controlled runtime box; the hairline above them is gone. One row of four
+did not fit (458px in 416), so 2x2, and two agent chips (time_off, facilities) were dropped
+to pay for the extra row: nine agents in two rows; card still 540 == demo at
+1100/1280/1920. Phones: the badges wrap as flex (three rows) - the 2x2 grid's nowrap cells
+had pushed the runtime box out of the card at 375 until that rule was added. All index
+links resolve; no element outside its card at 375/768/1100/1280/1920. Dark screenshots.
