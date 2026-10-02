@@ -7207,3 +7207,8 @@ var(--muted) }` - plain muted words after the three agent chips (the transparent
 its height and baseline level with the chips). MEASURED after the earlier 16px side-padding
 tweak too: one chip row, one attribute row (10px to spare at 1920, 14px at 1100), card 540 ==
 demo. Zoomed dark screenshot checked.
+
+## State on 2026-10-02 ("+ hundreds more"; not deployed)
+Ram: "+ added value" - the plus sign that the old "+197 more agents" chip carried is back:
+the plain-text item after the three agent chips reads "+ hundreds more". About 10px wider
+than before; the row had over 100px free, so not re-measured.
