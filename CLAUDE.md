@@ -6981,3 +6981,16 @@ ALSO SEEN (Ram's own edits, committed by him): the hero demo card's title is "Li
 its empty text is "This demo runs live in a Search2o account with 200 agents. Search finds
 and runs the agent that matches your request. These are real agents built to demonstrate
 framework features, using mock data." - re-read the data-search-* attributes before editing.
+
+## State on 2026-10-02 (hero: "Avoid context rot in the agentic loop." added after the solution lines; not deployed)
+Ram: add "Avoid context rot in the agentic loop" as the third line in the hero headline.
+READ AS: his heading text was two paragraphs (the h1; then "Our solution... Search runs
+the right agent for each user request."), so the new line is the THIRD paragraph, placed
+LAST - on the page that is the fourth visual line, under the gradient sentence:
+`<span class="line">Avoid context rot in the agentic loop.</span>` inside p.hero-sub
+(`.hero-sub .line { display: block }`, plain 17px --body like the "Our solution" line). A
+full stop was added to match the other lines. Order on the page: h1 / Our solution... /
+gradient Search runs... / Avoid context rot... The hero is 26px taller; diagram and demo
+still level (841/841 at 1100 and 1920); no sideways scroll at 375. FLAGGED: placement
+(last, after the gradient line) and the plain styling are my reading - the alternative is
+between "Our solution" and the gradient sentence.
