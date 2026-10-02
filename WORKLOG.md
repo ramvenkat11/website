@@ -5,3 +5,10 @@
 - Checked with headless Chrome screenshots at 1440, 1001, 500, 460, 390 and 360px. Headless Chrome does not exit after `--screenshot` on this page and cannot go below a 500px window; run it in the background, stop it once the image exists, and use an iframe page for phone widths.
 - State: not committed, not uploaded.
 - Open: between 1001px and about 1150px the "Validated…" list wraps "Model-neutral" to a second row (it did before this change).
+
+## 2026-10-02 — Hero figure: "Validated…" list on one row
+
+- Done: the `.cc-attrs` list in the hero figure now scales with the server node (`font-size: clamp(12px, 3.4cqi, 15px)`, icon and gaps in `em`), so that "Model-neutral" stays on the first row from 500px upward. The container for the `cqi` units moved from `.cc-agents` to the hero server node (`.cc-arch.hero-arch .arch-flow > .arch-node`). The `@media (min-width: 1200px)` override for `.cc-attrs` was removed; tablets (641–1000px) now show the list at 15px instead of 14px.
+- Phones (under 500px): one row would need about 9px text, so the list is a fixed 2 × 2 grid (Validated, Bounded / Observable, Model-neutral), shrinking below 360px.
+- Checked with screenshots at 1440, 1001, 498, 460, 412, 390, 360 and 320px, dark theme only.
+- State: not committed, not uploaded.
