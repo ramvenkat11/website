@@ -7151,3 +7151,21 @@ at 1100 and 1920 (811/811), flow padded 45/46px top and bottom (was 31/32 - a li
 than the 22px sides), one chip row and one attribute row at 1100/1920, every arrow on its
 node, nothing outside the card; phone: two chip rows, two attribute rows. Dark screenshot
 checked.
+
+## State on 2026-10-02 (DEPLOYED on Ram's "deploy")
+scripts/deploy.sh (backgrounded, log in the session scratchpad): preflight passed (account
+406848153313; html/js/config.js apiUrl https://reg.api.search2o.com and demoUrl
+https://demo.api.search2o.com), docs rebuilt (144 pages, 35 examples valid), 147 uploads
+(index.html, styles/styles.css, sitemap.xml and the rebuilt docs pages), NO deletions,
+invalidation IDTCK2NFLPIE3A65F49W2MEXN1 Completed after ~30s, verification: / 200, docs
+title, LIVE config.js both URLs correct. Checked after: live md5 == local for index.html,
+styles/styles.css, js/config.js, demo.html and docs/agent-execution/controlled-runtime.html.
+LIVE NOW: the restructured home page (hero diagram + live search demo, framework + Generate
+demo, architecture + Ask demo, "Try it free" header button, three-line headline, gradient
+attribute line, one row of agent examples), the Controlled runtime bounds section, the
+runtime overview without search settings, the matching page without the "situations, needs
+and outcomes" clause. STILL OPEN: the search card scrolls a phone to the demo on load (ui1's
+demo.js); demo.html is live but linked from nowhere and still in the sitemap; the in-app docs
+summaries need regenerating on the s2oserver side (docs_create.py) for the Ask-a-question
+answers to follow the docs; runtime-limits.html and installing-the-skill.html:52 still
+describe the old account-wide time and cost limits.
