@@ -6914,3 +6914,23 @@ demo at 1100/1280/1920; between about 1001 and 1090px wide the row wraps and the
 35px taller than the demo card (not fixed); phones wrap to three rows, nothing outside the
 card. LESSON: "make it stand out" from Ram means a small step (weight, colour), not a new
 component - offer the small step first.
+
+## State on 2026-10-01 (hero: no "Controlled runtime" box; cloud tag linked; bigger actor pills; three demo hints removed; not deployed)
+Ram's six. (1) HERO: the "Controlled runtime" label AND its inner tinted box are gone - the
+agent chips and the attribute row sit directly in the "Search2o agent server" node
+(`.cc-runtime` rules removed; the aside's aria-label no longer says controlled runtime).
+The freed ~68px was taken up by scale, not by empty padding: client boxes 22px 10px, server
+and bottom nodes 16px, chips margin-top 12 / row gap 8, stubs 30px (first 17px + 13px
+margin), down arrow 32px, bottom arrows 40px, attrs margin 14 / padding 12. Card still 540 ==
+demo at 1100/1280/1920 (flow padded 31/32px). (2) The "Search2o Cloud" tag is `<a
+class="arch-cloud-lbl" href="docs/security/data-privacy.html">` (`a.arch-cloud-lbl { color:
+#a9c6ff }`, like the Search/Reports links on the navy node). (3) The Users and Developers ·
+Admins pills are bigger: `padding: 14px 18px; gap: 4px; font-size: 15px`, icons 20px, sub-line
+12.5px (161x77 and 215x77, were 139x59 and 191x59); the row gap went 32 -> 16px so the
+Developers arrow still lands on the server (27px inside its right edge at 1920, 18px at
+1100); pair centred (79/80px margins); card still 540 == the Ask card. Phones keep 14px /
+11.5px with 9px 8px padding. (4-6) The three hint texts are EMPTY on the home page:
+`data-search-hint=""`, `data-ask-hint=""`, `data-generate-hint=""`. The attribute must stay
+present - demo.js treats a MISSING data- attribute as an error (it collects missing keys) and
+an empty string as no text; verified in the browser: the three hint elements render empty.
+NOT TOUCHED: demo.html (unlinked) still carries the three hints.
