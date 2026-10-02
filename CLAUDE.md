@@ -7014,3 +7014,14 @@ Validated / Bounded / Observable / Model-neutral. The new word is shorter, so th
 fit measured earlier (6px to spare at 1100) only improves; not re-measured in the browser.
 The "Human-in-the-loop" command-group label in the framework section is a different thing
 and stays.
+
+## State on 2026-10-02 (header button: "Try it free"; not deployed)
+Ram: instead of "Get started" in the header say "Eval for free" - "not exactly, something
+like that". APPLIED "Try it free" on the `a.nav-cta` button of all ten hand-written pages
+and gen/build.py's template (144 docs pages rebuilt, 35 examples valid); the link target is
+still gettingstarted.html, and the "Get started" h2 on that page plus the footer "Getting
+started" link are unchanged. WHY THAT WORDING: measured in the phone header (nav = Docs /
+Pricing / About + the button): "Try it free" is 91px and keeps the nav on ONE row at 360,
+375 and 390 (header 92px); "Eval for free" (108px) and "Evaluate free" (115) wrap the button
+to a second row at 360 (header 126px); "Free evaluation" (129) and "Evaluate for free"
+(137) wrap at 360 and 375. Alternatives offered to Ram with these numbers.
