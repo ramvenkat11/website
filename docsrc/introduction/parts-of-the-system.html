@@ -2,7 +2,7 @@
 
 <!--figure:architecture-->
 <h2>Search2o Cloud</h2>
-<p>The cloud service holds all state: accounts and users, agent definitions and drafts, configuration, conversation context, and the data behind the reports. The cloud checks agent definitions, indexes each agent's description, and answers searches. Only agent servers call the cloud's API; the Search2o license prohibits calling it directly, because that can leave data inconsistent.</p>
+<p>The cloud service holds all state: accounts and users, agent definitions and drafts, configuration, conversation context, and the data behind the reports. The cloud checks agent definitions, indexes the description that a developer writes for a published agent, and answers searches. Only agent servers call the cloud's API; the Search2o license prohibits calling it directly, because that can leave data inconsistent.</p>
 
 <h2>The agent server</h2>
 <p>The agent server, with the bundled GUI, is a Python 3.12+ package installed with <code>pip install search2o</code>. The server runs inside your organization and holds no state: at startup it loads the account's configuration, keeps that configuration current, and runs agents. The server's REST API is described at <code>/openapi.json</code>, with Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>.</p>
