@@ -7099,3 +7099,9 @@ api.py updateAgentBudget is developer permission. NOT SAID: the default values a
 the GUI the bounds are edited. STILL STALE, flagged twice now: runtime/runtime-limits.html
 prose (run time and LLM cost as account-wide limits) and
 skill-integration/installing-the-skill.html:52 (maxAgentRuntime, 600 seconds).
+
+## State on 2026-10-02 (hero attributes bolded again; not deployed)
+Ram: make Validated... back to bolded. `.cc-attrs` is `color: var(--ink); font-weight: 700;
+gap: 6px 10px` again - the exact "bolded" form measured earlier (one row at 1100 and 1920
+with Human-in-the-loop; the fourth item is now the shorter Model-neutral, so the fit only
+improves; not re-measured). Still the plain checked row under the hairline, no badges.
