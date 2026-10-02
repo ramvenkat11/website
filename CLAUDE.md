@@ -7138,3 +7138,16 @@ is semantic", data-privacy "Embeds the memory text for semantic search" (the wor
 names a technique - flagged to Ram). RAM'S SIDE: the Ask-a-question answers come from the
 in-app docs summaries (s2oserver maintenance/docs_create.py), which must be regenerated for
 the answer to change, and the page must be deployed.
+
+## State on 2026-10-02 (hero diagram: agent examples cut to ONE row; not deployed)
+Ram: the agent examples looked cluttered and diluted the message - reduce them and/or fix
+the image. The eleven chips in three rows are now ONE row: leave_balance, fx_rates,
+product_recalls and the dashed "+197 more agents" (200 - 3). The attributes line
+(gradient, 15px) is now the largest block of content in the server box. The two freed rows
+(~64px) went mostly into breathing room rather than empty card padding: client boxes
+26px 10px, server node 20px 16px, bottom nodes 18px 16px, chips margin-top 14, attributes
+margin 18 / padding-top 16, down arrow 36px, bottom arrows 44px. MEASURED: card 540 == demo
+at 1100 and 1920 (811/811), flow padded 45/46px top and bottom (was 31/32 - a little airier
+than the 22px sides), one chip row and one attribute row at 1100/1920, every arrow on its
+node, nothing outside the card; phone: two chip rows, two attribute rows. Dark screenshot
+checked.
