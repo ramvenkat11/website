@@ -376,7 +376,7 @@ p { margin: 0; }
   border: 5px solid transparent; border-bottom-color: var(--slate); border-top: 0;
 }
 .cc-join b { grid-column: 1 / -1; justify-self: stretch; height: 2px; margin: 0 calc((100% - 2 * var(--g)) / 6 - 1px); background: var(--slate); opacity: .55; }
-.cc-attrs { display: flex; flex-wrap: wrap; gap: 6px 10px; margin: 14px 0 0; padding: 12px 0 0; border-top: 1px solid var(--line-soft); list-style: none; color: var(--ink); font-size: 12px; font-weight: 700; }
+.cc-attrs { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 14px 0 0; padding: 12px 0 0; border-top: 1px solid var(--line-soft); list-style: none; color: var(--muted); font-size: 12px; font-weight: 600; }
 .cc-attrs li { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
 .cc-attrs svg { color: var(--ok); flex: none; }
 .arch-chips span.more { border-style: dashed; color: var(--faint); }
