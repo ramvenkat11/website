@@ -6960,3 +6960,24 @@ the chip column (`a.arch-sys-title`) is REMOVED with its two CSS rules; the four
 docs/profiles/index.html is no longer linked from the diagram. On phones the chips row sits
 12px under the server. Card still 540 == the Ask card at 1100/1920; arrows on their nodes;
 nothing outside the card at 375. Dark screenshot checked.
+
+## State on 2026-10-01 (HERO TEXT TRIAL: problem line as the h1, "Our solution" line under it; not deployed)
+Ram: "Try incorporating this into the Hero instead of the current heading" - "AI demos are
+impressive. Too few make it into production. / Our solution: bounded, observable agents,
+each built for a specific task. Search runs the right agent for each user request."
+index.html: `<h1>AI demos are impressive. Too few make it into production.</h1>` (24px/800,
+centred, margin-bottom 12) and `<p class="hero-sub">Our solution: bounded, observable agents,
+each built for a specific task. <span class="grad">Search runs the right agent for each
+user request.</span></p>` (17px --body, centred, margin-bottom 30; the last sentence is a
+block on its own line, weight 700, in the blue-to-teal gradient, `width: fit-content` so the
+gradient spans the sentence). His words verbatim. Three centred lines at 768/1100/1920
+(one line each); phone: h1 three lines, the sub wraps; one h1; no sideways scroll. The hero
+is 28px taller. NOT TOUCHED, because this is a trial: the footer sentence on ten pages,
+index metas / og:description, og:image:alt, og4.png and the LinkedIn banner still carry
+"Build hundreds of task-specific AI agents. Search runs the right agent for each request."
+REVERT: the previous h1 is in git HEAD (one line + the two .hero h1 rules); copies of the
+pre-trial index.html and styles.css are in the session scratchpad.
+ALSO SEEN (Ram's own edits, committed by him): the hero demo card's title is "Live demo" and
+its empty text is "This demo runs live in a Search2o account with 200 agents. Search finds
+and runs the agent that matches your request. These are real agents built to demonstrate
+framework features, using mock data." - re-read the data-search-* attributes before editing.
