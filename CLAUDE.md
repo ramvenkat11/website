@@ -6994,3 +6994,16 @@ gradient Search runs... / Avoid context rot... The hero is 26px taller; diagram 
 still level (841/841 at 1100 and 1920); no sideways scroll at 375. FLAGGED: placement
 (last, after the gradient line) and the plain styling are my reading - the alternative is
 between "Our solution" and the gradient sentence.
+
+## State on 2026-10-02 (hero heading: the previous two lines are back, plus a third; the "AI demos" trial is over; not deployed)
+Ram: go back to "Build hundreds of task-specific AI agents. / Search runs the right agent
+for each request." and add the line he had just given as the third. The h1 is `Build
+hundreds of task-specific AI agents. <span class="grad">Search runs the right agent for each
+request.</span> <span class="line">Avoid context rot in the agentic loop.</span>` -
+`.hero h1 .grad, .hero h1 .line { display: block }`: three centred 24px lines (ink /
+gradient / ink) at 1100 and 1920, six lines on a 375px phone. The "AI demos are
+impressive..." h1 and the whole `p.hero-sub` block and its CSS are GONE. A full stop was
+added to the third line to match the other two. Hero h1 margin-bottom is 30px again;
+diagram and demo level (811/811). CONSEQUENCE: the first two lines again match the footer
+sentence, metas, og:image:alt, og4.png and the LinkedIn banner, none of which carry the new
+third line (not asked).
