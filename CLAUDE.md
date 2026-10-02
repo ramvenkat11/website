@@ -7007,3 +7007,10 @@ added to the third line to match the other two. Hero h1 margin-bottom is 30px ag
 diagram and demo level (811/811). CONSEQUENCE: the first two lines again match the footer
 sentence, metas, og:image:alt, og4.png and the LinkedIn banner, none of which carry the new
 third line (not asked).
+
+## State on 2026-10-02 (hero attributes: Model-neutral replaces Human-in-the-loop; not deployed)
+Ram: the fourth hero attribute is "Model-neutral" (was "Human-in-the-loop"). The row reads
+Validated / Bounded / Observable / Model-neutral. The new word is shorter, so the one-row
+fit measured earlier (6px to spare at 1100) only improves; not re-measured in the browser.
+The "Human-in-the-loop" command-group label in the framework section is a different thing
+and stays.
