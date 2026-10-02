@@ -7212,3 +7212,27 @@ demo. Zoomed dark screenshot checked.
 Ram: "+ added value" - the plus sign that the old "+197 more agents" chip carried is back:
 the plain-text item after the three agent chips reads "+ hundreds more". About 10px wider
 than before; the row had over 100px free, so not re-measured.
+
+## State on 2026-10-02 (docs: indexing kept apart from publishing the draft; NOT DEPLOYED)
+Ram got "The cloud service indexes each agent's plain-English description when a draft is
+published and uses that index to match queries" from Ask-a-question. FINDING: no page says
+"when a draft is published" or "uses that index to match queries" (checked docsrc AND the
+regenerated summaries in ../s2oserver/maintenance/data/docs_summaries, read only); the answer
+was built from two introduction sentences that do not say WHEN indexing happens, and the
+docs used the verb "publish" for the DESCRIPTION too ("Publishing a description", "The
+description is published from the agent's page", "Publishing the description indexes the
+agent"), which invites the mix-up. Ram: "Do a variation of 2: don't mix indexing with
+publishing the draft." RULE FROM NOW: "publish" is for a DRAFT only; a description is
+WRITTEN and SUBMITTED (the audit log's own word: "a description submitted for indexing"),
+and indexing is always tied to the description, in a separate step after publishing.
+CHANGED: parts-of-the-system ("indexes the description that a developer writes for a
+published agent"); how-it-fits-together step 4 ("In a separate step, the developer writes a
+plain-English description of what the published agent does. The cloud indexes the
+description..."); your-first-agent ("Publish the draft. Describing the agent is a separate
+step: ... Submitting the description indexes the agent"); describing-an-agent (h2
+"Submitting a description"; "The description is submitted from the agent's page, after the
+agent is published."; "Submitting a new description replaces the old index entry." - no page
+linked the old #publishing-a-description anchor); gui/how-the-gui-runs ("submitting a
+description indexes the agent"). Sweep for publish + description: clean. 144 pages, 35
+examples. NOT VERIFIED: the GUI's own button label for the description (ui1). RAM'S SIDE:
+regenerate the in-app summaries (docs_create.py) and deploy for the answers to follow.
