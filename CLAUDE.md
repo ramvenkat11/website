@@ -6934,3 +6934,19 @@ Developers arrow still lands on the server (27px inside its right edge at 1920, 
 present - demo.js treats a MISSING data- attribute as an error (it collects missing keys) and
 an empty string as no text; verified in the browser: the three hint elements render empty.
 NOT TOUCHED: demo.html (unlinked) still carries the three hints.
+
+## State on 2026-10-01 (hero agent chips from Ram's list + "+189 more agents"; not deployed)
+Ram gave twenty agent names (the demo account's) and asked for as many as the space permits,
+then a chip for the remainder of 200. Chip widths were MEASURED in a 1100px frame (row
+423px there, 441 at 1920; gap 6): five chips never fit one row (the five narrowest need
+399.2 of 399), so four per row. PLACED, in three rows of four at 1100/1280/1920:
+leave_balance, fx_rates, product_recalls, printer_help / feature_flags, trademarks,
+cafeteria_menu, rfp_writer / battlecards, rice_scoring, exec_travel, and the dashed
+`.more` chip "+189 more agents" (200 - 11). The old travel_desk/reimbursements/hr_policy
+set is gone. Card still 540 == demo at 1100+; at ~1010px the chips take four rows of three
+and the diagram is 65px taller than the demo (narrow-window range, not fixed); phones: six
+rows of two, nothing outside the card. NOT USED from his list: podcast_planning,
+hazmat_handling, restricted_areas, ab_test_results, customs_clearance,
+sanctions_screening, invention_disclosures, crisis_statements, accessibility_testing (the
+long names cost a chip per row). ALSO SEEN: html/demo/demo.js and demo.css are modified in
+the working tree (a ui1 demo deploy) - not mine.
