@@ -353,19 +353,24 @@ p { margin: 0; }
 .cc-title { margin: -22px -20px 18px; padding: 11px 20px; border-bottom: 1px solid var(--line-soft); border-radius: 18px 18px 0 0; background: var(--bg-soft); color: var(--ink); font-size: 13.5px; font-weight: 700; }
 .cc-arch.hero-arch { display: flex; flex-direction: column; justify-content: center; }
 .hero-arch .cc-row { grid-template-columns: 1fr 1.1fr; gap: 8px; }
-.hero-arch .arch-flow > .arch-link { height: 32px; }
-.cc-arch.hero-arch .cc-col .arch-link { height: 40px; }
-.cc-arch.hero-arch .arch-flow > .arch-node, .cc-arch.hero-arch .cc-col .arch-node { padding: 16px 16px; }
-.cc-arch.hero-arch .arch-flow > .arch-node > .arch-chips { margin-top: 12px; gap: 8px 6px; }
+.hero-arch .arch-flow > .arch-link { height: 36px; }
+.cc-arch.hero-arch .cc-col .arch-link { height: 44px; }
+.cc-arch.hero-arch .arch-flow > .arch-node { padding: 24px 16px; }
+.cc-arch.hero-arch .cc-col .arch-node { padding: 18px 16px; }
+.cc-agents { display: grid; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line-soft); }
+.cc-agents-lbl { color: var(--muted); font-size: 12.5px; font-weight: 700; }
+.cc-arch.hero-arch .cc-agents .arch-chips { margin-top: 8px; gap: 8px 6px; }
+.cc-arch.hero-arch .cc-agents .arch-chips span.more { padding-left: 3px; padding-right: 0; border-color: transparent; background: none; color: var(--muted); }
 .cc-arch.hero-arch .arch-chips { gap: 6px; }
 .cc-arch.hero-arch .arch-chips span { font-size: 12px; padding: 3px 9px; }
 .hero-arch .arch-flow > .arch-link .arch-lbl { font-family: var(--mono); font-size: 11.5px; }
 .cc-clients { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: 100%; }
 .cc-clients .cc-cc { position: relative; align-content: center; }
-.cc-arch .cc-clients .cc-cc { padding: 22px 10px; }
+.cc-arch .cc-clients .cc-cc { padding: 15px 10px 18px; }
 .cc-arch .cc-clients .cc-skill { position: absolute; left: 50%; bottom: 0; z-index: 1; margin: 0; transform: translate(-50%, 50%); flex-wrap: nowrap; width: max-content; }
 .cc-arch .cc-clients .cc-skill span { white-space: nowrap; }
 .cc-server-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; }
+.cc-arch.hero-arch .cc-server-head strong { font-size: 19px; font-weight: 800; letter-spacing: -0.02em; }
 .cc-server-head span { color: var(--faint); }
 .cc-server-head code { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
 .cc-join { --g: 10px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--g); width: 100%; justify-items: center; }
@@ -376,7 +381,7 @@ p { margin: 0; }
   border: 5px solid transparent; border-bottom-color: var(--slate); border-top: 0;
 }
 .cc-join b { grid-column: 1 / -1; justify-self: stretch; height: 2px; margin: 0 calc((100% - 2 * var(--g)) / 6 - 1px); background: var(--slate); opacity: .55; }
-.cc-attrs { display: flex; flex-wrap: wrap; gap: 6px 9px; margin: 14px 0 0; padding: 12px 0 0; border-top: 1px solid var(--line-soft); list-style: none; font-size: 14px; font-weight: 800; letter-spacing: -0.01em; background: linear-gradient(94deg, var(--blue) 4%, var(--teal) 96%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.cc-attrs { display: flex; flex-wrap: wrap; gap: 6px 9px; margin: 14px 0 0; padding: 0; list-style: none; font-size: 14px; font-weight: 800; letter-spacing: -0.01em; background: linear-gradient(94deg, var(--blue) 4%, var(--teal) 96%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .cc-attrs li { display: inline-flex; align-items: center; gap: 5px; white-space: nowrap; }
 .cc-attrs svg { width: 15px; height: 15px; color: var(--ok); flex: none; }
 @media (min-width: 1200px) {
@@ -527,6 +532,7 @@ a.arch-lbl { color: var(--blue-ink); }
   background: var(--bg-soft); color: var(--muted); font-size: 13px; font-weight: 600;
 }
 .convo-title .lock { color: var(--ok); }
+.hero-demo .convo-title { color: var(--ink); font-size: 14.5px; font-weight: 700; }
 .convo-body { padding: 22px; display: grid; gap: 16px; }
 .turn-user {
   justify-self: end; max-width: 85%;
