@@ -7067,3 +7067,35 @@ hairline, then muted 12px words with green checks. The four items are Validated,
 Observable, Model-neutral. One row at 1100 (41px to spare) and 1920; two rows on a phone;
 diagram and demo level (811/811). The spacing values (margin 14 / padding 12) stay from the
 later layout pass.
+
+## State on 2026-10-02 (Controlled runtime: the two per-agent bounds get their own section; NOT DEPLOYED)
+Ram: the home page says "Bounded"; the two main bounds are the agent-specific max time and
+cost, and they were not getting enough coverage in Controlled runtime (one paragraph under
+"How much an agent may do"). NOW docsrc/agent-execution/controlled-runtime.html: the lead
+says the runtime "bounds every agent in time and in cost"; a new SECOND section, "Two
+bounds on every agent: time and cost" (right after "The agent is fixed"): the two bullets
+(Time: seconds, result code timedOut, the message names the limit; Cost: LLM spend in US
+dollars, added up after each LLM call from the LLM profile prices, run stopped with result
+code errorInAgent and the person told the request reached the agent's cost limit); "The
+bounds belong to the agent, not to the account" with the lookup-versus-research contrast;
+h3 "What a bound covers" (one run - to the answer or to an ask; the continuing run has the
+full bounds again; an invoked agent runs inside the same run, so its time and LLM spend
+count toward the bounds of the agent that received the request); h3 "Setting the bounds"
+(a new draft starts with default bounds, a draft made from a published agent starts with
+that agent's; saved with the draft; the validation run is held to them; publishing carries
+them; a developer can change them on a published agent - next run, no new version, audit
+log; the cost bound relies on the LLM profile prices - a profile without prices adds
+nothing; the reports show duration and LLM cost per run). The old section is renamed "The
+limits every agent shares" (account-wide runtime limits + the CPU/memory paragraph); no
+page linked its old anchor. 1,110 words; links resolve; 144 pages, 35 examples.
+VERIFIED IN CODE (../search2o, read only): conversationrun.py - asyncio.timeout(max_time)
+wraps the top-level agent's whole run, llmCost starts at 0 per ConversationRun and is
+compared with the TOP-LEVEL agent's max_cost; invoke.py runs the invoked agent with
+`run=executor.run` (same run, same counters); ShowMessage is an ErrorInAgent ->
+errorInAgent; ModelDetails prices default 0; dev.py validation uses the draft's
+maxTime/maxCost; s2oserver draft.py new drafts take GlobalConst defaults and a checked-out
+draft copies the agent's; agentdb.change_budget writes AuditEntryType.budgetUpdated;
+api.py updateAgentBudget is developer permission. NOT SAID: the default values and where in
+the GUI the bounds are edited. STILL STALE, flagged twice now: runtime/runtime-limits.html
+prose (run time and LLM cost as account-wide limits) and
+skill-integration/installing-the-skill.html:52 (maxAgentRuntime, 600 seconds).
