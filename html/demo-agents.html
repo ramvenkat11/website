@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<title>Live demo — Search2o</title>
-<meta name="description" content="Try Search2o four ways: ask as a user and the right agent answers, look at the agent behind the answer as a developer, describe an agent and have it written, or ask a question about Search2o. A live demo on a real account.">
-<meta property="og:title" content="Live demo — Search2o">
-<meta property="og:description" content="Try Search2o four ways: ask as a user, inspect as a developer, have an agent written from a description, or ask a question about Search2o. A live demo on a real account.">
+<title>The 200 agents in the live demo — Search2o</title>
+<meta name="description" content="Every agent the Search2o live demo can run, in 20 groups from Human Resources to the Executive Office, with the name and description of each one.">
+<meta property="og:title" content="The 200 agents in the live demo — Search2o">
+<meta property="og:description" content="Every agent the Search2o live demo can run, in 20 groups, with the name and description of each one.">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://search2o.com/demo.html">
-<meta property="og:url" content="https://search2o.com/demo.html">
+<link rel="canonical" href="https://search2o.com/demo-agents.html">
+<meta property="og:url" content="https://search2o.com/demo-agents.html">
 <meta property="og:image" content="https://search2o.com/images/og4.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -20,7 +20,6 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/jetbrains-mono-latin.woff2" crossorigin>
 <link rel="stylesheet" href="styles/styles.css">
-<link rel="stylesheet" href="demo/demo.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DYRX3801TG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYRX3801TG');</script>
 </head>
@@ -38,49 +37,20 @@
   </div>
 </header>
 
-<main class="s2o-demo-page">
+<main>
   <section class="page-hero">
     <div class="container">
       <span class="kicker">Live demo</span>
-      <h1>Search that executes</h1>
-      <p class="note">Everything below runs live in a real Search2o account, with <a href="demo-agents.html">200 agents</a>. The agents are written to showcase various framework features and produce mock output. </p>
+      <h1>The 200 agents in the demo</h1>
+      <p class="note">Every agent the <a href="demo.html">live demo</a> can run, in 20 groups. Each one is a real Search2o agent, written to show a framework feature and answering with mock data. The same list is served as <a href="demo-agents.json">demo-agents.json</a>.</p>
     </div>
   </section>
 
-  <section class="page-body s2o-demo-body">
+  <section class="page-body">
     <div class="container">
-      <div
-        data-s2o-demo="all"
-        data-mode-search-label="Search"
-        data-mode-search-detail="Ask, and the right agent answers"
-        data-mode-developer-label="Developer view"
-        data-mode-developer-detail="Trace the agent run"
-        data-mode-generate-label="Generate an agent"
-        data-mode-generate-detail="Generate an agent from a description"
-        data-mode-ask-label="Ask a question"
-        data-mode-ask-detail="Ask anything about Search2o"
-        data-search-title="End-user view · request an outcome"
-        data-search-placeholder="Ask for something…"
-        data-search-placeholder-followup="Ask a follow-up question"
-        data-search-placeholder-answer="Answer the question above to continue"
-        data-search-hint="Enter to send · Shift+Enter for a new line"
-        data-search-empty="Type a request. Search finds and runs the agent built to handle it. If multiple agents match, you choose which one to run."
-        data-developer-title="Developer view · the agent behind the answer"
-        data-developer-placeholder="Ask for something, and see how the agent answers it…"
-        data-developer-hint="Enter to search · no follow-ups in this view"
-        data-developer-empty="Ask for something. The agent that answers is shown with its description, its definition and every step it took."
-        data-generate-title="Generate an agent · written by AI, from your description"
-        data-generate-label="What should the agent do?"
-        data-generate-placeholder="Describe the agent: what it takes in, which systems it talks to, what it returns."
-        data-generate-hint="Describe the agent to write"
-        data-generate-button="Write the agent"
-        data-generate-example="An agent that looks up an order by its number, checks whether it has shipped, and drafts a status email to the customer."
-        data-ask-title="Ask a question · answered by AI, from the Search2o docs"
-        data-ask-label="What would you like to know about Search2o?"
-        data-ask-placeholder="e.g. How do I use the ask command inside a while loop?"
-        data-ask-hint="Enter to ask, Shift+Enter for a new line"
-        data-ask-button="Ask"
-      ></div>
+      <p class="agents-status" id="agents-status">Loading the agent list…</p>
+      <nav class="group-jump" id="group-jump" aria-label="Groups"></nav>
+      <div id="agent-groups"></div>
     </div>
   </section>
 </main>
@@ -128,7 +98,74 @@
 
 <script src="js/config.js"></script>
 <script src="js/site.js"></script>
-<script type="module" src="demo/demo.js"></script>
+<script>
+(function () {
+  var AGENTS_URL = "demo-agents.json";
+  var jump = document.getElementById("group-jump");
+  var groupsHost = document.getElementById("agent-groups");
+  var status = document.getElementById("agents-status");
+
+  function el(tag, className, text) {
+    var node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
+  }
+
+  function slug(name) {
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  }
+
+  function render(agents) {
+    var order = [];
+    var byGroup = {};
+    agents.forEach(function (agent) {
+      if (!byGroup[agent.group]) { byGroup[agent.group] = []; order.push(agent.group); }
+      byGroup[agent.group].push(agent);
+    });
+
+    order.forEach(function (group) {
+      var id = "group-" + slug(group);
+      var link = el("a", null, group);
+      link.href = "#" + id;
+      jump.appendChild(link);
+
+      var section = el("section", "agent-group");
+      section.id = id;
+      section.appendChild(el("h2", null, group));
+      var list = el("ul", "agent-list");
+      byGroup[group].forEach(function (agent) {
+        var item = el("li");
+        var head = el("div", "agent-head");
+        head.appendChild(el("h3", null, agent.title));
+        head.appendChild(el("code", null, agent.agentName));
+        item.appendChild(head);
+        item.appendChild(el("p", null, agent.description));
+        list.appendChild(item);
+      });
+      section.appendChild(list);
+      groupsHost.appendChild(section);
+    });
+
+    status.remove();
+  }
+
+  fetch(AGENTS_URL)
+    .then(function (response) {
+      if (!response.ok) throw new Error(response.status);
+      return response.json();
+    })
+    .then(render)
+    .catch(function () {
+      status.textContent = "";
+      status.appendChild(document.createTextNode("The agent list did not load. Open "));
+      var link = el("a", null, AGENTS_URL);
+      link.href = AGENTS_URL;
+      status.appendChild(link);
+      status.appendChild(document.createTextNode(" to read it directly."));
+    });
+})();
+</script>
 
 </body>
 </html>

@@ -648,6 +648,20 @@ a.arch-lbl { color: var(--blue-ink); }
 .page-hero .lead { max-width: 62ch; margin-top: 18px; font-size: 17.5px; color: var(--body); }
 .page-hero .note { max-width: 70ch; margin-top: 14px; font-size: 15.5px; color: var(--muted); }
 .page-body { padding: 30px 0 96px; }
+.agents-status { margin: 0 0 24px; color: var(--muted); font-size: 15px; }
+.group-jump { display: flex; flex-wrap: wrap; gap: 8px; }
+.group-jump a { padding: 5px 13px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-soft); color: var(--muted); font-size: 13.5px; font-weight: 550; }
+.group-jump a:hover { color: var(--ink); border-color: var(--slate); text-decoration: none; }
+.agent-group { margin-top: 52px; }
+.agent-group h2 { font-size: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--line); }
+.agent-list { margin: 0; padding: 0; list-style: none; }
+.agent-list li { display: grid; grid-template-columns: minmax(0, 280px) minmax(0, 1fr); gap: 6px 32px; padding: 16px 0; border-bottom: 1px solid var(--line-soft); }
+.agent-list h3 { font-size: 15.5px; font-weight: 700; }
+.agent-list code { display: block; margin-top: 4px; font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
+.agent-list p { margin: 0; color: var(--body); font-size: 15px; line-height: 1.55; }
+@media (max-width: 640px) {
+  .agent-list li { grid-template-columns: minmax(0, 1fr); }
+}
 .prose { max-width: 720px; }
 .prose p { margin: 0 0 18px; font-size: 16.5px; line-height: 1.75; }
 .prose h2 { margin: 46px 0 16px; font-size: 26px; }
