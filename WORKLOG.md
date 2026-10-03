@@ -45,3 +45,9 @@
 - Open: `content/pricing.md` and `content/pricing2.md` (planning notes, not shipped) still say $30.
 - State: not committed, not uploaded.
 - Also changed to $40: the per-member price in `content/pricing.md` (lines 17, 44, 55, 94, 102, 113), `content/pricing2.md:20` and `content/pricing_table.md:8`. Still $30 in `content/pricing.md`: the overage "$30 per additional 300 executions" (lines 20, 34, 94, 105, 120), which the note defines as "the same as a seat"; waiting for Ram to say whether it moves to $40 too.
+
+## 2026-10-02 — Visitor review of the live site
+
+- Done: visited https://search2o.com with headless Playwright Chromium (the Claude in Chrome extension refused the domain as "blocked by your site permissions" despite Chrome's site-access setting) and ran the three homepage demos as a technical first-time visitor: 8 live-demo requests, 4 generator runs, 2 docs questions, plus the getting-started and pricing pages. Screenshots and recorded text are in the session scratchpad, not in the repo.
+- Findings reported in chat: the generator is the strongest demo (coherent JSONC in 3–9 s, even from a sloppy sentence); the live demo answers in 1–5 s and names the agent, but `leave_balance` and `fx_rates` ask back for values already in the request (default USD leads to "Our books are already in USD"), "What can you do?" routes to `ethics_hotline`, and the same request gave different mock output on two runs; the docs box refuses the LangChain/LangGraph comparison but answers the on-prem question honestly. "Avoid context rot" is never demonstrated on the page.
+- State: no site files changed. Nothing committed, nothing uploaded.
