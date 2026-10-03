@@ -1,0 +1,58 @@
+Review https://search2o.com as a first-time visitor and tell me how well it
+persuades someone who tries it. I built the site, so be blunt.
+
+Use a real browser, not WebFetch or curl. The right side of the homepage holds
+three live demos that are drawn by script, so a text fetch shows none of them.
+Use the connected Chrome browser; if it isn't connected, use Playwright with
+Chromium and install it if needed.
+
+First confirm you have the current version: the H1 ends with "Avoid context
+rot." and the nav says "Try it free". If you see anything else, reload with a
+cache-busting query string.
+
+Background: Search2o lets a company build hundreds of task-specific AI agents;
+a search picks and runs the right agent for each request. The agents live on
+the Search2o agent server, not in the assistant's context. That is what the
+hero diagram shows and what "Avoid context rot" refers to. The demos run live
+against a shared account with 200 agents that return mock output.
+
+What to do:
+1. Take a full-page screenshot at a desktop width (about 1440px) and a phone
+   width (about 390px), and look at both. Note what a visitor sees first, and
+   whether the demos are visible without scrolling at each width.
+2. For each of the three demos, in order: screenshot it before touching it,
+   and say what a newcomer would think it is and what they would do first.
+   Then use it the way a curious developer would, without reading the docs.
+   - If it takes requests: try the suggested input if there is one, a request
+     of your own that one of the 200 agents should handle, a vague request
+     that could fit several agents, a request no agent could handle, and a
+     follow-up that depends on the previous answer.
+   - If it builds or generates something: give it two descriptions of your
+     own, one simple and one awkward.
+   - If it is view-only: click everything that looks clickable.
+   Screenshot each result. Record how long each response took, what it showed
+   about which agent was chosen, and any error, dead end or confusing state.
+   Keep it to about ten runs per demo.
+3. Follow "Try it free" and read the page it leads to. Don't submit the
+   account form.
+
+What to report:
+- For each demo: what it shows, what worked, and what confused or failed,
+  each tied to a screenshot, a timing or quoted text.
+- Whether the demos prove the headline's three claims: many agents, search
+  runs the right one, no context rot.
+- The moment a visitor is most likely to leave, and the moment most likely to
+  convince them.
+- The three changes that would do the most, most important first.
+
+Rules:
+- Every criticism needs something you observed. If you couldn't see or run
+  something, say so instead of guessing.
+- Say what works as plainly as what doesn't.
+- The audience is technical early adopters: programmers, AI engineers, Hacker
+  News readers. They want to know what it does and how it differs, quickly.
+  Don't recommend testimonials, customer logos, trust badges or benefit-style
+  marketing copy.
+- Judge wording by how a reader will interpret it. Ignore typos.
+- Don't critique product design choices on taste, for example agents defined
+  in JSON. Report only what you saw happen.
