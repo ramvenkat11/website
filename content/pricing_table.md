@@ -5,7 +5,7 @@ Search2o is in open beta. This table is the pricing page as it stands on
 
 | | Free | Paid |
 | --- | --- | --- |
-| **Price** | $0 | $30/member/month |
+| **Price** | $0 | $40/member/month |
 | **How to get it** | Default when signing up. | Upgrade from the Account page in the GUI. |
 | **Members**\* | Up to 10 | Unlimited |
 | **Agents** | Up to 25 | Up to 250 |

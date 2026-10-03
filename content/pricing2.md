@@ -17,7 +17,7 @@ Eval comes with usage limits. If they get in your way, let us know and we’ll i
 
 Switch to Prod when you’re ready to use Search2o in production. Your agents and configuration carry over.
 
-(We need to say $30/user/month)
+(We need to say $40/user/month)
 
 ## Tell us what you’re building
 

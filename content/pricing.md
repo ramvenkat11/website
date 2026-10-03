@@ -14,7 +14,7 @@ Every pricing decision below satisfies three rules.
 
 ## Pricing model
 
-One price, one unit: $30 per member per month, where a member is a person, a developer, or a service account.
+One price, one unit: $40 per member per month, where a member is a person, a developer, or a service account.
 
 - The value unit is executions, and searches count as executions. Each member brings 300 executions per month into a pool shared by the whole workspace.
 - Nothing stops at the limit. Beyond the pool, overage is $30 per additional 300 executions — the same as a seat, so adding usage and adding a person cost the same and routing traffic through one seat gains nothing.
@@ -41,7 +41,7 @@ No one meets a limit or a bill they were not told about first.
 
 The beta is free with the limits on, Paid is available from day one, and the beta end date is on the page.
 
-- Members paid for during the beta keep the $30 price for 24 months; members added to the same account after the beta pay the price current at that time. No discount: the freeze is the founding incentive.
+- Members paid for during the beta keep the $40 price for 24 months; members added to the same account after the beta pay the price current at that time. No discount: the freeze is the founding incentive.
 - The page states the structure now so the eventual pricing is not a surprise: per member, pooled executions. No commitment to a permanent free tier.
 - Around day 45, ask the ten most active workspaces what they would budget. Usage at $0 is not a price signal.
 
@@ -52,7 +52,7 @@ Track from day one:
 3. Which workspaces use service accounts, SSO, and reports — this is the gate-placement data for Enterprise.
 4. Who asks about SSO, audit, or dedicated hosting — the Enterprise pipeline.
 
-Benchmark: the median free-to-paid rate across products is about 8%. If under 2% of active free workspaces convert at $30, the problem is activation or value, not price.
+Benchmark: the median free-to-paid rate across products is about 8%. If under 2% of active free workspaces convert at $40, the problem is activation or value, not price.
 
 ## Enterprise scope
 
@@ -91,7 +91,7 @@ Two decisions remain before GA; one of them before the beta page goes live.
 - [ ] The beta end date, shown on the page (beta page).
 - [ ] Enterprise pricing (GA): price per user, volume bands, minimum commitment, and whether active-user billing changes the rate.
 
-Decided and not to be reopened: $30 per member for people, developers and service accounts, billed monthly for now; 300 executions per member pooled with $30 per additional 300; 30 indexes per month on Free and 10 per member per month on Paid, with indexing failing beyond that; AI assistance 100 per month on Free and 50 per member per month on Paid; memory 100 per user on Free and 500 on Paid; Free stops at its limits with no overage; no platform fee; no agent versioning on Free; dormant free workspaces deleted after 1 month; no commitment to a permanent free tier; Enterprise post-beta.
+Decided and not to be reopened: $40 per member for people, developers and service accounts, billed monthly for now; 300 executions per member pooled with $30 per additional 300; 30 indexes per month on Free and 10 per member per month on Paid, with indexing failing beyond that; AI assistance 100 per month on Free and 50 per member per month on Paid; memory 100 per user on Free and 500 on Paid; Free stops at its limits with no overage; no platform fee; no agent versioning on Free; dormant free workspaces deleted after 1 month; no commitment to a permanent free tier; Enterprise post-beta.
 
 # Part 2 — Pricing page
 
@@ -99,7 +99,7 @@ Decided and not to be reopened: $30 per member for people, developers and servic
 
 Two plans during the public beta. A member is a person, a developer, or a service account. Enterprise arrives at general availability.
 
-- **Price** — Free: $0 · Paid: $30 / member / month, billed monthly
+- **Price** — Free: $0 · Paid: $40 / member / month, billed monthly
 - **Members** — Free: up to 10 · Paid: unlimited
 - **Agents** — Free: unlimited drafts; 30 indexes / month · Paid: unlimited drafts; 10 indexes / member / month
 - **Executions (incl. searches)** — Free: 300 / workspace / month, pooled · Paid: 300 / member / month, pooled; $30 per extra 300
@@ -110,7 +110,7 @@ Two plans during the public beta. A member is a person, a developer, or a servic
 - **Agent version history** — Free: none · Paid: last 90 days
 - **Support** — Free: community · Paid: email
 
-Pay during the beta and each paid member keeps the $30 price for 24 months. Members added after the beta pay the then-current price.
+Pay during the beta and each paid member keeps the $40 price for 24 months. Members added after the beta pay the then-current price.
 
 ## Limits and retention by tier
 
