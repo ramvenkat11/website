@@ -1,0 +1,34 @@
+// Email Newsletter Writer - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Look up what this user told the agent before.
+        "memory": { "query": "newsletter tone", "label": "newsletter_tone", "limit": 1 },
+
+        "if": {
+          "condition": "{ len(result) > 0 }",
+          "then": {
+            "var": { "tone": "{ result[0]['text'] }" }
+          },
+          "else": {
+            // Ask only the first time.
+            "ask": {
+              "message": "What tone should the newsletter use?",
+              "inputs": [ { "name": "tone", "type": "chooseOne", "options": ["Friendly", "Formal", "Playful"] } ]
+            },
+            "var": { "tone": "{ result['tone'] }" },
+            // Remember the answer for next time.
+            "memory": { "store": { "newsletter_tone": "{ tone }" } }
+          }
+        },
+
+        "prompt": {
+          "system": "You are the email newsletter writer at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} The user prefers tone: {tone}.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

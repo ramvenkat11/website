@@ -1,0 +1,33 @@
+// Prototype Cost Estimator - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "build_cost", "args": { "units": 12, "partsPerUnit": 340.0, "labHours": 60, "hourlyRate": 85.0 } },
+
+        // Use the value the function returned.
+        "var": { "total": "{ result }" },
+
+        "prompt": {
+          "system": "You are the prototype cost estimator at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Use this figure: estimated build cost = {total} USD.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "build_cost": {
+      "args": {
+        "units": { "type": "int" },
+        "partsPerUnit": { "type": "float" },
+        "labHours": { "type": "int" },
+        "hourlyRate": { "type": "float" }
+      },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ round(units * partsPerUnit + labHours * hourlyRate, 2) }"
+      }
+    }
+  }
+}

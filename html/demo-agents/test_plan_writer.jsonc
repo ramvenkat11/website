@@ -1,0 +1,22 @@
+// Test Plan Writer - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What is the test plan for?",
+          "inputs": [ { "name": "scope", "type": "chooseOne", "options": ["New feature", "Bug fix", "Integration", "Full release"] } ]
+        },
+
+        "var": { "scope": "{ result['scope'] }" },
+
+        "prompt": {
+          "system": "You are the test plan writer at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (scope: {scope})' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

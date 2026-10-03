@@ -1,0 +1,23 @@
+// Lab Equipment Booker - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Pause for the user's answer.
+        "ask": {
+          "message": "Which instrument do you need?",
+          "inputs": [ { "name": "instrument", "type": "chooseOne", "options": ["Mass spectrometer", "Electron microscope", "3D printer", "Environmental chamber"] } ]
+        },
+
+        // Keep the result in a variable.
+        "var": { "instrument": "{ result['instrument'] }" },
+
+        "prompt": {
+          "system": "You are the lab equipment booker at Northwind Corp. Use made-up data for instrument availability, time slots and training requirements. Keep the answer short.",
+          "user": "{ f'{sys.query} (instrument: {instrument})' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

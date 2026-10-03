@@ -1,0 +1,34 @@
+// User Access Review Assistant - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Look up what this user told the agent before.
+        "memory": { "query": "review system", "label": "review_system", "limit": 1 },
+
+        "if": {
+          "condition": "{ len(result) > 0 }",
+          "then": {
+            "var": { "system": "{ result[0]['text'] }" }
+          },
+          "else": {
+            // Ask only the first time.
+            "ask": {
+              "message": "Which system are you reviewing?",
+              "inputs": [ { "name": "system", "type": "chooseOne", "options": ["ERP", "CRM", "Payroll", "Code repository"] } ]
+            },
+            "var": { "system": "{ result['system'] }" },
+            // Remember the answer for next time.
+            "memory": { "store": { "review_system": "{ system }" } }
+          }
+        },
+
+        "prompt": {
+          "system": "You are the user access review assistant at Northwind Corp. Use made-up users, roles and last sign-in dates. Keep the answer short.",
+          "user": "{ f'{sys.query} The user reviews the system: {system}.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+// Sanctions Screening Checker - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user to type an answer.
+        "ask": {
+          "message": "Who should be screened?",
+          "inputs": [ { "name": "party", "type": "str", "label": "Name", "description": "A person or company name" } ]
+        },
+
+        "var": { "party": "{ result['party'].strip() }" },
+
+        // Stop with an error the user sees.
+        "if": {
+          "condition": "{ len(party) < 2 }",
+          "then": { "fail": "Enter a person or company name to screen." }
+        },
+
+        // Write to the agent server's log.
+        "log": { "level": "info", "message": "{ 'sanctions screening requested for a name of length ' + str(len(party)) }" },
+
+        "prompt": {
+          "system": "You are the sanctions screening checker at Northwind Corp. Use made-up data. Say whether the name matches any sanctions or denied-party list, how close the match is, and what to do next. Keep the answer short.",
+          "user": "{ f'{sys.query} Name to screen: {party}.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+// Penetration Test Scoper - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with an argument.
+        "func": { "name": "test_window", "args": { "days": 5 } },
+
+        // Use the value the function returned.
+        "var": { "window": "{ result }" },
+
+        "prompt": {
+          "system": "You are the penetration test scoper at Northwind Corp. Use made-up applications, hosts and contacts. Keep the answer short.",
+          "user": "{ f'{sys.query} Plan the test for {window}.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    },
+    // Build a value and return it.
+    "test_window": {
+      "args": { "days": { "type": "int" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ str(days) + ' working days, outside business hours' }"
+      }
+    }
+  }
+}

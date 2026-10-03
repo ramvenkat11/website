@@ -1,0 +1,26 @@
+// Diverse Supplier Finder - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // The list to work through.
+        "var": { "certifications": ["Small business", "Minority-owned", "Women-owned", "Veteran-owned"], "lines": "" },
+
+        // Go through each item in turn.
+        "for": {
+          "iter": "{ certifications }",
+          "loopVar": "certification",
+          "do": {
+            "var": { "lines": "{ lines + '- ' + certification + '\\n' }" }
+          }
+        },
+
+        "prompt": {
+          "system": "You are the diverse supplier finder at Northwind Corp. Use made-up suppliers and spend figures. Keep the answer short.",
+          "user": "{ f'{sys.query} Cover each of these certifications:\\n{lines}' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

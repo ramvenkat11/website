@@ -1,0 +1,28 @@
+// Restricted Area Access Requester - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "Which area?",
+          "inputs": [ { "name": "area", "type": "chooseOne", "options": ["Server room", "Research lab", "Executive floor", "Data center, unescorted"] } ]
+        },
+
+        "var": { "area": "{ result['area'] }" },
+
+        // Stop with an error the user sees.
+        "if": {
+          "condition": "{ area == 'Data center, unescorted' }",
+          "then": { "fail": "Unescorted data center access is only granted to the infrastructure team." }
+        },
+
+        "prompt": {
+          "system": "You are the restricted area access requester at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (area: {area})' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

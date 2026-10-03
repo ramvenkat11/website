@@ -1,0 +1,22 @@
+// Survey Response Analyzer - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user to type an answer.
+        "ask": {
+          "message": "Which survey should I analyze?",
+          "inputs": [ { "name": "survey", "type": "text" } ]
+        },
+
+        "var": { "survey": "{ result['survey'] }" },
+
+        "prompt": {
+          "system": "You are the survey response analyzer at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (survey: {survey})' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

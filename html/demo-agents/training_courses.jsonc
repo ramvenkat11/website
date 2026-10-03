@@ -1,0 +1,28 @@
+// Training Course Finder - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What level are you?",
+          "inputs": [ { "name": "level", "type": "chooseOne", "options": ["Beginner", "Intermediate", "Advanced", "Not sure"] } ]
+        },
+
+        "var": { "level": "{ result['level'] }" },
+
+        // Finish early with a message; no LLM call needed.
+        "if": {
+          "condition": "{ level == 'Not sure' }",
+          "then": { "end": "Take the skills check in the learning portal first, then ask again." }
+        },
+
+        "prompt": {
+          "system": "You are the training course finder at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (level: {level})' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

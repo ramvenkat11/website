@@ -1,0 +1,38 @@
+// Architecture Decision Record Writer - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Values used below.
+        "var": { "company": "Northwind Corp" },
+
+        // Pause for the user's answer.
+        "ask": {
+          "message": "What kind of decision?",
+          "inputs": [
+            { "name": "kind", "type": "chooseOne", "options": ["Any", "Database", "Messaging", "Hosting"], "default": "Any" }
+          ]
+        },
+
+        // Keep the result in a variable.
+        "var.2": { "kind": "{ result['kind'] }" },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ kind == 'Any' }",
+          "then": { "var": { "focus": "any decision" } },
+          "else": { "var": { "focus": "{ kind.lower() }" } }
+        },
+
+        // Tell the user what is happening while they wait.
+        "progress": "Working on it...",
+
+        "prompt": {
+          "system": "{ f'You are the architecture decision record writer at {company}. Use made-up data. Keep the answer short.' }",
+          "user": "{ f'{sys.query} Focus on {focus}.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+// Release Sign-off Checklist - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // The list to work through.
+        "var": { "gates": ["All P1 bugs closed", "Regression suite passed", "Performance within budget", "Security scan clean", "Rollback plan approved"], "lines": "" },
+
+        // Go through each item in turn.
+        "for": {
+          "iter": "{ gates }",
+          "loopVar": "gate",
+          "do": {
+            "var": { "lines": "{ lines + '- ' + gate + '\\n' }" }
+          }
+        },
+
+        "prompt": {
+          "system": "You are the release sign-off checklist at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Report the status of each release gate:\\n{lines}' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+// Weekly KPI Digest - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "growth": { "question": "{ sys.query }" },
+          "retention": { "question": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## Growth\\n' + result['growth'] + '\\n\\n## Retention and support\\n' + result['retention'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "growth": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "growth",
+          "system": "You are the weekly KPI digest at Northwind Corp. Use made-up data. Summarize this week's revenue and sign-up numbers in a few lines. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gemini_flash", "prompt": "growth" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "retention": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "retention",
+          "system": "You are the weekly KPI digest at Northwind Corp. Use made-up data. Summarize this week's retention and support volume in a few lines. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gemini_flash", "prompt": "retention" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+// Competitor Feature Comparison - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "ours": { "question": "{ sys.query }" },
+          "theirs": { "question": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## Our product\\n' + result['ours'] + '\\n\\n## The competitor\\n' + result['theirs'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "ours": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "ours",
+          "system": "You are the competitor feature comparison assistant at Northwind Corp. Use made-up data. Describe our product's features for this area in a few lines. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "ours" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "theirs": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "theirs",
+          "system": "You are the competitor feature comparison assistant at Northwind Corp. Use made-up data. Describe the competitor's features for this area in a few lines. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "theirs" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

@@ -1,0 +1,26 @@
+// Town Hall Q&A Preparer - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // The list to work through.
+        "var": { "topics": ["Company results", "Reorganization", "Return to office", "Pay and bonuses"], "lines": "" },
+
+        // Go through each item in turn.
+        "for": {
+          "iter": "{ topics }",
+          "loopVar": "topic",
+          "do": {
+            "var": { "lines": "{ lines + '- ' + topic + '\\n' }" }
+          }
+        },
+
+        "prompt": {
+          "system": "You are the town hall Q&A preparer at Northwind Corp. Use made-up data. List the hard questions employees are likely to ask and a short honest answer for each. Keep the answer short.",
+          "user": "{ f'{sys.query} Cover each of these:\\n{lines}' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

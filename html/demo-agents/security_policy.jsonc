@@ -1,0 +1,20 @@
+// Information Security Policy Guide - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Values used below.
+        "var": { "company": "Northwind Corp", "policyVersion": "4.2" },
+
+        // Tell the user what is happening while they wait.
+        "progress": "Looking up the policy...",
+
+        "prompt": {
+          "system": "{ f'You are the information security policy guide at {company}. Quote made-up sections of policy version {policyVersion}. Keep the answer short.' }",
+          "user": "{ sys.query }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

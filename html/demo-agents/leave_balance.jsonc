@@ -1,0 +1,52 @@
+// Leave Balance Checker - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Values used below.
+        "var": {
+          "company": "Northwind Corp",
+          "year": 2026
+        },
+
+        // Pause for the user's answer.
+        "ask": {
+          "message": "Which leave balance?",
+          "inputs": [
+            {
+              "name": "leaveType",
+              "type": "chooseOne",
+              "options": ["All", "Vacation", "Sick", "Personal"],
+              "default": "All"
+            }
+          ]
+        },
+
+        // Keep the result in a variable.
+        "var.2": {
+          "leaveType": "{ result['leaveType'] }"
+        },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ leaveType == 'All' }",
+          "then": { "var": { "focus": "all leave types" } },
+          "else": { "var": { "focus": "{ leaveType + ' leave' }" } }
+        },
+
+        // Tell the user what is happening while they wait.
+        "progress": "Checking your balance...",
+
+        "prompt": {
+          "system": "{ f'You are the leave balance checker at {company}. Use made-up data for {year}. Keep the answer short.' }",
+          "user": "{ f'{sys.query} Show {focus}.' }"
+        },
+
+        "llm": {
+          "profile": "claude_haiku",
+          "streamOutput": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+// Lab Safety Checker - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What kind of work are you planning?",
+          "inputs": [ { "name": "work", "type": "chooseOne", "options": ["Chemicals", "Lasers", "High voltage", "Biological samples", "Unknown substance"] } ]
+        },
+
+        "var": { "work": "{ result['work'] }" },
+
+        // Finish early with a message; no LLM call needed.
+        "if": {
+          "condition": "{ work == 'Unknown substance' }",
+          "then": { "end": "Do not handle an unknown substance. Seal it and call the lab safety officer on extension 4400." }
+        },
+
+        "prompt": {
+          "system": "You are the lab safety checker at Northwind Corp. Use made-up data. List the protective equipment, training and approvals needed. Keep the answer short.",
+          "user": "{ f'{sys.query} (work: {work})' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

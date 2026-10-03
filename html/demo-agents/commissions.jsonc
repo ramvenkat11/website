@@ -1,0 +1,28 @@
+// Sales Commission Calculator - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "commission", "args": { "closed": 240000.0, "rate": 0.08 } },
+
+        // Use the value the function returned.
+        "var": { "figure": "{ result }" },
+
+        "prompt": {
+          "system": "You are the sales commission calculator at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Use this figure: commission = {figure}.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "commission": {
+      "args": { "closed": { "type": "float" }, "rate": { "type": "float" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ round(closed * rate, 2) }"
+      }
+    }
+  }
+}

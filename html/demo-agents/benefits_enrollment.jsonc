@@ -1,0 +1,38 @@
+// Benefits Enrollment Guide - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Values used below.
+        "var": { "company": "Northwind Corp" },
+
+        // Pause for the user's answer.
+        "ask": {
+          "message": "Which benefit?",
+          "inputs": [
+            { "name": "benefit", "type": "chooseOne", "options": ["All", "Health", "Dental", "Vision", "Retirement"], "default": "All" }
+          ]
+        },
+
+        // Keep the result in a variable.
+        "var.2": { "benefit": "{ result['benefit'] }" },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ benefit == 'All' }",
+          "then": { "var": { "focus": "every benefit" } },
+          "else": { "var": { "focus": "{ benefit.lower() }" } }
+        },
+
+        // Tell the user what is happening while they wait.
+        "progress": "Working on it...",
+
+        "prompt": {
+          "system": "{ f'You are the benefits enrollment guide at {company}. Use made-up data. Keep the answer short.' }",
+          "user": "{ f'{sys.query} Focus on {focus}.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

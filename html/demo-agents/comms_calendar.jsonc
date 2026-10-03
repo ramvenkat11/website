@@ -1,0 +1,26 @@
+// Communications Calendar Planner - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // The list to work through.
+        "var": { "weeks": [1, 2, 3, 4], "lines": "" },
+
+        // Go through each item in turn.
+        "for": {
+          "iter": "{ weeks }",
+          "loopVar": "week",
+          "do": {
+            "var": { "lines": "{ lines + '- Week ' + str(week) + '\\n' }" }
+          }
+        },
+
+        "prompt": {
+          "system": "You are the communications calendar planner at Northwind Corp. Use made-up events. Place announcements, newsletters and leadership messages so they do not collide. Keep the answer short.",
+          "user": "{ f'{sys.query} Plan these weeks:\\n{lines}' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

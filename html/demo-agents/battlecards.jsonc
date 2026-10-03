@@ -1,0 +1,20 @@
+// Competitor Battlecard Writer - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Find other agents that could help with the question.
+        "search": { "query": "{ sys.query }" },
+
+        // Pick out what is needed from the search results.
+        "var": { "helpers": "{ ', '.join([r['agentTitle'] for r in result][:3]) or 'none' }" },
+
+        "prompt": {
+          "system": "You are the competitor battlecard writer at Northwind Corp. Compare our product with competitors. Keep the answer short.",
+          "user": "{ f'{sys.query} Agents that may help: {helpers}.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

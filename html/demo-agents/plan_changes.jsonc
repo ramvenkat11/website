@@ -1,0 +1,28 @@
+// Subscription Plan Changer - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What change?",
+          "inputs": [ { "name": "change", "type": "chooseOne", "options": ["Upgrade", "Downgrade", "Pause", "Keep my plan"] } ]
+        },
+
+        "var": { "change": "{ result['change'] }" },
+
+        // Finish early with a message; no LLM call needed.
+        "if": {
+          "condition": "{ change == 'Keep my plan' }",
+          "then": { "end": "No change made. Your plan stays as it is." }
+        },
+
+        "prompt": {
+          "system": "You are the subscription plan changer at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (change: {change})' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

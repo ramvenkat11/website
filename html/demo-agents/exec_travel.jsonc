@@ -1,0 +1,34 @@
+// Executive Travel Planner - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Look up what this user told the agent before.
+        "memory": { "query": "travel class", "label": "exec_travel_class", "limit": 1 },
+
+        "if": {
+          "condition": "{ len(result) > 0 }",
+          "then": {
+            "var": { "seat": "{ result[0]['text'] }" }
+          },
+          "else": {
+            // Ask only the first time.
+            "ask": {
+              "message": "Which seat does the executive prefer?",
+              "inputs": [ { "name": "seat", "type": "chooseOne", "options": ["Aisle", "Window", "No preference"] } ]
+            },
+            "var": { "seat": "{ result['seat'] }" },
+            // Remember the answer for next time.
+            "memory": { "store": { "exec_travel_class": "{ seat }" } }
+          }
+        },
+
+        "prompt": {
+          "system": "You are the executive travel planner at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} The executive prefers seat: {seat}.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

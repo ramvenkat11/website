@@ -1,0 +1,45 @@
+// Research Idea Evaluator - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "feasibility": { "question": "{ sys.query }" },
+          "novelty": { "question": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## Feasibility\\n' + result['feasibility'] + '\\n\\n## Novelty\\n' + result['novelty'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "feasibility": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "feasibility",
+          "system": "You are the research idea evaluator at Northwind Corp. Use made-up data. Judge whether the idea can be built with the skills, equipment and budget Northwind has. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "feasibility" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "novelty": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "novelty",
+          "system": "You are the research idea evaluator at Northwind Corp. Use made-up data. Say how the idea differs from past Northwind projects and known work elsewhere. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "novelty" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

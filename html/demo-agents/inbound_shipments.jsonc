@@ -1,0 +1,38 @@
+// Inbound Shipment Tracker - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Values used below.
+        "var": { "company": "Northwind Corp" },
+
+        // Pause for the user's answer.
+        "ask": {
+          "message": "Which warehouse?",
+          "inputs": [
+            { "name": "warehouse", "type": "chooseOne", "options": ["All", "Chicago", "Dallas", "Newark"], "default": "All" }
+          ]
+        },
+
+        // Keep the result in a variable.
+        "var.2": { "warehouse": "{ result['warehouse'] }" },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ warehouse == 'All' }",
+          "then": { "var": { "focus": "every warehouse" } },
+          "else": { "var": { "focus": "{ warehouse.lower() }" } }
+        },
+
+        // Tell the user what is happening while they wait.
+        "progress": "Working on it...",
+
+        "prompt": {
+          "system": "{ f'You are the inbound shipment tracker at {company}. Use made-up data. Keep the answer short.' }",
+          "user": "{ f'{sys.query} Focus on {focus}.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

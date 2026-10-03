@@ -1,0 +1,28 @@
+// Hazardous Materials Handling Guide - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What material?",
+          "inputs": [ { "name": "material", "type": "chooseOne", "options": ["Batteries", "Paint", "Cleaning products", "Unknown"] } ]
+        },
+
+        "var": { "material": "{ result['material'] }" },
+
+        // Stop with an error the user sees.
+        "if": {
+          "condition": "{ material == 'Unknown' }",
+          "then": { "fail": "Do not touch it. Call the safety officer." }
+        },
+
+        "prompt": {
+          "system": "You are the hazardous materials handling guide at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (material: {material})' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

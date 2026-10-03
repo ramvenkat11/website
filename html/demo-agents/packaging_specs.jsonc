@@ -1,0 +1,28 @@
+// Packaging Spec Advisor - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What kind of item are you packing?",
+          "inputs": [ { "name": "item", "type": "chooseOne", "options": ["Fragile", "Heavy", "Temperature sensitive", "Hazardous"] } ]
+        },
+
+        "var": { "item": "{ result['item'] }" },
+
+        // Finish early with a message; no LLM call needed.
+        "if": {
+          "condition": "{ item == 'Hazardous' }",
+          "then": { "end": "Hazardous items follow separate rules. Ask the hazardous materials agent instead." }
+        },
+
+        "prompt": {
+          "system": "You are the packaging spec advisor at Northwind Corp. Use made-up data. Give the box grade, cushioning, pallet pattern and labels to use. Keep the answer short.",
+          "user": "{ f'{sys.query} (item: {item})' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

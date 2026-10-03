@@ -1,0 +1,29 @@
+// Test Protocol Writer - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What are you testing?",
+          "inputs": [ { "name": "stage", "type": "chooseOne", "options": ["Early prototype", "Pre-production unit", "Final design"], "default": "Early prototype" } ]
+        },
+
+        "var": { "stage": "{ result['stage'] }" },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ stage == 'Final design' }",
+          "then": { "var": { "depth": "full qualification with pass and fail limits" } },
+          "else": { "var": { "depth": "a short exploratory test plan" } }
+        },
+
+        "prompt": {
+          "system": "You are the test protocol writer at Northwind Corp. Use made-up data. Write the objective, setup, steps, measurements and acceptance criteria. Keep the answer short.",
+          "user": "{ f'{sys.query} Stage: {stage}. Write {depth}.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

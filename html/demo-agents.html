@@ -135,12 +135,20 @@
       section.appendChild(el("h2", null, group));
       var list = el("ul", "agent-list");
       byGroup[group].forEach(function (agent) {
-        var item = el("li");
+        var item = el("li", "agent-list-item");
+        item.id = agent.agentName;
         var head = el("div", "agent-head");
         head.appendChild(el("h3", null, agent.title));
         head.appendChild(el("code", null, agent.agentName));
         item.appendChild(head);
-        item.appendChild(el("p", null, agent.description));
+        var body = el("div", "agent-body");
+        body.appendChild(el("p", null, agent.description));
+        var button = el("button", "agent-source-btn", SHOW_LABEL);
+        button.type = "button";
+        button.setAttribute("aria-expanded", "false");
+        button.addEventListener("click", function () { toggleSource(item, agent.agentName); });
+        body.appendChild(button);
+        item.appendChild(body);
         list.appendChild(item);
       });
       section.appendChild(list);
@@ -148,6 +156,110 @@
     });
 
     status.remove();
+    openFromHash();
+    window.addEventListener("hashchange", openFromHash);
+  }
+
+  var SHOW_LABEL = "Show source";
+  var HIDE_LABEL = "Hide source";
+  var SOURCE_DIR = "demo-agents/";
+  var TOKEN_RULES = [
+    [/\/\/[^\n]*/, "cm"],
+    [/\/\*[\s\S]*?\*\//, "cm"],
+    [/"(?:[^"\\]|\\.)*"(?=\s*:)/, "key"],
+    [/"(?:[^"\\]|\\.)*"/, "str"],
+    [/\b(?:true|false|null)\b/, "kw"],
+    [/-?\b\d+(?:\.\d+)?\b/, "num"]
+  ];
+  var TOKEN_PATTERN = new RegExp(TOKEN_RULES.map(function (rule) { return "(" + rule[0].source + ")"; }).join("|"), "g");
+  var COPY_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>';
+  var DONE_ICON = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
+
+  function highlight(code, target) {
+    var pos = 0;
+    var match;
+    TOKEN_PATTERN.lastIndex = 0;
+    while ((match = TOKEN_PATTERN.exec(code)) !== null) {
+      target.appendChild(document.createTextNode(code.slice(pos, match.index)));
+      var cls = "";
+      for (var i = 0; i < TOKEN_RULES.length; i++) {
+        if (match[i + 1] !== undefined) { cls = TOKEN_RULES[i][1]; break; }
+      }
+      target.appendChild(el("span", cls, match[0]));
+      pos = TOKEN_PATTERN.lastIndex;
+    }
+    target.appendChild(document.createTextNode(code.slice(pos)));
+  }
+
+  function sourceCard(name, code) {
+    var card = el("div", "codecard");
+    var bar = el("div", "bar");
+    bar.appendChild(el("span", "d"));
+    bar.appendChild(el("span", "d"));
+    bar.appendChild(el("span", "d"));
+    bar.appendChild(el("span", "fname", name + ".jsonc \u00b7 " + code.split("\n").length + " lines"));
+    var copy = el("button", "copy");
+    copy.type = "button";
+    copy.setAttribute("aria-label", "Copy the source");
+    copy.innerHTML = COPY_ICON;
+    copy.addEventListener("click", function () {
+      navigator.clipboard.writeText(code).then(function () {
+        copy.innerHTML = DONE_ICON;
+        setTimeout(function () { copy.innerHTML = COPY_ICON; }, 1400);
+      });
+    });
+    bar.appendChild(copy);
+    card.appendChild(bar);
+    var pre = el("pre");
+    var codeNode = el("code");
+    highlight(code, codeNode);
+    pre.appendChild(codeNode);
+    card.appendChild(pre);
+    return card;
+  }
+
+  function toggleSource(item, name) {
+    var button = item.querySelector(".agent-source-btn");
+    var holder = item.querySelector(".agent-source");
+    if (holder) {
+      holder.hidden = !holder.hidden;
+      button.textContent = holder.hidden ? SHOW_LABEL : HIDE_LABEL;
+      button.setAttribute("aria-expanded", String(!holder.hidden));
+      return;
+    }
+    holder = el("div", "agent-source");
+    item.appendChild(holder);
+    button.textContent = "Loading\u2026";
+    var url = SOURCE_DIR + name + ".jsonc";
+    fetch(url)
+      .then(function (response) {
+        if (!response.ok) throw new Error(response.status);
+        return response.text();
+      })
+      .then(function (code) {
+        holder.appendChild(sourceCard(name, code));
+      })
+      .catch(function () {
+        var note = el("p", "agents-status", "The source did not load. Open ");
+        var link = el("a", null, url);
+        link.href = url;
+        note.appendChild(link);
+        note.appendChild(document.createTextNode(" to read it directly."));
+        holder.appendChild(note);
+      })
+      .then(function () {
+        button.textContent = HIDE_LABEL;
+        button.setAttribute("aria-expanded", "true");
+      });
+  }
+
+  function openFromHash() {
+    var name = decodeURIComponent(location.hash.slice(1));
+    if (!name) return;
+    var item = document.getElementById(name);
+    if (!item || !item.classList.contains("agent-list-item")) return;
+    if (!item.querySelector(".agent-source")) toggleSource(item, name);
+    item.scrollIntoView();
   }
 
   fetch(AGENTS_URL)

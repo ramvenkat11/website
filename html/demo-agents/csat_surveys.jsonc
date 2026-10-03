@@ -1,0 +1,28 @@
+// Customer Satisfaction Survey Analyzer - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "score", "args": { "promoters": 320, "detractors": 80, "total": 500 } },
+
+        // Use the value the function returned.
+        "var": { "figure": "{ result }" },
+
+        "prompt": {
+          "system": "You are the customer satisfaction survey analyzer at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Use this figure: NPS = {figure}.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "score": {
+      "args": { "promoters": { "type": "int" }, "detractors": { "type": "int" }, "total": { "type": "int" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ round((promoters - detractors) / total * 100) }"
+      }
+    }
+  }
+}

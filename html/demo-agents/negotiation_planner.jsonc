@@ -1,0 +1,31 @@
+// Supplier Negotiation Planner - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "target_price", "args": { "quoted": 48000.0, "discount": 0.08 } },
+
+        // Use the value the function returned.
+        "var": { "target": "{ result }" },
+
+        // Tell the user what is happening while they wait.
+        "progress": "Preparing your negotiation plan...",
+
+        "prompt": {
+          "system": "You are the supplier negotiation planner at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Use this figure: target price = {target} dollars against a quote of 48000.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "target_price": {
+      "args": { "quoted": { "type": "float" }, "discount": { "type": "float" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ round(quoted * (1 - discount), 2) }"
+      }
+    }
+  }
+}

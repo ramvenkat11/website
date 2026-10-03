@@ -1,0 +1,28 @@
+// Expense Report Checker - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What kind of expense?",
+          "inputs": [ { "name": "kind", "type": "chooseOne", "options": ["Travel", "Meals", "Software", "Personal"] } ]
+        },
+
+        "var": { "kind": "{ result['kind'] }" },
+
+        // Stop with an error the user sees.
+        "if": {
+          "condition": "{ kind == 'Personal' }",
+          "then": { "fail": "Personal expenses cannot be claimed." }
+        },
+
+        "prompt": {
+          "system": "You are the expense report checker at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (kind: {kind})' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+// Media Inquiry Responder - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Write to the agent server's log.
+        "log": { "level": "info", "message": "{ 'media_inquiries asked: ' + sys.query[:80] }" },
+
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "Is the reporter on deadline?",
+          "inputs": [ { "name": "deadline", "type": "chooseOne", "options": ["Today", "This week", "No deadline"] } ]
+        },
+
+        "var": { "deadline": "{ result['deadline'] }" },
+
+        "prompt": {
+          "system": "You are the media inquiry responder at Northwind Corp. Use made-up data. Say who should respond, what can be said on the record, and draft a short reply to the reporter. Keep the answer short.",
+          "user": "{ f'{sys.query} Deadline: {deadline}.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

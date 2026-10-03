@@ -1,0 +1,20 @@
+// Trademark Search Assistant - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Find other agents that could help with the question.
+        "search": { "query": "{ sys.query }" },
+
+        // Pick out what is needed from the search results.
+        "var": { "helpers": "{ ', '.join([r['agentTitle'] for r in result][:3]) or 'none' }" },
+
+        "prompt": {
+          "system": "You are the trademark search assistant at Northwind Corp. Check names against existing trademarks. Keep the answer short.",
+          "user": "{ f'{sys.query} Agents that may help: {helpers}.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+// Bug Triage Assistant - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "How bad is the bug?",
+          "inputs": [ { "name": "severity", "type": "chooseOne", "options": ["Crash or data loss", "Feature broken", "Cosmetic", "Not sure"] } ]
+        },
+
+        "var": { "severity": "{ result['severity'] }" },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ severity == 'Crash or data loss' }",
+          "then": { "var": { "priority": "P1 - fix before anything else" } },
+          "else": { "var": { "priority": "to be decided by the triage meeting" } }
+        },
+
+        "prompt": {
+          "system": "You are the bug triage assistant at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Severity: {severity}. Priority: {priority}.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

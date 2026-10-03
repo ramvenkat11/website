@@ -1,0 +1,45 @@
+// Prospect Account Researcher - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "overview": { "question": "{ sys.query }" },
+          "contacts": { "question": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## Company overview\\n' + result['overview'] + '\\n\\n## Key contacts\\n' + result['contacts'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "overview": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "overview",
+          "system": "You are the prospect account researcher at Northwind Corp. Use made-up data. Describe the company in a few lines. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "claude_haiku", "prompt": "overview" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "contacts": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "contacts",
+          "system": "You are the prospect account researcher at Northwind Corp. Use made-up data. List likely decision makers. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "claude_haiku", "prompt": "contacts" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

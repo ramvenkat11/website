@@ -1,0 +1,29 @@
+// Approval Authority Lookup - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What needs approval?",
+          "inputs": [ { "name": "decision", "type": "chooseOne", "options": ["Spending", "Hiring", "Contract signing", "Pricing change"] } ]
+        },
+
+        "var": { "decision": "{ result['decision'] }" },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ decision == 'Contract signing' }",
+          "then": { "var": { "note": "Contracts also need a legal review before signing." } },
+          "else": { "var": { "note": "No extra review is needed." } }
+        },
+
+        "prompt": {
+          "system": "You are the approval authority lookup at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Decision: {decision}. {note}' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

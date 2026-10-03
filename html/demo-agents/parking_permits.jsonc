@@ -1,0 +1,28 @@
+// Parking Permit Requester - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "Who is the permit for?",
+          "inputs": [ { "name": "who", "type": "chooseOne", "options": ["Me", "A visitor", "A delivery"] } ]
+        },
+
+        "var": { "who": "{ result['who'] }" },
+
+        // Finish early with a message; no LLM call needed.
+        "if": {
+          "condition": "{ who == 'A delivery' }",
+          "then": { "end": "Deliveries use the loading dock and need no permit." }
+        },
+
+        "prompt": {
+          "system": "You are the parking permit requester at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (who: {who})' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+// Business Continuity Planner - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "Which disruption are you planning for?",
+          "inputs": [ { "name": "scenario", "type": "chooseOne", "options": ["Site outage", "IT system down", "Key supplier lost", "Pandemic"] } ]
+        },
+
+        "var": { "scenario": "{ result['scenario'] }" },
+
+        // Write to the agent server's log.
+        "log": { "level": "info", "message": "{ 'continuity plan requested: ' + scenario }" },
+
+        "prompt": {
+          "system": "You are the business continuity planner at Northwind Corp. Use made-up data. Give the recovery steps, recovery time targets, backup sites and who to call. Keep the answer short.",
+          "user": "{ f'{sys.query} (scenario: {scenario})' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

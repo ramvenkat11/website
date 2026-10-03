@@ -1,0 +1,26 @@
+// Product Requirements Drafter - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // The list to work through.
+        "var": { "sections": ["Problem", "Goals and non-goals", "User stories", "Scope", "Success metrics", "Open questions"], "lines": "" },
+
+        // Go through each item in turn.
+        "for": {
+          "iter": "{ sections }",
+          "loopVar": "section",
+          "do": {
+            "var": { "lines": "{ lines + '- ' + section + '\\n' }" }
+          }
+        },
+
+        "prompt": {
+          "system": "You are the product requirements drafter at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Write each of these sections:\\n{lines}' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

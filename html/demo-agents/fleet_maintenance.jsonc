@@ -1,0 +1,28 @@
+// Fleet Maintenance Scheduler - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // A number and a list used below.
+        "var": { "offset": 0, "slots": [] },
+
+        // Loop over dates, skipping some with continue and stopping with break.
+        "while": {
+          "condition": "{ True }",
+          "do": {
+            "var": { "offset": "{ offset + 1 }" },
+            "continue": "{ (datetime.now().date() + timedelta(days=offset)).weekday() >= 5 }",
+            "var.2": { "slots": "{ slots + [['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'][(datetime.now().date() + timedelta(days=offset)).weekday()] + ' ' + (datetime.now().date() + timedelta(days=offset)).isoformat()] }" },
+            "break": "{ len(slots) >= 4 }"
+          }
+        },
+
+        "prompt": {
+          "system": "You are the fleet maintenance scheduler at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Offer service appointments on these weekdays: {slots}' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

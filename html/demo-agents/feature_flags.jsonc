@@ -1,0 +1,34 @@
+// Feature Flag Manager - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Look up what this user told the agent before.
+        "memory": { "query": "flag env", "label": "flag_env", "limit": 1 },
+
+        "if": {
+          "condition": "{ len(result) > 0 }",
+          "then": {
+            "var": { "environment": "{ result[0]['text'] }" }
+          },
+          "else": {
+            // Ask only the first time.
+            "ask": {
+              "message": "Which environment do you use?",
+              "inputs": [ { "name": "environment", "type": "chooseOne", "options": ["Development", "Staging", "Production"] } ]
+            },
+            "var": { "environment": "{ result['environment'] }" },
+            // Remember the answer for next time.
+            "memory": { "store": { "flag_env": "{ environment }" } }
+          }
+        },
+
+        "prompt": {
+          "system": "You are the feature flag manager at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} The user prefers environment: {environment}.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+// All-Hands Question Collector - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Write to the agent server's log.
+        "log": { "level": "info", "message": "{ 'all_hands asked: ' + sys.query[:80] }" },
+
+        // Shown only when the agent is validated.
+        "trace": "{ 'Question length: ' + str(len(sys.query)) }",
+
+        "prompt": {
+          "system": "You are the all-hands question collector at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ sys.query }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+// Campaign Performance Reporter - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Uses an allowlisted function.
+        "var": { "leads": "{ randint(200, 1500) }" },
+
+        // Tell the user what is happening while they wait.
+        "progress": "{ f'Found {leads} leads from the campaign...' }",
+
+        "prompt": {
+          "system": "You are the campaign performance reporter at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} There are {leads} leads from the campaign.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

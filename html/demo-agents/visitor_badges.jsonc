@@ -1,0 +1,28 @@
+// Visitor Badge Registration - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "badge_hours", "args": { "arrive": 9, "leave": 17 } },
+
+        // Use the value the function returned.
+        "var": { "figure": "{ result }" },
+
+        "prompt": {
+          "system": "You are the visitor badge registration at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Use this figure: hours on site = {figure}.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "badge_hours": {
+      "args": { "arrive": { "type": "int" }, "leave": { "type": "int" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ leave - arrive }"
+      }
+    }
+  }
+}

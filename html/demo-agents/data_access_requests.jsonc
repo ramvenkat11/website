@@ -1,0 +1,28 @@
+// Dataset Access Request Helper - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What kind of data do you need?",
+          "inputs": [ { "name": "dataKind", "type": "chooseOne", "options": ["Aggregated reports", "Raw event data", "Finance tables", "Customer personal data"] } ]
+        },
+
+        "var": { "dataKind": "{ result['dataKind'] }" },
+
+        // Finish early with a message; no LLM call needed.
+        "if": {
+          "condition": "{ dataKind == 'Customer personal data' }",
+          "then": { "end": "Access to customer personal data goes through the privacy office. Please file a privacy review first." }
+        },
+
+        "prompt": {
+          "system": "You are the dataset access request helper at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (data needed: {dataKind})' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

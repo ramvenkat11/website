@@ -1,0 +1,28 @@
+// Purchasing Approval Threshold Guide - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "How much will it cost?",
+          "inputs": [ { "name": "amount", "type": "chooseOne", "options": ["Under $1,000", "$1,000 to $10,000", "$10,000 to $100,000", "Over $100,000"] } ]
+        },
+
+        "var": { "amount": "{ result['amount'] }" },
+
+        // Finish early with a message; no LLM call needed.
+        "if": {
+          "condition": "{ amount == 'Under $1,000' }",
+          "then": { "end": "Purchases under $1,000 need no approval. Use your purchasing card or the catalog." }
+        },
+
+        "prompt": {
+          "system": "You are the purchasing approval threshold guide at Northwind Corp. Use made-up approval rules. Keep the answer short.",
+          "user": "{ f'{sys.query} (amount: {amount})' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

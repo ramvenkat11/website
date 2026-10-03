@@ -1,0 +1,28 @@
+// Guest Wi-Fi Access Issuer - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "valid_hours", "args": { "days": 2 } },
+
+        // Use the value the function returned.
+        "var": { "figure": "{ result }" },
+
+        "prompt": {
+          "system": "You are the guest wi-fi access issuer at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Use this figure: hours of access = {figure}.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "valid_hours": {
+      "args": { "days": { "type": "int" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ days * 24 }"
+      }
+    }
+  }
+}

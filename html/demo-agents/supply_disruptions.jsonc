@@ -1,0 +1,20 @@
+// Supply Disruption Monitor - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Write to the agent server's log.
+        "log": { "level": "info", "message": "{ 'supply_disruptions asked: ' + sys.query[:80] }" },
+
+        // Tell the user what is happening while they wait.
+        "progress": "Checking ports, weather and supplier alerts...",
+
+        "prompt": {
+          "system": "You are the supply disruption monitor at Northwind Corp. Use made-up data. List current events such as port congestion, strikes, storms or supplier outages, the open orders each one affects, and the expected delay. Keep the answer short.",
+          "user": "{ sys.query }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

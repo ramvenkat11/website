@@ -1,0 +1,28 @@
+// Test Data Request Desk - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What test data do you need?",
+          "inputs": [ { "name": "data", "type": "chooseOne", "options": ["Test accounts", "Sample orders", "Masked customer data", "Real customer data"] } ]
+        },
+
+        "var": { "data": "{ result['data'] }" },
+
+        // Finish early with a message; no LLM call needed.
+        "if": {
+          "condition": "{ data == 'Real customer data' }",
+          "then": { "end": "Real customer data cannot be used for testing. Ask for masked customer data instead." }
+        },
+
+        "prompt": {
+          "system": "You are the test data request desk at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (data: {data})' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

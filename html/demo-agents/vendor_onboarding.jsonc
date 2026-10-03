@@ -1,0 +1,26 @@
+// Vendor Onboarding Assistant - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // The list to work through.
+        "var": { "checks": ["Tax form", "Bank details", "Insurance certificate", "Sanctions screening"], "lines": "" },
+
+        // Go through each item in turn.
+        "for": {
+          "iter": "{ checks }",
+          "loopVar": "check",
+          "do": {
+            "var": { "lines": "{ lines + '- ' + check + '\\n' }" }
+          }
+        },
+
+        "prompt": {
+          "system": "You are the vendor onboarding assistant at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Cover each of these:\\n{lines}' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

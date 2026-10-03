@@ -1,0 +1,34 @@
+// Regression Suite Planner - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Look up what this user told the agent before.
+        "memory": { "query": "product area", "label": "qa_product_area", "limit": 1 },
+
+        "if": {
+          "condition": "{ len(result) > 0 }",
+          "then": {
+            "var": { "area": "{ result[0]['text'] }" }
+          },
+          "else": {
+            // Ask only the first time.
+            "ask": {
+              "message": "Which product area do you test?",
+              "inputs": [ { "name": "area", "type": "chooseOne", "options": ["Checkout", "Accounts", "Search", "Mobile app"] } ]
+            },
+            "var": { "area": "{ result['area'] }" },
+            // Remember the answer for next time.
+            "memory": { "store": { "qa_product_area": "{ area }" } }
+          }
+        },
+
+        "prompt": {
+          "system": "You are the regression suite planner at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} The user tests the area: {area}.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

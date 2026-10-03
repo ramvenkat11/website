@@ -1,0 +1,28 @@
+// Company OKR Tracker - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "progress", "args": { "done": 7.0, "target": 12.0 } },
+
+        // Use the value the function returned.
+        "var": { "figure": "{ result }" },
+
+        "prompt": {
+          "system": "You are the company OKR tracker at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Use this figure: progress on the key result in percent = {figure}.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "progress": {
+      "args": { "done": { "type": "float" }, "target": { "type": "float" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ round(done / target * 100) }"
+      }
+    }
+  }
+}

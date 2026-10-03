@@ -1,0 +1,28 @@
+// Pricing Experiment Planner - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "Which customers would see the test?",
+          "inputs": [ { "name": "audience", "type": "chooseOne", "options": ["New sign-ups", "Trial users", "Upgrading customers", "Existing customers at renewal"] } ]
+        },
+
+        "var": { "audience": "{ result['audience'] }" },
+
+        // Stop with an error the user sees.
+        "if": {
+          "condition": "{ audience == 'Existing customers at renewal' }",
+          "then": { "fail": "Price tests on existing customers at renewal need approval from the pricing committee first." }
+        },
+
+        "prompt": {
+          "system": "You are the pricing experiment planner at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (test audience: {audience})' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

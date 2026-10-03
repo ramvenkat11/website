@@ -1,0 +1,22 @@
+// User Interview Guide Builder - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What do you want to learn?",
+          "inputs": [ { "name": "goal", "type": "chooseOne", "options": ["Discover problems", "Test a concept", "Evaluate a prototype", "Understand churn"] } ]
+        },
+
+        "var": { "goal": "{ result['goal'] }" },
+
+        "prompt": {
+          "system": "You are the user interview guide builder at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (research goal: {goal})' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

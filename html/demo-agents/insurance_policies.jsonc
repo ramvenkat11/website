@@ -1,0 +1,38 @@
+// Corporate Insurance Policy Guide - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Values used below.
+        "var": { "company": "Northwind Corp" },
+
+        // Pause for the user's answer.
+        "ask": {
+          "message": "Which policy?",
+          "inputs": [
+            { "name": "policy", "type": "chooseOne", "options": ["All", "Property", "Liability", "Cyber", "Travel"], "default": "All" }
+          ]
+        },
+
+        // Keep the result in a variable.
+        "var.2": { "policy": "{ result['policy'] }" },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ policy == 'All' }",
+          "then": { "var": { "focus": "every policy" } },
+          "else": { "var": { "focus": "{ policy.lower() }" } }
+        },
+
+        // Tell the user what is happening while they wait.
+        "progress": "Working on it...",
+
+        "prompt": {
+          "system": "{ f'You are the corporate insurance policy guide at {company}. Use made-up data. Keep the answer short.' }",
+          "user": "{ f'{sys.query} Focus on {focus}.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

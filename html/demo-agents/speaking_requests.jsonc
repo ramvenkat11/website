@@ -1,0 +1,28 @@
+// Speaking Request Screener - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "Who is the audience?",
+          "inputs": [ { "name": "audience", "type": "chooseOne", "options": ["Customers", "Industry conference", "Press", "Political event"] } ]
+        },
+
+        "var": { "audience": "{ result['audience'] }" },
+
+        // Finish early with a message; no LLM call needed.
+        "if": {
+          "condition": "{ audience == 'Political event' }",
+          "then": { "end": "Executives do not speak at political events. The request has been declined." }
+        },
+
+        "prompt": {
+          "system": "You are the speaking request screener at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (audience: {audience})' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

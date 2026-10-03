@@ -1,0 +1,28 @@
+// Export Control Screener - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "Where is it going?",
+          "inputs": [ { "name": "country", "type": "chooseOne", "options": ["Canada", "Germany", "Japan", "An embargoed country"] } ]
+        },
+
+        "var": { "country": "{ result['country'] }" },
+
+        // Stop with an error the user sees.
+        "if": {
+          "condition": "{ country == 'An embargoed country' }",
+          "then": { "fail": "Shipping to embargoed countries is not allowed." }
+        },
+
+        "prompt": {
+          "system": "You are the export control screener at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (country: {country})' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

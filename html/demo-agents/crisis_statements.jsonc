@@ -1,0 +1,28 @@
+// Crisis Statement Drafter - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What kind of incident is it?",
+          "inputs": [ { "name": "incident", "type": "chooseOne", "options": ["Service outage", "Data breach", "Product safety", "Pending lawsuit"] } ]
+        },
+
+        "var": { "incident": "{ result['incident'] }" },
+
+        // Finish early with a message; no LLM call needed.
+        "if": {
+          "condition": "{ incident == 'Pending lawsuit' }",
+          "then": { "end": "Statements about pending lawsuits must come from the legal team. Please contact legal before saying anything publicly." }
+        },
+
+        "prompt": {
+          "system": "You are the crisis statement drafter at Northwind Corp. Use made-up details. Write a calm holding statement: what happened, what we are doing, and when we will update. Keep the answer short.",
+          "user": "{ f'{sys.query} (incident: {incident})' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+// Third Party Risk Assessor - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "security": { "question": "{ sys.query }" },
+          "financial": { "question": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## Security and privacy\\n' + result['security'] + '\\n\\n## Financial health\\n' + result['financial'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "security": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "security",
+          "system": "You are the third party risk assessor at Northwind Corp. Use made-up data. Rate the vendor's security and privacy risk from its questionnaire answers. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "claude_haiku", "prompt": "security" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "financial": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "financial",
+          "system": "You are the third party risk assessor at Northwind Corp. Use made-up data. Rate the vendor's financial stability and dependency risk. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "claude_haiku", "prompt": "financial" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

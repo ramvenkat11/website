@@ -1,0 +1,45 @@
+// Board Meeting Minutes Drafter - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "decisions": { "question": "{ sys.query }" },
+          "actions": { "question": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## Decisions\\n' + result['decisions'] + '\\n\\n## Actions\\n' + result['actions'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "decisions": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "decisions",
+          "system": "You are the board meeting minutes drafter at Northwind Corp. Use made-up data. List the decisions made. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "decisions" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "actions": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "actions",
+          "system": "You are the board meeting minutes drafter at Northwind Corp. Use made-up data. List the actions assigned. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "actions" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

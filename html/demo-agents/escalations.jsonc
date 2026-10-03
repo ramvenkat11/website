@@ -1,0 +1,45 @@
+// Complaint Escalation Router - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "summary": { "question": "{ sys.query }" },
+          "owner": { "question": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## Summary\\n' + result['summary'] + '\\n\\n## Who handles it\\n' + result['owner'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "summary": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "summary",
+          "system": "You are the complaint escalation router at Northwind Corp. Use made-up data. Summarize the complaint. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "summary" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "owner": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "owner",
+          "system": "You are the complaint escalation router at Northwind Corp. Use made-up data. Name the team that should handle it. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "owner" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

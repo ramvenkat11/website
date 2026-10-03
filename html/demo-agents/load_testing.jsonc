@@ -1,0 +1,28 @@
+// Load Test Planner - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "target_rps", "args": { "daily_users": 40000, "peak_factor": 3.0 } },
+
+        // Use the value the function returned.
+        "var": { "figure": "{ result }" },
+
+        "prompt": {
+          "system": "You are the load test planner at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Use this figure: target requests per second at peak = {figure}.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "target_rps": {
+      "args": { "daily_users": { "type": "int" }, "peak_factor": { "type": "float" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ round(daily_users * peak_factor / 86400 * 10, 1) }"
+      }
+    }
+  }
+}

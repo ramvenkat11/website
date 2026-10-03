@@ -1,0 +1,45 @@
+// Job Posting Writer - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "responsibilities": { "question": "{ sys.query }" },
+          "qualifications": { "question": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## Responsibilities\\n' + result['responsibilities'] + '\\n\\n## Qualifications\\n' + result['qualifications'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "responsibilities": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "responsibilities",
+          "system": "You are the job posting writer at Northwind Corp. Use made-up data. List the role's responsibilities. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "responsibilities" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "qualifications": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "qualifications",
+          "system": "You are the job posting writer at Northwind Corp. Use made-up data. List the qualifications required. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "qualifications" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

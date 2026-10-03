@@ -1,0 +1,45 @@
+// Supplier Quote Comparer - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "cheapest": { "question": "{ sys.query }" },
+          "fastest": { "question": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## Lowest price\\n' + result['cheapest'] + '\\n\\n## Fastest delivery\\n' + result['fastest'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "cheapest": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "cheapest",
+          "system": "You are the supplier quote comparer at Northwind Corp. Use made-up data. Name the cheapest supplier. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gemini_flash", "prompt": "cheapest" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "fastest": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "fastest",
+          "system": "You are the supplier quote comparer at Northwind Corp. Use made-up data. Name the fastest supplier. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gemini_flash", "prompt": "fastest" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

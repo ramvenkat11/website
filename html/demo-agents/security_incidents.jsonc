@@ -1,0 +1,28 @@
+// Security Incident Reporter - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What happened?",
+          "inputs": [ { "name": "incident", "type": "chooseOne", "options": ["Lost or stolen device", "Malware warning", "Password shared by mistake", "Attack in progress"] } ]
+        },
+
+        "var": { "incident": "{ result['incident'] }" },
+
+        // Finish early with a message; no LLM call needed.
+        "if": {
+          "condition": "{ incident == 'Attack in progress' }",
+          "then": { "end": "Call the security operations hotline now on extension 5000. Do not turn off the affected computer." }
+        },
+
+        "prompt": {
+          "system": "You are the security incident reporter at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (incident: {incident})' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

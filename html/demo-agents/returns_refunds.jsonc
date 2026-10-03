@@ -1,0 +1,28 @@
+// Return and Refund Processor - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "Why are you returning it?",
+          "inputs": [ { "name": "reason", "type": "chooseOne", "options": ["Damaged", "Wrong item", "Changed my mind", "Used for over a year"] } ]
+        },
+
+        "var": { "reason": "{ result['reason'] }" },
+
+        // Stop with an error the user sees.
+        "if": {
+          "condition": "{ reason == 'Used for over a year' }",
+          "then": { "fail": "Items used for over a year cannot be returned." }
+        },
+
+        "prompt": {
+          "system": "You are the return and refund processor at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (reason: {reason})' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

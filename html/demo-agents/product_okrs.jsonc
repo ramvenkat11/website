@@ -1,0 +1,20 @@
+// Product OKR Tracker - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Work out the current quarter.
+        "var": { "quarter": "{ 'Q' + str((datetime.now().month - 1) // 3 + 1) + ' ' + str(datetime.now().year) }" },
+
+        // Write to the agent server's log.
+        "log": { "level": "info", "message": "{ 'okr tracker asked for ' + quarter }" },
+
+        "prompt": {
+          "system": "You are the product OKR tracker at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Report on {quarter}.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

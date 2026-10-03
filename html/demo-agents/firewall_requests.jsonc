@@ -1,0 +1,20 @@
+// Firewall Rule Change Requester - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Write to the agent server's log.
+        "log": { "level": "warning", "message": "{ 'firewall_requests asked: ' + sys.query[:80] }" },
+
+        // Shown only when the agent is validated.
+        "trace": "{ 'Question length: ' + str(len(sys.query)) }",
+
+        "prompt": {
+          "system": "You are the firewall rule change requester at Northwind Corp. Use made-up hosts and ports. Keep the answer short.",
+          "user": "{ sys.query }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

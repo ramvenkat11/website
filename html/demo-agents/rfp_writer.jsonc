@@ -1,0 +1,45 @@
+// Request for Proposal Drafter - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "requirements": { "question": "{ sys.query }" },
+          "scoring": { "question": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## Scope and requirements\\n' + result['requirements'] + '\\n\\n## Evaluation criteria\\n' + result['scoring'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "requirements": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "requirements",
+          "system": "You are the request for proposal drafter at Northwind Corp. Use made-up details. Write the scope and the requirements suppliers must answer. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "requirements" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "scoring": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "scoring",
+          "system": "You are the request for proposal drafter at Northwind Corp. Use made-up details. List the evaluation criteria with a weight for each. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "scoring" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

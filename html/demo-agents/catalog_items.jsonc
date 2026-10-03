@@ -1,0 +1,30 @@
+// Approved Catalog Item Finder - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Pause for the user's answer.
+        "ask": {
+          "message": "Which catalog?",
+          "inputs": [ { "name": "catalog", "type": "chooseOne", "options": ["Any", "IT equipment", "Furniture", "Lab supplies", "Printing"], "default": "Any" } ]
+        },
+
+        // Keep the result in a variable.
+        "var": { "catalog": "{ result['catalog'] }" },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ catalog == 'Any' }",
+          "then": { "var": { "focus": "every approved catalog" } },
+          "else": { "var": { "focus": "{ 'the ' + catalog.lower() + ' catalog' }" } }
+        },
+
+        "prompt": {
+          "system": "You are the approved catalog item finder at Northwind Corp. Use made-up items, suppliers, contract prices and delivery times. Keep the answer short.",
+          "user": "{ f'{sys.query} Search {focus}.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

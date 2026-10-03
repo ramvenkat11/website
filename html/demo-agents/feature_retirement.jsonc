@@ -1,0 +1,17 @@
+// Feature Retirement Planner - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // The sunset date is 90 days from today.
+        "var": { "sunset": "{ (datetime.now().date() + timedelta(days=90)).isoformat() }" },
+
+        "prompt": {
+          "system": "You are the feature retirement planner at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Plan for a sunset date of {sunset}.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

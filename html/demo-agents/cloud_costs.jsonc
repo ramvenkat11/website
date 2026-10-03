@@ -1,0 +1,28 @@
+// Cloud Cost Reporter - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "monthly_cost", "args": { "hours": 720, "rate": 0.46 } },
+
+        // Use the value the function returned.
+        "var": { "figure": "{ result }" },
+
+        "prompt": {
+          "system": "You are the cloud cost reporter at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Use this figure: monthly cost of one server = {figure}.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "monthly_cost": {
+      "args": { "hours": { "type": "int" }, "rate": { "type": "float" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ round(hours * rate, 2) }"
+      }
+    }
+  }
+}

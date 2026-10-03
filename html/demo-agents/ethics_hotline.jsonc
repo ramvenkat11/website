@@ -1,0 +1,28 @@
+// Ethics Hotline Intake - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What is your concern about?",
+          "inputs": [ { "name": "topic", "type": "chooseOne", "options": ["Fraud", "Harassment", "Safety", "Conflict of interest", "Someone is in danger now"] } ]
+        },
+
+        "var": { "topic": "{ result['topic'] }" },
+
+        // Finish early with a message; no LLM call needed.
+        "if": {
+          "condition": "{ topic == 'Someone is in danger now' }",
+          "then": { "end": "Call emergency services now, then Northwind Security on extension 5555." }
+        },
+
+        "prompt": {
+          "system": "You are the ethics hotline intake at Northwind Corp. Use made-up data. Explain how to report the concern anonymously, what happens next, and that retaliation is not allowed. Keep the answer short.",
+          "user": "{ f'{sys.query} (concern: {topic})' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

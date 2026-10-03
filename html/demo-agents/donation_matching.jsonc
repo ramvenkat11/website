@@ -1,0 +1,26 @@
+// Charitable Donation Matching - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // The list to work through.
+        "var": { "charitys": ["Food bank", "Local school", "Animal shelter", "Clean water fund"], "lines": "" },
+
+        // Go through each item in turn.
+        "for": {
+          "iter": "{ charitys }",
+          "loopVar": "charity",
+          "do": {
+            "var": { "lines": "{ lines + '- ' + charity + '\\n' }" }
+          }
+        },
+
+        "prompt": {
+          "system": "You are the charitable donation matching at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Cover each of these:\\n{lines}' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

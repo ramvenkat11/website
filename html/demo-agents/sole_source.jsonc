@@ -1,0 +1,28 @@
+// Sole-Source Justification Writer - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What is the purchase value?",
+          "inputs": [ { "name": "value", "type": "chooseOne", "options": ["Under $25k", "$25k to $100k", "$100k to $250k", "Over $250k"] } ]
+        },
+
+        "var": { "value": "{ result['value'] }" },
+
+        // Stop with an error the user sees.
+        "if": {
+          "condition": "{ value == 'Over $250k' }",
+          "then": { "fail": "Purchases over $250k cannot be sole-sourced. They must go out to competitive bid." }
+        },
+
+        "prompt": {
+          "system": "You are the sole-source justification writer at Northwind Corp. Use made-up details. Keep the answer short.",
+          "user": "{ f'{sys.query} (purchase value: {value})' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

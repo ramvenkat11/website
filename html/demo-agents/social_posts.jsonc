@@ -1,0 +1,38 @@
+// Social Media Post Writer - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Values used below.
+        "var": { "company": "Northwind Corp" },
+
+        // Pause for the user's answer.
+        "ask": {
+          "message": "Which platform?",
+          "inputs": [
+            { "name": "platform", "type": "chooseOne", "options": ["All", "LinkedIn", "X", "Instagram"], "default": "All" }
+          ]
+        },
+
+        // Keep the result in a variable.
+        "var.2": { "platform": "{ result['platform'] }" },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ platform == 'All' }",
+          "then": { "var": { "focus": "every platform" } },
+          "else": { "var": { "focus": "{ platform.lower() }" } }
+        },
+
+        // Tell the user what is happening while they wait.
+        "progress": "Working on it...",
+
+        "prompt": {
+          "system": "{ f'You are the social media post writer at {company}. Use made-up data. Keep the answer short.' }",
+          "user": "{ f'{sys.query} Focus on {focus}.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

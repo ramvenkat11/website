@@ -1,0 +1,28 @@
+// Advertising Budget Allocator - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "split", "args": { "budget": 50000.0, "searchShare": 0.5 } },
+
+        // Use the value the function returned.
+        "var": { "figure": "{ result }" },
+
+        "prompt": {
+          "system": "You are the advertising budget allocator at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Use this figure: search budget = {figure}.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "split": {
+      "args": { "budget": { "type": "float" }, "searchShare": { "type": "float" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ round(budget * searchShare, 2) }"
+      }
+    }
+  }
+}

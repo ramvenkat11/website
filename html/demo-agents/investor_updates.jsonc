@@ -1,0 +1,22 @@
+// Investor Update Drafter - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "Which update?",
+          "inputs": [ { "name": "period", "type": "chooseOne", "options": ["Monthly", "Quarterly", "Annual letter"] } ]
+        },
+
+        "var": { "period": "{ result['period'] }" },
+
+        "prompt": {
+          "system": "You are the investor update drafter at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (update: {period})' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

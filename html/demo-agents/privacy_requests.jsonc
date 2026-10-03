@@ -1,0 +1,28 @@
+// Personal Data Request Handler - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "deadline_days", "args": { "received": 3 } },
+
+        // Use the value the function returned.
+        "var": { "figure": "{ result }" },
+
+        "prompt": {
+          "system": "You are the personal data request handler at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Use this figure: days left to respond = {figure}.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "deadline_days": {
+      "args": { "received": { "type": "int" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ 30 - received }"
+      }
+    }
+  }
+}

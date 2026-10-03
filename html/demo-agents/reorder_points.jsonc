@@ -1,0 +1,28 @@
+// Reorder Point Calculator - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "reorder_level", "args": { "dailyUse": 42, "leadDays": 12, "safetyStock": 150 } },
+
+        // Use the value the function returned.
+        "var": { "level": "{ result }" },
+
+        "prompt": {
+          "system": "You are the reorder point calculator at Northwind Corp. Use made-up data. Explain when to reorder and how much. Keep the answer short.",
+          "user": "{ f'{sys.query} Use this reorder level: {level} units.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "reorder_level": {
+      "args": { "dailyUse": { "type": "int" }, "leadDays": { "type": "int" }, "safetyStock": { "type": "int" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ dailyUse * leadDays + safetyStock }"
+      }
+    }
+  }
+}

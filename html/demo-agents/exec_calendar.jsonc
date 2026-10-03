@@ -1,0 +1,22 @@
+// Executive Calendar Assistant - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "Whose calendar?",
+          "inputs": [ { "name": "executive", "type": "chooseOne", "options": ["CEO", "CFO", "COO", "Chief of Staff"] } ]
+        },
+
+        "var": { "executive": "{ result['executive'] }" },
+
+        "prompt": {
+          "system": "You are the executive calendar assistant at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (calendar: {executive})' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

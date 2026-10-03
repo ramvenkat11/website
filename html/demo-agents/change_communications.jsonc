@@ -1,0 +1,28 @@
+// Organizational Change Communicator - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "weeks_left", "args": { "daysToChange": 45 } },
+
+        // Use the value the function returned.
+        "var": { "weeks": "{ result }" },
+
+        "prompt": {
+          "system": "You are the organizational change communicator at Northwind Corp. Use made-up data. Plan what to tell employees, managers and leaders, and in what order, before a change takes effect. Keep the answer short.",
+          "user": "{ f'{sys.query} The change takes effect in {weeks} weeks.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "weeks_left": {
+      "args": { "daysToChange": { "type": "int" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ daysToChange // 7 }"
+      }
+    }
+  }
+}

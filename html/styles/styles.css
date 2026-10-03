@@ -659,6 +659,15 @@ a.arch-lbl { color: var(--blue-ink); }
 .agent-list h3 { font-size: 15.5px; font-weight: 700; }
 .agent-list code { display: block; margin-top: 4px; font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
 .agent-list p { margin: 0; color: var(--body); font-size: 15px; line-height: 1.55; }
+.agent-source-btn { margin-top: 8px; padding: 0; border: 0; background: none; color: var(--blue-ink); font: inherit; font-size: 13.5px; font-weight: 600; cursor: pointer; }
+.agent-source-btn:hover { text-decoration: underline; }
+.agent-source { grid-column: 1 / -1; margin: 8px 0 6px; }
+.agent-source .codecard pre { max-height: 560px; }
+.codecard .key { color: #9db4e0; }
+.codecard .str { color: #b5e0a8; }
+.codecard .num { color: #f2c98d; }
+.codecard .kw { color: #f0a8c0; }
+.codecard .cm { color: #6b7d9e; font-style: italic; }
 @media (max-width: 640px) {
   .agent-list li { grid-template-columns: minmax(0, 1fr); }
 }

@@ -1,0 +1,34 @@
+// Risk Register Keeper - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Look up what this user told the agent before.
+        "memory": { "query": "business unit", "label": "business_unit", "limit": 1 },
+
+        "if": {
+          "condition": "{ len(result) > 0 }",
+          "then": {
+            "var": { "unit": "{ result[0]['text'] }" }
+          },
+          "else": {
+            // Ask only the first time.
+            "ask": {
+              "message": "Which business unit's risks do you own?",
+              "inputs": [ { "name": "unit", "type": "chooseOne", "options": ["Manufacturing", "Retail", "Digital", "Corporate"] } ]
+            },
+            "var": { "unit": "{ result['unit'] }" },
+            // Remember the answer for next time.
+            "memory": { "store": { "business_unit": "{ unit }" } }
+          }
+        },
+
+        "prompt": {
+          "system": "You are the risk register keeper at Northwind Corp. Use made-up data. List the unit's top risks with likelihood, impact, owner, mitigation and review date. Keep the answer short.",
+          "user": "{ f'{sys.query} The user owns business unit: {unit}.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

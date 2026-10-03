@@ -1,0 +1,20 @@
+// Order Status Lookup - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Uses an allowlisted function.
+        "var": { "orderNo": "{ randint(100000, 999999) }" },
+
+        // Tell the user what is happening while they wait.
+        "progress": "{ f'Found {orderNo} as the order number...' }",
+
+        "prompt": {
+          "system": "You are the order status lookup at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} There are {orderNo} as the order number.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

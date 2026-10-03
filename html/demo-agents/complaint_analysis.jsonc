@@ -1,0 +1,45 @@
+// Product Complaint Analyzer - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "themes": { "question": "{ sys.query }" },
+          "fixes": { "question": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## Complaint themes\\n' + result['themes'] + '\\n\\n## Suggested fixes\\n' + result['fixes'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "themes": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "themes",
+          "system": "You are the product complaint analyzer at Northwind Corp. Use made-up data. Group the customer complaints into recurring quality themes. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "themes" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "fixes": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "fixes",
+          "system": "You are the product complaint analyzer at Northwind Corp. Use made-up data. Suggest the quality fixes for the top themes. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "fixes" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

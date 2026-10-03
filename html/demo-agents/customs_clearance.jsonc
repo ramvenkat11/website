@@ -1,0 +1,31 @@
+// Customs Clearance Assistant - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask for a choice and a typed answer.
+        "ask": {
+          "message": "Tell me about the import.",
+          "inputs": [
+            { "name": "origin", "type": "chooseOne", "options": ["China", "Mexico", "Germany", "Vietnam"] },
+            { "name": "goods", "type": "str", "label": "Goods", "description": "For example: steel brackets, cotton shirts" }
+          ]
+        },
+
+        "var": { "origin": "{ result['origin'] }", "goods": "{ result['goods'] }" },
+
+        // Stop with an error the user sees.
+        "if": {
+          "condition": "{ goods.strip() == '' }",
+          "then": { "fail": "Please describe the goods being imported." }
+        },
+
+        "prompt": {
+          "system": "You are the customs clearance assistant at Northwind Corp. Use made-up data. Give the likely tariff code, duty rate and the documents the broker needs. Keep the answer short.",
+          "user": "{ f'{sys.query} Importing {goods} from {origin}.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

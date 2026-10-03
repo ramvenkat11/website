@@ -1,0 +1,45 @@
+// Code Review Assistant - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "bugs": { "question": "{ sys.query }" },
+          "style": { "question": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## Possible bugs\\n' + result['bugs'] + '\\n\\n## Style notes\\n' + result['style'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "bugs": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "bugs",
+          "system": "You are the code review assistant at Northwind Corp. Use made-up data. List possible bugs. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "bugs" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "style": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "style",
+          "system": "You are the code review assistant at Northwind Corp. Use made-up data. List style improvements. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "style" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+// Experiment Log Summarizer - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Write to the agent server's log.
+        "log": { "level": "info", "message": "{ 'experiment_log asked: ' + sys.query[:80] }" },
+
+        // Shown only when the agent is validated.
+        "trace": "{ 'Question length: ' + str(len(sys.query)) }",
+
+        "prompt": {
+          "system": "You are the experiment log summarizer at Northwind Corp. Use made-up lab notebook entries. Summarize the method, results, anomalies and next steps. Keep the answer short.",
+          "user": "{ sys.query }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

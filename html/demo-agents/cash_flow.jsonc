@@ -1,0 +1,20 @@
+// Cash Flow Summarizer - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Uses an allowlisted function.
+        "var": { "days": "{ randint(30, 90) }" },
+
+        // Tell the user what is happening while they wait.
+        "progress": "{ f'Found {days} days of cash on hand...' }",
+
+        "prompt": {
+          "system": "You are the cash flow summarizer at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} There are {days} days of cash on hand.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

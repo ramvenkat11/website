@@ -1,0 +1,20 @@
+// Cafeteria Menu Lookup - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Uses an allowlisted function.
+        "var": { "dishes": "{ randint(6, 14) }" },
+
+        // Tell the user what is happening while they wait.
+        "progress": "{ f'Found {dishes} dishes today...' }",
+
+        "prompt": {
+          "system": "You are the cafeteria menu lookup at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} There are {dishes} dishes today.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

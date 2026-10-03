@@ -1,0 +1,28 @@
+// NDA Generator - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What kind of NDA?",
+          "inputs": [ { "name": "kind", "type": "chooseOne", "options": ["Mutual", "One-way", "Not sure"] } ]
+        },
+
+        "var": { "kind": "{ result['kind'] }" },
+
+        // Finish early with a message; no LLM call needed.
+        "if": {
+          "condition": "{ kind == 'Not sure' }",
+          "then": { "end": "Ask the legal team which kind fits before drafting." }
+        },
+
+        "prompt": {
+          "system": "You are the nda generator at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (kind: {kind})' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

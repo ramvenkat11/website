@@ -1,0 +1,51 @@
+// Carrier Selection Advisor - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "cost": { "question": "{ sys.query }" },
+          "reliability": { "question": "{ sys.query }" }
+        },
+
+        // Copy the result into a variable right away.
+        "var": { "costView": "{ result['cost'] }", "reliabilityView": "{ result['reliability'] }" },
+
+        "prompt": {
+          "system": "You are the carrier selection advisor at Northwind Corp. Recommend one carrier and say why. Keep the answer short.",
+          "user": "{ f'{sys.query}\\n\\nCost comparison:\\n{costView}\\n\\nReliability comparison:\\n{reliabilityView}' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "cost": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "cost",
+          "system": "You are the carrier selection advisor at Northwind Corp. Use made-up data. Compare three carriers on price for this lane. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gemini_flash", "prompt": "cost" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "reliability": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "reliability",
+          "system": "You are the carrier selection advisor at Northwind Corp. Use made-up data. Compare three carriers on on-time delivery and damage rates. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gemini_flash", "prompt": "reliability" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

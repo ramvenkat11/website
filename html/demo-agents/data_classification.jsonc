@@ -1,0 +1,33 @@
+// Data Classification Advisor - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Values used below.
+        "var": { "company": "Northwind Corp" },
+
+        // Pause for the user's answer.
+        "ask": {
+          "message": "What are you planning to do with the data?",
+          "inputs": [ { "name": "action", "type": "chooseOne", "options": ["Just classify it", "Email it outside", "Upload it to a cloud drive", "Print it"], "default": "Just classify it" } ]
+        },
+
+        // Keep the result in a variable.
+        "var.2": { "action": "{ result['action'] }" },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ action == 'Just classify it' }",
+          "then": { "var": { "focus": "which classification level applies" } },
+          "else": { "var": { "focus": "{ 'whether it is allowed to ' + action.lower() }" } }
+        },
+
+        "prompt": {
+          "system": "{ f'You are the data classification advisor at {company}. The levels are Public, Internal, Confidential and Restricted. Use made-up rules. Keep the answer short.' }",
+          "user": "{ f'{sys.query} Explain {focus}.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+// Phishing Email Reporter - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "Did you click a link in it?",
+          "inputs": [ { "name": "clicked", "type": "chooseOne", "options": ["No", "Yes", "Not sure"] } ]
+        },
+
+        "var": { "clicked": "{ result['clicked'] }" },
+
+        // Stop with an error the user sees.
+        "if": {
+          "condition": "{ clicked == 'Yes' }",
+          "then": { "fail": "Disconnect from the network now and call the IT security line." }
+        },
+
+        "prompt": {
+          "system": "You are the phishing email reporter at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (clicked: {clicked})' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

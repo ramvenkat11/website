@@ -1,0 +1,28 @@
+// Discount Approval Requester - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "How big a discount?",
+          "inputs": [ { "name": "discount", "type": "chooseOne", "options": ["10%", "20%", "30%", "Over 40%"] } ]
+        },
+
+        "var": { "discount": "{ result['discount'] }" },
+
+        // Stop with an error the user sees.
+        "if": {
+          "condition": "{ discount == 'Over 40%' }",
+          "then": { "fail": "Discounts over 40% need the sales director's approval in person." }
+        },
+
+        "prompt": {
+          "system": "You are the discount approval requester at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (discount: {discount})' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

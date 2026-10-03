@@ -1,0 +1,28 @@
+// Feature Prioritization Scorer - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "rice", "args": { "reach": 4000.0, "impact": 2.0, "confidence": 0.8, "effort": 3.0 } },
+
+        // Use the value the function returned.
+        "var": { "figure": "{ result }" },
+
+        "prompt": {
+          "system": "You are the feature prioritization scorer at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Use this example figure: RICE score = {figure}.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "rice": {
+      "args": { "reach": { "type": "float" }, "impact": { "type": "float" }, "confidence": { "type": "float" }, "effort": { "type": "float" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ round(reach * impact * confidence / effort, 1) }"
+      }
+    }
+  }
+}

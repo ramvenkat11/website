@@ -1,0 +1,38 @@
+// Regulatory Compliance Answerer - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Values used below.
+        "var": { "company": "Northwind Corp" },
+
+        // Pause for the user's answer.
+        "ask": {
+          "message": "Which rule?",
+          "inputs": [
+            { "name": "rule", "type": "chooseOne", "options": ["Any", "Anti-bribery", "Data protection", "Competition"], "default": "Any" }
+          ]
+        },
+
+        // Keep the result in a variable.
+        "var.2": { "rule": "{ result['rule'] }" },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ rule == 'Any' }",
+          "then": { "var": { "focus": "any rule" } },
+          "else": { "var": { "focus": "{ rule.lower() }" } }
+        },
+
+        // Tell the user what is happening while they wait.
+        "progress": "Working on it...",
+
+        "prompt": {
+          "system": "{ f'You are the regulatory compliance answerer at {company}. Use made-up data. Keep the answer short.' }",
+          "user": "{ f'{sys.query} Focus on {focus}.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

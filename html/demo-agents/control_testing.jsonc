@@ -1,0 +1,28 @@
+// Control Test Results - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "pass_rate", "args": { "tested": 48, "failed": 3 } },
+
+        // Use the value the function returned.
+        "var": { "rate": "{ result }" },
+
+        "prompt": {
+          "system": "You are the control test results reporter at Northwind Corp. Use made-up data. Report internal control tests this quarter: which passed, which failed, the deficiencies found and remediation owners. Keep the answer short.",
+          "user": "{ f'{sys.query} Use this figure: pass rate = {rate}%.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "pass_rate": {
+      "args": { "tested": { "type": "int" }, "failed": { "type": "int" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ round((tested - failed) / tested * 100, 1) }"
+      }
+    }
+  }
+}

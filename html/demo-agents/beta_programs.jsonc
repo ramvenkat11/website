@@ -1,0 +1,28 @@
+// Beta Program Enrollment - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "Which plan is the customer on?",
+          "inputs": [ { "name": "plan", "type": "chooseOne", "options": ["Enterprise", "Business", "Starter", "Free trial"] } ]
+        },
+
+        "var": { "plan": "{ result['plan'] }" },
+
+        // Finish early with a message; no LLM call needed.
+        "if": {
+          "condition": "{ plan == 'Free trial' }",
+          "then": { "end": "Free trial accounts cannot join beta programs. Ask again once the account is on a paid plan." }
+        },
+
+        "prompt": {
+          "system": "You are the beta program enrollment assistant at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (customer plan: {plan})' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

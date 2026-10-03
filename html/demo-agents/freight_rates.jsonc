@@ -1,0 +1,30 @@
+// Freight Rate Finder - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Pause for the user's answer.
+        "ask": {
+          "message": "How will the goods travel?",
+          "inputs": [ { "name": "mode", "type": "chooseOne", "options": ["Ocean", "Air", "Truck", "Rail"], "default": "Ocean" } ]
+        },
+
+        // Keep the result in a variable.
+        "var": { "mode": "{ result['mode'] }" },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ mode == 'Air' }",
+          "then": { "var": { "unit": "per kilogram" } },
+          "else": { "var": { "unit": "per container or truckload" } }
+        },
+
+        "prompt": {
+          "system": "You are the freight rate finder at Northwind Corp. Use made-up data. Quote current contracted freight rates and transit times. Keep the answer short.",
+          "user": "{ f'{sys.query} Mode: {mode}. Quote rates {unit}.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

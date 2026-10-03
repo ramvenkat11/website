@@ -1,0 +1,20 @@
+// Release Notes Writer - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Uses an allowlisted function.
+        "var": { "changes": "{ randint(8, 25) }" },
+
+        // Tell the user what is happening while they wait.
+        "progress": "{ f'Found {changes} changes in this release...' }",
+
+        "prompt": {
+          "system": "You are the release notes writer at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} There are {changes} changes in this release.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

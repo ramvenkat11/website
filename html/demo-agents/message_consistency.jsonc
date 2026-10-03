@@ -1,0 +1,45 @@
+// Key Message Consistency Checker - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "facts": { "draft": "{ sys.query }" },
+          "tone": { "draft": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## Facts and key messages\\n' + result['facts'] + '\\n\\n## Tone and voice\\n' + result['tone'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "facts": {
+      "args": { "draft": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "facts",
+          "system": "You are the key message consistency checker at Northwind Corp. Use made-up approved key messages. Point out any statement in the draft that contradicts or goes beyond them. Keep the answer short.",
+          "user": "{ draft }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "facts" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "tone": {
+      "args": { "draft": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "tone",
+          "system": "You are the key message consistency checker at Northwind Corp. Say whether the draft sounds like Northwind: plain, confident and never dismissive. Keep the answer short.",
+          "user": "{ draft }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "tone" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

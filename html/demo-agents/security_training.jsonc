@@ -1,0 +1,26 @@
+// Security Awareness Training Tracker - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // The list to work through.
+        "var": { "courses": ["Phishing basics", "Safe passwords", "Handling customer data", "Working remotely"], "lines": "" },
+
+        // Go through each item in turn.
+        "for": {
+          "iter": "{ courses }",
+          "loopVar": "course",
+          "do": {
+            "var": { "lines": "{ lines + '- ' + course + '\\n' }" }
+          }
+        },
+
+        "prompt": {
+          "system": "You are the security awareness training tracker at Northwind Corp. Use made-up completion dates and due dates. Keep the answer short.",
+          "user": "{ f'{sys.query} Report on each of these courses:\\n{lines}' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

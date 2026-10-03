@@ -1,0 +1,45 @@
+// Vendor Security Questionnaire Reviewer - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "strengths": { "question": "{ sys.query }" },
+          "gaps": { "question": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## Controls in place\\n' + result['strengths'] + '\\n\\n## Gaps to close\\n' + result['gaps'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "strengths": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "strengths",
+          "system": "You are the vendor security questionnaire reviewer at Northwind Corp. Use made-up answers. List the security controls the vendor has in place. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gemini_flash", "prompt": "strengths" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "gaps": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "gaps",
+          "system": "You are the vendor security questionnaire reviewer at Northwind Corp. Use made-up answers. List the gaps the vendor must close before getting access. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gemini_flash", "prompt": "gaps" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

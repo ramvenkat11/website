@@ -1,0 +1,22 @@
+// Metric Definition Lookup - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Pause for the user's answer.
+        "ask": {
+          "message": "Which area is the metric from?",
+          "inputs": [ { "name": "area", "type": "chooseOne", "options": ["Revenue", "Customers", "Product usage", "Operations"] } ]
+        },
+
+        "var": { "area": "{ result['area'] }" },
+
+        "prompt": {
+          "system": "You are the metric definition lookup at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (metric area: {area})' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

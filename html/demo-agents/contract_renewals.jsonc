@@ -1,0 +1,34 @@
+// Supplier Contract Renewal Tracker - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Look up what this user told the agent before.
+        "memory": { "query": "spend category", "label": "spend_category", "limit": 1 },
+
+        "if": {
+          "condition": "{ len(result) > 0 }",
+          "then": {
+            "var": { "category": "{ result[0]['text'] }" }
+          },
+          "else": {
+            // Ask only the first time.
+            "ask": {
+              "message": "Which spending category do you manage?",
+              "inputs": [ { "name": "category", "type": "chooseOne", "options": ["Software", "Logistics", "Facilities services", "Raw materials"] } ]
+            },
+            "var": { "category": "{ result['category'] }" },
+            // Remember the answer for next time.
+            "memory": { "store": { "spend_category": "{ category }" } }
+          }
+        },
+
+        "prompt": {
+          "system": "You are the supplier contract renewal tracker at Northwind Corp. Use made-up contracts, end dates, notice periods and values. Keep the answer short.",
+          "user": "{ f'{sys.query} The user manages the category: {category}.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

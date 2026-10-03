@@ -1,0 +1,28 @@
+// Employee Spotlight Writer - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user to type an answer.
+        "ask": {
+          "message": "Tell me about the person being featured.",
+          "inputs": [ { "name": "notes", "type": "text", "label": "Notes", "description": "Role, team, what they did, a fun fact." } ]
+        },
+
+        "var": { "notes": "{ result['notes'] }" },
+
+        // Stop with an error the user sees.
+        "if": {
+          "condition": "{ len(notes.strip()) == 0 }",
+          "then": { "fail": "Please give a few notes about the person." }
+        },
+
+        "prompt": {
+          "system": "You are the employee spotlight writer at Northwind Corp. Write a warm short profile for the intranet. Do not invent personal details beyond the notes.",
+          "user": "{ f'{sys.query}\\n\\nNotes:\\n{notes}' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

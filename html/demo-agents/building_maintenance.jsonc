@@ -1,0 +1,38 @@
+// Building Maintenance Request - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Values used below.
+        "var": { "company": "Northwind Corp" },
+
+        // Pause for the user's answer.
+        "ask": {
+          "message": "What is the problem?",
+          "inputs": [
+            { "name": "problem", "type": "chooseOne", "options": ["Other", "Heating", "Lighting", "Plumbing", "Door"], "default": "Other" }
+          ]
+        },
+
+        // Keep the result in a variable.
+        "var.2": { "problem": "{ result['problem'] }" },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ problem == 'Other' }",
+          "then": { "var": { "focus": "the problem described" } },
+          "else": { "var": { "focus": "{ problem.lower() }" } }
+        },
+
+        // Tell the user what is happening while they wait.
+        "progress": "Working on it...",
+
+        "prompt": {
+          "system": "{ f'You are the building maintenance request at {company}. Use made-up data. Keep the answer short.' }",
+          "user": "{ f'{sys.query} Focus on {focus}.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

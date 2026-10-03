@@ -1,0 +1,28 @@
+// Purchase Order Creator - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "po_total", "args": { "quantity": 200, "unitPrice": 12.5 } },
+
+        // Use the value the function returned.
+        "var": { "figure": "{ result }" },
+
+        "prompt": {
+          "system": "You are the purchase order creator at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Use this figure: order total = {figure}.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "po_total": {
+      "args": { "quantity": { "type": "int" }, "unitPrice": { "type": "float" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ round(quantity * unitPrice, 2) }"
+      }
+    }
+  }
+}

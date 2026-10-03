@@ -1,0 +1,45 @@
+// Emergency Procedures Guide - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "steps": { "question": "{ sys.query }" },
+          "contacts": { "question": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## What to do now\\n' + result['steps'] + '\\n\\n## Who to call\\n' + result['contacts'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "steps": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "steps",
+          "system": "You are the emergency procedures guide at Northwind Corp. Use made-up data. List the steps to take right now. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "steps" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "contacts": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "contacts",
+          "system": "You are the emergency procedures guide at Northwind Corp. Use made-up data. List whom to call. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gpt5_mini", "prompt": "contacts" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+// A/B Test Result Interpreter - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Call a function with arguments.
+        "func": { "name": "lift", "args": { "control": 0.042, "variant": 0.047 } },
+
+        // Use the value the function returned.
+        "var": { "figure": "{ result }" },
+
+        "prompt": {
+          "system": "You are the a/b test result interpreter at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} Use this figure: lift percent = {figure}.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    },
+    // Compute a value and return it.
+    "lift": {
+      "args": { "control": { "type": "float" }, "variant": { "type": "float" } },
+      "commands": {
+        // Hand the result back to the caller.
+        "return": "{ round((variant - control) / control * 100, 1) }"
+      }
+    }
+  }
+}

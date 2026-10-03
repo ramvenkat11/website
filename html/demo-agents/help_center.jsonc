@@ -1,0 +1,20 @@
+// Help Center Answer Finder - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Find other agents that could help with the question.
+        "search": { "query": "{ sys.query }" },
+
+        // Pick out what is needed from the search results.
+        "var": { "helpers": "{ ', '.join([r['agentTitle'] for r in result][:3]) or 'none' }" },
+
+        "prompt": {
+          "system": "You are the help center answer finder at Northwind Corp. Answer customer questions from help articles. Keep the answer short.",
+          "user": "{ f'{sys.query} Agents that may help: {helpers}.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

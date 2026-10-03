@@ -1,0 +1,38 @@
+// Laptop and Monitor Request Handler - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Values used below.
+        "var": { "company": "Northwind Corp" },
+
+        // Pause for the user's answer.
+        "ask": {
+          "message": "What do you need?",
+          "inputs": [
+            { "name": "item", "type": "chooseOne", "options": ["Anything", "Laptop", "Monitor", "Keyboard", "Headset"], "default": "Anything" }
+          ]
+        },
+
+        // Keep the result in a variable.
+        "var.2": { "item": "{ result['item'] }" },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ item == 'Anything' }",
+          "then": { "var": { "focus": "any equipment" } },
+          "else": { "var": { "focus": "{ item.lower() }" } }
+        },
+
+        // Tell the user what is happening while they wait.
+        "progress": "Working on it...",
+
+        "prompt": {
+          "system": "{ f'You are the laptop and monitor request handler at {company}. Use made-up data. Keep the answer short.' }",
+          "user": "{ f'{sys.query} Focus on {focus}.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

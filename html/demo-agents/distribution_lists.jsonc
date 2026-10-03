@@ -1,0 +1,20 @@
+// Email Distribution List Manager - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Kept for this agent across the conversation.
+        "var": { "agent.visits": "{ agent.visits + 1 if sys.exists('agent', 'visits') else 1 }" },
+
+        // Shared by every agent in the conversation.
+        "var.2": { "conv.lastTopic": "distribution lists" },
+
+        "prompt": {
+          "system": "You are the email distribution list manager at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (Question {agent.visits} in this conversation.)' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

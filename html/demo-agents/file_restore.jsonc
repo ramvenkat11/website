@@ -1,0 +1,20 @@
+// Deleted File Restore Requester - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Uses an allowlisted function.
+        "var": { "versions": "{ randint(3, 30) }" },
+
+        // Tell the user what is happening while they wait.
+        "progress": "{ f'Found {versions} backup versions available...' }",
+
+        "prompt": {
+          "system": "You are the deleted file restore requester at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} There are {versions} backup versions available.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

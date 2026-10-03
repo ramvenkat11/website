@@ -1,0 +1,20 @@
+// Exit Interview Summarizer - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Uses an allowlisted function.
+        "var": { "responses": "{ randint(12, 40) }" },
+
+        // Tell the user what is happening while they wait.
+        "progress": "{ f'Found {responses} exit interview responses...' }",
+
+        "prompt": {
+          "system": "You are the exit interview summarizer at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} There are {responses} exit interview responses.' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

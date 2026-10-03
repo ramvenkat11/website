@@ -1,0 +1,22 @@
+// Accessibility Test Guide - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What do you want to check?",
+          "inputs": [ { "name": "check", "type": "chooseOne", "options": ["Screen reader", "Keyboard navigation", "Color contrast", "Captions"] } ]
+        },
+
+        "var": { "check": "{ result['check'] }" },
+
+        "prompt": {
+          "system": "You are the accessibility test guide at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (check: {check})' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

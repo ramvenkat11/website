@@ -1,0 +1,28 @@
+// Foreign Exchange Rate Lookup - gpt5_mini.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "Converting to which currency?",
+          "inputs": [ { "name": "currency", "type": "chooseOne", "options": ["USD", "EUR", "GBP", "JPY"] } ]
+        },
+
+        "var": { "currency": "{ result['currency'] }" },
+
+        // Finish early with a message; no LLM call needed.
+        "if": {
+          "condition": "{ currency == 'USD' }",
+          "then": { "end": "Our books are already in USD, so no conversion is needed." }
+        },
+
+        "prompt": {
+          "system": "You are the foreign exchange rate lookup at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (currency: {currency})' }"
+        },
+        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+      }
+    }
+  }
+}

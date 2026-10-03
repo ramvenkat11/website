@@ -1,0 +1,23 @@
+// Internal Announcement Writer - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Pause for the user's answer.
+        "ask": {
+          "message": "Who is the announcement for?",
+          "inputs": [ { "name": "audience", "type": "chooseOne", "options": ["All employees", "One department", "Managers only", "One office"], "default": "All employees" } ]
+        },
+
+        // Keep the result in a variable.
+        "var": { "audience": "{ result['audience'] }" },
+
+        "prompt": {
+          "system": "You are the internal announcement writer at Northwind Corp. Use made-up details. Write a short announcement with a clear headline, what is changing, when, and who to ask.",
+          "user": "{ f'{sys.query} (audience: {audience})' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

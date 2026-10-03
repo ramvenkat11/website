@@ -1,0 +1,28 @@
+// Research Paper Summarizer - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user to type an answer.
+        "ask": {
+          "message": "Paste the abstract of the paper.",
+          "inputs": [ { "name": "abstract", "type": "text", "label": "Abstract" } ]
+        },
+
+        "var": { "abstract": "{ result['abstract'] }" },
+
+        // Stop with an error the user sees.
+        "if": {
+          "condition": "{ len(abstract.strip()) < 50 }",
+          "then": { "fail": "The abstract is too short to summarize." }
+        },
+
+        "prompt": {
+          "system": "You are the research paper summarizer at Northwind Corp. Explain the paper in plain language and say how it could apply to Northwind products. Keep the answer short.",
+          "user": "{ f'{sys.query}\\n\\nAbstract:\\n{abstract}' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

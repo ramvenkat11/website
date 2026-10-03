@@ -1,0 +1,29 @@
+// Customer Due Diligence Helper - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What kind of customer is this?",
+          "inputs": [ { "name": "customerType", "type": "chooseOne", "options": ["Individual", "Small business", "Corporation", "Government body"] } ]
+        },
+
+        "var": { "customerType": "{ result['customerType'] }" },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ customerType in ['Corporation', 'Government body'] }",
+          "then": { "var": { "depth": "enhanced due diligence, including beneficial owners" } },
+          "else": { "var": { "depth": "standard identity and address checks" } }
+        },
+
+        "prompt": {
+          "system": "You are the customer due diligence helper at Northwind Corp. Use made-up data. List the documents to collect and the checks to run before onboarding a customer. Keep the answer short.",
+          "user": "{ f'{sys.query} Customer type: {customerType}. Apply {depth}.' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}

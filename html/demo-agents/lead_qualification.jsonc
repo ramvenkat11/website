@@ -1,0 +1,38 @@
+// Inbound Lead Qualifier - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Values used below.
+        "var": { "company": "Northwind Corp" },
+
+        // Pause for the user's answer.
+        "ask": {
+          "message": "How big is the lead's company?",
+          "inputs": [
+            { "name": "size", "type": "chooseOne", "options": ["Any", "Small", "Mid-size", "Enterprise"], "default": "Any" }
+          ]
+        },
+
+        // Keep the result in a variable.
+        "var.2": { "size": "{ result['size'] }" },
+
+        // Branch on a condition.
+        "if": {
+          "condition": "{ size == 'Any' }",
+          "then": { "var": { "focus": "any company size" } },
+          "else": { "var": { "focus": "{ size.lower() }" } }
+        },
+
+        // Tell the user what is happening while they wait.
+        "progress": "Working on it...",
+
+        "prompt": {
+          "system": "{ f'You are the inbound lead qualifier at {company}. Use made-up data. Keep the answer short.' }",
+          "user": "{ f'{sys.query} Focus on {focus}.' }"
+        },
+        "llm": { "profile": "claude_haiku", "streamOutput": true }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+// Month-End Close Tracker - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "done": { "question": "{ sys.query }" },
+          "open": { "question": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## Completed\\n' + result['done'] + '\\n\\n## Still open\\n' + result['open'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "done": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "done",
+          "system": "You are the month-end close tracker at Northwind Corp. Use made-up data. List the close tasks already completed. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gemini_flash", "prompt": "done" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "open": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "open",
+          "system": "You are the month-end close tracker at Northwind Corp. Use made-up data. List the close tasks still open and who owns them. Keep the answer short.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "gemini_flash", "prompt": "open" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

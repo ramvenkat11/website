@@ -1,0 +1,45 @@
+// Blog Article Drafter - claude_haiku.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Run both functions at the same time.
+        "parallel": {
+          "outline": { "question": "{ sys.query }" },
+          "headlines": { "question": "{ sys.query }" }
+        },
+
+        // parallel returns a dict keyed by function name.
+        "output": "{ '## Outline\\n' + result['outline'] + '\\n\\n## Headline ideas\\n' + result['headlines'] }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "outline": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "outline",
+          "system": "You are the blog article drafter at Northwind Corp. Use made-up data. Write a short outline.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "claude_haiku", "prompt": "outline" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    },
+    // Takes one argument; parallel runs it alongside the other function.
+    "headlines": {
+      "args": { "question": { "type": "str" } },
+      "commands": {
+        "prompt": {
+          "name": "headlines",
+          "system": "You are the blog article drafter at Northwind Corp. Use made-up data. Suggest three headlines.",
+          "user": "{ question }"
+        },
+        "llm": { "profile": "claude_haiku", "prompt": "headlines" },
+        // Hand the result back to the caller.
+        "return": "{ result }"
+      }
+    }
+  }
+}

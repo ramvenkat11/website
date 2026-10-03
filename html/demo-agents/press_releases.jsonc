@@ -1,0 +1,28 @@
+// Press Release Drafter - gemini_flash.
+{
+  "functions": {
+    "main": {
+      "commands": {
+        // Ask the user for what the agent needs.
+        "ask": {
+          "message": "What is being announced?",
+          "inputs": [ { "name": "announcement", "type": "chooseOne", "options": ["Product launch", "Partnership", "New hire", "Not decided"] } ]
+        },
+
+        "var": { "announcement": "{ result['announcement'] }" },
+
+        // Finish early with a message; no LLM call needed.
+        "if": {
+          "condition": "{ announcement == 'Not decided' }",
+          "then": { "end": "Come back once the announcement is decided." }
+        },
+
+        "prompt": {
+          "system": "You are the press release drafter at Northwind Corp. Use made-up data. Keep the answer short.",
+          "user": "{ f'{sys.query} (announcement: {announcement})' }"
+        },
+        "llm": { "profile": "gemini_flash", "streamOutput": true }
+      }
+    }
+  }
+}
