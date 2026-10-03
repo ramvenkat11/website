@@ -31,3 +31,10 @@
 - Done: `html/index.html` `data-search-empty` now reads "...with [200 agents](demo-agents.html) using models..." (Ram: the attribute accepts markdown). The separate `.hero-demo-link` line under the box and its CSS are removed.
 - Open: `html/demo/demo.js` built 2026-10-02 14:54 still renders the brackets literally; the link appears once ui1 rebuilds the bundle with markdown support.
 - State: not committed, not uploaded.
+
+## 2026-10-02 — demo-agents.html: source on click and per-agent anchors
+
+- Done: `html/demo-agents/` holds a straight copy of `../s2oserver/docs/demo/definitions/*.jsonc` (200 files, 193 KB; copy again with the JSON). Each row on `demo-agents.html` has a "Show source" button that fetches `demo-agents/<name>.jsonc` once and opens a `.codecard` with the file name, line count, copy button and highlighted JSONC (the six regexes from `gen/build.py` `_TOKENS["jsonc"]`, ported to the page script). Token colours for `.codecard` were added to `styles.css`; the card is capped at 560px tall and scrolls.
+- Anchors: every row has `id="<agentName>"`, so `demo-agents.html#leave_balance` scrolls to that agent and opens its source (also on hashchange). Group sections keep `group-<slug>` ids, so names cannot clash. The home page search results can link to `demo-agents.html#<agentName>`.
+- Checked at 1280px and 500px over the local server with `#benefits_enrollment`.
+- State: not committed, not uploaded.
