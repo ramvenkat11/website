@@ -18,3 +18,10 @@
 - Done: in the `@media (max-width: 640px)` block of `html/styles/styles.css`, `.cc-join i:first-child` had `height: 16px; margin-top: 10px`, 4px short of the 30px row, so that the arrow under the search2o-skill chip stopped above the horizontal line. Height is now 20px. The arrow was already short before today's changes.
 - Checked with a 3x screenshot at 500px wide, cropped with `sips -c … --cropOffset`. An iframe page is not usable for this crop: the demo input takes focus and scrolls the frame.
 - State: not committed, not uploaded.
+
+## 2026-10-02 — demo-agents.html: the 200 demo agents
+
+- Done: `html/demo-agents.json` is a straight copy of `../s2oserver/docs/demo/agents.json` (200 agents, 20 groups of 10; copy it again whenever the demo account changes). `html/demo-agents.html` is a hand-written top page with the usual header and footer, no header entry; its inline script fetches the JSON and renders a jump list of groups and one section per group (title, agent name in code, description). On fetch failure it shows a line linking to the raw file. Styles: `.agents-status`, `.group-jump`, `.agent-group`, `.agent-list` next to `.page-body` in `html/styles/styles.css`.
+- Links: `html/index.html` has "See the 200 agents in this demo →" under the hero demo box (`.hero-demo-link`); `html/demo.html` links "200 agents" in the hero note. Sitemap: `html/sitemap.xml` and `SITE_PAGES` in `gen/build.py`.
+- Checked at 1280px and 500px with a local `python3 -m http.server` (fetch needs http, not file://), dark theme only.
+- State: not committed, not uploaded.
