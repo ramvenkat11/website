@@ -38,3 +38,9 @@
 - Anchors: every row has `id="<agentName>"`, so `demo-agents.html#leave_balance` scrolls to that agent and opens its source (also on hashchange). Group sections keep `group-<slug>` ids, so names cannot clash. The home page search results can link to `demo-agents.html#<agentName>`.
 - Checked at 1280px and 500px over the local server with `#benefits_enrollment`.
 - State: not committed, not uploaded.
+
+## 2026-10-02 — Price changed to $40 per user per month
+
+- Done: `html/pricing.html` (meta description, og:description, the Prod paragraph) now says $40 per user per month instead of $30. No other shipped page states the amount; `docs/support-licensing/license.html` says "priced per user per month" without a figure.
+- Open: `content/pricing.md` and `content/pricing2.md` (planning notes, not shipped) still say $30.
+- State: not committed, not uploaded.
