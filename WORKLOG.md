@@ -44,3 +44,4 @@
 - Done: `html/pricing.html` (meta description, og:description, the Prod paragraph) now says $40 per user per month instead of $30. No other shipped page states the amount; `docs/support-licensing/license.html` says "priced per user per month" without a figure.
 - Open: `content/pricing.md` and `content/pricing2.md` (planning notes, not shipped) still say $30.
 - State: not committed, not uploaded.
+- Also changed to $40: the per-member price in `content/pricing.md` (lines 17, 44, 55, 94, 102, 113), `content/pricing2.md:20` and `content/pricing_table.md:8`. Still $30 in `content/pricing.md`: the overage "$30 per additional 300 executions" (lines 20, 34, 94, 105, 120), which the note defines as "the same as a seat"; waiting for Ram to say whether it moves to $40 too.
