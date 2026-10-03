@@ -25,3 +25,9 @@
 - Links: `html/index.html` has "See the 200 agents in this demo →" under the hero demo box (`.hero-demo-link`); `html/demo.html` links "200 agents" in the hero note. Sitemap: `html/sitemap.xml` and `SITE_PAGES` in `gen/build.py`.
 - Checked at 1280px and 500px with a local `python3 -m http.server` (fetch needs http, not file://), dark theme only.
 - State: not committed, not uploaded.
+
+## 2026-10-02 — Hero demo: agents link moved into data-search-empty
+
+- Done: `html/index.html` `data-search-empty` now reads "...with [200 agents](demo-agents.html) using models..." (Ram: the attribute accepts markdown). The separate `.hero-demo-link` line under the box and its CSS are removed.
+- Open: `html/demo/demo.js` built 2026-10-02 14:54 still renders the brackets literally; the link appears once ui1 rebuilds the bundle with markdown support.
+- State: not committed, not uploaded.
