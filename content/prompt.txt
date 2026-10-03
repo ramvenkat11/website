@@ -6,10 +6,6 @@ three live demos that are drawn by script, so a text fetch shows none of them.
 Use the connected Chrome browser; if it isn't connected, use Playwright with
 Chromium and install it if needed.
 
-First confirm you have the current version: the H1 ends with "Avoid context
-rot." and the nav says "Try it free". If you see anything else, reload with a
-cache-busting query string.
-
 Background: Search2o lets a company build hundreds of task-specific AI agents;
 a search picks and runs the right agent for each request. The agents live on
 the Search2o agent server, not in the assistant's context. That is what the
