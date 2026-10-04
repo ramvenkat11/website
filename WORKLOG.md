@@ -67,3 +67,9 @@
 - Unchanged: `finding-and-running-an-agent.html`, `installing-the-skill.html`, the section `index.html` lead, and page titles in `gen/toc.py`. The old overview text (the Eric Holmes MCP article, the four risks of a direct skill) and the old ten-item list are gone from the docs.
 - State: `gen/build.py` ran (144 pages, no broken internal links on the three rebuilt pages). Not committed, not uploaded. Not checked in a browser.
 - Next: Ram reviews; possible follow-ups are the section index lead and whether "What it costs" deserves its own page.
+
+## 2026-10-03 — Skill integration docs: link check and three corrections
+
+- Checked: all 20 external links on the two rewritten pages return 200 and their three `#` anchors exist. Every internal target was read for the fact its link text claims.
+- Fixed in `docsrc/skill-integration/what-search2o-provides.html`: (1) "search costs no model tokens" is no longer a link; no docs page states that fact (the old version of this page was the only one). (2) "serves the GUI, the chat bots, the REST API and the skill" is no longer a link, for the same reason. (3) "kept for three months after last use" now reads "7 days after the last use on the Free plan and 90 days on Paid", matching `docsrc/security/data-privacy.html`.
+- Open: `content/behind_skill.md` still says "three months" and still links those two facts to `what-search2o-provides.html`. "Under a second" on this page versus "less than 0.5 seconds" on `search/how-matching-works.html` are both true but differ. The "Reports" link goes to `reports/cost.html`, which shows cost per agent and per version, not per person.
