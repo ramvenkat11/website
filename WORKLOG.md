@@ -91,3 +91,8 @@
 - Done: `html/styles/styles.css` has a new rule `.hero h1 .line` (16px, weight 500, `var(--muted)`, 10px above, normal letter spacing), so that "Avoid context rot, unpredictable workflows, and runaway LLM costs." reads as a supporting line under the two 24px/800 lines. `html/index.html` is untouched by this; the longer wording of that line was already an uncommitted edit by Ram.
 - Checked: headless Chrome screenshot at 1280px, dark theme. Phone width not verified (headless Chrome does not go below about 500px wide).
 - State: not committed, not uploaded.
+
+## 2026-10-03 — Home hero: third heading line, gentler step down
+
+- Ram found the muted 16px/500 version abrupt ("suddenly the color goes away"). `.hero h1 .line` in `html/styles/styles.css` is now 19px, weight 600, 6px above, and inherits the heading colour (`--ink`), so the three lines read ink, gradient, ink, and the third is lower only in size and weight.
+- Checked at 1280px in the dark theme by headless screenshot. Not committed, not uploaded.
