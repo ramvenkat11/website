@@ -96,3 +96,9 @@
 
 - Ram found the muted 16px/500 version abrupt ("suddenly the color goes away"). `.hero h1 .line` in `html/styles/styles.css` is now 19px, weight 600, 6px above, and inherits the heading colour (`--ink`), so the three lines read ink, gradient, ink, and the third is lower only in size and weight.
 - Checked at 1280px in the dark theme by headless screenshot. Not committed, not uploaded.
+
+## 2026-10-04 — Home hero: third heading line, back to the first version with a stronger grey
+
+- Ram found the 19px/600 ink version too prominent and preferred the first one, which he had called abrupt in colour. `.hero h1 .line` is now the first version (16px, weight 500, 10px above) with `var(--body)` instead of `var(--muted)`.
+- If this misses too, ask numbered questions (size, weight, colour) instead of trying a fourth variant.
+- Checked at 1280px, dark theme, headless screenshot. Not committed, not uploaded.
