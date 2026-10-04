@@ -3,17 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "Whose calendar?",
-          "inputs": [ { "name": "executive", "type": "chooseOne", "options": ["CEO", "CFO", "COO", "Chief of Staff"] } ]
+        // Jev reads the message and says whether it names whose calendar.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "executive": {
+                "type": "choice",
+                "instructions": "Whether the message names whose calendar the user means",
+                "criteria": {
+                  "stated": "The message names whose calendar the user means, for example the CFO or the CEO",
+                  "not stated": "The message does not name whose calendar"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "executiveStated": "{ jev['executive']['choice'] if 'executive' in jev and 'choice' in jev['executive'] else 'not stated' }",
+          "executive": ""
         },
 
-        "var": { "executive": "{ result['executive'] }" },
+        // Ask the user only when the message does not name whose calendar.
+        "if.2": {
+          "condition": "{ executiveStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Whose calendar?",
+              "inputs": [ { "name": "executive", "type": "str", "description": "For example CEO, CFO, COO or Chief of Staff." } ]
+            },
+            "var": { "executive": "{ result['executive'] }" }
+          }
+        },
 
+        // The LLM reads the executive from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the executive calendar assistant at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (calendar: {executive})' }"
+          "user": "{ f'{sys.query} (calendar: {executive})' if executive else sys.query }"
         },
         "llm": { "profile": "gemini_flash", "streamOutput": true }
       }

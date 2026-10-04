@@ -3,23 +3,68 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "What test data do you need?",
-          "inputs": [ { "name": "data", "type": "chooseOne", "options": ["Test accounts", "Sample orders", "Masked customer data", "Real customer data"] } ]
+        // Jev reads the message and says whether it describes the test data, and whether that is real customer data.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "data": {
+                "type": "choice",
+                "instructions": "Whether the message says what test data the user needs",
+                "criteria": {
+                  "stated": "The message describes the test data the user needs, for example sample orders or test accounts",
+                  "not stated": "The message does not say what test data is needed"
+                }
+              },
+              "realCustomerData": {
+                "type": "choice",
+                "instructions": "Whether the user wants real (unmasked) customer data",
+                "criteria": {
+                  "Yes": "The user wants real, unmasked customer data",
+                  "No": "The user wants something other than real customer data, such as masked or made-up data",
+                  "cannot tell": "The message does not clearly say"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "dataStated": "{ jev['data']['choice'] if 'data' in jev and 'choice' in jev['data'] else 'not stated' }",
+          "realCustomerData": "{ jev['realCustomerData']['choice'] if 'realCustomerData' in jev and 'choice' in jev['realCustomerData'] else 'cannot tell' }",
+          "data": ""
         },
 
-        "var": { "data": "{ result['data'] }" },
+        // Ask the user only when the message does not describe the test data.
+        "if.2": {
+          "condition": "{ dataStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What test data do you need?",
+              "inputs": [ { "name": "data", "type": "str", "description": "For example Test accounts, Sample orders or Masked customer data." } ]
+            },
+            "var": { "data": "{ result['data'] }" }
+          }
+        },
 
         // Finish early with a message; no LLM call needed.
-        "if": {
-          "condition": "{ data == 'Real customer data' }",
+        "if.3": {
+          "condition": "{ realCustomerData == 'Yes' }",
           "then": { "end": "Real customer data cannot be used for testing. Ask for masked customer data instead." }
         },
 
+        // The LLM reads the test data from the message; the asked one is added only when there was an ask.
         "prompt": {
-          "system": "You are the test data request desk at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (data: {data})' }"
+          "system": "You are the test data request desk at Northwind Corp. Use made-up data. Real customer data cannot be used for testing; suggest masked customer data instead. Keep the answer short.",
+          "user": "{ f'{sys.query} (data: {data})' if data else sys.query }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

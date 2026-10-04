@@ -3,23 +3,68 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "What kind of work are you planning?",
-          "inputs": [ { "name": "work", "type": "chooseOne", "options": ["Chemicals", "Lasers", "High voltage", "Biological samples", "Unknown substance"] } ]
+        // Jev reads the message and says whether it gives the kind of lab work, and whether that involves an unknown substance.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "work": {
+                "type": "choice",
+                "instructions": "Whether the message says what kind of lab work the user is planning",
+                "criteria": {
+                  "stated": "The message says what kind of lab work the user is planning, for example lasers or radioactive sources",
+                  "not stated": "The message does not say what kind of lab work"
+                }
+              },
+              "unknownSubstance": {
+                "type": "choice",
+                "instructions": "Whether the work involves a substance the user cannot identify",
+                "criteria": {
+                  "Yes": "The user says the work involves a substance they cannot identify",
+                  "No": "The message describes the work and it involves no substance the user cannot identify",
+                  "cannot tell": "The message does not describe the work"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "workStated": "{ jev['work']['choice'] if 'work' in jev and 'choice' in jev['work'] else 'not stated' }",
+          "unknownSubstance": "{ jev['unknownSubstance']['choice'] if 'unknownSubstance' in jev and 'choice' in jev['unknownSubstance'] else 'cannot tell' }",
+          "work": ""
         },
 
-        "var": { "work": "{ result['work'] }" },
+        // Ask the user only when the message does not say the kind of work.
+        "if.2": {
+          "condition": "{ workStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What kind of work are you planning?",
+              "inputs": [ { "name": "work", "type": "str", "description": "For example Chemicals, Lasers, High voltage or Biological samples." } ]
+            },
+            "var": { "work": "{ result['work'] }" }
+          }
+        },
 
         // Finish early with a message; no LLM call needed.
-        "if": {
-          "condition": "{ work == 'Unknown substance' }",
+        "if.3": {
+          "condition": "{ unknownSubstance == 'Yes' }",
           "then": { "end": "Do not handle an unknown substance. Seal it and call the lab safety officer on extension 4400." }
         },
 
+        // The LLM reads the work from the message; the asked one is added only when there was an ask.
         "prompt": {
-          "system": "You are the lab safety checker at Northwind Corp. Use made-up data. List the protective equipment, training and approvals needed. Keep the answer short.",
-          "user": "{ f'{sys.query} (work: {work})' }"
+          "system": "You are the lab safety checker at Northwind Corp. Use made-up data. If the work involves an unknown substance, tell the user not to handle it, to seal it and to call the lab safety officer on extension 4400. List the protective equipment, training and approvals needed. Keep the answer short.",
+          "user": "{ f'{sys.query} (work: {work})' if work else sys.query }"
         },
         "llm": { "profile": "gemini_flash", "streamOutput": true }
       }

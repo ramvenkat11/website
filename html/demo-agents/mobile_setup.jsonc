@@ -6,22 +6,59 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Pause for the user's answer.
-        "ask": {
-          "message": "Which device?",
-          "inputs": [
-            { "name": "device", "type": "chooseOne", "options": ["Any", "iPhone", "Android", "iPad"], "default": "Any" }
-          ]
+        // Jev reads the message and says whether it names one device, says any device, or names none.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "device": {
+                "type": "choice",
+                "instructions": "Which device the user is setting up",
+                "criteria": {
+                  "any": "The user says any device",
+                  "one device": "The message names one device, for example an iPhone or a Pixel 8",
+                  "not stated": "The message does not name a device"
+                }
+              }
+            }
+          }
+        },
+        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.3": {
+          "deviceScope": "{ jev['device']['choice'] if 'device' in jev and 'choice' in jev['device'] else 'not stated' }",
+          "device": ""
         },
 
-        // Keep the result in a variable.
-        "var.2": { "device": "{ result['device'] }" },
+        // Ask the user only when the message does not name the device.
+        "if.2": {
+          "condition": "{ deviceScope == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Which device?",
+              "inputs": [
+                { "name": "device", "type": "str", "description": "For example Any, iPhone, Android or iPad." }
+              ]
+            },
+            "var": {
+              "device": "{ result['device'] }",
+              "deviceScope": "{ 'any' if result['device'].strip().lower() == 'any' else 'one device' }"
+            }
+          }
+        },
 
-        // Branch on a condition.
-        "if": {
-          "condition": "{ device == 'Any' }",
-          "then": { "var": { "focus": "any device" } },
-          "else": { "var": { "focus": "{ device.lower() }" } }
+        // Branch on a condition. The LLM reads a device the message names; an asked one is added here.
+        "if.3": {
+          "condition": "{ deviceScope == 'any' }",
+          "then": { "var": { "focus": " Focus on any device." } },
+          "else": { "var": { "focus": "{ f' Focus on {device.lower()}.' if device else '' }" } }
         },
 
         // Tell the user what is happening while they wait.
@@ -29,7 +66,7 @@
 
         "prompt": {
           "system": "{ f'You are the mobile device setup guide at {company}. Use made-up data. Keep the answer short.' }",
-          "user": "{ f'{sys.query} Focus on {focus}.' }"
+          "user": "{ sys.query + focus }"
         },
         "llm": { "profile": "gpt5_mini", "streamOutput": true }
       }

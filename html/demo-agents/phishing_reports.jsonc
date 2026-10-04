@@ -3,16 +3,49 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "Did you click a link in it?",
-          "inputs": [ { "name": "clicked", "type": "chooseOne", "options": ["No", "Yes", "Not sure"] } ]
+        // Jev reads the message and says whether the user clicked a link in the email.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "clicked": {
+                "type": "choice",
+                "instructions": "Whether the user clicked a link or opened an attachment in the email",
+                "criteria": {
+                  "No": "The user says they did not click a link or open an attachment in the email",
+                  "Yes": "The user says they clicked a link or opened an attachment in the email",
+                  "Not sure": "The user says they are not sure whether they clicked a link or opened an attachment",
+                  "not stated": "The message does not clearly say whether the user clicked a link or opened an attachment"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": { "clicked": "{ jev['clicked']['choice'] if 'clicked' in jev and 'choice' in jev['clicked'] else 'not stated' }" },
+
+        // Ask the user only when the message does not say whether the user clicked.
+        "if.2": {
+          "condition": "{ clicked == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Did you click a link in it?",
+              "inputs": [ { "name": "clicked", "type": "chooseOne", "options": ["No", "Yes", "Not sure"] } ]
+            },
+            "var": { "clicked": "{ result['clicked'] }" }
+          }
         },
 
-        "var": { "clicked": "{ result['clicked'] }" },
-
         // Stop with an error the user sees.
-        "if": {
+        "if.3": {
           "condition": "{ clicked == 'Yes' }",
           "then": { "fail": "Disconnect from the network now and call the IT security line." }
         },

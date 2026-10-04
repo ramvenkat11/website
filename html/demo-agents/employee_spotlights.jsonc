@@ -3,23 +3,58 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user to type an answer.
-        "ask": {
-          "message": "Tell me about the person being featured.",
-          "inputs": [ { "name": "notes", "type": "text", "label": "Notes", "description": "Role, team, what they did, a fun fact." } ]
+        // Jev reads the message and says whether it already gives notes about the person.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "notes": {
+                "type": "choice",
+                "instructions": "Whether the message gives notes about the person being featured",
+                "criteria": {
+                  "stated": "The message gives notes about the person, such as their role, team, what they did or a fun fact",
+                  "not stated": "The message gives no notes about the person"
+                }
+              }
+            }
+          }
         },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        "var": { "notes": "{ result['notes'] }" },
-
-        // Stop with an error the user sees.
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(notes.strip()) == 0 }",
-          "then": { "fail": "Please give a few notes about the person." }
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "notesStated": "{ jev['notes']['choice'] if 'notes' in jev and 'choice' in jev['notes'] else 'not stated' }",
+          "notes": ""
         },
 
+        // Ask the user only when the message gives no notes.
+        "if.2": {
+          "condition": "{ notesStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Tell me about the person being featured.",
+              "inputs": [ { "name": "notes", "type": "text", "label": "Notes", "description": "Role, team, what they did, a fun fact." } ]
+            },
+            "var": { "notes": "{ result['notes'] }" },
+
+            // Stop with an error the user sees.
+            "if": {
+              "condition": "{ len(notes.strip()) == 0 }",
+              "then": { "fail": "Please give a few notes about the person." }
+            }
+          }
+        },
+
+        // The LLM reads the notes from the message; the asked ones are added only when there was an ask.
         "prompt": {
           "system": "You are the employee spotlight writer at Northwind Corp. Write a warm short profile for the intranet. Do not invent personal details beyond the notes.",
-          "user": "{ f'{sys.query}\\n\\nNotes:\\n{notes}' }"
+          "user": "{ f'{sys.query}\\n\\nNotes:\\n{notes}' if notes else sys.query }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

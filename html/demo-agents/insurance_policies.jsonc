@@ -6,22 +6,59 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Pause for the user's answer.
-        "ask": {
-          "message": "Which policy?",
-          "inputs": [
-            { "name": "policy", "type": "chooseOne", "options": ["All", "Property", "Liability", "Cyber", "Travel"], "default": "All" }
-          ]
+        // Jev reads the message and says whether it asks about one policy, every policy, or names none.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "policy": {
+                "type": "choice",
+                "instructions": "Which insurance policy the user asks about",
+                "criteria": {
+                  "all": "The user asks about every policy",
+                  "one policy": "The message names one insurance policy, for example cyber, property or travel",
+                  "not stated": "The message does not say which policy"
+                }
+              }
+            }
+          }
+        },
+        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.3": {
+          "policyScope": "{ jev['policy']['choice'] if 'policy' in jev and 'choice' in jev['policy'] else 'not stated' }",
+          "policy": ""
         },
 
-        // Keep the result in a variable.
-        "var.2": { "policy": "{ result['policy'] }" },
+        // Ask the user only when the message does not say which policy.
+        "if.2": {
+          "condition": "{ policyScope == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Which policy?",
+              "inputs": [
+                { "name": "policy", "type": "str", "description": "For example All, Property, Liability, Cyber or Travel." }
+              ]
+            },
+            "var": {
+              "policy": "{ result['policy'] }",
+              "policyScope": "{ 'all' if result['policy'].strip().lower() == 'all' else 'one policy' }"
+            }
+          }
+        },
 
-        // Branch on a condition.
-        "if": {
-          "condition": "{ policy == 'All' }",
-          "then": { "var": { "focus": "every policy" } },
-          "else": { "var": { "focus": "{ policy.lower() }" } }
+        // Branch on a condition. The LLM reads a policy the message names; an asked one is added here.
+        "if.3": {
+          "condition": "{ policyScope == 'all' }",
+          "then": { "var": { "focus": " Focus on every policy." } },
+          "else": { "var": { "focus": "{ f' Focus on {policy.lower()}.' if policy else '' }" } }
         },
 
         // Tell the user what is happening while they wait.
@@ -29,7 +66,7 @@
 
         "prompt": {
           "system": "{ f'You are the corporate insurance policy guide at {company}. Use made-up data. Keep the answer short.' }",
-          "user": "{ f'{sys.query} Focus on {focus}.' }"
+          "user": "{ sys.query + focus }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

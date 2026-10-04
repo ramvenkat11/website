@@ -3,24 +3,75 @@
   "functions": {
     "main": {
       "commands": {
-        // Pause for the user's answer.
-        "ask": {
-          "message": "Where did the request come from?",
-          "inputs": [ { "name": "source", "type": "chooseOne", "options": ["Customer", "Sales team", "Support ticket", "Internal team"] } ]
+        // Jev reads the message and says whether it gives the source of the request, and whether that is a customer.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "source": {
+                "type": "choice",
+                "instructions": "Whether the message says where the feature request came from",
+                "criteria": {
+                  "stated": "The message says where the feature request came from, for example a customer or a partner",
+                  "not stated": "The message does not say where the request came from"
+                }
+              },
+              "fromCustomer": {
+                "type": "choice",
+                "instructions": "Whether the feature request came directly from a customer",
+                "criteria": {
+                  "Yes": "The request came directly from a customer",
+                  "No": "The request came from somewhere other than a customer",
+                  "cannot tell": "The message does not say where the request came from"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "sourceStated": "{ jev['source']['choice'] if 'source' in jev and 'choice' in jev['source'] else 'not stated' }",
+          "fromCustomer": "{ jev['fromCustomer']['choice'] if 'fromCustomer' in jev and 'choice' in jev['fromCustomer'] else 'cannot tell' }",
+          "source": ""
         },
 
-        "var": { "source": "{ result['source'] }" },
+        // Ask the user only when the message does not say where the request came from.
+        "if.2": {
+          "condition": "{ sourceStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Where did the request come from?",
+              "inputs": [ { "name": "source", "type": "str", "description": "For example Customer, Sales team, Support ticket or Internal team." } ]
+            },
+            "var": { "source": "{ result['source'] }" }
+          }
+        },
 
         // Branch on a condition.
-        "if": {
-          "condition": "{ source == 'Customer' }",
+        "if.3": {
+          "condition": "{ fromCustomer == 'Yes' }",
           "then": { "var": { "urgency": "check the customer's plan and renewal date" } },
-          "else": { "var": { "urgency": "check how many customers are affected" } }
+          "else": {
+            "if": {
+              "condition": "{ fromCustomer == 'No' }",
+              "then": { "var": { "urgency": "check how many customers are affected" } },
+              "else": { "var": { "urgency": "check the customer's plan and renewal date if it came from a customer, otherwise check how many customers are affected" } }
+            }
+          }
         },
 
+        // The LLM reads the source from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the feature request triage assistant at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (source: {source}; to judge urgency, {urgency})' }"
+          "user": "{ f'{sys.query} (source: {source}; to judge urgency, {urgency})' if source else f'{sys.query} (to judge urgency, {urgency})' }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

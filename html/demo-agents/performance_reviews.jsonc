@@ -3,29 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Look up what this user told the agent before.
-        "memory": { "query": "review style", "label": "review_style", "limit": 1 },
+        // Jev reads the message and says whether it says how the feedback should be written.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "style": {
+                "type": "choice",
+                "instructions": "Whether the message says how the user wants the review feedback written",
+                "criteria": {
+                  "stated": "The message says how the user wants the review feedback written, for example brief or detailed with examples",
+                  "not stated": "The message does not say how the feedback should be written"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(result) > 0 }",
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "styleStated": "{ jev['style']['choice'] if 'style' in jev and 'choice' in jev['style'] else 'not stated' }",
+          "style": ""
+        },
+
+        // Ask the user only when the message does not say the style.
+        "if.2": {
+          "condition": "{ styleStated == 'not stated' }",
           "then": {
-            "var": { "style": "{ result[0]['text'] }" }
-          },
-          "else": {
-            // Ask only the first time.
             "ask": {
               "message": "How do you like feedback written?",
-              "inputs": [ { "name": "style", "type": "chooseOne", "options": ["Brief", "Detailed"] } ]
+              "inputs": [ { "name": "style", "type": "str", "description": "For example Brief or Detailed." } ]
             },
-            "var": { "style": "{ result['style'] }" },
-            // Remember the answer for next time.
-            "memory": { "store": { "review_style": "{ style }" } }
+            "var": { "style": "{ result['style'] }" }
           }
         },
 
+        // The LLM reads the style from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the performance review helper at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} The user prefers style: {style}.' }"
+          "user": "{ f'{sys.query} The user prefers style: {style}.' if style else sys.query }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

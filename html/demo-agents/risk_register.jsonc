@@ -3,29 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Look up what this user told the agent before.
-        "memory": { "query": "business unit", "label": "business_unit", "limit": 1 },
+        // Jev reads the message and says whether it names the business unit.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "unit": {
+                "type": "choice",
+                "instructions": "Whether the message names the business unit whose risks the user owns",
+                "criteria": {
+                  "stated": "The message names the business unit whose risks the user owns, for example retail or manufacturing",
+                  "not stated": "The message does not name a business unit"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(result) > 0 }",
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "unitStated": "{ jev['unit']['choice'] if 'unit' in jev and 'choice' in jev['unit'] else 'not stated' }",
+          "unit": ""
+        },
+
+        // Ask the user only when the message does not name the business unit.
+        "if.2": {
+          "condition": "{ unitStated == 'not stated' }",
           "then": {
-            "var": { "unit": "{ result[0]['text'] }" }
-          },
-          "else": {
-            // Ask only the first time.
             "ask": {
               "message": "Which business unit's risks do you own?",
-              "inputs": [ { "name": "unit", "type": "chooseOne", "options": ["Manufacturing", "Retail", "Digital", "Corporate"] } ]
+              "inputs": [ { "name": "unit", "type": "str", "description": "For example Manufacturing, Retail, Digital or Corporate." } ]
             },
-            "var": { "unit": "{ result['unit'] }" },
-            // Remember the answer for next time.
-            "memory": { "store": { "business_unit": "{ unit }" } }
+            "var": { "unit": "{ result['unit'] }" }
           }
         },
 
+        // The LLM reads the business unit from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the risk register keeper at Northwind Corp. Use made-up data. List the unit's top risks with likelihood, impact, owner, mitigation and review date. Keep the answer short.",
-          "user": "{ f'{sys.query} The user owns business unit: {unit}.' }"
+          "user": "{ f'{sys.query} The user owns business unit: {unit}.' if unit else sys.query }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

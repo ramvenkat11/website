@@ -3,23 +3,68 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "Why are you returning it?",
-          "inputs": [ { "name": "reason", "type": "chooseOne", "options": ["Damaged", "Wrong item", "Changed my mind", "Used for over a year"] } ]
+        // Jev reads the message and says whether it gives the reason for the return, and whether the item was used for over a year.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "reason": {
+                "type": "choice",
+                "instructions": "Whether the message says why the user is returning the item",
+                "criteria": {
+                  "stated": "The message says why the user is returning the item, for example it is damaged or arrived late",
+                  "not stated": "The message does not say why the item is being returned"
+                }
+              },
+              "usedOverAYear": {
+                "type": "choice",
+                "instructions": "Whether the item was used for over a year",
+                "criteria": {
+                  "Yes": "The message says the item was used for over a year",
+                  "No": "The message says the item was used for a year or less, or not used at all",
+                  "cannot tell": "The message does not clearly say how long the item was used"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "reasonStated": "{ jev['reason']['choice'] if 'reason' in jev and 'choice' in jev['reason'] else 'not stated' }",
+          "usedOverAYear": "{ jev['usedOverAYear']['choice'] if 'usedOverAYear' in jev and 'choice' in jev['usedOverAYear'] else 'cannot tell' }",
+          "reason": ""
         },
 
-        "var": { "reason": "{ result['reason'] }" },
+        // Ask the user only when the message does not give the reason.
+        "if.2": {
+          "condition": "{ reasonStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Why are you returning it?",
+              "inputs": [ { "name": "reason", "type": "str", "description": "For example Damaged, Wrong item, Changed my mind or Used for over a year." } ]
+            },
+            "var": { "reason": "{ result['reason'] }" }
+          }
+        },
 
         // Stop with an error the user sees.
-        "if": {
-          "condition": "{ reason == 'Used for over a year' }",
+        "if.3": {
+          "condition": "{ usedOverAYear == 'Yes' }",
           "then": { "fail": "Items used for over a year cannot be returned." }
         },
 
+        // The LLM reads the reason from the message; the asked one is added only when there was an ask.
         "prompt": {
-          "system": "You are the return and refund processor at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (reason: {reason})' }"
+          "system": "You are the return and refund processor at Northwind Corp. Use made-up data. Items used for over a year cannot be returned; if the item was used for over a year, say so instead of processing the return. Keep the answer short.",
+          "user": "{ f'{sys.query} (reason: {reason})' if reason else sys.query }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

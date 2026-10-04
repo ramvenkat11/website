@@ -3,23 +3,68 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "What kind of data do you need?",
-          "inputs": [ { "name": "dataKind", "type": "chooseOne", "options": ["Aggregated reports", "Raw event data", "Finance tables", "Customer personal data"] } ]
+        // Jev reads the message and says whether it names the kind of data, and whether that includes customer personal data.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "dataKind": {
+                "type": "choice",
+                "instructions": "Whether the message names the kind of data the user needs",
+                "criteria": {
+                  "stated": "The message names the kind of data the user needs, for example raw event data or finance tables",
+                  "not stated": "The message does not name the kind of data"
+                }
+              },
+              "personalData": {
+                "type": "choice",
+                "instructions": "Whether the data the user needs includes customer personal data",
+                "criteria": {
+                  "Yes": "The data needed includes customer personal data",
+                  "No": "The data needed does not include customer personal data",
+                  "cannot tell": "The message does not say enough to tell"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "dataKindStated": "{ jev['dataKind']['choice'] if 'dataKind' in jev and 'choice' in jev['dataKind'] else 'not stated' }",
+          "personalData": "{ jev['personalData']['choice'] if 'personalData' in jev and 'choice' in jev['personalData'] else 'cannot tell' }",
+          "dataKind": ""
         },
 
-        "var": { "dataKind": "{ result['dataKind'] }" },
+        // Ask the user only when the message does not name the kind of data.
+        "if.2": {
+          "condition": "{ dataKindStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What kind of data do you need?",
+              "inputs": [ { "name": "dataKind", "type": "str", "description": "For example Aggregated reports, Raw event data or Finance tables." } ]
+            },
+            "var": { "dataKind": "{ result['dataKind'] }" }
+          }
+        },
 
         // Finish early with a message; no LLM call needed.
-        "if": {
-          "condition": "{ dataKind == 'Customer personal data' }",
+        "if.3": {
+          "condition": "{ personalData == 'Yes' }",
           "then": { "end": "Access to customer personal data goes through the privacy office. Please file a privacy review first." }
         },
 
+        // The LLM reads the kind of data from the message; the asked one is added only when there was an ask.
         "prompt": {
-          "system": "You are the dataset access request helper at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (data needed: {dataKind})' }"
+          "system": "You are the dataset access request helper at Northwind Corp. Use made-up data. Access to customer personal data goes through the privacy office and needs a privacy review first. Keep the answer short.",
+          "user": "{ f'{sys.query} (data needed: {dataKind})' if dataKind else sys.query }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

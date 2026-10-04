@@ -6,22 +6,65 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Pause for the user's answer.
-        "ask": {
-          "message": "Which platform?",
-          "inputs": [
-            { "name": "platform", "type": "chooseOne", "options": ["All", "LinkedIn", "X", "Instagram"], "default": "All" }
-          ]
+        // Jev reads the message and says whether it names the platform, and whether the user wants every platform.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "platform": {
+                "type": "choice",
+                "instructions": "Whether the message says which platform the post is for",
+                "criteria": {
+                  "stated": "The message names the platform the post is for, for example LinkedIn or Instagram, or says the post is for every platform",
+                  "not stated": "The message does not say which platform the post is for"
+                }
+              },
+              "allPlatforms": {
+                "type": "choice",
+                "instructions": "Whether the user wants posts for every platform",
+                "criteria": {
+                  "Yes": "The user wants posts for every platform",
+                  "No": "The user wants a post for one or more named platforms, not for every platform",
+                  "cannot tell": "The message does not clearly say"
+                }
+              }
+            }
+          }
+        },
+        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.3": {
+          "platformStated": "{ jev['platform']['choice'] if 'platform' in jev and 'choice' in jev['platform'] else 'not stated' }",
+          "allPlatforms": "{ jev['allPlatforms']['choice'] if 'allPlatforms' in jev and 'choice' in jev['allPlatforms'] else 'cannot tell' }",
+          "platform": ""
         },
 
-        // Keep the result in a variable.
-        "var.2": { "platform": "{ result['platform'] }" },
+        // Ask the user only when the message does not name the platform.
+        "if.2": {
+          "condition": "{ platformStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Which platform?",
+              "inputs": [
+                { "name": "platform", "type": "str", "description": "For example All, LinkedIn, X or Instagram." }
+              ]
+            },
+            "var": { "platform": "{ result['platform'] }" }
+          }
+        },
 
-        // Branch on a condition.
-        "if": {
-          "condition": "{ platform == 'All' }",
-          "then": { "var": { "focus": "every platform" } },
-          "else": { "var": { "focus": "{ platform.lower() }" } }
+        // Branch on a condition. The LLM reads a platform the message names; an asked one is added here.
+        "if.3": {
+          "condition": "{ allPlatforms == 'Yes' }",
+          "then": { "var": { "focus": " Focus on every platform." } },
+          "else": { "var": { "focus": "{ f' Focus on {platform.lower()}.' if platform else '' }" } }
         },
 
         // Tell the user what is happening while they wait.
@@ -29,7 +72,7 @@
 
         "prompt": {
           "system": "{ f'You are the social media post writer at {company}. Use made-up data. Keep the answer short.' }",
-          "user": "{ f'{sys.query} Focus on {focus}.' }"
+          "user": "{ sys.query + focus }"
         },
         "llm": { "profile": "gemini_flash", "streamOutput": true }
       }

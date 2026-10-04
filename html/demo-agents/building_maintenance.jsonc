@@ -6,22 +6,59 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Pause for the user's answer.
-        "ask": {
-          "message": "What is the problem?",
-          "inputs": [
-            { "name": "problem", "type": "chooseOne", "options": ["Other", "Heating", "Lighting", "Plumbing", "Door"], "default": "Other" }
-          ]
+        // Jev reads the message and says whether it names one kind of problem, says some other kind, or names none.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "problem": {
+                "type": "choice",
+                "instructions": "Which kind of building problem the user reports",
+                "criteria": {
+                  "other": "The message says the problem is of some other kind, without naming the kind",
+                  "one kind": "The message names the kind of building problem, for example heating, lighting, plumbing or a door",
+                  "not stated": "The message does not report a building problem"
+                }
+              }
+            }
+          }
+        },
+        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.3": {
+          "problemScope": "{ jev['problem']['choice'] if 'problem' in jev and 'choice' in jev['problem'] else 'not stated' }",
+          "problem": ""
         },
 
-        // Keep the result in a variable.
-        "var.2": { "problem": "{ result['problem'] }" },
+        // Ask the user only when the message does not say which problem.
+        "if.2": {
+          "condition": "{ problemScope == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What is the problem?",
+              "inputs": [
+                { "name": "problem", "type": "str", "description": "For example Other, Heating, Lighting, Plumbing or Door." }
+              ]
+            },
+            "var": {
+              "problem": "{ result['problem'] }",
+              "problemScope": "{ 'other' if result['problem'].strip().lower() == 'other' else 'one kind' }"
+            }
+          }
+        },
 
-        // Branch on a condition.
-        "if": {
-          "condition": "{ problem == 'Other' }",
-          "then": { "var": { "focus": "the problem described" } },
-          "else": { "var": { "focus": "{ problem.lower() }" } }
+        // Branch on a condition. The LLM reads a problem the message names; an asked one is added here.
+        "if.3": {
+          "condition": "{ problemScope == 'other' }",
+          "then": { "var": { "focus": " Focus on the problem described." } },
+          "else": { "var": { "focus": "{ f' Focus on {problem.lower()}.' if problem else '' }" } }
         },
 
         // Tell the user what is happening while they wait.
@@ -29,7 +66,7 @@
 
         "prompt": {
           "system": "{ f'You are the building maintenance request at {company}. Use made-up data. Keep the answer short.' }",
-          "user": "{ f'{sys.query} Focus on {focus}.' }"
+          "user": "{ sys.query + focus }"
         },
         "llm": { "profile": "gpt5_mini", "streamOutput": true }
       }

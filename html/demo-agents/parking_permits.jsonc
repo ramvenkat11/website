@@ -3,23 +3,68 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "Who is the permit for?",
-          "inputs": [ { "name": "who", "type": "chooseOne", "options": ["Me", "A visitor", "A delivery"] } ]
+        // Jev reads the message and says whether it says who the permit is for, and whether that is a delivery.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "who": {
+                "type": "choice",
+                "instructions": "Whether the message says who the parking permit is for",
+                "criteria": {
+                  "stated": "The message says who the parking permit is for, for example the user, a visitor, a contractor or a delivery",
+                  "not stated": "The message does not say who the permit is for"
+                }
+              },
+              "isDelivery": {
+                "type": "choice",
+                "instructions": "Whether the parking permit is for a delivery",
+                "criteria": {
+                  "Yes": "The permit is for a delivery",
+                  "No": "The permit is for someone or something other than a delivery",
+                  "cannot tell": "The message does not say enough to tell"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "whoStated": "{ jev['who']['choice'] if 'who' in jev and 'choice' in jev['who'] else 'not stated' }",
+          "isDelivery": "{ jev['isDelivery']['choice'] if 'isDelivery' in jev and 'choice' in jev['isDelivery'] else 'cannot tell' }",
+          "who": ""
         },
 
-        "var": { "who": "{ result['who'] }" },
+        // Ask the user only when the message does not say who the permit is for.
+        "if.2": {
+          "condition": "{ whoStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Who is the permit for?",
+              "inputs": [ { "name": "who", "type": "str", "description": "For example Me, A visitor or A delivery." } ]
+            },
+            "var": { "who": "{ result['who'] }" }
+          }
+        },
 
         // Finish early with a message; no LLM call needed.
-        "if": {
-          "condition": "{ who == 'A delivery' }",
+        "if.3": {
+          "condition": "{ isDelivery == 'Yes' }",
           "then": { "end": "Deliveries use the loading dock and need no permit." }
         },
 
+        // The LLM reads the permit holder from the message; the asked one is added only when there was an ask.
         "prompt": {
-          "system": "You are the parking permit requester at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (who: {who})' }"
+          "system": "You are the parking permit requester at Northwind Corp. Use made-up data. Deliveries use the loading dock and need no permit; if the permit is for a delivery, say so instead of issuing one. Keep the answer short.",
+          "user": "{ f'{sys.query} (who: {who})' if who else sys.query }"
         },
         "llm": { "profile": "gemini_flash", "streamOutput": true }
       }

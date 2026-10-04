@@ -3,23 +3,68 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "Which test environment?",
-          "inputs": [ { "name": "env", "type": "chooseOne", "options": ["QA-1", "QA-2", "Staging", "Production"] } ]
+        // Jev reads the message and says whether it names the environment, and whether that is production.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "env": {
+                "type": "choice",
+                "instructions": "Whether the message names the test environment the user wants to book",
+                "criteria": {
+                  "stated": "The message names the environment the user wants to book, for example Staging or QA-1",
+                  "not stated": "The message does not name an environment"
+                }
+              },
+              "production": {
+                "type": "choice",
+                "instructions": "Whether the environment the user wants is production",
+                "criteria": {
+                  "Yes": "The environment the user wants is production",
+                  "No": "The environment the user wants is something other than production",
+                  "cannot tell": "The message does not clearly say"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "envStated": "{ jev['env']['choice'] if 'env' in jev and 'choice' in jev['env'] else 'not stated' }",
+          "production": "{ jev['production']['choice'] if 'production' in jev and 'choice' in jev['production'] else 'cannot tell' }",
+          "env": ""
         },
 
-        "var": { "env": "{ result['env'] }" },
+        // Ask the user only when the message does not name the environment.
+        "if.2": {
+          "condition": "{ envStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Which test environment?",
+              "inputs": [ { "name": "env", "type": "str", "description": "For example QA-1, QA-2, Staging or Production." } ]
+            },
+            "var": { "env": "{ result['env'] }" }
+          }
+        },
 
         // Stop with an error the user sees.
-        "if": {
-          "condition": "{ env == 'Production' }",
+        "if.3": {
+          "condition": "{ production == 'Yes' }",
           "then": { "fail": "Testing is not allowed in production. Book QA-1, QA-2 or Staging." }
         },
 
+        // The LLM reads the environment from the message; the asked one is added only when there was an ask.
         "prompt": {
-          "system": "You are the test environment booking assistant at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (environment: {env})' }"
+          "system": "You are the test environment booking assistant at Northwind Corp. Use made-up data. Testing is not allowed in production; if asked for production, refuse and suggest QA-1, QA-2 or Staging. Keep the answer short.",
+          "user": "{ f'{sys.query} (environment: {env})' if env else sys.query }"
         },
         "llm": { "profile": "gemini_flash", "streamOutput": true }
       }

@@ -3,25 +3,62 @@
   "functions": {
     "main": {
       "commands": {
-        // Pause for the user's answer.
-        "ask": {
-          "message": "Which catalog?",
-          "inputs": [ { "name": "catalog", "type": "chooseOne", "options": ["Any", "IT equipment", "Furniture", "Lab supplies", "Printing"], "default": "Any" } ]
+        // Jev reads the message and says whether it names one catalog, wants every catalog, or names none.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "catalog": {
+                "type": "choice",
+                "instructions": "Which catalog the user wants to search",
+                "criteria": {
+                  "any": "The user wants every catalog searched",
+                  "one catalog": "The message names one catalog, for example furniture, IT equipment or lab supplies",
+                  "not stated": "The message does not say which catalog"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "catalogScope": "{ jev['catalog']['choice'] if 'catalog' in jev and 'choice' in jev['catalog'] else 'not stated' }",
+          "catalog": ""
         },
 
-        // Keep the result in a variable.
-        "var": { "catalog": "{ result['catalog'] }" },
+        // Ask the user only when the message does not say which catalog.
+        "if.2": {
+          "condition": "{ catalogScope == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Which catalog?",
+              "inputs": [ { "name": "catalog", "type": "str", "description": "For example Any, IT equipment, Furniture, Lab supplies or Printing." } ]
+            },
+            "var": {
+              "catalog": "{ result['catalog'] }",
+              "catalogScope": "{ 'any' if result['catalog'].strip().lower() == 'any' else 'one catalog' }"
+            }
+          }
+        },
 
-        // Branch on a condition.
-        "if": {
-          "condition": "{ catalog == 'Any' }",
-          "then": { "var": { "focus": "every approved catalog" } },
-          "else": { "var": { "focus": "{ 'the ' + catalog.lower() + ' catalog' }" } }
+        // Branch on a condition. The LLM reads a catalog the message names; an asked one is added here.
+        "if.3": {
+          "condition": "{ catalogScope == 'any' }",
+          "then": { "var": { "focus": " Search every approved catalog." } },
+          "else": { "var": { "focus": "{ f' Search the {catalog.lower()} catalog.' if catalog else '' }" } }
         },
 
         "prompt": {
           "system": "You are the approved catalog item finder at Northwind Corp. Use made-up items, suppliers, contract prices and delivery times. Keep the answer short.",
-          "user": "{ f'{sys.query} Search {focus}.' }"
+          "user": "{ sys.query + focus }"
         },
         "llm": { "profile": "gemini_flash", "streamOutput": true }
       }

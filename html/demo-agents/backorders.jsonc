@@ -3,29 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Look up what this user told the agent before.
-        "memory": { "query": "sales region", "label": "sales_region", "limit": 1 },
+        // Jev reads the message and says whether it names the region.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "region": {
+                "type": "choice",
+                "instructions": "Whether the message names the sales region whose customers the user serves",
+                "criteria": {
+                  "stated": "The message names the sales region whose customers the user serves, for example Europe or North America",
+                  "not stated": "The message does not name a sales region"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(result) > 0 }",
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "regionStated": "{ jev['region']['choice'] if 'region' in jev and 'choice' in jev['region'] else 'not stated' }",
+          "region": ""
+        },
+
+        // Ask the user only when the message does not name the region.
+        "if.2": {
+          "condition": "{ regionStated == 'not stated' }",
           "then": {
-            "var": { "region": "{ result[0]['text'] }" }
-          },
-          "else": {
-            // Ask only the first time.
             "ask": {
               "message": "Which region's customers do you serve?",
-              "inputs": [ { "name": "region", "type": "chooseOne", "options": ["North America", "Europe", "Asia Pacific", "Latin America"] } ]
+              "inputs": [ { "name": "region", "type": "str", "description": "For example North America, Europe, Asia Pacific or Latin America." } ]
             },
-            "var": { "region": "{ result['region'] }" },
-            // Remember the answer for next time.
-            "memory": { "store": { "sales_region": "{ region }" } }
+            "var": { "region": "{ result['region'] }" }
           }
         },
 
+        // The LLM reads the region from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the backorder tracker at Northwind Corp. Use made-up data. List customer orders waiting on out-of-stock items, the quantities short and the expected fill dates. Keep the answer short.",
-          "user": "{ f'{sys.query} The user serves region: {region}.' }"
+          "user": "{ f'{sys.query} The user serves region: {region}.' if region else sys.query }"
         },
         "llm": { "profile": "gemini_flash", "streamOutput": true }
       }

@@ -3,29 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Look up what this user told the agent before.
-        "memory": { "query": "audit area", "label": "audit_area", "limit": 1 },
+        // Jev reads the message and says whether it names the audit area.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "area": {
+                "type": "choice",
+                "instructions": "Whether the message names the audit area the user is working on",
+                "criteria": {
+                  "stated": "The message names the audit area the user is working on, for example procurement or payroll",
+                  "not stated": "The message does not name an audit area"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(result) > 0 }",
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "areaStated": "{ jev['area']['choice'] if 'area' in jev and 'choice' in jev['area'] else 'not stated' }",
+          "area": ""
+        },
+
+        // Ask the user only when the message does not name the audit area.
+        "if.2": {
+          "condition": "{ areaStated == 'not stated' }",
           "then": {
-            "var": { "area": "{ result[0]['text'] }" }
-          },
-          "else": {
-            // Ask only the first time.
             "ask": {
               "message": "Which audit area are you working on?",
-              "inputs": [ { "name": "area", "type": "chooseOne", "options": ["Revenue", "Payroll", "Procurement", "IT controls"] } ]
+              "inputs": [ { "name": "area", "type": "str", "description": "For example Revenue, Payroll, Procurement or IT controls." } ]
             },
-            "var": { "area": "{ result['area'] }" },
-            // Remember the answer for next time.
-            "memory": { "store": { "audit_area": "{ area }" } }
+            "var": { "area": "{ result['area'] }" }
           }
         },
 
+        // The LLM reads the audit area from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the audit evidence collector at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} The user prefers area: {area}.' }"
+          "user": "{ f'{sys.query} The user prefers area: {area}.' if area else sys.query }"
         },
         "llm": { "profile": "gemini_flash", "streamOutput": true }
       }

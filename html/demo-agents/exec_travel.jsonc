@@ -3,29 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Look up what this user told the agent before.
-        "memory": { "query": "travel class", "label": "exec_travel_class", "limit": 1 },
+        // Jev reads the message and says whether it gives the seat preference.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "seat": {
+                "type": "choice",
+                "instructions": "Whether the message says which seat the executive prefers",
+                "criteria": {
+                  "stated": "The message says which seat the executive prefers, for example aisle or window, or says there is no preference",
+                  "not stated": "The message does not say which seat the executive prefers"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(result) > 0 }",
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "seatStated": "{ jev['seat']['choice'] if 'seat' in jev and 'choice' in jev['seat'] else 'not stated' }",
+          "seat": ""
+        },
+
+        // Ask the user only when the message does not give the seat preference.
+        "if.2": {
+          "condition": "{ seatStated == 'not stated' }",
           "then": {
-            "var": { "seat": "{ result[0]['text'] }" }
-          },
-          "else": {
-            // Ask only the first time.
             "ask": {
               "message": "Which seat does the executive prefer?",
-              "inputs": [ { "name": "seat", "type": "chooseOne", "options": ["Aisle", "Window", "No preference"] } ]
+              "inputs": [ { "name": "seat", "type": "str", "description": "For example Aisle, Window or No preference." } ]
             },
-            "var": { "seat": "{ result['seat'] }" },
-            // Remember the answer for next time.
-            "memory": { "store": { "exec_travel_class": "{ seat }" } }
+            "var": { "seat": "{ result['seat'] }" }
           }
         },
 
+        // The LLM reads the seat from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the executive travel planner at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} The executive prefers seat: {seat}.' }"
+          "user": "{ f'{sys.query} The executive prefers seat: {seat}.' if seat else sys.query }"
         },
         "llm": { "profile": "gemini_flash", "streamOutput": true }
       }

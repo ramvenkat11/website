@@ -3,24 +3,75 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "What kind of customer is this?",
-          "inputs": [ { "name": "customerType", "type": "chooseOne", "options": ["Individual", "Small business", "Corporation", "Government body"] } ]
+        // Jev reads the message and says whether it gives the kind of customer, and whether that is a corporation or government body.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "customerType": {
+                "type": "choice",
+                "instructions": "Whether the message says the kind of customer being onboarded",
+                "criteria": {
+                  "stated": "The message says the kind of customer being onboarded, for example a small business or a charity",
+                  "not stated": "The message does not say the kind of customer"
+                }
+              },
+              "largeEntity": {
+                "type": "choice",
+                "instructions": "Whether the customer is a corporation or a government body",
+                "criteria": {
+                  "Yes": "The customer is a corporation or a government body",
+                  "No": "The customer is something other than a corporation or a government body",
+                  "cannot tell": "The message does not say what kind of customer it is"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "customerTypeStated": "{ jev['customerType']['choice'] if 'customerType' in jev and 'choice' in jev['customerType'] else 'not stated' }",
+          "largeEntity": "{ jev['largeEntity']['choice'] if 'largeEntity' in jev and 'choice' in jev['largeEntity'] else 'cannot tell' }",
+          "customerType": ""
         },
 
-        "var": { "customerType": "{ result['customerType'] }" },
+        // Ask the user only when the message does not say the kind of customer.
+        "if.2": {
+          "condition": "{ customerTypeStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What kind of customer is this?",
+              "inputs": [ { "name": "customerType", "type": "str", "description": "For example Individual, Small business, Corporation or Government body." } ]
+            },
+            "var": { "customerType": "{ result['customerType'] }" }
+          }
+        },
 
         // Branch on a condition.
-        "if": {
-          "condition": "{ customerType in ['Corporation', 'Government body'] }",
+        "if.3": {
+          "condition": "{ largeEntity == 'Yes' }",
           "then": { "var": { "depth": "enhanced due diligence, including beneficial owners" } },
-          "else": { "var": { "depth": "standard identity and address checks" } }
+          "else": {
+            "if": {
+              "condition": "{ largeEntity == 'No' }",
+              "then": { "var": { "depth": "standard identity and address checks" } },
+              "else": { "var": { "depth": "enhanced due diligence, including beneficial owners, for a corporation or government body, otherwise standard identity and address checks" } }
+            }
+          }
         },
 
+        // The LLM reads the customer type from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the customer due diligence helper at Northwind Corp. Use made-up data. List the documents to collect and the checks to run before onboarding a customer. Keep the answer short.",
-          "user": "{ f'{sys.query} Customer type: {customerType}. Apply {depth}.' }"
+          "user": "{ sys.query + (f' Customer type: {customerType}.' if customerType else '') + f' Apply {depth}.' }"
         },
         "llm": { "profile": "gemini_flash", "streamOutput": true }
       }

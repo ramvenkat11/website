@@ -3,29 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Look up what this user told the agent before.
-        "memory": { "query": "flag env", "label": "flag_env", "limit": 1 },
+        // Jev reads the message and says whether it names the environment.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "environment": {
+                "type": "choice",
+                "instructions": "Whether the message names the environment the user works in",
+                "criteria": {
+                  "stated": "The message names the environment the user works in, for example Staging or Production",
+                  "not stated": "The message does not name an environment"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(result) > 0 }",
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "environmentStated": "{ jev['environment']['choice'] if 'environment' in jev and 'choice' in jev['environment'] else 'not stated' }",
+          "environment": ""
+        },
+
+        // Ask the user only when the message does not name the environment.
+        "if.2": {
+          "condition": "{ environmentStated == 'not stated' }",
           "then": {
-            "var": { "environment": "{ result[0]['text'] }" }
-          },
-          "else": {
-            // Ask only the first time.
             "ask": {
               "message": "Which environment do you use?",
-              "inputs": [ { "name": "environment", "type": "chooseOne", "options": ["Development", "Staging", "Production"] } ]
+              "inputs": [ { "name": "environment", "type": "str", "description": "For example Development, Staging or Production." } ]
             },
-            "var": { "environment": "{ result['environment'] }" },
-            // Remember the answer for next time.
-            "memory": { "store": { "flag_env": "{ environment }" } }
+            "var": { "environment": "{ result['environment'] }" }
           }
         },
 
+        // The LLM reads the environment from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the feature flag manager at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} The user prefers environment: {environment}.' }"
+          "user": "{ f'{sys.query} The user prefers environment: {environment}.' if environment else sys.query }"
         },
         "llm": { "profile": "gemini_flash", "streamOutput": true }
       }

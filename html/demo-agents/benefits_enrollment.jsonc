@@ -6,22 +6,59 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Pause for the user's answer.
-        "ask": {
-          "message": "Which benefit?",
-          "inputs": [
-            { "name": "benefit", "type": "chooseOne", "options": ["All", "Health", "Dental", "Vision", "Retirement"], "default": "All" }
-          ]
+        // Jev reads the message and says whether it asks about one benefit, every benefit, or names none.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "benefit": {
+                "type": "choice",
+                "instructions": "Which benefit the user asks about",
+                "criteria": {
+                  "all": "The user asks about every benefit",
+                  "one benefit": "The message names one benefit, for example dental, health or retirement",
+                  "not stated": "The message does not say which benefit"
+                }
+              }
+            }
+          }
+        },
+        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.3": {
+          "benefitScope": "{ jev['benefit']['choice'] if 'benefit' in jev and 'choice' in jev['benefit'] else 'not stated' }",
+          "benefit": ""
         },
 
-        // Keep the result in a variable.
-        "var.2": { "benefit": "{ result['benefit'] }" },
+        // Ask the user only when the message does not say which benefit.
+        "if.2": {
+          "condition": "{ benefitScope == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Which benefit?",
+              "inputs": [
+                { "name": "benefit", "type": "str", "description": "For example All, Health, Dental, Vision or Retirement." }
+              ]
+            },
+            "var": {
+              "benefit": "{ result['benefit'] }",
+              "benefitScope": "{ 'all' if result['benefit'].strip().lower() == 'all' else 'one benefit' }"
+            }
+          }
+        },
 
-        // Branch on a condition.
-        "if": {
-          "condition": "{ benefit == 'All' }",
-          "then": { "var": { "focus": "every benefit" } },
-          "else": { "var": { "focus": "{ benefit.lower() }" } }
+        // Branch on a condition. The LLM reads a benefit the message names; an asked one is added here.
+        "if.3": {
+          "condition": "{ benefitScope == 'all' }",
+          "then": { "var": { "focus": " Focus on every benefit." } },
+          "else": { "var": { "focus": "{ f' Focus on {benefit.lower()}.' if benefit else '' }" } }
         },
 
         // Tell the user what is happening while they wait.
@@ -29,7 +66,7 @@
 
         "prompt": {
           "system": "{ f'You are the benefits enrollment guide at {company}. Use made-up data. Keep the answer short.' }",
-          "user": "{ f'{sys.query} Focus on {focus}.' }"
+          "user": "{ sys.query + focus }"
         },
         "llm": { "profile": "gemini_flash", "streamOutput": true }
       }

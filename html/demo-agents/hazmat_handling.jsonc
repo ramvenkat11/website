@@ -3,23 +3,68 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "What material?",
-          "inputs": [ { "name": "material", "type": "chooseOne", "options": ["Batteries", "Paint", "Cleaning products", "Unknown"] } ]
+        // Jev reads the message and says whether it names the material, and whether the user does not know what it is.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "material": {
+                "type": "choice",
+                "instructions": "Whether the message names the hazardous material in question",
+                "criteria": {
+                  "stated": "The message names the hazardous material, for example paint or solvent",
+                  "not stated": "The message does not name a material"
+                }
+              },
+              "unknownMaterial": {
+                "type": "choice",
+                "instructions": "Whether the user says they do not know what the material is",
+                "criteria": {
+                  "Yes": "The user says they do not know what the material is",
+                  "No": "The user knows what the material is",
+                  "cannot tell": "The message does not describe the material"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "materialStated": "{ jev['material']['choice'] if 'material' in jev and 'choice' in jev['material'] else 'not stated' }",
+          "unknownMaterial": "{ jev['unknownMaterial']['choice'] if 'unknownMaterial' in jev and 'choice' in jev['unknownMaterial'] else 'cannot tell' }",
+          "material": ""
         },
 
-        "var": { "material": "{ result['material'] }" },
+        // Ask the user only when the message does not name the material.
+        "if.2": {
+          "condition": "{ materialStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What material?",
+              "inputs": [ { "name": "material", "type": "str", "description": "For example Batteries, Paint, Cleaning products or Unknown." } ]
+            },
+            "var": { "material": "{ result['material'] }" }
+          }
+        },
 
         // Stop with an error the user sees.
-        "if": {
-          "condition": "{ material == 'Unknown' }",
+        "if.3": {
+          "condition": "{ unknownMaterial == 'Yes' }",
           "then": { "fail": "Do not touch it. Call the safety officer." }
         },
 
+        // The LLM reads the material from the message; the asked one is added only when there was an ask.
         "prompt": {
-          "system": "You are the hazardous materials handling guide at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (material: {material})' }"
+          "system": "You are the hazardous materials handling guide at Northwind Corp. Use made-up data. If the material is unknown, tell the user not to touch it and to call the safety officer. Keep the answer short.",
+          "user": "{ f'{sys.query} (material: {material})' if material else sys.query }"
         },
         "llm": { "profile": "gpt5_mini", "streamOutput": true }
       }

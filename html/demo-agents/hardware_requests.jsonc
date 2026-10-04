@@ -6,22 +6,59 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Pause for the user's answer.
-        "ask": {
-          "message": "What do you need?",
-          "inputs": [
-            { "name": "item", "type": "chooseOne", "options": ["Anything", "Laptop", "Monitor", "Keyboard", "Headset"], "default": "Anything" }
-          ]
+        // Jev reads the message and says whether it names the equipment, says any will do, or names none.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "item": {
+                "type": "choice",
+                "instructions": "Which equipment the user needs",
+                "criteria": {
+                  "anything": "The user says any equipment will do",
+                  "one item": "The message names the equipment the user needs, for example a laptop or a docking station",
+                  "not stated": "The message does not say what equipment the user needs"
+                }
+              }
+            }
+          }
+        },
+        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.3": {
+          "itemScope": "{ jev['item']['choice'] if 'item' in jev and 'choice' in jev['item'] else 'not stated' }",
+          "item": ""
         },
 
-        // Keep the result in a variable.
-        "var.2": { "item": "{ result['item'] }" },
+        // Ask the user only when the message does not say what equipment.
+        "if.2": {
+          "condition": "{ itemScope == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What do you need?",
+              "inputs": [
+                { "name": "item", "type": "str", "description": "For example Anything, Laptop, Monitor, Keyboard or Headset." }
+              ]
+            },
+            "var": {
+              "item": "{ result['item'] }",
+              "itemScope": "{ 'anything' if result['item'].strip().lower() == 'anything' else 'one item' }"
+            }
+          }
+        },
 
-        // Branch on a condition.
-        "if": {
-          "condition": "{ item == 'Anything' }",
-          "then": { "var": { "focus": "any equipment" } },
-          "else": { "var": { "focus": "{ item.lower() }" } }
+        // Branch on a condition. The LLM reads an item the message names; an asked one is added here.
+        "if.3": {
+          "condition": "{ itemScope == 'anything' }",
+          "then": { "var": { "focus": " Focus on any equipment." } },
+          "else": { "var": { "focus": "{ f' Focus on {item.lower()}.' if item else '' }" } }
         },
 
         // Tell the user what is happening while they wait.
@@ -29,7 +66,7 @@
 
         "prompt": {
           "system": "{ f'You are the laptop and monitor request handler at {company}. Use made-up data. Keep the answer short.' }",
-          "user": "{ f'{sys.query} Focus on {focus}.' }"
+          "user": "{ sys.query + focus }"
         },
         "llm": { "profile": "gpt5_mini", "streamOutput": true }
       }

@@ -3,23 +3,68 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "Which area?",
-          "inputs": [ { "name": "area", "type": "chooseOne", "options": ["Server room", "Research lab", "Executive floor", "Data center, unescorted"] } ]
+        // Jev reads the message and says whether it names the area, and whether the user asks for unescorted data center access.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "area": {
+                "type": "choice",
+                "instructions": "Whether the message names the area the user wants access to",
+                "criteria": {
+                  "stated": "The message names the area the user wants access to, for example the server room or the data center",
+                  "not stated": "The message does not name an area"
+                }
+              },
+              "unescortedDataCenter": {
+                "type": "choice",
+                "instructions": "Whether the user asks to enter the data center without an escort",
+                "criteria": {
+                  "Yes": "The user asks to enter the data center without an escort",
+                  "No": "The user asks for another area, or for escorted access to the data center",
+                  "cannot tell": "The message does not say enough to tell"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "areaStated": "{ jev['area']['choice'] if 'area' in jev and 'choice' in jev['area'] else 'not stated' }",
+          "unescortedDataCenter": "{ jev['unescortedDataCenter']['choice'] if 'unescortedDataCenter' in jev and 'choice' in jev['unescortedDataCenter'] else 'cannot tell' }",
+          "area": ""
         },
 
-        "var": { "area": "{ result['area'] }" },
+        // Ask the user only when the message does not name the area.
+        "if.2": {
+          "condition": "{ areaStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Which area?",
+              "inputs": [ { "name": "area", "type": "str", "description": "For example Server room, Research lab, Executive floor or Data center." } ]
+            },
+            "var": { "area": "{ result['area'] }" }
+          }
+        },
 
         // Stop with an error the user sees.
-        "if": {
-          "condition": "{ area == 'Data center, unescorted' }",
+        "if.3": {
+          "condition": "{ unescortedDataCenter == 'Yes' }",
           "then": { "fail": "Unescorted data center access is only granted to the infrastructure team." }
         },
 
+        // The LLM reads the area from the message; the asked one is added only when there was an ask.
         "prompt": {
-          "system": "You are the restricted area access requester at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (area: {area})' }"
+          "system": "You are the restricted area access requester at Northwind Corp. Use made-up data. Unescorted data center access is only granted to the infrastructure team. Keep the answer short.",
+          "user": "{ f'{sys.query} (area: {area})' if area else sys.query }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

@@ -3,18 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Pause for the user's answer.
-        "ask": {
-          "message": "Which instrument do you need?",
-          "inputs": [ { "name": "instrument", "type": "chooseOne", "options": ["Mass spectrometer", "Electron microscope", "3D printer", "Environmental chamber"] } ]
+        // Jev reads the message and says whether it names the instrument.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "instrument": {
+                "type": "choice",
+                "instructions": "Whether the message names the instrument the user needs",
+                "criteria": {
+                  "stated": "The message names the instrument the user needs, for example an electron microscope or a 3D printer",
+                  "not stated": "The message does not name an instrument"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "instrumentStated": "{ jev['instrument']['choice'] if 'instrument' in jev and 'choice' in jev['instrument'] else 'not stated' }",
+          "instrument": ""
         },
 
-        // Keep the result in a variable.
-        "var": { "instrument": "{ result['instrument'] }" },
+        // Ask the user only when the message does not name the instrument.
+        "if.2": {
+          "condition": "{ instrumentStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Which instrument do you need?",
+              "inputs": [ { "name": "instrument", "type": "str", "description": "For example Mass spectrometer, Electron microscope or 3D printer." } ]
+            },
+            "var": { "instrument": "{ result['instrument'] }" }
+          }
+        },
 
+        // The LLM reads the instrument from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the lab equipment booker at Northwind Corp. Use made-up data for instrument availability, time slots and training requirements. Keep the answer short.",
-          "user": "{ f'{sys.query} (instrument: {instrument})' }"
+          "user": "{ f'{sys.query} (instrument: {instrument})' if instrument else sys.query }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

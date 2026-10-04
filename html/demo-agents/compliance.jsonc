@@ -6,22 +6,59 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Pause for the user's answer.
-        "ask": {
-          "message": "Which rule?",
-          "inputs": [
-            { "name": "rule", "type": "chooseOne", "options": ["Any", "Anti-bribery", "Data protection", "Competition"], "default": "Any" }
-          ]
+        // Jev reads the message and says whether it names one rule, says any rule, or names none.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "rule": {
+                "type": "choice",
+                "instructions": "Which area of regulation the user asks about",
+                "criteria": {
+                  "any": "The user says any rule",
+                  "one rule": "The message names one area of regulation, for example data protection, anti-bribery or competition",
+                  "not stated": "The message does not say which rule"
+                }
+              }
+            }
+          }
+        },
+        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.3": {
+          "ruleScope": "{ jev['rule']['choice'] if 'rule' in jev and 'choice' in jev['rule'] else 'not stated' }",
+          "rule": ""
         },
 
-        // Keep the result in a variable.
-        "var.2": { "rule": "{ result['rule'] }" },
+        // Ask the user only when the message does not say which rule.
+        "if.2": {
+          "condition": "{ ruleScope == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Which rule?",
+              "inputs": [
+                { "name": "rule", "type": "str", "description": "For example Any, Anti-bribery, Data protection or Competition." }
+              ]
+            },
+            "var": {
+              "rule": "{ result['rule'] }",
+              "ruleScope": "{ 'any' if result['rule'].strip().lower() == 'any' else 'one rule' }"
+            }
+          }
+        },
 
-        // Branch on a condition.
-        "if": {
-          "condition": "{ rule == 'Any' }",
-          "then": { "var": { "focus": "any rule" } },
-          "else": { "var": { "focus": "{ rule.lower() }" } }
+        // Branch on a condition. The LLM reads a rule the message names; an asked one is added here.
+        "if.3": {
+          "condition": "{ ruleScope == 'any' }",
+          "then": { "var": { "focus": " Focus on any rule." } },
+          "else": { "var": { "focus": "{ f' Focus on {rule.lower()}.' if rule else '' }" } }
         },
 
         // Tell the user what is happening while they wait.
@@ -29,7 +66,7 @@
 
         "prompt": {
           "system": "{ f'You are the regulatory compliance answerer at {company}. Use made-up data. Keep the answer short.' }",
-          "user": "{ f'{sys.query} Focus on {focus}.' }"
+          "user": "{ sys.query + focus }"
         },
         "llm": { "profile": "gpt5_mini", "streamOutput": true }
       }

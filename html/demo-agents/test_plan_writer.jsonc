@@ -3,17 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "What is the test plan for?",
-          "inputs": [ { "name": "scope", "type": "chooseOne", "options": ["New feature", "Bug fix", "Integration", "Full release"] } ]
+        // Jev reads the message and says whether it says what the test plan is for.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "scope": {
+                "type": "choice",
+                "instructions": "Whether the message says what the test plan is for",
+                "criteria": {
+                  "stated": "The message says what the test plan is for, for example a new feature or a bug fix",
+                  "not stated": "The message does not say what the test plan is for"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "scopeStated": "{ jev['scope']['choice'] if 'scope' in jev and 'choice' in jev['scope'] else 'not stated' }",
+          "scope": ""
         },
 
-        "var": { "scope": "{ result['scope'] }" },
+        // Ask the user only when the message does not say what the test plan is for.
+        "if.2": {
+          "condition": "{ scopeStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What is the test plan for?",
+              "inputs": [ { "name": "scope", "type": "str", "description": "For example New feature, Bug fix, Integration or Full release." } ]
+            },
+            "var": { "scope": "{ result['scope'] }" }
+          }
+        },
 
+        // The LLM reads the scope from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the test plan writer at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (scope: {scope})' }"
+          "user": "{ f'{sys.query} (scope: {scope})' if scope else sys.query }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

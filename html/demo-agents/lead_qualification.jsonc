@@ -6,19 +6,52 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Pause for the user's answer.
-        "ask": {
-          "message": "How big is the lead's company?",
-          "inputs": [
-            { "name": "size", "type": "chooseOne", "options": ["Any", "Small", "Mid-size", "Enterprise"], "default": "Any" }
-          ]
+        // Jev reads the message and says how big the lead's company is.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "size": {
+                "type": "choice",
+                "instructions": "The size of the lead's company",
+                "criteria": {
+                  "Any": "The user says the size of the company does not matter",
+                  "Small": "The message describes a small company, by a size word, headcount or revenue",
+                  "Mid-size": "The message describes a mid-size company, by a size word, headcount or revenue",
+                  "Enterprise": "The message describes an enterprise or very large company, by a size word, headcount or revenue",
+                  "not stated": "The message does not say how big the lead's company is"
+                }
+              }
+            }
+          }
+        },
+        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.3": { "size": "{ jev['size']['choice'] if 'size' in jev and 'choice' in jev['size'] else 'not stated' }" },
+
+        // Ask the user only when the message does not say how big the company is.
+        "if.2": {
+          "condition": "{ size == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "How big is the lead's company?",
+              "inputs": [
+                { "name": "size", "type": "chooseOne", "options": ["Any", "Small", "Mid-size", "Enterprise"], "default": "Any" }
+              ]
+            },
+            "var": { "size": "{ result['size'] }" }
+          }
         },
 
-        // Keep the result in a variable.
-        "var.2": { "size": "{ result['size'] }" },
-
         // Branch on a condition.
-        "if": {
+        "if.3": {
           "condition": "{ size == 'Any' }",
           "then": { "var": { "focus": "any company size" } },
           "else": { "var": { "focus": "{ size.lower() }" } }

@@ -3,23 +3,68 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "What kind of incident is it?",
-          "inputs": [ { "name": "incident", "type": "chooseOne", "options": ["Service outage", "Data breach", "Product safety", "Pending lawsuit"] } ]
+        // Jev reads the message and says whether it names the incident, and whether that is a pending lawsuit.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "incident": {
+                "type": "choice",
+                "instructions": "Whether the message names the kind of incident the statement is about",
+                "criteria": {
+                  "stated": "The message names the kind of incident the statement is about, for example a data breach or a service outage",
+                  "not stated": "The message does not name the kind of incident"
+                }
+              },
+              "lawsuit": {
+                "type": "choice",
+                "instructions": "Whether the incident is about a pending lawsuit",
+                "criteria": {
+                  "Yes": "The incident is about a pending lawsuit",
+                  "No": "The incident is about something other than a pending lawsuit",
+                  "cannot tell": "The message does not say enough to tell"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "incidentStated": "{ jev['incident']['choice'] if 'incident' in jev and 'choice' in jev['incident'] else 'not stated' }",
+          "lawsuit": "{ jev['lawsuit']['choice'] if 'lawsuit' in jev and 'choice' in jev['lawsuit'] else 'cannot tell' }",
+          "incident": ""
         },
 
-        "var": { "incident": "{ result['incident'] }" },
+        // Ask the user only when the message does not name the incident.
+        "if.2": {
+          "condition": "{ incidentStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What kind of incident is it?",
+              "inputs": [ { "name": "incident", "type": "str", "description": "For example Service outage, Data breach, Product safety or Pending lawsuit." } ]
+            },
+            "var": { "incident": "{ result['incident'] }" }
+          }
+        },
 
         // Finish early with a message; no LLM call needed.
-        "if": {
-          "condition": "{ incident == 'Pending lawsuit' }",
+        "if.3": {
+          "condition": "{ lawsuit == 'Yes' }",
           "then": { "end": "Statements about pending lawsuits must come from the legal team. Please contact legal before saying anything publicly." }
         },
 
+        // The LLM reads the incident from the message; the asked one is added only when there was an ask.
         "prompt": {
-          "system": "You are the crisis statement drafter at Northwind Corp. Use made-up details. Write a calm holding statement: what happened, what we are doing, and when we will update. Keep the answer short.",
-          "user": "{ f'{sys.query} (incident: {incident})' }"
+          "system": "You are the crisis statement drafter at Northwind Corp. Use made-up details. Write a calm holding statement: what happened, what we are doing, and when we will update. If the incident is about a pending lawsuit, do not draft a statement; say statements about pending lawsuits must come from the legal team. Keep the answer short.",
+          "user": "{ f'{sys.query} (incident: {incident})' if incident else sys.query }"
         },
         "llm": { "profile": "gpt5_mini", "streamOutput": true }
       }

@@ -3,29 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Look up what this user told the agent before.
-        "memory": { "query": "research lab", "label": "research_lab", "limit": 1 },
+        // Jev reads the message and says whether it says which lab the inventor works in.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "lab": {
+                "type": "choice",
+                "instructions": "Whether the message says which research lab the inventor works in",
+                "criteria": {
+                  "stated": "The message says which research lab the user works in, for example Electronics or Biotech",
+                  "not stated": "The message does not say which lab the user is in"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(result) > 0 }",
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "labStated": "{ jev['lab']['choice'] if 'lab' in jev and 'choice' in jev['lab'] else 'not stated' }",
+          "lab": ""
+        },
+
+        // Ask the user only when the message does not say which lab.
+        "if.2": {
+          "condition": "{ labStated == 'not stated' }",
           "then": {
-            "var": { "lab": "{ result[0]['text'] }" }
-          },
-          "else": {
-            // Ask only the first time.
             "ask": {
               "message": "Which lab are you in?",
-              "inputs": [ { "name": "lab", "type": "chooseOne", "options": ["Materials", "Electronics", "Software", "Biotech"] } ]
+              "inputs": [ { "name": "lab", "type": "str", "description": "For example Materials, Electronics, Software or Biotech." } ]
             },
-            "var": { "lab": "{ result['lab'] }" },
-            // Remember the answer for next time.
-            "memory": { "store": { "research_lab": "{ lab }" } }
+            "var": { "lab": "{ result['lab'] }" }
           }
         },
 
+        // The LLM reads the lab from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the invention disclosure helper at Northwind Corp. Use made-up data. Help the inventor describe the problem, the solution, what is new and who contributed. Keep the answer short.",
-          "user": "{ f'{sys.query} The inventor works in the {lab} lab.' }"
+          "user": "{ f'{sys.query} The inventor works in the {lab} lab.' if lab else sys.query }"
         },
         "llm": { "profile": "gpt5_mini", "streamOutput": true }
       }

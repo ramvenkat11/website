@@ -9,29 +9,59 @@
           "year": 2026
         },
 
-        // Pause for the user's answer.
-        "ask": {
-          "message": "Which leave balance?",
-          "inputs": [
-            {
-              "name": "leaveType",
-              "type": "chooseOne",
-              "options": ["All", "Vacation", "Sick", "Personal"],
-              "default": "All"
+        // Jev reads the message and says whether it asks about one kind of leave, every kind, or names none.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "leaveType": {
+                "type": "choice",
+                "instructions": "Which leave balance the user asks about",
+                "criteria": {
+                  "all": "The user asks about every kind of leave",
+                  "one kind": "The message names one kind of leave, for example vacation, sick or parental",
+                  "not stated": "The message does not say which kind of leave"
+                }
+              }
             }
-          ]
+          }
         },
+        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // Keep the result in a variable.
-        "var.2": {
-          "leaveType": "{ result['leaveType'] }"
-        },
-
-        // Branch on a condition.
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ leaveType == 'All' }",
-          "then": { "var": { "focus": "all leave types" } },
-          "else": { "var": { "focus": "{ leaveType + ' leave' }" } }
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.3": {
+          "leaveScope": "{ jev['leaveType']['choice'] if 'leaveType' in jev and 'choice' in jev['leaveType'] else 'not stated' }",
+          "leaveType": ""
+        },
+
+        // Ask the user only when the message does not say which kind.
+        "if.2": {
+          "condition": "{ leaveScope == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Which leave balance?",
+              "inputs": [
+                { "name": "leaveType", "type": "str", "description": "For example All, Vacation, Sick or Personal." }
+              ]
+            },
+            "var": {
+              "leaveType": "{ result['leaveType'] }",
+              "leaveScope": "{ 'all' if result['leaveType'].strip().lower() == 'all' else 'one kind' }"
+            }
+          }
+        },
+
+        // Branch on a condition. The LLM reads a kind the message names; an asked one is added here.
+        "if.3": {
+          "condition": "{ leaveScope == 'all' }",
+          "then": { "var": { "focus": " Show all leave types." } },
+          "else": { "var": { "focus": "{ f' Show {leaveType} leave.' if leaveType else '' }" } }
         },
 
         // Tell the user what is happening while they wait.
@@ -39,7 +69,7 @@
 
         "prompt": {
           "system": "{ f'You are the leave balance checker at {company}. Use made-up data for {year}. Keep the answer short.' }",
-          "user": "{ f'{sys.query} Show {focus}.' }"
+          "user": "{ sys.query + focus }"
         },
 
         "llm": {

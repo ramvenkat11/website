@@ -3,23 +3,68 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "What kind of item are you packing?",
-          "inputs": [ { "name": "item", "type": "chooseOne", "options": ["Fragile", "Heavy", "Temperature sensitive", "Hazardous"] } ]
+        // Jev reads the message and says whether it says what kind of item is being packed, and whether that is hazardous.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "item": {
+                "type": "choice",
+                "instructions": "Whether the message says what kind of item is being packed",
+                "criteria": {
+                  "stated": "The message says what kind of item is being packed, for example fragile glassware or frozen food",
+                  "not stated": "The message does not say what kind of item is being packed"
+                }
+              },
+              "isHazardous": {
+                "type": "choice",
+                "instructions": "Whether the item being packed is hazardous",
+                "criteria": {
+                  "Yes": "The item is hazardous",
+                  "No": "The item is not hazardous",
+                  "cannot tell": "The message does not say enough to tell"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "itemStated": "{ jev['item']['choice'] if 'item' in jev and 'choice' in jev['item'] else 'not stated' }",
+          "isHazardous": "{ jev['isHazardous']['choice'] if 'isHazardous' in jev and 'choice' in jev['isHazardous'] else 'cannot tell' }",
+          "item": ""
         },
 
-        "var": { "item": "{ result['item'] }" },
+        // Ask the user only when the message does not say the kind of item.
+        "if.2": {
+          "condition": "{ itemStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What kind of item are you packing?",
+              "inputs": [ { "name": "item", "type": "str", "description": "For example Fragile, Heavy, Temperature sensitive or Hazardous." } ]
+            },
+            "var": { "item": "{ result['item'] }" }
+          }
+        },
 
         // Finish early with a message; no LLM call needed.
-        "if": {
-          "condition": "{ item == 'Hazardous' }",
+        "if.3": {
+          "condition": "{ isHazardous == 'Yes' }",
           "then": { "end": "Hazardous items follow separate rules. Ask the hazardous materials agent instead." }
         },
 
+        // The LLM reads the item from the message; the asked one is added only when there was an ask.
         "prompt": {
-          "system": "You are the packaging spec advisor at Northwind Corp. Use made-up data. Give the box grade, cushioning, pallet pattern and labels to use. Keep the answer short.",
-          "user": "{ f'{sys.query} (item: {item})' }"
+          "system": "You are the packaging spec advisor at Northwind Corp. Use made-up data. Hazardous items follow separate rules; if the item is hazardous, tell the user to ask the hazardous materials agent instead. Give the box grade, cushioning, pallet pattern and labels to use. Keep the answer short.",
+          "user": "{ f'{sys.query} (item: {item})' if item else sys.query }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

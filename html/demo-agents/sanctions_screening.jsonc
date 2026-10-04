@@ -3,26 +3,61 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user to type an answer.
-        "ask": {
-          "message": "Who should be screened?",
-          "inputs": [ { "name": "party", "type": "str", "label": "Name", "description": "A person or company name" } ]
+        // Jev reads the message and says whether it gives the name to screen.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "party": {
+                "type": "choice",
+                "instructions": "Whether the message gives the name of the person or company to screen",
+                "criteria": {
+                  "stated": "The message gives the name of the person or company to screen",
+                  "not stated": "The message does not give a name to screen"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "partyStated": "{ jev['party']['choice'] if 'party' in jev and 'choice' in jev['party'] else 'not stated' }",
+          "party": ""
         },
 
-        "var": { "party": "{ result['party'].strip() }" },
+        // Ask the user only when the message does not give the name.
+        "if.2": {
+          "condition": "{ partyStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Who should be screened?",
+              "inputs": [ { "name": "party", "type": "str", "label": "Name", "description": "A person or company name" } ]
+            },
+            "var": { "party": "{ result['party'].strip() }" },
 
-        // Stop with an error the user sees.
-        "if": {
-          "condition": "{ len(party) < 2 }",
-          "then": { "fail": "Enter a person or company name to screen." }
+            // Stop with an error the user sees.
+            "if": {
+              "condition": "{ len(party) < 2 }",
+              "then": { "fail": "Enter a person or company name to screen." }
+            }
+          }
         },
 
         // Write to the agent server's log.
-        "log": { "level": "info", "message": "{ 'sanctions screening requested for a name of length ' + str(len(party)) }" },
+        "log": { "level": "info", "message": "{ 'sanctions screening requested for a name of length ' + str(len(party)) if party else 'sanctions screening requested for a name given in the message' }" },
 
+        // The LLM reads the name from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the sanctions screening checker at Northwind Corp. Use made-up data. Say whether the name matches any sanctions or denied-party list, how close the match is, and what to do next. Keep the answer short.",
-          "user": "{ f'{sys.query} Name to screen: {party}.' }"
+          "user": "{ f'{sys.query} Name to screen: {party}.' if party else sys.query }"
         },
         "llm": { "profile": "gpt5_mini", "streamOutput": true }
       }

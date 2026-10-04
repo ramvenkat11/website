@@ -3,17 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user to type an answer.
-        "ask": {
-          "message": "Which survey should I analyze?",
-          "inputs": [ { "name": "survey", "type": "text" } ]
+        // Jev reads the message and says whether it says which survey to analyze.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "survey": {
+                "type": "choice",
+                "instructions": "Whether the message says which survey the user wants analyzed",
+                "criteria": {
+                  "stated": "The message names or gives the survey the user wants analyzed",
+                  "not stated": "The message does not say which survey to analyze"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "surveyStated": "{ jev['survey']['choice'] if 'survey' in jev and 'choice' in jev['survey'] else 'not stated' }",
+          "survey": ""
         },
 
-        "var": { "survey": "{ result['survey'] }" },
+        // Ask the user only when the message does not say which survey.
+        "if.2": {
+          "condition": "{ surveyStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Which survey should I analyze?",
+              "inputs": [ { "name": "survey", "type": "text" } ]
+            },
+            "var": { "survey": "{ result['survey'] }" }
+          }
+        },
 
+        // The LLM reads the survey from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the survey response analyzer at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (survey: {survey})' }"
+          "user": "{ f'{sys.query} (survey: {survey})' if survey else sys.query }"
         },
         "llm": { "profile": "gpt5_mini", "streamOutput": true }
       }

@@ -3,17 +3,50 @@
   "functions": {
     "main": {
       "commands": {
-        // Pause for the user's answer.
-        "ask": {
-          "message": "How will the goods travel?",
-          "inputs": [ { "name": "mode", "type": "chooseOne", "options": ["Ocean", "Air", "Truck", "Rail"], "default": "Ocean" } ]
+        // Jev reads the message and says how the goods will travel.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "mode": {
+                "type": "choice",
+                "instructions": "How the goods will travel",
+                "criteria": {
+                  "Ocean": "The goods travel by sea, for example by ocean freight or by ship",
+                  "Air": "The goods travel by air, for example by air freight or express courier",
+                  "Truck": "The goods travel by road, for example by truck or lorry",
+                  "Rail": "The goods travel by rail",
+                  "not stated": "The message does not say how the goods travel"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": { "mode": "{ jev['mode']['choice'] if 'mode' in jev and 'choice' in jev['mode'] else 'not stated' }" },
+
+        // Ask the user only when the message does not say how the goods travel.
+        "if.2": {
+          "condition": "{ mode == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "How will the goods travel?",
+              "inputs": [ { "name": "mode", "type": "chooseOne", "options": ["Ocean", "Air", "Truck", "Rail"], "default": "Ocean" } ]
+            },
+            "var": { "mode": "{ result['mode'] }" }
+          }
         },
 
-        // Keep the result in a variable.
-        "var": { "mode": "{ result['mode'] }" },
-
         // Branch on a condition.
-        "if": {
+        "if.3": {
           "condition": "{ mode == 'Air' }",
           "then": { "var": { "unit": "per kilogram" } },
           "else": { "var": { "unit": "per container or truckload" } }

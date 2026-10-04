@@ -3,16 +3,50 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "How bad is the bug?",
-          "inputs": [ { "name": "severity", "type": "chooseOne", "options": ["Crash or data loss", "Feature broken", "Cosmetic", "Not sure"] } ]
+        // Jev reads the message and says how bad the bug is.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "severity": {
+                "type": "choice",
+                "instructions": "How bad the bug is",
+                "criteria": {
+                  "Crash or data loss": "The bug crashes the app or loses data, for example the app keeps crashing",
+                  "Feature broken": "A feature does not work",
+                  "Cosmetic": "The bug only affects how something looks, for example a button is the wrong color",
+                  "Not sure": "The user says they do not know how bad the bug is",
+                  "not stated": "The message does not say how bad the bug is"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": { "severity": "{ jev['severity']['choice'] if 'severity' in jev and 'choice' in jev['severity'] else 'not stated' }" },
+
+        // Ask the user only when the message does not say how bad the bug is.
+        "if.2": {
+          "condition": "{ severity == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "How bad is the bug?",
+              "inputs": [ { "name": "severity", "type": "chooseOne", "options": ["Crash or data loss", "Feature broken", "Cosmetic", "Not sure"] } ]
+            },
+            "var": { "severity": "{ result['severity'] }" }
+          }
         },
 
-        "var": { "severity": "{ result['severity'] }" },
-
         // Branch on a condition.
-        "if": {
+        "if.3": {
           "condition": "{ severity == 'Crash or data loss' }",
           "then": { "var": { "priority": "P1 - fix before anything else" } },
           "else": { "var": { "priority": "to be decided by the triage meeting" } }

@@ -3,26 +3,84 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask for a choice and a typed answer.
-        "ask": {
-          "message": "Tell me about the import.",
-          "inputs": [
-            { "name": "origin", "type": "chooseOne", "options": ["China", "Mexico", "Germany", "Vietnam"] },
-            { "name": "goods", "type": "str", "label": "Goods", "description": "For example: steel brackets, cotton shirts" }
-          ]
+        // Jev reads the message and says whether it names the origin country and the goods.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "origin": {
+                "type": "choice",
+                "instructions": "Whether the message names the country the goods are imported from",
+                "criteria": {
+                  "stated": "The message names the country the goods are imported from, for example Vietnam or Mexico",
+                  "not stated": "The message does not name the country the goods come from"
+                }
+              },
+              "goods": {
+                "type": "choice",
+                "instructions": "Whether the message says what goods are being imported",
+                "criteria": {
+                  "stated": "The message says what goods are being imported, for example steel brackets or cotton shirts",
+                  "not stated": "The message does not say what goods are being imported"
+                }
+              }
+            }
+          }
         },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        "var": { "origin": "{ result['origin'] }", "goods": "{ result['goods'] }" },
-
-        // Stop with an error the user sees.
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ goods.strip() == '' }",
-          "then": { "fail": "Please describe the goods being imported." }
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "originStated": "{ jev['origin']['choice'] if 'origin' in jev and 'choice' in jev['origin'] else 'not stated' }",
+          "goodsStated": "{ jev['goods']['choice'] if 'goods' in jev and 'choice' in jev['goods'] else 'not stated' }",
+          "origin": "",
+          "goods": ""
         },
 
+        // Ask the user only when the message does not name the origin country.
+        "if.2": {
+          "condition": "{ originStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Which country are the goods coming from?",
+              "inputs": [
+                { "name": "origin", "type": "str", "description": "For example China, Mexico, Germany or Vietnam." }
+              ]
+            },
+            "var": { "origin": "{ result['origin'] }" }
+          }
+        },
+
+        // Ask the user only when the message does not say what the goods are.
+        "if.3": {
+          "condition": "{ goodsStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What goods are you importing?",
+              "inputs": [
+                { "name": "goods", "type": "str", "label": "Goods", "description": "For example: steel brackets, cotton shirts" }
+              ]
+            },
+            "var": { "goods": "{ result['goods'] }" },
+
+            // Stop with an error the user sees.
+            "if": {
+              "condition": "{ goods.strip() == '' }",
+              "then": { "fail": "Please describe the goods being imported." }
+            }
+          }
+        },
+
+        // The LLM reads the goods and origin from the message; the asked ones are added only when there was an ask.
         "prompt": {
           "system": "You are the customs clearance assistant at Northwind Corp. Use made-up data. Give the likely tariff code, duty rate and the documents the broker needs. Keep the answer short.",
-          "user": "{ f'{sys.query} Importing {goods} from {origin}.' }"
+          "user": "{ sys.query + (f' Importing {goods} from {origin}.' if goods and origin else f' Importing {goods}.' if goods else f' Importing from {origin}.' if origin else '') }"
         },
         "llm": { "profile": "gpt5_mini", "streamOutput": true }
       }

@@ -3,18 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Pause for the user's answer.
-        "ask": {
-          "message": "Who is the announcement for?",
-          "inputs": [ { "name": "audience", "type": "chooseOne", "options": ["All employees", "One department", "Managers only", "One office"], "default": "All employees" } ]
+        // Jev reads the message and says whether it says who the announcement is for.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "audience": {
+                "type": "choice",
+                "instructions": "Whether the message says who the announcement is for",
+                "criteria": {
+                  "stated": "The message says who the announcement is for, for example all employees or the London office",
+                  "not stated": "The message does not say who the announcement is for"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "audienceStated": "{ jev['audience']['choice'] if 'audience' in jev and 'choice' in jev['audience'] else 'not stated' }",
+          "audience": ""
         },
 
-        // Keep the result in a variable.
-        "var": { "audience": "{ result['audience'] }" },
+        // Ask the user only when the message does not say who the announcement is for.
+        "if.2": {
+          "condition": "{ audienceStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Who is the announcement for?",
+              "inputs": [ { "name": "audience", "type": "str", "description": "For example All employees, One department, Managers only or One office." } ]
+            },
+            "var": { "audience": "{ result['audience'] }" }
+          }
+        },
 
+        // The LLM reads the audience from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the internal announcement writer at Northwind Corp. Use made-up details. Write a short announcement with a clear headline, what is changing, when, and who to ask.",
-          "user": "{ f'{sys.query} (audience: {audience})' }"
+          "user": "{ f'{sys.query} (audience: {audience})' if audience else sys.query }"
         },
         "llm": { "profile": "gemini_flash", "streamOutput": true }
       }

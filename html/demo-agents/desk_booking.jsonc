@@ -3,29 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Look up what this user told the agent before.
-        "memory": { "query": "desk floor", "label": "desk_floor", "limit": 1 },
+        // Jev reads the message and says whether it names the floor.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "floor": {
+                "type": "choice",
+                "instructions": "Whether the message names the floor the user wants a desk on",
+                "criteria": {
+                  "stated": "The message names the floor the user wants, for example Floor 2",
+                  "not stated": "The message does not name a floor"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(result) > 0 }",
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "floorStated": "{ jev['floor']['choice'] if 'floor' in jev and 'choice' in jev['floor'] else 'not stated' }",
+          "floor": ""
+        },
+
+        // Ask the user only when the message does not name the floor.
+        "if.2": {
+          "condition": "{ floorStated == 'not stated' }",
           "then": {
-            "var": { "floor": "{ result[0]['text'] }" }
-          },
-          "else": {
-            // Ask only the first time.
             "ask": {
               "message": "Which floor do you prefer?",
-              "inputs": [ { "name": "floor", "type": "chooseOne", "options": ["Floor 1", "Floor 2", "Floor 3"] } ]
+              "inputs": [ { "name": "floor", "type": "str", "description": "For example Floor 1, Floor 2 or Floor 3." } ]
             },
-            "var": { "floor": "{ result['floor'] }" },
-            // Remember the answer for next time.
-            "memory": { "store": { "desk_floor": "{ floor }" } }
+            "var": { "floor": "{ result['floor'] }" }
           }
         },
 
+        // The LLM reads the floor from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the desk reservation assistant at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} The user prefers floor: {floor}.' }"
+          "user": "{ f'{sys.query} The user prefers floor: {floor}.' if floor else sys.query }"
         },
         "llm": { "profile": "gemini_flash", "streamOutput": true }
       }

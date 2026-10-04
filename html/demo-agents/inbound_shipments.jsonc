@@ -6,22 +6,59 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Pause for the user's answer.
-        "ask": {
-          "message": "Which warehouse?",
-          "inputs": [
-            { "name": "warehouse", "type": "chooseOne", "options": ["All", "Chicago", "Dallas", "Newark"], "default": "All" }
-          ]
+        // Jev reads the message and says whether it asks about one warehouse, every warehouse, or names none.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "warehouse": {
+                "type": "choice",
+                "instructions": "Which warehouse the user asks about",
+                "criteria": {
+                  "all": "The user asks about every warehouse",
+                  "one warehouse": "The message names one warehouse, for example Dallas or Chicago",
+                  "not stated": "The message does not say which warehouse"
+                }
+              }
+            }
+          }
+        },
+        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.3": {
+          "warehouseScope": "{ jev['warehouse']['choice'] if 'warehouse' in jev and 'choice' in jev['warehouse'] else 'not stated' }",
+          "warehouse": ""
         },
 
-        // Keep the result in a variable.
-        "var.2": { "warehouse": "{ result['warehouse'] }" },
+        // Ask the user only when the message does not say which warehouse.
+        "if.2": {
+          "condition": "{ warehouseScope == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Which warehouse?",
+              "inputs": [
+                { "name": "warehouse", "type": "str", "description": "For example All, Chicago, Dallas or Newark." }
+              ]
+            },
+            "var": {
+              "warehouse": "{ result['warehouse'] }",
+              "warehouseScope": "{ 'all' if result['warehouse'].strip().lower() == 'all' else 'one warehouse' }"
+            }
+          }
+        },
 
-        // Branch on a condition.
-        "if": {
-          "condition": "{ warehouse == 'All' }",
-          "then": { "var": { "focus": "every warehouse" } },
-          "else": { "var": { "focus": "{ warehouse.lower() }" } }
+        // Branch on a condition. The LLM reads a warehouse the message names; an asked one is added here.
+        "if.3": {
+          "condition": "{ warehouseScope == 'all' }",
+          "then": { "var": { "focus": " Focus on every warehouse." } },
+          "else": { "var": { "focus": "{ f' Focus on {warehouse.lower()}.' if warehouse else '' }" } }
         },
 
         // Tell the user what is happening while they wait.
@@ -29,7 +66,7 @@
 
         "prompt": {
           "system": "{ f'You are the inbound shipment tracker at {company}. Use made-up data. Keep the answer short.' }",
-          "user": "{ f'{sys.query} Focus on {focus}.' }"
+          "user": "{ sys.query + focus }"
         },
         "llm": { "profile": "gpt5_mini", "streamOutput": true }
       }

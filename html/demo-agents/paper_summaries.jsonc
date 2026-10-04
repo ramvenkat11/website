@@ -3,23 +3,58 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user to type an answer.
-        "ask": {
-          "message": "Paste the abstract of the paper.",
-          "inputs": [ { "name": "abstract", "type": "text", "label": "Abstract" } ]
+        // Jev reads the message and says whether it already gives the abstract of the paper.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "abstract": {
+                "type": "choice",
+                "instructions": "Whether the message gives the text of the paper's abstract",
+                "criteria": {
+                  "stated": "The message gives the text of the paper's abstract",
+                  "not stated": "The message gives no abstract"
+                }
+              }
+            }
+          }
         },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        "var": { "abstract": "{ result['abstract'] }" },
-
-        // Stop with an error the user sees.
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(abstract.strip()) < 50 }",
-          "then": { "fail": "The abstract is too short to summarize." }
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "abstractStated": "{ jev['abstract']['choice'] if 'abstract' in jev and 'choice' in jev['abstract'] else 'not stated' }",
+          "abstract": ""
         },
 
+        // Ask the user only when the message gives no abstract.
+        "if.2": {
+          "condition": "{ abstractStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Paste the abstract of the paper.",
+              "inputs": [ { "name": "abstract", "type": "text", "label": "Abstract" } ]
+            },
+            "var": { "abstract": "{ result['abstract'] }" },
+
+            // Stop with an error the user sees.
+            "if": {
+              "condition": "{ len(abstract.strip()) < 50 }",
+              "then": { "fail": "The abstract is too short to summarize." }
+            }
+          }
+        },
+
+        // The LLM reads the abstract from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the research paper summarizer at Northwind Corp. Explain the paper in plain language and say how it could apply to Northwind products. Keep the answer short.",
-          "user": "{ f'{sys.query}\\n\\nAbstract:\\n{abstract}' }"
+          "user": "{ f'{sys.query}\\n\\nAbstract:\\n{abstract}' if abstract else sys.query }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

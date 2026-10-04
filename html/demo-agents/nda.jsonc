@@ -3,16 +3,49 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "What kind of NDA?",
-          "inputs": [ { "name": "kind", "type": "chooseOne", "options": ["Mutual", "One-way", "Not sure"] } ]
+        // Jev reads the message and says which kind of NDA it asks for.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "kind": {
+                "type": "choice",
+                "instructions": "The kind of NDA the user wants",
+                "criteria": {
+                  "Mutual": "Both sides share confidential information",
+                  "One-way": "Only one side shares confidential information",
+                  "Not sure": "The user says they do not know which kind",
+                  "not stated": "The message does not say which kind of NDA"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": { "kind": "{ jev['kind']['choice'] if 'kind' in jev and 'choice' in jev['kind'] else 'not stated' }" },
+
+        // Ask the user only when the message does not say which kind.
+        "if.2": {
+          "condition": "{ kind == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What kind of NDA?",
+              "inputs": [ { "name": "kind", "type": "chooseOne", "options": ["Mutual", "One-way", "Not sure"] } ]
+            },
+            "var": { "kind": "{ result['kind'] }" }
+          }
         },
 
-        "var": { "kind": "{ result['kind'] }" },
-
         // Finish early with a message; no LLM call needed.
-        "if": {
+        "if.3": {
           "condition": "{ kind == 'Not sure' }",
           "then": { "end": "Ask the legal team which kind fits before drafting." }
         },

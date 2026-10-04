@@ -3,23 +3,68 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "How often should the report be sent?",
-          "inputs": [ { "name": "frequency", "type": "chooseOne", "options": ["Daily", "Weekly", "Monthly", "Every hour"] } ]
+        // Jev reads the message and says whether it says how often the report is sent, and whether that is hourly or more often.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "frequency": {
+                "type": "choice",
+                "instructions": "Whether the message says how often the user wants the report sent",
+                "criteria": {
+                  "stated": "The message says how often the user wants the report sent, for example weekly or every quarter",
+                  "not stated": "The message does not say how often the report should be sent"
+                }
+              },
+              "hourly": {
+                "type": "choice",
+                "instructions": "Whether the report should be sent hourly or more often",
+                "criteria": {
+                  "Yes": "The report should be sent hourly or more often",
+                  "No": "The report should be sent less often than hourly",
+                  "cannot tell": "The message does not say enough to tell"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "frequencyStated": "{ jev['frequency']['choice'] if 'frequency' in jev and 'choice' in jev['frequency'] else 'not stated' }",
+          "hourly": "{ jev['hourly']['choice'] if 'hourly' in jev and 'choice' in jev['hourly'] else 'cannot tell' }",
+          "frequency": ""
         },
 
-        "var": { "frequency": "{ result['frequency'] }" },
+        // Ask the user only when the message does not say how often.
+        "if.2": {
+          "condition": "{ frequencyStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "How often should the report be sent?",
+              "inputs": [ { "name": "frequency", "type": "str", "description": "For example Daily, Weekly, Monthly or Every hour." } ]
+            },
+            "var": { "frequency": "{ result['frequency'] }" }
+          }
+        },
 
         // Stop with an error the user sees.
-        "if": {
-          "condition": "{ frequency == 'Every hour' }",
+        "if.3": {
+          "condition": "{ hourly == 'Yes' }",
           "then": { "fail": "Hourly report emails are not allowed. Use a live dashboard instead." }
         },
 
+        // The LLM reads the frequency from the message; the asked one is added only when there was an ask.
         "prompt": {
-          "system": "You are the scheduled report setup assistant at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (frequency: {frequency})' }"
+          "system": "You are the scheduled report setup assistant at Northwind Corp. Use made-up data. Hourly report emails are not allowed; if the user wants the report hourly or more often, say so and suggest a live dashboard instead. Keep the answer short.",
+          "user": "{ f'{sys.query} (frequency: {frequency})' if frequency else sys.query }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

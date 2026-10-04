@@ -3,29 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Look up what this user told the agent before.
-        "memory": { "query": "speaker", "label": "speaker", "limit": 1 },
+        // Jev reads the message and says whether it names the speaker.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "speaker": {
+                "type": "choice",
+                "instructions": "Whether the message names the executive who will give the speech",
+                "criteria": {
+                  "stated": "The message names the executive who will give the speech, for example the CEO or the CFO",
+                  "not stated": "The message does not name who will give the speech"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(result) > 0 }",
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "speakerStated": "{ jev['speaker']['choice'] if 'speaker' in jev and 'choice' in jev['speaker'] else 'not stated' }",
+          "speaker": ""
+        },
+
+        // Ask the user only when the message does not name the speaker.
+        "if.2": {
+          "condition": "{ speakerStated == 'not stated' }",
           "then": {
-            "var": { "speaker": "{ result[0]['text'] }" }
-          },
-          "else": {
-            // Ask only the first time.
             "ask": {
               "message": "Who usually gives the speeches you write?",
-              "inputs": [ { "name": "speaker", "type": "chooseOne", "options": ["CEO", "CFO", "CTO", "Head of People"] } ]
+              "inputs": [ { "name": "speaker", "type": "str", "description": "For example CEO, CFO, CTO or Head of People." } ]
             },
-            "var": { "speaker": "{ result['speaker'] }" },
-            // Remember the answer for next time.
-            "memory": { "store": { "speaker": "{ speaker }" } }
+            "var": { "speaker": "{ result['speaker'] }" }
           }
         },
 
+        // The LLM reads the speaker from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the executive speech writer at Northwind Corp. Use made-up facts. Write remarks meant to be spoken aloud, with a strong opening and a clear close. Keep the answer short.",
-          "user": "{ f'{sys.query} The speaker is the {speaker}.' }"
+          "user": "{ f'{sys.query} The speaker is the {speaker}.' if speaker else sys.query }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

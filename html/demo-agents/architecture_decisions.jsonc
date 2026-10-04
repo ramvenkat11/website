@@ -6,22 +6,59 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Pause for the user's answer.
-        "ask": {
-          "message": "What kind of decision?",
-          "inputs": [
-            { "name": "kind", "type": "chooseOne", "options": ["Any", "Database", "Messaging", "Hosting"], "default": "Any" }
-          ]
+        // Jev reads the message and says whether it names one kind of decision, says any kind, or names none.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "kind": {
+                "type": "choice",
+                "instructions": "Which area the architecture decision is about",
+                "criteria": {
+                  "any": "The user says any kind of decision",
+                  "one kind": "The message names the area the decision is about, for example database, messaging or hosting",
+                  "not stated": "The message does not say which kind of decision"
+                }
+              }
+            }
+          }
+        },
+        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.3": {
+          "kindScope": "{ jev['kind']['choice'] if 'kind' in jev and 'choice' in jev['kind'] else 'not stated' }",
+          "kind": ""
         },
 
-        // Keep the result in a variable.
-        "var.2": { "kind": "{ result['kind'] }" },
+        // Ask the user only when the message does not say which kind.
+        "if.2": {
+          "condition": "{ kindScope == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What kind of decision?",
+              "inputs": [
+                { "name": "kind", "type": "str", "description": "For example Any, Database, Messaging or Hosting." }
+              ]
+            },
+            "var": {
+              "kind": "{ result['kind'] }",
+              "kindScope": "{ 'any' if result['kind'].strip().lower() == 'any' else 'one kind' }"
+            }
+          }
+        },
 
-        // Branch on a condition.
-        "if": {
-          "condition": "{ kind == 'Any' }",
-          "then": { "var": { "focus": "any decision" } },
-          "else": { "var": { "focus": "{ kind.lower() }" } }
+        // Branch on a condition. The LLM reads a kind the message names; an asked one is added here.
+        "if.3": {
+          "condition": "{ kindScope == 'any' }",
+          "then": { "var": { "focus": " Focus on any decision." } },
+          "else": { "var": { "focus": "{ f' Focus on {kind.lower()}.' if kind else '' }" } }
         },
 
         // Tell the user what is happening while they wait.
@@ -29,7 +66,7 @@
 
         "prompt": {
           "system": "{ f'You are the architecture decision record writer at {company}. Use made-up data. Keep the answer short.' }",
-          "user": "{ f'{sys.query} Focus on {focus}.' }"
+          "user": "{ sys.query + focus }"
         },
         "llm": { "profile": "gpt5_mini", "streamOutput": true }
       }

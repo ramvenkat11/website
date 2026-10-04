@@ -3,23 +3,68 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "Who is the audience?",
-          "inputs": [ { "name": "audience", "type": "chooseOne", "options": ["Customers", "Industry conference", "Press", "Political event"] } ]
+        // Jev reads the message and says whether it describes the audience, and whether the event is a political event.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "audience": {
+                "type": "choice",
+                "instructions": "Whether the message says who the audience of the speaking event is",
+                "criteria": {
+                  "stated": "The message says who the audience of the speaking event is, for example customers or an industry conference",
+                  "not stated": "The message does not say who the audience is"
+                }
+              },
+              "politicalEvent": {
+                "type": "choice",
+                "instructions": "Whether the speaking event is a political event",
+                "criteria": {
+                  "Yes": "The event is a political event",
+                  "No": "The event is not a political event",
+                  "cannot tell": "The message does not clearly say"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "audienceStated": "{ jev['audience']['choice'] if 'audience' in jev and 'choice' in jev['audience'] else 'not stated' }",
+          "politicalEvent": "{ jev['politicalEvent']['choice'] if 'politicalEvent' in jev and 'choice' in jev['politicalEvent'] else 'cannot tell' }",
+          "audience": ""
         },
 
-        "var": { "audience": "{ result['audience'] }" },
+        // Ask the user only when the message does not describe the audience.
+        "if.2": {
+          "condition": "{ audienceStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "Who is the audience?",
+              "inputs": [ { "name": "audience", "type": "str", "description": "For example Customers, Industry conference, Press or Political event." } ]
+            },
+            "var": { "audience": "{ result['audience'] }" }
+          }
+        },
 
         // Finish early with a message; no LLM call needed.
-        "if": {
-          "condition": "{ audience == 'Political event' }",
+        "if.3": {
+          "condition": "{ politicalEvent == 'Yes' }",
           "then": { "end": "Executives do not speak at political events. The request has been declined." }
         },
 
+        // The LLM reads the audience from the message; the asked one is added only when there was an ask.
         "prompt": {
-          "system": "You are the speaking request screener at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (audience: {audience})' }"
+          "system": "You are the speaking request screener at Northwind Corp. Use made-up data. Executives do not speak at political events; decline such requests. Keep the answer short.",
+          "user": "{ f'{sys.query} (audience: {audience})' if audience else sys.query }"
         },
         "llm": { "profile": "gpt5_mini", "streamOutput": true }
       }

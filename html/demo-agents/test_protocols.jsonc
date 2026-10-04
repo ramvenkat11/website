@@ -3,16 +3,49 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "What are you testing?",
-          "inputs": [ { "name": "stage", "type": "chooseOne", "options": ["Early prototype", "Pre-production unit", "Final design"], "default": "Early prototype" } ]
+        // Jev reads the message and says which stage of the product it is testing.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "stage": {
+                "type": "choice",
+                "instructions": "The stage of the product being tested",
+                "criteria": {
+                  "Early prototype": "The product is an early prototype or a proof of concept",
+                  "Pre-production unit": "The product is a pre-production unit",
+                  "Final design": "The product is the final design",
+                  "not stated": "The message does not say which stage the product is at"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": { "stage": "{ jev['stage']['choice'] if 'stage' in jev and 'choice' in jev['stage'] else 'not stated' }" },
+
+        // Ask the user only when the message does not say the stage.
+        "if.2": {
+          "condition": "{ stage == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What are you testing?",
+              "inputs": [ { "name": "stage", "type": "chooseOne", "options": ["Early prototype", "Pre-production unit", "Final design"], "default": "Early prototype" } ]
+            },
+            "var": { "stage": "{ result['stage'] }" }
+          }
         },
 
-        "var": { "stage": "{ result['stage'] }" },
-
         // Branch on a condition.
-        "if": {
+        "if.3": {
           "condition": "{ stage == 'Final design' }",
           "then": { "var": { "depth": "full qualification with pass and fail limits" } },
           "else": { "var": { "depth": "a short exploratory test plan" } }

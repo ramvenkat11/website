@@ -3,23 +3,68 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "What change?",
-          "inputs": [ { "name": "change", "type": "chooseOne", "options": ["Upgrade", "Downgrade", "Pause", "Keep my plan"] } ]
+        // Jev reads the message and says whether it says which change the user wants, and whether that is to keep the plan unchanged.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "change": {
+                "type": "choice",
+                "instructions": "Whether the message says what change the user wants to their subscription plan",
+                "criteria": {
+                  "stated": "The message says what the user wants for their subscription plan, for example an upgrade, a switch to annual billing or keeping the plan as it is",
+                  "not stated": "The message does not say what change the user wants"
+                }
+              },
+              "noChange": {
+                "type": "choice",
+                "instructions": "Whether the user wants to keep the plan unchanged",
+                "criteria": {
+                  "Yes": "The user wants to keep the plan unchanged",
+                  "No": "The user wants a change to the plan",
+                  "cannot tell": "The message does not say enough to tell"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "changeStated": "{ jev['change']['choice'] if 'change' in jev and 'choice' in jev['change'] else 'not stated' }",
+          "noChange": "{ jev['noChange']['choice'] if 'noChange' in jev and 'choice' in jev['noChange'] else 'cannot tell' }",
+          "change": ""
         },
 
-        "var": { "change": "{ result['change'] }" },
+        // Ask the user only when the message does not say which change.
+        "if.2": {
+          "condition": "{ changeStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What change?",
+              "inputs": [ { "name": "change", "type": "str", "description": "For example Upgrade, Downgrade, Pause or Keep my plan." } ]
+            },
+            "var": { "change": "{ result['change'] }" }
+          }
+        },
 
         // Finish early with a message; no LLM call needed.
-        "if": {
-          "condition": "{ change == 'Keep my plan' }",
+        "if.3": {
+          "condition": "{ noChange == 'Yes' }",
           "then": { "end": "No change made. Your plan stays as it is." }
         },
 
+        // The LLM reads the change from the message; the asked one is added only when there was an ask.
         "prompt": {
-          "system": "You are the subscription plan changer at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (change: {change})' }"
+          "system": "You are the subscription plan changer at Northwind Corp. Use made-up data. If the user wants to keep the plan unchanged, say no change was made and the plan stays as it is. Keep the answer short.",
+          "user": "{ f'{sys.query} (change: {change})' if change else sys.query }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

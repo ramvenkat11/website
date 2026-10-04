@@ -6,25 +6,62 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Pause for the user's answer.
-        "ask": {
-          "message": "What are you planning to do with the data?",
-          "inputs": [ { "name": "action", "type": "chooseOne", "options": ["Just classify it", "Email it outside", "Upload it to a cloud drive", "Print it"], "default": "Just classify it" } ]
+        // Jev reads the message and says whether it only asks for the classification, names another action, or names none.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "action": {
+                "type": "choice",
+                "instructions": "What the user plans to do with the data",
+                "criteria": {
+                  "just classify it": "The user only wants to know the classification of the data",
+                  "another action": "The message says what the user plans to do with the data, for example email it outside or upload it to a cloud drive",
+                  "not stated": "The message does not say what the user plans to do with the data"
+                }
+              }
+            }
+          }
+        },
+        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.3": {
+          "actionScope": "{ jev['action']['choice'] if 'action' in jev and 'choice' in jev['action'] else 'not stated' }",
+          "action": ""
         },
 
-        // Keep the result in a variable.
-        "var.2": { "action": "{ result['action'] }" },
+        // Ask the user only when the message does not say what the user plans to do.
+        "if.2": {
+          "condition": "{ actionScope == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What are you planning to do with the data?",
+              "inputs": [ { "name": "action", "type": "str", "description": "For example Just classify it, Email it outside or Upload it to a cloud drive." } ]
+            },
+            "var": {
+              "action": "{ result['action'] }",
+              "actionScope": "{ 'just classify it' if result['action'].strip().lower() == 'just classify it' else 'another action' }"
+            }
+          }
+        },
 
-        // Branch on a condition.
-        "if": {
-          "condition": "{ action == 'Just classify it' }",
-          "then": { "var": { "focus": "which classification level applies" } },
-          "else": { "var": { "focus": "{ 'whether it is allowed to ' + action.lower() }" } }
+        // Branch on a condition. The LLM reads an action the message names; an asked one is added here.
+        "if.3": {
+          "condition": "{ actionScope == 'just classify it' }",
+          "then": { "var": { "focus": " Explain which classification level applies." } },
+          "else": { "var": { "focus": "{ f' Explain whether it is allowed to {action.lower()}.' if action else '' }" } }
         },
 
         "prompt": {
           "system": "{ f'You are the data classification advisor at {company}. The levels are Public, Internal, Confidential and Restricted. Use made-up rules. Keep the answer short.' }",
-          "user": "{ f'{sys.query} Explain {focus}.' }"
+          "user": "{ sys.query + focus }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

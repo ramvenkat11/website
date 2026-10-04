@@ -3,29 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Look up what this user told the agent before.
-        "memory": { "query": "review system", "label": "review_system", "limit": 1 },
+        // Jev reads the message and says whether it names the system.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "system": {
+                "type": "choice",
+                "instructions": "Whether the message names the system whose user access is being reviewed",
+                "criteria": {
+                  "stated": "The message names the system whose user access is being reviewed, for example CRM or Payroll",
+                  "not stated": "The message does not name a system"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(result) > 0 }",
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "systemStated": "{ jev['system']['choice'] if 'system' in jev and 'choice' in jev['system'] else 'not stated' }",
+          "system": ""
+        },
+
+        // Ask the user only when the message does not name the system.
+        "if.2": {
+          "condition": "{ systemStated == 'not stated' }",
           "then": {
-            "var": { "system": "{ result[0]['text'] }" }
-          },
-          "else": {
-            // Ask only the first time.
             "ask": {
               "message": "Which system are you reviewing?",
-              "inputs": [ { "name": "system", "type": "chooseOne", "options": ["ERP", "CRM", "Payroll", "Code repository"] } ]
+              "inputs": [ { "name": "system", "type": "str", "description": "For example ERP, CRM, Payroll or Code repository." } ]
             },
-            "var": { "system": "{ result['system'] }" },
-            // Remember the answer for next time.
-            "memory": { "store": { "review_system": "{ system }" } }
+            "var": { "system": "{ result['system'] }" }
           }
         },
 
+        // The LLM reads the system from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the user access review assistant at Northwind Corp. Use made-up users, roles and last sign-in dates. Keep the answer short.",
-          "user": "{ f'{sys.query} The user reviews the system: {system}.' }"
+          "user": "{ f'{sys.query} The user reviews the system: {system}.' if system else sys.query }"
         },
         "llm": { "profile": "gpt5_mini", "streamOutput": true }
       }

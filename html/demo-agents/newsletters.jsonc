@@ -3,29 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Look up what this user told the agent before.
-        "memory": { "query": "newsletter tone", "label": "newsletter_tone", "limit": 1 },
+        // Jev reads the message and says whether it names the tone.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "tone": {
+                "type": "choice",
+                "instructions": "Whether the message names the tone the user wants the newsletter written in",
+                "criteria": {
+                  "stated": "The message names the tone the newsletter should use, for example friendly or upbeat",
+                  "not stated": "The message does not name a tone"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(result) > 0 }",
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "toneStated": "{ jev['tone']['choice'] if 'tone' in jev and 'choice' in jev['tone'] else 'not stated' }",
+          "tone": ""
+        },
+
+        // Ask the user only when the message does not name the tone.
+        "if.2": {
+          "condition": "{ toneStated == 'not stated' }",
           "then": {
-            "var": { "tone": "{ result[0]['text'] }" }
-          },
-          "else": {
-            // Ask only the first time.
             "ask": {
               "message": "What tone should the newsletter use?",
-              "inputs": [ { "name": "tone", "type": "chooseOne", "options": ["Friendly", "Formal", "Playful"] } ]
+              "inputs": [ { "name": "tone", "type": "str", "description": "For example Friendly, Formal or Playful." } ]
             },
-            "var": { "tone": "{ result['tone'] }" },
-            // Remember the answer for next time.
-            "memory": { "store": { "newsletter_tone": "{ tone }" } }
+            "var": { "tone": "{ result['tone'] }" }
           }
         },
 
+        // The LLM reads the tone from the message; the asked one is added only when there was an ask.
         "prompt": {
           "system": "You are the email newsletter writer at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} The user prefers tone: {tone}.' }"
+          "user": "{ f'{sys.query} The user prefers tone: {tone}.' if tone else sys.query }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

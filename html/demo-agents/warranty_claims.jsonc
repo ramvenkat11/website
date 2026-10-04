@@ -6,22 +6,65 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Pause for the user's answer.
-        "ask": {
-          "message": "What happened to the product?",
-          "inputs": [
-            { "name": "problem", "type": "chooseOne", "options": ["Any", "Stopped working", "Broken part", "Cosmetic damage"], "default": "Any" }
-          ]
+        // Jev reads the message and says whether it describes the problem, and whether the user asks about any problem.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "problem": {
+                "type": "choice",
+                "instructions": "Whether the message says what happened to the product",
+                "criteria": {
+                  "stated": "The message says what happened to the product, for example a broken part or it stopped working, or asks about any kind of problem",
+                  "not stated": "The message does not say what happened to the product"
+                }
+              },
+              "anyProblem": {
+                "type": "choice",
+                "instructions": "Whether the user asks about any kind of problem rather than a specific one",
+                "criteria": {
+                  "Yes": "The user asks about any kind of problem",
+                  "No": "The user asks about a specific problem",
+                  "cannot tell": "The message does not clearly say"
+                }
+              }
+            }
+          }
+        },
+        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.3": {
+          "problemStated": "{ jev['problem']['choice'] if 'problem' in jev and 'choice' in jev['problem'] else 'not stated' }",
+          "anyProblem": "{ jev['anyProblem']['choice'] if 'anyProblem' in jev and 'choice' in jev['anyProblem'] else 'cannot tell' }",
+          "problem": ""
         },
 
-        // Keep the result in a variable.
-        "var.2": { "problem": "{ result['problem'] }" },
+        // Ask the user only when the message does not describe the problem.
+        "if.2": {
+          "condition": "{ problemStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What happened to the product?",
+              "inputs": [
+                { "name": "problem", "type": "str", "description": "For example Any, Stopped working, Broken part or Cosmetic damage." }
+              ]
+            },
+            "var": { "problem": "{ result['problem'] }" }
+          }
+        },
 
-        // Branch on a condition.
-        "if": {
-          "condition": "{ problem == 'Any' }",
-          "then": { "var": { "focus": "any problem" } },
-          "else": { "var": { "focus": "{ problem.lower() }" } }
+        // Branch on a condition. The LLM reads a problem the message describes; an asked one is added here.
+        "if.3": {
+          "condition": "{ anyProblem == 'Yes' }",
+          "then": { "var": { "focus": " Focus on any problem." } },
+          "else": { "var": { "focus": "{ f' Focus on {problem.lower()}.' if problem else '' }" } }
         },
 
         // Tell the user what is happening while they wait.
@@ -29,7 +72,7 @@
 
         "prompt": {
           "system": "{ f'You are the warranty claim checker at {company}. Use made-up data. Keep the answer short.' }",
-          "user": "{ f'{sys.query} Focus on {focus}.' }"
+          "user": "{ sys.query + focus }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

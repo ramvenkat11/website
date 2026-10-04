@@ -3,23 +3,68 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "How big a discount?",
-          "inputs": [ { "name": "discount", "type": "chooseOne", "options": ["10%", "20%", "30%", "Over 40%"] } ]
+        // Jev reads the message and says whether it gives the discount, and whether that is over 40%.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "discount": {
+                "type": "choice",
+                "instructions": "Whether the message gives the discount being requested",
+                "criteria": {
+                  "stated": "The message gives the discount being requested, for example 25%",
+                  "not stated": "The message does not give a discount"
+                }
+              },
+              "overForty": {
+                "type": "choice",
+                "instructions": "Whether the discount requested is more than 40%",
+                "criteria": {
+                  "Yes": "The discount requested is more than 40%",
+                  "No": "The discount requested is 40% or less",
+                  "cannot tell": "The message does not give a discount"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "discountStated": "{ jev['discount']['choice'] if 'discount' in jev and 'choice' in jev['discount'] else 'not stated' }",
+          "overForty": "{ jev['overForty']['choice'] if 'overForty' in jev and 'choice' in jev['overForty'] else 'cannot tell' }",
+          "discount": ""
         },
 
-        "var": { "discount": "{ result['discount'] }" },
+        // Ask the user only when the message does not give the discount.
+        "if.2": {
+          "condition": "{ discountStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "How big a discount?",
+              "inputs": [ { "name": "discount", "type": "str", "description": "For example 10%, 20%, 30% or Over 40%." } ]
+            },
+            "var": { "discount": "{ result['discount'] }" }
+          }
+        },
 
         // Stop with an error the user sees.
-        "if": {
-          "condition": "{ discount == 'Over 40%' }",
+        "if.3": {
+          "condition": "{ overForty == 'Yes' }",
           "then": { "fail": "Discounts over 40% need the sales director's approval in person." }
         },
 
+        // The LLM reads the discount from the message; the asked one is added only when there was an ask.
         "prompt": {
-          "system": "You are the discount approval requester at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (discount: {discount})' }"
+          "system": "You are the discount approval requester at Northwind Corp. Use made-up data. Discounts over 40% need the sales director's approval in person; say so if the request is over 40%. Keep the answer short.",
+          "user": "{ f'{sys.query} (discount: {discount})' if discount else sys.query }"
         },
         "llm": { "profile": "gpt5_mini", "streamOutput": true }
       }

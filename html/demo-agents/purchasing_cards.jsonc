@@ -6,25 +6,68 @@
         // Values used below.
         "var": { "company": "Northwind Corp", "standardLimit": 5000 },
 
-        // Pause for the user's answer.
-        "ask": {
-          "message": "What do you need?",
-          "inputs": [ { "name": "request", "type": "chooseOne", "options": ["New card", "Higher limit", "Allowed purchases"] } ]
+        // Jev reads the message and says whether it says what the user needs, and whether that is a higher limit.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "request": {
+                "type": "choice",
+                "instructions": "Whether the message says what the user needs for a purchasing card",
+                "criteria": {
+                  "stated": "The message says what the user needs for a purchasing card, for example a higher limit or a replacement for a lost card",
+                  "not stated": "The message does not say what the user needs"
+                }
+              },
+              "higherLimit": {
+                "type": "choice",
+                "instructions": "Whether the user wants a higher card limit",
+                "criteria": {
+                  "Yes": "The user wants a higher card limit",
+                  "No": "The user wants something other than a higher card limit",
+                  "cannot tell": "The message does not say enough to tell"
+                }
+              }
+            }
+          }
+        },
+        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.3": {
+          "requestStated": "{ jev['request']['choice'] if 'request' in jev and 'choice' in jev['request'] else 'not stated' }",
+          "higherLimit": "{ jev['higherLimit']['choice'] if 'higherLimit' in jev and 'choice' in jev['higherLimit'] else 'cannot tell' }",
+          "request": ""
         },
 
-        // Keep the result in a variable.
-        "var.2": { "request": "{ result['request'] }" },
+        // Ask the user only when the message does not say what the user needs.
+        "if.2": {
+          "condition": "{ requestStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What do you need?",
+              "inputs": [ { "name": "request", "type": "str", "description": "For example New card, Higher limit or Allowed purchases." } ]
+            },
+            "var": { "request": "{ result['request'] }" }
+          }
+        },
 
-        // Branch on a condition.
-        "if": {
-          "condition": "{ request == 'Higher limit' }",
-          "then": { "var": { "focus": "{ 'a monthly limit above the standard ' + str(standardLimit) + ' dollars' }" } },
-          "else": { "var": { "focus": "{ request.lower() }" } }
+        // Branch on a condition. The LLM reads a request the message states; an asked one is added here.
+        "if.3": {
+          "condition": "{ higherLimit == 'Yes' }",
+          "then": { "var": { "focus": "{ ' The user asks about a monthly limit above the standard ' + str(standardLimit) + ' dollars.' }" } },
+          "else": { "var": { "focus": "{ f' The user asks about {request.lower()}.' if request else '' }" } }
         },
 
         "prompt": {
-          "system": "{ f'You are the purchasing card limit requester at {company}. Use made-up data. Keep the answer short.' }",
-          "user": "{ f'{sys.query} The user asks about {focus}.' }"
+          "system": "{ f'You are the purchasing card limit requester at {company}. Use made-up data. The standard monthly card limit is {standardLimit} dollars. Keep the answer short.' }",
+          "user": "{ sys.query + focus }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }

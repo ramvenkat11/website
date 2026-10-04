@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Search2o visitor review</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+/* Layout: one reading column, figures in a two-up grid that stacks on phones, a sticky section index on wide screens. */
+:root {
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --fg: #1d2129;
+  --muted: #5c6370;
+  --rule: #e3e0d8;
+  --accent: #1f5fd1;
+  --good: #1d7a4a;
+  --bad: #b0352b;
+  --good-bg: #e7f3ec;
+  --bad-bg: #f9e9e6;
+  --display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #16181d; --surface: #1f2228; --fg: #e8e6e0; --muted: #a2a7b0; --rule: #33373f;
+    --accent: #7aa7ff; --good: #6fcf97; --bad: #f08a7e; --good-bg: #1d2f25; --bad-bg: #3a2320;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #16181d; --surface: #1f2228; --fg: #e8e6e0; --muted: #a2a7b0; --rule: #33373f;
+  --accent: #7aa7ff; --good: #6fcf97; --bad: #f08a7e; --good-bg: #1d2f25; --bad-bg: #3a2320;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--fg); font: 16px/1.55 var(--body); padding-block: 2.5rem 5rem; padding-inline: 16px; }
+.page { max-width: 1120px; margin-inline: auto; display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 3rem; }
+@media (max-width: 900px) { .page { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; } nav.index { position: static; } }
+nav.index { position: sticky; top: 1.5rem; align-self: start; font-size: 0.875rem; }
+nav.index ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem; }
+nav.index a { color: var(--muted); text-decoration: none; }
+nav.index a:hover, nav.index a:focus-visible { color: var(--accent); }
+main { min-width: 0; max-width: 72ch; }
+h1 { font: 600 2.4rem/1.1 var(--display); margin: 0 0 0.5rem; text-wrap: balance; }
+h2 { font: 600 1.5rem/1.2 var(--display); margin: 3rem 0 0.75rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); text-wrap: balance; }
+h3 { font: 600 1.05rem/1.3 var(--body); margin: 1.75rem 0 0.5rem; }
+p { margin: 0 0 1rem; }
+.meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+.meta code { font-size: 0.85em; }
+.verdict { background: var(--surface); border: 1px solid var(--rule); border-left: 4px solid var(--accent); padding: 1rem 1.25rem; margin: 0 0 1.5rem; font-size: 1.05rem; }
+ul { padding-left: 1.2rem; margin: 0 0 1rem; }
+li { margin-bottom: 0.4rem; }
+li::marker { color: var(--muted); }
+code { font-family: var(--mono); font-size: 0.9em; background: color-mix(in srgb, var(--fg) 7%, transparent); padding: 0.05em 0.3em; border-radius: 3px; }
+.tag { display: inline-block; font: 600 0.72rem/1 var(--body); letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3em 0.55em; border-radius: 3px; margin-right: 0.4rem; vertical-align: middle; }
+.tag.good { color: var(--good); background: var(--good-bg); }
+.tag.bad { color: var(--bad); background: var(--bad-bg); }
+.shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 1rem 0 1.5rem; }
+@media (max-width: 600px) { .shots { grid-template-columns: minmax(0, 1fr); } }
+figure { margin: 0; background: var(--surface); border: 1px solid var(--rule); padding: 0.5rem; }
+figure.wide { grid-column: 1 / -1; }
+figure a { display: block; }
+figure img { max-width: 100%; height: auto; display: block; border: 1px solid var(--rule); }
+figure.tall img { max-height: 520px; width: auto; margin-inline: auto; object-fit: contain; }
+figcaption { font-size: 0.82rem; color: var(--muted); padding: 0.5rem 0.25rem 0.2rem; }
+figcaption b { color: var(--fg); font-weight: 500; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; margin: 0 0 1.25rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+td:nth-child(3) { white-space: nowrap; }
+.table-wrap { overflow-x: auto; }
+ol.changes { padding-left: 1.4rem; }
+ol.changes li { margin-bottom: 0.9rem; }
+ol.changes li strong { font-weight: 600; }
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="page">
+<nav class="index" aria-label="Sections">
+<ol>
+<li><a href="#verdict">Verdict</a></li>
+<li><a href="#first">What a visitor sees first</a></li>
+<li><a href="#live">Live demo</a></li>
+<li><a href="#gen">Agent generator</a></li>
+<li><a href="#docs">Ask about Search2o</a></li>
+<li><a href="#try">Try it free, pricing</a></li>
+<li><a href="#claims">The headline's claims</a></li>
+<li><a href="#moments">Leave and convince</a></li>
+<li><a href="#changes">Three changes</a></li>
+</ol>
+</nav>
+
+<main>
+<h1>Search2o visitor review</h1>
+<p class="meta">search2o.com visited on 2 October 2026 as a technical first-time visitor. Headless Chromium through Playwright at 1440px and 390px (the Chrome extension refused the domain). Timings are wall-clock from click to the moment the card stopped changing, so about ±0.5 s. Click any screenshot to open it full size.</p>
+
+<h2 id="verdict" style="border-top:0;margin-top:0;padding-top:0">Verdict</h2>
+<div class="verdict">A technical visitor understands within ten seconds what the product is. Whether they go on to try it depends on their first exchange with the live demo, and that exchange is the weakest part of the site. The agent generator, further down the page, is the strongest part and does more to persuade than anything in the hero.</div>
+
+<h2 id="first">What a visitor sees first</h2>
+<ul>
+<li><span class="tag good">Works</span>Desktop: headline, diagram with <code>pip install search2o</code>, and the "Ask for something…" box all sit above the fold.</li>
+<li><span class="tag bad">Gap</span>The placeholder gives no example request, so the first move is up to the visitor.</li>
+<li><span class="tag bad">Gap</span>Phone: the diagram comes first and the demo starts about two and a half screens down. A phone visitor from Hacker News will probably not reach it.</li>
+<li><span class="tag bad">Gap</span>"Avoid context rot" is the third headline line and nothing on the page shows it. The sentence under the demo, "Follow-ups retain the conversation's context", reads as the opposite claim.</li>
+</ul>
+<div class="shots">
+<figure class="wide"><a href="shots/desktop-fold.png"><img src="shots/desktop-fold.png" alt="Homepage at 1440px: headline, diagram, live demo box"></a><figcaption><b>1440px, first screen.</b> Headline, diagram and demo without scrolling.</figcaption></figure>
+<figure class="tall"><a href="shots/phone-fold.png"><img src="shots/phone-fold.png" alt="Homepage at 390px: headline and the top of the diagram"></a><figcaption><b>390px, first screen.</b> The demo is not in view.</figcaption></figure>
+</div>
+
+<h2 id="live">Demo 1: Live demo</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Request</th><th>Agent chosen</th><th>Settled</th><th>What came back</th></tr></thead>
+<tbody>
+<tr><td>What is my leave balance?</td><td><code>leave_balance</code></td><td>1.6 s</td><td>A question back: "Which leave balance?" with pills; input disabled until answered. After Submit, 3.1 s to a table.</td></tr>
+<tr><td>Same request, second run</td><td><code>leave_balance</code></td><td>2.6 s</td><td>"[System requires ID verification] I don't have your employee ID on file", then a "sample" table.</td></tr>
+<tr><td>Convert 250 USD to EUR</td><td><code>fx_rates</code></td><td>1.6 s</td><td>"Converting to which currency?" with USD preselected. Submit on the default: "Our books are already in USD, so no conversion is needed." Choosing EUR: "1 USD = 0.92 EUR. 250 USD = 230.00 EUR."</td></tr>
+<tr><td>And to JPY?</td><td><code>fx_rates</code></td><td>1.0 s</td><td>The same currency question again; JPY not preselected.</td></tr>
+<tr><td>Is there a recall on the Acme toaster model T200?</td><td><code>product_recalls</code></td><td>~5 s</td><td>"No — there is no active recall … in the Northwind recall database as of 2026-10-03." The card showed "Running · Product Recall Notices · Stop" meanwhile.</td></tr>
+<tr><td>I need some numbers for the quarterly report</td><td><code>forecast_explainer</code></td><td>3.0 s</td><td>"Which region do you follow?"; after Submit, 4.1 s to a Q3 forecast list for North America.</td></tr>
+<tr><td>Write a haiku about databases</td><td><code>sql_helper</code></td><td>2.1 s</td><td>A haiku, opening "Ah, circling back to your first question!" and mentioning leave balances.</td></tr>
+<tr><td>What can you do?</td><td><code>ethics_hotline</code></td><td>1.0 s</td><td>"What is your concern about? Fraud / Harassment / Safety / Conflict of interest / Someone is in danger now".</td></tr>
+</tbody>
+</table>
+</div>
+<h3>What works</h3>
+<ul>
+<li>Fast. The first visible change came in 0.5–0.6 s on every run and most answers settled within 1–4 s.</li>
+<li>The agent name appears under every answer and in the "Running" line, so "search picked an agent" is visible.</li>
+<li>The recall and forecast requests went to the obviously right agent and came back with clear mock answers.</li>
+</ul>
+<h3>What confuses or fails</h3>
+<ul>
+<li>The first request a visitor is likely to type gets a form instead of an answer. Two agents asked for values that were already in the request, and the currency question defaults to the source currency, so the obvious click yields a non-answer.</li>
+<li>"What can you do?" is the most natural first question and got the worst routing seen.</li>
+<li>No request produced a "no agent matches" response, so the visitor cannot tell whether search has a floor.</li>
+<li>The same request produced different mock output on two runs, which reads as unreliability to someone who has not read that the data is mock.</li>
+</ul>
+<div class="shots">
+<figure><a href="shots/live1-leave.png"><img src="shots/live1-leave.png" alt="leave_balance asks Which leave balance?"></a><figcaption><b>First request.</b> A question back, input disabled.</figcaption></figure>
+<figure><a href="shots/live1-leave-answered.png"><img src="shots/live1-leave-answered.png" alt="Leave balance table"></a><figcaption><b>After Submit.</b> A clean table, agent name below it.</figcaption></figure>
+<figure><a href="shots/live2-fx.png"><img src="shots/live2-fx.png" alt="Second run says ID verification required; fx_rates asks currency"></a><figcaption><b>Second run.</b> "ID verification" variant, then the currency question with USD preselected.</figcaption></figure>
+<figure><a href="shots/live3-followup.png"><img src="shots/live3-followup.png" alt="Our books are already in USD; And to JPY asks again"></a><figcaption><b>Default accepted.</b> "No conversion is needed"; the follow-up asks again.</figcaption></figure>
+<figure><a href="shots/live4-recall.png"><img src="shots/live4-recall.png" alt="Running Product Recall Notices with Stop link"></a><figcaption><b>Running state.</b> Agent named while it works.</figcaption></figure>
+<figure><a href="shots/live6-none.png"><img src="shots/live6-none.png" alt="Forecast answer and haiku from sql_helper"></a><figcaption><b>Forecast and haiku.</b> The haiku refers back to the leave question.</figcaption></figure>
+<figure><a href="shots/final2-whatcanyoudo.png"><img src="shots/final2-whatcanyoudo.png" alt="ethics_hotline asks What is your concern about?"></a><figcaption><b>"What can you do?"</b> Routed to the ethics hotline.</figcaption></figure>
+<figure><a href="shots/final1-fx-question.png"><img src="shots/final1-fx-question.png" alt="Converting to which currency? USD preselected"></a><figcaption><b>Fresh session.</b> EUR was in the request; USD is preselected.</figcaption></figure>
+</div>
+
+<h2 id="gen">Demo 2: Generate an agent</h2>
+<p>This is the convincing moment on the page.</p>
+<ul>
+<li><span class="tag good">Works</span>The example description produced a 28-line JSONC agent (db → var → prompt → llm → output) in 3–5 s.</li>
+<li><span class="tag good">Works</span>"An agent that takes a customer email address and returns their last three orders from the orders database" produced a 42-line agent in 8 s, with an <code>if</code>/<code>ask</code> that requests the email when it is missing and a suggested SQL query in a comment.</li>
+<li><span class="tag good">Works</span>"something that kinda watches our slack for complaints and then idk pings someone maybe" produced a coherent agent in 9 s: api → prompt → llm → parse → if/then post an alert.</li>
+<li><span class="tag good">Works</span>After the first result the card switches to "Changing the agent below. Each request builds on it", and a change request was applied in place.</li>
+<li><span class="tag bad">Gap</span>After generating, the original description vanishes and the box becomes "What should change?". A second description needs "Start a new agent", which is easy to miss.</li>
+<li><span class="tag bad">Gap</span>SQL and API paths come out as empty strings (<code>"sql": "{ '' }"</code>) with a comment telling you to fill them. Honest, but a reader skimming the code sees placeholders first.</li>
+<li><span class="tag bad">Gap</span><code>gpt5_mini</code>, <code>sys.query</code>, <code>sys.inputs</code> and <code>{ result }</code> appear without explanation; nothing on the card says what a profile is.</li>
+</ul>
+<div class="shots">
+<figure><a href="shots/gen1-example.png"><img src="shots/gen1-example.png" alt="Generated agent for the example description"></a><figcaption><b>Example description.</b> 28 lines, about 4 s.</figcaption></figure>
+<figure><a href="shots/gen1c-change.png"><img src="shots/gen1c-change.png" alt="Making the change in progress"></a><figcaption><b>Change mode.</b> "Making the change…" rewrites the agent in place.</figcaption></figure>
+<figure><a href="shots/gen2-simple.png"><img src="shots/gen2-simple.png" alt="Generated agent for last three orders by email"></a><figcaption><b>Simple description.</b> 42 lines with an ask step, 8 s.</figcaption></figure>
+<figure><a href="shots/gen3-awkward.png"><img src="shots/gen3-awkward.png" alt="Generated agent for the sloppy Slack description"></a><figcaption><b>Sloppy description.</b> 44 lines, 9 s.</figcaption></figure>
+</div>
+
+<h2 id="docs">Demo 3: Ask a question about Search2o</h2>
+<ul>
+<li><span class="tag good">Works</span>"Can I run the agent server on-prem without sending data to your cloud?" got a direct, sourced answer in 12.6 s: "No. The agent server must contact Search2o Cloud…", followed by what can stay on-prem (secrets, conversation-state hooks, client-held encryption keys). The best answer on the site: candid, and it quotes the docs.</li>
+<li><span class="tag bad">Fails</span>"How is this different from LangChain or LangGraph?" got "I can't answer that directly from these docs" in 11.4 s, then eight "documented axes" and a request to rephrase. This is the question the audience asks first, and the page makes them ask it twice.</li>
+</ul>
+<div class="shots">
+<figure><a href="shots/docs1-langchain.png"><img src="shots/docs1-langchain.png" alt="I can't answer that directly from these docs"></a><figcaption><b>LangChain question.</b> Declined, with a rephrase request.</figcaption></figure>
+<figure><a href="shots/final3-onprem.png"><img src="shots/final3-onprem.png" alt="On-prem answer: No, the agent server must contact Search2o Cloud"></a><figcaption><b>On-prem question.</b> Direct answer with quoted docs.</figcaption></figure>
+</div>
+
+<h2 id="try">Try it free, pricing</h2>
+<ul>
+<li><span class="tag good">Works</span>The getting-started page is concrete: a form that shows the license key on the spot, <code>pip install search2o</code>, the env-var start line for macOS and PowerShell, the local URL with port. A developer can judge the install cost in one screen.</li>
+<li><span class="tag good">Works</span>Pricing is short and honest: eval free "for as long as you need", $40 per user per month for Prod, "We're in beta". Nothing hidden.</li>
+<li><span class="tag bad">Gap</span>The form asks for a work email and an account name before the visitor has seen the GUI. That is a real cost for this audience, and the page does not say what the account gets them beyond the key.</li>
+</ul>
+<div class="shots">
+<figure class="tall"><a href="shots/gettingstarted-full.png"><img src="shots/gettingstarted-full.png" alt="Getting started page"></a><figcaption><b>gettingstarted.html.</b> Five steps, form first.</figcaption></figure>
+<figure class="tall"><a href="shots/pricing-full.png"><img src="shots/pricing-full.png" alt="Pricing page"></a><figcaption><b>pricing.html.</b> Eval free, Prod $40 per user per month.</figcaption></figure>
+</div>
+
+<h2 id="claims">Do the demos prove the headline?</h2>
+<ul>
+<li><strong>Many agents.</strong> Yes. Six different agent names appeared in eight requests, and the "200 agents" link opens a list by department with source.</li>
+<li><strong>Search runs the right agent.</strong> Partly. Four of eight requests went to the obviously right agent. "What can you do?" went to the ethics hotline, and two agents asked for values already in the request.</li>
+<li><strong>Avoid context rot.</strong> Not shown anywhere. The demo demonstrates context retention; nothing demonstrates what rots without Search2o or how the agent server prevents it.</li>
+</ul>
+
+<h2 id="moments">Leave and convince</h2>
+<ul>
+<li><strong>Most likely to leave:</strong> the first live-demo exchange, when a question comes back instead of an answer, or "What can you do?" produces the ethics-hotline form.</li>
+<li><strong>Most likely to convince:</strong> watching the generator turn a sloppy sentence into a readable agent in under ten seconds; second, the candor of the on-prem answer.</li>
+</ul>
+
+<h2 id="changes">Three changes, most important first</h2>
+<ol class="changes">
+<li><strong>Make the first live-demo exchange answer, not ask.</strong> Seed the box with one suggested request that resolves in one step (the recall question does). Make <code>fx_rates</code> and <code>leave_balance</code> use values already in the request. Route "What can you do?" to an agent that lists what the demo covers.</li>
+<li><strong>Answer the LangChain/LangGraph question on the page.</strong> The docs bot already has the eight-axis list. One paragraph in the hero or framework section saying how this differs from a tool-calling loop or a graph framework removes the question the audience arrives with.</li>
+<li><strong>Show "no context rot" instead of stating it.</strong> The framework has <code>trace</code>. A line under each live-demo answer such as "ran <code>product_recalls</code>; 412 tokens sent to the model, none from earlier turns" would make the third headline line observable. As it stands, nothing on the page supports it.</li>
+</ol>
+</main>
+</div>
+</body>
+</html>

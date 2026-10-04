@@ -3,16 +3,50 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "How much will it cost?",
-          "inputs": [ { "name": "amount", "type": "chooseOne", "options": ["Under $1,000", "$1,000 to $10,000", "$10,000 to $100,000", "Over $100,000"] } ]
+        // Jev reads the message and says which cost band the purchase falls in.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "amount": {
+                "type": "choice",
+                "instructions": "The total cost of the purchase",
+                "criteria": {
+                  "Under $1,000": "The purchase costs less than $1,000",
+                  "$1,000 to $10,000": "The purchase costs between $1,000 and $10,000",
+                  "$10,000 to $100,000": "The purchase costs between $10,000 and $100,000, for example $15k",
+                  "Over $100,000": "The purchase costs more than $100,000",
+                  "not stated": "The message does not give a cost"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": { "amount": "{ jev['amount']['choice'] if 'amount' in jev and 'choice' in jev['amount'] else 'not stated' }" },
+
+        // Ask the user only when the message does not give a cost.
+        "if.2": {
+          "condition": "{ amount == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "How much will it cost?",
+              "inputs": [ { "name": "amount", "type": "chooseOne", "options": ["Under $1,000", "$1,000 to $10,000", "$10,000 to $100,000", "Over $100,000"] } ]
+            },
+            "var": { "amount": "{ result['amount'] }" }
+          }
         },
 
-        "var": { "amount": "{ result['amount'] }" },
-
         // Finish early with a message; no LLM call needed.
-        "if": {
+        "if.3": {
           "condition": "{ amount == 'Under $1,000' }",
           "then": { "end": "Purchases under $1,000 need no approval. Use your purchasing card or the catalog." }
         },

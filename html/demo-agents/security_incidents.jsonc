@@ -3,23 +3,68 @@
   "functions": {
     "main": {
       "commands": {
-        // Ask the user for what the agent needs.
-        "ask": {
-          "message": "What happened?",
-          "inputs": [ { "name": "incident", "type": "chooseOne", "options": ["Lost or stolen device", "Malware warning", "Password shared by mistake", "Attack in progress"] } ]
+        // Jev reads the message and says whether it describes the incident, and whether an attack is in progress.
+        "api": {
+          "profile": "jev",
+          "body": {
+            "model": "jev-latest",
+            "state": "{ sys.query }",
+            "questions": {
+              "incident": {
+                "type": "choice",
+                "instructions": "Whether the message says what happened",
+                "criteria": {
+                  "stated": "The message describes what happened, for example a lost or stolen device or a malware warning",
+                  "not stated": "The message does not say what happened"
+                }
+              },
+              "attackInProgress": {
+                "type": "choice",
+                "instructions": "Whether an attack is happening right now",
+                "criteria": {
+                  "Yes": "An attack is happening right now",
+                  "No": "No attack is happening right now",
+                  "cannot tell": "The message does not clearly say"
+                }
+              }
+            }
+          }
+        },
+        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+
+        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        "if": {
+          "condition": "{ len(jev) == 0 }",
+          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+        },
+        "var.2": {
+          "incidentStated": "{ jev['incident']['choice'] if 'incident' in jev and 'choice' in jev['incident'] else 'not stated' }",
+          "attackInProgress": "{ jev['attackInProgress']['choice'] if 'attackInProgress' in jev and 'choice' in jev['attackInProgress'] else 'cannot tell' }",
+          "incident": ""
         },
 
-        "var": { "incident": "{ result['incident'] }" },
+        // Ask the user only when the message does not describe the incident.
+        "if.2": {
+          "condition": "{ incidentStated == 'not stated' }",
+          "then": {
+            "ask": {
+              "message": "What happened?",
+              "inputs": [ { "name": "incident", "type": "str", "description": "For example Lost or stolen device, Malware warning or Attack in progress." } ]
+            },
+            "var": { "incident": "{ result['incident'] }" }
+          }
+        },
 
         // Finish early with a message; no LLM call needed.
-        "if": {
-          "condition": "{ incident == 'Attack in progress' }",
+        "if.3": {
+          "condition": "{ attackInProgress == 'Yes' }",
           "then": { "end": "Call the security operations hotline now on extension 5000. Do not turn off the affected computer." }
         },
 
+        // The LLM reads the incident from the message; the asked one is added only when there was an ask.
         "prompt": {
-          "system": "You are the security incident reporter at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (incident: {incident})' }"
+          "system": "You are the security incident reporter at Northwind Corp. Use made-up data. If an attack is in progress, tell the user to call the security operations hotline now on extension 5000 and not to turn off the affected computer. Keep the answer short.",
+          "user": "{ f'{sys.query} (incident: {incident})' if incident else sys.query }"
         },
         "llm": { "profile": "claude_haiku", "streamOutput": true }
       }
