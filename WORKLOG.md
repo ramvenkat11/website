@@ -122,3 +122,7 @@
 - Scope set by Ram: only obstacles to a normal person creating an eval account. Walked home → "Try it free" → form at 1440px and 390px; read `html/js/site.js` for what the form accepts; did not submit.
 - Result, reported in chat (no review page written): nothing on the site stands in the way. "Try it free" is in the sticky header on every page and at both widths; the form is three fields and a checkbox, fully on the first screen at desktop; the key appears at once, no email, no card.
 - One conditional item: `site.js` has the server error `freeEmailCurrentlyNotAllowed` ("Public email domains are currently not allowed"). If the registration server has that rule on, a visitor with a gmail address learns it only after clicking "Create account"; the label says "Work email" and nothing more. Whether the rule is on is a server setting I did not test.
+
+## 2026-10-04 — Sign-up path review closed
+
+- Ram: the public-email rule is off; only throwaway addresses (mailinator and the like) are refused. So the one conditional item falls away, and the review's result is that nothing stands between a visitor and an eval sign-up.
