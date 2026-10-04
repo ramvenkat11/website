@@ -78,3 +78,10 @@
 
 - Done: in `docsrc/introduction/what-is-search2o.html` the lead now ends "...runs the agent, and returns the answer. The answer starts a conversation that the user can continue." Docs rebuilt; only `html/docs/introduction/what-is-search2o.html` changed, because the page description and the card blurb are cut off before that sentence.
 - State: not committed, not uploaded.
+
+## 2026-10-03 — New docs section: Comparisons, with "Search2o and LangChain"
+
+- Done: `gen/toc.py` has a "Comparisons" section (slug `comparisons`) before "Support and licensing", with one page, `langchain` ("Search2o and LangChain"). `docsrc/comparisons/langchain.html` is `content/langchain.md` converted: the first paragraph is the lead (the "The short answer" heading and the byline are dropped), the table uses `table.fields.compare`, the three `https://search2o.com/docs/...` links are relative, external links open in a new tab. `docsrc/comparisons/index.html` says other comparisons will be added as needed.
+- Also: a Comparisons card on the docs home (`docsrc/index.html`, under "Reference and more") and a Comparisons block in `docs_links.md`. `html/sitemap.xml` picks up the two pages from the build.
+- State: build wrote 146 pages; every page under `html/docs/` changed because the sidebar gained a section. No broken internal links on the new pages; the six LangChain URLs return 200. Not committed, not uploaded, not checked in a browser.
+- Open: `docs_links.md` has no "Skill integration" block.
