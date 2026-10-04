@@ -116,3 +116,9 @@
 
 - Ram: the review nitpicked and tested in ways normal visitors will not; none of the listed errors is concerning; the site lacks nothing. Mock data is labelled, agent source is one click away, Eval is free so the GUI need not be shown before sign-up.
 - `content/review-2026-10-04/index.html` is unchanged and still lists those items; treat its "Gap" and "Fails" entries as rejected unless Ram says otherwise.
+
+## 2026-10-04 — Third review: what stands between a visitor and an eval sign-up
+
+- Scope set by Ram: only obstacles to a normal person creating an eval account. Walked home → "Try it free" → form at 1440px and 390px; read `html/js/site.js` for what the form accepts; did not submit.
+- Result, reported in chat (no review page written): nothing on the site stands in the way. "Try it free" is in the sticky header on every page and at both widths; the form is three fields and a checkbox, fully on the first screen at desktop; the key appears at once, no email, no card.
+- One conditional item: `site.js` has the server error `freeEmailCurrentlyNotAllowed` ("Public email domains are currently not allowed"). If the registration server has that rule on, a visitor with a gmail address learns it only after clicking "Create account"; the label says "Work email" and nothing more. Whether the rule is on is a server setting I did not test.
