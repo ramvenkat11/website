@@ -1,6 +1,6 @@
 # Search2o behind a skill: what it buys
 
-Oct 3, 2026 · @Ram Venkat
+Oct 4, 2026 · @Ram Venkat
 
 Build each repeatable task on your company's systems as a task-specific agent in Search2o, and install one skill in Claude Code. The skill makes two calls on your agent server: `search` finds the agent for a request, and `execAgent` runs it. Claude Code keeps the agentic loop; the work on your systems runs on the agent server.
 
@@ -14,9 +14,10 @@ This page lists what changes when those workflows become Search2o agents. Claims
 | --- | --- | --- |
 | Where a workflow lives | In instructions Claude interprets on each run | In a fixed, validated, versioned agent that runs on your server |
 | What enters Claude's context | The instructions, every step Claude writes, every intermediate result | The skill's instructions, the names and titles of matching agents, each agent's output |
-| Model tokens per run | Finding the skill, loading it, and a model call for each step Claude writes | One skill, two calls by Claude, and the agent's `llm` steps; search and other commands cost none |
+| Model tokens per run | Finding the skill, loading it, and a model call for each step Claude writes | One skill and two calls by Claude, plus the agent's `llm` steps; search and other commands cost none |
+| What the model work costs | Claude usage for every step | Claude usage for the two calls; each `llm` step at the price of its model, or no per-token charge on a model you host |
 | When the assistant's model changes | Each skill is due a retest | One skill is due a retest |
-| Models a step can use | Claude models | Any vendor's, chosen per step in a profile |
+| Models a step can use | Claude models | Any vendor's, or one you host with Ollama or vLLM, chosen per step in a profile |
 | What a laptop holds | A route and a credential for each system, or for the MCP server in front of it | One revocable token for the agent server |
 | What can act on your systems | What the model decides at run time, within the person's access and permission rules | Published agents, inside their profiles, allowlist, time and cost bounds |
 | Record of a run | Session telemetry, if you collect it | Agent, version, person, duration, result and cost, in built-in reports |
@@ -44,7 +45,9 @@ Anthropic makes the same point about code inside a skill. A bundled script costs
 
 In Search2o, [search costs no model tokens](https://search2o.com/docs/skill-integration/what-search2o-provides.html), and an agent's flow control, API calls and database calls cost none. Only an `llm` command spends tokens: on the model its profile names, under the company's key, within the agent's [cost bound](https://search2o.com/docs/agent-execution/controlled-runtime.html).
 
-On Claude's side the cost is fixed: one skill, two calls and the result, however many agents exist and however many steps each one takes. When two hundred people run the same workflow, the difference repeats two hundred times.
+That model can be one you host. Search2o supports [Ollama](https://ollama.com) and [vLLM](https://docs.vllm.ai/en/latest/), which can run open models on your own hardware. An `llm` step on such a model has no per-token charge, and nothing is paid to a model vendor; the cost is the hardware it runs on.
+
+On Claude's side the cost is fixed: one skill, two calls and the result, however many agents exist and however many steps each one takes. When two hundred people run the same workflow, the difference repeats two hundred times. When the agents' own steps run on models you host, Claude's fixed part is the only model usage a run is charged for.
 
 ### 3. One skill entry stands for the whole catalogue
 
@@ -68,13 +71,13 @@ Users report the same from their side: [prompts that stopped working](https://th
 
 A Search2o agent is a fixed list of commands. Which calls it makes, in what order and with what checks, does not depend on the model driving Claude Code. When the assistant's model changes, one skill is due a retest, not one per workflow.
 
-An `llm` step inside an agent is still a prompt. It keeps running on the model its profile names, so a new model reaches your agents when you change the profile, not when the assistant upgrades. That prompt is due the same retest when you do.
+An `llm` step inside an agent is still a prompt. It keeps running on the model its profile names, so a new model reaches your agents when you change the profile, not when the assistant upgrades. That prompt is due the same retest when you do. A model you host changes only when you change it; no vendor retires or updates it.
 
-### 5. Each step uses the model that fits, from any vendor
+### 5. Each step uses the model that fits, from any vendor or your own hardware
 
 Claude Code is built for Claude models. Anthropic's documentation says it "[doesn't support routing Claude Code to non-Claude models](https://code.claude.com/docs/en/llm-gateway) through any gateway". Within Claude, a skill or a subagent can [name a different model](https://code.claude.com/docs/en/skills).
 
-In an agent, each `llm` command names a profile, and [a profile is one model at one vendor](https://search2o.com/docs/profiles/llm-profiles.html). OpenAI, Anthropic and Gemini are bundled. Any endpoint that speaks one of their protocols needs only a profile; anything else needs an adapter.
+In an agent, each `llm` command names a profile, and [a profile is one model at one vendor](https://search2o.com/docs/profiles/llm-profiles.html). OpenAI, Anthropic and Gemini are bundled. Any endpoint that speaks one of their protocols needs only a profile; anything else needs an adapter. Models you host with Ollama or vLLM are supported as well.
 
 One agent can extract fields with a small model, reason with a larger one, and keep a sensitive step on a model you host. A profile is [changed once and every agent that uses it follows](https://search2o.com/docs/profiles/overview.html) on its next run, so retiring a model is one edit.
 
@@ -102,7 +105,7 @@ With direct routes closed, an assistant that is mistaken, or misled by text it h
 
 In a model-driven workflow, every API response and query result the model handles is sent to the model's vendor as part of the conversation.
 
-In an agent, API responses, database rows and credentials [stay on the agent server](https://search2o.com/docs/security/data-privacy.html) unless the agent writes them into its output or a conversation variable. Claude, and the vendor behind it, sees only what the agent's author chose to output. Data reaches an LLM inside the agent only where an `llm` command sends it, to the vendor that step's profile names.
+In an agent, API responses, database rows and credentials [stay on the agent server](https://search2o.com/docs/security/data-privacy.html) unless the agent writes them into its output or a conversation variable. Claude, and the vendor behind it, sees only what the agent's author chose to output. Data reaches an LLM inside the agent only where an `llm` command sends it, to the vendor that step's profile names. When the profile names a model you host, that data stays inside your network.
 
 ### 9. The same request takes the same steps
 
@@ -132,6 +135,8 @@ A skill is a set of files. It has to reach each person's machine or account, thr
 
 The same published agent [serves the GUI, the chat bots, the REST API and the skill](https://search2o.com/docs/skill-integration/what-search2o-provides.html). The skill folder follows the open [Agent Skills](https://agentskills.io) standard, so it works unmodified in other clients, Cursor and OpenAI Codex among them. The work that goes into an agent is not tied to one assistant.
 
+From the GUI or a chat bot, search picks the agent with no model call. A run whose `llm` steps use a model you host then has no per-token charge at all.
+
 ### 12. State outlives the session
 
 Agents in one conversation share state that Search2o saves: the prompt history and conversation variables, [stored encrypted and kept for three months](https://search2o.com/docs/security/data-privacy.html) after last use. Two agents written by different developers build on each other's work without knowing about each other.
@@ -159,7 +164,7 @@ Claude also keeps everything it does without Search2o: files, code, and requests
 
 ## Sources
 
-Pages opened on October 3, 2026.
+Pages opened on October 3 and 4, 2026.
 
 **Anthropic**
 
@@ -194,6 +199,7 @@ Pages opened on October 3, 2026.
 **Others**
 
 - [Agent Skills standard](https://agentskills.io)
+- [Ollama](https://ollama.com) and [vLLM](https://docs.vllm.ai/en/latest/), which run open models on hardware you host
 - Chris Tyson, [The Day Anthropic Broke 90% of My Prompts](https://theagentarchitect.substack.com/p/claude-sonnet-4-prompts-stopped-working), October 3, 2025
 - MindStudio, [Fix Degraded Claude Code Output: Trim Skills, Not Add Them](https://www.mindstudio.ai/blog/how-to-fix-claude-code-skills-prompts), August 12, 2026
 - [Refresh skill prompts for current Claude models](https://github.com/rohitg00/pro-workflow/pull/113), a pull request on rohitg00/pro-workflow

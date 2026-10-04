@@ -58,9 +58,10 @@
 <tbody>
 <tr><td>Where a workflow lives</td><td>In instructions Claude interprets on each run</td><td>In a fixed, validated, versioned agent that runs on your server</td></tr>
 <tr><td>What enters Claude's context</td><td>The instructions, every step Claude writes, every intermediate result</td><td>The skill's instructions, the names and titles of matching agents, each agent's output</td></tr>
-<tr><td>Model tokens per run</td><td>Finding the skill, loading it, and a model call for each step Claude writes</td><td>One skill, two calls by Claude, and the agent's <code>llm</code> steps; search and other commands cost none</td></tr>
+<tr><td>Model tokens per run</td><td>Finding the skill, loading it, and a model call for each step Claude writes</td><td>One skill and two calls by Claude, plus the agent's <code>llm</code> steps; search and other commands cost none</td></tr>
+<tr><td>What the model work costs</td><td>Claude usage for every step</td><td>Claude usage for the two calls; each <code>llm</code> step at the price of its model, or no per-token charge on a model you host</td></tr>
 <tr><td>When the assistant's model changes</td><td>Each skill is due a retest</td><td>One skill is due a retest</td></tr>
-<tr><td>Models a step can use</td><td>Claude models</td><td>Any vendor's, chosen per step in a profile</td></tr>
+<tr><td>Models a step can use</td><td>Claude models</td><td>Any vendor's, or one you host with Ollama or vLLM, chosen per step in a profile</td></tr>
 <tr><td>What a laptop holds</td><td>A route and a credential for each system, or for the MCP server in front of it</td><td>One revocable token for the agent server</td></tr>
 <tr><td>What can act on your systems</td><td>What the model decides at run time, within the person's access and permission rules</td><td>Published agents, inside their profiles, allowlist, time and cost bounds</td></tr>
 <tr><td>Record of a run</td><td>Session telemetry, if you collect it</td><td>Agent, version, person, duration, result and cost, in built-in reports</td></tr>

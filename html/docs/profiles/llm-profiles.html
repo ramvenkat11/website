@@ -63,7 +63,7 @@
 <p>A new account has profiles for OpenAI (<code>gpt5_mini</code>, and <code>gpt_image</code> for image generation), Anthropic (<code>claude_haiku</code>) and Gemini (<code>gemini_flash</code>, and <code>gemini_image</code> for image generation). Each profile reads its key from the environment. Edit the model and the prices to match your contracts.</p>
 
 <h2 id="other-vendors">Other vendors</h2>
-<p>Any endpoint that speaks one of the three protocols needs only a profile with the endpoint's URL. Any other endpoint needs an <a href="../llm/llm-adapters.html">adapter</a>.</p>
+<p>A model you host with Ollama or vLLM needs only a profile that names the <code>ollama</code> or <code>vllm</code> adapter; see <a href="../llm/vendors.html">LLM vendors</a>. Any endpoint that speaks the OpenAI, Anthropic or Gemini protocol needs only a profile with the endpoint's URL. Any other endpoint needs an <a href="../llm/llm-adapters.html">adapter</a>.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../profiles/overview.html'><small>Previous</small>How profiles work</a><a class=next href='../profiles/prompt-profiles.html'><small>Next</small>Prompt profiles</a></nav>

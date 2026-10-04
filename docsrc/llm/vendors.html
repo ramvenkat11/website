@@ -1,4 +1,4 @@
-<p class="lead">Search2o ships with adapters for OpenAI, Anthropic and Google Gemini. One API key is enough to start, and a new account already has a profile for each vendor.</p>
+<p class="lead">Search2o ships with five adapters: OpenAI, Anthropic and Google Gemini for the three vendors, and Ollama and vLLM for models you host. One API key is enough to start, and a new account already has a profile for each of the three vendors.</p>
 
 <h2>The key</h2>
 <p>Each seeded profile reads its key from the agent server's environment. Set the key for the vendor you use before starting the agent server:</p>
@@ -27,7 +27,7 @@ $ export GEMINI_API_KEY=...        # Google Gemini
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Field</th><th>What to set</th></tr></thead>
 <tbody>
-<tr><td><code>adapter</code></td><td><code>openai</code>, <code>anthropic</code> or <code>gemini</code>, matching the protocol the endpoint speaks.</td></tr>
+<tr><td><code>adapter</code></td><td><code>openai</code>, <code>anthropic</code> or <code>gemini</code>, matching the protocol the endpoint speaks; <code>ollama</code> or <code>vllm</code> for a model served by one of those.</td></tr>
 <tr><td><code>vendor</code></td><td>The name the reports group spend under.</td></tr>
 <tr><td><code>url</code></td><td>The endpoint, for example <code>https://api.openai.com</code>.</td></tr>
 <tr><td><code>headers</code></td><td>Authorization and anything else the vendor wants. The values are dynamic strings, so the key can be read at call time: <code>{ f"Bearer {sys.secret['OPENAI_API_KEY']}" }</code>.</td></tr>
@@ -36,5 +36,19 @@ $ export GEMINI_API_KEY=...        # Google Gemini
 </tbody></table></div>
 <p>Every field is described in <a href="../profiles/llm-profiles.html">LLM profiles</a>. An agent changes model by naming a different profile; nothing in the agent's code changes.</p>
 
+<h2>Models you host: Ollama and vLLM</h2>
+<p>The <code>ollama</code> and <code>vllm</code> adapters connect to open models that run on your own hardware, served by <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> or <a href="https://docs.vllm.ai/en/latest/" target="_blank" rel="noopener">vLLM</a>. Both adapters call the server's OpenAI-compatible Responses API, at the path <code>/v1/responses</code>. Create a profile under <strong>Profiles &rsaquo; LLM</strong> and set:</p>
+<div class="tablewrap"><table class="fields compare">
+<thead><tr><th>Field</th><th>Ollama</th><th>vLLM</th></tr></thead>
+<tbody>
+<tr><td><code>adapter</code></td><td><code>ollama</code></td><td><code>vllm</code></td></tr>
+<tr><td><code>vendor</code></td><td colspan="2">The name the reports group the profile under, for example <code>ollama</code> or <code>vllm</code>.</td></tr>
+<tr><td><code>url</code></td><td colspan="2">The agent server's route to the model server, ending in <code>/v1/responses</code>. On the same machine with the default ports: <code>http://localhost:11434/v1/responses</code> for Ollama, <code>http://localhost:8000/v1/responses</code> for vLLM.</td></tr>
+<tr><td><code>headers</code></td><td colspan="2"><code>Content-Type</code> alone when the server asks for no key.</td></tr>
+<tr><td><code>model</code></td><td>The model as Ollama names it, for example <code>qwen2.5:7b</code>.</td><td>The name the model is served under.</td></tr>
+</tbody></table></div>
+<p>Ollama does not act on a forced tool choice. When an <code>llm</code> command sets <code>outputFormat: "structured"</code>, the <code>ollama</code> adapter asks Ollama for JSON that fits the schemas of the offered functions and turns the reply into function calls, so the command returns the same dict as with any other adapter.</p>
+<p>vLLM makes tool calls only when the server is started with tool calling switched on: <code>--enable-auto-tool-choice</code> and the <code>--tool-call-parser</code> that fits the model.</p>
+
 <h2>Any compatible LLM</h2>
-<p>These three adapters are not limited to the three vendors. Any endpoint that speaks one of the three protocols works with the matching adapter and a profile that points at the endpoint's URL &mdash; a private deployment, a gateway, or another vendor's compatible API. See <a href="llm-adapters.html">Connecting to other LLMs</a>.</p>
+<p>The <code>openai</code>, <code>anthropic</code> and <code>gemini</code> adapters are not limited to those three vendors. Any endpoint that speaks one of the three protocols works with the matching adapter and a profile that points at the endpoint's URL &mdash; a private deployment, a gateway, or another vendor's compatible API. See <a href="llm-adapters.html">Connecting to other LLMs</a>.</p>

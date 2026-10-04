@@ -62,7 +62,7 @@
 <figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>export OPENAI_API_KEY=sk-...
 <span class=ps1>$ </span>export ANTHROPIC_API_KEY=sk-ant-...
 <span class=ps1>$ </span>export GEMINI_API_KEY=...</code></pre></figure>
-<p>One key is enough to start. Search2o is not limited to these three vendors; see <a href="../llm/llm-adapters.html">Connecting to other LLMs</a>. Where secrets come from is configurable; see <a href="../security/secret-vault.html">Secret vault</a>.</p>
+<p>One key is enough to start. Search2o is not limited to these three vendors: models you host with Ollama or vLLM work as well, and so do other LLMs; see <a href="../llm/vendors.html">LLM vendors</a> and <a href="../llm/llm-adapters.html">Connecting to other LLMs</a>. Where secrets come from is configurable; see <a href="../security/secret-vault.html">Secret vault</a>.</p>
 
 <h2 id="what-starts-up">What starts up</h2>
 <p>At startup the server validates the license and downloads the account's configuration from Search2o Cloud. The server then checks every entry of the expression allowlist against its own Python environment and builds its connection pools. After that the server serves:</p>

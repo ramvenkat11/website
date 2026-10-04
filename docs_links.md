@@ -37,7 +37,7 @@
 ## LLM
 
 - Section: https://search2o.com/docs/llm/index.html
-- The three vendors: https://search2o.com/docs/llm/vendors.html
+- LLM vendors: https://search2o.com/docs/llm/vendors.html
 - Connecting to other LLMs: https://search2o.com/docs/llm/llm-adapters.html
 - Executing code from an LLM: https://search2o.com/docs/llm/code-from-llm.html
 

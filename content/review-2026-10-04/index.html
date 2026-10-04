@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Search2o visitor review</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+/* Layout: one reading column, figures in a two-up grid that stacks on phones, a sticky section index on wide screens. */
+:root {
+  --bg: #fbfaf7;
+  --surface: #ffffff;
+  --fg: #1d2129;
+  --muted: #5c6370;
+  --rule: #e3e0d8;
+  --accent: #1f5fd1;
+  --good: #1d7a4a;
+  --bad: #b0352b;
+  --good-bg: #e7f3ec;
+  --bad-bg: #f9e9e6;
+  --display: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", Menlo, Consolas, monospace;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #16181d; --surface: #1f2228; --fg: #e8e6e0; --muted: #a2a7b0; --rule: #33373f;
+    --accent: #7aa7ff; --good: #6fcf97; --bad: #f08a7e; --good-bg: #1d2f25; --bad-bg: #3a2320;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #16181d; --surface: #1f2228; --fg: #e8e6e0; --muted: #a2a7b0; --rule: #33373f;
+  --accent: #7aa7ff; --good: #6fcf97; --bad: #f08a7e; --good-bg: #1d2f25; --bad-bg: #3a2320;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--fg); font: 16px/1.55 var(--body); padding-block: 2.5rem 5rem; padding-inline: 16px; }
+.page { max-width: 1120px; margin-inline: auto; display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 3rem; }
+@media (max-width: 900px) { .page { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; } nav.index { position: static; } }
+nav.index { position: sticky; top: 1.5rem; align-self: start; font-size: 0.875rem; }
+nav.index ol { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem; }
+nav.index a { color: var(--muted); text-decoration: none; }
+nav.index a:hover, nav.index a:focus-visible { color: var(--accent); }
+main { min-width: 0; max-width: 72ch; }
+h1 { font: 600 2.4rem/1.1 var(--display); margin: 0 0 0.5rem; text-wrap: balance; }
+h2 { font: 600 1.5rem/1.2 var(--display); margin: 3rem 0 0.75rem; padding-top: 1.25rem; border-top: 1px solid var(--rule); text-wrap: balance; }
+h3 { font: 600 1.05rem/1.3 var(--body); margin: 1.75rem 0 0.5rem; }
+p { margin: 0 0 1rem; }
+.meta { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+.meta code { font-size: 0.85em; }
+.verdict { background: var(--surface); border: 1px solid var(--rule); border-left: 4px solid var(--accent); padding: 1rem 1.25rem; margin: 0 0 1.5rem; font-size: 1.05rem; }
+ul { padding-left: 1.2rem; margin: 0 0 1rem; }
+li { margin-bottom: 0.4rem; }
+li::marker { color: var(--muted); }
+code { font-family: var(--mono); font-size: 0.9em; background: color-mix(in srgb, var(--fg) 7%, transparent); padding: 0.05em 0.3em; border-radius: 3px; }
+.tag { display: inline-block; font: 600 0.72rem/1 var(--body); letter-spacing: 0.06em; text-transform: uppercase; padding: 0.3em 0.55em; border-radius: 3px; margin-right: 0.4rem; vertical-align: middle; }
+.tag.good { color: var(--good); background: var(--good-bg); }
+.tag.bad { color: var(--bad); background: var(--bad-bg); }
+.shots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; margin: 1rem 0 1.5rem; }
+@media (max-width: 600px) { .shots { grid-template-columns: minmax(0, 1fr); } }
+figure { margin: 0; background: var(--surface); border: 1px solid var(--rule); padding: 0.5rem; }
+figure.wide { grid-column: 1 / -1; }
+figure a { display: block; }
+figure img { max-width: 100%; height: auto; display: block; border: 1px solid var(--rule); }
+figure.tall img { max-height: 520px; width: auto; margin-inline: auto; object-fit: contain; }
+figcaption { font-size: 0.82rem; color: var(--muted); padding: 0.5rem 0.25rem 0.2rem; }
+figcaption b { color: var(--fg); font-weight: 500; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; margin: 0 0 1.25rem; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 0.45rem 0.6rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+th { font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--muted); }
+td:nth-child(3) { white-space: nowrap; }
+.table-wrap { overflow-x: auto; }
+ol.changes { padding-left: 1.4rem; }
+ol.changes li { margin-bottom: 0.9rem; }
+ol.changes li strong { font-weight: 600; }
+a { color: var(--accent); }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class="page">
+<nav class="index" aria-label="Sections">
+<ol>
+<li><a href="#verdict">Verdict</a></li>
+<li><a href="#since">Since 2 October</a></li>
+<li><a href="#first">What a visitor sees first</a></li>
+<li><a href="#line3">The third headline line</a></li>
+<li><a href="#live">Live demo</a></li>
+<li><a href="#gen">Agent generator</a></li>
+<li><a href="#docs">Ask about Search2o</a></li>
+<li><a href="#try">Try it free, pricing</a></li>
+<li><a href="#claims">The headline's claims</a></li>
+<li><a href="#moments">Leave and convince</a></li>
+<li><a href="#changes">Three changes</a></li>
+</ol>
+</nav>
+
+<main>
+<h1>Search2o visitor review</h1>
+<p class="meta">search2o.com visited on 4 October 2026 as a technical first-time visitor, with the same method as the <a href="../review-2026-10-02/index.html">review of 2 October</a>: headless Chromium through Playwright at 1440px and 390px. 16 live-demo requests in four sessions, 5 generator runs, 4 docs questions, plus the getting-started and pricing pages. Timings are wall-clock from click to the moment the card stopped changing, so about ±0.5 s. Click any screenshot to open it full size.</p>
+
+<h2 id="verdict" style="border-top:0;margin-top:0;padding-top:0">Verdict</h2>
+<div class="verdict">The site persuades better than it did two days ago. The currency request answers in one step, an unrelated request gets "No agent matches this question", the LangChain question is answered, and a phone visitor reaches the demo after one screen. Two weak points remain in the first exchange: <code>leave_balance</code>, one of three agents named in the hero diagram, declines to answer both ways it was asked, and a question about the product typed into the hero box is matched to mock agents. The generator is still the strongest part of the page.</div>
+
+<h2 id="since">What changed since 2 October</h2>
+<ul>
+<li><span class="tag good">Fixed</span>"Convert 250 USD to EUR" returns "250 USD ≈ 230.00 EUR" directly. On 2 October it asked "Converting to which currency?" with USD preselected.</li>
+<li><span class="tag good">Fixed</span>"And to JPY?" returns "250 USD ≈ 38,750 JPY". On 2 October it asked the currency question again.</li>
+<li><span class="tag good">Fixed</span>An unrelated request now gets "No agent matches this question". On 2 October no request produced a refusal.</li>
+<li><span class="tag good">Fixed</span>An ambiguous request now shows a list of up to four matching agents to choose from, instead of running one.</li>
+<li><span class="tag good">Fixed</span>"How is this different from LangChain or LangGraph?" is answered in the docs box. On 2 October it was declined.</li>
+<li><span class="tag good">Fixed</span>Phone: the demo starts 1.2 screens down (at 1028px of an 844px screen). On 2 October it was about two and a half screens down.</li>
+<li><span class="tag good">Fixed</span>The agent name under each answer is a link to that agent's source.</li>
+<li><span class="tag bad">Gap</span>Still open: <code>leave_balance</code> does not answer, "What can you do?" lists <code>ethics_hotline</code> first, the same request returns different mock data on two runs, and the box has no suggested request.</li>
+</ul>
+
+<h2 id="first">What a visitor sees first</h2>
+<ul>
+<li><span class="tag good">Works</span>Desktop: the three headline lines, the diagram with <code>pip install search2o</code>, and the "Ask for something…" box all sit above the fold. The third line reads as a supporting line, not a third headline.</li>
+<li><span class="tag good">Works</span>The empty demo card says what it is: "This demo runs live in a Search2o account with 200 agents using models from OpenAI, Anthropic, and Google", with "200 agents" as a link.</li>
+<li><span class="tag good">Works</span>Phone: the headline and the top of the diagram fill the first screen; the demo follows after one more screen. A request typed there answered correctly, with no horizontal scrolling.</li>
+<li><span class="tag bad">Gap</span>The placeholder is still "Ask for something…" with no example. The diagram names <code>leave_balance</code>, <code>fx_rates</code> and <code>product_recalls</code>, so those are the requests a visitor will try, and the first of them is the one that does not answer.</li>
+</ul>
+<div class="shots">
+<figure class="wide"><a href="shots/desktop-fold.png"><img src="shots/desktop-fold.png" alt="Homepage at 1440px: headline, diagram, live demo box"></a><figcaption><b>1440px, first screen.</b> Headline, diagram and demo without scrolling.</figcaption></figure>
+<figure class="tall"><a href="shots/phone-fold.png"><img src="shots/phone-fold.png" alt="Homepage at 390px: headline and the top of the diagram"></a><figcaption><b>390px, first screen.</b> Headline and diagram; the demo starts one screen further down.</figcaption></figure>
+<figure class="tall"><a href="shots/phone-live.png"><img src="shots/phone-live.png" alt="Live demo at 390px answering a currency request"></a><figcaption><b>390px, live demo.</b> "Convert 250 USD to EUR" answered by <code>fx_rates</code>.</figcaption></figure>
+</div>
+
+<h2 id="line3">The third headline line</h2>
+<p>"Avoid context rot, unpredictable workflows, and runaway LLM costs." names three problems and explains none of them. That is a reasonable choice for a hero: the audience knows all three terms, and the line tells them which problems the product is aimed at. What matters is whether a visitor who wants more can get it. I tried the three routes a visitor has.</p>
+<ul>
+<li><strong>The diagram.</strong> It shows agents living on the agent server, away from Claude Code, and four words: Validated, Bounded, Observable, Model-neutral. "Bounded" and "Observable" map onto runaway costs, and "Validated" onto unpredictable workflows, for a reader who makes the connection. The four words are not links, so the diagram stops there. Nothing in it points at context rot except the position of the agents.</li>
+<li><strong>The docs box.</strong> It answers all three well. "What is context rot and how does Search2o avoid it?" got a definition and five mechanisms in 10.3 s. "How does Search2o stop LLM costs from running away?" got per-agent cost bounds, token-free search, per-step model choice and cost reports in 11.9 s. This is the route that works, and it is two sections below the hero, under "Ask a question about Search2o".</li>
+<li><strong>The hero box.</strong> A visitor with a question is most likely to type it into the box in front of them. "What is context rot?" typed into the Live demo returned three mock agents to choose from: <code>paper_summaries</code>, <code>architecture_decisions</code>, <code>test_failures</code>. "How is this different from LangChain?" returned <code>research_ideas</code>, <code>competitor_features</code>, <code>paper_summaries</code>. "What is Search2o?" returned <code>research_grants</code>, <code>seo_keywords</code>, <code>help_center</code>. The demo account has no agent that answers questions about Search2o, so the one box above the fold cannot answer the questions the headline raises.</li>
+</ul>
+<p>So the line can stay unexplained, as intended. The gap is that the answer exists on the page and the visitor's nearest box does not lead to it.</p>
+<div class="shots">
+<figure><a href="shots/live10-contextrot.png"><img src="shots/live10-contextrot.png" alt="Live demo listing three research agents for the question What is context rot"></a><figcaption><b>Hero box.</b> "What is context rot?" matched to three mock agents.</figcaption></figure>
+<figure><a href="shots/docs2-contextrot.png"><img src="shots/docs2-contextrot.png" alt="Docs box answering what context rot is"></a><figcaption><b>Docs box.</b> The same question, answered in 10.3 s.</figcaption></figure>
+<figure><a href="shots/live12-what.png"><img src="shots/live12-what.png" alt="Live demo listing three agents for What is Search2o"></a><figcaption><b>Hero box.</b> "What is Search2o?" matched to grants, SEO and help-centre agents.</figcaption></figure>
+<figure><a href="shots/docs3-costs.png"><img src="shots/docs3-costs.png" alt="Docs box answering how LLM costs are bounded"></a><figcaption><b>Docs box.</b> The cost question, answered in 11.9 s.</figcaption></figure>
+</div>
+
+<h2 id="live">Demo 1: Live demo</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Request</th><th>Agent</th><th>Settled</th><th>What came back</th></tr></thead>
+<tbody>
+<tr><td>What is my leave balance?</td><td><code>leave_balance</code></td><td>1.9 s</td><td>A question back: "Which leave balance?" with a text field, "For example All, Vacation, Sick or Personal." Input locked: "Answer the question above to continue". After Submit, 1.6 s to "I don't have your employee ID or name on file. Could you please provide…".</td></tr>
+<tr><td>How many vacation days do I have left?</td><td><code>leave_balance</code></td><td>2.6 s</td><td>No question back, and no balance: "I don't have access to your personal leave records… Log into the Northwind HR Portal".</td></tr>
+<tr><td>Convert 250 USD to EUR</td><td><code>fx_rates</code></td><td>6.9 s</td><td>"250 USD ≈ 230.00 EUR (rate used: 1 USD = 0.92 EUR)."</td></tr>
+<tr><td>And to JPY?</td><td><code>fx_rates</code></td><td>5.1 s</td><td>"250 USD ≈ 38,750 JPY (rate used: 1 USD = 155.00 JPY)."</td></tr>
+<tr><td>Is there a recall on the Acme toaster model T200?</td><td><code>product_recalls</code></td><td>6.9 s</td><td>"Recall status: Recalled — YES. Recall ID: NW-REC-2026-117", serials T200-10000 to T200-14500, announced 2026-08-15.</td></tr>
+<tr><td>What about the T300?</td><td><code>product_recalls</code></td><td>7.1 s</td><td>"Recall status: Not recalled — NO… Acme Toaster model T300".</td></tr>
+<tr><td>The T200 request again, new session</td><td><code>product_recalls</code></td><td>6.6 s</td><td>"Yes. Recall NWC-2026-042", serials T200-1000 to T200-5987, issued 2026-09-10. A different recall number, range and date from the first run.</td></tr>
+<tr><td>I need some numbers for the quarterly report</td><td>list of 3</td><td>1.3 s</td><td>"3 agents match": <code>forecast_explainer</code>, <code>sales_pipeline</code>, <code>control_testing</code>. Choosing ran <code>sales_pipeline</code>: a Q3 pipeline summary in 3.6 s.</td></tr>
+<tr><td>How do I replace brake pads on a 2012 Honda Civic?</td><td>none</td><td>0.5 s</td><td>"No agent matches this question. Try asking in different words."</td></tr>
+<tr><td>Write a haiku about databases</td><td>list of 3</td><td>0.6 s</td><td><code>sql_helper</code>, <code>social_posts</code>, <code>data_catalog</code>.</td></tr>
+<tr><td>What can you do?</td><td>list of 3 or 4</td><td>0.5 s</td><td><code>ethics_hotline</code> first, then <code>product_recalls</code>, <code>compliance</code> (and <code>leave_balance</code> in a session that had used it). Choosing the first: "What is your concern about?", input locked.</td></tr>
+</tbody>
+</table>
+</div>
+<h3>What works</h3>
+<ul>
+<li>Search is fast and visibly separate from the run: the list or the refusal arrives in 0.5–1.3 s.</li>
+<li>The floor exists. The brake-pads request was refused in half a second. A technical visitor will test this, and it holds.</li>
+<li>Both follow-ups worked without restating anything: "And to JPY?" kept the 250 USD, "What about the T300?" kept the product and the question.</li>
+<li>The list for an ambiguous request is honest. The demo shows the candidates instead of guessing, which is the behaviour the second headline line promises.</li>
+<li>The agent name under an answer opens <code>demo-agents.html</code> in a new tab at that agent, with its source expanded. A visitor can read the 21 lines that produced the answer.</li>
+</ul>
+<h3>What confuses or fails</h3>
+<ul>
+<li><code>leave_balance</code> never returns a balance. Asked plainly, it asks which type and then says it has no employee ID. Asked with the type in the request, it sends the visitor to an HR portal. On 2 October the same agent returned a table. It is the first agent named in the diagram.</li>
+<li>Agents that call a model took 5–7 s. The wait is acceptable, and it is longer than the 1–5 s seen on 2 October.</li>
+<li>The same recall request gave two different recalls in two sessions. The footer says "This is mock data from a real agent", which helps, but a visitor who repeats a request sees the facts change.</li>
+<li>"What can you do?" still puts <code>ethics_hotline</code> first. The list softens it, because nothing runs until the visitor chooses. Choosing it locks the input, and the only way out is "New search", which clears the whole conversation.</li>
+<li>The "↵ Enter" hint depends on how the request was sent. Sent with the keyboard, Enter ran the first agent. Sent by clicking the arrow, Enter repeated the search and ran nothing, because the arrow button had the focus. In one session the agent that ran was the second in the list, the row the pointer was resting on. I saw these in a headless browser and did not confirm them by hand.</li>
+<li>In an empty card the list makes the card grow from 540px to 737px, which moves the page below it.</li>
+</ul>
+<div class="shots">
+<figure><a href="shots/live1-leave.png"><img src="shots/live1-leave.png" alt="Leave balance request answered with a question back"></a><figcaption><b>First request.</b> A question back, input locked.</figcaption></figure>
+<figure><a href="shots/live1-leave-answered.png"><img src="shots/live1-leave-answered.png" alt="Leave balance agent saying it has no employee ID"></a><figcaption><b>After Submit.</b> "I don't have your employee ID or name on file."</figcaption></figure>
+<figure><a href="shots/c2-leave.png"><img src="shots/c2-leave.png" alt="Leave balance agent pointing to the HR portal"></a><figcaption><b>Type given in the request.</b> No question, and no balance either.</figcaption></figure>
+<figure><a href="shots/live3-fx-followup.png"><img src="shots/live3-fx-followup.png" alt="Currency conversion and its follow-up answered directly"></a><figcaption><b>Currency and follow-up.</b> Both answered in one step.</figcaption></figure>
+<figure><a href="shots/live5-recall-followup.png"><img src="shots/live5-recall-followup.png" alt="Recall answer and a follow-up about another model"></a><figcaption><b>Recall and follow-up.</b> "What about the T300?" needs no restating.</figcaption></figure>
+<figure><a href="shots/c4-recall.png"><img src="shots/c4-recall.png" alt="A second, different recall answer for the same request"></a><figcaption><b>Same request, new session.</b> A different recall number, range and date.</figcaption></figure>
+<figure><a href="shots/live6-vague.png"><img src="shots/live6-vague.png" alt="List of three matching agents"></a><figcaption><b>Ambiguous request.</b> Three candidates, none run yet.</figcaption></figure>
+<figure><a href="shots/live7-brakes.png"><img src="shots/live7-brakes.png" alt="No agent matches this question"></a><figcaption><b>Unrelated request.</b> Refused in 0.5 s.</figcaption></figure>
+<figure><a href="shots/c3-whatcanyoudo-list.png"><img src="shots/c3-whatcanyoudo-list.png" alt="List of four agents for What can you do"></a><figcaption><b>"What can you do?"</b> Ethics hotline first.</figcaption></figure>
+<figure><a href="shots/c3-whatcanyoudo-picked.png"><img src="shots/c3-whatcanyoudo-picked.png" alt="Ethics hotline asking what the concern is about"></a><figcaption><b>First candidate chosen.</b> A form, input locked.</figcaption></figure>
+<figure class="wide"><a href="shots/c5-agent-source.png"><img src="shots/c5-agent-source.png" alt="The demo agents page opened at product_recalls with its source"></a><figcaption><b>Agent name clicked.</b> The agent's source, in a new tab.</figcaption></figure>
+</div>
+
+<h2 id="gen">Demo 2: Generate an agent</h2>
+<p>Still the convincing moment on the page.</p>
+<ul>
+<li><span class="tag good">Works</span>The example description produced a 31-line agent (<code>db</code> → <code>var</code> → <code>prompt</code> → <code>llm</code> → <code>output</code>) in 2.9 s.</li>
+<li><span class="tag good">Works</span>"Also handle the case where the order number is missing from the request." rewrote it in place in 3.7 s, to 64 lines with an <code>if</code> and an <code>ask</code> for the order number.</li>
+<li><span class="tag good">Works</span>"An agent that takes a customer email address and returns their last three orders from the orders database" produced 43 lines in 8.3 s, with an <code>ask</code> when the email is missing and a suggested SQL query in a comment.</li>
+<li><span class="tag good">Works</span>"something that kinda watches our slack for complaints and then idk pings someone maybe" produced 48 coherent lines in 9.1 s: <code>api</code> → <code>prompt</code> → <code>llm</code> → <code>if</code> → post an alert.</li>
+<li><span class="tag good">Works</span>The comments now say why a value is blank: "Nothing here knows your schema, so this is left for you." That reads as honest, not unfinished.</li>
+<li><span class="tag bad">Gap</span>Clicking "Write the agent" with an empty box gives a red "Say a little more about what you want." The example sits in a pill between the box and the button and has to be clicked first; a visitor who reads it as the default will click the button.</li>
+<li><span class="tag bad">Gap</span>After the first result the box becomes "What should change?". A second description needs "Start a new agent", which is easy to miss. Unchanged since 2 October.</li>
+<li><span class="tag bad">Gap</span><code>gpt5_mini</code>, <code>sys.query</code>, <code>sys.inputs</code> and <code>{ result }</code> appear without explanation, and nothing on the card says what a profile is. Unchanged.</li>
+</ul>
+<div class="shots">
+<figure><a href="shots/gen0-emptyclick.png"><img src="shots/gen0-emptyclick.png" alt="Generator showing Say a little more about what you want"></a><figcaption><b>Empty box, button clicked.</b> The example pill was not applied.</figcaption></figure>
+<figure><a href="shots/gen1-example.png"><img src="shots/gen1-example.png" alt="Generated agent for the example description"></a><figcaption><b>Example description.</b> 31 lines, 2.9 s.</figcaption></figure>
+<figure><a href="shots/gen1c-change.png"><img src="shots/gen1c-change.png" alt="Agent rewritten after a change request"></a><figcaption><b>Change request.</b> 64 lines, 3.7 s.</figcaption></figure>
+<figure><a href="shots/gen2-simple.png"><img src="shots/gen2-simple.png" alt="Generated agent for the simple description"></a><figcaption><b>Simple description.</b> 43 lines with an ask step, 8.3 s.</figcaption></figure>
+<figure><a href="shots/gen3-awkward.png"><img src="shots/gen3-awkward.png" alt="Generated agent for the sloppy description"></a><figcaption><b>Sloppy description.</b> 48 lines, 9.1 s.</figcaption></figure>
+</div>
+
+<h2 id="docs">Demo 3: Ask a question about Search2o</h2>
+<ul>
+<li><span class="tag good">Works</span>"How is this different from LangChain or LangGraph?" got a structured answer in 12.3 s: starting point, who writes and who uses, how a request reaches an agent, what an agent is, product or toolkit, when each fits. On 2 October it was declined. This is the question the audience arrives with, and it is now answered fairly, including when LangChain is the better choice.</li>
+<li><span class="tag good">Works</span>"What is context rot and how does Search2o avoid it?" got a definition and five mechanisms in 10.3 s.</li>
+<li><span class="tag good">Works</span>"How does Search2o stop LLM costs from running away?" got a concrete answer in 11.9 s.</li>
+<li><span class="tag good">Works</span>"Can I run the agent server on-prem without sending data to your cloud?" got "No — the agent server runs on-prem, but it must communicate with Search2o Cloud" in 10.7 s, with what can stay on-prem. Still the most candid answer on the site.</li>
+<li><span class="tag bad">Fails</span>Two answers contained agent syntax that does not exist. The LangChain answer showed an "Example form" with <code>"definition": [{"command": "query_db"}, {"command": "call_model"}]</code>. The cost answer showed <code>{"command": "llm", "profile": "gemini_flash"}</code>. The generator, one section above, shows the real form: <code>functions</code> → <code>main</code> → <code>commands</code> with <code>db</code> and <code>llm</code>. A reader who compares the two sees the docs assistant contradict the product.</li>
+<li><span class="tag bad">Gap</span>No answer carried a link to a docs page. The answers quote the docs, and the reader cannot follow the quote.</li>
+<li><span class="tag bad">Gap</span>The answer opens clipped to about ten lines behind "Show full answer". The first screen of the LangChain answer is a heading and two bullets.</li>
+<li><span class="tag bad">Gap</span>Every answer took 10–12 s, the slowest responses on the page.</li>
+</ul>
+<div class="shots">
+<figure><a href="shots/docs1-langchain.png"><img src="shots/docs1-langchain.png" alt="Docs box answering the LangChain question"></a><figcaption><b>LangChain question.</b> Answered in 12.3 s; clipped until "Show full answer".</figcaption></figure>
+<figure><a href="shots/docs4-onprem.png"><img src="shots/docs4-onprem.png" alt="Docs box answering the on-prem question"></a><figcaption><b>On-prem question.</b> A direct "No", then what can stay on-prem.</figcaption></figure>
+</div>
+
+<h2 id="try">Try it free, pricing</h2>
+<ul>
+<li><span class="tag good">Works</span>"Try it free" leads to <code>gettingstarted.html</code>, which is concrete: a three-field form that shows the license key on the spot ("No email is sent at this step"), <code>pip install search2o</code>, the start line for macOS and PowerShell, and the local URL. It ends with "The same agents work in Claude Code through the search2o-skill".</li>
+<li><span class="tag good">Works</span>Pricing is short and plain: Eval "free for as long as you need", Prod at $40 per user per month, "We're in beta".</li>
+<li><span class="tag bad">Gap</span>The form still asks for a work email and an account name before the visitor has seen the GUI, and the page has no picture of what they will get. I did not submit the form.</li>
+</ul>
+<div class="shots">
+<figure class="tall"><a href="shots/gettingstarted-full.png"><img src="shots/gettingstarted-full.png" alt="The getting started page"></a><figcaption><b>gettingstarted.html.</b> Form first, then install and run.</figcaption></figure>
+<figure class="tall"><a href="shots/pricing-full.png"><img src="shots/pricing-full.png" alt="The pricing page"></a><figcaption><b>pricing.html.</b> Eval free, Prod $40 per user per month.</figcaption></figure>
+</div>
+
+<h2 id="claims">Do the demos prove the headline?</h2>
+<ul>
+<li><strong>Hundreds of task-specific agents.</strong> Yes. Six different agents ran, 19 agent names appeared across answers and match lists, the card says 200, and each name under an answer opens that agent's source.</li>
+<li><strong>Search runs the right agent.</strong> Mostly. Clear requests went to the right agent every time, an unrelated request was refused, and ambiguous requests were offered as a list. The exceptions are "What can you do?" and questions about Search2o itself, which match unrelated agents.</li>
+<li><strong>Context rot.</strong> Not shown, and explained only in the docs box. The demo's own line, "Follow-ups retain the conversation's context", still reads as the opposite to someone who has not asked.</li>
+<li><strong>Unpredictable workflows.</strong> Partly shown. The agent source is one click away and it is a fixed command list. Against that, the same recall request returned different facts in two sessions, which a visitor will read as unpredictable output even though the steps were the same.</li>
+<li><strong>Runaway LLM costs.</strong> Not shown. No answer displays what it cost or what bound it ran under. "Bounded" in the diagram is the only trace of it above the fold.</li>
+</ul>
+
+<h2 id="moments">Leave and convince</h2>
+<ul>
+<li><strong>Most likely to leave:</strong> typing the first agent named in the diagram and getting "I don't have your employee ID", or asking the hero box what the product is and getting a list of research agents.</li>
+<li><strong>Most likely to convince:</strong> the generator turning a sloppy sentence into a readable agent in nine seconds. Second: the half-second "No agent matches this question", followed by a follow-up that needs no restating. Third: the LangChain answer saying when LangChain fits better.</li>
+</ul>
+
+<h2 id="changes">Three changes, most important first</h2>
+<ol class="changes">
+<li><strong>Make the three agents named in the diagram answer in one step.</strong> <code>fx_rates</code> and <code>product_recalls</code> do. <code>leave_balance</code> should return a mock balance for a mock employee, as it did on 2 October, and never ask for an employee ID that a visitor does not have. Then put one of the three in the placeholder, for example "Try: is there a recall on the Acme toaster T200?".</li>
+<li><strong>Let the hero box answer questions about Search2o.</strong> Publish one agent in the demo account that answers from the docs, described so that "What is Search2o?", "What is context rot?", "What can you do?" and "How is this different from LangChain?" match it. That fixes the ethics-hotline result, gives the third headline line its explanation in the box the visitor is already using, and demonstrates the product with its own subject.</li>
+<li><strong>Stop the docs assistant from inventing agent syntax, and give its answers links.</strong> Two of four answers showed a JSON form that Search2o does not use. Either give it a real definition to quote or tell it to show no code that is not in the docs. A link to the source page under each answer lets the reader check, and the comparison and skill pages are worth landing on.</li>
+</ol>
+</main>
+</div>
+</body>
+</html>
