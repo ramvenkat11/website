@@ -111,3 +111,8 @@
 - Open: `leave_balance` never returns a balance (asks type, then "I don't have your employee ID"; or points to the HR portal). Questions about Search2o typed into the hero box match mock agents (`paper_summaries`, `research_grants`...). The docs box invented agent syntax in 2 of 4 answers (`"definition": [{"command": "query_db"}]`) and gives no links. Same recall request returned different mock facts in two sessions. "What can you do?" lists `ethics_hotline` first. Enter after clicking the send arrow repeats the search (seen headless only).
 - Hero third line: unexplained by design (Ram). The docs box explains all three claims in 10–12 s; the hero box cannot.
 - State: no site files changed by this task.
+
+## 2026-10-04 — Ram's verdict on the second visitor review
+
+- Ram: the review nitpicked and tested in ways normal visitors will not; none of the listed errors is concerning; the site lacks nothing. Mock data is labelled, agent source is one click away, Eval is free so the GUI need not be shown before sign-up.
+- `content/review-2026-10-04/index.html` is unchanged and still lists those items; treat its "Gap" and "Fails" entries as rejected unless Ram says otherwise.
