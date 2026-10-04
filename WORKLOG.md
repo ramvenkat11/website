@@ -126,3 +126,9 @@
 ## 2026-10-04 — Sign-up path review closed
 
 - Ram: the public-email rule is off; only throwaway addresses (mailinator and the like) are refused. So the one conditional item falls away, and the review's result is that nothing stands between a visitor and an eval sign-up.
+
+## 2026-10-04 — Images on mobile: scan at 390px (no changes made)
+
+- Ram: "the images are not showing right on mobile". Scanned all 157 built pages at 390px with Playwright (script `imgs.js` in the session scratchpad): every `figure`, `aside.arch`, `img` and `svg` in `main`.
+- Found: all docs `figure.fig` SVGs (viewBox 720 wide, `width: 100%` in `html/docs/docs.css:149`) render 342px wide, scale 0.47, so their text is 4–5.4px. All `figure.shot` screenshots (1374–1568px captures, `--shot-w` 520–560px) render 342px wide. No page overflows horizontally, no image fails to load, both-theme images never show together. The home page diagrams are HTML and reflow correctly.
+- Not yet confirmed with Ram that this is the problem he sees. Candidate fix: on narrow screens give `figure.fig` and `figure.shot` a horizontal scroll at a readable minimum width, or open the full image on tap.
