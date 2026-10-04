@@ -52,3 +52,10 @@
 - Findings reported in chat: the generator is the strongest demo (coherent JSONC in 3–9 s, even from a sloppy sentence); the live demo answers in 1–5 s and names the agent, but `leave_balance` and `fx_rates` ask back for values already in the request (default USD leads to "Our books are already in USD"), "What can you do?" routes to `ethics_hotline`, and the same request gave different mock output on two runs; the docs box refuses the LangChain/LangGraph comparison but answers the on-prem question honestly. "Avoid context rot" is never demonstrated on the page.
 - State: no site files changed. Nothing committed, nothing uploaded.
 - Added: the review as a local page, `content/review-2026-10-02/index.html`, with the 18 screenshots it cites in `content/review-2026-10-02/shots/` (2 MB). Not linked from the site; not committed, not uploaded.
+
+## 2026-10-03 — demo-agents: refreshed the 200 definitions from s2oserver
+
+- Done: copied `../s2oserver/docs/demo/definitions/*.jsonc` over `html/demo-agents/` again. 83 of the 200 files had changed (3835 lines added, 831 removed); the file names are the same 200 on both sides. `diff -rq` now reports the two directories identical.
+- `html/demo-agents.json` was already byte-identical to `../s2oserver/docs/demo/agents.json`, so it is unchanged.
+- State: working tree only. Not committed, not uploaded.
+- Next: Ram reviews and commits; upload waits for his go-ahead.
