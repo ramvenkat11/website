@@ -59,3 +59,11 @@
 - `html/demo-agents.json` was already byte-identical to `../s2oserver/docs/demo/agents.json`, so it is unchanged.
 - State: working tree only. Not committed, not uploaded.
 - Next: Ram reviews and commits; upload waits for his go-ahead.
+
+## 2026-10-03 — Skill integration docs redone from content/behind_skill.md
+
+- Done: `docsrc/skill-integration/overview.html` (Skills + Search2o) is now the opening of `content/behind_skill.md`, the `skill-flow` figure, the "At a glance" table word for word (`table.fields.compare`, because plain `table.fields` uppercases the header and would show "SEARCH2O") and "What stays with Claude". `docsrc/skill-integration/what-search2o-provides.html` (What Search2o adds) is now the twelve numbered points under Context and tokens, Models, Control and Reach, then "What it costs" and the Anthropic and other sources. The document's list of Search2o sources is left out, because those are inline links to the docs' own pages.
+- Links: `https://search2o.com/docs/...` links became relative. The two links that pointed at `what-search2o-provides.html` itself now go to `../search/how-matching-works.html` and `../development/publishing.html`. External links open in a new tab.
+- Unchanged: `finding-and-running-an-agent.html`, `installing-the-skill.html`, the section `index.html` lead, and page titles in `gen/toc.py`. The old overview text (the Eric Holmes MCP article, the four risks of a direct skill) and the old ten-item list are gone from the docs.
+- State: `gen/build.py` ran (144 pages, no broken internal links on the three rebuilt pages). Not committed, not uploaded. Not checked in a browser.
+- Next: Ram reviews; possible follow-ups are the section index lead and whether "What it costs" deserves its own page.
