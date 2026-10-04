@@ -76,5 +76,5 @@
 
 ## 2026-10-03 — what-is-search2o.html: lead sentence split
 
-- Done: in `docsrc/introduction/what-is-search2o.html` the lead now ends "...runs the agent, and returns the answer. The answer starts a conversation that the user can continue." Docs rebuilt; the same text is the page description and the card blurb on `html/docs/introduction/index.html`.
+- Done: in `docsrc/introduction/what-is-search2o.html` the lead now ends "...runs the agent, and returns the answer. The answer starts a conversation that the user can continue." Docs rebuilt; only `html/docs/introduction/what-is-search2o.html` changed, because the page description and the card blurb are cut off before that sentence.
 - State: not committed, not uploaded.
