@@ -102,3 +102,12 @@
 - Ram found the 19px/600 ink version too prominent and preferred the first one, which he had called abrupt in colour. `.hero h1 .line` is now the first version (16px, weight 500, 10px above) with `var(--body)` instead of `var(--muted)`.
 - If this misses too, ask numbered questions (size, weight, colour) instead of trying a fourth variant.
 - Checked at 1280px, dark theme, headless screenshot. Not committed, not uploaded.
+
+## 2026-10-04 — Second visitor review of the live site
+
+- Done: repeated the 2 October review (prompt in `content/prompt.txt`) against https://search2o.com, which was byte-identical to the local `html/` for index, demo, styles and scripts. Headless Playwright Chromium, reusing the module in the 2 October session's scratchpad. 16 live-demo requests, 5 generator runs, 4 docs questions, phone width, getting-started and pricing.
+- Added: `content/review-2026-10-04/index.html` with 27 screenshots in `content/review-2026-10-04/shots/` (3 MB). Same layout as the 2 October page, plus "What changed since 2 October" and "The third headline line". Not linked from the site, not committed, not uploaded.
+- Fixed since 2 October: `fx_rates` answers in one step and handles the follow-up; unrelated request gets "No agent matches this question"; ambiguous requests show a list of matches; the docs box answers the LangChain question; phone reaches the demo after 1.2 screens; agent names link to source.
+- Open: `leave_balance` never returns a balance (asks type, then "I don't have your employee ID"; or points to the HR portal). Questions about Search2o typed into the hero box match mock agents (`paper_summaries`, `research_grants`...). The docs box invented agent syntax in 2 of 4 answers (`"definition": [{"command": "query_db"}]`) and gives no links. Same recall request returned different mock facts in two sessions. "What can you do?" lists `ethics_hotline` first. Enter after clicking the send arrow repeats the search (seen headless only).
+- Hero third line: unexplained by design (Ram). The docs box explains all three claims in 10–12 s; the hero box cannot.
+- State: no site files changed by this task.
