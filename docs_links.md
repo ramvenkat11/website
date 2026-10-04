@@ -171,6 +171,11 @@
 - Slack, Teams and Google Chat: https://search2o.com/docs/chat-integrations/chat-applications.html
 - Building a bot with an AI assistant: https://search2o.com/docs/chat-integrations/ai-prompts.html
 
+## Comparisons
+
+- Section: https://search2o.com/docs/comparisons/index.html
+- Search2o and LangChain: https://search2o.com/docs/comparisons/langchain.html
+
 ## Support and licensing
 
 - Section: https://search2o.com/docs/support-licensing/index.html

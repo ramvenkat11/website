@@ -1,0 +1,74 @@
+<p class="lead">LangChain's frameworks are for building an agent. Search2o is for an organization running many agents as one system: developers write them, and everyone else runs them from one search box. The two overlap in places, which is why the question comes up, but they start from different problems.</p>
+<p>"LangChain" is several products, and the difference is not the same for each:</p>
+<ul>
+  <li><strong>The frameworks.</strong> <a href="https://docs.langchain.com/oss/python/langchain/overview" target="_blank" rel="noopener">LangChain</a>, <a href="https://docs.langchain.com/oss/python/langgraph/overview" target="_blank" rel="noopener">LangGraph</a> and Deep Agents are open-source libraries for building an agent in Python or TypeScript. LangSmith is the platform for tracing, evaluating and deploying what gets built. These do a different job from Search2o.</li>
+  <li><strong><a href="https://docs.langchain.com/langsmith/fleet" target="_blank" rel="noopener">LangSmith Fleet</a>.</strong> A no-code product: anyone can create an agent by describing a task, then share it. Its goal is close to Search2o's, agents for a whole company, and its route there is different.</li>
+</ul>
+
+<h2>At a glance</h2>
+<div class="tablewrap"><table class="fields compare">
+<thead><tr><th></th><th>Search2o</th><th>LangChain frameworks</th><th>LangSmith Fleet</th></tr></thead>
+<tbody>
+<tr><td>Starting point</td><td>An organization running many agents as one system</td><td>A developer building an agent in code</td><td>Anyone creating an agent without code</td></tr>
+<tr><td>Who writes agents</td><td>Developers</td><td>Developers</td><td>Anyone, by describing the task</td></tr>
+<tr><td>Who uses them</td><td>Everyone in the organization</td><td>Whoever the application was built for</td><td>The creator, and the colleagues it is shared with</td></tr>
+<tr><td>How a request reaches an agent</td><td>Search finds the agent</td><td>Through the application's own entry point</td><td>A person picks the agent by name</td></tr>
+<tr><td>What decides the steps</td><td>The command list its developer wrote</td><td>The developer's code, the model, or a mix</td><td>The model</td></tr>
+</tbody>
+</table></div>
+
+<h2>Who writes agents, and who uses them?</h2>
+<p>In Search2o these are different people. Developers write agents and publish them. Everyone else types what they need, and does not have to know which agents exist.</p>
+<p>With LangChain's frameworks, a development team builds an agent application and owns all of it. Its users are whoever it was built for: the team itself, colleagues, or the company's customers.</p>
+<p>With Fleet, an agent usually starts with the person who needs it. They describe a routine task in plain language and Fleet builds the agent. It can then be shared with colleagues, and a central team can publish one for the whole workspace to run (<a href="https://www.langchain.com/blog/introducing-langsmith-fleet" target="_blank" rel="noopener">launch post</a>).</p>
+
+<h2>How does a request reach the right agent?</h2>
+<p>In Search2o, search decides. Every published agent carries a description, a request is matched against all of them, and the best match runs. When nothing fits, search returns no agent instead of improvising an answer.</p>
+<p>Agents written by different developers need no knowledge of each other. A follow-up in the same conversation can run a different agent, which reads what the previous one produced.</p>
+<p>In LangChain, a developer or a person decides. An application built with the frameworks has its own entry point, and its developer decides which agents it contains and how work moves between them. LangChain documents <a href="https://docs.langchain.com/oss/python/langchain/multi-agent" target="_blank" rel="noopener">patterns</a> for that, including subagents, handoffs and a router.</p>
+<p>In Fleet, each agent has a name and a person picks it, in chat or by @mentioning its Slack handle.</p>
+
+<h2>What is an agent?</h2>
+<p>In Search2o, an agent is a definition: an ordered list of commands in JSON, with Python expressions, for one well-defined task. Commands call an API, query a database, call a model or ask the person a question. The command list decides what runs next; the model is one of the commands, not the thing choosing them.</p>
+<p>A definition holds no arbitrary code, and it must pass a validation run before it can be published.</p>
+<p>In LangChain's frameworks, an agent is code, with the whole language available. With LangChain's <code>create_agent</code> and with Deep Agents, a model works in a loop and chooses the next tool. With LangGraph, the developer lays out a graph and decides which steps are fixed code and which are left to the model.</p>
+<p>So predictable execution exists on both sides. In LangGraph it is something the developer builds; in Search2o it is the only way an agent runs.</p>
+<p>In Fleet, an agent is a set of instructions and tools, and the model decides the steps.</p>
+
+<h2>Product or toolkit?</h2>
+<p>Search2o is one product: an agent server inside your organization, a cloud service for search, state and reports, a browser interface, and a REST API. Routing, saved state, version history, roles and usage reports come with it.</p>
+<p>LangChain's frameworks are a toolkit, and LangSmith is a set of separate products around them. They are general-purpose: the team that uses them decides what kind of agent system to build. Search2o is built on one idea: structured agent definitions combined with a search engine that finds the right one for each request.</p>
+
+<h2>Which one do I need?</h2>
+<p>That depends on the job.</p>
+<p>LangChain's frameworks fit when:</p>
+<ul>
+  <li>you are building one agent application, such as a customer-facing assistant or a coding agent, and want full control in code</li>
+  <li>the work is open-ended or long-running, and the model should plan the steps</li>
+  <li>you need to score agent output against datasets, or keep a step-by-step trace of every production run</li>
+</ul>
+<p>Fleet fits when the people who need an agent should create it themselves, without a developer.</p>
+<p>Search2o fits when:</p>
+<ul>
+  <li>the organization will have many agents, written by different developers, and people should reach all of them from one place</li>
+  <li>the tasks are well defined and should follow steps a developer wrote, within set limits on time and model cost</li>
+  <li>developers should spend their time writing agents, not building the routing, state, versioning and reporting around them</li>
+</ul>
+
+<h2>Can I use both?</h2>
+<p>Yes. They connect through standard interfaces, in both directions.</p>
+<ul>
+  <li><strong>LangChain calling Search2o.</strong> Search2o's <a href="../rest-api/index.html">REST API</a> lets any program search for an agent and run it. An agent built with LangChain or LangGraph can call it as a tool, the way the <a href="../skill-integration/index.html">Search2o skill</a> does for Claude Code.</li>
+  <li><strong>Search2o calling LangChain.</strong> A Search2o agent can call REST APIs and MCP servers. LangSmith's Agent Server exposes each deployed agent <a href="https://docs.langchain.com/langsmith/server-mcp" target="_blank" rel="noopener">as an MCP tool</a> and through its own REST API.</li>
+</ul>
+
+<h2>Sources</h2>
+<p>LangChain statements were checked against LangChain's own pages on October 3, 2026. Search2o statements come from the <a href="../index.html">Search2o documentation</a>.</p>
+<ul>
+  <li><a href="https://docs.langchain.com/oss/python/langchain/overview" target="_blank" rel="noopener">LangChain overview</a></li>
+  <li><a href="https://docs.langchain.com/oss/python/langgraph/overview" target="_blank" rel="noopener">LangGraph overview</a></li>
+  <li><a href="https://docs.langchain.com/oss/python/langchain/multi-agent" target="_blank" rel="noopener">Multi-agent patterns</a></li>
+  <li><a href="https://docs.langchain.com/langsmith/fleet" target="_blank" rel="noopener">LangSmith Fleet</a></li>
+  <li><a href="https://www.langchain.com/blog/introducing-langsmith-fleet" target="_blank" rel="noopener">Introducing LangSmith Fleet</a>, March 19, 2026</li>
+  <li><a href="https://docs.langchain.com/langsmith/server-mcp" target="_blank" rel="noopener">MCP endpoint in Agent Server</a></li>
+</ul>

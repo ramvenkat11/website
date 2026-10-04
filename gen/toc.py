@@ -161,6 +161,9 @@ TOC = [
         ("finding-and-running-an-agent", "What the skill does"),
         ("installing-the-skill", "Installing the skill"),
     ]),
+    ("comparisons", "Comparisons", [
+        ("langchain", "Search2o and LangChain"),
+    ]),
     ("support-licensing", "Support and licensing", [
         ("asking-the-docs", "Asking the docs"),
         ("support", "Support"),
