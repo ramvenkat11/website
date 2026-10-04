@@ -141,3 +141,7 @@
 - Home hero: `html/index.html` LLMs box reads "OpenAI · Anthropic · Gemini · Ollama · vLLM · Other", with non-breaking spaces before the dots so it breaks three and three at desktop. Box height unchanged (105px desktop, 130px phone).
 - Not changed, reported to Ram: the "Model neutrality" card on the home page and step 3 of `html/gettingstarted.html` still name three vendors; GUI screenshots in the docs were not checked for an adapter list.
 - State: docs rebuilt (146 pages). Not committed, not uploaded. `https://docs.vllm.ai/en/latest/` answered 429 to the link check twice; `https://ollama.com` 200.
+
+## 2026-10-04 — Home page "Model neutrality" card names five
+
+- `html/index.html`: the card now reads "Bring your own keys, or host your own models. OpenAI, Anthropic, Gemini, Ollama, and vLLM are supported out of the box, along with any compatible LLM. Others need only a small adapter." Not committed, not uploaded.
