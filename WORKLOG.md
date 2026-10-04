@@ -85,3 +85,9 @@
 - Also: a Comparisons card on the docs home (`docsrc/index.html`, under "Reference and more") and a Comparisons block in `docs_links.md`. `html/sitemap.xml` picks up the two pages from the build.
 - State: build wrote 146 pages; every page under `html/docs/` changed because the sidebar gained a section. No broken internal links on the new pages; the six LangChain URLs return 200. Not committed, not uploaded, not checked in a browser.
 - Open: `docs_links.md` has no "Skill integration" block.
+
+## 2026-10-03 — Home hero: third heading line made secondary
+
+- Done: `html/styles/styles.css` has a new rule `.hero h1 .line` (16px, weight 500, `var(--muted)`, 10px above, normal letter spacing), so that "Avoid context rot, unpredictable workflows, and runaway LLM costs." reads as a supporting line under the two 24px/800 lines. `html/index.html` is untouched by this; the longer wording of that line was already an uncommitted edit by Ram.
+- Checked: headless Chrome screenshot at 1280px, dark theme. Phone width not verified (headless Chrome does not go below about 500px wide).
+- State: not committed, not uploaded.
