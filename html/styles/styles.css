@@ -366,12 +366,12 @@ p { margin: 0; }
 .cc-arch.hero-arch .cc-agents .arch-chips span { font-size: clamp(10px, 2.6cqi, 11.5px); padding: 3px clamp(5px, 1.6cqi, 7px); white-space: nowrap; }
 .cc-arch.hero-arch .cc-agents .arch-chips span.more { padding-left: 3px; padding-right: 0; border-color: transparent; background: none; color: var(--muted); }
 .cc-agents:has(.cc-agent-field) { position: relative; display: block; }
-.cc-agents:has(.cc-agent-field) .cc-agents-lbl { position: absolute; top: calc(14px + 20px); left: 50%; transform: translate(-50%, -50%); z-index: 1; padding: 4px 14px; border-radius: 999px; background: var(--card); box-shadow: 0 0 10px 8px var(--card); font-size: 12.5px; }
+.cc-agents:has(.cc-agent-field) .cc-agents-lbl { position: absolute; top: calc(14px + 20px); left: 50%; transform: translate(-50%, -50%); z-index: 1; padding: 4px 14px; border-radius: 999px; background: var(--card); box-shadow: 0 0 10px 8px var(--card); font-size: 13px; color: var(--ink); }
 .cc-agent-field {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; height: 40px; min-width: 0; overflow: hidden;
   -webkit-mask-image: linear-gradient(to right, transparent, #000 22%, #000 78%, transparent); mask-image: linear-gradient(to right, transparent, #000 22%, #000 78%, transparent);
 }
-.cc-agent-field i { flex: none; width: 34px; height: 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-soft); }
+.cc-agent-field i { flex: none; width: 34px; height: 11px; border: 1px solid color-mix(in srgb, var(--blue) 30%, var(--line)); border-radius: 999px; background: color-mix(in srgb, var(--blue) 12%, var(--card)); }
 .cc-agent-field i:nth-child(8n+2) { width: 22px; }
 .cc-agent-field i:nth-child(8n+3) { width: 46px; }
 .cc-agent-field i:nth-child(8n+4) { width: 28px; }
