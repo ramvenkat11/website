@@ -145,3 +145,9 @@
 ## 2026-10-04 — Home page "Model neutrality" card names five
 
 - `html/index.html`: the card now reads "Bring your own keys, or host your own models. OpenAI, Anthropic, Gemini, Ollama, and vLLM are supported out of the box, along with any compatible LLM. Others need only a small adapter." Not committed, not uploaded.
+
+## 2026-10-04 — Getting started: no vendor key needed with Ollama or vLLM
+
+- `html/gettingstarted.html` step "Run the server": the sub-heading "Use an LLM key" is now "Choose an LLM", with a second paragraph saying a model hosted with Ollama or vLLM needs no vendor key (start without one, create an LLM profile after sign-in; links to `docs/llm/vendors.html#models-you-host-ollama-and-vllm`). The start commands still show `ANTHROPIC_API_KEY` as the example.
+- `docsrc/getting-started/running-the-server.html` "LLM keys" says the same. Docs rebuilt. Not committed, not uploaded.
+- Assumed, not tested: the agent server starts with no vendor key set (the seeded profiles read their key at call time).
