@@ -158,3 +158,10 @@
 - Kept: the word "vendor" where it means a company (OpenAI etc.), `vendorTools`, the adapter method `set_assistant_vendor`, and the "Vendor" column of the seeded-profiles table on `llm/vendors.html`.
 - Stale, cannot fix here: the screenshot `html/docs/img/gui-profiles-{light,dark}.png` still shows a "Vendor" column (and profile names `anthropic`, `openai` instead of `claude_haiku`, `gpt5_mini`).
 - State: docs rebuilt. Not committed, not uploaded.
+
+## 2026-10-04 — GUI screenshots removed from the docs
+
+- Ram: remove all GUI screenshots; the GUI is a moving target at this stage. (A recapture of the LLM profiles list through Chrome failed first: the extension's tab was hidden, so screenshots timed out.)
+- Done: all 17 `<!--shot:...-->` lines removed from 9 files under `docsrc/` (`development/code-editor`, `development/trace-and-validation`, `gui/index`, `gui/search`, `gui/agents`, `gui/profiles`, `gui/guardrails`, `gui/operations`, `gui/account`, `hooks/overview`). No surrounding sentence referred to a screenshot. Docs rebuilt; no page has a `figure.shot` or links to `img/` any more.
+- Left in place: the 34 PNG files in `html/docs/img/` (deleting project files needs Ram's permission each time), and the `shot` support in `gen/build.py` and `html/docs/docs.css`, so screenshots can come back later.
+- State: not committed, not uploaded. The PNGs are also still in the bucket.
