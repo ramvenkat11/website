@@ -151,3 +151,10 @@
 - `html/gettingstarted.html` step "Run the server": the sub-heading "Use an LLM key" is now "Choose an LLM", with a second paragraph saying a model hosted with Ollama or vLLM needs no vendor key (start without one, create an LLM profile after sign-in; links to `docs/llm/vendors.html#models-you-host-ollama-and-vllm`). The start commands still show `ANTHROPIC_API_KEY` as the example.
 - `docsrc/getting-started/running-the-server.html` "LLM keys" says the same. Docs rebuilt. Not committed, not uploaded.
 - Assumed, not tested: the agent server starts with no vendor key set (the seeded profiles read their key at call time).
+
+## 2026-10-04 — `vendor` field removed from the LLM profile docs
+
+- Ram: the field is gone from LLM profiles (confirmed in `../s2oserver/models/systemconfig.py` and `../search2o` notes). Removed from `docsrc/llm/vendors.html` (two table rows), `docsrc/llm/llm-adapters.html` (the sentence about reports grouping under the field), `docsrc/gui/profiles.html` (caption and the field list), `docsrc/profiles/overview.html` (table cell). The generated field table on `profiles/llm-profiles.html` lost its row on rebuild, because it is built from the s2oserver model.
+- Kept: the word "vendor" where it means a company (OpenAI etc.), `vendorTools`, the adapter method `set_assistant_vendor`, and the "Vendor" column of the seeded-profiles table on `llm/vendors.html`.
+- Stale, cannot fix here: the screenshot `html/docs/img/gui-profiles-{light,dark}.png` still shows a "Vendor" column (and profile names `anthropic`, `openai` instead of `claude_haiku`, `gpt5_mini`).
+- State: docs rebuilt. Not committed, not uploaded.
