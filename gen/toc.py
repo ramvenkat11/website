@@ -66,7 +66,7 @@ TOC = [
         ("describing-an-agent", "Describing an agent"),
         ("how-matching-works", "How matching behaves"),
         ("tags", "Tags"),
-        ("search-settings", "Search settings"),
+        ("search-settings", "Search behavior"),
         ("search-quality", "Search quality"),
         ("orchestrator", "Orchestrator"),
     ]),

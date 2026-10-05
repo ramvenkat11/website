@@ -1,18 +1,21 @@
-<p class="lead">The <strong>Search</strong> configuration decides which tag the search box uses and what happens when the user presses Enter in the bundled GUI.</p>
+<p class="lead">A search returns the agents that match a query, best first. What an interface does with those matches &mdash; run the best one at once, or show them for the user to pick &mdash; is the interface's own behavior, not an account setting. The bundled GUI makes it a preference you set in the interface; an interface of your own decides for itself.</p>
 
-<!--fields:model:SearchOptionsModel-->
-<p>Leave <code>tag</code> empty and the search box searches agents of every tag. Set a tag and only agents carrying that tag are matched. See <a href="tags.html">Tags</a>.</p>
+<h2>What an interface can do with the matches</h2>
+<p>A search returns one, two or three agents, or none; see <a href="how-matching-works.html">How matching behaves</a>. The interface then chooses how to act:</p>
+<div class="tablewrap"><table class="fields data">
+<thead><tr><th>Behavior</th><th>What happens</th></tr></thead>
+<tbody>
+<tr><td>Run the best match</td><td>The top agent runs at once. The fastest path, and it never asks the user to choose.</td></tr>
+<tr><td>Run only a lone match</td><td>A single match runs at once; when two or three come back, they are offered as choices.</td></tr>
+<tr><td>Show the matches</td><td>The matches are always shown and the user picks. Nothing runs until they do.</td></tr>
+</tbody></table></div>
+<p>When nothing matches, the interface says so rather than running anything.</p>
 
-<h2>Search behavior</h2>
-<!--enum:SearchBehavior-->
-<p>A search returns one, two or three agents, or none; see <a href="how-matching-works.html">How matching behaves</a>. The default setting runs the top match at once. The other two settings turn the results into choices. <code>executeOnlyMatch</code> still runs a single match without asking. <code>showResults</code> always waits for the user.</p>
+<h2>Follow-ups</h2>
+<p>A follow-up is a query typed into a conversation that already exists. An interface can search it like a new query and keep the agent that answered last as a fallback or among the choices, or it can keep the whole conversation on the agent that started it. See <a href="how-matching-works.html#follow-ups">Follow-ups</a>.</p>
 
-<h2>Follow-up behavior</h2>
-<p>A follow-up is a query typed into an existing conversation. The previous agent is the agent that answered last.</p>
-<!--enum:FollowupBehavior-->
-<p>The first three settings search the follow-up like a new query and keep the previous agent in play. Under the default setting, the previous agent answers when nothing else matches. Under the two settings that offer a choice, the previous agent is added to the end of the choices. <code>executePrevious</code> never searches a follow-up: the conversation stays on the agent that started it.</p>
-
-<p>Changes take effect on the next search. Search settings are edited under <strong>Agents › Search</strong> by a developer or an administrator.</p>
+<h2>The bundled GUI</h2>
+<p>In the GUI this is a per-user setting, under <a href="../gui/personal.html">your profile</a> alongside the theme: by default the best match runs at once, and a follow-up is searched again with the previous agent as the fallback. Change the setting and the GUI offers the matches as choices instead. It is your own preference, not part of the account configuration, and takes effect on the next search.</p>
 
 <h2>Your own interface</h2>
-<p>These settings apply only to the bundled GUI. An interface of your own, or a chat integration, decides for itself what to do with the matches.</p>
+<p>An interface of your own, a chat integration, or an <a href="../skill-integration/overview.html">agent skill</a> decides for itself what to do with the matches. The <a href="../rest-api/search.html"><code>search</code></a> call returns only the ranked matches; the choice of what to run is yours. A chat bot that always runs the best match feels like a conversation; one that shows the matches feels like a search page. Either works, as long as it stays consistent.</p>

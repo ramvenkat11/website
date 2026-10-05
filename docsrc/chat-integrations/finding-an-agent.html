@@ -1,26 +1,24 @@
-<p class="lead">The bot calls <code>search</code> with the person&rsquo;s question. The call returns up to three agents, and two values that say what to do with them.</p>
+<p class="lead">The bot calls <code>search</code> with the person&rsquo;s question. The call returns up to three matching agents, best first, and the bot decides what to do with them.</p>
 
 <x-code lang="json" title="The response">
 { "success": true,
-  "searchResults": [ { "agentName": "hr_policy", "agentTitle": "HR policy" } ],
-  "searchBehavior": "executeTopMatch",
-  "followupBehavior": "executePrevious" }
+  "searchResults": [ { "agentName": "hr_policy", "agentTitle": "HR policy" } ] }
 </x-code>
 
 <h2>What to do with the results</h2>
-<p><code>searchBehavior</code> applies to a new question. <code>followupBehavior</code> applies to a question asked inside a conversation that already exists. Both come from the account&rsquo;s <a href="../search/search-settings.html">search settings</a>.</p>
+<p>Search returns only the matches; what the bot does with them is the bot&rsquo;s own <a href="../search/search-settings.html">search behavior</a>, not an account setting. Pick one approach and keep it consistent.</p>
 <div class="tablewrap"><table class="fields data">
-<thead><tr><th>Value</th><th>What the bot does</th></tr></thead>
+<thead><tr><th>Approach</th><th>What the bot does</th></tr></thead>
 <tbody>
-<tr><td><code>executeTopMatch</code></td><td>Run the first result.</td></tr>
-<tr><td><code>executeOnlyMatch</code></td><td>Run the result when there is exactly one. Otherwise show the list.</td></tr>
-<tr><td><code>showResults</code></td><td>Show the list and let the person choose.</td></tr>
-<tr><td><code>executePrevious</code><br><small>only in <code>followupBehavior</code></small></td><td>Keep using the agent already in the conversation.</td></tr>
+<tr><td>Run the best match</td><td>Run the first result.</td></tr>
+<tr><td>Run only a lone match</td><td>Run the result when there is exactly one. Otherwise show the list.</td></tr>
+<tr><td>Show the matches</td><td>Show the list and let the person choose.</td></tr>
+<tr><td>Keep the conversation&rsquo;s agent<br><small>for a follow-up</small></td><td>Keep using the agent already in the conversation.</td></tr>
 </tbody></table></div>
-<p>Both values are guidance, not a rule the bot must follow. They carry the account&rsquo;s preference, and a bot may take its own line. A bot that always runs the top match, for example, feels more like a conversation and less like a search page. The cost is that the person is never offered a choice when the match is uncertain. Either suits, as long as the bot stays consistent.</p>
+<p>A bot that always runs the best match feels more like a conversation and less like a search page. The cost is that the person is never offered a choice when the match is uncertain. Either suits, as long as the bot stays consistent.</p>
 
 <h2>Letting the person choose</h2>
-<p>When the behavior says to show the results, show them as buttons: one button per agent, labeled with the agent title. Search returns at most three, so the buttons fit in a single row.</p>
+<p>When the bot shows the results, show them as buttons: one button per agent, labeled with the agent title. Search returns at most three, so the buttons fit in a single row.</p>
 <p>Four things make a picker work properly.</p>
 <ul>
   <li><strong>Carry the question, not only the choice.</strong> Running an agent needs the question, and a click only says which agent. It works well to put a short identifier in the button and keep the question in your own store. A chat application limits how much a button can carry, and a question can be longer than that.</li>

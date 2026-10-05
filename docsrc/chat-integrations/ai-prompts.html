@@ -42,17 +42,11 @@ FINDING AN AGENT
   POST BASE/api/exec/search
     in : { "query": "the person's question" }        at least 8 characters
     out: { "success": true,
-           "searchResults": [ { "agentName": "...", "agentTitle": "..." } ],
-           "searchBehavior": "executeTopMatch" | "executeOnlyMatch" | "showResults",
-           "followupBehavior": "executeTopMatch" | "executeOnlyMatch" | "showResults"
-                               | "executePrevious" }
-  Up to three results. searchBehavior tells you what to do with them for a new question,
-  followupBehavior for a question inside a conversation that already exists.
-      executeTopMatch   run the first result
-      executeOnlyMatch  run it when there is one result, otherwise show the list
-      showResults       show the list and let the person choose
-      executePrevious   keep using the agent already in this conversation
-  An empty searchResults means no agent covers that question. Say so.
+           "searchResults": [ { "agentName": "...", "agentTitle": "..." } ] }
+  Up to three results, best first. You decide what to do with them: run the first
+  result, or show the list as buttons and let the person choose. For a question inside a
+  conversation that already exists, you may instead keep using the agent already in that
+  conversation. An empty searchResults means no agent covers that question. Say so.
 
 RUNNING AN AGENT
   POST BASE/api/exec/execAgent
@@ -112,7 +106,7 @@ RULES YOU MUST FOLLOW
   - html parts cannot be shown in any chat application. Convert them to text, or tell the
     person the answer is in the Search2o GUI.
   - image parts are base64. Upload them using the chat application's file API.
-  - When searchBehavior or followupBehavior says to show the results, show one button per
+  - When you show the results, show one button per
     agent. Put a short id in the button and keep the question in your own store, because a
     button carries little and a question can be long. Replace the message once somebody
     chooses, so a second click cannot start a second conversation. Accept the click only

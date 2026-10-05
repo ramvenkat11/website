@@ -74,7 +74,7 @@
 - Describing an agent: https://search2o.com/docs/search/describing-an-agent.html
 - How matching behaves: https://search2o.com/docs/search/how-matching-works.html
 - Tags: https://search2o.com/docs/search/tags.html
-- Search settings: https://search2o.com/docs/search/search-settings.html
+- Search behavior: https://search2o.com/docs/search/search-settings.html
 - Search quality: https://search2o.com/docs/search/search-quality.html
 
 ## Development process

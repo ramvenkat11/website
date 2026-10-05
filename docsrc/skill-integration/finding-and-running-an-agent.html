@@ -10,7 +10,7 @@
   <li><a href="../rest-api/search.html"><code>search</code></a> takes the request and returns the matching agents, best first, each with its name and title.</li>
   <li><a href="../rest-api/running-agents.html"><code>execAgent</code></a> runs one agent and returns its output, the conversation id, a result code and, when the agent has paused for input, the questions it is asking.</li>
 </ul>
-<p>The search response also carries <code>searchBehavior</code> and <code>followupBehavior</code>, the account's guidance for an interface that cannot judge for itself; see <a href="../search/how-matching-works.html">How matching behaves</a>. The assistant can judge, so the skill tells it to set them aside and pick the agent that fits.</p>
+<p>The search response is the ranked matches and nothing more; see <a href="../search/how-matching-works.html">How matching behaves</a>. What to do with them is the caller's own <a href="../search/search-settings.html">search behavior</a>, and the assistant judges for itself: it reads the titles and picks the agent that fits.</p>
 
 <h2>A request, step by step</h2>
 <ol>

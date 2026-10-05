@@ -105,12 +105,13 @@ ends their tokens with their account.
 
 ## Finding an agent
 
-The bot calls `search` with the person's question. The call returns up to three agents, and
-two values that tell the bot what to do with them.
+The bot calls `search` with the person's question. The call returns up to three matching
+agents, best first, and the bot decides what to do with them.
 
-`searchBehavior` says whether to run the best match, run the only match, or show the list and
-let the person choose. `followupBehavior` says the same for a question asked inside an
-existing conversation, and can also say to continue with the agent already in use.
+Search returns only the matches. What the bot does with them is the bot's own behavior, not
+an account setting: run the best match, run a lone match and otherwise show the list, or
+always show the list and let the person choose. For a question asked inside an existing
+conversation, the bot may instead keep the agent already in use.
 
 When the search returns nothing, no agent covers that question. Say so. There is no directory
 of agents for end users, and none is needed. People ask, and the answer tells them whether an
@@ -299,16 +300,10 @@ FINDING AN AGENT
   POST BASE/api/exec/search
     in : { "query": "the person's question" }        at least 8 characters
     out: { "success": true,
-           "searchResults": [ { "agentName": "...", "agentTitle": "..." } ],
-           "searchBehavior": "executeTopMatch" | "executeOnlyMatch" | "showResults",
-           "followupBehavior": "executeTopMatch" | "executeOnlyMatch" | "showResults"
-                               | "executePrevious" }
-  Up to three results. searchBehavior tells you what to do with them for a new question,
-  followupBehavior for a question inside a conversation that already exists.
-      executeTopMatch   run the first result
-      executeOnlyMatch  run it when there is one result, otherwise show the list
-      showResults       show the list and let the person choose
-      executePrevious   keep using the agent already in this conversation
+           "searchResults": [ { "agentName": "...", "agentTitle": "..." } ] }
+  Up to three results, best first. You decide what to do with them: run the first result,
+  or show the list as buttons and let the person choose. For a question inside a conversation
+  that already exists, you may instead keep using the agent already in that conversation.
   An empty searchResults means no agent covers that question. Say so.
 
 RUNNING AN AGENT
@@ -367,7 +362,7 @@ RULES YOU MUST FOLLOW
   - html parts cannot be shown in any chat application. Convert them to text, or tell the
     person the answer is in the Search2o GUI.
   - image parts are base64. Upload them using the chat application's file API.
-  - When searchBehavior or followupBehavior says to show the results, show one button per
+  - When you show the results, show one button per
     agent. Put a short id in the button and keep the question in your own store, because a
     button carries little and a question can be long. Replace the message once somebody
     chooses, so a second click cannot start a second conversation. Accept the click only

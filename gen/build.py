@@ -9,7 +9,7 @@ tables derived from the pydantic models, so the reference cannot drift from the 
     <!--fields:command:api-->        the fields of one command (CommandBlock's alias, e.g. "if")
     <!--fields:model:LlmModel-->     the fields of a model in models/systemconfig.py or agentmodels.py
     <!--commands:groups-->           every command, grouped as the editor groups them
-    <!--enum:SearchBehavior-->       the members of a StrEnum with the comment on each member
+    <!--enum:AgentExecResult-->      the members of a StrEnum with the comment on each member
 
     <x-code lang="jsonc">...</x-code>   a code block; contents are escaped and highlighted here,
                                         so sources can hold the raw text.
