@@ -176,3 +176,8 @@
 
 - Ram: add the model from `agents.json` to the left column (title, name, model). `html/demo-agents.html`: one line in the render script adds `<code class="agent-model">` under the agent name when the entry has `model`. No CSS change; it takes the existing `.agent-list code` style. Checked at 1280px and 390px with a local server: 200 rows, 200 model lines.
 - State: not committed, not uploaded.
+
+## 2026-10-05 — Hero figure: agent names removed
+
+- Ram: no actual agent names; only communicate that there are hundreds. In `html/index.html` the `.cc-agents` row is now one label, "Hundreds of task-specific agents" (the `.arch-chips` with `leave_balance`, `fx_rates`, `product_recalls`, "+ hundreds more" is gone). No CSS change; the chip rules for `.cc-agents .arch-chips` in `styles.css` are now unused.
+- Checked by screenshot at 1440px; rendered at 390px but not viewed. Not committed, not uploaded.
