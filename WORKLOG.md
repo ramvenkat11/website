@@ -211,3 +211,7 @@
 - `gui/agents.html`: removed the "Search" subsection (it documented the removed Agents › Search cloud-config panel) and dropped "the search settings" from the lead. Where the UI setting now lives in the GUI is a ui1 detail I could not verify; flagged to Ram.
 - Checked: no `searchBehavior`/`followupBehavior`/`SearchOptionsModel`/enum-value/"search settings" strings remain in docsrc or html/docs; no broken internal links on the touched pages.
 - State: not committed, not uploaded.
+
+## 2026-10-05 — Search behavior: documented as a per-user GUI setting
+
+- Ram: the UI setting now lives under user settings in the GUI (client-side). Added it to `docsrc/gui/personal.html` Profile section, next to the theme, and reworded the "The bundled GUI" paragraph of `docsrc/search/search-settings.html` to call it a per-user preference under the profile (link to gui/personal.html), not account configuration. Docs rebuilt; links clean. Not committed, not uploaded.
