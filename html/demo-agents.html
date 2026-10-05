@@ -140,6 +140,7 @@
         var head = el("div", "agent-head");
         head.appendChild(el("h3", null, agent.title));
         head.appendChild(el("code", null, agent.agentName));
+        if (agent.model) head.appendChild(el("code", "agent-model", agent.model));
         item.appendChild(head);
         var body = el("div", "agent-body");
         body.appendChild(el("p", null, agent.description));
