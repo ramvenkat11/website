@@ -193,3 +193,11 @@
 
 - Ram: put the Agents wording in the middle, not on the left. `.cc-agents:has(.cc-agent-field)` is now a positioned block; `.cc-agents-lbl` is absolutely centred over the field on a `var(--card)` pill with a soft halo, and the field is centred and fades out at both ends. The phone override is reduced to `padding-right: 0`.
 - Checked by screenshot at 1440px and 390px, light theme. Dark theme not viewed. Not committed, not uploaded.
+
+## 2026-10-05 — Light/dark button in the header of every page
+
+- Done: the `.theme-toggle` button (same markup as the docs header in `gen/build.py`) added after the header `</nav>` on the 11 non-docs pages: `html/index.html`, `demo.html`, `demo-agents.html`, `pricing.html`, `about.html`, `gettingstarted.html`, `404.html` and the four `html/legal/*.html`. `js/site.js` already handled the button and every page already read `s2o-theme` in its head.
+- `html/styles/styles.css`: `.docs .theme-toggle` and `.docs .site-nav` lost the `.docs` prefix, so the button sits between the tagline and the nav on every page, as in the docs. The rule that stacks the tagline under the logo now applies up to 440px (was 359px), so the button stays on the first header row on phones.
+- Tested with Playwright from a local server: on all 11 pages and one docs page a click switches the background from white to `rgb(9, 15, 29)`, saves `s2o-theme`, and updates the aria-label. Header measured at 340, 390, 430, 460 and 800px: button on the first row, no horizontal overflow.
+- Not checked: how the demo widget (`html/demo/demo.css`, built by ui1) looks when dark is forced by the button on a light-mode machine.
+- State: not committed, not uploaded.
