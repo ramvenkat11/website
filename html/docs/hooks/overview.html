@@ -48,7 +48,6 @@
     <article class="docs-article">
       <h1>How hooks work</h1>
       <p class="lead">Hooks are Python functions and classes of your own that the agent server calls at set points: when the agent server starts and stops, before and after an agent runs, when an agent is published or deleted, before an LLM or API call, and when the agent server needs a secret, an encryption key, or the state of a conversation. Administrators name them on the Hooks page in the GUI, under Operations &rsaquo; Hooks.</p>
-<figure class="shot"><img class="light" src="../img/gui-hooks-light.png" alt="The Hooks page" style="--shot-w:560px"><img class="dark" src="../img/gui-hooks-dark.png" alt="The Hooks page" style="--shot-w:560px"><figcaption>Operations › Hooks: one import path per hook, in the groups the page draws them in.</figcaption></figure>
 
 <h2 id="how-hooks-are-loaded">How hooks are loaded</h2>
 <p>Each hook is a dotted Python import path, such as <code>mycompany.hooks.on_agent_end</code>, naming a function or class. The code must be installed in the Python environment of every agent server of the account. An empty box means the hook is not set.</p>

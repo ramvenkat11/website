@@ -51,11 +51,9 @@
 
 <h2 id="compile-rules">Compile rules</h2>
 <p>Each operator is allowed or denied, and an operator can be rewritten to a function of your own from the allowlist; comprehensions are bounded too. The rules are applied only when a draft is validated or published; a changed rule does not touch a published agent. See <a href="../runtime/compile-rules.html">Compile rules</a>.</p>
-<figure class="shot"><img class="light" src="../img/gui-guardrails-light.png" alt="The Compile rules page: expression limits and per-operator allow/deny" style="--shot-w:560px"><img class="dark" src="../img/gui-guardrails-dark.png" alt="The Compile rules page: expression limits and per-operator allow/deny" style="--shot-w:560px"><figcaption>Compile rules: limits on expressions, and allow, deny or rewrite per operator.</figcaption></figure>
 
 <h2 id="allowlist">Allowlist</h2>
 <p>The functions and objects that expressions may use, one per line, and the <code>sys</code> variables that agents may read. The agent server resolves every entry when the allowlist is saved, and refuses the save if an entry cannot be imported. See <a href="../runtime/allowlist.html">Allowlist</a> and <a href="../runtime/system-variables.html">System variables</a>.</p>
-<figure class="shot"><img class="light" src="../img/gui-allowlist-light.png" alt="The Allowlist page: the sys variables and functions expressions may use" style="--shot-w:560px"><img class="dark" src="../img/gui-allowlist-dark.png" alt="The Allowlist page: the sys variables and functions expressions may use" style="--shot-w:560px"><figcaption>The allowlist: the system variables, and the functions and objects that expressions may call.</figcaption></figure>
 
 <h2 id="runtime">Runtime</h2>
 <p>Limits on a run: time, loop iterations, database rows, definition size, and LLM spend. See <a href="../runtime/runtime-limits.html">Runtime limits</a>.</p>

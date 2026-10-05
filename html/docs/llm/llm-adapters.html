@@ -87,7 +87,7 @@
   <li>On the <a href="../hooks/adapters-and-validators.html">Hooks</a> page, under LLM adapters, add a line <code>mypackage.myadapter.MyAdapter</code> and save.</li>
   <li>Restart the agent servers. Each builds the class once when it starts, and lists the adapter under <em>Adapters</em> when a new LLM profile is created. A class that cannot be imported or built is written to the agent server's log, and the agent server refuses to run agents until the line is fixed.</li>
 </ol>
-<p>The class needs a constructor that takes no arguments. Reports group spend under the profile's <em>vendor</em> field, so set that field to the vendor's name, whatever the adapter is called.</p>
+<p>The class needs a constructor that takes no arguments.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../llm/vendors.html'><small>Previous</small>LLM vendors</a><a class=next href='../llm/code-from-llm.html'><small>Next</small>Executing code from an LLM</a></nav>

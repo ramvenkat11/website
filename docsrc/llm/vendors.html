@@ -28,7 +28,6 @@ $ export GEMINI_API_KEY=...        # Google Gemini
 <thead><tr><th>Field</th><th>What to set</th></tr></thead>
 <tbody>
 <tr><td><code>adapter</code></td><td><code>openai</code>, <code>anthropic</code> or <code>gemini</code>, matching the protocol the endpoint speaks; <code>ollama</code> or <code>vllm</code> for a model served by one of those.</td></tr>
-<tr><td><code>vendor</code></td><td>The name the reports group spend under.</td></tr>
 <tr><td><code>url</code></td><td>The endpoint, for example <code>https://api.openai.com</code>.</td></tr>
 <tr><td><code>headers</code></td><td>Authorization and anything else the vendor wants. The values are dynamic strings, so the key can be read at call time: <code>{ f"Bearer {sys.secret['OPENAI_API_KEY']}" }</code>.</td></tr>
 <tr><td><code>model</code></td><td>The model name as the vendor writes it.</td></tr>
@@ -42,7 +41,6 @@ $ export GEMINI_API_KEY=...        # Google Gemini
 <thead><tr><th>Field</th><th>Ollama</th><th>vLLM</th></tr></thead>
 <tbody>
 <tr><td><code>adapter</code></td><td><code>ollama</code></td><td><code>vllm</code></td></tr>
-<tr><td><code>vendor</code></td><td colspan="2">The name the reports group the profile under, for example <code>ollama</code> or <code>vllm</code>.</td></tr>
 <tr><td><code>url</code></td><td colspan="2">The agent server's route to the model server, ending in <code>/v1/responses</code>. On the same machine with the default ports: <code>http://localhost:11434/v1/responses</code> for Ollama, <code>http://localhost:8000/v1/responses</code> for vLLM.</td></tr>
 <tr><td><code>headers</code></td><td colspan="2"><code>Content-Type</code> alone when the server asks for no key.</td></tr>
 <tr><td><code>model</code></td><td>The model as Ollama names it, for example <code>qwen2.5:7b</code>.</td><td>The name the model is served under.</td></tr>
