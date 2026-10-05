@@ -171,3 +171,8 @@
 - Done: copied `../s2oserver/docs/demo/definitions/*.jsonc` over `html/demo-agents/` (22 of 200 files had changed; same 200 names) and `../s2oserver/docs/demo/agents.json` over `html/demo-agents.json`. Both now identical to the source.
 - `agents.json` has a new field per agent, `model` (the model the agent's LLM profile calls). Group, name, title and description are unchanged for all 200. `html/demo-agents.html` ignores the new field.
 - State: not committed, not uploaded.
+
+## 2026-10-05 — demo-agents.html shows each agent's model
+
+- Ram: add the model from `agents.json` to the left column (title, name, model). `html/demo-agents.html`: one line in the render script adds `<code class="agent-model">` under the agent name when the entry has `model`. No CSS change; it takes the existing `.agent-list code` style. Checked at 1280px and 390px with a local server: 200 rows, 200 model lines.
+- State: not committed, not uploaded.
