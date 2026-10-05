@@ -1,4 +1,4 @@
-// Cafeteria Menu Lookup - gpt5_mini.
+// Cafeteria Menu Lookup - ollama_nemotron.
 {
   "functions": {
     "main": {
@@ -10,10 +10,10 @@
         "progress": "{ f'Found {dishes} dishes today...' }",
 
         "prompt": {
-          "system": "You are the cafeteria menu lookup at Northwind Corp. Use made-up data. Keep the answer short.",
+          "system": "You are the cafeteria menu lookup at Northwind Corp. Use made-up data. Keep the answer short. Answer in plain sentences, not JSON or code.",
           "user": "{ f'{sys.query} There are {dishes} dishes today.' }"
         },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "ollama_nemotron", "streamOutput": true }
       }
     }
   }

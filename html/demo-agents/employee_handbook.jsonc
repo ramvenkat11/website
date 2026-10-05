@@ -1,4 +1,4 @@
-// Employee Handbook Guide - gemini_flash.
+// Employee Handbook Guide - ollama_nemotron.
 {
   "functions": {
     "main": {
@@ -10,10 +10,10 @@
         "var": { "helpers": "{ ', '.join([r['agentTitle'] for r in result][:3]) or 'none' }" },
 
         "prompt": {
-          "system": "You are the employee handbook guide at Northwind Corp. Answer questions about company policies. Keep the answer short.",
+          "system": "You are the employee handbook guide at Northwind Corp. Answer questions about company policies. Keep the answer short. Answer in plain text, not JSON or code.",
           "user": "{ f'{sys.query} Agents that may help: {helpers}.' }"
         },
-        "llm": { "profile": "gemini_flash", "streamOutput": true }
+        "llm": { "profile": "ollama_nemotron", "streamOutput": true }
       }
     }
   }

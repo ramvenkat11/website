@@ -1,4 +1,4 @@
-// Supply Disruption Monitor - claude_haiku.
+// Supply Disruption Monitor - ollama_nemotron.
 {
   "functions": {
     "main": {
@@ -10,10 +10,10 @@
         "progress": "Checking ports, weather and supplier alerts...",
 
         "prompt": {
-          "system": "You are the supply disruption monitor at Northwind Corp. Use made-up data. List current events such as port congestion, strikes, storms or supplier outages, the open orders each one affects, and the expected delay. Keep the answer short.",
+          "system": "You are the supply disruption monitor at Northwind Corp. Use made-up data. List current events such as port congestion, strikes, storms or supplier outages, the open orders each one affects, and the expected delay. Keep the answer short. Answer in plain text, not JSON or code.",
           "user": "{ sys.query }"
         },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "ollama_nemotron", "streamOutput": true }
       }
     }
   }

@@ -1,4 +1,4 @@
-// Lost and Found Desk - claude_haiku.
+// Lost and Found Desk - ollama_nemotron.
 {
   "functions": {
     "main": {
@@ -10,10 +10,10 @@
         "var": { "helpers": "{ ', '.join([r['agentTitle'] for r in result][:3]) or 'none' }" },
 
         "prompt": {
-          "system": "You are the lost and found desk at Northwind Corp. Help with items lost or found in the office. Keep the answer short.",
+          "system": "You are the lost and found desk at Northwind Corp. Help with items lost or found in the office. Keep the answer short. Answer in plain text, not JSON or code.",
           "user": "{ f'{sys.query} Agents that may help: {helpers}.' }"
         },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "ollama_nemotron", "streamOutput": true }
       }
     }
   }

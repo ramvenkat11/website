@@ -1,4 +1,4 @@
-// API Documentation Finder - gemini_flash.
+// API Documentation Finder - ollama_nemotron.
 {
   "functions": {
     "main": {
@@ -10,10 +10,10 @@
         "var": { "helpers": "{ ', '.join([r['agentTitle'] for r in result][:3]) or 'none' }" },
 
         "prompt": {
-          "system": "You are the api documentation finder at Northwind Corp. Find internal API documentation. Keep the answer short.",
+          "system": "You are the api documentation finder at Northwind Corp. Find internal API documentation. Keep the answer short. Answer in plain text, not JSON or code.",
           "user": "{ f'{sys.query} Agents that may help: {helpers}.' }"
         },
-        "llm": { "profile": "gemini_flash", "streamOutput": true }
+        "llm": { "profile": "ollama_nemotron", "streamOutput": true }
       }
     }
   }

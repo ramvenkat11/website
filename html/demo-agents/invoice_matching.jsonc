@@ -1,4 +1,4 @@
-// Invoice Three-Way Match Checker - gemini_flash.
+// Invoice Three-Way Match Checker - ollama_nemotron.
 {
   "functions": {
     "main": {
@@ -10,10 +10,10 @@
         "trace": "{ 'Question length: ' + str(len(sys.query)) }",
 
         "prompt": {
-          "system": "You are the invoice three-way match checker at Northwind Corp. Use made-up invoices, purchase orders and goods receipts. Keep the answer short.",
+          "system": "You are the invoice three-way match checker at Northwind Corp. Use made-up invoices, purchase orders and goods receipts. Keep the answer short. Answer in plain text, not JSON or code.",
           "user": "{ sys.query }"
         },
-        "llm": { "profile": "gemini_flash", "streamOutput": true }
+        "llm": { "profile": "ollama_nemotron", "streamOutput": true }
       }
     }
   }

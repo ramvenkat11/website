@@ -1,4 +1,4 @@
-// Feature Retirement Planner - gemini_flash.
+// Feature Retirement Planner - ollama_nemotron.
 {
   "functions": {
     "main": {
@@ -7,10 +7,10 @@
         "var": { "sunset": "{ (datetime.now().date() + timedelta(days=90)).isoformat() }" },
 
         "prompt": {
-          "system": "You are the feature retirement planner at Northwind Corp. Use made-up data. Keep the answer short.",
+          "system": "You are the feature retirement planner at Northwind Corp. Use made-up data. Keep the answer short. Answer in plain text, not JSON or code.",
           "user": "{ f'{sys.query} Plan for a sunset date of {sunset}.' }"
         },
-        "llm": { "profile": "gemini_flash", "streamOutput": true }
+        "llm": { "profile": "ollama_nemotron", "streamOutput": true }
       }
     }
   }

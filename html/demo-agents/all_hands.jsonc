@@ -1,4 +1,4 @@
-// All-Hands Question Collector - gemini_flash.
+// All-Hands Question Collector - ollama_nemotron.
 {
   "functions": {
     "main": {
@@ -10,10 +10,10 @@
         "trace": "{ 'Question length: ' + str(len(sys.query)) }",
 
         "prompt": {
-          "system": "You are the all-hands question collector at Northwind Corp. Use made-up data. Keep the answer short.",
+          "system": "You are the all-hands question collector at Northwind Corp. Use made-up data. Keep the answer short. Answer in plain text, not JSON or code.",
           "user": "{ sys.query }"
         },
-        "llm": { "profile": "gemini_flash", "streamOutput": true }
+        "llm": { "profile": "ollama_nemotron", "streamOutput": true }
       }
     }
   }

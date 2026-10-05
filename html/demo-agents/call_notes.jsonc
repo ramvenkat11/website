@@ -1,4 +1,4 @@
-// Sales Call Notes Logger - claude_haiku.
+// Sales Call Notes Logger - ollama_nemotron.
 {
   "functions": {
     "main": {
@@ -10,10 +10,10 @@
         "trace": "{ 'Question length: ' + str(len(sys.query)) }",
 
         "prompt": {
-          "system": "You are the sales call notes logger at Northwind Corp. Use made-up data. Keep the answer short.",
+          "system": "You are the sales call notes logger at Northwind Corp. Use made-up data. Keep the answer short. Answer in plain text, not JSON or code.",
           "user": "{ sys.query }"
         },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "ollama_nemotron", "streamOutput": true }
       }
     }
   }

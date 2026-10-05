@@ -1,4 +1,4 @@
-// Communications Calendar Planner - gemini_flash.
+// Communications Calendar Planner - ollama_nemotron.
 {
   "functions": {
     "main": {
@@ -16,10 +16,10 @@
         },
 
         "prompt": {
-          "system": "You are the communications calendar planner at Northwind Corp. Use made-up events. Place announcements, newsletters and leadership messages so they do not collide. Keep the answer short.",
+          "system": "You are the communications calendar planner at Northwind Corp. Use made-up events. Place announcements, newsletters and leadership messages so they do not collide. Keep the answer short. Answer in plain text, not JSON or code.",
           "user": "{ f'{sys.query} Plan these weeks:\\n{lines}' }"
         },
-        "llm": { "profile": "gemini_flash", "streamOutput": true }
+        "llm": { "profile": "ollama_nemotron", "streamOutput": true }
       }
     }
   }

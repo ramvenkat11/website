@@ -1,4 +1,4 @@
-// Loyalty Points Lookup - gpt5_mini.
+// Loyalty Points Lookup - ollama_nemotron.
 {
   "functions": {
     "main": {
@@ -10,10 +10,10 @@
         "var.2": { "conv.lastTopic": "loyalty points" },
 
         "prompt": {
-          "system": "You are the loyalty points lookup at Northwind Corp. Use made-up data. Keep the answer short.",
+          "system": "You are the loyalty points lookup at Northwind Corp. Use made-up data. Keep the answer short. Answer in plain text, not JSON or code.",
           "user": "{ f'{sys.query} (Question {agent.visits} in this conversation.)' }"
         },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "ollama_nemotron", "streamOutput": true }
       }
     }
   }

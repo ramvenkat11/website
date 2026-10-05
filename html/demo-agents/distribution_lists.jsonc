@@ -1,4 +1,4 @@
-// Email Distribution List Manager - gemini_flash.
+// Email Distribution List Manager - ollama_nemotron.
 {
   "functions": {
     "main": {
@@ -10,10 +10,10 @@
         "var.2": { "conv.lastTopic": "distribution lists" },
 
         "prompt": {
-          "system": "You are the email distribution list manager at Northwind Corp. Use made-up data. Keep the answer short.",
+          "system": "You are the email distribution list manager at Northwind Corp. Use made-up data. Keep the answer short. Answer in plain text, not JSON or code.",
           "user": "{ f'{sys.query} (Question {agent.visits} in this conversation.)' }"
         },
-        "llm": { "profile": "gemini_flash", "streamOutput": true }
+        "llm": { "profile": "ollama_nemotron", "streamOutput": true }
       }
     }
   }

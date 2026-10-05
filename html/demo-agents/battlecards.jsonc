@@ -1,4 +1,4 @@
-// Competitor Battlecard Writer - gpt5_mini.
+// Competitor Battlecard Writer - ollama_nemotron.
 {
   "functions": {
     "main": {
@@ -10,10 +10,10 @@
         "var": { "helpers": "{ ', '.join([r['agentTitle'] for r in result][:3]) or 'none' }" },
 
         "prompt": {
-          "system": "You are the competitor battlecard writer at Northwind Corp. Compare our product with competitors. Keep the answer short.",
+          "system": "You are the competitor battlecard writer at Northwind Corp. Compare our product with competitors. Keep the answer short. Answer in plain text, not JSON or code.",
           "user": "{ f'{sys.query} Agents that may help: {helpers}.' }"
         },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "ollama_nemotron", "streamOutput": true }
       }
     }
   }

@@ -3,1200 +3,1400 @@
     "group": "Human Resources",
     "agentName": "leave_balance",
     "title": "Leave Balance Checker",
-    "description": "Tells an employee how many vacation, sick and personal days they have left this year, how many they have used, and when unused days expire or carry over."
+    "description": "Tells an employee how many vacation, sick and personal days they have left this year, how many they have used, and when unused days expire or carry over.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Human Resources",
     "agentName": "benefits_enrollment",
     "title": "Benefits Enrollment Guide",
-    "description": "Walks an employee through choosing health, dental, vision and retirement plans during open enrollment or after a life event, and explains what each option costs per paycheck."
+    "description": "Walks an employee through choosing health, dental, vision and retirement plans during open enrollment or after a life event, and explains what each option costs per paycheck.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Human Resources",
     "agentName": "onboarding",
     "title": "New Hire Onboarding Checklist",
-    "description": "Gives a new employee their first-week checklist: the forms to sign, the people to meet, the systems to set up and the orientation sessions to attend."
+    "description": "Gives a new employee their first-week checklist: the forms to sign, the people to meet, the systems to set up and the orientation sessions to attend.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Human Resources",
     "agentName": "job_postings",
     "title": "Job Posting Writer",
-    "description": "Writes a job posting from a role's title, team and requirements, with responsibilities, qualifications and a short description of the team, ready to publish."
+    "description": "Writes a job posting from a role's title, team and requirements, with responsibilities, qualifications and a short description of the team, ready to publish.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Human Resources",
     "agentName": "interview_scheduling",
     "title": "Candidate Interview Scheduler",
-    "description": "Finds times when a candidate and the interview panel are all free, proposes an interview schedule, and drafts the invitation the candidate receives."
+    "description": "Finds times when a candidate and the interview panel are all free, proposes an interview schedule, and drafts the invitation the candidate receives.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Human Resources",
     "agentName": "performance_reviews",
     "title": "Performance Review Helper",
-    "description": "Helps a manager or employee prepare for a performance review: summarizes goals, drafts self-assessment and feedback text, and explains the rating scale and review timeline."
+    "description": "Helps a manager or employee prepare for a performance review: summarizes goals, drafts self-assessment and feedback text, and explains the rating scale and review timeline.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Human Resources",
     "agentName": "payslips",
     "title": "Payslip Question Answerer",
-    "description": "Explains the lines on an employee's payslip - gross pay, taxes, deductions, overtime and bonuses - and why this month's net pay differs from last month's."
+    "description": "Explains the lines on an employee's payslip - gross pay, taxes, deductions, overtime and bonuses - and why this month's net pay differs from last month's.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Human Resources",
     "agentName": "employee_handbook",
     "title": "Employee Handbook Guide",
-    "description": "Answers questions about company policies in the employee handbook, such as dress code, remote work, working hours, holidays and the code of conduct."
+    "description": "Answers questions about company policies in the employee handbook, such as dress code, remote work, working hours, holidays and the code of conduct.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Human Resources",
     "agentName": "training_courses",
     "title": "Training Course Finder",
-    "description": "Recommends internal training courses and certifications for a skill or role, with their length, format and how to sign up."
+    "description": "Recommends internal training courses and certifications for a skill or role, with their length, format and how to sign up.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Human Resources",
     "agentName": "exit_interviews",
     "title": "Exit Interview Summarizer",
-    "description": "Summarizes exit interview answers from departing employees into the main reasons people leave and the themes that repeat across teams."
+    "description": "Summarizes exit interview answers from departing employees into the main reasons people leave and the themes that repeat across teams.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Finance",
     "agentName": "expense_reports",
     "title": "Expense Report Checker",
-    "description": "Checks an expense report before it is submitted: flags missing receipts, spending over policy limits and categories that are wrong, and explains how to fix each one."
+    "description": "Checks an expense report before it is submitted: flags missing receipts, spending over policy limits and categories that are wrong, and explains how to fix each one.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Finance",
     "agentName": "insurance_policies",
     "title": "Corporate Insurance Policy Guide",
-    "description": "Explains what the company's own insurance covers - property, liability, cyber and travel - and what to do and whom to contact when something needs to be claimed."
+    "description": "Explains what the company's own insurance covers - property, liability, cyber and travel - and what to do and whom to contact when something needs to be claimed.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Finance",
     "agentName": "budget_tracking",
     "title": "Budget vs Actual Reporter",
-    "description": "Compares a department's actual spending with its budget for the month or quarter, shows where it is over or under, and by how much."
+    "description": "Compares a department's actual spending with its budget for the month or quarter, shows where it is over or under, and by how much.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Finance",
     "agentName": "dividends",
     "title": "Shareholder Dividend Questions",
-    "description": "Answers shareholder questions about dividends: the next payment date, the amount per share, the record date, and how dividends are taxed and reinvested."
+    "description": "Answers shareholder questions about dividends: the next payment date, the amount per share, the record date, and how dividends are taxed and reinvested.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Finance",
     "agentName": "donation_matching",
     "title": "Charitable Donation Matching",
-    "description": "Explains how the company matches employees' charitable donations, which charities qualify, the yearly limit, and how to submit a donation to be matched."
+    "description": "Explains how the company matches employees' charitable donations, which charities qualify, the yearly limit, and how to submit a donation to be matched.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Finance",
     "agentName": "tax_documents",
     "title": "Tax Document Finder",
-    "description": "Finds the company's tax documents and forms - W-9s, tax certificates, VAT registrations and filed returns - for a given year or entity."
+    "description": "Finds the company's tax documents and forms - W-9s, tax certificates, VAT registrations and filed returns - for a given year or entity.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Finance",
     "agentName": "month_end_close",
     "title": "Month-End Close Tracker",
-    "description": "Shows the status of the month-end close: which reconciliations and journal entries are done, which are late, and who owns each remaining task."
+    "description": "Shows the status of the month-end close: which reconciliations and journal entries are done, which are late, and who owns each remaining task.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Finance",
     "agentName": "cash_flow",
     "title": "Cash Flow Summarizer",
-    "description": "Summarizes the company's cash coming in and going out for a period, the current cash position, and the largest payments due in the coming weeks."
+    "description": "Summarizes the company's cash coming in and going out for a period, the current cash position, and the largest payments due in the coming weeks.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Finance",
     "agentName": "fx_rates",
     "title": "Foreign Exchange Rate Lookup",
-    "description": "Gives current and past foreign exchange rates between currencies and converts amounts, using the rates the company uses for its books."
+    "description": "Gives current and past foreign exchange rates between currencies and converts amounts, using the rates the company uses for its books.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Finance",
     "agentName": "audit_evidence",
     "title": "Audit Evidence Collector",
-    "description": "Gathers the documents auditors ask for - approvals, reconciliations, contracts and system reports - and tracks which audit requests are still open."
+    "description": "Gathers the documents auditors ask for - approvals, reconciliations, contracts and system reports - and tracks which audit requests are still open.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Sales",
     "agentName": "lead_qualification",
     "title": "Inbound Lead Qualifier",
-    "description": "Scores a new sales lead from its company size, industry, budget and stated needs, and says whether it is ready for a salesperson or needs more nurturing."
+    "description": "Scores a new sales lead from its company size, industry, budget and stated needs, and says whether it is ready for a salesperson or needs more nurturing.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Sales",
     "agentName": "price_quotes",
     "title": "Price Quote Generator",
-    "description": "Builds a price quote for a customer from the products, quantities and contract length they want, applying list prices and standard volume discounts."
+    "description": "Builds a price quote for a customer from the products, quantities and contract length they want, applying list prices and standard volume discounts.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Sales",
     "agentName": "sales_pipeline",
     "title": "Sales Pipeline Reporter",
-    "description": "Reports the sales pipeline: open deals by stage, their expected value and close dates, and which deals have stalled or slipped this quarter."
+    "description": "Reports the sales pipeline: open deals by stage, their expected value and close dates, and which deals have stalled or slipped this quarter.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Sales",
     "agentName": "account_research",
     "title": "Prospect Account Researcher",
-    "description": "Prepares a briefing on a prospect company before a sales meeting: what it does, its size, recent news, likely needs and who the decision makers are."
+    "description": "Prepares a briefing on a prospect company before a sales meeting: what it does, its size, recent news, likely needs and who the decision makers are.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Sales",
     "agentName": "battlecards",
     "title": "Competitor Battlecard Writer",
-    "description": "Writes a battlecard comparing our product with a named competitor: where we win, where they win, common objections and how to answer them."
+    "description": "Writes a battlecard comparing our product with a named competitor: where we win, where they win, common objections and how to answer them.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Sales",
     "agentName": "commissions",
     "title": "Sales Commission Calculator",
-    "description": "Calculates a salesperson's commission for a quarter from their closed deals, quota attainment and commission plan, and explains each line of the payout."
+    "description": "Calculates a salesperson's commission for a quarter from their closed deals, quota attainment and commission plan, and explains each line of the payout.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Sales",
     "agentName": "sales_territories",
     "title": "Sales Territory Lookup",
-    "description": "Tells a salesperson which region, industry or account list they own, and who owns a given customer or city."
+    "description": "Tells a salesperson which region, industry or account list they own, and who owns a given customer or city.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Sales",
     "agentName": "discount_approvals",
     "title": "Discount Approval Requester",
-    "description": "Prepares a request to approve a discount above the standard limit, with the deal size, the discount asked for and the business reason, and routes it to the right approver."
+    "description": "Prepares a request to approve a discount above the standard limit, with the deal size, the discount asked for and the business reason, and routes it to the right approver.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Sales",
     "agentName": "partner_referrals",
     "title": "Partner Referral Registration",
-    "description": "Registers a deal referred by a reseller or partner, checks that the customer is not already registered to someone else, and explains the referral fee."
+    "description": "Registers a deal referred by a reseller or partner, checks that the customer is not already registered to someone else, and explains the referral fee.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Sales",
     "agentName": "call_notes",
     "title": "Sales Call Notes Logger",
-    "description": "Turns a salesperson's notes from a customer call into a clean summary with next steps, decision makers mentioned and follow-up dates."
+    "description": "Turns a salesperson's notes from a customer call into a clean summary with next steps, decision makers mentioned and follow-up dates.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Marketing",
     "agentName": "campaign_results",
     "title": "Campaign Performance Reporter",
-    "description": "Reports how a marketing campaign performed - impressions, clicks, leads generated, cost per lead and conversions - compared with its goals."
+    "description": "Reports how a marketing campaign performed - impressions, clicks, leads generated, cost per lead and conversions - compared with its goals.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Marketing",
     "agentName": "social_posts",
     "title": "Social Media Post Writer",
-    "description": "Writes social media posts for LinkedIn, X and Instagram about an announcement or topic, in the company's voice and within each platform's length limits."
+    "description": "Writes social media posts for LinkedIn, X and Instagram about an announcement or topic, in the company's voice and within each platform's length limits.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Marketing",
     "agentName": "blog_writer",
     "title": "Blog Article Drafter",
-    "description": "Drafts a company blog article from a topic and key points, with a headline, introduction, sections and a closing call to action."
+    "description": "Drafts a company blog article from a topic and key points, with a headline, introduction, sections and a closing call to action.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Marketing",
     "agentName": "brand_guidelines",
     "title": "Brand Guideline Checker",
-    "description": "Checks text or a design description against the company's brand guidelines - logo use, colors, fonts, tone of voice and approved terms - and lists what to change."
+    "description": "Checks text or a design description against the company's brand guidelines - logo use, colors, fonts, tone of voice and approved terms - and lists what to change.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Marketing",
     "agentName": "podcast_planning",
     "title": "Podcast Episode Planner",
-    "description": "Plans a company podcast episode: suggests topics and guests, writes the outline and interview questions, and drafts the episode description."
+    "description": "Plans a company podcast episode: suggests topics and guests, writes the outline and interview questions, and drafts the episode description.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Marketing",
     "agentName": "newsletters",
     "title": "Email Newsletter Writer",
-    "description": "Writes the company's email newsletter from a list of updates, with a subject line, short sections and links."
+    "description": "Writes the company's email newsletter from a list of updates, with a subject line, short sections and links.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Marketing",
     "agentName": "seo_keywords",
     "title": "SEO Keyword Researcher",
-    "description": "Suggests search keywords for a web page or topic, with how often people search for them and how hard they are to rank for, and where to use them on the page."
+    "description": "Suggests search keywords for a web page or topic, with how often people search for them and how hard they are to rank for, and where to use them on the page.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Marketing",
     "agentName": "press_releases",
     "title": "Press Release Drafter",
-    "description": "Drafts a press release for an announcement - a launch, partnership, funding or hire - with headline, dateline, quotes and a company boilerplate."
+    "description": "Drafts a press release for an announcement - a launch, partnership, funding or hire - with headline, dateline, quotes and a company boilerplate.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Marketing",
     "agentName": "ad_budget",
     "title": "Advertising Budget Allocator",
-    "description": "Recommends how to split an advertising budget across channels such as search, social and display, based on past cost per lead and the campaign goal."
+    "description": "Recommends how to split an advertising budget across channels such as search, social and display, based on past cost per lead and the campaign goal.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Marketing",
     "agentName": "launch_messaging",
     "title": "Product Launch Messaging Writer",
-    "description": "Writes the messaging for a new product or feature launch: the one-line positioning, key benefits, target audience and talking points for sales."
+    "description": "Writes the messaging for a new product or feature launch: the one-line positioning, key benefits, target audience and talking points for sales.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Customer Support",
     "agentName": "order_status",
     "title": "Order Status Lookup",
-    "description": "Tells a customer where their order is: whether it has shipped, the carrier and tracking number, and the expected delivery date."
+    "description": "Tells a customer where their order is: whether it has shipped, the carrier and tracking number, and the expected delivery date.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Customer Support",
     "agentName": "returns_refunds",
     "title": "Return and Refund Processor",
-    "description": "Handles a customer's return: checks whether the item is eligible, explains how to send it back, and says when and how the refund will arrive."
+    "description": "Handles a customer's return: checks whether the item is eligible, explains how to send it back, and says when and how the refund will arrive.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Customer Support",
     "agentName": "product_recalls",
     "title": "Product Recall Notices",
-    "description": "Tells a customer whether a product they own is under a safety recall, what the risk is, and how to get a repair, replacement or refund."
+    "description": "Tells a customer whether a product they own is under a safety recall, what the risk is, and how to get a repair, replacement or refund.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Customer Support",
     "agentName": "help_center",
     "title": "Help Center Answer Finder",
-    "description": "Answers customer questions from the help center articles, with the steps to follow and a link to the article."
+    "description": "Answers customer questions from the help center articles, with the steps to follow and a link to the article.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Customer Support",
     "agentName": "warranty_claims",
     "title": "Warranty Claim Checker",
-    "description": "Checks whether a customer's product is still under warranty, what the warranty covers, and how to file a claim for a repair or replacement."
+    "description": "Checks whether a customer's product is still under warranty, what the warranty covers, and how to file a claim for a repair or replacement.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Customer Support",
     "agentName": "escalations",
     "title": "Complaint Escalation Router",
-    "description": "Takes a customer complaint that needs more than a standard answer and routes it to the right team or manager, with a summary of the history and urgency."
+    "description": "Takes a customer complaint that needs more than a standard answer and routes it to the right team or manager, with a summary of the history and urgency.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Customer Support",
     "agentName": "csat_surveys",
     "title": "Customer Satisfaction Survey Analyzer",
-    "description": "Analyzes customer satisfaction survey responses: the overall score, trends over time and the most common complaints and praise."
+    "description": "Analyzes customer satisfaction survey responses: the overall score, trends over time and the most common complaints and praise.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Customer Support",
     "agentName": "plan_changes",
     "title": "Subscription Plan Changer",
-    "description": "Changes a customer's subscription: upgrades, downgrades, pauses or cancellations, with the price difference and when the change takes effect."
+    "description": "Changes a customer's subscription: upgrades, downgrades, pauses or cancellations, with the price difference and when the change takes effect.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Customer Support",
     "agentName": "loyalty_points",
     "title": "Loyalty Points Lookup",
-    "description": "Tells a customer how many loyalty points they have, how they earned them, when they expire and what they can redeem them for."
+    "description": "Tells a customer how many loyalty points they have, how they earned them, when they expire and what they can redeem them for.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Customer Support",
     "agentName": "troubleshooting",
     "title": "Product Troubleshooting Guide",
-    "description": "Guides a customer step by step through fixing a problem with a product that is not working as expected, and says when to contact support instead."
+    "description": "Guides a customer step by step through fixing a problem with a product that is not working as expected, and says when to contact support instead.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "IT",
     "agentName": "password_reset",
     "title": "Password Reset Helper",
-    "description": "Helps an employee reset a forgotten or expired password for their work account, and unlock the account after too many failed sign-ins."
+    "description": "Helps an employee reset a forgotten or expired password for their work account, and unlock the account after too many failed sign-ins.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "IT",
     "agentName": "hardware_requests",
     "title": "Laptop and Monitor Request Handler",
-    "description": "Handles an employee's request for a new or replacement laptop, monitor, keyboard or headset, and tells them when it will arrive."
+    "description": "Handles an employee's request for a new or replacement laptop, monitor, keyboard or headset, and tells them when it will arrive.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "IT",
     "agentName": "software_licenses",
     "title": "Software License Requester",
-    "description": "Requests a license for a software application an employee needs, checks whether one is already available, and routes it for approval."
+    "description": "Requests a license for a software application an employee needs, checks whether one is already available, and routes it for approval.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "IT",
     "agentName": "vpn_help",
     "title": "VPN Connection Troubleshooter",
-    "description": "Helps an employee connect to the company VPN from home or while traveling, and fixes common connection errors."
+    "description": "Helps an employee connect to the company VPN from home or while traveling, and fixes common connection errors.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "IT",
     "agentName": "file_restore",
     "title": "Deleted File Restore Requester",
-    "description": "Requests the recovery of a deleted or overwritten file or folder from backups, and says how far back a version can be restored."
+    "description": "Requests the recovery of a deleted or overwritten file or folder from backups, and says how far back a version can be restored.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "IT",
     "agentName": "printer_help",
     "title": "Printer Problem Solver",
-    "description": "Fixes common office printer problems - paper jams, offline printers, driver errors and print queues - and shows how to add a printer."
+    "description": "Fixes common office printer problems - paper jams, offline printers, driver errors and print queues - and shows how to add a printer.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "IT",
     "agentName": "phishing_reports",
     "title": "Phishing Email Reporter",
-    "description": "Lets an employee report a suspicious email, tells them whether it is a known phishing attempt, and what to do if they already clicked a link."
+    "description": "Lets an employee report a suspicious email, tells them whether it is a known phishing attempt, and what to do if they already clicked a link.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "IT",
     "agentName": "mobile_setup",
     "title": "Mobile Device Setup Guide",
-    "description": "Sets up a work phone or tablet: installing company email, calendar and apps, enrolling the device and meeting the security requirements."
+    "description": "Sets up a work phone or tablet: installing company email, calendar and apps, enrolling the device and meeting the security requirements.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "IT",
     "agentName": "distribution_lists",
     "title": "Email Distribution List Manager",
-    "description": "Creates email distribution lists and adds or removes members, and tells an employee which lists they belong to."
+    "description": "Creates email distribution lists and adds or removes members, and tells an employee which lists they belong to.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "IT",
     "agentName": "guest_wifi",
     "title": "Guest Wi-Fi Access Issuer",
-    "description": "Issues guest Wi-Fi access for a visitor to the office, with the network name, a temporary password and how long it is valid."
+    "description": "Issues guest Wi-Fi access for a visitor to the office, with the network name, a temporary password and how long it is valid.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Engineering",
     "agentName": "code_review",
     "title": "Code Review Assistant",
-    "description": "Reviews a code change and points out bugs, security issues, missing tests and style problems, with suggested fixes."
+    "description": "Reviews a code change and points out bugs, security issues, missing tests and style problems, with suggested fixes.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Engineering",
     "agentName": "feature_flags",
     "title": "Feature Flag Manager",
-    "description": "Turns product feature flags on or off for customers, regions or percentages of users, and shows which flags are currently active."
+    "description": "Turns product feature flags on or off for customers, regions or percentages of users, and shows which flags are currently active.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Engineering",
     "agentName": "deployments",
     "title": "Deployment Status Checker",
-    "description": "Shows which version of each service is deployed in each environment, whether the latest deployment succeeded, and who deployed it."
+    "description": "Shows which version of each service is deployed in each environment, whether the latest deployment succeeded, and who deployed it.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Engineering",
     "agentName": "on_call",
     "title": "On-Call Schedule Lookup",
-    "description": "Tells an engineer who is on call for a team or service right now and next week, and how to reach them."
+    "description": "Tells an engineer who is on call for a team or service right now and next week, and how to reach them.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Engineering",
     "agentName": "api_docs",
     "title": "API Documentation Finder",
-    "description": "Finds the documentation for an internal API: its endpoints, parameters, example requests and responses, and which team owns it."
+    "description": "Finds the documentation for an internal API: its endpoints, parameters, example requests and responses, and which team owns it.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Engineering",
     "agentName": "test_failures",
     "title": "Test Failure Analyzer",
-    "description": "Explains why an automated test failed: the error, the likely cause in recent code changes, and whether the test fails intermittently."
+    "description": "Explains why an automated test failed: the error, the likely cause in recent code changes, and whether the test fails intermittently.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Engineering",
     "agentName": "architecture_decisions",
     "title": "Architecture Decision Record Writer",
-    "description": "Writes an architecture decision record: the problem, the options considered, the decision made and its consequences."
+    "description": "Writes an architecture decision record: the problem, the options considered, the decision made and its consequences.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Engineering",
     "agentName": "cloud_costs",
     "title": "Cloud Cost Reporter",
-    "description": "Reports cloud spending by service, team and environment, shows what changed since last month, and points out resources that can be shut down."
+    "description": "Reports cloud spending by service, team and environment, shows what changed since last month, and points out resources that can be shut down.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Engineering",
     "agentName": "sql_helper",
     "title": "Database Query Helper",
-    "description": "Writes and explains SQL queries against the company's data warehouse from a plain-language question, and fixes queries that return errors."
+    "description": "Writes and explains SQL queries against the company's data warehouse from a plain-language question, and fixes queries that return errors.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Engineering",
     "agentName": "release_notes",
     "title": "Release Notes Writer",
-    "description": "Writes customer-facing release notes from a list of changes, grouped into new features, improvements and fixes."
+    "description": "Writes customer-facing release notes from a list of changes, grouped into new features, improvements and fixes.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Legal",
     "agentName": "contract_review",
     "title": "Contract Clause Reviewer",
-    "description": "Reviews a contract for risky clauses - liability, indemnity, termination, auto-renewal and payment terms - and suggests safer wording."
+    "description": "Reviews a contract for risky clauses - liability, indemnity, termination, auto-renewal and payment terms - and suggests safer wording.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Legal",
     "agentName": "nda",
     "title": "NDA Generator",
-    "description": "Generates a non-disclosure agreement for a named party, mutual or one-way, with the purpose, term and governing law filled in."
+    "description": "Generates a non-disclosure agreement for a named party, mutual or one-way, with the purpose, term and governing law filled in.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Legal",
     "agentName": "board_minutes",
     "title": "Board Meeting Minutes Drafter",
-    "description": "Drafts the minutes of a board meeting from the agenda and notes: attendees, discussion, resolutions passed and actions assigned."
+    "description": "Drafts the minutes of a board meeting from the agenda and notes: attendees, discussion, resolutions passed and actions assigned.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Legal",
     "agentName": "privacy_requests",
     "title": "Personal Data Request Handler",
-    "description": "Handles a person's request to see, correct or delete the personal data the company holds about them, and tracks the legal response deadline."
+    "description": "Handles a person's request to see, correct or delete the personal data the company holds about them, and tracks the legal response deadline.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Legal",
     "agentName": "trademarks",
     "title": "Trademark Search Assistant",
-    "description": "Checks whether a proposed product or company name may conflict with existing trademarks, and explains how to register a new one."
+    "description": "Checks whether a proposed product or company name may conflict with existing trademarks, and explains how to register a new one.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Legal",
     "agentName": "compliance",
     "title": "Regulatory Compliance Answerer",
-    "description": "Answers questions about the regulations the company must follow, such as anti-bribery, data protection and industry rules, and what they require in a given situation."
+    "description": "Answers questions about the regulations the company must follow, such as anti-bribery, data protection and industry rules, and what they require in a given situation.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Legal",
     "agentName": "litigation_holds",
     "title": "Litigation Hold Notifier",
-    "description": "Notifies employees that they must preserve documents and email for a legal case, and tracks who has confirmed the hold."
+    "description": "Notifies employees that they must preserve documents and email for a legal case, and tracks who has confirmed the hold.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Legal",
     "agentName": "legal_intake",
     "title": "Legal Matter Intake",
-    "description": "Takes a new request for the legal team - a question, a contract or a dispute - collects the details lawyers need, and routes it to the right lawyer."
+    "description": "Takes a new request for the legal team - a question, a contract or a dispute - collects the details lawyers need, and routes it to the right lawyer.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Legal",
     "agentName": "export_controls",
     "title": "Export Control Screener",
-    "description": "Checks whether a product or technology can be shipped or shared with a given country or customer under export control and sanctions rules."
+    "description": "Checks whether a product or technology can be shipped or shared with a given country or customer under export control and sanctions rules.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Legal",
     "agentName": "conflict_of_interest",
     "title": "Conflict of Interest Declaration Handler",
-    "description": "Helps an employee declare an outside job, investment or relationship that might be a conflict of interest, and explains what happens next."
+    "description": "Helps an employee declare an outside job, investment or relationship that might be a conflict of interest, and explains what happens next.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Operations",
     "agentName": "purchase_orders",
     "title": "Purchase Order Creator",
-    "description": "Creates a purchase order for goods or services from an approved vendor, with quantities, prices and the budget code, and sends it for approval."
+    "description": "Creates a purchase order for goods or services from an approved vendor, with quantities, prices and the budget code, and sends it for approval.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Operations",
     "agentName": "vendor_onboarding",
     "title": "Vendor Onboarding Assistant",
-    "description": "Sets up a new vendor: collects their tax, banking and insurance details, runs the required checks, and adds them to the approved vendor list."
+    "description": "Sets up a new vendor: collects their tax, banking and insurance details, runs the required checks, and adds them to the approved vendor list.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Operations",
     "agentName": "supplier_quotes",
     "title": "Supplier Quote Comparer",
-    "description": "Compares quotes from several suppliers for the same item on price, delivery time and terms, and recommends the best one."
+    "description": "Compares quotes from several suppliers for the same item on price, delivery time and terms, and recommends the best one.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Operations",
     "agentName": "inventory",
     "title": "Inventory Level Checker",
-    "description": "Shows how much of a product is in stock at each warehouse, what is on order, and which items are running low."
+    "description": "Shows how much of a product is in stock at each warehouse, what is on order, and which items are running low.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Operations",
     "agentName": "inbound_shipments",
     "title": "Inbound Shipment Tracker",
-    "description": "Tracks shipments coming from suppliers to our warehouses: where they are, when they will arrive and whether they are delayed."
+    "description": "Tracks shipments coming from suppliers to our warehouses: where they are, when they will arrive and whether they are delayed.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Operations",
     "agentName": "pick_lists",
     "title": "Warehouse Pick List Generator",
-    "description": "Generates the pick list for warehouse staff to fill today's orders, ordered by location in the warehouse."
+    "description": "Generates the pick list for warehouse staff to fill today's orders, ordered by location in the warehouse.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Operations",
     "agentName": "fleet_maintenance",
     "title": "Fleet Maintenance Scheduler",
-    "description": "Schedules servicing and inspections for company vehicles and trucks, and shows which vehicles are due or overdue."
+    "description": "Schedules servicing and inspections for company vehicles and trucks, and shows which vehicles are due or overdue.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Operations",
     "agentName": "hazmat_handling",
     "title": "Hazardous Materials Handling Guide",
-    "description": "Explains how to store, label, ship and dispose of hazardous materials such as chemicals and batteries, and what to do after a spill."
+    "description": "Explains how to store, label, ship and dispose of hazardous materials such as chemicals and batteries, and what to do after a spill.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Operations",
     "agentName": "quality_inspections",
     "title": "Quality Inspection Logger",
-    "description": "Records the results of quality inspections on incoming goods or production batches, and flags defects that exceed the allowed rate."
+    "description": "Records the results of quality inspections on incoming goods or production batches, and flags defects that exceed the allowed rate.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Operations",
     "agentName": "supplier_scorecards",
     "title": "Supplier Performance Scorecard",
-    "description": "Rates each supplier on on-time delivery, quality, price and responsiveness over a period, and shows how they compare."
+    "description": "Rates each supplier on on-time delivery, quality, price and responsiveness over a period, and shows how they compare.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Facilities",
     "agentName": "room_booking",
     "title": "Meeting Room Booker",
-    "description": "Finds and books a meeting room for a given time and number of people, with the equipment needed, such as a screen or video conferencing."
+    "description": "Finds and books a meeting room for a given time and number of people, with the equipment needed, such as a screen or video conferencing.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Facilities",
     "agentName": "desk_booking",
     "title": "Desk Reservation Assistant",
-    "description": "Reserves a desk in the office for the days an employee plans to come in, and shows which desks near their team are free."
+    "description": "Reserves a desk in the office for the days an employee plans to come in, and shows which desks near their team are free.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Facilities",
     "agentName": "visitor_badges",
     "title": "Visitor Badge Registration",
-    "description": "Registers a visitor coming to the office, prints their badge details, and tells the host when they arrive."
+    "description": "Registers a visitor coming to the office, prints their badge details, and tells the host when they arrive.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Facilities",
     "agentName": "building_maintenance",
     "title": "Building Maintenance Request",
-    "description": "Reports a problem in the office building - heating, lighting, plumbing or a broken door - and tracks when it will be fixed."
+    "description": "Reports a problem in the office building - heating, lighting, plumbing or a broken door - and tracks when it will be fixed.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Facilities",
     "agentName": "parking_permits",
     "title": "Parking Permit Requester",
-    "description": "Requests a parking permit for the office car park, for an employee or a visitor, and explains the parking rules and spaces available."
+    "description": "Requests a parking permit for the office car park, for an employee or a visitor, and explains the parking rules and spaces available.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Facilities",
     "agentName": "office_supplies",
     "title": "Office Supply Orderer",
-    "description": "Orders office supplies such as paper, pens, notebooks and printer toner for a team, and says when they will be delivered."
+    "description": "Orders office supplies such as paper, pens, notebooks and printer toner for a team, and says when they will be delivered.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Facilities",
     "agentName": "cafeteria_menu",
     "title": "Cafeteria Menu Lookup",
-    "description": "Shows the office cafeteria's menu for today and the week, opening hours, prices, and dishes that suit dietary needs such as vegetarian or gluten-free."
+    "description": "Shows the office cafeteria's menu for today and the week, opening hours, prices, and dishes that suit dietary needs such as vegetarian or gluten-free.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Facilities",
     "agentName": "mailroom",
     "title": "Mailroom Package Notifier",
-    "description": "Tells an employee when a package or letter has arrived for them in the mailroom and where to collect it."
+    "description": "Tells an employee when a package or letter has arrived for them in the mailroom and where to collect it.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Facilities",
     "agentName": "lost_and_found",
     "title": "Lost and Found Desk",
-    "description": "Reports an item lost in the office or checks whether an item someone found has been handed in, and how to collect it."
+    "description": "Reports an item lost in the office or checks whether an item someone found has been handed in, and how to collect it.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Facilities",
     "agentName": "emergency_procedures",
     "title": "Emergency Procedures Guide",
-    "description": "Explains what to do in an office emergency - fire, medical incident, severe weather or a security threat - including evacuation routes and whom to call."
+    "description": "Explains what to do in an office emergency - fire, medical incident, severe weather or a security threat - including evacuation routes and whom to call.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Procurement",
     "agentName": "catalog_items",
     "title": "Approved Catalog Item Finder",
-    "description": "Finds the approved catalog item for something an employee wants to buy, with the preferred supplier, contract price and delivery time, so they order the right thing without a quote."
+    "description": "Finds the approved catalog item for something an employee wants to buy, with the preferred supplier, contract price and delivery time, so they order the right thing without a quote.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Procurement",
     "agentName": "rfp_writer",
     "title": "Request for Proposal Drafter",
-    "description": "Drafts a request for proposal from a short description of what is being bought, with the scope and requirements suppliers must answer and the criteria their proposals will be scored on."
+    "description": "Drafts a request for proposal from a short description of what is being bought, with the scope and requirements suppliers must answer and the criteria their proposals will be scored on.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Procurement",
     "agentName": "contract_renewals",
     "title": "Supplier Contract Renewal Tracker",
-    "description": "Lists the supplier contracts coming up for renewal in a spending category, with their end dates, notice periods and annual value, and flags the ones that renew automatically if nobody acts."
+    "description": "Lists the supplier contracts coming up for renewal in a spending category, with their end dates, notice periods and annual value, and flags the ones that renew automatically if nobody acts.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Procurement",
     "agentName": "spend_analysis",
     "title": "Category Spend Analyzer",
-    "description": "Breaks down what the company spent in a purchasing category over the year by supplier and business unit, and points out where spend is split across too many suppliers to get a volume discount."
+    "description": "Breaks down what the company spent in a purchasing category over the year by supplier and business unit, and points out where spend is split across too many suppliers to get a volume discount.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Procurement",
     "agentName": "sole_source",
     "title": "Sole-Source Justification Writer",
-    "description": "Writes the justification needed to buy from a single supplier without competitive bids, explaining why no other supplier can meet the need, for purchases within the sole-source limit."
+    "description": "Writes the justification needed to buy from a single supplier without competitive bids, explaining why no other supplier can meet the need, for purchases within the sole-source limit.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Procurement",
     "agentName": "invoice_matching",
     "title": "Invoice Three-Way Match Checker",
-    "description": "Checks a supplier invoice against its purchase order and the goods received, and explains any mismatch in quantity or price that is holding the invoice back from payment."
+    "description": "Checks a supplier invoice against its purchase order and the goods received, and explains any mismatch in quantity or price that is holding the invoice back from payment.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Procurement",
     "agentName": "supplier_diversity",
     "title": "Diverse Supplier Finder",
-    "description": "Suggests certified small, minority-owned, women-owned and veteran-owned suppliers for a purchase, and shows how much of this year's spend has gone to diverse suppliers so far."
+    "description": "Suggests certified small, minority-owned, women-owned and veteran-owned suppliers for a purchase, and shows how much of this year's spend has gone to diverse suppliers so far.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Procurement",
     "agentName": "purchasing_policy",
     "title": "Purchasing Approval Threshold Guide",
-    "description": "Tells an employee who must approve a purchase of a given size, how many quotes they need, and whether it has to go out to a formal tender."
+    "description": "Tells an employee who must approve a purchase of a given size, how many quotes they need, and whether it has to go out to a formal tender.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Procurement",
     "agentName": "purchasing_cards",
     "title": "Purchasing Card Limit Requester",
-    "description": "Requests a new company purchasing card or a higher monthly limit on an existing one, and explains which purchases the card may and may not be used for."
+    "description": "Requests a new company purchasing card or a higher monthly limit on an existing one, and explains which purchases the card may and may not be used for.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Procurement",
     "agentName": "negotiation_planner",
     "title": "Supplier Negotiation Planner",
-    "description": "Prepares a buyer for a price negotiation with a supplier: a target price, a walk-away point, the arguments to use and the concessions to ask for in return."
+    "description": "Prepares a buyer for a price negotiation with a supplier: a target price, a walk-away point, the arguments to use and the concessions to ask for in return.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Security",
     "agentName": "access_reviews",
     "title": "User Access Review Assistant",
-    "description": "Helps a manager review who on their team has access to a business system, points out accounts that look excessive or unused, and records which access to keep or remove."
+    "description": "Helps a manager review who on their team has access to a business system, points out accounts that look excessive or unused, and records which access to keep or remove.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Security",
     "agentName": "security_incidents",
     "title": "Security Incident Reporter",
-    "description": "Takes a report of a suspected security incident, such as a lost laptop, malware or a leaked password, tells the employee what to do right away, and writes up the report for the security team."
+    "description": "Takes a report of a suspected security incident, such as a lost laptop, malware or a leaked password, tells the employee what to do right away, and writes up the report for the security team.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Security",
     "agentName": "vulnerability_triage",
     "title": "Vulnerability Risk Scorer",
-    "description": "Scores a reported software vulnerability by its severity and how exposed the affected system is, and says how many days the owning team has to fix it."
+    "description": "Scores a reported software vulnerability by its severity and how exposed the affected system is, and says how many days the owning team has to fix it.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Security",
     "agentName": "restricted_areas",
     "title": "Restricted Area Access Requester",
-    "description": "Requests badge access for an employee to a restricted area such as the server room, the lab or the executive floor, and explains who must approve it and for how long it lasts."
+    "description": "Requests badge access for an employee to a restricted area such as the server room, the lab or the executive floor, and explains who must approve it and for how long it lasts.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Security",
     "agentName": "security_training",
     "title": "Security Awareness Training Tracker",
-    "description": "Shows an employee which required security awareness courses they have finished, which are overdue, and the due date for each one still open."
+    "description": "Shows an employee which required security awareness courses they have finished, which are overdue, and the due date for each one still open.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Security",
     "agentName": "vendor_security",
     "title": "Vendor Security Questionnaire Reviewer",
-    "description": "Reviews a supplier's answers to the security questionnaire before they get access to company data, listing the controls they meet and the gaps they must close first."
+    "description": "Reviews a supplier's answers to the security questionnaire before they get access to company data, listing the controls they meet and the gaps they must close first.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Security",
     "agentName": "data_classification",
     "title": "Data Classification Advisor",
-    "description": "Tells an employee how sensitive a document or dataset is under the company's classification levels, and how that level lets them store, share and send it."
+    "description": "Tells an employee how sensitive a document or dataset is under the company's classification levels, and how that level lets them store, share and send it.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Security",
     "agentName": "firewall_requests",
     "title": "Firewall Rule Change Requester",
-    "description": "Turns a request to open a network connection between two systems into a firewall change request with the source, destination, port and business reason the network team needs."
+    "description": "Turns a request to open a network connection between two systems into a firewall change request with the source, destination, port and business reason the network team needs.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Security",
     "agentName": "security_policy",
     "title": "Information Security Policy Guide",
-    "description": "Answers questions about the company's information security policies, such as acceptable use, clean desk, travel with laptops and bringing your own device, quoting the policy section that applies."
+    "description": "Answers questions about the company's information security policies, such as acceptable use, clean desk, travel with laptops and bringing your own device, quoting the policy section that applies.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Security",
     "agentName": "pen_test_scoping",
     "title": "Penetration Test Scoper",
-    "description": "Plans a penetration test of an application: what is in and out of scope, the testing window, the rules of engagement and who to call if something breaks."
+    "description": "Plans a penetration test of an application: what is in and out of scope, the testing window, the rules of engagement and who to call if something breaks.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Data & Analytics",
     "agentName": "dashboard_finder",
     "title": "Dashboard Finder",
-    "description": "Points an employee to the right analytics dashboard for a question, says which metrics and filters it shows, and names its owner and refresh schedule."
+    "description": "Points an employee to the right analytics dashboard for a question, says which metrics and filters it shows, and names its owner and refresh schedule.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Data & Analytics",
     "agentName": "metric_definitions",
     "title": "Metric Definition Lookup",
-    "description": "Explains exactly how a business metric such as active users, churn or gross margin is defined and calculated at the company, including its source tables and known caveats."
+    "description": "Explains exactly how a business metric such as active users, churn or gross margin is defined and calculated at the company, including its source tables and known caveats.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Data & Analytics",
     "agentName": "data_access_requests",
     "title": "Dataset Access Request Helper",
-    "description": "Helps an employee request read access to a dataset or warehouse schema, telling them who approves it, how long it takes and which datasets need extra privacy review."
+    "description": "Helps an employee request read access to a dataset or warehouse schema, telling them who approves it, how long it takes and which datasets need extra privacy review.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Data & Analytics",
     "agentName": "ab_test_results",
     "title": "A/B Test Result Interpreter",
-    "description": "Reads the conversion numbers from an A/B experiment, works out the lift between variants and says whether the result is strong enough to act on."
+    "description": "Reads the conversion numbers from an A/B experiment, works out the lift between variants and says whether the result is strong enough to act on.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Data & Analytics",
     "agentName": "data_quality_issues",
     "title": "Data Quality Issue Reporter",
-    "description": "Helps an analyst report a data problem such as missing rows, duplicates or late loads, and checks the report covers the table, the impact and when it started."
+    "description": "Helps an analyst report a data problem such as missing rows, duplicates or late loads, and checks the report covers the table, the impact and when it started.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Data & Analytics",
     "agentName": "forecast_explainer",
     "title": "Sales Forecast Explainer",
-    "description": "Explains the latest sales forecast for a region: the expected numbers for the quarter, what changed since the last forecast and which assumptions drive it."
+    "description": "Explains the latest sales forecast for a region: the expected numbers for the quarter, what changed since the last forecast and which assumptions drive it.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Data & Analytics",
     "agentName": "report_scheduling",
     "title": "Scheduled Report Setup",
-    "description": "Sets up a recurring report delivery: which report, how often, to whom and in what format, and explains how to change or stop it later."
+    "description": "Sets up a recurring report delivery: which report, how often, to whom and in what format, and explains how to change or stop it later.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Data & Analytics",
     "agentName": "data_catalog",
     "title": "Data Catalog Browser",
-    "description": "Finds the warehouse table or dataset that holds a given piece of information, and describes its columns, owner, freshness and how it joins to other tables."
+    "description": "Finds the warehouse table or dataset that holds a given piece of information, and describes its columns, owner, freshness and how it joins to other tables.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Data & Analytics",
     "agentName": "kpi_digest",
     "title": "Weekly KPI Digest",
-    "description": "Gives a manager a short weekly summary of the company's key numbers - revenue, sign-ups, retention and support volume - with what moved and why."
+    "description": "Gives a manager a short weekly summary of the company's key numbers - revenue, sign-ups, retention and support volume - with what moved and why.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Data & Analytics",
     "agentName": "survey_analysis",
     "title": "Survey Response Analyzer",
-    "description": "Summarizes the answers to an internal or customer survey: the main themes in the comments, the scores by group and the points worth following up."
+    "description": "Summarizes the answers to an internal or customer survey: the main themes in the comments, the scores by group and the points worth following up.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Product Management",
     "agentName": "feature_requests",
     "title": "Feature Request Triage",
-    "description": "Takes a feature request from a customer or colleague, checks whether something similar is already planned, and records it with the problem, who asked and how urgent it is."
+    "description": "Takes a feature request from a customer or colleague, checks whether something similar is already planned, and records it with the problem, who asked and how urgent it is.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Product Management",
     "agentName": "roadmap_status",
     "title": "Roadmap Status Lookup",
-    "description": "Tells anyone where a product initiative stands on the roadmap: its current stage, target quarter, owner and whether it is on track or slipping."
+    "description": "Tells anyone where a product initiative stands on the roadmap: its current stage, target quarter, owner and whether it is on track or slipping.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Product Management",
     "agentName": "prd_writer",
     "title": "Product Requirements Drafter",
-    "description": "Drafts a product requirements document from a short idea, with the problem, goals, user stories, scope, success metrics and open questions."
+    "description": "Drafts a product requirements document from a short idea, with the problem, goals, user stories, scope, success metrics and open questions.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Product Management",
     "agentName": "rice_scoring",
     "title": "Feature Prioritization Scorer",
-    "description": "Scores candidate features by reach, impact, confidence and effort, and ranks them so a product team can decide what to build next."
+    "description": "Scores candidate features by reach, impact, confidence and effort, and ranks them so a product team can decide what to build next.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Product Management",
     "agentName": "user_interviews",
     "title": "User Interview Guide Builder",
-    "description": "Builds a customer interview guide for a research goal, with who to recruit, the opening questions, the follow-up probes and how to take notes."
+    "description": "Builds a customer interview guide for a research goal, with who to recruit, the opening questions, the follow-up probes and how to take notes.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Product Management",
     "agentName": "competitor_features",
     "title": "Competitor Feature Comparison",
-    "description": "Compares the company's product with a competitor feature by feature, showing where each is ahead or behind and what gaps are worth closing."
+    "description": "Compares the company's product with a competitor feature by feature, showing where each is ahead or behind and what gaps are worth closing.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Product Management",
     "agentName": "beta_programs",
     "title": "Beta Program Enrollment",
-    "description": "Signs a customer account up for an early-access beta of a new feature, checks it is eligible, and explains what to expect and how to give feedback."
+    "description": "Signs a customer account up for an early-access beta of a new feature, checks it is eligible, and explains what to expect and how to give feedback.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Product Management",
     "agentName": "product_okrs",
     "title": "Product OKR Tracker",
-    "description": "Shows a product team's objectives and key results for the quarter, how far each key result has progressed and which ones are at risk."
+    "description": "Shows a product team's objectives and key results for the quarter, how far each key result has progressed and which ones are at risk.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Product Management",
     "agentName": "pricing_experiments",
     "title": "Pricing Experiment Planner",
-    "description": "Plans a pricing or packaging test: which customers see which price, how long it runs, what to measure and the risks to watch for."
+    "description": "Plans a pricing or packaging test: which customers see which price, how long it runs, what to measure and the risks to watch for.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Product Management",
     "agentName": "feature_retirement",
     "title": "Feature Retirement Planner",
-    "description": "Plans how to retire an old product feature: who still uses it, the announcement and sunset dates, the migration path and what to tell customers."
+    "description": "Plans how to retire an old product feature: who still uses it, the announcement and sunset dates, the migration path and what to tell customers.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Supply Chain",
     "agentName": "demand_forecast",
     "title": "Demand Forecaster",
-    "description": "Forecasts how many units of a product customers will order over the next few months from past sales and trends, so planners know how much to make or buy."
+    "description": "Forecasts how many units of a product customers will order over the next few months from past sales and trends, so planners know how much to make or buy.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Supply Chain",
     "agentName": "reorder_points",
     "title": "Reorder Point Calculator",
-    "description": "Works out the stock level at which a product should be reordered and how much to order, from daily usage, supplier lead time and safety stock."
+    "description": "Works out the stock level at which a product should be reordered and how much to order, from daily usage, supplier lead time and safety stock.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Supply Chain",
     "agentName": "freight_rates",
     "title": "Freight Rate Finder",
-    "description": "Quotes the company's contracted freight rates and transit times for ocean, air, truck or rail shipments between two locations."
+    "description": "Quotes the company's contracted freight rates and transit times for ocean, air, truck or rail shipments between two locations.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Supply Chain",
     "agentName": "customs_clearance",
     "title": "Customs Clearance Assistant",
-    "description": "Helps get imported goods through customs: the likely tariff code, the duty to expect, and the documents the customs broker needs."
+    "description": "Helps get imported goods through customs: the likely tariff code, the duty to expect, and the documents the customs broker needs.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Supply Chain",
     "agentName": "carrier_selection",
     "title": "Carrier Selection Advisor",
-    "description": "Compares shipping carriers for a route on price, on-time delivery and damage rates, and recommends which one to book."
+    "description": "Compares shipping carriers for a route on price, on-time delivery and damage rates, and recommends which one to book.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Supply Chain",
     "agentName": "supply_disruptions",
     "title": "Supply Disruption Monitor",
-    "description": "Shows current events that could delay supplies - port congestion, strikes, storms or supplier outages - and which open orders each one affects."
+    "description": "Shows current events that could delay supplies - port congestion, strikes, storms or supplier outages - and which open orders each one affects.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Supply Chain",
     "agentName": "warehouse_capacity",
     "title": "Warehouse Capacity Planner",
-    "description": "Shows how full each warehouse is, how many pallet positions are free, and when each site is expected to run out of space."
+    "description": "Shows how full each warehouse is, how many pallet positions are free, and when each site is expected to run out of space.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Supply Chain",
     "agentName": "backorders",
     "title": "Backorder Tracker",
-    "description": "Lists customer orders waiting on out-of-stock items, how many units are short, and when each order is expected to be filled."
+    "description": "Lists customer orders waiting on out-of-stock items, how many units are short, and when each order is expected to be filled.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Supply Chain",
     "agentName": "packaging_specs",
     "title": "Packaging Spec Advisor",
-    "description": "Tells warehouse and shipping staff how to pack an item - box strength, cushioning, pallet layout and labels - so it arrives undamaged."
+    "description": "Tells warehouse and shipping staff how to pack an item - box strength, cushioning, pallet layout and labels - so it arrives undamaged.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Supply Chain",
     "agentName": "carbon_footprint",
     "title": "Shipping Emissions Calculator",
-    "description": "Estimates the carbon emissions of shipments by weight, distance and transport mode, and suggests lower-carbon ways to ship."
+    "description": "Estimates the carbon emissions of shipments by weight, distance and transport mode, and suggests lower-carbon ways to ship.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Risk & Compliance",
     "agentName": "risk_register",
     "title": "Risk Register Keeper",
-    "description": "Keeps the list of business risks for a unit: each risk's likelihood, impact, owner, mitigation and next review date."
+    "description": "Keeps the list of business risks for a unit: each risk's likelihood, impact, owner, mitigation and next review date.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Risk & Compliance",
     "agentName": "sanctions_screening",
     "title": "Sanctions Screening Checker",
-    "description": "Screens a person or company name against sanctions and denied-party lists before doing business with them, and says what to do on a match."
+    "description": "Screens a person or company name against sanctions and denied-party lists before doing business with them, and says what to do on a match.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Risk & Compliance",
     "agentName": "kyc_checks",
     "title": "Customer Due Diligence Helper",
-    "description": "Lists the identity documents and background checks needed before onboarding a new customer, depending on whether it is a person, business or government body."
+    "description": "Lists the identity documents and background checks needed before onboarding a new customer, depending on whether it is a person, business or government body.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Risk & Compliance",
     "agentName": "policy_attestations",
     "title": "Policy Attestation Tracker",
-    "description": "Shows which employees have signed this year's required policies, such as the code of conduct, who is overdue, and when reminders go out."
+    "description": "Shows which employees have signed this year's required policies, such as the code of conduct, who is overdue, and when reminders go out.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Risk & Compliance",
     "agentName": "control_testing",
     "title": "Control Test Results",
-    "description": "Reports the results of internal control tests for the quarter: which controls passed or failed, the issues found, and who is fixing them."
+    "description": "Reports the results of internal control tests for the quarter: which controls passed or failed, the issues found, and who is fixing them.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Risk & Compliance",
     "agentName": "ethics_hotline",
     "title": "Ethics Hotline Intake",
-    "description": "Helps an employee raise a concern about fraud, harassment or other misconduct, explains how to report it anonymously, and what happens next."
+    "description": "Helps an employee raise a concern about fraud, harassment or other misconduct, explains how to report it anonymously, and what happens next.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Risk & Compliance",
     "agentName": "third_party_risk",
     "title": "Third Party Risk Assessor",
-    "description": "Assesses the risk of working with a vendor or partner, covering their security, privacy and financial health, and gives an overall risk rating."
+    "description": "Assesses the risk of working with a vendor or partner, covering their security, privacy and financial health, and gives an overall risk rating.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Risk & Compliance",
     "agentName": "regulatory_changes",
     "title": "Regulatory Change Tracker",
-    "description": "Summarizes new and upcoming laws and regulations that affect the company, when they take effect, and which teams must change what."
+    "description": "Summarizes new and upcoming laws and regulations that affect the company, when they take effect, and which teams must change what.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Risk & Compliance",
     "agentName": "gifts_hospitality",
     "title": "Gifts and Hospitality Register",
-    "description": "Records gifts, meals and event invitations given to or received from business contacts, and says whether one needs approval under the gift limit."
+    "description": "Records gifts, meals and event invitations given to or received from business contacts, and says whether one needs approval under the gift limit.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Risk & Compliance",
     "agentName": "business_continuity",
     "title": "Business Continuity Planner",
-    "description": "Gives the plan for keeping the business running during a disruption such as a site outage or IT failure: recovery steps, time targets and who to call."
+    "description": "Gives the plan for keeping the business running during a disruption such as a site outage or IT failure: recovery steps, time targets and who to call.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Research & Development",
     "agentName": "lab_equipment",
     "title": "Lab Equipment Booker",
-    "description": "Books time on shared lab instruments such as the mass spectrometer, electron microscope and 3D printer, and says which slots are free and what training is needed first."
+    "description": "Books time on shared lab instruments such as the mass spectrometer, electron microscope and 3D printer, and says which slots are free and what training is needed first.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Research & Development",
     "agentName": "experiment_log",
     "title": "Experiment Log Summarizer",
-    "description": "Summarizes lab notebook entries for an experiment into the method used, the results, anything unexpected and the next steps."
+    "description": "Summarizes lab notebook entries for an experiment into the method used, the results, anything unexpected and the next steps.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Research & Development",
     "agentName": "invention_disclosures",
     "title": "Invention Disclosure Helper",
-    "description": "Helps an inventor write up a new idea for the patent team, covering the problem, the solution, what is new about it and who contributed."
+    "description": "Helps an inventor write up a new idea for the patent team, covering the problem, the solution, what is new about it and who contributed.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Research & Development",
     "agentName": "paper_summaries",
     "title": "Research Paper Summarizer",
-    "description": "Explains a scientific paper's abstract in plain language and says how its findings could apply to our own products."
+    "description": "Explains a scientific paper's abstract in plain language and says how its findings could apply to our own products.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Research & Development",
     "agentName": "research_grants",
     "title": "Research Grant Finder",
-    "description": "Finds government and industry research grants that fit a project, with their deadlines, funding amounts and eligibility rules."
+    "description": "Finds government and industry research grants that fit a project, with their deadlines, funding amounts and eligibility rules.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Research & Development",
     "agentName": "prototype_costs",
     "title": "Prototype Cost Estimator",
-    "description": "Estimates what it will cost to build a batch of prototypes from parts, lab hours and labor rates, and breaks the total down."
+    "description": "Estimates what it will cost to build a batch of prototypes from parts, lab hours and labor rates, and breaks the total down.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Research & Development",
     "agentName": "stage_gates",
     "title": "Project Stage-Gate Reviewer",
-    "description": "Reviews an R&D project against the stage-gate criteria - feasibility, market need, cost to complete and risks - and recommends pass, hold or stop."
+    "description": "Reviews an R&D project against the stage-gate criteria - feasibility, market need, cost to complete and risks - and recommends pass, hold or stop.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Research & Development",
     "agentName": "lab_safety",
     "title": "Lab Safety Checker",
-    "description": "Tells a researcher what protective equipment, training and approvals are needed before working with chemicals, lasers, high voltage or biological samples."
+    "description": "Tells a researcher what protective equipment, training and approvals are needed before working with chemicals, lasers, high voltage or biological samples.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Research & Development",
     "agentName": "research_ideas",
     "title": "Research Idea Evaluator",
-    "description": "Judges a new research idea on whether we can build it and how new it is compared with past projects and known work elsewhere."
+    "description": "Judges a new research idea on whether we can build it and how new it is compared with past projects and known work elsewhere.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Research & Development",
     "agentName": "test_protocols",
     "title": "Test Protocol Writer",
-    "description": "Writes a test protocol for a prototype or final design, with the setup, steps, measurements and pass or fail criteria."
+    "description": "Writes a test protocol for a prototype or final design, with the setup, steps, measurements and pass or fail criteria.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Corporate Communications",
     "agentName": "internal_announcements",
     "title": "Internal Announcement Writer",
-    "description": "Writes an announcement for employees about a change, with a clear headline, what is changing, when it happens and who to ask."
+    "description": "Writes an announcement for employees about a change, with a clear headline, what is changing, when it happens and who to ask.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Corporate Communications",
     "agentName": "crisis_statements",
     "title": "Crisis Statement Drafter",
-    "description": "Drafts a calm holding statement during an outage, data breach or product safety incident, saying what happened, what we are doing and when we will update."
+    "description": "Drafts a calm holding statement during an outage, data breach or product safety incident, saying what happened, what we are doing and when we will update.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Corporate Communications",
     "agentName": "executive_speeches",
     "title": "Executive Speech Writer",
-    "description": "Writes speeches and talking points for a company leader to deliver at events, all-hands meetings or conferences."
+    "description": "Writes speeches and talking points for a company leader to deliver at events, all-hands meetings or conferences.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Corporate Communications",
     "agentName": "town_halls",
     "title": "Town Hall Q&A Preparer",
-    "description": "Prepares leaders for a town hall by listing the hard questions employees are likely to ask and a short honest answer to each."
+    "description": "Prepares leaders for a town hall by listing the hard questions employees are likely to ask and a short honest answer to each.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Corporate Communications",
     "agentName": "media_inquiries",
     "title": "Media Inquiry Responder",
-    "description": "Handles a question from a journalist: who should respond, what can be said on the record, and a short draft reply."
+    "description": "Handles a question from a journalist: who should respond, what can be said on the record, and a short draft reply.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Corporate Communications",
     "agentName": "employee_spotlights",
     "title": "Employee Spotlight Writer",
-    "description": "Turns a few notes about a colleague into a warm short profile for the intranet celebrating their work."
+    "description": "Turns a few notes about a colleague into a warm short profile for the intranet celebrating their work.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Corporate Communications",
     "agentName": "intranet_news",
     "title": "Intranet News Finder",
-    "description": "Finds and summarizes recent company news posted on the intranet, such as leadership changes, office openings and awards."
+    "description": "Finds and summarizes recent company news posted on the intranet, such as leadership changes, office openings and awards.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Corporate Communications",
     "agentName": "message_consistency",
     "title": "Key Message Consistency Checker",
-    "description": "Checks a draft statement against the company's approved key messages and voice, and points out anything that contradicts or goes beyond them."
+    "description": "Checks a draft statement against the company's approved key messages and voice, and points out anything that contradicts or goes beyond them.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Corporate Communications",
     "agentName": "change_communications",
     "title": "Organizational Change Communicator",
-    "description": "Plans how to tell employees, managers and leaders about a reorganization or other big change, and in what order, before it takes effect."
+    "description": "Plans how to tell employees, managers and leaders about a reorganization or other big change, and in what order, before it takes effect.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Corporate Communications",
     "agentName": "comms_calendar",
     "title": "Communications Calendar Planner",
-    "description": "Plans the weeks ahead of internal communications so announcements, newsletters and leadership messages do not land on top of each other."
+    "description": "Plans the weeks ahead of internal communications so announcements, newsletters and leadership messages do not land on top of each other.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Quality Assurance",
     "agentName": "test_plan_writer",
     "title": "Test Plan Writer",
-    "description": "Drafts a test plan for a new feature, fix or release: what to test, the test cases, the environments needed and the entry and exit criteria."
+    "description": "Drafts a test plan for a new feature, fix or release: what to test, the test cases, the environments needed and the entry and exit criteria.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Quality Assurance",
     "agentName": "bug_triage",
     "title": "Bug Triage Assistant",
-    "description": "Helps decide how serious a newly reported bug is, what priority it gets, which team should own it and whether it is a duplicate of a known issue."
+    "description": "Helps decide how serious a newly reported bug is, what priority it gets, which team should own it and whether it is a duplicate of a known issue.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Quality Assurance",
     "agentName": "release_signoff",
     "title": "Release Sign-off Checklist",
-    "description": "Shows whether a release is ready to ship by checking each quality gate, and lists what is still blocking QA sign-off."
+    "description": "Shows whether a release is ready to ship by checking each quality gate, and lists what is still blocking QA sign-off.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Quality Assurance",
     "agentName": "regression_planner",
     "title": "Regression Suite Planner",
-    "description": "Tells a tester which regression tests to run for a change in their product area, how long the run takes and which tests were flaky last time."
+    "description": "Tells a tester which regression tests to run for a change in their product area, how long the run takes and which tests were flaky last time.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Quality Assurance",
     "agentName": "test_environments",
     "title": "Test Environment Booking",
-    "description": "Books a shared QA or staging environment for a test run, shows who has it now and when it frees up, and refuses test runs against production."
+    "description": "Books a shared QA or staging environment for a test run, shows who has it now and when it frees up, and refuses test runs against production.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Quality Assurance",
     "agentName": "defect_metrics",
     "title": "Defect Metrics Reporter",
-    "description": "Reports quality numbers for a product or sprint: bugs found and fixed, open defects by severity, and how many defects escaped to production."
+    "description": "Reports quality numbers for a product or sprint: bugs found and fixed, open defects by severity, and how many defects escaped to production.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Quality Assurance",
     "agentName": "accessibility_testing",
     "title": "Accessibility Test Guide",
-    "description": "Explains how to test a screen or page for accessibility, such as screen reader, keyboard and color contrast checks, and what counts as a pass."
+    "description": "Explains how to test a screen or page for accessibility, such as screen reader, keyboard and color contrast checks, and what counts as a pass.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Quality Assurance",
     "agentName": "load_testing",
     "title": "Load Test Planner",
-    "description": "Plans a performance or load test: the traffic to simulate, the target response times and the pass or fail thresholds for a service."
+    "description": "Plans a performance or load test: the traffic to simulate, the target response times and the pass or fail thresholds for a service.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Quality Assurance",
     "agentName": "complaint_analysis",
     "title": "Product Complaint Analyzer",
-    "description": "Groups customer complaints about a product into recurring quality problems and suggests which fixes would remove the most complaints."
+    "description": "Groups customer complaints about a product into recurring quality problems and suggests which fixes would remove the most complaints.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Quality Assurance",
     "agentName": "test_data_requests",
     "title": "Test Data Request Desk",
-    "description": "Gets a tester the test accounts, sample orders or masked data they need for a test run, and explains why real customer data cannot be used."
+    "description": "Gets a tester the test accounts, sample orders or masked data they need for a test run, and explains why real customer data cannot be used.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Executive Office",
     "agentName": "exec_calendar",
     "title": "Executive Calendar Assistant",
-    "description": "Finds a meeting slot with a senior executive, shows what is already on their calendar this week and explains how to request time."
+    "description": "Finds a meeting slot with a senior executive, shows what is already on their calendar this week and explains how to request time.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Executive Office",
     "agentName": "ceo_briefing",
     "title": "CEO Briefing Builder",
-    "description": "Prepares a one-page weekly briefing for the CEO with the business headlines, key numbers and the risks and decisions that need attention."
+    "description": "Prepares a one-page weekly briefing for the CEO with the business headlines, key numbers and the risks and decisions that need attention.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Executive Office",
     "agentName": "okr_tracker",
     "title": "Company OKR Tracker",
-    "description": "Shows the company's objectives and key results for the quarter, how far along each one is and which are at risk of being missed."
+    "description": "Shows the company's objectives and key results for the quarter, how far along each one is and which are at risk of being missed.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Executive Office",
     "agentName": "all_hands",
     "title": "All-Hands Question Collector",
-    "description": "Takes employee questions for the next all-hands meeting, groups similar ones together and shows the answers given to past questions."
+    "description": "Takes employee questions for the next all-hands meeting, groups similar ones together and shows the answers given to past questions.",
+    "model": "nemotron-3-nano:30b"
   },
   {
     "group": "Executive Office",
     "agentName": "investor_updates",
     "title": "Investor Update Drafter",
-    "description": "Drafts a monthly or quarterly update to investors covering growth, key wins, spending and what the company is asking investors for help with."
+    "description": "Drafts a monthly or quarterly update to investors covering growth, key wins, spending and what the company is asking investors for help with.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Executive Office",
     "agentName": "strategy_offsite",
     "title": "Strategy Offsite Planner",
-    "description": "Plans the leadership team's strategy offsite: the agenda, the pre-reads each session needs, the venue logistics and who presents what."
+    "description": "Plans the leadership team's strategy offsite: the agenda, the pre-reads each session needs, the venue logistics and who presents what.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Executive Office",
     "agentName": "exec_travel",
     "title": "Executive Travel Planner",
-    "description": "Plans travel for an executive: flights, hotels and ground transport around their meetings, remembering their seat preference for next time."
+    "description": "Plans travel for an executive: flights, hotels and ground transport around their meetings, remembering their seat preference for next time.",
+    "model": "gemini-3.6-flash"
   },
   {
     "group": "Executive Office",
     "agentName": "speaking_requests",
     "title": "Speaking Request Screener",
-    "description": "Reviews an invitation for an executive to speak at an event, says whether it fits the company's priorities and drafts a reply accepting or declining it."
+    "description": "Reviews an invitation for an executive to speak at an event, says whether it fits the company's priorities and drafts a reply accepting or declining it.",
+    "model": "gpt-5-mini"
   },
   {
     "group": "Executive Office",
     "agentName": "approval_authority",
     "title": "Approval Authority Lookup",
-    "description": "Tells a manager who is allowed to approve a decision, such as spending, hiring or signing a contract, and the limits each level of the company can approve alone."
+    "description": "Tells a manager who is allowed to approve a decision, such as spending, hiring or signing a contract, and the limits each level of the company can approve alone.",
+    "model": "claude-haiku-4-5"
   },
   {
     "group": "Executive Office",
     "agentName": "crisis_comms",
     "title": "Crisis Communications Guide",
-    "description": "Guides the leadership team through a crisis such as an outage, a data breach or bad press: who to inform, in what order, and a first statement to send."
+    "description": "Guides the leadership team through a crisis such as an outage, a data breach or bad press: who to inform, in what order, and a first statement to send.",
+    "model": "gemini-3.6-flash"
   }
 ]
