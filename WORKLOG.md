@@ -165,3 +165,9 @@
 - Done: all 17 `<!--shot:...-->` lines removed from 9 files under `docsrc/` (`development/code-editor`, `development/trace-and-validation`, `gui/index`, `gui/search`, `gui/agents`, `gui/profiles`, `gui/guardrails`, `gui/operations`, `gui/account`, `hooks/overview`). No surrounding sentence referred to a screenshot. Docs rebuilt; no page has a `figure.shot` or links to `img/` any more.
 - Left in place: the 34 PNG files in `html/docs/img/` (deleting project files needs Ram's permission each time), and the `shot` support in `gen/build.py` and `html/docs/docs.css`, so screenshots can come back later.
 - State: not committed, not uploaded. The PNGs are also still in the bucket.
+
+## 2026-10-04 — demo-agents refreshed again from s2oserver
+
+- Done: copied `../s2oserver/docs/demo/definitions/*.jsonc` over `html/demo-agents/` (22 of 200 files had changed; same 200 names) and `../s2oserver/docs/demo/agents.json` over `html/demo-agents.json`. Both now identical to the source.
+- `agents.json` has a new field per agent, `model` (the model the agent's LLM profile calls). Group, name, title and description are unchanged for all 200. `html/demo-agents.html` ignores the new field.
+- State: not committed, not uploaded.
