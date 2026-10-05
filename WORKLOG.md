@@ -181,3 +181,10 @@
 
 - Ram: no actual agent names; only communicate that there are hundreds. In `html/index.html` the `.cc-agents` row is now one label, "Hundreds of task-specific agents" (the `.arch-chips` with `leave_balance`, `fx_rates`, `product_recalls`, "+ hundreds more" is gone). No CSS change; the chip rules for `.cc-agents .arch-chips` in `styles.css` are now unused.
 - Checked by screenshot at 1440px; rendered at 390px but not viewed. Not committed, not uploaded.
+
+## 2026-10-05 — Hero figure: agents shown as a field of blank chips
+
+- Ram rejected the text line "Hundreds of task-specific agents" ("Very bad design! This is hero section. Do not write text."). The `.cc-agents` row is now the label "Agents" plus `.cc-agent-field`: 54 empty `<i>` pills of eight widths in three rows, clipped at 40px and faded out to the right with a mask, so the row reads as many agents continuing past the edge. `aria-hidden`.
+- CSS in `html/styles/styles.css`: `.cc-agent-field` rules after the `.cc-agents .arch-chips span.more` rule, and two lines in the phone block (`.cc-agents:has(.cc-agent-field)` no-wrap, field `flex: 1`).
+- Checked by screenshot at 1440px and 390px, light theme. Dark theme not viewed. Not committed, not uploaded.
+- This is the first redraw of this row; if it misses, ask numbered questions before another attempt.
