@@ -188,3 +188,8 @@
 - CSS in `html/styles/styles.css`: `.cc-agent-field` rules after the `.cc-agents .arch-chips span.more` rule, and two lines in the phone block (`.cc-agents:has(.cc-agent-field)` no-wrap, field `flex: 1`).
 - Checked by screenshot at 1440px and 390px, light theme. Dark theme not viewed. Not committed, not uploaded.
 - This is the first redraw of this row; if it misses, ask numbered questions before another attempt.
+
+## 2026-10-05 — Hero figure: "Agents" label centred in the chip field
+
+- Ram: put the Agents wording in the middle, not on the left. `.cc-agents:has(.cc-agent-field)` is now a positioned block; `.cc-agents-lbl` is absolutely centred over the field on a `var(--card)` pill with a soft halo, and the field is centred and fades out at both ends. The phone override is reduced to `padding-right: 0`.
+- Checked by screenshot at 1440px and 390px, light theme. Dark theme not viewed. Not committed, not uploaded.
