@@ -249,3 +249,6 @@
 
 ## 2026-10-05 — Architecture diagram width matched to the other diagrams
 - `#system-architecture .howgrid` overrode the grid to `1.4fr 1fr` (gap 48), making the diagram 597px wide vs ~520 for the hero and framework diagrams, with wasted whitespace on the right. Changed to `1fr 1fr` (gap 64) like every other section; diagram is now 504px and the system branches sit next to the agent server. CSS-only, one line. Not committed, not uploaded.
+
+## 2026-10-05 — Architecture diagram: actor boxes left-aligned
+- `.arch-actors` was `justify-content: center`; changed to `flex-start` so the Users and Developers · Admins boxes sit at the org box's left edge (over the agent server), with the free space on the right. CSS-only, one line. Not committed, not uploaded.
