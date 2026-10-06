@@ -252,3 +252,6 @@
 
 ## 2026-10-05 — Architecture diagram: actor boxes left-aligned
 - `.arch-actors` was `justify-content: center`; changed to `flex-start` so the Users and Developers · Admins boxes sit at the org box's left edge (over the agent server), with the free space on the right. CSS-only, one line. Not committed, not uploaded.
+
+## 2026-10-05 — Architecture section: gap/columns now identical to the framework section
+- Correcting the previous change: I had set `#system-architecture .howgrid` to gap 64px, double the sibling framework section's 32px, leaving a big gap between the diagram and the demo. Set it to `minmax(0,1fr) minmax(0,1fr)` gap 32px — now measured identical to `#framework .fw-grid`: diagram 520, gap 32, demo (right box) 520 starting at the same x. CSS-only. Not committed, not uploaded.
