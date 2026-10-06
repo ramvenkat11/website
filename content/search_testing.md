@@ -33,18 +33,18 @@ hard search is, and it is why we do not report a single number.
 
 ## How often it finds the right agent
 
-Search either runs the single best match or offers the two or three that are plausible, so there
-are two numbers worth knowing: how often the right agent is the first one, and how often it is
-among the ones offered.
+Search either runs the single best match or offers the two that are plausible, never more, so
+there are two numbers worth knowing: how often the right agent is the first one, and how often it
+is one of the first two.
 
-| catalog | right agent first | right agent among the first three |
+| catalog | right agent first | right agent among the first two |
 |---|---|---|
-| a university | 91.0% | 97.6% |
-| a clinic group | 90.6% | 98.2% |
-| a software company's internal agents | 89.0% | 98.2% |
-| a large corporation's departments | 85.4% | 94.9% |
-| a retailer's supply chain | 83.8% | 95.6% |
-| a catalog of 1,000 agents | 85.5% | 94.1% |
+| a university | 91.0% | 96.8% |
+| a clinic group | 90.6% | 97.4% |
+| a software company's internal agents | 89.0% | 95.8% |
+| a large corporation's departments | 85.5% | 92.3% |
+| a retailer's supply chain | 83.8% | 94.3% |
+| a catalog of 1,000 agents | 85.5% | 92.2% |
 
 Two things are worth drawing out.
 
@@ -56,6 +56,22 @@ control when you write your agents, not something search can fix afterwards.
 **Size is not the problem people expect it to be.** A catalog of a thousand agents scores
 within a point of a catalog of a hundred. Adding agents does not make search worse; adding
 agents that overlap does.
+
+### One answer or two
+
+When the best match is clearly ahead, search shows just that one; when the top two are close, it
+shows both and lets the user choose. Showing one more often saves the user a click, but a single
+answer that is wrong is worse than two that include the right one, so we set the line by checking
+every single answer search gave against a reviewer's judgment (see below).
+
+| catalog | questions answered with one result | of all questions, a single answer that was wrong |
+|---|---|---|
+| a university | 80.8% | 0.6% |
+| a clinic group | 73.0% | 1.0% |
+| a software company's internal agents | 73.6% | 1.2% |
+| a large corporation's departments | 75.0% | 1.7% |
+| a retailer's supply chain | 65.0% | 1.1% |
+| a catalog of 1,000 agents | 64.6% | 0.6% |
 
 ---
 
@@ -97,51 +113,6 @@ languages costs about three points more.
 
 ---
 
-## An experiment: letting Jev choose between the two or three
-
-Not yet in the product. The numbers in this section come from a test, not from the search we ship.
-
-When search is not sure, it offers two or three agents and the user picks. We tested handing
-that choice to Jev, a fast System 1 model from typesafe.ai. Jev is built to make one quick
-decision from a fixed list of options. It reads the question and each offered agent's
-description, and picks one.
-
-On the questions where search offered two or three agents:
-
-| catalog | search's first choice right | Jev's choice right |
-|---|---|---|
-| a university | 72.4% | 79.0% |
-| a clinic group | 74.2% | 82.2% |
-| a software company's internal agents | 69.9% | 77.4% |
-| a large corporation's departments | 66.9% | 75.0% |
-| a retailer's supply chain | 65.3% | 75.9% |
-| a catalog of 1,000 agents | 67.0% | 73.6% |
-
-Counted over every question, as in the first table on this page, the right agent comes first
-more often:
-
-| catalog | right agent first, search alone | with Jev choosing |
-|---|---|---|
-| a university | 91.0% | 92.4% |
-| a clinic group | 90.6% | 93.2% |
-| a software company's internal agents | 89.0% | 91.4% |
-| a large corporation's departments | 85.5% | 87.6% |
-| a retailer's supply chain | 83.8% | 88.1% |
-| a catalog of 1,000 agents | 85.5% | 88.3% |
-
-The gain is largest where agents overlap most, which is where search needs the help.
-
-Speed is what makes this usable. Jev adds one call, and only to the searches that offered more
-than one agent. Measured over thousands of calls, that call takes a median of 159 milliseconds
-(90% under 215 ms) when connections are kept open, and 223 milliseconds (90% under 268 ms) when
-each call opens its own. Jev's own processing time is a median of 62 milliseconds; the rest is
-the network.
-
-Jev needs each agent's description to do this well. Given only the agents' titles, it chose
-worse than search's own first choice.
-
----
-
 ## What we do not claim
 
 Every number above comes from catalogs we built, and a real catalog will differ. The honest
@@ -157,12 +128,23 @@ asking for what another agent does: "What are the top drivers behind incident da
 severity?" is marked as belonging to an insurance-claims agent, because "incident date" is one
 of its fields, though most people asking it would want the incident-report agent.
 
-So a question counted as wrong is often one a person would have answered the same way. We
-reviewed the questions where the right agent was among the choices search offered, but neither
-search's first choice nor Jev's choice was that agent. Depending on the catalog,
-between a fifth and three quarters of them had an answer key that was no better than the agent
-chosen, and often worse. Some of the questions are confusing
-enough that we would get them wrong ourselves.
+So a question counted as wrong is often one a person would have answered the same way. We had
+every question where search's first choice differed from the answer key — about 2,000 of them —
+judged blind: the reviewer saw only the question and the two agents' descriptions, in random
+order, without knowing which was the key and which was search's pick. In about three cases out of
+four the key stood. In the rest, search's choice was as good or better. Counting those, the right
+agent comes first more often than the table above says:
+
+| catalog | right agent first, as marked | as judged |
+|---|---|---|
+| a university | 91.0% | 92.8% |
+| a clinic group | 90.6% | 92.0% |
+| a software company's internal agents | 89.0% | 91.7% |
+| a large corporation's departments | 85.5% | 87.8% |
+| a retailer's supply chain | 83.8% | 87.0% |
+| a catalog of 1,000 agents | 85.5% | 89.2% |
+
+Some of the questions are confusing enough that we would get them wrong ourselves.
 
 Real people ask what they mean, in their own words. We expect search to do better on those
 questions than on ours.

@@ -58,7 +58,7 @@
  <span class=str>&quot;searchResults&quot;</span>: [{<span class=str>&quot;agentName&quot;</span>: <span class=str>&quot;hr_policy&quot;</span>, <span class=str>&quot;agentTitle&quot;</span>: <span class=str>&quot;HR policies and entitlements&quot;</span>}]}</code></pre></figure>
 
 <h2 id="the-response">The response</h2>
-<p><code>searchResults</code> holds zero, one, two or three agents, best first; see <a href="../search/how-matching-works.html">How matching works</a> for when each happens. An empty list means nothing matched, and the client should say so rather than run anything. Search returns only the matches; what to do with them &mdash; run the best one or offer a choice &mdash; is the client's own <a href="../search/search-settings.html">search behavior</a>.</p>
+<p><code>searchResults</code> holds zero, one or two agents, best first; see <a href="../search/how-matching-works.html">How matching works</a> for when each happens. An empty list means nothing matched, and the client should say so rather than run anything. Search returns only the matches; what to do with them &mdash; run the best one or offer a choice &mdash; is the client's own <a href="../search/search-settings.html">search behavior</a>.</p>
 
 <h2 id="running-the-match">Running the match</h2>
 <p>Search does not run anything. Take the chosen <code>agentName</code> and call <a href="running-agents.html"><code>execAgent</code></a> with the same query under <code>inputs.query</code>. For a follow-up, send the query to search again and pass the conversation's <code>convid</code> to <code>execAgent</code>, whichever agent matched.</p>

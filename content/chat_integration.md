@@ -105,7 +105,7 @@ ends their tokens with their account.
 
 ## Finding an agent
 
-The bot calls `search` with the person's question. The call returns up to three matching
+The bot calls `search` with the person's question. The call returns up to two matching
 agents, best first, and the bot decides what to do with them.
 
 Search returns only the matches. What the bot does with them is the bot's own behavior, not
@@ -123,7 +123,7 @@ showing the error.
 ## Letting the person choose
 
 When the behavior says to show the results, show them as buttons. One button per agent,
-labeled with the agent title. Search returns at most three, so they fit in a single row.
+labeled with the agent title. Search returns at most two, so they fit in a single row.
 
 Four things make a picker work properly.
 
@@ -301,7 +301,7 @@ FINDING AN AGENT
     in : { "query": "the person's question" }        at least 8 characters
     out: { "success": true,
            "searchResults": [ { "agentName": "...", "agentTitle": "..." } ] }
-  Up to three results, best first. You decide what to do with them: run the first result,
+  Up to two results, best first. You decide what to do with them: run the first result,
   or show the list as buttons and let the person choose. For a question inside a conversation
   that already exists, you may instead keep using the agent already in that conversation.
   An empty searchResults means no agent covers that question. Say so.

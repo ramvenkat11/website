@@ -1,4 +1,4 @@
-<p class="lead">The bot calls <code>search</code> with the person&rsquo;s question. The call returns up to three matching agents, best first, and the bot decides what to do with them.</p>
+<p class="lead">The bot calls <code>search</code> with the person&rsquo;s question. The call returns up to two matching agents, best first, and the bot decides what to do with them.</p>
 
 <x-code lang="json" title="The response">
 { "success": true,
@@ -18,7 +18,7 @@
 <p>A bot that always runs the best match feels more like a conversation and less like a search page. The cost is that the person is never offered a choice when the match is uncertain. Either suits, as long as the bot stays consistent.</p>
 
 <h2>Letting the person choose</h2>
-<p>When the bot shows the results, show them as buttons: one button per agent, labeled with the agent title. Search returns at most three, so the buttons fit in a single row.</p>
+<p>When the bot shows the results, show them as buttons: one button per agent, labeled with the agent title. Search returns at most two, so the buttons fit in a single row.</p>
 <p>Four things make a picker work properly.</p>
 <ul>
   <li><strong>Carry the question, not only the choice.</strong> Running an agent needs the question, and a click only says which agent. It works well to put a short identifier in the button and keep the question in your own store. A chat application limits how much a button can carry, and a question can be longer than that.</li>

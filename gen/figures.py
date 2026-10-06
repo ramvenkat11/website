@@ -554,7 +554,7 @@ def _search_results():
     f = Fig("search-results", 200, "What a search returns")
     f.box(20, 40, 200, 110, "one agent", "the query clearly belongs to it", kind="ok")
     f.text(120, 128, "runs at once (default)", size=11, anchor="middle")
-    f.box(260, 40, 200, 110, "two or three", "overlap or an ambiguous query", kind="card")
+    f.box(260, 40, 200, 110, "two", "overlap or an ambiguous query", kind="card")
     f.text(360, 128, "the user picks", size=11, anchor="middle")
     f.box(500, 40, 200, 110, "none", "outside every description", kind="soft")
     f.text(600, 128, "nothing runs", size=11, anchor="middle")

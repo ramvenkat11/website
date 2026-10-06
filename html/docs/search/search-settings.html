@@ -50,12 +50,12 @@
       <p class="lead">A search returns the agents that match a query, best first. What an interface does with those matches &mdash; run the best one at once, or show them for the user to pick &mdash; is the interface's own behavior, not an account setting. The bundled GUI makes it a preference you set in the interface; an interface of your own decides for itself.</p>
 
 <h2 id="what-an-interface-can-do-with-the-matches">What an interface can do with the matches</h2>
-<p>A search returns one, two or three agents, or none; see <a href="how-matching-works.html">How matching behaves</a>. The interface then chooses how to act:</p>
+<p>A search returns one or two agents, or none; see <a href="how-matching-works.html">How matching behaves</a>. The interface then chooses how to act:</p>
 <div class="tablewrap"><table class="fields data">
 <thead><tr><th>Behavior</th><th>What happens</th></tr></thead>
 <tbody>
 <tr><td>Run the best match</td><td>The top agent runs at once. The fastest path, and it never asks the user to choose.</td></tr>
-<tr><td>Run only a lone match</td><td>A single match runs at once; when two or three come back, they are offered as choices.</td></tr>
+<tr><td>Run only a lone match</td><td>A single match runs at once; when two come back, they are offered as a choice.</td></tr>
 <tr><td>Show the matches</td><td>The matches are always shown and the user picks. Nothing runs until they do.</td></tr>
 </tbody></table></div>
 <p>When nothing matches, the interface says so rather than running anything.</p>

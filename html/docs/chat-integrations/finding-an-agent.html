@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Finding an agent — Search2o docs</title>
-<meta name="description" content="The bot calls search with the person’s question. The call returns up to three matching agents, best first, and the bot decides what to do with them.">
+<meta name="description" content="The bot calls search with the person’s question. The call returns up to two matching agents, best first, and the bot decides what to do with them.">
 <link rel="canonical" href="https://search2o.com/docs/chat-integrations/finding-an-agent.html">
 <meta property="og:title" content="Finding an agent — Search2o docs">
-<meta property="og:description" content="The bot calls search with the person’s question. The call returns up to three matching agents, best first, and the bot decides what to do with them.">
+<meta property="og:description" content="The bot calls search with the person’s question. The call returns up to two matching agents, best first, and the bot decides what to do with them.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/chat-integrations/finding-an-agent.html">
 <meta property="og:image" content="https://search2o.com/images/og4.png">
@@ -47,7 +47,7 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../chat-integrations/index.html'>Chat integrations</a></div>
     <article class="docs-article">
       <h1>Finding an agent</h1>
-      <p class="lead">The bot calls <code>search</code> with the person&rsquo;s question. The call returns up to three matching agents, best first, and the bot decides what to do with them.</p>
+      <p class="lead">The bot calls <code>search</code> with the person&rsquo;s question. The call returns up to two matching agents, best first, and the bot decides what to do with them.</p>
 
 <figure class=code data-lang=json><div class=bar><span>The response</span></div><pre><code>{ &quot;success&quot;: true,
   &quot;searchResults&quot;: [ { &quot;agentName&quot;: &quot;hr_policy&quot;, &quot;agentTitle&quot;: &quot;HR policy&quot; } ] }</code></pre></figure>
@@ -65,7 +65,7 @@
 <p>A bot that always runs the best match feels more like a conversation and less like a search page. The cost is that the person is never offered a choice when the match is uncertain. Either suits, as long as the bot stays consistent.</p>
 
 <h2 id="letting-the-person-choose">Letting the person choose</h2>
-<p>When the bot shows the results, show them as buttons: one button per agent, labeled with the agent title. Search returns at most three, so the buttons fit in a single row.</p>
+<p>When the bot shows the results, show them as buttons: one button per agent, labeled with the agent title. Search returns at most two, so the buttons fit in a single row.</p>
 <p>Four things make a picker work properly.</p>
 <ul>
   <li><strong>Carry the question, not only the choice.</strong> Running an agent needs the question, and a click only says which agent. It works well to put a short identifier in the button and keep the question in your own store. A chat application limits how much a button can carry, and a question can be longer than that.</li>
