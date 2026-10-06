@@ -243,3 +243,6 @@
 ## 2026-10-05 — Profiles card: dropped "prompt" (prompt profile is optional)
 
 - Ram: a prompt can be inline in the agent; the prompt profile is optional, so it does not belong in "live in profiles, not its code". `html/index.html` Profiles card now lists LLM, API, database and MCP. Not committed, not uploaded.
+
+## 2026-10-05 — Profiles card: prompts back, as optional
+- Ram: say "optionally prompts" rather than dropping them. Card now: "An agent's LLM, API, database, MCP and optionally its prompts live in profiles, not its code. Each changes independently, and every change is in the audit log." (169 chars). Not committed, not uploaded.
