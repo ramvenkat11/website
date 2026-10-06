@@ -86,7 +86,7 @@
         </div>
 
         <div class="step-sec" id="install">
-          <h2>Download the agent server</h2>
+          <h2>Install the agent server</h2>
           <p>Install the agent server with the bundled GUI:</p>
           <div class="codecard" aria-label="Install with pip">
             <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">terminal</span></div>
@@ -106,11 +106,8 @@
 <pre><code><span class="ps1">PS&gt; </span>$env:SEARCH2O_LICENSE_KEY="your-license-key"
 <span class="ps1">PS&gt; </span>search2o</code></pre>
           </div>
-          <ul>
-            <li><strong>OpenAI, Anthropic or Gemini:</strong> Before starting the server, also set <code>OPENAI_API_KEY</code>, <code>ANTHROPIC_API_KEY</code> or <code>GEMINI_API_KEY</code>. Self hosted <strong>Ollama or vLLM</strong> does not require an API key.</li>
-              <li><strong>After you sign in:</strong> Create an <a href="docs/profiles/llm-profiles.html">LLM profile</a> for your model.</li>
-          </ul>
-         </div>
+          <p>Self hosted models using <strong>Ollama or vLLM</strong> need no vendor API key. For <strong>OpenAI, Anthropic or Gemini:</strong>, before starting the server, also set one or more of <code>OPENAI_API_KEY</code>, <code>ANTHROPIC_API_KEY</code> or <code>GEMINI_API_KEY</code>.</p>
+        </div>
 
         <div class="step-sec" id="gui">
           <h2>Set up your account</h2>
@@ -120,6 +117,7 @@
 
         <div class="step-sec" id="first-agent">
           <h2>Get started</h2>
+          <p>LLMs are called from an agent using an <a href="docs/profiles/llm-profiles.html">LLM profile</a>. You can use an existing profile or create a new one.</p>
           <p>Open <strong>Agents &rarr; Drafts</strong> and create a draft. Select your LLM profile, then tell <strong>Draft with AI</strong> what you want.
              </p><p> Build two or three task-specific agents. Each agent would typically use one or two of your enterprise systems and handle a specific use case. </p>
           <p>Validate and publish them. Then add plain-English descriptions so search can find them.</p>

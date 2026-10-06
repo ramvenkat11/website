@@ -738,6 +738,7 @@ a.arch-lbl { color: var(--blue-ink); }
 .numbered h3 { font-size: 16.5px; margin: 22px 0 8px; }
 .numbered p { margin: 0 0 12px; color: var(--body); font-size: 15.75px; line-height: 1.7; }
 .numbered p.dim { color: var(--muted); font-size: 14.75px; }
+.numbered .codecard { margin-bottom: 14px; }
 .numbered ul { margin: 0 0 12px; padding-left: 22px; }
 .numbered li { margin: 6px 0; color: var(--body); font-size: 15.75px; line-height: 1.7; }
 
