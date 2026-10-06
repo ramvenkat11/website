@@ -246,3 +246,6 @@
 
 ## 2026-10-05 — Profiles card: prompts back, as optional
 - Ram: say "optionally prompts" rather than dropping them. Card now: "An agent's LLM, API, database, MCP and optionally its prompts live in profiles, not its code. Each changes independently, and every change is in the audit log." (169 chars). Not committed, not uploaded.
+
+## 2026-10-05 — Architecture diagram width matched to the other diagrams
+- `#system-architecture .howgrid` overrode the grid to `1.4fr 1fr` (gap 48), making the diagram 597px wide vs ~520 for the hero and framework diagrams, with wasted whitespace on the right. Changed to `1fr 1fr` (gap 64) like every other section; diagram is now 504px and the system branches sit next to the agent server. CSS-only, one line. Not committed, not uploaded.
