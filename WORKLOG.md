@@ -215,3 +215,12 @@
 ## 2026-10-05 — Search behavior: documented as a per-user GUI setting
 
 - Ram: the UI setting now lives under user settings in the GUI (client-side). Added it to `docsrc/gui/personal.html` Profile section, next to the theme, and reworded the "The bundled GUI" paragraph of `docsrc/search/search-settings.html` to call it a per-user preference under the profile (link to gui/personal.html), not account configuration. Docs rebuilt; links clean. Not committed, not uploaded.
+
+## 2026-10-05 — Search quality page rewritten; no third match anywhere in docs
+
+- `docsrc/search/search-quality.html` rewritten from `content/search_testing.md`: new "right agent first / among the first two" table, new "One answer or two" subsection and table, refusal 100% and 82–86% kept, speed updated to ~200ms (kept the end-to-end/US-East note), new "The numbers are likely lower than real use" subsection with the blind-judged as-marked/as-judged table, clean closing line. The entire "An experiment: letting Jev choose" section is removed — no Jev on the page.
+- No third match, across all docs: changed "two or three"/"up to three"/"at most three"/"first three" to two in `search/how-matching-works.html`, `commands/search.html`, `rest-api/search.html`, `search/orchestrator.html`, `search/search-settings.html`, `gui/search.html`, `chat-integrations/finding-an-agent.html`, `chat-integrations/ai-prompts.html`, and the cited figures in `skill-integration/what-search2o-provides.html` (now "among the first two for 92.2%" and "92.3–97.4%"). The `search-results` figure in `gen/figures.py` box changed from "two or three" to "two". Unbuilt draft `content/chat_integration.md` updated to match.
+- Left as true (not match counts): "three parts of the system", "three bundled protocols", validation "three stages", Slack "three seconds", "Build two or three agents" on getting-started, etc.
+- Flagged to Ram: the source's "both are 100-agent catalogs" clause is inconsistent with its own table (the top catalog, a university, has 50 agents), so I used "about seven points apart" and dropped that clause.
+- Checked: no Jev and no third-match phrasing left in docsrc or html/docs; build clean (146 pages).
+- State: not committed, not uploaded.
