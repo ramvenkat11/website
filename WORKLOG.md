@@ -255,3 +255,7 @@
 
 ## 2026-10-05 — Architecture section: gap/columns now identical to the framework section
 - Correcting the previous change: I had set `#system-architecture .howgrid` to gap 64px, double the sibling framework section's 32px, leaving a big gap between the diagram and the demo. Set it to `minmax(0,1fr) minmax(0,1fr)` gap 32px — now measured identical to `#framework .fw-grid`: diagram 520, gap 32, demo (right box) 520 starting at the same x. CSS-only. Not committed, not uploaded.
+
+## 2026-10-06 — Getting started: Run the server section rewritten
+- `html/gettingstarted.html` step 3 now: the two start commands first (license key only, no vendor key in the command), then two bullets (Ollama/vLLM needs no key, create an LLM profile after sign-in; OpenAI/Anthropic/Gemini set one of the three keys before starting), then a "docs for other LLMs" link. The "Choose an LLM" / "Start the server" h3s are gone. Docs links stay relative. `.numbered ul/li` styles already existed, so no CSS change. Verified with a headless render. Not committed, not uploaded.
+- Pre-existing, not touched: the two code cards in that step sit flush against each other (`.codecard` has no vertical margin); the gap only shows where two cards are consecutive.
