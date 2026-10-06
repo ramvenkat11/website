@@ -469,7 +469,7 @@ p { margin: 0; }
 
 .arch-row { display: grid; grid-template-columns: 1fr auto auto; align-items: center; width: 100%; }
 .arch-grid { display: grid; grid-template-columns: minmax(0, 1fr) auto auto; align-items: center; width: 100%; }
-.arch-actors { grid-column: 1 / -1; grid-row: 1; display: flex; justify-content: center; gap: 16px; }
+.arch-actors { grid-column: 1 / -1; grid-row: 1; display: flex; justify-content: flex-start; gap: 16px; }
 .arch-actorcol { display: grid; grid-template-rows: 1fr auto; justify-items: center; min-width: 0; }
 .arch-actors .arch-actor { align-self: stretch; justify-content: center; gap: 4px; padding: 14px 18px; font-size: 15px; white-space: nowrap; }
 .arch-actors .arch-actor svg { width: 20px; height: 20px; }
@@ -482,7 +482,7 @@ p { margin: 0; }
 .arch-link.lnk::before, .arch-link.lnk::after { opacity: .55; }
 a.arch-lbl { color: var(--blue-ink); }
 .arch-part a, a.arch-cloud-lbl { color: #a9c6ff; }
-#system-architecture .howgrid { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+#system-architecture .howgrid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
 #system-architecture .arch { display: flex; flex-direction: column; justify-content: center; padding: 30px 22px; }
 .arch-hlink { position: relative; width: 34px; height: 2px; background: var(--slate); opacity: .55; }
 
