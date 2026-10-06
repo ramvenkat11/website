@@ -261,3 +261,4 @@
 - Pre-existing, not touched: the two code cards in that step sit flush against each other (`.codecard` has no vertical margin); the gap only shows where two cards are consecutive.
 - Follow-up: Ram added a sentence after the bullets; linked "secret names" to `docs/security/secret-vault.html#environment-variables` (the section that names the three vendor variables) and "LLM profiles" to `docs/profiles/llm-profiles.html`. Links relative.
 - Step 4: "Enter the email you used in step 1" was easy to read as any email; now bold "same email you used to create your account in step 1" with the reason (a code only goes to that address).
+- Moved "After you sign in: create an LLM profile" out of step 3 into step 5 (Get started) as its first paragraph. The remaining single bullet in step 3 became a paragraph.
