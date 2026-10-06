@@ -231,3 +231,7 @@
 - (b) "Built for the enterprise" (`#platform`): the Reports card is replaced by "Separate environments" (layers icon). Body: one account per environment (dev/staging/prod); an agent names its profiles and the profiles carry the endpoints, so the same agent runs in each; links all five profile types (LLM, prompt, API, database, MCP) and `security/multiple-environments.html`. Wording checked against that page (one account per environment, profiles point to each environment's systems).
 - The diagram's own cloud "Reports" part (Search / State / Reports) is untouched — the request was about the enterprise card only.
 - Checked by screenshot at 1280px; branches confirmed link-free. Not committed, not uploaded.
+
+## 2026-10-05 — Home "Separate environments" card shortened to match the others
+
+- The card body was ~280 chars vs ~155-169 for the other enterprise cards. Rewrote it to ~150 chars, keeping all five profile links and the multiple-environments link: "Dev, staging and production run as separate accounts, each with its own LLM, prompt, API, database and MCP profiles pointing at that environment." Not committed, not uploaded.
