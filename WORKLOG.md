@@ -235,3 +235,7 @@
 ## 2026-10-05 — Home "Separate environments" card shortened to match the others
 
 - The card body was ~280 chars vs ~155-169 for the other enterprise cards. Rewrote it to ~150 chars, keeping all five profile links and the multiple-environments link: "Dev, staging and production run as separate accounts, each with its own LLM, prompt, API, database and MCP profiles pointing at that environment." Not committed, not uploaded.
+
+## 2026-10-05 — Home enterprise card: "Separate environments" -> "Profiles"
+
+- Ram: rename the card to "Profiles" and say how profiles keep the five things out of agent code, vary independently, and are tracked in the audit log (the enablements — environments, model standardization, restricting agent reach — don't fit the box). `html/index.html`: heading "Profiles"; body "An agent's LLM, prompt, API, database and MCP live in profiles, not its code. Each changes independently, and every change is in the audit log." Links: profiles section index and the audit log. Length ~140, in line with the other cards. Kept the layers icon. Not committed, not uploaded.
