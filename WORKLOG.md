@@ -224,3 +224,10 @@
 - Flagged to Ram: the source's "both are 100-agent catalogs" clause is inconsistent with its own table (the top catalog, a university, has 50 agents), so I used "about seven points apart" and dropped that clause.
 - Checked: no Jev and no third-match phrasing left in docsrc or html/docs; build clean (146 pages).
 - State: not committed, not uploaded.
+
+## 2026-10-05 — Home page: diagram branches + enterprise "Separate environments" card
+
+- (a) Architecture diagram (`#system-architecture` in `html/index.html`): the agent-server branch "LLMs/Prompts" is now "LLMs", and all four branches (LLMs, APIs, Databases, MCP) are plain text — the links to the profile docs pages are removed.
+- (b) "Built for the enterprise" (`#platform`): the Reports card is replaced by "Separate environments" (layers icon). Body: one account per environment (dev/staging/prod); an agent names its profiles and the profiles carry the endpoints, so the same agent runs in each; links all five profile types (LLM, prompt, API, database, MCP) and `security/multiple-environments.html`. Wording checked against that page (one account per environment, profiles point to each environment's systems).
+- The diagram's own cloud "Reports" part (Search / State / Reports) is untouched — the request was about the enterprise card only.
+- Checked by screenshot at 1280px; branches confirmed link-free. Not committed, not uploaded.
