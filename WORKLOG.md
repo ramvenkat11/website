@@ -300,3 +300,4 @@
 ## 2026-10-07 — demo-agents.html no longer points at demo.html
 - Ram: the old live demo is unmaintained and must go. The demo-agents.html hero block (kicker "Live demo", note linking "live demo" to demo.html) now reads kicker "Demo" and links "demo on the home page" to index.html. The rm of html/demo.html was denied at the permission prompt, so the file, its sitemap entry (SITE_PAGES in gen/build.py) and the build are untouched pending Ram's word.
 - html/demo.html moved to content/demo.html (Ram: keep for later, off the website). Removed from SITE_PAGES in gen/build.py and the docs rebuilt, so html/sitemap.xml no longer lists it. No page links to it. Its asset paths (demo/demo.css, js/, images/) are relative to html/, so the copy in content/ will not render standalone until moved back. Not committed, not uploaded; the bucket copy goes at the next deploy (sync --delete).
+- Home page card "Change at scale" retitled "Change control" (Ram). Body unchanged.
