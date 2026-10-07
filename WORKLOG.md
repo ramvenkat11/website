@@ -281,3 +281,4 @@
 - Change at scale card, final wording: "optionally its prompts" restored, the one-to-many sentence dropped as obvious, "Every profile knows which agents use it" plus the audit log kept; trimmed to 164 chars to stay within the sibling range.
 - Home page: the "Model neutrality" card (it repeated the hero's LLM node and "Model-neutral" check, and was the longest card) became "Cost control": each agent uses only the model its workflow needs, even a free self-hosted one; every run has a spend limit (links runtime-limits); reports show LLM spend per agent and per user (links reports). 159 chars. The vendor list and the llm-adapters link now live only in the hero and the docs.
 - Cost control card: first sentence now "...whether frontier, cheap or free." (163 chars).
+- Cost control card wrapped to five lines at desktop width (siblings four). Last sentence trimmed to "reports show spend per agent and user." Re-rendered.
