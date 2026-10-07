@@ -278,3 +278,4 @@
 - Home page "Built for the enterprise" card: "Profiles" retitled "Change at scale"; body now says one profile change reaches every agent using it and each profile lists those agents (163 chars; siblings 147–167). The audit-log link in that card is gone; the sentence had to shrink to match.
 - Audit log link moved to the "Access & roles" card: "Built-in authentication or single sign-on. Every change is audited." (164 chars).
 - Reverted: Access & roles card back to its original text. The "each profile lists those agents" clause (Ram: not that important) came out of the Change at scale card and the audit log link went back in its place.
+- Change at scale card, final wording: "optionally its prompts" restored, the one-to-many sentence dropped as obvious, "Every profile knows which agents use it" plus the audit log kept (167 chars).
