@@ -13,7 +13,7 @@
 <p>Each call <a href="https://code.claude.com/docs/en/prompt-caching" target="_blank" rel="noopener">re-sends the full conversation</a>; prompt caching bills the re-read at a lower rate but does not remove it.</p>
 <p>Anthropic makes the same point about code inside a skill. A bundled script costs only its output in tokens, which its documentation describes as much more efficient than having Claude write equivalent code each time. A Search2o agent applies that to the whole workflow, and moves it off the laptop.</p>
 <p>In Search2o, search costs no model tokens, and an agent's flow control, API calls and database calls cost none. Only an <code>llm</code> command spends tokens: on the model its profile names, under the company's key, within the agent's <a href="../agent-execution/controlled-runtime.html">cost bound</a>.</p>
-<p>That model can be one you host. Search2o supports <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> and <a href="https://docs.vllm.ai/en/latest/" target="_blank" rel="noopener">vLLM</a>, which can run open models on your own hardware. An <code>llm</code> step on such a model has no per-token charge, and nothing is paid to a model vendor; the cost is the hardware it runs on.</p>
+<p>That model can be one you host. Search2o supports <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a>, <a href="https://docs.vllm.ai/en/latest/" target="_blank" rel="noopener">vLLM</a> and <a href="https://github.com/sgl-project/sglang" target="_blank" rel="noopener">SGLang</a>, which can run open models on your own hardware. An <code>llm</code> step on such a model has no per-token charge, and nothing is paid to a model vendor; the cost is the hardware it runs on.</p>
 <p>On Claude's side the cost is fixed: one skill, two calls and the result, however many agents exist and however many steps each one takes. When two hundred people run the same workflow, the difference repeats two hundred times. When the agents' own steps run on models you host, Claude's fixed part is the only model usage a run is charged for.</p>
 
 <h3>3. One skill entry stands for the whole catalogue</h3>
@@ -33,7 +33,7 @@
 
 <h3>5. Each step uses the model that fits, from any vendor or your own hardware</h3>
 <p>Claude Code is built for Claude models. Anthropic's documentation says it "<a href="https://code.claude.com/docs/en/llm-gateway" target="_blank" rel="noopener">doesn't support routing Claude Code to non-Claude models</a> through any gateway". Within Claude, a skill or a subagent can <a href="https://code.claude.com/docs/en/skills" target="_blank" rel="noopener">name a different model</a>.</p>
-<p>In an agent, each <code>llm</code> command names a profile, and <a href="../profiles/llm-profiles.html">a profile is one model at one vendor</a>. OpenAI, Anthropic and Gemini are bundled. Any endpoint that speaks one of their protocols needs only a profile; anything else needs an adapter. Models you host with <a href="../llm/vendors.html">Ollama or vLLM</a> are supported as well.</p>
+<p>In an agent, each <code>llm</code> command names a profile, and <a href="../profiles/llm-profiles.html">a profile is one model at one vendor</a>. OpenAI, Anthropic and Gemini are bundled. Any endpoint that speaks one of their protocols needs only a profile; anything else needs an adapter. Models you host with <a href="../llm/vendors.html">Ollama, vLLM or SGLang</a> are supported as well.</p>
 <p>One agent can extract fields with a small model, reason with a larger one, and keep a sensitive step on a model you host. A profile is <a href="../profiles/overview.html">changed once and every agent that uses it follows</a> on its next run, so retiring a model is one edit.</p>
 
 <h2>Control</h2>
@@ -108,7 +108,7 @@
 <h3>Others</h3>
 <ul>
   <li><a href="https://agentskills.io" target="_blank" rel="noopener">Agent Skills standard</a></li>
-  <li><a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a> and <a href="https://docs.vllm.ai/en/latest/" target="_blank" rel="noopener">vLLM</a>, which run open models on hardware you host</li>
+  <li><a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a>, <a href="https://docs.vllm.ai/en/latest/" target="_blank" rel="noopener">vLLM</a> and <a href="https://github.com/sgl-project/sglang" target="_blank" rel="noopener">SGLang</a>, which run open models on hardware you host</li>
   <li>Chris Tyson, <a href="https://theagentarchitect.substack.com/p/claude-sonnet-4-prompts-stopped-working" target="_blank" rel="noopener">The Day Anthropic Broke 90% of My Prompts</a>, October 3, 2025</li>
   <li>MindStudio, <a href="https://www.mindstudio.ai/blog/how-to-fix-claude-code-skills-prompts" target="_blank" rel="noopener">Fix Degraded Claude Code Output: Trim Skills, Not Add Them</a>, August 12, 2026</li>
   <li><a href="https://github.com/rohitg00/pro-workflow/pull/113" target="_blank" rel="noopener">Refresh skill prompts for current Claude models</a>, a pull request on rohitg00/pro-workflow</li>

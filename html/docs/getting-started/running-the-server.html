@@ -62,7 +62,7 @@
 <figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>export OPENAI_API_KEY=sk-...
 <span class=ps1>$ </span>export ANTHROPIC_API_KEY=sk-ant-...
 <span class=ps1>$ </span>export GEMINI_API_KEY=...</code></pre></figure>
-<p>One key is enough to start. A model you host with Ollama or vLLM needs no vendor key: start the server without one, and create an LLM profile for the model after you sign in; see <a href="../llm/vendors.html#models-you-host-ollama-and-vllm">LLM vendors</a>. For other LLMs, see <a href="../llm/llm-adapters.html">Connecting to other LLMs</a>. Where secrets come from is configurable; see <a href="../security/secret-vault.html">Secret vault</a>.</p>
+<p>One key is enough to start. A model you host with Ollama, vLLM or SGLang needs no vendor key: start the server without one, and create an LLM profile for the model after you sign in; see <a href="../llm/vendors.html#models-you-host-ollama-vllm-and-sglang">LLM vendors</a>. For other LLMs, see <a href="../llm/llm-adapters.html">Connecting to other LLMs</a>. Where secrets come from is configurable; see <a href="../security/secret-vault.html">Secret vault</a>.</p>
 
 <h2 id="what-starts-up">What starts up</h2>
 <p>At startup the server validates the license and downloads the account's configuration from Search2o Cloud. The server then checks every entry of the expression allowlist against its own Python environment and builds its connection pools. After that the server serves:</p>
