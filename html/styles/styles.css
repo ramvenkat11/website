@@ -126,7 +126,8 @@ p { margin: 0; }
 .theme-toggle .sun { display: none; }
 .theme-toggle .moon { display: block; }
 .theme-toggle { order: 1; margin-left: auto; }
-.site-nav { order: 2; margin-left: 0; }
+.site-nav { order: 2; margin-left: auto; }
+.docs .site-nav { margin-left: 0; }
 
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
@@ -824,7 +825,7 @@ a.arch-lbl { color: var(--blue-ink); }
   background: linear-gradient(150deg, #1a2745, #131f38); color: #e8eefb;
   font-size: 19px; font-weight: 600; letter-spacing: -0.015em; line-height: 1.45;
 }
-.page-hero.compact { padding: 60px 0 4px; }
+.page-hero.compact { padding: 72px 0 4px; }
 .page-hero.compact + .page-body { padding-top: 24px; }
 .quoteblock .hl { color: #9db4e0; }
 
