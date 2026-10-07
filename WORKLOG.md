@@ -283,3 +283,4 @@
 - Cost control card: first sentence now "...whether frontier, cheap or free." (163 chars).
 - Cost control card wrapped to five lines at desktop width (siblings four). Last sentence trimmed to "reports show spend per agent and user." Re-rendered.
 - Operational continuity card: dropped "Agent servers never need a restart" (untrue since agent server settings, uiConfig and license rotation need one). Now: "Configuration and profile changes are live on the next agent run, on every agent server. A running agent finishes with the configuration it started with." (153 chars). Link kept.
+- Home page card "Operational continuity" retitled "Always in sync" (the claim is consistency across stateless agent servers, not uptime). Body unchanged.
