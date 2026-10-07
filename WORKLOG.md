@@ -284,3 +284,8 @@
 - Cost control card wrapped to five lines at desktop width (siblings four). Last sentence trimmed to "reports show spend per agent and user." Re-rendered.
 - Operational continuity card: dropped "Agent servers never need a restart" (untrue since agent server settings, uiConfig and license rotation need one). Now: "Configuration and profile changes are live on the next agent run, on every agent server. A running agent finishes with the configuration it started with." (153 chars). Link kept.
 - Home page card "Operational continuity" retitled "Always in sync" (the claim is consistency across stateless agent servers, not uptime). Body unchanged.
+
+## 2026-10-06 — Page heroes aligned; theme toggle removed from site pages
+- `.page-hero.compact` (about.html) had 60px top padding against 72px on pricing and getting started, so the kicker jumped 12px between pages. Now 72px; the compact variant keeps its tighter bottom. Measured equal (first content row 146 on both pages).
+- Theme toggle removed from every site page (index, demo, demo-agents, gettingstarted, pricing, about, 404, the four legal pages): both the header button and the inline `s2o-theme` localStorage script. Site pages now follow only the system colour scheme. Docs pages keep the toggle and the script (built by gen/build.py, untouched).
+- Removing the button un-aligned the nav: the toggle's `margin-left: auto` had been pushing the nav right. `.site-nav` now has `margin-left: auto`, with `.docs .site-nav { margin-left: 0 }` so the docs header is unchanged. Rendered site header, docs header and phone header to confirm. Not committed, not uploaded.
