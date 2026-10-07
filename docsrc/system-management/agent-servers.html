@@ -28,6 +28,29 @@
 <!--fields:model:AgentServerModel-->
 <p>These settings are read once, at startup, so a change takes effect when the agent server restarts. The <code>logs</code> object is a standard Python logging configuration dictionary. The GUI path may point anywhere the agent server can read; leave the GUI path empty to serve no GUI. The documentation paths can be moved or set to nothing to switch the interactive API documentation off.</p>
 
+<h2>The GUI's settings</h2>
+<p>The <code>uiConfig</code> object holds the settings the <a href="../gui/how-the-gui-runs.html">GUI</a> reads from the agent server when the page loads. Each agent server configuration has its own, so two agent servers in one account can serve the GUI with different search behaviors or a different tag. A key that is missing takes the default below. A change takes effect when the agent server restarts and each user reloads the GUI.</p>
+<x-code lang="jsonc" nocheck>
+"uiConfig": {
+  "apiTimeoutSeconds": 90,
+  "toastDurationSeconds": 10,
+  "search": {
+    "tag": "",
+    "searchBehavior": "executeTopMatch",
+    "followupBehavior": "executeTopMatch"
+  }
+}
+</x-code>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Key</th><th>Meaning</th><th>Default</th></tr></thead>
+<tbody>
+<tr><td><code>apiTimeoutSeconds</code></td><td>Timeout, in seconds, for REST calls from the GUI. A timeout above 60 is worth keeping: submitting a description indexes the agent, which takes 15 to 30 seconds.</td><td><code>90</code></td></tr>
+<tr><td><code>toastDurationSeconds</code></td><td>How long a notification stays visible in the GUI, in seconds.</td><td><code>10</code></td></tr>
+<tr><td><code>search.tag</code></td><td>The <a href="../search/tags.html">tag</a> the GUI sends with every search, follow-ups included. Empty searches every tag.</td><td><code>""</code></td></tr>
+<tr><td><code>search.searchBehavior</code></td><td>What the GUI does with the matches of a new search; see <a href="../search/search-settings.html#the-bundled-gui">Search behavior</a>.</td><td><code>executeTopMatch</code></td></tr>
+<tr><td><code>search.followupBehavior</code></td><td>What the GUI does with the matches of a follow-up in a conversation.</td><td><code>executeTopMatch</code></td></tr>
+</tbody></table></div>
+
 <h2>Startup errors</h2>
 <p>Problems found at startup are written to the agent server's log. An allowlist entry the agent server cannot import is skipped, and the rest of the allowlist loads. A <a href="../hooks/index.html">hook</a> or an LLM adapter that cannot be loaded stops the agent server from running agents until the hook is fixed and the agent server restarted.</p>
 

@@ -1,4 +1,4 @@
-<p class="lead">A search returns the agents that match a query, best first. What an interface does with those matches &mdash; run the best one at once, or show them for the user to pick &mdash; is the interface's own behavior, not an account setting. The bundled GUI makes it a preference you set in the interface; an interface of your own decides for itself.</p>
+<p class="lead">A search returns the agents that match a query, best first. What an interface does with those matches &mdash; run the best one at once, or show them for the user to pick &mdash; is the interface's own behavior, not an account setting. The bundled GUI takes it from the agent server&rsquo;s configuration; an interface of your own decides for itself.</p>
 
 <h2>What an interface can do with the matches</h2>
 <p>A search returns one or two agents, or none; see <a href="how-matching-works.html">How matching behaves</a>. The interface then chooses how to act:</p>
@@ -15,7 +15,25 @@
 <p>A follow-up is a query typed into a conversation that already exists. An interface can search it like a new query and keep the agent that answered last as a fallback or among the choices, or it can keep the whole conversation on the agent that started it. See <a href="how-matching-works.html#follow-ups">Follow-ups</a>.</p>
 
 <h2>The bundled GUI</h2>
-<p>In the GUI this is a per-user setting, under <a href="../gui/personal.html">your profile</a> alongside the theme: by default the best match runs at once, and a follow-up is searched again with the previous agent as the fallback. Change the setting and the GUI offers the matches as choices instead. It is your own preference, not part of the account configuration, and takes effect on the next search.</p>
+<p>The GUI reads its behavior from the <code>uiConfig</code> object of the <a href="../system-management/agent-servers.html#the-gui-s-settings">agent server configuration</a> it is served by, so each agent server in an account can behave differently. By default the best match runs at once, and a follow-up is searched again with the previous agent as the fallback. A change takes effect when the agent server restarts and each user reloads the GUI.</p>
+<p><code>search.searchBehavior</code>, for a new search:</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Value</th><th>What happens</th></tr></thead>
+<tbody>
+<tr><td><code>executeTopMatch</code></td><td>Run the best match. The default.</td></tr>
+<tr><td><code>executeOnlyMatch</code></td><td>Run only a lone match; when two come back, the user chooses.</td></tr>
+<tr><td><code>showResults</code></td><td>Show the matches; the user chooses, even when only one matched.</td></tr>
+</tbody></table></div>
+<p><code>search.followupBehavior</code>, for a follow-up in a conversation. The previous agent is the one that answered last:</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Value</th><th>What happens</th></tr></thead>
+<tbody>
+<tr><td><code>executeTopMatch</code></td><td>Run the best match. When nothing matches, the previous agent runs. The default.</td></tr>
+<tr><td><code>executeOnlyMatch</code></td><td>Run only a lone match. When two come back, the user chooses, with the previous agent offered alongside them. When nothing matches, the previous agent runs.</td></tr>
+<tr><td><code>showResults</code></td><td>Show the matches, with the previous agent offered alongside them; the user chooses.</td></tr>
+<tr><td><code>executePrevious</code></td><td>Always run the previous agent. Nothing is searched.</td></tr>
+</tbody></table></div>
+<p><code>search.tag</code> is sent with every search the GUI makes, follow-ups included; empty searches every tag. See <a href="tags.html">Tags</a>.</p>
 
 <h2>Your own interface</h2>
 <p>An interface of your own, a chat integration, or an <a href="../skill-integration/overview.html">agent skill</a> decides for itself what to do with the matches. The <a href="../rest-api/search.html"><code>search</code></a> call returns only the ranked matches; the choice of what to run is yours. A chat bot that always runs the best match feels like a conversation; one that shows the matches feels like a search page. Either works, as long as it stays consistent.</p>

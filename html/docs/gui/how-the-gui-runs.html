@@ -56,14 +56,15 @@
 <p>The GUI&rsquo;s files sit in the agent server&rsquo;s <code>ui</code> directory, and the server serves them at its <code>/ui</code> path. Nothing has to be deployed or configured for this; installing the agent server is enough.</p>
 
 <h2 id="serving-the-gui-from-somewhere-else">Serving the GUI from somewhere else</h2>
-<p>The files are static, so any web server or CDN can serve them. <code>index.html</code> carries a small block of configuration in a <code>&lt;meta name="search2o-ui-config"&gt;</code> tag:</p>
+<p>The files are static, so any web server or CDN can serve them. <code>index.html</code> carries one setting in a <code>&lt;meta name="search2o-ui-config"&gt;</code> tag:</p>
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Setting</th><th>Meaning</th></tr></thead>
 <tbody>
 <tr><td><code>apiBase</code></td><td>Base URL of the agent server's REST API. Empty means the same origin as the GUI. When the GUI and the agent server are on different origins, add the GUI's origin to the server's allowed CORS origins.</td></tr>
-<tr><td><code>apiTimeoutSeconds</code></td><td>Timeout, in seconds, for REST calls from the GUI. A timeout above 60 is worth keeping: submitting a description indexes the agent, which takes 15 to 30 seconds.</td></tr>
-<tr><td><code>notificationDurationSeconds</code></td><td>How long a notification stays visible in the GUI.</td></tr>
 </tbody></table></div>
+
+<h2 id="settings-from-the-agent-server">Settings from the agent server</h2>
+<p>Everything else the GUI needs &mdash; the REST timeout, how long a notification stays visible, and the search behavior &mdash; is the <code>uiConfig</code> object of the <a href="../system-management/agent-servers.html#the-gui-s-settings">agent server configuration</a>. The GUI fetches it with <code>POST /api/auth/getUiConfig</code> each time the page loads; the call needs no sign-in. A change to these settings takes effect when the agent server restarts and each user reloads the GUI.</p>
 
 <h2 id="your-own-interface">Your own interface</h2>
 <p>The GUI is one client of the REST API, not a privileged one. A search box in your intranet, a chat bot, or a full application of your own can offer the same experience; see <a href="../rest-api/clients.html">Creating your own client</a> and <a href="../chat-integrations/index.html">Chat integrations</a>.</p>
@@ -71,7 +72,7 @@
     </article>
     <nav class=prevnext><a class=prev href='../gui/index.html'><small>Previous</small>GUI</a><a class=next href='../gui/search.html'><small>Next</small>Search and conversations</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#only-the-rest-api'>Only the REST API</a></li><li class=l2><a href='#where-the-gui-lives'>Where the GUI lives</a></li><li class=l2><a href='#serving-the-gui-from-somewhere-else'>Serving the GUI from somewhere else</a></li><li class=l2><a href='#your-own-interface'>Your own interface</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#only-the-rest-api'>Only the REST API</a></li><li class=l2><a href='#where-the-gui-lives'>Where the GUI lives</a></li><li class=l2><a href='#serving-the-gui-from-somewhere-else'>Serving the GUI from somewhere else</a></li><li class=l2><a href='#settings-from-the-agent-server'>Settings from the agent server</a></li><li class=l2><a href='#your-own-interface'>Your own interface</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">
