@@ -170,9 +170,9 @@ p { margin: 0; }
 }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start; }
 .hero-grid .demo, .hero-grid .hero-convo { margin-top: 7px; }
-.hero h1 { margin-bottom: 30px; font-size: 24px; line-height: 1.22; text-align: center; }
-.hero h1 .grad, .hero h1 .line { display: block; }
-.hero h1 .line { margin-top: 10px; color: var(--body); font-size: 16px; font-weight: 500; line-height: 1.4; letter-spacing: 0; }
+.hero-head { margin-bottom: 30px; text-align: center; }
+.hero h1 { margin-bottom: 12px; font-size: 32px; font-weight: 700; line-height: 1.2; }
+.hero-lead { margin: 14px 0 0; color: var(--body); font-size: 16px; font-weight: 500; line-height: 1.5; }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   margin-bottom: 22px; padding: 6px 13px;
@@ -180,13 +180,8 @@ p { margin: 0; }
   color: var(--muted); font-size: 13px; font-weight: 600; letter-spacing: .01em;
 }
 .eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ok); box-shadow: 0 0 0 3px rgba(21, 128, 61, .14); }
-.hero h1 .grad {
-  background: linear-gradient(94deg, var(--blue) 4%, var(--teal) 96%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-}
-.hero-pip { gap: 9px; color: var(--muted); }
-.hero-pip code { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--ink); }
-.hero-pip svg { flex: none; }
+.hero-pip { margin: 0; }
+.hero-pip code { font-family: var(--mono); font-size: 15px; font-weight: 500; color: var(--ink); }
 .hero-points { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 14px; }
 .hero-points li { display: flex; gap: 12px; align-items: flex-start; max-width: 54ch; color: var(--body); font-size: 16px; line-height: 1.6; }
 .hero-points svg { flex: 0 0 auto; margin-top: 4px; color: var(--blue); }
@@ -357,7 +352,7 @@ p { margin: 0; }
 .cc-title { margin: -22px -20px 18px; padding: 11px 20px; border-bottom: 1px solid var(--line-soft); border-radius: 18px 18px 0 0; background: var(--bg-soft); color: var(--ink); font-size: 13.5px; font-weight: 700; }
 .cc-arch.hero-arch { display: flex; flex-direction: column; justify-content: center; }
 .hero-arch .cc-row { grid-template-columns: 1fr 1.1fr; gap: 8px; }
-.hero-arch .arch-flow > .arch-link { height: 36px; }
+.hero-arch .arch-flow > .arch-link { height: 36px; margin-left: calc((100% - 20px) / 13); }
 .cc-arch.hero-arch .cc-col .arch-link { height: 44px; }
 .cc-arch.hero-arch .arch-flow > .arch-node { container-type: inline-size; padding: 24px 16px; }
 .cc-arch.hero-arch .cc-col .arch-node { padding: 18px 16px; }
@@ -383,7 +378,7 @@ p { margin: 0; }
 .cc-arch.hero-arch .arch-chips { gap: 6px; }
 .cc-arch.hero-arch .arch-chips span { font-size: 12px; padding: 3px 9px; }
 .hero-arch .arch-flow > .arch-link .arch-lbl { font-family: var(--mono); font-size: 11.5px; }
-.cc-clients { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; width: 100%; }
+.cc-clients { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1fr); gap: 10px; width: 100%; }
 .cc-clients .cc-cc { position: relative; align-content: center; }
 .cc-arch .cc-clients .cc-cc { padding: 15px 10px 18px; }
 .cc-arch .cc-clients .cc-skill { position: absolute; left: 50%; bottom: 0; z-index: 1; margin: 0; transform: translate(-50%, 50%); flex-wrap: nowrap; width: max-content; }
@@ -392,14 +387,14 @@ p { margin: 0; }
 .cc-arch.hero-arch .cc-server-head strong { font-size: 19px; font-weight: 800; letter-spacing: -0.02em; }
 .cc-server-head span { color: var(--faint); }
 .cc-server-head code { font-family: var(--mono); font-size: 12.5px; color: var(--muted); }
-.cc-join { --g: 10px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--g); width: 100%; justify-items: center; }
+.cc-join { --g: 10px; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1fr); gap: 0 var(--g); width: 100%; justify-items: center; }
 .cc-join i { position: relative; width: 2px; height: 30px; background: var(--slate); opacity: .55; }
 .cc-join i:first-child { height: 17px; margin-top: 13px; }
 .cc-join i::before {
   content: ""; position: absolute; left: 50%; top: -1px; transform: translateX(-50%);
   border: 5px solid transparent; border-bottom-color: var(--slate); border-top: 0;
 }
-.cc-join b { grid-column: 1 / -1; justify-self: stretch; height: 2px; margin: 0 calc((100% - 2 * var(--g)) / 6 - 1px); background: var(--slate); opacity: .55; }
+.cc-join b { grid-column: 1 / -1; justify-self: stretch; height: 2px; margin: 0 calc((100% - 2 * var(--g)) / 6.5 - 1px) 0 calc((100% - 2 * var(--g)) * 1.25 / 6.5 - 1px); background: var(--slate); opacity: .55; }
 .cc-attrs { display: flex; flex-wrap: wrap; gap: 6px .6em; margin: 16px 0 0; padding: 14px 0 0; border-top: 1px solid var(--line-soft); list-style: none; font-size: 14px; font-size: clamp(12px, 3.4cqi, 15px); font-weight: 800; letter-spacing: -0.01em; background: linear-gradient(94deg, var(--blue) 4%, var(--teal) 96%); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .cc-attrs li { display: inline-flex; align-items: center; gap: .33em; white-space: nowrap; }
 .cc-attrs svg { width: 1em; height: 1em; color: var(--ok); flex: none; }
@@ -413,7 +408,7 @@ p { margin: 0; }
 .cc-arch .arch-chips span { font-size: 11px; padding: 2px 8px; }
 .cc-arch .arch-flow > .arch-node { width: 100%; }
 .cc-arch .cc-cc { padding: 10px 10px; justify-items: center; text-align: center; }
-.cc-arch .cc-cc strong { font-size: 13px; }
+.cc-arch .cc-cc strong { font-size: 13px; white-space: nowrap; }
 .cc-arch .cc-cc .arch-chips { margin-top: 6px; justify-content: center; }
 .cc-row { display: grid; grid-template-columns: 1.2fr 1fr; gap: 12px; width: 100%; }
 .cc-col { display: grid; grid-template-rows: auto 1fr; justify-items: center; }
@@ -893,11 +888,9 @@ a.arch-lbl { color: var(--blue-ink); }
   .arch-actors .arch-actor { max-width: 100%; padding: 9px 8px; border-radius: 16px; font-size: 14px; white-space: normal; text-align: center; }
   .arch-actors .arch-actor em { font-size: 11.5px; }
   .arch-actors .arch-actor-name { flex-wrap: wrap; justify-content: center; }
-  .cc-clients, .cc-join { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr) minmax(0, 1fr); }
   .cc-clients { gap: 8px; }
   .cc-join { --g: 8px; }
   .hero-arch .arch-flow > .arch-link { margin-left: calc((100% - 16px) / 13); }
-  .cc-join b { margin: 0 calc((100% - 2 * var(--g)) / 6.5 - 1px) 0 calc((100% - 2 * var(--g)) * 1.25 / 6.5 - 1px); }
   .cc-arch .cc-clients .cc-cc { padding: 14px 2px 16px; }
   .cc-join i:first-child { height: 20px; margin-top: 10px; }
   .cc-server-head span { display: none; }
