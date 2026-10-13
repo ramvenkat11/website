@@ -411,3 +411,6 @@
 - Hero lead line 3 is now "When users submit a request, search finds and executes the right agent." (Ram).
 
 - Removed the commented-out `p.hero-attrs` line from index.html (Ram). The `.hero-attrs`/`.hero-attr` CSS rules remain.
+
+## 2026-10-13 — Hero head design variants (not applied)
+- Ram asked for a better display of the five hero lines. Four prototypes built in the scratchpad (mkhero.py → hero-a..d.html, served at http://127.0.0.1:8766/ with <base> to the local site on :8765): A centered claim + three numbered, labelled columns (01 Build / 02 Describe / 03 Run) under a rule; B left-aligned claim + lines behind a blue rule; C split, claim+CTA left and a numbered timeline right; D centered claim + numbered lines. All: "through search" in the blue→teal gradient (og card), claim 26–34px. Rendered at 1280 and 500. Nothing in the project changed; awaiting Ram's pick.
