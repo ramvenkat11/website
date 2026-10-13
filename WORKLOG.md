@@ -380,3 +380,6 @@
 ## 2026-10-13 — Tagline comma removed
 - "A platform to build, run, and use AI agents, through search." → no comma after "AI agents". Changed in html/index.html (h1, description, og:description, og:image:alt), the og:image:alt on every site page, content/demo.html, the docs template in gen/build.py plus all 145 built docs pages, and the `lines` lists in gen/ogcard.py and gen/linkedin_banner.py; og5.png and linkedin-banner.png regenerated.
 - State: uncommitted, nothing uploaded. Next: Ram reviews and commits.
+
+## 2026-10-13 — Section-two heading
+- h2 now "The conversation ties independent agents together with shared context" (Ram's wording). Uncommitted.
