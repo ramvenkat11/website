@@ -409,3 +409,5 @@
 - Ram shortened the CTA to "Have a few agents in production today." (link on "today" kept). Rendered at 1280 and 500.
 
 - Hero lead line 3 is now "When users submit a request, search finds and executes the right agent." (Ram).
+
+- Removed the commented-out `p.hero-attrs` line from index.html (Ram). The `.hero-attrs`/`.hero-attr` CSS rules remain.
