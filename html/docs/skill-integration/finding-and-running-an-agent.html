@@ -80,7 +80,7 @@
 <p>Search2o supplies the parts: one validated agent per query, each running inside the company. The assistant supplies the plan: how to split the request, in what order, and how to present the whole. Neither side has to know the other's agents or the other's plan in advance.</p>
 
 <h2 id="an-example">An example</h2>
-<p>A support engineer in Claude Code types: <em>Has order 48812 shipped? If not, open a ticket with the warehouse.</em></p>
+<p>A support engineer types into the agent harness: <em>Has order 48812 shipped? If not, open a ticket with the warehouse.</em></p>
 <p>The assistant sees two parts and a dependency between them. It sends the first part, <em>has order 48812 shipped?</em>, to <code>search</code>, and runs the order-lookup agent that comes back. The agent runs on the company's agent server against the orders database and returns: not shipped, held for an address check.</p>
 <p>Because the answer is "not shipped", the assistant sends the second part to <code>search</code> and runs the warehouse-ticket agent with the same conversation id. That agent already has the order details in the conversation's state. It creates the ticket and returns its number.</p>
 <p>The assistant composes one answer: <em>Order 48812 hasn't shipped &mdash; it's held for an address check. Ticket WH-1183 opened with the warehouse.</em></p>

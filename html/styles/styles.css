@@ -171,13 +171,14 @@ p { margin: 0; }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start; }
 .hero-grid .demo { margin-top: 7px; }
 .hero-head { max-width: 900px; margin: 0 auto 32px; text-align: center; }
-.hero-claim { margin: 0 0 16px; color: var(--ink); font-size: clamp(23px, 2.3vw, 29px); font-weight: 700; letter-spacing: -0.022em; line-height: 1.2; }
+.hero-claim { margin: 0 0 14px; color: var(--ink); font-size: clamp(21px, 2vw, 25px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.25; }
 .hero-lead { margin: 0; color: var(--body); font-size: 17px; font-weight: 500; line-height: 1.55; }
 .hero-attrs { margin: 12px 0 0; color: var(--body); font-size: 17px; font-weight: 500; line-height: 1.55; }
 .hero-head strong { color: var(--ink); font-weight: 650; }
 .hero-term { color: var(--blue-ink); font-weight: 600; white-space: nowrap; }
 .hero-term:hover { text-decoration: underline; text-underline-offset: 3px; }
-.hero-cta { margin: 12px 0 0; color: var(--body); font-size: 17px; font-weight: 500; line-height: 1.55; }
+.hero-cta { margin: 16px 0 0; color: var(--body); font-size: 20px; font-weight: 500; line-height: 1.5; }
+.hero-cta .hero-term { font-weight: 700; }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   margin-bottom: 22px; padding: 6px 13px;
@@ -345,10 +346,9 @@ p { margin: 0; }
 .arch .note { margin-top: 20px; color: var(--faint); font-size: 13px; }
 .points { margin-top: 22px; }
 #search-and-execute .section-head h2, #platform .section-head h2, #system-architecture .section-head h2 { font-size: 24px; }
-.fw-card .cc-title { color: var(--muted); font-size: 13px; font-weight: 600; line-height: 1.5; }
-.fw-demo .convo-title { box-sizing: border-box; min-height: 62px; }
-@media (max-width: 1070px) and (min-width: 1001px) { .fw-demo .convo-title { min-height: 82px; } }
-.fw-card .cc-title code { font-family: var(--mono); }
+.fw-card .cc-title { padding-top: 14px; padding-bottom: 14px; color: var(--muted); font-size: 13px; font-weight: 600; line-height: 1.5; }
+.fw-lead { margin: 0 0 11px; color: var(--body); font-size: 14px; line-height: 1.6; }
+.fw-lead a { font-weight: 600; }
 .fw-cmds { display: grid; gap: 10px; flex: 1; align-content: space-between; }
 .fw-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: start; }
 @media (min-width: 1001px) {
