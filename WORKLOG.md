@@ -407,3 +407,5 @@
 - Hero CTA: only "today" is the link (blue, 700); the rest of the sentence is `strong` in ink (Ram).
 
 - Ram shortened the CTA to "Have a few agents in production today." (link on "today" kept). Rendered at 1280 and 500.
+
+- Hero lead line 3 is now "When users submit a request, search finds and executes the right agent." (Ram).
