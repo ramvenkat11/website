@@ -403,3 +403,5 @@
 - Hero CTA line is now "Have your first few agents in production today." as one link to gettingstarted.html (Ram's text; replaced his "Start now and have your first few agents in production within hours"). Uncommitted.
 
 - `.hero-cta .hero-term` now wraps (white-space: normal; the nowrap from `.hero-term` would overflow a phone), with a no-break space before "today." so narrow widths break as "…agents in / production today." Rendered at 1280 (one line) and 500.
+
+- Hero CTA: only "today" is the link (blue, 700); the rest of the sentence is `strong` in ink (Ram).
