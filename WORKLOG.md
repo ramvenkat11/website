@@ -397,3 +397,5 @@
 - Stale neighbour noted: agent-execution/order-of-execution.html says "An LLM call is refused once the run's spend passes the maximum LLM cost"; the server stops the run after the call that passed the limit.
 
 - Hero qualities line: "bounded" → "budget-capped" (Ram); same link.
+
+- Hero qualities links now blue (var(--blue-ink)) at the line's normal weight, underline on hover, matching "Get started" colour (Ram). Rendered at 1280.
