@@ -2,7 +2,7 @@
 
 Oct 4, 2026 · @Ram Venkat
 
-Build each repeatable task on your company's systems as a task-specific agent in Search2o, and install one skill in Claude Code. The skill makes two calls on your agent server: `search` finds the agent for a request, and `execAgent` runs it. Claude Code keeps the agentic loop; the work on your systems runs on the agent server.
+Build each repeatable task on your company's systems as an agent in Search2o, and install one skill in Claude Code. The skill makes two calls on your agent server: `search` finds the agent for a request, and `execAgent` runs it. Claude Code keeps the agentic loop; the work on your systems runs on the agent server.
 
 The usual alternative is a skill per workflow, with MCP servers or scripts that reach company systems from each laptop. There, Claude reads the instructions and writes and runs the steps itself, on every run, in every person's session.
 
@@ -113,13 +113,13 @@ A skill guides what Claude does; it does not define it. Anthropic lists [instruc
 
 A skill can bundle a script for the fixed parts, and Anthropic recommends it. The script still runs on the laptop, with the person's access.
 
-An agent [takes the same path through the same commands](https://search2o.com/docs/introduction/task-specific-agents.html) on every run. Nothing is published without a real validation run. Every publish creates a version, each run is recorded against the version that ran, and a failure names the command it failed at.
+An agent takes the same path through the same commands on every run. Nothing is published without a real validation run. Every publish creates a version, each run is recorded against the version that ran, and a failure names the command it failed at.
 
 The output of an `llm` step can still vary, as any model call does.
 
 ### 10. Every run is recorded in one place
 
-Search2o [records every run](https://search2o.com/docs/introduction/task-specific-agents.html): who requested it, what ran, how long it took, what failed, and what the LLM calls cost. [Reports](https://search2o.com/docs/reports/cost.html) show these per agent, per version and per person. Cost is computed from the prices set in each LLM profile. A run started from Claude Code appears under the person's name, beside runs from the GUI and the chat bots.
+Search2o records every run: who requested it, what ran, how long it took, what failed, and what the LLM calls cost. [Reports](https://search2o.com/docs/reports/cost.html) show these per agent, per version and per person. Cost is computed from the prices set in each LLM profile. A run started from Claude Code appears under the person's name, beside runs from the GUI and the chat bots.
 
 Claude Code can [export OpenTelemetry metrics and events](https://code.claude.com/docs/en/monitoring-usage) to a collector you operate: model requests with tokens and cost, tool calls and skill activations, attributed to a user. It is opt-in, and the names of user-configured MCP servers and tools are withheld unless detail logging is on.
 
@@ -188,7 +188,6 @@ Pages opened on October 3 and 4, 2026.
 - [What Search2o adds](https://search2o.com/docs/skill-integration/what-search2o-provides.html)
 - [What the skill does](https://search2o.com/docs/skill-integration/finding-and-running-an-agent.html)
 - [Installing the skill](https://search2o.com/docs/skill-integration/installing-the-skill.html)
-- [Task-specific agents](https://search2o.com/docs/introduction/task-specific-agents.html)
 - [Controlled runtime](https://search2o.com/docs/agent-execution/controlled-runtime.html)
 - [Search quality](https://search2o.com/docs/search/search-quality.html)
 - [How profiles work](https://search2o.com/docs/profiles/overview.html) and [LLM profiles](https://search2o.com/docs/profiles/llm-profiles.html)

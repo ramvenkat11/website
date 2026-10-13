@@ -56,11 +56,11 @@
 <h3>9. The same request takes the same steps</h3>
 <p>A skill guides what Claude does; it does not define it. Anthropic lists <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/enterprise" target="_blank" rel="noopener">instruction following</a> among the things to evaluate in a skill, with Claude skipping validation steps as its example of failure.</p>
 <p>A skill can bundle a script for the fixed parts, and Anthropic recommends it. The script still runs on the laptop, with the person's access.</p>
-<p>An agent <a href="../introduction/task-specific-agents.html">takes the same path through the same commands</a> on every run. Nothing is published without a real validation run. Every publish creates a version, each run is recorded against the version that ran, and a failure names the command it failed at.</p>
+<p>An agent takes the same path through the same commands on every run. Nothing is published without a real validation run. Every publish creates a version, each run is recorded against the version that ran, and a failure names the command it failed at.</p>
 <p>The output of an <code>llm</code> step can still vary, as any model call does.</p>
 
 <h3>10. Every run is recorded in one place</h3>
-<p>Search2o <a href="../introduction/task-specific-agents.html">records every run</a>: who requested it, what ran, how long it took, what failed, and what the LLM calls cost. <a href="../reports/cost.html">Reports</a> show these per agent, per version and per person. Cost is computed from the prices set in each LLM profile. A run started from Claude Code appears under the person's name, beside runs from the GUI and the chat bots.</p>
+<p>Search2o records every run: who requested it, what ran, how long it took, what failed, and what the LLM calls cost. <a href="../reports/cost.html">Reports</a> show these per agent, per version and per person. Cost is computed from the prices set in each LLM profile. A run started from Claude Code appears under the person's name, beside runs from the GUI and the chat bots.</p>
 <p>Claude Code can <a href="https://code.claude.com/docs/en/monitoring-usage" target="_blank" rel="noopener">export OpenTelemetry metrics and events</a> to a collector you operate: model requests with tokens and cost, tool calls and skill activations, attributed to a user. It is opt-in, and the names of user-configured MCP servers and tools are withheld unless detail logging is on.</p>
 <p>That is a record of model and tool activity in a session. Search2o's is a record of the business action: which agent, which version, for whom, with what result.</p>
 

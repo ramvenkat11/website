@@ -4,16 +4,16 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Search2o Agent Server</title>
-<meta name="description" content="Build hundreds of task-specific AI agents. Search runs the right agent for each request. Agents run in a controlled runtime on your own agent servers, with one conversation carrying context between them.">
+<meta name="description" content="Build hundreds of AI agents. Search runs the right agent for each request. Agents run in a controlled runtime on your own agent servers, with one conversation carrying context between them.">
 <meta property="og:title" content="Search2o Agent Server">
-<meta property="og:description" content="Build hundreds of task-specific AI agents. Search runs the right agent for each request.">
+<meta property="og:description" content="Build hundreds of AI agents. Search runs the right agent for each request.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://search2o.com/">
 <meta property="og:url" content="https://search2o.com/">
 <meta property="og:image" content="https://search2o.com/images/og4.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Search2o: build hundreds of task-specific AI agents; search runs the right agent for each request">
+<meta property="og:image:alt" content="Search2o: build hundreds of AI agents; search runs the right agent for each request">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -49,13 +49,13 @@
     <div class="container">
       <div class="hero-head">
         <h1 class="hero-claim">Create agents in minutes with AI assistance</h1>
-        <p class="hero-lead">Describe when to use each agent in <a class="hero-term" href="docs/search/describing-an-agent.html">plain English</a>.<br>The agent server finds and runs the <a class="hero-term" href="docs/search/how-matching-works.html">right agent</a> for each user request.</p>
+        <p class="hero-lead">Describe when to use each agent in <a class="hero-term" href="docs/search/describing-an-agent.html">plain English</a>.<br>Search2o finds and runs the <a class="hero-term" href="docs/search/how-matching-works.html">right agent</a> for each user request.</p>
         <p class="hero-attrs">Each agent is <a class="hero-term" href="docs/development/trace-and-validation.html">validated</a>, <a class="hero-term" href="docs/runtime/runtime-limits.html">bounded</a>, <a class="hero-term" href="docs/reports/index.html">observable</a> and <a class="hero-term" href="docs/llm/llm-adapters.html">model-neutral</a>.</p>
         <p class="hero-cta"><a class="hero-term" href="gettingstarted.html">Get started</a> and <strong>have a production system running in a few hours</strong>.</p>
       </div>
       <div class="fw-grid">
         <aside class="arch cc-arch fw-card" aria-label="The agent definition language">
-          <p class="cc-title">An agent is built in a JSON structure with 23 commands from below. JSON strings enclosed in <code>{ }</code> are evaluated as Python expressions, with <a href="docs/agent-definition/python-expressions.html">built-in safeguards</a>.</p>
+          <p class="cc-title">An agent is built in JSON with the following commands. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with <a href="docs/agent-definition/python-expressions.html">built-in safeguards</a>.</p>
           <div class="fw-cmds">
             <div class="cg"><span class="cg-l">Variables</span><span class="cg-c"><a href="docs/commands/var.html"><code>var</code></a></span></div>
             <div class="cg"><span class="cg-l">Flow control</span><span class="cg-c"><a href="docs/commands/if.html"><code>if</code></a><a href="docs/commands/while.html"><code>while</code></a><a href="docs/commands/for.html"><code>for</code></a><a href="docs/commands/break.html"><code>break</code></a><a href="docs/commands/continue.html"><code>continue</code></a><a href="docs/commands/func.html"><code>func</code></a><a href="docs/commands/return.html"><code>return</code></a><a href="docs/commands/parallel.html"><code>parallel</code></a></span></div>
@@ -86,21 +86,30 @@
     <div class="container">
       <div class="section-head center">
         <span class="kicker">One conversation, many agents</span>
-        <h2>Agents are not wired together.<br>The conversation connects them dynamically.</h2>
+        <h2>Agents don't talk to each other directly.<br>The conversation connects them dynamically.</h2>
       </div>
       <div class="hero-grid">
-        <aside class="convo hero-convo" aria-label="A three-turn conversation. Each turn is answered by a different agent, and each later agent uses what the earlier ones returned. The agents are not connected to each other.">
-          <div class="convo-title">One conversation &middot; three agents</div>
+        <aside class="convo hero-convo" aria-label="One conversation across two agents, each on its own LLM, with a confirmation before the booking">
+          <div class="convo-title">
+            <svg class="lock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            Context shared across agents
+          </div>
           <div class="convo-body">
-          <div class="turn-user st st1">Where is order 48213?</div>
-          <div class="turn-agent st st2"><div class="who"><span class="chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>order_status</span></div><div class="msg">Shipped on Tuesday with UPS, tracking 1Z 84A 220. Due on Friday.</div></div>
-          <aside class="note-bubble r2 st st2"><b>matched</b>No rule picked this agent. Its description did.</aside>
-          <div class="turn-user st st3">It arrived damaged. Can I return it?</div>
-          <div class="turn-agent st st4"><div class="who"><span class="chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>returns_refunds</span></div><div class="msg">Order 48213 is eligible. A return label is on its way to you. The refund follows within 3 to 5 days of receipt.</div></div>
-          <aside class="note-bubble r4 st st4"><b>state kept</b>A different agent. It took the order number from the conversation.</aside>
-          <div class="turn-user st st5">How many loyalty points do I keep?</div>
-          <div class="turn-agent st st6"><div class="who"><span class="chip"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>loyalty_points</span></div><div class="msg">You keep 1,240 points. The 300 from order 48213 are withdrawn with the refund.</div></div>
-          <aside class="note-bubble r6 st st6"><b>not wired</b>Three agents that know nothing of each other.</aside>
+            <div class="turn-user st st1">Book my trip for Tuesday's all-day meeting in New York</div>
+            <div class="turn-agent">
+              <div class="msg ask st st2" aria-label="The agent asks before booking">
+                <span class="q">UA1191 out Monday 18:40, back Wednesday 07:15, and two nights at the Marriott near the office. $1,240. <b>Book it?</b></span>
+                <span class="opts"><i class="on">Book</i><i>Hold</i></span>
+                <span class="submit">Submit</span>
+              </div>
+              <div class="msg st st3">Booked UA1191 and the two hotel nights.</div>
+            </div>
+            <div class="note-bubble r2 st st4"><b>travel_desk</b>Books travel.</div>
+            <div class="turn-user st st5">File the expenses for that trip</div>
+            <div class="turn-agent">
+              <div class="msg st st6">Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
+            </div>
+            <div class="note-bubble r4 st st7"><b>reimbursements</b>Files expenses. Knows about the trip from the conversation context.</div>
           </div>
         </aside>
 
@@ -123,7 +132,7 @@
     <div class="container">
       <div class="section-head center">
         <span class="kicker">Hybrid architecture</span>
-        <h2>Stateless agent servers. State managed in Search2o Cloud.</h2>
+        <h2>Stateless agent servers run in your organization. State is managed in Search2o Cloud.</h2>
       </div>
       <div class="howgrid">
         <aside class="arch cc-arch hero-arch" aria-label="Claude Code or Pi.dev, a browser used by users, developers and admins, and Slack or Teams send requests to the Search2o agent server in your organization. The agent server runs the agents and calls enterprise systems and LLMs. Search, state and reports live in Search2o Cloud, with sensitive data encrypted.">
@@ -168,7 +177,7 @@
           <div
             data-s2o-demo="ask"
             data-ask-title="Ask a question about Search2o"
-            data-ask-label="What would you like to know?"
+            data-ask-label=""
             data-ask-placeholder="Ask a question..."
             data-ask-hint=""
             data-ask-button="Ask"
@@ -255,7 +264,7 @@
     </div>
     <div class="footer-base">
       <span>&copy; <span id="year">2026</span> Search2o &middot; Virginia, USA</span>
-      <span>Build hundreds of task-specific AI agents. Search runs the right agent for each request.</span>
+      <span>Build hundreds of AI agents. Search runs the right agent for each request.</span>
     </div>
   </div>
 </footer>
