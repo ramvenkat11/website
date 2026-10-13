@@ -389,3 +389,5 @@
 
 ## 2026-10-13 — Qualities line back in the hero
 - `p.hero-attrs` restored between the lead and the CTA: "Each agent is validated, bounded, observable and model-neutral." with the four `a.hero-attr` links (trace-and-validation, runtime-limits, reports, llm-adapters). `.hero-attr` ink/650, hover blue underlined (styles.css). Rendered at 1280 (one line) and 500 (wraps before "model-neutral"). The scratchpad phone.html iframe rendered black this time; the 500px direct render was used instead. Uncommitted.
+
+- model-neutral now links to docs/llm/vendors.html (Ram).
