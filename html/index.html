@@ -48,14 +48,14 @@
     <div class="hero-bg"></div>
     <div class="container">
       <div class="hero-head">
-        <h1 class="hero-claim">Create agents in minutes interactively with AI</h1>
+        <h1 class="hero-claim">Create agents in minutes with AI assistance</h1>
         <p class="hero-lead">Describe when to use each agent in <a class="hero-term" href="docs/search/describing-an-agent.html">plain English</a>.<br>The agent server finds and runs the <a class="hero-term" href="docs/search/how-matching-works.html">right agent</a> for each user request.</p>
         <p class="hero-attrs">Each agent is <a class="hero-term" href="docs/development/trace-and-validation.html">validated</a>, <a class="hero-term" href="docs/runtime/runtime-limits.html">bounded</a>, <a class="hero-term" href="docs/reports/index.html">observable</a> and <a class="hero-term" href="docs/llm/llm-adapters.html">model-neutral</a>.</p>
-        <p class="hero-cta"><a class="btn btn-blue btn-sm" href="gettingstarted.html">Get started</a> and <strong>have a production system running in a few hours</strong>.</p>
+        <p class="hero-cta"><a class="hero-term" href="gettingstarted.html">Get started</a> and <strong>have a production system running in a few hours</strong>.</p>
       </div>
       <div class="fw-grid">
         <aside class="arch cc-arch fw-card" aria-label="The agent definition language">
-          <p class="cc-title">An agent is built in a JSON structure with 23 commands from below. JSON strings enclosed in <code>{ }</code> are evaluated as Python expressions.</p>
+          <p class="cc-title">An agent is built in a JSON structure with 23 commands from below. JSON strings enclosed in <code>{ }</code> are evaluated as Python expressions, with <a href="docs/agent-definition/python-expressions.html">built-in safeguards</a>.</p>
           <div class="fw-cmds">
             <div class="cg"><span class="cg-l">Variables</span><span class="cg-c"><a href="docs/commands/var.html"><code>var</code></a></span></div>
             <div class="cg"><span class="cg-l">Flow control</span><span class="cg-c"><a href="docs/commands/if.html"><code>if</code></a><a href="docs/commands/while.html"><code>while</code></a><a href="docs/commands/for.html"><code>for</code></a><a href="docs/commands/break.html"><code>break</code></a><a href="docs/commands/continue.html"><code>continue</code></a><a href="docs/commands/func.html"><code>func</code></a><a href="docs/commands/return.html"><code>return</code></a><a href="docs/commands/parallel.html"><code>parallel</code></a></span></div>
@@ -73,7 +73,7 @@
             data-s2o-demo="generate"
             data-generate-title="Live demo &middot; Describe an agent and AI writes it"
             data-generate-label=""
-            data-generate-placeholder="Describe an agent or click on one of the descriptions that appears below."
+            data-generate-placeholder="Describe an agent that you want to build or click on one of the descriptions that appears below."
             data-generate-hint=""
             data-generate-button="Write the agent"
             data-generate-example="An agent that looks up an order by its number, checks whether it has shipped, and drafts a status email to the customer."
