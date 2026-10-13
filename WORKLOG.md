@@ -386,3 +386,6 @@
 
 ## 2026-10-13 — GUI repository published
 - github.com/Search2o/ui is live. Linked from html/gettingstarted.html (replaced "the GUI will be published as a separate GitHub project"), docsrc getting-started/registering-and-downloading, support-licensing/license, support-licensing/support, gui/index lead; docs rebuilt. The ui repo has no LICENSE or CONTRIBUTING file yet, so the license page still cites only the agent-server files. Uncommitted.
+
+## 2026-10-13 — Qualities line back in the hero
+- `p.hero-attrs` restored between the lead and the CTA: "Each agent is validated, bounded, observable and model-neutral." with the four `a.hero-attr` links (trace-and-validation, runtime-limits, reports, llm-adapters). `.hero-attr` ink/650, hover blue underlined (styles.css). Rendered at 1280 (one line) and 500 (wraps before "model-neutral"). The scratchpad phone.html iframe rendered black this time; the 500px direct render was used instead. Uncommitted.
