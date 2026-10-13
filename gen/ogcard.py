@@ -1,4 +1,4 @@
-"""Draws the social card html/images/og4.png (1200x630): the wordmark art from gen/assets/wordmark.png,
+"""Draws the social card html/images/og5.png (1200x630): the wordmark art from gen/assets/wordmark.png,
 the tagline, the home page headline with its gradient accent, and the address. Run with the system python3 (needs PIL)."""
 from PIL import Image, ImageDraw, ImageFont, ImageChops
 import math
@@ -43,25 +43,26 @@ d.rectangle([568, 96, 569, wm_bottom - 1], fill=HAIR)
 d.text((603, wm_bottom), "Search that executes", font=medium(34), fill=MUTED, anchor="ls")
 
 # headline: line 1 in ink, line 2 in the blue-to-teal gradient, sized to fit the 1006px text width
-lines = ["Build hundreds of AI agents.", "Search runs the right agent for each request."]
+lines = ["A platform to build, run, and use AI agents,", "through search."]
 size = 60
 while max(bold(size).getlength(l) for l in lines) > 1006: size -= 1
 f = bold(size); pitch = round(size * 1.26)
-top = round((300 + 462) / 2 - pitch)
-d.text((97, top), lines[0], font=f, fill=INK)
+n = len(lines); last = top = round((300 + 462) / 2 - n * pitch / 2)
+for i, l in enumerate(lines[:-1]): d.text((97, top + i * pitch), l, font=f, fill=INK)
+last = top + (n - 1) * pitch
 mask = Image.new("L", (W, H), 0); md = ImageDraw.Draw(mask)
-md.text((97, top + pitch), lines[1], font=f, fill=255)
-x0, x1 = 97, 97 + f.getlength(lines[1])
+md.text((97, last), lines[-1], font=f, fill=255)
+x0, x1 = 97, 97 + f.getlength(lines[-1])
 grad = Image.new("RGBA", (W, H), (0, 0, 0, 0)); gp = grad.load()
 for x in range(W):
     t = min(1, max(0, (x - x0) / (x1 - x0)))
     c = tuple(round(a + (b - a) * t) for a, b in zip(BLUE, TEAL)) + (255,)
-    for y in range(top + pitch - 10, top + 2 * pitch + 30): gp[x, y] = c
+    for y in range(last - 10, last + pitch + 30): gp[x, y] = c
 img.paste(grad, (0, 0), mask)
 
 # rule and the address
 d = ImageDraw.Draw(img)
 d.line([(97, 530), (1103, 530)], fill=RULE, width=1)
 d.text((97, 572), "search2o.com", font=bold(24), fill=INK, anchor="ls")
-out = img.convert("RGB"); out.save(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "html", "images", "og4.png"), optimize=True)
+out = img.convert("RGB"); out.save(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "html", "images", "og5.png"), optimize=True)
 print("saved", out.size, "line1 width", round(f.getlength(lines[0])), "right edge", 97 + round(f.getlength(lines[0])))

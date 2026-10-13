@@ -50,18 +50,22 @@ xh = left + WM_W + 120
 d.rectangle([xh, wm_top - 10, xh + 3, wm_top + block_h + 10], fill=HAIR)
 
 # headline: line 1 in ink, line 2 in the blue-to-teal gradient
-size = 88; f = bold(size); pitch = 112
-lines = ["Build hundreds of AI agents.", "Search runs the right agent for each request."]
+lines = ["A platform to build, run, and use AI agents,", "through search."]
 x0 = xh + 120
-top = round((H - (pitch + size * 1.0)) / 2) - 4
-d.text((x0, top), lines[0], font=f, fill=INK)
-mask = Image.new("L", (W, H), 0); ImageDraw.Draw(mask).text((x0, top + pitch), lines[1], font=f, fill=255)
-x1 = x0 + f.getlength(lines[1])
+size = 88
+while max(bold(size).getlength(l) for l in lines) > W - 120 - x0: size -= 1
+f = bold(size); pitch = round(size * 1.27)
+n = len(lines)
+top = round((H - ((n - 1) * pitch + size * 1.0)) / 2) - 4
+for i, l in enumerate(lines[:-1]): d.text((x0, top + i * pitch), l, font=f, fill=INK)
+last = top + (n - 1) * pitch
+mask = Image.new("L", (W, H), 0); ImageDraw.Draw(mask).text((x0, last), lines[-1], font=f, fill=255)
+x1 = x0 + f.getlength(lines[-1])
 grad = Image.new("RGBA", (W, H), (0, 0, 0, 0)); gp = grad.load()
 for x in range(W):
     t = min(1, max(0, (x - x0) / (x1 - x0)))
     c = tuple(round(a + (b - a) * t) for a, b in zip(BLUE, TEAL)) + (255,)
-    for y in range(top + pitch - 20, top + pitch + size + 40): gp[x, y] = c
+    for y in range(last - 20, last + size + 40): gp[x, y] = c
 img.paste(grad, (0, 0), mask)
 
 out = img.convert("RGB"); out.save(OUT, optimize=True)
