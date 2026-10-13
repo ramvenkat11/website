@@ -383,3 +383,6 @@
 
 ## 2026-10-13 — Section-two heading
 - h2 now "The conversation ties independent agents together with shared context" (Ram's wording). Uncommitted.
+
+## 2026-10-13 — GUI repository published
+- github.com/Search2o/ui is live. Linked from html/gettingstarted.html (replaced "the GUI will be published as a separate GitHub project"), docsrc getting-started/registering-and-downloading, support-licensing/license, support-licensing/support, gui/index lead; docs rebuilt. The ui repo has no LICENSE or CONTRIBUTING file yet, so the license page still cites only the agent-server files. Uncommitted.
