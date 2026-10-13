@@ -401,3 +401,5 @@
 - Hero qualities links now blue (var(--blue-ink)) at the line's normal weight, underline on hover, matching "Get started" colour (Ram). Rendered at 1280.
 
 - Hero CTA line is now "Have your first few agents in production today." as one link to gettingstarted.html (Ram's text; replaced his "Start now and have your first few agents in production within hours"). Uncommitted.
+
+- `.hero-cta .hero-term` now wraps (white-space: normal; the nowrap from `.hero-term` would overflow a phone), with a no-break space before "today." so narrow widths break as "…agents in / production today." Rendered at 1280 (one line) and 500.
