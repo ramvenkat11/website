@@ -391,3 +391,7 @@
 - `p.hero-attrs` restored between the lead and the CTA: "Each agent is validated, bounded, observable and model-neutral." with the four `a.hero-attr` links (trace-and-validation, runtime-limits, reports, llm-adapters). `.hero-attr` ink/650, hover blue underlined (styles.css). Rendered at 1280 (one line) and 500 (wraps before "model-neutral"). The scratchpad phone.html iframe rendered black this time; the 500px direct render was used instead. Uncommitted.
 
 - model-neutral now links to docs/llm/vendors.html (Ram).
+
+## 2026-10-13 — Runtime limits: LLM cost paragraph
+- docsrc/runtime/runtime-limits.html: new "LLM cost limit" section (per-agent, per-run US-dollar limit; priced per call from token counts and the LLM profile prices; run stops with errorInAgent and the person sees the cost-limit message; unpriced profile adds nothing; covers invoked agents; saved with the draft, carried at publish, changeable on the agent; links to controlled-runtime and the cost report). Facts verified in agent-server search2o/execution/conversationrun.py add_llm_result. Lead corrected: run time and LLM cost belong to each agent; the Guardrails limits are the account-wide ones. The passing cost sentence in "How the limits are checked" moved into the new section. Docs rebuilt. Uncommitted.
+- Stale neighbour noted: agent-execution/order-of-execution.html says "An LLM call is refused once the run's spend passes the maximum LLM cost"; the server stops the run after the call that passed the limit.
