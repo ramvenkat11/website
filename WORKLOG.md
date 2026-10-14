@@ -433,3 +433,5 @@
 - Step 2 second sentence shortened to "Search matches requests to it." (the longer one orphaned "matches." on a third line at 1280).
 
 - Step 1 is now "Agents are JSON with a schema. AI generates them fully formed." (Ram: the schema sentence is the key).
+
+- Step 1: "Build agents as JSON with a schema. AI generates them fully formed." (Ram: step 1 must say developers build).
