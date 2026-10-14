@@ -427,3 +427,5 @@
 - Step lines (Ram asked for redos): 1 "Define agents in JSON. AI drafts and edits them with you." 2 "Describe each agent in plain English. That description is how search finds it." 3 "Submit a request. Search finds and executes the right agent." Rendered at 1280 and 500.
 
 - Ram: no "you", no over-explaining in the hero. Step 1 "Define agents in JSON. AI drafts and edits them." Step 2 "Describe each agent in plain English."
+
+- Step 2 second sentence back, hero-tight: "That description is what search matches." (Ram).
