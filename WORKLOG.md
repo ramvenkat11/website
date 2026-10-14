@@ -468,3 +468,6 @@
 - "A platform to build, run, and use AI microagents through search." in index.html description/og:description, og:image:alt on every site page and docs page (gen/build.py template + built pages), content/demo.html, and the headline lines in gen/ogcard.py and gen/linkedin_banner.py; og5.png and linkedin-banner.png regenerated (og line 1 right edge 1095 of 1200). index.html description second sentence now "Microagents run in a controlled runtime…". Uncommitted.
 
 - Enterprise card "Horizontal scalability" → "Operational continuity" (Ram's three no-statements, rewritten to fit): no restarts for configuration changes (live on the next run, linked), no lost state when a server goes down (state in Search2o Cloud), no outage for a license key rotation (linked). Icon unchanged. Section 3 heading left as is (Ram unsure).
+
+## 2026-10-14 — Transition from microagents to agents on the home page
+- Ram: microagents overused. Hero keeps the term (claim, three steps, CTA) and the meta/tagline keep "AI microagents"; everything below the hero is back to "agent" (card title/lead, generate demo strings, section 2 kicker/h2/figure title/aria, search demo strings, section 3 h2, server-box label "Agents", enterprise cards). The hero's step 1 link is the one definition link on the page.
