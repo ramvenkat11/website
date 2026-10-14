@@ -500,3 +500,5 @@
 - Card title "Horizontally scalable"; body opens "Agent servers are stateless, so run one or a cluster…" (Ram).
 
 - Card body trimmed ("on every server" dropped) so it holds four lines like its neighbours at 1280.
+
+- Ram rewrote the card: "Agent servers can run standalone or in a cluster. Configuration and profile changes are live on the next agent run on every server, with no restart." Rendered at 1280: four lines, level with its neighbours; links intact.
