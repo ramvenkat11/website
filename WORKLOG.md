@@ -461,3 +461,5 @@
 
 ## 2026-10-13 — Microagents used consistently on the home page
 - index.html: hero steps ("Each is JSON with a schema", "each microagent", "the right microagent"), CTA "a few microagents", card title/lead ("Structured microagent definitions", "A microagent is built in JSON…"), generate demo title/placeholder/button/example, conversation figure title and aria-labels, search demo placeholders/empty/disclaimer, server-box label "Microagents", enterprise section (profiles, cost control, REST API) all say microagent. Kept as fixed terms: agent server, agent harness, Agent framework (footer), the command groups Deep agents / Agent output / Agent termination, and the meta/tagline "AI agents". Rendered full page at 1280 and 500.
+
+- Hero claim (Ram): "Build, run, and use hundreds of AI microagents through search"; `.hero-claim` reduced to clamp(23px, 2.2vw, 29px), margin-bottom 30px. One line at 1280; phone breaks after "hundreds of AI". Rendered.
