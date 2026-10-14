@@ -488,3 +488,5 @@
 - Tooltip term: no underline, no blue — ink at 650 weight, help cursor; blue only while hovered or open (Ram).
 
 - Section 3 h2 (Ram): "Agent servers are stateless and can run standalone or in a cluster.<br>Search2o Cloud provides all the plumbing."
+
+- Section 3 heading: `#system-architecture .section-head` max-width 860px so the first sentence holds one line at 1280; the `<br>` is hidden at ≤760px (space after it so the sentences flow on phones).
