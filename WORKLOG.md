@@ -451,3 +451,6 @@
 - Microagents page: new second paragraph — microagents are to AI what microservices are to applications (decoupled, independent, one task, thousands of runs by different users, low latency and cost, stateless with the conversation holding state). Rebuilt.
 
 - Microagents opening rewritten (Ram: the two paragraphs were disjoint): four short paragraphs — definition via the microservices analogy; boundaries; the description and search; stateless with the conversation holding state. Rebuilt.
+
+## 2026-10-13 — Microagents on the site
+- index.html: hero step 1 "Build microagents with AI assistance…" (microagents linked to docs/introduction/microagents.html, default blue link); section 2 kicker "One conversation, many microagents" and h2 "Conversation ties microagents together with shared context"; section 3 h2 "Microagents run on your servers, with state managed in the cloud." about.html: "those workflows are microagents" (linked) and "Developers create microagents with clear responsibilities". gettingstarted.html: "Build two or three microagents" (linked). pricing.html lead: "Build microagents for your systems…". demo-agents.html note: "a real Search2o microagent". Titles, meta and the tagline untouched. Uncommitted.
