@@ -502,3 +502,6 @@
 - Card body trimmed ("on every server" dropped) so it holds four lines like its neighbours at 1280.
 
 - Ram rewrote the card: "Agent servers can run standalone or in a cluster. Configuration and profile changes are live on the next agent run on every server, with no restart." Rendered at 1280: four lines, level with its neighbours; links intact.
+
+## 2026-10-14 — Microagent consistency sweep (site + docs)
+- Kept "microagent" only where it introduces or names the concept: home hero (claim, steps, CTA, tooltip), the tagline/meta on every page, about.html "those workflows are microagents" (linked), docs home card and Introduction lead ("what a microagent is"), what-is-search2o lead (linked), skill-integration/overview lead (linked), and the Microagents topic page. Reverted to "agent": pricing lead, gettingstarted step ("Build two or three agents", link dropped), about.html "focused agents", demo-agents note, what-is-search2o orchestration bullet. Docs rebuilt.
