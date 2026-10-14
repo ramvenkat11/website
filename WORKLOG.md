@@ -505,3 +505,5 @@
 
 ## 2026-10-14 — Microagent consistency sweep (site + docs)
 - Kept "microagent" only where it introduces or names the concept: home hero (claim, steps, CTA, tooltip), the tagline/meta on every page, about.html "those workflows are microagents" (linked), docs home card and Introduction lead ("what a microagent is"), what-is-search2o lead (linked), skill-integration/overview lead (linked), and the Microagents topic page. Reverted to "agent": pricing lead, gettingstarted step ("Build two or three agents", link dropped), about.html "focused agents", demo-agents note, what-is-search2o orchestration bullet. Docs rebuilt.
+
+- Docs home lead (docsrc/index.html) now opens "Search2o is a platform for building, running and using AI microagents through search." (linked) and says developers "define agents in JSON … and describe each one in plain English" (the old lead used "describe" for the JSON). Rebuilt.
