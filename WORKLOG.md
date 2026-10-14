@@ -454,3 +454,5 @@
 
 ## 2026-10-13 — Microagents on the site
 - index.html: hero step 1 "Build microagents with AI assistance…" (microagents linked to docs/introduction/microagents.html, default blue link); section 2 kicker "One conversation, many microagents" and h2 "Conversation ties microagents together with shared context"; section 3 h2 "Microagents run on your servers, with state managed in the cloud." about.html: "those workflows are microagents" (linked) and "Developers create microagents with clear responsibilities". gettingstarted.html: "Build two or three microagents" (linked). pricing.html lead: "Build microagents for your systems…". demo-agents.html note: "a real Search2o microagent". Titles, meta and the tagline untouched. Uncommitted.
+
+- Hero claim (Ram): "Build, run, and use hundreds of microagents through search". One line at 1280, two balanced lines at 500. Title/meta/tagline still "A platform to build, run, and use AI agents through search."
