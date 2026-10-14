@@ -54,12 +54,12 @@
           <li><span class="hero-step-head"><i></i><span class="hero-step-n">2</span><b class="hero-step-k">Developers</b><i></i></span><span class="hero-step-t">Describe each microagent in plain English. Search matches requests to it.</span></li>
           <li><span class="hero-step-head"><i></i><span class="hero-step-n">3</span><b class="hero-step-k">Users</b><i></i></span><span class="hero-step-t">Submit a request. Search finds and executes the right microagent.</span></li>
         </ol>
-        <p class="hero-cta"><a href="gettingstarted.html"><strong>Have a few microagents in production</strong>&nbsp;<span class="hero-term">today</span>.</a></p>
+        <p class="hero-cta"><a href="gettingstarted.html"><strong>Have a few microagents in production&nbsp;today.</strong></a></p>
       </div>
       <div class="fw-grid">
-        <aside class="arch cc-arch fw-card" aria-label="The microagent definition language">
-          <p class="cc-title">Structured microagent definitions</p>
-          <p class="fw-lead">A microagent is built in JSON with the following commands. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with <a href="docs/agent-definition/python-expressions.html">built-in safeguards</a>.</p>
+        <aside class="arch cc-arch fw-card" aria-label="The agent definition language">
+          <p class="cc-title">Structured agent definitions</p>
+          <p class="fw-lead">An agent is built in JSON with the following commands. Strings enclosed in <code>{ }</code> are evaluated as Python expressions, with <a href="docs/agent-definition/python-expressions.html">built-in safeguards</a>.</p>
           <div class="fw-cmds">
             <div class="cg"><span class="cg-l">Variables</span><span class="cg-c"><a href="docs/commands/var.html"><code>var</code></a></span></div>
             <div class="cg"><span class="cg-l">Flow control</span><span class="cg-c"><a href="docs/commands/if.html"><code>if</code></a><a href="docs/commands/while.html"><code>while</code></a><a href="docs/commands/for.html"><code>for</code></a><a href="docs/commands/break.html"><code>break</code></a><a href="docs/commands/continue.html"><code>continue</code></a><a href="docs/commands/func.html"><code>func</code></a><a href="docs/commands/return.html"><code>return</code></a><a href="docs/commands/parallel.html"><code>parallel</code></a></span></div>
@@ -75,12 +75,12 @@
         <div class="fw-demo">
           <div
             data-s2o-demo="generate"
-            data-generate-title="Live demo &middot; Draft a microagent with AI assistance."
+            data-generate-title="Live demo &middot; Draft an agent with AI assistance."
             data-generate-label=""
-            data-generate-placeholder="Say what the microagent should do, or click one of the examples below."
+            data-generate-placeholder="Say what the agent should do, or click one of the examples below."
             data-generate-hint=""
-            data-generate-button="Write the microagent"
-            data-generate-example="A microagent that looks up an order by its number, checks whether it has shipped, and drafts a status email to the customer."
+            data-generate-button="Write the agent"
+            data-generate-example="An agent that looks up an order by its number, checks whether it has shipped, and drafts a status email to the customer."
           ></div>
         </div>
       </div>
@@ -89,19 +89,19 @@
   <section class="section" id="search-and-execute">
     <div class="container">
       <div class="section-head center">
-        <span class="kicker">One conversation, many microagents</span>
-        <h2>Conversation ties microagents together with shared context</h2>
+        <span class="kicker">One conversation, many agents</span>
+        <h2>Conversation ties agents together with shared context</h2>
       </div>
       <div class="hero-grid">
-        <aside class="convo hero-convo" aria-label="One conversation across two microagents, each on its own LLM, with a confirmation before the booking">
+        <aside class="convo hero-convo" aria-label="One conversation across two agents, each on its own LLM, with a confirmation before the booking">
           <div class="convo-title">
             <svg class="lock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-            Context shared across microagents
+            Context shared across agents
           </div>
           <div class="convo-body">
             <div class="turn-user st st1">Book my trip for Tuesday's all-day meeting in New York</div>
             <div class="turn-agent">
-              <div class="msg ask st st2" aria-label="The microagent asks before booking">
+              <div class="msg ask st st2" aria-label="The agent asks before booking">
                 <span class="q">UA1191 out Monday 18:40, back Wednesday 07:15, and two nights at the Marriott near the office. $1,240. <b>Book it?</b></span>
                 <span class="opts"><i class="on">Book</i><i>Hold</i></span>
                 <span class="submit">Submit</span>
@@ -122,11 +122,11 @@
           data-s2o-demo="search"
           data-search-title="Live demo"
           data-search-placeholder="Ask for something&hellip;"
-          data-search-placeholder-followup="Ask a follow-up question. The matched microagent will run in the same context."
+          data-search-placeholder-followup="Ask a follow-up question. The matched agent will run in the same context."
           data-search-placeholder-answer="Answer the question above to continue"
           data-search-hint=""
-          data-search-empty="This demo runs live in a Search2o account with [200 microagents](demo-agents.html). They use mock data to demonstrate framework features."
-          data-search-disclaimer="This is mock data from a real microagent. Click on its name to see what it does."
+          data-search-empty="This demo runs live in a Search2o account with [200 agents](demo-agents.html). The agents use mock data to demonstrate framework features."
+          data-search-disclaimer="This is mock data from a real agent. Click on the agent name to see what it does."
         ></div>
       </div>
     </div>
@@ -136,7 +136,7 @@
     <div class="container">
       <div class="section-head center">
         <span class="kicker">Hybrid architecture</span>
-        <h2>Microagents run on your servers, with state managed in the cloud.</h2>
+        <h2>Agents run on your servers, with state managed in the cloud.</h2>
       </div>
       <div class="howgrid">
         <aside class="arch cc-arch hero-arch" aria-label="An agent harness, a browser used by users, developers and admins, and Slack or Teams send requests to the Search2o agent server in your organization. The agent server runs the agents and calls enterprise systems and LLMs. Search, state and reports live in Search2o Cloud, with sensitive data encrypted.">
@@ -155,7 +155,7 @@
                 <div class="cc-server-head"><strong>Search2o agent server</strong></div>
                 <span class="cc-server-links"><a href="docs/runtime/overview.html">Stateless</a>&nbsp;&middot; <a href="docs/agent-execution/controlled-runtime.html">Controlled&nbsp;runtime</a>&nbsp;&middot; <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">GitHub</a></span>
                 <div class="cc-agents">
-                  <span class="cc-agents-lbl">Microagents</span>
+                  <span class="cc-agents-lbl">Agents</span>
                   <div class="cc-agent-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
                 </div>
               </div>
@@ -210,22 +210,22 @@
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></div>
           <h3>Change control</h3>
-          <p>A microagent's LLM, API, database, MCP and optionally prompts live in <a href="docs/profiles/index.html">profiles</a>, not its code. Every profile knows which microagents use it. Every change is in the <a href="docs/system-management/audit-log.html">audit log</a>.</p>
+          <p>An agent's LLM, API, database, MCP and optionally prompts live in <a href="docs/profiles/index.html">profiles</a>, not its code. Every profile knows which agents use it. Every change is in the <a href="docs/system-management/audit-log.html">audit log</a>.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M18.09 10.37A6 6 0 1 1 10.34 18"/><path d="M7 6h1v4"/><path d="m16.71 13.88.7.71-2.82 2.82"/></svg></div>
           <h3>Cost control</h3>
-          <p>Each microagent uses only the model its workflow needs, whether frontier, cheap or free. Every run has a <a href="docs/runtime/runtime-limits.html">spend limit</a>, and <a href="docs/reports/index.html">reports</a> show spend per microagent and user.</p>
+          <p>Each agent uses only the model its workflow needs, whether frontier, cheap or free. Every run has a <a href="docs/runtime/runtime-limits.html">spend limit</a>, and <a href="docs/reports/index.html">reports</a> show spend per agent and user.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="5" height="8" rx="1"/><rect x="9.5" y="3" width="5" height="8" rx="1"/><rect x="17" y="3" width="5" height="8" rx="1"/><path d="M2 18h20"/><path d="m18 14 4 4-4 4"/><path d="m6 14-4 4 4 4"/></svg></div>
-          <h3>Horizontal scalability</h3>
-          <p>Agent servers are stateless, so you can run as many as you need behind a load balancer. Configuration changes are <a href="docs/runtime/overview.html#how-a-change-reaches-every-agent-server">live on the next run</a> on every server.</p>
+          <h3>Operational continuity</h3>
+          <p>No restarts for configuration changes: they are <a href="docs/runtime/overview.html#how-a-change-reaches-every-agent-server">live on the next run</a> on every server. No lost state when a server goes down, because state lives in Search2o Cloud.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 4-4 16"/></svg></div>
           <h3>API &amp; automation</h3>
-          <p>The agent server exposes a <a href="docs/rest-api/overview.html">REST API</a>. Use it to run microagents non-interactively &mdash; <a href="docs/rest-api/running-agents.html">event-driven or in batch</a>. The bundled GUI uses the same API.</p>
+          <p>The agent server exposes a <a href="docs/rest-api/overview.html">REST API</a>. Use it to run agents non-interactively &mdash; <a href="docs/rest-api/running-agents.html">event-driven or in batch</a>. The bundled GUI uses the same API.</p>
         </article>
       </div>
     </div>

@@ -192,9 +192,7 @@ p { margin: 0; }
 .hero-term:hover { text-decoration: underline; text-underline-offset: 3px; }
 .hero-cta { margin: 30px 0 0; color: var(--body); font-size: 20px; font-weight: 500; line-height: 1.5; }
 .hero-cta a { color: var(--ink); }
-.hero-cta a:hover { text-decoration: none; }
-.hero-cta a:hover .hero-term { text-decoration: underline; text-underline-offset: 3px; }
-.hero-cta .hero-term { font-weight: 700; white-space: normal; }
+.hero-cta a:hover { text-decoration: underline; text-underline-offset: 4px; }
 .eyebrow {
   display: inline-flex; align-items: center; gap: 8px;
   margin-bottom: 22px; padding: 6px 13px;
