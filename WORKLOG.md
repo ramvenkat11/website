@@ -492,3 +492,5 @@
 - Section 3 heading: `#system-architecture .section-head` max-width 860px so the first sentence holds one line at 1280; the `<br>` is hidden at ≤760px (space after it so the sentences flow on phones).
 
 - Ram shortened the section 3 h2 to "Agent servers are stateless. Search2o Cloud provides the plumbing." (no br). Rendered: one line at 1280, two on a phone with "Search2o / Cloud" split across the break. The 860px section-head and the phone br rule remain, harmless.
+
+- nbsp between Search2o and Cloud in the section 3 h2.
