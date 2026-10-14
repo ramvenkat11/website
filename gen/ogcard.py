@@ -43,7 +43,7 @@ d.rectangle([568, 96, 569, wm_bottom - 1], fill=HAIR)
 d.text((603, wm_bottom), "Search that executes", font=medium(34), fill=MUTED, anchor="ls")
 
 # headline: line 1 in ink, line 2 in the blue-to-teal gradient, sized to fit the 1006px text width
-lines = ["A platform to build, run, and use AI agents", "through search."]
+lines = ["A platform to build, run, and use AI microagents", "through search."]
 size = 60
 while max(bold(size).getlength(l) for l in lines) > 1006: size -= 1
 f = bold(size); pitch = round(size * 1.26)

@@ -50,7 +50,7 @@ xh = left + WM_W + 120
 d.rectangle([xh, wm_top - 10, xh + 3, wm_top + block_h + 10], fill=HAIR)
 
 # headline: line 1 in ink, line 2 in the blue-to-teal gradient
-lines = ["A platform to build, run, and use AI agents", "through search."]
+lines = ["A platform to build, run, and use AI microagents", "through search."]
 x0 = xh + 120
 size = 88
 while max(bold(size).getlength(l) for l in lines) > W - 120 - x0: size -= 1

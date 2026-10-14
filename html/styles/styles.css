@@ -171,7 +171,7 @@ p { margin: 0; }
 .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 40px; align-items: start; }
 .hero-grid .demo { margin-top: 7px; }
 .hero-head { max-width: 1000px; margin: 0 auto 36px; text-align: center; }
-.hero-claim { margin: 0 0 34px; color: var(--ink); font-size: clamp(26px, 2.6vw, 34px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.18; }
+.hero-claim { margin: 0 0 30px; color: var(--ink); font-size: clamp(23px, 2.2vw, 29px); font-weight: 700; letter-spacing: -0.025em; line-height: 1.18; }
 .hero-accent { background: linear-gradient(90deg, var(--blue), var(--teal)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hero-steps { --gap: 28px; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 var(--gap); }
 .hero-steps li { position: relative; }
