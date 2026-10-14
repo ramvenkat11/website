@@ -440,3 +440,5 @@
 - Ram: step 1 had become convoluted (concept + act in one step). Now 1 Platform "Agents are JSON with a schema. Servers are stateless, backed by Search2o Cloud." 2 Developers "Build fully formed agents with AI. Describe each one in plain English." 3 Users "Submit a request. Search finds and executes the right agent." Labels no longer repeat. Python expressions left to the card below. Rendered at 1280 and 500. Uncommitted.
 
 - Platform line settled at "Agents are JSON with a schema. Stateless servers via Search2o Cloud." — the only wording naming Search2o Cloud that holds two rows in the ~300px column at 1280 (tried "Servers are stateless, backed by…", "Stateless servers, backed by…", "…state in…": all three rows).
+
+- Ram: Platform as step 1 breaks the flow. Back to Developers / Developers / Users: 1 "Build agents in JSON with a schema. AI generates them fully formed." 2 "Describe each agent in plain English. Search matches requests to it." 3 unchanged.
