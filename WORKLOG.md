@@ -435,3 +435,6 @@
 - Step 1 is now "Agents are JSON with a schema. AI generates them fully formed." (Ram: the schema sentence is the key).
 
 - Step 1: "Build agents as JSON with a schema. AI generates them fully formed." (Ram: step 1 must say developers build).
+
+## 2026-10-13 — Hero steps restructured: Platform / Developers / Users
+- Ram: step 1 had become convoluted (concept + act in one step). Now 1 Platform "Agents are JSON with a schema. Servers are stateless, backed by Search2o Cloud." 2 Developers "Build fully formed agents with AI. Describe each one in plain English." 3 Users "Submit a request. Search finds and executes the right agent." Labels no longer repeat. Python expressions left to the card below. Rendered at 1280 and 500. Uncommitted.
