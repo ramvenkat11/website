@@ -477,3 +477,5 @@
 - Continuity card: license key rotation sentence restored (Ram had removed it); middle sentence shortened to "No lost state when a server goes down: state is in Search2o Cloud."
 
 - Continuity card: "state is in Search2o Cloud" dropped (Ram).
+
+- Section 3 h2 (Ram's gist): "Stateless agent servers run standalone or in a cluster.<br>State lives in Search2o Cloud." (break before the second sentence; nbsp in Search2o Cloud). Rendered at 1280 and 500.
