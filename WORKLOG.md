@@ -496,3 +496,5 @@
 - nbsp between Search2o and Cloud in the section 3 h2.
 
 - Enterprise card "Operational continuity" → "Agent servers" (Ram): stateless, one or a cluster behind a load balancer (cluster → docs/system-management/agent-servers.html), scale by adding servers, configuration changes live on the next run with no restart. License rotation sentence dropped.
+
+- Card title "Horizontally scalable"; body opens "Agent servers are stateless, so run one or a cluster…" (Ram).
