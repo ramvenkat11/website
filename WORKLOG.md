@@ -494,3 +494,5 @@
 - Ram shortened the section 3 h2 to "Agent servers are stateless. Search2o Cloud provides the plumbing." (no br). Rendered: one line at 1280, two on a phone with "Search2o / Cloud" split across the break. The 860px section-head and the phone br rule remain, harmless.
 
 - nbsp between Search2o and Cloud in the section 3 h2.
+
+- Enterprise card "Operational continuity" → "Agent servers" (Ram): stateless, one or a cluster behind a load balancer (cluster → docs/system-management/agent-servers.html), scale by adding servers, configuration changes live on the next run with no restart. License rotation sentence dropped.
