@@ -475,3 +475,5 @@
 - Hero CTA: "today" no longer blue; the whole sentence is one ink link in `strong`, underlined on hover (Ram). `.hero-term` rules for the CTA removed.
 
 - Continuity card: license key rotation sentence restored (Ram had removed it); middle sentence shortened to "No lost state when a server goes down: state is in Search2o Cloud."
+
+- Continuity card: "state is in Search2o Cloud" dropped (Ram).
