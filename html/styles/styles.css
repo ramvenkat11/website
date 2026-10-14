@@ -183,6 +183,15 @@ p { margin: 0; }
 .hero-step-head i:last-child { margin-right: calc(-1 * var(--gap)); }
 .hero-steps li:first-child .hero-step-head i:first-child, .hero-steps li:last-child .hero-step-head i:last-child { visibility: hidden; margin: 0; }
 .hero-step-t { display: block; padding: 0 6px; color: var(--body); font-size: 16px; font-weight: 500; line-height: 1.5; }
+.tip { position: relative; display: inline-block; }
+.tip::after { content: ""; position: absolute; left: 0; right: 0; bottom: 100%; height: 10px; }
+.tip-term { all: unset; cursor: help; color: var(--ink); font-weight: 650; }
+.tip:hover .tip-term, .tip.open .tip-term { color: var(--blue-ink); }
+.tip-term:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 2px; }
+.tip-box { position: absolute; left: 50%; bottom: calc(100% + 8px); z-index: 5; width: max-content; max-width: min(320px, calc(100vw - 32px)); padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--body); font-size: 14px; font-weight: 500; line-height: 1.45; text-align: left; box-shadow: var(--card-shadow-lg); transform: translateX(-50%); opacity: 0; visibility: hidden; transition: opacity .15s ease, visibility .15s ease; }
+.tip-box::after { content: ""; position: absolute; left: 50%; top: 100%; width: 10px; height: 10px; margin: -5px 0 0 -5px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--card); transform: rotate(45deg); }
+.tip-box a { white-space: nowrap; }
+.tip:hover .tip-box, .tip:focus-within .tip-box, .tip.open .tip-box { opacity: 1; visibility: visible; }
 .hero-lead { margin: 0; color: var(--body); font-size: 17px; font-weight: 500; line-height: 1.55; }
 .hero-attrs { margin: 12px 0 0; color: var(--body); font-size: 17px; font-weight: 500; line-height: 1.55; }
 .hero-head strong { color: var(--ink); font-weight: 650; }
@@ -360,6 +369,7 @@ p { margin: 0; }
 .arch .note { margin-top: 20px; color: var(--faint); font-size: 13px; }
 .points { margin-top: 22px; }
 #search-and-execute .section-head h2, #platform .section-head h2, #system-architecture .section-head h2 { font-size: 24px; }
+#system-architecture .section-head { max-width: 860px; }
 .fw-card .cc-title { padding-top: 14px; padding-bottom: 14px; color: var(--muted); font-size: 13px; font-weight: 600; line-height: 1.5; }
 .fw-lead { margin: 0 0 11px; color: var(--body); font-size: 14px; line-height: 1.6; }
 .fw-lead a { font-weight: 600; }
@@ -1063,4 +1073,7 @@ a.arch-lbl { color: var(--blue-ink); }
   .hero-step-t { padding: 0 0 0 32px; }
   .hero-steps li::before { content: ""; position: absolute; left: 10px; top: 26px; bottom: -16px; width: 2px; background: var(--line); }
   .hero-steps li:last-child::before { display: none; }
+  .tip-box { left: 0; transform: none; }
+  .tip-box::after { left: 24px; }
+  #system-architecture .section-head h2 br { display: none; }
 }

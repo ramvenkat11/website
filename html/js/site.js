@@ -410,3 +410,19 @@ function resetAltcha(widget) {
     });
   });
 })();
+
+(function () {
+  var tips = document.querySelectorAll(".tip");
+  if (!tips.length) return;
+  function close(tip) { tip.classList.remove("open"); tip.querySelector(".tip-term").setAttribute("aria-expanded", "false"); }
+  tips.forEach(function (tip) {
+    var term = tip.querySelector(".tip-term");
+    term.addEventListener("click", function () {
+      var open = !tip.classList.contains("open");
+      tips.forEach(close);
+      if (open) { tip.classList.add("open"); term.setAttribute("aria-expanded", "true"); }
+    });
+  });
+  document.addEventListener("click", function (e) { tips.forEach(function (tip) { if (!tip.contains(e.target)) close(tip); }); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") tips.forEach(close); });
+})();
