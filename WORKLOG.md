@@ -466,3 +466,5 @@
 
 ## 2026-10-13 — Tagline now "AI microagents"
 - "A platform to build, run, and use AI microagents through search." in index.html description/og:description, og:image:alt on every site page and docs page (gen/build.py template + built pages), content/demo.html, and the headline lines in gen/ogcard.py and gen/linkedin_banner.py; og5.png and linkedin-banner.png regenerated (og line 1 right edge 1095 of 1200). index.html description second sentence now "Microagents run in a controlled runtime…". Uncommitted.
+
+- Enterprise card "Horizontal scalability" → "Operational continuity" (Ram's three no-statements, rewritten to fit): no restarts for configuration changes (live on the next run, linked), no lost state when a server goes down (state in Search2o Cloud), no outage for a license key rotation (linked). Icon unchanged. Section 3 heading left as is (Ram unsure).
