@@ -442,3 +442,5 @@
 - Platform line settled at "Agents are JSON with a schema. Stateless servers via Search2o Cloud." — the only wording naming Search2o Cloud that holds two rows in the ~300px column at 1280 (tried "Servers are stateless, backed by…", "Stateless servers, backed by…", "…state in…": all three rows).
 
 - Ram: Platform as step 1 breaks the flow. Back to Developers / Developers / Users: 1 "Build agents in JSON with a schema. AI generates them fully formed." 2 "Describe each agent in plain English. Search matches requests to it." 3 unchanged.
+
+- Step 1 (Ram): "Build agents with AI assistance. Agents are JSON with a schema."
