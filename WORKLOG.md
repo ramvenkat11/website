@@ -444,3 +444,6 @@
 - Ram: Platform as step 1 breaks the flow. Back to Developers / Developers / Users: 1 "Build agents in JSON with a schema. AI generates them fully formed." 2 "Describe each agent in plain English. Search matches requests to it." 3 unchanged.
 
 - Step 1 (Ram): "Build agents with AI assistance. Agents are JSON with a schema."
+
+## 2026-10-13 — Microagents topic (task-specific agents renamed)
+- `git mv docsrc/introduction/task-specific-agents.html docsrc/introduction/microagents.html`; wording "task-specific agent(s)" → "microagent(s)" throughout the page. TOC entry ("microagents", "Microagents") after What is Search2o. References restored with the new term: what-is-search2o lead link + "many microagents" bullet; introduction/index and docsrc/index.html card ("what a microagent is"); skill-integration/overview lead link; what-search2o-provides "takes the same path…" and "records every run" links. Docs rebuilt (146 pages); the build dropped the stale html/docs/introduction/task-specific-agents.html. Not touched: content/behind_skill.md, content/prompt.txt, site pages. Uncommitted.
