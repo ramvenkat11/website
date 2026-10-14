@@ -447,3 +447,5 @@
 
 ## 2026-10-13 — Microagents topic (task-specific agents renamed)
 - `git mv docsrc/introduction/task-specific-agents.html docsrc/introduction/microagents.html`; wording "task-specific agent(s)" → "microagent(s)" throughout the page. TOC entry ("microagents", "Microagents") after What is Search2o. References restored with the new term: what-is-search2o lead link + "many microagents" bullet; introduction/index and docsrc/index.html card ("what a microagent is"); skill-integration/overview lead link; what-search2o-provides "takes the same path…" and "records every run" links. Docs rebuilt (146 pages); the build dropped the stale html/docs/introduction/task-specific-agents.html. Not touched: content/behind_skill.md, content/prompt.txt, site pages. Uncommitted.
+
+- Microagents page: new second paragraph — microagents are to AI what microservices are to applications (decoupled, independent, one task, thousands of runs by different users, low latency and cost, stateless with the conversation holding state). Rebuilt.
