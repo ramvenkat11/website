@@ -484,3 +484,5 @@
 
 ## 2026-10-14 — Microagents tooltip in the hero
 - Hero step 1: "microagents" is now `span.tip > button.tip-term` (blue, dotted underline) with `span.tip-box[role=tooltip]` "Microagents are to AI what microservices are to applications. Show more" (link to docs/introduction/microagents.html). styles.css: `.tip*` rules after `.hero-step-t` (box above the term, centred, arrow, card colours, max-width 320px; ≤760px left-aligned to the term); hover, focus-within or `.open` shows it; `.tip::after` bridges the hover gap. html/js/site.js: IIFE appended — click toggles `.open`/aria-expanded, outside click and Escape close. Rendered open at 1280 and 500 and closed at 1280 via a scratchpad copy with `.open` forced.
+
+- Tooltip term: no underline, no blue — ink at 650 weight, help cursor; blue only while hovered or open (Ram).
