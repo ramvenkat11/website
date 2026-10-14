@@ -473,3 +473,5 @@
 - Ram: microagents overused. Hero keeps the term (claim, three steps, CTA) and the meta/tagline keep "AI microagents"; everything below the hero is back to "agent" (card title/lead, generate demo strings, section 2 kicker/h2/figure title/aria, search demo strings, section 3 h2, server-box label "Agents", enterprise cards). The hero's step 1 link is the one definition link on the page.
 
 - Hero CTA: "today" no longer blue; the whole sentence is one ink link in `strong`, underlined on hover (Ram). `.hero-term` rules for the CTA removed.
+
+- Continuity card: license key rotation sentence restored (Ram had removed it); middle sentence shortened to "No lost state when a server goes down: state is in Search2o Cloud."
