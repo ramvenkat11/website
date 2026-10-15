@@ -1,12 +1,12 @@
 """Draws the social card html/images/og5.png (1200x630): the wordmark art from gen/assets/wordmark.png,
-the tagline, the home page headline with its gradient accent, and the address. Run with the system python3 (needs PIL)."""
+the home page headline with its gradient accent, and the address. Run with the system python3 (needs PIL)."""
 from PIL import Image, ImageDraw, ImageFont, ImageChops
 import math
 import os
 S = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
 W, H = 1200, 630
 BASE = (9, 15, 29); GLOW = (28, 48, 93); INK = (238, 243, 251); MUTED = (138, 154, 182)
-BLUE = (77, 141, 255); TEAL = (45, 212, 191); HAIR = (58, 74, 110); RULE = (34, 44, 66)
+BLUE = (77, 141, 255); TEAL = (45, 212, 191); RULE = (34, 44, 66)
 FONT = "/System/Library/Fonts/HelveticaNeue.ttc"
 bold = lambda s: ImageFont.truetype(FONT, s, index=1)
 medium = lambda s: ImageFont.truetype(FONT, s, index=10)
@@ -37,10 +37,6 @@ for y in range(wm.height):
 wm = wm.resize((440, round(331 * 440 / 1810)), Image.LANCZOS)
 img.alpha_composite(wm, (97, 96))
 d = ImageDraw.Draw(img)
-wm_bottom = 96 + wm.height  # the wordmark's baseline (no descenders)
-# hairline + tagline on the wordmark's baseline
-d.rectangle([568, 96, 569, wm_bottom - 1], fill=HAIR)
-d.text((603, wm_bottom), "Search that executes", font=medium(34), fill=MUTED, anchor="ls")
 
 # headline: line 1 in ink, line 2 in the blue-to-teal gradient, sized to fit the 1006px text width
 lines = ["A platform to build, run, and use AI microagents", "through search."]
