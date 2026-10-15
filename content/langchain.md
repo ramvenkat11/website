@@ -1,25 +1,29 @@
 # Search2o and LangChain: what's the difference?
 
-Oct 3, 2026 · @Ram Venkat
+Oct 14, 2026 · @Ram Venkat
 
 ## The short answer
 
-LangChain's frameworks are for building an agent. Search2o is for an organization running many agents as one system: developers write them, and everyone else runs them from one search box. The two overlap in places, which is why the question comes up, but they start from different problems.
+LangChain's frameworks are for building an agent, of any size. Search2o is for an organization running many small ones as one system: developers write them, and everyone else runs them from one search box. The two overlap in places, which is why the question comes up, but they start from different problems.
+
+A Search2o agent is a [microagent](https://search2o.com/docs/introduction/microagents.html). It does one task, is independent of every other agent, has a boundary that can be written down (the systems it may reach, a time budget, an LLM cost budget), and is expected to run thousands of times for different users, quickly and at low cost. Microagents are to AI what microservices are to applications. The rest of this page says "agent".
 
 "LangChain" is several products, and the difference is not the same for each:
 
-- **The frameworks.** [LangChain](https://docs.langchain.com/oss/python/langchain/overview), [LangGraph](https://docs.langchain.com/oss/python/langgraph/overview) and Deep Agents are open-source libraries for building an agent in Python or TypeScript. LangSmith is the platform for tracing, evaluating and deploying what gets built. These do a different job from Search2o.
+- **The frameworks.** [LangChain](https://docs.langchain.com/oss/python/langchain/overview), [LangGraph](https://docs.langchain.com/oss/python/langgraph/overview) and Deep Agents are open-source libraries for building an agent in Python or TypeScript. LangSmith is the platform for tracing, evaluating and deploying what gets built. LangGraph describes itself as a runtime for long-running, stateful agents, and Deep Agents as a harness for long-running agents on complex tasks. A Search2o agent is short-running and holds no state of its own (the conversation does), so these frameworks and Search2o are built for different kinds of agent.
 - **[LangSmith Fleet](https://docs.langchain.com/langsmith/fleet).** A no-code product: anyone can create an agent by describing a task, then share it. Its goal is close to Search2o's, agents for a whole company, and its route there is different.
 
 ## At a glance
 
 |  | Search2o | LangChain frameworks | LangSmith Fleet |
 | --- | --- | --- | --- |
-| Starting point | An organization running many agents as one system | A developer building an agent in code | Anyone creating an agent without code |
+| Starting point | An organization running many small agents as one system | A developer building an agent in code | Anyone creating an agent without code |
+| What an agent is | One task, with a written boundary on systems, time and cost; state lives in the conversation | Code, of any size; the frameworks are built for long-running, stateful agents | Instructions, tools and its own memory |
 | Who writes agents | Developers | Developers | Anyone, by describing the task |
 | Who uses them | Everyone in the organization | Whoever the application was built for | The creator, and the colleagues it is shared with |
 | How a request reaches an agent | Search finds the agent | Through the application's own entry point | A person picks the agent by name |
 | What decides the steps | The command list its developer wrote | The developer's code, the model, or a mix | The model |
+| How agents combine | Through the conversation they share | In code, by the developer | Each agent has its own memory and threads |
 
 ## Who writes agents, and who uses them?
 
@@ -31,7 +35,7 @@ With Fleet, an agent usually starts with the person who needs it. They describe 
 
 ## How does a request reach the right agent?
 
-In Search2o, search decides. Every published agent carries a description, a request is matched against all of them, and the best match runs. When nothing fits, search returns no agent instead of improvising an answer.
+In Search2o, search decides. Every published agent carries a plain-language description of its task and its boundaries; a request is matched against all of them, and the best match runs. When nothing fits, search returns no agent instead of improvising an answer.
 
 Agents written by different developers need no knowledge of each other. A follow-up in the same conversation can run a different agent, which reads what the previous one produced.
 
@@ -41,51 +45,58 @@ In Fleet, each agent has a name and a person picks it, in chat or by @mentioning
 
 ## What is an agent?
 
-In Search2o, an agent is a definition: an ordered list of commands in JSON, with Python expressions, for one well-defined task. Commands call an API, query a database, call a model or ask the person a question. The command list decides what runs next; the model is one of the commands, not the thing choosing them.
+In Search2o, an agent is one task: one verb, one or two systems, a run measured in seconds. A vacation request, an invoice status lookup, a meeting-room booking. Its definition is an ordered list of commands in JSON, with Python expressions: call an API, query a database, call a model, ask the person a question. The command list decides what runs next; the model is one of the commands, not the thing choosing them.
 
-A definition holds no arbitrary code, and it must pass a validation run before it can be published.
+The definition is also the boundary. It names the profiles the agent may reach, so it reaches nothing else; it runs inside a controlled runtime with no arbitrary code; and it stops at its time and LLM cost budgets. Because it has a few specific paths rather than an open-ended set, it is validated before publishing by a real run with every step traced, and the same request takes the same path on every run.
 
-In LangChain's frameworks, an agent is code, with the whole language available. With LangChain's `create_agent` and with Deep Agents, a model works in a loop and chooses the next tool. With LangGraph, the developer lays out a graph and decides which steps are fixed code and which are left to the model.
+Like a microservice, an agent holds no state of its own. The conversation that runs it holds the state.
 
-So predictable execution exists on both sides. In LangGraph it is something the developer builds; in Search2o it is the only way an agent runs.
+In LangChain's frameworks, an agent is code, with the whole language available, and nothing bounds what one agent is. The frameworks are built for the large end: LangGraph for long-running, stateful agents that persist through failures and resume where they left off, Deep Agents for complex tasks, with planning, subagents, a virtual filesystem and context management. With `create_agent` and Deep Agents, a model works in a loop and chooses the next tool. With LangGraph, the developer lays out a graph and decides which steps are fixed code and which are left to the model.
 
-In Fleet, an agent is a set of instructions and tools, and the model decides the steps.
+The kinds of agent the microagents page sets aside, a general assistant that takes any question, or an analysis workbench whose cost and reach are not known in advance, are the kinds these frameworks are made for. The page calls them useful for other reasons.
 
-## Product or toolkit?
+In Fleet, an agent is instructions, tools and its own memory, and the model decides the steps on each run. Its scope is whatever its description says, and there is no fixed path to validate.
 
-Search2o is one product: an agent server inside your organization, a cloud service for search, state and reports, a browser interface, and a REST API. Routing, saved state, version history, roles and usage reports come with it.
+## How do agents work together?
 
-LangChain's frameworks are a toolkit, and LangSmith is a set of separate products around them. They are general-purpose: the team that uses them decides what kind of agent system to build. Search2o is built on one idea: structured agent definitions combined with a search engine that finds the right one for each request.
+In Search2o, through the conversation. Agents do not need to know about each other. What one agent produces, its prompts and the conversation's variables, is there for the next agent that runs in the same conversation, even one using a different model, because the prompts in the shared context are model-neutral. A follow-up question runs whichever agent fits it, and that agent reads what the previous one left behind. An agent can also search for and invoke another; that is how an [orchestrator](https://search2o.com/docs/search/orchestrator.html) is written, one agent that receives every request from an interface of your own and runs the rest.
+
+In LangChain, in code. The developer decides which agents an application contains and how work moves between them. The documented [patterns](https://docs.langchain.com/oss/python/langchain/multi-agent) are subagents, where a main agent calls the others as tools; handoffs, where agents transfer control to each other; a router, where a classification step sends the request to one or more agents; and custom workflows in LangGraph.
+
+In Fleet, each agent has its own identity, memory and threads. Agents sharing a conversation is not something its documentation describes.
 
 ## Which one do I need?
 
-That depends on the job.
+That depends on the agent.
 
 LangChain's frameworks fit when:
 
-- you are building one agent application, such as a customer-facing assistant or a coding agent, and want full control in code
-- the work is open-ended or long-running, and the model should plan the steps
-- you need to score agent output against datasets, or keep a step-by-step trace of every production run
+- the agent is one application, such as a customer-facing assistant or a coding agent, and you want full control in code
+- the work is open-ended, such as a general assistant that takes any question: the model decides which tools to call and how many steps to take, so a run's cost and reach are not known in advance
+- you need to score its output against datasets (LangSmith Evaluation)
 
 Fleet fits when the people who need an agent should create it themselves, without a developer.
 
 Search2o fits when:
 
-- the organization will have many agents, written by different developers, and people should reach all of them from one place
-- the tasks are well defined and should follow steps a developer wrote, within set limits on time and model cost
+- the organization will have many small agents, written by different developers, and people should reach all of them from one place
+- each task has a boundary you can write down, which systems, how long, how much model spend, and should run the same way every time within it
+- a task will run thousands of times for different users, and each run should be recorded and reported by agent and by user
 - developers should spend their time writing agents, not building the routing, state, versioning and reporting around them
 
 ## Can I use both?
 
-Yes. They connect through standard interfaces, in both directions.
+Yes, and the microservice analogy carries: a large agent built with LangChain can hand its bounded tasks to Search2o agents, and a Search2o agent can call a deployed LangChain agent. They connect through standard interfaces, in both directions.
 
-- **LangChain calling Search2o.** Search2o's [REST API](https://search2o.com/docs/rest-api/index.html) lets any program search for an agent and run it. An agent built with LangChain or LangGraph can call it as a tool, the way the [Search2o skill](https://search2o.com/docs/skill-integration/index.html) does for Claude Code.
+- **LangChain calling Search2o.** Search2o's [REST API](https://search2o.com/docs/rest-api/index.html) lets any program search for an agent and run it. An agent built with LangChain or LangGraph can call it as a tool, the way the [Search2o skill](https://search2o.com/docs/skill-integration/index.html) does for an agent harness.
 - **Search2o calling LangChain.** A Search2o agent can call REST APIs and MCP servers. LangSmith's Agent Server exposes each deployed agent [as an MCP tool](https://docs.langchain.com/langsmith/server-mcp) and through its own REST API.
 
 ## Sources
 
-LangChain statements were checked against LangChain's own pages on October 3, 2026. Search2o statements come from the [Search2o documentation](https://search2o.com/docs).
+LangChain statements were checked against LangChain's own pages on October 3, 2026. Search2o statements come from the Microagents and Orchestrator pages, read on October 14, 2026, and the rest of the [Search2o documentation](https://search2o.com/docs).
 
+- [Microagents](https://search2o.com/docs/introduction/microagents.html)
+- [Orchestrator](https://search2o.com/docs/search/orchestrator.html)
 - [LangChain overview](https://docs.langchain.com/oss/python/langchain/overview)
 - [LangGraph overview](https://docs.langchain.com/oss/python/langgraph/overview)
 - [Multi-agent patterns](https://docs.langchain.com/oss/python/langchain/multi-agent)

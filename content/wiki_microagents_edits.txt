@@ -1,0 +1,62 @@
+LEAD
+what: small, single-purpose AI agents; one task each; combined to carry out larger workflows
+
+what: Relatively small workflows that are task-specific; they are focussed on a single end goal. they usually need specific inputs to operate. They are not useful by themselves. They are part of a large workflow, which is the one that is useful to the end user.
+
+compared by its users to microservices
+
+They are to AI agents, what microservices are to applications.
+
+the word is also used for unrelated things (see Other uses)
+
+The word agents have been widely used for many other things before LLMs were invented. Hence, microagents also meant other things. Even after AI agents came about, there is no universal consistency on using it as an exact parallel to microservices.
+
+USAGE
+
+1. Jan 2024: Microsoft's Semantic Kernel team describes a "MicroAgent" pattern, one agent per service. Tested against a single "mono-agent", completion rates were about equal (80–85%).
+
+Microsoft's Semantic kernel team found that microagents performed at about the same level as a single agent that contained all their functions.
+
+2. Jul 2025: BlinkOps, a security-automation company, raises US$50 million (Series B) for no-code "security micro-agents".
+
+BlinkOps is a startup that specializes in security microagents.
+
+3. Nov 2025: MAKER, a preprint from Cognizant AI Lab, splits a task across "focused microagents" and completes over one million LLM steps with zero errors. It has a section comparing microagents with microservices.
+
+Cognizant AI lab used focused microagents to complete 1M+ LLM steps with zero errors.
+
+4. Apr 2026: Rao Tadepalli, in an opinion column: micro agents do tasks, macro agents coordinate them, meta agents govern them.
+
+In a CIO article, the borders of microagents, macroagents and metaagents are defined.
+
+5. Apr 2026: Cornelia Davis of Temporal: microagents "each doing one thing"; they bring the benefits of microservices and also their coordination, state and failure problems.
+
+A Temporal article says that microagents have the both the same benefits and problems as microservices.
+
+CRITICISM
+
+6. Chris Latimer of Vectorize lists the costs: coordination overhead, extra points of failure, state across agents, network latency.
+
+Vectorize criticize microagents for the same reasons as the temporal article.
+
+7. John deVadoss's 2026 preprint: a "role-based micro-agent swarm" scored worst of five designs tested (23.1% vs 70.6% safe success). He calls the proliferation of micro-agents a hazard.
+
+John deVadoss thinks that mmicroagents are a hazard and perform bad.
+
+OTHER USES
+
+8. OpenHands coding agent: "microagents" were instruction files triggered by keywords; they were renamed "skills" in Nov 2025.
+
+Openhands have a similar concept as Claude code' subagents, triggered by search keywords and they call them microagents.
+
+9. aiXplain platform: "micro-agents" are helper agents for planning, orchestration and access control.
+
+aiXplain calls their helper agents as microagents
+
+10. Multi-agent systems research, University of Otago, from 2001: a micro-agent is the most primitive level of agent, and larger agents are built from micro-agents.
+
+University of Otago looks at microagents as a building block of a regular agent
+
+11. Physics: "microagents" are self-propelled microscopic particles.
+
+Physics uses the term microagents for microscopic particles that propel themselves
