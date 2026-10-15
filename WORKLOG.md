@@ -522,3 +522,8 @@
 ## 2026-10-15 — Google 404 for /demo.html traced
 - Whole live bucket (432 files) and html/ searched: nothing contains "demo.html". Live demo/ (demo.js, demo.css) is identical to html/demo; demo.js builds only `demo-agents.html#<agent>` links. Home page references only demo/demo.css and demo/demo.js.
 - Cause: html/demo.html moved to content/ on 2026-10-07 (and left the sitemap); the 2026-10-13 deploy's `--delete` removed it from the bucket, so Google's indexed URL now returns 404. No change made; options for Ram: leave the 404 to drop out of the index, or redirect /demo.html.
+
+## 2026-10-15 — "Search that executes" removed except on about.html
+- Removed the header `span.tagline` and the footer `<p>` from every site page except html/about.html (index, pricing, gettingstarted, demo-agents, 404, legal/*), and the header span from the docs template in gen/build.py; docs rebuilt (146 pages). index.html title and og:title now "Search2o".
+- gen/ogcard.py: hairline + tagline dropped (and the unused HAIR and wm_bottom); og5.png regenerated.
+- about.html untouched (body text, header tagline and footer line all stay), so the `.tagline` CSS stays. Left for Ram: the trademark notice in html/legal/intellectual.html:47 (and content/legal/intellectual.md), gen/linkedin_banner.py (LinkedIn, not the site), content/demo.html and content/index.md (not served). Rendered pricing and docs index at 1280px: logo alone in header, footer brand without the line. Not committed, not uploaded.
