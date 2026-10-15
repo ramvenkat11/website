@@ -516,3 +516,4 @@
 ## 2026-10-14 — "Deep agents" command group renamed "Orchestrators"
 - Changed in html/index.html (command-groups box), gen/toc.py (sidebar group for search and invoke), docsrc/development/code-editor.html, content/editor.md, and docsrc/commands/invoke.html lead ("…is how orchestrators are built."). Docs rebuilt; all 146 pages carry the new sidebar label.
 - Still "Deep agents": s2oserver/models/agentschema.py CommandGroup title (Ram is changing it); it drives the group heading and #deep-agents anchor on commands/index and agent-definition/commands, so rebuild docs after his change. LangChain's "Deep Agents" product name on the comparison page stays.
+- Same day: group label changed again to "Orchestration" (Ram) in html/index.html, gen/toc.py, docsrc/development/code-editor.html, content/editor.md; docs rebuilt. invoke lead keeps "orchestrators" (refers to agents). s2oserver schema title should become "Orchestration" too (anchor #orchestration).
