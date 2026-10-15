@@ -518,3 +518,7 @@
 - Still "Deep agents": s2oserver/models/agentschema.py CommandGroup title (Ram is changing it); it drives the group heading and #deep-agents anchor on commands/index and agent-definition/commands, so rebuild docs after his change. LangChain's "Deep Agents" product name on the comparison page stays.
 - Same day: group label changed again to "Orchestration" (Ram) in html/index.html, gen/toc.py, docsrc/development/code-editor.html, content/editor.md; docs rebuilt. invoke lead keeps "orchestrators" (refers to agents). s2oserver schema title should become "Orchestration" too (anchor #orchestration).
 - Same day: Orchestration group moved to the end of the command list (Ram) in html/index.html, gen/toc.py, docsrc/development/code-editor.html and content/editor.md (its own order; placed last). Docs rebuilt. s2oserver schema order is Ram's to change; it drives the group order on commands/index and agent-definition/commands.
+
+## 2026-10-15 — Google 404 for /demo.html traced
+- Whole live bucket (432 files) and html/ searched: nothing contains "demo.html". Live demo/ (demo.js, demo.css) is identical to html/demo; demo.js builds only `demo-agents.html#<agent>` links. Home page references only demo/demo.css and demo/demo.js.
+- Cause: html/demo.html moved to content/ on 2026-10-07 (and left the sitemap); the 2026-10-13 deploy's `--delete` removed it from the bucket, so Google's indexed URL now returns 404. No change made; options for Ram: leave the 404 to drop out of the index, or redirect /demo.html.
