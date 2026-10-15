@@ -35,9 +35,9 @@ there opens, grouped by what it does:
 | Terminate agent | `end`, `fail` |
 | Call external systems | `api`, `db` |
 | Engage with LLM | `prompt`, `llm`, `memory` |
-| Deep agents | `search`, `invoke` |
 | Human in the loop | `ask` |
 | Agent output | `output` |
+| Orchestration | `search`, `invoke` |
 
 - **Keep typing** to filter the list.
 - **Up and Down** move through it. The box under the list describes the highlighted command.

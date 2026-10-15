@@ -52,8 +52,6 @@
   <url><loc>https://search2o.com/docs/commands/memory.html</loc></url>
   <url><loc>https://search2o.com/docs/commands/api.html</loc></url>
   <url><loc>https://search2o.com/docs/commands/db.html</loc></url>
-  <url><loc>https://search2o.com/docs/commands/search.html</loc></url>
-  <url><loc>https://search2o.com/docs/commands/invoke.html</loc></url>
   <url><loc>https://search2o.com/docs/commands/ask.html</loc></url>
   <url><loc>https://search2o.com/docs/commands/output.html</loc></url>
   <url><loc>https://search2o.com/docs/commands/end.html</loc></url>
@@ -61,6 +59,8 @@
   <url><loc>https://search2o.com/docs/commands/progress.html</loc></url>
   <url><loc>https://search2o.com/docs/commands/trace.html</loc></url>
   <url><loc>https://search2o.com/docs/commands/log.html</loc></url>
+  <url><loc>https://search2o.com/docs/commands/search.html</loc></url>
+  <url><loc>https://search2o.com/docs/commands/invoke.html</loc></url>
   <url><loc>https://search2o.com/docs/search/index.html</loc></url>
   <url><loc>https://search2o.com/docs/search/describing-an-agent.html</loc></url>
   <url><loc>https://search2o.com/docs/search/how-matching-works.html</loc></url>

@@ -52,8 +52,6 @@ TOC = [
         ("memory", "memory", "LLM interaction"),
         ("api", "api", "External systems"),
         ("db", "db", "External systems"),
-        ("search", "search", "Deep agents"),
-        ("invoke", "invoke", "Deep agents"),
         ("ask", "ask", "Human-in-the-loop"),
         ("output", "output", "Agent output"),
         ("end", "end", "Agent termination"),
@@ -61,6 +59,8 @@ TOC = [
         ("progress", "progress", "Observability"),
         ("trace", "trace", "Observability"),
         ("log", "log", "Observability"),
+        ("search", "search", "Orchestration"),
+        ("invoke", "invoke", "Orchestration"),
     ]),
     ("search", "Search", [
         ("describing-an-agent", "Describing an agent"),
