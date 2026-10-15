@@ -512,3 +512,7 @@
 - docsrc/comparisons/langchain.html rewritten to match the Oct 14 content: new microagent paragraph after the lead (linked to introduction/microagents.html), framework bullet now contrasts long-running stateful agents with short-running stateless Search2o agents, table gains "What an agent is" and "How agents combine" rows, "What is an agent?" expanded (one task, boundary, stateless), "Product or toolkit?" replaced by "How do agents work together?" (links search/orchestrator.html and LangChain multi-agent patterns), "Which one do I need?" bullets revised, "Can I use both?" opens with the microservice analogy, Sources lists Microagents and Orchestrator first with the Oct 14 read date.
 - Docs rebuilt (146 pages); every in-site link resolves; rendered at 1280 and 500 px.
 - State: uncommitted, awaiting Ram's review. Next: nothing pending on this page.
+
+## 2026-10-14 — "Deep agents" command group renamed "Orchestrators"
+- Changed in html/index.html (command-groups box), gen/toc.py (sidebar group for search and invoke), docsrc/development/code-editor.html, content/editor.md, and docsrc/commands/invoke.html lead ("…is how orchestrators are built."). Docs rebuilt; all 146 pages carry the new sidebar label.
+- Still "Deep agents": s2oserver/models/agentschema.py CommandGroup title (Ram is changing it); it drives the group heading and #deep-agents anchor on commands/index and agent-definition/commands, so rebuild docs after his change. LangChain's "Deep Agents" product name on the comparison page stays.
