@@ -542,3 +542,19 @@
 - Examples highlighted with the docs' jsonc rules and validated against the s2oserver models by the generator script (scratchpad gen_framework.py, not in the repo; the page is now a hand-maintained file like the other site pages).
 - Nav: "Framework" before "Docs" on all ten site pages, the new page (aria-current) and the docs template (rebuilt, 146 pages). Footer "Agent framework" now → framework.html on the ten site pages (was index.html#framework; the hero is to be redone later). SITE_PAGES gained framework.html, so sitemap.xml lists it. Page loads demo/demo.css, js/config.js, demo/demo.js for the widget. CSS: a .fw-page/.fw-sec/.fw-text/.fw-code/.know/.fw-split/.fw-end block appended to styles.css, with its own ≤1000/≤760 collapses.
 - Rendered dark and light at 1280 and dark at 500: all sections, both code columns, the widget and the footer are right. Long lines in weather.json scroll horizontally inside the card; JetBrains Mono shows `!=` as the ≠ ligature (same as in the docs). Not committed, not uploaded. Next: Ram reviews the wording.
+
+## 2026-10-17 — Agent framework page, second draft
+Ram's review of the first draft: too dense; get to "JSON + Python expressions + 23 commands" at once,
+annotate the first agent with arrows rather than prose, then the demo, then the development process;
+the weather agent is optional. Rebuilt html/framework.html from the scratchpad generator:
+hero → "Your first agent" (annotated figure, 3 callouts) → "Now give it an API to call" (orders agent
+with a tool function; 5 callouts covering args, progress/log, api, trace, functions) → the 23-command
+card full width → generate demo → Draft/Validate/Publish steps with one closing paragraph on the
+controlled runtime → CTA. Removed the four-things grid, the six runtime cards and the weather agent.
+Callouts: `<span class="al" data-n>` marks a code line, `<ol class="anno-notes">` holds the notes,
+and an inline script draws SVG leader lines (routed through the gap, arrowhead at the line) on load,
+font load and resize; under 1000px the notes stack below the card with numbered badges instead.
+styles.css: the old `.fw-*`/`.know`/`.fw-split` block replaced by the new `.fw-*`/`.anno*` block.
+Both examples validate against the s2oserver models (progress/log/trace do not produce a result, per
+RESULT_PRODUCING_COMMANDS, so `result` after them is still the api response). Rendered dark/light
+at 1280 and dark at 500. Not committed, not uploaded. Next: Ram's wording review.
