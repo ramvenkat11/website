@@ -595,3 +595,10 @@ answer.jsonc / orders.jsonc with a two-line comment at the top; orders.jsonc als
 `\.[A-Za-z0-9](?:[A-Za-z0-9_]*[A-Za-z0-9])?$`), and a trailing comment on `return`. The suffix
 sentence under the command card was removed since the example now covers it. Validated and
 rendered at 1280 and 390 (iframe). Not committed, not uploaded.
+
+## 2026-10-17 — Framework page: commands section heading
+Ram: the command-reference sentence sounded scary (each command already links to its page), and
+the heading should say these commands are all you need, so you write the business logic and the
+framework does the rest. Now: h2 "Twenty-three commands are all you need", lead "Every agent is
+written with these commands and nothing else. You concentrate on what the agent should do, and
+the framework takes care of everything around it." Not committed, not uploaded.
