@@ -558,3 +558,12 @@ styles.css: the old `.fw-*`/`.know`/`.fw-split` block replaced by the new `.fw-*
 Both examples validate against the s2oserver models (progress/log/trace do not produce a result, per
 RESULT_PRODUCING_COMMANDS, so `result` after them is still the api response). Rendered dark/light
 at 1280 and dark at 500. Not committed, not uploaded. Next: Ram's wording review.
+
+## 2026-10-17 — Framework page: phone layout of the annotations
+Ram: the annotations did not look good on a phone. Replaced the stacked-notes-plus-badges layout
+below 1000px with inline notes: the generator now emits, after every marked line, a
+`<span class="al-note">` carrying the same note text, hidden on wide screens and shown as a block
+under its own line (blue left rule, indented to the line, numbered) on narrow ones; the leader-line
+SVG and the notes column are hidden there. Note: headless Chrome's minimum window width is about
+470px, so `--window-size=390` crops a wider layout; true phone-width renders need a 390px iframe
+(scratchpad phone-frame.html). Checked at 390 (iframe) and 1280. Not committed, not uploaded.
