@@ -585,3 +585,13 @@ Hero is now h1 "An agent is just JSON, with Python expressions." plus two senten
 the first example; the "Your first agent" heading is gone and the annotated figure follows the
 hero directly (`.fw-first` trims the section's top padding). No hero buttons. Rendered at 1280.
 Not committed, not uploaded.
+
+## 2026-10-17 — Framework page: JSONC, no command count in the hero, dot-suffix callout
+Ram: drop "23 commands" from the introduction, make the examples JSONC and say so up front, and
+introduce the `.suffix` repeat syntax in the orders example. Hero lead is now "To be exact, it is
+JSONC, which is JSON that allows comments. Here is a complete agent." Both examples are
+answer.jsonc / orders.jsonc with a two-line comment at the top; orders.jsonc also has
+`"progress.done": "Found the order"` with a sixth callout explaining the suffix (server rule:
+`\.[A-Za-z0-9](?:[A-Za-z0-9_]*[A-Za-z0-9])?$`), and a trailing comment on `return`. The suffix
+sentence under the command card was removed since the example now covers it. Validated and
+rendered at 1280 and 390 (iframe). Not committed, not uploaded.
