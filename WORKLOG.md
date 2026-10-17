@@ -567,3 +567,13 @@ under its own line (blue left rule, indented to the line, numbered) on narrow on
 SVG and the notes column are hidden there. Note: headless Chrome's minimum window width is about
 470px, so `--window-size=390` crops a wider layout; true phone-width renders need a 390px iframe
 (scratchpad phone-frame.html). Checked at 390 (iframe) and 1280. Not committed, not uploaded.
+
+## 2026-10-17 — Framework page: tone and wording pass
+Ram: no sign-up pushing on this page, no mention of Search2o Cloud, and full English sentences
+rather than clipped ones. Rewrote every sentence on html/framework.html in the generator: hero lead,
+both figures' callouts, the section leads, the three development steps (Validate no longer names
+Search2o Cloud), the runtime paragraph. The hero's "Build your first agent" button is gone (two
+ghost links to the docs remain) and the closing "Have a few agents in production this week" CTA is
+now "Where to read more", three sentences linking the agent definition docs, the command reference
+and the getting started guide. The only gettingstarted.html links left are the site-wide nav
+button and footer link. Re-rendered at 1280 and at 390 (iframe). Not committed, not uploaded.
