@@ -577,3 +577,11 @@ ghost links to the docs remain) and the closing "Have a few agents in production
 now "Where to read more", three sentences linking the agent definition docs, the command reference
 and the getting started guide. The only gettingstarted.html links left are the site-wide nav
 button and footer link. Re-rendered at 1280 and at 390 (iframe). Not committed, not uploaded.
+
+## 2026-10-17 — Framework page: hero cut to two sentences, buttons removed
+Ram: no buttons at the top (do not send the developer elsewhere), and open the way an O'Reilly
+first chapter does: "this is just JSON, with Python expressions", then straight into an example.
+Hero is now h1 "An agent is just JSON, with Python expressions." plus two sentences that introduce
+the first example; the "Your first agent" heading is gone and the annotated figure follows the
+hero directly (`.fw-first` trims the section's top padding). No hero buttons. Rendered at 1280.
+Not committed, not uploaded.
