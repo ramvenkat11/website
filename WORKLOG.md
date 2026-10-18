@@ -602,3 +602,11 @@ the heading should say these commands are all you need, so you write the busines
 framework does the rest. Now: h2 "Twenty-three commands are all you need", lead "Every agent is
 written with these commands and nothing else. You concentrate on what the agent should do, and
 the framework takes care of everything around it." Not committed, not uploaded.
+
+## 2026-10-17 — Framework page: consistent block widths
+Ram: make the image widths consistent. The code cards were ~668px, the demo 880px and the command
+card 1060px. styles.css now has `.fw-page { --fw-w: 680px; --fw-notes: 308px; --fw-gap: 72px }`;
+the annotated figure's card, the command card, the demo, the section leads, the text blocks and
+the numbered steps all use `--fw-w`, and the figure's max-width is the sum of the three variables.
+The command card's label column is 124px so the flow-control row stays on one line. Rendered at
+1280. Not committed, not uploaded.
