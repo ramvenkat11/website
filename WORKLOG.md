@@ -610,3 +610,16 @@ the annotated figure's card, the command card, the demo, the section leads, the 
 the numbered steps all use `--fw-w`, and the figure's max-width is the sum of the three variables.
 The command card's label column is 124px so the flow-control row stays on one line. Rendered at
 1280. Not committed, not uploaded.
+
+## 2026-10-18 — Framework page: structure figure, JSONC moved to the second example
+Ram: keep the first example plain, move JSONC to the second, show the agent's structure as an
+image, and fix the inaccurate "every JSON key is a command … administrator" sentence. Now: hero
+lead "Here is a complete agent…", answer.json has no comment; the orders section lead introduces
+JSONC and orders.jsonc keeps its comments. After the first figure: "Every agent has the same
+shape." + a new HTML/CSS figure `.fw-struct` (nested boxes: Agent → "functions" → "main" and
+"getOrder" → "commands" rows; Python expressions and profile names highlighted, with a legend),
+then an accurate paragraph: functions hold commands run in order, each command is a key whose
+value carries its fields, a string enclosed in braces is a Python expression, a command that
+reaches outside names a profile that holds the connection details (no "administrator"; docs say
+profiles are edited in the GUI). Styles: `.st-*` block in styles.css, single column under 640px.
+Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
