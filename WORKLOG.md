@@ -623,3 +623,12 @@ value carries its fields, a string enclosed in braces is a Python expression, a 
 reaches outside names a profile that holds the connection details (no "administrator"; docs say
 profiles are edited in the GUI). Styles: `.st-*` block in styles.css, single column under 640px.
 Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
+
+## 2026-10-20 — Docs: prompt, search and invoke commands removed; prompts moved into the agent
+- Mirrors s2oserver release 29 (scratch file search2o_prompts.txt). 20 commands now.
+- Deleted with Ram's permission, but `rm` was blocked by the harness, so moved to retired/docsrc/ and retired/html/docs/ (out of the build and the deploy; deploy's --delete removes them live): commands/prompt, commands/search, commands/invoke, profiles/prompt-profiles, search/orchestrator.
+- gen/toc.py: those five out, agent-definition/prompts added after Commands. gen/build.py reads models/promptmodels.py (fields:model:AgentPromptModel). gen/check_examples.py validates blocks titled "Prompts" as {name: AgentPromptModel}. tool-loop figure label "system + history + user".
+- New docsrc/agent-definition/prompts.html: fields, GUI (Prompts on draft and agent pages, Add prompt), published-prompt changes and dependency check, not versioned, evaluation in the llm's function, no `result`, scopes conversation/agent/local, sharing history needs same name + conversation scope, images, doc for Draft with AI.
+- 65 edits over 38 pages: counts 23 -> 20, invoke/search/prompt-profile statements removed, llm/memory/trace examples rewritten, security pages no longer claim encrypted prompts, Draft with AI gets an "agent's prompts" item, drafts/publishing mention prompts, workflows fan-out now one execAgent per ticket.
+- 37 examples valid, 142 pages built, docs links clean. Not committed, not uploaded.
+- Next: orchestration rewrite (separate task, Ram); web pages later: html/index.html and html/framework.html still show the prompt command, 23 commands, and link to the removed command pages. gen/figures.py deep-agent figure (unused) still draws search/invoke.
