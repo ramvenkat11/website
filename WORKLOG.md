@@ -632,3 +632,9 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - 65 edits over 38 pages: counts 23 -> 20, invoke/search/prompt-profile statements removed, llm/memory/trace examples rewritten, security pages no longer claim encrypted prompts, Draft with AI gets an "agent's prompts" item, drafts/publishing mention prompts, workflows fan-out now one execAgent per ticket.
 - 37 examples valid, 142 pages built, docs links clean. Not committed, not uploaded.
 - Next: orchestration rewrite (separate task, Ram); web pages later: html/index.html and html/framework.html still show the prompt command, 23 commands, and link to the removed command pages. gen/figures.py deep-agent figure (unused) still draws search/invoke.
+
+## 2026-10-21 — Prompts page corrected: prompts are agent meta fields, never JSON
+- Ram: prompts are meta fields of the agent set in the GUI (like title and run limits); no prompt blocks in an agent. My JSON "Prompts" blocks were wrong.
+- docsrc/agent-definition/prompts.html rewritten: example prompts shown as Name/System/User/Scope/Doc tables, only llm commands in JSON; image user text shown as a Python expression. llm.html and memory.html describe their prompt in prose. structure.html lead no longer says "next to the definition".
+- Added the publish overwrite rule (scratch file update): title, run limits and prompts changed on the agent after the draft was made are listed on publish; publishing again replaces them (prompts.html, publishing.html).
+- gen/check_examples.py restored to HEAD (Prompts-block validation no longer needed). 32 examples valid, 142 pages built. Not committed.
