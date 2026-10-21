@@ -9,7 +9,6 @@
 <thead><tr><th>Data</th><th>Who can read it</th><th>Kept for</th></tr></thead>
 <tbody>
 <tr><td>Conversation state<br><small>variables, prompt history, output, where an agent paused; not stored in the cloud at all when the conversation state hooks are set</small></td><td>Only the user whose conversation it is; the account's agent servers decrypt it to answer that user's next request</td><td>7 days after the last use on the Free plan, 90 days on Paid; pinned conversations indefinitely</td></tr>
-<tr><td>Prompt profiles<br><small>the system and user prompt text; a prompt written in an agent is stored in plain form with the agent</small></td><td>Developers and above, through the GUI; the account's agent servers decrypt them at runtime</td><td>Life of the profile</td></tr>
 </tbody></table></div>
 
 <h2>What leaves in plain form but is stored encrypted</h2>
@@ -30,7 +29,7 @@
 <tr><td>Drafts</td><td>The developer who owns the draft</td><td>Until published or deleted</td></tr>
 <tr><td>Execution records<br><small>agent name and version, result code, error message, command path, duration, LLM cost</small></td><td>Developers, in the agent reports; administrators, in the usage report</td><td>7 days on the Free plan, 90 days on Paid</td></tr>
 <tr><td>Configuration<br><small>agent servers, allowlist, limits, authentication</small></td><td>Developers or administrators, by part</td><td>Life of the account</td></tr>
-<tr><td>Profiles<br><small>LLMs, APIs, databases, MCP servers, and the name and note of a prompt profile; a secret in a profile is a sys.secret reference, not the value</small></td><td>Developers and above</td><td>Life of the account</td></tr>
+<tr><td>Profiles<br><small>LLMs, APIs, databases and MCP servers; a secret in a profile is a sys.secret reference, not the value</small></td><td>Developers and above</td><td>Life of the account</td></tr>
 <tr><td>Users<br><small>email address, name, role, GUI preferences</small></td><td>Administrators and the owner</td><td>Until the user is deleted</td></tr>
 <tr><td>Audit log<br><small>what changed and who changed it, as field names, never values</small></td><td>Administrators in the GUI; developers and above through the API</td><td>90 days</td></tr>
 <tr><td>Messages to Search2o<br><small>sent from the GUI</small></td><td>Search2o support</td><td>One year</td></tr>

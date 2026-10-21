@@ -36,5 +36,5 @@
 <p><strong>Observability.</strong> Every run is recorded: who requested it, what ran, how long it took, what failed, and what the LLM calls cost. The <a href="../reports/index.html">reports</a> show these per agent and per user.</p>
 
 <h2>How microagents work together</h2>
-<p>Microagents do not talk to each other. They build on each other's work through the shared context of a <a href="../agent-execution/conversation-state.html">conversation</a>: the prompts and the conversation variables.</p>
+<p>Microagents do not talk to each other. They build on each other's work through the shared context of a <a href="../agent-execution/conversation-state.html">conversation</a>: the prompts and the conversation variables. Two agents share a prompt's history when both have a prompt of the same name with the <code>conversation</code> scope; see <a href="../agent-definition/prompts.html#sharing-a-history-between-agents">Prompts</a>.</p>
 <p>The prompts in the shared context are model-neutral, so a second agent in the same conversation, using a different LLM, continues with the same prompt history as its short-term memory. <a href="../agent-definition/variables.html">Conversation variables</a> carry the context that is not in a prompt, such as the user's authorization.</p>

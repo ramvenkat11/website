@@ -40,7 +40,7 @@
 <p>In Fleet, an agent is instructions, tools and its own memory, and the model decides the steps on each run. Its scope is whatever its description says, and there is no fixed path to validate.</p>
 
 <h2>How do agents work together?</h2>
-<p>In Search2o, through the conversation. Agents do not need to know about each other. What one agent produces, its prompts and the conversation's variables, is there for the next agent that runs in the same conversation, even one using a different model, because the prompts in the shared context are model-neutral. A follow-up question runs whichever agent fits it, and that agent reads what the previous one left behind. An agent can also search for and invoke another; that is how an <a href="../search/orchestrator.html">orchestrator</a> is written, one agent that receives every request from an interface of your own and runs the rest.</p>
+<p>In Search2o, through the conversation. Agents do not need to know about each other. What one agent produces, its prompts and the conversation's variables, is there for the next agent that runs in the same conversation, even one using a different model, because the prompts in the shared context are model-neutral. A follow-up question runs whichever agent fits it, and that agent reads what the previous one left behind. Two agents continue the same exchange with the model when their prompts share a name; see <a href="../agent-definition/prompts.html#sharing-a-history-between-agents">Prompts</a>.</p>
 <p>In LangChain, in code. The developer decides which agents an application contains and how work moves between them. The documented <a href="https://docs.langchain.com/oss/python/langchain/multi-agent" target="_blank" rel="noopener">patterns</a> are subagents, where a main agent calls the others as tools; handoffs, where agents transfer control to each other; a router, where a classification step sends the request to one or more agents; and custom workflows in LangGraph.</p>
 <p>In Fleet, each agent has its own identity, memory and threads. Agents sharing a conversation is not something its documentation describes.</p>
 
@@ -69,10 +69,10 @@
 </ul>
 
 <h2>Sources</h2>
-<p>LangChain statements were checked against LangChain's own pages on October 3, 2026. Search2o statements come from the Microagents and Orchestrator pages, read on October 14, 2026, and the rest of the <a href="../index.html">Search2o documentation</a>.</p>
+<p>LangChain statements were checked against LangChain's own pages on October 3, 2026. Search2o statements come from the Microagents page, read on October 14, 2026, the Prompts page, read on October 20, 2026, and the rest of the <a href="../index.html">Search2o documentation</a>.</p>
 <ul>
   <li><a href="../introduction/microagents.html">Microagents</a></li>
-  <li><a href="../search/orchestrator.html">Orchestrator</a></li>
+  <li><a href="../agent-definition/prompts.html">Prompts</a></li>
   <li><a href="https://docs.langchain.com/oss/python/langchain/overview" target="_blank" rel="noopener">LangChain overview</a></li>
   <li><a href="https://docs.langchain.com/oss/python/langgraph/overview" target="_blank" rel="noopener">LangGraph overview</a></li>
   <li><a href="https://docs.langchain.com/oss/python/langchain/multi-agent" target="_blank" rel="noopener">Multi-agent patterns</a></li>

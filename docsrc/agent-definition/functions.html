@@ -11,7 +11,7 @@
 <p>The description is needed only when the function is used as a tool. The description tells the model what the function does and when to call the function.</p>
 
 <h2>Error handling</h2>
-<p>When a command raises an error that the command's own <code>onError</code> does not handle, the function's <code>onError</code> block runs instead of the rest of the function. Inside the block, <code>exc</code> holds the exception. The block may <code>return</code> a value, and that value becomes the function's result. Otherwise the error propagates to the caller. The <code>ask</code> and <code>invoke</code> commands cannot be used in error handling.</p>
+<p>When a command raises an error that the command's own <code>onError</code> does not handle, the function's <code>onError</code> block runs instead of the rest of the function. Inside the block, <code>exc</code> holds the exception. The block may <code>return</code> a value, and that value becomes the function's result. Otherwise the error propagates to the caller. The <code>ask</code> command cannot be used in error handling.</p>
 
 <x-code lang="jsonc" title="A tool function with an error handler">
 "lookupOrder": {

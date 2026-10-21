@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Agent framework — Search2o</title>
+<meta name="description" content="An agent is a JSON file with 23 commands and Python expressions in braces. Write what the agent does; the agent server handles credentials, connections, streaming, memory and limits.">
+<meta property="og:title" content="Agent framework — Search2o">
+<meta property="og:description" content="An agent is a JSON file with 23 commands and Python expressions in braces. Write what the agent does; the agent server handles credentials, connections, streaming, memory and limits.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://search2o.com/framework.html">
+<meta property="og:url" content="https://search2o.com/framework.html">
+<meta property="og:image" content="https://search2o.com/images/og5.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Search2o: a platform to build, run, and use AI microagents through search">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/jetbrains-mono-latin.woff2" crossorigin>
+<link rel="stylesheet" href="styles/styles.css">
+<link rel="stylesheet" href="demo/demo.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYRX3801TG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYRX3801TG');</script>
+</head>
+<body class="fw-page">
+
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="index.html" aria-label="Search2o home"><img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61"></a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="navlink" href="framework.html" aria-current="page">Framework</a>
+      <a class="navlink" href="docs/index.html">Docs</a>
+      <a class="navlink" href="pricing.html">Pricing</a>
+      <a class="navlink" href="about.html">About</a>
+      <a class="btn btn-blue nav-cta" href="gettingstarted.html">Get started</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker">Agent framework</span>
+      <h1>An agent is just JSON, with Python expressions.</h1>
+      <p class="lead">Here is a complete agent. It sends the user&rsquo;s question to a language model and streams the answer back.</p>
+    </div>
+  </section>
+
+  <section class="fw-sec fw-first" id="first-agent">
+    <div class="container">
+      <figure class="anno" aria-label="The first agent, annotated">
+        <div class="codecard"><div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">answer.json</span></div><pre><code>{
+  <span class=key>&quot;functions&quot;</span>: {
+    <span class="al" data-n="1"><span class=key>&quot;main&quot;</span>: {</span>
+<span class="al-note" style="margin-left:4ch"><span class="an">1</span>Every agent starts in the function named <code>main</code>. An agent can have other functions as well, and the next example adds one.</span>      <span class=key>&quot;commands&quot;</span>: {
+        <span class="al" data-n="2"><span class=key>&quot;prompt&quot;</span>: { <span class=key>&quot;user&quot;</span>: <span class=str>&quot;{ sys.query }&quot;</span> },</span>
+<span class="al-note" style="margin-left:8ch"><span class="an">2</span>The <code>prompt</code> command builds the message that goes to the model. The braces mark a Python expression, and <code>sys.query</code> holds the question the user asked.</span>        <span class="al" data-n="3"><span class=key>&quot;llm&quot;</span>: { <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;gpt5_mini&quot;</span>, <span class=key>&quot;streamOutput&quot;</span>: <span class=kw>true</span> }</span>
+<span class="al-note" style="margin-left:8ch"><span class="an">3</span>The <code>llm</code> command sends the prompt to a model and streams the answer back to the user as it is generated. The profile named here holds the model name, the API key and the host, so the agent file contains none of them.</span>      }
+    }
+  }
+}</code></pre></div>
+        <ol class="anno-notes">
+          <li data-n="1"><span class="an">1</span>Every agent starts in the function named <code>main</code>. An agent can have other functions as well, and the next example adds one.</li>
+          <li data-n="2"><span class="an">2</span>The <code>prompt</code> command builds the message that goes to the model. The braces mark a Python expression, and <code>sys.query</code> holds the question the user asked.</li>
+          <li data-n="3"><span class="an">3</span>The <code>llm</code> command sends the prompt to a model and streams the answer back to the user as it is generated. The profile named here holds the model name, the API key and the host, so the agent file contains none of them.</li>
+        </ol>
+        <svg class="anno-svg" aria-hidden="true"></svg>
+      </figure>
+      <div class="fw-text">
+        <p>Every agent has the same shape.</p>
+      </div>
+      <figure class="fw-struct" aria-label="The structure of an agent: functions, each holding commands">
+        <div class="st-box st-agent">
+          <div class="st-head"><span class="st-label">Agent</span><span class="st-hint">one JSON document</span></div>
+          <div class="st-box st-functions">
+            <div class="st-head"><span class="st-label">"functions"</span></div>
+            <div class="st-row">
+              <div class="st-box st-fn">
+                <div class="st-head"><span class="st-label">"main"</span><span class="st-hint">runs first</span></div>
+                <div class="st-box st-cmds">
+                  <div class="st-head"><span class="st-label">"commands"</span></div>
+                  <div class="st-cmd">"prompt": { "user": <span class="st-py">"{ sys.query }"</span> }</div>
+                  <div class="st-cmd">"api": { "profile": <span class="st-prof">"orders"</span>, &hellip; }</div>
+                  <div class="st-cmd">"llm": { "profile": <span class="st-prof">"gpt5_mini"</span>, &hellip; }</div>
+                </div>
+              </div>
+              <div class="st-box st-fn">
+                <div class="st-head"><span class="st-label">"getOrder"</span><span class="st-hint">called by name, or by the model as a tool</span></div>
+                <div class="st-box st-cmds">
+                  <div class="st-head"><span class="st-label">"commands"</span></div>
+                  <div class="st-cmd">"api": { &hellip; }</div>
+                  <div class="st-cmd">"return": <span class="st-py">"{ result }"</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="st-legend"><span><i class="st-py"></i>Python expression</span><span><i class="st-prof"></i>profile</span></figcaption>
+      </figure>
+      <div class="fw-text">
+        <p>An agent is a set of named functions, and a function is a list of commands that run in the order they are written. Each command is a key, and its value carries the command&rsquo;s fields. A string value enclosed in braces is a Python expression; any other string is plain text. Where a command reaches outside the agent, to a model, an API or a database, it names a profile, and the profile holds the connection details.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="second-agent">
+    <div class="container">
+      <div class="section-head">
+        <h2>Now give it an API to call</h2>
+        <p>This agent answers questions about orders. It has a function that looks up an order through an API, and the model decides when to call that function. Agent files are JSONC, which is JSON that allows comments, so this one has a few.</p>
+      </div>
+      <figure class="anno" aria-label="An agent with a tool, annotated">
+        <div class="codecard"><div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">orders.jsonc</span></div><pre><code>{
+  <span class=cm>// Answers questions about orders.</span>
+  <span class=cm>// The model calls getOrder when it needs one.</span>
+  <span class=key>&quot;functions&quot;</span>: {
+    <span class=key>&quot;getOrder&quot;</span>: {
+      <span class=key>&quot;description&quot;</span>: <span class=str>&quot;Looks up one order by its number.&quot;</span>,
+      <span class="al" data-n="1"><span class=key>&quot;args&quot;</span>: { <span class=key>&quot;orderId&quot;</span>: { <span class=key>&quot;type&quot;</span>: <span class=str>&quot;str&quot;</span> } },</span>
+<span class="al-note" style="margin-left:6ch"><span class="an">1</span>A function that declares arguments becomes a tool the model can call. The model reads the description, decides when the function is needed, and supplies the arguments itself.</span>      <span class=key>&quot;commands&quot;</span>: {
+        <span class="al" data-n="2"><span class=key>&quot;progress&quot;</span>: <span class=str>&quot;Looking up the order&quot;</span>,</span>
+<span class="al-note" style="margin-left:8ch"><span class="an">2</span>Each of these two commands is a single line. The <code>progress</code> command shows the user a short message while the agent works. The <code>log</code> command writes a line to the agent server&rsquo;s log, which stays in your environment.</span>        <span class=key>&quot;log&quot;</span>: <span class=str>&quot;{ f&#x27;Order {orderId} requested by {sys.userEmail}&#x27; }&quot;</span>,
+        <span class="al" data-n="3"><span class=key>&quot;api&quot;</span>: {</span>
+<span class="al-note" style="margin-left:8ch"><span class="an">3</span>The <code>api</code> command calls the API that the profile names. The host, the credentials and the headers come from the profile, and only the path comes from the agent. The parsed response is placed in <code>result</code>.</span>          <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;orders&quot;</span>,
+          <span class=key>&quot;path&quot;</span>: <span class=str>&quot;{ f&#x27;/orders/{orderId}&#x27; }&quot;</span>
+        },
+        <span class="al" data-n="4"><span class=key>&quot;trace&quot;</span>: <span class=str>&quot;{ f&#x27;Status: {result[&#x27;status&#x27;]}&#x27; }&quot;</span>,</span>
+<span class="al-note" style="margin-left:8ch"><span class="an">4</span>The <code>trace</code> command writes to the execution trace that you read while validating a draft. In production it does nothing.</span>        <span class="al" data-n="5"><span class=key>&quot;progress.done&quot;</span>: <span class=str>&quot;Found the order&quot;</span>,</span>
+<span class="al-note" style="margin-left:8ch"><span class="an">5</span>To use a command a second time in the same function, add a dot and a suffix to its name. The suffix can be any word or number; it only keeps the two keys distinct.</span>        <span class=key>&quot;return&quot;</span>: <span class=str>&quot;{ result }&quot;</span>   <span class=cm>// the order goes back to the model</span>
+      }
+    },
+    <span class=key>&quot;main&quot;</span>: {
+      <span class=key>&quot;commands&quot;</span>: {
+        <span class=key>&quot;prompt&quot;</span>: { <span class=key>&quot;user&quot;</span>: <span class=str>&quot;{ sys.query }&quot;</span> },
+        <span class=key>&quot;llm&quot;</span>: {
+          <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;gpt5_mini&quot;</span>,
+          <span class="al" data-n="6"><span class=key>&quot;functions&quot;</span>: [<span class=str>&quot;getOrder&quot;</span>],</span>
+<span class="al-note" style="margin-left:10ch"><span class="an">6</span>Listing <code>getOrder</code> here gives the model that function as a tool. The model calls it whenever a question needs an order looked up.</span>          <span class=key>&quot;streamOutput&quot;</span>: <span class=kw>true</span>
+        }
+      }
+    }
+  }
+}</code></pre></div>
+        <ol class="anno-notes">
+          <li data-n="1"><span class="an">1</span>A function that declares arguments becomes a tool the model can call. The model reads the description, decides when the function is needed, and supplies the arguments itself.</li>
+          <li data-n="2"><span class="an">2</span>Each of these two commands is a single line. The <code>progress</code> command shows the user a short message while the agent works. The <code>log</code> command writes a line to the agent server&rsquo;s log, which stays in your environment.</li>
+          <li data-n="3"><span class="an">3</span>The <code>api</code> command calls the API that the profile names. The host, the credentials and the headers come from the profile, and only the path comes from the agent. The parsed response is placed in <code>result</code>.</li>
+          <li data-n="4"><span class="an">4</span>The <code>trace</code> command writes to the execution trace that you read while validating a draft. In production it does nothing.</li>
+          <li data-n="5"><span class="an">5</span>To use a command a second time in the same function, add a dot and a suffix to its name. The suffix can be any word or number; it only keeps the two keys distinct.</li>
+          <li data-n="6"><span class="an">6</span>Listing <code>getOrder</code> here gives the model that function as a tool. The model calls it whenever a question needs an order looked up.</li>
+        </ol>
+        <svg class="anno-svg" aria-hidden="true"></svg>
+      </figure>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="commands">
+    <div class="container">
+      <div class="section-head">
+        <h2>Twenty-three commands are all you need</h2>
+        <p>Every agent is written with these commands and nothing else. You concentrate on what the agent should do, and the framework takes care of everything around it.</p>
+      </div>
+      <aside class="arch cc-arch fw-card fw-cmdcard" aria-label="The 23 commands, by group">
+        <div class="fw-cmds">
+          <div class="cg"><span class="cg-l">Variables</span><span class="cg-c"><a href="docs/commands/var.html"><code>var</code></a></span></div>
+          <div class="cg"><span class="cg-l">Flow control</span><span class="cg-c"><a href="docs/commands/if.html"><code>if</code></a><a href="docs/commands/while.html"><code>while</code></a><a href="docs/commands/for.html"><code>for</code></a><a href="docs/commands/break.html"><code>break</code></a><a href="docs/commands/continue.html"><code>continue</code></a><a href="docs/commands/func.html"><code>func</code></a><a href="docs/commands/return.html"><code>return</code></a><a href="docs/commands/parallel.html"><code>parallel</code></a></span></div>
+          <div class="cg"><span class="cg-l">LLM interaction</span><span class="cg-c"><a href="docs/commands/prompt.html"><code>prompt</code></a><a href="docs/commands/llm.html"><code>llm</code></a><a href="docs/commands/memory.html"><code>memory</code></a></span></div>
+          <div class="cg"><span class="cg-l">External systems</span><span class="cg-c"><a href="docs/commands/api.html"><code>api</code></a><a href="docs/commands/db.html"><code>db</code></a></span></div>
+          <div class="cg"><span class="cg-l">Human-in-the-loop</span><span class="cg-c"><a href="docs/commands/ask.html"><code>ask</code></a></span></div>
+          <div class="cg"><span class="cg-l">Agent output</span><span class="cg-c"><a href="docs/commands/output.html"><code>output</code></a></span></div>
+          <div class="cg"><span class="cg-l">Agent termination</span><span class="cg-c"><a href="docs/commands/end.html"><code>end</code></a><a href="docs/commands/fail.html"><code>fail</code></a></span></div>
+          <div class="cg"><span class="cg-l">Observability</span><span class="cg-c"><a href="docs/commands/progress.html"><code>progress</code></a><a href="docs/commands/trace.html"><code>trace</code></a><a href="docs/commands/log.html"><code>log</code></a></span></div>
+          <div class="cg"><span class="cg-l">Orchestration</span><span class="cg-c"><a href="docs/commands/search.html"><code>search</code></a><a href="docs/commands/invoke.html"><code>invoke</code></a></span></div>
+        </div>
+      </aside>
+      <div class="fw-text">
+        <p>A command is written as a single line when a string is all it needs, and as an object when it takes more than one field. The <a href="docs/agent-definition/syntax.html">syntax page</a> describes the rules in full.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="demo">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Live demo</span>
+        <h2>Describe an agent and read the definition it produces</h2>
+        <p>Draft with AI writes the first draft of an agent from a sentence that describes what the agent should do. The same assistant is available inside the draft editor, where it can also change an agent that already exists. Try it here with a description of your own, or with one of the examples.</p>
+      </div>
+      <div class="fw-demo">
+        <div
+          data-s2o-demo="generate"
+          data-generate-title="Live demo &middot; Draft an agent with AI assistance."
+          data-generate-label=""
+          data-generate-placeholder="Say what the agent should do, or click one of the examples below."
+          data-generate-hint=""
+          data-generate-button="Write the agent"
+          data-generate-example="An agent that looks up an order by its number, checks whether it has shipped, and drafts a status email to the customer."
+        ></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="development">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Development process</span>
+        <h2>Draft, validate, publish</h2>
+        <p>An agent goes through three stages on its way to the users who will run it.</p>
+      </div>
+      <div class="numbered">
+        <div class="step-sec">
+          <h2>Draft</h2>
+          <p>A draft is private to the developer who created it. You can write it in the <a href="docs/development/code-editor.html">editor</a>, which knows the agent language and points out mistakes as you type, or let <a href="docs/development/draft-with-ai.html">Draft with AI</a> write the first version from a sentence and then refine it by hand.</p>
+        </div>
+        <div class="step-sec">
+          <h2>Validate</h2>
+          <p>Validation checks the definition against the schema and the security rules, and confirms that everything the agent refers to exists in the account. The agent server then runs the draft on a sample question and shows the <a href="docs/development/trace-and-validation.html">trace</a>: every command that ran, what it was called with, and what it returned. An agent cannot be published until validation passes.</p>
+        </div>
+        <div class="step-sec">
+          <h2>Publish</h2>
+          <p>When an agent is <a href="docs/development/publishing.html">published</a>, it receives a version number and a description written in plain English. <a href="docs/search/index.html">Search</a> indexes that description, and users find the agent by asking for what it does, in their own words.</p>
+        </div>
+      </div>
+      <div class="fw-text fw-after-steps">
+        <p>Everything the agent did not spell out is handled by the <a href="docs/agent-execution/controlled-runtime.html">controlled runtime</a>: credentials, connections to outside systems, streaming, conversation memory, pausing for a person&rsquo;s answer, and the time and cost <a href="docs/runtime/runtime-limits.html">limits</a> that every run stays within.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-end">
+    <div class="container">
+      <div class="section-head">
+        <h2>Where to read more</h2>
+        <p>The <a href="docs/agent-definition/index.html">agent definition</a> section of the documentation explains the structure of an agent, its variables and its Python expressions in detail. The <a href="docs/commands/index.html">command reference</a> describes every command. The <a href="docs/getting-started/your-first-agent.html">getting started guide</a> walks through writing and running a first agent.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61">
+      </div>
+      <div class="footer-cols">
+        <div class="fcol">
+          <h4>Product</h4>
+          <a href="framework.html">Agent framework</a>
+          <a href="index.html#system-architecture">System architecture</a>
+          <a href="index.html#platform">Platform</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+        <div class="fcol">
+          <h4>Resources</h4>
+          <a href="gettingstarted.html">Getting started</a>
+          <a href="docs/index.html">Docs</a>
+        </div>
+        <div class="fcol">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+        <div class="fcol">
+          <h4>Legal</h4>
+          <a href="legal/terms.html">Terms of Service</a>
+          <a href="legal/privacy.html">Privacy Policy</a>
+          <a href="legal/license.html">Software License</a>
+          <a href="legal/intellectual.html">Intellectual Property</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>&copy; <span id="year">2026</span> Search2o &middot; Virginia, USA</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/site.js"></script>
+<script type="module" src="demo/demo.js"></script>
+<script>
+(function () {
+  function draw(fig) {
+    var svg = fig.querySelector(".anno-svg");
+    var box = fig.getBoundingClientRect();
+    if (!svg || !box.width || getComputedStyle(svg).display === "none") return;
+    var id = "ah" + Array.prototype.indexOf.call(document.querySelectorAll(".anno"), fig);
+    svg.setAttribute("viewBox", "0 0 " + box.width + " " + box.height);
+    var edge = fig.querySelector(".codecard").getBoundingClientRect().right - box.left + 24;
+    var paths = "";
+    fig.querySelectorAll(".anno-notes li").forEach(function (li) {
+      var line = fig.querySelector('.al[data-n="' + li.dataset.n + '"]');
+      if (!line) return;
+      var a = line.getBoundingClientRect(), b = li.getBoundingClientRect();
+      var x1 = b.left - box.left - 10, y1 = b.top - box.top + 12;
+      var x2 = a.right - box.left + 8, y2 = a.top - box.top + a.height / 2;
+      var mx = (x1 + edge) / 2;
+      paths += '<path marker-end="url(#' + id + ')" d="M' + x1 + " " + y1 + " C" + mx + " " + y1 + " " + mx + " " + y2 + " " + edge + " " + y2 + " L" + x2 + " " + y2 + '"/>';
+    });
+    svg.innerHTML = '<defs><marker id="' + id + '" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z"/></marker></defs>' + paths;
+  }
+  function drawAll() { document.querySelectorAll(".anno").forEach(draw); }
+  drawAll();
+  window.addEventListener("resize", drawAll);
+  window.addEventListener("load", drawAll);
+  if (document.fonts) document.fonts.ready.then(drawAll);
+})();
+</script>
+</body>
+</html>

@@ -69,10 +69,9 @@
 <tr><td>Progress</td><td>Progress notes sent while the run is under way.</td></tr>
 <tr><td>Agent trace</td><td>The agent author's own notes, written with the <code>trace</code> command.</td></tr>
 <tr><td>Flow</td><td>Command and function boundaries, <code>if</code> and loop conditions, <code>break</code> and <code>continue</code> when they fire, <code>end</code>, and the definition checks.</td></tr>
-<tr><td>Input</td><td>What each command was called with: the LLM request, API URL and headers, SQL, a search's query and tag, prompt text, a function's arguments, and the fields an <code>ask</code> presented.</td></tr>
-<tr><td>Output</td><td>What each command produced: LLM content and token counts, API bodies, database row counts, search results, a function's return value, what a <code>var</code> assigned, and the answers to an <code>ask</code>.</td></tr>
+<tr><td>Input</td><td>What each command was called with: the LLM request, the prompt's name, scope and text, API URL and headers, SQL, a function's arguments, and the fields an <code>ask</code> presented.</td></tr>
+<tr><td>Output</td><td>What each command produced: LLM content and token counts, API bodies, database row counts, a function's return value, what a <code>var</code> assigned, and the answers to an <code>ask</code>.</td></tr>
 <tr><td>Tool</td><td>Tool calls the LLM makes, with their arguments and results, and MCP discovery.</td></tr>
-<tr><td>Invoke</td><td>Nested agents: the inputs another agent was invoked with, and what it returned or whether it paused.</td></tr>
 <tr><td>Error</td><td>Every failure, whatever raised it. Showing only this filter gives the complete list of errors.</td></tr>
 </tbody></table></div>
 <ul>

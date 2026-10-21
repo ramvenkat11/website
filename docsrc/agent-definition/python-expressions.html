@@ -31,9 +31,8 @@
 </x-code>
 
 <h2>Where expressions can be used</h2>
-<p>Expressions can be used in most command fields. The fields of the <a href="../commands/var.html">var</a>, <a href="../commands/if.html">if</a>, <a href="../commands/output.html">output</a> and <a href="../commands/api.html">api</a> commands are typical examples.</p>
+<p>Expressions can be used in most command fields. The fields of the <a href="../commands/var.html">var</a>, <a href="../commands/if.html">if</a>, <a href="../commands/output.html">output</a> and <a href="../commands/api.html">api</a> commands are typical examples. The system and user text of a <a href="prompts.html">prompt</a> are expressions too.</p>
 <p>Expressions can also be used in a few fields of the profiles in the configuration. Examples are the URL and headers of an API profile, and the connection string of a database profile. Profiles are shared by every agent in the account, so a secret usually appears there, for example <code>"{ f'Bearer {sys.secret[\"OPENAI_API_KEY\"]}' }"</code>.</p>
-<p>Prompt profiles are an exception. The text of a prompt profile is always literal, so that end-to-end encryption works for prompt profiles. See <a href="../profiles/prompt-profiles.html">Prompt profiles</a>.</p>
 
 <h2>Two stages</h2>
 <p>An expression is checked twice and run once.</p>

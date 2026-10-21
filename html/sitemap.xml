@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://search2o.com/</loc></url>
+  <url><loc>https://search2o.com/framework.html</loc></url>
   <url><loc>https://search2o.com/demo-agents.html</loc></url>
   <url><loc>https://search2o.com/gettingstarted.html</loc></url>
   <url><loc>https://search2o.com/pricing.html</loc></url>
@@ -27,6 +28,7 @@
   <url><loc>https://search2o.com/docs/agent-definition/structure.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-definition/functions.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-definition/commands.html</loc></url>
+  <url><loc>https://search2o.com/docs/agent-definition/prompts.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-definition/variables.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-execution/index.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-execution/controlled-runtime.html</loc></url>
@@ -47,7 +49,6 @@
   <url><loc>https://search2o.com/docs/commands/func.html</loc></url>
   <url><loc>https://search2o.com/docs/commands/return.html</loc></url>
   <url><loc>https://search2o.com/docs/commands/parallel.html</loc></url>
-  <url><loc>https://search2o.com/docs/commands/prompt.html</loc></url>
   <url><loc>https://search2o.com/docs/commands/llm.html</loc></url>
   <url><loc>https://search2o.com/docs/commands/memory.html</loc></url>
   <url><loc>https://search2o.com/docs/commands/api.html</loc></url>
@@ -59,15 +60,12 @@
   <url><loc>https://search2o.com/docs/commands/progress.html</loc></url>
   <url><loc>https://search2o.com/docs/commands/trace.html</loc></url>
   <url><loc>https://search2o.com/docs/commands/log.html</loc></url>
-  <url><loc>https://search2o.com/docs/commands/search.html</loc></url>
-  <url><loc>https://search2o.com/docs/commands/invoke.html</loc></url>
   <url><loc>https://search2o.com/docs/search/index.html</loc></url>
   <url><loc>https://search2o.com/docs/search/describing-an-agent.html</loc></url>
   <url><loc>https://search2o.com/docs/search/how-matching-works.html</loc></url>
   <url><loc>https://search2o.com/docs/search/tags.html</loc></url>
   <url><loc>https://search2o.com/docs/search/search-settings.html</loc></url>
   <url><loc>https://search2o.com/docs/search/search-quality.html</loc></url>
-  <url><loc>https://search2o.com/docs/search/orchestrator.html</loc></url>
   <url><loc>https://search2o.com/docs/development/index.html</loc></url>
   <url><loc>https://search2o.com/docs/development/drafts.html</loc></url>
   <url><loc>https://search2o.com/docs/development/code-editor.html</loc></url>
@@ -84,7 +82,6 @@
   <url><loc>https://search2o.com/docs/profiles/index.html</loc></url>
   <url><loc>https://search2o.com/docs/profiles/overview.html</loc></url>
   <url><loc>https://search2o.com/docs/profiles/llm-profiles.html</loc></url>
-  <url><loc>https://search2o.com/docs/profiles/prompt-profiles.html</loc></url>
   <url><loc>https://search2o.com/docs/profiles/api-profiles.html</loc></url>
   <url><loc>https://search2o.com/docs/profiles/db-profiles.html</loc></url>
   <url><loc>https://search2o.com/docs/profiles/mcp-servers.html</loc></url>

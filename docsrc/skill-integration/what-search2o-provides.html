@@ -79,10 +79,10 @@
 
 <h2>What it costs</h2>
 <ul>
-  <li><strong>Someone writes the agents.</strong> A developer learns a JSON definition with 23 commands. <a href="../development/draft-with-ai.html">Draft with AI</a> writes a draft from a description and leaves queries and API paths for the developer to fill in. Each agent is then validated and published.</li>
+  <li><strong>Someone writes the agents.</strong> A developer learns a JSON definition with 20 commands. <a href="../development/draft-with-ai.html">Draft with AI</a> writes a draft from a description and leaves queries and API paths for the developer to fill in. Each agent is then validated and published.</li>
   <li><strong>You run the agent server.</strong> It installs with pip and is stateless. It is still a service your company operates.</li>
   <li><strong>Requests pass through Search2o Cloud.</strong> The request text is sent in plain form to be matched, then stored encrypted. So is the text of a long-term memory an agent stores. API responses and database rows are not sent unless an agent writes them into its output or a conversation variable.</li>
-  <li><strong>Definitions and state are stored in Search2o Cloud.</strong> Agent definitions and profiles are stored in plain form, except prompt profiles, and without secret values. Conversation state is stored encrypted. By default Search2o manages the encryption key; with end-to-end encryption the key stays in your organization.</li>
+  <li><strong>Definitions and state are stored in Search2o Cloud.</strong> Agent definitions, their prompts and profiles are stored in plain form, without secret values. Conversation state is stored encrypted. By default Search2o manages the encryption key; with end-to-end encryption the key stays in your organization.</li>
   <li><strong>The skill is still a skill.</strong> Claude decides from its description whether a request is for a company agent, and picks among the matches. The description needs fitting to your company.</li>
   <li><strong>Agent output is still input.</strong> What an agent returns enters Claude's context, including text the agent fetched from elsewhere. The skill tells Claude to treat it as data, not as instructions.</li>
 </ul>

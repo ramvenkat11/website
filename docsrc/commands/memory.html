@@ -15,16 +15,15 @@
   "query": "{ sys.query }",
   "limit": 5
 },
-"prompt": {
-  "user": "{ f'What I remember about this user: {[m['text'] for m in result]}. Their question: {sys.query}' }"
-},
-"llm": { "profile": "gpt5_mini" },
+"var": { "memories": "{ [m['text'] for m in result] }" },
+"llm": { "profile": "gpt5_mini", "prompt": "answer" },
 "memory.store": {
   "store": {
     "preferred_airline": "{ f'The user prefers to fly {airline}' }"
   }
 }
 </x-code>
+<p>The agent's prompt named <code>answer</code> reads the variable in its user text: <code>{ f'What I remember about this user: {memories}. Their question: {sys.query}' }</code>.</p>
 
 <h2>Rules</h2>
 <ul>

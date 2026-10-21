@@ -1,0 +1,69 @@
+<p class="lead">A prompt is what an <code>llm</code> command sends to a model: a system text, a user text, and the history of the exchange so far. An agent's prompts are set in the GUI, like its title and run limits, and are not written in the agent definition. Each prompt has a name, and an <code>llm</code> command names the prompt it uses in its <code>prompt</code> field.</p>
+
+<p>For example, an agent that answers questions about orders could have this prompt:</p>
+<div class="tablewrap"><table class="fields">
+<tbody>
+<tr><td>Name</td><td><code>orders</code></td></tr>
+<tr><td>System</td><td><code>You answer questions about orders. Answer in under 100 words.</code></td></tr>
+<tr><td>User</td><td><code>{ sys.query }</code></td></tr>
+<tr><td>Scope</td><td><code>conversation</code></td></tr>
+<tr><td>Doc</td><td>Answers questions about orders, with the getOrder tool.</td></tr>
+</tbody></table></div>
+
+<p>The agent's <code>llm</code> command names it:</p>
+<x-code lang="jsonc">
+"llm": { "profile": "gpt5_mini", "prompt": "orders", "streamOutput": true }
+</x-code>
+
+<h2>Fields</h2>
+<!--fields:model:AgentPromptModel-->
+<p>A prompt needs a system text, a user text, or both. A prompt name is letters, digits and underscores.</p>
+
+<h2>Where prompts are edited</h2>
+<p>In the GUI, an agent's prompts are listed under <strong>Prompts</strong>, on the draft page and on the agent page. <strong>Add prompt</strong> adds one. The prompts of a draft are validated with the draft and published with it. The GUI shows the limits on how many prompts an agent may have and how long each text may be.</p>
+<p>A prompt of a published agent can be changed on the agent page without publishing a new version. The agent's next run uses the new text. The change is refused when the new text does not compile. When the new text uses a name that the old text did not use, the GUI lists those names before saving, because the agent may never set them. Make a change like that in a draft, where validation runs the agent with it, or save it without the dependency check.</p>
+<p>Prompts are not versioned. A past version of an agent is shown without prompts. A prompt that an <code>llm</code> command uses cannot be deleted: remove it from the agent in a draft, publish, and then delete the prompt. Every change to a published agent's prompts is recorded in the <a href="../system-management/audit-log.html">audit log</a>.</p>
+<p>When a prompt of the published agent changed after a draft was made from the agent, publishing the draft shows which prompts differ. Publishing again replaces them with the draft's prompts. The same applies to the agent's title and run limits. See <a href="../development/publishing.html">Publishing</a>.</p>
+
+<h2>How a prompt is evaluated</h2>
+<p>The system and user text are written like any other string in an agent: plain text, or a <a href="python-expressions.html">Python expression</a> in braces. Both are evaluated each time an <code>llm</code> command that names the prompt runs. They are evaluated in the function where that command runs, so they can read the function's arguments and local variables, as well as <code>agent.</code>, <code>conv.</code> and <code>sys.</code> variables.</p>
+<p>A prompt cannot read <code>result</code>. To give the model what a command fetched, set a variable from <code>result</code> before the <code>llm</code> command:</p>
+<x-code lang="jsonc">
+"api": { "profile": "orders", "path": "{ f'/orders/{orderId}' }" },
+"var": { "order": "{ result }" },
+"llm": { "profile": "gpt5_mini", "prompt": "summary" }
+</x-code>
+<p>The prompt named <code>summary</code> then reads the variable in its user text:</p>
+<div class="tablewrap"><table class="fields">
+<tbody>
+<tr><td>Name</td><td><code>summary</code></td></tr>
+<tr><td>System</td><td><code>You write short, friendly summaries of orders for customers.</code></td></tr>
+<tr><td>User</td><td><code>{ f'Summarize this order: {order}' }</code></td></tr>
+<tr><td>Scope</td><td><code>local</code></td></tr>
+</tbody></table></div>
+<p>Each time the <code>llm</code> command runs, the evaluated system text replaces the prompt's system text, and a non-empty user text is added to the prompt's history. The model's answer, and any tool calls and tool results, are added to the history too. The next <code>llm</code> call with the same prompt therefore carries the whole exchange. The trace shows each call's prompt name, scope, system text and user text as an input.</p>
+
+<h2>Scope</h2>
+<p>The scope decides how long a prompt's history is kept and which agents share it.</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Scope</th><th>History</th></tr></thead>
+<tbody>
+<tr><td><code>conversation</code></td><td>The default. One history for the whole conversation, shared with every other agent in the conversation that has a prompt of the same name and scope.</td></tr>
+<tr><td><code>agent</code></td><td>This agent's own history in the conversation. Other agents in the conversation do not see it.</td></tr>
+<tr><td><code>local</code></td><td>A history for one run only. It is kept while the run pauses on an <code>ask</code>, and it is empty when the next run starts.</td></tr>
+</tbody></table></div>
+<p>An agent may have several prompts, and each prompt keeps its own history. A second prompt suits a separate exchange beside the main one, such as a step that classifies the request. Give a prompt like that the <code>local</code> scope, so that its history does not grow from one run to the next.</p>
+
+<h2>Sharing a history between agents</h2>
+<p>A conversation can move from one agent to another, as it does when a follow-up search matches a different agent. The second agent continues the first agent's exchange only when both agents have a prompt with the same name and the <code>conversation</code> scope. A prompt with another name starts with an empty history. The history is kept in a form that does not depend on the model, so the second agent may use a different LLM.</p>
+<p>Agents that are meant to work together in one conversation should therefore agree on a prompt name. When the second agent's prompt has a system text, that text replaces the first agent's at the second agent's first <code>llm</code> call, so each agent gives the model its own instructions.</p>
+
+<h2>Images</h2>
+<p>The user text may also be an expression that produces a content part, or a list of content parts. An image reaches a vision model as a content part. This user text sends a photo from the agent's inputs with a question:</p>
+<x-code lang="python">
+{ [ {'contentType': 'image', 'contentBase64': sys.inputs['photo'], 'mimeType': 'image/png'},
+    {'contentType': 'text', 'text': 'What is in this picture?'} ] }
+</x-code>
+
+<h2>Documentation</h2>
+<p>The doc field is plain text that says what the prompt is for. <a href="../development/draft-with-ai.html">Draft with AI</a> sees each prompt's name and doc, and never its text, so a useful doc helps the AI choose the right prompt for each <code>llm</code> command.</p>

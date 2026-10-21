@@ -7,7 +7,8 @@ tree, on-page table of contents, prev/next, footer) and replaces the placeholder
 tables derived from the pydantic models, so the reference cannot drift from the code:
 
     <!--fields:command:api-->        the fields of one command (CommandBlock's alias, e.g. "if")
-    <!--fields:model:LlmModel-->     the fields of a model in models/systemconfig.py or agentmodels.py
+    <!--fields:model:LlmModel-->     the fields of a model in models/systemconfig.py, agentmodels.py
+                                     or promptmodels.py
     <!--commands:groups-->           every command, grouped as the editor groups them
     <!--enum:AgentExecResult-->      the members of a StrEnum with the comment on each member
 
@@ -50,7 +51,7 @@ import figures  # noqa: E402
 from pydantic import BaseModel, RootModel  # noqa: E402
 from pydantic_core import PydanticUndefined  # noqa: E402
 
-from models import agentmodels, systemconfig, schemaobjects, reportmodels  # noqa: E402
+from models import agentmodels, systemconfig, schemaobjects, reportmodels, promptmodels  # noqa: E402
 from models.agentschema import AgentSchema  # noqa: E402
 from models.configtypes import AgentName, AgentTag, ProfileName, SafeName, TagFilter  # noqa: E402
 
@@ -251,7 +252,7 @@ def enum_table(name: str) -> str:
 
 
 def model_by_name(name: str) -> type[BaseModel]:
-    for mod in (systemconfig, agentmodels, schemaobjects, reportmodels):
+    for mod in (systemconfig, agentmodels, schemaobjects, reportmodels, promptmodels):
         m = getattr(mod, name, None)
         if isinstance(m, type) and issubclass(m, BaseModel):
             return m
@@ -439,6 +440,7 @@ def header(depth) -> str:
   <div class="container header-row">
     <a class="brand" href="{r}index.html" aria-label="Search2o home"><img class="logo-light" src="{r}images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="{r}images/logo-dark.png" alt="Search2o" width="336" height="61"></a>
     <nav class="site-nav" aria-label="Main">
+      <a class="navlink" href="{r}framework.html">Framework</a>
       <a class="navlink" href="{rel(depth)}index.html" aria-current="page">Docs</a>
       <a class="navlink" href="{r}pricing.html">Pricing</a>
       <a class="navlink" href="{r}about.html">About</a>
@@ -476,6 +478,10 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
     nav += "</nav>"
     title = f"{ptitle} — Search2o docs" if pslug or sslug else "Search2o documentation"
     path = docs_path(sslug, pslug)
+    has_demo = DEMO_MARKER in body
+    demo_css = f'<link rel="stylesheet" href="{r}demo/demo.css">\n' if has_demo else ""
+    demo_config = f'<script src="{r}js/config.js"></script>\n' if has_demo else ""
+    demo_js = f'<script type="module" src="{r}demo/demo.js"></script>\n' if has_demo else ""
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -499,7 +505,7 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
 <link rel="preload" as="font" type="font/woff2" href="{r}fonts/jetbrains-mono-latin.woff2" crossorigin>
 <link rel="stylesheet" href="{r}styles/styles.css">
 <link rel="stylesheet" href="{rel(depth)}docs.css">
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYRX3801TG"></script>
+{demo_css}<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYRX3801TG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments);}}gtag('js',new Date());gtag('config','G-DYRX3801TG');</script>
 </head>
 <body class="docs">
@@ -518,15 +524,16 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
   {page_toc(toc)}
 </div>
 {footer(depth)}
-<script src="{r}js/site.js"></script>
+{demo_config}<script src="{r}js/site.js"></script>
 <script src="{rel(depth)}docs.js"></script>
-</body>
+{demo_js}</body>
 </html>
 """
 
 
 SITE = "https://search2o.com"
-SITE_PAGES = ("", "demo-agents.html", "gettingstarted.html", "pricing.html", "about.html",
+DEMO_MARKER = "data-s2o-demo="
+SITE_PAGES = ("", "framework.html", "demo-agents.html", "gettingstarted.html", "pricing.html", "about.html",
               "legal/terms.html", "legal/privacy.html", "legal/license.html", "legal/intellectual.html")   # the sitemap
 
 

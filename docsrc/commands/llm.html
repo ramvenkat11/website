@@ -1,4 +1,4 @@
-<p class="lead">Sends the current prompt to a large language model and returns the model's answer. With <code>functions</code> or <code>mcp</code> set, the model can call tools, and the command runs the tool loop for you.</p>
+<p class="lead">Sends one of the agent's <a href="../agent-definition/prompts.html">prompts</a> to a large language model and returns the model's answer. With <code>functions</code> or <code>mcp</code> set, the model can call tools, and the command runs the tool loop for you.</p>
 
 <h2>Fields</h2>
 <!--fields:command:llm-->
@@ -27,12 +27,9 @@
   },
   "main": {
     "commands": {
-      "prompt": {
-        "system": "You answer questions about orders. The table orders has columns id, status, total and customer_email.",
-        "user": "{ sys.query }"
-      },
       "llm": {
         "profile": "gpt5_mini",
+        "prompt": "orders",
         "functions": ["runQuery"],
         "streamOutput": true
       }
@@ -41,8 +38,11 @@
 }
 </x-code>
 
+<p>The agent has a prompt named <code>orders</code>, set in the GUI. Its system text says <em>You answer questions about orders. The table orders has columns id, status, total and customer_email.</em> Its user text is <code>{ sys.query }</code>.</p>
+
 <h2>Rules</h2>
 <ul>
+  <li><code>prompt</code> is the literal name of one of the agent's <a href="../agent-definition/prompts.html">prompts</a>, which are set in the GUI. The prompt's system and user text are evaluated in the function where the command runs, and the prompt's history is kept under its name.</li>
   <li><code>profile</code> is the literal name of an <a href="../profiles/llm-profiles.html">LLM profile</a>. To pick a profile at runtime, branch with <code>if</code>.</li>
   <li>The token ceiling, retries, headers and any extra request parameters come from the profile.</li>
   <li>An agent's run is stopped once the run's LLM spend passes the <em>max LLM cost per run</em> in <a href="../runtime/runtime-limits.html">Runtime limits</a>.</li>

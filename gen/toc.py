@@ -24,6 +24,7 @@ TOC = [
         ("structure", "Agent structure"),
         ("functions", "Functions"),
         ("commands", "Commands"),
+        ("prompts", "Prompts"),
         ("variables", "Variables and namespaces"),
     ]),
     ("agent-execution", "Agent execution", [
@@ -47,7 +48,6 @@ TOC = [
         ("func", "func", "Flow control"),
         ("return", "return", "Flow control"),
         ("parallel", "parallel", "Flow control"),
-        ("prompt", "prompt", "LLM interaction"),
         ("llm", "llm", "LLM interaction"),
         ("memory", "memory", "LLM interaction"),
         ("api", "api", "External systems"),
@@ -59,8 +59,6 @@ TOC = [
         ("progress", "progress", "Observability"),
         ("trace", "trace", "Observability"),
         ("log", "log", "Observability"),
-        ("search", "search", "Orchestration"),
-        ("invoke", "invoke", "Orchestration"),
     ]),
     ("search", "Search", [
         ("describing-an-agent", "Describing an agent"),
@@ -68,7 +66,6 @@ TOC = [
         ("tags", "Tags"),
         ("search-settings", "Search behavior"),
         ("search-quality", "Search quality"),
-        ("orchestrator", "Orchestrator"),
     ]),
     ("development", "Development process", [
         ("drafts", "Drafts"),
@@ -88,7 +85,6 @@ TOC = [
     ("profiles", "Profiles", [
         ("overview", "How profiles work"),
         ("llm-profiles", "LLM profiles"),
-        ("prompt-profiles", "Prompt profiles"),
         ("api-profiles", "API profiles"),
         ("db-profiles", "Database profiles"),
         ("mcp-servers", "MCP servers"),

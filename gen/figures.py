@@ -405,7 +405,7 @@ def _ask_pause():
 @figure("tool-loop")
 def _tool_loop():
     f = Fig("tool-loop", 260, "The llm command's tool loop")
-    f.box(20, 40, 150, 56, "prompt", "system + history + query", kind="soft")
+    f.box(20, 40, 150, 56, "prompt", "system + history + user", kind="soft")
     f.box(240, 40, 180, 56, "LLM", kind="accent")
     f.arrow(170, 68, 240, 68)
     f.box(500, 40, 200, 56, "answer", "no tool call · the result", kind="ok")

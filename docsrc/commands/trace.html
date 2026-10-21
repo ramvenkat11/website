@@ -5,8 +5,8 @@
 
 <h2>Example</h2>
 <x-code lang="jsonc">
-"search": { "query": "{ sys.query }" },
-"trace": "{ f'Found {len(result)} agents: {[r['agentName'] for r in result]} ' }"
+"db": { "profile": "orders", "sql": "SELECT id FROM orders WHERE status = 'open'" },
+"trace": "{ f'Found {len(result)} open orders' }"
 </x-code>
 
 <h2>Rules</h2>

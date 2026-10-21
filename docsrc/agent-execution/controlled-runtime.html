@@ -12,7 +12,7 @@
 <p>The bounds belong to the agent, not to the account. An agent that looks up one record can be held to a few seconds and a few cents, while an agent that researches a question is given more of both.</p>
 
 <h3>What a bound covers</h3>
-<p>A bound covers one run: from the request to the answer, or to the point where the agent pauses on an <a href="../commands/ask.html"><code>ask</code></a>. The run that continues after the answer starts with the full bounds again. An agent that the agent <a href="../commands/invoke.html">invokes</a> runs inside the same run, so its time and its LLM spend count toward the bounds of the agent that received the request.</p>
+<p>A bound covers one run: from the request to the answer, or to the point where the agent pauses on an <a href="../commands/ask.html"><code>ask</code></a>. The run that continues after the answer starts with the full bounds again.</p>
 
 <h3>Setting the bounds</h3>
 <p>A new draft starts with default bounds, and a draft made from a published agent starts with that agent's bounds. The bounds are saved with the draft, the validation run is held to them, and publishing carries them to the agent. A developer can also change the bounds of a published agent directly. That change applies from the next run, does not make a new version, and is recorded in the <a href="../system-management/audit-log.html">audit log</a>.</p>

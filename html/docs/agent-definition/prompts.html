@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Prompts — Search2o docs</title>
+<meta name="description" content="A prompt is what an llm command sends to a model: a system text, a user text, and the history of the exchange so far. An agent&#x27;s prompts are set in the GUI, …">
+<link rel="canonical" href="https://search2o.com/docs/agent-definition/prompts.html">
+<meta property="og:title" content="Prompts — Search2o docs">
+<meta property="og:description" content="A prompt is what an llm command sends to a model: a system text, a user text, and the history of the exchange so far. An agent&#x27;s prompts are set in the GUI, …">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://search2o.com/docs/agent-definition/prompts.html">
+<meta property="og:image" content="https://search2o.com/images/og5.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Search2o: a platform to build, run, and use AI microagents through search">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="../../fonts/inter-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="../../fonts/jetbrains-mono-latin.woff2" crossorigin>
+<link rel="stylesheet" href="../../styles/styles.css">
+<link rel="stylesheet" href="../docs.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYRX3801TG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYRX3801TG');</script>
+</head>
+<body class="docs">
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="../../index.html" aria-label="Search2o home"><img class="logo-light" src="../../images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="../../images/logo-dark.png" alt="Search2o" width="336" height="61"></a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="navlink" href="../../framework.html">Framework</a>
+      <a class="navlink" href="../index.html" aria-current="page">Docs</a>
+      <a class="navlink" href="../../pricing.html">Pricing</a>
+      <a class="navlink" href="../../about.html">About</a>
+      <a class="btn btn-blue nav-cta" href="../../gettingstarted.html">Get started</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Switch theme">
+      <svg class="sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M19.4 4.6l-1.8 1.8M6.4 17.6l-1.8 1.8"/></svg>
+      <svg class="moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+<div class="container docs-layout">
+  <button class="sb-toggle" type="button" aria-expanded="false" aria-controls="sidebar">Contents</button>
+  <div id="sidebar" class="sb-wrap"><nav class=sidebar aria-label='Documentation'><a class='sb-home' href='../index.html'>Documentation</a><details><summary><a href='../introduction/index.html'>Introduction</a></summary><ul><li><a href='../introduction/what-is-search2o.html'>What is Search2o</a></li><li><a href='../introduction/microagents.html'>Microagents</a></li><li><a href='../introduction/parts-of-the-system.html'>Parts of the system</a></li><li><a href='../introduction/how-it-fits-together.html'>How it fits together</a></li></ul></details><details><summary><a href='../getting-started/index.html'>Getting started</a></summary><ul><li><a href='../getting-started/registering-and-downloading.html'>Creating an account and downloading</a></li><li><a href='../getting-started/license-key.html'>License key</a></li><li><a href='../getting-started/running-the-server.html'>Running the server</a></li><li><a href='../getting-started/the-gui.html'>Opening the GUI</a></li><li><a href='../getting-started/your-first-agent.html'>Your first agent</a></li></ul></details><details open><summary><a href='../agent-definition/index.html'>Agent definition</a></summary><ul><li><a href='../agent-definition/syntax.html'>Syntax</a></li><li><a href='../agent-definition/python-expressions.html'>Python expressions</a></li><li><a href='../agent-definition/structure.html'>Agent structure</a></li><li><a href='../agent-definition/functions.html'>Functions</a></li><li><a href='../agent-definition/commands.html'>Commands</a></li><li><a href='../agent-definition/prompts.html' aria-current=page>Prompts</a></li><li><a href='../agent-definition/variables.html'>Variables and namespaces</a></li></ul></details><details><summary><a href='../agent-execution/index.html'>Agent execution</a></summary><ul><li><a href='../agent-execution/controlled-runtime.html'>Controlled runtime</a></li><li><a href='../agent-execution/output.html'>Agent output</a></li><li><a href='../agent-execution/order-of-execution.html'>Order of execution</a></li><li><a href='../agent-execution/conversation-state.html'>Conversation state</a></li></ul></details><details><summary><a href='../llm/index.html'>LLM</a></summary><ul><li><a href='../llm/vendors.html'>LLM vendors</a></li><li><a href='../llm/llm-adapters.html'>Connecting to other LLMs</a></li><li><a href='../llm/code-from-llm.html'>Executing code from an LLM</a></li></ul></details><details><summary><a href='../commands/index.html'>Command reference</a></summary><ul><li class=sb-group>Variables</li><li><a href='../commands/var.html'>var</a></li><li class=sb-group>Flow control</li><li><a href='../commands/if.html'>if</a></li><li><a href='../commands/while.html'>while</a></li><li><a href='../commands/for.html'>for</a></li><li><a href='../commands/break.html'>break</a></li><li><a href='../commands/continue.html'>continue</a></li><li><a href='../commands/func.html'>func</a></li><li><a href='../commands/return.html'>return</a></li><li><a href='../commands/parallel.html'>parallel</a></li><li class=sb-group>LLM interaction</li><li><a href='../commands/llm.html'>llm</a></li><li><a href='../commands/memory.html'>memory</a></li><li class=sb-group>External systems</li><li><a href='../commands/api.html'>api</a></li><li><a href='../commands/db.html'>db</a></li><li class=sb-group>Human-in-the-loop</li><li><a href='../commands/ask.html'>ask</a></li><li class=sb-group>Agent output</li><li><a href='../commands/output.html'>output</a></li><li class=sb-group>Agent termination</li><li><a href='../commands/end.html'>end</a></li><li><a href='../commands/fail.html'>fail</a></li><li class=sb-group>Observability</li><li><a href='../commands/progress.html'>progress</a></li><li><a href='../commands/trace.html'>trace</a></li><li><a href='../commands/log.html'>log</a></li></ul></details><details><summary><a href='../search/index.html'>Search</a></summary><ul><li><a href='../search/describing-an-agent.html'>Describing an agent</a></li><li><a href='../search/how-matching-works.html'>How matching behaves</a></li><li><a href='../search/tags.html'>Tags</a></li><li><a href='../search/search-settings.html'>Search behavior</a></li><li><a href='../search/search-quality.html'>Search quality</a></li></ul></details><details><summary><a href='../development/index.html'>Development process</a></summary><ul><li><a href='../development/drafts.html'>Drafts</a></li><li><a href='../development/code-editor.html'>Agent editor</a></li><li><a href='../development/draft-with-ai.html'>Draft with AI</a></li><li><a href='../development/trace-and-validation.html'>Trace and validation</a></li><li><a href='../development/publishing.html'>Publishing</a></li></ul></details><details><summary><a href='../runtime/index.html'>Agent runtime</a></summary><ul><li><a href='../runtime/overview.html'>Overview</a></li><li><a href='../runtime/allowlist.html'>Allowlist</a></li><li><a href='../runtime/system-variables.html'>System variables</a></li><li><a href='../runtime/compile-rules.html'>Compile rules</a></li><li><a href='../runtime/runtime-limits.html'>Runtime limits</a></li><li><a href='../runtime/connection-pools.html'>Connection pools</a></li></ul></details><details><summary><a href='../profiles/index.html'>Profiles</a></summary><ul><li><a href='../profiles/overview.html'>How profiles work</a></li><li><a href='../profiles/llm-profiles.html'>LLM profiles</a></li><li><a href='../profiles/api-profiles.html'>API profiles</a></li><li><a href='../profiles/db-profiles.html'>Database profiles</a></li><li><a href='../profiles/mcp-servers.html'>MCP servers</a></li></ul></details><details><summary><a href='../hooks/index.html'>Hooks</a></summary><ul><li><a href='../hooks/overview.html'>How hooks work</a></li><li><a href='../hooks/lifecycle.html'>Server and agent runs</a></li><li><a href='../hooks/conversation-state.html'>Conversation state</a></li><li><a href='../hooks/secrets-and-encryption.html'>Secrets and encryption</a></li><li><a href='../hooks/llm-and-api-calls.html'>LLM and API calls</a></li><li><a href='../hooks/adapters-and-validators.html'>Adapters and validators</a></li></ul></details><details><summary><a href='../reports/index.html'>Reports</a></summary><ul><li><a href='../reports/performance.html'>Agent performance</a></li><li><a href='../reports/errors.html'>Agent errors</a></li><li><a href='../reports/cost.html'>LLM cost</a></li><li><a href='../reports/usage.html'>User usage</a></li></ul></details><details><summary><a href='../system-management/index.html'>System management</a></summary><ul><li><a href='../system-management/users-and-roles.html'>Users and roles</a></li><li><a href='../system-management/service-accounts.html'>Service accounts</a></li><li><a href='../system-management/agent-servers.html'>Agent servers</a></li><li><a href='../system-management/agent-server-sizing.html'>Agent server sizing</a></li><li><a href='../system-management/authentication.html'>Authentication</a></li><li><a href='../system-management/single-sign-on.html'>Single sign-on</a></li><li><a href='../system-management/audit-log.html'>Audit log</a></li></ul></details><details><summary><a href='../security/index.html'>Security and privacy</a></summary><ul><li><a href='../security/license-rotation.html'>License key rotation</a></li><li><a href='../security/secret-vault.html'>Secret vault</a></li><li><a href='../security/encryption.html'>Encryption</a></li><li><a href='../security/data-privacy.html'>Data privacy</a></li><li><a href='../security/multiple-environments.html'>Running multiple environments</a></li></ul></details><details><summary><a href='../gui/index.html'>GUI</a></summary><ul><li><a href='../gui/how-the-gui-runs.html'>How the GUI runs</a></li><li><a href='../gui/search.html'>Search and conversations</a></li><li><a href='../gui/agents.html'>Agents</a></li><li><a href='../gui/profiles.html'>Profiles</a></li><li><a href='../gui/guardrails.html'>Guardrails</a></li><li><a href='../gui/operations.html'>Operations</a></li><li><a href='../gui/reports.html'>Reports</a></li><li><a href='../gui/account.html'>Admin and billing</a></li><li><a href='../gui/personal.html'>Profile and docs</a></li></ul></details><details><summary><a href='../rest-api/index.html'>REST API</a></summary><ul><li><a href='../rest-api/overview.html'>Overview</a></li><li><a href='../rest-api/authentication.html'>Authentication</a></li><li><a href='../rest-api/running-agents.html'>Running agents</a></li><li><a href='../rest-api/streaming.html'>Streaming</a></li><li><a href='../rest-api/search.html'>Search</a></li><li><a href='../rest-api/conversations.html'>Conversations</a></li><li><a href='../rest-api/workflows.html'>Workflows</a></li><li><a href='../rest-api/automating-with-an-llm.html'>Automating tasks with an LLM</a></li><li><a href='../rest-api/clients.html'>Creating your own client</a></li></ul></details><details><summary><a href='../chat-integrations/index.html'>Chat integrations</a></summary><ul><li><a href='../chat-integrations/overview.html'>How a chat integration works</a></li><li><a href='../chat-integrations/connecting-a-person.html'>Connecting a person</a></li><li><a href='../chat-integrations/integration-tokens.html'>Integration tokens</a></li><li><a href='../chat-integrations/finding-an-agent.html'>Finding an agent</a></li><li><a href='../chat-integrations/running-an-agent.html'>Running an agent</a></li><li><a href='../chat-integrations/showing-the-answer.html'>Showing the answer</a></li><li><a href='../chat-integrations/chat-applications.html'>Slack, Teams and Google Chat</a></li><li><a href='../chat-integrations/ai-prompts.html'>Building a bot with an AI assistant</a></li></ul></details><details><summary><a href='../skill-integration/index.html'>Skill integration</a></summary><ul><li><a href='../skill-integration/overview.html'>Skills + Search2o</a></li><li><a href='../skill-integration/what-search2o-provides.html'>What Search2o adds</a></li><li><a href='../skill-integration/finding-and-running-an-agent.html'>What the skill does</a></li><li><a href='../skill-integration/installing-the-skill.html'>Installing the skill</a></li></ul></details><details><summary><a href='../comparisons/index.html'>Comparisons</a></summary><ul><li><a href='../comparisons/langchain.html'>Search2o and LangChain</a></li></ul></details><details><summary><a href='../support-licensing/index.html'>Support and licensing</a></summary><ul><li><a href='../support-licensing/asking-the-docs.html'>Asking the docs</a></li><li><a href='../support-licensing/support.html'>Support</a></li><li><a href='../support-licensing/license.html'>License</a></li><li><a href='../support-licensing/billing.html'>Billing</a></li></ul></details></nav></div>
+  <main class="docs-main">
+    <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../agent-definition/index.html'>Agent definition</a></div>
+    <article class="docs-article">
+      <h1>Prompts</h1>
+      <p class="lead">A prompt is what an <code>llm</code> command sends to a model: a system text, a user text, and the history of the exchange so far. An agent's prompts are set in the GUI, like its title and run limits, and are not written in the agent definition. Each prompt has a name, and an <code>llm</code> command names the prompt it uses in its <code>prompt</code> field.</p>
+
+<p>For example, an agent that answers questions about orders could have this prompt:</p>
+<div class="tablewrap"><table class="fields">
+<tbody>
+<tr><td>Name</td><td><code>orders</code></td></tr>
+<tr><td>System</td><td><code>You answer questions about orders. Answer in under 100 words.</code></td></tr>
+<tr><td>User</td><td><code>{ sys.query }</code></td></tr>
+<tr><td>Scope</td><td><code>conversation</code></td></tr>
+<tr><td>Doc</td><td>Answers questions about orders, with the getOrder tool.</td></tr>
+</tbody></table></div>
+
+<p>The agent's <code>llm</code> command names it:</p>
+<figure class=code data-lang=jsonc><pre><code><span class=key>&quot;llm&quot;</span>: { <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;gpt5_mini&quot;</span>, <span class=key>&quot;prompt&quot;</span>: <span class=str>&quot;orders&quot;</span>, <span class=key>&quot;streamOutput&quot;</span>: <span class=kw>true</span> }</code></pre></figure>
+
+<h2 id="fields">Fields</h2>
+<div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>system</code></td><td class=ty>dynamic string</td><td class=dflt></td><td>The system prompt.</td></tr><tr><td><code>user</code></td><td class=ty>dynamic string</td><td class=dflt></td><td>The user prompt. Evaluated at each LLM call that uses this prompt.</td></tr><tr><td><code>scope</code></td><td class=ty>&quot;conversation&quot; | &quot;agent&quot; | &quot;local&quot;</td><td class=dflt>&quot;conversation&quot;</td><td>How long the prompt&#x27;s history is kept.</td></tr><tr><td><code>doc</code></td><td class=ty>string</td><td class=dflt></td><td>What the prompt is for. Shown to draft help in place of the prompt&#x27;s text.</td></tr></tbody></table></div>
+<p>A prompt needs a system text, a user text, or both. A prompt name is letters, digits and underscores.</p>
+
+<h2 id="where-prompts-are-edited">Where prompts are edited</h2>
+<p>In the GUI, an agent's prompts are listed under <strong>Prompts</strong>, on the draft page and on the agent page. <strong>Add prompt</strong> adds one. The prompts of a draft are validated with the draft and published with it. The GUI shows the limits on how many prompts an agent may have and how long each text may be.</p>
+<p>A prompt of a published agent can be changed on the agent page without publishing a new version. The agent's next run uses the new text. The change is refused when the new text does not compile. When the new text uses a name that the old text did not use, the GUI lists those names before saving, because the agent may never set them. Make a change like that in a draft, where validation runs the agent with it, or save it without the dependency check.</p>
+<p>Prompts are not versioned. A past version of an agent is shown without prompts. A prompt that an <code>llm</code> command uses cannot be deleted: remove it from the agent in a draft, publish, and then delete the prompt. Every change to a published agent's prompts is recorded in the <a href="../system-management/audit-log.html">audit log</a>.</p>
+<p>When a prompt of the published agent changed after a draft was made from the agent, publishing the draft shows which prompts differ. Publishing again replaces them with the draft's prompts. The same applies to the agent's title and run limits. See <a href="../development/publishing.html">Publishing</a>.</p>
+
+<h2 id="how-a-prompt-is-evaluated">How a prompt is evaluated</h2>
+<p>The system and user text are written like any other string in an agent: plain text, or a <a href="python-expressions.html">Python expression</a> in braces. Both are evaluated each time an <code>llm</code> command that names the prompt runs. They are evaluated in the function where that command runs, so they can read the function's arguments and local variables, as well as <code>agent.</code>, <code>conv.</code> and <code>sys.</code> variables.</p>
+<p>A prompt cannot read <code>result</code>. To give the model what a command fetched, set a variable from <code>result</code> before the <code>llm</code> command:</p>
+<figure class=code data-lang=jsonc><pre><code><span class=key>&quot;api&quot;</span>: { <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;orders&quot;</span>, <span class=key>&quot;path&quot;</span>: <span class=str>&quot;{ f&#x27;/orders/{orderId}&#x27; }&quot;</span> },
+<span class=key>&quot;var&quot;</span>: { <span class=key>&quot;order&quot;</span>: <span class=str>&quot;{ result }&quot;</span> },
+<span class=key>&quot;llm&quot;</span>: { <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;gpt5_mini&quot;</span>, <span class=key>&quot;prompt&quot;</span>: <span class=str>&quot;summary&quot;</span> }</code></pre></figure>
+<p>The prompt named <code>summary</code> then reads the variable in its user text:</p>
+<div class="tablewrap"><table class="fields">
+<tbody>
+<tr><td>Name</td><td><code>summary</code></td></tr>
+<tr><td>System</td><td><code>You write short, friendly summaries of orders for customers.</code></td></tr>
+<tr><td>User</td><td><code>{ f'Summarize this order: {order}' }</code></td></tr>
+<tr><td>Scope</td><td><code>local</code></td></tr>
+</tbody></table></div>
+<p>Each time the <code>llm</code> command runs, the evaluated system text replaces the prompt's system text, and a non-empty user text is added to the prompt's history. The model's answer, and any tool calls and tool results, are added to the history too. The next <code>llm</code> call with the same prompt therefore carries the whole exchange. The trace shows each call's prompt name, scope, system text and user text as an input.</p>
+
+<h2 id="scope">Scope</h2>
+<p>The scope decides how long a prompt's history is kept and which agents share it.</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Scope</th><th>History</th></tr></thead>
+<tbody>
+<tr><td><code>conversation</code></td><td>The default. One history for the whole conversation, shared with every other agent in the conversation that has a prompt of the same name and scope.</td></tr>
+<tr><td><code>agent</code></td><td>This agent's own history in the conversation. Other agents in the conversation do not see it.</td></tr>
+<tr><td><code>local</code></td><td>A history for one run only. It is kept while the run pauses on an <code>ask</code>, and it is empty when the next run starts.</td></tr>
+</tbody></table></div>
+<p>An agent may have several prompts, and each prompt keeps its own history. A second prompt suits a separate exchange beside the main one, such as a step that classifies the request. Give a prompt like that the <code>local</code> scope, so that its history does not grow from one run to the next.</p>
+
+<h2 id="sharing-a-history-between-agents">Sharing a history between agents</h2>
+<p>A conversation can move from one agent to another, as it does when a follow-up search matches a different agent. The second agent continues the first agent's exchange only when both agents have a prompt with the same name and the <code>conversation</code> scope. A prompt with another name starts with an empty history. The history is kept in a form that does not depend on the model, so the second agent may use a different LLM.</p>
+<p>Agents that are meant to work together in one conversation should therefore agree on a prompt name. When the second agent's prompt has a system text, that text replaces the first agent's at the second agent's first <code>llm</code> call, so each agent gives the model its own instructions.</p>
+
+<h2 id="images">Images</h2>
+<p>The user text may also be an expression that produces a content part, or a list of content parts. An image reaches a vision model as a content part. This user text sends a photo from the agent's inputs with a question:</p>
+<figure class=code data-lang=python><pre><code>{ [ {<span class=str>&#x27;contentType&#x27;</span>: <span class=str>&#x27;image&#x27;</span>, <span class=str>&#x27;contentBase64&#x27;</span>: sys.inputs[<span class=str>&#x27;photo&#x27;</span>], <span class=str>&#x27;mimeType&#x27;</span>: <span class=str>&#x27;image/png&#x27;</span>},
+    {<span class=str>&#x27;contentType&#x27;</span>: <span class=str>&#x27;text&#x27;</span>, <span class=str>&#x27;text&#x27;</span>: <span class=str>&#x27;What is in this picture?&#x27;</span>} ] }</code></pre></figure>
+
+<h2 id="documentation">Documentation</h2>
+<p>The doc field is plain text that says what the prompt is for. <a href="../development/draft-with-ai.html">Draft with AI</a> sees each prompt's name and doc, and never its text, so a useful doc helps the AI choose the right prompt for each <code>llm</code> command.</p>
+
+    </article>
+    <nav class=prevnext><a class=prev href='../agent-definition/commands.html'><small>Previous</small>Commands</a><a class=next href='../agent-definition/variables.html'><small>Next</small>Variables and namespaces</a></nav>
+  </main>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#fields'>Fields</a></li><li class=l2><a href='#where-prompts-are-edited'>Where prompts are edited</a></li><li class=l2><a href='#how-a-prompt-is-evaluated'>How a prompt is evaluated</a></li><li class=l2><a href='#scope'>Scope</a></li><li class=l2><a href='#sharing-a-history-between-agents'>Sharing a history between agents</a></li><li class=l2><a href='#images'>Images</a></li><li class=l2><a href='#documentation'>Documentation</a></li></ul></aside>
+</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-base">
+      <span>&copy; <span id="year">2026</span> Search2o &middot; Virginia, USA</span>
+      <span><a href="../../about.html#contact">Contact</a></span>
+    </div>
+  </div>
+</footer>
+<script src="../../js/site.js"></script>
+<script src="../docs.js"></script>
+</body>
+</html>

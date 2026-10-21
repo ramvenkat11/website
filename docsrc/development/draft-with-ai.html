@@ -1,14 +1,15 @@
 <p class="lead">Draft with AI writes and edits an agent for you, inside the draft you are working on. Describe the agent you want, or the change you want made to this one. The AI returns the whole draft with that change made, and the editor shows the result straight away. Draft with AI is not a general chatbot, and it is not the documentation: for questions about how Search2o works, the <strong>Docs</strong> icon at the top of the page is the place to ask.</p>
 
 <h2>What it knows</h2>
-<p>Draft with AI does not start from a blank page. Every request carries four things.</p>
+<p>Draft with AI does not start from a blank page. Every request carries five things.</p>
 <p><strong>How an agent is built.</strong> The AI works from the same command schema the editor and validation use. It knows every command, the fields each command takes, how blocks run in order, and how to use a command twice (<code>var</code>, then <code>var.1</code>). It also knows the rules validation enforces, so it avoids writing what would be refused. For example:</p>
 <ul>
-  <li><code>ask</code> and <code>invoke</code> cannot go inside a <code>for</code> loop or an <code>onError</code> block. When the work needs them, the AI uses a <code>while</code> loop, or has the handler set a variable and asks afterwards.</li>
+  <li><code>ask</code> cannot go inside a <code>for</code> loop or an <code>onError</code> block. When the work needs it, the AI uses a <code>while</code> loop, or has the handler set a variable and asks afterwards.</li>
   <li>A function used as a tool cannot <code>end</code>. The AI uses <code>fail</code>, or returns a value for the LLM to explain.</li>
   <li>An agent runs again on every turn. <code>agent.</code> and <code>conv.</code> variables carry over, and a variable that was never set is read safely.</li>
 </ul>
 <p><strong>Your current draft.</strong> Every request edits the draft you have open. The AI keeps every function, command, name, expression and comment that your request does not touch, exactly as you wrote them. It changes only what you asked for, and leaves working parts in your style. On a new, empty draft, it builds the agent from scratch.</p>
+<p><strong>The agent's prompts.</strong> The AI sees each prompt's name and its <code>doc</code>, and never the prompt's text. It names a listed prompt in every <code>llm</code> command. When none fits, it names a new prompt and adds a comment saying what the prompt's system and user text should say, and which variables the prompt should read. See <a href="../agent-definition/prompts.html">Prompts</a>.</p>
 <p><strong>This account's configuration.</strong></p>
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Setting</th><th>How the AI uses it</th></tr></thead>
@@ -46,6 +47,5 @@
 <ul>
   <li><strong>Ask for one change at a time.</strong> "Add an ask for the order number before the lookup" is easier to check than a whole agent rewritten at once.</li>
   <li><strong>Tick the profiles first, and keep their notes useful.</strong> A profile's notes are what the AI knows about your system. "Orders database: orders, order_lines, customers" leads to a better draft than an empty note.</li>
-  <li><strong>Name the agents to call.</strong> The AI does not know which agents exist in your account. To have the draft invoke one, say which.</li>
   <li><strong>If something is refused at validation,</strong> say what the error was in your next request, or fix it in the editor. A validation error names the place in the definition it is about.</li>
 </ul>
