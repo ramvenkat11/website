@@ -638,3 +638,8 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - docsrc/agent-definition/prompts.html rewritten: example prompts shown as Name/System/User/Scope/Doc tables, only llm commands in JSON; image user text shown as a Python expression. llm.html and memory.html describe their prompt in prose. structure.html lead no longer says "next to the definition".
 - Added the publish overwrite rule (scratch file update): title, run limits and prompts changed on the agent after the draft was made are listed on publish; publishing again replaces them (prompts.html, publishing.html).
 - gen/check_examples.py restored to HEAD (Prompts-block validation no longer needed). 32 examples valid, 142 pages built. Not committed.
+
+## 2026-10-21 — Web pages: prompt, search and invoke commands removed
+- html/index.html: prompt dropped from LLM interaction, Orchestration row removed, Change control card now "An agent's LLM, API, database and MCP settings live in profiles".
+- html/framework.html regenerated from scratchpad gen_framework.py: first example is main -> llm with profile, prompt "answer", streamOutput; four notes (main, llm, profile, prompt set in the GUI with user text { sys.query }). Structure figure main shows api and llm with "prompt": "orders". orders.jsonc llm names prompt "orders". Structure paragraph adds that an llm command names a prompt set in the GUI. "Twenty commands are all you need"; description and aria-label say 20. Examples validated.
+- Rendered desktop and phone. No site page links to the removed command pages. Not committed, not uploaded.
