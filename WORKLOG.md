@@ -676,3 +676,7 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 
 ## 2026-10-22 — Home hero wording from Ram
 - Headline: "Deliver repeatable, observable, cost-controlled AI agents – Fast." (en dash, "cost-controlled" keeps the accent gradient). Subline: "Search2o agent server simplifies how you build, run and use agents." Headline size capped at 34px so it stays on one line at 1280. Not committed, not uploaded.
+
+## 2026-10-22 — Home hero: Observability dropped from the figure (trial)
+- Ram wants to see whether the picture simplifies without Observability/reports (the heading keeps "observable"). Done: the Observability row, the step-5 arrow and the legend's Observe item are removed; the server card has three rows; the legend is four columns (two under 1000px). The removed markup is saved in the session scratchpad as removed-observability.html; restoring also means putting `last` back on the Observability row, grid rows back to `auto repeat(4, auto)`, the `/ 5 /` grid areas back to `/ 6 /`, and the legend back to five columns.
+- Checked light at 1280 and 390. Not committed, not uploaded.
