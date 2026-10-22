@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Agent framework — Search2o</title>
-<meta name="description" content="An agent is a JSON file with 23 commands and Python expressions in braces. Write what the agent does; the agent server handles credentials, connections, streaming, memory and limits.">
+<meta name="description" content="An agent is a JSON file with 20 commands and Python expressions in braces. Write what the agent does; the agent server handles credentials, connections, streaming, memory and limits.">
 <meta property="og:title" content="Agent framework — Search2o">
-<meta property="og:description" content="An agent is a JSON file with 23 commands and Python expressions in braces. Write what the agent does; the agent server handles credentials, connections, streaming, memory and limits.">
+<meta property="og:description" content="An agent is a JSON file with 20 commands and Python expressions in braces. Write what the agent does; the agent server handles credentials, connections, streaming, memory and limits.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://search2o.com/framework.html">
 <meta property="og:url" content="https://search2o.com/framework.html">
@@ -55,16 +55,20 @@
   <span class=key>&quot;functions&quot;</span>: {
     <span class="al" data-n="1"><span class=key>&quot;main&quot;</span>: {</span>
 <span class="al-note" style="margin-left:4ch"><span class="an">1</span>Every agent starts in the function named <code>main</code>. An agent can have other functions as well, and the next example adds one.</span>      <span class=key>&quot;commands&quot;</span>: {
-        <span class="al" data-n="2"><span class=key>&quot;prompt&quot;</span>: { <span class=key>&quot;user&quot;</span>: <span class=str>&quot;{ sys.query }&quot;</span> },</span>
-<span class="al-note" style="margin-left:8ch"><span class="an">2</span>The <code>prompt</code> command builds the message that goes to the model. The braces mark a Python expression, and <code>sys.query</code> holds the question the user asked.</span>        <span class="al" data-n="3"><span class=key>&quot;llm&quot;</span>: { <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;gpt5_mini&quot;</span>, <span class=key>&quot;streamOutput&quot;</span>: <span class=kw>true</span> }</span>
-<span class="al-note" style="margin-left:8ch"><span class="an">3</span>The <code>llm</code> command sends the prompt to a model and streams the answer back to the user as it is generated. The profile named here holds the model name, the API key and the host, so the agent file contains none of them.</span>      }
+        <span class="al" data-n="2"><span class=key>&quot;llm&quot;</span>: {</span>
+<span class="al-note" style="margin-left:8ch"><span class="an">2</span>The <code>llm</code> command sends a prompt to a model and streams the answer back to the user as it is generated.</span>          <span class="al" data-n="3"><span class=key>&quot;profile&quot;</span>: <span class=str>&quot;gpt5_mini&quot;</span>,</span>
+<span class="al-note" style="margin-left:10ch"><span class="an">3</span>The profile named here holds the model name, the API key and the host, so the agent file contains none of them.</span>          <span class="al" data-n="4"><span class=key>&quot;prompt&quot;</span>: <span class=str>&quot;answer&quot;</span>,</span>
+<span class="al-note" style="margin-left:10ch"><span class="an">4</span>The prompt named here is set in the GUI, not in this file. Its user text is <code>{ sys.query }</code>. The braces mark a Python expression, and <code>sys.query</code> holds the question the user asked.</span>          <span class=key>&quot;streamOutput&quot;</span>: <span class=kw>true</span>
+        }
+      }
     }
   }
 }</code></pre></div>
         <ol class="anno-notes">
           <li data-n="1"><span class="an">1</span>Every agent starts in the function named <code>main</code>. An agent can have other functions as well, and the next example adds one.</li>
-          <li data-n="2"><span class="an">2</span>The <code>prompt</code> command builds the message that goes to the model. The braces mark a Python expression, and <code>sys.query</code> holds the question the user asked.</li>
-          <li data-n="3"><span class="an">3</span>The <code>llm</code> command sends the prompt to a model and streams the answer back to the user as it is generated. The profile named here holds the model name, the API key and the host, so the agent file contains none of them.</li>
+          <li data-n="2"><span class="an">2</span>The <code>llm</code> command sends a prompt to a model and streams the answer back to the user as it is generated.</li>
+          <li data-n="3"><span class="an">3</span>The profile named here holds the model name, the API key and the host, so the agent file contains none of them.</li>
+          <li data-n="4"><span class="an">4</span>The prompt named here is set in the GUI, not in this file. Its user text is <code>{ sys.query }</code>. The braces mark a Python expression, and <code>sys.query</code> holds the question the user asked.</li>
         </ol>
         <svg class="anno-svg" aria-hidden="true"></svg>
       </figure>
@@ -81,9 +85,8 @@
                 <div class="st-head"><span class="st-label">"main"</span><span class="st-hint">runs first</span></div>
                 <div class="st-box st-cmds">
                   <div class="st-head"><span class="st-label">"commands"</span></div>
-                  <div class="st-cmd">"prompt": { "user": <span class="st-py">"{ sys.query }"</span> }</div>
                   <div class="st-cmd">"api": { "profile": <span class="st-prof">"orders"</span>, &hellip; }</div>
-                  <div class="st-cmd">"llm": { "profile": <span class="st-prof">"gpt5_mini"</span>, &hellip; }</div>
+                  <div class="st-cmd">"llm": { "profile": <span class="st-prof">"gpt5_mini"</span>, "prompt": "orders", &hellip; }</div>
                 </div>
               </div>
               <div class="st-box st-fn">
@@ -100,7 +103,7 @@
         <figcaption class="st-legend"><span><i class="st-py"></i>Python expression</span><span><i class="st-prof"></i>profile</span></figcaption>
       </figure>
       <div class="fw-text">
-        <p>An agent is a set of named functions, and a function is a list of commands that run in the order they are written. Each command is a key, and its value carries the command&rsquo;s fields. A string value enclosed in braces is a Python expression; any other string is plain text. Where a command reaches outside the agent, to a model, an API or a database, it names a profile, and the profile holds the connection details.</p>
+        <p>An agent is a set of named functions, and a function is a list of commands that run in the order they are written. Each command is a key, and its value carries the command&rsquo;s fields. A string value enclosed in braces is a Python expression; any other string is plain text. Where a command reaches outside the agent, to a model, an API or a database, it names a profile, and the profile holds the connection details. An <code>llm</code> command also names a prompt, which is set in the GUI and holds the text sent to the model.</p>
       </div>
     </div>
   </section>
@@ -133,9 +136,9 @@
     },
     <span class=key>&quot;main&quot;</span>: {
       <span class=key>&quot;commands&quot;</span>: {
-        <span class=key>&quot;prompt&quot;</span>: { <span class=key>&quot;user&quot;</span>: <span class=str>&quot;{ sys.query }&quot;</span> },
         <span class=key>&quot;llm&quot;</span>: {
           <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;gpt5_mini&quot;</span>,
+          <span class=key>&quot;prompt&quot;</span>: <span class=str>&quot;orders&quot;</span>,
           <span class="al" data-n="6"><span class=key>&quot;functions&quot;</span>: [<span class=str>&quot;getOrder&quot;</span>],</span>
 <span class="al-note" style="margin-left:10ch"><span class="an">6</span>Listing <code>getOrder</code> here gives the model that function as a tool. The model calls it whenever a question needs an order looked up.</span>          <span class=key>&quot;streamOutput&quot;</span>: <span class=kw>true</span>
         }
@@ -159,20 +162,19 @@
   <section class="fw-sec" id="commands">
     <div class="container">
       <div class="section-head">
-        <h2>Twenty-three commands are all you need</h2>
+        <h2>Twenty commands are all you need</h2>
         <p>Every agent is written with these commands and nothing else. You concentrate on what the agent should do, and the framework takes care of everything around it.</p>
       </div>
-      <aside class="arch cc-arch fw-card fw-cmdcard" aria-label="The 23 commands, by group">
+      <aside class="arch cc-arch fw-card fw-cmdcard" aria-label="The 20 commands, by group">
         <div class="fw-cmds">
           <div class="cg"><span class="cg-l">Variables</span><span class="cg-c"><a href="docs/commands/var.html"><code>var</code></a></span></div>
           <div class="cg"><span class="cg-l">Flow control</span><span class="cg-c"><a href="docs/commands/if.html"><code>if</code></a><a href="docs/commands/while.html"><code>while</code></a><a href="docs/commands/for.html"><code>for</code></a><a href="docs/commands/break.html"><code>break</code></a><a href="docs/commands/continue.html"><code>continue</code></a><a href="docs/commands/func.html"><code>func</code></a><a href="docs/commands/return.html"><code>return</code></a><a href="docs/commands/parallel.html"><code>parallel</code></a></span></div>
-          <div class="cg"><span class="cg-l">LLM interaction</span><span class="cg-c"><a href="docs/commands/prompt.html"><code>prompt</code></a><a href="docs/commands/llm.html"><code>llm</code></a><a href="docs/commands/memory.html"><code>memory</code></a></span></div>
+          <div class="cg"><span class="cg-l">LLM interaction</span><span class="cg-c"><a href="docs/commands/llm.html"><code>llm</code></a><a href="docs/commands/memory.html"><code>memory</code></a></span></div>
           <div class="cg"><span class="cg-l">External systems</span><span class="cg-c"><a href="docs/commands/api.html"><code>api</code></a><a href="docs/commands/db.html"><code>db</code></a></span></div>
           <div class="cg"><span class="cg-l">Human-in-the-loop</span><span class="cg-c"><a href="docs/commands/ask.html"><code>ask</code></a></span></div>
           <div class="cg"><span class="cg-l">Agent output</span><span class="cg-c"><a href="docs/commands/output.html"><code>output</code></a></span></div>
           <div class="cg"><span class="cg-l">Agent termination</span><span class="cg-c"><a href="docs/commands/end.html"><code>end</code></a><a href="docs/commands/fail.html"><code>fail</code></a></span></div>
           <div class="cg"><span class="cg-l">Observability</span><span class="cg-c"><a href="docs/commands/progress.html"><code>progress</code></a><a href="docs/commands/trace.html"><code>trace</code></a><a href="docs/commands/log.html"><code>log</code></a></span></div>
-          <div class="cg"><span class="cg-l">Orchestration</span><span class="cg-c"><a href="docs/commands/search.html"><code>search</code></a><a href="docs/commands/invoke.html"><code>invoke</code></a></span></div>
         </div>
       </aside>
       <div class="fw-text">
