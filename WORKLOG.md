@@ -691,3 +691,8 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Ram's idea, agreed: the server card now has Search as its full-width top row, and under it a split row with Agent framework on the left (developer side) and Agent runtime on the right (user side). The developer's "Describe" box and the user's request/agent pair point at Search; "Build, validate, publish agents" points at the framework half; execAgent/output point at the runtime half. Markup: `.as-split` wrapper in column 2, row 3, with the two `.as-part` divs (grid-column auto, grid-row 1, so the general `.as-part { grid-column: 2 }` rule does not stack them). Grid rows are `auto repeat(2, auto)`; side and card grid areas end at row 4.
 - Phones: the server column is 1.5fr so the two halves fit; the split parts stack icon over name at 11.5px.
 - Checked light at 1280 and 390, dark at 700. Not committed, not uploaded.
+
+## 2026-10-22 — Home hero: single-direction arrows, phone overlaps fixed
+- Ram: overlaps on mobile; double-headed arrows look bad, make request and response obvious.
+- Done: each exchange is now two arrows, request into the server with its label above, response back to the actor under it (`.as-msg.to` / `.as-msg.from`, one arrowhead each). Lifelines are now flow elements (`i.rail`) under the actor header instead of absolutely positioned at a fixed top, so a taller phone header cannot run into them. Labels no longer spread over the rail area on phones: the lanes keep their rail padding (the phone rule sets padding-top/bottom only), labels are 11px, the chip has no icon, the user's sub-label is capped at 92px wide, and the server column is 1.3fr.
+- Checked light at 1280, 700, 390, 375 and dark at 375. Not committed, not uploaded.
