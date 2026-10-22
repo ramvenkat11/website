@@ -680,3 +680,9 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 ## 2026-10-22 — Home hero: Observability dropped from the figure (trial)
 - Ram wants to see whether the picture simplifies without Observability/reports (the heading keeps "observable"). Done: the Observability row, the step-5 arrow and the legend's Observe item are removed; the server card has three rows; the legend is four columns (two under 1000px). The removed markup is saved in the session scratchpad as removed-observability.html; restoring also means putting `last` back on the Observability row, grid rows back to `auto repeat(4, auto)`, the `/ 5 /` grid areas back to `/ 6 /`, and the legend back to five columns.
 - Checked light at 1280 and 390. Not committed, not uploaded.
+
+## 2026-10-22 — Home hero: no numbers, captions inside the sample boxes
+- Ram: "Controlled runtime" → "Agent runtime"; step-1 label "Build, validate, publish agents"; "Describe" and "Request" go inside their sample boxes; numbers probably not needed since a second block will explain in detail.
+- Done: badges and the legend removed (markup with numbers saved as figure-with-numbers.html in the session scratchpad; the legend texts are in the 2026-10-22 "numbered steps" entry's description if needed for the second block). Arrows now start directly at the dashed lifelines. The sample boxes carry a small uppercase caption in the actor's colour: DESCRIBE, REQUEST, OUTPUT. The runtime row reads "Agent runtime". On phones the boxes stay hidden and the one-word labels Describe / Request / Output show instead.
+- Checked light and dark at 1280, light at 390. Not committed, not uploaded.
+- Next: the second block under the hero that explains the steps in detail (Ram's plan).
