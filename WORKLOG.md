@@ -706,3 +706,9 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Ram: use a single arrow pointing to the user, request above, response below; add a line under Search.
 - Done: the user exchanges are one line each with the arrowhead at the user's lifeline (`.as-xchg .ln`), request text above, response below. The Search row is now a column: icon + "Search" (`.as-pn`), then a muted line "Matches each request to the agent built to handle it." (Ram's wording with "each"). Loop styles removed.
 - Checked light at 1280 and 375. Not committed, not uploaded.
+
+## 2026-10-22 — Home hero: each box carries its own arrow, Travel desk named on both sides
+- Ram: the right-side arrows were still confusing; give the boxes their own arrows so the request need not be labelled; the left description must name the agent the user gets back.
+- Done: every message is now `.as-flow`, a box (or label) with one arrow line attached to it. Request boxes (`.l`: the user's request text and the execAgent call) have the line on their left, arrowhead at the server. Response boxes (`.r`: the Travel desk chip and the output text) have the line on their right, arrowhead at the user's lifeline. Developer messages (Describe box, "Build, validate, publish agents") have the line on their right, arrowhead at the server. The REQUEST and OUTPUT captions are gone; DESCRIBE stays. The Describe box now shows the Travel desk chip above "Arranges air travel and hotel stays.", the same chip Search returns on the right. The `.as-xchg`/`.as-msg` rules are replaced by `.as-flow`.
+- Phones keep the one-word labels Describe / Request / Output with their short arrows.
+- Checked light and dark at 1280, light at 700 and 375. Not committed, not uploaded.
