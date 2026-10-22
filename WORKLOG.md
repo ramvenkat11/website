@@ -713,3 +713,9 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Phones keep the one-word labels Describe / Request / Output with their short arrows.
 - Checked light and dark at 1280, light at 700 and 375. Not committed, not uploaded.
 - Follow-up: boxes no longer touch the lifelines. Boxes whose arrow points at the server keep a 14px gap from the dashed line (7px on phones) via `.as-left .as-flow.r .lbl` / `.as-right .as-flow.l .lbl` margins; arrows that end at the user's lifeline still touch it. Checked light at 1280 and 375.
+
+## 2026-10-22 — Home hero: messages sit on through-lines, search shown as a call
+- Ram: boxes touching or sitting off the lifeline both looked wrong; the line should read as if it continues behind the box; "Description" not "Describe", and no chip inside the box; show the search request as `search("…")`, not a box.
+- Done: every message (`.as-flow`) is a three-column grid: line segment, payload, line segment, so the line runs from the lifeline to the server and passes behind the payload; the arrowhead is on the server end for requests (`.l`) and on the user end for responses (`.r`). Payloads: left, "Travel desk description" caption (name in ink, word in teal) above a box with "Arranges air travel and hotel stays."; "Build, validate, publish agents" as plain text on its line; right, `search("Book a trip to New York")`, the Travel desk chip, `execAgent(conversationId, request)`, and the output box "Booked UA1191, departs 06:00." No request/output captions.
+- Phones (≤860): rail 16px, segments at least 8px, 10.5px labels, 10px code with arguments hidden (`search`, `execAgent`), the chip becomes plain bold text so it can wrap, caption hidden and "Description"/"Output" one-word labels shown. Tablet (≤1000): split row names at 14px so "Agent framework" stays on one line.
+- Checked light and dark at 1280, light at 1000 and 700, light at 375, dark at 360. Not committed, not uploaded.
