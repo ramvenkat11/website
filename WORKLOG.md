@@ -673,3 +673,6 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Done: the phone layout no longer restacks the figure into full-width rows. Under 860px the same three-column picture shrinks: rail 18px, badges 20px, 11.5px labels, sample texts (`.as-clob`) and the execAgent arguments (`.as-args`) hidden, short mobile-only labels "Request"/"Output" (`.as-m`) shown, arrow labels span the whole lane width. Under 480px the actor names stack under their icons so "Developer" no longer collides with the server card; under 400px the agent chip drops its icon. Service rows are plain divs now (no links). The navy title bar shows "Search2o agent server" with `pip install search2o` in mono under it.
 - Verified no horizontal overflow: the scratchpad frame page now prints the iframe's clientWidth and scrollWidth and lists elements outside the viewport (sw == vw at 360, 390, 700, 1280).
 - Checked light at 1280, 700, 390, 360 and dark at 360. Not committed, not uploaded.
+
+## 2026-10-22 — Home hero wording from Ram
+- Headline: "Deliver repeatable, observable, cost-controlled AI agents – Fast." (en dash, "cost-controlled" keeps the accent gradient). Subline: "Search2o agent server simplifies how you build, run and use agents." Headline size capped at 34px so it stays on one line at 1280. Not committed, not uploaded.
