@@ -696,3 +696,8 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Ram: overlaps on mobile; double-headed arrows look bad, make request and response obvious.
 - Done: each exchange is now two arrows, request into the server with its label above, response back to the actor under it (`.as-msg.to` / `.as-msg.from`, one arrowhead each). Lifelines are now flow elements (`i.rail`) under the actor header instead of absolutely positioned at a fixed top, so a taller phone header cannot run into them. Labels no longer spread over the rail area on phones: the lanes keep their rail padding (the phone rule sets padding-top/bottom only), labels are 11px, the chip has no icon, the user's sub-label is capped at 92px wide, and the server column is 1.3fr.
 - Checked light at 1280, 700, 390, 375 and dark at 375. Not committed, not uploaded.
+
+## 2026-10-22 — Home hero: loop glyph for request/response, shorter example
+- Ram: the two-arrow version was too crowded; go back to one glyph per exchange but not a double-headed arrow; shorten the example request.
+- Done: each user exchange is a loop (`.as-xchg .loop`: a box with top, left and bottom borders, open toward the user). The top leg carries a chevron pointing into the server (request), the bottom leg ends in an arrowhead at the user's lifeline (response). Request text above the loop, response below. Developer arrows stay single-headed. Example texts: request "Fly me to New York on Tuesday", description "Arranges air travel and hotel stays." (no shared words), agent "Travel desk", output "Booked UA1191, Tuesday 06:00."
+- Checked light at 1280 (plus 2x close-up) and 375. Not committed, not uploaded.
