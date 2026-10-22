@@ -729,3 +729,9 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Under 1000px the call arguments go on their own lines; under 860px the boxes lose their borders (plain text), long samples hide behind "Description"/"Output", call arguments hide.
 - Caught and fixed my own breakage: a media-block edit had left stray rules outside the `@media (max-width: 1000px)` block, which leaked the tablet rules into all widths and broke the phone block. Brace count checked.
 - Checked light at 1280 (2x), 880, 700, 375 and dark at 1280, 360. Not committed, not uploaded.
+
+## 2026-10-22 — Home hero: "Describe agents" box with an example line
+- Ram: put the label back inside the box as "Describe agents" (bold, the action) with "Travel desk: …" under it, clearly an example.
+- Done: the developer's first box reads **Describe agents** on the first line and "**Travel desk**: *Arranges air travel and hotel stays.*" on the second (`.as-act` bold ink; `.as-eg` muted italic with `text-wrap: pretty`; the agent name keeps its one style, bold ink upright). The caption above the box is gone. Phones show "Describe agents" as the short label.
+- Layout fix found while checking: boxes sized with `width: max-content` forced the lane's auto grid track wider than the lane, so a long box ran under the arrow and, on tablets, under the server card. Now `.as-lane` has `grid-template-columns: minmax(0, 1fr)`, `.as-flow` is a flex row (line segments `flex: 1 1 18px; min-width: 18px`, label `flex: 0 1 auto; min-width: 0`), and `.as-box` is `width: fit-content; margin: 0 auto` (the execAgent box stays `min-content`). Long boxes now wrap inside the lane.
+- Checked light at 1280 (2x), 1100, 880, 700, 375 and dark at 1280, 360. Not committed, not uploaded.
