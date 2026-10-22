@@ -686,3 +686,8 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Done: badges and the legend removed (markup with numbers saved as figure-with-numbers.html in the session scratchpad; the legend texts are in the 2026-10-22 "numbered steps" entry's description if needed for the second block). Arrows now start directly at the dashed lifelines. The sample boxes carry a small uppercase caption in the actor's colour: DESCRIBE, REQUEST, OUTPUT. The runtime row reads "Agent runtime". On phones the boxes stay hidden and the one-word labels Describe / Request / Output show instead.
 - Checked light and dark at 1280, light at 390. Not committed, not uploaded.
 - Next: the second block under the hero that explains the steps in detail (Ram's plan).
+
+## 2026-10-22 — Home hero: Search on top, framework and runtime side by side
+- Ram's idea, agreed: the server card now has Search as its full-width top row, and under it a split row with Agent framework on the left (developer side) and Agent runtime on the right (user side). The developer's "Describe" box and the user's request/agent pair point at Search; "Build, validate, publish agents" points at the framework half; execAgent/output point at the runtime half. Markup: `.as-split` wrapper in column 2, row 3, with the two `.as-part` divs (grid-column auto, grid-row 1, so the general `.as-part { grid-column: 2 }` rule does not stack them). Grid rows are `auto repeat(2, auto)`; side and card grid areas end at row 4.
+- Phones: the server column is 1.5fr so the two halves fit; the split parts stack icon over name at 11.5px.
+- Checked light at 1280 and 390, dark at 700. Not committed, not uploaded.
