@@ -650,3 +650,8 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Checked: light and dark at 1280px, light at 900px and 390px, via a scratchpad frame page (`serve/frame.html` iframes a symlink to html/ and sets data-theme; serves on 8766) because headless Chrome will not go under 500px and follows the macOS theme.
 - Not touched, on Ram's instruction: the conversation section, Hybrid architecture figure and metadata/OG text; these will change later. Not committed, not uploaded.
 - Next: Ram reviews; the hero wording and figure will be iterated.
+
+## 2026-10-22 — Home hero figure redesigned (second pass)
+- Ram: "it should be obvious which parts (boxes) provide what services (arrows)"; one arrow per request/response pair.
+- Done: the four services are now full-width rows of the "Search2o application server" box (title bar, rows separated by lines, an icon per row), so each arrow ends on the row it serves. Developer and User are side panels spanning the box; the User panel holds "Chat box" and "Agent harness" chips. Each pair is one double-headed arrow, request text above the line and response below; developer arrows in teal, user arrows in blue (`--as-dev`, `--as-user`). Markup: `.as-arrow` holds `.req`, `.ln` (classes r/l/lr choose arrowheads) and `.res`.
+- Responsive: under 1000px the actor panels narrow to 108px and the lane text tightens; under 860px the figure stacks with the lanes as "Developer → …" / "→ User: …" lines. Checked light and dark at 1280, light at 900, 861 and 390 (frame page on port 8766). Not committed, not uploaded.
