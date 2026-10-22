@@ -701,3 +701,8 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Ram: the two-arrow version was too crowded; go back to one glyph per exchange but not a double-headed arrow; shorten the example request.
 - Done: each user exchange is a loop (`.as-xchg .loop`: a box with top, left and bottom borders, open toward the user). The top leg carries a chevron pointing into the server (request), the bottom leg ends in an arrowhead at the user's lifeline (response). Request text above the loop, response below. Developer arrows stay single-headed. Example texts: request "Fly me to New York on Tuesday", description "Arranges air travel and hotel stays." (no shared words), agent "Travel desk", output "Booked UA1191, Tuesday 06:00."
 - Checked light at 1280 (plus 2x close-up) and 375. Not committed, not uploaded.
+
+## 2026-10-22 — Home hero: single arrow to the user, Search tagline
+- Ram: use a single arrow pointing to the user, request above, response below; add a line under Search.
+- Done: the user exchanges are one line each with the arrowhead at the user's lifeline (`.as-xchg .ln`), request text above, response below. The Search row is now a column: icon + "Search" (`.as-pn`), then a muted line "Matches each request to the agent built to handle it." (Ram's wording with "each"). Loop styles removed.
+- Checked light at 1280 and 375. Not committed, not uploaded.
