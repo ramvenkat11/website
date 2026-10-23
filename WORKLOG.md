@@ -823,3 +823,7 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Rendered 1280/1000/860/700/384/375/360 light and dark via scratchpad render-section.sh; no overflow, no broken names. The md now mirrors the applied text.
 - Next: Ram reviews; kicker "How it works" unchanged.
 - "How it works" h2 now 24px like Platform's "Built for the enterprise" (added #how-it-works to the 24px section-head rule, styles.css); rendered at all seven widths, light and dark, no overflow.
+
+## 2026-10-23 — docs rewrite, all 142 pages (Ram: "make the writing better", verify facts, fix, report, don't stop)
+- Product facts gathered from ../s2oserver WORKLOG (Oct 19-23): search/invoke/prompt commands removed (20 remain), agents independent, prompts = agentPrompts {system,user,scope conversation|agent|local,doc} edited only via draft since 10-21, publish overwrite/metaFieldsChanged, agent const, audit agentPublished/promptsUpdated, getDraftList limit 1,000.
+- Introduction (5 pages) rewritten by hand as the voice reference. Six forked workers rewrite the other 19 sections in parallel (A: agent-definition/agent-execution/commands; B: development/runtime/profiles; C: llm/hooks/search/security; D: getting-started/gui/reports/system-management/support-licensing; E: rest-api/chat-integrations; F: skill-integration/comparisons). Reports land in scratchpad reports/group-*.md. Build (gen/build.py) only after all return; nothing committed.
