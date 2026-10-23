@@ -773,3 +773,6 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Ram: back to 1 (ink). `--as-dev: var(--ink)`; dark mode keeps the dark digits/icon via `--as-dev-fg`. Rendered light and dark at 1280, dark at 360. Not committed, not uploaded.
 - Ram: reverse the search and execAgent arrows. Both right lanes are now `as-flow l` (arrowhead at the server). Rendered 1280 light and 375. Not committed, not uploaded.
 - Ram: search arrow points away from the server again (`as-flow r`); execAgent stays pointing at the server. Rendered 1280 light. Not committed, not uploaded.
+
+## 2026-10-23 — Header nav: "Agent framework" and "Agent runtime"
+- Ram: page titles and header should say Agent framework / Agent runtime. The `<title>`, og:title and kickers of framework.html and runtime.html already did; changed the two navlinks on all 13 site pages (incl. legal/ and 404) and the header template in gen/build.py; docs rebuilt (142 pages). Header checked at 1280, 1000 and 900 on the home and docs pages (no overflow) and at 700 and 375 where the nav wraps. Not committed, not uploaded.
