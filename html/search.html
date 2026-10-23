@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Search — Search2o</title>
+<meta name="description" content="Users do not choose agents; they say what they need. Search reads a request written in plain language and returns the agent built to handle it, by meaning rather than by keywords.">
+<meta property="og:title" content="Search — Search2o">
+<meta property="og:description" content="Users do not choose agents; they say what they need. Search reads a request written in plain language and returns the agent built to handle it, by meaning rather than by keywords.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://search2o.com/search.html">
+<meta property="og:url" content="https://search2o.com/search.html">
+<meta property="og:image" content="https://search2o.com/images/og5.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Search2o: a platform to build, run, and use AI microagents through search">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/jetbrains-mono-latin.woff2" crossorigin>
+<link rel="stylesheet" href="styles/styles.css">
+<link rel="stylesheet" href="demo/demo.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYRX3801TG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYRX3801TG');</script>
+</head>
+<body class="fw-page">
+
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="index.html" aria-label="Search2o home"><img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61"></a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="navlink" href="framework.html">Framework</a>
+      <a class="navlink" href="runtime.html">Runtime</a>
+      <a class="navlink" href="search.html" aria-current="page">Search</a>
+      <a class="navlink" href="docs/index.html">Docs</a>
+      <a class="navlink" href="pricing.html">Pricing</a>
+      <a class="navlink" href="about.html">About</a>
+      <a class="btn btn-blue nav-cta" href="gettingstarted.html">Get started</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker">Search</span>
+      <h1>Users do not choose agents. They say what they need.</h1>
+      <p class="lead">Search reads a request written in plain language and returns the agent built to handle it. Here is the whole exchange, as the bundled GUI, a chat bot or an interface of your own makes it.</p>
+    </div>
+  </section>
+
+  <section class="fw-sec fw-first" id="the-call">
+    <div class="container">
+      <figure class="anno" aria-label="A search call and its response, annotated">
+        <div class="codecard"><div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">POST /api/exec/search</span></div><pre><code><span class=cm>// the request</span>
+{ <span class="al" data-n="1"><span class=key>&quot;query&quot;</span>: <span class=str>&quot;Book a trip to New York&quot;</span></span> }
+<span class="al-note" style="margin-left:2ch"><span class="an">1</span>The request is the user&rsquo;s words, as typed. There is no agent name, no keyword and no menu.</span>
+<span class=cm>// the response</span>
+{
+  <span class=key>&quot;success&quot;</span>: <span class=kw>true</span>,
+  <span class="al" data-n="2"><span class=key>&quot;searchResults&quot;</span>: [</span>
+<span class="al-note" style="margin-left:2ch"><span class="an">2</span>Zero, one or two agents, best first. One when the request clearly belongs to that agent. Two when it is ambiguous or two descriptions overlap. None when nothing fits, and then nothing runs.</span>    {
+      <span class="al" data-n="3"><span class=key>&quot;agentName&quot;</span>: <span class=str>&quot;travel_desk&quot;</span>,</span>
+<span class="al-note" style="margin-left:6ch"><span class="an">3</span>Search only matches. The interface takes the agent name and calls <code>execAgent</code> with the same request, at once or after offering the user a choice.</span>      <span class=key>&quot;agentTitle&quot;</span>: <span class=str>&quot;Travel desk&quot;</span>
+    }
+  ]
+}</code></pre></div>
+        <ol class="anno-notes">
+          <li data-n="1"><span class="an">1</span>The request is the user&rsquo;s words, as typed. There is no agent name, no keyword and no menu.</li>
+          <li data-n="2"><span class="an">2</span>Zero, one or two agents, best first. One when the request clearly belongs to that agent. Two when it is ambiguous or two descriptions overlap. None when nothing fits, and then nothing runs.</li>
+          <li data-n="3"><span class="an">3</span>Search only matches. The interface takes the agent name and calls <code>execAgent</code> with the same request, at once or after offering the user a choice.</li>
+        </ol>
+        <svg class="anno-svg" aria-hidden="true"></svg>
+      </figure>
+      <div class="fw-text">
+        <p>Search does not look for the words of the request in the descriptions. It works from meaning, so a request and a description need not share a word, and need not be in the same language. The result comes back in less than half a second, and a catalog of a thousand agents is searched as quickly as a catalog of a hundred.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="description">
+    <div class="container">
+      <div class="section-head">
+        <h2>The description is what search matches against</h2>
+        <p>When an agent is published, its developer describes it in plain language, and search indexes the description within half a minute. This is the description that matched the request above.</p>
+      </div>
+      <figure class="desc-example" aria-label="The description of the Travel desk agent">
+        <div class="desc-head"><span class="st-label">travel_desk</span><span class="st-hint">Travel desk</span></div>
+        <p>Arranges air travel and hotel stays for business travel. Books flights and hotel nights for the dates and the city the traveler names, holds a booking when the traveler is not ready to confirm, and answers questions about an existing booking. It does not file expenses and does not approve travel.</p>
+      </figure>
+      <div class="fw-text">
+        <p>A good description is written for the person who will type the request. It says what the agent does for the user, the questions it answers, the actions it takes and what it leaves to others. Two to five sentences is typical. A description that only names the mechanism, such as &ldquo;calls the travel API and summarizes the JSON&rdquo;, matches poorly, because nobody asks for a mechanism, and search returns such a description to the developer with an explanation of what to change. When two agents overlap by accident, a request in the shared territory returns both, and sharpening the two descriptions is what separates them. The <a href="docs/search/describing-an-agent.html">describing an agent</a> page has the details.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="conversation">
+    <div class="container">
+      <div class="section-head">
+        <h2>A conversation can move from agent to agent</h2>
+        <p>A follow-up typed into a conversation is searched like a new request. When it belongs to a different agent, that agent runs next, with the conversation&rsquo;s state and history in place. When nothing new matches, the agent that answered last answers again.</p>
+      </div>
+      <div class="fw-text">
+        <p>What an interface does with the matches is its own <a href="docs/search/search-settings.html">search behavior</a>: the bundled GUI runs the best match at once, and an interface of your own can show the two best as a choice instead. <a href="docs/search/tags.html">Tags</a> split an account&rsquo;s agents into separate pools, such as one for the help desk and one for finance, and a search names the pool it wants or searches them all.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="demo">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Live demo</span>
+        <h2>Ask for something, in your own words</h2>
+        <p>This demo runs against a live Search2o account with 200 agents, from human resources and finance to engineering and sales. The matched agent runs and answers with mock data. Ask a follow-up to see the conversation move to another agent.</p>
+      </div>
+      <div class="fw-demo">
+        <div
+          data-s2o-demo="search"
+          data-search-title="Live demo"
+          data-search-placeholder="Ask for something&hellip;"
+          data-search-placeholder-followup="Ask a follow-up question. The matched agent will run in the same context."
+          data-search-placeholder-answer="Answer the question above to continue"
+          data-search-hint=""
+          data-search-empty="This demo runs live in a Search2o account with [200 agents](demo-agents.html). The agents use mock data to demonstrate framework features."
+          data-search-disclaimer="This is mock data from a real agent. Click on the agent name to see what it does."
+        ></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="quality">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Search quality</span>
+        <h2>Measured on 15,000 questions, against the live service</h2>
+        <p>We built six catalogs of agents, from a university to a thousand-agent catalog spanning fifty business areas, wrote 15,000 questions with a known right agent, and put every question through the search we ship.</p>
+      </div>
+      <div class="fw-text">
+        <p>The right agent comes first 84% to 91% of the time, depending on the catalog, and is one of the first two 92% to 97% of the time. A request about something else entirely is refused every time; a request about the customer&rsquo;s own world that no agent covers is refused 82% to 86% of the time. A search takes about 200 milliseconds, and a catalog of a thousand agents scores within a point of a catalog of a hundred. What separates the easy catalogs from the hard ones is how far apart their agents sit, which the descriptions decide. The <a href="docs/search/search-quality.html">search quality</a> page gives every table and the conditions behind each number.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-end">
+    <div class="container">
+      <div class="section-head">
+        <h2>Where to read more</h2>
+        <p>The <a href="docs/search/index.html">search</a> section of the documentation covers <a href="docs/search/how-matching-works.html">how matching behaves</a>, <a href="docs/search/describing-an-agent.html">describing an agent</a>, <a href="docs/search/tags.html">tags</a>, <a href="docs/search/search-settings.html">search behavior</a> and the <a href="docs/search/search-quality.html">search quality</a> results. The <a href="docs/rest-api/search.html">search call</a> of the REST API is the search box as an API call.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61">
+      </div>
+      <div class="footer-cols">
+        <div class="fcol">
+          <h4>Product</h4>
+          <a href="framework.html">Agent framework</a>
+          <a href="runtime.html">Agent runtime</a>
+          <a href="search.html">Search</a>
+          <a href="index.html#platform">Platform</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+        <div class="fcol">
+          <h4>Resources</h4>
+          <a href="gettingstarted.html">Getting started</a>
+          <a href="docs/index.html">Docs</a>
+        </div>
+        <div class="fcol">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+        <div class="fcol">
+          <h4>Legal</h4>
+          <a href="legal/terms.html">Terms of Service</a>
+          <a href="legal/privacy.html">Privacy Policy</a>
+          <a href="legal/license.html">Software License</a>
+          <a href="legal/intellectual.html">Intellectual Property</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>&copy; <span id="year">2026</span> Search2o &middot; Virginia, USA</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/site.js"></script>
+<script type="module" src="demo/demo.js"></script>
+<script>
+(function () {
+  function draw(fig) {
+    var svg = fig.querySelector(".anno-svg");
+    var box = fig.getBoundingClientRect();
+    if (!svg || !box.width || getComputedStyle(svg).display === "none") return;
+    var id = "ah" + Array.prototype.indexOf.call(document.querySelectorAll(".anno"), fig);
+    svg.setAttribute("viewBox", "0 0 " + box.width + " " + box.height);
+    var edge = fig.querySelector(".codecard").getBoundingClientRect().right - box.left + 24;
+    var paths = "";
+    fig.querySelectorAll(".anno-notes li").forEach(function (li) {
+      var line = fig.querySelector('.al[data-n="' + li.dataset.n + '"]');
+      if (!line) return;
+      var a = line.getBoundingClientRect(), b = li.getBoundingClientRect();
+      var x1 = b.left - box.left - 10, y1 = b.top - box.top + 12;
+      var x2 = a.right - box.left + 8, y2 = a.top - box.top + a.height / 2;
+      var mx = (x1 + edge) / 2;
+      paths += '<path marker-end="url(#' + id + ')" d="M' + x1 + " " + y1 + " C" + mx + " " + y1 + " " + mx + " " + y2 + " " + edge + " " + y2 + " L" + x2 + " " + y2 + '"/>';
+    });
+    svg.innerHTML = '<defs><marker id="' + id + '" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z"/></marker></defs>' + paths;
+  }
+  function drawAll() { document.querySelectorAll(".anno").forEach(draw); }
+  drawAll();
+  window.addEventListener("resize", drawAll);
+  window.addEventListener("load", drawAll);
+  if (document.fonts) document.fonts.ready.then(drawAll);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Agent runtime — Search2o</title>
+<meta name="description" content="The agent says what to do; the runtime decides what it may do. Every agent server builds the same runtime from the account configuration and bounds every run in time and cost.">
+<meta property="og:title" content="Agent runtime — Search2o">
+<meta property="og:description" content="The agent says what to do; the runtime decides what it may do. Every agent server builds the same runtime from the account configuration and bounds every run in time and cost.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://search2o.com/runtime.html">
+<meta property="og:url" content="https://search2o.com/runtime.html">
+<meta property="og:image" content="https://search2o.com/images/og5.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Search2o: a platform to build, run, and use AI microagents through search">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/jetbrains-mono-latin.woff2" crossorigin>
+<link rel="stylesheet" href="styles/styles.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYRX3801TG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYRX3801TG');</script>
+</head>
+<body class="fw-page">
+
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="index.html" aria-label="Search2o home"><img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61"></a>
+    <nav class="site-nav" aria-label="Main">
+      <a class="navlink" href="framework.html">Framework</a>
+      <a class="navlink" href="runtime.html" aria-current="page">Runtime</a>
+      <a class="navlink" href="search.html">Search</a>
+      <a class="navlink" href="docs/index.html">Docs</a>
+      <a class="navlink" href="pricing.html">Pricing</a>
+      <a class="navlink" href="about.html">About</a>
+      <a class="btn btn-blue nav-cta" href="gettingstarted.html">Get started</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker">Agent runtime</span>
+      <h1>The agent says what to do. The runtime decides what it may do.</h1>
+      <p class="lead">Every agent server builds a runtime from the account&rsquo;s configuration and runs every agent inside it. Here is the orders agent from the framework page again, with what the runtime supplies on each line.</p>
+    </div>
+  </section>
+
+  <section class="fw-sec fw-first" id="supplies">
+    <div class="container">
+      <figure class="anno" aria-label="The orders agent, annotated with what the runtime supplies">
+        <div class="codecard"><div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">orders.jsonc</span></div><pre><code>{
+  <span class=key>&quot;functions&quot;</span>: {
+    <span class=key>&quot;getOrder&quot;</span>: {
+      <span class=key>&quot;args&quot;</span>: { <span class=key>&quot;orderId&quot;</span>: { <span class=key>&quot;type&quot;</span>: <span class=str>&quot;str&quot;</span> } },
+      <span class=key>&quot;commands&quot;</span>: {
+        <span class=key>&quot;api&quot;</span>: {
+          <span class="al" data-n="1"><span class=key>&quot;profile&quot;</span>: <span class=str>&quot;orders&quot;</span>,</span>
+<span class="al-note" style="margin-left:10ch"><span class="an">1</span>The profile holds the host, the credentials and the headers, and the agent never sees them. Profiles are shared across the account, so the places an agent can reach are the ones the profiles name.</span>          <span class="al" data-n="2"><span class=key>&quot;path&quot;</span>: <span class=str>&quot;{ f&#x27;/orders/{orderId}&#x27; }&quot;</span></span>
+<span class="al-note" style="margin-left:10ch"><span class="an">2</span>A Python expression runs with the account&rsquo;s allowlist in place of Python&rsquo;s builtins. A name the allowlist does not carry does not exist for the agent, and <code>import</code>, underscore names and the other constructs the compile rules refuse are caught when the agent is validated.</span>        },
+        <span class=key>&quot;return&quot;</span>: <span class=str>&quot;{ result }&quot;</span>
+      }
+    },
+    <span class=key>&quot;main&quot;</span>: {
+      <span class=key>&quot;commands&quot;</span>: {
+        <span class=key>&quot;llm&quot;</span>: {
+          <span class="al" data-n="3"><span class=key>&quot;profile&quot;</span>: <span class=str>&quot;gpt5_mini&quot;</span>,</span>
+<span class="al-note" style="margin-left:10ch"><span class="an">3</span>The LLM profile carries the model, the key and the prices. After every call the agent server adds the cost to the run&rsquo;s total and stops the run when the total passes the agent&rsquo;s cost bound.</span>          <span class=key>&quot;prompt&quot;</span>: <span class=str>&quot;orders&quot;</span>,
+          <span class=key>&quot;functions&quot;</span>: [<span class=str>&quot;getOrder&quot;</span>],
+          <span class="al" data-n="4"><span class=key>&quot;streamOutput&quot;</span>: <span class=kw>true</span></span>
+<span class="al-note" style="margin-left:10ch"><span class="an">4</span>Streaming, the conversation&rsquo;s memory, pausing for a person&rsquo;s answer and the time bound on the run are the runtime&rsquo;s work too. The agent asks for none of them by name.</span>        }
+      }
+    }
+  }
+}</code></pre></div>
+        <ol class="anno-notes">
+          <li data-n="1"><span class="an">1</span>The profile holds the host, the credentials and the headers, and the agent never sees them. Profiles are shared across the account, so the places an agent can reach are the ones the profiles name.</li>
+          <li data-n="2"><span class="an">2</span>A Python expression runs with the account&rsquo;s allowlist in place of Python&rsquo;s builtins. A name the allowlist does not carry does not exist for the agent, and <code>import</code>, underscore names and the other constructs the compile rules refuse are caught when the agent is validated.</li>
+          <li data-n="3"><span class="an">3</span>The LLM profile carries the model, the key and the prices. After every call the agent server adds the cost to the run&rsquo;s total and stops the run when the total passes the agent&rsquo;s cost bound.</li>
+          <li data-n="4"><span class="an">4</span>Streaming, the conversation&rsquo;s memory, pausing for a person&rsquo;s answer and the time bound on the run are the runtime&rsquo;s work too. The agent asks for none of them by name.</li>
+        </ol>
+        <svg class="anno-svg" aria-hidden="true"></svg>
+      </figure>
+      <div class="fw-text">
+        <p>An agent is a definition: written by a developer, validated by a real run before it is published, versioned, and unchanged while it runs. Credentials stay out of it. A secret is read as <code>sys.secret['NAME']</code>, with the name written out, and the agent server resolves the value at run time, so the definition shows which secrets an agent uses and never their values. An agent&rsquo;s variables belong to that agent; the one channel between agents is the conversation, by design.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="holds">
+    <div class="container">
+      <div class="section-head">
+        <h2>What the runtime holds</h2>
+        <p>An agent server holds no state of its own, but it holds a runtime: an in-memory copy of everything an agent needs to run, built from the account&rsquo;s configuration. Every part is edited in the GUI.</p>
+      </div>
+      <figure class="fw-struct" aria-label="The parts of the runtime: guardrails, profiles and operations">
+        <div class="st-box st-agent">
+          <div class="st-head"><span class="st-label">Runtime</span><span class="st-hint">one per agent server, in memory</span></div>
+          <div class="st-row st-row3">
+            <div class="st-box st-fn">
+              <div class="st-head"><span class="st-label">Guardrails</span><span class="st-hint">developers</span></div>
+              <div class="st-cmd"><a href="docs/runtime/allowlist.html">Allowlist</a></div>
+              <div class="st-cmd"><a href="docs/runtime/system-variables.html">System variables</a></div>
+              <div class="st-cmd"><a href="docs/runtime/compile-rules.html">Compile rules</a></div>
+              <div class="st-cmd"><a href="docs/runtime/runtime-limits.html">Runtime limits</a></div>
+            </div>
+            <div class="st-box st-fn">
+              <div class="st-head"><span class="st-label">Profiles</span><span class="st-hint">developers</span></div>
+              <div class="st-cmd"><a href="docs/profiles/llm-profiles.html">LLM</a></div>
+              <div class="st-cmd"><a href="docs/profiles/api-profiles.html">API</a></div>
+              <div class="st-cmd"><a href="docs/profiles/db-profiles.html">Database</a></div>
+              <div class="st-cmd"><a href="docs/profiles/mcp-servers.html">MCP server</a></div>
+            </div>
+            <div class="st-box st-fn">
+              <div class="st-head"><span class="st-label">Operations</span><span class="st-hint">administrators</span></div>
+              <div class="st-cmd"><a href="docs/runtime/connection-pools.html">Connection pools</a></div>
+              <div class="st-cmd"><a href="docs/security/secret-vault.html">Secrets</a></div>
+              <div class="st-cmd"><a href="docs/security/encryption.html">Encryption</a></div>
+              <div class="st-cmd"><a href="docs/hooks/index.html">Hooks</a></div>
+            </div>
+          </div>
+        </div>
+      </figure>
+      <div class="fw-text">
+        <p>The guardrails bound what an expression may do: the allowlist names what it can reach, the compile rules say which operators and shapes of expression are accepted, and the runtime limits cap how many times a loop may iterate, how many rows a database call may return and how long a definition may be. Profiles are the agents&rsquo; only way out to models, APIs, databases and MCP servers, and every HTTP call goes through a connection pool that administrators size. Hooks are your own code, called around runs and publishing, before LLM and API calls, and for conversation state, secrets and encryption keys. Every part carries a version, so two people cannot silently overwrite each other, and every change lands in the <a href="docs/system-management/audit-log.html">audit log</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="bounds">
+    <div class="container">
+      <div class="section-head">
+        <h2>Two bounds on every agent: time and cost</h2>
+        <p>Every agent carries two bounds of its own and is published and run with both. The bounds belong to the agent, not to the account.</p>
+      </div>
+      <div class="fw-text">
+        <p>The time bound is the number of seconds one run may take; a run past it ends with the result code <code>timedOut</code>. The cost bound is the LLM spend, in US dollars, that one run may reach; the agent server prices every call from the LLM profile and stops the run when the total passes the bound, and the person is told that the request reached the agent&rsquo;s cost limit. An agent that looks up one record can be held to a few seconds and a few cents, while an agent that researches a question is given more of both. A draft starts with default bounds, the validation run is held to them, and publishing carries them to the agent; a developer can change them on a published agent, and the <a href="docs/reports/index.html">reports</a> show what each agent&rsquo;s runs take and spend, which is the evidence for choosing them.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="everywhere">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Every agent server</span>
+        <h2>A change is live on the next run, on every server</h2>
+        <p>Every agent server builds its runtime from the same configuration, so an agent behaves the same wherever it runs. A change to a part or a profile reaches every server without a restart.</p>
+      </div>
+      <div class="numbered">
+        <div class="step-sec">
+          <h2>A part changes</h2>
+          <p>A developer or an administrator saves a part or a profile in the GUI. Search2o Cloud stores it, stamped with the time.</p>
+        </div>
+        <div class="step-sec">
+          <h2>The next run asks</h2>
+          <p>Every time a run starts, the agent server tells the cloud, and the reply carries the time of the latest change. When it is newer than the server&rsquo;s runtime, the server asks for what changed since it last asked and receives only those parts.</p>
+        </div>
+        <div class="step-sec">
+          <h2>The runtime is swapped</h2>
+          <p>The agent server builds a new runtime from the changed parts and the unchanged pieces of the old one, and the run starts against it. Two servers starting the same agent at the same moment run with the same runtime.</p>
+        </div>
+      </div>
+      <div class="fw-text fw-after-steps">
+        <p>An agent keeps the runtime it started with for its whole run, and the connections of the old runtime stay open until the last agent using them finishes, so a configuration change can never break an agent in the middle of a call. Because the agent server is a stateless process, it can run inside whatever isolation your organization uses, and it can be run in a <a href="docs/system-management/agent-servers.html">cluster</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="leaves">
+    <div class="container">
+      <div class="section-head">
+        <h2>What leaves the agent server</h2>
+        <p>Search2o Cloud receives the search request and the conversation state, and the state is <a href="docs/security/encryption.html">encrypted</a> before it leaves the agent server. API, database, MCP and LLM traffic goes where the profiles point. Everything else an agent handles, API responses, database rows, credentials and variables, stays on the agent server for the life of the run. <a href="docs/security/data-privacy.html">Data privacy</a> says where every kind of data ends up.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-end">
+    <div class="container">
+      <div class="section-head">
+        <h2>Where to read more</h2>
+        <p>The <a href="docs/agent-execution/controlled-runtime.html">controlled runtime</a> page is the summary of every control. The <a href="docs/runtime/index.html">agent runtime</a> section describes each part, and <a href="docs/profiles/index.html">profiles</a>, <a href="docs/hooks/index.html">hooks</a> and <a href="docs/security/index.html">security and privacy</a> have sections of their own.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61">
+      </div>
+      <div class="footer-cols">
+        <div class="fcol">
+          <h4>Product</h4>
+          <a href="framework.html">Agent framework</a>
+          <a href="runtime.html">Agent runtime</a>
+          <a href="search.html">Search</a>
+          <a href="index.html#platform">Platform</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+        <div class="fcol">
+          <h4>Resources</h4>
+          <a href="gettingstarted.html">Getting started</a>
+          <a href="docs/index.html">Docs</a>
+        </div>
+        <div class="fcol">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+        <div class="fcol">
+          <h4>Legal</h4>
+          <a href="legal/terms.html">Terms of Service</a>
+          <a href="legal/privacy.html">Privacy Policy</a>
+          <a href="legal/license.html">Software License</a>
+          <a href="legal/intellectual.html">Intellectual Property</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>&copy; <span id="year">2026</span> Search2o &middot; Virginia, USA</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/site.js"></script>
+<script>
+(function () {
+  function draw(fig) {
+    var svg = fig.querySelector(".anno-svg");
+    var box = fig.getBoundingClientRect();
+    if (!svg || !box.width || getComputedStyle(svg).display === "none") return;
+    var id = "ah" + Array.prototype.indexOf.call(document.querySelectorAll(".anno"), fig);
+    svg.setAttribute("viewBox", "0 0 " + box.width + " " + box.height);
+    var edge = fig.querySelector(".codecard").getBoundingClientRect().right - box.left + 24;
+    var paths = "";
+    fig.querySelectorAll(".anno-notes li").forEach(function (li) {
+      var line = fig.querySelector('.al[data-n="' + li.dataset.n + '"]');
+      if (!line) return;
+      var a = line.getBoundingClientRect(), b = li.getBoundingClientRect();
+      var x1 = b.left - box.left - 10, y1 = b.top - box.top + 12;
+      var x2 = a.right - box.left + 8, y2 = a.top - box.top + a.height / 2;
+      var mx = (x1 + edge) / 2;
+      paths += '<path marker-end="url(#' + id + ')" d="M' + x1 + " " + y1 + " C" + mx + " " + y1 + " " + mx + " " + y2 + " " + edge + " " + y2 + " L" + x2 + " " + y2 + '"/>';
+    });
+    svg.innerHTML = '<defs><marker id="' + id + '" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z"/></marker></defs>' + paths;
+  }
+  function drawAll() { document.querySelectorAll(".anno").forEach(draw); }
+  drawAll();
+  window.addEventListener("resize", drawAll);
+  window.addEventListener("load", drawAll);
+  if (document.fonts) document.fonts.ready.then(drawAll);
+})();
+</script>
+</body>
+</html>
