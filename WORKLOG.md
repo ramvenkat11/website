@@ -808,3 +808,4 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Report-only: `@figure("architecture")` in gen/figures.py is now unused by any docsrc page.
 - Checked 1280 light and dark, 375 (no overflow). Not committed, not uploaded.
 - Ram: box titles were marketing fluff. Now: Search2o cloud, Agent framework, Search, Conversations, Agent runtime, User interface (texts and links unchanged). Rendered 1280. Not committed, not uploaded.
+- Ram: section h2 → "Parts of the system" (kicker "How it works" unchanged). Not committed, not uploaded.
