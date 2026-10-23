@@ -776,3 +776,4 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 
 ## 2026-10-23 — Header nav: "Agent framework" and "Agent runtime"
 - Ram: page titles and header should say Agent framework / Agent runtime. The `<title>`, og:title and kickers of framework.html and runtime.html already did; changed the two navlinks on all 13 site pages (incl. legal/ and 404) and the header template in gen/build.py; docs rebuilt (142 pages). Header checked at 1280, 1000 and 900 on the home and docs pages (no overflow) and at 700 and 375 where the nav wraps. Not committed, not uploaded.
+- Ram: on a Galaxy A55 (384px) "Agent framework" touched the card sides. Phone `.as-part` rows now stack the icon over the name (`flex-direction: column`, 8px side padding again); the Search row keeps its inline icon. 2x close-up at 384: ~12px clear on each side; dark at 360 fine; sw == vw at 360 and 384. Not committed, not uploaded.
