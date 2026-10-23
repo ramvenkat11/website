@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Search2o documentation</title>
-<meta name="description" content="Search2o is a platform for building, running and using AI microagents through search. Developers define agents in JSON with Python expressions and describe e…">
+<meta name="description" content="Search2o agent server simplifies how you build, run and use AI agents. Developers build agents in JSON with Python expressions and describe each one in plain…">
 <link rel="canonical" href="https://search2o.com/docs/index.html">
 <meta property="og:title" content="Search2o documentation">
-<meta property="og:description" content="Search2o is a platform for building, running and using AI microagents through search. Developers define agents in JSON with Python expressions and describe e…">
+<meta property="og:description" content="Search2o agent server simplifies how you build, run and use AI agents. Developers build agents in JSON with Python expressions and describe each one in plain…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/index.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -51,51 +51,9 @@
     <div class="crumbs"><a href='index.html'>Docs</a></div>
     <article class="docs-article">
       <h1>Search2o documentation</h1>
-      <p class="lead">Search2o is a platform for building, running and using AI <a href="introduction/microagents.html">microagents</a> through search. Developers define agents in JSON with Python expressions and describe each one in plain English. Users type what they need, the matching agent runs, and follow-ups continue the same conversation.</p>
+      <p class="lead">Search2o agent server simplifies how you build, run and use AI <a href="introduction/index.html">agents</a>. Developers build agents in JSON with Python expressions and describe each one in plain language. Users say what they need, search finds the agent built to handle it, the agent runs, and follow-ups continue the same conversation.</p>
 
-<section class="docs-arch" id="system-architecture">
-  <div class="section-head center">
-    <span class="kicker">Hybrid architecture</span>
-    <h2 id="agent-servers-are-stateless-search2o-cloud-provides-the-plumbing">Agent servers are stateless. Search2o&nbsp;Cloud provides the plumbing.</h2>
-  </div>
-  <aside class="arch cc-arch hero-arch" aria-label="An agent harness, a browser used by users, developers and admins, and Slack or Teams send requests to the Search2o agent server in your organization. The agent server runs the agents and calls enterprise systems and LLMs. Search, state and reports live in Search2o Cloud, with sensitive data encrypted.">
-    <div class="arch-flow">
-      <div class="arch-org">
-      <span class="arch-org-lbl">Your organization</span>
-      <div class="cc-clients">
-        <div class="arch-node cc-cc"><strong><a href="gui/index.html">Browser</a></strong><div class="arch-chips cc-skill cc-roles"><span>User &middot; Developer &middot; Admin</span></div></div>
-        <div class="arch-node cc-cc"><strong><a href="chat-integrations/index.html">Slack/Teams</a></strong><div class="arch-chips cc-skill"><span><a href="chat-integrations/index.html">Bot</a></span></div></div>
-        <div class="arch-node cc-cc"><strong><a href="skill-integration/index.html">Agent harness</a></strong><div class="arch-chips cc-skill"><span><a href="https://github.com/Search2o/search2o-skill" target="_blank" rel="noopener">search2o-skill</a></span></div></div>
-      </div>
-      <div class="cc-join" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
-      <div class="arch-link cc-down" aria-hidden="true"></div>
-      <div class="cc-main">
-        <div class="arch-node cc-server">
-          <div class="cc-server-head"><strong>Search2o agent server</strong></div>
-          <span class="cc-server-links"><a href="runtime/overview.html">Stateless</a>&nbsp;&middot; <a href="agent-execution/controlled-runtime.html">Controlled&nbsp;runtime</a>&nbsp;&middot; <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">GitHub</a></span>
-          <div class="cc-agents">
-            <span class="cc-agents-lbl">Agents</span>
-            <div class="cc-agent-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-          </div>
-        </div>
-        <div class="arch-sys">
-          <div class="arch-branch"><div class="arch-node"><strong>Enterprise systems</strong><span>APIs&nbsp;&middot; Databases&nbsp;&middot; MCP&nbsp;servers</span></div></div>
-          <div class="arch-branch"><div class="arch-node"><strong>LLMs</strong><span>OpenAI&nbsp;&middot; Anthropic&nbsp;&middot; Gemini&nbsp;&middot; Ollama&nbsp;&middot; vLLM&nbsp;&middot; SGLang&nbsp;&middot; Other</span></div></div>
-        </div>
-      </div>
-      </div>
-      <div class="arch-link two lnk"><a class="arch-lbl" href="security/encryption.html">sensitive data encrypted</a></div>
-      <div class="arch-node cloud">
-        <a class="arch-cloud-lbl" href="security/data-privacy.html">Search2o Cloud</a>
-        <div class="arch-parts">
-          <div class="arch-part"><a href="search/index.html">Search</a></div>
-          <div class="arch-part"><a href="security/data-privacy.html">State</a></div>
-          <div class="arch-part"><a href="reports/index.html">Reports</a></div>
-        </div>
-      </div>
-    </div>
-  </aside>
-
+<section class="docs-arch" id="ask">
   <div class="arch-demo">
     <div
       data-s2o-demo="ask"
@@ -107,46 +65,11 @@
     ></div>
   </div>
 </section>
-<h2 id="start-here">Start here</h2>
-<ul class="pagecards">
-  <li><a href="introduction/index.html"><b>Introduction</b><small>What Search2o is, what a microagent is, the three parts of the system, and how a request becomes a result.</small></a></li>
-  <li><a href="getting-started/index.html"><b>Getting started</b><small>Create your account, install the agent server with pip, run it with your license, and build a first agent.</small></a></li>
-  <li><a href="agent-definition/index.html"><b>Agent definition</b><small>The JSON structure, dynamic strings, functions, commands and variables.</small></a></li>
-  <li><a href="commands/index.html"><b>Command reference</b><small>All 20 commands, every field, with working examples.</small></a></li>
-</ul>
-
-<h2 id="building-and-running-agents">Building and running agents</h2>
-<ul class="pagecards">
-  <li><a href="agent-execution/index.html"><b>Agent execution</b><small>The controlled runtime, output streaming, order of execution and conversation state.</small></a></li>
-  <li><a href="development/index.html"><b>Development process</b><small>Drafts, the editor, Draft with AI, trace and validation, and publishing.</small></a></li>
-  <li><a href="search/index.html"><b>Search</b><small>How to describe an agent so users can find it, how matching behaves, tags, settings and search quality.</small></a></li>
-</ul>
-
-<h2 id="operating-the-system">Operating the system</h2>
-<ul class="pagecards">
-  <li><a href="runtime/index.html"><b>Agent runtime</b><small>What an agent server builds from the configuration and runs agents against: the allowlist, system variables, compile rules and runtime limits, connection pools, and how a change reaches every server.</small></a></li>
-  <li><a href="profiles/index.html"><b>Profiles</b><small>The LLM, API, database and MCP profiles that agents refer to by name.</small></a></li>
-  <li><a href="hooks/index.html"><b>Hooks</b><small>Your own code, called by the agent server: around runs and publishing, before LLM and API calls, and for conversation state, secrets and encryption keys.</small></a></li>
-  <li><a href="reports/index.html"><b>Reports</b><small>Agent performance, errors, LLM cost and user usage.</small></a></li>
-  <li><a href="system-management/index.html"><b>System management</b><small>Users and roles, service accounts, agent servers and how to size them, authentication, single sign-on and the audit log.</small></a></li>
-  <li><a href="security/index.html"><b>Security and privacy</b><small>License key rotation, the secret vault, encryption and key rotation, where every kind of data ends up, and running several environments.</small></a></li>
-  <li><a href="gui/index.html"><b>GUI</b><small>How the GUI runs, and a tour of every page in the bundled interface, by role.</small></a></li>
-</ul>
-
-<h2 id="reference-and-more">Reference and more</h2>
-<ul class="pagecards">
-  <li><a href="rest-api/index.html"><b>REST API</b><small>Sign in, run agents, stream, search, manage conversations, automate tasks with an LLM, and build your own client on the same API the GUI uses.</small></a></li>
-  <li><a href="chat-integrations/index.html"><b>Chat integrations</b><small>Let people use agents from Slack, Microsoft Teams or Google Chat: connecting a person, finding and running an agent, and prompts that write most of the bot.</small></a></li>
-  <li><a href="skill-integration/index.html"><b>Skill integration</b><small>Let an agent harness such as Claude Code or Pi.dev run your published agents: what the skill does, what Search2o adds to it, and how to install it.</small></a></li>
-  <li><a href="llm/index.html"><b>LLM</b><small>The six bundled adapters (OpenAI, Anthropic, Gemini, Ollama, vLLM and SGLang), connecting to any other LLM, and running code that an LLM writes.</small></a></li>
-  <li><a href="comparisons/index.html"><b>Comparisons</b><small>How Search2o differs from other products that people ask about, starting with LangChain.</small></a></li>
-  <li><a href="support-licensing/index.html"><b>Support and licensing</b><small>Asking a question of the documentation, how to reach Search2o support, the license of the agent server, and billing.</small></a></li>
-</ul>
 
     </article>
     <nav class=prevnext><span></span><a class=next href='introduction/index.html'><small>Next</small>Introduction</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#agent-servers-are-stateless-search2o-cloud-provides-the-plumbing'>Agent servers are stateless. Search2o&nbsp;Cloud provides the plumbing.</a></li><li class=l2><a href='#start-here'>Start here</a></li><li class=l2><a href='#building-and-running-agents'>Building and running agents</a></li><li class=l2><a href='#operating-the-system'>Operating the system</a></li><li class=l2><a href='#reference-and-more'>Reference and more</a></li></ul></aside>
+  
 </div>
 <footer class="site-footer">
   <div class="container">
