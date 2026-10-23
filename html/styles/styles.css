@@ -291,7 +291,10 @@ a.as-part:hover { background: var(--bg-soft); color: var(--blue-ink); text-decor
   .as-flow.l .ln::before { border-right-width: 7px; }
   .as-flow.dot .ln::before, .as-flow.dot .ln::after { top: -5px; }
   .as-agent { font-size: 10.5px; }
-  .as-args { display: none; }
+  .as-right .as-flow .lbl { display: block; padding-right: 4px; }
+  .as-right .as-flow .n { display: inline-flex; vertical-align: middle; margin: -2px 3px 0 0; }
+  .as-flow .nw { white-space: normal; }
+  .as-flow .as-agent.nw { white-space: nowrap; }
   .as-flow .sub { padding: 4px 6px 0 4px; font-size: 10.5px; line-height: 1.3; }
   .as-left .as-flow .sub { padding-left: 6px; }
 }
