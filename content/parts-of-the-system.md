@@ -41,9 +41,9 @@ Links:
 - Agent runtime -> runtime.html
 - Reports -> docs/reports/index.html
 
-## Open interface
+## Open interface for integrations
 
-Everything reaches the agent server through a REST API: a bundled browser chat with human-in-the-loop built in, Slack and Teams through chat integrations, and Claude Code through the search2o-skill. Your own integrations can use the same API.
+Everything reaches the agent server through a REST API: a bundled browser chat, Slack and Teams through chat integrations, and Claude Code through the search2o-skill. Your own integrations can use the same API.
 
 Links:
 - REST API -> docs/rest-api/overview.html
