@@ -822,3 +822,4 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - `.how-step .nw { white-space: nowrap }` keeps "search2o-skill" whole (it broke at the hyphen at 860).
 - Rendered 1280/1000/860/700/384/375/360 light and dark via scratchpad render-section.sh; no overflow, no broken names. The md now mirrors the applied text.
 - Next: Ram reviews; kicker "How it works" unchanged.
+- "How it works" h2 now 24px like Platform's "Built for the enterprise" (added #how-it-works to the 24px section-head rule, styles.css); rendered at all seven widths, light and dark, no overflow.
