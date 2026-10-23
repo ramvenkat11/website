@@ -26,3 +26,9 @@
 
 This is the https://search2o.com website project
 
+## Self-review before reporting (Ram, 2026-10-23)
+- Ram is tired of proofreading. Before saying a visual change is done, render every changed view
+  at 1280, 1000, 860, 700, 384 (Galaxy A55), 375 and 360, light and dark, and inspect 2x close-ups
+  of the whole figure, not only the element just changed: text touching or crossing lines, borders
+  and edges; numbers out of line; words broken or orphaned; horizontal overflow. Fix what the
+  close-ups show before reporting, and report only what was actually looked at.
