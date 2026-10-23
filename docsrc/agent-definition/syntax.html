@@ -1,14 +1,14 @@
-<p class="lead">Agents are written in JSONC: JSON with comments. Every value keeps its JSON meaning, with one extension: a string value enclosed in braces is a Python expression.</p>
+<p class="lead">Agents are written in JSONC: JSON with comments. Every value keeps its JSON meaning, with one extension: a string enclosed in braces is a Python expression.</p>
 
 <h2>Comments</h2>
-<p>Line comments (<code>//</code>) and block comments (<code>/* */</code>) are allowed anywhere. Comments are stripped when the draft is validated, so a published agent is plain JSON.</p>
+<p>Line comments (<code>//</code>) and block comments (<code>/* */</code>) are allowed anywhere. Validation strips them, so a published agent is plain JSON.</p>
 
 <h2>Keys and values</h2>
 <p>A key is always a plain name: a function name, a command name or a field name. The <a href="structure.html">structure</a> of the definition, the <a href="functions.html">functions</a> and the <a href="commands.html">commands</a> each have their own page.</p>
-<p>A value is a JSON string, number, boolean, list or object, and each field of a command expects one of those types. The command reference shows the type of every field.</p>
+<p>A value is a JSON string, number, boolean, list or object. Each field of a command expects one of those types, and the command reference shows the type of every field.</p>
 
 <h2>Dynamic strings</h2>
-<p>A string value wrapped in <code>{ ... }</code> is a Python expression, evaluated when the agent runs. Any other string is plain text. A field that may hold either is called a <em>dynamic string</em> in the command reference.</p>
+<p>A string wrapped in <code>{ ... }</code> is a Python expression, evaluated when the agent runs. Any other string is plain text. A field that may hold either is called a <em>dynamic string</em> in the command reference.</p>
 
 <x-code lang="jsonc" title="A plain string and an expression">
 "var": {
@@ -17,4 +17,4 @@
 }
 </x-code>
 
-<p>What an expression may contain, what it can see, how it is checked and how it runs are all on <a href="python-expressions.html">Python expressions</a>.</p>
+<p>What an expression may contain, what it can see, how it is checked and how it runs are on <a href="python-expressions.html">Python expressions</a>.</p>

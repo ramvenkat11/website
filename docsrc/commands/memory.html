@@ -4,10 +4,10 @@
 <!--fields:command:memory-->
 
 <h2>How memories are keyed</h2>
-<p>A memory belongs to one user and is identified by the storing agent's name and a <em>label</em>. Storing under a label that already exists replaces the earlier memory, so a label holds the current truth of one fact rather than a history. Labels are literal names written in the definition. The text is a dynamic string. One command may both store and search.</p>
+<p>A memory belongs to one user and is identified by the storing agent's name and a <em>label</em>. Storing under a label that already exists replaces the earlier memory, so a label holds the current truth of one fact rather than a history. Labels are literal names written in the definition; the text is a dynamic string. One command may both store and search.</p>
 
 <h2>Result</h2>
-<p>When <code>query</code> is set, the result is a list of the best-matching memories. Each memory has <code>agentName</code>, <code>label</code>, <code>text</code> and <code>createdAt</code>. Matching is semantic: the query does not have to share words with the memory. At most <code>limit</code> memories come back, and only memories that are relevant enough. An unrelated query returns an empty list. Without <code>query</code>, the result is <code>None</code>.</p>
+<p>When <code>query</code> is set, the result is a list of the best-matching memories, each with <code>agentName</code>, <code>label</code>, <code>text</code> and <code>createdAt</code>. Matching is semantic: the query does not have to share words with the memory. At most <code>limit</code> memories come back, and only memories that are relevant enough. An unrelated query returns an empty list. Without <code>query</code>, the result is <code>None</code>.</p>
 
 <h2>Example</h2>
 <x-code lang="jsonc">
@@ -30,6 +30,6 @@
   <li>A memory command with <code>query</code> makes a round trip to Search2o Cloud, where memories are kept and searched. The query text is sent in plain form, used for the match, and not stored. Without <code>query</code> the command makes no call: stores and deletes travel with the report the agent server sends when the run completes.</li>
   <li>Stores and deletes are applied when the agent completes successfully. A run that fails stores nothing. Validation runs never store memories.</li>
   <li>One agent may use at most 10 distinct labels across its definition. A single command may store up to 25 memories.</li>
-  <li>A memory is kept for a year after it was last used in a query, or until the agent that stored it is deleted, whichever comes first. Each user has a bounded number of memories, 100 on the Free plan and 500 on Paid; when the bound is reached, the least recently retrieved memories are evicted first.</li>
-  <li>By default the search covers every agent's memories for this user. Narrow the search with <code>agentName</code> or <code>label</code>.</li>
+  <li>A memory is kept for a year after it was last used in a query, or until the agent that stored it is deleted, whichever comes first. Each user has a bounded number of memories, 100 on the Free plan and 500 on Paid. When the bound is reached, the least recently retrieved memories are evicted first.</li>
+  <li>By default the search covers every agent's memories for this user. Narrow it with <code>agentName</code> or <code>label</code>.</li>
 </ul>

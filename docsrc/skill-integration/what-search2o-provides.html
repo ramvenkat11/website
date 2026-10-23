@@ -1,4 +1,4 @@
-<p class="lead">This page goes through what changes when a company's workflows become Search2o agents behind one skill, instead of a skill per workflow with MCP servers or scripts. Claims about either side link to their sources, listed at the end. Claims about Claude Code are about that agent harness specifically; the rest applies to any agent harness.</p>
+<p class="lead">What changes when a company's workflows become Search2o agents behind one skill, instead of a skill per workflow with MCP servers or scripts. Each claim links to its source, and the sources are listed at the end. Claims about Claude Code are about that agent harness; the rest applies to any agent harness.</p>
 
 <h2>Context and tokens</h2>
 
@@ -9,17 +9,17 @@
 <p>With Search2o the workflow is not written at run time. It is a published agent, and it runs on the agent server. Claude's context receives the Search2o skill's instructions, the names and titles of the matching agents, and each agent's output. The agent's commands, API responses, database rows and variables <a href="../agent-execution/controlled-runtime.html">stay on the agent server</a>.</p>
 
 <h3>2. The workflow is not generated again on every run</h3>
-<p>A workflow that Claude carries out costs model tokens at three points, each time anyone runs it. Finding the skill: the description of every installed skill is in every request, <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview" target="_blank" rel="noopener">about 100 tokens each</a>. Loading it: the skill body, which Anthropic sizes at under 5,000 tokens, enters the context and stays. Generating the workflow: Claude writes the steps in a loop of model calls, one for each step.</p>
+<p>A workflow that Claude carries out costs model tokens at three points, each time anyone runs it. Finding the skill: the description of every installed skill is in every request, <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview" target="_blank" rel="noopener">about 100 tokens each</a>. Loading it: the skill body, which Anthropic sizes at under 5,000 tokens, enters the context and stays. Generating the workflow: Claude writes the steps in a loop of model calls, one call for each step.</p>
 <p>Each call <a href="https://code.claude.com/docs/en/prompt-caching" target="_blank" rel="noopener">re-sends the full conversation</a>; prompt caching bills the re-read at a lower rate but does not remove it.</p>
 <p>Anthropic makes the same point about code inside a skill. A bundled script costs only its output in tokens, which its documentation describes as much more efficient than having Claude write equivalent code each time. A Search2o agent applies that to the whole workflow, and moves it off the laptop.</p>
 <p>In Search2o, search costs no model tokens, and an agent's flow control, API calls and database calls cost none. Only an <code>llm</code> command spends tokens: on the model its profile names, under the company's key, within the agent's <a href="../agent-execution/controlled-runtime.html">cost bound</a>.</p>
 <p>That model can be one you host. Search2o supports <a href="https://ollama.com" target="_blank" rel="noopener">Ollama</a>, <a href="https://docs.vllm.ai/en/latest/" target="_blank" rel="noopener">vLLM</a> and <a href="https://github.com/sgl-project/sglang" target="_blank" rel="noopener">SGLang</a>, which can run open models on your own hardware. An <code>llm</code> step on such a model has no per-token charge, and nothing is paid to a model vendor; the cost is the hardware it runs on.</p>
-<p>On Claude's side the cost is fixed: one skill, two calls and the result, however many agents exist and however many steps each one takes. When two hundred people run the same workflow, the difference repeats two hundred times. When the agents' own steps run on models you host, Claude's fixed part is the only model usage a run is charged for.</p>
+<p>On Claude's side the cost is fixed: one skill, two calls and the result, however many agents exist and however many steps each one takes. When two hundred people run the same workflow, the saving repeats two hundred times. When the agents' own steps run on models you host, Claude's fixed part is the only model usage a run is charged for.</p>
 
 <h3>3. One skill entry stands for the whole catalogue</h3>
 <p>Every installed skill puts its name and description in Claude's context, <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview" target="_blank" rel="noopener">about 100 tokens each</a>, and Claude chooses among them by reading the descriptions. Anthropic <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/enterprise" target="_blank" rel="noopener">advises limiting</a> how many are loaded at once: with too many, Claude may pick the wrong skill or miss the right one. In Claude Code the listing has a budget of <a href="https://code.claude.com/docs/en/skills#skill-descriptions-are-cut-short" target="_blank" rel="noopener">1% of the context window</a>; past it, descriptions are dropped, least-used skills first, and only names remain.</p>
 <p>The Search2o skill takes one entry. Behind it, search matches the request against every published agent's description in under a second, with no model call. Adding an agent changes nothing in the skill or on any laptop.</p>
-<p>Search accuracy is <a href="../search/search-quality.html">measured and published</a>. The tests ran on catalogues Search2o built. On a catalogue of 1,000 agents, the right agent came first for 85.5% of 10,000 questions and was among the first two for 92.2%. On five catalogues of 50 to 100 agents the figures were 83.8&ndash;91.0% and 92.3&ndash;97.4%.</p>
+<p>Search accuracy is <a href="../search/search-quality.html">measured and published</a>. The tests ran on catalogues Search2o built. On a catalogue of 1,000 agents, the right agent came first for 85.5% of 10,000 questions and was among the first two for 92.2%. On five catalogues of 50 to 100 agents the figures were 83.8 to 91.0% and 92.3 to 97.4%.</p>
 <p>These figures measure search on its own. Through the skill, Claude reads the titles of the matches and runs the one that fits.</p>
 
 <h2>Models</h2>
@@ -47,7 +47,7 @@
 <p>When Claude carries out a workflow, the actions are decided at run time by the model and run with the person's access. Claude Code's <a href="https://code.claude.com/docs/en/permissions" target="_blank" rel="noopener">permission rules</a> decide which of them need the person's approval.</p>
 <p>Anthropic's guidance warns that a malicious skill <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview" target="_blank" rel="noopener">can direct Claude to invoke tools or run code</a> in ways that do not match its stated purpose. It also warns that content fetched from outside may carry malicious instructions.</p>
 <p>A published agent's actions are <a href="../agent-execution/controlled-runtime.html">fixed by its author</a>. It reaches only what its profiles name, and its expressions call only what the account's allowlist permits. Each run stops at the agent's time and cost bounds.</p>
-<p>With direct routes closed, an assistant that is mistaken, or misled by text it has read, can run only published agents, as that person, with the inputs it supplies. It cannot run new code against your systems.</p>
+<p>With direct routes closed, an assistant that is mistaken, or misled by text it has read, can only run published agents, as that person, with the inputs it supplies. It cannot run new code against your systems.</p>
 
 <h3>8. Intermediate data stays on your server</h3>
 <p>In a model-driven workflow, every API response and query result the model handles is sent to the model's vendor as part of the conversation.</p>
@@ -62,7 +62,7 @@
 <h3>10. Every run is recorded in one place</h3>
 <p>Search2o <a href="../introduction/microagents.html">records every run</a>: who requested it, what ran, how long it took, what failed, and what the LLM calls cost. <a href="../reports/cost.html">Reports</a> show these per agent, per version and per person. Cost is computed from the prices set in each LLM profile. A run started from the agent harness appears under the person's name, beside runs from the GUI and the chat bots.</p>
 <p>Claude Code can <a href="https://code.claude.com/docs/en/monitoring-usage" target="_blank" rel="noopener">export OpenTelemetry metrics and events</a> to a collector you operate: model requests with tokens and cost, tool calls and skill activations, attributed to a user. It is opt-in, and the names of user-configured MCP servers and tools are withheld unless detail logging is on.</p>
-<p>That is a record of model and tool activity in a session. Search2o's is a record of the business action: which agent, which version, for whom, with what result.</p>
+<p>That is a record of model and tool activity in a session. Search2o's record is of the business action: which agent, which version, for whom, with what result.</p>
 
 <h2>Reach</h2>
 
@@ -79,7 +79,7 @@
 
 <h2>What it costs</h2>
 <ul>
-  <li><strong>Someone writes the agents.</strong> A developer learns a JSON definition with 20 commands. <a href="../development/draft-with-ai.html">Draft with AI</a> writes a draft from a description and leaves queries and API paths for the developer to fill in. Each agent is then validated and published.</li>
+  <li><strong>Someone writes the agents.</strong> A developer learns a JSON definition with 20 commands. <a href="../development/draft-with-ai.html">Draft with AI</a> writes a draft from a description and leaves the queries and API paths for the developer to fill in. Each agent is then validated and published.</li>
   <li><strong>You run the agent server.</strong> It installs with pip and is stateless. It is still a service your company operates.</li>
   <li><strong>Requests pass through Search2o Cloud.</strong> The request text is sent in plain form to be matched, then stored encrypted. So is the text of a long-term memory an agent stores. API responses and database rows are not sent unless an agent writes them into its output or a conversation variable.</li>
   <li><strong>Definitions and state are stored in Search2o Cloud.</strong> Agent definitions, their prompts and profiles are stored in plain form, without secret values. Conversation state is stored encrypted. By default Search2o manages the encryption key; with end-to-end encryption the key stays in your organization.</li>

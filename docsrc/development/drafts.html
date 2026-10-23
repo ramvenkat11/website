@@ -1,19 +1,22 @@
-<p class="lead">Agent development begins with a draft. Drafts are private: only the developer who created a draft can see that draft.</p>
+<p class="lead">Agent development begins with a draft. A draft is private: only the developer who created it can see it.</p>
 
 <h2>What a draft holds</h2>
 <ul>
   <li>The agent's name and title.</li>
   <li>The agent definition, as a JSONC document.</li>
   <li>The agent's <a href="../agent-definition/prompts.html">prompts</a>.</li>
+  <li>The agent's const: a JSON object the agent reads as <code>const.name</code>, stored encrypted so that the cloud cannot read it.</li>
+  <li>The profiles the agent uses. <a href="draft-with-ai.html">Draft with AI</a> reads these.</li>
+  <li>The agent's run limits: the most time and the most LLM spend one run may take.</li>
   <li>The agent's tag.</li>
-  <li>A validation query: a typical query the agent is expected to handle. Validation runs the draft against this query.</li>
+  <li>A validation query: a typical request the agent should handle. Validation runs the draft against it.</li>
 </ul>
 
 <h2>New agents and changes</h2>
-<p>A draft is created either for a new agent, or from a published agent in order to change that agent. Every change to a published agent goes through a draft: edit, validate, publish. A draft for a new agent can be renamed until the draft is published. A draft of an existing agent keeps the agent's name.</p>
+<p>A draft is created for a new agent, or from a published agent in order to change it. The definition, the prompts and the const change only through a draft: edit, validate, publish. The title, the run limits and the tag can also be changed on the agent's page. A draft for a new agent can be renamed until it is published. A draft of an existing agent keeps the agent's name.</p>
 
-<h2>Validating and the conversation</h2>
-<p>Each draft has its own conversation, which validation runs use. The draft's conversation is not listed with the user's conversations. The conversation is removed when the draft is published or deleted. Validation runs are not counted in reports.</p>
+<h2>The draft's conversation</h2>
+<p>Each draft has its own conversation, which validation runs use. It is not listed with the user's conversations, and it is removed when the draft is published or deleted. Validation runs do not appear in reports.</p>
 
 <h2>Limits</h2>
-<p>A developer may hold up to 100 drafts. Drafts that are no longer needed can be deleted in bulk from the drafts list. Deleting a draft never affects a published agent.</p>
+<p>A developer may hold 10 drafts on the Free plan and 100 on the Paid plan. Drafts can be deleted in bulk from the drafts list. Deleting a draft never touches a published agent.</p>

@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Running an agent — Search2o docs</title>
-<meta name="description" content="The bot calls execAgent with the agent name and the person’s question. The question goes in inputs under the name query.">
+<meta name="description" content="The bot calls execAgent with the agent name and the person&#x27;s question. The question goes in inputs under the name query.">
 <link rel="canonical" href="https://search2o.com/docs/chat-integrations/running-an-agent.html">
 <meta property="og:title" content="Running an agent — Search2o docs">
-<meta property="og:description" content="The bot calls execAgent with the agent name and the person’s question. The question goes in inputs under the name query.">
+<meta property="og:description" content="The bot calls execAgent with the agent name and the person&#x27;s question. The question goes in inputs under the name query.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/chat-integrations/running-an-agent.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,16 +50,16 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../chat-integrations/index.html'>Chat integrations</a></div>
     <article class="docs-article">
       <h1>Running an agent</h1>
-      <p class="lead">The bot calls <code>execAgent</code> with the agent name and the person&rsquo;s question. The question goes in <code>inputs</code> under the name <code>query</code>.</p>
+      <p class="lead">The bot calls <code>execAgent</code> with the agent name and the person's question. The question goes in <code>inputs</code> under the name <code>query</code>.</p>
 
 <figure class=code data-lang=json><div class=bar><span>The request</span></div><pre><code>{ &quot;agentName&quot;: &quot;hr_policy&quot;,
   &quot;inputs&quot;: { &quot;query&quot;: &quot;how much vacation have I accrued&quot; },
   &quot;convid&quot;: &quot;…&quot; }</code></pre></figure>
-<p>Leave <code>convid</code> out to start a conversation. The response carries the new identifier. Pass that identifier on every later call to continue the same conversation. Please leave the field out altogether rather than sending an empty <code>convid</code>.</p>
+<p>Leave <code>convid</code> out to start a conversation. The response carries the new identifier. Pass that identifier on every later call to continue the same conversation. Leave the field out altogether rather than sending an empty string, which is rejected.</p>
 
 <h2 id="threads-and-conversations">Threads and conversations</h2>
 <p>A chat application identifies a thread in its own way. Slack uses a workspace, a channel and the timestamp of the first message. Teams and Google Chat each have their own identifiers.</p>
-<p>The bot keeps its own record of which thread belongs to which conversation. The bot writes the record when a conversation is created and reads the record on every later message in that thread. Search2o holds no link to the chat application.</p>
+<p>The bot keeps its own record of which thread belongs to which conversation. It writes the record when a conversation is created and reads it on every later message in that thread. Search2o holds no link to the chat application.</p>
 
 <h2 id="how-a-run-ends">How a run ends</h2>
 <p>The response carries a result code. A bot handles four cases.</p>
@@ -69,7 +69,7 @@
 <tr><td><code>success</code></td><td>The run finished. Show the output; see <a href="showing-the-answer.html">Showing the answer</a>.</td></tr>
 <tr><td><code>ask</code></td><td>The agent is asking for input. See below.</td></tr>
 <tr><td><code>unknownConversation</code></td><td>The conversation is no longer known. Forget the stored identifier, start a new conversation, and carry on. This is not an error to report.</td></tr>
-<tr><td>Anything else</td><td>The run failed. Tell the person, using the error message when there is one.</td></tr>
+<tr><td>Anything else</td><td>The run failed. Tell the person, using <code>error.message</code> when there is one.</td></tr>
 </tbody></table></div>
 <p>Conversations expire, so a stored identifier that is no longer known is ordinary and expected.</p>
 
@@ -79,12 +79,12 @@
 <p>Slack needs one extra step. A form there can only be opened in response to a click, and the ask arrives while the bot is handling a message event. The usual way round it is a message with an Answer button, with the form opening when that button is pressed.</p>
 
 <h2 id="slow-answers">Slow answers</h2>
-<p>Every chat application expects the bot to acknowledge an event quickly. Slack allows about three seconds. Microsoft Teams allows longer, and Google Chat longer still. It is worth checking the current figure for the application you are building against, because each vendor changes it.</p>
-<p>We would suggest not building against that figure. An agent that calls a model usually answers in about five seconds, and sometimes takes a minute or more. No window covers that.</p>
-<p>The pattern is therefore the same on all three. Acknowledge the event at once. Post a short message saying the answer is coming. Post or edit the real answer when the answer arrives.</p>
-<p>Each application has its own way to send that later message. In Slack, post a message and edit it with <code>chat.update</code>. In Teams, keep the conversation reference and send a proactive message, or update the activity. In Google Chat, create a message in the space with the Chat API. All three also have a typing or progress indicator worth using while the person waits.</p>
+<p>Every chat application expects the bot to acknowledge an event quickly. Slack allows about three seconds. Microsoft Teams allows longer, and Google Chat longer still. Check the current figure for the application you are building against, because each vendor changes it.</p>
+<p>Do not build against that figure. An agent that calls a model usually answers in about five seconds, and sometimes takes a minute or more. No window covers that.</p>
+<p>The pattern is the same on all three. Acknowledge the event at once. Post a short message saying the answer is coming. Post or edit the real answer when it arrives.</p>
+<p>Each application has its own way to send that later message. In Slack, post a message and edit it with <code>chat.update</code>. In Teams, keep the conversation reference and send a proactive message, or update the activity. In Google Chat, create a message in the space with the Chat API. All three also have a typing or progress indicator to use while the person waits.</p>
 <p>When a conversation turns out to have expired, the bot starts a new one and runs the question again. Reuse the message already posted rather than posting another. Otherwise the person sees two messages saying an answer is coming, for one question.</p>
-<p>The agent server can <a href="../rest-api/streaming.html">stream progress</a> while an agent runs, and a bot can use the progress to update the message it posted. Please leave an unfinished stream open: closing it stops the agent.</p>
+<p>The agent server can <a href="../rest-api/streaming.html">stream progress</a> while an agent runs, and a bot can use the progress to update the message it posted. Keep an unfinished stream open: closing it stops the agent.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../chat-integrations/finding-an-agent.html'><small>Previous</small>Finding an agent</a><a class=next href='../chat-integrations/showing-the-answer.html'><small>Next</small>Showing the answer</a></nav>

@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>System variables — Search2o docs</title>
-<meta name="description" content="The sys namespace carries what the runtime knows about a run. Four names are always there. Four more reach an agent only when a developer lists them here, so…">
+<meta name="description" content="The sys namespace carries what the runtime knows about a run. Four names are always there. Four more reach an agent only when a developer enables them here, …">
 <link rel="canonical" href="https://search2o.com/docs/runtime/system-variables.html">
 <meta property="og:title" content="System variables — Search2o docs">
-<meta property="og:description" content="The sys namespace carries what the runtime knows about a run. Four names are always there. Four more reach an agent only when a developer lists them here, so…">
+<meta property="og:description" content="The sys namespace carries what the runtime knows about a run. Four names are always there. Four more reach an agent only when a developer enables them here, …">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/runtime/system-variables.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,7 +50,7 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../runtime/index.html'>Agent runtime</a></div>
     <article class="docs-article">
       <h1>System variables</h1>
-      <p class="lead">The <code>sys</code> namespace carries what the runtime knows about a run. Four names are always there. Four more reach an agent only when a developer lists them here, so by default an agent sees nothing about the user or the agent server. See <a href="../agent-definition/variables.html">Variables and namespaces</a> for how an expression reads them.</p>
+      <p class="lead">The <code>sys</code> namespace carries what the runtime knows about a run. Four names are always there. Four more reach an agent only when a developer enables them here, so by default an agent sees nothing about the user or the agent server. See <a href="../agent-definition/variables.html">Variables and namespaces</a> for how an expression reads them.</p>
 
 <h2 id="always-present">Always present</h2>
 <ul>
@@ -62,7 +62,7 @@
 
 <h2 id="enabled-here">Enabled here</h2>
 <div class=tablewrap><table class=fields><thead><tr><th>Value</th><th>Meaning</th></tr></thead><tbody><tr><td><code>userEmail</code></td><td>Email of the user.</td></tr><tr><td><code>userSession</code></td><td>A hashed value of the session ID of the user in the agent server. This can be used to store data that is specific to the current user session.</td></tr><tr><td><code>serverIp</code></td><td>IP address of the agent server as seen by the cloud. This can be used in logging server specific activity.</td></tr><tr><td><code>cookies</code></td><td>User cookies in the request. This can expose the raw session ID of the user and other such secret values. This needs to be used carefully.</td></tr></tbody></table></div>
-<p><code>cookies</code> deserves care. The cookies carry the user's raw session ID, and an agent that writes the cookies into its output, a variable or a call to an outside system has given that session away. We would suggest enabling <code>cookies</code> only for an agent that needs them, and never letting the value leave the agent server.</p>
+<p><code>cookies</code> needs care. The cookies carry the user's raw session ID, and an agent that writes them into its output, a variable or a call to an outside system has given that session away. Enable <code>cookies</code> only for an agent that needs them, and never let the value leave the agent server.</p>
 <div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>sysVariables</code></td><td class=ty>list of &quot;userEmail&quot; | &quot;userSession&quot; | &quot;serverIp&quot; | &quot;cookies&quot;</td><td class=dflt></td><td>Which system variables agents can read from the &#x27;sys&#x27; namespace. &#x27;inputs&#x27; and &#x27;query&#x27; are always available.</td></tr></tbody></table></div>
 
     </article>

@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Search behavior — Search2o docs</title>
-<meta name="description" content="A search returns the agents that match a query, best first. What an interface does with those matches — run the best one at once, or show them for the user t…">
+<meta name="description" content="A search returns the agents that match a query, best first. What an interface does with those matches, run the best one at once or show them for the user to …">
 <link rel="canonical" href="https://search2o.com/docs/search/search-settings.html">
 <meta property="og:title" content="Search behavior — Search2o docs">
-<meta property="og:description" content="A search returns the agents that match a query, best first. What an interface does with those matches — run the best one at once, or show them for the user t…">
+<meta property="og:description" content="A search returns the agents that match a query, best first. What an interface does with those matches, run the best one at once or show them for the user to …">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/search/search-settings.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,7 +50,7 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../search/index.html'>Search</a></div>
     <article class="docs-article">
       <h1>Search behavior</h1>
-      <p class="lead">A search returns the agents that match a query, best first. What an interface does with those matches &mdash; run the best one at once, or show them for the user to pick &mdash; is the interface's own behavior, not an account setting. The bundled GUI takes it from the agent server&rsquo;s configuration; an interface of your own decides for itself.</p>
+      <p class="lead">A search returns the agents that match a query, best first. What an interface does with those matches, run the best one at once or show them for the user to pick, is the interface's own behavior, not an account setting. The bundled GUI takes it from the agent server's configuration; an interface of your own decides for itself.</p>
 
 <h2 id="what-an-interface-can-do-with-the-matches">What an interface can do with the matches</h2>
 <p>A search returns one or two agents, or none; see <a href="how-matching-works.html">How matching behaves</a>. The interface then chooses how to act:</p>
@@ -58,7 +58,7 @@
 <thead><tr><th>Behavior</th><th>What happens</th></tr></thead>
 <tbody>
 <tr><td>Run the best match</td><td>The top agent runs at once. The fastest path, and it never asks the user to choose.</td></tr>
-<tr><td>Run only a lone match</td><td>A single match runs at once; when two come back, they are offered as a choice.</td></tr>
+<tr><td>Run only a lone match</td><td>A single match runs at once. When two come back, they are offered as a choice.</td></tr>
 <tr><td>Show the matches</td><td>The matches are always shown and the user picks. Nothing runs until they do.</td></tr>
 </tbody></table></div>
 <p>When nothing matches, the interface says so rather than running anything.</p>
@@ -73,8 +73,8 @@
 <thead><tr><th>Value</th><th>What happens</th></tr></thead>
 <tbody>
 <tr><td><code>executeTopMatch</code></td><td>Run the best match. The default.</td></tr>
-<tr><td><code>executeOnlyMatch</code></td><td>Run only a lone match; when two come back, the user chooses.</td></tr>
-<tr><td><code>showResults</code></td><td>Show the matches; the user chooses, even when only one matched.</td></tr>
+<tr><td><code>executeOnlyMatch</code></td><td>Run only a lone match. When two come back, the user chooses.</td></tr>
+<tr><td><code>showResults</code></td><td>Show the matches. The user chooses, even when only one matched.</td></tr>
 </tbody></table></div>
 <p><code>search.followupBehavior</code>, for a follow-up in a conversation. The previous agent is the one that answered last:</p>
 <div class="tablewrap"><table class="fields">
@@ -82,13 +82,13 @@
 <tbody>
 <tr><td><code>executeTopMatch</code></td><td>Run the best match. When nothing matches, the previous agent runs. The default.</td></tr>
 <tr><td><code>executeOnlyMatch</code></td><td>Run only a lone match. When two come back, the user chooses, with the previous agent offered alongside them. When nothing matches, the previous agent runs.</td></tr>
-<tr><td><code>showResults</code></td><td>Show the matches, with the previous agent offered alongside them; the user chooses.</td></tr>
+<tr><td><code>showResults</code></td><td>Show the matches, with the previous agent offered alongside them. The user chooses.</td></tr>
 <tr><td><code>executePrevious</code></td><td>Always run the previous agent. Nothing is searched.</td></tr>
 </tbody></table></div>
-<p><code>search.tag</code> is sent with every search the GUI makes, follow-ups included; empty searches every tag. See <a href="tags.html">Tags</a>.</p>
+<p><code>search.tag</code> is sent with every search the GUI makes, follow-ups included. Empty searches every tag. See <a href="tags.html">Tags</a>.</p>
 
 <h2 id="your-own-interface">Your own interface</h2>
-<p>An interface of your own, a chat integration, or an <a href="../skill-integration/overview.html">agent skill</a> decides for itself what to do with the matches. The <a href="../rest-api/search.html"><code>search</code></a> call returns only the ranked matches; the choice of what to run is yours. A chat bot that always runs the best match feels like a conversation; one that shows the matches feels like a search page. Either works, as long as it stays consistent.</p>
+<p>An interface of your own, a chat integration or an <a href="../skill-integration/overview.html">agent skill</a> decides for itself what to do with the matches. The <a href="../rest-api/search.html"><code>search</code></a> call returns only the ranked matches; what to run is your choice. A chat bot that always runs the best match feels like a conversation. One that shows the matches feels like a search page. Either works, as long as it stays consistent.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../search/tags.html'><small>Previous</small>Tags</a><a class=next href='../search/search-quality.html'><small>Next</small>Search quality</a></nav>

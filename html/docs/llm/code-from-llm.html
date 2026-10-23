@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Executing code from an LLM — Search2o docs</title>
-<meta name="description" content="Search2o will never execute arbitrary Python code. A future dynamic command will let an LLM generate an agent in Search2o&#x27;s own JSON format and execute that …">
+<meta name="description" content="Search2o never runs arbitrary Python code, whoever wrote it. A future dynamic command will let an LLM write an agent in Search2o&#x27;s own JSON format and run th…">
 <link rel="canonical" href="https://search2o.com/docs/llm/code-from-llm.html">
 <meta property="og:title" content="Executing code from an LLM — Search2o docs">
-<meta property="og:description" content="Search2o will never execute arbitrary Python code. A future dynamic command will let an LLM generate an agent in Search2o&#x27;s own JSON format and execute that …">
+<meta property="og:description" content="Search2o never runs arbitrary Python code, whoever wrote it. A future dynamic command will let an LLM write an agent in Search2o&#x27;s own JSON format and run th…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/llm/code-from-llm.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,11 +50,11 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../llm/index.html'>LLM</a></div>
     <article class="docs-article">
       <h1>Executing code from an LLM</h1>
-      <p class="lead">Search2o will never execute arbitrary Python code. A future <code>dynamic</code> command will let an LLM generate an agent in Search2o's own JSON format and execute that agent.</p>
+      <p class="lead">Search2o never runs arbitrary Python code, whoever wrote it. A future <code>dynamic</code> command will let an LLM write an agent in Search2o's own JSON format and run that agent instead.</p>
 
-<p>The distinction matters. A generated agent is still a set of commands. Its expressions run in the controlled runtime under the allowlist and the limits. A generated agent can do only what a hand-written agent can do, and it produces the same trace. Arbitrary code would bypass all of that. That is why arbitrary code is ruled out rather than merely restricted.</p>
+<p>The difference matters. A generated agent is still a set of commands. Its expressions run in the controlled runtime, under the allowlist and the limits, and it produces the same trace as a hand-written agent. It can do only what a hand-written agent can do. Arbitrary code would bypass all of that, which is why it is ruled out rather than restricted.</p>
 
-<p>Until the <code>dynamic</code> command ships, use tool calling to let a model decide what happens: offer the model functions that do the work, and let the model choose which function to call and with which arguments. See the <a href="../commands/llm.html"><code>llm</code></a> command.</p>
+<p>Until the <code>dynamic</code> command ships, let the model decide what happens through tool calling: offer it functions that do the work, and it chooses which function to call and with which arguments. See the <a href="../commands/llm.html"><code>llm</code></a> command.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../llm/llm-adapters.html'><small>Previous</small>Connecting to other LLMs</a><a class=next href='../commands/index.html'><small>Next</small>Command reference</a></nav>

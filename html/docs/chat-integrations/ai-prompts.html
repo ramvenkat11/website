@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Building a bot with an AI assistant — Search2o docs</title>
-<meta name="description" content="The API is small enough that an assistant can write most of a bot in one pass. What an assistant cannot do is guess the contract, and a wrong guess produces …">
+<meta name="description" content="The API is small enough that an assistant can write most of a bot in one pass. What an assistant cannot do is guess the contract: a wrong guess produces code…">
 <link rel="canonical" href="https://search2o.com/docs/chat-integrations/ai-prompts.html">
 <meta property="og:title" content="Building a bot with an AI assistant — Search2o docs">
-<meta property="og:description" content="The API is small enough that an assistant can write most of a bot in one pass. What an assistant cannot do is guess the contract, and a wrong guess produces …">
+<meta property="og:description" content="The API is small enough that an assistant can write most of a bot in one pass. What an assistant cannot do is guess the contract: a wrong guess produces code…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/chat-integrations/ai-prompts.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,9 +50,9 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../chat-integrations/index.html'>Chat integrations</a></div>
     <article class="docs-article">
       <h1>Building a bot with an AI assistant</h1>
-      <p class="lead">The API is small enough that an assistant can write most of a bot in one pass. What an assistant cannot do is guess the contract, and a wrong guess produces code that looks right and fails in testing. Give it the contract first.</p>
+      <p class="lead">The API is small enough that an assistant can write most of a bot in one pass. What an assistant cannot do is guess the contract: a wrong guess produces code that looks right and fails in testing. Give it the contract first.</p>
 
-<p>Paste the reference prompt, then the prompt for your chat application, then let the assistant work. Both are written to be pasted as they are.</p>
+<p>Paste the reference prompt, then the prompt for your chat application, and let the assistant work. Both are written to be pasted as they are.</p>
 
 <h2 id="the-reference-prompt">The reference prompt</h2>
 <figure class=code data-lang=text><div class=bar><span>The contract</span></div><pre><code>You are writing a chat bot that connects a chat application to Search2o. Use only the
@@ -68,9 +68,10 @@ AUTHENTICATION
   Three calls need no token at all: startConnect, getConnectRequest, getConnectToken.
 
 ERRORS
-  A failure is HTTP 4xx with a body of:
+  A failure is HTTP 4xx or 5xx with a body of:
       { &quot;success&quot;: false, &quot;error&quot;: { &quot;message&quot;: &quot;...&quot;, &quot;cause&quot;: &quot;...&quot;, &quot;data&quot;: {} } }
-  Show error.message. There is no error code to branch on.
+  Show error.message. There is no error code to branch on. A 401 means the token no
+  longer works.
 
 CONNECTING A PERSON  (run once per person, no password is ever handled by the bot)
   1. POST BASE/api/auth/startConnect
@@ -157,11 +158,10 @@ RULES YOU MUST FOLLOW
   - html parts cannot be shown in any chat application. Convert them to text, or tell the
     person the answer is in the Search2o GUI.
   - image parts are base64. Upload them using the chat application&#x27;s file API.
-  - When you show the results, show one button per
-    agent. Put a short id in the button and keep the question in your own store, because a
-    button carries little and a question can be long. Replace the message once somebody
-    chooses, so a second click cannot start a second conversation. Accept the click only
-    from the person who asked.
+  - When you show search results, show one button per agent. Put a short id in the button
+    and keep the question in your own store, because a button carries little and a question
+    can be long. Replace the message once somebody chooses, so a second click cannot start
+    a second conversation. Accept the click only from the person who asked.
   - When a run returns unknownConversation, reuse the message you already posted for
     the retry. Do not post a second one.</code></pre></figure>
 
@@ -223,7 +223,7 @@ RULES YOU MUST FOLLOW
   - Upload image parts as card images.</code></pre></figure>
 
 <h2 id="check-these-before-you-trust-the-result">Check these before you trust the result</h2>
-<p>An assistant produces something plausible. These are the points where a plausible answer is wrong, so check each one against the running bot.</p>
+<p>An assistant produces something plausible. These are the points where a plausible answer is wrong. Check each one against the running bot.</p>
 <ul>
   <li>The connect flow never returns the token to the browser. Code that reads a token from a redirect or from the page has invented that.</li>
   <li>The token comes back once. Code that expects to fetch the token again later is wrong.</li>

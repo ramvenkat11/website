@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Connecting to other LLMs — Search2o docs</title>
-<meta name="description" content="An adapter is what connects Search2o to an LLM. Six adapters are bundled. Three cover every endpoint that speaks the OpenAI, Anthropic or Gemini protocol, an…">
+<meta name="description" content="An adapter connects Search2o to an LLM. Six are bundled: three for every endpoint that speaks the OpenAI, Anthropic or Gemini protocol, and three for models …">
 <link rel="canonical" href="https://search2o.com/docs/llm/llm-adapters.html">
 <meta property="og:title" content="Connecting to other LLMs — Search2o docs">
-<meta property="og:description" content="An adapter is what connects Search2o to an LLM. Six adapters are bundled. Three cover every endpoint that speaks the OpenAI, Anthropic or Gemini protocol, an…">
+<meta property="og:description" content="An adapter connects Search2o to an LLM. Six are bundled: three for every endpoint that speaks the OpenAI, Anthropic or Gemini protocol, and three for models …">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/llm/llm-adapters.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,17 +50,17 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../llm/index.html'>LLM</a></div>
     <article class="docs-article">
       <h1>Connecting to other LLMs</h1>
-      <p class="lead">An adapter is what connects Search2o to an LLM. Six adapters are bundled. Three cover every endpoint that speaks the OpenAI, Anthropic or Gemini protocol, and three connect to models you host with Ollama, vLLM or SGLang. An LLM with an interface of its own needs an adapter class, written in Python and named on the Hooks page.</p>
+      <p class="lead">An adapter connects Search2o to an LLM. Six are bundled: three for every endpoint that speaks the OpenAI, Anthropic or Gemini protocol, and three for models you host with Ollama, vLLM or SGLang. An LLM with a protocol of its own needs an adapter class, written in Python and named on the Hooks page.</p>
 
 <h2 id="first-try-a-bundled-adapter">First, try a bundled adapter</h2>
-<p>Many LLMs are reachable with the adapters that are already there. A private deployment, a gateway, or a vendor that offers an OpenAI-compatible API needs no code at all: create an <a href="../profiles/llm-profiles.html">LLM profile</a> under <strong>Profiles &rsaquo; LLM</strong>, pick the adapter that matches the protocol (<code>openai</code>, <code>anthropic</code> or <code>gemini</code>), and set the URL, the headers and the model. A model served by Ollama, vLLM or SGLang takes the <code>ollama</code>, <code>vllm</code> or <code>sglang</code> adapter. See <a href="vendors.html">LLM vendors</a>.</p>
-<p>Each bundled adapter's description says which protocol the adapter speaks. The GUI shows the adapter's description when a profile is created &mdash; the OpenAI one reads &ldquo;Adapter for OpenAI ChatGPT responses API or any vendor that is compatible with it&rdquo;.</p>
+<p>Most LLMs are reachable with the adapters that are already there. A private deployment, a gateway, or a vendor with an OpenAI-compatible API needs no code: create an <a href="../profiles/llm-profiles.html">LLM profile</a> under <strong>Profiles &rsaquo; LLM</strong>, pick the adapter that matches the protocol (<code>openai</code>, <code>anthropic</code> or <code>gemini</code>), and set the URL, the headers and the model. A model served by Ollama, vLLM or SGLang takes the <code>ollama</code>, <code>vllm</code> or <code>sglang</code> adapter. See <a href="vendors.html">LLM vendors</a>.</p>
+<p>The GUI shows each adapter's description when a profile is created, and the description says which protocol the adapter speaks.</p>
 
 <h2 id="when-you-need-an-adapter-of-your-own">When you need an adapter of your own</h2>
-<p>An adapter turns the request that Search2o builds &mdash; prompt, tools, model and limits &mdash; into the vendor's request body, and turns the vendor's response back into Search2o's form. Write one only when the vendor's protocol matches none of the bundled adapters.</p>
+<p>An adapter turns the request Search2o builds, with the prompt, tools, model and limits, into the vendor's request body, and turns the vendor's response back into Search2o's form. Write one only when the vendor's protocol matches none of the bundled adapters.</p>
 
 <h3 id="basellmadapter-for-most-apis">BaseLlmAdapter, for most APIs</h3>
-<p><code>search2o.llm.basellmadapter.BaseLlmAdapter</code> does the assembly and the control flow. It builds the request in a fixed order, merges the profile's <code>additionalParams</code> over the result, and reads the response in a fixed order. You supply only the vendor-specific pieces, as these methods:</p>
+<p><code>search2o.llm.basellmadapter.BaseLlmAdapter</code> does the assembly and the control flow. It builds the request in a fixed order, merges the profile's <code>additionalParams</code> over the result, and reads the response in a fixed order. You supply the vendor-specific pieces, as these methods:</p>
 <div class="tablewrap"><table class="fields data">
 <thead><tr><th>Method</th><th>What it does</th></tr></thead>
 <tbody>
@@ -78,17 +78,17 @@
 <tr><td><code>set_token_counts</code></td><td>Read the token counts, which the cost report is computed from.</td></tr>
 <tr><td><code>set_assistant_vendor</code></td><td>Read the answer: either tool calls or content. A response with neither is an error.</td></tr>
 </tbody></table></div>
-<p><code>BaseLlmAdapter</code> walks the prompt for you and calls the four message methods in the order the conversation happened, so an adapter never has to sort the history itself. <code>get_error</code> has a working implementation that reads the response's <code>error</code> field; override it when the vendor reports errors differently.</p>
+<p><code>BaseLlmAdapter</code> walks the prompt history and calls the four message methods in the order the exchange happened, so an adapter never sorts the history itself. <code>get_error</code> has a working implementation that reads the response's <code>error</code> field; override it when the vendor reports errors differently.</p>
 
 <h3 id="llmadapter-for-anything-else">LlmAdapter, for anything else</h3>
 <p><code>search2o.llm.llmadapter.LlmAdapter</code> is the bare interface, for a protocol so different that the assembly above does not help. Five methods, and nothing is done for you: <code>name</code>, <code>description</code>, <code>process_request</code> (an <code>LlmRequestModel</code> in, the request body out), <code>process_response</code> (the response in, an <code>LlmResponseModel</code> out), and <code>get_error</code>.</p>
-<p>The bundled adapters in <code>search2o.llm</code> &mdash; <code>openaiadapter.py</code>, <code>anthropicadapter.py</code> and <code>geminiadapter.py</code> &mdash; are the reference implementations, and each is a short file. <code>ollamaadapter.py</code>, <code>vllmadapter.py</code> and <code>sglangadapter.py</code> extend the OpenAI adapter.</p>
+<p>The bundled adapters in <code>search2o.llm</code> are the reference implementations, and each is a short file: <code>openaiadapter.py</code>, <code>anthropicadapter.py</code> and <code>geminiadapter.py</code>. <code>ollamaadapter.py</code>, <code>vllmadapter.py</code> and <code>sglangadapter.py</code> extend the OpenAI adapter.</p>
 
 <h2 id="registering-it">Registering it</h2>
 <ol>
   <li>Install the class in the Python environment of every agent server.</li>
   <li>On the <a href="../hooks/adapters-and-validators.html">Hooks</a> page, under LLM adapters, add a line <code>mypackage.myadapter.MyAdapter</code> and save.</li>
-  <li>Restart the agent servers. Each builds the class once when it starts, and lists the adapter under <em>Adapters</em> when a new LLM profile is created. A class that cannot be imported or built is written to the agent server's log, and the agent server refuses to run agents until the line is fixed.</li>
+  <li>Restart the agent servers. Each builds the class once at startup and then offers the adapter under <em>Adapters</em> when a new LLM profile is created. A class that cannot be imported or built is written to the agent server's log, and that agent server refuses to run agents until the line is fixed.</li>
 </ol>
 <p>The class needs a constructor that takes no arguments.</p>
 

@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Users and roles — Search2o docs</title>
-<meta name="description" content="Every user has one of four roles. The roles are listed here in ascending order of privilege, and each role includes every permission of the roles below it.">
+<meta name="description" content="Every user has one of four roles. They are listed here in ascending order, and each role includes every permission of the roles below it.">
 <link rel="canonical" href="https://search2o.com/docs/system-management/users-and-roles.html">
 <meta property="og:title" content="Users and roles — Search2o docs">
-<meta property="og:description" content="Every user has one of four roles. The roles are listed here in ascending order of privilege, and each role includes every permission of the roles below it.">
+<meta property="og:description" content="Every user has one of four roles. They are listed here in ascending order, and each role includes every permission of the roles below it.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/system-management/users-and-roles.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,15 +50,15 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../system-management/index.html'>System management</a></div>
     <article class="docs-article">
       <h1>Users and roles</h1>
-      <p class="lead">Every user has one of four roles. The roles are listed here in ascending order of privilege, and each role includes every permission of the roles below it.</p>
+      <p class="lead">Every user has one of four roles. They are listed here in ascending order, and each role includes every permission of the roles below it.</p>
 
 <h2 id="roles">Roles</h2>
 <figure class="fig"><svg viewBox="0 0 720 220" role="img" aria-label="Four roles; each includes the ones below it" xmlns="http://www.w3.org/2000/svg"><defs><marker id="roles-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--faint)"/></marker><marker id="roles-arr-r" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M10,0 L0,5 L10,10 z" fill="var(--faint)"/></marker></defs><rect x="20" y="170" width="380" height="40" rx="10" fill="var(--bg-soft)" stroke="var(--line)"/><text x="36" y="190" text-anchor="start" dominant-baseline="middle" font-size="12.5" font-weight="700" fill="var(--ink)">User</text><text x="386" y="190" text-anchor="end" dominant-baseline="middle" font-size="11" font-weight="500" fill="var(--muted)">search, converse, own profile</text><rect x="20" y="124" width="480" height="40" rx="10" fill="var(--card)" stroke="var(--line)"/><text x="36" y="144" text-anchor="start" dominant-baseline="middle" font-size="12.5" font-weight="700" fill="var(--ink)">Developer</text><text x="486" y="144" text-anchor="end" dominant-baseline="middle" font-size="11" font-weight="500" fill="var(--muted)">+ agents, dev configuration, agent reports</text><rect x="20" y="78" width="580" height="40" rx="10" fill="var(--navy)" stroke="var(--navy)"/><text x="36" y="98" text-anchor="start" dominant-baseline="middle" font-size="12.5" font-weight="700" fill="#fff">Administrator</text><text x="586" y="98" text-anchor="end" dominant-baseline="middle" font-size="11" font-weight="500" fill="rgba(255,255,255,.8)">+ users, system configuration, license, usage reports</text><rect x="20" y="32" width="680" height="40" rx="10" fill="var(--blue)" stroke="var(--blue)"/><text x="36" y="52" text-anchor="start" dominant-baseline="middle" font-size="12.5" font-weight="700" fill="#fff">Account owner</text><text x="686" y="52" text-anchor="end" dominant-baseline="middle" font-size="11" font-weight="500" fill="rgba(255,255,255,.8)">+ owner role, billing</text></svg><figcaption>Four roles; each includes the ones below it</figcaption></figure>
 <ol>
-  <li><strong>User</strong> — an end user. A user runs searches, converses with agents, and manages a personal profile and preferences.</li>
-  <li><strong>Developer</strong> — creates, validates and publishes agents; views and edits the agent configuration (allowlist, compile rules, runtime limits, profiles); reads the agent reports; sees all published agents.</li>
-  <li><strong>Administrator</strong> — everything a developer can do, plus users and their roles, authentication, agent servers, connection pools, secrets and encryption, the license, and the user usage reports.</li>
-  <li><strong>Account owner</strong> — everything an administrator can do, plus billing and account-level settings.</li>
+  <li><strong>User</strong>: an end user. Runs searches, converses with agents, and manages a personal profile.</li>
+  <li><strong>Developer</strong>: creates, validates and publishes agents; views and edits the agent configuration (allowlist, compile rules, runtime limits, profiles); reads the agent reports; sees all published agents.</li>
+  <li><strong>Administrator</strong>: everything a developer can do, plus users and their roles, authentication, agent servers, connection pools, secrets and encryption, the license, and the user usage reports.</li>
+  <li><strong>Account owner</strong>: everything an administrator can do, plus billing and account-level settings.</li>
 </ol>
 <p>A program that calls the API on its own behalf is a <a href="service-accounts.html">service account</a>: a user with a key instead of a password, and with its own role, any except owner.</p>
 
@@ -79,13 +79,13 @@
 </tbody></table></div>
 
 <h2 id="adding-users">Adding users</h2>
-<p>An administrator adds users by email address, up to 25 at a time. Each new user receives an email saying they were added, then clicks <strong>New user / Forgot password</strong> on the sign-in dialog, enters that email address, receives a one-time code, and chooses a password. No password or code travels in the added-user email. If the account restricts email addresses to a domain, only addresses in that domain can be added. A user's role can be changed only by someone else.</p>
+<p>An administrator adds users by email address, up to 25 at a time. Each new user receives an email saying they were added. The user then clicks <strong>New user / Forgot password</strong> on the sign-in dialog, enters that email address, receives a one-time code, and chooses a password. No password or code travels in the added-user email. If the account restricts email addresses to a domain, only addresses in that domain can be added. Nobody can change their own role.</p>
 
 <h2 id="removing-users">Removing users</h2>
-<p>A deleted user cannot sign in and cannot be restored. The user's name stays on everything the user published. Administrators cannot delete themselves.</p>
+<p>A deleted user cannot sign in and cannot be restored. The user's name stays on everything the user published. Nobody can delete themselves, and only an owner can delete another owner.</p>
 
 <h2 id="freezing">Freezing</h2>
-<p>An administrator can freeze the account. A freeze stops every change to agents and configuration: drafts, publishing, profiles and settings. Searches and agent runs continue. The freeze records who applied it, and any administrator can lift the freeze. A freeze suits a release or an investigation.</p>
+<p>An administrator can freeze the account. A freeze stops every change to agents and configuration: drafts, publishing, profiles and settings. Searches and agent runs continue. The freeze records who applied it, and any administrator can lift it. A freeze suits a release or an investigation.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../system-management/index.html'><small>Previous</small>System management</a><a class=next href='../system-management/service-accounts.html'><small>Next</small>Service accounts</a></nav>

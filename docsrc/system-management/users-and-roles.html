@@ -1,12 +1,12 @@
-<p class="lead">Every user has one of four roles. The roles are listed here in ascending order of privilege, and each role includes every permission of the roles below it.</p>
+<p class="lead">Every user has one of four roles. They are listed here in ascending order, and each role includes every permission of the roles below it.</p>
 
 <h2>Roles</h2>
 <!--figure:roles-->
 <ol>
-  <li><strong>User</strong> — an end user. A user runs searches, converses with agents, and manages a personal profile and preferences.</li>
-  <li><strong>Developer</strong> — creates, validates and publishes agents; views and edits the agent configuration (allowlist, compile rules, runtime limits, profiles); reads the agent reports; sees all published agents.</li>
-  <li><strong>Administrator</strong> — everything a developer can do, plus users and their roles, authentication, agent servers, connection pools, secrets and encryption, the license, and the user usage reports.</li>
-  <li><strong>Account owner</strong> — everything an administrator can do, plus billing and account-level settings.</li>
+  <li><strong>User</strong>: an end user. Runs searches, converses with agents, and manages a personal profile.</li>
+  <li><strong>Developer</strong>: creates, validates and publishes agents; views and edits the agent configuration (allowlist, compile rules, runtime limits, profiles); reads the agent reports; sees all published agents.</li>
+  <li><strong>Administrator</strong>: everything a developer can do, plus users and their roles, authentication, agent servers, connection pools, secrets and encryption, the license, and the user usage reports.</li>
+  <li><strong>Account owner</strong>: everything an administrator can do, plus billing and account-level settings.</li>
 </ol>
 <p>A program that calls the API on its own behalf is a <a href="service-accounts.html">service account</a>: a user with a key instead of a password, and with its own role, any except owner.</p>
 
@@ -27,10 +27,10 @@
 </tbody></table></div>
 
 <h2>Adding users</h2>
-<p>An administrator adds users by email address, up to 25 at a time. Each new user receives an email saying they were added, then clicks <strong>New user / Forgot password</strong> on the sign-in dialog, enters that email address, receives a one-time code, and chooses a password. No password or code travels in the added-user email. If the account restricts email addresses to a domain, only addresses in that domain can be added. A user's role can be changed only by someone else.</p>
+<p>An administrator adds users by email address, up to 25 at a time. Each new user receives an email saying they were added. The user then clicks <strong>New user / Forgot password</strong> on the sign-in dialog, enters that email address, receives a one-time code, and chooses a password. No password or code travels in the added-user email. If the account restricts email addresses to a domain, only addresses in that domain can be added. Nobody can change their own role.</p>
 
 <h2>Removing users</h2>
-<p>A deleted user cannot sign in and cannot be restored. The user's name stays on everything the user published. Administrators cannot delete themselves.</p>
+<p>A deleted user cannot sign in and cannot be restored. The user's name stays on everything the user published. Nobody can delete themselves, and only an owner can delete another owner.</p>
 
 <h2>Freezing</h2>
-<p>An administrator can freeze the account. A freeze stops every change to agents and configuration: drafts, publishing, profiles and settings. Searches and agent runs continue. The freeze records who applied it, and any administrator can lift the freeze. A freeze suits a release or an investigation.</p>
+<p>An administrator can freeze the account. A freeze stops every change to agents and configuration: drafts, publishing, profiles and settings. Searches and agent runs continue. The freeze records who applied it, and any administrator can lift it. A freeze suits a release or an investigation.</p>

@@ -53,8 +53,8 @@
       <p class="lead">An agent is written as a definition: a JSONC document with a <code>functions</code> object, each function holding the commands it runs. The <strong>Agent definition</strong> editor on the draft page is where you write it. The editor is built on Monaco, the editor inside Visual Studio Code, and it knows the Search2o agent language, so it suggests what comes next and points out mistakes as you type.</p>
 
 <h2 id="what-the-editor-knows">What the editor knows</h2>
-<p>The editor learns the agent language from the agent schema that the cloud publishes: the same schema that validation checks your agent against. The schema covers every command, the fields each command takes, what type each field holds, and a sentence describing each one. So a command or field added to Search2o appears in the editor at once, and what the editor suggests is what validation accepts.</p>
-<p>The schema is loaded the first time you open the editor and kept for the rest of the session. If the schema cannot be loaded, the editor still works as a plain JSON editor, without the suggestions and checks described below.</p>
+<p>The editor learns the agent language from the agent schema that the cloud publishes: the same schema validation checks your agent against. The schema covers every command, the fields each command takes, what type each field holds, and a sentence describing each one. A command or field added to Search2o appears in the editor at once, and what the editor suggests is what validation accepts.</p>
+<p>The schema is loaded the first time you open the editor and kept for the rest of the session. If it cannot be loaded, the editor still works as a plain JSON editor, without the suggestions and checks described below.</p>
 
 <h2 id="adding-a-command">Adding a command</h2>
 <p>Inside a function's <code>commands</code> block, start a new line and type <code>"</code>. A list of every command allowed there opens, grouped by what it does:</p>
@@ -70,7 +70,7 @@
 <tr><td>Agent termination</td><td><code>end</code>, <code>fail</code></td></tr>
 <tr><td>Observability</td><td><code>progress</code>, <code>trace</code>, <code>log</code></td></tr>
 </tbody></table></div>
-<p>Keep typing to filter the list. Up and Down move through it, and the box under the list describes the highlighted command. Enter, Tab or a click inserts the command; Escape closes the list. The list shows only the commands allowed where you are typing, and opens as tall as the window allows.</p>
+<p>Keep typing to filter the list. Up and Down move through it, and the box under the list describes the highlighted command. Enter, Tab or a click inserts the command; Escape closes the list. The list shows only the commands allowed where you are typing.</p>
 <p>Choosing a command inserts it ready to fill in, with the fields you will almost always need: <code>if</code> arrives with <code>condition</code>, <code>then</code> and <code>else</code>; <code>for</code> with <code>iter</code>, <code>loopVar</code> and <code>do</code>; <code>api</code> with <code>profile</code>, <code>path</code>, <code>queryParams</code> and <code>body</code>. Each field gets a starter value to replace: a Python expression field gets <code>"{  }"</code>, a block of commands <code>{}</code>, a list of objects one empty object, a field with a fixed set of values its first value, and a field with a default that default. A block cannot hold the same key twice, so when the block already has a <code>var</code>, the next one is inserted as <code>var.1</code>, then <code>var.2</code>. The command is indented to match its surroundings, a comma is added to the previous entry if it needs one, and the cursor lands where you type next.</p>
 
 <h2 id="suggestions-as-you-type">Suggestions as you type</h2>
@@ -117,15 +117,15 @@
 <h2 id="around-the-editor">Around the editor</h2>
 <ul>
   <li><strong>Save</strong> with Ctrl+S (&#8984;S on a Mac) from anywhere on the page, including while typing in the editor. <em>Saved</em> appears briefly beside the Agent definition heading.</li>
-  <li><strong>Validate</strong> with Ctrl+Enter (&#8984;&#9166;) from anywhere on the page except inside the editor, where that key belongs to the editor, and inside the Draft with AI box, where it sends the request; there, use the <strong>Validate/Trace</strong> button or click outside the editor first.</li>
+  <li><strong>Validate</strong> with Ctrl+Enter (&#8984;&#9166;) from anywhere on the page except inside the editor, where that key belongs to the editor, and inside the Draft with AI box, where it sends the request. There, use the <strong>Validate/Trace</strong> button or click outside the editor first.</li>
   <li><strong>Jump to a problem.</strong> Validation errors and lines in the validation output show where in the agent they happened, such as <code>main.commands.llm</code>. Select one to scroll to that command and select the whole of it. If you have since removed or renamed the command, you are told so.</li>
   <li><strong>Two kinds of undo.</strong> The editor's own Undo steps back through your typing. <strong>Undo AI edit</strong>, beside the heading, steps back through changes made by <a href="draft-with-ai.html">Draft with AI</a>, up to the last ten.</li>
 </ul>
 
 <h2 id="what-the-editor-leaves-to-others">What the editor leaves to others</h2>
 <ul>
-  <li>Hovering shows a problem's message; the box under the command list describes each command, and the Docs icon answers questions about the language.</li>
-  <li>Profile names, secret names and functions on your allowlist are typed, not suggested; validation checks that each one exists.</li>
+  <li>Hovering shows a problem's message; the box under the command list describes each command; the Docs icon answers questions about the language.</li>
+  <li>Profile names, secret names, prompt names and functions on your allowlist are typed, not suggested. Validation checks that each one exists.</li>
   <li>The editor is a first line of defense. Validation in the cloud has the final say when you validate and publish.</li>
 </ul>
 

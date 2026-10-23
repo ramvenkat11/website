@@ -54,49 +54,53 @@
 
 <figure class="fig"><svg viewBox="0 0 720 230" role="img" aria-label="Three scopes for variables" xmlns="http://www.w3.org/2000/svg"><defs><marker id="variable-scopes-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--faint)"/></marker><marker id="variable-scopes-arr-r" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M10,0 L0,5 L10,10 z" fill="var(--faint)"/></marker></defs><rect x="20" y="30" width="220" height="130" rx="10" fill="var(--card)" stroke="var(--line)"/><text x="36" y="52" text-anchor="start" dominant-baseline="middle" font-size="13" font-weight="700" fill="var(--ink)" font-family="var(--mono)">local</text><text x="36" y="78" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">one function, one run</text><text x="36" y="100" text-anchor="start" dominant-baseline="middle" font-size="11" font-weight="500" fill="var(--muted)" font-family="var(--mono)">city, rows, loop variables</text><text x="36" y="126" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">any Python value</text><rect x="250" y="30" width="220" height="130" rx="10" fill="var(--card)" stroke="var(--line)"/><text x="266" y="52" text-anchor="start" dominant-baseline="middle" font-size="13" font-weight="700" fill="var(--ink)" font-family="var(--mono)">agent.x</text><text x="266" y="78" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">one agent, whole conversation</text><text x="266" y="100" text-anchor="start" dominant-baseline="middle" font-size="11" font-weight="500" fill="var(--muted)" font-family="var(--mono)">agent.hasInit, agent.cache</text><text x="266" y="126" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">JSON-serializable, saved</text><rect x="480" y="30" width="220" height="130" rx="10" fill="var(--card)" stroke="var(--line)"/><text x="496" y="52" text-anchor="start" dominant-baseline="middle" font-size="13" font-weight="700" fill="var(--ink)" font-family="var(--mono)">conv.x</text><text x="496" y="78" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">all agents, whole conversation</text><text x="496" y="100" text-anchor="start" dominant-baseline="middle" font-size="11" font-weight="500" fill="var(--muted)" font-family="var(--mono)">conv.order, conv.customer</text><text x="496" y="126" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">JSON-serializable, saved</text><text x="20" y="186" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="600" fill="var(--ink)">read-only:  sys · command · result · exc</text><text x="20" y="208" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">set with var; seed agent. and conv. values before reading them</text></svg><figcaption>Three scopes for variables</figcaption></figure>
 <h2 id="local-variables">Local variables</h2>
-<p>Local variables are set and read without a prefix. A local variable lives in the function that set it and disappears when that function returns. Function arguments and <code>for</code> loop variables are local variables. A local variable can hold any Python value.</p>
+<p>Local variables are set and read without a prefix. A local variable lives in the function that set it and disappears when that function returns. Function arguments and <code>for</code> loop variables are locals. A local variable can hold any Python value.</p>
 
 <h2 id="agent-variables">Agent variables</h2>
-<p>Agent variables are written <code>agent.name</code>. An agent variable lives for the whole conversation. Every function of the agent can read and write the variable; other agents cannot. Use agent variables for state that a follow-up query should find again: whether initialization has run, a cached lookup, the user's last choice.</p>
+<p>Agent variables are written <code>agent.name</code>. An agent variable lives for the whole conversation. Every function of the agent can read and write it; other agents cannot. Use agent variables for state that a follow-up query should find again: whether initialization has run, a cached lookup, the user's last choice.</p>
 
 <h2 id="conversation-variables">Conversation variables</h2>
-<p>Conversation variables are written <code>conv.name</code>. A conversation variable lives for the whole conversation, and any agent that runs in the conversation can read and write the variable. Conversation variables are how agents hand work to each other: one agent leaves a result in <code>conv.order</code>, and the next agent picks the result up.</p>
+<p>Conversation variables are written <code>conv.name</code>. A conversation variable lives for the whole conversation, and any agent that runs in the conversation can read and write it. This is how agents hand work to each other: one agent leaves a result in <code>conv.order</code>, and the next agent picks it up.</p>
 <p>Agent and conversation variables are saved with the conversation, so their values must be JSON serializable. Reading a variable that has never been set raises an error. <code>sys.exists(scope, name)</code> answers whether the variable exists first, so a variable can be seeded on first use: <code>"{ (agent.count if sys.exists('agent', 'count') else 0) + 1 }"</code>.</p>
 
 <h2 id="setting-variables">Setting variables</h2>
-<p>The <a href="../commands/var.html"><code>var</code></a> command sets variables of all three kinds. The command can also set one element of an existing list or dict: <code>"totals['q3']": "{ ... }"</code>. Once set, a variable can be read in any dynamic string.</p>
+<p>The <a href="../commands/var.html"><code>var</code></a> command sets variables of all three kinds. It can also set one element of an existing list or dict: <code>"totals['q3']": "{ ... }"</code>. Once set, a variable can be read in any dynamic string.</p>
+<p>Validation refuses an expression that reads a local variable nothing before it can have set, and a prompt that does the same; see <a href="python-expressions.html#variables-that-nothing-sets">Python expressions</a>.</p>
 
 <h2 id="read-only-namespaces">Read-only namespaces</h2>
+<h3 id="const">const</h3>
+<p><code>const</code> holds the agent's constants: a JSON object set in the GUI with the draft, like the prompts, and read as <code>const.name</code>. The object is encrypted on its way to and from Search2o Cloud, so the cloud never reads it. An agent cannot assign to <code>const</code>. Validation lists the keys the agent reads, and the agent server checks that the agent's const has them.</p>
+
 <h3 id="sys">sys</h3>
-<p>The runtime provides <code>sys</code>. The following names are always present:</p>
+<p>The runtime provides <code>sys</code>. These names are always present:</p>
 <ul>
-  <li><code>sys.inputs</code> — the inputs the agent was started with, as a dict. For a search the dict is <code>{ "query": ... }</code>. A call to <a href="../rest-api/running-agents.html"><code>execAgent</code></a> passes any inputs it likes.</li>
-  <li><code>sys.query</code> — the user's query, the same as <code>sys.inputs['query']</code>.</li>
-  <li><code>sys.secret[name]</code> — reads a secret by name. Where secrets come from — the environment, a file, or your own vault — is on <a href="../security/secret-vault.html">Secret vault</a>.</li>
-  <li><code>sys.exists(scope, name)</code> — whether a variable exists, before reading it. The scope is <code>local</code>, <code>agent</code>, <code>conv</code> or <code>allowlist</code>; see <a href="python-expressions.html#checking-whether-a-variable-exists">Python expressions</a>.</li>
+  <li><code>sys.inputs</code>: the inputs the agent was started with, as a dict. For a search the dict is <code>{ "query": ... }</code>. A call to <a href="../rest-api/running-agents.html"><code>execAgent</code></a> passes any inputs it likes.</li>
+  <li><code>sys.query</code>: the user's query, the same as <code>sys.inputs['query']</code>.</li>
+  <li><code>sys.secret[name]</code>: reads a secret by name. Where secrets come from, the environment, a file or your own vault, is on <a href="../security/secret-vault.html">Secret vault</a>.</li>
+  <li><code>sys.exists(scope, name)</code>: whether a variable exists, before reading it. The scope is <code>local</code>, <code>agent</code>, <code>conv</code>, <code>const</code> or <code>allowlist</code>; see <a href="python-expressions.html#checking-whether-a-variable-exists">Python expressions</a>.</li>
 </ul>
-<p>The following names are present only when an administrator enables them in the <a href="../runtime/system-variables.html">system variables</a> configuration:</p>
+<p>These names are present only when an administrator enables them in the <a href="../runtime/system-variables.html">system variables</a> configuration:</p>
 <ul>
-  <li><code>sys.userEmail</code> — the email address of the user running the agent.</li>
-  <li><code>sys.userSession</code> — a hash of the user's session, for keying per-session data.</li>
-  <li><code>sys.serverIp</code> — the agent server's address as seen by the cloud, for logging.</li>
-  <li><code>sys.cookies</code> — the cookies of the request that started the run.</li>
+  <li><code>sys.userEmail</code>: the email address of the user running the agent.</li>
+  <li><code>sys.userSession</code>: a hash of the user's session, for keying per-session data.</li>
+  <li><code>sys.serverIp</code>: the agent server's address as seen by the cloud, for logging.</li>
+  <li><code>sys.cookies</code>: the cookies of the request that started the run.</li>
 </ul>
 
 <h3 id="command">command</h3>
-<p><code>command</code> holds the values of the current command's fields that have been evaluated so far. A field may refer to a field written earlier in the same command as <code>command.field</code>.</p>
+<p><code>command</code> holds the values of the current command's fields evaluated so far. A field may refer to a field written earlier in the same command as <code>command.field</code>.</p>
 
 <h3 id="other-names">Other names</h3>
 <ul>
-  <li><code>result</code> — the result of the most recent command that produces one.</li>
-  <li><code>exc</code> — inside an <code>onError</code> block, the exception being handled.</li>
+  <li><code>result</code>: the result of the most recent command that produces one.</li>
+  <li><code>exc</code>: inside an <code>onError</code> block, the exception being handled.</li>
 </ul>
-<p><code>sys</code>, <code>command</code>, <code>result</code>, <code>exc</code>, <code>env</code>, <code>agent</code>, <code>conv</code> and <code>onError</code> are reserved and cannot be assigned.</p>
+<p><code>sys</code>, <code>command</code>, <code>result</code>, <code>exc</code>, <code>agent</code>, <code>conv</code>, <code>const</code> and <code>onError</code> are reserved and cannot be assigned, nor used as argument or loop variable names. Python keywords cannot be variable names either.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../agent-definition/prompts.html'><small>Previous</small>Prompts</a><a class=next href='../agent-execution/index.html'><small>Next</small>Agent execution</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#local-variables'>Local variables</a></li><li class=l2><a href='#agent-variables'>Agent variables</a></li><li class=l2><a href='#conversation-variables'>Conversation variables</a></li><li class=l2><a href='#setting-variables'>Setting variables</a></li><li class=l2><a href='#read-only-namespaces'>Read-only namespaces</a></li><li class=l3><a href='#sys'>sys</a></li><li class=l3><a href='#command'>command</a></li><li class=l3><a href='#other-names'>Other names</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#local-variables'>Local variables</a></li><li class=l2><a href='#agent-variables'>Agent variables</a></li><li class=l2><a href='#conversation-variables'>Conversation variables</a></li><li class=l2><a href='#setting-variables'>Setting variables</a></li><li class=l2><a href='#read-only-namespaces'>Read-only namespaces</a></li><li class=l3><a href='#const'>const</a></li><li class=l3><a href='#sys'>sys</a></li><li class=l3><a href='#command'>command</a></li><li class=l3><a href='#other-names'>Other names</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

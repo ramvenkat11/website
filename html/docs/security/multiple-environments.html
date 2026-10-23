@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Running multiple environments — Search2o docs</title>
-<meta name="description" content="Most organizations run their systems in several environments — development, test, staging, production. Search2o supports this with one account per environment.">
+<meta name="description" content="Most organizations run their systems in several environments: development, test, staging, production. Search2o supports this with one account per environment.">
 <link rel="canonical" href="https://search2o.com/docs/security/multiple-environments.html">
 <meta property="og:title" content="Running multiple environments — Search2o docs">
-<meta property="og:description" content="Most organizations run their systems in several environments — development, test, staging, production. Search2o supports this with one account per environment.">
+<meta property="og:description" content="Most organizations run their systems in several environments: development, test, staging, production. Search2o supports this with one account per environment.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/security/multiple-environments.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,17 +50,17 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../security/index.html'>Security and privacy</a></div>
     <article class="docs-article">
       <h1>Running multiple environments</h1>
-      <p class="lead">Most organizations run their systems in several environments &mdash; development, test, staging, production. Search2o supports this with one account per environment.</p>
+      <p class="lead">Most organizations run their systems in several environments: development, test, staging, production. Search2o supports this with one account per environment.</p>
 
 <h2 id="one-account-per-environment">One account per environment</h2>
-<p>Each environment needs its own Search2o account and license key. Create an account for each environment, and start each environment's agent servers with that environment's key. Accounts are fully separate: agents, configuration, conversations and reports never cross between them.</p>
-<p>Each environment typically has its own users as well &mdash; developers in development, testers in test, and the real user population in production.</p>
+<p>Each environment needs its own Search2o account and license key. Create an account for each, and start each environment's agent servers with that environment's key. Accounts are fully separate: agents, configuration, conversations and reports never cross between them.</p>
+<p>Each environment usually has its own users as well: developers in development, testers in test, and the real user population in production.</p>
 
 <h2 id="profiles-point-to-the-environment-s-systems">Profiles point to the environment's systems</h2>
-<p>An agent names its <a href="../profiles/overview.html">profiles</a>; the profiles carry the endpoints. The same profile names can exist in every account, pointing at that environment's servers &mdash; the development database in development, the production database in production. An agent definition therefore moves between environments without any change.</p>
+<p>An agent names its <a href="../profiles/overview.html">profiles</a>, and the profiles carry the endpoints. The same profile names can exist in every account, pointing at that environment's servers: the development database in development, the production database in production. An agent definition therefore moves between environments without change.</p>
 
 <h2 id="moving-agents-between-environments">Moving agents between environments</h2>
-<p>Agents are promoted through the <a href="../rest-api/overview.html">REST API</a>: read the agent and its description from one account, create a draft in the next, then validate and publish there. The calls are the same calls the GUI uses.</p>
+<p>Agents are promoted through the <a href="../rest-api/overview.html">REST API</a>: read the agent, its prompts and its description from one account, create a draft in the next, then validate and publish there. These are the same calls the GUI uses.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../security/data-privacy.html'><small>Previous</small>Data privacy</a><a class=next href='../gui/index.html'><small>Next</small>GUI</a></nav>

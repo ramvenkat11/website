@@ -51,8 +51,8 @@
     <article class="docs-article">
       <h1>Reports</h1>
       <p class="lead">Search2o keeps a record of every agent execution, including failures, for 7 days on the Free plan and 90 days on the Paid plan. The reports summarize those records. Developers see the agent reports; administrators also see the user usage reports.</p>
-<p>Every report covers a time window that you choose. Each report returns a table and a trend. The trend uses hourly buckets when the window is 48 hours or less, and daily buckets otherwise. A row in the table opens a detail report for that agent or user.</p>
-<ul class=pagecards><li><a href='performance.html'><b>Agent performance</b><small>One row per agent: how often the agent ran, for how many users, how often the agent succeeded, and how long a run took.</small></a></li><li><a href='errors.html'><b>Agent errors</b><small>One row per agent that failed at least once: how often the agent failed, for how many users, and with which result codes.</small></a></li><li><a href='cost.html'><b>LLM cost</b><small>One row per agent: the total LLM spend, the average spend per execution, and the highest spend of any single execution. Every execution counts, whether or no…</small></a></li><li><a href='usage.html'><b>User usage</b><small>One row per user: executions, distinct agents used, success rate, LLM spend and last activity. Administrators only. The table is paged and can be sorted by a…</small></a></li></ul>
+<p>Every report covers a time window that you choose and returns a table and a trend. The trend uses hourly buckets when the window is 48 hours or less, and daily buckets otherwise. A row in the table opens a detail report for that agent or user.</p>
+<ul class=pagecards><li><a href='performance.html'><b>Agent performance</b><small>One row per agent: how often the agent ran, for how many users, how often it succeeded, and how long a run took.</small></a></li><li><a href='errors.html'><b>Agent errors</b><small>One row per agent that failed at least once: how often the agent failed, for how many users, and with which result codes.</small></a></li><li><a href='cost.html'><b>LLM cost</b><small>One row per agent: the total LLM spend, the average spend per execution, and the highest spend of any single execution. Every execution counts, whether or no…</small></a></li><li><a href='usage.html'><b>User usage</b><small>One row per user: executions, distinct agents used, success rate, LLM spend and last activity. Administrators only. The table is paged and can be sorted by a…</small></a></li></ul>
 
 <h2 id="what-is-recorded">What is recorded</h2>
 <p>Each record holds the agent and its version, the user, the start time and the duration, the result code, the error message if there was one, and the LLM cost and LLM time. Validation runs of drafts are not recorded.</p>
@@ -66,7 +66,7 @@
 <tr><td><code>callFailed</code></td><td>A call to an external system failed.</td></tr>
 <tr><td><code>failCommand</code></td><td>The agent ended itself with the <code>fail</code> command.</td></tr>
 <tr><td><code>errorInAgent</code></td><td>A coding error in the agent.</td></tr>
-<tr><td><code>unknownConversation</code></td><td>The conversation could not be found, the conversation is paused on an ask by a different agent, or the agent that asked has been republished since.</td></tr>
+<tr><td><code>unknownConversation</code></td><td>The conversation could not be found, is paused on an ask by a different agent, or the agent that asked has been republished since.</td></tr>
 <tr><td><code>timedOut</code></td><td>The run exceeded the maximum agent runtime.</td></tr>
 <tr><td><code>stopped</code></td><td>The user stopped the run.</td></tr>
 <tr><td><code>mustLogin</code></td><td>The session expired during the run.</td></tr>

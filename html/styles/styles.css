@@ -444,6 +444,15 @@ a.as-part:hover { background: var(--bg-soft); color: var(--blue-ink); text-decor
 .section-head p { margin-top: 14px; font-size: 15px; color: var(--muted); }
 
 .howgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+.how-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin: 0; padding: 0; list-style: none; }
+.how-step { padding: 22px 20px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--card-shadow); }
+.how-step .n { display: inline-grid; place-items: center; vertical-align: top; width: 26px; height: 26px; margin: 0 6px 14px 0; border-radius: 50%; background: var(--blue); color: #fff; font-size: 13px; font-weight: 700; line-height: 1; }
+.how-step .n.dev { background: var(--ink); color: var(--as-dev-fg, #fff); }
+.how-step h3 { margin-bottom: 8px; font-size: 16px; line-height: 1.3; }
+.how-step p { color: var(--muted); font-size: 14px; text-wrap: pretty; }
+.how-step .nw { white-space: nowrap; }
+.how-step p code { font-family: var(--mono); font-size: 13px; color: var(--ink); }
+.how-links { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 12px; font-size: 13.5px; font-weight: 600; }
 .steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
 .steps li { position: relative; padding: 0 0 34px 62px; counter-increment: step; }
 .steps li:last-child { padding-bottom: 0; }
@@ -469,7 +478,7 @@ a.as-part:hover { background: var(--bg-soft); color: var(--blue-ink); text-decor
 .arch { border: 1px solid var(--line); border-radius: 18px; background: var(--card); box-shadow: var(--card-shadow-lg); padding: 32px 28px; }
 .arch .note { margin-top: 20px; color: var(--faint); font-size: 13px; }
 .points { margin-top: 22px; }
-#search-and-execute .section-head h2, #platform .section-head h2, #system-architecture .section-head h2 { font-size: 24px; }
+#search-and-execute .section-head h2, #platform .section-head h2, #how-it-works .section-head h2, #system-architecture .section-head h2 { font-size: 24px; }
 #system-architecture .section-head { max-width: 860px; }
 .fw-card .cc-title { padding-top: 14px; padding-bottom: 14px; color: var(--muted); font-size: 13px; font-weight: 600; line-height: 1.5; }
 .fw-lead { margin: 0 0 11px; color: var(--body); font-size: 14px; line-height: 1.6; }
@@ -992,6 +1001,7 @@ a.arch-lbl { color: var(--blue-ink); }
   .cc-title { margin: -24px -16px 16px; padding: 11px 16px; }
   .fw-grid, #system-architecture .howgrid { grid-template-columns: minmax(0, 1fr); }
   .cardgrid { grid-template-columns: repeat(2, 1fr); }
+  .how-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .factrow { grid-template-columns: 1fr; }
   .tworow { grid-template-columns: 1fr; }
   .hero { padding: 60px 0 72px; }
@@ -1041,7 +1051,7 @@ a.arch-lbl { color: var(--blue-ink); }
   .cc-main .cc-server { padding: 12px 10px; }
   .cc-arch.hero-arch .cc-main .cc-server-head strong { font-size: 15px; }
   .header-cta { display: none; }
-  .cardgrid, .form-grid { grid-template-columns: 1fr; }
+  .cardgrid, .form-grid, .how-steps { grid-template-columns: 1fr; }
   .footer-main { flex-direction: column; gap: 32px; }
   .footer-cols { gap: 40px; flex-wrap: wrap; }
   .footer-base { flex-direction: column; align-items: flex-start; }

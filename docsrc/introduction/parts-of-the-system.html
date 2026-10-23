@@ -1,13 +1,50 @@
 <p class="lead">Search2o has three parts: a cloud service, an agent server that runs in your organization, and a GUI served by that agent server.</p>
 
-<!--figure:architecture-->
+<div class="docs-arch">
+  <aside class="arch cc-arch hero-arch" aria-label="An agent harness, a browser used by users, developers and admins, and Slack or Teams send requests to the Search2o agent server in your organization. The agent server runs the agents and calls enterprise systems and LLMs. Search, state and reports live in Search2o Cloud, with sensitive data encrypted.">
+    <div class="arch-flow">
+      <div class="arch-org">
+      <span class="arch-org-lbl">Your organization</span>
+      <div class="cc-clients">
+        <div class="arch-node cc-cc"><strong><a href="../gui/index.html">Browser</a></strong><div class="arch-chips cc-skill cc-roles"><span>User &middot; Developer &middot; Admin</span></div></div>
+        <div class="arch-node cc-cc"><strong><a href="../chat-integrations/index.html">Slack/Teams</a></strong><div class="arch-chips cc-skill"><span><a href="../chat-integrations/index.html">Bot</a></span></div></div>
+        <div class="arch-node cc-cc"><strong><a href="../skill-integration/index.html">Agent harness</a></strong><div class="arch-chips cc-skill"><span><a href="https://github.com/Search2o/search2o-skill" target="_blank" rel="noopener">search2o-skill</a></span></div></div>
+      </div>
+      <div class="cc-join" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+      <div class="arch-link cc-down" aria-hidden="true"></div>
+      <div class="cc-main">
+        <div class="arch-node cc-server">
+          <div class="cc-server-head"><strong>Search2o agent server</strong></div>
+          <span class="cc-server-links"><a href="../runtime/overview.html">Stateless</a>&nbsp;&middot; <a href="../agent-execution/controlled-runtime.html">Controlled&nbsp;runtime</a>&nbsp;&middot; <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">GitHub</a></span>
+          <div class="cc-agents">
+            <span class="cc-agents-lbl">Agents</span>
+            <div class="cc-agent-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          </div>
+        </div>
+        <div class="arch-sys">
+          <div class="arch-branch"><div class="arch-node"><strong>Enterprise systems</strong><span>APIs&nbsp;&middot; Databases&nbsp;&middot; MCP&nbsp;servers</span></div></div>
+          <div class="arch-branch"><div class="arch-node"><strong>LLMs</strong><span>OpenAI&nbsp;&middot; Anthropic&nbsp;&middot; Gemini&nbsp;&middot; Ollama&nbsp;&middot; vLLM&nbsp;&middot; SGLang&nbsp;&middot; Other</span></div></div>
+        </div>
+      </div>
+      </div>
+      <div class="arch-link two lnk"><a class="arch-lbl" href="../security/encryption.html">sensitive data encrypted</a></div>
+      <div class="arch-node cloud">
+        <a class="arch-cloud-lbl" href="../security/data-privacy.html">Search2o Cloud</a>
+        <div class="arch-parts">
+          <div class="arch-part"><a href="../search/index.html">Search</a></div>
+          <div class="arch-part"><a href="../security/data-privacy.html">State</a></div>
+          <div class="arch-part"><a href="../reports/index.html">Reports</a></div>
+        </div>
+      </div>
+    </div>
+  </aside>
+</div>
 <h2>Search2o Cloud</h2>
-<p>The cloud service holds all state: accounts and users, agent definitions and drafts, configuration, conversation context, and the data behind the reports. The cloud checks agent definitions, indexes the description that a developer writes for a published agent, and answers searches. Only agent servers call the cloud's API; the Search2o license prohibits calling it directly, because that can leave data inconsistent.</p>
+<p>The cloud service holds all state: accounts and users, agent definitions and drafts, configuration, conversation context, the search index, and the data behind the reports. It checks agent definitions, indexes the description a developer writes for a published agent, and answers searches. Only agent servers call the cloud's API. The Search2o license prohibits calling it directly, because a direct call can leave data inconsistent.</p>
 
 <h2>The agent server</h2>
-<p>The agent server, with the bundled GUI, is a Python 3.12+ package installed with <code>pip install search2o</code>. The server runs inside your organization and holds no state: at startup it loads the account's configuration, keeps that configuration current, and runs agents. The server's REST API is described at <code>/openapi.json</code>, with Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>.</p>
-<p>The server is asynchronous and needs nothing beyond its Python packages. Run one server on a laptop, run one as a standalone server, or run several as a load-balanced cluster. No server holds state, so any server can serve any request.</p>
+<p>The agent server, with the bundled GUI, is a Python 3.12+ package installed with <code>pip install search2o</code>. It runs inside your organization and holds no state. At startup it loads the account's configuration, keeps that configuration current, and runs agents. Its REST API is described at <code>/openapi.json</code>, with Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>.</p>
+<p>The server is asynchronous and needs nothing beyond its Python packages. Run one on a laptop, run one as a standalone server, or run several as a load-balanced cluster. No server holds state, so any server can serve any request.</p>
 
 <h2>The GUI</h2>
-<p>The GUI is a single-page application bundled with the agent server and served at <code>/ui</code>. The GUI uses only the agent server's REST API. Each role sees more of the GUI. End users get search and conversations. Developers additionally get drafts, the editor with Draft with AI, validation and publishing, agent configurations and agent execution reports. Administrators get users, authentication, system configuration and user reports. Owners get account-level settings and billing information.</p>
-
+<p>The GUI is a single-page application bundled with the agent server and served at <code>/ui</code>. It uses only the agent server's REST API. What a person sees depends on their role. Users get search and conversations. Developers also get drafts, the editor with Draft with AI, validation and publishing, agent configuration and agent execution reports. Administrators also get users, authentication, system configuration and user reports. Owners get account settings and billing as well.</p>

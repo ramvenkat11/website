@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>License key rotation — Search2o docs</title>
-<meta name="description" content="The license key is what connects an agent server to the account. Every request an agent server makes to Search2o Cloud carries the key, and an agent server w…">
+<meta name="description" content="The license key connects an agent server to the account. Every request an agent server makes to Search2o Cloud carries the key, and an agent server without a…">
 <link rel="canonical" href="https://search2o.com/docs/security/license-rotation.html">
 <meta property="og:title" content="License key rotation — Search2o docs">
-<meta property="og:description" content="The license key is what connects an agent server to the account. Every request an agent server makes to Search2o Cloud carries the key, and an agent server w…">
+<meta property="og:description" content="The license key connects an agent server to the account. Every request an agent server makes to Search2o Cloud carries the key, and an agent server without a…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/security/license-rotation.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,18 +50,18 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../security/index.html'>Security and privacy</a></div>
     <article class="docs-article">
       <h1>License key rotation</h1>
-      <p class="lead">The license key is what connects an agent server to the account. Every request an agent server makes to Search2o Cloud carries the key, and an agent server without a valid key cannot start. An administrator can replace the key at any time, without downtime.</p>
+      <p class="lead">The license key connects an agent server to the account. Every request an agent server makes to Search2o Cloud carries the key, and an agent server without a valid key cannot start. An administrator can replace the key at any time, without downtime.</p>
 
 <h2 id="when-to-rotate">When to rotate</h2>
-<p>Rotate the key when the key may have been exposed, or on a schedule your security policy sets. The key is a credential like any other: keep it in your secret store, pass it to agent servers through <code>SEARCH2O_LICENSE_KEY</code>, and never write it into a script or an agent. See <a href="../getting-started/license-key.html">License key</a> for the two ways an agent server receives it.</p>
+<p>Rotate the key when it may have been exposed, or on the schedule your security policy sets. The key is a credential like any other: keep it in your secret store, pass it to agent servers through <code>SEARCH2O_LICENSE_KEY</code>, and never write it into a script or an agent. See <a href="../getting-started/license-key.html">License key</a> for the two ways an agent server receives it.</p>
 
 <h2 id="how-a-rotation-works">How a rotation works</h2>
 <ol>
-  <li>On the License page, rotate the key. A new key is issued and shown once. The old key keeps working for a grace period.</li>
-  <li>Restart every agent server with the new key before the grace period ends. Agent servers can be restarted one at a time; during the grace period, agent servers on the old key and agent servers on the new key serve the account side by side.</li>
-  <li>An agent server still on the old key stops working when the grace period ends.</li>
+  <li>On the License page, rotate the key and choose when the old key expires, from 15 minutes to 31 days ahead. A new key is issued and shown once. The old key keeps working until the time you chose.</li>
+  <li>Restart every agent server with the new key before then. Agent servers can be restarted one at a time; until the old key expires, agent servers on either key serve the account side by side.</li>
+  <li>An agent server still on the old key stops working when the old key expires.</li>
 </ol>
-<p>The License page shows the status of the current key and, during a rotation, when the old key expires. A new rotation cannot start while a previous rotation is in its grace period.</p>
+<p>The License page shows the status of the current key and, during a rotation, when the old key expires. A new rotation cannot start while the old key of a previous rotation is still valid.</p>
 
 <h2 id="canceling-a-rotation">Canceling a rotation</h2>
 <p>If something goes wrong, cancel the rotation while the old key is still valid. The new key is invalidated at once, and the old key stays current. Agent servers already restarted with the new key must be restarted again with the old key.</p>

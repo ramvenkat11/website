@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Trace and validation — Search2o docs</title>
-<meta name="description" content="Before a draft can be published, it has to validate: Search2o Cloud checks the definition, and the agent server then runs it against a sample question. Valid…">
+<meta name="description" content="Before a draft can be published, it has to validate: Search2o Cloud checks the definition, and the agent server runs it against a sample question. Validation…">
 <link rel="canonical" href="https://search2o.com/docs/development/trace-and-validation.html">
 <meta property="og:title" content="Trace and validation — Search2o docs">
-<meta property="og:description" content="Before a draft can be published, it has to validate: Search2o Cloud checks the definition, and the agent server then runs it against a sample question. Valid…">
+<meta property="og:description" content="Before a draft can be published, it has to validate: Search2o Cloud checks the definition, and the agent server runs it against a sample question. Validation…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/development/trace-and-validation.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,16 +50,16 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../development/index.html'>Development process</a></div>
     <article class="docs-article">
       <h1>Trace and validation</h1>
-      <p class="lead">Before a draft can be <a href="publishing.html">published</a>, it has to validate: Search2o Cloud checks the definition, and the agent server then runs it against a sample question. Validation proves that the agent passes the schema and security checks, finds everything it needs in your account, and runs to the end. Publish stays unavailable until it does. Validation happens in the draft editor, on the <strong>Validate</strong> tab below the agent definition.</p>
+      <p class="lead">Before a draft can be <a href="publishing.html">published</a>, it has to validate: Search2o Cloud checks the definition, and the agent server runs it against a sample question. Validation proves that the agent passes the schema and security checks, finds everything it needs in your account, and runs to the end. Publish stays unavailable until it does. Validation happens in the draft editor, on the <strong>Validate</strong> tab below the agent definition.</p>
 
 <h2 id="what-validation-checks">What validation checks</h2>
-<p>Validation runs in three stages. Problems from the first two are reported together, and the agent runs only if neither finds any.</p>
+<p>Validation has three stages. Problems from the first two are reported together, and the agent runs only if neither finds any.</p>
 <ol>
-  <li><strong>Definition and security checks.</strong> The definition is checked again from scratch, with the account's current settings. Every command and field must be one the agent schema allows. Every Python expression must pass the security checks: no names that start with an underscore, and no operator the <a href="../runtime/compile-rules.html">compile rules</a> disallow. The agent may read only the <code>sys</code> variables the account makes available, and every profile the agent names must exist.</li>
+  <li><strong>Definition and security checks.</strong> The definition is checked again from scratch, with the account's current settings. Every command and field must be one the agent schema allows. Every Python expression must pass the security checks: no names that start with an underscore, and no operator the <a href="../runtime/compile-rules.html">compile rules</a> disallow. The agent may read only the <code>sys</code> variables the account makes available, and every profile the agent names must exist. The prompts are checked with the definition: a prompt cannot read <code>result</code>, or a variable the agent never sets.</li>
   <li><strong>What the agent server can find.</strong> Every name an expression calls must be on the account's <a href="../runtime/allowlist.html">allowlist</a>, and every secret the agent reads must exist.</li>
   <li><strong>A real run.</strong> The agent runs against the draft's validation query, exactly as it would for a user, with tracing on, so that every step is visible.</li>
 </ol>
-<p>The draft validates only if the run finishes successfully. Both results are stored with the draft: that it passed the checks, and that it ran. Saving any change to the draft clears both, so the draft validates again before it can be published.</p>
+<p>The draft validates only if the run finishes. Both results are stored with the draft: that it passed the checks, and that it ran. Saving any change to the draft clears both, so the draft validates again before it can be published.</p>
 
 <h2 id="running-a-validation">Running a validation</h2>
 <ol>
@@ -70,16 +70,16 @@
 <p>While the run is under way, the Validate tab reads <strong>Validating</strong>, and <strong>Stop</strong> appears beside it in the output panel. Stopping ends the run, and nothing from the run is saved. The Draft with AI tab is locked until the run finishes, so its result cannot land out of sight.</p>
 
 <h3 id="follow-up-questions">Follow-up questions</h3>
-<p>A user rarely asks just one question: the user asks, reads the answer, and continues in the same conversation. Validation lets you test that too, with follow-up questions to the conversation your validation run started. Every draft has its own validation conversation, separate from anyone's searches. The conversation holds what the agent carried over between turns, such as its <code>agent.</code> and <code>conv.</code> variables, just as a user's conversation would.</p>
+<p>A user rarely asks just one question. Validation lets you test the follow-ups too, in the conversation your validation run started. Every draft has its own validation conversation, separate from anyone's searches. It holds what the agent carried over between turns, such as its <code>agent.</code> and <code>conv.</code> variables, just as a user's conversation would.</p>
 <ol>
   <li><strong>Start the conversation.</strong> Validate with the saved validation query. Once the agent has run, the conversation exists, whether the run finished or paused on an <code>ask</code>.</li>
   <li><strong>Ask a follow-up.</strong> The box's label changes from <em>Validation query</em> to <em>Follow-up question</em>. Type the next question a user might ask, and select <strong>Validate/Trace</strong> or press Ctrl+Enter.</li>
-  <li><strong>Keep going.</strong> Each follow-up continues the same conversation, and the box empties after each run, ready for the next question. The output console shows the latest run.</li>
+  <li><strong>Keep going.</strong> Each follow-up continues the same conversation, and the box empties after each run. The output console shows the latest run.</li>
 </ol>
 <ul>
-  <li>Follow-up questions are not saved with the draft. The saved validation query stays as it was, however many follow-ups you ask.</li>
-  <li>You can change the agent in the middle of a conversation. Every run checks the draft as it is now, so you can fix something the second turn exposed and ask the same follow-up again.</li>
-  <li>A follow-up is a full validation. It goes through the same checks, and a follow-up that runs successfully marks the draft as validated.</li>
+  <li>Follow-up questions are not saved with the draft. The saved validation query stays as it was.</li>
+  <li>You can change the agent in the middle of a conversation. Every run checks the draft as it is now, so you can fix what the second turn exposed and ask the same follow-up again.</li>
+  <li>A follow-up is a full validation. It goes through the same checks, and a follow-up that runs marks the draft as validated.</li>
   <li>A failed run ends the conversation in the editor. After check errors or a runtime error, the box goes back to the validation query, and the next run starts the conversation again from the first question.</li>
   <li><strong>Start over with the validation query</strong> leaves the conversation; the next run asks the saved query in a fresh conversation. Reloading the page does the same.</li>
   <li>Publishing or deleting the draft deletes its validation conversation.</li>
@@ -109,7 +109,7 @@
 </ul>
 
 <h3 id="runtime-errors">Runtime errors</h3>
-<p>If the definition passes the checks but the run fails, the error that ended it is shown as a <strong>Runtime error</strong>, for example an expression that could not be evaluated or an API call that failed. The output console shows everything that happened up to that point.</p>
+<p>If the definition passes the checks but the run fails, the error that ended it is shown as a <strong>Runtime error</strong>: an expression that could not be evaluated, an API call that failed. The output console shows everything that happened up to that point.</p>
 
 <h2 id="the-validation-output">The validation output</h2>
 <p>Below the errors, the <strong>Validation output</strong> console lists the run step by step. Each line shows how long after the start it happened, what happened, and, when the line belongs to a command, where in the agent the command is. Select that location to jump to the command in the editor.</p>
@@ -130,17 +130,17 @@
   <li>Each filter shows how many lines of its kind the run produced; hovering over a filter shows what it covers.</li>
   <li>Every filter is on at the start, so a run is never shown partially without you choosing it. A kind the run did not produce is greyed out rather than hidden.</li>
   <li><strong>Show all</strong> and <strong>Hide all</strong> turn every filter on or off at once; each appears only when it would change something. The header counts the lines shown and the lines hidden.</li>
-  <li>Filters change only what you see. They never re-run anything, so you can read the flow, put the payloads away and bring them back without paying for another run.</li>
+  <li>Filters change only what you see. They never re-run anything.</li>
 </ul>
 <p><strong>Clear</strong> empties the console and removes the errors shown for the last run. It does not change whether the draft is validated: if the last run failed, the Validate tab goes back to showing the stored status. Validation runs are your own testing and are not counted in the agent's execution, cost or performance reports.</p>
 
 <h2 id="why-validation-errors-are-not-fixed-by-ai">Why validation errors are not fixed by AI</h2>
-<p>The draft editor has Draft with AI, which can write and edit the agent. It would be easy to add a button that sends a failed validation to the AI. We have deliberately left that out.</p>
+<p>The draft editor has Draft with AI, which can write and edit the agent. A button that sends a failed validation to the AI would be easy to add. We have deliberately left it out.</p>
 <p>A validation run is a real run against your own systems. Its output, trace and runtime errors carry whatever those systems returned: rows from your databases and bodies from your APIs; what your LLMs said, and the prompts that were sent to them; the validation query, and values such as the user's email address or cookies when the agent reads them; error messages, which often quote the value that caused them.</p>
-<p>Search2o does not send your agent's output to an LLM. Draft with AI receives the draft's definition, your request, the profiles the draft uses with their notes, and the account's allowlist, disallowed operators and available <code>sys</code> variables. Nothing produced by running the agent is included: no output, no trace, no runtime error, and no validation query. An automatic fix would have to break that, so it is not offered. Instead:</p>
+<p>Search2o does not send your agent's output to an LLM. Draft with AI receives the draft's definition, your request, the profiles the draft uses with their notes, the names and docs of the prompts, and the account's allowlist, disallowed operators and available <code>sys</code> variables. Nothing produced by running the agent is included: no output, no trace, no runtime error, and no validation query. An automatic fix would have to break that, so it is not offered. Instead:</p>
 <ul>
   <li><strong>Fix it in the editor.</strong> Validation errors point at the command they are about.</li>
-  <li><strong>Describe the problem to Draft with AI yourself</strong>, for example "the <code>for</code> loop contains an <code>ask</code>, which is not allowed". Definition errors describe the definition, not your data, so repeating one in your request is safe. Anything you type into the request is sent, so please keep output and trace lines out of it.</li>
+  <li><strong>Describe the problem to Draft with AI yourself</strong>, for example "the <code>for</code> loop contains an <code>ask</code>, which is not allowed". Definition errors describe the definition, not your data, so repeating one in your request is safe. Anything you type into the request is sent, so keep output and trace lines out of it.</li>
   <li><strong>Keep credentials out of the definition.</strong> The definition itself is sent to Draft with AI. Connection strings, API keys and URLs that carry credentials belong in profiles and secrets, not inline in the agent.</li>
 </ul>
 

@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Authentication — Search2o docs</title>
-<meta name="description" content="Search2o has built-in authentication with email and password. An administrator sets the session and password rules to the organization&#x27;s requirements on the …">
+<meta name="description" content="Search2o has built-in authentication with email and password. An administrator sets the session and password rules on the Admin › Authentication page. People…">
 <link rel="canonical" href="https://search2o.com/docs/system-management/authentication.html">
 <meta property="og:title" content="Authentication — Search2o docs">
-<meta property="og:description" content="Search2o has built-in authentication with email and password. An administrator sets the session and password rules to the organization&#x27;s requirements on the …">
+<meta property="og:description" content="Search2o has built-in authentication with email and password. An administrator sets the session and password rules on the Admin › Authentication page. People…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/system-management/authentication.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,22 +50,22 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../system-management/index.html'>System management</a></div>
     <article class="docs-article">
       <h1>Authentication</h1>
-      <p class="lead">Search2o has built-in authentication with email and password. An administrator sets the session and password rules to the organization's requirements on the Admin &rsaquo; Authentication page. People can also sign in through your identity provider with <a href="single-sign-on.html">single sign-on</a>, alongside password sign-in or instead of it.</p>
+      <p class="lead">Search2o has built-in authentication with email and password. An administrator sets the session and password rules on the Admin &rsaquo; Authentication page. People can also sign in through your identity provider with <a href="single-sign-on.html">single sign-on</a>, alongside password sign-in or instead of it.</p>
 
 <h2 id="sessions">Sessions</h2>
-<p>A browser sign-in creates a session held in an HTTP-only cookie. The session ends after a period of inactivity, and in any case after a maximum lifetime; the defaults are one hour and twelve hours. A change to any of these affects a signed-in user only when that user signs in again. See <a href="../rest-api/authentication.html">Authentication in the REST API</a> for how clients sign in.</p>
+<p>A browser sign-in creates a session held in an HTTP-only cookie. The session ends after a period of inactivity, and in any case after a maximum lifetime; the defaults are four hours and twelve hours. A change to either affects a signed-in user only at the next sign-in. See <a href="../rest-api/authentication.html">Authentication in the REST API</a> for how clients sign in.</p>
 
 <h2 id="passwords">Passwords</h2>
 <p>The password policy sets the length and the character classes a password must contain, and is enforced on every new password. Users can be made to change their password after a number of days. A password reset signs out every session of that user.</p>
 
 <h2 id="restricting-who-can-be-added">Restricting who can be added</h2>
-<p>With an allowed email domain set, only addresses in that domain can be added as users. The domain is best set before adding users beyond the founding team.</p>
+<p>With an allowed email domain set, only addresses in that domain can be added as users. Set the domain before adding users beyond the founding team.</p>
 
 <h2 id="emails-and-one-time-codes">Emails and one-time codes</h2>
 <p>Two emails are sent: one when an administrator adds a user, and one when a person clicks <strong>New user / Forgot password</strong> on the sign-in dialog. Both are HTML templates that can be edited. The second carries a one-time code, valid for a set number of minutes and usable once; the person enters the code and chooses a password. The added-user email carries no code. A code requested for an address the account does not know produces an <a href="audit-log.html">audit log entry</a> rather than an email.</p>
 
 <h2 id="sign-in-methods">Sign-in methods</h2>
-<p>Every account starts with password sign-in, and can add <a href="single-sign-on.html">single sign-on</a> beside it. Password sign-in can be turned off only once single sign-on is configured, so that an account always keeps a way to sign in.</p>
+<p>Every account starts with password sign-in and can add <a href="single-sign-on.html">single sign-on</a> beside it. Password sign-in can be turned off only once single sign-on is configured, so that an account always keeps a way to sign in.</p>
 <div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>cookie</code></td><td class=ty>CookieModel</td><td class=dflt></td><td>Cookie settings for user sessions.</td></tr><tr><td><code>integrationTokenMaxAgeDays</code></td><td class=ty>integer</td><td class=dflt>365</td><td>How long a token issued to an integration stays valid. Leave empty for tokens that never expire.</td></tr><tr><td><code>builtinAuth</code></td><td class=ty>BuiltinAuthModel</td><td class=dflt></td><td>The settings for signing in with an email and a password: the password policy, session lengths, and the emails sent to users. Every account starts with this, and keeps these settings even when single sign-on is the way in.</td></tr><tr><td><code>isBuiltinAllowed</code></td><td class=ty>boolean</td><td class=dflt>true</td><td>Whether users may sign in with a password. Turn it off only once single sign-on is configured and proven, or nobody can sign in. With it on beside single sign-on, both are offered.</td></tr><tr><td><code>sso</code></td><td class=ty>OidcAuthModel or Saml2AuthModel</td><td class=dflt></td><td>How users of this account sign in with single sign-on, and the settings for that method. Empty means password sign-in only.</td></tr></tbody></table></div>
 
 <h2 id="password-sign-in-settings">Password sign-in settings</h2>

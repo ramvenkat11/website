@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Search quality — Search2o docs</title>
-<meta name="description" content="Search is what stands between a user and the right agent, so its quality decides whether the whole system feels reliable. This page gives the measured number…">
+<meta name="description" content="Search stands between a user and the right agent, so its quality decides whether the whole system feels reliable. This page gives the measured numbers and th…">
 <link rel="canonical" href="https://search2o.com/docs/search/search-quality.html">
 <meta property="og:title" content="Search quality — Search2o docs">
-<meta property="og:description" content="Search is what stands between a user and the right agent, so its quality decides whether the whole system feels reliable. This page gives the measured number…">
+<meta property="og:description" content="Search stands between a user and the right agent, so its quality decides whether the whole system feels reliable. This page gives the measured numbers and th…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/search/search-quality.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,10 +50,10 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../search/index.html'>Search</a></div>
     <article class="docs-article">
       <h1>Search quality</h1>
-      <p class="lead">Search is what stands between a user and the right agent, so its quality decides whether the whole system feels reliable. This page gives the measured numbers and the conditions they hold under. Everything below was measured against the live search service, running the code we ship with the settings it ships with. Nothing is modeled or extrapolated.</p>
+      <p class="lead">Search stands between a user and the right agent, so its quality decides whether the whole system feels reliable. This page gives the measured numbers and the conditions they hold under. Everything below was measured against the live search service, running the code we ship with the settings it ships with. Nothing is modeled or extrapolated.</p>
 
 <h2 id="what-we-test-against">What we test against</h2>
-<p>Search2o's job is to read a question typed in plain language and find the agent that answers it. To know how well it does that, we need catalogs of agents and questions with a known right answer. We built five, each a realistic working catalog for a different kind of business, plus one very large catalog to test what happens at scale.</p>
+<p>Search reads a question typed in plain language and finds the agent that answers it. To measure how well it does that, we need catalogs of agents and questions with a known right answer. We built five, each a realistic working catalog for a different kind of business, plus one very large catalog to see what happens at scale.</p>
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Catalog</th><th>Agents</th><th>Questions asked</th></tr></thead>
 <tbody>
@@ -65,10 +65,10 @@
 <tr><td>A catalog spanning fifty business areas</td><td>1,000</td><td>10,000</td></tr>
 </tbody></table></div>
 <p>That is 15,000 questions in total. Every question has one known correct agent, and every question was put through the real search.</p>
-<p>The five business catalogs are deliberately different from one another in the way that matters most: how much their agents overlap. A university's agents sit well apart; a retailer's supply chain agents share a great deal of ground. That difference is the main thing that decides how hard search is, and it is why we do not report a single number.</p>
+<p>The five business catalogs differ in the way that matters most: how much their agents overlap. A university's agents sit well apart; a retailer's supply chain agents share a great deal of ground. That difference decides how hard search is, and it is why we do not report a single number.</p>
 
 <h2 id="how-often-it-finds-the-right-agent">How often it finds the right agent</h2>
-<p>Search either runs the single best match or offers the two that are plausible, never more, so there are two numbers worth knowing: how often the right agent is the first one, and how often it is one of the first two.</p>
+<p>Search returns the single best match or the two that are plausible, never more, so two numbers matter: how often the right agent is first, and how often it is one of the first two.</p>
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Catalog</th><th>Right agent first</th><th>Right agent among the first two</th></tr></thead>
 <tbody>
@@ -79,12 +79,12 @@
 <tr><td>A retailer's supply chain and merchandising</td><td>83.8%</td><td>94.3%</td></tr>
 <tr><td>A catalog spanning fifty business areas</td><td>85.5%</td><td>92.2%</td></tr>
 </tbody></table></div>
-<p>Two things are worth drawing out.</p>
-<p><strong>The spread between catalogs is larger than the spread between any settings we tried.</strong> The easiest and hardest catalogs here are about seven points apart. What separates them is how distinct their agents are from one another, which is something you control when you write your agents, not something search can fix afterwards. <a href="describing-an-agent.html">Describing an agent</a> covers what makes a description distinct.</p>
-<p><strong>Size is not the problem people expect it to be.</strong> A catalog of a thousand agents scores within a point of a catalog of a hundred. Adding agents does not make search worse; adding agents that overlap does.</p>
+<p>Two things stand out.</p>
+<p><strong>The spread between catalogs is larger than the spread between any settings we tried.</strong> The easiest and hardest catalogs here are about seven points apart. What separates them is how distinct their agents are from one another. You control that when you write your agents; search cannot fix it afterwards. <a href="describing-an-agent.html">Describing an agent</a> covers what makes a description distinct.</p>
+<p><strong>Size is not the problem people expect.</strong> A catalog of a thousand agents scores within a point of a catalog of a hundred. Adding agents does not make search worse; adding agents that overlap does.</p>
 
 <h3 id="one-answer-or-two">One answer or two</h3>
-<p>When the best match is clearly ahead, search shows just that one; when the top two are close, it shows both and lets the user choose. Showing one more often saves the user a click, but a single answer that is wrong is worse than two that include the right one, so we set the line by checking every single answer search gave against a reviewer's judgment (see below).</p>
+<p>When the best match is clearly ahead, search returns that one. When the top two are close, it returns both and the user chooses. Returning one more often saves the user a click, but a single wrong answer is worse than two that include the right one, so we set the line by checking every single answer against a reviewer's judgment (see below).</p>
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Catalog</th><th>Questions answered with one result</th><th>Of all questions, a single answer that was wrong</th></tr></thead>
 <tbody>
@@ -97,23 +97,23 @@
 </tbody></table></div>
 
 <h2 id="saying-no-match-when-nothing-fits">Saying "no match" when nothing fits</h2>
-<p>An agent search that always answers is worse than useless, because the wrong agent will act. So we test refusal as carefully as we test matching, with two kinds of question, both of which should be turned away.</p>
-<p><strong>Questions about something else entirely</strong> &mdash; "how to replace brake pads on a 2012 Honda Civic", asked of a university's catalog. These are refused 100% of the time.</p>
-<p><strong>Questions about the customer's own world that no agent covers</strong> &mdash; asking a university about appealing a parking ticket when nobody has built a parking agent. These are the hard ones, because every agent in the catalog is in the same neighborhood and something always looks close. These questions are refused 82% to 86% of the time, depending on the catalog.</p>
-<p>The second case is the one that matters in practice. People do not type a sourdough recipe into a company's search box; they ask about the one thing nobody has built an agent for yet. What the user sees when search offers both agents, or none, is covered in <a href="how-matching-works.html">How matching behaves</a>.</p>
+<p>A search that always answers is worse than useless, because the wrong agent will act. So we test refusal as carefully as matching, with two kinds of question that should both be turned away.</p>
+<p><strong>Questions about something else entirely.</strong> "How to replace brake pads on a 2012 Honda Civic", asked of a university's catalog. These are refused 100% of the time.</p>
+<p><strong>Questions about the customer's own world that no agent covers.</strong> Asking a university about appealing a parking ticket when nobody has built a parking agent. These are the hard ones, because every agent in the catalog is in the same neighborhood and something always looks close. They are refused 82% to 86% of the time, depending on the catalog.</p>
+<p>The second case is the one that matters in practice. People do not type a sourdough recipe into a company's search box; they ask about the one thing nobody has built an agent for yet. What the user sees when search returns two agents, or none, is covered in <a href="how-matching-works.html">How matching behaves</a>.</p>
 
 <h2 id="how-fast-it-is">How fast it is</h2>
-<p>A search compares the question against everything in the catalog and returns the best matches in about 200 milliseconds. A catalog of a thousand agents takes about the same, a little over 200 milliseconds: search does not get slower as your catalog grows. End to end, with the network hops, a user can expect an answer in well under a second. Search2o Cloud is currently served from the US East region, and we will expand to other regions as demand grows.</p>
+<p>A search compares the question against everything in the catalog and returns the best matches in about 200 milliseconds. A catalog of a thousand agents takes about the same, a little over 200 milliseconds. Search does not get slower as the catalog grows. End to end, with the network hops, a user can expect an answer in well under a second. Search2o Cloud is served from the US East region today; other regions will follow as demand grows.</p>
 
 <h2 id="across-languages">Across languages</h2>
-<p>Search works on meaning rather than on words, so it handles languages other than English, and it handles a question asked in one language against agents described in another. Accuracy in a non-English catalog is within about three points of English, and asking across two different languages costs about three points more.</p>
+<p>Search works on meaning rather than words, so it handles languages other than English, and a question asked in one language against agents described in another. Accuracy in a non-English catalog is within about three points of English, and asking across two languages costs about three points more.</p>
 
 <h2 id="what-we-do-not-claim">What we do not claim</h2>
-<p>Every number above comes from catalogs we built, and a real catalog will differ. The honest way to read them is as a range: a well-separated catalog lands at the top of it, a catalog full of near-duplicate agents at the bottom, and the difference is mostly in how the agents are described.</p>
+<p>Every number above comes from catalogs we built, and a real catalog will differ. Read them as a range: a well-separated catalog lands at the top, a catalog full of near-duplicate agents at the bottom, and the difference is mostly in how the agents are described.</p>
 
 <h3 id="the-numbers-are-likely-lower-than-real-use">The numbers are likely lower than real use</h3>
-<p>The test questions, and the answer each one is marked against, were written by a language model, and they were made hard on purpose. Many name something that belongs to one agent while asking for what another agent does: "What are the top drivers behind incident date by severity?" is marked as belonging to an insurance-claims agent, because "incident date" is one of its fields, though most people asking it would want the incident-report agent.</p>
-<p>So a question counted as wrong is often one a person would have answered the same way. We had every question where search's first choice differed from the answer key &mdash; about 2,000 of them &mdash; judged blind: the reviewer saw only the question and the two agents' descriptions, in random order, without knowing which was the key and which was search's pick. In about three cases out of four the key stood. In the rest, search's choice was as good or better. Counting those, the right agent comes first more often than the first table says:</p>
+<p>The test questions, and the answer each is marked against, were written by a language model and made hard on purpose. Many name something that belongs to one agent while asking for what another agent does: "What are the top drivers behind incident date by severity?" is marked as belonging to an insurance-claims agent, because "incident date" is one of its fields, though most people asking it would want the incident-report agent.</p>
+<p>So a question counted as wrong is often one a person would have answered the same way. We had every question where search's first choice differed from the answer key, about 2,000 of them, judged blind: the reviewer saw only the question and the two agents' descriptions, in random order, without knowing which was the key and which was search's pick. In about three cases out of four the key stood. In the rest, search's choice was as good or better. Counting those, the right agent comes first more often than the first table says:</p>
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Catalog</th><th>Right agent first, as marked</th><th>As judged</th></tr></thead>
 <tbody>
@@ -124,7 +124,7 @@
 <tr><td>A retailer's supply chain and merchandising</td><td>83.8%</td><td>87.0%</td></tr>
 <tr><td>A catalog spanning fifty business areas</td><td>85.5%</td><td>89.2%</td></tr>
 </tbody></table></div>
-<p>Some of the questions are confusing enough that we would get them wrong ourselves. Real people ask what they mean, in their own words, and we expect search to do better on those than on ours. The fastest way to find out where yours sits is to put your own agents in and ask your own questions.</p>
+<p>Some of the questions are confusing enough that we would get them wrong ourselves. Real people ask what they mean, in their own words, and we expect search to do better on those than on ours. The fastest way to find out where your catalog sits is to put your own agents in and ask your own questions.</p>
 
 <h2 id="where-we-go-from-here">Where we go from here</h2>
 <p>We will keep improving search quality and speed.</p>

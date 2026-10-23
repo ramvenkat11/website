@@ -56,25 +56,26 @@
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Prefix</th><th>What is there</th><th>Who may call it</th></tr></thead>
 <tbody>
-<tr><td><code>/api/auth/</code></td><td>Sign-in, password reset, the account name, the GUI&rsquo;s configuration</td><td>Anyone</td></tr>
+<tr><td><code>/api/auth/</code></td><td>Sign-in, password reset, the account name, the GUI&rsquo;s configuration, the connect flow for integrations</td><td>Anyone</td></tr>
 <tr><td><code>/api/exec/</code></td><td>Search and run an agent</td><td>Any signed-in user</td></tr>
-<tr><td><code>/api/user/</code></td><td>The caller's profile, password and conversations</td><td>Any signed-in user</td></tr>
-<tr><td><code>/api/dev/</code></td><td>Drafts and draft validation, agents, descriptions, the audit log, messages to Search2o</td><td>Developers and above</td></tr>
-<tr><td><code>/api/admin/</code></td><td>Users, roles, configuration, profiles, the license, freezing the account</td><td>Administrators and the owner</td></tr>
+<tr><td><code>/api/user/</code></td><td>The caller's profile, password, conversations and integration tokens</td><td>Any signed-in user</td></tr>
+<tr><td><code>/api/dev/</code></td><td>Drafts and draft validation, agents, descriptions, profiles, the audit log, messages to Search2o</td><td>Developers and above</td></tr>
+<tr><td><code>/api/admin/</code></td><td>Users, roles, service accounts, configuration, the license, freezing the account</td><td>Administrators and the owner</td></tr>
 <tr><td><code>/api/reports/</code></td><td>The four reports and their detail views</td><td>Developers; the usage report needs an administrator</td></tr>
+<tr><td><code>/api/owner/</code></td><td>The account, invoices, the paid service, deleting the account</td><td>The owner</td></tr>
 </tbody></table></div>
-<p>The role required by each call is the role the GUI requires for the same action; see <a href="../system-management/users-and-roles.html">Users and roles</a>. The check is made by Search2o Cloud on every call.</p>
+<p>Each call needs the role the GUI needs for the same action; see <a href="../system-management/users-and-roles.html">Users and roles</a>. Search2o Cloud checks the role on every call.</p>
 
 <h2 id="requests-and-responses">Requests and responses</h2>
-<p>A request body is a JSON object. A body with a field the endpoint does not know is rejected with status 422, so a typo in a field name cannot pass silently. Every response is a JSON object with <code>success</code>, and with <code>errorMessage</code> when <code>success</code> is false. The message is written for the person using the client and can be shown as is.</p>
-<figure class=code data-lang=json><div class=bar><span>A failed call</span></div><pre><code>{ &quot;success&quot;: false, &quot;errorMessage&quot;: &quot;This conversation has expired. Please start a new one.&quot; }</code></pre></figure>
-<p>A failed call carries an HTTP error status as well. 422 means a bad request or an error inside the agent. 401 or 403 means a missing or insufficient sign-in. 500 means the server or the cloud is at fault. When the caller's session has expired, the response also carries <code>mustLogin: true</code>; sign in again and repeat the call.</p>
+<p>A request body is a JSON object. A body with a field the endpoint does not know is rejected with status 422, so a typo in a field name cannot pass silently. Every response is a JSON object with <code>success</code>. When <code>success</code> is false, the response carries <code>error</code>, and <code>error.message</code> is written for the person using the client and can be shown as is. <code>error.path</code> names the command where an error inside an agent happened, and <code>error.cause</code> and <code>error.data</code> carry details when there are any.</p>
+<figure class=code data-lang=json><div class=bar><span>A failed call</span></div><pre><code>{ &quot;success&quot;: false, &quot;error&quot;: { &quot;message&quot;: &quot;This conversation has expired. Please start a new one.&quot;, &quot;data&quot;: {} } }</code></pre></figure>
+<p>A failed call carries an HTTP error status as well. 422 means a bad request or an error inside the agent. 401 means the caller is not signed in, or the session has expired: sign in again and repeat the call. 403 means the role does not allow the call. 500 means the server or the cloud is at fault.</p>
 
 <h2 id="the-schema">The schema</h2>
-<p>A running server serves its OpenAPI schema at <code>/openapi.json</code>. The schema lists every endpoint with its request and response models, and is the input for a generated client or for an LLM that calls the API. The same server renders the schema for people. Swagger UI at <code>/docs</code> lets each endpoint be tried from the browser, and ReDoc at <code>/redoc</code> is a reference to read. All three paths can be moved or switched off in the <a href="../system-management/agent-servers.html">Agent servers</a> configuration. See <a href="clients.html">Creating your own client</a> and <a href="automating-with-an-llm.html">Automating tasks with an LLM</a>.</p>
+<p>A running server serves its OpenAPI schema at <code>/openapi.json</code>. The schema lists every endpoint with its request and response models, and is the input for a generated client or for an LLM that calls the API. The same server renders the schema for people: Swagger UI at <code>/docs</code> sends requests from the browser, and ReDoc at <code>/redoc</code> is a reference to read. All three paths can be moved or switched off in the <a href="../system-management/agent-servers.html">Agent servers</a> configuration. See <a href="clients.html">Creating your own client</a> and <a href="automating-with-an-llm.html">Automating tasks with an LLM</a>.</p>
 
 <h2 id="checking-that-a-server-is-up">Checking that a server is up</h2>
-<p><code>GET /health</code> needs no sign-in and is answered by the agent server itself, so a load balancer or a monitor can use it as a health check. It reaches nothing outside the agent server, and the response is <code>{"status": "ok"}</code>. See <a href="../system-management/agent-server-sizing.html#watching-a-deployment-that-is-already-busy">Agent server sizing</a> for what its response time says about a busy server.</p>
+<p><code>GET /health</code> needs no sign-in and is answered by the agent server itself, so a load balancer or a monitor can use it as a health check. It reaches nothing outside the agent server, and the response is <code>{"status": "ok"}</code>. <a href="../system-management/agent-server-sizing.html#watching-a-deployment-that-is-already-busy">Agent server sizing</a> says what its response time tells you about a busy server.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../rest-api/index.html'><small>Previous</small>REST API</a><a class=next href='../rest-api/authentication.html'><small>Next</small>Authentication</a></nav>

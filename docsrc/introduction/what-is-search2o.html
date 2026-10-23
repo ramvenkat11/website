@@ -1,13 +1,14 @@
-<p class="lead">Search2o is a platform for building <a href="microagents.html">microagents</a> and running them from a search interface. A user types what they need; Search2o finds the agent built for that need, runs the agent, and returns the answer. The answer starts a conversation that the user can continue.</p>
+<p class="lead">Search2o is a platform for building <a href="microagents.html">microagents</a> and running them from a search box. A user types what they need. Search2o finds the agent built for that need, runs it, and returns the answer. The answer starts a conversation that the user can continue.</p>
 
-<p>Developers write agents in a declarative JSON format with Python expressions, and describe each agent in plain English. Search2o matches a user's query to the agent whose description fits, runs that agent in a controlled runtime, and returns the response. A follow-up may go to the same agent or to a different agent; the conversation carries its context along.</p>
+<p>Developers write agents in JSON with Python expressions and describe each agent in plain English. Search matches a request to the agent whose description fits, and the agent runs in a controlled runtime. A follow-up may go to the same agent or to a different one; the conversation carries its context along.</p>
 
-<p>Search2o is self-contained. Create an account and install the agent server. The search box, the code editor, user management and reports are all there; nothing has to be built around Search2o.</p>
+<p>Search2o is self-contained. Create an account and install the agent server. The search box, the editor, user management and reports come with it.</p>
 
 <h2>What makes it different</h2>
 <ul>
-  <li><strong>Search is the orchestration layer.</strong> An organization accumulates many agents, written by different teams, and search makes the whole collection behave like one application.</li>
-  <li><strong>Agents are structured and declarative.</strong> An agent is a set of functions, and a function is an ordered list of commands. The 20 commands cover what agents are built to do: call APIs and databases, prompt LLMs with tools, ask the user for input, and remember facts across conversations.</li>
-  <li><strong>Execution is controlled.</strong> The Python expressions in an agent run in a controlled runtime, governed by the allowlist, the compile rules and the runtime limits that developers set.</li>
-  <li><strong>State is managed.</strong> The agent server holds no state &mdash; everything is stored in Search2o Cloud, so agent servers can be started, stopped and scaled without risk of data loss. Sensitive information &mdash; conversations, queries and memories &mdash; is encrypted.</li>
+  <li><strong>Search finds the agent.</strong> An organization accumulates many agents, written by different teams. Users do not learn their names; they ask for what they need, and search picks the agent. The whole collection behaves like one application.</li>
+  <li><strong>Agents are small and structured.</strong> An agent does one task. It is a set of functions, and a function is an ordered list of commands. Twenty commands cover what agents do: call APIs and databases, prompt LLMs with tools, ask the user for input, and remember facts across conversations.</li>
+  <li><strong>Agents are independent.</strong> No agent calls another. Agents build on each other's work through the conversation: a follow-up goes through search again, and the agent that runs next sees what the conversation already holds.</li>
+  <li><strong>Execution is controlled.</strong> The Python expressions in an agent run in a controlled runtime, under the allowlist, the compile rules and the runtime limits that developers set.</li>
+  <li><strong>Nothing to host for state.</strong> The agent server holds no state. Everything is stored in Search2o Cloud, so agent servers can be started, stopped and scaled freely. Conversations, queries and memories are encrypted.</li>
 </ul>

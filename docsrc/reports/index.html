@@ -1,5 +1,5 @@
 <p class="lead">Search2o keeps a record of every agent execution, including failures, for 7 days on the Free plan and 90 days on the Paid plan. The reports summarize those records. Developers see the agent reports; administrators also see the user usage reports.</p>
-<p>Every report covers a time window that you choose. Each report returns a table and a trend. The trend uses hourly buckets when the window is 48 hours or less, and daily buckets otherwise. A row in the table opens a detail report for that agent or user.</p>
+<p>Every report covers a time window that you choose and returns a table and a trend. The trend uses hourly buckets when the window is 48 hours or less, and daily buckets otherwise. A row in the table opens a detail report for that agent or user.</p>
 <!--pages:cards-->
 
 <h2>What is recorded</h2>
@@ -14,7 +14,7 @@
 <tr><td><code>callFailed</code></td><td>A call to an external system failed.</td></tr>
 <tr><td><code>failCommand</code></td><td>The agent ended itself with the <code>fail</code> command.</td></tr>
 <tr><td><code>errorInAgent</code></td><td>A coding error in the agent.</td></tr>
-<tr><td><code>unknownConversation</code></td><td>The conversation could not be found, the conversation is paused on an ask by a different agent, or the agent that asked has been republished since.</td></tr>
+<tr><td><code>unknownConversation</code></td><td>The conversation could not be found, is paused on an ask by a different agent, or the agent that asked has been republished since.</td></tr>
 <tr><td><code>timedOut</code></td><td>The run exceeded the maximum agent runtime.</td></tr>
 <tr><td><code>stopped</code></td><td>The user stopped the run.</td></tr>
 <tr><td><code>mustLogin</code></td><td>The session expired during the run.</td></tr>

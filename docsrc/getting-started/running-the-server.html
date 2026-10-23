@@ -1,4 +1,4 @@
-<p class="lead">The agent server is a FastAPI application served by Uvicorn. The <code>search2o</code> command starts the server and passes any further options to Uvicorn.</p>
+<p class="lead">The agent server is a FastAPI application served by Uvicorn. The <code>search2o</code> command starts it and passes any further options to Uvicorn.</p>
 
 <h2>Start</h2>
 <x-code lang="bash">
@@ -8,27 +8,26 @@ $ search2o --host 0.0.0.0 --port 8080
 
 $ SEARCH2O_LICENSE_KEY=... ANTHROPIC_API_KEY=... search2o   # key, one LLM key, start
 </x-code>
-<p>Other command line options are passed through to Uvicorn. The <code>--reload</code> family, <code>--factory</code> and <code>--workers</code> are refused: the server always runs one worker, and capacity comes from more servers rather than more workers. See <a href="../system-management/agent-servers.html">Agent servers</a>.</p>
+<p>Other command line options go to Uvicorn. The <code>--reload</code> family, <code>--factory</code> and <code>--workers</code> are refused: the server always runs one worker, and capacity comes from more servers rather than more workers. See <a href="../system-management/agent-servers.html">Agent servers</a>.</p>
 
 <h2>LLM keys</h2>
-<p>A new account comes with LLM profiles for OpenAI, Anthropic and Gemini. Each profile reads its API key from an environment variable on the server. Set the variable for the provider you use before starting the server:</p>
+<p>A new account comes with LLM profiles for OpenAI, Anthropic and Gemini. Each profile reads its API key from an environment variable on the server. Set the variable for the provider you use before starting:</p>
 <x-code lang="bash">
 $ export OPENAI_API_KEY=sk-...
 $ export ANTHROPIC_API_KEY=sk-ant-...
 $ export GEMINI_API_KEY=...
 </x-code>
-<p>One key is enough to start. A model you host with Ollama, vLLM or SGLang needs no vendor key: start the server without one, and create an LLM profile for the model after you sign in; see <a href="../llm/vendors.html#models-you-host-ollama-vllm-and-sglang">LLM vendors</a>. For other LLMs, see <a href="../llm/llm-adapters.html">Connecting to other LLMs</a>. Where secrets come from is configurable; see <a href="../security/secret-vault.html">Secret vault</a>.</p>
+<p>One key is enough. A model you host with Ollama, vLLM or SGLang needs no vendor key: start the server without one and create an LLM profile for the model after you sign in; see <a href="../llm/vendors.html#models-you-host-ollama-vllm-and-sglang">LLM vendors</a>. For other LLMs, see <a href="../llm/llm-adapters.html">Connecting to other LLMs</a>. Secrets can come from a vault instead of environment variables; see <a href="../security/secret-vault.html">Secret vault</a>.</p>
 
 <h2>What starts up</h2>
-<p>At startup the server validates the license and downloads the account's configuration from Search2o Cloud. The server then checks every entry of the expression allowlist against its own Python environment and builds its connection pools. After that the server serves:</p>
+<p>At startup the server validates the license and downloads the account's configuration from Search2o Cloud. It checks every entry of the expression allowlist against its own Python environment and builds its connection pools. Then it serves:</p>
 <ul>
   <li>the GUI at <code>/ui</code>,</li>
   <li>the OpenAPI schema at <code>/openapi.json</code>, Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>,</li>
   <li>the REST API under <code>/api/</code>.</li>
 </ul>
-<p>The three documentation paths, the GUI path and the allowed CORS origins are set in the <a href="../system-management/agent-servers.html">Agent servers</a> configuration. Each path can also be removed: a server can run with no GUI and no interactive API documentation.</p>
+<p>The three documentation paths, the GUI path and the allowed CORS origins are settings in the <a href="../system-management/agent-servers.html">Agent servers</a> configuration. Each path can be removed, so a server can run with no GUI and no interactive API documentation.</p>
 
 <h2>Running in production</h2>
-<p>The server holds no state. Moving from a laptop to a shared server, or from one server to a cluster, changes nothing in the agents or in the configuration. Start as many servers as you need with the same license key and put them behind any load balancer. Each server brings itself up to date with the account's configuration on every agent run.</p>
-<p>To let colleagues try Search2o, add them to the account and start one server in a common place in your organization.</p>
-<p>One thing to check when choosing where a server runs: the APIs and databases your agents call must be reachable from that place.</p>
+<p>The server holds no state. Moving from a laptop to a shared server, or from one server to a cluster, changes nothing in the agents or the configuration. Start as many servers as you need with the same license key and put them behind any load balancer. Each server brings itself up to date with the account's configuration on every agent run.</p>
+<p>To let colleagues try Search2o, add them to the account and start one server where they can reach it. The APIs and databases your agents call must be reachable from wherever the server runs.</p>

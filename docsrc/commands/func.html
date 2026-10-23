@@ -32,8 +32,8 @@
 <h2>Rules</h2>
 <ul>
   <li>The function name is a literal, not an expression. The function must exist in the agent, and it cannot be <code>main</code>.</li>
-  <li>Arguments become local variables of the called function. An argument that the function declares but the call omits is set to <code>None</code>.</li>
+  <li>Arguments become local variables of the called function. An argument the function declares but the call omits is <code>None</code>.</li>
   <li>The called function's <code>return</code> value is this command's result. A function that reaches the end of its commands without a <code>return</code> returns <code>None</code>.</li>
-  <li>A function cannot call itself, directly or through other functions, while the function is still running.</li>
+  <li>A function cannot call itself, directly or through other functions, while it is still running.</li>
   <li>The <code>llm</code> command uses the same mechanism when a function is offered to the model as a tool.</li>
 </ul>

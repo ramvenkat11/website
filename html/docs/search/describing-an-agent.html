@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Describing an agent — Search2o docs</title>
-<meta name="description" content="After an agent is published, its developer describes the agent in plain language. Search2o uses the description to match user queries with the most relevant …">
+<meta name="description" content="After an agent is published, its developer describes it in plain language. Search matches user queries against that description. An agent without a descripti…">
 <link rel="canonical" href="https://search2o.com/docs/search/describing-an-agent.html">
 <meta property="og:title" content="Describing an agent — Search2o docs">
-<meta property="og:description" content="After an agent is published, its developer describes the agent in plain language. Search2o uses the description to match user queries with the most relevant …">
+<meta property="og:description" content="After an agent is published, its developer describes it in plain language. Search matches user queries against that description. An agent without a descripti…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/search/describing-an-agent.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,26 +50,26 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../search/index.html'>Search</a></div>
     <article class="docs-article">
       <h1>Describing an agent</h1>
-      <p class="lead">After an agent is published, its developer describes the agent in plain language. Search2o uses the description to match user queries with the most relevant agent. An agent without a description cannot be found by search.</p>
+      <p class="lead">After an agent is published, its developer describes it in plain language. Search matches user queries against that description. An agent without a description cannot be found by search.</p>
 
 <h2 id="writing-a-good-description">Writing a good description</h2>
-<p>It is best to write for the person who will type the query, rather than for the system. A good description says what the agent does <em>for the user</em>: the questions the agent answers, the actions the agent takes, and what the agent does not do. Two to five sentences is typical. Up to 5,000 characters is allowed.</p>
+<p>Write for the person who will type the query, not for the system. A good description says what the agent does <em>for the user</em>: the questions it answers, the actions it takes, and what it does not do. Two to five sentences is typical. The limit is 5,000 characters.</p>
 <figure class=code data-lang=text><div class=bar><span>A description that matches well</span></div><pre><code>This agent answers employee and contractor questions about workforce policies
 and personal entitlements. It covers vacation and leave policies, benefits
 eligibility, onboarding and offboarding, workplace conduct guidelines and
 general HR procedures. It can look up the requester&#x27;s own HR records where
 permitted, such as accrued vacation balance. It cannot make policy exceptions,
 approve requests or modify HR records.</code></pre></figure>
-<p>A description that only lists the mechanism &mdash; <em>calls the HR API and summarizes the JSON</em> &mdash; matches poorly, because users do not ask about mechanisms. Every submitted description is checked for exactly this problem. A description that does not say what the agent provides to the user is returned with an explanation of what to change.</p>
+<p>A description that only names the mechanism, such as <em>calls the HR API and summarizes the JSON</em>, matches poorly, because users do not ask about mechanisms. Every submitted description is checked for this. A description that does not say what the agent provides to the user comes back with an explanation of what to change.</p>
 
 <h2 id="languages">Languages</h2>
-<p>Descriptions and queries may be in any major language. The description and the query do not have to be in the same language.</p>
+<p>Descriptions and queries may be in any major language, and they need not be in the same one.</p>
 
 <h2 id="submitting-a-description">Submitting a description</h2>
-<p>The description is submitted from the agent's page, after the agent is published. Indexing takes 15 to 30 seconds, and the agent is searchable as soon as it completes. If indexing fails, the reason is shown, and the <a href="../system-management/audit-log.html">audit log</a> keeps the record. Submitting a new description replaces the old index entry. Removing the description takes the agent out of search without deleting the agent.</p>
+<p>The description is submitted from the agent's page, after the agent is published. Indexing takes 15 to 30 seconds, and the agent is searchable as soon as it completes. If indexing fails, the reason is shown and the <a href="../system-management/audit-log.html">audit log</a> keeps the record. A new description replaces the old index entry. Removing the description takes the agent out of search without deleting the agent.</p>
 
 <h2 id="overlapping-agents">Overlapping agents</h2>
-<p>When two agents describe overlapping territory, a query in that territory returns both agents. With the default <a href="search-settings.html">search behavior</a>, the higher-ranked agent runs. With a behavior that offers choices, the user picks. The overlap may be intended. If the overlap is accidental, sharpen the descriptions: say what each agent is <em>for</em> and what each agent leaves to the other.</p>
+<p>When two agents cover overlapping ground, a query in that territory returns both. With the default <a href="search-settings.html">search behavior</a> the higher-ranked agent runs; with a behavior that offers choices, the user picks. The overlap may be intended. If it is accidental, sharpen the descriptions: say what each agent is <em>for</em> and what each leaves to the other.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../search/index.html'><small>Previous</small>Search</a><a class=next href='../search/how-matching-works.html'><small>Next</small>How matching behaves</a></nav>

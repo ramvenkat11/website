@@ -8,7 +8,7 @@
 <tr><td><code>progress</code></td><td>A short string</td><td>Each <code>progress</code> command, as it runs.</td></tr>
 <tr><td><code>data</code></td><td>One output part: text, html or image</td><td>Each part the agent appends to its output, including the streamed text of an <code>llm</code> command.</td></tr>
 <tr><td><code>trace</code></td><td><code>traceType</code>, and a value with <code>path</code>, <code>duration</code> and <code>message</code></td><td>Only on <code>validateDraftStream</code>: the execution trace, one line per event.</td></tr>
-<tr><td><code>agent</code></td><td>The same object a non-streaming call returns, without <code>output</code></td><td>Once, when the run ends. Carries <code>resultCode</code>, <code>convid</code> and <code>askInput</code>.</td></tr>
+<tr><td><code>agent</code></td><td>The same object a non-streaming call returns, without <code>output</code></td><td>Once, when the run ends. Carries <code>resultCode</code>, <code>convid</code>, <code>askInput</code> and <code>error</code>. On <code>validateDraftStream</code> this line has the type <code>draft</code> and carries the validation fields as well.</td></tr>
 <tr><td><code>noop</code></td><td>none</td><td>A heartbeat while nothing else is happening, so that proxies keep the connection open. The interval is the <em>stream heartbeat</em> in <a href="../runtime/runtime-limits.html">Runtime limits</a>.</td></tr>
 <tr><td><code>end</code></td><td>none</td><td>The last line.</td></tr>
 </tbody></table></div>
@@ -19,10 +19,10 @@
 {"type": "agent", "value": {"success": true, "resultCode": "success", "convid": "…", "agentName": "weather"}}
 {"type": "end"}
 </x-code>
-<p>Assemble the output by appending the <code>data</code> parts in order. Read <code>resultCode</code> and <code>askInput</code> from the <code>agent</code> line; an <code>ask</code> is answered exactly as in a non-streaming call.</p>
+<p>Assemble the output by appending the <code>data</code> parts in order. Read <code>resultCode</code> and <code>askInput</code> from the <code>agent</code> line. An <code>ask</code> is answered exactly as in a non-streaming call.</p>
 
 <h2>Stopping a run</h2>
-<p>Closing the connection stops the agent. The run is recorded with the result code <code>stopped</code>, and the conversation keeps the state it had before the run. The GUI's stop button does nothing more than this.</p>
+<p>Closing the connection stops the agent. The run is recorded with the result code <code>stopped</code>, and the conversation keeps the state it had before the run. The GUI's stop button does exactly this.</p>
 
 <h2>When to stream</h2>
 <p>Stream when a person is watching: the first output appears as soon as the agent produces it, and progress messages show that a long call is still working. A scheduler or a pipeline step is better served by a single response, which is simpler to handle and carries the whole output.</p>

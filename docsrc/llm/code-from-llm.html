@@ -1,5 +1,5 @@
-<p class="lead">Search2o will never execute arbitrary Python code. A future <code>dynamic</code> command will let an LLM generate an agent in Search2o's own JSON format and execute that agent.</p>
+<p class="lead">Search2o never runs arbitrary Python code, whoever wrote it. A future <code>dynamic</code> command will let an LLM write an agent in Search2o's own JSON format and run that agent instead.</p>
 
-<p>The distinction matters. A generated agent is still a set of commands. Its expressions run in the controlled runtime under the allowlist and the limits. A generated agent can do only what a hand-written agent can do, and it produces the same trace. Arbitrary code would bypass all of that. That is why arbitrary code is ruled out rather than merely restricted.</p>
+<p>The difference matters. A generated agent is still a set of commands. Its expressions run in the controlled runtime, under the allowlist and the limits, and it produces the same trace as a hand-written agent. It can do only what a hand-written agent can do. Arbitrary code would bypass all of that, which is why it is ruled out rather than restricted.</p>
 
-<p>Until the <code>dynamic</code> command ships, use tool calling to let a model decide what happens: offer the model functions that do the work, and let the model choose which function to call and with which arguments. See the <a href="../commands/llm.html"><code>llm</code></a> command.</p>
+<p>Until the <code>dynamic</code> command ships, let the model decide what happens through tool calling: offer it functions that do the work, and it chooses which function to call and with which arguments. See the <a href="../commands/llm.html"><code>llm</code></a> command.</p>

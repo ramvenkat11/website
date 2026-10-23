@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Agent servers — Search2o docs</title>
-<meta name="description" content="An agent server is the Python process that runs agents inside your organization. The process is a FastAPI application served by Uvicorn, fully asynchronous, …">
+<meta name="description" content="An agent server is the Python process that runs agents inside your organization: a FastAPI application served by Uvicorn, fully asynchronous, with exactly on…">
 <link rel="canonical" href="https://search2o.com/docs/system-management/agent-servers.html">
 <meta property="og:title" content="Agent servers — Search2o docs">
-<meta property="og:description" content="An agent server is the Python process that runs agents inside your organization. The process is a FastAPI application served by Uvicorn, fully asynchronous, …">
+<meta property="og:description" content="An agent server is the Python process that runs agents inside your organization: a FastAPI application served by Uvicorn, fully asynchronous, with exactly on…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/system-management/agent-servers.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,14 +50,14 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../system-management/index.html'>System management</a></div>
     <article class="docs-article">
       <h1>Agent servers</h1>
-      <p class="lead">An agent server is the Python process that runs agents inside your organization. The process is a FastAPI application served by Uvicorn, fully asynchronous, with exactly one worker. Run one agent server on a laptop or several behind a load balancer; any agent server can serve any request. Below: the command line, the addresses an agent server serves, and how agent servers are configured.</p>
+      <p class="lead">An agent server is the Python process that runs agents inside your organization: a FastAPI application served by Uvicorn, fully asynchronous, with exactly one worker. Run one on a laptop or several behind a load balancer; any agent server can serve any request. This page covers the command line, the addresses an agent server serves, and how agent servers are configured.</p>
 
 <h2 id="the-command-line">The command line</h2>
-<p>Options on the <code>search2o</code> command line are passed through to Uvicorn, so the Uvicorn options for the address, the port and TLS all work as documented by Uvicorn. A few options are refused because the agent server runs as exactly one worker per process:</p>
+<p>Options on the <code>search2o</code> command line are passed through to Uvicorn, so the Uvicorn options for the address, the port and TLS all work as Uvicorn documents them. A few options are refused because the agent server runs as exactly one worker per process:</p>
 <figure class=code data-lang=text><pre><code>--reload  --reload-dir  --reload-include  --reload-exclude  --reload-delay
 --factory
 --workers</code></pre></figure>
-<p>To use more than one worker's worth of capacity, run more agent servers rather than more workers.</p>
+<p>For more than one worker's worth of capacity, run more agent servers.</p>
 
 <h2 id="what-an-agent-server-serves">What an agent server serves</h2>
 <p>By default an agent server listens on <code>127.0.0.1:9020</code> and serves:</p>
@@ -72,11 +72,11 @@
 <p>All of these paths are settings in the agent server's configuration, described next.</p>
 
 <h2 id="named-agent-server-configurations">Named agent server configurations</h2>
-<p>The Agent servers page holds one or more named configurations. The configuration named <code>default</code> is required, and an agent server uses it unless told otherwise. To run an agent server under another configuration, append the name to the license key value: <code>SEARCH2O_LICENSE_KEY=your-license-key/edge</code> starts the agent server with the configuration named <code>edge</code>. Use separate configurations when agent servers differ in what they serve, for example an agent server that serves the GUI and an agent server that answers only REST calls.</p>
+<p>The Agent servers page holds one or more named configurations. The one named <code>default</code> is required, and an agent server uses it unless told otherwise. To run an agent server under another configuration, append the name to the license key: <code>SEARCH2O_LICENSE_KEY=your-license-key/edge</code> starts the agent server with the configuration named <code>edge</code>. Separate configurations suit agent servers that differ in what they serve, for example one that serves the GUI and one that answers only REST calls.</p>
 
 <h2 id="what-a-configuration-sets">What a configuration sets</h2>
 <div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>uiPath</code></td><td class=ty>string</td><td class=dflt>&quot;/ui&quot;</td><td>The path the bundled Search2o application is served at. Leave it empty to not serve it at all.</td></tr><tr><td><code>routes</code></td><td class=ty>list of &quot;owner&quot; | &quot;admin&quot; | &quot;dev&quot; | &quot;user&quot; | &quot;auth&quot; | &quot;exec&quot; | &quot;reports&quot;</td><td class=dflt></td><td>The list of routes to serve.</td></tr><tr><td><code>connectPageUrl</code></td><td class=ty>string</td><td class=dflt></td><td>The page where a user approves an integration&#x27;s request for access. Leave it empty and it follows the application path above, which is what keeps the two in step. Set a page under that path for an application of your own, such as connect, or a full address for one hosted elsewhere, such as https://ui.example.com/connect. Whatever is set must point at where the application is really served. The request is added to it as a query parameter named c.</td></tr><tr><td><code>allowCrossOrigin</code></td><td class=ty>list of string</td><td class=dflt>[&#x27;*&#x27;]</td><td>Other origins allowed to call this API, such as https://ui.example.com.</td></tr><tr><td><code>docsUrl</code></td><td class=ty>string</td><td class=dflt>&quot;/docs&quot;</td><td>Where the API documentation is served.</td></tr><tr><td><code>redocUrl</code></td><td class=ty>string</td><td class=dflt>&quot;/redoc&quot;</td><td>Where the ReDoc documentation is served.</td></tr><tr><td><code>openapiUrl</code></td><td class=ty>string</td><td class=dflt>&quot;/openapi.json&quot;</td><td>Where the OpenAPI schema is served.</td></tr><tr><td><code>logs</code></td><td class=ty>object of string → JSON value</td><td class=dflt></td><td>Logging configuration for the agent server.</td></tr><tr><td><code>cloudPool</code></td><td class=ty>ConnectionPoolModel</td><td class=dflt></td><td>How this agent server connects to Search2o Cloud. It carries connection settings only: it is deliberately not one of the API connection pools, and it has no certificate fields, so nothing configured for an agent can change how this server reaches Search2o Cloud. A server behind a proxy that re-signs TLS trusts that proxy through the SSL_CERT_FILE environment variable, which is where a machine-wide trust setting belongs. Changing any of this needs an agent server restart.</td></tr><tr><td><code>uiConfig</code></td><td class=ty>object of string → JSON value</td><td class=dflt></td><td>A free form JSON configuration that is sent to the UI from the getUiConfig call.</td></tr></tbody></table></div>
-<p>These settings are read once, at startup, so a change takes effect when the agent server restarts. The <code>logs</code> object is a standard Python logging configuration dictionary. The GUI path may point anywhere the agent server can read; leave the GUI path empty to serve no GUI. The documentation paths can be moved or set to nothing to switch the interactive API documentation off.</p>
+<p>These settings are read once, at startup, so a change takes effect when the agent server restarts. The <code>logs</code> object is a standard Python logging configuration dictionary. The GUI path may point anywhere the agent server can read; leave it empty to serve no GUI. The documentation paths can be moved or set to nothing to switch the interactive API documentation off.</p>
 
 <h2 id="the-gui-s-settings">The GUI's settings</h2>
 <p>The <code>uiConfig</code> object holds the settings the <a href="../gui/how-the-gui-runs.html">GUI</a> reads from the agent server when the page loads. Each agent server configuration has its own, so two agent servers in one account can serve the GUI with different search behaviors or a different tag. A key that is missing takes the default below. A change takes effect when the agent server restarts and each user reloads the GUI.</p>
@@ -92,7 +92,7 @@
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Key</th><th>Meaning</th><th>Default</th></tr></thead>
 <tbody>
-<tr><td><code>apiTimeoutSeconds</code></td><td>Timeout, in seconds, for REST calls from the GUI. A timeout above 60 is worth keeping: submitting a description indexes the agent, which takes 15 to 30 seconds.</td><td><code>90</code></td></tr>
+<tr><td><code>apiTimeoutSeconds</code></td><td>Timeout, in seconds, for REST calls from the GUI. Keep it above 60: submitting a description indexes the agent, which takes 15 to 30 seconds.</td><td><code>90</code></td></tr>
 <tr><td><code>toastDurationSeconds</code></td><td>How long a notification stays visible in the GUI, in seconds.</td><td><code>10</code></td></tr>
 <tr><td><code>search.tag</code></td><td>The <a href="../search/tags.html">tag</a> the GUI sends with every search, follow-ups included. Empty searches every tag.</td><td><code>""</code></td></tr>
 <tr><td><code>search.searchBehavior</code></td><td>What the GUI does with the matches of a new search; see <a href="../search/search-settings.html#the-bundled-gui">Search behavior</a>.</td><td><code>executeTopMatch</code></td></tr>
@@ -100,10 +100,10 @@
 </tbody></table></div>
 
 <h2 id="startup-errors">Startup errors</h2>
-<p>Problems found at startup are written to the agent server's log. An allowlist entry the agent server cannot import is skipped, and the rest of the allowlist loads. A <a href="../hooks/index.html">hook</a> or an LLM adapter that cannot be loaded stops the agent server from running agents until the hook is fixed and the agent server restarted.</p>
+<p>Problems found at startup are written to the agent server's log. An allowlist entry the agent server cannot import is skipped, and the rest of the allowlist loads. A <a href="../hooks/index.html">hook</a> or an LLM adapter that cannot be loaded stops the agent server from running agents until it is fixed and the agent server restarted.</p>
 
 <h2 id="running-many-agent-servers">Running many agent servers</h2>
-<p>The agent server is stateless, so you are free to containerize it and run it load balanced; nothing more is needed. Run as many as you need. Every agent server picks up a configuration or profile change before its next agent run, so agent servers never drift from each other; see <a href="../runtime/overview.html">Agent runtime</a>. The exceptions are the settings on this page, which need a restart, and the license key: after a <a href="../security/license-rotation.html">rotation</a>, every agent server is restarted with the new key.</p>
+<p>The agent server is stateless, so containerize it and run it load balanced; nothing more is needed. Every agent server picks up a configuration or profile change before its next agent run, so agent servers never drift from each other; see <a href="../runtime/overview.html">Agent runtime</a>. The exceptions are the settings on this page, which need a restart, and the license key: after a <a href="../security/license-rotation.html">rotation</a>, every agent server is restarted with the new key.</p>
 
 <h2 id="health">Health</h2>
 <p><code>GET /health</code> is answered by the agent server itself, without sign-in, and is the call for a load balancer or a monitor to use. It reaches nothing outside the agent server, so its response time reflects that agent server's own health. See <a href="agent-server-sizing.html">Agent server sizing</a>.</p>

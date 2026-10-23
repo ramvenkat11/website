@@ -57,7 +57,7 @@
 <div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>onError</code></td><td class=ty>command block</td><td class=dflt></td><td>Commands to run if this command raises an uncaught error.</td></tr><tr><td><code>profile</code><span class=req>required</span></td><td class=ty>string</td><td class=dflt></td><td>Database connection profile defined in the configuration.</td></tr><tr><td><code>sql</code></td><td class=ty>dynamic string</td><td class=dflt></td><td>The SQL query to execute.</td></tr><tr><td><code>params</code></td><td class=ty>dynamic dict</td><td class=dflt></td><td>Parameters that are set in the query.</td></tr><tr><td><code>timeout</code></td><td class=ty>dynamic string or integer</td><td class=dflt>30</td><td>Query timeout in seconds.</td></tr></tbody></table></div>
 
 <h2 id="result">Result</h2>
-<p>The result is a list of rows. Each row is a dict keyed by column name. A statement that returns no rows, such as an <code>INSERT</code>, returns an empty list. A query that returns more rows than the <em>max rows from a db call</em> setting fails; see <a href="../runtime/runtime-limits.html">Runtime limits</a>.</p>
+<p>The result is a list of rows, each a dict keyed by column name. A statement that returns no rows, such as an <code>INSERT</code>, returns an empty list. A query that returns more rows than the <em>max rows from a db call</em> setting fails; see <a href="../runtime/runtime-limits.html">Runtime limits</a>.</p>
 
 <h2 id="example">Example</h2>
 <figure class=code data-lang=jsonc><pre><code><span class=key>&quot;db&quot;</span>: {
@@ -69,8 +69,8 @@
 
 <h2 id="rules">Rules</h2>
 <ul>
-  <li>Named parameters (<code>:email</code>) with <code>params</code> are safer than SQL built from variables. Parameters are passed to the driver and are never interpolated into the statement.</li>
-  <li>The profile's connection string names an async driver, which must be installed in the agent server's Python environment. <code>sqlite+aiosqlite</code> works out of the box. <code>postgresql+asyncpg</code>, <code>mysql+aiomysql</code>, <code>oracle+oracledb</code> and <code>mssql+aioodbc</code> are optional extras of the <code>search2o</code> package. aioodbc presents an async API but wraps the synchronous ODBC driver underneath, so synchronous operations that load the CPU can cause performance issues in the fully asynchronous agent server.</li>
+  <li>Named parameters (<code>:email</code>) with <code>params</code> are safer than SQL built from variables. Parameters go to the driver and are never interpolated into the statement.</li>
+  <li>The profile's connection string names an async driver, which must be installed in the agent server's Python environment. <code>sqlite+aiosqlite</code> works out of the box. <code>postgresql+asyncpg</code>, <code>mysql+aiomysql</code>, <code>oracle+oracledb</code> and <code>mssql+aioodbc</code> are optional extras of the <code>search2o</code> package. aioodbc presents an async API but wraps the synchronous ODBC driver underneath, so work that loads the CPU there can slow the fully asynchronous agent server.</li>
   <li>The default timeout is 30 seconds. A timeout or a connection failure raises an error that <code>onError</code> can catch.</li>
 </ul>
 

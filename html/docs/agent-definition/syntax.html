@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Syntax — Search2o docs</title>
-<meta name="description" content="Agents are written in JSONC: JSON with comments. Every value keeps its JSON meaning, with one extension: a string value enclosed in braces is a Python expres…">
+<meta name="description" content="Agents are written in JSONC: JSON with comments. Every value keeps its JSON meaning, with one extension: a string enclosed in braces is a Python expression.">
 <link rel="canonical" href="https://search2o.com/docs/agent-definition/syntax.html">
 <meta property="og:title" content="Syntax — Search2o docs">
-<meta property="og:description" content="Agents are written in JSONC: JSON with comments. Every value keeps its JSON meaning, with one extension: a string value enclosed in braces is a Python expres…">
+<meta property="og:description" content="Agents are written in JSONC: JSON with comments. Every value keeps its JSON meaning, with one extension: a string enclosed in braces is a Python expression.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/agent-definition/syntax.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,24 +50,24 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../agent-definition/index.html'>Agent definition</a></div>
     <article class="docs-article">
       <h1>Syntax</h1>
-      <p class="lead">Agents are written in JSONC: JSON with comments. Every value keeps its JSON meaning, with one extension: a string value enclosed in braces is a Python expression.</p>
+      <p class="lead">Agents are written in JSONC: JSON with comments. Every value keeps its JSON meaning, with one extension: a string enclosed in braces is a Python expression.</p>
 
 <h2 id="comments">Comments</h2>
-<p>Line comments (<code>//</code>) and block comments (<code>/* */</code>) are allowed anywhere. Comments are stripped when the draft is validated, so a published agent is plain JSON.</p>
+<p>Line comments (<code>//</code>) and block comments (<code>/* */</code>) are allowed anywhere. Validation strips them, so a published agent is plain JSON.</p>
 
 <h2 id="keys-and-values">Keys and values</h2>
 <p>A key is always a plain name: a function name, a command name or a field name. The <a href="structure.html">structure</a> of the definition, the <a href="functions.html">functions</a> and the <a href="commands.html">commands</a> each have their own page.</p>
-<p>A value is a JSON string, number, boolean, list or object, and each field of a command expects one of those types. The command reference shows the type of every field.</p>
+<p>A value is a JSON string, number, boolean, list or object. Each field of a command expects one of those types, and the command reference shows the type of every field.</p>
 
 <h2 id="dynamic-strings">Dynamic strings</h2>
-<p>A string value wrapped in <code>{ ... }</code> is a Python expression, evaluated when the agent runs. Any other string is plain text. A field that may hold either is called a <em>dynamic string</em> in the command reference.</p>
+<p>A string wrapped in <code>{ ... }</code> is a Python expression, evaluated when the agent runs. Any other string is plain text. A field that may hold either is called a <em>dynamic string</em> in the command reference.</p>
 
 <figure class=code data-lang=jsonc><div class=bar><span>A plain string and an expression</span></div><pre><code><span class=key>&quot;var&quot;</span>: {
   <span class=key>&quot;label&quot;</span>: <span class=str>&quot;Order total&quot;</span>,
   <span class=key>&quot;total&quot;</span>: <span class=str>&quot;{ price * quantity }&quot;</span>
 }</code></pre></figure>
 
-<p>What an expression may contain, what it can see, how it is checked and how it runs are all on <a href="python-expressions.html">Python expressions</a>.</p>
+<p>What an expression may contain, what it can see, how it is checked and how it runs are on <a href="python-expressions.html">Python expressions</a>.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../agent-definition/index.html'><small>Previous</small>Agent definition</a><a class=next href='../agent-definition/python-expressions.html'><small>Next</small>Python expressions</a></nav>

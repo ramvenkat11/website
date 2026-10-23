@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Agent server sizing — Search2o docs</title>
-<meta name="description" content="An agent server is the part of Search2o that a company runs. This page says how many to run and how to configure them. The figures come from our own load tes…">
+<meta name="description" content="How many agent servers to run and how to configure them. The figures come from our own load tests on an Intel i9 at 2.40 GHz. A faster processor does proport…">
 <link rel="canonical" href="https://search2o.com/docs/system-management/agent-server-sizing.html">
 <meta property="og:title" content="Agent server sizing — Search2o docs">
-<meta property="og:description" content="An agent server is the part of Search2o that a company runs. This page says how many to run and how to configure them. The figures come from our own load tes…">
+<meta property="og:description" content="How many agent servers to run and how to configure them. The figures come from our own load tests on an Intel i9 at 2.40 GHz. A faster processor does proport…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/system-management/agent-server-sizing.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,10 +50,10 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../system-management/index.html'>System management</a></div>
     <article class="docs-article">
       <h1>Agent server sizing</h1>
-      <p class="lead">An agent server is the part of Search2o that a company runs. This page says how many to run and how to configure them. The figures come from our own load tests, on an Intel i9 at 2.40 GHz. A faster processor does proportionally more, so these figures are a conservative starting point.</p>
+      <p class="lead">How many agent servers to run and how to configure them. The figures come from our own load tests on an Intel i9 at 2.40 GHz. A faster processor does proportionally more, so treat them as a conservative starting point.</p>
 
 <h2 id="running-one-agent-server-for-every-processor-core">Running one agent server for every processor core</h2>
-<p>An agent server is a single Python process. Python holds a global interpreter lock, so one process uses one core however many threads it has. A larger machine therefore does nothing for a single agent server, and capacity comes from running more of them.</p>
+<p>An agent server is a single Python process. Python holds a global interpreter lock, so one process uses one core however many threads it has. A larger machine does nothing for a single agent server; capacity comes from running more of them.</p>
 <p>A machine with eight cores should run eight agent servers behind a load balancer. In our tests a second agent server nearly doubled throughput, from 50 to 89 agent runs per second, and both servers stayed near a full core.</p>
 
 <h2 id="planning-about-50-agent-runs-per-second-for-each-agent-server">Planning about 50 agent runs per second for each agent server</h2>
@@ -61,7 +61,7 @@
 <p>How many runs that allows at the same time depends on how long a run lasts.</p>
 <figure class=code data-lang=text><pre><code>agent runs at the same time  =  50 per second  x  seconds per run</code></pre></figure>
 <p><strong>About 25 at the same time suits agents that mostly compute.</strong> A computing agent finishes in around half a second and uses the processor for all of it.</p>
-<p><strong>We would suggest 100 to 150 at the same time for agents that call a remote language model.</strong> Such an agent takes a few seconds and spends almost all of that waiting, which costs the agent server nothing. These agents never fill a core. What gives out first is the agent server's responsiveness, so it helps to watch that rather than the processor.</p>
+<p><strong>100 to 150 at the same time suits agents that call a remote language model.</strong> Such an agent takes a few seconds and spends almost all of that waiting, which costs the agent server nothing. These agents never fill a core. What gives out first is the agent server's responsiveness, so watch that rather than the processor.</p>
 <p>How long a model call takes belongs to the model rather than to Search2o, and it is the number that decides how many runs fit. These are the medians we measured with small fast models.</p>
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Model</th><th>Median run</th></tr></thead>
@@ -73,8 +73,8 @@
 <p>Agents that stream their answers hold a connection for the life of the run, so a deployment that streams heavily holds fewer runs at the same time than these figures suggest.</p>
 
 <h2 id="raising-the-api-connection-pool-if-your-agents-call-anything">Raising the API connection pool if your agents call anything</h2>
-<p>This is the pool the agents themselves use, for calls to language models and to your own services. The default of 20 connections suits an agent server that mostly computes. When agents call anything, the pool is best sized above the number of runs at once, because each waiting run holds a connection for the whole call. Twenty connections serve about twenty runs.</p>
-<p>In our tests, 100 model-calling runs at the same time gave <strong>1 run per second and 82 failures</strong> on the default pool, and <strong>24 runs per second with no failures</strong> on a wide one. The pool is best sized above the number of runs you expect at the same time. See <a href="../runtime/connection-pools.html">Connection pools</a>.</p>
+<p>This is the pool the agents themselves use, for calls to language models and to your own services. The default of 20 connections suits an agent server that mostly computes. When agents call anything, size the pool above the number of runs at once, because each waiting run holds a connection for the whole call. Twenty connections serve about twenty runs.</p>
+<p>In our tests, 100 model-calling runs at the same time gave <strong>1 run per second and 82 failures</strong> on the default pool, and <strong>24 runs per second with no failures</strong> on a wide one. See <a href="../runtime/connection-pools.html">Connection pools</a>.</p>
 
 <h2 id="leaving-the-cloud-connection-pool-alone">Leaving the cloud connection pool alone</h2>
 <p>That is a different pool, used by the agent server to reach Search2o Cloud rather than by your agents. Widening it from 20 to 200 gained nothing in our tests and made heavy load worse, because it admits more work into one process.</p>
@@ -89,7 +89,7 @@
 <h2 id="watching-a-deployment-that-is-already-busy">Watching a deployment that is already busy</h2>
 <p>Two things tell you whether another agent server will help. Neither needs any extra load put on the system.</p>
 <p>The first is the processor use of each agent server, which ordinary monitoring reports.</p>
-<p>The second is how long an agent server takes to answer a request it handles by itself. <strong><code>GET /health</code> is the one to use.</strong> It returns a fixed answer, it needs no sign-in, and it reaches nothing outside the agent server, so its response time reflects that server's own health and nothing else. Any uptime monitor can poll it.</p>
+<p>The second is how long an agent server takes to answer a request it handles by itself. <strong><code>GET /health</code> is the one to use.</strong> It returns a fixed answer, needs no sign-in, and reaches nothing outside the agent server, so its response time reflects that server's own health and nothing else. Any uptime monitor can poll it.</p>
 <p>It answers in about 0.003s on a server with capacity to spare, and stays there while the server has room. It passes 0.01s when the agent server is running out of capacity.</p>
 <div class="tablewrap"><table class="fields compare">
 <thead><tr><th>What you see at a busy time</th><th>What it means</th><th>What to do</th></tr></thead>
@@ -98,7 +98,7 @@
 <tr><td><code>/health</code> under 0.01s, servers well under a core</td><td>The runs are waiting on something else</td><td>Another server will wait too</td></tr>
 <tr><td><code>/health</code> climbing above 0.01s</td><td>The agent server itself is saturated</td><td>Add another one</td></tr>
 </tbody></table></div>
-<p>It helps to add agent servers while each one is near a full core. A server at half a core is waiting rather than working, and another one waits alongside it.</p>
+<p>Add agent servers while each one is near a full core. A server at half a core is waiting rather than working, and another one waits alongside it.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../system-management/agent-servers.html'><small>Previous</small>Agent servers</a><a class=next href='../system-management/authentication.html'><small>Next</small>Authentication</a></nav>

@@ -50,14 +50,14 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../runtime/index.html'>Agent runtime</a></div>
     <article class="docs-article">
       <h1>Allowlist</h1>
-      <p class="lead">The allowlist is the complete set of names that an agent's Python expressions may use. Expressions do not get Python's builtins; the allowlist takes their place, so a name that is not on the allowlist does not exist for an agent, and an expression that uses it is refused before the agent ever runs. The allowlist applies to every agent in the account, and developers edit it in the GUI under Guardrails.</p>
+      <p class="lead">The allowlist is the complete set of names that an agent's Python expressions may use. Expressions do not get Python's builtins; the allowlist takes their place. A name that is not on the allowlist does not exist for an agent, and an expression that uses it is refused before the agent ever runs. The allowlist applies to every agent in the account, and developers edit it in the GUI under Guardrails.</p>
 
 <h2 id="how-expressions-are-contained">How expressions are contained</h2>
-<p>Expressions are contained at the application level, not by the operating system. Four things decide what an expression may do: the allowlist decides which names the expression can reach; the <a href="compile-rules.html">compile rules</a> decide which operators and which shapes of expression are accepted; the <a href="runtime-limits.html">runtime limits</a> bound a run in time, iterations, rows and LLM spend; and the scope rules below decide which variables are visible. The runtime does not limit memory or CPU. Rewriting an operator to a function of your own is the tool for operations that could load the agent server.</p>
+<p>Expressions are contained at the application level, not by the operating system. Four things decide what an expression may do. The allowlist decides which names it can reach. The <a href="compile-rules.html">compile rules</a> decide which operators and which shapes of expression are accepted. The <a href="runtime-limits.html">runtime limits</a> bound a run in time, iterations, rows and LLM spend. The scope rules below decide which variables are visible. The runtime does not limit memory or CPU; rewriting an operator to a function of your own is the tool for operations that could load the agent server.</p>
 <figure class="fig"><svg viewBox="0 0 720 250" role="img" aria-label="What decides what an expression may do" xmlns="http://www.w3.org/2000/svg"><defs><marker id="expression-bounds-arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="var(--faint)"/></marker><marker id="expression-bounds-arr-r" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M10,0 L0,5 L10,10 z" fill="var(--faint)"/></marker></defs><rect x="20" y="30" width="680" height="200" rx="14" fill="var(--bg-soft)" stroke="var(--line)"/><text x="36" y="50" text-anchor="start" dominant-baseline="middle" font-size="12" font-weight="700" fill="var(--ink)">a Python expression in braces</text><rect x="36" y="70" width="150" height="32" rx="10" fill="var(--card)" stroke="var(--line)"/><text x="111.0" y="86.0" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="600" fill="var(--ink)">allowlist</text><text x="200" y="86" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">the only names it can reach; public members of allowlisted objects; no import, no dunders</text><rect x="36" y="110" width="150" height="32" rx="10" fill="var(--card)" stroke="var(--line)"/><text x="111.0" y="126.0" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="600" fill="var(--ink)">compile rules</text><text x="200" y="126" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">each operator allowed, denied or rewritten to a function of your own</text><rect x="36" y="150" width="150" height="32" rx="10" fill="var(--card)" stroke="var(--line)"/><text x="111.0" y="166.0" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="600" fill="var(--ink)">runtime limits</text><text x="200" y="166" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">time, loop iterations, database rows, definition size, LLM spend</text><rect x="36" y="190" width="150" height="32" rx="10" fill="var(--card)" stroke="var(--line)"/><text x="111.0" y="206.0" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="600" fill="var(--ink)">scope</text><text x="200" y="206" text-anchor="start" dominant-baseline="middle" font-size="11.5" font-weight="500" fill="var(--muted)">earlier locals, agent./conv. variables, sys and command namespaces — nothing else</text></svg><figcaption>What decides what an expression may do</figcaption></figure>
 
 <h2 id="one-entry-per-line">One entry per line</h2>
-<p>Each line names one thing to allow, and blank lines are ignored. Anything after a <code>#</code> is a comment. A line that is only a comment is ignored, so comments can be used to group a long allowlist into sections.</p>
+<p>Each line names one thing to allow. Blank lines are ignored, and anything after a <code>#</code> is a comment, so comments can group a long allowlist into sections.</p>
 <figure class=code data-lang=text><pre><code># Text handling
 json.loads
 json.dumps
@@ -75,20 +75,20 @@ re.sub              # replace matches in a string</code></pre></figure>
 <tr><td>A whole module</td><td><code>math</code></td><td><code>math.sqrt(16)</code></td></tr>
 <tr><td>Everything public in a module</td><td><code>math.*</code></td><td><code>sqrt(16)</code></td></tr>
 </tbody></table></div>
-<p>A module inside a package is named in full. <code>urllib.parse</code> allows that module, and <code>xml.etree.ElementTree</code> allows that one.</p>
+<p>A module inside a package is named in full: <code>urllib.parse</code>, <code>xml.etree.ElementTree</code>.</p>
 <p>The same forms allow your own code. <code>mycompany.pricing.discount</code> is resolved the same way as <code>math.sqrt</code>, as long as the package is installed beside the agent server.</p>
 
 <h3 id="renaming-an-entry-with-as">Renaming an entry with <code>as</code></h3>
 <p>Any entry can be given the name that expressions will use.</p>
 <figure class=code data-lang=text><pre><code>math.sqrt as sqrt                # sqrt(16)
 datetime.datetime as datetime    # datetime(2026, 1, 2)</code></pre></figure>
-<p>Without <code>as</code>, an expression uses the entry as written. <code>math.sqrt</code> is used as <code>math.sqrt(16)</code>.</p>
+<p>Without <code>as</code>, an expression uses the entry as written: <code>math.sqrt</code> is used as <code>math.sqrt(16)</code>.</p>
 <p>An entry that ends in <code>.*</code> cannot be renamed, because that form brings in many names at once. An <code>as</code> on such a line is refused when the allowlist is saved.</p>
 
 <h3 id="choosing-between-the-forms">Choosing between the forms</h3>
-<p>Naming one function is the narrowest choice, and it is the one we would suggest. <code>math.sqrt</code> allows that function and nothing else in the module.</p>
-<p>Allowing a whole module is convenient when agents use many of its functions. It allows every public function in that module, so it is worth knowing what is in the module first.</p>
-<p>The <code>.*</code> form puts the names into the expression directly, without the module in front. It also replaces any earlier entry of the same name. <code>math.*</code> provides a <code>pow</code>, so a <code>pow</code> entry higher up the list is no longer Python's <code>pow</code>. One of the other forms is best unless short names are what you want.</p>
+<p>Naming one function is the narrowest choice. <code>math.sqrt</code> allows that function and nothing else in the module.</p>
+<p>Allowing a whole module is convenient when agents use many of its functions. It allows every public function in the module, so know what is in the module first.</p>
+<p>The <code>.*</code> form puts the names into the expression directly, without the module in front. It also replaces any earlier entry of the same name: <code>math.*</code> provides a <code>pow</code>, so a <code>pow</code> entry higher up the list is no longer Python's <code>pow</code>. Use one of the other forms unless short names are what you want.</p>
 
 <h2 id="what-a-name-gives-an-agent">What a name gives an agent</h2>
 <p>An entry allows the name itself and the public members of the object behind it.</p>
@@ -96,14 +96,14 @@ datetime.datetime as datetime    # datetime(2026, 1, 2)</code></pre></figure>
 <p>An allowlisted class can be used to construct an object, and the public members of that object can be used.</p>
 
 <h3 id="a-module-does-not-open-the-modules-it-uses">A module does not open the modules it uses</h3>
-<p>A module entry allows what is in that module. It does not allow the modules that module imports.</p>
+<p>A module entry allows what is in that module, not the modules it imports.</p>
 <p>Python modules import each other freely. The <code>json</code> module imports <code>codecs</code>, and <code>uuid</code> imports <code>os</code>. Without this rule, allowing <code>json</code> would quietly allow <code>codecs.open</code>, and allowing <code>uuid</code> would allow the operating system.</p>
 <figure class=code data-lang=text><pre><code>json                # json.dumps and json.loads are allowed
                     # json.codecs is refused</code></pre></figure>
 <p>The same holds for a package. Allowing <code>urllib</code> does not allow <code>urllib.parse</code>. Name <code>urllib.parse</code> when that is what agents need.</p>
 
 <h3 id="what-is-always-refused">What is always refused</h3>
-<p>Any name that starts with an underscore is refused. This covers private names and dunder names. The rule holds for a variable, an attribute, a function and a keyword argument, and it holds on an allowlisted object too.</p>
+<p>Any name that starts with an underscore is refused: private names and dunder names, whether a variable, an attribute, a function or a keyword argument, and on an allowlisted object too.</p>
 <p><code>format</code> and <code>format_map</code> are refused on every object. A format string is read when the expression runs, so it can reach places that are checked nowhere else. Use an f-string instead.</p>
 <p><code>import</code> is not available in an expression. Everything an agent can reach is named in the allowlist.</p>
 <p>The rules for what an expression may contain, beyond names, are listed in <a href="compile-rules.html#what-validation-refuses">Compile rules</a>.</p>
@@ -114,13 +114,13 @@ datetime.datetime as datetime    # datetime(2026, 1, 2)</code></pre></figure>
   <li>the names on the allowlist, with the public members of the objects behind them;</li>
   <li>variables set earlier in the same function, and the function's arguments;</li>
   <li>agent and conversation variables set earlier, as <code>agent.x</code> and <code>conv.x</code>;</li>
-  <li>the read-only <code>sys</code> and <code>command</code> namespaces. Which <code>sys</code> variables are present is decided in <a href="system-variables.html">System variables</a>.</li>
+  <li>the read-only <code>sys</code>, <code>const</code> and <code>command</code> namespaces. Which <code>sys</code> variables are present is decided in <a href="system-variables.html">System variables</a>.</li>
 </ul>
 <p>See <a href="../agent-definition/variables.html">Variables and namespaces</a>.</p>
 
 <h2 id="functions-must-not-block">Functions must not block</h2>
 <p>Expressions run on the agent server's shared event loop. A function that blocks that loop holds up every agent on the agent server, so such a function does not belong on the allowlist. <code>time.sleep</code> and synchronous network calls are examples.</p>
-<p>Async functions are welcome. When the whole expression is a call to an async function, the result is awaited for you. Inside a larger expression, use <code>await</code>; see <a href="../agent-definition/python-expressions.html#awaiting">Awaiting</a>.</p>
+<p>Async functions are fine. When the whole expression is a call to an async function, the result is awaited for you. Inside a larger expression, use <code>await</code>; see <a href="../agent-definition/python-expressions.html#awaiting">Awaiting</a>.</p>
 
 <h2 id="when-an-entry-is-wrong">When an entry is wrong</h2>
 <p>Every entry is resolved when the allowlist is saved, on the agent server behind the GUI. If any line fails, the allowlist is not saved, and each failing line is reported with its own message.</p>
@@ -128,11 +128,11 @@ datetime.datetime as datetime    # datetime(2026, 1, 2)</code></pre></figure>
 math.nope          Could not be imported.
 math.* as m        A star import cannot be renamed with &#x27;as&#x27;.</code></pre></figure>
 <p>The line is reported exactly as it was written, so a long allowlist shows which rows to fix.</p>
-<p>Once the allowlist is saved, every agent server rebuilds its names before the next agent run. No restart is needed; see <a href="overview.html#how-a-change-reaches-every-agent-server">How a change reaches every agent server</a>.</p>
-<p>Each agent server resolves each entry in its own Python environment. An entry that cannot be imported on one agent server is skipped there, a message is written to that agent server's log, and the rest of the allowlist still loads. A package installed on one agent server and missing on another shows up this way, so it is worth keeping the environments of your agent servers the same.</p>
+<p>Once the allowlist is saved, every agent server rebuilds its names before its next agent run. No restart is needed; see <a href="overview.html#how-a-change-reaches-every-agent-server">How a change reaches every agent server</a>.</p>
+<p>Each agent server resolves each entry in its own Python environment. An entry that cannot be imported on one agent server is skipped there, with a message in that agent server's log, and the rest of the allowlist still loads. A package installed on one agent server and missing on another shows up this way, so keep the environments of your agent servers the same.</p>
 
 <h2 id="your-own-code">Your own code</h2>
-<p>The allowlist is how your own code becomes callable from expressions. Install the package beside the agent server, on every agent server, and name the function in the allowlist. A function that a <a href="compile-rules.html#rewriting-an-operator">Python operator</a> is rewritten to must be on the allowlist, and it must take the two values that operator works on. Code that the agent server itself calls &mdash; an <a href="../llm/llm-adapters.html">LLM adapter</a>, a vault function, an encryption key function &mdash; is not an allowlist entry; it is named on the Hooks page. See <a href="../hooks/index.html">Hooks</a>.</p>
+<p>The allowlist is how your own code becomes callable from expressions. Install the package beside the agent server, on every agent server, and name the function in the allowlist. A function that a <a href="compile-rules.html#rewriting-an-operator">Python operator</a> is rewritten to must be on the allowlist, and it must take the two values that operator works on. Code that the agent server itself calls, such as an <a href="../llm/llm-adapters.html">LLM adapter</a>, a vault function or an encryption key function, is not an allowlist entry; it is named on the Hooks page. See <a href="../hooks/index.html">Hooks</a>.</p>
 <div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>allowlist</code></td><td class=ty>list of string</td><td class=dflt></td><td>What agent expressions may call. These run on the server&#x27;s shared event loop and must not block it - asyncio.run, for example. A coroutine is awaited only when it is the whole expression, not when it appears inside a larger one.</td></tr></tbody></table></div>
 
     </article>

@@ -11,7 +11,7 @@ search2o/
 
 <h2>Authorization</h2>
 <p>The skill authenticates as the person, with an <a href="../chat-integrations/integration-tokens.html">integration token</a>: the same per-person, revocable token a chat bot uses. A token can search, run agents and manage that person's own conversations. It cannot read or change configuration, manage users or read reports, whatever the person's role. Runs made through the skill appear in the usage report under the person's name.</p>
-<p>Each person creates a token from their profile in the GUI, as described in <a href="../chat-integrations/connecting-a-person.html">Connecting a person</a>. The token is never stored in the skill's files. Please revoke a token when it is no longer needed, and revoke any token that has been pasted into a chat.</p>
+<p>Each person creates a token from their profile in the GUI, as described in <a href="../chat-integrations/connecting-a-person.html">Connecting a person</a>. The token is never stored in the skill's files. Revoke a token when it is no longer needed, and revoke any token that has been pasted into a chat.</p>
 
 <h2>Installing</h2>
 <p>Copy the <code>search2o</code> folder into the client's skills directory. For Claude Code:</p>
@@ -23,7 +23,7 @@ cp -R search2o ~/.claude/skills/
 export SEARCH2O_SERVER=https://search2o.example.com
 export SEARCH2O_TOKEN=<the integration token>
 </x-code>
-<p>or as files, which suit a client that does not keep environment variables between sessions:</p>
+<p>or as files, for a client that does not keep environment variables between sessions:</p>
 <x-code lang="text">
 mkdir -p ~/.search2o
 echo -n https://search2o.example.com > ~/.search2o/server
@@ -39,14 +39,14 @@ python3 search2o/scripts/s2o.py execAgent '{"agentName": "order_status", "inputs
 <p>Each call prints one JSON object. A failed call prints a message and exits with a non-zero status, so the assistant sees what went wrong: a refused token, a server it cannot reach, or a call the token may not make.</p>
 
 <h2>Where it works</h2>
-<p>Agent Skills is an open standard, published at agentskills.io, and the same folder works unmodified in every client that implements it &mdash; Claude Code, Cursor and OpenAI Codex among them.</p>
+<p>Agent Skills is an open standard, published at agentskills.io, and the same folder works unmodified in every client that implements it, Claude Code, Cursor and OpenAI Codex among them.</p>
 <p>The script calls your agent server over the network. In a client that runs on your machine, such as Claude Code or Cursor, the script uses the machine's network and reaches the agent server directly. In a client that runs scripts in a hosted environment, whether that environment can reach your agent server depends on the network settings of the client's account.</p>
-<p>In Claude Code a skill can be distributed to a team through a plugin; other clients have their own ways, and the folder is the same in each.</p>
+<p>In Claude Code a skill can be distributed to a team through a plugin. Other clients have their own ways, and the folder is the same in each.</p>
 
 <h2>Fitting it to your company</h2>
 <h3>The description</h3>
-<p>The description in <code>SKILL.md</code> is the only thing the assistant reads to decide whether a request is for the company's agents. Too broad, and general requests go to <code>search</code>; too narrow, and requests that should reach an agent never do. It helps to edit its examples to name the kinds of work your agents do, then try a handful of requests that should use the skill and a handful that should not.</p>
+<p>The description in <code>SKILL.md</code> is the only thing the assistant reads to decide whether a request is for the company's agents. Too broad, and general requests go to <code>search</code>; too narrow, and requests that should reach an agent never do. Edit its examples to name the kinds of work your agents do, then try a handful of requests that should use the skill and a handful that should not.</p>
 <h3>Tag scoping</h3>
-<p><code>search</code> accepts a <a href="../search/tags.html">tag</a> and returns only the agents that carry it. A company that wants narrower triggers can install two copies of the skill &mdash; one for support agents, one for finance agents &mdash; each with its own name, its own description, and instructions that pass its tag to <code>search</code>.</p>
+<p><code>search</code> accepts a <a href="../search/tags.html">tag</a> and returns only the agents that carry it. A company that wants narrower triggers can install two copies of the skill, one for support agents and one for finance agents, each with its own name, its own description, and instructions that pass its tag to <code>search</code>.</p>
 <h3>Long-running agents</h3>
-<p>The script waits for the agent to finish, for up to 600 seconds, the default of <code>maxAgentRuntime</code>, the <a href="../runtime/runtime-limits.html">runtime limit</a> on how long an agent may run. If your account allows longer runs, raise <code>TIMEOUT</code> in the script to match.</p>
+<p>The script waits up to 600 seconds for an agent to finish. Each agent has its own <a href="../agent-execution/controlled-runtime.html">time bound</a>, set with the draft. If an agent's bound is longer than 600 seconds, raise <code>TIMEOUT</code> in the script to match.</p>

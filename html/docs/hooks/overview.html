@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>How hooks work — Search2o docs</title>
-<meta name="description" content="Hooks are Python functions and classes of your own that the agent server calls at set points: when the agent server starts and stops, before and after an age…">
+<meta name="description" content="Hooks are Python functions and classes of your own that the agent server calls at set points: when it starts and stops, before and after an agent runs, when …">
 <link rel="canonical" href="https://search2o.com/docs/hooks/overview.html">
 <meta property="og:title" content="How hooks work — Search2o docs">
-<meta property="og:description" content="Hooks are Python functions and classes of your own that the agent server calls at set points: when the agent server starts and stops, before and after an age…">
+<meta property="og:description" content="Hooks are Python functions and classes of your own that the agent server calls at set points: when it starts and stops, before and after an agent runs, when …">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/hooks/overview.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,15 +50,15 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../hooks/index.html'>Hooks</a></div>
     <article class="docs-article">
       <h1>How hooks work</h1>
-      <p class="lead">Hooks are Python functions and classes of your own that the agent server calls at set points: when the agent server starts and stops, before and after an agent runs, when an agent is published or deleted, before an LLM or API call, and when the agent server needs a secret, an encryption key, or the state of a conversation. Administrators name them on the Hooks page in the GUI, under Operations &rsaquo; Hooks.</p>
+      <p class="lead">Hooks are Python functions and classes of your own that the agent server calls at set points: when it starts and stops, before and after an agent runs, when an agent is published or deleted, before an LLM or API call, and when it needs a secret, an encryption key or the state of a conversation. Administrators name them in the GUI under Operations &rsaquo; Hooks.</p>
 
 <h2 id="how-hooks-are-loaded">How hooks are loaded</h2>
 <p>Each hook is a dotted Python import path, such as <code>mycompany.hooks.on_agent_end</code>, naming a function or class. The code must be installed in the Python environment of every agent server of the account. An empty box means the hook is not set.</p>
-<p>Hooks are imported when the agent server starts, so a change on the Hooks page takes effect only after the agent servers restart. Every other configuration part reaches a running agent server before its next run; this one does not, and the page says so when it saves. A path that cannot be imported, a function that is not <code>async</code>, or an adapter class that cannot be built is written to the agent server's log, and that agent server refuses to run agents until the hook is fixed and the agent server restarted. A save is recorded in the <a href="../system-management/audit-log.html">audit log</a> as &ldquo;Hooks were updated&rdquo;, with the names of the fields that changed.</p>
+<p>Hooks are imported when the agent server starts, so a change on the Hooks page takes effect only after the agent servers restart. Every other configuration part reaches a running agent server before its next run; this one does not, and the page says so when it saves. A path that cannot be imported, a function that is not <code>async</code>, or an adapter class that cannot be built is written to the agent server's log, and that agent server refuses to run agents until the hook is fixed and the server restarted. A save is recorded in the <a href="../system-management/audit-log.html">audit log</a> as &ldquo;Hooks were updated&rdquo;, with the names of the fields that changed.</p>
 
 <h2 id="writing-a-hook">Writing a hook</h2>
 <p>Every hook is an <code>async</code> function that takes one <code>dict</code>. The dict holds what is relevant to the call; the other pages of this section list its keys, hook by hook. Most calls include <code>isValidation</code>, which is <code>True</code> during a <a href="../development/trace-and-validation.html">validation run</a>. Only <code>vault</code>, <code>encryptionKey</code> and <code>restore</code> return a value; what the other hooks return is ignored.</p>
-<p>To refuse, a hook raises an exception. The exception's message is shown as it is: to the user when an agent is stopped, to the developer when a save is refused. Choose the words accordingly.</p>
+<p>To refuse, a hook raises an exception. The exception's message is shown as it is: to the user when an agent is stopped, to the developer when a save is refused. Choose the words for that reader.</p>
 <figure class=code data-lang=python><div class=bar><span>mycompany/hooks.py</span></div><pre><code><span class=kw>async</span> <span class=kw>def</span> before_api_call(args):
     <span class=kw>if</span> args[<span class=str>&quot;method&quot;</span>] != <span class=str>&quot;GET&quot;</span> <span class=kw>and</span> args[<span class=str>&quot;userEmail&quot;</span>].endswith(<span class=str>&quot;@contractor.example.com&quot;</span>):
         <span class=kw>raise</span> Exception(<span class=str>&quot;Contractors may read from this API but not write to it.&quot;</span>)

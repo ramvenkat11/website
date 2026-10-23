@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Conversation state — Search2o docs</title>
-<meta name="description" content="By default the agent server encrypts a conversation&#x27;s state and stores the ciphertext in Search2o Cloud. With these three hooks, the state is stored by your …">
+<meta name="description" content="By default the agent server encrypts a conversation&#x27;s state and stores the ciphertext in Search2o Cloud. With these three hooks, your own code stores the sta…">
 <link rel="canonical" href="https://search2o.com/docs/hooks/conversation-state.html">
 <meta property="og:title" content="Conversation state — Search2o docs">
-<meta property="og:description" content="By default the agent server encrypts a conversation&#x27;s state and stores the ciphertext in Search2o Cloud. With these three hooks, the state is stored by your …">
+<meta property="og:description" content="By default the agent server encrypts a conversation&#x27;s state and stores the ciphertext in Search2o Cloud. With these three hooks, your own code stores the sta…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/hooks/conversation-state.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,15 +50,15 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../hooks/index.html'>Hooks</a></div>
     <article class="docs-article">
       <h1>Conversation state</h1>
-      <p class="lead">By default the agent server encrypts a conversation's state and stores the ciphertext in Search2o Cloud. With these three hooks, the state is stored by your own code instead and never leaves your organization. The three are set together, or none of them.</p>
+      <p class="lead">By default the agent server encrypts a conversation's state and stores the ciphertext in Search2o Cloud. With these three hooks, your own code stores the state instead, and it never leaves your organization. Set all three, or none.</p>
 <div class="tablewrap"><table class="fields data">
 <thead><tr><th>Hook</th><th>When it is called</th><th>The dict holds</th></tr></thead>
 <tbody>
 <tr><td><code>save</code><small>Save conversation state</small></td><td>When a run ends successfully or pauses on an <code>ask</code>, in place of storing the state in the cloud.</td><td><code>convid</code>, <code>state</code>, the state as a JSON string, <code>userEmail</code>, <code>agentName</code> and <code>isValidation</code>.</td></tr>
-<tr><td><code>restore</code><small>Restore conversation state</small></td><td>When a follow-up request continues the conversation, and when the GUI opens a past conversation. It returns the string that <code>save</code> stored, or <code>None</code> when there is none, which ends the conversation as expired.</td><td><code>convid</code>, <code>userEmail</code> and <code>isValidation</code>.</td></tr>
+<tr><td><code>restore</code><small>Restore conversation state</small></td><td>When a follow-up continues the conversation, and when the GUI opens a past conversation. It returns the string that <code>save</code> stored, or <code>None</code> when there is none, which ends the conversation as expired.</td><td><code>convid</code>, <code>userEmail</code> and <code>isValidation</code>.</td></tr>
 <tr><td><code>deleteConversation</code><small>Delete conversation state</small></td><td>When a user deletes the conversation.</td><td><code>convid</code> and <code>isValidation</code>.</td></tr>
 </tbody></table></div>
-<p>Three things follow from storing the state yourself. The agent server hands <code>save</code> the state in plain form, and you are free to encrypt it before storing it. Search2o Cloud does not check who continues a conversation whose state your code holds; <code>restore</code> receives <code>userEmail</code> so that your code can check that the conversation belongs to that person. And deleting stored state is your decision: the agent server calls <code>deleteConversation</code> when a user deletes a conversation, and expires nothing else. The cloud keeps the conversation's entry, the encrypted title and the time of the last run, and applies the plan's retention to that entry, so an unpinned conversation still leaves the conversation list after 7 days on the Free plan and 90 days on Paid. Validation runs keep their state in the cloud, whatever the hooks. See <a href="../agent-execution/conversation-state.html">Conversation state</a>.</p>
+<p>Three things follow from storing the state yourself. The agent server hands <code>save</code> the state in plain form; encrypt it before storing it if you need to. Search2o Cloud does not check who continues a conversation whose state your code holds, so <code>restore</code> receives <code>userEmail</code> and your code can check that the conversation belongs to that person. And expiring stored state is your job: the agent server calls <code>deleteConversation</code> when a user deletes a conversation, and nothing else. The cloud still keeps the conversation's entry, with the encrypted title and the time of the last run, under the plan's retention, so an unpinned conversation leaves the conversation list after 7 days on the Free plan and 90 days on Paid. Validation runs keep their state in the cloud whatever the hooks. See <a href="../agent-execution/conversation-state.html">Conversation state</a>.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../hooks/lifecycle.html'><small>Previous</small>Server and agent runs</a><a class=next href='../hooks/secrets-and-encryption.html'><small>Next</small>Secrets and encryption</a></nav>

@@ -1,9 +1,9 @@
-<p class="lead">An agent produces output with the <code>output</code> command. Output is streamed to the user as multipart content. Each part is written to the stream the moment the command runs, and the client &mdash; the GUI or a chat application &mdash; renders the part immediately.</p>
+<p class="lead">An agent produces output with the <code>output</code> command. Output is streamed to the user as multipart content. Each part is written to the stream the moment the command runs, and the client, the GUI or a chat application, renders it immediately.</p>
 
-<p>Output is append-only and keeps its order. The supported parts are text, HTML, images, and whatever an <code>llm</code> command with <code>streamOutput</code> produces.</p>
+<p>Output is append-only and keeps its order. The parts are text, HTML, images, and whatever an <code>llm</code> command with <code>streamOutput</code> produces.</p>
 
 <h2>Text</h2>
-<p>Text is the default part. Text is interpreted as Markdown, which is what LLMs produce.</p>
+<p>Text is the default part. It is interpreted as Markdown, which is what LLMs produce.</p>
 <x-code lang="jsonc">
 "output": "The answer to your question is **42**"
 </x-code>
@@ -25,7 +25,7 @@
 </x-code>
 
 <h2>Images</h2>
-<p>Images are emitted as base64-encoded data with an explicit MIME type.</p>
+<p>An image is base64-encoded data with an explicit MIME type.</p>
 <x-code lang="jsonc">
 "output": {
   "contentType": "image",
@@ -38,4 +38,4 @@
 <p>A list appends each element as a part. A string in the list becomes a text part.</p>
 
 <h2>Progress, trace and log are not output</h2>
-<p><code>progress</code> sends a transient message that the user sees while the agent runs. The message is not saved with the conversation. <code>trace</code> writes to the developer's execution trace during validation and does nothing in production. <code>log</code> writes to the agent server's log. <code>output</code> and <code>end</code> are the two commands that add to the answer: <code>end</code> appends its value to the output.</p>
+<p><code>progress</code> sends a transient message that the user sees while the agent runs. It is not saved with the conversation. <code>trace</code> writes to the developer's execution trace during validation and does nothing in production. <code>log</code> writes to the agent server's log. Two commands add to the answer: <code>output</code>, and <code>end</code>, which appends its value to the output.</p>

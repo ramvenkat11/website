@@ -1,4 +1,4 @@
-<p class="lead">An agent is written in JSON. The string values in that JSON can be Python expressions; a key cannot be an expression. This page explains what Search2o does with those expressions, from the moment a developer validates an agent to the moment the expression runs.</p>
+<p class="lead">An agent is written in JSON. The string values in that JSON can be Python expressions; a key cannot. This page explains what Search2o does with an expression, from the moment a developer validates the agent to the moment the expression runs.</p>
 
 <h2>What counts as an expression</h2>
 <p>A string value is an expression when the whole string is wrapped in braces.</p>
@@ -14,8 +14,8 @@
 <p><code>total</code> is an expression. <code>label</code> is plain text. <code>greeting</code> is an expression that builds a string with an f-string.</p>
 <p>The braces must enclose the whole value. <code>"Hello {name}"</code> is plain text, and the agent sees the braces literally. To mix text and values, write an f-string inside the braces.</p>
 <p>A value that starts with <code>{</code> and ends with <code>}</code> is always read as an expression. So the string <code>'{"a": 1}'</code> is not text: that value is the Python dict <code>{"a": 1}</code>. To keep a leading brace literal, make sure the string does not end with a closing brace.</p>
-<p>An expression is one Python expression. Statements are not allowed: there is no assignment, no <code>import</code>, no <code>def</code> and no semicolon. The <a href="../commands/var.html">var</a> command is how an agent sets a variable.</p>
-<p>The result of an expression can be of any Python type: a number, a list, a dict, an object. A field that may hold either plain text or an expression is called a <em>dynamic string</em> in the command reference.</p>
+<p>An expression is one Python expression. Statements are not allowed: no assignment, no <code>import</code>, no <code>def</code>, no semicolon. The <a href="../commands/var.html">var</a> command is how an agent sets a variable.</p>
+<p>The result can be of any Python type: a number, a list, a dict, an object. A field that may hold either plain text or an expression is called a <em>dynamic string</em> in the command reference.</p>
 
 <x-code lang="jsonc" title="Dynamic strings in a var command">
 "var": {
@@ -31,8 +31,8 @@
 </x-code>
 
 <h2>Where expressions can be used</h2>
-<p>Expressions can be used in most command fields. The fields of the <a href="../commands/var.html">var</a>, <a href="../commands/if.html">if</a>, <a href="../commands/output.html">output</a> and <a href="../commands/api.html">api</a> commands are typical examples. The system and user text of a <a href="prompts.html">prompt</a> are expressions too.</p>
-<p>Expressions can also be used in a few fields of the profiles in the configuration. Examples are the URL and headers of an API profile, and the connection string of a database profile. Profiles are shared by every agent in the account, so a secret usually appears there, for example <code>"{ f'Bearer {sys.secret[\"OPENAI_API_KEY\"]}' }"</code>.</p>
+<p>Most command fields take an expression. The fields of <a href="../commands/var.html">var</a>, <a href="../commands/if.html">if</a>, <a href="../commands/output.html">output</a> and <a href="../commands/api.html">api</a> are typical. The system and user text of a <a href="prompts.html">prompt</a> are expressions too.</p>
+<p>A few fields of the profiles in the configuration also take expressions: the URL and headers of an API profile, the connection string of a database profile. Profiles are shared by every agent in the account, so a secret usually appears there, for example <code>"{ f'Bearer {sys.secret[\"OPENAI_API_KEY\"]}' }"</code>.</p>
 
 <h2>Two stages</h2>
 <p>An expression is checked twice and run once.</p>
@@ -65,19 +65,22 @@
 </table>
 </div>
 
-<p>The account's settings for comprehensions and operators are described under <a href="../runtime/compile-rules.html">Compile rules</a>.</p>
+<p>The account's settings for comprehensions and operators are under <a href="../runtime/compile-rules.html">Compile rules</a>.</p>
 
 <h3>Rules for sys</h3>
-<p><code>sys</code> holds what the runtime provides. <code>sys</code> can only be used as <code>sys.&lt;member&gt;</code>. An expression cannot pass <code>sys</code> to a function or store <code>sys</code> in a variable.</p>
-<p>A secret can only be read as <code>sys.secret['NAME']</code>, with the name written out. A key held in a variable is refused. So is <code>sys.secret</code> on its own. This rule means the name of every secret an agent uses is visible in the agent's definition; the values never are.</p>
+<p><code>sys</code> holds what the runtime provides, and can only be used as <code>sys.&lt;member&gt;</code>. An expression cannot pass <code>sys</code> to a function or store it in a variable.</p>
+<p>A secret can only be read as <code>sys.secret['NAME']</code>, with the name written out. A key held in a variable is refused, and so is <code>sys.secret</code> on its own. The name of every secret an agent uses is therefore visible in the definition; the values never are.</p>
 <p>A member of <code>sys</code> that does not exist is refused. <code>sys.inputs</code>, <code>sys.query</code>, <code>sys.secret</code> and <code>sys.exists</code> are always present. <code>sys.userEmail</code>, <code>sys.userSession</code>, <code>sys.serverIp</code> and <code>sys.cookies</code> are present only when an administrator enables them. See <a href="../runtime/system-variables.html">System variables</a>.</p>
-<p>Inside a command, <code>command.&lt;field&gt;</code> reads a field that the same command has already set. A field that the command does not have is refused.</p>
+<p>Inside a command, <code>command.&lt;field&gt;</code> reads a field that the same command has already set. A field the command does not have is refused.</p>
+
+<h3>Variables that nothing sets</h3>
+<p>The cloud also refuses an expression that reads a local variable no earlier command in the function can have set: not an argument, not a loop variable, not the target of a <code>var</code> before it. It errs on the side of allowing: a variable set on any path before the expression, for example in one branch of an <code>if</code>, passes. An <code>agent.</code> or <code>conv.</code> variable passes when any <code>var</code> command in the agent sets it. The same check applies to the text of each <a href="prompts.html">prompt</a>, at each <code>llm</code> command that names it.</p>
 
 <h3>Operator rewriting</h3>
 <p>The account can map an operator to a function. When <code>**</code> is mapped to <code>bounded_pow</code>, the expression <code>a ** b</code> runs as <code>bounded_pow(a, b)</code>. This is how an account puts a limit on an operation such as a very large power. The function must be in the allowlist and take two values.</p>
 
 <h3>What the agent server checks</h3>
-<p>The cloud does not know which functions the agent server provides or which secrets the agent server holds. So the cloud hands two lists to the agent server: the names the expressions use, and the secrets the expressions read.</p>
+<p>The cloud does not know which functions the agent server provides or which secrets it holds. So the cloud hands the agent server the names the expressions use and the secrets they read.</p>
 <p>The agent server refuses the agent when a name is not in the allowlist or a secret cannot be found. Each message gives the path of the first place the name or secret is used.</p>
 <p>Secrets from environment variables and files live on one machine. The check therefore tells a developer that the secret exists on the agent server that validated the agent. Another agent server in the same account must have the same secrets, and the same vault when secrets come from one.</p>
 
@@ -87,20 +90,21 @@
 <h2>Stage two: running</h2>
 
 <h3>The names an expression can see</h3>
-<p>An expression runs inside the function that contains it. The expression can read:</p>
+<p>An expression runs inside the function that contains it. It can read:</p>
 <ul>
   <li>The function's local variables and arguments, by name.</li>
   <li>Agent variables, as <code>agent.name</code>.</li>
   <li>Conversation variables, as <code>conv.name</code>.</li>
+  <li>The agent's constants, as <code>const.name</code>.</li>
   <li><code>sys</code> and <code>command</code>.</li>
-  <li><code>result</code>, which holds the result of the last command that produces one.</li>
-  <li><code>exc</code>, which holds the error being handled inside an <code>onError</code> block.</li>
+  <li><code>result</code>, the result of the last command that produces one.</li>
+  <li><code>exc</code>, the error being handled inside an <code>onError</code> block.</li>
   <li>The names in the allowlist.</li>
 </ul>
-<p>Nothing else is available. The allowlist takes the place of Python's builtins, so <code>len</code> or <code>sorted</code> works only when the allowlist lists <code>len</code> or <code>sorted</code>. The namespaces are described under <a href="variables.html">Variables and namespaces</a>.</p>
+<p>Nothing else. The allowlist takes the place of Python's builtins, so <code>len</code> or <code>sorted</code> works only when the allowlist lists it. The namespaces are described under <a href="variables.html">Variables and namespaces</a>.</p>
 
 <h3>Checking whether a variable exists</h3>
-<p>Reading a variable that was never set is an error. <code>sys.exists(scope, name)</code> answers whether the variable exists first. The scope is one of <code>local</code>, <code>agent</code>, <code>conv</code> or <code>allowlist</code>.</p>
+<p>Reading a variable that was never set is an error. <code>sys.exists(scope, name)</code> answers whether the variable exists first. The scope is one of <code>local</code>, <code>agent</code>, <code>conv</code>, <code>const</code> or <code>allowlist</code>.</p>
 
 <x-code lang="jsonc" title="Counting visits with sys.exists">
 "var": {
@@ -112,18 +116,17 @@
 
 <h3>What the allowlist hands over</h3>
 <p>A function or class in the allowlist is the real Python object. A method on a value works as in Python, so <code>'abc'.upper()</code> and <code>items.append(x)</code> work.</p>
-<p>A module in the allowlist is not handed over as a module. The agent gets the module's functions, classes and constants. The agent does not get the other modules that the module imports. So granting <code>json</code> does not also grant the modules that <code>json</code> uses internally.</p>
-<p>A module that a granted module imports is not granted with it; an expression that reaches for one is refused when the line runs. List that module on its own. The entry forms are described under <a href="../runtime/allowlist.html">Allowlist</a>.</p>
+<p>A module in the allowlist is not handed over as a module. The agent gets the module's functions, classes and constants, not the modules it imports. Granting <code>json</code> does not grant what <code>json</code> uses internally; an expression that reaches for such a module is refused when the line runs. List that module on its own. The entry forms are under <a href="../runtime/allowlist.html">Allowlist</a>.</p>
 
 <h3>Awaiting</h3>
-<p>An expression can <code>await</code> an async function from the allowlist. The runtime detects the <code>await</code> and runs the expression as a coroutine. When the whole expression is a call to an async function, the result is awaited for you, so <code>await</code> is optional there; inside a larger expression, an async call must be awaited explicitly. To run several calls at once, use the <a href="../commands/parallel.html">parallel</a> command.</p>
+<p>An expression can <code>await</code> an async function from the allowlist. The runtime detects the <code>await</code> and runs the expression as a coroutine. When the whole expression is a call to an async function, the result is awaited for you, so <code>await</code> is optional there. Inside a larger expression, an async call must be awaited explicitly. To run several calls at once, use the <a href="../commands/parallel.html">parallel</a> command.</p>
 
 <h3>The value an expression produces</h3>
 <p>An expression produces any Python value. Each field expects a type, and a value of the wrong type is an error that names the type the field expected. For example, the <code>timeout</code> of an <code>api</code> command must be a whole number.</p>
-<p>Agent variables and conversation variables are saved with the conversation. Their values must be JSON. A JSON value is a string, a number, a boolean or <code>None</code>. A list or dict of JSON values is also JSON. A local variable can hold any value.</p>
+<p>Agent variables and conversation variables are saved with the conversation, so their values must be JSON: a string, a number, a boolean, <code>None</code>, or a list or dict of those. A local variable can hold any value.</p>
 
 <h3>Errors</h3>
 <p>An expression that raises an error stops the command. The message gives the path of the command and the Python error. An <code>onError</code> block on the command or the function can handle the error instead. Inside that block <code>exc</code> holds the error.</p>
 
 <h3>Limits</h3>
-<p>The rules on this page decide what an expression can reach. The rules do not limit how much work an expression does. An expression runs on the agent server alongside every other agent run, so a very long computation delays the other runs. The limits that apply are those set in the configuration: run time, loop iterations, database rows and the operator rewrites described above. See <a href="../runtime/runtime-limits.html">Runtime limits</a>.</p>
+<p>The rules on this page decide what an expression can reach, not how much work it does. An expression runs on the agent server alongside every other agent run, so a very long computation delays the other runs. The limits that apply are the ones set in the configuration: run time, loop iterations, database rows and the operator rewrites described above. See <a href="../runtime/runtime-limits.html">Runtime limits</a>.</p>

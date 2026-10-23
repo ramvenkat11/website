@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Functions — Search2o docs</title>
-<meta name="description" content="An agent is a collection of functions. When a function is called, the function runs its commands in order. Besides commands, a function may declare arguments…">
+<meta name="description" content="An agent is a collection of functions. When a function is called, it runs its commands in order. Besides commands, a function may declare arguments, a descri…">
 <link rel="canonical" href="https://search2o.com/docs/agent-definition/functions.html">
 <meta property="og:title" content="Functions — Search2o docs">
-<meta property="og:description" content="An agent is a collection of functions. When a function is called, the function runs its commands in order. Besides commands, a function may declare arguments…">
+<meta property="og:description" content="An agent is a collection of functions. When a function is called, it runs its commands in order. Besides commands, a function may declare arguments, a descri…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/agent-definition/functions.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,20 +50,22 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../agent-definition/index.html'>Agent definition</a></div>
     <article class="docs-article">
       <h1>Functions</h1>
-      <p class="lead">An agent is a collection of functions. When a function is called, the function runs its commands in order. Besides <code>commands</code>, a function may declare arguments, a description and an error handler.</p>
+      <p class="lead">An agent is a collection of functions. When a function is called, it runs its commands in order. Besides <code>commands</code>, a function may declare arguments, a description and an error handler.</p>
 
 <h2 id="fields">Fields</h2>
 <div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>description</code></td><td class=ty>dynamic string</td><td class=dflt></td><td>Describes this function to the LLM. Needed only when the function is used as a tool.</td></tr><tr><td><code>args</code></td><td class=ty>object of name → argument object</td><td class=dflt></td><td>The function&#x27;s arguments, with their types and descriptions. Descriptions are needed only for tool calling.</td></tr><tr><td><code>commands</code></td><td class=ty>command block</td><td class=dflt></td><td>The commands this function runs.</td></tr><tr><td><code>onError</code></td><td class=ty>command block</td><td class=dflt></td><td>Commands to run if the function raises an error that no command handled.</td></tr></tbody></table></div>
 
 <h2 id="arguments">Arguments</h2>
-<p><code>args</code> maps each argument name to the argument's type and description. When another function calls this function with <code>func</code>, only the names matter: the arguments arrive as local variables, and an argument the caller omits is <code>None</code>. When the function is offered to an LLM as a tool, the model reads the type and description of each argument, so fill them in:</p>
+<p><code>args</code> maps each argument name to its type and description. When another function calls this one with <code>func</code>, only the names matter: the arguments arrive as local variables, and an argument the caller omits is <code>None</code>. When the function is offered to an LLM as a tool, the model reads the type and description of each argument, so fill them in:</p>
 <div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>description</code></td><td class=ty>string</td><td class=dflt></td><td>Description of this argument, which is needed only when used in tool calling. Include all the constraints of this argument here for the LLM.</td></tr><tr><td><code>required</code></td><td class=ty>boolean</td><td class=dflt>true</td><td>Whether the argument is required. This only tells the LLM; an argument that is not passed in is set to None.</td></tr></tbody></table></div>
+<p>An argument name follows the rules for variable names. A reserved name such as <code>result</code> or a Python keyword is refused.</p>
 
 <h2 id="description">Description</h2>
-<p>The description is needed only when the function is used as a tool. The description tells the model what the function does and when to call the function.</p>
+<p>The description tells the model what the function does and when to call it. It is needed only when the function is used as a tool, and validation treats a function with a description as a tool: the rules for tool functions, such as no <code>end</code>, apply to it.</p>
 
 <h2 id="error-handling">Error handling</h2>
-<p>When a command raises an error that the command's own <code>onError</code> does not handle, the function's <code>onError</code> block runs instead of the rest of the function. Inside the block, <code>exc</code> holds the exception. The block may <code>return</code> a value, and that value becomes the function's result. Otherwise the error propagates to the caller. The <code>ask</code> command cannot be used in error handling.</p>
+<p>When a command raises an error that the command's own <code>onError</code> does not handle, the function's <code>onError</code> block runs instead of the rest of the function. Inside the block, <code>exc</code> holds the exception. The block may <code>return</code> a value, which becomes the function's result. Otherwise the error propagates to the caller.</p>
+<p>A function can fail before any of its commands has run, so its <code>onError</code> block can rely only on the function's arguments and on what the block itself sets. Validation refuses an expression in the block that reads anything else. The <code>ask</code> command cannot be used in error handling.</p>
 
 <figure class=code data-lang=jsonc><div class=bar><span>A tool function with an error handler</span></div><pre><code><span class=key>&quot;lookupOrder&quot;</span>: {
   <span class=key>&quot;description&quot;</span>: <span class=str>&quot;Looks up one order by id and returns its status and total.&quot;</span>,
@@ -81,7 +83,7 @@
 }</code></pre></figure>
 
 <h2 id="reentrancy">Reentrancy</h2>
-<p>A function cannot call itself while it is running, directly or through other functions. A loop is the way to repeat work.</p>
+<p>A function cannot call itself while it is running, directly or through other functions. Repeat work with a loop.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../agent-definition/structure.html'><small>Previous</small>Agent structure</a><a class=next href='../agent-definition/commands.html'><small>Next</small>Commands</a></nav>

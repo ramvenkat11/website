@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>How profiles work — Search2o docs</title>
-<meta name="description" content="Commands in an agent name profiles; profiles hold the details. An llm command says &quot;profile&quot;: &quot;gpt5_mini&quot;, and the LLM profile of that name holds the URL, th…">
+<meta name="description" content="Commands in an agent name profiles, and profiles hold the details. An llm command says &quot;profile&quot;: &quot;gpt5_mini&quot;, and the LLM profile of that name holds the URL…">
 <link rel="canonical" href="https://search2o.com/docs/profiles/overview.html">
 <meta property="og:title" content="How profiles work — Search2o docs">
-<meta property="og:description" content="Commands in an agent name profiles; profiles hold the details. An llm command says &quot;profile&quot;: &quot;gpt5_mini&quot;, and the LLM profile of that name holds the URL, th…">
+<meta property="og:description" content="Commands in an agent name profiles, and profiles hold the details. An llm command says &quot;profile&quot;: &quot;gpt5_mini&quot;, and the LLM profile of that name holds the URL…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/profiles/overview.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,20 +50,20 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../profiles/index.html'>Profiles</a></div>
     <article class="docs-article">
       <h1>How profiles work</h1>
-      <p class="lead">Commands in an agent name profiles; profiles hold the details. An <code>llm</code> command says <code>"profile": "gpt5_mini"</code>, and the LLM profile of that name holds the URL, the headers, the model and the prices.</p>
+      <p class="lead">Commands in an agent name profiles, and profiles hold the details. An <code>llm</code> command says <code>"profile": "gpt5_mini"</code>, and the LLM profile of that name holds the URL, the headers, the model and the prices.</p>
 
 <h2 id="the-four-kinds">The four kinds</h2>
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Profile</th><th>Used by</th><th>Holds</th></tr></thead>
 <tbody>
 <tr><td><a href="llm-profiles.html">LLM profile</a></td><td>the <code>llm</code> command</td><td>Adapter, URL, headers, the model and its prices, limits</td></tr>
-<tr><td><a href="api-profiles.html">API profile</a></td><td>the <code>api</code> command</td><td>Base URL, headers, the connection pool</td></tr>
+<tr><td><a href="api-profiles.html">API profile</a></td><td>the <code>api</code> command</td><td>Base URL, headers, query parameters, the connection pool</td></tr>
 <tr><td><a href="db-profiles.html">Database profile</a></td><td>the <code>db</code> command</td><td>Connection string and pool settings</td></tr>
-<tr><td><a href="mcp-servers.html">MCP server</a></td><td>the <code>mcp</code> field in an <code>llm</code> command</td><td>The server's URL and its connection settings</td></tr>
+<tr><td><a href="mcp-servers.html">MCP server</a></td><td>the <code>mcp</code> field in an <code>llm</code> command</td><td>The server's URL and headers</td></tr>
 </tbody></table></div>
 
 <h2 id="why-profiles">Why profiles</h2>
-<p>A profile is changed once, and every agent that uses the profile picks up the change on its next run. Three things follow from that.</p>
+<p>A profile is changed once, and every agent that uses it picks up the change on its next run. Three things follow.</p>
 <ul>
   <li><strong>Moving between environments.</strong> The same agents run against development, staging and production by changing the profiles, not the agents. An agent that names <code>orders_db</code> does not know which database that is.</li>
   <li><strong>Retiring a model or a service.</strong> When a model is sunset or an API moves, one profile changes and every agent follows.</li>
@@ -72,10 +72,10 @@
 
 <h2 id="rules-that-apply-to-every-profile">Rules that apply to every profile</h2>
 <ul>
-  <li>A profile name is letters, digits and underscores. A profile name starts with a letter and ends with a letter or a digit. MCP names are an exception &mdash; they cannot have underscores.</li>
+  <li>A profile name is letters, digits and underscores. It starts with a letter and ends with a letter or a digit. MCP server names are the exception: no underscores.</li>
   <li>Each profile page in the GUI shows which agents use the profile. A profile in use cannot be deleted; remove the reference from the agents first.</li>
   <li>Each kind of profile has a limit on how many an account may hold. The GUI shows the limit on the profile's page.</li>
-  <li>A profile carries a documentation note. <a href="../development/draft-with-ai.html">Draft with AI</a> reads the note to learn what the API serves or what the database holds, so a useful note leads to a better draft.</li>
+  <li>A profile carries a note. <a href="../development/draft-with-ai.html">Draft with AI</a> reads the note to learn what the API serves or what the database holds, so a useful note leads to a better draft.</li>
   <li>Profiles are versioned like every configuration part: a save is refused when someone else changed the profile first, and every create, update and delete produces an <a href="../system-management/audit-log.html">audit log entry</a>. See <a href="../runtime/overview.html">Agent runtime</a>.</li>
 </ul>
 

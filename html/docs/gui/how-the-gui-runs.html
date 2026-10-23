@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>How the GUI runs — Search2o docs</title>
-<meta name="description" content="The GUI is Search2o’s official interface: a single-page application bundled with the agent server. The GUI uses the server’s REST API and nothing else, and y…">
+<meta name="description" content="The GUI is Search2o’s official interface: a single-page application bundled with the agent server. It uses the server’s REST API and nothing else, and you ca…">
 <link rel="canonical" href="https://search2o.com/docs/gui/how-the-gui-runs.html">
 <meta property="og:title" content="How the GUI runs — Search2o docs">
-<meta property="og:description" content="The GUI is Search2o’s official interface: a single-page application bundled with the agent server. The GUI uses the server’s REST API and nothing else, and y…">
+<meta property="og:description" content="The GUI is Search2o’s official interface: a single-page application bundled with the agent server. It uses the server’s REST API and nothing else, and you ca…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/gui/how-the-gui-runs.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,13 +50,13 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../gui/index.html'>GUI</a></div>
     <article class="docs-article">
       <h1>How the GUI runs</h1>
-      <p class="lead">The GUI is Search2o&rsquo;s official interface: a single-page application bundled with the agent server. The GUI uses the server&rsquo;s REST API and nothing else, and you are free to build interfaces of your own with the same API.</p>
+      <p class="lead">The GUI is Search2o&rsquo;s official interface: a single-page application bundled with the agent server. It uses the server&rsquo;s REST API and nothing else, and you can build interfaces of your own on the same API.</p>
 
 <h2 id="only-the-rest-api">Only the REST API</h2>
-<p>Every action in the GUI is a call to the agent server&rsquo;s <a href="../rest-api/overview.html">REST API</a>. The GUI has no private endpoints and no other channel, so everything the GUI does is available to your own code.</p>
+<p>Every action in the GUI is a call to the agent server&rsquo;s <a href="../rest-api/overview.html">REST API</a>. The GUI has no private endpoints and no other channel, so everything it does is available to your own code.</p>
 
 <h2 id="where-the-gui-lives">Where the GUI lives</h2>
-<p>The GUI&rsquo;s files sit in the agent server&rsquo;s <code>ui</code> directory, and the server serves them at its <code>/ui</code> path. Nothing has to be deployed or configured for this; installing the agent server is enough.</p>
+<p>The GUI&rsquo;s files sit in the agent server&rsquo;s <code>ui</code> directory, and the server serves them at its <code>/ui</code> path. Installing the agent server is all it takes.</p>
 
 <h2 id="serving-the-gui-from-somewhere-else">Serving the GUI from somewhere else</h2>
 <p>The files are static, so any web server or CDN can serve them. <code>index.html</code> carries one setting in a <code>&lt;meta name="search2o-ui-config"&gt;</code> tag:</p>
@@ -67,7 +67,7 @@
 </tbody></table></div>
 
 <h2 id="settings-from-the-agent-server">Settings from the agent server</h2>
-<p>Everything else the GUI needs &mdash; the REST timeout, how long a notification stays visible, and the search behavior &mdash; is the <code>uiConfig</code> object of the <a href="../system-management/agent-servers.html#the-gui-s-settings">agent server configuration</a>. The GUI fetches it with <code>POST /api/auth/getUiConfig</code> each time the page loads; the call needs no sign-in. A change to these settings takes effect when the agent server restarts and each user reloads the GUI.</p>
+<p>Everything else the GUI needs, the REST timeout, how long a notification stays visible and the search behavior, is the <code>uiConfig</code> object of the <a href="../system-management/agent-servers.html#the-gui-s-settings">agent server configuration</a>. The GUI fetches it with <code>POST /api/auth/getUiConfig</code> each time the page loads; the call needs no sign-in. A change takes effect when the agent server restarts and each user reloads the GUI.</p>
 
 <h2 id="your-own-interface">Your own interface</h2>
 <p>The GUI is one client of the REST API, not a privileged one. A search box in your intranet, a chat bot, or a full application of your own can offer the same experience; see <a href="../rest-api/clients.html">Creating your own client</a> and <a href="../chat-integrations/index.html">Chat integrations</a>.</p>
