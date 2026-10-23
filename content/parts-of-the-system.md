@@ -35,15 +35,15 @@ Links:
 
 ## All the plumbing built-in
 
-Every agent run stores the conversation state and restores it for the followups. Human-in-the-loop knows where to continue an agent from the stored state. Agent runs also record LLM costs, timing and errors for the real-time reports.  
+Every agent run stores the conversation state and restores it for the followups. Human-in-the-loop knows where to continue an agent from the stored state. Agent runs also automatically record LLM costs, timing and errors for the real-time reports.  
 
 Links:
 - Agent runtime -> runtime.html
 - Reports -> docs/reports/index.html
 
-## 
+## Open interface
 
-Everything reaches the agent server through one REST API: a bundled browser chat with human-in-the-loop built in, Slack and Teams through chat integrations, and Claude Code through the search2o-skill. Your own UI can use the same API.
+Everything reaches the agent server through a REST API: a bundled browser chat with human-in-the-loop built in, Slack and Teams through chat integrations, and Claude Code through the search2o-skill. Your own integrations can use the same API.
 
 Links:
 - REST API -> docs/rest-api/overview.html
