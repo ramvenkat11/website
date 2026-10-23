@@ -1,7 +1,7 @@
 <p class="lead">Calls a REST API and returns the response. Use <code>api</code> for any HTTP endpoint an API profile names: your own services, public APIs, or a vendor's endpoints.</p>
 
 <h2>Fields</h2>
-<p>Every call goes through an <a href="../profiles/api-profiles.html">API profile</a> from the configuration. The profile carries the base URL, the headers sent on every call, and the connection pool to use; <code>path</code> is added to the end of the profile's URL. Headers and parameters set on the command are added to the profile's. The hosts an agent can reach are therefore the ones the profiles name.</p>
+<p>Every call goes through an <a href="../profiles/api-profiles.html">API profile</a> from the configuration. The profile carries the base URL, the headers sent on every call, and the connection pool to use; <code>path</code> is added to the end of the profile's URL. Headers and query parameters set on the command are added to the profile's, within what the profile allows: a profile value is replaced only when the profile marks it as one a command may override, and a new one is added only when the profile allows additions. The hosts an agent can reach are therefore the ones the profiles name.</p>
 <!--fields:command:api-->
 
 <h2>Result</h2>

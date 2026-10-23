@@ -4,7 +4,7 @@
 <!--fields:command:llm-->
 
 <h2>Result</h2>
-<p>By default the result is the model's text answer, as a string. With <code>outputFormat: "structured"</code>, the model is expected to answer with a tool call, and the result is a dict of <code>{ functionName: arguments }</code>, shaped by the function's declared <code>args</code>. That gives typed output without parsing text. With <code>streamOutput: true</code>, the text and any images the model produces are also streamed straight to the user as part of the agent's output.</p>
+<p>By default the result is the model's text answer, as a string. With <code>outputFormat: "structured"</code>, the model is expected to answer with a tool call, and the result is a dict of <code>{ functionName: arguments }</code>, shaped by the function's declared <code>args</code>. The result is typed, with no text to parse. With <code>streamOutput: true</code>, the text and any images the model produces are also streamed straight to the user as part of the agent's output.</p>
 
 <h2>Tool calling</h2>
 <!--figure:tool-loop-->

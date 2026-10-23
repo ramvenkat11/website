@@ -2,8 +2,8 @@
 
 <h2>Settings</h2>
 <!--fields:model:ApiServerModel-->
+<p>The URL, the header values and the query parameter values are dynamic strings, so credentials can come from <code>sys.secret</code> instead of being stored in the profile.</p>
 
 <h2>What a command may add</h2>
-<p>The URL and the header values are dynamic strings, so credentials can come from <code>sys.secret</code> instead of being stored in the profile.</p>
 <p>The profile decides how far an <code>api</code> command may go beyond it. The <em>path add</em> setting says whether a command may add a path to the base URL, may not, or must. A path the command adds is relative: an absolute URL, or a path that steps outside the base URL with <code>..</code>, fails the call.</p>
 <p>A header or query parameter the profile sets is replaced by the command's value only when the profile marks it as one a command may override; otherwise the call fails. A header or query parameter the profile does not have is added only when the profile allows commands to add headers or query parameters; otherwise the call fails. A query parameter written into the profile's URL itself can never be changed by a command.</p>

@@ -13,9 +13,9 @@
 <tr><td><code>ask</code></td><td>The agent paused to ask the user for input. Counted as a success.</td></tr>
 <tr><td><code>callFailed</code></td><td>A call to an external system failed.</td></tr>
 <tr><td><code>failCommand</code></td><td>The agent ended itself with the <code>fail</code> command.</td></tr>
-<tr><td><code>errorInAgent</code></td><td>A coding error in the agent.</td></tr>
+<tr><td><code>errorInAgent</code></td><td>A coding error in the agent, or a run that passed the agent's LLM cost limit.</td></tr>
 <tr><td><code>unknownConversation</code></td><td>The conversation could not be found, is paused on an ask by a different agent, or the agent that asked has been republished since.</td></tr>
-<tr><td><code>timedOut</code></td><td>The run exceeded the maximum agent runtime.</td></tr>
+<tr><td><code>timedOut</code></td><td>The run exceeded the agent's maximum run time.</td></tr>
 <tr><td><code>stopped</code></td><td>The user stopped the run.</td></tr>
 <tr><td><code>mustLogin</code></td><td>The session expired during the run.</td></tr>
 <tr><td><code>unexpected</code></td><td>An unknown exception was raised.</td></tr>

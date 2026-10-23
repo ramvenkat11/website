@@ -30,7 +30,7 @@ $ export GEMINI_API_KEY=...        # Google Gemini
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Field</th><th>What to set</th></tr></thead>
 <tbody>
-<tr><td><code>adapter</code></td><td><code>openai</code>, <code>anthropic</code> or <code>gemini</code>, matching the protocol the endpoint speaks; <code>ollama</code>, <code>vllm</code> or <code>sglang</code> for a model served by one of those.</td></tr>
+<tr><td><code>adapter</code></td><td><code>openai</code>, <code>anthropic</code> or <code>gemini</code>, matching the protocol the endpoint speaks, whoever serves it: a private deployment, a gateway, or another vendor's compatible API. <code>ollama</code>, <code>vllm</code> or <code>sglang</code> for a model served by one of those. For a protocol none of them speaks, see <a href="llm-adapters.html">Connecting to other LLMs</a>.</td></tr>
 <tr><td><code>url</code></td><td>The endpoint, for example <code>https://api.openai.com</code>.</td></tr>
 <tr><td><code>headers</code></td><td>Authorization and whatever else the vendor wants. The values are dynamic strings, so the key is read at call time: <code>{ f"Bearer {sys.secret['OPENAI_API_KEY']}" }</code>.</td></tr>
 <tr><td><code>model</code></td><td>The model name as the vendor writes it.</td></tr>
@@ -50,6 +50,3 @@ $ export GEMINI_API_KEY=...        # Google Gemini
 </tbody></table></div>
 <p>Ollama does not act on a forced tool choice. When an <code>llm</code> command sets <code>outputFormat: "structured"</code>, the <code>ollama</code> adapter asks Ollama for JSON that fits the schemas of the offered functions and turns the reply into function calls, so the command returns the same dict as with any other adapter.</p>
 <p>vLLM makes tool calls only when started with tool calling on: <code>--enable-auto-tool-choice</code> and the <code>--tool-call-parser</code> that fits the model. SGLang makes tool calls only when started with the <code>--tool-call-parser</code> that fits the model.</p>
-
-<h2>Any compatible LLM</h2>
-<p>The <code>openai</code>, <code>anthropic</code> and <code>gemini</code> adapters are not limited to those three vendors. Any endpoint that speaks one of the three protocols works with the matching adapter and a profile that points at its URL: a private deployment, a gateway, or another vendor's compatible API. See <a href="llm-adapters.html">Connecting to other LLMs</a>.</p>

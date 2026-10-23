@@ -21,8 +21,8 @@
 <thead><tr><th>Value</th><th>What happens</th></tr></thead>
 <tbody>
 <tr><td><code>executeTopMatch</code></td><td>Run the best match. The default.</td></tr>
-<tr><td><code>executeOnlyMatch</code></td><td>Run only a lone match. When two come back, the user chooses.</td></tr>
-<tr><td><code>showResults</code></td><td>Show the matches. The user chooses, even when only one matched.</td></tr>
+<tr><td><code>executeOnlyMatch</code></td><td>Run only a lone match.</td></tr>
+<tr><td><code>showResults</code></td><td>Show the matches, even when only one matched.</td></tr>
 </tbody></table></div>
 <p><code>search.followupBehavior</code>, for a follow-up in a conversation. The previous agent is the one that answered last:</p>
 <div class="tablewrap"><table class="fields">
@@ -36,4 +36,4 @@
 <p><code>search.tag</code> is sent with every search the GUI makes, follow-ups included. Empty searches every tag. See <a href="tags.html">Tags</a>.</p>
 
 <h2>Your own interface</h2>
-<p>An interface of your own, a chat integration or an <a href="../skill-integration/overview.html">agent skill</a> decides for itself what to do with the matches. The <a href="../rest-api/search.html"><code>search</code></a> call returns only the ranked matches; what to run is your choice. A chat bot that always runs the best match feels like a conversation. One that shows the matches feels like a search page. Either works, as long as it stays consistent.</p>
+<p>The <a href="../rest-api/search.html"><code>search</code></a> call returns only the ranked matches. What a chat integration, an <a href="../skill-integration/overview.html">agent skill</a> or a client of your own runs is its choice. A chat bot that always runs the best match feels like a conversation. One that shows the matches feels like a search page. Either works, as long as it stays consistent.</p>

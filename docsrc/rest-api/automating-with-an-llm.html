@@ -1,7 +1,7 @@
 <p class="lead">The OpenAPI schema at <code>/openapi.json</code> describes every endpoint of the agent server precisely enough for an LLM to call the API. Hand the schema to a model or to a coding assistant, and administrative and reporting tasks can be done in plain language.</p>
 
 <h2>What the schema gives a model</h2>
-<p>The schema names every endpoint, the fields of each request with their types and constraints, and the shape of each response. That is what a tool-calling model needs. Most agent frameworks and coding assistants accept an OpenAPI document directly and turn each endpoint into a tool. The model reads the descriptions, picks the endpoint, and fills in the body.</p>
+<p>The schema names every endpoint, the fields of each request with their types and constraints, and the shape of each response, which is what a tool-calling model needs. Most agent frameworks and coding assistants accept an OpenAPI document and turn each endpoint into a tool. The model reads the descriptions, picks the endpoint, and fills in the body.</p>
 <x-code lang="bash">
 $ curl http://127.0.0.1:9020/openapi.json > search2o-openapi.json
 </x-code>
@@ -25,4 +25,4 @@ $ curl http://127.0.0.1:9020/openapi.json > search2o-openapi.json
 <p>A model with the schema can call anything the service account may call, including <code>deleteAgent</code>, <code>deleteUsers</code> and <code>updateRole</code>. The service account's role is the boundary, so keep it as low as the task allows; the developer role is enough when a report is all that is needed. Every call the model makes is an ordinary API call: Search2o Cloud checks it against the role, records it against the service account, and shows it in the reports like any other.</p>
 
 <h2>For people rather than models</h2>
-<p>The same schema is rendered for people. Swagger UI at <code>/docs</code> lets you fill in a request and send it from the browser. ReDoc at <code>/redoc</code> is a reference to read. Both are served by the agent server and can be moved or switched off in the <a href="../system-management/agent-servers.html">Agent servers</a> configuration.</p>
+<p>The same schema is rendered for people: Swagger UI at <code>/docs</code> sends a request from the browser, and ReDoc at <code>/redoc</code> is a reference to read. See <a href="overview.html">Overview</a>.</p>

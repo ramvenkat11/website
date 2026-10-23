@@ -6,7 +6,7 @@
 <ul>
   <li><code>ask</code> cannot go inside a <code>for</code> loop or an <code>onError</code> block. The AI uses a <code>while</code> loop, or has the handler set a variable and asks afterwards.</li>
   <li>A function used as a tool cannot <code>end</code>. The AI uses <code>fail</code>, or returns a value for the model to explain.</li>
-  <li>An agent runs again on every turn. <code>agent.</code> and <code>conv.</code> variables carry over, and a variable that was never set is read safely.</li>
+  <li>An agent runs again on every turn of a conversation. <code>agent.</code> and <code>conv.</code> variables carry over, and reading one that was never set fails, so the AI checks with <code>sys.exists</code> first.</li>
 </ul>
 <p><strong>Your current draft.</strong> Every request edits the draft you have open. The AI keeps every function, command, name, expression and comment that your request does not touch, exactly as you wrote them. On a new, empty draft, it builds the agent from scratch.</p>
 <p><strong>The agent's prompts.</strong> The AI sees each prompt's name and its <code>doc</code>, never the prompt's text. It names a listed prompt in every <code>llm</code> command. When none fits, it names a new prompt and adds a comment saying what the prompt's system and user text should say, and which variables the prompt should read. See <a href="../agent-definition/prompts.html">Prompts</a>.</p>

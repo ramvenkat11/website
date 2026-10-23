@@ -27,7 +27,7 @@ agent runs at the same time  =  50 per second  x  seconds per run
 <p>In our tests, 100 model-calling runs at the same time gave <strong>1 run per second and 82 failures</strong> on the default pool, and <strong>24 runs per second with no failures</strong> on a wide one. See <a href="../runtime/connection-pools.html">Connection pools</a>.</p>
 
 <h2>Leaving the cloud connection pool alone</h2>
-<p>That is a different pool, used by the agent server to reach Search2o Cloud rather than by your agents. Widening it from 20 to 200 gained nothing in our tests and made heavy load worse, because it admits more work into one process.</p>
+<p>The cloud pool is the one the agent server uses to reach Search2o Cloud, not the one your agents use. Widening it from 20 to 200 gained nothing in our tests and made heavy load worse, because it admits more work into one process.</p>
 
 <h2>Treating 107 MB to 165 MB as base memory</h2>
 <p>An agent server held 107 MB idle and 165 MB with 400 runs in flight. It stays in that band because conversation state is saved to Search2o Cloud rather than accumulated in the process.</p>

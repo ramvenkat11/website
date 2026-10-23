@@ -11,13 +11,13 @@ $ SEARCH2O_LICENSE_KEY=... ANTHROPIC_API_KEY=... search2o   # key, one LLM key, 
 <p>Other command line options go to Uvicorn. The <code>--reload</code> family, <code>--factory</code> and <code>--workers</code> are refused: the server always runs one worker, and capacity comes from more servers rather than more workers. See <a href="../system-management/agent-servers.html">Agent servers</a>.</p>
 
 <h2>LLM keys</h2>
-<p>A new account comes with LLM profiles for OpenAI, Anthropic and Gemini. Each profile reads its API key from an environment variable on the server. Set the variable for the provider you use before starting:</p>
+<p>A new account comes with LLM profiles for OpenAI, Anthropic and Gemini, and three more for models served on the agent server's own machine by Ollama, vLLM and SGLang. A vendor profile reads its API key from an environment variable on the server. Set the variable for the vendor you use before starting:</p>
 <x-code lang="bash">
 $ export OPENAI_API_KEY=sk-...
 $ export ANTHROPIC_API_KEY=sk-ant-...
 $ export GEMINI_API_KEY=...
 </x-code>
-<p>One key is enough. A model you host with Ollama, vLLM or SGLang needs no vendor key: start the server without one and create an LLM profile for the model after you sign in; see <a href="../llm/vendors.html#models-you-host-ollama-vllm-and-sglang">LLM vendors</a>. For other LLMs, see <a href="../llm/llm-adapters.html">Connecting to other LLMs</a>. Secrets can come from a vault instead of environment variables; see <a href="../security/secret-vault.html">Secret vault</a>.</p>
+<p>One key is enough. A model served by Ollama, vLLM or SGLang needs no key, so the server can start without one; see <a href="../llm/vendors.html#models-you-host-ollama-vllm-and-sglang">LLM vendors</a>. For other LLMs, see <a href="../llm/llm-adapters.html">Connecting to other LLMs</a>. Secrets can come from a vault instead of environment variables; see <a href="../security/secret-vault.html">Secret vault</a>.</p>
 
 <h2>What starts up</h2>
 <p>At startup the server validates the license and downloads the account's configuration from Search2o Cloud. It checks every entry of the expression allowlist against its own Python environment and builds its connection pools. Then it serves:</p>

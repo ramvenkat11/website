@@ -19,7 +19,7 @@
 <tr><td>Observability</td><td><code>progress</code>, <code>trace</code>, <code>log</code></td></tr>
 </tbody></table></div>
 <p>Keep typing to filter the list. Up and Down move through it, and the box under the list describes the highlighted command. Enter, Tab or a click inserts the command; Escape closes the list. The list shows only the commands allowed where you are typing.</p>
-<p>Choosing a command inserts it ready to fill in, with the fields you will almost always need: <code>if</code> arrives with <code>condition</code>, <code>then</code> and <code>else</code>; <code>for</code> with <code>iter</code>, <code>loopVar</code> and <code>do</code>; <code>api</code> with <code>profile</code>, <code>path</code>, <code>queryParams</code> and <code>body</code>. Each field gets a starter value to replace: a Python expression field gets <code>"{  }"</code>, a block of commands <code>{}</code>, a list of objects one empty object, a field with a fixed set of values its first value, and a field with a default that default. A block cannot hold the same key twice, so when the block already has a <code>var</code>, the next one is inserted as <code>var.1</code>, then <code>var.2</code>. The command is indented to match its surroundings, a comma is added to the previous entry if it needs one, and the cursor lands where you type next.</p>
+<p>Choosing a command inserts it with the fields you will almost always need: <code>if</code> arrives with <code>condition</code>, <code>then</code> and <code>else</code>; <code>for</code> with <code>iter</code>, <code>loopVar</code> and <code>do</code>; <code>api</code> with <code>profile</code>, <code>path</code>, <code>queryParams</code> and <code>body</code>. Each field gets a starter value to replace: <code>"{  }"</code> for a Python expression, <code>{}</code> for a block of commands, one empty object for a list of objects, the first value for a field with a fixed set of values, and the default for a field that has one. A block cannot hold the same key twice, so when it already has a <code>var</code>, the next one is inserted as <code>var.1</code>, then <code>var.2</code>. The command is indented to match its surroundings, a comma is added to the previous entry if it needs one, and the cursor lands where you type next.</p>
 
 <h2>Suggestions as you type</h2>
 <p>Everywhere else a key belongs, the editor shows the next likely key as gray text ahead of the cursor. Tab or Enter accepts it; keep typing to ignore it. Inside a function: <code>description</code>, <code>args</code>, <code>commands</code> and <code>onError</code>. Inside a function argument: <code>type</code>, <code>description</code> and <code>required</code>. Inside a command: that command's fields, required ones first, so that a deleted <code>condition</code> is the first thing suggested back. Inside a list of objects, such as an <code>ask</code>'s <code>inputs</code>: the fields each entry takes. Only keys that are not already there are suggested, and the suggestion appears even on an empty line, so an unfinished object shows what it is still missing.</p>
@@ -28,7 +28,7 @@
 
 <h2>Checks as you type</h2>
 <p>The editor checks the definition continuously and underlines problems: syntax errors, such as a missing bracket or a stray character, and anything the agent language does not allow, such as an unknown command or field, or a value of the wrong type. Hover over an underlined problem to read what is wrong. <code>//</code> and <code>/* */</code> comments are allowed, and are not reported.</p>
-<p>These checks catch most mistakes early, but they are not the final word. <a href="trace-and-validation.html">Validation</a> checks the agent with your account's settings and runs it, and reports each problem with a sentence and its location.</p>
+<p>These checks catch most mistakes early, but they are not the final word. Profile names, secret names, prompt names and functions on your allowlist are typed, not suggested. <a href="trace-and-validation.html">Validation</a> checks that each one exists, checks the agent with your account's settings, runs it, and reports each problem with a sentence and its location.</p>
 
 <h2>Reading the definition</h2>
 <ul>
@@ -68,11 +68,5 @@
   <li><strong>Validate</strong> with Ctrl+Enter (&#8984;&#9166;) from anywhere on the page except inside the editor, where that key belongs to the editor, and inside the Draft with AI box, where it sends the request. There, use the <strong>Validate/Trace</strong> button or click outside the editor first.</li>
   <li><strong>Jump to a problem.</strong> Validation errors and lines in the validation output show where in the agent they happened, such as <code>main.commands.llm</code>. Select one to scroll to that command and select the whole of it. If you have since removed or renamed the command, you are told so.</li>
   <li><strong>Two kinds of undo.</strong> The editor's own Undo steps back through your typing. <strong>Undo AI edit</strong>, beside the heading, steps back through changes made by <a href="draft-with-ai.html">Draft with AI</a>, up to the last ten.</li>
-</ul>
-
-<h2>What the editor leaves to others</h2>
-<ul>
-  <li>Hovering shows a problem's message; the box under the command list describes each command; the Docs icon answers questions about the language.</li>
-  <li>Profile names, secret names, prompt names and functions on your allowlist are typed, not suggested. Validation checks that each one exists.</li>
-  <li>The editor is a first line of defense. Validation in the cloud has the final say when you validate and publish.</li>
+  <li><strong>Help.</strong> The box under the command list describes each command, and the Docs icon in the header answers questions about the language.</li>
 </ul>

@@ -13,7 +13,7 @@
 
 <p><code>total</code> is an expression. <code>label</code> is plain text. <code>greeting</code> is an expression that builds a string with an f-string.</p>
 <p>The braces must enclose the whole value. <code>"Hello {name}"</code> is plain text, and the agent sees the braces literally. To mix text and values, write an f-string inside the braces.</p>
-<p>A value that starts with <code>{</code> and ends with <code>}</code> is always read as an expression. So the string <code>'{"a": 1}'</code> is not text: that value is the Python dict <code>{"a": 1}</code>. To keep a leading brace literal, make sure the string does not end with a closing brace.</p>
+<p>A value that starts with <code>{</code> and ends with <code>}</code> is always read as an expression. So the string <code>'{"a": 1}'</code> is not text: that value is the Python dict <code>{"a": 1}</code>. To keep a leading brace literal, do not end the string with a closing brace.</p>
 <p>An expression is one Python expression. Statements are not allowed: no assignment, no <code>import</code>, no <code>def</code>, no semicolon. The <a href="../commands/var.html">var</a> command is how an agent sets a variable.</p>
 <p>The result can be of any Python type: a number, a list, a dict, an object. A field that may hold either plain text or an expression is called a <em>dynamic string</em> in the command reference.</p>
 
@@ -77,7 +77,7 @@
 <p>The cloud also refuses an expression that reads a local variable no earlier command in the function can have set: not an argument, not a loop variable, not the target of a <code>var</code> before it. It errs on the side of allowing: a variable set on any path before the expression, for example in one branch of an <code>if</code>, passes. An <code>agent.</code> or <code>conv.</code> variable passes when any <code>var</code> command in the agent sets it. The same check applies to the text of each <a href="prompts.html">prompt</a>, at each <code>llm</code> command that names it.</p>
 
 <h3>Operator rewriting</h3>
-<p>The account can map an operator to a function. When <code>**</code> is mapped to <code>bounded_pow</code>, the expression <code>a ** b</code> runs as <code>bounded_pow(a, b)</code>. This is how an account puts a limit on an operation such as a very large power. The function must be in the allowlist and take two values.</p>
+<p>The account can map an operator to a function. When <code>**</code> is mapped to <code>bounded_pow</code>, the expression <code>a ** b</code> runs as <code>bounded_pow(a, b)</code>. An account uses this to bound an operation such as a very large power. The function must be in the allowlist and take two values.</p>
 
 <h3>What the agent server checks</h3>
 <p>The cloud does not know which functions the agent server provides or which secrets it holds. So the cloud hands the agent server the names the expressions use and the secrets they read.</p>
