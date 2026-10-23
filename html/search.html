@@ -46,7 +46,7 @@
     <div class="container">
       <span class="kicker">Search</span>
       <h1>Users do not choose agents. They say what they need.</h1>
-      <p class="lead">Search reads a request written in plain language and returns the agent built to handle it. Here is the whole exchange, as the bundled GUI, a chat bot or an interface of your own makes it.</p>
+      <p class="lead">Search reads a request in plain language and returns the agent built to handle it. Here is the exchange, as the bundled GUI, a chat bot or your own interface makes it.</p>
     </div>
   </section>
 
@@ -55,26 +55,26 @@
       <figure class="anno" aria-label="A search call and its response, annotated">
         <div class="codecard"><div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">POST /api/exec/search</span></div><pre><code><span class=cm>// the request</span>
 { <span class="al" data-n="1"><span class=key>&quot;query&quot;</span>: <span class=str>&quot;Book a trip to New York&quot;</span></span> }
-<span class="al-note" style="margin-left:2ch"><span class="an">1</span>The request is the user&rsquo;s words, as typed. There is no agent name, no keyword and no menu.</span>
+<span class="al-note" style="margin-left:2ch"><span class="an">1</span>The user&rsquo;s words, as typed. No agent name, no keyword, no menu.</span>
 <span class=cm>// the response</span>
 {
   <span class=key>&quot;success&quot;</span>: <span class=kw>true</span>,
   <span class="al" data-n="2"><span class=key>&quot;searchResults&quot;</span>: [</span>
-<span class="al-note" style="margin-left:2ch"><span class="an">2</span>Zero, one or two agents, best first. One when the request clearly belongs to that agent. Two when it is ambiguous or two descriptions overlap. None when nothing fits, and then nothing runs.</span>    {
+<span class="al-note" style="margin-left:2ch"><span class="an">2</span>Zero, one or two agents, best first. One when the request clearly belongs to it, two when the request is ambiguous or two descriptions overlap, none when nothing fits. Then nothing runs.</span>    {
       <span class="al" data-n="3"><span class=key>&quot;agentName&quot;</span>: <span class=str>&quot;travel_desk&quot;</span>,</span>
-<span class="al-note" style="margin-left:6ch"><span class="an">3</span>Search only matches. The interface takes the agent name and calls <code>execAgent</code> with the same request, at once or after offering the user a choice.</span>      <span class=key>&quot;agentTitle&quot;</span>: <span class=str>&quot;Travel desk&quot;</span>
+<span class="al-note" style="margin-left:6ch"><span class="an">3</span>Search only matches. The interface calls <code>execAgent</code> with the agent name and the same request, at once or after offering the user the choice.</span>      <span class=key>&quot;agentTitle&quot;</span>: <span class=str>&quot;Travel desk&quot;</span>
     }
   ]
 }</code></pre></div>
         <ol class="anno-notes">
-          <li data-n="1"><span class="an">1</span>The request is the user&rsquo;s words, as typed. There is no agent name, no keyword and no menu.</li>
-          <li data-n="2"><span class="an">2</span>Zero, one or two agents, best first. One when the request clearly belongs to that agent. Two when it is ambiguous or two descriptions overlap. None when nothing fits, and then nothing runs.</li>
-          <li data-n="3"><span class="an">3</span>Search only matches. The interface takes the agent name and calls <code>execAgent</code> with the same request, at once or after offering the user a choice.</li>
+          <li data-n="1"><span class="an">1</span>The user&rsquo;s words, as typed. No agent name, no keyword, no menu.</li>
+          <li data-n="2"><span class="an">2</span>Zero, one or two agents, best first. One when the request clearly belongs to it, two when the request is ambiguous or two descriptions overlap, none when nothing fits. Then nothing runs.</li>
+          <li data-n="3"><span class="an">3</span>Search only matches. The interface calls <code>execAgent</code> with the agent name and the same request, at once or after offering the user the choice.</li>
         </ol>
         <svg class="anno-svg" aria-hidden="true"></svg>
       </figure>
       <div class="fw-text">
-        <p>Search does not look for the words of the request in the descriptions. It works from meaning, so a request and a description need not share a word, and need not be in the same language. The result comes back in less than half a second, and a catalog of a thousand agents is searched as quickly as a catalog of a hundred.</p>
+        <p>Search works from meaning, not words. A request and a description need not share a word, or a language. A result takes less than half a second, and a thousand agents are searched as quickly as a hundred.</p>
       </div>
     </div>
   </section>
@@ -83,14 +83,14 @@
     <div class="container">
       <div class="section-head">
         <h2>The description is what search matches against</h2>
-        <p>When an agent is published, its developer describes it in plain language, and search indexes the description within half a minute. This is the description that matched the request above.</p>
+        <p>When an agent is published, its developer describes it in plain language. Search indexes the description within half a minute. This is the description the request above matched.</p>
       </div>
       <figure class="desc-example" aria-label="The description of the Travel desk agent">
         <div class="desc-head"><span class="st-label">travel_desk</span><span class="st-hint">Travel desk</span></div>
         <p>Arranges air travel and hotel stays for business travel. Books flights and hotel nights for the dates and the city the traveler names, holds a booking when the traveler is not ready to confirm, and answers questions about an existing booking. It does not file expenses and does not approve travel.</p>
       </figure>
       <div class="fw-text">
-        <p>A good description is written for the person who will type the request. It says what the agent does for the user, the questions it answers, the actions it takes and what it leaves to others. Two to five sentences is typical. A description that only names the mechanism, such as &ldquo;calls the travel API and summarizes the JSON&rdquo;, matches poorly, because nobody asks for a mechanism, and search returns such a description to the developer with an explanation of what to change. When two agents overlap by accident, a request in the shared territory returns both, and sharpening the two descriptions is what separates them. The <a href="docs/search/describing-an-agent.html">describing an agent</a> page has the details.</p>
+        <p>A description is written for the person who will type the request. It says what the agent does for the user: the questions it answers, the actions it takes, what it leaves to others. Two to five sentences is typical. A description that names only the mechanism, such as &ldquo;calls the travel API and summarizes the JSON&rdquo;, matches poorly, because nobody asks for a mechanism; search returns it to the developer with an explanation of what to change. When two agents overlap by accident, a request in the shared territory returns both, and sharper descriptions separate them. See <a href="docs/search/describing-an-agent.html">describing an agent</a>.</p>
       </div>
     </div>
   </section>
@@ -99,10 +99,10 @@
     <div class="container">
       <div class="section-head">
         <h2>A conversation can move from agent to agent</h2>
-        <p>A follow-up typed into a conversation is searched like a new request. When it belongs to a different agent, that agent runs next, with the conversation&rsquo;s state and history in place. When nothing new matches, the agent that answered last answers again.</p>
+        <p>A follow-up in a conversation is searched like a new request. When it belongs to another agent, that agent runs next, with the conversation&rsquo;s state and history in place. When nothing new matches, the agent that answered last answers again.</p>
       </div>
       <div class="fw-text">
-        <p>What an interface does with the matches is its own <a href="docs/search/search-settings.html">search behavior</a>: the bundled GUI runs the best match at once, and an interface of your own can show the two best as a choice instead. <a href="docs/search/tags.html">Tags</a> split an account&rsquo;s agents into separate pools, such as one for the help desk and one for finance, and a search names the pool it wants or searches them all.</p>
+        <p>What an interface does with the matches is its own <a href="docs/search/search-settings.html">search behavior</a>: the bundled GUI runs the best match at once; your own interface can offer the two best as a choice. <a href="docs/search/tags.html">Tags</a> split an account&rsquo;s agents into pools, one for the help desk and one for finance, and a search names a pool or searches them all.</p>
       </div>
     </div>
   </section>
@@ -112,7 +112,7 @@
       <div class="section-head">
         <span class="kicker">Live demo</span>
         <h2>Ask for something, in your own words</h2>
-        <p>This demo runs against a live Search2o account with 200 agents, from human resources and finance to engineering and sales. The matched agent runs and answers with mock data. Ask a follow-up to see the conversation move to another agent.</p>
+        <p>This demo runs in a live Search2o account with 200 agents, from human resources and finance to engineering and sales. The matched agent runs and answers with mock data. Ask a follow-up and watch the conversation move to another agent.</p>
       </div>
       <div class="fw-demo">
         <div
@@ -134,10 +134,10 @@
       <div class="section-head">
         <span class="kicker">Search quality</span>
         <h2>Measured on 15,000 questions, against the live service</h2>
-        <p>We built six catalogs of agents, from a university to a thousand-agent catalog spanning fifty business areas, wrote 15,000 questions with a known right agent, and put every question through the search we ship.</p>
+        <p>Six catalogs of agents, from a university to a thousand agents across fifty business areas. 15,000 questions, each with a known right agent. Every question went through the search we ship.</p>
       </div>
       <div class="fw-text">
-        <p>The right agent comes first 84% to 91% of the time, depending on the catalog, and is one of the first two 92% to 97% of the time. A request about something else entirely is refused every time; a request about the customer&rsquo;s own world that no agent covers is refused 82% to 86% of the time. A search takes about 200 milliseconds, and a catalog of a thousand agents scores within a point of a catalog of a hundred. What separates the easy catalogs from the hard ones is how far apart their agents sit, which the descriptions decide. The <a href="docs/search/search-quality.html">search quality</a> page gives every table and the conditions behind each number.</p>
+        <p>The right agent comes first 84% to 91% of the time, depending on the catalog, and is one of the first two 92% to 97% of the time. A request about something else entirely is always refused; a request about the customer&rsquo;s own world that no agent covers is refused 82% to 86% of the time. A search takes about 200 milliseconds. A thousand agents score within a point of a hundred. What separates the easy catalogs from the hard ones is how far apart their agents sit, and the descriptions decide that. The <a href="docs/search/search-quality.html">search quality</a> page has every table and the conditions behind each number.</p>
       </div>
     </div>
   </section>
@@ -146,7 +146,7 @@
     <div class="container">
       <div class="section-head">
         <h2>Where to read more</h2>
-        <p>The <a href="docs/search/index.html">search</a> section of the documentation covers <a href="docs/search/how-matching-works.html">how matching behaves</a>, <a href="docs/search/describing-an-agent.html">describing an agent</a>, <a href="docs/search/tags.html">tags</a>, <a href="docs/search/search-settings.html">search behavior</a> and the <a href="docs/search/search-quality.html">search quality</a> results. The <a href="docs/rest-api/search.html">search call</a> of the REST API is the search box as an API call.</p>
+        <p>The <a href="docs/search/index.html">search</a> section of the documentation covers <a href="docs/search/how-matching-works.html">how matching behaves</a>, <a href="docs/search/describing-an-agent.html">describing an agent</a>, <a href="docs/search/tags.html">tags</a>, <a href="docs/search/search-settings.html">search behavior</a> and <a href="docs/search/search-quality.html">search quality</a>. The REST API&rsquo;s <a href="docs/rest-api/search.html">search call</a> is the search box as an API call.</p>
       </div>
     </div>
   </section>
