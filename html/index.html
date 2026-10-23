@@ -25,7 +25,6 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/jetbrains-mono-latin.woff2" crossorigin>
 <link rel="stylesheet" href="styles/styles.css">
-<link rel="stylesheet" href="demo/demo.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DYRX3801TG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYRX3801TG');</script>
 </head>
@@ -36,6 +35,8 @@
     <a class="brand" href="index.html" aria-label="Search2o home"><img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61"></a>
     <nav class="site-nav" aria-label="Main">
       <a class="navlink" href="framework.html">Framework</a>
+      <a class="navlink" href="runtime.html">Runtime</a>
+      <a class="navlink" href="search.html">Search</a>
       <a class="navlink" href="docs/index.html">Docs</a>
       <a class="navlink" href="pricing.html">Pricing</a>
       <a class="navlink" href="about.html">About</a>
@@ -64,7 +65,7 @@
         <div class="as-srv" aria-hidden="true"></div>
         <div class="as-title"><span>Search2o agent server</span><code>pip install search2o</code></div>
 
-        <div class="as-part as-r1"><span class="as-pn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search</span><small>Matches each request to the agent built to handle it.</small></div>
+        <a class="as-part as-r1" href="search.html"><span class="as-pn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search</span><small>Matches each request to the agent built to handle it.</small></a>
         <div class="as-lane as-left as-r1">
           <div class="as-flow r"><i class="ln"></i><div class="lbl"><span class="as-m">Describe agents</span><span class="as-box long"><b class="as-act">Describe agents</b><span class="as-eg"><span class="as-agent">Travel desk</span>: Arranges air travel and hotel stays.</span></span></div><i class="ln"></i></div>
         </div>
@@ -74,8 +75,8 @@
         </div>
 
         <div class="as-split as-r2">
-          <div class="as-part"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5a2 2 0 0 0 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg>Agent framework</div>
-          <div class="as-part"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>Agent runtime</div>
+          <a class="as-part" href="framework.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5a2 2 0 0 0 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg>Agent framework</a>
+          <a class="as-part" href="runtime.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>Agent runtime</a>
         </div>
         <div class="as-lane as-left as-r2">
           <div class="as-flow r"><i class="ln"></i><div class="lbl"><span class="as-box">Build, validate, publish agents</span></div><i class="ln"></i></div>
@@ -83,110 +84,6 @@
         <div class="as-lane as-right as-r2">
           <div class="as-flow l"><i class="ln"></i><div class="lbl"><span class="as-box fit"><code>execAgent<span class="as-args">(<span class="nw"><span class="as-agent">Travel desk</span>,</span> <span class="nw">"Book a trip to New York")</span></span></code></span></div><i class="ln"></i></div>
           <div class="as-flow r"><i class="ln"></i><div class="lbl"><span class="as-m">Output</span><span class="as-box long">Booked UA1191, departs 06:00.</span></div><i class="ln"></i></div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="section" id="search-and-execute">
-    <div class="container">
-      <div class="section-head center">
-        <span class="kicker">One conversation, many agents</span>
-        <h2>Conversation ties agents together with shared context</h2>
-      </div>
-      <div class="hero-grid">
-        <aside class="convo hero-convo" aria-label="One conversation across two agents, each on its own LLM, with a confirmation before the booking">
-          <div class="convo-title">
-            <svg class="lock" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-            Context shared across agents
-          </div>
-          <div class="convo-body">
-            <div class="turn-user st st1">Book my trip for Tuesday's all-day meeting in New York</div>
-            <div class="turn-agent">
-              <div class="msg ask st st2" aria-label="The agent asks before booking">
-                <span class="q">UA1191 out Monday 18:40, back Wednesday 07:15, and two nights at the Marriott near the office. $1,240. <b>Book it?</b></span>
-                <span class="opts"><i class="on">Book</i><i>Hold</i></span>
-                <span class="submit">Submit</span>
-              </div>
-              <div class="msg st st3">Booked UA1191 and the two hotel nights.</div>
-            </div>
-            <div class="note-bubble r2 st st4"><b>travel_desk</b>Books travel.</div>
-            <div class="turn-user st st5">File the expenses for that trip</div>
-            <div class="turn-agent">
-              <div class="msg st st6">Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
-            </div>
-            <div class="note-bubble r4 st st7"><b>reimbursements</b>Files expenses. Knows about the trip from the conversation context.</div>
-          </div>
-        </aside>
-
-      <div class="hero-demo">
-        <div
-          data-s2o-demo="search"
-          data-search-title="Live demo"
-          data-search-placeholder="Ask for something&hellip;"
-          data-search-placeholder-followup="Ask a follow-up question. The matched agent will run in the same context."
-          data-search-placeholder-answer="Answer the question above to continue"
-          data-search-hint=""
-          data-search-empty="This demo runs live in a Search2o account with [200 agents](demo-agents.html). The agents use mock data to demonstrate framework features."
-          data-search-disclaimer="This is mock data from a real agent. Click on the agent name to see what it does."
-        ></div>
-      </div>
-    </div>
-    </div>
-  </section>
-  <section class="section soft" id="system-architecture">
-    <div class="container">
-      <div class="section-head center">
-        <span class="kicker">Hybrid architecture</span>
-        <h2>Agent servers are stateless. Search2o&nbsp;Cloud provides the plumbing.</h2>
-      </div>
-      <div class="howgrid">
-        <aside class="arch cc-arch hero-arch" aria-label="An agent harness, a browser used by users, developers and admins, and Slack or Teams send requests to the Search2o agent server in your organization. The agent server runs the agents and calls enterprise systems and LLMs. Search, state and reports live in Search2o Cloud, with sensitive data encrypted.">
-          <div class="arch-flow">
-            <div class="arch-org">
-            <span class="arch-org-lbl">Your organization</span>
-            <div class="cc-clients">
-              <div class="arch-node cc-cc"><strong><a href="docs/gui/index.html">Browser</a></strong><div class="arch-chips cc-skill cc-roles"><span>User &middot; Developer &middot; Admin</span></div></div>
-              <div class="arch-node cc-cc"><strong><a href="docs/chat-integrations/index.html">Slack/Teams</a></strong><div class="arch-chips cc-skill"><span><a href="docs/chat-integrations/index.html">Bot</a></span></div></div>
-              <div class="arch-node cc-cc"><strong><a href="docs/skill-integration/index.html">Agent harness</a></strong><div class="arch-chips cc-skill"><span><a href="https://github.com/Search2o/search2o-skill" target="_blank" rel="noopener">search2o-skill</a></span></div></div>
-            </div>
-            <div class="cc-join" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
-            <div class="arch-link cc-down" aria-hidden="true"></div>
-            <div class="cc-main">
-              <div class="arch-node cc-server">
-                <div class="cc-server-head"><strong>Search2o agent server</strong></div>
-                <span class="cc-server-links"><a href="docs/runtime/overview.html">Stateless</a>&nbsp;&middot; <a href="docs/agent-execution/controlled-runtime.html">Controlled&nbsp;runtime</a>&nbsp;&middot; <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">GitHub</a></span>
-                <div class="cc-agents">
-                  <span class="cc-agents-lbl">Agents</span>
-                  <div class="cc-agent-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                </div>
-              </div>
-              <div class="arch-sys">
-                <div class="arch-branch"><div class="arch-node"><strong>Enterprise systems</strong><span>APIs&nbsp;&middot; Databases&nbsp;&middot; MCP&nbsp;servers</span></div></div>
-                <div class="arch-branch"><div class="arch-node"><strong>LLMs</strong><span>OpenAI&nbsp;&middot; Anthropic&nbsp;&middot; Gemini&nbsp;&middot; Ollama&nbsp;&middot; vLLM&nbsp;&middot; SGLang&nbsp;&middot; Other</span></div></div>
-              </div>
-            </div>
-            </div>
-            <div class="arch-link two lnk"><a class="arch-lbl" href="docs/security/encryption.html">sensitive data encrypted</a></div>
-            <div class="arch-node cloud">
-              <a class="arch-cloud-lbl" href="docs/security/data-privacy.html">Search2o Cloud</a>
-              <div class="arch-parts">
-                <div class="arch-part"><a href="docs/search/index.html">Search</a></div>
-                <div class="arch-part"><a href="docs/security/data-privacy.html">State</a></div>
-                <div class="arch-part"><a href="docs/reports/index.html">Reports</a></div>
-              </div>
-            </div>
-          </div>
-        </aside>
-
-        <div class="arch-demo">
-          <div
-            data-s2o-demo="ask"
-            data-ask-title="Ask a question about Search2o"
-            data-ask-label=""
-            data-ask-placeholder="Ask a question..."
-            data-ask-hint=""
-            data-ask-button="Ask"
-          ></div>
         </div>
       </div>
     </div>
@@ -244,7 +141,8 @@
         <div class="fcol">
           <h4>Product</h4>
           <a href="framework.html">Agent framework</a>
-          <a href="index.html#system-architecture">System architecture</a>
+          <a href="runtime.html">Agent runtime</a>
+          <a href="search.html">Search</a>
           <a href="index.html#platform">Platform</a>
           <a href="pricing.html">Pricing</a>
         </div>
@@ -275,6 +173,5 @@
 
 <script src="js/config.js"></script>
 <script src="js/site.js"></script>
-<script type="module" src="demo/demo.js"></script>
 </body>
 </html>

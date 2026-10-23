@@ -226,6 +226,9 @@ p { margin: 0; }
 .as-split { position: relative; z-index: 1; grid-column: 2; display: grid; grid-template-columns: 1fr 1fr; margin: 0 1px 1px; border-top: 1px solid var(--line); border-radius: 0 0 17px 17px; overflow: hidden; }
 .as-split .as-part { grid-column: auto; grid-row: 1; margin: 0; padding: 24px 8px; font-size: 15px; }
 .as-split .as-part + .as-part { border-left: 1px solid var(--line); }
+a.as-part { color: var(--ink); text-decoration: none; transition: background .15s ease; }
+a.as-part:hover { background: var(--bg-soft); text-decoration: none; }
+a.as-part:hover .as-pn, .as-split a.as-part:hover { color: var(--blue-ink); }
 .as-m { display: none; }
 .as-r1 { grid-row: 2; }
 .as-r2 { grid-row: 3; }
@@ -1207,6 +1210,12 @@ a.arch-lbl { color: var(--blue-ink); }
 .fw-page .numbered { max-width: var(--fw-w); }
 .fw-page .numbered .step-sec { padding-bottom: 36px; }
 .fw-after-steps { margin-top: 28px; }
+.desc-example { max-width: var(--fw-w); margin: 0 0 18px; padding: 18px 22px; border: 1px solid var(--line); border-left: 3px solid var(--blue); border-radius: 12px; background: var(--card); box-shadow: var(--card-shadow); }
+.desc-example p { margin: 0; color: var(--body); font-size: 15px; line-height: 1.7; }
+.desc-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; margin-bottom: 8px; }
+.st-row3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.st-cmd a { color: var(--body); }
+.st-cmd a:hover { color: var(--blue-ink); }
 .fw-end { padding: 44px 0 96px; }
 .fw-end .section-head { max-width: var(--fw-w); margin-bottom: 0; }
 .fw-end .section-head h2 { font-size: 24px; }

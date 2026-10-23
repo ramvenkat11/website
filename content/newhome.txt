@@ -1,22 +1,11 @@
-
-Hero section:
-
-Paraphrasing mlflow.org: "Deliver High-Quality, stable, dependable, observable, cost-controlled AI solutions.
-                  Search2o lets you move 10x faster by simplifying how you
-                  build, run and use AI agents" - We need to adapt something like this. This is our value prop that should be up in the hero section.  This should flow into the app server section below.
-
-Search2o application server
-    A box with four parts: Agent framework, Controlled runtime, Search, Observability
-
-    Developer icon produces to Agent framework: Build, validate, publish agents
-    Developer icon produces to Search: Describe agents (A text clob showing an agent description)
-    Developer icon consumes reports from Observability
-
-    User icon talks to Search: Makes a search request (A text clob showing a request), Receives an agent back (show agent title)
-    User icon talks to controlled runtime: Sends execAgent(conversationId, request), Receives agent output.
-    Users can consume from a chatbox or from agent harness - both will use the above two interactions.
-
-
-
-
-
+- Create two new pages: search.html and runtime.html
+- Header would be: Framework, Runtime, Search, Docs, Pricing, About.
+- Change the footer as needed
+- Link the three boxes in the hero to the three pages in the header
+- search.html
+ -- Incorporate content from search docs, especially what is search, how it works and search quality
+ -- Move the demo from One conversation, many agents section from home page to here
+- runtime.html
+ -- Incorporate content from Agent Runtime in the docs
+- Remove the One conversation, many agents section from home page - For now, just move this to the new search.html page
+- Remove hybrid architecture section from the home page - this already has been moved to docs index.html page

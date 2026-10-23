@@ -30,6 +30,8 @@
     <a class="brand" href="../../index.html" aria-label="Search2o home"><img class="logo-light" src="../../images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="../../images/logo-dark.png" alt="Search2o" width="336" height="61"></a>
     <nav class="site-nav" aria-label="Main">
       <a class="navlink" href="../../framework.html">Framework</a>
+      <a class="navlink" href="../../runtime.html">Runtime</a>
+      <a class="navlink" href="../../search.html">Search</a>
       <a class="navlink" href="../index.html" aria-current="page">Docs</a>
       <a class="navlink" href="../../pricing.html">Pricing</a>
       <a class="navlink" href="../../about.html">About</a>
@@ -64,7 +66,7 @@
 <figure class=code data-lang=jsonc><pre><code><span class=key>&quot;llm&quot;</span>: { <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;gpt5_mini&quot;</span>, <span class=key>&quot;prompt&quot;</span>: <span class=str>&quot;orders&quot;</span>, <span class=key>&quot;streamOutput&quot;</span>: <span class=kw>true</span> }</code></pre></figure>
 
 <h2 id="fields">Fields</h2>
-<div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>system</code></td><td class=ty>dynamic string</td><td class=dflt></td><td>The system prompt.</td></tr><tr><td><code>user</code></td><td class=ty>dynamic string</td><td class=dflt></td><td>The user prompt. Evaluated at each LLM call that uses this prompt.</td></tr><tr><td><code>scope</code></td><td class=ty>&quot;conversation&quot; | &quot;agent&quot; | &quot;local&quot;</td><td class=dflt>&quot;conversation&quot;</td><td>How long the prompt&#x27;s history is kept.</td></tr><tr><td><code>doc</code></td><td class=ty>string</td><td class=dflt></td><td>What the prompt is for. Shown to draft help in place of the prompt&#x27;s text.</td></tr></tbody></table></div>
+<div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>system</code></td><td class=ty>PromptText</td><td class=dflt></td><td>The system prompt.</td></tr><tr><td><code>user</code></td><td class=ty>PromptText</td><td class=dflt></td><td>The user prompt. Evaluated at each LLM call that uses this prompt.</td></tr><tr><td><code>scope</code></td><td class=ty>&quot;conversation&quot; | &quot;agent&quot; | &quot;local&quot;</td><td class=dflt>&quot;conversation&quot;</td><td>How long the prompt&#x27;s history is kept.</td></tr><tr><td><code>doc</code></td><td class=ty>string</td><td class=dflt></td><td>What the prompt is for. Shown to draft help in place of the prompt&#x27;s text.</td></tr></tbody></table></div>
 <p>A prompt needs a system text, a user text, or both. A prompt name is letters, digits and underscores.</p>
 
 <h2 id="where-prompts-are-edited">Where prompts are edited</h2>
