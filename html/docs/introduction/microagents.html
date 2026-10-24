@@ -79,7 +79,7 @@
 <p>The line is the same in every case. A microagent has a boundary you can write down, on systems, time and cost, and a small set of paths that can be validated. That boundary is also what makes a description precise enough for search to match.</p>
 
 <h2 id="how-a-microagent-runs">How a microagent runs</h2>
-<p>A request that matches the agent's description starts the agent. The agent runs for a short time, may ask the user for inputs or an approval on the way, and produces a response. The agent that runs is the one whose description fits the request; see <a href="../search/how-matching-works.html">How matching behaves</a>.</p>
+<p>A request that matches the agent's description starts it; see <a href="../search/how-matching-works.html">How matching behaves</a>. The agent runs for a short time, may ask the user for inputs or an approval on the way, and produces a response.</p>
 
 <h2 id="what-the-boundary-buys">What the boundary buys</h2>
 <p><strong>Validation.</strong> A microagent has a few specific paths, like a workflow, rather than an open-ended set. That is what makes it possible to validate the agent before it is published: a real run against a validation query, with every step in the trace. See <a href="../development/trace-and-validation.html">Trace and validation</a>.</p>

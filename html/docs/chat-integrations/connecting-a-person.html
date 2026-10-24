@@ -59,7 +59,7 @@
 <p>This needs nothing from the bot beyond somewhere to store the token, and it suits a small team. It does not suit a large one: a token pasted into a public chat message stays in that workspace's history.</p>
 
 <h2 id="the-connect-flow">The connect flow</h2>
-<p>The bot sends the person a button. The button opens a page on the agent server. The person signs in if not signed in already, approves the request, and returns to the chat application. The bot collects the token by itself, and nothing is copied by hand.</p>
+<p>The bot sends the person a button that opens a page on the agent server. The person signs in if not signed in already, approves the request, and returns to the chat application. The bot collects the token by itself; nothing is copied by hand.</p>
 <ol>
   <li>The bot calls <code>startConnect</code> with a name to display, such as the name of the chat workspace. The call returns an identifier, a secret, a short code and an address.</li>
   <li>The bot posts a button pointing at that address, and shows the short code beside the button.</li>

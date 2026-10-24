@@ -1,4 +1,4 @@
-# The concepts behind the agent server
+# Core concepts behind the agent server
 
 ## Stateless servers, stateful cloud
 
@@ -10,7 +10,7 @@ Links:
 
 ## Structured microagents
 
-Search2o agents are microagents with structured definitions. AI can generate one fully formed and developers can validate it before publishing. 20 built-in commands handle the workflow and agentic primitives, so that developers can focus on the business logic.
+Search2o agents are microagents with structured definitions. AI can generate one fully formed and developers can validate it before publishing. 20 built-in commands handle the workflow and all the plumbing, so that developers can focus on the business logic.
 
 Links:
 - Agent framework -> framework.html
@@ -33,17 +33,6 @@ Links:
 - Conversations -> search.html#conversation
 - Live demo -> search.html#demo
 
-## All the plumbing built-in
-
-Every agent run stores the conversation state and restores it for the followups. Human-in-the-loop knows where to continue an agent from the stored state. Agent runs also automatically record LLM costs, timing and errors for the real-time reports.  
-
-Links:
-- Agent runtime -> runtime.html
-- Reports -> docs/reports/index.html
-
-## Open interface for integrations
-
-Everything reaches the agent server through a REST API: a bundled browser chat, Slack and Teams through chat integrations, and Claude Code through the search2o-skill. Your own integrations can use the same API.
 
 Links:
 - REST API -> docs/rest-api/overview.html

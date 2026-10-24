@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>MCP servers — Search2o docs</title>
-<meta name="description" content="An MCP server is a tool provider that agents use through the llm command&#x27;s mcp field. The server&#x27;s tools are listed from the server itself and offered to the…">
+<meta name="description" content="An MCP server is a tool provider that agents use through the llm command&#x27;s mcp field. The agent server reads the list of tools from the MCP server and offers…">
 <link rel="canonical" href="https://search2o.com/docs/profiles/mcp-servers.html">
 <meta property="og:title" content="MCP servers — Search2o docs">
-<meta property="og:description" content="An MCP server is a tool provider that agents use through the llm command&#x27;s mcp field. The server&#x27;s tools are listed from the server itself and offered to the…">
+<meta property="og:description" content="An MCP server is a tool provider that agents use through the llm command&#x27;s mcp field. The agent server reads the list of tools from the MCP server and offers…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/profiles/mcp-servers.html">
 <meta property="og:image" content="https://search2o.com/images/og5.png">
@@ -50,7 +50,7 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../profiles/index.html'>Profiles</a></div>
     <article class="docs-article">
       <h1>MCP servers</h1>
-      <p class="lead">An MCP server is a tool provider that agents use through the <code>llm</code> command's <code>mcp</code> field. The server's tools are listed from the server itself and offered to the model.</p>
+      <p class="lead">An MCP server is a tool provider that agents use through the <code>llm</code> command's <code>mcp</code> field. The agent server reads the list of tools from the MCP server and offers them to the model.</p>
 
 <h2 id="settings">Settings</h2>
 <div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>secretsUsed</code></td><td class=ty>list of string</td><td class=dflt></td><td>The secret names this profile&#x27;s expressions read (sys.secret[&#x27;NAME&#x27;]). Worked out by the cloud when the profile is saved and sent with the profile to agent servers; anything sent in this field is ignored.</td></tr><tr><td><code>name</code><span class=req>required</span></td><td class=ty>string</td><td class=dflt></td><td>The name agents use to refer to this MCP server.</td></tr><tr><td><code>doc</code></td><td class=ty>string</td><td class=dflt></td><td>Free-text notes about this server, for whoever maintains the configuration.</td></tr><tr><td><code>url</code><span class=req>required</span></td><td class=ty>dynamic string</td><td class=dflt></td><td>The URL of the MCP server.</td></tr><tr><td><code>headers</code></td><td class=ty>object of string → dynamic string</td><td class=dflt></td><td>Headers sent with every call, including any authentication.</td></tr><tr><td><code>retryableErrorCodes</code></td><td class=ty>list of integer</td><td class=dflt>[-32600, -32601, -32602]</td><td>MCP (JSON-RPC) error codes treated as recoverable: the error is given back to the LLM to correct itself instead of failing the agent. Defaults to -32600 (invalid request), -32601 (method not found) and -32602 (invalid params).</td></tr></tbody></table></div>

@@ -56,7 +56,7 @@
 <p>The <code>llmAdapters</code> box takes one import path per line, each naming a class that extends <code>LlmAdapter</code>. Each class is built once, with no arguments, when the agent server starts, and the adapters are then offered when an LLM profile is created. See <a href="../llm/llm-adapters.html">Connecting to other LLMs</a>.</p>
 
 <h2 id="agent-configuration-validators">Agent configuration validators</h2>
-<p>One function for each kind of profile: LLM, API, MCP server and database. The function is called before a profile of that kind is saved, with one key, <code>profile</code>, holding the profile as JSON. If it raises, the save is refused and the developer sees the message. A validator holds profiles to a company rule: every API profile's URL is inside the company's domains, say, or every LLM profile names a connection pool of its own.</p>
+<p>One function for each kind of profile: LLM, API, MCP server and database. The function is called before a profile of that kind is saved, with one key, <code>profile</code>, holding the profile as JSON. If it raises, the save is refused and the developer sees the message. A validator enforces a company rule, such as every API profile's URL being inside the company's domains, or every LLM profile naming a connection pool of its own.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../hooks/llm-and-api-calls.html'><small>Previous</small>LLM and API calls</a><a class=next href='../reports/index.html'><small>Next</small>Reports</a></nav>
