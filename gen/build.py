@@ -440,9 +440,14 @@ def header(depth) -> str:
   <div class="container header-row">
     <a class="brand" href="{r}index.html" aria-label="Search2o home"><img class="logo-light" src="{r}images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="{r}images/logo-dark.png" alt="Search2o" width="336" height="61"></a>
     <nav class="site-nav" aria-label="Main">
-      <a class="navlink" href="{r}framework.html">Agent framework</a>
-      <a class="navlink" href="{r}runtime.html">Agent runtime</a>
-      <a class="navlink" href="{r}search.html">Search</a>
+      <details class="nav-menu">
+        <summary class="navlink">Product<svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="nav-menu-list">
+          <a class="navlink" href="{r}framework.html">Agent framework</a>
+          <a class="navlink" href="{r}runtime.html">Agent runtime</a>
+          <a class="navlink" href="{r}search.html">Search</a>
+        </div>
+      </details>
       <a class="navlink" href="{rel(depth)}index.html" aria-current="page">Docs</a>
       <a class="navlink" href="{r}pricing.html">Pricing</a>
       <a class="navlink" href="{r}about.html">About</a>

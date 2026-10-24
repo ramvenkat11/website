@@ -34,9 +34,14 @@
   <div class="container header-row">
     <a class="brand" href="index.html" aria-label="Search2o home"><img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61"></a>
     <nav class="site-nav" aria-label="Main">
-      <a class="navlink" href="framework.html">Agent framework</a>
-      <a class="navlink" href="runtime.html">Agent runtime</a>
-      <a class="navlink" href="search.html">Search</a>
+      <details class="nav-menu">
+        <summary class="navlink">Product<svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="nav-menu-list">
+          <a class="navlink" href="framework.html">Agent framework</a>
+          <a class="navlink" href="runtime.html">Agent runtime</a>
+          <a class="navlink" href="search.html">Search</a>
+        </div>
+      </details>
       <a class="navlink" href="docs/index.html">Docs</a>
       <a class="navlink" href="pricing.html">Pricing</a>
       <a class="navlink" href="about.html">About</a>
@@ -53,13 +58,13 @@
         <h1 class="hero-claim">Deliver repeatable, observable, <span class="hero-accent">cost-controlled</span> AI&nbsp;agents &ndash;&nbsp;Fast.</h1>
         <p class="hero-sub">Search2o agent server simplifies how you build, run and use agents.</p>
       </div>
-      <div class="appsrv" aria-label="The Search2o agent server with four parts: agent framework, search, agent runtime and observability. Developers are on the left, users on the right. Step 1: a developer builds, validates and publishes agents with the agent framework. Step 2: the developer describes the agents in English to search, for example a Travel desk agent that arranges air travel and hotel stays. Step 3: the user's chat box or agent harness calls search with a request such as Book a trip to New York, and search returns the Travel desk agent. Step 4: it calls execAgent with the conversation, the agent and the request on the agent runtime, and receives the agent's output, for example Booked UA1191, departs 06:00. Step 5: observability gives the developer reports.">
+      <div class="appsrv" aria-label="The Search2o agent server with four parts: agent framework, search, agent runtime and observability. Developers are on the left, users on the right. A developer builds, validates and publishes agents with the agent framework, and describes them in English to search, for example a Travel desk agent that arranges air travel and hotel stays. A user calls search with a request such as Book a trip to New York, and search returns the Travel desk agent. The user calls execAgent with the conversation, the agent and the request on the agent runtime, and receives the agent's output, for example Booked UA1191, departs 06:00. Observability gives the developer reports.">
         <div class="as-side as-dev">
           <div class="as-actor"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 4-4 16"/></svg></span><span class="nm">Developer</span></div>
           <i class="rail"></i>
         </div>
         <div class="as-side as-user">
-          <div class="as-actor"><span class="nm">User<small>Chat box or agent harness</small></span><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span></div>
+          <div class="as-actor"><span class="nm">User</span><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span></div>
           <i class="rail"></i>
         </div>
         <div class="as-srv" aria-hidden="true"></div>
@@ -67,27 +72,27 @@
 
         <a class="as-part as-r1" href="framework.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5a2 2 0 0 0 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg>Agent framework</a>
         <div class="as-lane as-left as-r1">
-          <div class="as-flow r"><span class="lbl"><b class="n">1</b>Build, validate, publish agents</span><i class="ln"></i></div>
+          <div class="as-flow r"><span class="lbl">Build, validate, publish agents</span><i class="ln"></i></div>
         </div>
 
         <a class="as-part as-r2 big" href="search.html"><span class="as-pn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search</span><small>request <span class="as-arr-h">&rarr;</span><span class="as-arr-v" aria-hidden="true">&darr;</span> agent built for it</small></a>
         <div class="as-lane as-left as-r2">
-          <div class="as-flow r"><span class="lbl"><b class="n">2</b>Describe agents in English</span><i class="ln"></i><span class="sub"><b class="as-agent">Travel desk</b>: Arranges air travel and hotel stays.</span></div>
+          <div class="as-flow r"><span class="lbl">Describe agents in English</span><i class="ln"></i><span class="sub"><b class="as-agent">Travel desk</b>: Arranges air travel and hotel stays.</span></div>
         </div>
         <div class="as-lane as-right as-r2">
-          <div class="as-flow l"><span class="lbl"><b class="n">3</b><code>search(<wbr><span class="nw">"Book a trip to New York"</span>)</code></span><i class="ln"></i></div>
+          <div class="as-flow l"><span class="lbl"><code>search(<wbr><span class="args"><span class="nw"><span class="kw">"Book a trip</span> <span class="kw">to New York")</span></span></span></code></span><i class="ln"></i></div>
           <div class="as-flow r dot"><i class="ln"></i><span class="sub"><b class="as-agent">Travel desk</b></span></div>
         </div>
 
         <a class="as-part as-r3" href="runtime.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>Agent runtime</a>
         <div class="as-lane as-right as-r3">
-          <div class="as-flow l"><span class="lbl"><b class="n">4</b><code>execAgent(<wbr>convId, <b class="as-agent nw">Travel desk</b>, <span class="nw">"Book a trip to New York"</span>)</code></span><i class="ln"></i></div>
-          <div class="as-flow r dot"><i class="ln"></i><span class="sub">Booked UA1191, departs 06:00.</span></div>
+          <div class="as-flow l"><span class="lbl"><code>execAgent(<wbr><span class="args">convId, <span class="kw"><b class="as-agent nw">Travel desk</b>,</span> <span class="nw"><span class="kw">"Book a trip</span> <span class="kw">to New York")</span></span></span></code></span><i class="ln"></i></div>
+          <div class="as-flow r dot"><i class="ln"></i><span class="sub">Booked UA1191, <span class="kw">departs 06:00.</span></span></div>
         </div>
 
         <a class="as-part as-r4 last" href="docs/reports/index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-5 4 3 5-7"/></svg>Observability</a>
         <div class="as-lane as-left as-r4">
-          <div class="as-flow l"><span class="lbl"><b class="n">5</b>Reports</span><i class="ln"></i></div>
+          <div class="as-flow l"><span class="lbl">Reports</span><i class="ln"></i></div>
         </div>
       </div>
     </div>

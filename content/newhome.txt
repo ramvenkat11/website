@@ -1,4 +1,0 @@
-Second section: How it works
-
-We have 1, 2, 3, 4, 5 corresponding to the hero
-We describe each but in a very short way that is suitable for the home page - no essays.
