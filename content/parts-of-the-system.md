@@ -1,6 +1,6 @@
-# Core concepts behind the agent server
+# The concepts behind the agent server
 
-## Stateless servers, stateful cloud
+## Hybrid architecture
 
 Agent server has no dependency in your enterprise. It is stateless and maintains its state in the Search2o cloud. Conversations and other sensitive information are encrypted. 
 
@@ -10,7 +10,7 @@ Links:
 
 ## Structured microagents
 
-Search2o agents are microagents with structured definitions. AI can generate one fully formed and developers can validate it before publishing. 20 built-in commands handle the workflow and all the plumbing, so that developers can focus on the business logic.
+Search2o agents are microagents with structured definitions. AI can generate one fully formed and developers can validate it before publishing. 20 built-in commands handle the workflow and agentic primitives, so that developers can focus on the business logic.
 
 Links:
 - Agent framework -> framework.html
@@ -22,7 +22,6 @@ Search is what lets hundreds of microagents act as one system. It matches a user
 
 Links:
 - Search -> search.html
-- Search quality -> search.html#quality
 - Live demo -> search.html#demo
 
 ## Prompts live across agents
@@ -33,9 +32,18 @@ Links:
 - Conversations -> search.html#conversation
 - Live demo -> search.html#demo
 
+## All the plumbing built-in
+
+Every agent run stores the conversation state and restores it for the followups. Human-in-the-loop knows where to continue an agent from the stored state. Agent runs also automatically record LLM costs, timing and errors for the real-time reports.  
 
 Links:
-- REST API -> docs/rest-api/overview.html
-- GUI -> docs/gui/index.html
+- Agent runtime -> runtime.html
+- Reports -> docs/reports/index.html
+
+## Open interface 
+
+Everything reaches the agent server through a REST API: a bundled browser chat, Slack and Teams through chat integrations, and Claude Code through the search2o-skill. Your own integrations can use the same API.
+
+Links:
 - Slack and Teams -> docs/chat-integrations/index.html
 - search2o-skill -> https://github.com/Search2o/search2o-skill
