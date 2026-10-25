@@ -9,15 +9,8 @@ document.querySelectorAll("[data-copy]").forEach(function (btn) {
   });
 });
 
-var hoverPointer = window.matchMedia("(hover: hover)").matches;
 document.querySelectorAll(".nav-menu").forEach(function (menu) {
   var summary = menu.querySelector("summary");
-  var closeDelay;
-  if (hoverPointer) {
-    menu.addEventListener("mouseenter", function () { clearTimeout(closeDelay); menu.open = true; });
-    menu.addEventListener("mouseleave", function () { closeDelay = setTimeout(function () { menu.open = false; }, 160); });
-    summary.addEventListener("click", function (e) { if (menu.open) e.preventDefault(); });
-  }
   document.addEventListener("click", function (e) { if (!menu.contains(e.target)) menu.open = false; });
   menu.addEventListener("keydown", function (e) {
     if (e.key === "Escape" && menu.open) { menu.open = false; summary.focus(); }
