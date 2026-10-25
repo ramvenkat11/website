@@ -912,3 +912,6 @@ Org box in #stateless now carries a GitHub-mark pill "source available" (a.src, 
 
 ## 2026-10-25 Pill text -> GitHub
 Ram: "source available" is licence terminology; pill now reads "GitHub" (mark + word), same link. Figure aria-label updated. Rendered 1280/640/360 light and dark, clean. Uncommitted.
+
+## 2026-10-25 Browser chat tile: "Bundled UI or build your own."
+Ram does not want "Use the". Rendered #user-interfaces at all widths, no overflow. Uncommitted.
