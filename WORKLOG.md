@@ -959,3 +959,6 @@ Ram: revert. hero-sub is back to "Search2o agent server simplifies how you build
 
 ## 2026-10-25 Token in the interfaces figure
 Ram asked whether the authorization token could be shown in the #user-interfaces figure; three mockups (serve/mock-token.html in the scratchpad: header line in the calls box, pill on the box border, pill on the client lines) rendered at 1280 and 375; Ram chose option 1. The calls box now opens with `<code class="hdr">Authorization: Bearer &lt;token&gt;</code>` above search()/execAgent(); CSS `.ui-calls .hdr` (dashed rule below) after `.ui-calls .fn`. Figure aria-label says each call carries an authorization token. Rendered with render-ui.sh tk at all widths light/dark. Uncommitted.
+
+## 2026-10-25 Standalone or cluster in the interfaces figure
+Ram: show standalone or cluster in the #user-interfaces figure. The server box title now carries `<small>Standalone or cluster</small>` under "Search2o agent server" (CSS `.ui-srv .t small`, 12px, #a9c6ff on navy, before `.ui-srv .r`). aria-label gained "The agent server runs standalone or as a cluster." Rendered with render-ui.sh cl at all widths light/dark. Uncommitted.
