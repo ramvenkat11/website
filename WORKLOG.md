@@ -921,3 +921,6 @@ Ram chose docs over GitHub (GUI tour links to the ui repo itself). Rendered #use
 
 ## 2026-10-25 Enterprise cards and plumbing pieces reworked
 Platform: Change control -> Model neutrality (adapters list, profile link; audit log link dropped from the page), Cost control -> "Observability & cost" (run records, reports, spend limit). Plumbing ring: Model neutrality -> Parallel execution, "API and database calls" -> "API, database and MCP calls"; order now LLM calls, API/db/MCP, Parallel | Human in the loop, Save and restore, Memory. aria-label updated. A regex swallowed Security and Access cards once; restored from HEAD with current text. Rendered both sections 1280-360 light/dark, no overflow. Uncommitted.
+
+## 2026-10-25 Model neutrality card text
+Now: "Each agent uses the model its workflow needs. Adapters for OpenAI-compatible models, Anthropic, Gemini, Ollama, vLLM and SGLang, and adapters can be added for others." (profile sentence and "frontier, cheap or free" removed per Ram; Adapters links to docs/llm/llm-adapters.html). Rendered #platform at all widths, clean. Uncommitted.
