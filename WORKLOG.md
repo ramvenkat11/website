@@ -918,3 +918,6 @@ Ram does not want "Use the". Rendered #user-interfaces at all widths, no overflo
 
 ## 2026-10-25 Bundled UI linked to docs/gui/index.html
 Ram chose docs over GitHub (GUI tour links to the ui repo itself). Rendered #user-interfaces at all widths, no overflow. Uncommitted.
+
+## 2026-10-25 Enterprise cards and plumbing pieces reworked
+Platform: Change control -> Model neutrality (adapters list, profile link; audit log link dropped from the page), Cost control -> "Observability & cost" (run records, reports, spend limit). Plumbing ring: Model neutrality -> Parallel execution, "API and database calls" -> "API, database and MCP calls"; order now LLM calls, API/db/MCP, Parallel | Human in the loop, Save and restore, Memory. aria-label updated. A regex swallowed Security and Access cards once; restored from HEAD with current text. Rendered both sections 1280-360 light/dark, no overflow. Uncommitted.
