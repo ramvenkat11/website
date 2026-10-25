@@ -903,3 +903,6 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Section 3 line now "A REST interface with an OpenAPI spec supports generating any interface." (Ram).
 - Section 3 line now "Agent server exposes a REST interface with an OpenAPI spec." (Ram).
 - Platform cards (Ram): "API & automation" → "Integration": three levels, Python expressions in an agent, the REST API, hooks (linked). Security card: "Sensitive information is encrypted by default and can be encrypted end to end."; the hooks sentence removed from it.
+
+## 2026-10-25 Bundled interfaces: "built-in UI" -> "bundled UI"
+Browser chat tile line now "Use the bundled UI or build your own." Rendered at 1280-360 light/dark, no overflow. Ram asked where to say that everything running in the organization is source available on GitHub; options offered, no edit yet. Uncommitted.
