@@ -901,3 +901,4 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Section 5 (Ram): request and response pills now sit inside the Agent runtime frame on either side of the agent box (`.fw-run` row: pill, agent, pill); "answer" → "response". On phones the pills stack above and below the agent box. Scanned 1280–360, no overflow.
 - Section 5: response arrowhead now points away from the agent (was mirrored the wrong way).
 - Section 3 line now "A REST interface with an OpenAPI spec supports generating any interface." (Ram).
+- Section 3 line now "Agent server exposes a REST interface with an OpenAPI spec." (Ram).
