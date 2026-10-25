@@ -894,3 +894,4 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Section 5 (Ram): h2 "All the plumbing you need", line "Agent runtime takes care of the infrastructure, so an agent is only business logic.", frame tag "Agent runtime". Tag background made opaque (org-bg layered over --bg) so the dashed frame stops at the tag in dark mode, where --org-bg is translucent; same fix on the Managed state "Your organization" tag. Checked 1280 light and dark.
 - Platform section: "Platform" kicker removed, heading "Built for the enterprise" alone (Ram).
 - Section 3 h2 now "Bundled interfaces" (Ram).
+- Product menu: click now toggles open and closed (Ram). The hover-to-open and the click guard that kept a hovered menu from closing are removed from site.js; outside click and Escape still close it.
