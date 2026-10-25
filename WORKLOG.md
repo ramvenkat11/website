@@ -950,3 +950,6 @@ Ram: "No databases or queues required in your organization." (was "No required d
 
 ## 2026-10-25 Managed state subheading, again
 Ram: "No dependencies on databases or queues in your organization." Checked at 1280 and 375. Uncommitted.
+
+## 2026-10-25 Hero subline
+Ram: hero-sub "Search2o agent server simplifies your agentic enterprise, so you can concentrate on the business logic." (was "...simplifies how you build, run and use agents."). Hero rendered at all widths light/dark (render-hero.sh hs). Uncommitted.
