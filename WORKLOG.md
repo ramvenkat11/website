@@ -953,3 +953,6 @@ Ram: "No dependencies on databases or queues in your organization." Checked at 1
 
 ## 2026-10-25 Hero subline
 Ram: hero-sub "Search2o agent server simplifies your agentic enterprise, so you can concentrate on the business logic." (was "...simplifies how you build, run and use agents."). Hero rendered at all widths light/dark (render-hero.sh hs). Uncommitted.
+
+## 2026-10-25 Hero subline reverted
+Ram: revert. hero-sub is back to "Search2o agent server simplifies how you build, run and use agents." (matches HEAD).
