@@ -1,4 +1,0 @@
-- Add a new section after managed state
-- Agent framework and runtime
--- Takes care of all the plumbing
--- Picture: Show the face that the agent runs in a controlled runtime, the state is automatically saved and restored (don't show the cloud), the framework provides human in the loop, memory, api/db calls, parallel executions etc.
