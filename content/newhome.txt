@@ -1,0 +1,4 @@
+- How it works goes away
+- Replaced by a section on builtin plumbing
+- This section talks about the cloud (takes care of state with no organization dependency), conversation state auto save/restore and how the 20 framework commands provide all the agentic primitives.
+- I don't want essays - possibly small pictures

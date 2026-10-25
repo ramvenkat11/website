@@ -97,56 +97,114 @@
       </div>
     </div>
   </section>
-  <section class="section soft" id="how-it-works">
+  <section class="section soft" id="search-and-conversation">
     <div class="container">
       <div class="section-head center">
-        <span class="kicker">How it works</span>
-        <h2>The concepts that simplify your agentic enterprise</h2>
+        <h2>Built-in agent discovery and orchestration</h2>
+        <p>Agents are discovered by search and build on each other in a conversation.</p>
       </div>
-      <ol class="how-steps">
-        <li class="how-step">
-          <b class="n dev"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></b>
-          <h3>Hybrid architecture</h3>
-          <p>Agent server has no dependency in your enterprise. It is stateless and maintains its state in the Search2o cloud. It can run standalone or in a cluster.</p>
-          <p>Conversations and other sensitive information are encrypted.</p>
-          <p class="how-links"><a href="docs/introduction/parts-of-the-system.html">Parts of the system</a><a href="docs/security/encryption.html">Encryption</a></p>
-        </li>
-        <li class="how-step">
-          <b class="n dev"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5a2 2 0 0 0 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg></b>
-          <h3>Structured microagents</h3>
-          <p>Microagents are independent, structured and task-focused. AI can generate fully formed drafts from prompts.</p>
-          <p>20 built-in commands handle the workflow and agentic primitives, so that developers can focus on the business logic.</p>
-          <p class="how-links"><a href="framework.html">Agent framework</a><a href="framework.html#demo">Live demo</a></p>
-        </li>
-        <li class="how-step">
-          <b class="n"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></b>
-          <h3>Search by intention</h3>
-          <p>Search is what lets hundreds of microagents act as one system. It matches a user request to the agent built to handle it, using the description the developer wrote.</p>
-          <p>It runs in under half a second and has a high accuracy.</p>
-          <p class="how-links"><a href="search.html">Search</a><a href="search.html#demo">Live demo</a></p>
-        </li>
-        <li class="how-step">
-          <b class="n"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.2A8 8 0 1 1 21 12Z"/></svg></b>
-          <h3>Prompts live across agents</h3>
-          <p>Agents do not call each other. Instead, an agent continues a prompt from where the previous agent left off in a conversation. It can also use other information that the conversation holds.</p>
-          <p>This allows agents to build on each other dynamically, without any hardcoded wiring.</p>
-          <p class="how-links"><a href="search.html#conversation">Conversations</a><a href="search.html#demo">Live demo</a></p>
-        </li>
-        <li class="how-step">
-          <b class="n"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg></b>
-          <h3>All the plumbing built-in</h3>
-          <p>Every agent run stores the conversation state and restores it for the followups. Human-in-the-loop knows where to continue an agent from the stored state.</p>
-          <p>Agent runs also automatically record LLM costs, timing and errors for the real-time reports.</p>
-          <p class="how-links"><a href="runtime.html">Agent runtime</a><a href="docs/reports/index.html">Reports</a></p>
-        </li>
-        <li class="how-step">
-          <b class="n"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></b>
-          <h3>Open interface</h3>
-          <p>Everything reaches the agent server through a REST API: a bundled browser chat, Slack and Teams through chat integrations, and Claude Code through the <span class="nw">search2o-skill</span>.</p>
-          <p>Your own integrations can use the same API.</p>
-          <p class="how-links"><a href="docs/chat-integrations/index.html">Slack and Teams</a><a href="https://github.com/Search2o/search2o-skill" target="_blank" rel="noopener">search2o-skill</a></p>
-        </li>
-      </ol>
+      <div class="sc-wrap">
+        <div class="convo hero-convo" aria-label="One conversation across two independent agents. Search matches the first request to the Travel desk agent, which asks before booking. A second request is matched to the Reimbursements agent, which continues the same conversation and files the expenses for the trip.">
+          <div class="convo-title">Conversation</div>
+          <div class="convo-body">
+            <div class="turn-user r1 st st1">Book my trip for Tuesday's all-day meeting in New York<i class="mk">1</i></div>
+            <aside class="note-bubble first r1 st st2"><b><i class="mk">1</i>Search by intention</b>No rule routed this request. Search matched it to Travel desk from the description its developer wrote, in under half a second. <a href="search.html">How search matches</a></aside>
+            <div class="turn-agent r2 st st3">
+              <div class="msg ask" aria-label="The agent asks before booking"><i class="mk">2</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>
+                <span class="q">UA1191 departs 06:00 Tuesday, back at 19:30, and a night at the Marriott near the office. $1,240. <b>Book it?</b></span>
+                <span class="opts"><i class="on">Book</i><i>Hold</i></span>
+                <span class="submit">Submit</span>
+              </div>
+            </div>
+            <aside class="note-bubble r2 st st4"><b><i class="mk">2</i>Human in the loop</b>The agent paused and asked. The answer always goes back to the same agent, which resumes from its stored state, now or days later. <a href="search.html#conversation">Conversations</a></aside>
+            <div class="turn-agent r3 st st5">
+              <div class="msg"><i class="mk">3</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>Booked UA1191 and the hotel night. The confirmation is in your inbox.</div>
+            </div>
+            <aside class="note-bubble r3 st st5"><b><i class="mk">3</i>The conversation keeps it</b>Travel desk ended here. Its prompt stays in the conversation, and so does anything it chose to save there, like the trip. <a href="search.html#conversation">Conversations</a></aside>
+            <div class="turn-user r4 st st6">File the expenses for that trip</div>
+            <div class="turn-agent r5 st st7">
+              <div class="msg"><i class="mk">4</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Reimbursements</span>Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
+            </div>
+            <aside class="note-bubble r5 st st7"><b><i class="mk">4</i>A different agent</b>Search matched the follow-up to Reimbursements. It continued the same prompt on a different model and knew the trip. Nothing wired the two agents together. <a href="search.html#conversation">How agents build on each other</a></aside>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="user-interfaces">
+    <div class="container">
+      <div class="section-head center">
+        <h2>Bundled user interfaces</h2>
+        <p>Used from the browser, chat applications or an agent harness.</p>
+      </div>
+      <div class="ui-grid">
+        <div class="ui-col">
+          <h3><span class="ui-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span>Browser chat</h3>
+          <div class="ui-shot" aria-label="A browser chat window. The user asks to book a trip to New York, the Travel desk agent books it, the user asks to file the expenses, and the Reimbursements agent files them.">
+            <div class="ui-bar"><i></i><i></i><i></i><span>Use the built-in UI or <a href="docs/rest-api/index.html">build your own</a>.</span></div>
+            <div class="ui-body">
+              <div class="bub me">Book my trip for Tuesday's all-day meeting in New York</div>
+              <div class="bub bot"><b>Travel desk</b>Booked UA1191, departs 06:00, and a night at the Marriott. $1,240.</div>
+              <div class="bub me">File the expenses for that trip</div>
+              <div class="bub bot"><b>Reimbursements</b>Filed $1,240 against your cost center. Sent to your manager for approval.</div>
+            </div>
+          </div>
+        </div>
+        <div class="ui-col">
+          <h3><span class="ui-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.2A8 8 0 1 1 21 12Z"/></svg></span>Slack, Teams, Google Chat</h3>
+          <div class="ui-shot" aria-label="A direct message with the Search2o app. A person asks it to book a trip to New York and then to file the expenses, and the app answers from the Travel desk and Reimbursements agents.">
+            <div class="ui-bar"><span class="ch"><a href="docs/chat-integrations/index.html">Chat integrations</a></span></div>
+            <div class="ui-body">
+              <div class="slk"><span class="av u">AK</span><span><b>Anna K.</b><small>9:41</small><p>Book my trip for Tuesday's all-day meeting in New York</p></span></div>
+              <div class="slk"><span class="av">S</span><span><b>Search2o</b><small>9:41</small><p><b>Travel desk</b> &middot; Booked UA1191, departs 06:00, and a night at the Marriott. $1,240.</p></span></div>
+              <div class="slk"><span class="av u">AK</span><span><b>Anna K.</b><small>9:43</small><p>File the expenses for that trip</p></span></div>
+              <div class="slk"><span class="av">S</span><span><b>Search2o</b><small>9:43</small><p><b>Reimbursements</b> &middot; Filed $1,240 against your cost center. Sent to your manager for approval.</p></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="ui-col">
+          <h3><span class="ui-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-5-6-5"/><path d="M12 19h8"/></svg></span>Agent harness</h3>
+          <div class="ui-shot term" aria-label="A Claude Code terminal. The user asks in one line to book the trip and file the expenses. The search2o-skill splits it into two tasks and runs search and execAgent for each, in one conversation.">
+            <div class="ui-bar"><span class="ch"><a href="https://github.com/Search2o/search2o-skill" target="_blank" rel="noopener">search2o-skill</a> &middot; <a href="docs/skill-integration/index.html">Skill integration</a></span></div>
+            <div class="ui-body">
+              <div><span class="p">&gt;</span> Book my trip for Tuesday's all-day meeting in New York and file the expenses</div>
+              <div class="d">&#9679; search2o-skill: two tasks, one conversation</div>
+              <div class="d">&#9679; search &rarr; Travel desk &middot; execAgent</div>
+              <div><span class="ok">&#10003;</span> Booked UA1191, departs 06:00. $1,240.</div>
+              <div class="d">&#9679; search &rarr; Reimbursements &middot; execAgent</div>
+              <div><span class="ok">&#10003;</span> Filed $1,240. Sent to your manager for approval.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section soft" id="stateless">
+    <div class="container">
+      <div class="section-head center">
+        <h2>Managed state</h2>
+        <p>The platform provides the agentic plumbing you need, so you can work on the business logic.</p>
+      </div>
+      <div class="st-wrap">
+        <div class="st-fig" aria-label="An agent server in your organization with no internal dependency, connected to Search2o Cloud by an encrypted link. The cloud keeps the conversations and memories, encrypted by default.">
+          <div class="st-box st-org">
+            <span class="tag">Your organization</span>
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span>
+            <b>Agent server</b>
+            <small>Stateless<br>No internal dependency</small>
+          </div>
+          <div class="st-link" aria-hidden="true">
+            <i class="ln"></i>
+            <span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>encrypted</span>
+          </div>
+          <div class="st-box st-cloud">
+            <span class="tag">Search2o Cloud</span>
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
+            <b>State</b>
+            <small>Conversations, memories <span class="enc">encrypted by default</span></small>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
   <section class="section" id="platform">
