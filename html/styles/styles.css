@@ -521,6 +521,7 @@ a.as-part:hover { background: var(--bg-soft); color: var(--blue-ink); text-decor
 #framework-runtime .fw-piece { display: flex; align-items: center; gap: 9px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); box-shadow: var(--card-shadow); color: var(--ink); font-size: 13px; font-weight: 600; line-height: 1.25; }
 #framework-runtime .fw-piece .ic { display: grid; place-items: center; flex: 0 0 auto; width: 30px; height: 30px; border-radius: 9px; background: var(--icon-bg); color: var(--icon-fg); }
 #framework-runtime .fw-piece .ic svg { width: 16px; height: 16px; }
+#framework-runtime .fw-piece:hover { border-color: var(--blue); color: var(--blue-ink); text-decoration: none; }
 #framework-runtime .fw-agent { position: relative; display: grid; justify-items: center; gap: 4px; padding: 26px 20px; border: 1px solid var(--blue); border-radius: 16px; background: var(--card); box-shadow: var(--card-shadow-lg); text-align: center; }
 #framework-runtime .fw-agent > b { color: var(--ink); font-size: 17px; font-weight: 800; letter-spacing: -0.02em; }
 #framework-runtime .fw-agent > small { color: var(--muted); font-size: 13px; font-weight: 500; }

@@ -31,6 +31,7 @@ TOC = [
         ("controlled-runtime", "Controlled runtime"),
         ("output", "Agent output"),
         ("order-of-execution", "Order of execution"),
+        ("error-handling", "Error handling"),
         ("conversation-state", "Conversation state"),
     ]),
     ("llm", "LLM", [

@@ -1,0 +1,9 @@
+<p class="lead">The runtime handles the errors an agent meets: a failed LLM, API or database call, a tool call the model got wrong, a limit reached, or a command that raised. An agent names what to do on a command's <code>onError</code> block; everything it does not catch ends the run with a result code and a record in the error report.</p>
+
+<h2>Where errors are handled</h2>
+<ul>
+  <li><a href="../agent-definition/commands.html#error-handling-on-a-command">Error handling on a command</a>: the <code>onError</code> block every command can carry.</li>
+  <li><a href="../commands/fail.html">fail</a>: ending a run with an error of the agent's own.</li>
+  <li><a href="controlled-runtime.html#when-something-fails">When something fails</a>: what the person and the client see.</li>
+  <li><a href="../reports/index.html#result-codes">Result codes</a> and the <a href="../reports/errors.html">error report</a>: how every failure is recorded.</li>
+</ul>
