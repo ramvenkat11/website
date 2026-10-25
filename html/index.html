@@ -135,7 +135,7 @@
     <div class="container">
       <div class="section-head center">
         <h2>Bundled interfaces</h2>
-        <p>Agent server exposes a REST interface with an OpenAPI spec.</p>
+        <p>Two REST calls and an authorization header are all a client needs.</p>
       </div>
       <div class="ui-fan" aria-label="Three clients, a browser chat, the chat applications and an agent harness, all call the Search2o agent server with the same two calls: search finds the agent for a request, and execAgent runs it in the conversation.">
         <div class="ui-clients">
@@ -200,19 +200,25 @@
   <section class="section" id="framework-runtime">
     <div class="container">
       <div class="section-head center">
-        <h2>All the plumbing you need</h2>
-        <p>Agent runtime takes care of the infrastructure, so an agent is only business logic.</p>
+        <h2>Built-in agent infrastructure</h2>
+        <p>Agent runtime takes care of all the plumbing, so an agent is only business logic.</p>
       </div>
       <div class="fw-wrap">
-        <div class="fw-fig" aria-label="An agent, which is only business logic, runs inside the agent runtime. The runtime around it provides LLM calls, API, database and MCP calls, parallel execution, human in the loop, saving and restoring conversations, and memory. A request goes into the agent and a response comes out.">
+        <div class="fw-fig" aria-label="An agent, which is only business logic, runs inside the agent runtime. The runtime around it provides LLM calls, the tool calling loop, API, database and MCP calls, connection pools, error handling, human in the loop, saving and restoring conversations, memory, runtime limits, cost and time metrics, agent versioning and externalized configuration.">
           <span class="fw-tag">Agent runtime</span>
           <div class="fw-ring">
           <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.2A8 8 0 1 1 21 12Z"/></svg></i>LLM calls</span>
+          <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/><path d="M9 12h6M12 9v6"/></svg></i>Tool calling loop</span>
           <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2v5M15 2v5M6 7h12v4a6 6 0 0 1-12 0V7Z"/><path d="M12 17v5"/></svg></i>API, database and MCP calls</span>
-          <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 7h13M3 12h13M3 17h13"/><path d="m14 4 3 3-3 3"/><path d="m14 9 3 3-3 3"/><path d="m14 14 3 3-3 3"/></svg></i>Parallel execution</span>
+          <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.5-1.5"/></svg></i>Connection pools</span>
+          <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5h.01"/></svg></i>Error handling</span>
           <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></i>Human in the loop</span>
-          <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-15.5 6.2M3 12a9 9 0 0 1 15.5-6.2"/><path d="M3 7v5h5M21 17v-5h-5"/></svg></i>Save and restore conversations</span>
+          <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-15.5 6.2M3 12a9 9 0 0 1 15.5-6.2"/><path d="M3 7v5h5M21 17v-5h-5"/></svg></i>Save/Restore conversations</span>
           <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a7 7 0 0 0-7 7c0 2.4 1.2 4.1 2.5 5.3V19h9v-3.7C17.8 14.1 19 12.4 19 10a7 7 0 0 0-7-7Z"/><path d="M9 22h6"/></svg></i>Memory</span>
+          <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></i>Runtime limits</span>
+          <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15v-4M12 15V8M17 15v-6"/></svg></i>Cost and time metrics</span>
+          <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 8v8M18 10a6 6 0 0 1-6 6H8"/></svg></i>Agent versioning</span>
+          <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></i>Externalized configuration</span>
             <div class="fw-run"><span class="fw-io in"><b>request</b></span><div class="fw-agent"><b>Your agent</b><small>Business logic only</small></div><span class="fw-io out"><b>response</b></span></div>
           </div>
         </div>
@@ -238,12 +244,12 @@
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></div>
           <h3>Model neutrality</h3>
-          <p>Each agent uses only the model its workflow needs, whether frontier, cheap or free. <a href="docs/llm/index.html">Bundled adapters</a> for OpenAI, Anthropic, Gemini, Ollama, vLLM and SGLang, and a way to connect any other LLM. An agent's LLM settings live in <a href="docs/profiles/index.html">profiles</a>, not its code.</p>
+          <p>Each agent picks its model. <a href="docs/llm/vendors.html">Out of the box</a>: OpenAI-compatible models, Anthropic, Gemini, Ollama, vLLM and SGLang. <a href="docs/llm/llm-adapters.html">Adapters</a> can be added for other LLMs.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15v-4M12 15V8M17 15v-6"/></svg></div>
           <h3>Observability &amp; cost</h3>
-          <p>Every run records its LLM cost, time and result, failures included. <a href="docs/reports/index.html">Reports</a> show cost, errors, performance and usage per agent and user, with a trend. Every run has a <a href="docs/runtime/runtime-limits.html">spend limit</a>.</p>
+          <p>Every run records its cost, time and result, failures included. <a href="docs/reports/index.html">Reports</a> show cost, errors, performance and usage per agent and user. Every run has a <a href="docs/runtime/runtime-limits.html">spend limit</a>.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="5" height="8" rx="1"/><rect x="9.5" y="3" width="5" height="8" rx="1"/><rect x="17" y="3" width="5" height="8" rx="1"/><path d="M2 18h20"/><path d="m18 14 4 4-4 4"/><path d="m6 14-4 4 4 4"/></svg></div>

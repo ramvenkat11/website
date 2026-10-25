@@ -517,7 +517,7 @@ a.as-part:hover { background: var(--bg-soft); color: var(--blue-ink); text-decor
 #framework-runtime .fw-io::after { content: ""; position: absolute; top: 50%; margin-top: -5px; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
 #framework-runtime .fw-io.in::after { right: -16px; border-left: 8px solid var(--slate); }
 #framework-runtime .fw-io.out::after { left: -16px; border-left: 8px solid var(--slate); }
-#framework-runtime .fw-ring { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: center; }
+#framework-runtime .fw-ring { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; align-items: center; }
 #framework-runtime .fw-piece { display: flex; align-items: center; gap: 9px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); box-shadow: var(--card-shadow); color: var(--ink); font-size: 13px; font-weight: 600; line-height: 1.25; }
 #framework-runtime .fw-piece .ic { display: grid; place-items: center; flex: 0 0 auto; width: 30px; height: 30px; border-radius: 9px; background: var(--icon-bg); color: var(--icon-fg); }
 #framework-runtime .fw-piece .ic svg { width: 16px; height: 16px; }
@@ -527,6 +527,7 @@ a.as-part:hover { background: var(--bg-soft); color: var(--blue-ink); text-decor
 #framework-runtime .fw-piece:nth-child(-n+3) { order: -1; }
 @media (max-width: 1000px) {
   #framework-runtime .fw-wrap { max-width: 600px; }
+  #framework-runtime .fw-ring { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 }
 @media (max-width: 860px) {
   #framework-runtime .fw-fig { padding: 30px 16px 20px; }
