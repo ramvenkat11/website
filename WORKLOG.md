@@ -899,3 +899,4 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Figures narrowed (Ram): Bundled interfaces fan capped at 900px and centred; hero `.appsrv` capped at 960px and centred (was full container width). Checked 1280 and 861–1100 for overflow.
 - Bundled interfaces: the client tiles were a fixed share of the row and left empty space inside; the three fan columns are now content-sized (`auto`), the tile line kept on one line on desktop, server box min 220px. Scanned 1280–360, no overflow.
 - Section 5 (Ram): request and response pills now sit inside the Agent runtime frame on either side of the agent box (`.fw-run` row: pill, agent, pill); "answer" → "response". On phones the pills stack above and below the agent box. Scanned 1280–360, no overflow.
+- Section 5: response arrowhead now points away from the agent (was mirrored the wrong way).
