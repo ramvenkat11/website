@@ -877,3 +877,4 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Home page order now: hero, search-and-conversation, user-interfaces, stateless, platform… Two plain-background sections now sit side by side (stateless, platform); mention to Ram.
 - Rendered 1280/1000/860/700 (frame 4000) and 384/375/360 (frame 6000) light and dark; no overflow; links ok. Not committed.
 - Section 4 now on the soft background (`section soft`) so it separates from the platform section (Ram).
+- Backgrounds now alternate: search-and-conversation soft, user-interfaces plain, stateless soft, platform plain (Ram: plumbing looked the same as platform). Full page rendered at 1280.
