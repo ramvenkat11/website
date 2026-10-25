@@ -879,3 +879,4 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Section 4 now on the soft background (`section soft`) so it separates from the platform section (Ram).
 - Backgrounds now alternate: search-and-conversation soft, user-interfaces plain, stateless soft, platform plain (Ram: plumbing looked the same as platform). Full page rendered at 1280.
 - Section 3 h2 now "Bundled user interfaces" (Ram).
+- Section 4 h2 now "Managed state" (Ram).
