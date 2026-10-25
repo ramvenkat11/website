@@ -876,3 +876,4 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - `html/styles/styles.css`: `#stateless` block before the reduced-motion rule (two-column figure, stacks with a vertical arrow ≤640); h2 added to the 24px rule in place of `#how-it-works`. The old `.how-steps/.how-step` rules and `.how-step .nw`/`p + p` are now unused (left in place; report only). `content/parts-of-the-system.md` is the source of the removed boxes.
 - Home page order now: hero, search-and-conversation, user-interfaces, stateless, platform… Two plain-background sections now sit side by side (stateless, platform); mention to Ram.
 - Rendered 1280/1000/860/700 (frame 4000) and 384/375/360 (frame 6000) light and dark; no overflow; links ok. Not committed.
+- Section 4 now on the soft background (`section soft`) so it separates from the platform section (Ram).
