@@ -924,3 +924,6 @@ Platform: Change control -> Model neutrality (adapters list, profile link; audit
 
 ## 2026-10-25 Model neutrality card text
 Now: "Each agent uses the model its workflow needs. Adapters for OpenAI-compatible models, Anthropic, Gemini, Ollama, vLLM and SGLang, and adapters can be added for others." (profile sentence and "frontier, cheap or free" removed per Ram; Adapters links to docs/llm/llm-adapters.html). Rendered #platform at all widths, clean. Uncommitted.
+
+## 2026-10-25 Model neutrality card, four lines
+"Each agent picks its model. Out of the box: OpenAI-compatible models, Anthropic, Gemini, Ollama, vLLM and SGLang. Adapters can be added for other LLMs." Links: Out of the box -> docs/llm/vendors.html, Adapters -> docs/llm/llm-adapters.html. Four lines at 1280, rendered all widths, clean. Uncommitted.
