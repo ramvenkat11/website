@@ -137,44 +137,33 @@
         <h2>Bundled user interfaces</h2>
         <p>Used from the browser, chat applications or an agent harness.</p>
       </div>
-      <div class="ui-grid">
-        <div class="ui-col">
-          <h3><span class="ui-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span>Browser chat</h3>
-          <div class="ui-shot" aria-label="A browser chat window. The user asks to book a trip to New York, the Travel desk agent books it, the user asks to file the expenses, and the Reimbursements agent files them.">
-            <div class="ui-bar"><i></i><i></i><i></i><span>Use the built-in UI or <a href="docs/rest-api/index.html">build your own</a>.</span></div>
-            <div class="ui-body">
-              <div class="bub me">Book my trip for Tuesday's all-day meeting in New York</div>
-              <div class="bub bot"><b>Travel desk</b>Booked UA1191, departs 06:00, and a night at the Marriott. $1,240.</div>
-              <div class="bub me">File the expenses for that trip</div>
-              <div class="bub bot"><b>Reimbursements</b>Filed $1,240 against your cost center. Sent to your manager for approval.</div>
-            </div>
+      <div class="ui-fan" aria-label="Three clients, a browser chat, the chat applications and an agent harness, all call the Search2o agent server with the same two calls: search finds the agent for a request, and execAgent runs it in the conversation.">
+        <div class="ui-clients">
+          <div class="ui-tile">
+            <span class="ui-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span>
+            <span><b>Browser chat</b><small>Use the built-in UI or <a href="docs/rest-api/index.html">build your own</a>.</small></span>
+          </div>
+          <div class="ui-tile">
+            <span class="ui-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.2A8 8 0 1 1 21 12Z"/></svg></span>
+            <span><b>Slack, Teams, Google Chat</b><small><a href="docs/chat-integrations/index.html">Chat integrations</a></small></span>
+          </div>
+          <div class="ui-tile">
+            <span class="ui-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-5-6-5"/><path d="M12 19h8"/></svg></span>
+            <span><b>Agent harness</b><small><a href="https://github.com/Search2o/search2o-skill" target="_blank" rel="noopener">search2o-skill</a> &middot; <a href="docs/skill-integration/index.html">Skill integration</a></small></span>
           </div>
         </div>
-        <div class="ui-col">
-          <h3><span class="ui-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.2A8 8 0 1 1 21 12Z"/></svg></span>Slack, Teams, Google Chat</h3>
-          <div class="ui-shot" aria-label="A direct message with the Search2o app. A person asks it to book a trip to New York and then to file the expenses, and the app answers from the Travel desk and Reimbursements agents.">
-            <div class="ui-bar"><span class="ch"><a href="docs/chat-integrations/index.html">Chat integrations</a></span></div>
-            <div class="ui-body">
-              <div class="slk"><span class="av u">AK</span><span><b>Anna K.</b><small>9:41</small><p>Book my trip for Tuesday's all-day meeting in New York</p></span></div>
-              <div class="slk"><span class="av">S</span><span><b>Search2o</b><small>9:41</small><p><b>Travel desk</b> &middot; Booked UA1191, departs 06:00, and a night at the Marriott. $1,240.</p></span></div>
-              <div class="slk"><span class="av u">AK</span><span><b>Anna K.</b><small>9:43</small><p>File the expenses for that trip</p></span></div>
-              <div class="slk"><span class="av">S</span><span><b>Search2o</b><small>9:43</small><p><b>Reimbursements</b> &middot; Filed $1,240 against your cost center. Sent to your manager for approval.</p></span></div>
-            </div>
-          </div>
+        <div class="ui-bus" aria-hidden="true"><svg viewBox="0 0 64 300" preserveAspectRatio="none"><line x1="0" y1="50" x2="44" y2="50"/><line x1="0" y1="150" x2="44" y2="150"/><line x1="0" y1="250" x2="44" y2="250"/><line x1="44" y1="50" x2="44" y2="250"/><line x1="44" y1="150" x2="64" y2="150"/></svg></div>
+        <div class="ui-down" aria-hidden="true"></div>
+        <div class="ui-calls">
+          <code><span class="fn">search</span>() <span class="arr">&rarr;</span> agent</code>
+          <code><span class="fn">execAgent</span>() <span class="arr">&rarr;</span> answer</code>
         </div>
-        <div class="ui-col">
-          <h3><span class="ui-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-5-6-5"/><path d="M12 19h8"/></svg></span>Agent harness</h3>
-          <div class="ui-shot term" aria-label="A Claude Code terminal. The user asks in one line to book the trip and file the expenses. The search2o-skill splits it into two tasks and runs search and execAgent for each, in one conversation.">
-            <div class="ui-bar"><span class="ch"><a href="https://github.com/Search2o/search2o-skill" target="_blank" rel="noopener">search2o-skill</a> &middot; <a href="docs/skill-integration/index.html">Skill integration</a></span></div>
-            <div class="ui-body">
-              <div><span class="p">&gt;</span> Book my trip for Tuesday's all-day meeting in New York and file the expenses</div>
-              <div class="d">&#9679; search2o-skill: two tasks, one conversation</div>
-              <div class="d">&#9679; search &rarr; Travel desk &middot; execAgent</div>
-              <div><span class="ok">&#10003;</span> Booked UA1191, departs 06:00. $1,240.</div>
-              <div class="d">&#9679; search &rarr; Reimbursements &middot; execAgent</div>
-              <div><span class="ok">&#10003;</span> Filed $1,240. Sent to your manager for approval.</div>
-            </div>
-          </div>
+        <div class="ui-link" aria-hidden="true"></div>
+        <div class="ui-down" aria-hidden="true"></div>
+        <div class="ui-srv">
+          <span class="t">Search2o agent server</span>
+          <span class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search</span>
+          <span class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>Agent runtime</span>
         </div>
       </div>
     </div>
@@ -183,15 +172,15 @@
     <div class="container">
       <div class="section-head center">
         <h2>Managed state</h2>
-        <p>The platform provides the agentic plumbing you need, so you can work on the business logic.</p>
+        <p>No required databases or queues in your organization.</p>
       </div>
       <div class="st-wrap">
-        <div class="st-fig" aria-label="An agent server in your organization with no internal dependency, connected to Search2o Cloud by an encrypted link. The cloud keeps the conversations and memories, encrypted by default.">
+        <div class="st-fig" aria-label="A cluster of stateless agent servers in your organization with no internal dependency, connected to Search2o Cloud by an encrypted link. The cloud keeps the conversations and memories, encrypted by default.">
           <div class="st-box st-org">
             <span class="tag">Your organization</span>
-            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span>
-            <b>Agent server</b>
-            <small>Stateless<br>No internal dependency</small>
+            <span class="cluster"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span></span>
+            <b>Agent servers</b>
+            <small>Stateless, no internal dependency</small>
           </div>
           <div class="st-link" aria-hidden="true">
             <i class="ln"></i>
@@ -207,7 +196,29 @@
       </div>
     </div>
   </section>
-  <section class="section" id="platform">
+  <section class="section" id="framework-runtime">
+    <div class="container">
+      <div class="section-head center">
+        <h2>Agent framework and runtime</h2>
+        <p>They take care of the plumbing, so an agent is only business logic.</p>
+      </div>
+      <div class="fw-wrap">
+        <div class="fw-fig" aria-label="An agent, which is only business logic, runs inside a controlled runtime. The framework around it provides human in the loop, memory, API and database calls, saving and restoring conversations, LLM calls and model neutrality. A request goes into the agent and an answer comes out.">
+          <span class="fw-tag">Controlled runtime</span>
+          <div class="fw-ring">
+          <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></i>Human in the loop</span>
+          <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a7 7 0 0 0-7 7c0 2.4 1.2 4.1 2.5 5.3V19h9v-3.7C17.8 14.1 19 12.4 19 10a7 7 0 0 0-7-7Z"/><path d="M9 22h6"/></svg></i>Memory</span>
+          <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v12c0 1.7 3.1 3 7 3s7-1.3 7-3V6"/><path d="M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/></svg></i>API and database calls</span>
+          <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-15.5 6.2M3 12a9 9 0 0 1 15.5-6.2"/><path d="M3 7v5h5M21 17v-5h-5"/></svg></i>Save and restore conversations</span>
+          <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.2A8 8 0 1 1 21 12Z"/></svg></i>LLM calls</span>
+          <span class="fw-piece"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></i>Model neutrality</span>
+            <div class="fw-agent"><span class="fw-io in"><b>request</b></span><b>Your agent</b><small>Business logic only</small><span class="fw-io out"><b>answer</b></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section soft" id="platform">
     <div class="container">
       <div class="section-head center">
         <span class="kicker">Platform</span>

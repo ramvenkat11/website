@@ -1,4 +1,4 @@
-- How it works goes away
-- Replaced by a section on builtin plumbing
-- This section talks about the cloud (takes care of state with no organization dependency), conversation state auto save/restore and how the 20 framework commands provide all the agentic primitives.
-- I don't want essays - possibly small pictures
+- Add a new section after managed state
+- Agent framework and runtime
+-- Takes care of all the plumbing
+-- Picture: Show the face that the agent runs in a controlled runtime, the state is automatically saved and restored (don't show the cloud), the framework provides human in the loop, memory, api/db calls, parallel executions etc.
