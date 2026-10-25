@@ -915,3 +915,6 @@ Ram: "source available" is licence terminology; pill now reads "GitHub" (mark + 
 
 ## 2026-10-25 Browser chat tile: "Bundled UI or build your own."
 Ram does not want "Use the". Rendered #user-interfaces at all widths, no overflow. Uncommitted.
+
+## 2026-10-25 Bundled UI linked to docs/gui/index.html
+Ram chose docs over GitHub (GUI tour links to the ui repo itself). Rendered #user-interfaces at all widths, no overflow. Uncommitted.
