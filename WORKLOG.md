@@ -906,3 +906,6 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 
 ## 2026-10-25 Bundled interfaces: "built-in UI" -> "bundled UI"
 Browser chat tile line now "Use the bundled UI or build your own." Rendered at 1280-360 light/dark, no overflow. Ram asked where to say that everything running in the organization is source available on GitHub; options offered, no edit yet. Uncommitted.
+
+## 2026-10-25 Source available: Managed state pill and Security card
+Org box in #stateless now carries a GitHub-mark pill "source available" (a.src, styled like the encrypted lock pill) linking to https://github.com/Search2o; CSS after .st-org small. Security & privacy card paraphrased from content/newhome.txt line 7: vault / conversations and memories encrypted by default / "run from source" link to the GitHub org. Figure aria-label mentions source availability. Rendered #stateless and #platform at 1280-360 light/dark, no overflow. Ram will look at the pill and decide. Uncommitted.
