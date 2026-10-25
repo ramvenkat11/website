@@ -881,3 +881,4 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Section 3 h2 now "Bundled user interfaces" (Ram).
 - Section 4 h2 now "Managed state" (Ram).
 - Section 3 redone as three plain tiles (Ram picked "drop the mocks, keep icons"): icon, name, one link line each (Browser chat: use the built-in UI or build your own → REST API; Slack, Teams, Google Chat: Chat integrations; Agent harness: search2o-skill · Skill integration). The mock screens and their CSS (`.ui-shot/.ui-bar/.bub/.slk/.term`) are gone; `#user-interfaces` block now ~8 lines. Rendered 1280/700/360 light and dark, no overflow.
+- Managed state on phones: the vertical arrow between the boxes had collapsed (percentage height in an auto grid row); now absolutely positioned inside the 86px link block, ending 14px above the cloud tag so the lower head shows. Checked 384 light and dark.
