@@ -956,3 +956,6 @@ Ram: hero-sub "Search2o agent server simplifies your agentic enterprise, so you 
 
 ## 2026-10-25 Hero subline reverted
 Ram: revert. hero-sub is back to "Search2o agent server simplifies how you build, run and use agents." (matches HEAD).
+
+## 2026-10-25 Token in the interfaces figure
+Ram asked whether the authorization token could be shown in the #user-interfaces figure; three mockups (serve/mock-token.html in the scratchpad: header line in the calls box, pill on the box border, pill on the client lines) rendered at 1280 and 375; Ram chose option 1. The calls box now opens with `<code class="hdr">Authorization: Bearer &lt;token&gt;</code>` above search()/execAgent(); CSS `.ui-calls .hdr` (dashed rule below) after `.ui-calls .fn`. Figure aria-label says each call carries an authorization token. Rendered with render-ui.sh tk at all widths light/dark. Uncommitted.
