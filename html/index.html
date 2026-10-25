@@ -137,7 +137,7 @@
         <h2>Bundled interfaces</h2>
         <p>Two REST calls and an authorization token are all a client needs.</p>
       </div>
-      <div class="ui-fan" aria-label="Three clients, a browser chat, the chat applications and an agent harness, all call the Search2o agent server with the same two calls: search finds the agent for a request, and execAgent runs it in the conversation.">
+      <div class="ui-fan" aria-label="Three clients, a browser chat, the chat applications and an agent harness, all call the Search2o agent server with the same two calls, search to find the agent for a request and execAgent to run it in the conversation, and each call carries an authorization token.">
         <div class="ui-clients">
           <div class="ui-tile">
             <span class="ui-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span>
@@ -155,6 +155,7 @@
         <div class="ui-bus" aria-hidden="true"><svg viewBox="0 0 64 300" preserveAspectRatio="none"><line x1="0" y1="50" x2="44" y2="50"/><line x1="0" y1="150" x2="44" y2="150"/><line x1="0" y1="250" x2="44" y2="250"/><line x1="44" y1="50" x2="44" y2="250"/><line x1="44" y1="150" x2="64" y2="150"/></svg></div>
         <div class="ui-down" aria-hidden="true"></div>
         <div class="ui-calls">
+          <code class="hdr">Authorization: Bearer &lt;token&gt;</code>
           <code><span class="fn">search</span>() <span class="arr">&rarr;</span> agent</code>
           <code><span class="fn">execAgent</span>() <span class="arr">&rarr;</span> answer</code>
         </div>

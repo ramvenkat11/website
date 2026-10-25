@@ -482,6 +482,7 @@ a.as-part:hover { background: var(--bg-soft); color: var(--blue-ink); text-decor
 #user-interfaces .ui-calls::before { content: ""; position: absolute; left: -8px; top: 50%; margin-top: -6px; width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 8px solid var(--slate); }
 #user-interfaces .ui-calls code { display: block; font-family: var(--mono); font-size: 13px; line-height: 1.5; color: var(--muted); }
 #user-interfaces .ui-calls .fn { color: var(--ink); font-weight: 600; }
+#user-interfaces .ui-calls .hdr { padding-bottom: 6px; margin-bottom: 2px; border-bottom: 1px dashed var(--line); }
 #user-interfaces .ui-calls .arr { color: var(--blue-ink); }
 #user-interfaces .ui-link { position: relative; height: 2px; background: var(--slate); }
 #user-interfaces .ui-link::after { content: ""; position: absolute; right: 0; top: 50%; margin-top: -6px; width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 8px solid var(--slate); }
