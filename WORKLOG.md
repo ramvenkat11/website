@@ -927,3 +927,6 @@ Now: "Each agent uses the model its workflow needs. Adapters for OpenAI-compatib
 
 ## 2026-10-25 Model neutrality card, four lines
 "Each agent picks its model. Out of the box: OpenAI-compatible models, Anthropic, Gemini, Ollama, vLLM and SGLang. Adapters can be added for other LLMs." Links: Out of the box -> docs/llm/vendors.html, Adapters -> docs/llm/llm-adapters.html. Four lines at 1280, rendered all widths, clean. Uncommitted.
+
+## 2026-10-25 Observability card four lines; plumbing piece Cost and time metrics
+Observability & cost: dropped "LLM" and ", with a trend" -> four lines at 1280. Plumbing: Parallel execution -> "Cost and time metrics" (bar chart icon; Ram rejected "Automatic metrics" as a plumbing word). aria-label updated. Rendered both sections at all widths, clean. Uncommitted.
