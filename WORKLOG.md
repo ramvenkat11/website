@@ -909,3 +909,6 @@ Browser chat tile line now "Use the bundled UI or build your own." Rendered at 1
 
 ## 2026-10-25 Source available: Managed state pill and Security card
 Org box in #stateless now carries a GitHub-mark pill "source available" (a.src, styled like the encrypted lock pill) linking to https://github.com/Search2o; CSS after .st-org small. Security & privacy card paraphrased from content/newhome.txt line 7: vault / conversations and memories encrypted by default / "run from source" link to the GitHub org. Figure aria-label mentions source availability. Rendered #stateless and #platform at 1280-360 light/dark, no overflow. Ram will look at the pill and decide. Uncommitted.
+
+## 2026-10-25 Pill text -> GitHub
+Ram: "source available" is licence terminology; pill now reads "GitHub" (mark + word), same link. Figure aria-label updated. Rendered 1280/640/360 light and dark, clean. Uncommitted.
