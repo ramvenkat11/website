@@ -930,3 +930,6 @@ Now: "Each agent uses the model its workflow needs. Adapters for OpenAI-compatib
 
 ## 2026-10-25 Observability card four lines; plumbing piece Cost and time metrics
 Observability & cost: dropped "LLM" and ", with a trend" -> four lines at 1280. Plumbing: Parallel execution -> "Cost and time metrics" (bar chart icon; Ram rejected "Automatic metrics" as a plumbing word). aria-label updated. Rendered both sections at all widths, clean. Uncommitted.
+
+## 2026-10-25 Agent runtime section: 12 pieces, new heading
+h2 "Built-in agent infrastructure", p "Agent runtime takes care of all the plumbing, so an agent is only business logic." Pieces now 12 in a 4-col grid (3 cols <=1000, 2 <=860, 1 <=420): LLM calls, API/db/MCP calls, Connection pools, Parallel execution | Human in the loop, Save and restore conversations, Memory, Error handling | Runtime limits, Cost and time metrics, Agent versioning, Externalized configuration. All verified against docs (connection-pools, commands parallel/onError, runtime-limits, publishing, profiles). aria-label updated. Rendered all widths light/dark, clean; "Save and restore conversations" is 3 lines at 1280. Uncommitted.
