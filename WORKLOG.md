@@ -902,3 +902,4 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Section 5: response arrowhead now points away from the agent (was mirrored the wrong way).
 - Section 3 line now "A REST interface with an OpenAPI spec supports generating any interface." (Ram).
 - Section 3 line now "Agent server exposes a REST interface with an OpenAPI spec." (Ram).
+- Platform cards (Ram): "API & automation" → "Integration": three levels, Python expressions in an agent, the REST API, hooks (linked). Security card: "Sensitive information is encrypted by default and can be encrypted end to end."; the hooks sentence removed from it.
