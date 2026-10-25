@@ -880,3 +880,4 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Backgrounds now alternate: search-and-conversation soft, user-interfaces plain, stateless soft, platform plain (Ram: plumbing looked the same as platform). Full page rendered at 1280.
 - Section 3 h2 now "Bundled user interfaces" (Ram).
 - Section 4 h2 now "Managed state" (Ram).
+- Section 3 redone as three plain tiles (Ram picked "drop the mocks, keep icons"): icon, name, one link line each (Browser chat: use the built-in UI or build your own → REST API; Slack, Teams, Google Chat: Chat integrations; Agent harness: search2o-skill · Skill integration). The mock screens and their CSS (`.ui-shot/.ui-bar/.bub/.slk/.term`) are gone; `#user-interfaces` block now ~8 lines. Rendered 1280/700/360 light and dark, no overflow.
