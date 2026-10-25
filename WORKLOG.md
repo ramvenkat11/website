@@ -947,3 +947,6 @@ Ram: "Two REST calls and an authorization token are all a client needs." (header
 
 ## 2026-10-25 Managed state subheading
 Ram: "No databases or queues required in your organization." (was "No required databases or queues in your organization.") in #stateless. Checked at 1280 and 375. Uncommitted.
+
+## 2026-10-25 Managed state subheading, again
+Ram: "No dependencies on databases or queues in your organization." Checked at 1280 and 375. Uncommitted.
