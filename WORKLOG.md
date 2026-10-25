@@ -895,3 +895,4 @@ Rendered dark/light at 1280 and at 390 (iframe). Not committed, not uploaded.
 - Platform section: "Platform" kicker removed, heading "Built for the enterprise" alone (Ram).
 - Section 3 h2 now "Bundled interfaces" (Ram).
 - Product menu: click now toggles open and closed (Ram). The hover-to-open and the click guard that kept a hovered menu from closing are removed from site.js; outside click and Escape still close it.
+- Section 2 notes recoloured from beige to the page palette (Ram: too bright and stark): background var(--bg-soft), border var(--line), body text var(--body), labels and phone markers var(--blue-ink); pointer matches; no shadow. Follows the theme in dark mode. Checked 1280 light and dark, 384.
