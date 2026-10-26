@@ -7,7 +7,7 @@ docsrc/<section>/<page>.html. A section's own landing page is docsrc/<section>/i
 TOC = [
     ("introduction", "Introduction", [
         ("what-is-search2o", "What is Search2o"),
-        ("microagents", "Microagents"),
+        ("search2o-agents", "Search2o agents"),
         ("parts-of-the-system", "Parts of the system"),
         ("how-it-fits-together", "How it fits together"),
     ]),

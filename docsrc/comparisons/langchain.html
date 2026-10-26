@@ -1,5 +1,5 @@
 <p class="lead">LangChain's frameworks are for building an agent, of any size. Search2o is for an organization running many small ones as one system: developers write them, and everyone else runs them from one search box. The two overlap in places, which is why the question comes up, but they start from different problems.</p>
-<p>A Search2o agent is a <a href="../introduction/microagents.html">microagent</a>: one task, independent of every other agent, with a boundary that can be written down, on the systems it may reach, its time and its LLM cost. It is expected to run thousands of times for different users, quickly and at low cost. The rest of this page says "agent".</p>
+<p>A <a href="../introduction/search2o-agents.html">Search2o agent</a> is an independent unit built for a single task. Agents do not call other agents. Its limits are written down: which systems it may reach, how long it may run and how much it may spend on LLM calls. It is built to run thousands of times, for different users, quickly and at low cost.</p>
 <p>"LangChain" is several products, and the difference is not the same for each:</p>
 <ul>
   <li><strong>The frameworks.</strong> <a href="https://docs.langchain.com/oss/python/langchain/overview" target="_blank" rel="noopener">LangChain</a>, <a href="https://docs.langchain.com/oss/python/langgraph/overview" target="_blank" rel="noopener">LangGraph</a> and Deep Agents are open-source libraries for building an agent in Python or TypeScript. LangSmith is the platform for tracing, evaluating and deploying what gets built. LangGraph describes itself as a runtime for long-running, stateful agents, and Deep Agents as a harness for long-running agents on complex tasks. A Search2o agent is short-running and holds no state of its own (the conversation does), so these frameworks and Search2o are built for different kinds of agent.</li>
@@ -36,7 +36,7 @@
 <p>The definition is also the boundary. It names the profiles the agent may reach, so it reaches nothing else. It runs inside a controlled runtime with no arbitrary code, and it stops at its time and LLM cost budgets. Because it has a few specific paths rather than an open-ended set, it is validated before publishing by a real run with every step traced, and the same request takes the same path on every run.</p>
 <p>Like a microservice, an agent holds no state of its own. The conversation that runs it holds the state.</p>
 <p>In LangChain's frameworks, an agent is code, with the whole language available, and nothing bounds what one agent is. The frameworks are built for the large end: LangGraph for long-running, stateful agents that persist through failures and resume where they left off, Deep Agents for complex tasks, with planning, subagents, a virtual filesystem and context management. With <code>create_agent</code> and Deep Agents, a model works in a loop and chooses the next tool. With LangGraph, the developer lays out a graph and decides which steps are fixed code and which are left to the model.</p>
-<p>The kinds of agent the microagents page sets aside, a general assistant that takes any question, or an analysis workbench whose cost and reach are not known in advance, are the kinds these frameworks are made for.</p>
+<p>The kinds of agent the Search2o agents page sets aside, a general assistant that takes any question, or an analysis workbench whose cost and reach are not known in advance, are the kinds these frameworks are made for.</p>
 <p>In Fleet, an agent is instructions, tools and its own memory, and the model decides the steps on each run. Its scope is whatever its description says, and there is no fixed path to validate.</p>
 
 <h2>How do agents work together?</h2>
@@ -69,9 +69,9 @@
 </ul>
 
 <h2>Sources</h2>
-<p>LangChain statements were checked against LangChain's own pages on October 3, 2026. Search2o statements come from the Microagents page, read on October 14, 2026, the Prompts page, read on October 20, 2026, and the rest of the <a href="../index.html">Search2o documentation</a>.</p>
+<p>LangChain statements were checked against LangChain's own pages on October 3, 2026. Search2o statements come from the Search2o agents page, read on October 26, 2026, the Prompts page, read on October 20, 2026, and the rest of the <a href="../index.html">Search2o documentation</a>.</p>
 <ul>
-  <li><a href="../introduction/microagents.html">Microagents</a></li>
+  <li><a href="../introduction/search2o-agents.html">Search2o agents</a></li>
   <li><a href="../agent-definition/prompts.html">Prompts</a></li>
   <li><a href="https://docs.langchain.com/oss/python/langchain/overview" target="_blank" rel="noopener">LangChain overview</a></li>
   <li><a href="https://docs.langchain.com/oss/python/langgraph/overview" target="_blank" rel="noopener">LangGraph overview</a></li>
