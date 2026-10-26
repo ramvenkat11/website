@@ -1011,3 +1011,7 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Checked error-handling.html and commands/llm.html at 1280 and 360, light and dark, no overflow; close-ups read.
 - Nothing committed.
 - Const page: sensitive text belongs in the const (definition and prompts are stored in plain form in the cloud, the const encrypted); lead, the "keep values" paragraph and the Encrypted section say so. Prompts page: one sentence pointing sensitive text at the const.
+
+## 2026-10-26 callFailed fixed; Read-only namespaces page
+- reports/index.html: callFailed now "The agent server could not complete a call to Search2o Cloud during the run."
+- The "Read-only namespaces" section (const, sys, command, result, exc, reserved names) moved out of `docsrc/agent-definition/variables.html` into new `docsrc/agent-definition/read-only-namespaces.html`; TOC: Variables page renamed "Variables", new entry "Read-only namespaces" after it. Links whose text was "Variables and namespaces" updated (see next entry for which point where).
