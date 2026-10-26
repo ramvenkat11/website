@@ -1015,3 +1015,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-26 callFailed fixed; Read-only namespaces page
 - reports/index.html: callFailed now "The agent server could not complete a call to Search2o Cloud during the run."
 - The "Read-only namespaces" section (const, sys, command, result, exc, reserved names) moved out of `docsrc/agent-definition/variables.html` into new `docsrc/agent-definition/read-only-namespaces.html`; TOC: Variables page renamed "Variables", new entry "Read-only namespaces" after it. Links whose text was "Variables and namespaces" updated (see next entry for which point where).
+- Links retargeted: allowlist.html, runtime/system-variables.html, commands/var.html and python-expressions.html now point to read-only-namespaces.html; controlled-runtime.html points to variables.html as "Variables". Checked new page, Variables and Reports at 1280/360 light/dark, no overflow. Nothing committed.
