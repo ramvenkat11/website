@@ -980,3 +980,6 @@ Ram: too much "built" (section "Built for the enterprise", card "Built for teams
 
 ## 2026-10-25 Card title: Multi-user
 Ram: no marketing fluff, say what it is. Card is "Multi-user": "Built-in authentication and single sign-on. Four roles: users, developers, administrators and owners. Service accounts for bots and scripts." Same four links. Rendered with SEC=platform render-st.sh mu. Uncommitted.
+
+## 2026-10-25 Card title: Multi-user access and roles
+Ram: "Built for teams", "Ready for teams" and "Multi-user" all rejected. Card is now "Multi-user access and roles" with the original text back: "Four roles: users, developers, administrators and owners. Service accounts for bots and scripts. Built-in authentication as well as single sign-on." Links: users-and-roles, service-accounts, authentication, single-sign-on. Rendered with SEC=platform render-st.sh ma. Uncommitted.
