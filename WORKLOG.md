@@ -1102,3 +1102,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Ram will revise "Built for the enterprise" later to remove repetitions (model neutrality, secret vault, live config appear there too).
 - Not committed.
 - Box outline tag "Agent runtime" → "Agent server" (index.html:147); aria-label wording matched. Rendered 1280 light and 360 dark, tag centred on the dashed border.
+- Header menu "Agent runtime" → "Agent server" was applied to 13 pages + build.py, then reverted on Ram's instruction (it was wrong). Pages, build.py and html/docs are back to the previous state. The box tag change stands.
