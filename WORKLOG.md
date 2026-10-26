@@ -1115,3 +1115,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Source available second sentence → "Build your own UI or other solutions around the agent server." (Contact link gone.) Rendered 1280 700 360 light+dark, no overflow.
 - Managed state: removed the "Standalone or cluster" label under the server icons (index.html .cluster em), its aria-label mention, and the now-unused `.cluster em` CSS rule. Rendered 1280 700 360 light+dark, no overflow.
 - Source available second sentence reverted to "Contact us for code changes or modifications for internal use." (Contact us → about.html#contact). Rendered 1280 and 360, no overflow.
+- Source available second sentence → "Contact us for customizations or modifications for internal use." Rendered 1280 and 360 light+dark, no overflow.
