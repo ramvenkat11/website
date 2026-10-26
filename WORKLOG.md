@@ -1060,3 +1060,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Ram: never "GUI"; "UI" on web pages and docs alike. `sed s/GUI/UI/g` over 62 files: docsrc (53 files, 127 occurrences), html/gettingstarted, search, pricing, about, framework, runtime, gen/toc.py (section "UI", pages "Opening the UI", "How the UI runs"), gen/figures.py (config-sync box label, architecture figure caption text), gen/build.py comment. Docs rebuilt; no "GUI" left in docsrc, html/*.html, gen or html/docs.
 - Kept: the docs addresses `docs/gui/`, `how-the-gui-runs.html`, `getting-started/the-gui.html` (renaming changes URLs). Home-page meta tags were never affected (no "GUI" there).
 - Checked: config-sync figure at 1280 (box reads "UI", centred); all other changes are mid-sentence word swaps to a shorter word.
+
+## 2026-10-26 Hero subline, single line
+- Ram's wording: "Search2o agent server simplifies how you build, run and use agents, so you can deliver them fast." `.hero-sub` max-width 62ch → 100ch so it sits on one line at 1280 and 1000. Wraps to two lines at 860 and 700, three on phones; `them&nbsp;fast.` keeps the last two words together (at 360 "fast." was alone before). Rendered 1280, 1000, 860, 700, 430, 412, 393, 384, 375, 360 light and dark, no overflow.
