@@ -1042,3 +1042,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Search2o agents page lead: "A Search2o agent is an independent unit built for a single task. Agents do not call other agents. An agent is expected to run thousands of times, for different users, quickly and at low cost. It is to AI what a microservice is to an application."
 - Hero: the two sublines merged into one paragraph: "Search2o agent server simplifies how you build and run agents. Just two calls, search and execAgent, open up hundreds of agents to any client." The `.hero-sub + .hero-sub` rule removed.
 - Hero subline back to "Search2o agent server simplifies how you build, run and use agents." (the "Just two calls" sentence removed; matches HEAD).
+- `#user-interfaces` subheading: "Just two calls and an authorization token are all a client needs."
