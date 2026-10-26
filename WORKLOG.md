@@ -984,3 +984,10 @@ Ram: no marketing fluff, say what it is. Card is "Multi-user": "Built-in authent
 ## 2026-10-25 Card title: Multi-user access and roles
 Ram: "Built for teams", "Ready for teams" and "Multi-user" all rejected. Card is now "Multi-user access and roles" with the original text back: "Four roles: users, developers, administrators and owners. Service accounts for bots and scripts. Built-in authentication as well as single sign-on." Links: users-and-roles, service-accounts, authentication, single-sign-on. Rendered with SEC=platform render-st.sh ma. Uncommitted.
 Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so the card now uses sign&#8209;on (non-breaking hyphen). Re-rendered 360/375/384 light. Render note: crops taken right after a dark render can show navy card borders; it is the .pcard border-color transition caught mid theme switch, not the page (a direct re-render is light).
+
+## 2026-10-26 Managed state box, runtime piece rename, subheading
+- `#stateless` org box: "Stateless" and the GitHub pill replaced by one line, a plain link "Source available" with the GitHub icon (`.src` is now an inline link, icon aligned with `vertical-align: -2px`). An intermediate "Stateless, source available" was rejected; Ram removed "Stateless".
+- `#framework-runtime`: piece "Externalized configuration" renamed "Externalized prompts" (link unchanged, docs/profiles/overview.html).
+- `#stateless` subheading: "No dependencies to install or run in your organization." (Ram wanted no mention of databases or queues; the point is that nothing else needs to run, unlike frameworks that need Postgres or Redis.)
+- Checked both sections at 1280 1000 860 700 (640) 384 375 360 light and dark, no overflow; close-ups at 1280, 640 and 360.
+- Nothing committed; html/index.html and html/styles/styles.css modified.
