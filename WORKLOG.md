@@ -1048,3 +1048,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Order now: hero, #search-and-conversation (soft), #framework-runtime (plain), #user-interfaces (soft), #stateless (plain), #platform (soft). Reasoning: what it does, what you build with, how clients reach it, how it runs, enterprise checklist. Backgrounds re-alternated by changing the class on the two moved sections. No in-page anchors link to these ids. Overflow checked at 1280, 860, 360 light/dark.
 - `#framework-runtime` subheading: "Agent server takes care of all the plumbing, so your agent contains only business logic."
 - `#user-interfaces` subheading: "Just two calls and an authorization token are all a client needs to discover and run hundreds of agents."
+- `#user-interfaces` subheading: "A client uses just two calls to discover and run hundreds of agents."
