@@ -1024,3 +1024,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - The ≤1000px breakpoint went from 3 to 2 columns, since 16 pieces in 3 columns leave an orphan. Figure aria-label lists all 16.
 - Rendered at 1280 1000 900 860 700 384 375 360 light/dark, no overflow; crops read at 1280, 1000, 700, 360. Nothing committed.
 - `#framework-runtime` subheading: "Agent server takes care of all the plumbing, so an agent is only business logic."
+- `#user-interfaces` heading: "Bundled interfaces" → "Multiple interfaces".
