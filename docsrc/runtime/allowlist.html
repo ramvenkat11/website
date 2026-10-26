@@ -70,7 +70,7 @@ json                # json.dumps and json.loads are allowed
   <li>agent and conversation variables set earlier, as <code>agent.x</code> and <code>conv.x</code>;</li>
   <li>the read-only <code>sys</code>, <code>const</code> and <code>command</code> namespaces. Which <code>sys</code> variables are present is decided in <a href="system-variables.html">System variables</a>.</li>
 </ul>
-<p>See <a href="../agent-definition/read-only-namespaces.html">Read-only namespaces</a>.</p>
+<p>See <a href="../agent-definition/namespaces.html">Namespaces</a>.</p>
 
 <h2>Functions must not block</h2>
 <p>Expressions run on the agent server's shared event loop. A function that blocks that loop holds up every agent on the agent server, so such a function does not belong on the allowlist. <code>time.sleep</code> and synchronous network calls are examples.</p>

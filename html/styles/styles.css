@@ -529,7 +529,7 @@ a.as-part:hover { background: var(--bg-soft); color: var(--blue-ink); text-decor
 #framework-runtime .fw-piece:nth-child(-n+3) { order: -1; }
 @media (max-width: 1000px) {
   #framework-runtime .fw-wrap { max-width: 600px; }
-  #framework-runtime .fw-ring { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #framework-runtime .fw-ring { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 860px) {
   #framework-runtime .fw-fig { padding: 30px 16px 20px; }

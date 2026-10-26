@@ -1,4 +1,4 @@
-<p class="lead">Besides its <a href="variables.html">variables</a>, an agent reads a few names the runtime provides and the agent cannot assign: the <code>const</code>, the <code>sys</code> namespace, the current <code>command</code>, the last <code>result</code> and, in error handling, <code>exc</code>.</p>
+<p class="lead">Besides its <a href="variables.html">variables</a>, an agent reads three namespaces the runtime provides: the <code>const</code>, <code>sys</code> and the current <code>command</code>. They are read-only: an agent cannot assign to them.</p>
 
 <h2>const</h2>
 <p><code>const</code> holds the agent's <a href="const.html">const</a>: a JSON object of fixed values that is part of the agent meta, like the prompts, and read as <code>const.name</code>. The object is encrypted on its way to and from Search2o Cloud, so the cloud never reads it. An agent cannot assign to <code>const</code>, and each run gets a fresh copy. Validation checks every top-level key the agent reads against the const.</p>
@@ -21,10 +21,3 @@
 
 <h2>command</h2>
 <p><code>command</code> holds the values of the current command's fields evaluated so far. A field may refer to a field written earlier in the same command as <code>command.field</code>.</p>
-
-<h2>Other names</h2>
-<ul>
-  <li><code>result</code>: the result of the most recent command that produces one.</li>
-  <li><code>exc</code>: inside an <code>onError</code> block, the exception being handled.</li>
-</ul>
-<p><code>sys</code>, <code>command</code>, <code>result</code>, <code>exc</code>, <code>agent</code>, <code>conv</code>, <code>const</code> and <code>onError</code> are reserved and cannot be assigned, nor used as argument or loop variable names. Python keywords cannot be variable names either.</p>

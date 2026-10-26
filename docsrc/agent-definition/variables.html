@@ -1,4 +1,4 @@
-<p class="lead">There are three kinds of variables, with three scopes: local, agent and conversation. The runtime also provides <a href="read-only-namespaces.html">read-only namespaces</a>: <code>const</code>, <code>sys</code>, <code>command</code>, <code>result</code> and <code>exc</code>.</p>
+<p class="lead">There are three kinds of variables, with three scopes: local, agent and conversation. Two more names, <code>result</code> and <code>exc</code>, are set by the runtime. The read-only <a href="namespaces.html">namespaces</a> <code>const</code>, <code>sys</code> and <code>command</code> are on their own page.</p>
 
 <!--figure:variable-scopes-->
 <h2>Local variables</h2>
@@ -14,3 +14,13 @@
 <h2>Setting variables</h2>
 <p>The <a href="../commands/var.html"><code>var</code></a> command sets variables of all three kinds. It can also set one element of an existing list or dict: <code>"totals['q3']": "{ ... }"</code>. Once set, a variable can be read in any dynamic string.</p>
 <p>Validation refuses an expression that reads a local variable nothing before it can have set, and a prompt that does the same; see <a href="python-expressions.html#variables-that-nothing-sets">Python expressions</a>.</p>
+
+<h2>result and exc</h2>
+<p>The runtime sets two names that an agent reads but cannot assign:</p>
+<ul>
+  <li><code>result</code>: the result of the most recent command that produces one.</li>
+  <li><code>exc</code>: inside an <code>onError</code> block, the exception being handled; see <a href="../agent-execution/error-handling.html">Error handling</a>.</li>
+</ul>
+
+<h2>Reserved names</h2>
+<p><code>sys</code>, <code>command</code>, <code>result</code>, <code>exc</code>, <code>agent</code>, <code>conv</code>, <code>const</code> and <code>onError</code> are reserved and cannot be assigned, nor used as argument or loop variable names. Python keywords cannot be variable names either.</p>

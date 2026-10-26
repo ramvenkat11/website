@@ -27,7 +27,7 @@ TOC = [
         ("prompts", "Prompts"),
         ("const", "Const"),
         ("variables", "Variables"),
-        ("read-only-namespaces", "Read-only namespaces"),
+        ("namespaces", "Namespaces"),
     ]),
     ("agent-execution", "Agent execution", [
         ("controlled-runtime", "Controlled runtime"),

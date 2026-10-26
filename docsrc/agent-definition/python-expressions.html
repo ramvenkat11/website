@@ -101,7 +101,7 @@
   <li><code>exc</code>, the error being handled inside an <code>onError</code> block.</li>
   <li>The names in the allowlist.</li>
 </ul>
-<p>Nothing else. The allowlist takes the place of Python's builtins, so <code>len</code> or <code>sorted</code> works only when the allowlist lists it. The namespaces are described under <a href="read-only-namespaces.html">Read-only namespaces</a>.</p>
+<p>Nothing else. The allowlist takes the place of Python's builtins, so <code>len</code> or <code>sorted</code> works only when the allowlist lists it. The namespaces are described under <a href="namespaces.html">Namespaces</a>.</p>
 
 <h3>Checking whether a variable exists</h3>
 <p>Reading a variable that was never set is an error. <code>sys.exists(scope, name)</code> answers whether the variable exists first. The scope is one of <code>local</code>, <code>agent</code>, <code>conv</code>, <code>const</code> or <code>allowlist</code>.</p>
