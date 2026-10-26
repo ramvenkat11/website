@@ -1081,3 +1081,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-26 Managed state arrow one-way; agent box narrower
 - Ram: the managed state arrow is agent server → cloud only. The `.ln::before` arrowhead (org side; top on the vertical phone layout) removed in both the desktop and the stacked rules; only the head into Search2o Cloud remains.
 - Ram: the "Your agent" box need not be wide; request and response beside it even on mobile. `.fw-run` now `auto auto auto` centred (was `auto 1fr auto`), `.fw-agent` min-width 240px with 22/28 padding; ≤860 keeps the three columns (gap 14, agent padding 14/12, arrows kept); ≤420 gap 10, pills 11px, agent padding 12/8, title 15px, small 12px.
+- Arrowheads touched the agent box in the smaller gaps: offsets -12px at ≤860 (gap 14) and -9px at ≤420 (gap 10). Managed state checked at 1280, 860, 384 light and dark: single head into the cloud on both the horizontal and the stacked layout.
