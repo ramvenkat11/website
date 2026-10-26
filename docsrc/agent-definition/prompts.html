@@ -38,6 +38,7 @@
 "user": "{ f'{sys.query} (customer tier: {tier})' }"
 </x-code>
 <p>The rules of every other expression apply: only allowlisted functions, no dunder or private names, and printable ASCII inside the braces. Text outside ASCII is fine in values, including const values, just not written directly inside <code>{ ... }</code>. Use an escape such as <code>\u00e9</code>, or keep the text in const.</p>
+<p>Prompt texts are stored in the cloud in plain form. Text that is sensitive belongs in the <a href="const.html">const</a>, which is stored encrypted, and the prompt reads it as <code>{ const.name }</code>.</p>
 <p>The two texts are evaluated at different moments:</p>
 <ul>
   <li>The <strong>system</strong> text is evaluated on every <code>llm</code> call that uses the prompt, and replaces the previous system text. A system text that reads a variable follows that variable.</li>

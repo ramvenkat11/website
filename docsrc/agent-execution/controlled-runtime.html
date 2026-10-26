@@ -24,7 +24,7 @@
 
 <h2>What an agent cannot see</h2>
 <p>Credentials stay out of the definition. A secret is read as <code>sys.secret['NAME']</code>, with the name written out, and the agent server resolves it at run time. The definition shows which secrets an agent uses, never their values. See <a href="../security/secret-vault.html">Secret vault</a>.</p>
-<p>An agent's variables belong to that agent. The one channel between agents is the conversation: a <code>conv</code> variable set by one agent can be read by the next agent in the same conversation, by design. See <a href="../agent-definition/variables.html">Variables and namespaces</a>.</p>
+<p>An agent's variables belong to that agent. The one channel between agents is the conversation: a <code>conv</code> variable set by one agent can be read by the next agent in the same conversation, by design. See <a href="../agent-definition/variables.html">Variables</a>.</p>
 
 <h2>Where an agent's calls can go</h2>
 <p>APIs, databases, MCP servers and LLMs are reached through <a href="../profiles/index.html">profiles</a>, which administrators define and share across the account. An <code>api</code> command calls an API profile, so the hosts an agent can reach are the ones set in the profiles. Every HTTP call goes through a <a href="../runtime/connection-pools.html">connection pool</a> that administrators size.</p>

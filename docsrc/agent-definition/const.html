@@ -1,4 +1,4 @@
-<p class="lead">The const is a JSON object of fixed values for one agent: product names, tone of voice, thresholds, lists of categories, example texts. The agent reads it as the read-only <code>const</code> namespace. The const is part of the <a href="structure.html#definition-and-agent-meta">agent meta</a>: it is edited with the draft, validated with it, published with it, and stored encrypted.</p>
+<p class="lead">The const is a JSON object of fixed values for one agent: product names, tone of voice, thresholds, lists of categories, example texts, and any text that is sensitive. The agent reads it as the read-only <code>const</code> namespace. The const is part of the <a href="structure.html#definition-and-agent-meta">agent meta</a>: it is edited with the draft, validated with it, published with it, and stored encrypted.</p>
 
 <x-code lang="jsonc" title="A const">
 {
@@ -12,7 +12,7 @@
 <x-code lang="jsonc" title="Read in the definition">
 "output": "{ f'Contact {const.support[\"email\"]} between {const.support[\"hours\"]}.' }"
 </x-code>
-<p>Keep values that differ between agents, or that you want to change without touching the agent's logic, in the const rather than written into the definition. Use top-level keys that are valid names, letters, digits and underscores, so they can be read as <code>const.name</code>.</p>
+<p>Keep values that differ between agents, or that you want to change without touching the agent's logic, in the const rather than written into the definition. Keep sensitive text there too, whether a command or a prompt uses it: the definition and the prompts are stored in the cloud in plain form, the const is stored encrypted. Use top-level keys that are valid names, letters, digits and underscores, so they can be read as <code>const.name</code>.</p>
 
 <h2>Where you can use it</h2>
 <p>Anywhere an expression is allowed: in <code>var</code>, <code>if</code>, <code>for</code> (for example <code>"iter": "{ const.categories }"</code>), <code>api</code> bodies, <code>output</code>, function arguments, and <a href="prompts.html">prompts</a>:</p>
@@ -29,7 +29,7 @@
 
 <h2>Encrypted</h2>
 <p>The agent server encrypts the const before it leaves for Search2o Cloud, the same way it encrypts an agent's description. The cloud stores and returns only the encrypted value. The editor shows it decrypted, so you edit plain JSON.</p>
-<p>With <a href="../security/encryption.html">end-to-end encryption</a>, the key never leaves your organization and the const cannot be read outside your agent servers.</p>
+<p>With <a href="../security/encryption.html">end-to-end encryption</a>, the key never leaves your organization and the const cannot be read outside your agent servers. That makes the const the place for text a prompt or a command needs but that must not be readable outside your organization, such as internal instructions, names or wording. The prompt reads it as <code>{ const.name }</code>, and the prompt text that is stored in the cloud holds only the reference.</p>
 
 <h2>Validation</h2>
 <p>When a draft is validated:</p>

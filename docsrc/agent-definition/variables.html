@@ -1,4 +1,4 @@
-<p class="lead">There are three kinds of variables, with three scopes: local, agent and conversation. The runtime also provides a few read-only names.</p>
+<p class="lead">There are three kinds of variables, with three scopes: local, agent and conversation. The runtime also provides <a href="read-only-namespaces.html">read-only namespaces</a>: <code>const</code>, <code>sys</code>, <code>command</code>, <code>result</code> and <code>exc</code>.</p>
 
 <!--figure:variable-scopes-->
 <h2>Local variables</h2>
@@ -14,33 +14,3 @@
 <h2>Setting variables</h2>
 <p>The <a href="../commands/var.html"><code>var</code></a> command sets variables of all three kinds. It can also set one element of an existing list or dict: <code>"totals['q3']": "{ ... }"</code>. Once set, a variable can be read in any dynamic string.</p>
 <p>Validation refuses an expression that reads a local variable nothing before it can have set, and a prompt that does the same; see <a href="python-expressions.html#variables-that-nothing-sets">Python expressions</a>.</p>
-
-<h2>Read-only namespaces</h2>
-<h3>const</h3>
-<p><code>const</code> holds the agent's <a href="const.html">const</a>: a JSON object of fixed values that is part of the agent meta, like the prompts, and read as <code>const.name</code>. The object is encrypted on its way to and from Search2o Cloud, so the cloud never reads it. An agent cannot assign to <code>const</code>, and each run gets a fresh copy. Validation checks every top-level key the agent reads against the const.</p>
-
-<h3>sys</h3>
-<p>The runtime provides <code>sys</code>. These names are always present:</p>
-<ul>
-  <li><code>sys.inputs</code>: the inputs the agent was started with, as a dict. For a search the dict is <code>{ "query": ... }</code>. A call to <a href="../rest-api/running-agents.html"><code>execAgent</code></a> passes any inputs it likes.</li>
-  <li><code>sys.query</code>: the user's query, the same as <code>sys.inputs['query']</code>.</li>
-  <li><code>sys.secret[name]</code>: reads a secret by name. Where secrets come from, the environment, a file or your own vault, is on <a href="../security/secret-vault.html">Secret vault</a>.</li>
-  <li><code>sys.exists(scope, name)</code>: whether a variable exists, before reading it. The scope is <code>local</code>, <code>agent</code>, <code>conv</code>, <code>const</code> or <code>allowlist</code>; see <a href="python-expressions.html#checking-whether-a-variable-exists">Python expressions</a>.</li>
-</ul>
-<p>These names are present only when an administrator enables them in the <a href="../runtime/system-variables.html">system variables</a> configuration:</p>
-<ul>
-  <li><code>sys.userEmail</code>: the email address of the user running the agent.</li>
-  <li><code>sys.userSession</code>: a hash of the user's session, for keying per-session data.</li>
-  <li><code>sys.serverIp</code>: the agent server's address as seen by the cloud, for logging.</li>
-  <li><code>sys.cookies</code>: the cookies of the request that started the run.</li>
-</ul>
-
-<h3>command</h3>
-<p><code>command</code> holds the values of the current command's fields evaluated so far. A field may refer to a field written earlier in the same command as <code>command.field</code>.</p>
-
-<h3>Other names</h3>
-<ul>
-  <li><code>result</code>: the result of the most recent command that produces one.</li>
-  <li><code>exc</code>: inside an <code>onError</code> block, the exception being handled.</li>
-</ul>
-<p><code>sys</code>, <code>command</code>, <code>result</code>, <code>exc</code>, <code>agent</code>, <code>conv</code>, <code>const</code> and <code>onError</code> are reserved and cannot be assigned, nor used as argument or loop variable names. Python keywords cannot be variable names either.</p>
