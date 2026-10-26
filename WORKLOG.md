@@ -1034,3 +1034,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-26 Hero third line
 - Second `.hero-sub` paragraph added under the hero subline: "Just two calls, search and execAgent, open up hundreds of agents to any client: a browser, a chat application or an agent harness." (Ram's text; "opens" → "open" to agree with "two calls"). CSS: `.hero-sub + .hero-sub { margin-top: 10px; }`. Non-breaking spaces in "a browser", "a chat" and "agent harness" so no line ends on an article and "harness." is not alone at 360.
 - Hero third line reworded: "Just two calls, search and execAgent, open up hundreds of agents. Clients call it from a browser, chat applications or an agent harness."
+- Hero third line now: "Just two calls, search and execAgent, open up hundreds of agents to any client." (second sentence removed).
