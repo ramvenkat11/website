@@ -1110,3 +1110,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Ram keeps "You can modify them for internal use." and will change the license page separately. Card done.
 - Source available icon → code-file (document with folded corner and angle brackets), distinct from Integration's code-slash. Rendered 1280 light and 360 dark.
 - Source available second sentence → "Contact us for code changes or modifications for internal use." ("Contact us" → about.html#contact). Rendered 1280 700 360 light+dark, no overflow; desktop card 4 lines.
+- Multiple environments card tightened: "An agent refers to APIs, databases and models by profile name. Each environment's profiles point at its own systems, so the same agent runs unchanged in dev and prod." Rendered 1280 700 360 light+dark; 5 lines at desktop, no overflow.
