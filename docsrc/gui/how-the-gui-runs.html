@@ -1,21 +1,21 @@
-<p class="lead">The GUI is Search2o&rsquo;s official interface: a single-page application bundled with the agent server. It uses the server&rsquo;s REST API and nothing else, and you can build interfaces of your own on the same API.</p>
+<p class="lead">The UI is Search2o&rsquo;s official interface: a single-page application bundled with the agent server. It uses the server&rsquo;s REST API and nothing else, and you can build interfaces of your own on the same API.</p>
 
 <h2>Only the REST API</h2>
-<p>Every action in the GUI is a call to the agent server&rsquo;s <a href="../rest-api/overview.html">REST API</a>. The GUI has no private endpoints and no other channel, so everything it does is available to your own code.</p>
+<p>Every action in the UI is a call to the agent server&rsquo;s <a href="../rest-api/overview.html">REST API</a>. The UI has no private endpoints and no other channel, so everything it does is available to your own code.</p>
 
-<h2>Where the GUI lives</h2>
-<p>The GUI&rsquo;s files sit in the agent server&rsquo;s <code>ui</code> directory, and the server serves them at its <code>/ui</code> path. Installing the agent server is all it takes.</p>
+<h2>Where the UI lives</h2>
+<p>The UI&rsquo;s files sit in the agent server&rsquo;s <code>ui</code> directory, and the server serves them at its <code>/ui</code> path. Installing the agent server is all it takes.</p>
 
-<h2>Serving the GUI from somewhere else</h2>
+<h2>Serving the UI from somewhere else</h2>
 <p>The files are static, so any web server or CDN can serve them. <code>index.html</code> carries one setting in a <code>&lt;meta name="search2o-ui-config"&gt;</code> tag:</p>
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Setting</th><th>Meaning</th></tr></thead>
 <tbody>
-<tr><td><code>apiBase</code></td><td>Base URL of the agent server's REST API. Empty means the same origin as the GUI. When the GUI and the agent server are on different origins, add the GUI's origin to the server's allowed CORS origins.</td></tr>
+<tr><td><code>apiBase</code></td><td>Base URL of the agent server's REST API. Empty means the same origin as the UI. When the UI and the agent server are on different origins, add the UI's origin to the server's allowed CORS origins.</td></tr>
 </tbody></table></div>
 
 <h2>Settings from the agent server</h2>
-<p>Everything else the GUI needs, the REST timeout, how long a notification stays visible and the search behavior, is the <code>uiConfig</code> object of the <a href="../system-management/agent-servers.html#the-gui-s-settings">agent server configuration</a>. The GUI fetches it with <code>POST /api/auth/getUiConfig</code> each time the page loads; the call needs no sign-in. A change takes effect when the agent server restarts and each user reloads the GUI.</p>
+<p>Everything else the UI needs, the REST timeout, how long a notification stays visible and the search behavior, is the <code>uiConfig</code> object of the <a href="../system-management/agent-servers.html#the-gui-s-settings">agent server configuration</a>. The UI fetches it with <code>POST /api/auth/getUiConfig</code> each time the page loads; the call needs no sign-in. A change takes effect when the agent server restarts and each user reloads the UI.</p>
 
 <h2>Your own interface</h2>
-<p>The GUI is one client of the REST API, not a privileged one. A search box in your intranet, a chat bot, or a full application of your own can offer the same experience; see <a href="../rest-api/clients.html">Creating your own client</a> and <a href="../chat-integrations/index.html">Chat integrations</a>.</p>
+<p>The UI is one client of the REST API, not a privileged one. A search box in your intranet, a chat bot, or a full application of your own can offer the same experience; see <a href="../rest-api/clients.html">Creating your own client</a> and <a href="../chat-integrations/index.html">Chat integrations</a>.</p>

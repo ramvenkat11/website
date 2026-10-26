@@ -7,7 +7,7 @@
 
 <h2>How a pause works</h2>
 <!--figure:ask-pause-->
-<p>The agent's position, every function, loop and tool call in progress, is saved with the conversation. The run then ends with a result that tells the GUI, or the chat bot, what to ask. The user's next message on the conversation carries the answers. The agent resumes at the same position, and the <code>ask</code> command returns a dict of the answers keyed by input name. Execution then continues. Inputs the user did not answer are asked for again. Hidden inputs are sent back by the application without being shown. Variables set before the pause keep their values. When several branches of a <code>parallel</code> command ask, the run pauses once, with every branch's questions.</p>
+<p>The agent's position, every function, loop and tool call in progress, is saved with the conversation. The run then ends with a result that tells the UI, or the chat bot, what to ask. The user's next message on the conversation carries the answers. The agent resumes at the same position, and the <code>ask</code> command returns a dict of the answers keyed by input name. Execution then continues. Inputs the user did not answer are asked for again. Hidden inputs are sent back by the application without being shown. Variables set before the pause keep their values. When several branches of a <code>parallel</code> command ask, the run pauses once, with every branch's questions.</p>
 
 <h2>Example</h2>
 <x-code lang="jsonc">
@@ -30,5 +30,5 @@
   <li><code>ask</code> is not allowed inside a <code>for</code> block or in error handling, nor in any function called from those places. The agent fails validation.</li>
   <li><code>ask</code> is allowed in a function run by <a href="parallel.html#asking-from-a-branch"><code>parallel</code></a>. The command waits for every branch, sends the questions of all the paused branches together, and resumes each branch with its own answers.</li>
   <li><code>ask</code> is allowed inside a function that the LLM calls as a tool. The tool loop resumes where the agent paused.</li>
-  <li>Values typed as <code>password</code> are masked in the GUI but are ordinary strings to the agent. Keep them out of agent and conversation variables.</li>
+  <li>Values typed as <code>password</code> are masked in the UI but are ordinary strings to the agent. Keep them out of agent and conversation variables.</li>
 </ul>

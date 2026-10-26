@@ -15,7 +15,7 @@ TOC = [
         ("registering-and-downloading", "Creating an account and downloading"),
         ("license-key", "License key"),
         ("running-the-server", "Running the server"),
-        ("the-gui", "Opening the GUI"),
+        ("the-gui", "Opening the UI"),
         ("your-first-agent", "Your first agent"),
     ]),
     ("agent-definition", "Agent definition", [
@@ -122,8 +122,8 @@ TOC = [
         ("data-privacy", "Data privacy"),
         ("multiple-environments", "Running multiple environments"),
     ]),
-    ("gui", "GUI", [
-        ("how-the-gui-runs", "How the GUI runs"),
+    ("gui", "UI", [
+        ("how-the-gui-runs", "How the UI runs"),
         ("search", "Search and conversations"),
         ("agents", "Agents"),
         ("profiles", "Profiles"),

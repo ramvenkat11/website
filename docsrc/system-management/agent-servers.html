@@ -14,7 +14,7 @@
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Address</th><th>What is there</th></tr></thead>
 <tbody>
-<tr><td><code>http://127.0.0.1:9020/ui</code></td><td>The GUI</td></tr>
+<tr><td><code>http://127.0.0.1:9020/ui</code></td><td>The UI</td></tr>
 <tr><td><code>http://127.0.0.1:9020/openapi.json</code></td><td>The OpenAPI schema</td></tr>
 <tr><td><code>http://127.0.0.1:9020/docs</code></td><td>Swagger UI</td></tr>
 <tr><td><code>http://127.0.0.1:9020/redoc</code></td><td>ReDoc</td></tr>
@@ -22,14 +22,14 @@
 <p>All of these paths are settings in the agent server's configuration, described next.</p>
 
 <h2>Named agent server configurations</h2>
-<p>The Agent servers page holds one or more named configurations. The one named <code>default</code> is required, and an agent server uses it unless told otherwise. To run an agent server under another configuration, append the name to the license key: <code>SEARCH2O_LICENSE_KEY=your-license-key/edge</code> starts the agent server with the configuration named <code>edge</code>. Separate configurations suit agent servers that differ in what they serve, for example one that serves the GUI and one that answers only REST calls.</p>
+<p>The Agent servers page holds one or more named configurations. The one named <code>default</code> is required, and an agent server uses it unless told otherwise. To run an agent server under another configuration, append the name to the license key: <code>SEARCH2O_LICENSE_KEY=your-license-key/edge</code> starts the agent server with the configuration named <code>edge</code>. Separate configurations suit agent servers that differ in what they serve, for example one that serves the UI and one that answers only REST calls.</p>
 
 <h2>What a configuration sets</h2>
 <!--fields:model:AgentServerModel-->
-<p>These settings are read once, at startup, so a change takes effect when the agent server restarts. The <code>logs</code> object is a standard Python logging configuration dictionary. The GUI path may point anywhere the agent server can read; leave it empty to serve no GUI. The documentation paths can be moved or set to nothing to switch the interactive API documentation off.</p>
+<p>These settings are read once, at startup, so a change takes effect when the agent server restarts. The <code>logs</code> object is a standard Python logging configuration dictionary. The UI path may point anywhere the agent server can read; leave it empty to serve no UI. The documentation paths can be moved or set to nothing to switch the interactive API documentation off.</p>
 
-<h2>The GUI's settings</h2>
-<p>The <code>uiConfig</code> object holds the settings the <a href="../gui/how-the-gui-runs.html">GUI</a> reads from the agent server when the page loads. Each agent server configuration has its own, so two agent servers in one account can serve the GUI with different search behaviors or a different tag. A key that is missing takes the default below. A change takes effect when the agent server restarts and each user reloads the GUI.</p>
+<h2>The UI's settings</h2>
+<p>The <code>uiConfig</code> object holds the settings the <a href="../gui/how-the-gui-runs.html">UI</a> reads from the agent server when the page loads. Each agent server configuration has its own, so two agent servers in one account can serve the UI with different search behaviors or a different tag. A key that is missing takes the default below. A change takes effect when the agent server restarts and each user reloads the UI.</p>
 <x-code lang="jsonc" nocheck>
 "uiConfig": {
   "apiTimeoutSeconds": 90,
@@ -44,11 +44,11 @@
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Key</th><th>Meaning</th><th>Default</th></tr></thead>
 <tbody>
-<tr><td><code>apiTimeoutSeconds</code></td><td>Timeout, in seconds, for REST calls from the GUI. Keep it above 60: submitting a description indexes the agent, which takes 15 to 30 seconds.</td><td><code>90</code></td></tr>
-<tr><td><code>toastDurationSeconds</code></td><td>How long a notification stays visible in the GUI, in seconds.</td><td><code>10</code></td></tr>
-<tr><td><code>search.tag</code></td><td>The <a href="../search/tags.html">tag</a> the GUI sends with every search, follow-ups included. Empty searches every tag.</td><td><code>""</code></td></tr>
-<tr><td><code>search.searchBehavior</code></td><td>What the GUI does with the matches of a new search; see <a href="../search/search-settings.html#the-bundled-gui">Search behavior</a>.</td><td><code>executeTopMatch</code></td></tr>
-<tr><td><code>search.followupBehavior</code></td><td>What the GUI does with the matches of a follow-up in a conversation.</td><td><code>executeTopMatch</code></td></tr>
+<tr><td><code>apiTimeoutSeconds</code></td><td>Timeout, in seconds, for REST calls from the UI. Keep it above 60: submitting a description indexes the agent, which takes 15 to 30 seconds.</td><td><code>90</code></td></tr>
+<tr><td><code>toastDurationSeconds</code></td><td>How long a notification stays visible in the UI, in seconds.</td><td><code>10</code></td></tr>
+<tr><td><code>search.tag</code></td><td>The <a href="../search/tags.html">tag</a> the UI sends with every search, follow-ups included. Empty searches every tag.</td><td><code>""</code></td></tr>
+<tr><td><code>search.searchBehavior</code></td><td>What the UI does with the matches of a new search; see <a href="../search/search-settings.html#the-bundled-gui">Search behavior</a>.</td><td><code>executeTopMatch</code></td></tr>
+<tr><td><code>search.followupBehavior</code></td><td>What the UI does with the matches of a follow-up in a conversation.</td><td><code>executeTopMatch</code></td></tr>
 </tbody></table></div>
 
 <h2>Startup errors</h2>

@@ -3,7 +3,7 @@
 <p>There are two ways to create the token. Both produce the same kind of token.</p>
 
 <h2>Pasting a token</h2>
-<p>The person signs in to the GUI and creates an integration token from their profile. The GUI shows the token once. The person copies the token into the bot, usually with a slash command in a private message.</p>
+<p>The person signs in to the UI and creates an integration token from their profile. The UI shows the token once. The person copies the token into the bot, usually with a slash command in a private message.</p>
 <p>This needs nothing from the bot beyond somewhere to store the token, and it suits a small team. It does not suit a large one: a token pasted into a public chat message stays in that workspace's history.</p>
 
 <h2>The connect flow</h2>
@@ -30,5 +30,5 @@ $ curl -s -X POST http://127.0.0.1:9020/api/auth/startConnect \
 <p>The secret from the first call belongs to the bot. Never show it to the person, and never put it in a link.</p>
 
 <h2>Where the approval page lives</h2>
-<p>The address comes from the <em>connect page URL</em> setting on the agent server. Leave it empty when the agent server serves the GUI, and the address follows wherever the GUI is served. Set a path for a GUI of your own, or a full address for a GUI hosted somewhere else; the GUI is a set of static pages that can be hosted anywhere. When the agent server serves no GUI and the setting is empty, <code>startConnect</code> refuses, because there is nowhere to approve the request.</p>
-<p>The agent server adds the request's identifier to that address as the query parameter <code>c</code>, so a page that reads the parameter works whichever way the GUI is built. The bot receives a full address, or a path when the GUI is served by the agent server. Use a full address as it is; join a path to the agent server's address.</p>
+<p>The address comes from the <em>connect page URL</em> setting on the agent server. Leave it empty when the agent server serves the UI, and the address follows wherever the UI is served. Set a path for a UI of your own, or a full address for a UI hosted somewhere else; the UI is a set of static pages that can be hosted anywhere. When the agent server serves no UI and the setting is empty, <code>startConnect</code> refuses, because there is nowhere to approve the request.</p>
+<p>The agent server adds the request's identifier to that address as the query parameter <code>c</code>, so a page that reads the parameter works whichever way the UI is built. The bot receives a full address, or a path when the UI is served by the agent server. Use a full address as it is; join a path to the agent server's address.</p>

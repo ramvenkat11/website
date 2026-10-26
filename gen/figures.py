@@ -99,7 +99,7 @@ class Fig:
         self.parts.append(f'<polyline points="{" ".join(pts)}" fill="none" stroke="{col}" stroke-width="2" stroke-linejoin="round"/>')
 
     def screen(self, x, y, w, h, rail, header, active=None):
-        """A stylized GUI window: dark rail with items, header strip, content area. Returns the content rect."""
+        """A stylized UI window: dark rail with items, header strip, content area. Returns the content rect."""
         self.parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="12" fill="var(--card)" stroke="var(--line)"/>')
         rw = 120
         self.parts.append(f'<path d="M{x + 12},{y} h{rw - 12} v{h} h-{rw - 12} a12,12 0 0 1 -12,-12 v-{h - 24} a12,12 0 0 1 12,-12z" fill="var(--navy)"/>')
@@ -147,7 +147,7 @@ def _architecture():
     f.box(40, 60, 120, 60, "Users", "browser · chat app", kind="soft")
     f.box(40, 190, 120, 60, "Developers", "browser", kind="soft")
     f.box(195, 100, 210, 110, "Agent server", "stateless · source available", kind="dark")
-    f.text(300, 192, "GUI at /ui · REST at /api", size=11, fill="white", anchor="middle")
+    f.text(300, 192, "UI at /ui · REST at /api", size=11, fill="white", anchor="middle")
     f.parts[-1] = f.parts[-1].replace('fill="#fff"', 'fill="rgba(255,255,255,.75)"')
     f.arrow(160, 90, 195, 125)
     f.arrow(160, 220, 195, 185)
@@ -250,7 +250,7 @@ def _build_pipeline():
 @figure("config-sync")
 def _config_sync():
     f = Fig("config-sync", 260, "How a configuration change reaches every agent server")
-    f.box(20, 40, 150, 56, "GUI", "administrator edits a part", kind="soft")
+    f.box(20, 40, 150, 56, "UI", "administrator edits a part", kind="soft")
     f.box(250, 40, 220, 56, "Search2o Cloud", "stores it, stamps the time", kind="accent")
     f.arrow(170, 68, 250, 68, "save")
     f.box(20, 170, 140, 56, "Agent server A", kind="dark")
@@ -579,7 +579,7 @@ def _expression_bounds():
     return f.render()
 
 
-# ---- GUI mock-ups --------------------------------------------------------------
+# ---- UI mock-ups --------------------------------------------------------------
 RAIL = ["#AGENTS", "Drafts", "Published", "Search", "#PROFILES", "LLM", "Prompt", "API", "Database", "MCP",
         "#GUARDRAILS", "Compile rules", "Allowlist", "Runtime"]
 RAIL2 = ["#OPERATIONS", "Agent servers", "Connection pools", "Secrets & encryption", "#REPORTS", "Performance", "Cost", "Errors", "Usage",

@@ -2,7 +2,7 @@
 
 <h2>First, try a bundled adapter</h2>
 <p>A private deployment, a gateway, or a vendor with an OpenAI-compatible API needs no code: create an <a href="../profiles/llm-profiles.html">LLM profile</a> under <strong>Profiles &rsaquo; LLM</strong>, pick the adapter that matches the protocol (<code>openai</code>, <code>anthropic</code> or <code>gemini</code>), and set the URL, the headers and the model. A model served by Ollama, vLLM or SGLang takes the <code>ollama</code>, <code>vllm</code> or <code>sglang</code> adapter. See <a href="vendors.html">LLM vendors</a>.</p>
-<p>The GUI shows each adapter's description when a profile is created, and the description says which protocol the adapter speaks.</p>
+<p>The UI shows each adapter's description when a profile is created, and the description says which protocol the adapter speaks.</p>
 
 <h2>When you need an adapter of your own</h2>
 <p>An adapter turns the request Search2o builds, with the prompt, tools, model and limits, into the vendor's request body, and turns the vendor's response back into Search2o's form. Write one only when the vendor's protocol matches none of the bundled adapters.</p>
@@ -13,7 +13,7 @@
 <thead><tr><th>Method</th><th>What it does</th></tr></thead>
 <tbody>
 <tr><td><code>name</code><small>from LlmAdapter</small></td><td>The adapter's name, as it appears in a profile's <code>adapter</code> field.</td></tr>
-<tr><td><code>description</code><small>from LlmAdapter</small></td><td>One line, shown in the GUI when a profile is created.</td></tr>
+<tr><td><code>description</code><small>from LlmAdapter</small></td><td>One line, shown in the UI when a profile is created.</td></tr>
 <tr><td><code>set_model</code></td><td>Put the profile's model into the request parameters.</td></tr>
 <tr><td><code>set_max_tokens</code></td><td>Put the token ceiling into the request parameters.</td></tr>
 <tr><td><code>set_tools</code></td><td>Express the agent's tools in the vendor's schema.</td></tr>

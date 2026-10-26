@@ -60,7 +60,7 @@
 <p>The output of an <code>llm</code> step can still vary, as any model call does.</p>
 
 <h3>10. Every run is recorded in one place</h3>
-<p>Search2o <a href="../introduction/search2o-agents.html">records every run</a>: who requested it, what ran, how long it took, what failed, and what the LLM calls cost. <a href="../reports/cost.html">Reports</a> show these per agent, per version and per person. Cost is computed from the prices set in each LLM profile. A run started from the agent harness appears under the person's name, beside runs from the GUI and the chat bots.</p>
+<p>Search2o <a href="../introduction/search2o-agents.html">records every run</a>: who requested it, what ran, how long it took, what failed, and what the LLM calls cost. <a href="../reports/cost.html">Reports</a> show these per agent, per version and per person. Cost is computed from the prices set in each LLM profile. A run started from the agent harness appears under the person's name, beside runs from the UI and the chat bots.</p>
 <p>Claude Code can <a href="https://code.claude.com/docs/en/monitoring-usage" target="_blank" rel="noopener">export OpenTelemetry metrics and events</a> to a collector you operate: model requests with tokens and cost, tool calls and skill activations, attributed to a user. It is opt-in, and the names of user-configured MCP servers and tools are withheld unless detail logging is on.</p>
 <p>That is a record of model and tool activity in a session. Search2o's record is of the business action: which agent, which version, for whom, with what result.</p>
 
@@ -69,12 +69,12 @@
 <h3>11. Publish once, for every person, surface and assistant</h3>
 <p>A new agent is available to everyone as soon as it is published and described. Nothing is installed on a laptop, and the skill does not change. A corrected agent replaces the old version for everyone on the next run.</p>
 <p>A skill is a set of files. It has to reach each person's machine or account, through a repository, a plugin, managed settings or account sync. The Search2o skill is installed the same way, once, with a token for each person.</p>
-<p>The same published agent serves the GUI, the chat bots, the REST API and the skill. The skill folder follows the open <a href="https://agentskills.io" target="_blank" rel="noopener">Agent Skills</a> standard, so it works unmodified in other clients, Cursor and OpenAI Codex among them. The work that goes into an agent is not tied to one assistant.</p>
-<p>From the GUI or a chat bot, search picks the agent with no model call. A run whose <code>llm</code> steps use a model you host then has no per-token charge at all.</p>
+<p>The same published agent serves the UI, the chat bots, the REST API and the skill. The skill folder follows the open <a href="https://agentskills.io" target="_blank" rel="noopener">Agent Skills</a> standard, so it works unmodified in other clients, Cursor and OpenAI Codex among them. The work that goes into an agent is not tied to one assistant.</p>
+<p>From the UI or a chat bot, search picks the agent with no model call. A run whose <code>llm</code> steps use a model you host then has no per-token charge at all.</p>
 
 <h3>12. State outlives the session</h3>
 <p>Agents in one conversation share state that Search2o saves: the prompt history and conversation variables, <a href="../security/data-privacy.html">stored encrypted and kept</a> for 7 days after the last use on the Free plan and 90 days on Paid. Two agents written by different developers build on each other's work without knowing about each other.</p>
-<p>An agent can pause to ask the person a question and continue when the answer arrives. A password is <a href="finding-and-running-an-agent.html">never typed into the chat</a>; the assistant gives the person a link to the conversation in the GUI instead.</p>
+<p>An agent can pause to ask the person a question and continue when the answer arrives. A password is <a href="finding-and-running-an-agent.html">never typed into the chat</a>; the assistant gives the person a link to the conversation in the UI instead.</p>
 <p>That state does not depend on Claude's context. If the session is compacted or closed, the conversation is still there, under the person's account.</p>
 
 <h2>What it costs</h2>

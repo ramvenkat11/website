@@ -7,7 +7,7 @@
 <p>The account sets the longest a token may last, in days; the default is a year. A person may ask for a shorter life when creating a token, and asking for a longer one is refused. When the account leaves the limit empty, tokens never expire.</p>
 
 <h2>Managing tokens</h2>
-<p>A person sees their own tokens in the GUI. Each token shows the name the person gave it, when it was created, when it expires, and when it was last used. The last-used date tells a live integration from one that was set up and forgotten.</p>
+<p>A person sees their own tokens in the UI. Each token shows the name the person gave it, when it was created, when it expires, and when it was last used. The last-used date tells a live integration from one that was set up and forgotten.</p>
 <p>A person can revoke any of their own tokens. Revoking one stops that token at once and affects nothing else, including that person's own sign-in. A person may hold at most ten tokens.</p>
 
 <h2>What else ends a token</h2>
@@ -15,4 +15,4 @@
 
 <h2>Single sign-on</h2>
 <p>Search2o can sign people in through a company's own identity provider with OpenID Connect; see <a href="../system-management/single-sign-on.html">Single sign-on</a>. Little changes for a chat integration. A token still belongs to a person, is still created by that person, and still works the same way. The <a href="connecting-a-person.html">connect flow</a> is unchanged, except that the approval page sends the person to the identity provider instead of showing a password form.</p>
-<p>Two points to plan for. The connect flow is the only route for people who never open the GUI, so prefer it. A password reset no longer applies, because passwords live with the identity provider, so a token ends only when the person revokes it or the person is deleted. Disabling somebody at the identity provider does not end their Search2o tokens; remove the person in Search2o as well.</p>
+<p>Two points to plan for. The connect flow is the only route for people who never open the UI, so prefer it. A password reset no longer applies, because passwords live with the identity provider, so a token ends only when the person revokes it or the person is deleted. Disabling somebody at the identity provider does not end their Search2o tokens; remove the person in Search2o as well.</p>

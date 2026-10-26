@@ -21,8 +21,8 @@
 <h2>Rules that apply to every profile</h2>
 <ul>
   <li>A profile name is letters, digits and underscores. It starts with a letter and ends with a letter or a digit. MCP server names are the exception: no underscores.</li>
-  <li>Each profile page in the GUI shows which agents use the profile. A profile in use cannot be deleted; remove the reference from the agents first.</li>
-  <li>Each kind of profile has a limit on how many an account may hold. The GUI shows the limit on the profile's page.</li>
+  <li>Each profile page in the UI shows which agents use the profile. A profile in use cannot be deleted; remove the reference from the agents first.</li>
+  <li>Each kind of profile has a limit on how many an account may hold. The UI shows the limit on the profile's page.</li>
   <li>A profile carries a note. <a href="../development/draft-with-ai.html">Draft with AI</a> reads the note to learn what the API serves or what the database holds, so a useful note leads to a better draft.</li>
   <li>Profiles are versioned like every configuration part: a save is refused when someone else changed the profile first, and every create, update and delete produces an <a href="../system-management/audit-log.html">audit log entry</a>. See <a href="../runtime/overview.html">Agent runtime</a>.</li>
 </ul>

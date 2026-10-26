@@ -276,7 +276,7 @@ def section_cards(sslug: str) -> str:
 
 
 def shot_block(spec: str) -> str:
-    """<!--shot:name|width|alt|caption--> -> a screenshot captured in both GUI themes; docs.css shows the
+    """<!--shot:name|width|alt|caption--> -> a screenshot captured in both UI themes; docs.css shows the
     one matching the page theme (img/NAME-light.png and img/NAME-dark.png must both exist)."""
     name, width, alt, caption = (x.strip() for x in spec.split("|", 3))
     imgs = "".join(f'<img class="{t}" src="../img/{name}-{t}.png" alt="{html.escape(alt)}" style="--shot-w:{width}px">' for t in ("light", "dark"))

@@ -1,4 +1,4 @@
-<p class="lead">The audit log records what changed in the account and who changed it: agents published, indexed or retagged, configuration parts and profiles edited, failed sign-ins, and events from the agent servers. Administrators read it in the GUI; developers can read it through the API.</p>
+<p class="lead">The audit log records what changed in the account and who changed it: agents published, indexed or retagged, configuration parts and profiles edited, failed sign-ins, and events from the agent servers. Administrators read it in the UI; developers can read it through the API.</p>
 
 <h2>What produces an entry</h2>
 <ul>
@@ -11,7 +11,7 @@
 <p>Every entry carries the time of the change and, where a person made it, the user's name and email. An entry is visible to the roles that could have made the change: an administrator-only setting produces an entry only administrators see.</p>
 
 <h2>Reading it</h2>
-<p>The Audit log page opens from its icon in the GUI's header, shown to administrators and the owner. Choose a time window, and narrow the list to one kind of entry or to the changes made by one user, identified by email. Entries are kept for 7 days on the Free plan and 90 days on Paid.</p>
+<p>The Audit log page opens from its icon in the UI's header, shown to administrators and the owner. Choose a time window, and narrow the list to one kind of entry or to the changes made by one user, identified by email. Entries are kept for 7 days on the Free plan and 90 days on Paid.</p>
 <p>Through the <a href="../rest-api/overview.html">REST API</a>, <code>getAuditLog</code> returns the same entries to developers and above.</p>
 
 <h2>Why the values are not shown</h2>

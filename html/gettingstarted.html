@@ -90,12 +90,26 @@
 
         <div class="step-sec" id="install">
           <h2>Install the agent server</h2>
-          <p>Install the agent server with the bundled GUI:</p>
+          <p>Install the agent server with the bundled UI:</p>
           <div class="codecard" aria-label="Install with pip">
             <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">terminal</span></div>
 <pre><code><span class="ps1">$ </span>pip install search2o</code></pre>
           </div>
-          <p class="dim">The source is on GitHub: <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">agent server</a> and <a href="https://github.com/Search2o/ui" target="_blank" rel="noopener">GUI</a>.</p>
+          <h3>To install from the source</h3>
+          <p>Clone the <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">agent server</a> and install it from the clone. The clone does not include the UI.</p>
+          <div class="codecard" aria-label="Install the agent server from source">
+            <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">terminal</span></div>
+<pre><code><span class="ps1">$ </span>git clone https://github.com/Search2o/agent-server.git
+<span class="ps1">$ </span>pip install -e agent-server</code></pre>
+          </div>
+          <p>Then build the <a href="https://github.com/Search2o/ui" target="_blank" rel="noopener">UI</a>, which needs Node.js 22.12 or newer, and copy the build into the agent server's <code>ui</code> directory:</p>
+          <div class="codecard" aria-label="Build the UI from source">
+            <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">terminal</span></div>
+<pre><code><span class="ps1">$ </span>git clone https://github.com/Search2o/ui.git
+<span class="ps1">$ </span>cd ui &amp;&amp; npm install &amp;&amp; npm run build
+<span class="ps1">$ </span>cp -R dist ../agent-server/search2o/ui</code></pre>
+          </div>
+          <p class="dim">On Windows, copy the <code>dist</code> folder to the same directory. Any web server can serve the UI instead; see <a href="docs/gui/how-the-gui-runs.html">How the UI runs</a>.</p>
         </div>
 
         <div class="step-sec" id="run">
@@ -133,7 +147,7 @@
       </div>
       <div class="callout after-steps">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 12v5"/></svg>
-        <span>We would love to hear how setting up and running your first few agents went. Email <a href="mailto:info@search2o.com">info@search2o.com</a>, or send a message from the message icon in the GUI.</span>
+        <span>We would love to hear how setting up and running your first few agents went. Email <a href="mailto:info@search2o.com">info@search2o.com</a>, or send a message from the message icon in the UI.</span>
       </div>
     </div>
   </section>

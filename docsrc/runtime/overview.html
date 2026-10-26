@@ -15,7 +15,7 @@
 <h2>How a change reaches every agent server</h2>
 <!--figure:config-sync-->
 <ol>
-  <li>A developer or an administrator changes a part or a profile in the GUI. Search2o Cloud stores the change, stamped with the time.</li>
+  <li>A developer or an administrator changes a part or a profile in the UI. Search2o Cloud stores the change, stamped with the time.</li>
   <li>Every time an agent run starts, the agent server tells the cloud. The reply carries the time of the latest change.</li>
   <li>If that time is newer than the agent server's runtime, the agent server asks for what changed since it last asked, and receives only those parts.</li>
   <li>The agent server builds a new runtime from the changed parts and the unchanged pieces of the old one, then swaps it in. The agent runs against it.</li>
@@ -28,7 +28,7 @@
 
 <h2>Where the parts are configured</h2>
 <div class="tablewrap"><table class="fields">
-<thead><tr><th>Part</th><th>Where in the GUI</th><th>Edited by</th></tr></thead>
+<thead><tr><th>Part</th><th>Where in the UI</th><th>Edited by</th></tr></thead>
 <tbody>
 <tr><td><a href="allowlist.html">Allowlist</a></td><td>Guardrails &rsaquo; Allowlist</td><td>Developer</td></tr>
 <tr><td><a href="system-variables.html">System variables</a></td><td>Guardrails &rsaquo; System variables</td><td>Developer</td></tr>

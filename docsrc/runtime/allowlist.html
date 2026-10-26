@@ -1,4 +1,4 @@
-<p class="lead">The allowlist is the complete set of names that an agent's Python expressions may use. Expressions do not get Python's builtins; the allowlist takes their place. A name that is not on the allowlist does not exist for an agent, and an expression that uses it is refused before the agent ever runs. The allowlist applies to every agent in the account, and developers edit it in the GUI under Guardrails.</p>
+<p class="lead">The allowlist is the complete set of names that an agent's Python expressions may use. Expressions do not get Python's builtins; the allowlist takes their place. A name that is not on the allowlist does not exist for an agent, and an expression that uses it is refused before the agent ever runs. The allowlist applies to every agent in the account, and developers edit it in the UI under Guardrails.</p>
 
 <h2>How expressions are contained</h2>
 <p>Expressions are contained at the application level, not by the operating system. Four things decide what an expression may do. The allowlist decides which names it can reach. The <a href="compile-rules.html">compile rules</a> decide which operators and which shapes of expression are accepted. The <a href="runtime-limits.html">runtime limits</a> bound a run in time, iterations, rows and LLM spend. The scope rules below decide which variables are visible. The runtime does not limit memory or CPU; rewriting an operator to a function of your own is the tool for operations that could load the agent server.</p>
@@ -77,7 +77,7 @@ json                # json.dumps and json.loads are allowed
 <p>Async functions are fine. When the whole expression is a call to an async function, the result is awaited for you. Inside a larger expression, use <code>await</code>; see <a href="../agent-definition/python-expressions.html#awaiting">Awaiting</a>.</p>
 
 <h2>When an entry is wrong</h2>
-<p>Every entry is resolved when the allowlist is saved, on the agent server behind the GUI. If any line fails, the allowlist is not saved, and each failing line is reported with its own message.</p>
+<p>Every entry is resolved when the allowlist is saved, on the agent server behind the UI. If any line fails, the allowlist is not saved, and each failing line is reported with its own message.</p>
 <x-code lang="text">
 nosuchmodule       Could not be imported.
 math.nope          Could not be imported.
