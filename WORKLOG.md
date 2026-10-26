@@ -971,3 +971,6 @@ Ram rejected the two-line text ("don't just write text"): stateless, hence stand
 
 ## 2026-10-25 Managed state: cluster only
 Ram: no standalone tile, just the cluster; text may say standalone or cluster. The org box is now three server tiles joined by short dashed connectors (`.cluster` > `.nodes` with `<i class="ln">`), caption "Standalone or cluster", then "Agent servers" and "Stateless". `.modes`/`.or` CSS and the ≤860 tile shrink are gone. aria-label: "Stateless agent servers in your organization, standalone or a cluster that stays in sync, ...". Rendered with render-st.sh cl3 at all widths light/dark, clean. Uncommitted.
+
+## 2026-10-25 Enterprise card: Access & roles -> Built for teams
+Ram: title and content as the benefit. Card now "Built for teams": "Built-in authentication and single sign-on. Users, developers, administrators and owners each have their own role. Service accounts for bots and scripts." Links: authentication.html, single-sign-on.html, users-and-roles.html, service-accounts.html. Rendered with SEC=platform render-st.sh bt at all widths light/dark. Uncommitted.
