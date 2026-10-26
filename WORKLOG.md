@@ -1072,3 +1072,7 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - At 360 the middle unit still took three lines at 21px; `.as-head .hero-claim { font-size: 20px }` added to the existing `@media (max-width: 400px)` block so 393–360 get six lines too.
 - Ram: middle line lighter so the accents stand out. `span.hero-line-soft` on the middle unit: color var(--body), weight 500. Rendered 1280, 860, 360 light and dark, no overflow.
 - Ram: "plumbing for" → "plumbing behind". Middle line now "behind building, running, discovering and using AI agents,". Rendered 1280, 700, 384, 360 light and dark, no overflow.
+
+## 2026-10-26 Plumbing grid two per row on phones; discovery section on mobile
+- Ram: "Agent plumbing section - can't mobile use 2 boxes per row?" The `@media (max-width: 420px)` one-column override for `#framework-runtime .fw-ring` replaced by a compact two-column variant: figure padding 26/12/16, gap 8px, pieces 12px text with 7px gap and 8/9 padding, icons 26px with 14px glyphs. Rendered 384, 375, 360 light and dark, no overflow; the section is about a third shorter at 384.
+- Ram: the discovery section is confusing on mobile with the numbered notes stacked after the conversation; asked for ideas without numbers. Prototype (scratchpad `serve/proto/index.html`, not the repo): at ≤860px the notes keep their DOM order so each sits right under the turn it explains, numbers hidden, styled as a caption (left blue bar, muted text, no box). Rendered at 384 for Ram to judge; nothing changed on the page yet.
