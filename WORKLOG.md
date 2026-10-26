@@ -1055,3 +1055,8 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Not changed: docsrc/getting-started/registering-and-downloading.html "Source" section and docsrc/support-licensing/license.html still only link the two repos.
 - Subsection heading "To install from the source" (Ram's wording; first "From the source") added before the source instructions on `html/gettingstarted.html` (h3, styled by the existing `.numbered h3` rule) and the paragraph shortened to "Clone the agent server and install it from the clone. The clone does not include the GUI."
 - `docsrc/getting-started/registering-and-downloading.html`: the "Source" h2 replaced by an h3 "To install from the source" under Install with the same instructions (two bash x-code blocks; raw `&&`, the build escapes x-code contents) and the License link kept at the end. Rebuilt; the page TOC shows it under Install.
+
+## 2026-10-26 GUI → UI everywhere
+- Ram: never "GUI"; "UI" on web pages and docs alike. `sed s/GUI/UI/g` over 62 files: docsrc (53 files, 127 occurrences), html/gettingstarted, search, pricing, about, framework, runtime, gen/toc.py (section "UI", pages "Opening the UI", "How the UI runs"), gen/figures.py (config-sync box label, architecture figure caption text), gen/build.py comment. Docs rebuilt; no "GUI" left in docsrc, html/*.html, gen or html/docs.
+- Kept: the docs addresses `docs/gui/`, `how-the-gui-runs.html`, `getting-started/the-gui.html` (renaming changes URLs). Home-page meta tags were never affected (no "GUI" there).
+- Checked: config-sync figure at 1280 (box reads "UI", centred); all other changes are mid-sentence word swaps to a shorter word.
