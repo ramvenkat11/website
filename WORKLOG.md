@@ -1010,3 +1010,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Finding, not changed: reports/index.html describes callFailed as "a call to an external system failed"; the agent server sets it only when a call to Search2o Cloud fails.
 - Checked error-handling.html and commands/llm.html at 1280 and 360, light and dark, no overflow; close-ups read.
 - Nothing committed.
+- Const page: sensitive text belongs in the const (definition and prompts are stored in plain form in the cloud, the const encrypted); lead, the "keep values" paragraph and the Encrypted section say so. Prompts page: one sentence pointing sensitive text at the const.
