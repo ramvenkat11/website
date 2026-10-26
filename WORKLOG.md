@@ -962,3 +962,6 @@ Ram asked whether the authorization token could be shown in the #user-interfaces
 
 ## 2026-10-25 Standalone or cluster in the interfaces figure
 Ram: show standalone or cluster in the #user-interfaces figure. The server box title now carries `<small>Standalone or cluster</small>` under "Search2o agent server" (CSS `.ui-srv .t small`, 12px, #a9c6ff on navy, before `.ui-srv .r`). aria-label gained "The agent server runs standalone or as a cluster." Rendered with render-ui.sh cl at all widths light/dark. Uncommitted.
+
+## 2026-10-25 Standalone or cluster: moved to Managed state
+Ram: not in the interfaces figure, in Managed state. Reverted the `.ui-srv .t small` line, its CSS and the aria-label sentence. In #stateless the org box small now reads "Standalone or cluster" / "Stateless, no internal dependency" (two lines); aria-label starts "Agent servers in your organization, standalone or a cluster, stateless with no internal dependency, ...". Rendered with render-st.sh so at all widths light/dark. Uncommitted.
