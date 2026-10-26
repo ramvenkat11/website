@@ -1043,3 +1043,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Hero: the two sublines merged into one paragraph: "Search2o agent server simplifies how you build and run agents. Just two calls, search and execAgent, open up hundreds of agents to any client." The `.hero-sub + .hero-sub` rule removed.
 - Hero subline back to "Search2o agent server simplifies how you build, run and use agents." (the "Just two calls" sentence removed; matches HEAD).
 - `#user-interfaces` subheading: "Just two calls and an authorization token are all a client needs."
+
+## 2026-10-26 Home page section order
+- Order now: hero, #search-and-conversation (soft), #framework-runtime (plain), #user-interfaces (soft), #stateless (plain), #platform (soft). Reasoning: what it does, what you build with, how clients reach it, how it runs, enterprise checklist. Backgrounds re-alternated by changing the class on the two moved sections. No in-page anchors link to these ids. Overflow checked at 1280, 860, 360 light/dark.
