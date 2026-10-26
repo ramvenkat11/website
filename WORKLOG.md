@@ -1063,3 +1063,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 
 ## 2026-10-26 Hero subline, single line
 - Ram's wording: "Search2o agent server simplifies how you build, run and use agents, so you can deliver them fast." `.hero-sub` max-width 62ch → 100ch so it sits on one line at 1280 and 1000. Wraps to two lines at 860 and 700, three on phones; `them&nbsp;fast.` keeps the last two words together (at 360 "fast." was alone before). Rendered 1280, 1000, 860, 700, 430, 412, 393, 384, 375, 360 light and dark, no overflow.
+- Ram: the sentence is the hero's main and only heading; "Deliver repeatable, observable, cost-controlled AI agents – Fast." removed. `h1.hero-claim` now "Search2o agent server simplifies how you build, run and use agents, so you can deliver them&nbsp;fast."; the `.hero-sub` paragraph is gone and its max-width is back to 62ch (rule unused now). Heading size unchanged (clamp 26–34px), so it wraps to two lines at desktop.
