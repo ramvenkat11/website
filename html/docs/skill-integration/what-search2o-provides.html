@@ -11,10 +11,10 @@
 <meta property="og:description" content="What changes when a company&#x27;s workflows become Search2o agents behind one skill, instead of a skill per workflow with MCP servers or scripts. Each claim link…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/skill-integration/what-search2o-provides.html">
-<meta property="og:image" content="https://search2o.com/images/og5.png">
+<meta property="og:image" content="https://search2o.com/images/og6.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Search2o: a platform to build, run, and use AI microagents through search">
+<meta property="og:image:alt" content="Search2o agent server handles all the plumbing behind building, discovering and running AI agents, so you can focus on solving business problems.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="../../fonts/inter-latin.woff2" crossorigin>
@@ -75,7 +75,7 @@
 
 <h3 id="3-one-skill-entry-stands-for-the-whole-catalogue">3. One skill entry stands for the whole catalogue</h3>
 <p>Every installed skill puts its name and description in Claude's context, <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/overview" target="_blank" rel="noopener">about 100 tokens each</a>, and Claude chooses among them by reading the descriptions. Anthropic <a href="https://platform.claude.com/docs/en/agents-and-tools/agent-skills/enterprise" target="_blank" rel="noopener">advises limiting</a> how many are loaded at once: with too many, Claude may pick the wrong skill or miss the right one. In Claude Code the listing has a budget of <a href="https://code.claude.com/docs/en/skills#skill-descriptions-are-cut-short" target="_blank" rel="noopener">1% of the context window</a>; past it, descriptions are dropped, least-used skills first, and only names remain.</p>
-<p>The Search2o skill takes one entry. Behind it, search matches the request against every published agent's description in under a second, with no model call. Adding an agent changes nothing in the skill or on any laptop.</p>
+<p>The Search2o skill takes one entry. Behind it, search matches the request against every published agent's description in about 200 milliseconds on our side, with no model call. Adding an agent changes nothing in the skill or on any laptop.</p>
 <p>Search accuracy is <a href="../search/search-quality.html">measured and published</a>. The tests ran on catalogues Search2o built. On a catalogue of 1,000 agents, the right agent came first for 85.5% of 10,000 questions and was among the first two for 92.2%. On five catalogues of 50 to 100 agents the figures were 83.8 to 91.0% and 92.3 to 97.4%.</p>
 <p>These figures measure search on its own. Through the skill, Claude reads the titles of the matches and runs the one that fits.</p>
 

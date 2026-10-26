@@ -1,4 +1,4 @@
-"""Draws content/linkedin-banner.png, the LinkedIn company page cover (4200x700, 6:1): the wordmark
+"""Draws content/linkedin-banner2.png, the LinkedIn company page cover (4200x700, 6:1): the wordmark
 art from gen/assets/wordmark.png with the tagline, and the home page headline with its gradient
 accent. LinkedIn shows it at 1128x191 and overlays the page logo on the bottom-left corner, so the
 content sits in the middle band with wide margins. Run with the system python3 (needs PIL)."""
@@ -6,7 +6,7 @@ import math, os
 from PIL import Image, ImageDraw, ImageFont
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT = os.path.join(HERE, "..", "content", "linkedin-banner.png")
+OUT = os.path.join(HERE, "..", "content", "linkedin-banner2.png")
 W, H = 4200, 700
 BASE = (9, 15, 29); GLOW = (28, 48, 93); INK = (238, 243, 251); MUTED = (138, 154, 182)
 BLUE = (77, 141, 255); TEAL = (45, 212, 191); HAIR = (58, 74, 110)
@@ -49,24 +49,38 @@ d.text((left + 4, wm_top + wm.height + 26), "Search that executes", font=medium(
 xh = left + WM_W + 120
 d.rectangle([xh, wm_top - 10, xh + 3, wm_top + block_h + 10], fill=HAIR)
 
-# headline: line 1 in ink, line 2 in the blue-to-teal gradient
-lines = ["A platform to build, run, and use AI microagents", "through search."]
+# headline: segments per line; "ink" and "muted" are flat, "accent" takes the blue-to-teal gradient over its own span
+LINES = [
+    [("Search2o agent server ", "ink"), ("handles all the plumbing", "accent")],
+    [("behind building, discovering and running AI agents,", "muted")],
+    [("so you can focus on ", "ink"), ("solving business problems", "accent"), (".", "ink")],
+]
+def line_width(font, segs): return sum(font.getlength(t) for t, _ in segs)
+def draw_lines(img, x0, top, f, pitch, size):
+    d = ImageDraw.Draw(img)
+    for i, segs in enumerate(LINES):
+        y = top + i * pitch; x = x0
+        for t, kind in segs:
+            w = f.getlength(t)
+            if kind == "accent":
+                mask = Image.new("L", img.size, 0); ImageDraw.Draw(mask).text((x, y), t, font=f, fill=255)
+                grad = Image.new("RGBA", img.size, (0, 0, 0, 0)); gp = grad.load()
+                for gx in range(int(x) - 2, int(x + w) + 3):
+                    s = min(1, max(0, (gx - x) / w))
+                    c = tuple(round(a + (b - a) * s) for a, b in zip(BLUE, TEAL)) + (255,)
+                    for gy in range(int(y) - 10, int(y + size) + 40): gp[gx, gy] = c
+                img.paste(grad, (0, 0), mask)
+            else:
+                d.text((x, y), t, font=f, fill=INK if kind == "ink" else MUTED)
+            x += w
 x0 = xh + 120
 size = 88
-while max(bold(size).getlength(l) for l in lines) > W - 120 - x0: size -= 1
+while max(line_width(bold(size), l) for l in LINES) > W - 120 - x0: size -= 1
 f = bold(size); pitch = round(size * 1.27)
-n = len(lines)
+n = len(LINES)
 top = round((H - ((n - 1) * pitch + size * 1.0)) / 2) - 4
-for i, l in enumerate(lines[:-1]): d.text((x0, top + i * pitch), l, font=f, fill=INK)
-last = top + (n - 1) * pitch
-mask = Image.new("L", (W, H), 0); ImageDraw.Draw(mask).text((x0, last), lines[-1], font=f, fill=255)
-x1 = x0 + f.getlength(lines[-1])
-grad = Image.new("RGBA", (W, H), (0, 0, 0, 0)); gp = grad.load()
-for x in range(W):
-    t = min(1, max(0, (x - x0) / (x1 - x0)))
-    c = tuple(round(a + (b - a) * t) for a, b in zip(BLUE, TEAL)) + (255,)
-    for y in range(last - 20, last + size + 40): gp[x, y] = c
-img.paste(grad, (0, 0), mask)
+draw_lines(img, x0, top, f, pitch, size)
+x1 = x0 + max(line_width(f, l) for l in LINES)
 
 out = img.convert("RGB"); out.save(OUT, optimize=True)
 print("saved", OUT, out.size, "headline right edge", round(x1), "of", W, "bytes", os.path.getsize(OUT))

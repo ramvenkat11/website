@@ -10,10 +10,10 @@
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://search2o.com/">
 <meta property="og:url" content="https://search2o.com/">
-<meta property="og:image" content="https://search2o.com/images/og5.png">
+<meta property="og:image" content="https://search2o.com/images/og6.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Search2o: a platform to build, run, and use AI microagents through search">
+<meta property="og:image:alt" content="Search2o agent server handles all the plumbing behind building, discovering and running AI agents, so you can focus on solving business problems.">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -55,7 +55,7 @@
     <div class="hero-bg"></div>
     <div class="container">
       <div class="hero-head as-head">
-        <h1 class="hero-claim"><span class="hero-line">Search2o agent server <span class="hero-accent">handles all the plumbing</span></span> <span class="hero-line hero-line-soft">behind building, running, discovering and using AI&nbsp;agents,</span> <span class="hero-line">so you can focus on <span class="hero-accent">solving business&nbsp;problems</span>.</span></h1>
+        <h1 class="hero-claim"><span class="hero-line">Search2o agent server <span class="hero-accent">handles all the plumbing</span></span> <span class="hero-line hero-line-soft">behind building, discovering and running AI&nbsp;agents,</span> <span class="hero-line">so you can focus on <span class="hero-accent">solving business&nbsp;problems</span>.</span></h1>
       </div>
       <div class="appsrv" aria-label="The Search2o agent server with four parts: agent framework, search, agent runtime and observability. Developers are on the left, users on the right. A developer builds, validates and publishes agents with the agent framework, and describes them in English to search, for example a Travel desk agent that arranges air travel and hotel stays. A user calls search with a request such as Book a trip to New York, and search returns the Travel desk agent. The user calls execAgent with the conversation, the agent and the request on the agent runtime, and receives the agent's output, for example Booked UA1191, departs 06:00. Observability gives the developer reports.">
         <div class="as-side as-dev">
@@ -107,7 +107,7 @@
           <div class="convo-title">Conversation</div>
           <div class="convo-body">
             <div class="turn-user r1 st st1">Book my trip for Tuesday's all-day meeting in New York<i class="mk">1</i></div>
-            <aside class="note-bubble first r1 st st2"><b><i class="mk">1</i>Search by intention</b>No rule routed this request. Search matched it to Travel desk from the description its developer wrote, in under half a second. <a href="search.html">How search matches</a></aside>
+            <aside class="note-bubble first r1 st st2"><b><i class="mk">1</i>Search by intention</b>No rule routed this request. Search matched it to Travel desk from the description its developer wrote, in about 200 milliseconds on our side. <a href="search.html">How search matches</a></aside>
             <div class="turn-agent r2 st st3">
               <div class="msg ask" aria-label="The agent asks before booking"><i class="mk">2</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>
                 <span class="q">UA1191 departs 06:00 Tuesday, back at 19:30, and a night at the Marriott near the office. $1,240. <b>Book it?</b></span>
@@ -127,6 +127,12 @@
             <aside class="note-bubble r5 st st7"><b><i class="mk">4</i>A different agent</b>Search matched the follow-up to Reimbursements. It continued the same prompt on a different model and knew the trip. Nothing wired the two agents together. <a href="search.html#conversation">How agents build on each other</a></aside>
           </div>
         </div>
+        <div class="sc-notes">
+          <div class="note"><b><i class="mk">1</i>Search by intention</b>No rule routed this request. Search matched it to Travel desk from the description its developer wrote, in about 200 milliseconds on our side. <a href="search.html">How search matches</a></div>
+          <div class="note"><b><i class="mk">2</i>Human in the loop</b>The agent paused and asked. The answer always goes back to the same agent, which resumes from its stored state, now or days later. <a href="search.html#conversation">Conversations</a></div>
+          <div class="note"><b><i class="mk">3</i>The conversation keeps it</b>Travel desk ended here. Its prompt stays in the conversation, and so does anything it chose to save there, like the trip. <a href="search.html#conversation">Conversations</a></div>
+          <div class="note"><b><i class="mk">4</i>A different agent</b>Search matched the follow-up to Reimbursements. It continued the same prompt on a different model and knew the trip. Nothing wired the two agents together. <a href="search.html#conversation">How agents build on each other</a></div>
+        </div>
       </div>
     </div>
   </section>
@@ -137,25 +143,29 @@
         <p>Agent server takes care of all the plumbing, so your agent contains only business logic.</p>
       </div>
       <div class="fw-wrap">
-        <div class="fw-fig" aria-label="An agent, which is only business logic, runs inside the agent runtime. The runtime around it provides LLM calls, the tool calling loop, API, database and MCP calls, connection pools, error handling, runtime limits, human in the loop, saving and restoring conversations, memory, metrics, externalized prompts, agent versioning, trace and validation, drafting with AI, multi-developer publishing and multi-server sync.">
-          <span class="fw-tag">Agent runtime</span>
+        <div class="fw-fig" aria-label="An agent, which is only business logic, runs inside the agent server. The server around it provides LLM calls, model neutrality, the tool calling loop, API, database and MCP calls, connection pools, a secret vault, error handling, runtime limits, human in the loop, streaming, saving and restoring conversations, memory, externalized prompts, drafting with AI, trace and validation, agent versioning, multi-developer publishing, live configuration, metrics and an audit log.">
+          <span class="fw-tag">Agent server</span>
           <div class="fw-ring">
           <a class="fw-piece" href="docs/commands/llm.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.2A8 8 0 1 1 21 12Z"/></svg></i>LLM calls</a>
+          <a class="fw-piece" href="docs/llm/vendors.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 8.5 4.5L12 11 3.5 6.5 12 2z"/><path d="m3.5 11.5 8.5 4.5 8.5-4.5"/><path d="m3.5 16.5 8.5 4.5 8.5-4.5"/></svg></i>Model neutrality</a>
           <a class="fw-piece" href="docs/commands/llm.html#tool-calling"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/><path d="M9 12h6M12 9v6"/></svg></i>Tool calling loop</a>
           <a class="fw-piece" href="docs/profiles/index.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2v5M15 2v5M6 7h12v4a6 6 0 0 1-12 0V7Z"/><path d="M12 17v5"/></svg></i>API, database and MCP calls</a>
           <a class="fw-piece" href="docs/runtime/connection-pools.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.5-1.5"/></svg></i>Connection pools</a>
+          <a class="fw-piece" href="docs/security/secret-vault.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></i>Secret vault</a>
           <a class="fw-piece" href="docs/agent-execution/error-handling.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5h.01"/></svg></i>Error handling</a>
           <a class="fw-piece" href="docs/runtime/runtime-limits.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></i>Runtime limits</a>
           <a class="fw-piece" href="docs/commands/ask.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></i>Human in the loop</a>
+          <a class="fw-piece" href="docs/rest-api/streaming.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></i>Streaming</a>
           <a class="fw-piece" href="docs/agent-execution/conversation-state.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-15.5 6.2M3 12a9 9 0 0 1 15.5-6.2"/><path d="M3 7v5h5M21 17v-5h-5"/></svg></i>Save/Restore conversations</a>
           <a class="fw-piece" href="docs/commands/memory.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a7 7 0 0 0-7 7c0 2.4 1.2 4.1 2.5 5.3V19h9v-3.7C17.8 14.1 19 12.4 19 10a7 7 0 0 0-7-7Z"/><path d="M9 22h6"/></svg></i>Memory</a>
-          <a class="fw-piece" href="docs/reports/index.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15v-4M12 15V8M17 15v-6"/></svg></i>Metrics</a>
           <a class="fw-piece" href="docs/agent-definition/prompts.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></i>Externalized prompts</a>
-          <a class="fw-piece" href="docs/development/publishing.html#versions"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 8v8M18 10a6 6 0 0 1-6 6H8"/></svg></i>Agent versioning</a>
-          <a class="fw-piece" href="docs/development/trace-and-validation.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></i>Trace and validation</a>
           <a class="fw-piece" href="docs/development/draft-with-ai.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg></i>Draft with AI</a>
-          <a class="fw-piece" href="docs/development/publishing.html#when-several-developers-change-the-same-agent"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></i>Multi-developer publishing</a>
-          <a class="fw-piece" href="docs/system-management/agent-servers.html#running-many-agent-servers"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 0-9-9 9.8 9.8 0 0 0-6.7 2.7L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.8 9.8 0 0 0 6.7-2.7L21 16"/><path d="M16 16h5v5"/></svg></i>Multi-server sync</a>
+          <a class="fw-piece" href="docs/development/trace-and-validation.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></i>Trace and validation</a>
+          <a class="fw-piece" href="docs/development/publishing.html#versions"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 8v8M18 10a6 6 0 0 1-6 6H8"/></svg></i>Agent versioning</a>
+          <a class="fw-piece" href="docs/development/publishing.html#when-several-developers-change-the-same-agent"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></i>Multi&#8209;developer publishing</a>
+          <a class="fw-piece" href="docs/runtime/overview.html#how-a-change-reaches-every-agent-server"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></i>Live configuration</a>
+          <a class="fw-piece" href="docs/reports/index.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15v-4M12 15V8M17 15v-6"/></svg></i>Metrics</a>
+          <a class="fw-piece" href="docs/system-management/audit-log.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 12h-5M15 8h-5"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg></i>Audit log</a>
             <div class="fw-run"><span class="fw-io in"><b>request</b></span><div class="fw-agent"><b>Your agent</b><small>Business logic only</small></div><span class="fw-io out"><b>response</b></span></div>
           </div>
         </div>
@@ -207,12 +217,11 @@
         <p>No dependencies to install or run in your organization.</p>
       </div>
       <div class="st-wrap">
-        <div class="st-fig" aria-label="Stateless agent servers in your organization, standalone or a cluster that stays in sync, connected to Search2o Cloud by an encrypted link. The cloud keeps the conversations and memories, encrypted by default. The agent servers link to their source on GitHub.">
+        <div class="st-fig" aria-label="Stateless agent servers in your organization, connected to Search2o Cloud by an encrypted link. The cloud keeps the conversations and memories, encrypted by default. The agent servers link to their source on GitHub.">
           <div class="st-box st-org">
             <span class="tag">Your organization</span>
             <span class="cluster" aria-hidden="true">
               <span class="nodes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><i class="ln"></i><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><i class="ln"></i><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span></span>
-              <em>Standalone or cluster</em>
             </span>
             <b>Agent servers</b>
             <small><a class="src" href="https://github.com/Search2o" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>Source available</a></small>
@@ -240,7 +249,7 @@
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-3.5 8-10V5l-8-3-8 3v7c0 6.5 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
           <h3>Security &amp; privacy</h3>
-          <p>Secrets live in your <a href="docs/security/secret-vault.html">vault</a>. Conversations and memories are <a href="docs/security/encryption.html">encrypted by default</a>. Everything that runs in your organization can be <a href="https://github.com/Search2o" target="_blank" rel="noopener">run from source</a>.</p>
+          <p>Secrets live in your <a href="docs/security/secret-vault.html">vault</a>. Conversations and memories are <a href="docs/security/encryption.html">encrypted</a>, by default or, optionally, <a href="docs/security/encryption.html#end-to-end-a-key-you-hold">end to end</a>. <a href="docs/security/data-privacy.html">Data privacy</a> lists how each kind of data is handled.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M17.5 13.5a6.5 6.5 0 0 1 4 6.5"/></svg></div>
@@ -248,14 +257,14 @@
           <p><a href="docs/system-management/users-and-roles.html">Four roles</a>: users, developers, administrators and owners. <a href="docs/system-management/service-accounts.html">Service accounts</a> for bots and scripts. Built-in <a href="docs/system-management/authentication.html">authentication</a> as well as <a href="docs/system-management/single-sign-on.html">single sign&#8209;on</a>.</p>
         </article>
         <article class="pcard">
-          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg></div>
-          <h3>Model neutrality</h3>
-          <p>Each agent picks its model. <a href="docs/llm/vendors.html">Out of the box</a>: OpenAI-compatible models, Anthropic, Gemini, Ollama, vLLM and SGLang. <a href="docs/llm/llm-adapters.html">Adapters</a> can be added for other LLMs.</p>
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m10 12.5-2 2.5 2 2.5M14 12.5l2 2.5-2 2.5"/></svg></div>
+          <h3>Source available</h3>
+          <p>Everything that runs in your organization can be built from the source: the <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">agent server</a> and the <a href="https://github.com/Search2o/ui" target="_blank" rel="noopener">UI</a>. <a href="about.html#contact">Contact us</a> for customizations or modifications for internal use.</p>
         </article>
         <article class="pcard">
-          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15v-4M12 15V8M17 15v-6"/></svg></div>
-          <h3>Observability &amp; cost</h3>
-          <p>Every run records its cost, time and result, failures included. <a href="docs/reports/index.html">Reports</a> show cost, errors, performance and usage per agent and user. Every run has a <a href="docs/runtime/runtime-limits.html">spend limit</a>.</p>
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/></svg></div>
+          <h3>Multiple environments</h3>
+          <p>An agent refers to APIs, databases and models by <a href="docs/profiles/overview.html">profile name</a>. Each environment's profiles point at its own systems, so the same agent runs unchanged in <a href="docs/security/multiple-environments.html">dev and prod</a>.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="5" height="8" rx="1"/><rect x="9.5" y="3" width="5" height="8" rx="1"/><rect x="17" y="3" width="5" height="8" rx="1"/><path d="M2 18h20"/><path d="m18 14 4 4-4 4"/><path d="m6 14-4 4 4 4"/></svg></div>
@@ -285,7 +294,6 @@
           <a href="framework.html">Agent framework</a>
           <a href="runtime.html">Agent runtime</a>
           <a href="search.html">Search</a>
-          <a href="index.html#platform">Platform</a>
           <a href="pricing.html">Pricing</a>
         </div>
         <div class="fcol">
