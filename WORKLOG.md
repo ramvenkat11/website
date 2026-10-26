@@ -977,3 +977,6 @@ Ram: title and content as the benefit. Card now "Built for teams": "Built-in aut
 
 ## 2026-10-25 Card title: Ready for teams
 Ram: too much "built" (section "Built for the enterprise", card "Built for teams", "Built-in authentication"). Card is now "Ready for teams": "Authentication and single sign-on are included. Users, developers, administrators and owners each have their own role. Service accounts for bots and scripts." Rendered with SEC=platform render-st.sh rt. Uncommitted.
+
+## 2026-10-25 Card title: Multi-user
+Ram: no marketing fluff, say what it is. Card is "Multi-user": "Built-in authentication and single sign-on. Four roles: users, developers, administrators and owners. Service accounts for bots and scripts." Same four links. Rendered with SEC=platform render-st.sh mu. Uncommitted.
