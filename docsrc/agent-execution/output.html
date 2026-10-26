@@ -1,6 +1,6 @@
 <p class="lead">An agent produces output with the <code>output</code> command. Output is streamed to the user as multipart content. Each part is written to the stream the moment the command runs, and the client, the GUI or a chat application, renders it immediately.</p>
 
-<p>Output is append-only and keeps its order. The parts are text, HTML, images, and whatever an <code>llm</code> command with <code>streamOutput</code> produces.</p>
+<p>Output is append-only and keeps its order. The parts are text, images, and whatever an <code>llm</code> command with <code>streamOutput</code> produces.</p>
 
 <h2>Text</h2>
 <p>Text is the default part. It is interpreted as Markdown, which is what LLMs produce.</p>
@@ -15,22 +15,13 @@
 }
 </x-code>
 
-<h2>HTML</h2>
-<p>HTML is rendered after harmful content is removed. Markdown is not applied to HTML.</p>
-<x-code lang="jsonc">
-"output": {
-  "contentType": "html",
-  "text": "The answer to your question is <b>42</b>"
-}
-</x-code>
-
 <h2>Images</h2>
-<p>An image is base64-encoded data with an explicit MIME type.</p>
+<p>An image is base64-encoded data in <code>data</code>, with an explicit MIME type. The same part can be given to a prompt as its user text; see <a href="../agent-definition/prompts.html#what-the-texts-may-evaluate-to">Prompts</a>.</p>
 <x-code lang="jsonc">
 "output": {
   "contentType": "image",
   "mimeType": "image/png",
-  "text": "iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQCAYAAACAvzbMAAAB..."
+  "data": "iVBORw0KGgoAAAANSUhEUgAAAZAAAAGQCAYAAACAvzbMAAAB..."
 }
 </x-code>
 

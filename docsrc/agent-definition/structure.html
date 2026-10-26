@@ -1,4 +1,4 @@
-<p class="lead">The top-level object holds a set of named <strong>functions</strong>. Each function is an ordered object of <strong>commands</strong>, the units of execution. An agent also has named <a href="prompts.html">prompts</a>, set in the GUI and named by its <code>llm</code> commands.</p>
+<p class="lead">The top-level object of a definition holds a set of named <strong>functions</strong>. Each function is an ordered object of <strong>commands</strong>, the units of execution. The rest of an agent, including the <a href="prompts.html">prompts</a> its <code>llm</code> commands name, is the agent meta.</p>
 
 <x-code lang="jsonc" nocheck title="The shape of every agent">
 {
@@ -19,6 +19,9 @@
 </x-code>
 
 <!--figure:agent-structure-->
+<h2>Definition and agent meta</h2>
+<p>An agent has two parts. The <strong>definition</strong> is the JSON above: its functions and their commands. The <strong>agent meta</strong> is everything else that belongs to the agent: its title, tag, run limits, <a href="prompts.html">prompts</a> and <a href="const.html">const</a>. The meta is edited in the same <a href="../development/drafts.html">draft</a> as the definition, validated with it and published with it, but it is not written in the definition. A publish that changes only the meta keeps the agent's version; see <a href="../development/publishing.html">Publishing</a>.</p>
+
 <h2>Commands are keys</h2>
 <p>Each command is a key-value pair. The key is the command name and the value carries the command's fields: an object for most commands, a single value for simple ones such as <code>progress</code> or <code>return</code>. Commands run in the order they are written.</p>
 <p>Keys in a JSON object must be unique, so a command that appears twice in one function takes a suffix after a dot: <code>api</code>, <code>api.2</code>, <code>api.forecast</code>. The suffix is only a label. It appears in traces and error messages.</p>
@@ -27,4 +30,4 @@
 <p>Every agent defines a function named <code>main</code>, and execution starts there. Other functions run when a function calls them with <code>func</code> or <code>parallel</code>, or when an LLM calls them as tools. <code>main</code> itself cannot be called.</p>
 
 <h2>Size</h2>
-<p>A definition may be at most 20,480 characters by default. The limit is an administrator setting in <a href="../runtime/runtime-limits.html">Runtime limits</a>. Prompts are not part of the definition and have limits of their own; see <a href="prompts.html">Prompts</a>.</p>
+<p>A definition may be at most 20,480 characters by default. The limit is an administrator setting in <a href="../runtime/runtime-limits.html">Runtime limits</a>. Prompts and the const are part of the agent meta, not of the definition, and have limits of their own; see <a href="prompts.html">Prompts</a> and <a href="const.html">Const</a>.</p>

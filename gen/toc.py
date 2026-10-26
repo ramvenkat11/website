@@ -25,6 +25,7 @@ TOC = [
         ("functions", "Functions"),
         ("commands", "Commands"),
         ("prompts", "Prompts"),
+        ("const", "Const"),
         ("variables", "Variables and namespaces"),
     ]),
     ("agent-execution", "Agent execution", [

@@ -29,9 +29,9 @@
 <h2>Rules</h2>
 <ul>
   <li><code>iter</code> may also be a literal JSON list or object. An expression inside such a literal is evaluated like any other.</li>
-  <li>When an element is a tuple and several loop variables are given, the tuple is unpacked into the variables in order.</li>
+  <li>When an element is a tuple and several loop variables are given, the tuple is unpacked into the variables in order. A single loop variable over pairs, such as <code>{ d.items() }</code>, gets the whole pair.</li>
   <li>The loop variables are locals of the function, removed when the loop ends. They follow the rules for variable names: no reserved name, no Python keyword.</li>
   <li>A <code>for</code> nested inside another <code>for</code> may not reuse the outer loop's variable names.</li>
-  <li><code>maxIterations</code> stops the loop quietly when the count is reached. Without it, the <em>max loop iterations</em> setting in <a href="../runtime/runtime-limits.html">Runtime limits</a> applies.</li>
+  <li><code>maxIterations</code> stops the loop quietly when the count is reached, and <code>0</code> means zero iterations. Without it, a loop that reaches the <em>max loop iterations</em> setting in <a href="../runtime/runtime-limits.html">Runtime limits</a> fails the run with a message, as <code>while</code> does.</li>
   <li><code>ask</code> is not allowed inside a <code>for</code> block, nor in any function called from one.</li>
 </ul>

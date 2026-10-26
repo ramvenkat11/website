@@ -7,7 +7,7 @@
 <p>Every agent carries two bounds of its own, and is published and run with both.</p>
 <ul>
   <li><strong>Time.</strong> The number of seconds a run of the agent may take. A run past the bound ends with the result code <code>timedOut</code>, and the message names the limit.</li>
-  <li><strong>Cost.</strong> The LLM spend, in US dollars, that a run of the agent may reach. The agent server adds up the cost after each LLM call, from the prices in the <a href="../profiles/llm-profiles.html">LLM profile</a>, and stops the run once the total passes the bound. The run ends with the result code <code>errorInAgent</code>, and the person is told that the request reached the agent's cost limit.</li>
+  <li><strong>Cost.</strong> The LLM spend, in US dollars, that a run of the agent may reach. The agent server adds up the cost after each LLM call, from the prices in the <a href="../profiles/llm-profiles.html">LLM profile</a>, and stops the run once the total passes the bound. The run ends with the result code <code>errorInAgent</code>, and the person is told that the request reached the agent's cost limit. The stop cannot be caught: it ends the run even inside <code>onError</code>, a tool call or a <code>parallel</code> branch. Every attempt that is paid for counts, retries included.</li>
 </ul>
 <p>The bounds belong to the agent, not to the account. An agent that looks up one record can be held to a few seconds and a few cents, while an agent that researches a question is given more of both.</p>
 

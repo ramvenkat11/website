@@ -5,5 +5,6 @@
 
 <h2>Connection pool</h2>
 <!--fields:model:DbConnectionPool-->
+<p>An agent server keeps one pool per profile. When the connection string changes, for example after a vault secret is rotated, the old pool is closed and a new one opened. With <code>poolKey</code> set, there is one pool per distinct value of the expression, for example one per user. A pool that has not been used for <code>idleTimeout</code> seconds is closed.</p>
 
 <p>The connection string names an async SQLAlchemy driver, which must be installed in the agent server's environment: <code>postgresql+asyncpg://...</code>, <code>mysql+aiomysql://...</code>, <code>oracle+oracledb://...</code>, <code>mssql+aioodbc://...</code>, <code>sqlite+aiosqlite:///path</code>. The connection string is a dynamic string, so the password can come from <code>sys.secret</code>.</p>

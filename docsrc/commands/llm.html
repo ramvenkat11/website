@@ -10,7 +10,7 @@
 <!--figure:tool-loop-->
 <p><code>functions</code> lists the functions of this agent that the model may call. Each needs a <code>description</code> and typed <code>args</code>, because the model sees those. When the model asks for a call, the function runs with the model's arguments, and its return value goes back to the model. The loop repeats until the model answers with text or <code>maxToolCallLoops</code> is reached.</p>
 <p><code>mcp</code> lists tools from <a href="../profiles/mcp-servers.html">MCP servers</a> as <code>server.tool</code>, or just <code>server</code> for every tool the server offers. <code>vendorTools</code> passes vendor-defined tools, such as web search, through untouched. The LLM profile caps how many tools one call may carry.</p>
-<p>A tool that raises an error is reported to the model as an error, together with the profile's <em>tool error prompt</em>. The model can then correct its arguments or give up gracefully. An <code>ask</code> inside a tool function pauses the agent as anywhere else, and the agent resumes mid-loop when the user answers.</p>
+<p>An error inside a tool function is handled by that function's own <code>onError</code> blocks. An error that leaves the function ends the run; it is not given to the model. An MCP tool's error is given to the model, together with the profile's <em>tool error prompt</em>, when the server reports it as a tool error or with a code the MCP profile lists as retryable, and the model can then correct its arguments or give up. See <a href="../agent-execution/error-handling.html#errors-in-tools">Error handling</a>. An <code>ask</code> inside a tool function pauses the agent as anywhere else, and the agent resumes mid-loop when the user answers.</p>
 
 <h2>Example</h2>
 <x-code lang="jsonc">
@@ -43,8 +43,10 @@
 <h2>Rules</h2>
 <ul>
   <li><code>prompt</code> is the literal name of one of the agent's <a href="../agent-definition/prompts.html">prompts</a>. Validation refuses a name the agent has no prompt for. The prompt's system and user text are evaluated in the function where the command runs, and its history is kept under its name.</li>
+  <li>The prompt's system text must evaluate to text, and its user text to text, a content part or a list of them. Anything else is refused before the model is called; see <a href="../agent-definition/prompts.html#what-the-texts-may-evaluate-to">What the texts may evaluate to</a>.</li>
+  <li>Two <code>llm</code> commands that run at the same time must use different prompts. A tool function cannot use the prompt of the command that called it, and parallel branches need prompts of their own.</li>
   <li><code>profile</code> is the literal name of an <a href="../profiles/llm-profiles.html">LLM profile</a>. To pick a profile at run time, branch with <code>if</code>.</li>
-  <li>The token ceiling, retries, headers and any extra request parameters come from the profile.</li>
+  <li>The token ceiling, retries, headers and any extra request parameters come from the profile. Only timeouts, connection errors and HTTP 429 and 5xx responses are retried, with a short wait that grows on each attempt. A 400, 401 or 404 fails at once. Every attempt that is paid for counts toward the agent's cost limit.</li>
   <li>The run is stopped once its LLM spend passes the agent's own cost bound; see <a href="../agent-execution/controlled-runtime.html">Controlled runtime</a>.</li>
   <li><code>end</code> is not allowed inside a tool function. A tool must return to the model.</li>
 </ul>

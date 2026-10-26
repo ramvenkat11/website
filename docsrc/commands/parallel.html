@@ -20,6 +20,7 @@
 <ul>
   <li>The result is keyed by the names used in the command, so the order in which the calls finish does not matter.</li>
   <li>Each function runs in its own scope with its own locals. Agent and conversation variables are shared, so two parallel functions should not write the same variable.</li>
+  <li>Branches that run <code>llm</code> commands at the same time must use different <a href="../agent-definition/prompts.html#prompts-in-functions-loops-tools-and-parallel-branches">prompts</a>.</li>
   <li>A function that runs in parallel may <code>ask</code>, and may call a function that asks; see below.</li>
   <li>If any call fails, the whole command fails with that error. <code>onError</code> on the calling function can handle it.</li>
 </ul>

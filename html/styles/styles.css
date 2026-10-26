@@ -562,9 +562,9 @@ a.as-part:hover { background: var(--bg-soft); color: var(--blue-ink); text-decor
 #stateless .st-org .tag { background: linear-gradient(var(--org-bg), var(--org-bg)), var(--bg); border: 1px solid var(--org-border); color: var(--muted); }
 #stateless .st-org .ic { background: var(--icon-bg); color: var(--icon-fg); }
 #stateless .st-org small { color: var(--muted); }
-#stateless .st-org .src { display: inline-flex; align-items: center; gap: 5px; margin-top: 2px; padding: 3px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); font-size: 12px; font-weight: 700; text-decoration: none; }
-#stateless .st-org .src svg { width: 12px; height: 12px; }
-#stateless .st-org .src:hover { border-color: var(--blue); color: var(--blue-ink); }
+#stateless .st-org .src { color: var(--blue-ink); font-weight: 600; text-decoration: none; white-space: nowrap; }
+#stateless .st-org .src svg { width: 13px; height: 13px; margin-right: 4px; vertical-align: -2px; }
+#stateless .st-org .src:hover { text-decoration: underline; }
 #stateless .st-cloud { background: var(--cloud-bg); border-color: var(--cloud-border); color: #fff; box-shadow: var(--card-shadow-lg); }
 #stateless .st-cloud .tag { background: var(--navy-deep); border: 1px solid var(--cloud-border); color: #a9c6ff; }
 #stateless .st-cloud .ic { background: rgba(255, 255, 255, .1); color: #a9c6ff; }

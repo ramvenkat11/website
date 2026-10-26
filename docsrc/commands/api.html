@@ -5,7 +5,7 @@
 <!--fields:command:api-->
 
 <h2>Result</h2>
-<p>The response body is the command's result, available as <code>result</code> in the next command. A JSON response is parsed into a Python object. A text response is returned as a string, and a binary response as bytes. An empty body returns the HTTP status code as a number instead. The command does not check the status code. A timeout or a connection failure raises an error, which <code>onError</code> can catch.</p>
+<p>The response body is the command's result, available as <code>result</code> in the next command. A JSON response is parsed into a Python object. A text response is returned as a string, and a binary response as bytes. A response labelled JSON, or without a content type, that is not valid UTF-8 is returned as a base64 string. An empty body returns the HTTP status code as a number instead. The command does not check the status code. A timeout or a connection failure raises an error, which <code>onError</code> can catch.</p>
 
 <h2>Example</h2>
 <x-code lang="jsonc" title="Look up the caller's location, then the hourly forecast">

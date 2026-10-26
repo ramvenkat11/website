@@ -1,4 +1,4 @@
-<p class="lead">A prompt is what an <code>llm</code> command sends to a model: a system text, a user text, and the history of the exchange so far. An agent's prompts are set in the GUI, like its title and run limits, not written in the definition. Each prompt has a name, and an <code>llm</code> command names the prompt it uses in its <code>prompt</code> field.</p>
+<p class="lead">A prompt is what an <code>llm</code> command sends to a model: a system text, a user text, and the history of the exchange so far. Prompts are part of the <a href="structure.html#definition-and-agent-meta">agent meta</a>, not of the definition: they are edited with the draft, validated with it and published with it. Each prompt has a name, and an <code>llm</code> command names the prompt it uses in its <code>prompt</code> field.</p>
 
 <p>For example, an agent that answers questions about orders could have this prompt:</p>
 <div class="tablewrap"><table class="fields">
@@ -17,16 +17,37 @@
 
 <h2>Fields</h2>
 <!--fields:model:AgentPromptModel-->
-<p>A prompt needs a system text, a user text, or both. A prompt name is letters, digits and underscores. An agent may have up to 10 prompts, and each text up to 20,000 characters.</p>
+<p>A prompt needs a system text, a user text, or both. A prompt name follows the same rules as other names in an agent: a letter first, then letters, digits and underscores. An agent may have up to 10 prompts, and the system text, the user text and the doc may each be up to 20,000 characters.</p>
 
 <h2>Where prompts are edited</h2>
-<p>In the GUI, an agent's prompts are listed under <strong>Prompts</strong> on the draft page. <strong>Add prompt</strong> adds one. Prompts change only through a draft: edit them there, validate, and publish. Validation compiles each prompt with the draft, so a prompt that reads a variable the agent never sets, or reads <code>result</code>, is refused before it can run.</p>
-<p>A publish that changes only the prompts does not make a new version of the agent. The agent's next run uses the new text. A prompt that an <code>llm</code> command names cannot be dropped: remove the command's use of it in the same draft. Publishing records which prompts were added, removed or changed in the <a href="../system-management/audit-log.html">audit log</a>, by name, never their text.</p>
-<p>When the published agent's prompts, title or run limits changed after the draft was made from it, publishing the draft shows which of them differ. Publishing again replaces them with the draft's values. See <a href="../development/publishing.html">Publishing</a>.</p>
+<p>In the GUI, an agent's prompts are on the <strong>Prompts</strong> tab of the draft page. <strong>Add prompt</strong> adds one. Prompts change only through a draft: edit them there, validate, and publish. Validation compiles each prompt with the draft, so a prompt that reads a variable the agent never sets is refused before it can run.</p>
+<p>A publish that changes only the prompts keeps the agent's version. The agent's next run uses the new text. A prompt that an <code>llm</code> command names cannot be dropped: remove the command's use of it in the same draft. Publishing records which prompts were added, removed or changed in the <a href="../system-management/audit-log.html">audit log</a>, by name, never their text.</p>
+<p>When the published agent's prompts, const, title or run limits changed after the draft was made from it, publishing the draft lists the fields that differ. You can merge those changes into the draft, or publish again to replace them with the draft's values. See <a href="../development/publishing.html#when-the-agent-changed-under-the-draft">Publishing</a>.</p>
 
 <h2>How a prompt is evaluated</h2>
-<p>The system and user text are written like any other string in an agent: plain text, or a <a href="python-expressions.html">Python expression</a> in braces. Both are evaluated each time an <code>llm</code> command that names the prompt runs, in the function where that command runs, so they can read the function's arguments and local variables, as well as <code>agent.</code>, <code>conv.</code>, <code>const.</code> and <code>sys.</code> names.</p>
-<p>A prompt cannot read <code>result</code>. To give the model what a command fetched, set a variable from <code>result</code> before the <code>llm</code> command:</p>
+<p>The system and user text are written like any other string in an agent: plain text, or a <a href="python-expressions.html">Python expression</a> in braces. An expression is evaluated when the <code>llm</code> command runs, in the function where that command runs. It can read:</p>
+<ul>
+  <li>local variables set earlier in the same function: <code>{ city }</code>;</li>
+  <li>the function's arguments: <code>{ topic }</code> in a function called with <code>topic</code>;</li>
+  <li>agent and conversation variables: <code>{ agent.mood }</code>, <code>{ conv.lang }</code>;</li>
+  <li>the <code>sys</code> namespace: <code>{ sys.query }</code>, <code>{ sys.userEmail }</code>;</li>
+  <li>the agent's <a href="const.html">const</a>: <code>{ const.city }</code>.</li>
+</ul>
+<x-code lang="jsonc">
+"system": "{ 'You answer questions about ' + const.product + '. Reply in ' + const.language + '.' }",
+"user": "{ f'{sys.query} (customer tier: {tier})' }"
+</x-code>
+<p>The rules of every other expression apply: only allowlisted functions, no dunder or private names, and printable ASCII inside the braces. Text outside ASCII is fine in values, including const values, just not written directly inside <code>{ ... }</code>. Use an escape such as <code>\u00e9</code>, or keep the text in const.</p>
+<p>The two texts are evaluated at different moments:</p>
+<ul>
+  <li>The <strong>system</strong> text is evaluated on every <code>llm</code> call that uses the prompt, and replaces the previous system text. A system text that reads a variable follows that variable.</li>
+  <li>The <strong>user</strong> text is evaluated once per <code>llm</code> command and added to the history as one user turn. The tool round trips inside that command do not add it again.</li>
+  <li>After an agent pauses on <code>ask</code> and resumes, neither text is evaluated again. The <code>llm</code> command continues from where it stopped.</li>
+</ul>
+<p>The trace shows each call's prompt name, scope, system text and user text as an input.</p>
+
+<h3>Why a prompt cannot read result</h3>
+<p>A prompt is written outside every command, so at an <code>llm</code> call <code>result</code> is whatever the previous command happened to leave there. Reorder the commands, or insert one, and the prompt silently reads something else. Validation therefore refuses a prompt that reads <code>result</code>. Save the value into a variable before the <code>llm</code> command and read that variable in the prompt. Validation checks that the variable is set before every <code>llm</code> call that uses the prompt.</p>
 <x-code lang="jsonc">
 "api": { "profile": "orders", "path": "{ f'/orders/{orderId}' }" },
 "var": { "order": "{ result }" },
@@ -40,29 +61,81 @@
 <tr><td>User</td><td><code>{ f'Summarize this order: {order}' }</code></td></tr>
 <tr><td>Scope</td><td><code>local</code></td></tr>
 </tbody></table></div>
-<p>Each time the <code>llm</code> command runs, the evaluated system text replaces the prompt's system text, and a non-empty user text is added to the prompt's history. The model's answer, and any tool calls and tool results, are added to the history too, so the next <code>llm</code> call with the same prompt carries the whole exchange. The trace shows each call's prompt name, scope, system text and user text as an input.</p>
+
+<h2>What the texts may evaluate to</h2>
+<p>The <strong>system</strong> text must evaluate to text.</p>
+<p>The <strong>user</strong> text may evaluate to:</p>
+<ul>
+  <li>text: <code>{ sys.query }</code>;</li>
+  <li>a content part, either text, <code>{"contentType": "text", "text": "..."}</code>, or an image, <code>{"contentType": "image", "data": "&lt;base64&gt;", "mimeType": "image/png"}</code>;</li>
+  <li>a list of those, which becomes one user turn with several parts.</li>
+</ul>
+<p>Content parts have the same shape as the parts an agent sends to the user with the <a href="../commands/output.html"><code>output</code></a> command. An image the agent received or produced can be passed straight into a prompt. This user text sends a photo from the agent's inputs with a question:</p>
+<x-code lang="python">
+{ ['What is in this picture?', {'contentType': 'image', 'data': sys.inputs['photo'], 'mimeType': 'image/jpeg'}] }
+</x-code>
+<p>Anything else is refused before the model is called, with an error that names the prompt and the field. That includes a number, true or false, a dict that is not a content part, an unknown <code>contentType</code>, an image without a <code>mimeType</code>, and a list inside a list:</p>
+<ul>
+  <li><code>prompts.chat.user must be text, a content part or a list of them, not int.</code></li>
+  <li><code>prompts.chat.user item 2 must be text, a content part or a list of them, not int.</code></li>
+  <li><code>prompts.chat.user is an image part without a mimeType.</code></li>
+  <li><code>The expression at prompts.chat.system is expected to evaluate to str but it evaluated to int.</code></li>
+</ul>
+<p>To put a number or a structure into a prompt, convert it yourself, for example <code>{ str(count) }</code> or <code>{ json.dumps(order) }</code>. You then decide how it reads.</p>
 
 <h2>Scope</h2>
-<p>The scope decides how long a prompt's history is kept and which agents share it.</p>
+<p>Each prompt keeps a history: the user turns and the model's answers. The scope decides how long that history is kept and which agents share it.</p>
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Scope</th><th>History</th></tr></thead>
 <tbody>
-<tr><td><code>conversation</code></td><td>The default. One history for the whole conversation, shared with every other agent in the conversation that has a prompt of the same name and scope.</td></tr>
-<tr><td><code>agent</code></td><td>This agent's own history in the conversation. Other agents in the conversation do not see it.</td></tr>
-<tr><td><code>local</code></td><td>A history for one run only. It is kept while the run pauses on an <code>ask</code>, and it is empty when the next run starts.</td></tr>
+<tr><td><code>conversation</code></td><td>The default. One history for the whole conversation, shared with every agent in the conversation that has a prompt of the same name and scope. A second agent can see what was said to the first.</td></tr>
+<tr><td><code>agent</code></td><td>This agent's own history for the whole conversation. Another agent in the same conversation has a separate history for its prompts.</td></tr>
+<tr><td><code>local</code></td><td>A history for one run only. It starts empty on every run, survives an <code>ask</code> and resume within that run, and is shared by every function in the run that uses the prompt.</td></tr>
 </tbody></table></div>
-<p>An agent may have several prompts, and each keeps its own history. A second prompt suits a separate exchange beside the main one, such as a step that classifies the request. Give a prompt like that the <code>local</code> scope, so that its history does not grow from one run to the next.</p>
+<ul>
+  <li>Use <code>local</code> for one-off tasks inside a run, such as classifying, extracting or summarizing, where earlier runs should not influence the answer.</li>
+  <li>Use <code>agent</code> when the agent should remember its own exchanges with the user but not mix them with other agents'.</li>
+  <li>Use <code>conversation</code> when several agents take turns in one conversation and should share context.</li>
+</ul>
+<p>An agent may have several prompts, and each keeps its own history. Several prompts can be used in one run. Using the same prompt twice in a run continues its history.</p>
+
+<h2>What stays in the history</h2>
+<p>When an <code>llm</code> command finishes with an answer, the history keeps the user turn and the answer. The tool calls the model made along the way, and their results, are removed. A later call, or the next agent in the conversation, sees what was asked and what was answered, not the steps in between. To keep something a tool returned, store it in an <code>agent.</code> or <code>conv.</code> variable.</p>
+<p>If an <code>llm</code> command fails, its user turn is removed again, so a retry does not leave a duplicate question in the history.</p>
+<p>An <code>llm</code> command may run with an empty user text only when the prompt already has a history and the command offers tools. That lets the model continue working with tools without a new question. Otherwise an empty user text is an error.</p>
 
 <h2>Sharing a history between agents</h2>
 <p>A conversation can move from one agent to another, as it does when a follow-up search matches a different agent. The second agent continues the first agent's exchange only when both agents have a prompt with the same name and the <code>conversation</code> scope. A prompt with another name starts with an empty history. The history is kept in a form that does not depend on the model, so the second agent may use a different LLM.</p>
 <p>Agents meant to work together in one conversation should therefore agree on a prompt name. When the second agent's prompt has a system text, that text replaces the first agent's at the second agent's first <code>llm</code> call, so each agent gives the model its own instructions.</p>
 
-<h2>Images</h2>
-<p>The user text may also be an expression that produces a content part, or a list of content parts. An image reaches a vision model as a content part. This user text sends a photo from the agent's inputs with a question:</p>
-<x-code lang="python">
-{ [ {'contentType': 'image', 'contentBase64': sys.inputs['photo'], 'mimeType': 'image/png'},
-    {'contentType': 'text', 'text': 'What is in this picture?'} ] }
-</x-code>
+<h2>Prompts in functions, loops, tools and parallel branches</h2>
+<p>Prompts work anywhere an <code>llm</code> command can run:</p>
+<ul>
+  <li><strong>Functions:</strong> the expression sees the function's own local variables and arguments.</li>
+  <li><strong>Loops:</strong> each iteration evaluates the user text again, so <code>{ item }</code> follows the loop variable.</li>
+  <li><strong>Tool functions:</strong> a function the model calls as a tool can run its own <code>llm</code> command, and its prompt sees the tool function's locals.</li>
+  <li><strong>Parallel branches:</strong> each branch can run its own <code>llm</code> command.</li>
+</ul>
+<p>One rule applies to all of these: two <code>llm</code> commands that run at the same time must use different prompts. A tool function cannot use the prompt of the <code>llm</code> command that called it, and two parallel branches cannot use the same prompt. Doing so fails with <code>The prompt 'chat' is already in use by another llm command that has not finished: one in another parallel branch, or the llm command that called this tool. llm commands running at the same time must use different prompts.</code> Give each one its own prompt, for example <code>summarise_left</code> and <code>summarise_right</code>.</p>
+
+<h2>Errors you will see, and when</h2>
+<p>When you validate a draft, before anything runs:</p>
+<ul>
+  <li>a syntax error in a prompt expression, reported at the field, for example <code>prompts.chat.user</code>;</li>
+  <li>a variable that may not be set when the <code>llm</code> command runs: <code>'city' may not be set at the llm call at main.commands.if.then.llm</code>;</li>
+  <li>an agent or conversation variable that nothing sets: <code>'agent.mood' is not set anywhere in the agent</code>;</li>
+  <li>a prompt that reads <code>result</code>;</li>
+  <li>a function that is not in the allowlist, or a secret that does not exist;</li>
+  <li>an <code>llm</code> command that names a prompt the agent does not have;</li>
+  <li>a <code>const</code> key the agent's const does not have;</li>
+  <li>more prompts than the limit, or a text longer than the limit.</li>
+</ul>
+<p>When the agent runs:</p>
+<ul>
+  <li>an expression that fails, such as a missing dict key or an index out of range: <code>Could not evaluate the Python expression at prompts.chat.user: list index out of range</code>;</li>
+  <li>a system or user text of the wrong type, as listed above;</li>
+  <li>a prompt already in use by another <code>llm</code> command, as listed above.</li>
+</ul>
 
 <h2>Documentation</h2>
 <p>The doc field is plain text that says what the prompt is for. <a href="../development/draft-with-ai.html">Draft with AI</a> sees each prompt's name and doc, never its text, so a useful doc helps the AI choose the right prompt for each <code>llm</code> command.</p>

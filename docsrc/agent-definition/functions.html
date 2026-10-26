@@ -12,7 +12,7 @@
 <p>The description tells the model what the function does and when to call it. It is needed only when the function is used as a tool, and validation treats a function with a description as a tool: the rules for tool functions, such as no <code>end</code>, apply to it.</p>
 
 <h2>Error handling</h2>
-<p>When a command raises an error that the command's own <code>onError</code> does not handle, the function's <code>onError</code> block runs instead of the rest of the function. Inside the block, <code>exc</code> holds the exception. The block may <code>return</code> a value, which becomes the function's result. Otherwise the error propagates to the caller.</p>
+<p>When a command raises an error that the command's own <code>onError</code> does not handle, the function's <code>onError</code> block runs instead of the rest of the function. Inside the block, <code>exc</code> holds the exception. The block may <code>return</code> a value, which becomes the function's result. Without a <code>return</code> the function returns nothing, and the caller continues. See <a href="../agent-execution/error-handling.html">Error handling</a>.</p>
 <p>A function can fail before any of its commands has run, so its <code>onError</code> block can rely only on the function's arguments and on what the block itself sets. Validation refuses an expression in the block that reads anything else. The <code>ask</code> command cannot be used in error handling.</p>
 
 <x-code lang="jsonc" title="A tool function with an error handler">

@@ -1,0 +1,95 @@
+<p class="lead">The const is a JSON object of fixed values for one agent: product names, tone of voice, thresholds, lists of categories, example texts. The agent reads it as the read-only <code>const</code> namespace. The const is part of the <a href="structure.html#definition-and-agent-meta">agent meta</a>: it is edited with the draft, validated with it, published with it, and stored encrypted.</p>
+
+<x-code lang="jsonc" title="A const">
+{
+  "product": "Acme Router X2",
+  "language": "français",
+  "maxItems": 5,
+  "categories": ["billing", "outage", "setup"],
+  "support": { "email": "help@example.com", "hours": "9-17 CET" }
+}
+</x-code>
+<x-code lang="jsonc" title="Read in the definition">
+"output": "{ f'Contact {const.support[\"email\"]} between {const.support[\"hours\"]}.' }"
+</x-code>
+<p>Keep values that differ between agents, or that you want to change without touching the agent's logic, in the const rather than written into the definition. Use top-level keys that are valid names, letters, digits and underscores, so they can be read as <code>const.name</code>.</p>
+
+<h2>Where you can use it</h2>
+<p>Anywhere an expression is allowed: in <code>var</code>, <code>if</code>, <code>for</code> (for example <code>"iter": "{ const.categories }"</code>), <code>api</code> bodies, <code>output</code>, function arguments, and <a href="prompts.html">prompts</a>:</p>
+<div class="tablewrap"><table class="fields">
+<tbody>
+<tr><td>Name</td><td><code>chat</code></td></tr>
+<tr><td>System</td><td><code>{ 'You are the support assistant for ' + const.product + '. Answer in ' + const.language + '.' }</code></td></tr>
+<tr><td>User</td><td><code>{ sys.query }</code></td></tr>
+</tbody></table></div>
+<p><code>sys.exists('const', 'maxItems')</code> tells you whether a key is present.</p>
+
+<h2>Read-only, and fresh for every run</h2>
+<p>An agent cannot set <code>const</code>: <code>var</code> cannot target it. Each run gets its own copy. When an agent changes a list or dict it read from the const, for example by adding a key to a local variable that holds <code>const.support</code>, that change stays within that run. The next run, for any user, sees the const exactly as it was published.</p>
+
+<h2>Encrypted</h2>
+<p>The agent server encrypts the const before it leaves for Search2o Cloud, the same way it encrypts an agent's description. The cloud stores and returns only the encrypted value. The editor shows it decrypted, so you edit plain JSON.</p>
+<p>With <a href="../security/encryption.html">end-to-end encryption</a>, the key never leaves your organization and the const cannot be read outside your agent servers.</p>
+
+<h2>Validation</h2>
+<p>When a draft is validated:</p>
+<ul>
+  <li>Every <code>const.NAME</code> the agent reads, in commands or in prompts, is checked against the const's top-level keys. A missing key is reported where it is used: <code>'nokey' is not in the agent's const.</code> Keys are case-sensitive.</li>
+  <li>An agent that reads <code>const.anything</code> with no const, or an empty one, gets the same report for each read.</li>
+  <li>A const that is not a JSON object, for example a list, or that is not valid JSON, is reported at <code>const</code>.</li>
+</ul>
+<p>Only top-level keys are checked before the run. A missing nested key, such as <code>const.support['phone']</code>, fails when that expression runs: <code>Could not evaluate the Python expression at ...: 'phone'</code>. Use <code>.get()</code> for a nested value that may be absent.</p>
+
+<h2>Size</h2>
+<p>The encrypted const may be up to 50,000 characters. Encryption makes text about a third longer, and characters outside ASCII take more room, so a const of plain ASCII text fits up to roughly 37,000 characters, less when it holds accented or other non-ASCII characters. A const that is too long is refused when you save it: <code>The const is too long. Encrypted, it is 53,541 characters, over the 50,000 that can be stored. Encryption adds about a third, more for characters outside ASCII.</code></p>
+
+<h2>Changing the const of a published agent</h2>
+<p>Like the prompts, the const belongs to the draft: make a draft from the agent, change the const, validate and publish. A publish that changes only the const keeps the agent's version, and the agent's next run uses the new values. See <a href="../development/publishing.html">Publishing</a>.</p>
+
+<h2>Putting it together</h2>
+<p>A support agent that answers in the customer's language, about the right product, with or without a photo of the device. The photo, when there is one, arrives as a base64 input named <code>photo</code> alongside the query.</p>
+<x-code lang="jsonc" title="Definition">
+{
+  "functions": {
+    "main": {
+      "commands": {
+        "if": {
+          "condition": "{ 'photo' in sys.inputs }",
+          "then": { "llm": { "profile": "claude_haiku", "prompt": "with_photo" } },
+          "else": { "llm": { "profile": "claude_haiku", "prompt": "chat" } }
+        },
+        "output": "{ result }"
+      }
+    }
+  }
+}
+</x-code>
+<h3>Prompts</h3>
+<div class="tablewrap"><table class="fields">
+<tbody>
+<tr><td>Name</td><td><code>chat</code></td></tr>
+<tr><td>System</td><td><code>{ 'You support ' + const.product + '. Reply in ' + const.language + ', in at most ' + str(const.maxItems) + ' sentences.' }</code></td></tr>
+<tr><td>User</td><td><code>{ sys.query }</code></td></tr>
+<tr><td>Scope</td><td><code>agent</code></td></tr>
+<tr><td>Doc</td><td>Text questions from the customer.</td></tr>
+</tbody></table></div>
+<div class="tablewrap"><table class="fields">
+<tbody>
+<tr><td>Name</td><td><code>with_photo</code></td></tr>
+<tr><td>System</td><td><code>{ 'You support ' + const.product + '. Describe what you see, then answer. Reply in ' + const.language + '.' }</code></td></tr>
+<tr><td>User</td><td><code>{ [sys.query, {'contentType': 'image', 'data': sys.inputs['photo'], 'mimeType': 'image/jpeg'}] }</code></td></tr>
+<tr><td>Scope</td><td><code>agent</code></td></tr>
+<tr><td>Doc</td><td>Questions that come with a photo of the device.</td></tr>
+</tbody></table></div>
+<x-code lang="jsonc" title="Const">
+{
+  "product": "Acme Router X2",
+  "language": "français",
+  "maxItems": 5
+}
+</x-code>
+<ul>
+  <li>Validation checks that <code>const.product</code>, <code>const.language</code> and <code>const.maxItems</code> exist.</li>
+  <li>Both prompts use the <code>agent</code> scope, so this agent remembers its own conversation with the customer, and other agents in the conversation keep theirs.</li>
+  <li>Changing the product or the language later is a const-only publish: the agent's logic stays as it is, and the next run picks the new values up.</li>
+</ul>

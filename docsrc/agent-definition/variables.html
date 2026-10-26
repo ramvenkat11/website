@@ -17,7 +17,7 @@
 
 <h2>Read-only namespaces</h2>
 <h3>const</h3>
-<p><code>const</code> holds the agent's constants: a JSON object set in the GUI with the draft, like the prompts, and read as <code>const.name</code>. The object is encrypted on its way to and from Search2o Cloud, so the cloud never reads it. An agent cannot assign to <code>const</code>. Validation lists the keys the agent reads, and the agent server checks that the agent's const has them.</p>
+<p><code>const</code> holds the agent's <a href="const.html">const</a>: a JSON object of fixed values that is part of the agent meta, like the prompts, and read as <code>const.name</code>. The object is encrypted on its way to and from Search2o Cloud, so the cloud never reads it. An agent cannot assign to <code>const</code>, and each run gets a fresh copy. Validation checks every top-level key the agent reads against the const.</p>
 
 <h3>sys</h3>
 <p>The runtime provides <code>sys</code>. These names are always present:</p>

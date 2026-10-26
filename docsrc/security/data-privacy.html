@@ -8,6 +8,7 @@
 <div class="tablewrap"><table class="fields data">
 <thead><tr><th>Data</th><th>Who can read it</th><th>Kept for</th></tr></thead>
 <tbody>
+<tr><td>An agent's <a href="../agent-definition/const.html">const</a><br><small>the fixed values the agent reads as <code>const.name</code></small></td><td>Developers, in the GUI; the account's agent servers decrypt it to run the agent</td><td>As long as the agent, or a draft of it, exists</td></tr>
 <tr><td>Conversation state<br><small>variables, prompt history, output, where an agent paused; not stored in the cloud at all when the conversation state hooks are set</small></td><td>Only the user whose conversation it is; the account's agent servers decrypt it to answer that user's next request</td><td>7 days after the last use on the Free plan, 90 days on Paid; pinned conversations indefinitely</td></tr>
 </tbody></table></div>
 

@@ -69,8 +69,7 @@ RUNNING AN AGENT
 
   output.parts is a list. Each part is one of:
       { "contentType": "text",  "text": "markdown" }
-      { "contentType": "html",  "text": "<p>...</p>" }
-      { "contentType": "image", "text": "<base64>", "mimeType": "image/png" }
+      { "contentType": "image", "data": "<base64>", "mimeType": "image/png" }
 
 ASKING THE PERSON FOR INPUT
   When resultCode is "ask", askInput is a dictionary of blocks, one form each:
@@ -104,8 +103,6 @@ RULES YOU MUST FOLLOW
     new conversation and carry on. It is not an error to report.
   - Never log a token, never put one in a URL, never post one into a channel.
   - An answer is markdown. Convert it to the chat application's own format.
-  - html parts cannot be shown in any chat application. Convert them to text, or tell the
-    person the answer is in the Search2o GUI.
   - image parts are base64. Upload them using the chat application's file API.
   - When you show search results, show one button per agent. Put a short id in the button
     and keep the question in your own store, because a button carries little and a question

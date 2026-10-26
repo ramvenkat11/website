@@ -1,9 +1,84 @@
-<p class="lead">The runtime handles the errors an agent meets: a failed LLM, API or database call, a tool call the model got wrong, a limit reached, or a command that raised. An agent names what to do on a command's <code>onError</code> block; everything it does not catch ends the run with a result code and a record in the error report.</p>
+<p class="lead">An agent meets errors from three places: its own expressions, the systems it calls, and the limits the runtime enforces. A command that calls out can handle its own errors in an <code>onError</code> block, a function can handle what its commands did not, and whatever is not handled ends the run with a result code, a message for the person and a record in the error report. Nothing from a failed run is saved.</p>
 
-<h2>Where errors are handled</h2>
+<h2>Where errors come from</h2>
 <ul>
-  <li><a href="../agent-definition/commands.html#error-handling-on-a-command">Error handling on a command</a>: the <code>onError</code> block every command can carry.</li>
-  <li><a href="../commands/fail.html">fail</a>: ending a run with an error of the agent's own.</li>
-  <li><a href="controlled-runtime.html#when-something-fails">When something fails</a>: what the person and the client see.</li>
-  <li><a href="../reports/index.html#result-codes">Result codes</a> and the <a href="../reports/errors.html">error report</a>: how every failure is recorded.</li>
+  <li><strong>Expressions.</strong> A name that is not set, a missing dict key, an index out of range, a wrong type. The message names the command's path and the Python error: <code>Could not evaluate the Python expression at main.commands.var: 'phone'</code>. A field that evaluates to the wrong type is refused the same way: <code>The expression at prompts.chat.system is expected to evaluate to str but it evaluated to int.</code></li>
+  <li><strong><code>api</code>.</strong> A path, header or query parameter the API profile does not allow, a timeout, or a connection failure. The command does not check the HTTP status code: a 404 or a 500 is a result for the next command to test.</li>
+  <li><strong><code>db</code>.</strong> An unknown profile, a timeout, a connection or SQL error, or more rows than the account's row limit.</li>
+  <li><strong><code>llm</code>.</strong> A vendor error that survives the retries, a request that cannot be built, more tools than the profile allows, or an answer of the wrong shape for structured output.</li>
+  <li><strong>Loops.</strong> A <code>for</code> or <code>while</code> that reaches the account's <em>max loop iterations</em> setting.</li>
+  <li><strong>Functions.</strong> A function called again while it is still running.</li>
+  <li><strong>Hooks.</strong> A <a href="../hooks/overview.html">hook</a> that raises.</li>
+</ul>
+<p><a href="../development/trace-and-validation.html">Validation</a> catches many of these before the agent runs: a variable nothing sets, a prompt the agent does not have, a const key the const does not have, a function that is not on the allowlist. What remains depends on the data the agent meets at run time.</p>
+<p>Three commands end a run on purpose and are not errors: <code>ask</code> pauses the run, <code>end</code> finishes it, and <a href="../commands/fail.html"><code>fail</code></a> fails it with a message of the agent's own. None of them can be caught.</p>
+
+<h2>onError on a command</h2>
+<p><code>api</code>, <code>db</code> and <code>llm</code> accept an <code>onError</code> block. When the command raises, <code>exc</code> is set to the exception, the block's commands run, and the function continues with the command after the failed one. The failed command produced no result, so the block sets a variable the rest of the function can rely on:</p>
+<x-code lang="jsonc">
+"api": {
+  "profile": "weather",
+  "path": "{ f'/forecast/{city}' }",
+  "onError": {
+    "log": "{ f'Forecast unavailable for {city}: {exc}' }",
+    "var": { "forecastError": "{ str(exc) }" }
+  }
+},
+"if": {
+  "condition": "{ sys.exists('local', 'forecastError') }",
+  "then": { "output": "{ f'No forecast for {city} right now: {forecastError}' }" },
+  "else": { "var": { "forecast": "{ result }" } }
+}
+</x-code>
+<p>Inside the block:</p>
+<ul>
+  <li><code>exc</code> is the exception. <code>{ exc }</code> in an f-string gives its message.</li>
+  <li><code>result</code> is whatever the last command before the failed one produced, not a result of the failed command. Do not rely on it.</li>
+  <li><code>ask</code> is not allowed, because a run cannot pause while it handles an error. Set a variable in the block and ask after the command, with an <code>if</code> on that variable.</li>
+  <li>A command in the block can itself fail. That error goes to the function's <code>onError</code>.</li>
+</ul>
+
+<h2>onError on a function</h2>
+<p>A <a href="../agent-definition/functions.html">function</a> can carry an <code>onError</code> block of its own. It runs when an error leaves one of the function's commands: a command without an <code>onError</code>, a command whose <code>onError</code> failed, or a command that does not accept one, such as <code>var</code>, <code>for</code> or <code>func</code>. The rest of the function is skipped. With a <code>return</code> in the block, the returned value becomes the function's result. Without one the function returns nothing, and the caller continues.</p>
+<x-code lang="jsonc">
+"lookupOrder": {
+  "args": { "orderId": {} },
+  "commands": {
+    "api": { "profile": "orders", "path": "{ f'/orders/{orderId}' }" },
+    "return": "{ result }"
+  },
+  "onError": {
+    "log": "{ f'Order lookup failed for {orderId}: {exc}' }",
+    "return": "unknown"
+  }
+}
+</x-code>
+<p>A function can fail before any of its commands has run, so its <code>onError</code> block sees only the function's arguments, what the block itself sets, <code>exc</code> and <code>result</code>. Validation refuses an expression in the block that reads a variable from the function body.</p>
+<p><code>main</code> is a function too. An error that reaches the <code>onError</code> of <code>main</code> and is handled there ends the run normally, with whatever output the agent wrote.</p>
+
+<h2>What cannot be caught</h2>
+<ul>
+  <li>The agent's <a href="controlled-runtime.html">cost limit</a>. Reaching it ends the run at once, inside an <code>onError</code>, a tool call or a <code>parallel</code> branch alike.</li>
+  <li>The agent's time limit. The run is ended from outside with the result code <code>timedOut</code>.</li>
+  <li><code>fail</code>, a stop by the person, and an error from Search2o Cloud.</li>
+  <li>A hook that refuses the run.</li>
+</ul>
+
+<h2>Errors in tools</h2>
+<p>A function the model calls as a tool handles errors like any other function: its commands' <code>onError</code> blocks and its own <code>onError</code> apply. An error that leaves the function is not given to the model. It ends the run, with the model's answer never produced. A tool that should let the model recover catches the error itself and returns a value that says what went wrong.</p>
+<p>A tool on an <a href="../profiles/mcp-servers.html">MCP server</a> is different. An error the server reports as a tool error, or a JSON-RPC error whose code the MCP profile lists as retryable, goes back to the model together with the profile's tool error prompt, and the model can correct its arguments or give up. Any other MCP error ends the run.</p>
+<p><code>fail</code> inside a tool ends the run with its message. <code>end</code> is not allowed in a tool. <code>ask</code> pauses the run, and the model's tool loop resumes when the person answers.</p>
+
+<h2>Errors in parallel branches</h2>
+<p>When a branch of a <a href="../commands/parallel.html"><code>parallel</code></a> command fails, the command fails with that error, and the function's <code>onError</code> can handle it. When several branches fail, their messages are combined into one. A stop, a cost limit or an <code>ask</code> in any branch takes precedence over the failures of the others, which the trace still records.</p>
+
+<h2>What the person sees</h2>
+<p>An error that nothing handled ends the run with the result code <code>errorInAgent</code>. The person reads <em>This agent could not complete your request. The problem has been reported to its developer.</em> When the cause was a timeout or a connection failure on an API, a database or an LLM, the person reads <em>The agent could not reach a service it needs. Please try again in a moment.</em> A <code>fail</code> shows its own message. A run past the time limit or the cost limit says which limit it reached.</p>
+<p>The conversation state is not saved after a failed run. A follow-up in the same conversation sees the variables, prompts and output as they were before the run.</p>
+
+<h2>Where to look</h2>
+<ul>
+  <li>During validation, the <a href="../development/trace-and-validation.html">trace</a> shows every error with the path of the command it happened at, including the ones an <code>onError</code> block handled.</li>
+  <li>In production, the <a href="../reports/errors.html">error report</a> groups each agent's failures by version, result code and message, with the command path. The <a href="../reports/index.html#result-codes">result codes</a> say which kind of failure each was.</li>
+  <li>The <code>onAgentError</code> <a href="../hooks/lifecycle.html">hook</a> receives the result code, the message and the path of every failed run, for alerting from your own code.</li>
 </ul>

@@ -55,7 +55,8 @@
 <p>Problems found at startup are written to the agent server's log. An allowlist entry the agent server cannot import is skipped, and the rest of the allowlist loads. A <a href="../hooks/index.html">hook</a> or an LLM adapter that cannot be loaded stops the agent server from running agents until it is fixed and the agent server restarted.</p>
 
 <h2>Running many agent servers</h2>
-<p>The agent server is stateless, so containerize it and run it load balanced; nothing more is needed. Every agent server picks up a configuration or profile change before its next agent run, so agent servers never drift from each other; see <a href="../runtime/overview.html">Agent runtime</a>. The exceptions are the settings on this page, which need a restart, and the license key: after a <a href="../security/license-rotation.html">rotation</a>, every agent server is restarted with the new key.</p>
+<p>The agent server is stateless, so containerize it and run it load balanced; nothing more is needed. Every agent server picks up a configuration or profile change before its next agent run, so agent servers never drift from each other; see <a href="../runtime/overview.html">Agent runtime</a>. The exceptions are the settings on this page, which need a restart, and the license key: after a <a href="../security/license-rotation.html">rotation</a>, every agent server is restarted with the new key. When an agent is deleted, every agent server drops its cached copy at its next configuration refresh.</p>
+<p>When an agent server stops, the agents still running get <code>shutdownGrace</code> seconds to finish before they are stopped.</p>
 
 <h2>Health</h2>
 <p><code>GET /health</code> is answered by the agent server itself, without sign-in, and is the call for a load balancer or a monitor to use. It reaches nothing outside the agent server, so its response time reflects that agent server's own health. See <a href="agent-server-sizing.html">Agent server sizing</a>.</p>

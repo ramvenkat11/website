@@ -2,13 +2,10 @@
 
 <h2>What a draft holds</h2>
 <ul>
-  <li>The agent's name and title.</li>
+  <li>The agent's name.</li>
   <li>The agent definition, as a JSONC document.</li>
-  <li>The agent's <a href="../agent-definition/prompts.html">prompts</a>.</li>
-  <li>The agent's const: a JSON object the agent reads as <code>const.name</code>, stored encrypted so that the cloud cannot read it.</li>
+  <li>The <a href="../agent-definition/structure.html#definition-and-agent-meta">agent meta</a>: the title, the tag, the run limits (the most time and the most LLM spend one run may take), the <a href="../agent-definition/prompts.html">prompts</a> and the <a href="../agent-definition/const.html">const</a>.</li>
   <li>The profiles the agent uses. <a href="draft-with-ai.html">Draft with AI</a> reads these.</li>
-  <li>The agent's run limits: the most time and the most LLM spend one run may take.</li>
-  <li>The agent's tag.</li>
   <li>A validation query: a typical request the agent should handle. Validation runs the draft against it.</li>
 </ul>
 
