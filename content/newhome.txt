@@ -1,0 +1,5 @@
+ We are currently in beta and offer only the free tier.
+
+ When you are ready to switch to production, just let us know from the accounts page. When enough users are ready, we will switch to general availability.
+
+ The production pricing will have a platform fee, per developer fee and usage fee for search and execAgent, all comparable to AI vendors in the market.
