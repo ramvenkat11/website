@@ -1049,3 +1049,7 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - `#framework-runtime` subheading: "Agent server takes care of all the plumbing, so your agent contains only business logic."
 - `#user-interfaces` subheading: "Just two calls and an authorization token are all a client needs to discover and run hundreds of agents."
 - `#user-interfaces` subheading: "A client uses just two calls to discover and run hundreds of agents."
+
+## 2026-10-26 Getting started: install from source
+- `html/gettingstarted.html` #install: the "The source is on GitHub" line replaced by instructions for installing the two from source: clone agent-server and `pip install -e agent-server` (the clone has no GUI, `search2o/ui/` is gitignored there); clone ui, `npm install && npm run build` (Node.js 22.12+), `cp -R dist ../agent-server/search2o/ui`; Windows copy note; link to docs/gui/how-the-gui-runs.html for serving the GUI elsewhere. Facts from ../search2o (README, MANIFEST.in, main.py `_UI_DIR`) and ../ui1 (README, scripts/deploy-to-agentserver.sh).
+- Not changed: docsrc/getting-started/registering-and-downloading.html "Source" section and docsrc/support-licensing/license.html still only link the two repos.
