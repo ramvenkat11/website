@@ -974,3 +974,6 @@ Ram: no standalone tile, just the cluster; text may say standalone or cluster. T
 
 ## 2026-10-25 Enterprise card: Access & roles -> Built for teams
 Ram: title and content as the benefit. Card now "Built for teams": "Built-in authentication and single sign-on. Users, developers, administrators and owners each have their own role. Service accounts for bots and scripts." Links: authentication.html, single-sign-on.html, users-and-roles.html, service-accounts.html. Rendered with SEC=platform render-st.sh bt at all widths light/dark. Uncommitted.
+
+## 2026-10-25 Card title: Ready for teams
+Ram: too much "built" (section "Built for the enterprise", card "Built for teams", "Built-in authentication"). Card is now "Ready for teams": "Authentication and single sign-on are included. Users, developers, administrators and owners each have their own role. Service accounts for bots and scripts." Rendered with SEC=platform render-st.sh rt. Uncommitted.
