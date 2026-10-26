@@ -1101,3 +1101,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Rendered at 1280 1000 860 700 384 375 360 light+dark: no overflow, no broken words.
 - Ram will revise "Built for the enterprise" later to remove repetitions (model neutrality, secret vault, live config appear there too).
 - Not committed.
+- Box outline tag "Agent runtime" → "Agent server" (index.html:147); aria-label wording matched. Rendered 1280 light and 360 dark, tag centred on the dashed border.
