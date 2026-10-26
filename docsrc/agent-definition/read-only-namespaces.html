@@ -1,0 +1,30 @@
+<p class="lead">Besides its <a href="variables.html">variables</a>, an agent reads a few names the runtime provides and the agent cannot assign: the <code>const</code>, the <code>sys</code> namespace, the current <code>command</code>, the last <code>result</code> and, in error handling, <code>exc</code>.</p>
+
+<h2>const</h2>
+<p><code>const</code> holds the agent's <a href="const.html">const</a>: a JSON object of fixed values that is part of the agent meta, like the prompts, and read as <code>const.name</code>. The object is encrypted on its way to and from Search2o Cloud, so the cloud never reads it. An agent cannot assign to <code>const</code>, and each run gets a fresh copy. Validation checks every top-level key the agent reads against the const.</p>
+
+<h2>sys</h2>
+<p>The runtime provides <code>sys</code>. These names are always present:</p>
+<ul>
+  <li><code>sys.inputs</code>: the inputs the agent was started with, as a dict. For a search the dict is <code>{ "query": ... }</code>. A call to <a href="../rest-api/running-agents.html"><code>execAgent</code></a> passes any inputs it likes.</li>
+  <li><code>sys.query</code>: the user's query, the same as <code>sys.inputs['query']</code>.</li>
+  <li><code>sys.secret[name]</code>: reads a secret by name. Where secrets come from, the environment, a file or your own vault, is on <a href="../security/secret-vault.html">Secret vault</a>.</li>
+  <li><code>sys.exists(scope, name)</code>: whether a variable exists, before reading it. The scope is <code>local</code>, <code>agent</code>, <code>conv</code>, <code>const</code> or <code>allowlist</code>; see <a href="python-expressions.html#checking-whether-a-variable-exists">Python expressions</a>.</li>
+</ul>
+<p>These names are present only when an administrator enables them in the <a href="../runtime/system-variables.html">system variables</a> configuration:</p>
+<ul>
+  <li><code>sys.userEmail</code>: the email address of the user running the agent.</li>
+  <li><code>sys.userSession</code>: a hash of the user's session, for keying per-session data.</li>
+  <li><code>sys.serverIp</code>: the agent server's address as seen by the cloud, for logging.</li>
+  <li><code>sys.cookies</code>: the cookies of the request that started the run.</li>
+</ul>
+
+<h2>command</h2>
+<p><code>command</code> holds the values of the current command's fields evaluated so far. A field may refer to a field written earlier in the same command as <code>command.field</code>.</p>
+
+<h2>Other names</h2>
+<ul>
+  <li><code>result</code>: the result of the most recent command that produces one.</li>
+  <li><code>exc</code>: inside an <code>onError</code> block, the exception being handled.</li>
+</ul>
+<p><code>sys</code>, <code>command</code>, <code>result</code>, <code>exc</code>, <code>agent</code>, <code>conv</code>, <code>const</code> and <code>onError</code> are reserved and cannot be assigned, nor used as argument or loop variable names. Python keywords cannot be variable names either.</p>
