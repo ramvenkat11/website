@@ -1025,3 +1025,8 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Rendered at 1280 1000 900 860 700 384 375 360 light/dark, no overflow; crops read at 1280, 1000, 700, 360. Nothing committed.
 - `#framework-runtime` subheading: "Agent server takes care of all the plumbing, so an agent is only business logic."
 - `#user-interfaces` heading: "Bundled interfaces" → "Multiple interfaces".
+
+## 2026-10-26 Microagents page → Search2o agents
+- `docsrc/introduction/microagents.html` replaced by `docsrc/introduction/search2o-agents.html` ("Search2o agents" in the TOC). Same content, "Search2o agent" throughout; the microservice analogy kept as one sentence in the lead. Old source and built page moved to the scratchpad removed/ folder (rm is refused by the permission system).
+- Links updated: what-is-search2o.html ("building agents"), introduction/index.html ("what a Search2o agent is"), skill-integration/overview.html ("as an agent in Search2o"), skill-integration/what-search2o-provides.html (two hrefs), comparisons/langchain.html (two hrefs only; its wording waits for Ram's separate instructions).
+- The home page (html/index.html) still says microagents where it does; Ram said that is a separate pass.
