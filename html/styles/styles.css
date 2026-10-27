@@ -1130,8 +1130,9 @@ a.arch-lbl { color: var(--blue-ink); }
 .legal-body strong { color: var(--ink); }
 .legal-body code { font-family: var(--mono); font-size: .9em; }
 
+.pricing h1 { margin: 42px 0 0; font-size: clamp(22px, 2.4vw, 28px); font-weight: 700; }
 .pricing h2 { margin: 44px 0 0; font-size: 22px; letter-spacing: -0.015em; }
-.pricing h2:first-child { margin-top: 8px; }
+.pricing h1 + h2 { margin-top: 30px; }
 .pricing h2 ~ p { margin-top: 12px; max-width: 70ch; color: var(--body); font-size: 15.5px; line-height: 1.65; }
 .page-hero .hero-actions { margin-top: 26px; }
 .pricing h2 .dash { color: var(--faint); font-weight: 500; }
