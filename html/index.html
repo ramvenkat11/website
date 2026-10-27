@@ -106,32 +106,32 @@
         <div class="convo hero-convo" aria-label="One conversation across two independent agents. Search matches the first request to the Travel desk agent, which asks before booking. A second request is matched to the Reimbursements agent, which continues the same conversation and files the expenses for the trip.">
           <div class="convo-title">Conversation</div>
           <div class="convo-body">
-            <div class="turn-user r1 st st1">Book my trip for Tuesday's all-day meeting in New York<i class="mk">1</i></div>
-            <aside class="note-bubble first r1 st st2"><b><i class="mk">1</i>Search by intention</b>No rule routed this request. Search matched it to Travel desk from the description its developer wrote, in about 200 milliseconds on our side. <a href="search.html">How search matches</a></aside>
-            <div class="turn-agent r2 st st3">
+            <div class="turn-user r1">Book my trip for Tuesday's all-day meeting in New York<i class="mk">1</i></div>
+            <aside class="note-bubble first r1"><b><i class="mk">1</i><a href="search.html">Discovery</a></b>Search matched the request to Travel desk agent. The UI is configured to execute the agent automatically.</aside>
+            <div class="turn-agent r2">
               <div class="msg ask" aria-label="The agent asks before booking"><i class="mk">2</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>
                 <span class="q">UA1191 departs 06:00 Tuesday, back at 19:30, and a night at the Marriott near the office. $1,240. <b>Book it?</b></span>
                 <span class="opts"><i class="on">Book</i><i>Hold</i></span>
                 <span class="submit">Submit</span>
               </div>
             </div>
-            <aside class="note-bubble r2 st st4"><b><i class="mk">2</i>Human in the loop</b>The agent paused and asked. The answer always goes back to the same agent, which resumes from its stored state, now or days later. <a href="search.html#conversation">Conversations</a></aside>
-            <div class="turn-agent r3 st st5">
+            <aside class="note-bubble r2"><b><i class="mk">2</i><a href="docs/commands/ask.html">Human in the loop</a></b>Agent state is stored and when the user answers, it continues where it left off.</aside>
+            <div class="turn-agent r3">
               <div class="msg"><i class="mk">3</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>Booked UA1191 and the hotel night. The confirmation is in your inbox.</div>
             </div>
-            <aside class="note-bubble r3 st st5"><b><i class="mk">3</i>The conversation keeps it</b>Travel desk ended here. Its prompt stays in the conversation, and so does anything it chose to save there, like the trip. <a href="search.html#conversation">Conversations</a></aside>
-            <div class="turn-user r4 st st6">File the expenses for that trip</div>
-            <div class="turn-agent r5 st st7">
+            <aside class="note-bubble r3"><b><i class="mk">3</i><a href="search.html#conversation">Conversation context</a></b>Travel desk agent ended here. Its prompts and other information it chooses stay in the conversation.</aside>
+            <div class="turn-user r4">File the expenses for that trip</div>
+            <div class="turn-agent r5">
               <div class="msg"><i class="mk">4</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Reimbursements</span>Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
             </div>
-            <aside class="note-bubble r5 st st7"><b><i class="mk">4</i>A different agent</b>Search matched the follow-up to Reimbursements. It continued the same prompt on a different model and knew the trip. Nothing wired the two agents together. <a href="search.html#conversation">How agents build on each other</a></aside>
+            <aside class="note-bubble r5"><b><i class="mk">4</i><a href="search.html#conversation">Orchestration</a></b>Search matched the follow-up request to Reimbursements. It used the saved prompt from Travel desk to do its task.</aside>
           </div>
         </div>
         <div class="sc-notes">
-          <div class="note"><b><i class="mk">1</i>Search by intention</b>No rule routed this request. Search matched it to Travel desk from the description its developer wrote, in about 200 milliseconds on our side. <a href="search.html">How search matches</a></div>
-          <div class="note"><b><i class="mk">2</i>Human in the loop</b>The agent paused and asked. The answer always goes back to the same agent, which resumes from its stored state, now or days later. <a href="search.html#conversation">Conversations</a></div>
-          <div class="note"><b><i class="mk">3</i>The conversation keeps it</b>Travel desk ended here. Its prompt stays in the conversation, and so does anything it chose to save there, like the trip. <a href="search.html#conversation">Conversations</a></div>
-          <div class="note"><b><i class="mk">4</i>A different agent</b>Search matched the follow-up to Reimbursements. It continued the same prompt on a different model and knew the trip. Nothing wired the two agents together. <a href="search.html#conversation">How agents build on each other</a></div>
+          <div class="note"><b><i class="mk">1</i><a href="search.html">Discovery</a></b>Search matched the request to Travel desk agent. The UI is configured to execute the agent automatically.</div>
+          <div class="note"><b><i class="mk">2</i><a href="docs/commands/ask.html">Human in the loop</a></b>Agent state is stored and when the user answers, it continues where it left off.</div>
+          <div class="note"><b><i class="mk">3</i><a href="search.html#conversation">Conversation context</a></b>Travel desk agent ended here. Its prompts and other information it chooses stay in the conversation.</div>
+          <div class="note"><b><i class="mk">4</i><a href="search.html#conversation">Orchestration</a></b>Search matched the follow-up request to Reimbursements. It used the saved prompt from Travel desk to do its task.</div>
         </div>
       </div>
     </div>
@@ -140,7 +140,7 @@
     <div class="container">
       <div class="section-head center">
         <h2>Built-in agent infrastructure</h2>
-        <p>Agent server takes care of all the plumbing, so your agent contains only business logic.</p>
+        <p>Agent server takes care of everything else, so your agent contains only business logic.</p>
       </div>
       <div class="fw-wrap">
         <div class="fw-fig" aria-label="An agent, which is only business logic, runs inside the agent server. The server around it provides LLM calls, model neutrality, the tool calling loop, API, database and MCP calls, connection pools, a secret vault, error handling, runtime limits, human in the loop, streaming, saving and restoring conversations, memory, externalized prompts, drafting with AI, trace and validation, agent versioning, multi-developer publishing, live configuration, observability and an audit log.">
