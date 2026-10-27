@@ -1123,3 +1123,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Old Eval/Prod/$40 removed everywhere: docsrc/support-licensing/license.html pricing sentence rewritten (Free plan; billing starts when the owner asks to switch and approves); docsrc/support-licensing/billing.html per-user proration bullet removed. Docs rebuilt.
 - Rendered pricing at 1280 1000 860 700 384 375 360 light+dark, no overflow; docs license and billing pages viewed at 1280.
 - Note: pricing.html dump-dom readout needs --virtual-time-budget (plain --timeout gives empty readout); screenshots need --timeout.
+- Pricing usage limits sentence → "Each free account has usage limits."
