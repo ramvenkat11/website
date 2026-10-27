@@ -40,6 +40,7 @@
           <a class="navlink" href="framework.html">Agent framework</a>
           <a class="navlink" href="runtime.html">Agent runtime</a>
           <a class="navlink" href="search.html">Search</a>
+          <a class="navlink" href="conversation.html">Conversation</a>
         </div>
       </details>
       <a class="navlink" href="docs/index.html">Docs</a>
@@ -99,7 +100,7 @@
   <section class="section soft" id="search-and-conversation">
     <div class="container">
       <div class="section-head center">
-        <h2>Built-in agent discovery and orchestration</h2>
+        <h2>Built-in agent discovery and multi-agent conversations</h2>
         <p>Agents are discovered by search and build on each other in a conversation.</p>
       </div>
       <div class="sc-wrap">
@@ -119,19 +120,19 @@
             <div class="turn-agent r3">
               <div class="msg"><i class="mk">3</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>Booked UA1191 and the hotel night. The confirmation is in your inbox.</div>
             </div>
-            <aside class="note-bubble r3"><b><i class="mk">3</i><a href="search.html#conversation">Conversation context</a></b>Travel desk agent ended here. Its prompts and other information it chooses stay in the conversation.</aside>
+            <aside class="note-bubble r3"><b><i class="mk">3</i><a href="conversation.html#state">Conversation context</a></b>Travel desk agent ended here. Its prompts and other information it chooses stay in the conversation.</aside>
             <div class="turn-user r4">File the expenses for that trip</div>
             <div class="turn-agent r5">
               <div class="msg"><i class="mk">4</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Reimbursements</span>Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
             </div>
-            <aside class="note-bubble r5"><b><i class="mk">4</i><a href="search.html#conversation">Orchestration</a></b>Search matched the follow-up request to Reimbursements. It used the saved prompt from Travel desk to do its task.</aside>
+            <aside class="note-bubble r5"><b><i class="mk">4</i><a href="conversation.html">Building on each other</a></b>Search matched the follow-up request to Reimbursements. It used the saved prompt from Travel desk to do its task.</aside>
           </div>
         </div>
         <div class="sc-notes">
           <div class="note"><b><i class="mk">1</i><a href="search.html">Discovery</a></b>Search matched the request to Travel desk agent. The UI is configured to execute the agent automatically.</div>
           <div class="note"><b><i class="mk">2</i><a href="docs/commands/ask.html">Human in the loop</a></b>Agent state is stored and when the user answers, it continues where it left off.</div>
-          <div class="note"><b><i class="mk">3</i><a href="search.html#conversation">Conversation context</a></b>Travel desk agent ended here. Its prompts and other information it chooses stay in the conversation.</div>
-          <div class="note"><b><i class="mk">4</i><a href="search.html#conversation">Orchestration</a></b>Search matched the follow-up request to Reimbursements. It used the saved prompt from Travel desk to do its task.</div>
+          <div class="note"><b><i class="mk">3</i><a href="conversation.html#state">Conversation context</a></b>Travel desk agent ended here. Its prompts and other information it chooses stay in the conversation.</div>
+          <div class="note"><b><i class="mk">4</i><a href="conversation.html">Building on each other</a></b>Search matched the follow-up request to Reimbursements. It used the saved prompt from Travel desk to do its task.</div>
         </div>
       </div>
     </div>
@@ -294,6 +295,7 @@
           <a href="framework.html">Agent framework</a>
           <a href="runtime.html">Agent runtime</a>
           <a href="search.html">Search</a>
+          <a href="conversation.html">Conversation</a>
           <a href="pricing.html">Pricing</a>
         </div>
         <div class="fcol">

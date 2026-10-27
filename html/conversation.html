@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<title>Conversation — Search2o</title>
+<meta name="description" content="Conversations let agents build on each other. A conversation keeps what every agent in it did, said and was told. A follow-up is searched like a new request, and the agent that matches continues from that record.">
+<meta property="og:title" content="Conversation — Search2o">
+<meta property="og:description" content="Conversations let agents build on each other. A conversation keeps what every agent in it did, said and was told. A follow-up is searched like a new request, and the agent that matches continues from that record.">
+<meta property="og:type" content="website">
+<link rel="canonical" href="https://search2o.com/conversation.html">
+<meta property="og:url" content="https://search2o.com/conversation.html">
+<meta property="og:image" content="https://search2o.com/images/og6.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Search2o agent server handles all the plumbing behind building, discovering and running AI agents, so you can focus on solving business problems.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="fonts/jetbrains-mono-latin.woff2" crossorigin>
+<link rel="stylesheet" href="styles/styles.css">
+<link rel="stylesheet" href="demo/demo.css">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DYRX3801TG"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYRX3801TG');</script>
+</head>
+<body class="fw-page">
+
+<header class="site-header">
+  <div class="container header-row">
+    <a class="brand" href="index.html" aria-label="Search2o home"><img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61"></a>
+    <nav class="site-nav" aria-label="Main">
+      <details class="nav-menu">
+        <summary class="navlink">Product<svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
+        <div class="nav-menu-list">
+          <a class="navlink" href="framework.html">Agent framework</a>
+          <a class="navlink" href="runtime.html">Agent runtime</a>
+          <a class="navlink" href="search.html">Search</a>
+          <a class="navlink" href="conversation.html" aria-current="page">Conversation</a>
+        </div>
+      </details>
+      <a class="navlink" href="docs/index.html">Docs</a>
+      <a class="navlink" href="pricing.html">Pricing</a>
+      <a class="navlink" href="about.html">About</a>
+      <a class="btn btn-blue nav-cta" href="gettingstarted.html">Get started</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <span class="kicker">Conversation</span>
+      <h1>Conversations let agents build on each other.</h1>
+      <p class="lead">A conversation keeps what every agent in it did, said and was told. A follow-up is searched like a new request, and the agent that matches continues from that record. No agent calls another; the conversation carries the work from one to the next.</p>
+    </div>
+  </section>
+
+  <section class="fw-sec fw-first" id="the-call">
+    <div class="container">
+      <figure class="anno" aria-label="A follow-up in a conversation and its response, annotated">
+        <div class="codecard"><div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">POST /api/exec/execAgent</span></div><pre><code><span class=cm>// the follow-up</span>
+{
+  <span class="al" data-n="1"><span class=key>&quot;agentName&quot;</span>: <span class=str>&quot;reimbursements&quot;</span>,</span>
+<span class="al-note" style="margin-left:2ch"><span class="an">1</span>The agent search matched to the follow-up. It is not the agent that booked the trip, and nothing links the two.</span>  <span class=key>&quot;inputs&quot;</span>: { <span class=key>&quot;query&quot;</span>: <span class=str>&quot;File the expenses for that trip&quot;</span> },
+  <span class="al" data-n="2"><span class=key>&quot;convid&quot;</span>: <span class=str>&quot;7mMA1nl1QmwwGw1teIQe3r&quot;</span></span>
+<span class="al-note" style="margin-left:2ch"><span class="an">2</span>The id from the first response. Before the agent runs, the agent server restores everything the conversation holds. Leave it out and a new conversation starts.</span>}
+<span class=cm>// the response</span>
+{
+  <span class=key>&quot;success&quot;</span>: <span class=kw>true</span>,
+  <span class=key>&quot;convid&quot;</span>: <span class=str>&quot;7mMA1nl1QmwwGw1teIQe3r&quot;</span>,
+  <span class=key>&quot;agentName&quot;</span>: <span class=str>&quot;reimbursements&quot;</span>,
+  <span class="al" data-n="3"><span class=key>&quot;resultCode&quot;</span>: <span class=str>&quot;success&quot;</span>,</span>
+<span class="al-note" style="margin-left:2ch"><span class="an">3</span><code>success</code> or <code>ask</code>. On <code>ask</code> the agent has paused with a question; the same call, with the answers, resumes it.</span>  <span class=key>&quot;output&quot;</span>: { <span class=key>&quot;parts&quot;</span>: [ { <span class=key>&quot;contentType&quot;</span>: <span class=str>&quot;text&quot;</span>,
+    <span class=key>&quot;text&quot;</span>: <span class=str>&quot;Filed the New York trip, $1,240. Sent to your manager.&quot;</span> } ] }
+}</code></pre></div>
+        <ol class="anno-notes">
+          <li data-n="1"><span class="an">1</span>The agent search matched to the follow-up. It is not the agent that booked the trip, and nothing links the two.</li>
+          <li data-n="2"><span class="an">2</span>The id from the first response. Before the agent runs, the agent server restores everything the conversation holds. Leave it out and a new conversation starts.</li>
+          <li data-n="3"><span class="an">3</span><code>success</code> or <code>ask</code>. On <code>ask</code> the agent has paused with a question; the same call, with the answers, resumes it.</li>
+        </ol>
+        <svg class="anno-svg" aria-hidden="true"></svg>
+      </figure>
+      <div class="fw-text">
+        <p>Reimbursements knew the trip, its dates and its price because Travel desk left them in the conversation. The interface only kept sending the same <code>convid</code>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="state">
+    <div class="container">
+      <div class="section-head">
+        <h2>What a conversation keeps</h2>
+        <p>When an agent ends or pauses, the agent server saves the conversation&rsquo;s state. The agent does nothing for this. The next run in the conversation, by the same agent or another, starts from it.</p>
+      </div>
+      <div class="fw-text">
+        <p><b>The runs so far.</b> Which agent ran, with which inputs, what it answered, and where it stopped when it paused with a question.</p>
+        <p><b>The prompts.</b> For every prompt used in the conversation, its history: the user turns, the model&rsquo;s answers and the tool results. This history is what lets a model in a follow-up remember the earlier exchange.</p>
+        <p><b>The variables.</b> Conversation variables, which every agent in the conversation reads and writes, and each agent&rsquo;s own variables. An agent saves what later agents will need as a conversation variable, like the trip.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="prompts">
+    <div class="container">
+      <div class="section-head">
+        <h2>Prompts carry the exchange</h2>
+        <p>A prompt is what an <code>llm</code> command sends to a model: a system text, a user text and the history of the exchange so far. Each prompt has a scope, which says how long its history lives and which agents share it.</p>
+      </div>
+      <div class="fw-text">
+        <p><b>conversation</b>, the default. One history for the whole conversation, shared by every agent that has a prompt of the same name. A second agent sees what was said to the first.</p>
+        <p><b>agent</b>. The agent&rsquo;s own history for the whole conversation. Another agent in the same conversation does not see it.</p>
+        <p><b>local</b>. A history for one run, empty at the start of every run. For one-off tasks inside a run, such as classifying or summarizing, where earlier runs should not influence the answer.</p>
+        <p>Each prompt has a name, and the name is what connects agents. A second agent continues the first agent&rsquo;s exchange only when its prompt has the same name and the conversation scope. A prompt with another name starts a history of its own. An account&rsquo;s developers agree on a standard prompt name, and every agent that should see what was said before uses it. How a prompt is written and evaluated is in <a href="docs/agent-definition/prompts.html">Prompts</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="follow-up">
+    <div class="container">
+      <div class="section-head">
+        <h2>A follow-up can go to a different agent</h2>
+        <p>A follow-up in a conversation is searched like a new request. When it belongs to another agent, that agent runs next, with the conversation&rsquo;s state in place. When nothing new matches, the agent that answered last answers again.</p>
+      </div>
+      <div class="fw-text">
+        <p>What an interface does with the matches is its own <a href="docs/search/search-settings.html">search behavior</a>: the bundled UI runs the best match at once; your own interface can offer the two best as a choice.</p>
+        <p>Which agent runs next is always the client&rsquo;s decision. An agent cannot run another agent. A request with several parts is driven from outside: an agent harness with the Search2o skill splits it, sends each part through search and <code>execAgent</code> on the same conversation, and composes one answer. <a href="docs/agent-execution/building-on-each-other.html">How agents build on each other</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="demo">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Live demo</span>
+        <h2>Ask for something, then follow up</h2>
+        <p>This demo runs in a live Search2o account with 200 agents, from human resources and finance to engineering and sales. The matched agent runs and answers with mock data. Ask a follow-up and watch the conversation move to another agent that knows what the first one found.</p>
+      </div>
+      <div class="fw-demo">
+        <div
+          data-s2o-demo="search"
+          data-search-title="Live demo"
+          data-search-placeholder="Ask for something&hellip;"
+          data-search-placeholder-followup="Ask a follow-up question. The matched agent will run in the same context."
+          data-search-placeholder-answer="Answer the question above to continue"
+          data-search-hint=""
+          data-search-empty="This demo runs live in a Search2o account with [200 agents](demo-agents.html). The agents use mock data to demonstrate framework features."
+          data-search-disclaimer="This is mock data from a real agent. Click on the agent name to see what it does."
+        ></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="kept">
+    <div class="container">
+      <div class="section-head">
+        <h2>Kept safe, kept yours</h2>
+        <p>State is <a href="docs/security/encryption.html">encrypted</a> before it leaves the agent server, and the cloud never decrypts it. An account can <a href="docs/hooks/conversation-state.html">keep the state in its own organization</a> instead of the cloud. On the free service, a conversation unused for 7 days is deleted unless the user <a href="docs/rest-api/conversations.html">pins</a> it, and a user can delete a conversation at any time.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-end">
+    <div class="container">
+      <div class="section-head">
+        <h2>Where to read more</h2>
+        <p><a href="docs/agent-execution/conversation-state.html">Conversation state</a> covers what is saved and when. <a href="docs/agent-execution/building-on-each-other.html">Agents building on each other</a> covers who decides what runs next, and <a href="docs/agent-definition/prompts.html">Prompts</a> covers scope and the prompt name. In the REST API, <a href="docs/rest-api/running-agents.html">running agents</a> covers the call above and <a href="docs/rest-api/conversations.html">conversations</a> covers listing, renaming, pinning and deleting.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-main">
+      <div class="footer-brand">
+        <img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61">
+      </div>
+      <div class="footer-cols">
+        <div class="fcol">
+          <h4>Product</h4>
+          <a href="framework.html">Agent framework</a>
+          <a href="runtime.html">Agent runtime</a>
+          <a href="search.html">Search</a>
+          <a href="conversation.html">Conversation</a>
+          <a href="pricing.html">Pricing</a>
+        </div>
+        <div class="fcol">
+          <h4>Resources</h4>
+          <a href="gettingstarted.html">Getting started</a>
+          <a href="docs/index.html">Docs</a>
+        </div>
+        <div class="fcol">
+          <h4>Company</h4>
+          <a href="about.html">About</a>
+          <a href="about.html#contact">Contact</a>
+        </div>
+        <div class="fcol">
+          <h4>Legal</h4>
+          <a href="legal/terms.html">Terms of Service</a>
+          <a href="legal/privacy.html">Privacy Policy</a>
+          <a href="legal/license.html">Software License</a>
+          <a href="legal/intellectual.html">Intellectual Property</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>&copy; <span id="year">2026</span> Search2o &middot; Virginia, USA</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/config.js"></script>
+<script src="js/site.js"></script>
+<script type="module" src="demo/demo.js"></script>
+<script>
+(function () {
+  function draw(fig) {
+    var svg = fig.querySelector(".anno-svg");
+    var box = fig.getBoundingClientRect();
+    if (!svg || !box.width || getComputedStyle(svg).display === "none") return;
+    var id = "ah" + Array.prototype.indexOf.call(document.querySelectorAll(".anno"), fig);
+    svg.setAttribute("viewBox", "0 0 " + box.width + " " + box.height);
+    var edge = fig.querySelector(".codecard").getBoundingClientRect().right - box.left + 24;
+    var paths = "";
+    fig.querySelectorAll(".anno-notes li").forEach(function (li) {
+      var line = fig.querySelector('.al[data-n="' + li.dataset.n + '"]');
+      if (!line) return;
+      var a = line.getBoundingClientRect(), b = li.getBoundingClientRect();
+      var x1 = b.left - box.left - 10, y1 = b.top - box.top + 12;
+      var x2 = a.right - box.left + 8, y2 = a.top - box.top + a.height / 2;
+      var mx = (x1 + edge) / 2;
+      paths += '<path marker-end="url(#' + id + ')" d="M' + x1 + " " + y1 + " C" + mx + " " + y1 + " " + mx + " " + y2 + " " + edge + " " + y2 + " L" + x2 + " " + y2 + '"/>';
+    });
+    svg.innerHTML = '<defs><marker id="' + id + '" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z"/></marker></defs>' + paths;
+  }
+  function drawAll() { document.querySelectorAll(".anno").forEach(draw); }
+  drawAll();
+  window.addEventListener("resize", drawAll);
+  window.addEventListener("load", drawAll);
+  if (document.fonts) document.fonts.ready.then(drawAll);
+})();
+</script>
+</body>
+</html>

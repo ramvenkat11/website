@@ -1,0 +1,25 @@
+<p class="lead">Search2o has no orchestrator. An agent runs, answers and ends; it cannot run another agent. What lets agents build on each other is the conversation: every agent in it starts from what the earlier agents left there, and the client decides which agent runs next.</p>
+
+<h2>What a later agent inherits</h2>
+<p>When an agent ends or pauses, its <a href="conversation-state.html">conversation state</a> is saved. The next agent in the conversation, whichever it is, starts with two things from the agents before it.</p>
+<ul>
+  <li>The <strong>conversation variables</strong>, <code>conv.</code>, which any agent in the conversation sets and reads. An agent puts what later agents will need there: the trip it booked, the order it looked up, the customer it identified.</li>
+  <li>The <strong>prompt history</strong>: the user turns and the model's answers so far, when the agents' prompts share a name and the <code>conversation</code> scope. The account's developers agree on a standard prompt name, and an agent that uses it continues the exchange where the last agent left it. See <a href="../agent-definition/prompts.html#sharing-a-history-between-agents">Sharing a history between agents</a>.</li>
+</ul>
+<p>An agent's own variables, <code>agent.</code>, are also kept, but only for that agent. Nothing else is handed over: not the earlier agent's definition, not its tools, not its credentials.</p>
+
+<h2>Who decides what runs next</h2>
+<p>The client that sends the requests. It holds the conversation id, sends each request through <code>search</code> and runs the agent that comes back with <code>execAgent</code> on the same conversation. Search2o supplies the agents; the client supplies the sequence.</p>
+<ul>
+  <li>The <strong>bundled UI and the chat bots</strong> take one request at a time. A follow-up is searched like a new request, the best match runs with the conversation's state in place, and when nothing new matches the agent that answered last answers again. See <a href="../search/search-settings.html">Search settings</a>.</li>
+  <li>An <strong>agent harness</strong> with the <a href="../skill-integration/index.html">Search2o skill</a>, such as a coding assistant or a desktop assistant, handles a request with several parts: it splits the request, sends each part through search and <code>execAgent</code> in turn on one conversation, and composes one answer from the results. Each agent sees what the earlier ones produced. See <a href="../skill-integration/finding-and-running-an-agent.html">Finding and running an agent</a>.</li>
+  <li><strong>Your own client</strong> on the <a href="../rest-api/index.html">REST API</a> makes the same two calls and applies whatever plan it likes: a fixed sequence of agents, a loop until a condition holds, or a choice between the two best matches offered to the user.</li>
+</ul>
+
+<h2>Writing agents that build on each other</h2>
+<ul>
+  <li>Give the agent one job, and <a href="../search/describing-an-agent.html">describe</a> that job for the person who will ask for it. Search sends each part of a request to the agent built for it.</li>
+  <li>Use the account's standard prompt name, with the <code>conversation</code> scope, for the exchange with the user. Use another name with the <code>local</code> scope for one-off work inside a run, such as classifying or extracting, that no later agent should see.</li>
+  <li>Save what a later agent will need in a <code>conv.</code> variable, and read what earlier agents saved there instead of asking the user again. Variables are kept only when the run ends with <code>end</code> or pauses on <code>ask</code>; a run that fails leaves the conversation as it was.</li>
+  <li>Do not assume which agent ran before. A follow-up can reach an agent in any order, so read a <code>conv.</code> variable only after checking it is set.</li>
+</ul>

@@ -36,6 +36,7 @@
           <a class="navlink" href="framework.html">Agent framework</a>
           <a class="navlink" href="runtime.html">Agent runtime</a>
           <a class="navlink" href="search.html" aria-current="page">Search</a>
+          <a class="navlink" href="conversation.html">Conversation</a>
         </div>
       </details>
       <a class="navlink" href="docs/index.html">Docs</a>
@@ -96,18 +97,7 @@
       </figure>
       <div class="fw-text">
         <p>A description is written for the person who will type the request. It says what the agent does for the user: the questions it answers, the actions it takes, what it leaves to others. Two to five sentences is typical. A description that names only the mechanism, such as &ldquo;calls the travel API and summarizes the JSON&rdquo;, matches poorly, because nobody asks for a mechanism; search returns it to the developer with an explanation of what to change. When two agents overlap by accident, a request in the shared territory returns both, and sharper descriptions separate them. See <a href="docs/search/describing-an-agent.html">describing an agent</a>.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="fw-sec" id="conversation">
-    <div class="container">
-      <div class="section-head">
-        <h2>A conversation can move from agent to agent</h2>
-        <p>A follow-up in a conversation is searched like a new request. When it belongs to another agent, that agent runs next, with the conversation&rsquo;s state and history in place. When nothing new matches, the agent that answered last answers again.</p>
-      </div>
-      <div class="fw-text">
-        <p>What an interface does with the matches is its own <a href="docs/search/search-settings.html">search behavior</a>: the bundled UI runs the best match at once; your own interface can offer the two best as a choice. <a href="docs/search/tags.html">Tags</a> split an account&rsquo;s agents into pools, one for the help desk and one for finance, and a search names a pool or searches them all.</p>
+        <p><a href="docs/search/tags.html">Tags</a> split an account&rsquo;s agents into pools, one for the help desk and one for finance, and a search names a pool or searches them all.</p>
       </div>
     </div>
   </section>
@@ -169,6 +159,7 @@
           <a href="framework.html">Agent framework</a>
           <a href="runtime.html">Agent runtime</a>
           <a href="search.html">Search</a>
+          <a href="conversation.html">Conversation</a>
           <a href="pricing.html">Pricing</a>
         </div>
         <div class="fcol">

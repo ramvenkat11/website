@@ -446,6 +446,7 @@ def header(depth) -> str:
           <a class="navlink" href="{r}framework.html">Agent framework</a>
           <a class="navlink" href="{r}runtime.html">Agent runtime</a>
           <a class="navlink" href="{r}search.html">Search</a>
+          <a class="navlink" href="{r}conversation.html">Conversation</a>
         </div>
       </details>
       <a class="navlink" href="{rel(depth)}index.html" aria-current="page">Docs</a>
@@ -540,7 +541,7 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
 
 SITE = "https://search2o.com"
 DEMO_MARKER = "data-s2o-demo="
-SITE_PAGES = ("", "framework.html", "runtime.html", "search.html", "demo-agents.html", "gettingstarted.html", "pricing.html", "about.html",
+SITE_PAGES = ("", "framework.html", "runtime.html", "search.html", "conversation.html", "demo-agents.html", "gettingstarted.html", "pricing.html", "about.html",
               "legal/terms.html", "legal/privacy.html", "legal/license.html", "legal/intellectual.html")   # the sitemap
 
 

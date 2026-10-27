@@ -35,6 +35,7 @@ TOC = [
         ("order-of-execution", "Order of execution"),
         ("error-handling", "Error handling"),
         ("conversation-state", "Conversation state"),
+        ("building-on-each-other", "Agents building on each other"),
     ]),
     ("llm", "LLM", [
         ("vendors", "LLM vendors"),

@@ -4,6 +4,7 @@
   <url><loc>https://search2o.com/framework.html</loc></url>
   <url><loc>https://search2o.com/runtime.html</loc></url>
   <url><loc>https://search2o.com/search.html</loc></url>
+  <url><loc>https://search2o.com/conversation.html</loc></url>
   <url><loc>https://search2o.com/demo-agents.html</loc></url>
   <url><loc>https://search2o.com/gettingstarted.html</loc></url>
   <url><loc>https://search2o.com/pricing.html</loc></url>
@@ -40,6 +41,7 @@
   <url><loc>https://search2o.com/docs/agent-execution/order-of-execution.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-execution/error-handling.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-execution/conversation-state.html</loc></url>
+  <url><loc>https://search2o.com/docs/agent-execution/building-on-each-other.html</loc></url>
   <url><loc>https://search2o.com/docs/llm/index.html</loc></url>
   <url><loc>https://search2o.com/docs/llm/vendors.html</loc></url>
   <url><loc>https://search2o.com/docs/llm/llm-adapters.html</loc></url>
