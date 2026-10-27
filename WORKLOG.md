@@ -1117,3 +1117,9 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Source available second sentence reverted to "Contact us for code changes or modifications for internal use." (Contact us → about.html#contact). Rendered 1280 and 360, no overflow.
 - Source available second sentence → "Contact us for customizations or modifications for internal use." Rendered 1280 and 360 light+dark, no overflow.
 - Full home page review pass after today's edits: header (menu open) at 1280/384, hero + 5 sections at 1280 1000 860 700 384 360 light+dark (72 views). No overflow, no text touching borders, no broken words. Content repetitions noted for Ram's later pass: "Source available" (enterprise card + managed state link), "encrypted" (managed state + security card).
+
+## 2026-10-26 — Pricing page rewritten from content/newhome.txt
+- html/pricing.html: hero removed; body is `<h1>Pricing</h1>` + six h2 blocks (agent server free; Cloud free during beta; production pricing = platform fee + fee per developer + usage fee, no per-user fee, January 2027; usage limits; switching to paid from the Account page, approval before billing; tell us what you need with message icon when signed in / contact page before an account) + Get in touch button. Meta description/og:description rewritten. CSS: `.pricing h1` and `.pricing h1 + h2` added (styles.css ~1133).
+- Old Eval/Prod/$40 removed everywhere: docsrc/support-licensing/license.html pricing sentence rewritten (Free plan; billing starts when the owner asks to switch and approves); docsrc/support-licensing/billing.html per-user proration bullet removed. Docs rebuilt.
+- Rendered pricing at 1280 1000 860 700 384 375 360 light+dark, no overflow; docs license and billing pages viewed at 1280.
+- Note: pricing.html dump-dom readout needs --virtual-time-budget (plain --timeout gives empty readout); screenshots need --timeout.
