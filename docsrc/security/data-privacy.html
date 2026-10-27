@@ -1,4 +1,4 @@
-<p class="lead">Data falls into four categories: what never leaves your organization, what leaves only in encrypted form, what leaves in plain form but is stored encrypted, and what leaves and is stored in plain form. For each, the tables below say who can read the data and how long the cloud keeps it.</p>
+<p class="lead">Data falls into four categories: what never leaves your organization, what leaves only in encrypted form, what leaves in plain form but is stored encrypted, and what leaves and is stored in plain form. For each, the tables below say who can read the data and how long the cloud keeps it. The 7-day periods are the free account's limits; the paid service has no such limits.</p>
 
 <h2>What never leaves your organization</h2>
 <p>Secrets read with <code>sys.secret</code> never leave the agent server, whichever source they come from: the environment, files, or your vault through the <code>vault</code> hook. Conversation state never leaves either when the account uses the <a href="../hooks/conversation-state.html">conversation state hooks</a>; the agent server then hands each conversation's state to your own code, in plain form, and reads it back from there. Agents run on the agent server, and every call to your APIs, databases, LLM providers and MCP servers leaves from there. What those calls return stays on the agent server, unless an agent writes it into its output or into a conversation variable. The <code>log</code> command writes to the agent server's own log, and nothing in that log is sent to the cloud.</p>
@@ -9,14 +9,14 @@
 <thead><tr><th>Data</th><th>Who can read it</th><th>Kept for</th></tr></thead>
 <tbody>
 <tr><td>An agent's <a href="../agent-definition/const.html">const</a><br><small>the fixed values the agent reads as <code>const.name</code></small></td><td>Developers, in the UI; the account's agent servers decrypt it to run the agent</td><td>As long as the agent, or a draft of it, exists</td></tr>
-<tr><td>Conversation state<br><small>variables, prompt history, output, where an agent paused; not stored in the cloud at all when the conversation state hooks are set</small></td><td>Only the user whose conversation it is; the account's agent servers decrypt it to answer that user's next request</td><td>7 days after the last use on the Free plan, 90 days on Paid; pinned conversations indefinitely</td></tr>
+<tr><td>Conversation state<br><small>variables, prompt history, output, where an agent paused; not stored in the cloud at all when the conversation state hooks are set</small></td><td>Only the user whose conversation it is; the account's agent servers decrypt it to answer that user's next request</td><td>7 days after the last use; pinned conversations indefinitely</td></tr>
 </tbody></table></div>
 
 <h2>What leaves in plain form but is stored encrypted</h2>
 <div class="tablewrap"><table class="fields data">
 <thead><tr><th>Data</th><th>What the cloud does with the plain text</th><th>Who can read it</th><th>Kept for</th></tr></thead>
 <tbody>
-<tr><td>The user's query</td><td>Finds the matching agent. The shortened query is then stored encrypted as the conversation title, and the full query is stored encrypted on the execution record.</td><td>Only the user who typed it</td><td>Title: with the conversation. Execution record: 7 days on the Free plan, 90 days on Paid</td></tr>
+<tr><td>The user's query</td><td>Finds the matching agent. The shortened query is then stored encrypted as the conversation title, and the full query is stored encrypted on the execution record.</td><td>Only the user who typed it</td><td>Title: with the conversation. Execution record: 7 days</td></tr>
 <tr><td>Agent descriptions</td><td>Indexes the agent for search. The plain text is held in memory for that and never stored.</td><td>Developers and above</td><td>Life of the agent</td></tr>
 <tr><td>Long-term memories<br><small>written by agents with the memory command</small></td><td>Embeds the memory text for semantic search. The label is stored in plain form.</td><td>Agents run by the user the memory belongs to</td><td>A year after the memory was last used in a query, or until the agent that stored it is deleted</td></tr>
 </tbody></table></div>
@@ -26,13 +26,13 @@
 <div class="tablewrap"><table class="fields data">
 <thead><tr><th>Data</th><th>Who can read it</th><th>Kept for</th></tr></thead>
 <tbody>
-<tr><td>Agent definitions<br><small>with titles, tags, prompts and past versions</small></td><td>Developers and above</td><td>Life of the agent; past versions 7 days on the Free plan, 90 days on Paid</td></tr>
+<tr><td>Agent definitions<br><small>with titles, tags, prompts and past versions</small></td><td>Developers and above</td><td>Life of the agent; past versions 7 days</td></tr>
 <tr><td>Drafts</td><td>The developer who owns the draft</td><td>Until published or deleted</td></tr>
-<tr><td>Execution records<br><small>agent name and version, result code, error message, command path, duration, LLM cost</small></td><td>Developers, in the agent reports; administrators, in the usage report</td><td>7 days on the Free plan, 90 days on Paid</td></tr>
+<tr><td>Execution records<br><small>agent name and version, result code, error message, command path, duration, LLM cost</small></td><td>Developers, in the agent reports; administrators, in the usage report</td><td>7 days</td></tr>
 <tr><td>Configuration<br><small>agent servers, allowlist, limits, authentication</small></td><td>Developers or administrators, by part</td><td>Life of the account</td></tr>
 <tr><td>Profiles<br><small>LLMs, APIs, databases and MCP servers; a secret in a profile is a sys.secret reference, not the value</small></td><td>Developers and above</td><td>Life of the account</td></tr>
 <tr><td>Users<br><small>email address, name, role, UI preferences</small></td><td>Administrators and the owner</td><td>Until the user is deleted</td></tr>
-<tr><td>Audit log<br><small>what changed and who changed it, as field names, never values</small></td><td>Administrators in the UI; developers and above through the API</td><td>7 days on the Free plan, 90 days on Paid</td></tr>
+<tr><td>Audit log<br><small>what changed and who changed it, as field names, never values</small></td><td>Administrators in the UI; developers and above through the API</td><td>7 days</td></tr>
 <tr><td>Messages to Search2o<br><small>sent from the UI</small></td><td>Search2o support</td><td>One year</td></tr>
 </tbody></table></div>
 

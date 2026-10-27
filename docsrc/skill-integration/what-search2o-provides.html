@@ -73,7 +73,7 @@
 <p>From the UI or a chat bot, search picks the agent with no model call. A run whose <code>llm</code> steps use a model you host then has no per-token charge at all.</p>
 
 <h3>12. State outlives the session</h3>
-<p>Agents in one conversation share state that Search2o saves: the prompt history and conversation variables, <a href="../security/data-privacy.html">stored encrypted and kept</a> for 7 days after the last use on the Free plan and 90 days on Paid. Two agents written by different developers build on each other's work without knowing about each other.</p>
+<p>Agents in one conversation share state that Search2o saves: the prompt history and conversation variables, <a href="../security/data-privacy.html">stored encrypted and kept</a> for 7 days after the last use, with no such limit on the paid service. Two agents written by different developers build on each other's work without knowing about each other.</p>
 <p>An agent can pause to ask the person a question and continue when the answer arrives. A password is <a href="finding-and-running-an-agent.html">never typed into the chat</a>; the assistant gives the person a link to the conversation in the UI instead.</p>
 <p>That state does not depend on Claude's context. If the session is compacted or closed, the conversation is still there, under the person's account.</p>
 
