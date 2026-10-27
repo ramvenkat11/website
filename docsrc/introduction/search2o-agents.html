@@ -4,7 +4,7 @@
 
 <p>It also carries a plain-language description of the task and its boundaries. Search reads that description to find the agent for a request.</p>
 
-<p>Like a microservice, a Search2o agent holds no state of its own. The conversation that runs it holds the state. What one agent produces is there for the next one that runs in the same conversation.</p>
+<p>A Search2o agent keeps its state in the conversation, not on the agent server. It has state of its own, the <code>agent</code> scope, which only it reads, and it shares state with every agent in the conversation through the <code>conversation</code> scope. The agent server saves both when a run ends or pauses, so what one agent produces is there for the next one that runs in the same conversation. The state is per conversation: another conversation cannot see it, and a conversation belongs to one user, so another user cannot see it either. See <a href="../agent-execution/conversation-state.html">Conversation state</a>.</p>
 
 <h2>Examples</h2>
 <p>Search2o agents:</p>

@@ -64,7 +64,7 @@
   <li>The <strong>conversation variables</strong>, <code>conv.</code>, which any agent in the conversation sets and reads. An agent puts what later agents will need there: the trip it booked, the order it looked up, the customer it identified.</li>
   <li>The <strong>prompt history</strong>: the user turns and the model's answers so far, when the agents' prompts share a name and the <code>conversation</code> scope. The account's developers agree on a standard prompt name, and an agent that uses it continues the exchange where the last agent left it. See <a href="../agent-definition/prompts.html#sharing-a-history-between-agents">Sharing a history between agents</a>.</li>
 </ul>
-<p>An agent's own variables, <code>agent.</code>, are also kept, but only for that agent. Nothing else is handed over: not the earlier agent's definition, not its tools, not its credentials.</p>
+<p>An agent's own variables, <code>agent.</code>, are also kept, but only for that agent. Nothing else is handed over: not the earlier agent's definition, not its tools, not its credentials. All of it is per conversation: another conversation cannot see it, and a conversation belongs to one user, so another user cannot see it either.</p>
 
 <h2 id="who-decides-what-runs-next">Who decides what runs next</h2>
 <p>The client that sends the requests. It holds the conversation id, sends each request through <code>search</code> and runs the agent that comes back with <code>execAgent</code> on the same conversation. Search2o supplies the agents; the client supplies the sequence.</p>
