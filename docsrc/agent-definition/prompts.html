@@ -33,7 +33,7 @@
   <li>the <code>sys</code> namespace: <code>{ sys.query }</code>, <code>{ sys.userEmail }</code>;</li>
   <li>the agent's <a href="const.html">const</a>: <code>{ const.city }</code>.</li>
 </ul>
-<x-code lang="jsonc">
+<x-code lang="jsonc" nocheck>
 "system": "{ 'You answer questions about ' + const.product + '. Reply in ' + const.language + '.' }",
 "user": "{ f'{sys.query} (customer tier: {tier})' }"
 </x-code>
