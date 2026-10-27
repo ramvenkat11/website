@@ -75,7 +75,7 @@
 <p>Clone the <a href="https://github.com/Search2o/agent-server">agent server</a> and install it from the clone. The clone does not include the UI.</p>
 <figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>git clone https://github.com/Search2o/agent-server.git
 <span class=ps1>$ </span>pip install -e agent-server</code></pre></figure>
-<p>Then build the <a href="https://github.com/Search2o/ui">UI</a>, which needs Node.js 22.12 or newer, and copy the build into the agent server's <code>ui</code> directory:</p>
+<p>Then build the <a href="https://github.com/Search2o/ui">UI</a>, which needs Node.js 22.18 or newer, and copy the build into the agent server's <code>ui</code> directory:</p>
 <figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>git clone https://github.com/Search2o/ui.git
 <span class=ps1>$ </span>cd ui &amp;&amp; npm install &amp;&amp; npm run build
 <span class=ps1>$ </span>cp -R dist ../agent-server/search2o/ui</code></pre></figure>

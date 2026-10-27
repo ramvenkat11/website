@@ -727,7 +727,7 @@ a.as-part:hover { background: var(--bg-soft); color: var(--blue-ink); text-decor
 .cc-arch .arch-chips span { font-size: 11px; padding: 2px 8px; }
 .cc-arch .arch-flow > .arch-node { width: 100%; }
 .cc-arch .cc-cc { padding: 10px 10px; justify-items: center; text-align: center; }
-.cc-arch .cc-cc strong { font-size: 13px; white-space: nowrap; }
+.cc-arch .cc-cc strong { font-size: 13px; line-height: 1.25; }
 .cc-arch .cc-cc strong a { color: inherit; }
 .cc-arch .cc-cc strong a:hover { color: var(--blue-ink); }
 .cc-arch .cc-cc .arch-chips { margin-top: 6px; justify-content: center; }
@@ -1224,7 +1224,7 @@ a.arch-lbl { color: var(--blue-ink); }
   .cc-arch.hero-arch { --g: 8px; }
   .cc-arch .cc-clients .cc-cc { padding: 14px 2px 16px; }
   .cc-join i { height: 20px; margin-top: 10px; }
-  .cc-clients .cc-cc strong { font-size: 11px; white-space: nowrap; }
+  .cc-clients .cc-cc strong { font-size: 11px; white-space: normal; line-height: 1.25; }
   .hero-arch .arch-org { padding: 14px 6px 8px; }
   .cc-clients .cc-cc .arch-chips span { font-size: 10px; padding: 2px 5px; white-space: nowrap; }
   .arch-hlink, .arch-sys::before, .arch-branch::before, .arch-branch::after { display: none; }

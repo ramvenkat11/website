@@ -4,11 +4,11 @@ Search2o agent server uses Search2o cloud for state management. We will charge a
 
 We are currently in beta and offer the platform free of charge.
 
-The production pricing will have a platform fee, per developer fee and a usage fee that is based on calls made to the Search2o cloud. It will not have a per user fee and so you will pay for what you use. You can expect the rates to be similar to AI services in the market. Currently, the plan is to offer paid services in Jan 2027.
+The production pricing will have a platform fee, per developer fee, a storage fee based on agents, memories and conversations stored and a usage fee that is based on calls made to the Search2o cloud. It will not have a per user fee and so you will pay for what you use. You can expect the rates to be similar to AI services in the market. Currently, the plan is to offer paid services in Jan 2027.
 
 There are usage limits per account. If they get in your way, let us know and we'll increase them.
 
-If you think the platform is ready for production use and you are ready to switch to a paid service, just let us know from the accounts page. When we offer the paid service, we will still get your approval before we start the billing.
+When we offer the paid service, you will be able to upgrade from the account page. We will email you when we start this (paraphrase)
 
 We'd love to help you make your project a tremendous success. If you need help, want to report bugs or missing features, please contact us.
 
