@@ -1,5 +1,5 @@
 """Draws content/linkedin-banner2.png, the LinkedIn company page cover (4200x700, 6:1): the wordmark
-art from gen/assets/wordmark.png with the tagline, and the home page headline with its gradient
+art from gen/assets/wordmark.png, and the home page headline with its gradient
 accent. LinkedIn shows it at 1128x191 and overlays the page logo on the bottom-left corner, so the
 content sits in the middle band with wide margins. Run with the system python3 (needs PIL)."""
 import math, os
@@ -39,11 +39,10 @@ for y in range(wm.height):
 WM_W = 600
 wm = wm.resize((WM_W, round(wm.height * WM_W / wm.width)), Image.LANCZOS)
 left = 760
-block_h = wm.height + 26 + 52
+block_h = wm.height
 wm_top = round((H - block_h) / 2)
 img.alpha_composite(wm, (left, wm_top))
 d = ImageDraw.Draw(img)
-d.text((left + 4, wm_top + wm.height + 26), "Search that executes", font=medium(52), fill=MUTED, anchor="lt")
 
 # vertical hairline between the wordmark and the headline
 xh = left + WM_W + 120
