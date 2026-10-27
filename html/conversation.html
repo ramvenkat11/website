@@ -56,32 +56,12 @@
     </div>
   </section>
 
-  <section class="fw-sec fw-first" id="the-call">
+  <section class="fw-sec fw-first" id="mechanism">
     <div class="container">
-      <figure class="cv-fig" aria-label="Two agents in one conversation. Travel desk runs, and at the end its prompt history and its conversation variable are saved to the conversation. Reimbursements runs next: the same prompt name continues the history, and it reads the variable the first agent set.">
-        <div class="cv-box cv-agent">
-          <div class="cv-head"><span class="st-label">travel_desk</span><span class="st-hint">Travel desk</span></div>
-          <div class="cv-row"><code>chat</code><span><em>prompt</em> Book my trip for Tuesday&rsquo;s meeting in New York &rarr; UA1191 departs 06:00, a night at the Marriott. $1,240.</span></div>
-          <div class="cv-row"><code>conv.trip</code><span><em>sets</em> UA1191, Marriott, $1,240</span></div>
-          <div class="cv-foot">run ends</div>
-        </div>
-        <div class="cv-link"><i class="ln"></i><span>saved</span></div>
-        <div class="cv-box cv-conv">
-          <div class="cv-head"><span>Conversation</span></div>
-          <div class="cv-row"><code>chat</code><span><em>prompt</em> the exchange so far</span></div>
-          <div class="cv-row"><code>conv.trip</code><span><em>variable</em> UA1191, Marriott, $1,240</span></div>
-          <div class="cv-foot">Search2o Cloud, encrypted</div>
-        </div>
-        <div class="cv-link"><i class="ln"></i><span>restored</span></div>
-        <div class="cv-box cv-agent">
-          <div class="cv-head"><span class="st-label">reimbursements</span><span class="st-hint">Reimbursements</span></div>
-          <div class="cv-row"><code>chat</code><span><em>prompt</em> continues the same history: File the expenses for that trip &rarr; Filed the New York trip, $1,240.</span></div>
-          <div class="cv-row"><code>conv.trip</code><span><em>reads</em>, if it is set</span></div>
-          <div class="cv-foot">run ends, saved again</div>
-        </div>
-      </figure>
       <div class="fw-text">
-        <p>That is the whole mechanism. An agent does its job and, when it ends, the agent server saves its prompt history and its conversation variables to the conversation. The next agent starts from them: the same prompt name continues the history, and the variable is there to read. No agent calls another, and no two agents are wired together in advance. What connects them is that both use the name <code>chat</code> and the name <code>conv.trip</code>.</p>
+        <p>A conversation is an object that the agent server saves after every successful agent run, automatically. A request that carries the conversation&rsquo;s id restores it, automatically, before the next agent runs. A request without an id starts a new, empty conversation.</p>
+        <p>The object holds two things. <b>Variables</b>: whatever an agent explicitly set in the conversation scope, under <code>conv.</code>. <b>Prompts</b>: every prompt an agent used at the conversation scope, with its history of user turns and model answers.</p>
+        <p>That is what lets agents build on each other. The next agent in the conversation, whichever one search matches, reads the variables it needs, if they are set. When it uses a prompt with the same name as an earlier agent, the restored history already holds that agent&rsquo;s exchange, and the model continues from it. No agent calls another, and nothing wires two agents together in advance.</p>
       </div>
     </div>
   </section>
