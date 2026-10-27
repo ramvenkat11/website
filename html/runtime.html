@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Agent runtime — Search2o</title>
-<meta name="description" content="The agent says what to do; the runtime decides what it may do. Every agent server builds the same runtime from the account configuration and bounds every run in time and cost.">
+<meta name="description" content="The agent says what to do; the runtime decides what it may do. Every agent server builds the same runtime from the account configuration and bounds every agent run in time and cost.">
 <meta property="og:title" content="Agent runtime — Search2o">
-<meta property="og:description" content="The agent says what to do; the runtime decides what it may do. Every agent server builds the same runtime from the account configuration and bounds every run in time and cost.">
+<meta property="og:description" content="The agent says what to do; the runtime decides what it may do. Every agent server builds the same runtime from the account configuration and bounds every agent run in time and cost.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://search2o.com/runtime.html">
 <meta property="og:url" content="https://search2o.com/runtime.html">
@@ -73,10 +73,10 @@
       <span class=key>&quot;commands&quot;</span>: {
         <span class=key>&quot;llm&quot;</span>: {
           <span class="al" data-n="3"><span class=key>&quot;profile&quot;</span>: <span class=str>&quot;gpt5_mini&quot;</span>,</span>
-<span class="al-note" style="margin-left:10ch"><span class="an">3</span>The LLM profile carries the model, the key and the prices. After every call the agent server adds the cost to the run&rsquo;s total and stops the run when it passes the agent&rsquo;s cost bound.</span>          <span class=key>&quot;prompt&quot;</span>: <span class=str>&quot;orders&quot;</span>,
+<span class="al-note" style="margin-left:10ch"><span class="an">3</span>The LLM profile carries the model, the key and the prices. After every call the agent server adds the cost to the agent run&rsquo;s total and stops the agent run when it passes the agent&rsquo;s cost bound.</span>          <span class=key>&quot;prompt&quot;</span>: <span class=str>&quot;orders&quot;</span>,
           <span class=key>&quot;functions&quot;</span>: [<span class=str>&quot;getOrder&quot;</span>],
           <span class="al" data-n="4"><span class=key>&quot;streamOutput&quot;</span>: <span class=kw>true</span></span>
-<span class="al-note" style="margin-left:10ch"><span class="an">4</span>Streaming, conversation memory, pausing for a person&rsquo;s answer and the time bound on the run are the runtime&rsquo;s work too. The agent names none of them.</span>        }
+<span class="al-note" style="margin-left:10ch"><span class="an">4</span>Streaming, conversation memory, pausing for a person&rsquo;s answer and the time bound on the agent run are the runtime&rsquo;s work too. The agent names none of them.</span>        }
       }
     }
   }
@@ -84,8 +84,8 @@
         <ol class="anno-notes">
           <li data-n="1"><span class="an">1</span>The profile holds the host, the credentials and the headers; the agent never sees them. Profiles are shared across the account, so an agent can reach only the places the profiles name.</li>
           <li data-n="2"><span class="an">2</span>A Python expression runs with the account&rsquo;s allowlist in place of Python&rsquo;s builtins. A name the allowlist does not carry does not exist for the agent. <code>import</code>, underscore names and the other constructs the compile rules refuse are caught at validation.</li>
-          <li data-n="3"><span class="an">3</span>The LLM profile carries the model, the key and the prices. After every call the agent server adds the cost to the run&rsquo;s total and stops the run when it passes the agent&rsquo;s cost bound.</li>
-          <li data-n="4"><span class="an">4</span>Streaming, conversation memory, pausing for a person&rsquo;s answer and the time bound on the run are the runtime&rsquo;s work too. The agent names none of them.</li>
+          <li data-n="3"><span class="an">3</span>The LLM profile carries the model, the key and the prices. After every call the agent server adds the cost to the agent run&rsquo;s total and stops the agent run when it passes the agent&rsquo;s cost bound.</li>
+          <li data-n="4"><span class="an">4</span>Streaming, conversation memory, pausing for a person&rsquo;s answer and the time bound on the agent run are the runtime&rsquo;s work too. The agent names none of them.</li>
         </ol>
         <svg class="anno-svg" aria-hidden="true"></svg>
       </figure>
@@ -142,7 +142,7 @@
         <p>Every agent carries two bounds of its own and is published and run with both. They belong to the agent, not to the account.</p>
       </div>
       <div class="fw-text">
-        <p>The time bound is the number of seconds one run may take; a run past it ends with the result code <code>timedOut</code>. The cost bound is the LLM spend, in US dollars, one run may reach; the agent server prices every call from the LLM profile, stops the run when the total passes the bound, and tells the person why. An agent that looks up one record can be held to a few seconds and a few cents; an agent that researches a question is given more of both. A draft starts with default bounds, the validation run is held to them, and publishing carries them to the agent. A developer can change them on a published agent, and the <a href="docs/reports/index.html">reports</a> show what each agent&rsquo;s runs take and spend.</p>
+        <p>The time bound is the number of seconds one agent run may take; an agent run past it ends with the result code <code>timedOut</code>. The cost bound is the LLM spend, in US dollars, one agent run may reach; the agent server prices every call from the LLM profile, stops the agent run when the total passes the bound, and tells the person why. An agent that looks up one record can be held to a few seconds and a few cents; an agent that researches a question is given more of both. A draft starts with default bounds, the validation run is held to them, and publishing carries them to the agent. A developer can change them on a published agent, and the <a href="docs/reports/index.html">reports</a> show what each agent&rsquo;s runs take and spend.</p>
       </div>
     </div>
   </section>
@@ -151,7 +151,7 @@
     <div class="container">
       <div class="section-head">
         <span class="kicker">Every agent server</span>
-        <h2>A change is live on the next run, on every server</h2>
+        <h2>A change is live on the next agent run, on every server</h2>
         <p>Every agent server builds its runtime from the same configuration, so an agent behaves the same wherever it runs. A change to a part or a profile reaches every server without a restart.</p>
       </div>
       <div class="numbered">
@@ -160,12 +160,12 @@
           <p>A developer or an administrator saves a part or a profile in the UI. Search2o Cloud stores it, stamped with the time.</p>
         </div>
         <div class="step-sec">
-          <h2>The next run asks</h2>
-          <p>When a run starts, the agent server tells the cloud, and the reply carries the time of the latest change. If it is newer than the server&rsquo;s runtime, the server asks for what changed since it last asked and receives only those parts.</p>
+          <h2>The next agent run asks</h2>
+          <p>When an agent run starts, the agent server tells the cloud, and the reply carries the time of the latest change. If it is newer than the server&rsquo;s runtime, the server asks for what changed since it last asked and receives only those parts.</p>
         </div>
         <div class="step-sec">
           <h2>The runtime is swapped</h2>
-          <p>The server builds a new runtime from the changed parts and the unchanged pieces of the old one, and the run starts against it. Two servers starting the same agent at the same moment run with the same runtime.</p>
+          <p>The server builds a new runtime from the changed parts and the unchanged pieces of the old one, and the agent run starts against it. Two servers starting the same agent at the same moment run with the same runtime.</p>
         </div>
       </div>
       <div class="fw-text fw-after-steps">
@@ -178,7 +178,7 @@
     <div class="container">
       <div class="section-head">
         <h2>What leaves the agent server</h2>
-        <p>Search2o Cloud receives the search request and the conversation state, <a href="docs/security/encryption.html">encrypted</a> before it leaves the agent server. API, database, MCP and LLM traffic goes where the profiles point. Everything else an agent handles, API responses, database rows, credentials and variables, stays on the agent server for the life of the run. <a href="docs/security/data-privacy.html">Data privacy</a> says where every kind of data ends up.</p>
+        <p>Search2o Cloud receives the search request and the conversation state, <a href="docs/security/encryption.html">encrypted</a> before it leaves the agent server. API, database, MCP and LLM traffic goes where the profiles point. Everything else an agent handles, API responses, database rows, credentials and variables, stays on the agent server for the life of the agent run. <a href="docs/security/data-privacy.html">Data privacy</a> says where every kind of data ends up.</p>
       </div>
     </div>
   </section>
