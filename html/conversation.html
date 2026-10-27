@@ -58,31 +58,30 @@
 
   <section class="fw-sec fw-first" id="the-call">
     <div class="container">
-      <figure class="anno" aria-label="A follow-up in a conversation and its response, annotated">
-        <div class="codecard"><div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">POST /api/exec/execAgent</span></div><pre><code><span class=cm>// the follow-up</span>
-{
-  <span class="al" data-n="1"><span class=key>&quot;agentName&quot;</span>: <span class=str>&quot;reimbursements&quot;</span>,</span>
-<span class="al-note" style="margin-left:2ch"><span class="an">1</span>The agent search matched to the follow-up. It is not the agent that booked the trip, and nothing links the two.</span>  <span class=key>&quot;inputs&quot;</span>: { <span class=key>&quot;query&quot;</span>: <span class=str>&quot;File the expenses for that trip&quot;</span> },
-  <span class="al" data-n="2"><span class=key>&quot;convid&quot;</span>: <span class=str>&quot;7mMA1nl1QmwwGw1teIQe3r&quot;</span></span>
-<span class="al-note" style="margin-left:2ch"><span class="an">2</span>The id from the first response. Before the agent runs, the agent server restores everything the conversation holds. Leave it out and a new conversation starts.</span>}
-<span class=cm>// the response</span>
-{
-  <span class=key>&quot;success&quot;</span>: <span class=kw>true</span>,
-  <span class=key>&quot;convid&quot;</span>: <span class=str>&quot;7mMA1nl1QmwwGw1teIQe3r&quot;</span>,
-  <span class=key>&quot;agentName&quot;</span>: <span class=str>&quot;reimbursements&quot;</span>,
-  <span class="al" data-n="3"><span class=key>&quot;resultCode&quot;</span>: <span class=str>&quot;success&quot;</span>,</span>
-<span class="al-note" style="margin-left:2ch"><span class="an">3</span><code>success</code> or <code>ask</code>. On <code>ask</code> the agent has paused with a question; the same call, with the answers, resumes it.</span>  <span class=key>&quot;output&quot;</span>: { <span class=key>&quot;parts&quot;</span>: [ { <span class=key>&quot;contentType&quot;</span>: <span class=str>&quot;text&quot;</span>,
-    <span class=key>&quot;text&quot;</span>: <span class=str>&quot;Filed the New York trip, $1,240. Sent to your manager.&quot;</span> } ] }
-}</code></pre></div>
-        <ol class="anno-notes">
-          <li data-n="1"><span class="an">1</span>The agent search matched to the follow-up. It is not the agent that booked the trip, and nothing links the two.</li>
-          <li data-n="2"><span class="an">2</span>The id from the first response. Before the agent runs, the agent server restores everything the conversation holds. Leave it out and a new conversation starts.</li>
-          <li data-n="3"><span class="an">3</span><code>success</code> or <code>ask</code>. On <code>ask</code> the agent has paused with a question; the same call, with the answers, resumes it.</li>
-        </ol>
-        <svg class="anno-svg" aria-hidden="true"></svg>
+      <figure class="cv-fig" aria-label="Two agents in one conversation. Travel desk runs, and at the end its prompt history and its conversation variable are saved to the conversation. Reimbursements runs next: the same prompt name continues the history, and it reads the variable the first agent set.">
+        <div class="cv-box cv-agent">
+          <div class="cv-head"><span class="st-label">travel_desk</span><span class="st-hint">Travel desk</span></div>
+          <div class="cv-row"><code>chat</code><span><em>prompt</em> Book my trip for Tuesday&rsquo;s meeting in New York &rarr; UA1191 departs 06:00, a night at the Marriott. $1,240.</span></div>
+          <div class="cv-row"><code>conv.trip</code><span><em>sets</em> UA1191, Marriott, $1,240</span></div>
+          <div class="cv-foot">run ends</div>
+        </div>
+        <div class="cv-link"><i class="ln"></i><span>saved</span></div>
+        <div class="cv-box cv-conv">
+          <div class="cv-head"><span>Conversation</span></div>
+          <div class="cv-row"><code>chat</code><span><em>prompt</em> the exchange so far</span></div>
+          <div class="cv-row"><code>conv.trip</code><span><em>variable</em> UA1191, Marriott, $1,240</span></div>
+          <div class="cv-foot">Search2o Cloud, encrypted</div>
+        </div>
+        <div class="cv-link"><i class="ln"></i><span>restored</span></div>
+        <div class="cv-box cv-agent">
+          <div class="cv-head"><span class="st-label">reimbursements</span><span class="st-hint">Reimbursements</span></div>
+          <div class="cv-row"><code>chat</code><span><em>prompt</em> continues the same history: File the expenses for that trip &rarr; Filed the New York trip, $1,240.</span></div>
+          <div class="cv-row"><code>conv.trip</code><span><em>reads</em>, if it is set</span></div>
+          <div class="cv-foot">run ends, saved again</div>
+        </div>
       </figure>
       <div class="fw-text">
-        <p>Reimbursements knew the trip, its dates and its price because Travel desk left them in the conversation. The interface only kept sending the same <code>convid</code>.</p>
+        <p>That is the whole mechanism. An agent does its job and, when it ends, the agent server saves its prompt history and its conversation variables to the conversation. The next agent starts from them: the same prompt name continues the history, and the variable is there to read. No agent calls another, and no two agents are wired together in advance. What connects them is that both use the name <code>chat</code> and the name <code>conv.trip</code>.</p>
       </div>
     </div>
   </section>
@@ -111,7 +110,19 @@
         <p><b>conversation</b>, the default. One history for the whole conversation, shared by every agent that has a prompt of the same name. A second agent sees what was said to the first.</p>
         <p><b>agent</b>. The agent&rsquo;s own history for the whole conversation. Another agent in the same conversation does not see it.</p>
         <p><b>local</b>. A history for one run, empty at the start of every run. For one-off tasks inside a run, such as classifying or summarizing, where earlier runs should not influence the answer.</p>
-        <p>Each prompt has a name, and the name is what connects agents. A second agent continues the first agent&rsquo;s exchange only when its prompt has the same name and the conversation scope. A prompt with another name starts a history of its own. An account&rsquo;s developers agree on a standard prompt name, and every agent that should see what was said before uses it. How a prompt is written and evaluated is in <a href="docs/agent-definition/prompts.html">Prompts</a>.</p>
+        <p>Each prompt has a name, and the name is what connects agents. A second agent continues the first agent&rsquo;s exchange only when its prompt has the same name and the conversation scope. A prompt with another name starts a history of its own. How a prompt is written and evaluated is in <a href="docs/agent-definition/prompts.html">Prompts</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="names">
+    <div class="container">
+      <div class="section-head">
+        <h2>Agree on names</h2>
+        <p>Agents build on each other through names: the prompt name that continues the exchange, and the conversation variables that carry what one agent found to the next. Nothing enforces the names, so an organization agrees on them before its agents can work together.</p>
+      </div>
+      <div class="fw-text">
+        <p>A naming scheme is short. One standard prompt name, such as <code>chat</code>, for every agent&rsquo;s exchange with the user. A name for each thing agents hand to each other, such as <code>conv.trip</code>, <code>conv.customer</code> or <code>conv.order</code>, with what it holds. An agent that follows the scheme fits into any conversation in the account. One that invents its own names starts from nothing, and leaves nothing the next agent can find. <a href="docs/agent-execution/building-on-each-other.html#agree-on-names">Agreeing on names</a> in the docs.</p>
       </div>
     </div>
   </section>
@@ -213,33 +224,5 @@
 <script src="js/config.js"></script>
 <script src="js/site.js"></script>
 <script type="module" src="demo/demo.js"></script>
-<script>
-(function () {
-  function draw(fig) {
-    var svg = fig.querySelector(".anno-svg");
-    var box = fig.getBoundingClientRect();
-    if (!svg || !box.width || getComputedStyle(svg).display === "none") return;
-    var id = "ah" + Array.prototype.indexOf.call(document.querySelectorAll(".anno"), fig);
-    svg.setAttribute("viewBox", "0 0 " + box.width + " " + box.height);
-    var edge = fig.querySelector(".codecard").getBoundingClientRect().right - box.left + 24;
-    var paths = "";
-    fig.querySelectorAll(".anno-notes li").forEach(function (li) {
-      var line = fig.querySelector('.al[data-n="' + li.dataset.n + '"]');
-      if (!line) return;
-      var a = line.getBoundingClientRect(), b = li.getBoundingClientRect();
-      var x1 = b.left - box.left - 10, y1 = b.top - box.top + 12;
-      var x2 = a.right - box.left + 8, y2 = a.top - box.top + a.height / 2;
-      var mx = (x1 + edge) / 2;
-      paths += '<path marker-end="url(#' + id + ')" d="M' + x1 + " " + y1 + " C" + mx + " " + y1 + " " + mx + " " + y2 + " " + edge + " " + y2 + " L" + x2 + " " + y2 + '"/>';
-    });
-    svg.innerHTML = '<defs><marker id="' + id + '" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0L10 5L0 10z"/></marker></defs>' + paths;
-  }
-  function drawAll() { document.querySelectorAll(".anno").forEach(draw); }
-  drawAll();
-  window.addEventListener("resize", drawAll);
-  window.addEventListener("load", drawAll);
-  if (document.fonts) document.fonts.ready.then(drawAll);
-})();
-</script>
 </body>
 </html>

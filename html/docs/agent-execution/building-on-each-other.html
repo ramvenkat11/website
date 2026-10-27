@@ -74,10 +74,19 @@
   <li><strong>Your own client</strong> on the <a href="../rest-api/index.html">REST API</a> makes the same two calls and applies whatever plan it likes: a fixed sequence of agents, a loop until a condition holds, or a choice between the two best matches offered to the user.</li>
 </ul>
 
+<h2 id="agree-on-names">Agree on names</h2>
+<p>Agents build on each other through names, and nothing enforces them. A second agent continues the exchange only when its prompt has the same name as the first agent's; it finds what the first agent saved only under the variable name the first agent used. Two developers who choose different names produce two agents that run in the same conversation and share nothing.</p>
+<p>So an organization agrees on a naming scheme before its agents can work together, and keeps it where every developer finds it:</p>
+<ul>
+  <li><strong>One prompt name</strong> for the exchange with the user, such as <code>chat</code>, with the <code>conversation</code> scope. Every agent that should see what was said before uses it. Other names are for histories an agent keeps to itself.</li>
+  <li><strong>A name for each thing agents hand to each other</strong>, such as <code>conv.trip</code>, <code>conv.customer</code> or <code>conv.order</code>, with a note of what it holds and which agents set it. An agent reads a <code>conv.</code> variable only after checking it is set, because a follow-up can reach it in any order.</li>
+</ul>
+<p>An agent that follows the scheme fits into any conversation in the account. One that invents its own names starts from nothing and leaves nothing the next agent can find.</p>
+
 <h2 id="writing-agents-that-build-on-each-other">Writing agents that build on each other</h2>
 <ul>
   <li>Give the agent one job, and <a href="../search/describing-an-agent.html">describe</a> that job for the person who will ask for it. Search sends each part of a request to the agent built for it.</li>
-  <li>Use the account's standard prompt name, with the <code>conversation</code> scope, for the exchange with the user. Use another name with the <code>local</code> scope for one-off work inside a run, such as classifying or extracting, that no later agent should see.</li>
+  <li>Use the account's prompt name, with the <code>conversation</code> scope, for the exchange with the user. Use another name with the <code>local</code> scope for one-off work inside a run, such as classifying or extracting, that no later agent should see.</li>
   <li>Save what a later agent will need in a <code>conv.</code> variable, and read what earlier agents saved there instead of asking the user again. Variables are kept only when the run ends with <code>end</code> or pauses on <code>ask</code>; a run that fails leaves the conversation as it was.</li>
   <li>Do not assume which agent ran before. A follow-up can reach an agent in any order, so read a <code>conv.</code> variable only after checking it is set.</li>
 </ul>
@@ -85,7 +94,7 @@
     </article>
     <nav class=prevnext><a class=prev href='../agent-execution/conversation-state.html'><small>Previous</small>Conversation state</a><a class=next href='../llm/index.html'><small>Next</small>LLM</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#what-a-later-agent-inherits'>What a later agent inherits</a></li><li class=l2><a href='#who-decides-what-runs-next'>Who decides what runs next</a></li><li class=l2><a href='#writing-agents-that-build-on-each-other'>Writing agents that build on each other</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#what-a-later-agent-inherits'>What a later agent inherits</a></li><li class=l2><a href='#who-decides-what-runs-next'>Who decides what runs next</a></li><li class=l2><a href='#agree-on-names'>Agree on names</a></li><li class=l2><a href='#writing-agents-that-build-on-each-other'>Writing agents that build on each other</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">
