@@ -58,7 +58,7 @@
       <div class="hero-head as-head">
         <h1 class="hero-claim"><span class="hero-line">Search2o agent server <span class="hero-accent">handles all the plumbing</span></span> <span class="hero-line hero-line-soft">behind building, discovering and running AI&nbsp;agents,</span> <span class="hero-line">so you can focus on <span class="hero-accent">solving business&nbsp;problems</span>.</span></h1>
       </div>
-      <div class="appsrv" aria-label="The Search2o agent server with four parts: agent framework, search, agent runtime and observability. Developers are on the left, users on the right. A developer builds, validates and publishes agents with the agent framework, and describes them in English to search, for example a Travel desk agent that arranges air travel and hotel stays. A user calls search with a request such as Book a trip to New York, and search returns the Travel desk agent. The user calls execAgent with the conversation, the agent and the request on the agent runtime, and receives the agent's output, for example Booked UA1191, departs 06:00. Observability gives the developer reports.">
+      <div class="appsrv" aria-label="The Search2o agent server with three parts: agent framework, search and agent runtime. Developers are on the left, users on the right. A developer builds, validates and publishes agents with the agent framework, and describes them in English to search, for example a Travel desk agent that arranges air travel and hotel stays. A user calls search with a request such as Book a trip to New York, and search returns the Travel desk agent. The user calls execAgent with the conversation, the agent and the request on the agent runtime, and receives the agent's output, for example Booked UA1191, departs 06:00.">
         <div class="as-side as-dev">
           <div class="as-actor"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 4-4 16"/></svg></span><span class="nm">Developer</span></div>
           <i class="rail"></i>
@@ -84,16 +84,12 @@
           <div class="as-flow r dot"><i class="ln"></i><span class="sub"><b class="as-agent">Travel desk</b></span></div>
         </div>
 
-        <a class="as-part as-r3" href="runtime.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>Agent runtime</a>
+        <a class="as-part as-r3 last" href="runtime.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>Agent runtime</a>
         <div class="as-lane as-right as-r3">
           <div class="as-flow l"><span class="lbl"><code>execAgent(<wbr><span class="args">convId, <span class="kw"><b class="as-agent nw">Travel desk</b>,</span> <span class="nw"><span class="kw">"Book a trip</span> <span class="kw">to New York")</span></span></span></code></span><i class="ln"></i></div>
           <div class="as-flow r dot"><i class="ln"></i><span class="sub">Booked UA1191, <span class="kw">departs 06:00.</span></span></div>
         </div>
 
-        <a class="as-part as-r4 last" href="docs/reports/index.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-5 4 3 5-7"/></svg>Observability</a>
-        <div class="as-lane as-left as-r4">
-          <div class="as-flow l"><span class="lbl">Reports</span><i class="ln"></i></div>
-        </div>
       </div>
     </div>
   </section>
@@ -260,12 +256,12 @@
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m10 12.5-2 2.5 2 2.5M14 12.5l2 2.5-2 2.5"/></svg></div>
           <h3>Source available</h3>
-          <p>Everything that runs in your organization can be built from the source: the <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">agent server</a> and the <a href="https://github.com/Search2o/ui" target="_blank" rel="noopener">UI</a>. <a href="about.html#contact">Contact us</a> for customizations or modifications for internal use.</p>
+          <p>Everything that runs in your organization can be built from the source: the <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">agent server</a> and the <a href="https://github.com/Search2o/ui" target="_blank" rel="noopener">UI</a>. <a href="about.html#contact">Contact us</a> for customizations for internal use.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/></svg></div>
           <h3>Multiple environments</h3>
-          <p>An agent refers to APIs, databases and models by <a href="docs/profiles/overview.html">profile name</a>. Each environment's profiles point at its own systems, so the same agent runs unchanged in <a href="docs/security/multiple-environments.html">dev and prod</a>.</p>
+          <p>An agent refers to enterprise systems by <a href="docs/profiles/overview.html">profile name</a>. <a href="docs/security/multiple-environments.html">Dev and prod</a> environment&rsquo;s profiles point at its own systems, so the same agent runs unchanged.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="5" height="8" rx="1"/><rect x="9.5" y="3" width="5" height="8" rx="1"/><rect x="17" y="3" width="5" height="8" rx="1"/><path d="M2 18h20"/><path d="m18 14 4 4-4 4"/><path d="m6 14-4 4 4 4"/></svg></div>
