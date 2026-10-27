@@ -32,7 +32,7 @@
 <h2>What the boundary buys</h2>
 <p><strong>Validation.</strong> A Search2o agent has a few specific paths, like a workflow, rather than an open-ended set. That is what makes it possible to validate the agent before it is published: a real run against a validation query, with every step in the trace. See <a href="../development/trace-and-validation.html">Trace and validation</a>.</p>
 <p><strong>Dependability.</strong> The same request takes the same path through the same commands, so the agent behaves the same way on every run. A failure has a place: the command it failed at, in the run's record.</p>
-<p><strong>Safety.</strong> The agent reaches only the systems its profiles name, runs inside the <a href="../agent-execution/controlled-runtime.html">controlled runtime</a>, and stops at its <a href="../runtime/runtime-limits.html">time and cost budgets</a>.</p>
+<p><strong>Safety.</strong> The agent reaches only the systems its profiles name, runs inside the <a href="../runtime/controlled-execution.html">agent runtime</a>, and stops at its <a href="../runtime/runtime-limits.html">time and cost budgets</a>.</p>
 <p><strong>Observability.</strong> Every run is recorded: who requested it, what ran, how long it took, what failed, and what the LLM calls cost. The <a href="../reports/index.html">reports</a> show these per agent and per user.</p>
 
 <h2>How Search2o agents work together</h2>

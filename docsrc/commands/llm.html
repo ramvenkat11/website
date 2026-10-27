@@ -47,6 +47,6 @@
   <li>Two <code>llm</code> commands that run at the same time must use different prompts. A tool function cannot use the prompt of the command that called it, and parallel branches need prompts of their own.</li>
   <li><code>profile</code> is the literal name of an <a href="../profiles/llm-profiles.html">LLM profile</a>. To pick a profile at run time, branch with <code>if</code>.</li>
   <li>The token ceiling, retries, headers and any extra request parameters come from the profile. Only timeouts, connection errors and HTTP 429 and 5xx responses are retried, with a short wait that grows on each attempt. A 400, 401 or 404 fails at once. Every attempt that is paid for counts toward the agent's cost limit.</li>
-  <li>The run is stopped once its LLM spend passes the agent's own cost bound; see <a href="../agent-execution/controlled-runtime.html">Controlled runtime</a>.</li>
+  <li>The run is stopped once its LLM spend passes the agent's own cost bound; see <a href="../runtime/controlled-execution.html">Controlled execution</a>.</li>
   <li><code>end</code> is not allowed inside a tool function. A tool must return to the model.</li>
 </ul>

@@ -49,4 +49,4 @@ python3 search2o/scripts/s2o.py execAgent '{"agentName": "order_status", "inputs
 <h3>Tag scoping</h3>
 <p><code>search</code> accepts a <a href="../search/tags.html">tag</a> and returns only the agents that carry it. A company that wants narrower triggers can install two copies of the skill, one for support agents and one for finance agents, each with its own name, its own description, and instructions that pass its tag to <code>search</code>.</p>
 <h3>Long-running agents</h3>
-<p>The script waits up to 600 seconds for an agent to finish. Each agent has its own <a href="../agent-execution/controlled-runtime.html">time bound</a>, set with the draft. If an agent's bound is longer than 600 seconds, raise <code>TIMEOUT</code> in the script to match.</p>
+<p>The script waits up to 600 seconds for an agent to finish. Each agent has its own <a href="../runtime/controlled-execution.html">time bound</a>, set with the draft. If an agent's bound is longer than 600 seconds, raise <code>TIMEOUT</code> in the script to match.</p>

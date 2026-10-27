@@ -170,7 +170,7 @@ def _skill_flow():
     f.arrow(127, 122, 127, 144)
     f.box(275, 115, 200, 110, kind="dark")
     f.text(375, 133, "Search2o Agent Server", size=13, fill="white", weight=700, anchor="middle")
-    f.box(290, 147, 170, 64, "Controlled runtime", "agents run here", kind="soft")
+    f.box(290, 147, 170, 64, "Agent runtime", "agents run here", kind="soft")
     f.arrow(212, 170, 275, 170, both=True)
     f.text(243.5, 188, "request", size=11, anchor="middle")
     f.text(243.5, 202, "answer", size=11, anchor="middle")

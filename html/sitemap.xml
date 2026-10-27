@@ -36,7 +36,6 @@
   <url><loc>https://search2o.com/docs/agent-definition/variables.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-definition/namespaces.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-execution/index.html</loc></url>
-  <url><loc>https://search2o.com/docs/agent-execution/controlled-runtime.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-execution/output.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-execution/order-of-execution.html</loc></url>
   <url><loc>https://search2o.com/docs/agent-execution/error-handling.html</loc></url>
@@ -80,6 +79,7 @@
   <url><loc>https://search2o.com/docs/development/trace-and-validation.html</loc></url>
   <url><loc>https://search2o.com/docs/development/publishing.html</loc></url>
   <url><loc>https://search2o.com/docs/runtime/index.html</loc></url>
+  <url><loc>https://search2o.com/docs/runtime/controlled-execution.html</loc></url>
   <url><loc>https://search2o.com/docs/runtime/overview.html</loc></url>
   <url><loc>https://search2o.com/docs/runtime/allowlist.html</loc></url>
   <url><loc>https://search2o.com/docs/runtime/system-variables.html</loc></url>

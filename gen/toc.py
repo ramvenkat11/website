@@ -30,7 +30,6 @@ TOC = [
         ("namespaces", "Namespaces"),
     ]),
     ("agent-execution", "Agent execution", [
-        ("controlled-runtime", "Controlled runtime"),
         ("output", "Agent output"),
         ("order-of-execution", "Order of execution"),
         ("error-handling", "Error handling"),
@@ -79,6 +78,7 @@ TOC = [
         ("publishing", "Publishing"),
     ]),
     ("runtime", "Agent runtime", [
+        ("controlled-execution", "Controlled execution"),
         ("overview", "Overview"),
         ("allowlist", "Allowlist"),
         ("system-variables", "System variables"),

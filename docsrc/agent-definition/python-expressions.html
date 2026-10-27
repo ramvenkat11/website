@@ -38,9 +38,9 @@
 <p>An expression is checked twice and run once.</p>
 <ol>
   <li><strong>When the agent is validated.</strong> Search2o Cloud reads each expression and refuses the agent if an expression breaks a rule. The agent server then checks that the names and secrets the expressions use exist.</li>
-  <li><strong>When the agent runs.</strong> The agent server evaluates the expression in the controlled runtime.</li>
+  <li><strong>When the agent runs.</strong> The agent server evaluates the expression in the agent runtime.</li>
 </ol>
-<p>The agent server runs the version of each expression that passed the first stage. The controlled runtime adds its own protection: an expression sees only the allowlist, never Python's builtins.</p>
+<p>The agent server runs the version of each expression that passed the first stage. The agent runtime adds its own protection: an expression sees only the allowlist, never Python's builtins.</p>
 
 <h2>Stage one: validation</h2>
 
