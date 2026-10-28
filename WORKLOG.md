@@ -1241,3 +1241,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Home section backgrounds alternate again: #framework-runtime soft, #user-interfaces plain, #platform soft (were plain/soft/soft). Rendered full page 1280/1000/860/700/412/384/375/360 light+dark: every section change is a background change; no overflow.
 - Enterprise cards (.pcard): icon and heading share a row (flex-wrap; h3 flex-basis max-content), heading drops below the icon when it can't fit on one line beside it. Sweep 320–1280 clean; rendered 1280/1000/900/860/700/412/360.
 - Card heading "Multi-user access and roles" → "Multi-user access". Measured 320–1280: every heading sits beside its icon from 340px up; below that (single column) two headings drop.
+- Hero figure: execAgent call now links to conversation.html (runtime still linked from execAgent in the hero text).
