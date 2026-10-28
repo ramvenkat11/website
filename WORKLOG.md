@@ -1200,3 +1200,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 
 ## 2026-10-28 Tagline "Agent server for the enterprise"
 - Added the same way "Search that executes" was: header `span.tagline` after the logo and footer `<p>` under the logo on all 14 site pages (incl. legal/*, 404), header span in the gen/build.py template (docs rebuilt, 146 pages), `.tagline` rule + ≤900 docs / ≤440 stacking blocks restored in styles.css (from f6b94e7b^). Not added: index <title>/og:title, gen/ogcard.py, gen/linkedin_banner.py. Rendered index header/footer 7 widths light+dark and docs header 1280/860/384/360: clean. Not committed.
+- Infrastructure lead: "so an agent contains only business logic."
