@@ -1179,3 +1179,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - html/index.html #application-server: removed the right-side bus (dashed rail, client arrows, Browser/Chat/Agent harness) and the as-arrow marker. Restored the examples: left "Travel desk: Arranges air travel and hotel stays."; right lanes `search("Book a trip to New York")` → Travel desk and `execAgent(convId, Travel desk, "Book a trip to New York")` → "Booked UA1191, departs 06:00." aria-label updated.
 - styles.css: .as-bus rules gone; .as-right, .sub, .nw, .kw, .as-agent and phone rules restored from HEAD; lanes now sit in plain rows 2 and 3 (no ±50% offsets); server/agents/dev rail span rows 1–3.
 - Rendered 1280/1000/860/700/384/375/360 light+dark: clean. Not committed.
+
+## 2026-10-28 Hero example: IT helpdesk
+- Hero example changed from Travel desk to IT helpdesk ("Grants access and fixes laptop problems."; search/execAgent with "I can't open the finance dashboard"; result "Access requested. Your manager has been asked to approve."). aria-label updated. Text only, no renders. Not committed.
