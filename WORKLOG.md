@@ -1255,3 +1255,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Follow-up: the #run paragraph now also covers `--port` (default 9020), and step 4 says to use the server's address and port instead of 127.0.0.1:9020.
 - Ram's wording for the port: "By default Search2o starts on port 9020. Use --port to use another port." It now opens the #run paragraph.
 - Port sentence now says "the server" instead of "Search2o" (Ram).
+- gettingstarted.html wording made formal at Ram's request: "do not need a vendor API key", "Choose an LLM profile", "Your setup is complete", "For help, click the documentation icon", "We welcome your feedback...", the OpenAPI line as a full sentence, and the source-install summary now reads "Alternatively, install from the source". Text only, so no renders.
