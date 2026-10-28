@@ -1194,3 +1194,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Hero lead: gradient removed from "handles all the plumbing"; now <strong> (ink, weight 650 via .hero-head strong).
 - Hero lead last sentence: "Agent server handles all the plumbing, so you can focus on just the business logic." (building/discovering/running links gone).
 - Hero lead: task-focused agents now links docs/introduction/search2o-agents.html.
+- Hero lead: "execAgent, which runs the agent safely"; search→search.html, execAgent→runtime.html.
