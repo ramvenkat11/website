@@ -1277,3 +1277,10 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - search.html #demo: the widget is replaced by a paragraph linking to the conversation page demo; demo.css and demo.js are no longer loaded there.
 - Narrow header CSS: at ≤980 the header-row gap is 0 (nav items were taking the 14px gap), `.brand` gets margin-right 14px, `.docs .theme-toggle` margin-right 12px, and the -12px pull applies only to the first menu. At ≤440 the links use 7px padding at 14px. At 981–1040, `.docs .header-row` gap is 18px (the docs page overflowed by 1px at 981–992).
 - Nav stays on one row from 356px; below that "About" wraps. Sweeps of search, index and docs/index headers from 320 to 1280: 0 issues. On docs at ≤384, Get started sits under the theme button, as at 360 before.
+
+## 2026-10-28 — demos on their own pages
+- New pages html/demo-search.html ("Ask for something, then follow up", search widget) and html/demo-draft.html ("Describe an agent and read the definition it produces", generate widget). Each is built from the conversation.html shell, with its own title, description, canonical and og:url; the matching Demo menu item is aria-current. Both are added to sitemap.xml.
+- conversation.html and framework.html: the #demo sections are now short pointer paragraphs linking to the new pages, and demo.css/demo.js are no longer loaded there. search.html's pointer now goes to demo-search.html.
+- Header Demo menu items → demo-search.html and demo-draft.html (all site pages and gen/build.py; docs rebuilt).
+- `.fw-page .page-hero h1` now has text-wrap: balance, because "produces" was orphaned at 360. Product-page headings rebalance on phones; desktop is unchanged.
+- Widgets verified over local HTTP (they don't load from file://). Sweeps 320–1280: 0 issues. Link check: 0 broken. content/parts-of-the-system.md still lists framework.html#demo and search.html#demo (a notes file, not changed).
