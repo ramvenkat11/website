@@ -175,7 +175,7 @@ Write a Google Chat app in <your language> using the reference above.
   - Upload image parts as card images.
 </x-code>
 
-<h2>Check these before you trust the result</h2>
+<h2>Points to check in the generated code</h2>
 <p>An assistant produces something plausible. These are the points where a plausible answer is wrong. Check each one against the running bot.</p>
 <ul>
   <li>The connect flow never returns the token to the browser. Code that reads a token from a redirect or from the page has invented that.</li>
@@ -184,5 +184,5 @@ Write a Google Chat app in <your language> using the reference above.
   <li>The question goes in <code>inputs</code> under the name <code>query</code>. The question is not a top-level field.</li>
   <li><code>convid</code> is left out to start a conversation. The field is not set to null and not set to an empty string.</li>
   <li>An agent that asks needs the same <code>convid</code> on the next call, or the agent starts again from the beginning.</li>
-  <li>In Slack, opening a form straight from a message event cannot work. Generated code that does that fails the first time an agent asks for anything.</li>
+  <li>In Slack, opening a form directly from a message event cannot work. Generated code that does that fails the first time an agent asks for anything.</li>
 </ul>

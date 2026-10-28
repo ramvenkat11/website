@@ -1,4 +1,4 @@
-<p class="lead">An agent meets errors from three places: its own expressions, the systems it calls, and the limits the runtime enforces. A command that calls out can handle its own errors in an <code>onError</code> block, a function can handle what its commands did not, and whatever is not handled ends the run with a result code, a message for the person and a record in the error report. Nothing from a failed run is saved.</p>
+<p class="lead">An agent meets errors from three places: its own expressions, the systems it calls, and the limits the runtime enforces. A command that calls an external system can handle its own errors in an <code>onError</code> block, a function can handle what its commands did not, and whatever is not handled ends the run with a result code, a message for the person and a record in the error report. Nothing from a failed run is saved.</p>
 
 <h2>Where errors come from</h2>
 <ul>
@@ -66,7 +66,7 @@
 
 <h2>Errors in tools</h2>
 <p>A function the model calls as a tool handles errors like any other function: its commands' <code>onError</code> blocks and its own <code>onError</code> apply. An error that leaves the function is not given to the model. It ends the run, with the model's answer never produced. A tool that should let the model recover catches the error itself and returns a value that says what went wrong.</p>
-<p>A tool on an <a href="../profiles/mcp-servers.html">MCP server</a> is different. An error the server reports as a tool error, or a JSON-RPC error whose code the MCP profile lists as retryable, goes back to the model together with the profile's tool error prompt, and the model can correct its arguments or give up. Any other MCP error ends the run.</p>
+<p>A tool on an <a href="../profiles/mcp-servers.html">MCP server</a> is different. An error the server reports as a tool error, or a JSON-RPC error whose code the MCP profile lists as retryable, goes back to the model together with the profile's tool error prompt, and the model can correct its arguments or stop calling the tool. Any other MCP error ends the run.</p>
 <p><code>fail</code> inside a tool ends the run with its message. <code>end</code> is not allowed in a tool. <code>ask</code> pauses the run, and the model's tool loop resumes when the person answers.</p>
 
 <h2>Errors in parallel branches</h2>

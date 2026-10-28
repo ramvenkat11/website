@@ -10,7 +10,7 @@
   <li><a href="../rest-api/search.html"><code>search</code></a> takes the request and returns the matching agents, best first, each with its name and title.</li>
   <li><a href="../rest-api/running-agents.html"><code>execAgent</code></a> runs one agent and returns its output, the conversation id, a result code and, when the agent has paused for input, the questions it is asking.</li>
 </ul>
-<p>The search response is the ranked matches and nothing more; see <a href="../search/how-matching-works.html">How matching behaves</a>. What to do with them is the caller's own <a href="../search/search-settings.html">search behavior</a>. The assistant judges for itself: it reads the titles and picks the agent that fits.</p>
+<p>The search response is the ranked matches and nothing more; see <a href="../search/how-matching-works.html">How matching behaves</a>. What to do with them is the caller's own <a href="../search/search-settings.html">search behavior</a>. The assistant judges for itself: it reads the titles and chooses the agent that fits.</p>
 
 <h2>A request, step by step</h2>
 <ol>
@@ -34,5 +34,5 @@
 <p>A support engineer types into the agent harness: <em>Has order 48812 shipped? If not, open a ticket with the warehouse.</em></p>
 <p>The assistant sees two parts and a dependency between them. It sends the first part, <em>has order 48812 shipped?</em>, to <code>search</code>, and runs the order-lookup agent that comes back. The agent runs on the company's agent server against the orders database and returns: not shipped, held for an address check.</p>
 <p>Because the answer is "not shipped", the assistant sends the second part to <code>search</code> and runs the warehouse-ticket agent with the same conversation id. That agent already has the order details in the conversation's state. It creates the ticket and returns its number.</p>
-<p>The assistant composes one answer: <em>Order 48812 hasn't shipped. It's held for an address check. Ticket WH-1183 opened with the warehouse.</em></p>
+<p>The assistant composes one answer: <em>Order 48812 has not shipped. It is held for an address check. Ticket WH-1183 opened with the warehouse.</em></p>
 <p>Two agents ran, written by two different developers, neither knowing about the other. The assistant decided the order and the condition. Search2o did each step inside the company, with credentials that never left the agent server, and recorded both runs under the engineer's name.</p>

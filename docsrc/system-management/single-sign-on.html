@@ -20,9 +20,9 @@ https://search2o.example.com/ui
 <!--fields:model:OidcAuthModel-->
 <p>The client secret is stored encrypted and never returned, so the settings page shows the field blank once the secret is saved. To replace the secret, type a new one. To change any other setting, leave the field blank and the stored secret is kept.</p>
 
-<h2>Step 3: test it, then decide about passwords</h2>
+<h2>Step 3: test single sign-on, then decide about password sign-in</h2>
 <p>Keep password sign-in on while you test. Save the settings, then open Search2o in a new browser session: the sign-in dialog offers single sign-on beside the password form. Sign in through your provider and confirm that you arrive in Search2o as the right person.</p>
-<p>Once that works, decide whether to turn password sign-in off.</p>
+<p>When single sign-on works, decide whether to turn password sign-in off.</p>
 <ul>
   <li><strong>Leave it on</strong> to let people use either method. This helps during a rollout, and it is necessary for anyone who is not in your identity provider, such as an outside contractor.</li>
   <li><strong>Turn it off</strong> so that single sign-on is the only way in. Search2o refuses to turn password sign-in off until single sign-on is configured, so that an account always keeps a way to sign in. While it is off, a person can sign in only when your provider is available.</li>
@@ -38,7 +38,7 @@ https://search2o.example.com/ui
 <p>Any other OpenID Connect provider works the same way: register a web application with your Search2o address as the redirect URI, and give Search2o the issuer, the client ID and the client secret.</p>
 
 <h2>What your users see</h2>
-<p>A person opening Search2o is sent to your identity provider to sign in, and comes straight back signed in, without typing a Search2o password. When both sign-in methods are on, the person is offered the choice.</p>
+<p>A person opening Search2o is sent to your identity provider to sign in, and returns to Search2o signed in, without typing a Search2o password. When both sign-in methods are on, the person is offered the choice.</p>
 
 <h2>Roles and membership</h2>
 <p>The identity provider says only who the person is. The person's <a href="users-and-roles.html">role</a> is set in Search2o, and signing in through the provider changes nobody's role. A user created automatically by the <em>Create user</em> setting starts with the <code>user</code> role; an administrator promotes the user from the Users page.</p>

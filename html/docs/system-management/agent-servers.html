@@ -59,7 +59,7 @@
       <p class="lead">An agent server is the Python process that runs agents inside your organization: a FastAPI application served by Uvicorn, fully asynchronous, with exactly one worker. Run one on a laptop or several behind a load balancer; any agent server can serve any request. This page covers the command line, the addresses an agent server serves, and how agent servers are configured.</p>
 
 <h2 id="the-command-line">The command line</h2>
-<p>Options on the <code>search2o</code> command line are passed through to Uvicorn, so the Uvicorn options for the address, the port and TLS all work as Uvicorn documents them. A few options are refused because the agent server runs as exactly one worker per process:</p>
+<p>Options on the <code>search2o</code> command line are passed through to Uvicorn, so the Uvicorn options for the address, the port and TLS all work as Uvicorn documents them. The following options are refused because the agent server runs as exactly one worker per process:</p>
 <figure class=code data-lang=text><pre><code>--reload  --reload-dir  --reload-include  --reload-exclude  --reload-delay
 --factory
 --workers</code></pre></figure>

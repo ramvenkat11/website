@@ -63,7 +63,7 @@
 <figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>export OPENAI_API_KEY=...        <span class=cm># OpenAI</span>
 <span class=ps1>$ </span>export ANTHROPIC_API_KEY=...     <span class=cm># Anthropic</span>
 <span class=ps1>$ </span>export GEMINI_API_KEY=...        <span class=cm># Google Gemini</span></code></pre></figure>
-<p>Where a key is read from is configurable; see <a href="../security/secret-vault.html">Secret vault</a>. The hosted-model profiles need no key.</p>
+<p>Where a key is read from is configurable; see <a href="../security/secret-vault.html">Secret vault</a>. The hosted-model profiles do not need a key.</p>
 
 <h2 id="the-seeded-profiles">The seeded profiles</h2>
 <p>A new account has these <a href="../profiles/llm-profiles.html">LLM profiles</a>. An agent names one of them in its <code>llm</code> command.</p>
@@ -79,7 +79,7 @@
 <tr><td><code>vllm_qwen25</code></td><td>vLLM on the agent server's machine</td><td>Text, Qwen 2.5 7B</td></tr>
 <tr><td><code>sglang_qwen25</code></td><td>SGLang on the agent server's machine</td><td>Text, Qwen 2.5 7B</td></tr>
 </tbody></table></div>
-<p>The prices on a vendor profile are the list prices when the account was created. Edit them to match your contract, so that the <a href="../reports/cost.html">cost report</a> is right. The hosted-model profiles are priced at zero.</p>
+<p>The prices on a vendor profile are the list prices when the account was created. Edit them to match your contract, so that the <a href="../reports/cost.html">cost report</a> is accurate. The hosted-model profiles are priced at zero.</p>
 
 <h2 id="a-profile-for-another-model">A profile for another model</h2>
 <p>A profile is one model at one vendor, so a second model needs a second profile. Create one under <strong>Profiles &rsaquo; LLM</strong> in the UI and set:</p>
@@ -88,7 +88,7 @@
 <tbody>
 <tr><td><code>adapter</code></td><td><code>openai</code>, <code>anthropic</code> or <code>gemini</code>, matching the protocol the endpoint speaks, whoever serves it: a private deployment, a gateway, or another vendor's compatible API. <code>ollama</code>, <code>vllm</code> or <code>sglang</code> for a model served by one of those. For a protocol none of them speaks, see <a href="llm-adapters.html">Connecting to other LLMs</a>.</td></tr>
 <tr><td><code>url</code></td><td>The endpoint, for example <code>https://api.openai.com</code>.</td></tr>
-<tr><td><code>headers</code></td><td>Authorization and whatever else the vendor wants. The values are dynamic strings, so the key is read at call time: <code>{ f"Bearer {sys.secret['OPENAI_API_KEY']}" }</code>.</td></tr>
+<tr><td><code>headers</code></td><td>Authorization and any other headers the vendor requires. The values are dynamic strings, so the key is read at call time: <code>{ f"Bearer {sys.secret['OPENAI_API_KEY']}" }</code>.</td></tr>
 <tr><td><code>model</code></td><td>The model name as the vendor writes it.</td></tr>
 <tr><td><code>pricing</code></td><td>The prices per million tokens.</td></tr>
 </tbody></table></div>
@@ -101,7 +101,7 @@
 <tbody>
 <tr><td><code>adapter</code></td><td><code>ollama</code></td><td><code>vllm</code></td><td><code>sglang</code></td></tr>
 <tr><td><code>url</code></td><td colspan="3">The agent server's route to the model server, ending in <code>/v1/responses</code>. With the default ports on the same machine: <code>http://localhost:11434/v1/responses</code> for Ollama, <code>http://localhost:8000/v1/responses</code> for vLLM, <code>http://localhost:30000/v1/responses</code> for SGLang.</td></tr>
-<tr><td><code>headers</code></td><td colspan="3"><code>Content-Type</code> alone when the server asks for no key.</td></tr>
+<tr><td><code>headers</code></td><td colspan="3"><code>Content-Type</code> alone when the server does not require a key.</td></tr>
 <tr><td><code>model</code></td><td>The model as Ollama names it, for example <code>qwen2.5:7b</code>.</td><td colspan="2">The name the model is served under, for example <code>Qwen/Qwen2.5-7B-Instruct</code>.</td></tr>
 </tbody></table></div>
 <p>Ollama does not act on a forced tool choice. When an <code>llm</code> command sets <code>outputFormat: "structured"</code>, the <code>ollama</code> adapter asks Ollama for JSON that fits the schemas of the offered functions and turns the reply into function calls, so the command returns the same dict as with any other adapter.</p>

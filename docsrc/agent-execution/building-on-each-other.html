@@ -13,12 +13,12 @@
 <ul>
   <li>The <strong>bundled UI and the chat bots</strong> take one request at a time. A follow-up is searched like a new request, the best match runs with the conversation's state in place, and when nothing new matches the agent that answered last answers again. See <a href="../search/search-settings.html">Search settings</a>.</li>
   <li>An <strong>agent harness</strong> with the <a href="../skill-integration/index.html">Search2o skill</a>, such as a coding assistant or a desktop assistant, handles a request with several parts: it splits the request, sends each part through search and <code>execAgent</code> in turn on one conversation, and composes one answer from the results. Each agent sees what the earlier ones produced. See <a href="../skill-integration/finding-and-running-an-agent.html">Finding and running an agent</a>.</li>
-  <li><strong>Your own client</strong> on the <a href="../rest-api/index.html">REST API</a> makes the same two calls and applies whatever plan it likes: a fixed sequence of agents, a loop until a condition holds, or a choice between the two best matches offered to the user.</li>
+  <li><strong>Your own client</strong> on the <a href="../rest-api/index.html">REST API</a> makes the same two calls and applies any plan it chooses: a fixed sequence of agents, a loop until a condition holds, or a choice between the two best matches offered to the user.</li>
 </ul>
 
 <h2>Agree on names</h2>
 <p>Agents build on each other through names, and nothing enforces them. A second agent continues the exchange only when its prompt has the same name as the first agent's; it finds what the first agent saved only under the variable name the first agent used. Two developers who choose different names produce two agents that run in the same conversation and share nothing.</p>
-<p>So an organization agrees on a naming scheme before its agents can work together, and keeps it where every developer finds it:</p>
+<p>An organization therefore agrees on a naming scheme before its agents can work together, and keeps it where every developer finds it:</p>
 <ul>
   <li><strong>One prompt name</strong> for the exchange with the user, such as <code>chat</code>, with the <code>conversation</code> scope. Every agent that should see what was said before uses it. Other names are for histories an agent keeps to itself.</li>
   <li><strong>A name for each thing agents hand to each other</strong>, such as <code>conv.trip</code>, <code>conv.customer</code> or <code>conv.order</code>, with a note of what it holds and which agents set it. An agent reads a <code>conv.</code> variable only after checking it is set, because a follow-up can reach it in any order.</li>

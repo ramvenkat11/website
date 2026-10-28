@@ -225,7 +225,7 @@ RULES YOU MUST FOLLOW
   - Convert markdown to Google Chat formatting. Bold is *text*, links are &lt;url|label&gt;.
   - Upload image parts as card images.</code></pre></figure>
 
-<h2 id="check-these-before-you-trust-the-result">Check these before you trust the result</h2>
+<h2 id="points-to-check-in-the-generated-code">Points to check in the generated code</h2>
 <p>An assistant produces something plausible. These are the points where a plausible answer is wrong. Check each one against the running bot.</p>
 <ul>
   <li>The connect flow never returns the token to the browser. Code that reads a token from a redirect or from the page has invented that.</li>
@@ -234,13 +234,13 @@ RULES YOU MUST FOLLOW
   <li>The question goes in <code>inputs</code> under the name <code>query</code>. The question is not a top-level field.</li>
   <li><code>convid</code> is left out to start a conversation. The field is not set to null and not set to an empty string.</li>
   <li>An agent that asks needs the same <code>convid</code> on the next call, or the agent starts again from the beginning.</li>
-  <li>In Slack, opening a form straight from a message event cannot work. Generated code that does that fails the first time an agent asks for anything.</li>
+  <li>In Slack, opening a form directly from a message event cannot work. Generated code that does that fails the first time an agent asks for anything.</li>
 </ul>
 
     </article>
     <nav class=prevnext><a class=prev href='../chat-integrations/chat-applications.html'><small>Previous</small>Slack, Teams and Google Chat</a><a class=next href='../skill-integration/index.html'><small>Next</small>Skill integration</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#the-reference-prompt'>The reference prompt</a></li><li class=l2><a href='#the-prompt-for-slack'>The prompt for Slack</a></li><li class=l2><a href='#the-prompt-for-microsoft-teams'>The prompt for Microsoft Teams</a></li><li class=l2><a href='#the-prompt-for-google-chat'>The prompt for Google Chat</a></li><li class=l2><a href='#check-these-before-you-trust-the-result'>Check these before you trust the result</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#the-reference-prompt'>The reference prompt</a></li><li class=l2><a href='#the-prompt-for-slack'>The prompt for Slack</a></li><li class=l2><a href='#the-prompt-for-microsoft-teams'>The prompt for Microsoft Teams</a></li><li class=l2><a href='#the-prompt-for-google-chat'>The prompt for Google Chat</a></li><li class=l2><a href='#points-to-check-in-the-generated-code'>Points to check in the generated code</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

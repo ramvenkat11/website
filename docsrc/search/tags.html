@@ -6,7 +6,7 @@
 <h2>Using tags</h2>
 <p>Give agents a tag to put them in a separate pool: <code>corporate</code> for internal-only agents, <code>support</code> for the help desk, <code>pilot</code> for agents under evaluation. The search box still searches every tag. An agent's tag is changed from the agent's page, and the change is live at once.</p>
 
-<h2>Letting users pick a catalog</h2>
+<h2>Letting users choose a catalog</h2>
 <p>The <a href="../rest-api/search.html"><code>search</code></a> call of the REST API takes a <code>tag</code>, so an interface of your own can offer tags to its users, as a drop-down of catalogs for example, or search every tag with an empty string.</p>
 <p>An <a href="../skill-integration/overview.html">agent skill</a> searches the same way. The skill's search call can name a tag, so a company can install one skill per catalog, one for support agents and one for finance agents, each searching its own tag. See <a href="../skill-integration/installing-the-skill.html#tag-scoping">Tag scoping</a>.</p>
 

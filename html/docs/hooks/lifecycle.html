@@ -56,7 +56,7 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../hooks/index.html'>Hooks</a></div>
     <article class="docs-article">
       <h1>Server and agent runs</h1>
-      <p class="lead">Seven hooks follow the life of the agent server and of the agents it runs: one when the server starts and one when it stops, three around each agent run, and one each when an agent is published or deleted. They are the place for an audit trail of your own, for a check that stops an agent before it runs, and for anything that must happen when a new version goes live.</p>
+      <p class="lead">Seven hooks follow the life of the agent server and of the agents it runs: one when the server starts and one when it stops, three around each agent run, and one each when an agent is published or deleted. They are the place for an audit trail of your own, for a check that stops an agent before it runs, and for anything that must happen when a new version is published.</p>
 
 <h2 id="agent-server">Agent server</h2>
 <div class="tablewrap"><table class="fields data">
@@ -80,8 +80,8 @@
 <div class="tablewrap"><table class="fields data">
 <thead><tr><th>Hook</th><th>When it is called</th><th>The dict holds</th></tr></thead>
 <tbody>
-<tr><td><code>onAgentPublish</code><small>On agent publish</small></td><td>After an agent is published. If it raises, the developer gets an error saying that the agent was published and the hook failed.</td><td><code>agentName</code>, <code>agentVersion</code>, <code>agentDefinition</code>, <code>agentTitle</code>, <code>agentTag</code> and <code>userEmail</code>, the publisher.</td></tr>
-<tr><td><code>onAgentDelete</code><small>On agent delete</small></td><td>After an agent is deleted. If it raises, the developer gets an error saying that the agent was deleted and the hook failed.</td><td><code>agentName</code>.</td></tr>
+<tr><td><code>onAgentPublish</code><small>On agent publish</small></td><td>After an agent is published. If it raises, the developer receives an error saying that the agent was published and the hook failed.</td><td><code>agentName</code>, <code>agentVersion</code>, <code>agentDefinition</code>, <code>agentTitle</code>, <code>agentTag</code> and <code>userEmail</code>, the publisher.</td></tr>
+<tr><td><code>onAgentDelete</code><small>On agent delete</small></td><td>After an agent is deleted. If it raises, the developer receives an error saying that the agent was deleted and the hook failed.</td><td><code>agentName</code>.</td></tr>
 </tbody></table></div>
 
     </article>

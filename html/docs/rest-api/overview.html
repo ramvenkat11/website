@@ -80,13 +80,13 @@
 <h2 id="the-schema">The schema</h2>
 <p>A running server serves its OpenAPI schema at <code>/openapi.json</code>. The schema lists every endpoint with its request and response models, and is the input for a generated client or for an LLM that calls the API. The same server renders the schema for people: Swagger UI at <code>/docs</code> sends requests from the browser, and ReDoc at <code>/redoc</code> is a reference to read. All three paths can be moved or switched off in the <a href="../system-management/agent-servers.html">Agent servers</a> configuration. See <a href="clients.html">Creating your own client</a> and <a href="automating-with-an-llm.html">Automating tasks with an LLM</a>.</p>
 
-<h2 id="checking-that-a-server-is-up">Checking that a server is up</h2>
-<p><code>GET /health</code> needs no sign-in and is answered by the agent server itself, so a load balancer or a monitor can use it as a health check. It reaches nothing outside the agent server, and the response is <code>{"status": "ok"}</code>. <a href="../system-management/agent-server-sizing.html#watching-a-deployment-that-is-already-busy">Agent server sizing</a> says what its response time tells you about a busy server.</p>
+<h2 id="checking-that-a-server-is-running">Checking that a server is running</h2>
+<p><code>GET /health</code> does not require sign-in and is answered by the agent server itself, so a load balancer or a monitor can use it as a health check. It reaches nothing outside the agent server, and the response is <code>{"status": "ok"}</code>. <a href="../system-management/agent-server-sizing.html#watching-a-deployment-that-is-already-busy">Agent server sizing</a> says what its response time tells you about a busy server.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../rest-api/index.html'><small>Previous</small>REST API</a><a class=next href='../rest-api/authentication.html'><small>Next</small>Authentication</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#endpoint-groups'>Endpoint groups</a></li><li class=l2><a href='#requests-and-responses'>Requests and responses</a></li><li class=l2><a href='#the-schema'>The schema</a></li><li class=l2><a href='#checking-that-a-server-is-up'>Checking that a server is up</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#endpoint-groups'>Endpoint groups</a></li><li class=l2><a href='#requests-and-responses'>Requests and responses</a></li><li class=l2><a href='#the-schema'>The schema</a></li><li class=l2><a href='#checking-that-a-server-is-running'>Checking that a server is running</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

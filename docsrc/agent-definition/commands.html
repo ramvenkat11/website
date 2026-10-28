@@ -12,7 +12,7 @@
 <p><code>api</code>, <code>db</code> and <code>llm</code> accept an <code>onError</code> block. When the command raises an error, the block runs with <code>exc</code> set to the exception, and the function continues with the next command. Without an <code>onError</code> block on the command, the error goes to the function's <code>onError</code>, and then to the caller.</p>
 
 <h2>Where a command may appear</h2>
-<p>A few commands are restricted. Validation checks the restrictions and follows calls through <code>func</code> and through the functions an <code>llm</code> command offers as tools:</p>
+<p>Some commands are restricted. Validation checks the restrictions and follows calls through <code>func</code> and through the functions an <code>llm</code> command offers as tools:</p>
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Context</th><th>Not allowed</th><th>Why</th></tr></thead>
 <tbody>

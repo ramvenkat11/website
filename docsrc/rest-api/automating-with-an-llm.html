@@ -1,7 +1,7 @@
-<p class="lead">The OpenAPI schema at <code>/openapi.json</code> describes every endpoint of the agent server precisely enough for an LLM to call the API. Hand the schema to a model or to a coding assistant, and administrative and reporting tasks can be done in plain language.</p>
+<p class="lead">The OpenAPI schema at <code>/openapi.json</code> describes every endpoint of the agent server precisely enough for an LLM to call the API. Give the schema to a model or to a coding assistant, and administrative and reporting tasks can be done in plain language.</p>
 
 <h2>What the schema gives a model</h2>
-<p>The schema names every endpoint, the fields of each request with their types and constraints, and the shape of each response, which is what a tool-calling model needs. Most agent frameworks and coding assistants accept an OpenAPI document and turn each endpoint into a tool. The model reads the descriptions, picks the endpoint, and fills in the body.</p>
+<p>The schema names every endpoint, the fields of each request with their types and constraints, and the shape of each response, which is what a tool-calling model needs. Most agent frameworks and coding assistants accept an OpenAPI document and turn each endpoint into a tool. The model reads the descriptions, chooses the endpoint, and fills in the body.</p>
 <x-code lang="bash">
 $ curl http://127.0.0.1:9020/openapi.json > search2o-openapi.json
 </x-code>
@@ -13,7 +13,7 @@ $ curl http://127.0.0.1:9020/openapi.json > search2o-openapi.json
   <li>Tell the model the base URL of the agent server, and that every endpoint under <code>/api/</code> is a POST with a JSON body.</li>
 </ol>
 
-<h2>Tasks that suit this</h2>
+<h2>Suitable tasks</h2>
 <ul>
   <li><strong>Reporting.</strong> "Which agents failed most last week, and with what error?" The model calls <code>getAgentErrorReport</code> for the window and reads the result; a follow-up calls <code>getAgentErrorDetailReport</code> for one agent.</li>
   <li><strong>User administration.</strong> "Add these twelve people as developers." The model calls <code>addUsers</code> with the list, up to 25 at a time.</li>
@@ -21,7 +21,7 @@ $ curl http://127.0.0.1:9020/openapi.json > search2o-openapi.json
   <li><strong>Running agents.</strong> "Run the morning briefing for the payments team and send me the answer." The model calls <code>execAgent</code> without <code>stream</code> and returns the output; see <a href="running-agents.html">Running agents</a>.</li>
 </ul>
 
-<h2>Keeping it safe</h2>
+<h2>Limiting access</h2>
 <p>A model with the schema can call anything the service account may call, including <code>deleteAgent</code>, <code>deleteUsers</code> and <code>updateRole</code>. The service account's role is the boundary, so keep it as low as the task allows; the developer role is enough when a report is all that is needed. Every call the model makes is an ordinary API call: Search2o Cloud checks it against the role, records it against the service account, and shows it in the reports like any other.</p>
 
 <h2>For people rather than models</h2>

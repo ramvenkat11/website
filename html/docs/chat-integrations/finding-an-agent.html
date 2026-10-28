@@ -62,7 +62,7 @@
   &quot;searchResults&quot;: [ { &quot;agentName&quot;: &quot;hr_policy&quot;, &quot;agentTitle&quot;: &quot;HR policy&quot; } ] }</code></pre></figure>
 
 <h2 id="what-to-do-with-the-results">What to do with the results</h2>
-<p>Search returns only the matches. What the bot does with them is the bot's own <a href="../search/search-settings.html">search behavior</a>, not an account setting. Pick one approach and keep it.</p>
+<p>Search returns only the matches. What the bot does with them is the bot's own <a href="../search/search-settings.html">search behavior</a>, not an account setting. Choose one approach and keep to it.</p>
 <div class="tablewrap"><table class="fields data">
 <thead><tr><th>Approach</th><th>What the bot does</th></tr></thead>
 <tbody>
@@ -75,10 +75,10 @@
 
 <h2 id="letting-the-person-choose">Letting the person choose</h2>
 <p>When the bot shows the results, show them as buttons: one button per agent, labeled with the agent title. Search returns at most two, so the buttons fit in a single row.</p>
-<p>Three things make a picker work.</p>
+<p>Letting the person choose works only when the bot does three things.</p>
 <ul>
   <li><strong>Carry the question, not only the choice.</strong> Running an agent needs the question, and a click only says which agent. Put a short identifier in the button and keep the question in your own store. A chat application limits how much a button can carry, and a question can be longer than that.</li>
-  <li><strong>Replace the message once somebody has chosen.</strong> Otherwise the buttons stay live, and a second click starts a second conversation on the same question. Showing which agent was chosen reads better too.</li>
+  <li><strong>Replace the message once somebody has chosen.</strong> Otherwise the buttons stay live, and a second click starts a second conversation on the same question. Showing which agent was chosen is also clearer.</li>
   <li><strong>Accept the click only from the person who asked.</strong> In a channel anybody can click. A click from somebody else would run that question under their account and put it in their history.</li>
 </ul>
 

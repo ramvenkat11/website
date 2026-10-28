@@ -78,7 +78,7 @@
 <h2 id="where-prompts-are-edited">Where prompts are edited</h2>
 <p>In the UI, an agent's prompts are on the <strong>Prompts</strong> tab of the draft page. <strong>Add prompt</strong> adds one. Prompts change only through a draft: edit them there, validate, and publish. Validation compiles each prompt with the draft, so a prompt that reads a variable the agent never sets is refused before it can run.</p>
 <p>A publish that changes only the prompts keeps the agent's version. The agent's next run uses the new text. A prompt that an <code>llm</code> command names cannot be dropped: remove the command's use of it in the same draft. Publishing records which prompts were added, removed or changed in the <a href="../system-management/audit-log.html">audit log</a>, by name, never their text.</p>
-<p>When the published agent's prompts, const, title or run limits changed after the draft was made from it, publishing the draft lists the fields that differ. You can merge those changes into the draft, or publish again to replace them with the draft's values. See <a href="../development/publishing.html#when-the-agent-changed-under-the-draft">Publishing</a>.</p>
+<p>When the published agent's prompts, const, title or run limits changed after the draft was made from it, publishing the draft lists the fields that differ. You can merge those changes into the draft, or publish again to replace them with the draft's values. See <a href="../development/publishing.html#when-the-published-agent-changed-after-the-draft-was-made">Publishing</a>.</p>
 
 <h2 id="how-a-prompt-is-evaluated">How a prompt is evaluated</h2>
 <p>The system and user text are written like any other string in an agent: plain text, or a <a href="python-expressions.html">Python expression</a> in braces. An expression is evaluated when the <code>llm</code> command runs, in the function where that command runs. It can read:</p>
@@ -91,7 +91,7 @@
 </ul>
 <figure class=code data-lang=jsonc><pre><code><span class=key>&quot;system&quot;</span>: <span class=str>&quot;{ &#x27;You answer questions about &#x27; + const.product + &#x27;. Reply in &#x27; + const.language + &#x27;.&#x27; }&quot;</span>,
 <span class=key>&quot;user&quot;</span>: <span class=str>&quot;{ f&#x27;{sys.query} (customer tier: {tier})&#x27; }&quot;</span></code></pre></figure>
-<p>The rules of every other expression apply: only allowlisted functions, no dunder or private names, and printable ASCII inside the braces. Text outside ASCII is fine in values, including const values, just not written directly inside <code>{ ... }</code>. Use an escape such as <code>\u00e9</code>, or keep the text in const.</p>
+<p>The rules of every other expression apply: only allowlisted functions, no dunder or private names, and printable ASCII inside the braces. Text outside ASCII is allowed in values, including const values, but not directly inside <code>{ ... }</code>. Use an escape such as <code>\u00e9</code>, or keep the text in const.</p>
 <p>Prompt texts are stored in the cloud in plain form. Text that is sensitive belongs in the <a href="const.html">const</a>, which is stored encrypted, and the prompt reads it as <code>{ const.name }</code>.</p>
 <p>The two texts are evaluated at different moments:</p>
 <ul>
@@ -102,7 +102,7 @@
 <p>The trace shows each call's prompt name, scope, system text and user text as an input.</p>
 
 <h3 id="why-a-prompt-cannot-read-result">Why a prompt cannot read result</h3>
-<p>A prompt is written outside every command, so at an <code>llm</code> call <code>result</code> is whatever the previous command happened to leave there. Reorder the commands, or insert one, and the prompt silently reads something else. Validation therefore refuses a prompt that reads <code>result</code>. Save the value into a variable before the <code>llm</code> command and read that variable in the prompt. Validation checks that the variable is set before every <code>llm</code> call that uses the prompt.</p>
+<p>A prompt is written outside every command, so at an <code>llm</code> call <code>result</code> is whatever the previous command left there. Reorder the commands, or insert one, and the prompt silently reads something else. Validation therefore refuses a prompt that reads <code>result</code>. Save the value into a variable before the <code>llm</code> command and read that variable in the prompt. Validation checks that the variable is set before every <code>llm</code> call that uses the prompt.</p>
 <figure class=code data-lang=jsonc><pre><code><span class=key>&quot;api&quot;</span>: { <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;orders&quot;</span>, <span class=key>&quot;path&quot;</span>: <span class=str>&quot;{ f&#x27;/orders/{orderId}&#x27; }&quot;</span> },
 <span class=key>&quot;var&quot;</span>: { <span class=key>&quot;order&quot;</span>: <span class=str>&quot;{ result }&quot;</span> },
 <span class=key>&quot;llm&quot;</span>: { <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;gpt5_mini&quot;</span>, <span class=key>&quot;prompt&quot;</span>: <span class=str>&quot;summary&quot;</span> }</code></pre></figure>
@@ -123,7 +123,7 @@
   <li>a content part, either text, <code>{"contentType": "text", "text": "..."}</code>, or an image, <code>{"contentType": "image", "data": "&lt;base64&gt;", "mimeType": "image/png"}</code>;</li>
   <li>a list of those, which becomes one user turn with several parts.</li>
 </ul>
-<p>Content parts have the same shape as the parts an agent sends to the user with the <a href="../commands/output.html"><code>output</code></a> command. An image the agent received or produced can be passed straight into a prompt. This user text sends a photo from the agent's inputs with a question:</p>
+<p>Content parts have the same shape as the parts an agent sends to the user with the <a href="../commands/output.html"><code>output</code></a> command. An image the agent received or produced can be passed directly to a prompt. This user text sends a photo from the agent's inputs with a question:</p>
 <figure class=code data-lang=python><pre><code>{ [<span class=str>&#x27;What is in this picture?&#x27;</span>, {<span class=str>&#x27;contentType&#x27;</span>: <span class=str>&#x27;image&#x27;</span>, <span class=str>&#x27;data&#x27;</span>: sys.inputs[<span class=str>&#x27;photo&#x27;</span>], <span class=str>&#x27;mimeType&#x27;</span>: <span class=str>&#x27;image/jpeg&#x27;</span>}] }</code></pre></figure>
 <p>Anything else is refused before the model is called, with an error that names the prompt and the field. That includes a number, true or false, a dict that is not a content part, an unknown <code>contentType</code>, an image without a <code>mimeType</code>, and a list inside a list:</p>
 <ul>
@@ -171,7 +171,7 @@
 </ul>
 <p>One rule applies to all of these: two <code>llm</code> commands that run at the same time must use different prompts. A tool function cannot use the prompt of the <code>llm</code> command that called it, and two parallel branches cannot use the same prompt. Doing so fails with <code>The prompt 'chat' is already in use by another llm command that has not finished: one in another parallel branch, or the llm command that called this tool. llm commands running at the same time must use different prompts.</code> Give each one its own prompt, for example <code>summarise_left</code> and <code>summarise_right</code>.</p>
 
-<h2 id="errors-you-will-see-and-when">Errors you will see, and when</h2>
+<h2 id="errors-and-when-they-are-reported">Errors and when they are reported</h2>
 <p>When you validate a draft, before anything runs:</p>
 <ul>
   <li>a syntax error in a prompt expression, reported at the field, for example <code>prompts.chat.user</code>;</li>
@@ -196,7 +196,7 @@
     </article>
     <nav class=prevnext><a class=prev href='../agent-definition/commands.html'><small>Previous</small>Commands</a><a class=next href='../agent-definition/const.html'><small>Next</small>Const</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#fields'>Fields</a></li><li class=l2><a href='#where-prompts-are-edited'>Where prompts are edited</a></li><li class=l2><a href='#how-a-prompt-is-evaluated'>How a prompt is evaluated</a></li><li class=l3><a href='#why-a-prompt-cannot-read-result'>Why a prompt cannot read result</a></li><li class=l2><a href='#what-the-texts-may-evaluate-to'>What the texts may evaluate to</a></li><li class=l2><a href='#scope'>Scope</a></li><li class=l2><a href='#what-stays-in-the-history'>What stays in the history</a></li><li class=l2><a href='#sharing-a-history-between-agents'>Sharing a history between agents</a></li><li class=l2><a href='#prompts-in-functions-loops-tools-and-parallel-branches'>Prompts in functions, loops, tools and parallel branches</a></li><li class=l2><a href='#errors-you-will-see-and-when'>Errors you will see, and when</a></li><li class=l2><a href='#documentation'>Documentation</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#fields'>Fields</a></li><li class=l2><a href='#where-prompts-are-edited'>Where prompts are edited</a></li><li class=l2><a href='#how-a-prompt-is-evaluated'>How a prompt is evaluated</a></li><li class=l3><a href='#why-a-prompt-cannot-read-result'>Why a prompt cannot read result</a></li><li class=l2><a href='#what-the-texts-may-evaluate-to'>What the texts may evaluate to</a></li><li class=l2><a href='#scope'>Scope</a></li><li class=l2><a href='#what-stays-in-the-history'>What stays in the history</a></li><li class=l2><a href='#sharing-a-history-between-agents'>Sharing a history between agents</a></li><li class=l2><a href='#prompts-in-functions-loops-tools-and-parallel-branches'>Prompts in functions, loops, tools and parallel branches</a></li><li class=l2><a href='#errors-and-when-they-are-reported'>Errors and when they are reported</a></li><li class=l2><a href='#documentation'>Documentation</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

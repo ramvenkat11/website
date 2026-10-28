@@ -69,7 +69,7 @@
 
 <p><code>total</code> is an expression. <code>label</code> is plain text. <code>greeting</code> is an expression that builds a string with an f-string.</p>
 <p>The braces must enclose the whole value. <code>"Hello {name}"</code> is plain text, and the agent sees the braces literally. To mix text and values, write an f-string inside the braces.</p>
-<p>A value that starts with <code>{</code> and ends with <code>}</code> is always read as an expression. So the string <code>'{"a": 1}'</code> is not text: that value is the Python dict <code>{"a": 1}</code>. To keep a leading brace literal, do not end the string with a closing brace.</p>
+<p>A value that starts with <code>{</code> and ends with <code>}</code> is always read as an expression. The string <code>'{"a": 1}'</code> is therefore not text: that value is the Python dict <code>{"a": 1}</code>. To keep a leading brace literal, do not end the string with a closing brace.</p>
 <p>An expression is one Python expression. Statements are not allowed: no assignment, no <code>import</code>, no <code>def</code>, no semicolon. The <a href="../commands/var.html">var</a> command is how an agent sets a variable.</p>
 <p>The result can be of any Python type: a number, a list, a dict, an object. A field that may hold either plain text or an expression is called a <em>dynamic string</em> in the command reference.</p>
 
@@ -86,7 +86,7 @@
 
 <h2 id="where-expressions-can-be-used">Where expressions can be used</h2>
 <p>Most command fields take an expression. The fields of <a href="../commands/var.html">var</a>, <a href="../commands/if.html">if</a>, <a href="../commands/output.html">output</a> and <a href="../commands/api.html">api</a> are typical. The system and user text of a <a href="prompts.html">prompt</a> are expressions too.</p>
-<p>A few fields of the profiles in the configuration also take expressions: the URL and headers of an API profile, the connection string of a database profile. Profiles are shared by every agent in the account, so a secret usually appears there, for example <code>"{ f'Bearer {sys.secret[\"OPENAI_API_KEY\"]}' }"</code>.</p>
+<p>Some fields of the profiles in the configuration also take expressions: the URL and headers of an API profile, the connection string of a database profile. Profiles are shared by every agent in the account, so a secret usually appears there, for example <code>"{ f'Bearer {sys.secret[\"OPENAI_API_KEY\"]}' }"</code>.</p>
 
 <h2 id="two-stages">Two stages</h2>
 <p>An expression is checked twice and run once.</p>
@@ -128,15 +128,15 @@
 <p>Inside a command, <code>command.&lt;field&gt;</code> reads a field that the same command has already set. A field the command does not have is refused.</p>
 
 <h3 id="variables-that-nothing-sets">Variables that nothing sets</h3>
-<p>The cloud also refuses an expression that reads a local variable no earlier command in the function can have set: not an argument, not a loop variable, not the target of a <code>var</code> before it. It errs on the side of allowing: a variable set on any path before the expression, for example in one branch of an <code>if</code>, passes. An <code>agent.</code> or <code>conv.</code> variable passes when any <code>var</code> command in the agent sets it. The same check applies to the text of each <a href="prompts.html">prompt</a>, at each <code>llm</code> command that names it.</p>
+<p>The cloud also refuses an expression that reads a local variable no earlier command in the function can have set: not an argument, not a loop variable, not the target of a <code>var</code> before it. The check is permissive: a variable set on any path before the expression, for example in one branch of an <code>if</code>, passes. An <code>agent.</code> or <code>conv.</code> variable passes when any <code>var</code> command in the agent sets it. The same check applies to the text of each <a href="prompts.html">prompt</a>, at each <code>llm</code> command that names it.</p>
 
 <h3 id="operator-rewriting">Operator rewriting</h3>
 <p>The account can map an operator to a function. When <code>**</code> is mapped to <code>bounded_pow</code>, the expression <code>a ** b</code> runs as <code>bounded_pow(a, b)</code>. An account uses this to bound an operation such as a very large power. The function must be in the allowlist and take two values.</p>
 
 <h3 id="what-the-agent-server-checks">What the agent server checks</h3>
-<p>The cloud does not know which functions the agent server provides or which secrets it holds. So the cloud hands the agent server the names the expressions use and the secrets they read.</p>
+<p>The cloud does not know which functions the agent server provides or which secrets it holds. The cloud therefore gives the agent server the names the expressions use and the secrets they read.</p>
 <p>The agent server refuses the agent when a name is not in the allowlist or a secret cannot be found. Each message gives the path of the first place the name or secret is used.</p>
-<p>Secrets from environment variables and files live on one machine. The check therefore tells a developer that the secret exists on the agent server that validated the agent. Another agent server in the same account must have the same secrets, and the same vault when secrets come from one.</p>
+<p>Secrets from environment variables and files are stored on one machine. The check therefore tells a developer that the secret exists on the agent server that validated the agent. Another agent server in the same account must have the same secrets, and the same vault when secrets come from one.</p>
 
 <h3 id="the-validation-run">The validation run</h3>
 <p>Validation also runs the agent once with the developer's validation query. An expression that fails on real data fails here, before the agent can be published. See <a href="../development/trace-and-validation.html">Trace and validation</a>.</p>
@@ -168,7 +168,7 @@
 
 <h3 id="what-the-allowlist-hands-over">What the allowlist hands over</h3>
 <p>A function or class in the allowlist is the real Python object. A method on a value works as in Python, so <code>'abc'.upper()</code> and <code>items.append(x)</code> work.</p>
-<p>A module in the allowlist is not handed over as a module. The agent gets the module's functions, classes and constants, not the modules it imports. Granting <code>json</code> does not grant what <code>json</code> uses internally; an expression that reaches for such a module is refused when the line runs. List that module on its own. The entry forms are under <a href="../runtime/allowlist.html">Allowlist</a>.</p>
+<p>A module in the allowlist is not handed over as a module. The agent gets the module's functions, classes and constants, not the modules it imports. Granting <code>json</code> does not grant what <code>json</code> uses internally; an expression that uses such a module is refused when the line runs. List that module on its own. The entry forms are under <a href="../runtime/allowlist.html">Allowlist</a>.</p>
 
 <h3 id="awaiting">Awaiting</h3>
 <p>An expression can <code>await</code> an async function from the allowlist. The runtime detects the <code>await</code> and runs the expression as a coroutine. When the whole expression is a call to an async function, the result is awaited for you, so <code>await</code> is optional there. Inside a larger expression, an async call must be awaited explicitly. To run several calls at once, use the <a href="../commands/parallel.html">parallel</a> command.</p>

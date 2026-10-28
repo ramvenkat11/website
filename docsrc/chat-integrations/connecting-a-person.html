@@ -26,7 +26,7 @@ $ curl -s -X POST http://127.0.0.1:9020/api/auth/startConnect \
 <p>A request stays open for ten minutes. <code>startConnect</code>, <code>getConnectRequest</code> and <code>getConnectToken</code> need no token of their own. Every other call the bot makes carries the person's token; see <a href="../rest-api/authentication.html">Authentication</a>.</p>
 
 <h2>The short code</h2>
-<p>The short code is what protects the person. A link on its own is not enough to get a request approved, because a request started by somebody else shows a code the person has never seen. Tell people to compare the two codes. A bot must never show a code that did not come from <code>startConnect</code>.</p>
+<p>The short code is what protects the person. A link on its own is not enough for a request to be approved, because a request started by somebody else shows a code the person has never seen. Tell people to compare the two codes. A bot must never show a code that did not come from <code>startConnect</code>.</p>
 <p>The secret from the first call belongs to the bot. Never show it to the person, and never put it in a link.</p>
 
 <h2>Where the approval page lives</h2>

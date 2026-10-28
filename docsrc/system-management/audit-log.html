@@ -5,12 +5,12 @@
   <li><strong>Agents</strong>: a draft published, with the fields that changed; a description submitted for indexing; indexing completed; indexing failed, with the reason; a description removed from search; a title, tag or run limit changed, with the old and new values; prompts added, changed or removed, by name only. Each entry names the agent.</li>
   <li><strong>Configuration</strong>: a system configuration part created, updated or deleted: agent servers, encryption, secrets, authentication, compile rules, validation, allowlist, search, connection pools, hooks. The entry lists the <em>names</em> of the fields that changed, never their values. An allowlist change lists the entries added and removed.</li>
   <li><strong>Profiles</strong>: an LLM, API, database or MCP profile created, updated or deleted, with the profile name and the names of the fields that changed.</li>
-  <li><strong>Sign-ins</strong>: repeated failed sign-ins for a user, one entry per three attempts, so that an attack keeps showing. A password reset requested for an email address the account does not know. The requester learns nothing either way; the entry is how an administrator sees the attempt.</li>
+  <li><strong>Sign-ins</strong>: repeated failed sign-ins for a user, one entry per three attempts, so that a continuing attack remains visible. A password reset requested for an email address the account does not know. The requester learns nothing either way; the entry is how an administrator sees the attempt.</li>
   <li><strong>Agent servers</strong>: an agent server started, picked up a runtime change, shut down, or reported an error, with the server's name and version.</li>
 </ul>
 <p>Every entry carries the time of the change and, where a person made it, the user's name and email. An entry is visible to the roles that could have made the change: an administrator-only setting produces an entry only administrators see.</p>
 
-<h2>Reading it</h2>
+<h2>Reading the audit log</h2>
 <p>The Audit log page opens from its icon in the UI's header, shown to administrators and the owner. Choose a time window, and narrow the list to one kind of entry or to the changes made by one user, identified by email. Entries are kept for 7 days. The paid service has no such limit.</p>
 <p>Through the <a href="../rest-api/overview.html">REST API</a>, <code>getAuditLog</code> returns the same entries to developers and above.</p>
 

@@ -6,8 +6,8 @@
 <h2>Fan-out over a list</h2>
 <p>To run the triage agent for each of forty tickets, call <code>execAgent</code> once per ticket. Each call is an ordinary agent run, recorded and reported like any other.</p>
 
-<h2>Waiting on someone else</h2>
-<p><code>ask</code> pauses a conversation for the user who started it. An approval by a different person takes two agents and a table. The requester's agent writes the request with <code>db</code> and ends. The approver's agent, opened from search or run by a scheduled call, reads what is pending, asks the approver with <code>ask</code>, and records the decision. The requester's next request, or a scheduled run, picks the decision up.</p>
+<h2>Approval by another person</h2>
+<p><code>ask</code> pauses a conversation for the user who started it. An approval by a different person takes two agents and a table. The requester's agent writes the request with <code>db</code> and ends. The approver's agent, opened from search or run by a scheduled call, reads what is pending, asks the approver with <code>ask</code>, and records the decision. The requester's next request, or a scheduled run, reads the decision.</p>
 
 <h2>Agents inside your applications</h2>
-<p>The bundled UI uses this same API, so an agent can sit behind a button in your own application, in a chat integration, or in a pipeline step. With the <a href="search.html">search endpoint</a> an application offers the same &ldquo;type what you need&rdquo; experience without the bundled UI. Runs started this way appear in the same <a href="../reports/index.html">reports</a> as runs from the search box.</p>
+<p>The bundled UI uses this same API, so an agent can run behind a button in your own application, in a chat integration, or in a pipeline step. With the <a href="search.html">search endpoint</a> an application offers the same &ldquo;type what you need&rdquo; experience without the bundled UI. Runs started this way appear in the same <a href="../reports/index.html">reports</a> as runs from the search box.</p>

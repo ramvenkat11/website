@@ -68,7 +68,7 @@
 <figure class=code data-lang=jsonc><div class=bar><span>Read in the definition</span></div><pre><code><span class=key>&quot;output&quot;</span>: <span class=str>&quot;{ f&#x27;Contact {const.support[\&quot;email\&quot;]} between {const.support[\&quot;hours\&quot;]}.&#x27; }&quot;</span></code></pre></figure>
 <p>Keep values that differ between agents, or that you want to change without touching the agent's logic, in the const rather than written into the definition. Keep sensitive text there too, whether a command or a prompt uses it: the definition and the prompts are stored in the cloud in plain form, the const is stored encrypted. Use top-level keys that are valid names, letters, digits and underscores, so they can be read as <code>const.name</code>.</p>
 
-<h2 id="where-you-can-use-it">Where you can use it</h2>
+<h2 id="where-the-const-can-be-used">Where the const can be used</h2>
 <p>Anywhere an expression is allowed: in <code>var</code>, <code>if</code>, <code>for</code> (for example <code>"iter": "{ const.categories }"</code>), <code>api</code> bodies, <code>output</code>, function arguments, and <a href="prompts.html">prompts</a>:</p>
 <div class="tablewrap"><table class="fields">
 <tbody>
@@ -100,7 +100,7 @@
 <h2 id="changing-the-const-of-a-published-agent">Changing the const of a published agent</h2>
 <p>Like the prompts, the const belongs to the draft: make a draft from the agent, change the const, validate and publish. A publish that changes only the const keeps the agent's version, and the agent's next run uses the new values. See <a href="../development/publishing.html">Publishing</a>.</p>
 
-<h2 id="putting-it-together">Putting it together</h2>
+<h2 id="a-complete-example">A complete example</h2>
 <p>A support agent that answers in the customer's language, about the right product, with or without a photo of the device. The photo, when there is one, arrives as a base64 input named <code>photo</code> alongside the query.</p>
 <figure class=code data-lang=jsonc><div class=bar><span>Definition</span></div><pre><code>{
   <span class=key>&quot;functions&quot;</span>: {
@@ -141,13 +141,13 @@
 <ul>
   <li>Validation checks that <code>const.product</code>, <code>const.language</code> and <code>const.maxItems</code> exist.</li>
   <li>Both prompts use the <code>agent</code> scope, so this agent remembers its own conversation with the customer, and other agents in the conversation keep theirs.</li>
-  <li>Changing the product or the language later is a const-only publish: the agent's logic stays as it is, and the next run picks the new values up.</li>
+  <li>Changing the product or the language later is a const-only publish: the agent's logic stays as it is, and the next run uses the new values.</li>
 </ul>
 
     </article>
     <nav class=prevnext><a class=prev href='../agent-definition/prompts.html'><small>Previous</small>Prompts</a><a class=next href='../agent-definition/variables.html'><small>Next</small>Variables</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#where-you-can-use-it'>Where you can use it</a></li><li class=l2><a href='#read-only-and-fresh-for-every-run'>Read-only, and fresh for every run</a></li><li class=l2><a href='#encrypted'>Encrypted</a></li><li class=l2><a href='#validation'>Validation</a></li><li class=l2><a href='#size'>Size</a></li><li class=l2><a href='#changing-the-const-of-a-published-agent'>Changing the const of a published agent</a></li><li class=l2><a href='#putting-it-together'>Putting it together</a></li><li class=l3><a href='#prompts'>Prompts</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#where-the-const-can-be-used'>Where the const can be used</a></li><li class=l2><a href='#read-only-and-fresh-for-every-run'>Read-only, and fresh for every run</a></li><li class=l2><a href='#encrypted'>Encrypted</a></li><li class=l2><a href='#validation'>Validation</a></li><li class=l2><a href='#size'>Size</a></li><li class=l2><a href='#changing-the-const-of-a-published-agent'>Changing the const of a published agent</a></li><li class=l2><a href='#a-complete-example'>A complete example</a></li><li class=l3><a href='#prompts'>Prompts</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

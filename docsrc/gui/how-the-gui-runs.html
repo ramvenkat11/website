@@ -4,7 +4,7 @@
 <p>Every action in the UI is a call to the agent server&rsquo;s <a href="../rest-api/overview.html">REST API</a>. The UI has no private endpoints and no other channel, so everything it does is available to your own code.</p>
 
 <h2>Where the UI lives</h2>
-<p>The UI&rsquo;s files sit in the agent server&rsquo;s <code>ui</code> directory, and the server serves them at its <code>/ui</code> path. Installing the agent server is all it takes.</p>
+<p>The UI&rsquo;s files sit in the agent server&rsquo;s <code>ui</code> directory, and the server serves them at its <code>/ui</code> path. Installing the agent server is sufficient.</p>
 
 <h2>Serving the UI from somewhere else</h2>
 <p>The files are static, so any web server or CDN can serve them. <code>index.html</code> carries one setting in a <code>&lt;meta name="search2o-ui-config"&gt;</code> tag:</p>

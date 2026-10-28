@@ -8,7 +8,7 @@
 <x-code lang="bash">
 $ pip install search2o
 </x-code>
-<p>The <code>db</code> command uses SQLAlchemy's async engines, so the driver for your database must be installed too. SQLite works out of the box. The other drivers are optional extras of the package:</p>
+<p>The <code>db</code> command uses SQLAlchemy's async engines, so the driver for your database must be installed too. SQLite works without an extra driver. The other drivers are optional extras of the package:</p>
 <x-code lang="bash">
 $ pip install "search2o[postgres]"   # asyncpg
 $ pip install "search2o[mysql]"      # aiomysql, also used for MariaDB

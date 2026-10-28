@@ -62,14 +62,14 @@
 
 <p>It also carries a plain-language description of the task and its boundaries. Search reads that description to find the agent for a request.</p>
 
-<p>A Search2o agent keeps its state in the conversation, not on the agent server. It has state of its own, the <code>agent</code> scope, which only it reads, and it shares state with every agent in the conversation through the <code>conversation</code> scope. The agent server saves both when a run ends or pauses, so what one agent produces is there for the next one that runs in the same conversation. The state is per conversation: another conversation cannot see it, and a conversation belongs to one user, so another user cannot see it either. See <a href="../agent-execution/conversation-state.html">Conversation state</a>.</p>
+<p>A Search2o agent keeps its state in the conversation, not on the agent server. It has state of its own, the <code>agent</code> scope, which only it reads, and it shares state with every agent in the conversation through the <code>conversation</code> scope. The agent server saves both when a run ends or pauses, so what one agent produces is available to the next one that runs in the same conversation. The state is per conversation: another conversation cannot see it, and a conversation belongs to one user, so another user cannot see it either. See <a href="../agent-execution/conversation-state.html">Conversation state</a>.</p>
 
 <h2 id="examples">Examples</h2>
 <p>Search2o agents:</p>
 <ul>
   <li><strong>Vacation request</strong>: takes the dates, checks the balance, files the request, reports the result.</li>
   <li><strong>Invoice status</strong>: an invoice number in, where it stands in accounts payable out.</li>
-  <li><strong>Expense filing for a trip</strong>: pulls the trip's amounts, files the claim, asks before submitting.</li>
+  <li><strong>Expense filing for a trip</strong>: retrieves the trip's amounts, files the claim, asks before submitting.</li>
   <li><strong>Meeting-room booking</strong>: a time and a head count in, a booked room out.</li>
   <li><strong>Expense policy questions</strong>: answers from the policy documents and points to the form; it approves nothing.</li>
   <li><strong>Contract renewal</strong>: drafts the renewal at agreed terms and sends it for signature after an approval.</li>
@@ -82,13 +82,13 @@
   <li><strong>Month-end close</strong>, a process that runs for days with approvals from several people. Each step can be a Search2o agent; the whole is not one.</li>
   <li><strong>An analysis workbench</strong> that writes and runs queries against the warehouse on request. The path is decided at run time, so neither the cost nor the reach is known in advance.</li>
 </ul>
-<p>The line is the same in every case. A Search2o agent has a boundary you can write down, on systems, time and cost, and a small set of paths that can be validated. That boundary is also what makes a description precise enough for search to match.</p>
+<p>The same rule applies in every case. A Search2o agent has a boundary you can write down, on systems, time and cost, and a small set of paths that can be validated. That boundary is also what makes a description precise enough for search to match.</p>
 
 <h2 id="how-a-search2o-agent-runs">How a Search2o agent runs</h2>
 <p>A request that matches the agent's description starts it; see <a href="../search/how-matching-works.html">How matching behaves</a>. The agent runs for a short time, may ask the user for inputs or an approval on the way, and produces a response.</p>
 
-<h2 id="what-the-boundary-buys">What the boundary buys</h2>
-<p><strong>Validation.</strong> A Search2o agent has a few specific paths, like a workflow, rather than an open-ended set. That is what makes it possible to validate the agent before it is published: a real run against a validation query, with every step in the trace. See <a href="../development/trace-and-validation.html">Trace and validation</a>.</p>
+<h2 id="benefits-of-the-boundary">Benefits of the boundary</h2>
+<p><strong>Validation.</strong> A Search2o agent has a small number of specific paths, as a workflow does, rather than an open-ended set. That is what makes it possible to validate the agent before it is published: a real run against a validation query, with every step in the trace. See <a href="../development/trace-and-validation.html">Trace and validation</a>.</p>
 <p><strong>Dependability.</strong> The same request takes the same path through the same commands, so the agent behaves the same way on every run. A failure has a place: the command it failed at, in the run's record.</p>
 <p><strong>Safety.</strong> The agent reaches only the systems its profiles name, runs inside the <a href="../runtime/controlled-execution.html">agent runtime</a>, and stops at its <a href="../runtime/runtime-limits.html">time and cost budgets</a>.</p>
 <p><strong>Observability.</strong> Every run is recorded: who requested it, what ran, how long it took, what failed, and what the LLM calls cost. The <a href="../reports/index.html">reports</a> show these per agent and per user.</p>
@@ -100,7 +100,7 @@
     </article>
     <nav class=prevnext><a class=prev href='../introduction/what-is-search2o.html'><small>Previous</small>What is Search2o</a><a class=next href='../introduction/parts-of-the-system.html'><small>Next</small>Parts of the system</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#examples'>Examples</a></li><li class=l2><a href='#how-a-search2o-agent-runs'>How a Search2o agent runs</a></li><li class=l2><a href='#what-the-boundary-buys'>What the boundary buys</a></li><li class=l2><a href='#how-search2o-agents-work-together'>How Search2o agents work together</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#examples'>Examples</a></li><li class=l2><a href='#how-a-search2o-agent-runs'>How a Search2o agent runs</a></li><li class=l2><a href='#benefits-of-the-boundary'>Benefits of the boundary</a></li><li class=l2><a href='#how-search2o-agents-work-together'>How Search2o agents work together</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

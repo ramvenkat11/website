@@ -61,7 +61,7 @@
 
 
 <h2 id="default-a-key-managed-by-search2o">Default: a key managed by Search2o</h2>
-<p>With <code>encryptionSource</code> set to <code>cloud</code>, Search2o keeps one key per account in a key management service. An agent server fetches the key over TLS when it needs it and keeps it in memory. The agent server encrypts and decrypts; the cloud stores ciphertext and never decrypts your state. Nothing has to be set up, which is why this is the default. The key exists on Search2o's side, so Search2o, and Google as the infrastructure provider, can in principle read what the key protects.</p>
+<p>With <code>encryptionSource</code> set to <code>cloud</code>, Search2o keeps one key per account in a key management service. An agent server fetches the key over TLS when it needs it and keeps it in memory. The agent server encrypts and decrypts; the cloud stores ciphertext and never decrypts your state. Nothing has to be set up, which is why this is the default. Search2o holds the key, so Search2o, and Google as the infrastructure provider, can in principle read what the key protects.</p>
 
 <h2 id="end-to-end-a-key-you-hold">End-to-end: a key you hold</h2>
 <p>With <code>encryptionSource</code> set to <code>client</code>, the key never leaves your organization, and nobody outside it can read the state.</p>
@@ -77,7 +77,7 @@
 <p>With the default setting, an administrator rotates the Search2o-managed key from the License page. Rotation issues a new key for the account, and everything already encrypted stays readable; nothing is re-encrypted. An agent server begins using the new key only when it is restarted. Rotation does not protect data already written under a stolen key; it bounds future exposure. Rotation is available at most once every 90 days. If a key is known to be exposed, contact <a href="../support-licensing/support.html">support</a>.</p>
 
 <h2 id="switching-to-end-to-end-encryption">Switching to end-to-end encryption</h2>
-<p>Switch before the account holds data you care about. State encrypted under the cloud-managed key stays readable after the switch, and new state is encrypted under your key.</p>
+<p>Switch before the account holds important data. State encrypted under the cloud-managed key stays readable after the switch, and new state is encrypted under your key.</p>
 
 <h2 id="what-is-encrypted">What is encrypted</h2>
 <p>See <a href="data-privacy.html">Data privacy</a> for the full list. Conversation state can also stay in your organization altogether, stored by your own code through the <a href="../hooks/conversation-state.html">conversation state hooks</a>. The agent server then encrypts nothing on the way out, and encrypting what you store is your choice. The cipher is AES-GCM, and transport between the agent server and the cloud is always TLS.</p>

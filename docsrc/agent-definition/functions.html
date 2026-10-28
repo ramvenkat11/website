@@ -4,7 +4,7 @@
 <!--fields:model:FunctionModel-->
 
 <h2>Arguments</h2>
-<p><code>args</code> maps each argument name to its type and description. When another function calls this one with <code>func</code>, only the names matter: the arguments arrive as local variables, and an argument the caller omits is <code>None</code>. When the function is offered to an LLM as a tool, the model reads the type and description of each argument, so fill them in:</p>
+<p><code>args</code> maps each argument name to its type and description. When another function calls this one with <code>func</code>, only the names matter: the arguments arrive as local variables, and an argument the caller omits is <code>None</code>. When the function is offered to an LLM as a tool, the model reads the type and description of each argument, so give every argument both:</p>
 <!--fields:model:FunctionArgModel-->
 <p>An argument name follows the rules for variable names. A reserved name such as <code>result</code> or a Python keyword is refused.</p>
 

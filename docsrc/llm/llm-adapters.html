@@ -1,7 +1,7 @@
 <p class="lead">An adapter connects Search2o to an LLM. Six are bundled: three for every endpoint that speaks the OpenAI, Anthropic or Gemini protocol, and three for models you host with Ollama, vLLM or SGLang. An LLM with a protocol of its own needs an adapter class, written in Python and named on the Hooks page.</p>
 
 <h2>First, try a bundled adapter</h2>
-<p>A private deployment, a gateway, or a vendor with an OpenAI-compatible API needs no code: create an <a href="../profiles/llm-profiles.html">LLM profile</a> under <strong>Profiles &rsaquo; LLM</strong>, pick the adapter that matches the protocol (<code>openai</code>, <code>anthropic</code> or <code>gemini</code>), and set the URL, the headers and the model. A model served by Ollama, vLLM or SGLang takes the <code>ollama</code>, <code>vllm</code> or <code>sglang</code> adapter. See <a href="vendors.html">LLM vendors</a>.</p>
+<p>A private deployment, a gateway, or a vendor with an OpenAI-compatible API does not need code: create an <a href="../profiles/llm-profiles.html">LLM profile</a> under <strong>Profiles &rsaquo; LLM</strong>, choose the adapter that matches the protocol (<code>openai</code>, <code>anthropic</code> or <code>gemini</code>), and set the URL, the headers and the model. A model served by Ollama, vLLM or SGLang takes the <code>ollama</code>, <code>vllm</code> or <code>sglang</code> adapter. See <a href="vendors.html">LLM vendors</a>.</p>
 <p>The UI shows each adapter's description when a profile is created, and the description says which protocol the adapter speaks.</p>
 
 <h2>When you need an adapter of your own</h2>
@@ -26,13 +26,13 @@
 <tr><td><code>set_token_counts</code></td><td>Read the token counts, which the cost report is computed from.</td></tr>
 <tr><td><code>set_assistant_vendor</code></td><td>Read the answer: either tool calls or content. A response with neither is an error.</td></tr>
 </tbody></table></div>
-<p><code>BaseLlmAdapter</code> walks the prompt history and calls the four message methods in the order the exchange happened, so an adapter never sorts the history itself. <code>get_error</code> has a working implementation that reads the response's <code>error</code> field; override it when the vendor reports errors differently.</p>
+<p><code>BaseLlmAdapter</code> goes through the prompt history and calls the four message methods in the order the exchange happened, so an adapter never sorts the history itself. <code>get_error</code> has a working implementation that reads the response's <code>error</code> field; override it when the vendor reports errors differently.</p>
 
 <h3>LlmAdapter, for anything else</h3>
-<p><code>search2o.llm.llmadapter.LlmAdapter</code> is the bare interface, for a protocol so different that the assembly above does not help. Five methods, and nothing is done for you: <code>name</code>, <code>description</code>, <code>process_request</code> (an <code>LlmRequestModel</code> in, the request body out), <code>process_response</code> (the response in, an <code>LlmResponseModel</code> out), and <code>get_error</code>.</p>
+<p><code>search2o.llm.llmadapter.LlmAdapter</code> is the bare interface, for a protocol so different that the assembly above does not help. An adapter that extends it implements all five methods: <code>name</code>, <code>description</code>, <code>process_request</code> (an <code>LlmRequestModel</code> in, the request body out), <code>process_response</code> (the response in, an <code>LlmResponseModel</code> out), and <code>get_error</code>.</p>
 <p>The bundled adapters in <code>search2o.llm</code> are the reference implementations, and each is a short file: <code>openaiadapter.py</code>, <code>anthropicadapter.py</code> and <code>geminiadapter.py</code>. <code>ollamaadapter.py</code>, <code>vllmadapter.py</code> and <code>sglangadapter.py</code> extend the OpenAI adapter.</p>
 
-<h2>Registering it</h2>
+<h2>Registering an adapter</h2>
 <ol>
   <li>Install the class, with a constructor that takes no arguments, in the Python environment of every agent server.</li>
   <li>On the <a href="../hooks/adapters-and-validators.html">Hooks</a> page, under LLM adapters, add a line <code>mypackage.myadapter.MyAdapter</code> and save.</li>

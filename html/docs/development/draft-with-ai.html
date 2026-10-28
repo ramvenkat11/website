@@ -74,8 +74,8 @@
 <tbody>
 <tr><td>Used profiles</td><td>The AI names only the profiles you have ticked, exactly, in the command of their type. It reads each profile's notes to learn what the API serves or what the database holds.</td></tr>
 <tr><td>Expression allowlist</td><td>Expressions call only names on the allowlist. If your request needs a function that is not there, the AI leaves that value empty and says the function must be added to the allowlist first.</td></tr>
-<tr><td>Compile rules</td><td>The AI stays clear of an operator your account disallows. It writes the value another way, or leaves the value empty with a note naming the operator.</td></tr>
-<tr><td>System variables</td><td>The AI reads only the <code>sys</code> variables your account makes available. <code>sys.inputs</code>, <code>sys.query</code>, <code>sys.secret</code> and <code>sys.exists</code> are always there.</td></tr>
+<tr><td>Compile rules</td><td>The AI avoids an operator your account disallows. It writes the value another way, or leaves the value empty with a note naming the operator.</td></tr>
+<tr><td>System variables</td><td>The AI reads only the <code>sys</code> variables your account makes available. <code>sys.inputs</code>, <code>sys.query</code>, <code>sys.secret</code> and <code>sys.exists</code> are always available.</td></tr>
 </tbody></table></div>
 <p>You choose the used profiles in the draft. The allowlist, compile rules and system variables come from the account's settings under Guardrails; see <a href="../runtime/allowlist.html">Allowlist</a>, <a href="../runtime/compile-rules.html">Compile rules</a> and <a href="../runtime/system-variables.html">System variables</a>.</p>
 <p><strong>What it has never seen.</strong> Your database, your API and your MCP tools are outside the AI's view, so it never writes SQL, URL paths, request parameters or tool arguments. It puts the command in the right place, leaves those fields empty, and adds a comment saying what belongs there. An invented query would fail at validation against a table that does not exist, and you would still have to write the real one.</p>
@@ -85,12 +85,12 @@
   <li>Open a draft from Agents &rsaquo; Drafts, or create a new one.</li>
   <li>Below the agent definition, select <strong>Draft with AI</strong>. It is selected when the page opens.</li>
   <li>Under <strong>Used profiles</strong>, tick the profiles the agent should use. They are saved with the draft, like its title.</li>
-  <li>In the box, describe what you want, and select <strong>Send</strong> or press Ctrl+Enter (&#8984;&#9166; on a Mac). Say at least a few words, up to 10,000 characters.</li>
+  <li>In the box, describe what you want, and select <strong>Send</strong> or press Ctrl+Enter (&#8984;&#9166; on a Mac). Enter at least a few words, up to 10,000 characters.</li>
 </ol>
-<p>Before anything is sent, the draft is saved if it has unsaved changes. The AI works from the saved draft, so what you see is what it gets. If the save fails, nothing is sent. While the AI is writing, the button reads <strong>Writing&hellip;</strong> and the switch to <strong>Validate</strong> is locked, so the result cannot land out of sight.</p>
+<p>Before anything is sent, the draft is saved if it has unsaved changes. The AI works from the saved draft, so the AI receives exactly what the editor shows. If the save fails, nothing is sent. While the AI is writing, the button reads <strong>Writing&hellip;</strong> and the switch to <strong>Validate</strong> is locked, so the result is always in view.</p>
 
 <h2 id="what-comes-back">What comes back</h2>
-<p>The answer replaces the definition in the editor, and the draft is saved with it. Comments mark what is left for you: a query to write, a path to fill in. Each comment sits above the line it is about. Fill them in, delete the comments you are done with, and save. A request that needs no gaps comes back finished, with no comments. A request too vague to start from changes nothing; the AI says in a sentence or two what it would need to know.</p>
+<p>The answer replaces the definition in the editor, and the draft is saved with it. Comments mark what is left for you: a query to write, a path to fill in. Each comment sits above the line it is about. Fill them in, delete the comments you have dealt with, and save. A request that can be completed without gaps comes back finished, with no comments. A request too vague to start from changes nothing; the AI says in a sentence or two what it would need to know.</p>
 <p>Validate what comes back before you publish, and check that the agent does what you meant. The AI works within the rules above; validation is what proves that an agent runs.</p>
 
 <h2 id="undo">Undo</h2>

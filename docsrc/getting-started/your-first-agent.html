@@ -4,7 +4,7 @@
 <p>Sign in as a developer, open <strong>Agents › Drafts</strong> and create a new draft. Give it a name and a title. The name identifies the agent in the account; users see the title.</p>
 
 <h2>2. Draft it with AI</h2>
-<p>Tick your LLM profile under <strong>Used profiles</strong>. Tell <strong>Draft with AI</strong> what you want:</p>
+<p>Select your LLM profile under <strong>Used profiles</strong>. Describe the agent to <strong>Draft with AI</strong>, for example:</p>
 <ul>
   <li><em>Write a simple agent that forwards the user's query to the LLM.</em></li>
   <li><em>A tool-calling agent that fetches a customer's orders from our orders API.</em></li>
@@ -13,7 +13,7 @@
 <p>Comments in the draft mark what is left for you to fill in. An <code>llm</code> command names a prompt; the prompt's text is written under <strong>Prompts</strong>, next to the definition. See <a href="../development/draft-with-ai.html">Draft with AI</a>.</p>
 
 <h2>3. Validate it</h2>
-<p>Enter a validation query such as <em>What is the capital of France, in one word?</em> and validate. The draft is checked and then run against that query. The trace shows each command, what it was called with, and what came back. A draft must validate before it can be published.</p>
+<p>Enter a validation query such as <em>What is the capital of France, in one word?</em> and validate. The draft is checked and then run against that query. The trace shows each command, what it was called with, and what it returned. A draft must validate before it can be published.</p>
 
 <h2>4. Publish and describe it</h2>
 <p>Publish the draft. Describing the agent is a separate step: open the published agent and write its description, for example <em>Answers general knowledge questions in a sentence or two.</em> Submitting the description indexes the agent; wait for indexing to finish.</p>
@@ -21,7 +21,7 @@
 <h2>5. Search</h2>
 <p>Switch to the search box and type a question. The agent matches, runs and streams its answer. Ask a follow-up; the conversation continues with the context of the first answer.</p>
 
-<h2>Where to go next</h2>
+<h2>Next steps</h2>
 <ul>
   <li><a href="../agent-definition/index.html">Agent definition</a> explains the structure Draft with AI wrote.</li>
   <li><a href="../development/code-editor.html">Agent editor</a> and <a href="../development/draft-with-ai.html">Draft with AI</a> explain the editor and what the AI knows.</li>

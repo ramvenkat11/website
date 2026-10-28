@@ -27,4 +27,4 @@
 
 <h2>Asking from a branch</h2>
 <p>A branch may pause on <a href="ask.html"><code>ask</code></a>, at any depth: in the function itself or in a function it calls. <code>parallel</code> waits until every branch has either finished or paused. Then the questions of every paused branch are sent to the user together, one form per branch, each keyed by the branch's name in the command, such as <code>lookup</code> and <code>lookup.2</code>. When the user answers, the command runs again: the branches that had finished keep their results and do not run again, and each paused branch resumes at its own <code>ask</code> with its own answers. A branch whose answers have not arrived asks again, so the user may answer one form at a time. A branch that runs a <code>parallel</code> command of its own nests its branches' forms under its key.</p>
-<p>How the questions reach a client of your own is on <a href="../rest-api/running-agents.html#answering-an-ask">Running agents</a>.</p>
+<p><a href="../rest-api/running-agents.html#answering-an-ask">Running agents</a> describes how the questions reach a client of your own.</p>

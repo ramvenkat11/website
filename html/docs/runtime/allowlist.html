@@ -94,7 +94,7 @@ datetime.datetime as datetime    # datetime(2026, 1, 2)</code></pre></figure>
 <h3 id="choosing-between-the-forms">Choosing between the forms</h3>
 <p>Naming one function is the narrowest choice. <code>math.sqrt</code> allows that function and nothing else in the module.</p>
 <p>Allowing a whole module is convenient when agents use many of its functions. It allows every public function in the module, so know what is in the module first.</p>
-<p>The <code>.*</code> form puts the names into the expression directly, without the module in front. It also replaces any earlier entry of the same name: <code>math.*</code> provides a <code>pow</code>, so a <code>pow</code> entry higher up the list is no longer Python's <code>pow</code>. Use one of the other forms unless short names are what you want.</p>
+<p>The <code>.*</code> form puts the names into the expression directly, without the module in front. It also replaces any earlier entry of the same name: <code>math.*</code> provides a <code>pow</code>, so a <code>pow</code> entry higher up the list is no longer Python's <code>pow</code>. Use one of the other forms unless short names are required.</p>
 
 <h2 id="what-a-name-gives-an-agent">What a name gives an agent</h2>
 <p>An entry allows the name itself and the public members of the object behind it.</p>
@@ -126,7 +126,7 @@ datetime.datetime as datetime    # datetime(2026, 1, 2)</code></pre></figure>
 
 <h2 id="functions-must-not-block">Functions must not block</h2>
 <p>Expressions run on the agent server's shared event loop. A function that blocks that loop holds up every agent on the agent server, so such a function does not belong on the allowlist. <code>time.sleep</code> and synchronous network calls are examples.</p>
-<p>Async functions are fine. When the whole expression is a call to an async function, the result is awaited for you. Inside a larger expression, use <code>await</code>; see <a href="../agent-definition/python-expressions.html#awaiting">Awaiting</a>.</p>
+<p>Async functions are allowed. When the whole expression is a call to an async function, the result is awaited for you. Inside a larger expression, use <code>await</code>; see <a href="../agent-definition/python-expressions.html#awaiting">Awaiting</a>.</p>
 
 <h2 id="when-an-entry-is-wrong">When an entry is wrong</h2>
 <p>Every entry is resolved when the allowlist is saved, on the agent server behind the UI. If any line fails, the allowlist is not saved, and each failing line is reported with its own message.</p>

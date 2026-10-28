@@ -1,4 +1,4 @@
-<p class="lead">Before a draft can be <a href="publishing.html">published</a>, it has to validate: Search2o Cloud checks the definition, and the agent server runs it against a sample question. Validation proves that the agent passes the schema and security checks, finds everything it needs in your account, and runs to the end. Publish stays unavailable until it does. Validation happens in the draft editor, on the <strong>Validate</strong> tab below the agent definition.</p>
+<p class="lead">Before a draft can be <a href="publishing.html">published</a>, it must validate: Search2o Cloud checks the definition, and the agent server runs it against a sample question. Validation proves that the agent passes the schema and security checks, finds everything it needs in your account, and runs to the end. Publish stays unavailable until it does. Validation happens in the draft editor, on the <strong>Validate</strong> tab below the agent definition.</p>
 
 <h2>What validation checks</h2>
 <p>Validation has three stages. Problems from the first two are reported together, and the agent runs only if neither finds any.</p>
@@ -15,14 +15,14 @@
   <li>Enter a <strong>validation query</strong>: a typical question a user would ask this agent. The query is saved with the draft.</li>
   <li>Select <strong>Validate/Trace</strong>, or press Ctrl+Enter (&#8984;&#9166; on a Mac). Unsaved changes are saved first.</li>
 </ol>
-<p>While the run is under way, the Validate tab reads <strong>Validating</strong>, and <strong>Stop</strong> appears beside it in the output panel. Stopping ends the run, and nothing from the run is saved. The Draft with AI tab is locked until the run finishes, so its result cannot land out of sight.</p>
+<p>While the run is under way, the Validate tab reads <strong>Validating</strong>, and <strong>Stop</strong> appears beside it in the output panel. Stopping ends the run, and nothing from the run is saved. The Draft with AI tab is locked until the run finishes, so its result is always in view.</p>
 
 <h3>Follow-up questions</h3>
-<p>A user rarely asks just one question. Validation lets you test the follow-ups too, in the conversation your validation run started. Every draft has its own validation conversation, separate from anyone's searches. It holds what the agent carried over between turns, such as its <code>agent.</code> and <code>conv.</code> variables, just as a user's conversation would.</p>
+<p>A user rarely asks only one question. Validation lets you test the follow-ups too, in the conversation your validation run started. Every draft has its own validation conversation, separate from anyone's searches. It holds what the agent carried over between turns, such as its <code>agent.</code> and <code>conv.</code> variables, as a user's conversation would.</p>
 <ol>
   <li><strong>Start the conversation.</strong> Validate with the saved validation query. Once the agent has run, the conversation exists, whether the run finished or paused on an <code>ask</code>.</li>
   <li><strong>Ask a follow-up.</strong> The box's label changes from <em>Validation query</em> to <em>Follow-up question</em>. Type the next question a user might ask, and select <strong>Validate/Trace</strong> or press Ctrl+Enter.</li>
-  <li><strong>Keep going.</strong> Each follow-up continues the same conversation, and the box empties after each run. The output console shows the latest run.</li>
+  <li><strong>Continue.</strong> Each follow-up continues the same conversation, and the box empties after each run. The output console shows the latest run.</li>
 </ol>
 <ul>
   <li>Follow-up questions are not saved with the draft. The saved validation query stays as it was.</li>
@@ -32,7 +32,7 @@
   <li><strong>Start over with the validation query</strong> leaves the conversation; the next run asks the saved query in a fresh conversation. Reloading the page does the same.</li>
   <li>Publishing or deleting the draft deletes its validation conversation.</li>
 </ul>
-<p>Two messages you may see. <em>Type a follow-up question, or start a new conversation</em>: the follow-up box is empty. <em>Validation cannot be run on the follow-up query as the stored state could not be found</em>: the conversation the follow-up was meant to continue is no longer stored; start over with the validation query.</p>
+<p>Two messages can appear. <em>Type a follow-up question, or start a new conversation</em>: the follow-up box is empty. <em>Validation cannot be run on the follow-up query as the stored state could not be found</em>: the conversation the follow-up was meant to continue is no longer stored; start over with the validation query.</p>
 
 <h3>When the agent asks for input</h3>
 <p>If the agent reaches an <code>ask</code> command, the run pauses and the form the user would see appears in the panel, with one section for each <code>parallel</code> branch that asked. This is not a failure: fill in the form and submit it to continue the run.</p>
@@ -61,7 +61,7 @@
 
 <h2>The validation output</h2>
 <p>Below the errors, the <strong>Validation output</strong> console lists the run step by step. Each line shows how long after the start it happened, what happened, and, when the line belongs to a command, where in the agent the command is. Select that location to jump to the command in the editor.</p>
-<p>A traced run mixes very different things, and the payloads are usually the largest part. The filters above the console put a kind of line away and bring it back.</p>
+<p>A traced run mixes very different kinds of line, and the payloads are usually the largest part. The filters above the console hide a kind of line and show it again.</p>
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Filter</th><th>What it shows</th></tr></thead>
 <tbody>

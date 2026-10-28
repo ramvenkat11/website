@@ -4,7 +4,7 @@
 <p>A publish that changes the definition creates a new version of the agent. Past versions are kept for 7 days and can be viewed from the agent's page. The paid service has no such limit. A publish that changes only the <a href="../agent-definition/structure.html#definition-and-agent-meta">agent meta</a>, that is the prompts, the const, the title or the run limits, keeps the version number; the agent's next run uses the new values. A past version is shown without prompts.</p>
 <p>Every publish writes an entry in the <a href="../system-management/audit-log.html">audit log</a>, naming the agent, the version and the fields that changed.</p>
 
-<h2>When the agent changed under the draft</h2>
+<h2>When the published agent changed after the draft was made</h2>
 <p>The title and the run limits can be changed on the agent's page, and another developer's draft can publish new prompts or a new const without a new version. A draft made before such a change still carries the old values. Publishing it first shows which fields differ between the draft and the agent, prompts listed one by one. You can merge those changes into the draft, or publish again to replace them with the draft's values; the changes made on the agent are then lost. In the REST API the second publish carries <code>overwrite</code>.</p>
 
 <h2>Describing the agent</h2>
