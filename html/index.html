@@ -72,17 +72,17 @@
         <div class="as-title"><span>Search2o agent server</span><code>pip install search2o</code></div>
         <div class="as-agents"><span class="as-agents-lbl">Agents</span><div class="as-agent-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
         <div class="as-lane as-left as-r1">
-          <div class="as-flow r"><span class="lbl">Build, validate, publish agents</span><i class="ln"></i></div>
+          <div class="as-flow r"><span class="lbl"><a href="framework.html">Build, validate, publish agents</a></span><i class="ln"></i></div>
         </div>
         <div class="as-lane as-right as-r1">
-          <div class="as-flow l"><span class="lbl"><code>search(<wbr><span class="args"><span class="nw"><span class="kw">"My laptop</span> <span class="kw">keeps freezing")</span></span></span></code></span><i class="ln"></i></div>
+          <div class="as-flow l"><span class="lbl"><code><a href="search.html">search</a>(<wbr><span class="args"><span class="nw"><span class="kw">"My laptop</span> <span class="kw">keeps freezing")</span></span></span></code></span><i class="ln"></i></div>
           <div class="as-flow r dot"><i class="ln"></i><span class="sub"><b class="as-agent">IT helpdesk</b></span></div>
         </div>
         <div class="as-lane as-left as-r2">
-          <div class="as-flow r"><span class="lbl">Describe agents in English</span><i class="ln"></i><span class="sub"><b class="as-agent">IT helpdesk</b>: Handles employees&rsquo; IT support requests. Troubleshoots hardware and software, and manages accounts and access.</span></div>
+          <div class="as-flow r"><span class="lbl"><a href="search.html">Describe agents in English</a></span><i class="ln"></i><span class="sub"><b class="as-agent">IT helpdesk</b>: Handles employees&rsquo; IT support requests. Troubleshoots hardware and software, and manages accounts and access.</span></div>
         </div>
         <div class="as-lane as-right as-r2">
-          <div class="as-flow l"><span class="lbl"><code>execAgent(<wbr><span class="args">convId, <span class="kw"><b class="as-agent nw">IT helpdesk</b>,</span> <span class="nw"><span class="kw">"My laptop</span> <span class="kw">keeps freezing")</span></span></span></code></span><i class="ln"></i></div>
+          <div class="as-flow l"><span class="lbl"><code><a href="runtime.html">execAgent</a>(<wbr><span class="args">convId, <span class="kw"><b class="as-agent nw">IT helpdesk</b>,</span> <span class="nw"><span class="kw">"My laptop</span> <span class="kw">keeps freezing")</span></span></span></code></span><i class="ln"></i></div>
           <div class="as-flow r dot"><i class="ln"></i><span class="sub">Ticket IT-4821 opened. <span class="kw">A technician</span> will call at 2&nbsp;pm.</span></div>
         </div>
       </div>
@@ -92,7 +92,6 @@
     <div class="container">
       <div class="section-head center">
         <h2>Built-in agent infrastructure</h2>
-        <p>The <a href="framework.html">agent framework</a> and the <a href="runtime.html">agent runtime</a> provide everything an agent needs.</p>
       </div>
       <div class="fw-wrap">
         <div class="fw-fig" aria-label="An agent, which is only business logic, runs inside the agent server. The server around it provides LLM calls, model neutrality, the tool calling loop, API, database and MCP calls, connection pools, a secret vault, error handling, runtime limits, human in the loop, streaming, saving and restoring conversations, memory, externalized prompts, drafting with AI, trace and validation, agent versioning, multi-developer publishing, live configuration, observability and an audit log.">
@@ -127,8 +126,7 @@
   <section class="section soft" id="user-interfaces">
     <div class="container">
       <div class="section-head center">
-        <h2>Multiple interfaces, Cloud&#8209;managed state</h2>
-        <p>No dependencies to install or run in your organization.</p>
+        <h2>No dependencies, cloud&#8209;managed state</h2>
       </div>
       <div class="ui-fan" aria-label="Your organization runs the agent servers and three clients, a browser chat, the chat applications and an agent harness, which all connect to the agent server cluster. The agent servers link to their source on GitHub and keep no state of their own: an encrypted link connects them to Search2o Cloud, which keeps the conversations and memories, encrypted by default.">
         <div class="ui-org">

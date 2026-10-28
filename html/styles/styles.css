@@ -259,6 +259,7 @@ p { margin: 0; }
 .as-flow { display: block; }
 .as-flow .lbl { display: flex; align-items: flex-start; gap: 7px; padding: 0 8px 6px 22px; color: var(--ink); font-size: 13px; font-weight: 600; line-height: 18px; text-align: left; }
 .as-flow .lbl code { font-family: var(--mono); font-size: 12.5px; font-weight: 500; }
+.as-flow .lbl a { color: var(--blue-ink); }
 .as-dev .ic { color: var(--as-dev-fg, #fff); }
 .as-flow .ln { position: relative; display: block; height: 2px; background: var(--as-line); }
 .as-flow .ln::before, .as-flow .ln::after { position: absolute; top: -4px; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
