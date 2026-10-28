@@ -1254,3 +1254,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Open: site.js:202 "Please use your work email address." (waiting on Ram).
 - Follow-up: the #run paragraph now also covers `--port` (default 9020), and step 4 says to use the server's address and port instead of 127.0.0.1:9020.
 - Ram's wording for the port: "By default Search2o starts on port 9020. Use --port to use another port." It now opens the #run paragraph.
+- Port sentence now says "the server" instead of "Search2o" (Ram).
