@@ -71,7 +71,7 @@
                 <span class="submit">Submit</span>
               </div>
             </div>
-            <aside class="note-bubble r2"><b><i class="mk">2</i><a href="docs/commands/ask.html">Human in the loop</a></b>Agent state is stored and when the user answers, it continues where it left off.</aside>
+            <aside class="note-bubble r2"><b><i class="mk">2</i><a href="docs/commands/ask.html">Human in the loop</a></b>The agent&rsquo;s state is stored, and when the user answers, the agent continues from where it paused.</aside>
             <div class="turn-agent r3">
               <div class="msg"><i class="mk">3</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>Booked UA1191 and the hotel night. The confirmation is in your inbox.</div>
             </div>
@@ -85,7 +85,7 @@
         </div>
         <div class="sc-notes">
           <div class="note"><b><i class="mk">1</i><a href="search.html">Discovery</a></b>Search matched the request to Travel desk agent, and the UI ran it automatically. The request carried no conversation id, so a new, empty conversation started.</div>
-          <div class="note"><b><i class="mk">2</i><a href="docs/commands/ask.html">Human in the loop</a></b>Agent state is stored and when the user answers, it continues where it left off.</div>
+          <div class="note"><b><i class="mk">2</i><a href="docs/commands/ask.html">Human in the loop</a></b>The agent&rsquo;s state is stored, and when the user answers, the agent continues from where it paused.</div>
           <div class="note"><b><i class="mk">3</i><a href="#state">Conversation context</a></b>Travel desk agent ended here, and the agent server saved the conversation automatically: the variables the agent set under <code>conv.</code>, and its conversation-scope prompts with their history.</div>
           <div class="note"><b><i class="mk">4</i><a href="docs/agent-execution/building-on-each-other.html">Building on each other</a></b>Search matched the follow-up to Reimbursements. The request carried the conversation id, so the saved conversation was restored first. Its prompt has the same name as Travel desk&rsquo;s, so its model continued that exchange. No agent called the other.</div>
         </div>
@@ -102,7 +102,7 @@
       <div class="fw-text">
         <p><b>The runs so far.</b> Which agent ran, with which inputs, what it answered, and where it stopped when it paused with a question.</p>
         <p><b>The prompts.</b> For every prompt used in the conversation, its history: the user turns, the model&rsquo;s answers and the tool results. This history is what lets a model in a follow-up remember the earlier exchange.</p>
-        <p><b>The variables.</b> Conversation variables, which every agent in the conversation reads and writes, and each agent&rsquo;s own variables. An agent saves what later agents will need as a conversation variable, like the trip.</p>
+        <p><b>The variables.</b> Conversation variables, which every agent in the conversation reads and writes, and each agent&rsquo;s own variables. An agent saves what later agents will need as a conversation variable, such as the trip.</p>
       </div>
     </div>
   </section>
@@ -129,7 +129,7 @@
         <p>Agents build on each other through names: the prompt name that continues the exchange, and the conversation variables that carry what one agent found to the next. Nothing enforces the names, so an organization agrees on them before its agents can work together.</p>
       </div>
       <div class="fw-text">
-        <p>A naming scheme is short. One standard prompt name, such as <code>chat</code>, for every agent&rsquo;s exchange with the user. A name for each thing agents hand to each other, such as <code>conv.trip</code>, <code>conv.customer</code> or <code>conv.order</code>, with what it holds. An agent that follows the scheme fits into any conversation in the account. One that invents its own names starts from nothing, and leaves nothing the next agent can find. <a href="docs/agent-execution/building-on-each-other.html#agree-on-names">Agreeing on names</a> in the docs.</p>
+        <p>A naming scheme is short. One standard prompt name, such as <code>chat</code>, for every agent&rsquo;s exchange with the user. A name for each thing agents hand to each other, such as <code>conv.trip</code>, <code>conv.customer</code> or <code>conv.order</code>, with what it holds. An agent that follows the scheme fits into any conversation in the account. One that invents its own names starts from nothing, and leaves nothing the next agent can find. See <a href="docs/agent-execution/building-on-each-other.html#agree-on-names">Agreeing on names</a> in the documentation.</p>
       </div>
     </div>
   </section>
@@ -163,7 +163,7 @@
           data-search-placeholder-answer="Answer the question above to continue"
           data-search-hint=""
           data-search-empty="This demo runs live in a Search2o account with [200 agents](demo-agents.html). The agents use mock data to demonstrate framework features."
-          data-search-disclaimer="This is mock data from a real agent. Click on the agent name to see what it does."
+          data-search-disclaimer="This is mock data from a real agent. Click the agent name to see what it does."
         ></div>
       </div>
     </div>

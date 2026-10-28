@@ -51,7 +51,7 @@
     <div class="container">
       <span class="kicker">Agent runtime</span>
       <h1>The agent says what to do. The runtime decides what it may do.</h1>
-      <p class="lead">Every agent server builds a runtime from the account&rsquo;s configuration and runs every agent inside it. Here is the orders agent from the framework page, with what the runtime supplies on each line.</p>
+      <p class="lead">Every agent server builds a runtime from the account&rsquo;s configuration and runs every agent inside it. Below is the orders agent from the framework page, with what the runtime supplies on each line.</p>
     </div>
   </section>
 
@@ -131,7 +131,7 @@
         </div>
       </figure>
       <div class="fw-text">
-        <p>The guardrails bound what an expression may do: the allowlist names what it can reach, the compile rules say which operators and shapes of expression are accepted, and the runtime limits cap loop iterations, database rows and definition length. Profiles are the only way out to models, APIs, databases and MCP servers, and every HTTP call goes through a connection pool that administrators size. Hooks are your own code, called around runs and publishing, before LLM and API calls, and for conversation state, secrets and encryption keys. Every part carries a version, so two people cannot silently overwrite each other, and every change lands in the <a href="docs/system-management/audit-log.html">audit log</a>.</p>
+        <p>The guardrails bound what an expression may do: the allowlist names what it can reach, the compile rules say which operators and shapes of expression are accepted, and the runtime limits cap loop iterations, database rows and definition length. Profiles are the only way out to models, APIs, databases and MCP servers, and every HTTP call goes through a connection pool that administrators size. Hooks are your own code, called around runs and publishing, before LLM and API calls, and for conversation state, secrets and encryption keys. Every part carries a version, so two people cannot silently overwrite each other, and every change is recorded in the <a href="docs/system-management/audit-log.html">audit log</a>.</p>
       </div>
     </div>
   </section>
@@ -143,7 +143,7 @@
         <p>Every agent carries two bounds of its own and is published and run with both. They belong to the agent, not to the account.</p>
       </div>
       <div class="fw-text">
-        <p>The time bound is the number of seconds one agent run may take; an agent run past it ends with the result code <code>timedOut</code>. The cost bound is the LLM spend, in US dollars, one agent run may reach; the agent server prices every call from the LLM profile, stops the agent run when the total passes the bound, and tells the person why. An agent that looks up one record can be held to a few seconds and a few cents; an agent that researches a question is given more of both. A draft starts with default bounds, the validation run is held to them, and publishing carries them to the agent. A developer can change them on a published agent, and the <a href="docs/reports/index.html">reports</a> show what each agent&rsquo;s runs take and spend.</p>
+        <p>The time bound is the number of seconds one agent run may take; an agent run past it ends with the result code <code>timedOut</code>. The cost bound is the LLM spend, in US dollars, one agent run may reach; the agent server prices every call from the LLM profile, stops the agent run when the total passes the bound, and informs the user of the reason. An agent that looks up one record can be held to a few seconds and a few cents; an agent that researches a question is given more of both. A draft starts with default bounds, the validation run is held to them, and publishing carries them to the agent. A developer can change them on a published agent, and the <a href="docs/reports/index.html">reports</a> show what each agent&rsquo;s runs take and spend.</p>
       </div>
     </div>
   </section>

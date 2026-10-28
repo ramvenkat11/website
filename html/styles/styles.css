@@ -117,6 +117,12 @@ p { margin: 0; }
 .nav-menu { position: relative; }
 .nav-menu > summary { display: inline-flex; align-items: center; gap: 5px; list-style: none; cursor: pointer; user-select: none; }
 .nav-menu > summary::-webkit-details-marker { display: none; }
+.src-alt { margin-top: 18px; }
+.src-alt > summary { display: inline-flex; align-items: center; gap: 8px; cursor: pointer; list-style: none; color: var(--blue-ink); font-weight: 600; }
+.src-alt > summary::-webkit-details-marker { display: none; }
+.src-alt > summary::before { content: ""; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 7px solid currentColor; transition: transform .15s ease; }
+.src-alt[open] > summary::before { transform: rotate(90deg); }
+.src-alt[open] > summary { margin-bottom: 4px; }
 .nav-menu > summary .chev { margin-top: 1px; transition: transform .15s ease; }
 .nav-menu[open] > summary { color: var(--ink); background: var(--bg-soft); }
 .nav-menu[open] > summary .chev { transform: rotate(180deg); }
@@ -608,7 +614,7 @@ p { margin: 0; }
 .how-step p { color: var(--muted); font-size: 14px; text-wrap: pretty; }
 .how-step .nw { white-space: nowrap; }
 .how-step p + p { margin-top: 8px; }
-.how-step p code { font-family: var(--mono); font-size: 13px; color: var(--ink); }
+.how-step p code { font-family: var(--mono); font-size: 13px; color: var(--ink); font-variant-ligatures: none; }
 .how-links { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 12px; font-size: 13.5px; font-weight: 600; }
 .steps { list-style: none; margin: 0; padding: 0; counter-reset: step; }
 .steps li { position: relative; padding: 0 0 34px 62px; counter-increment: step; }

@@ -52,7 +52,7 @@
     <div class="container">
       <span class="kicker">Search</span>
       <h1>Users do not choose agents. They say what they need.</h1>
-      <p class="lead">Search reads a request in plain language and returns the agent built to handle it. Here is the exchange, as the bundled UI, a chat bot or your own interface makes it.</p>
+      <p class="lead">Search reads a request in plain language and returns the agent built to handle it. The exchange below is the same whether the bundled UI, a chat bot or your own interface makes it.</p>
     </div>
   </section>
 
@@ -80,7 +80,7 @@
         <svg class="anno-svg" aria-hidden="true"></svg>
       </figure>
       <div class="fw-text">
-        <p>Search works from meaning, not words. A request and a description need not share a word, or a language. A search takes about 200 milliseconds, on our side, and a thousand agents are searched as quickly as a hundred.</p>
+        <p>Search works from meaning, not words. A request and a description do not need to share a word or a language. A search takes about 200 milliseconds in Search2o Cloud, and a thousand agents are searched as quickly as a hundred.</p>
       </div>
     </div>
   </section>
@@ -96,7 +96,7 @@
         <p>Arranges air travel and hotel stays for business travel. Books flights and hotel nights for the dates and the city the traveler names, holds a booking when the traveler is not ready to confirm, and answers questions about an existing booking. It does not file expenses and does not approve travel.</p>
       </figure>
       <div class="fw-text">
-        <p>A description is written for the person who will type the request. It says what the agent does for the user: the questions it answers, the actions it takes, what it leaves to others. Two to five sentences is typical. A description that names only the mechanism, such as &ldquo;calls the travel API and summarizes the JSON&rdquo;, matches poorly, because nobody asks for a mechanism; search returns it to the developer with an explanation of what to change. When two agents overlap by accident, a request in the shared territory returns both, and sharper descriptions separate them. See <a href="docs/search/describing-an-agent.html">describing an agent</a>.</p>
+        <p>A description is written for the person who will type the request. It says what the agent does for the user: the questions it answers, the actions it takes, what it leaves to others. A typical description has two to five sentences. A description that names only the mechanism, such as &ldquo;calls the travel API and summarizes the JSON&rdquo;, matches poorly, because users do not ask for a mechanism; search returns it to the developer with an explanation of what to change. When two agents overlap by accident, a request in the shared territory returns both, and sharper descriptions separate them. See <a href="docs/search/describing-an-agent.html">describing an agent</a>.</p>
         <p><a href="docs/search/tags.html">Tags</a> split an account&rsquo;s agents into pools, one for the help desk and one for finance, and a search names a pool or searches them all.</p>
       </div>
     </div>
@@ -118,7 +118,7 @@
           data-search-placeholder-answer="Answer the question above to continue"
           data-search-hint=""
           data-search-empty="This demo runs live in a Search2o account with [200 agents](demo-agents.html). The agents use mock data to demonstrate framework features."
-          data-search-disclaimer="This is mock data from a real agent. Click on the agent name to see what it does."
+          data-search-disclaimer="This is mock data from a real agent. Click the agent name to see what it does."
         ></div>
       </div>
     </div>
@@ -129,10 +129,10 @@
       <div class="section-head">
         <span class="kicker">Search quality</span>
         <h2>Measured on 15,000 questions, against the live service</h2>
-        <p>Six catalogs of agents, from a university to a thousand agents across fifty business areas. 15,000 questions, each with a known right agent. Every question went through the search we ship.</p>
+        <p>Six catalogs of agents, from a university to a thousand agents across fifty business areas. 15,000 questions, each with a known right agent. Every question went through the production search service.</p>
       </div>
       <div class="fw-text">
-        <p>The right agent comes first 84% to 91% of the time, depending on the catalog, and is one of the first two 92% to 97% of the time. A request about something else entirely is always refused; a request about the customer&rsquo;s own world that no agent covers is refused 82% to 86% of the time. A search takes about 200 milliseconds, on our side. A thousand agents score within a point of a hundred. What separates the easy catalogs from the hard ones is how far apart their agents sit, and the descriptions decide that. The <a href="docs/search/search-quality.html">search quality</a> page has every table and the conditions behind each number.</p>
+        <p>The right agent comes first 84% to 91% of the time, depending on the catalog, and is one of the first two 92% to 97% of the time. A request about something else entirely is always refused; a request about the customer&rsquo;s own world that no agent covers is refused 82% to 86% of the time. A search takes about 200 milliseconds in Search2o Cloud. A catalog of a thousand agents scores within one percentage point of a catalog of a hundred. What separates the easy catalogs from the hard ones is how distinct their agents are, and the descriptions determine that. The <a href="docs/search/search-quality.html">search quality</a> page has every table and the conditions behind each number.</p>
       </div>
     </div>
   </section>
