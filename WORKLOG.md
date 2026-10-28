@@ -1224,3 +1224,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - #user-interfaces (Ram): the three client tiles now sit inside "Your organization": new `.ui-org` dashed region (tag "Your organization") holding the server card (`.st-srv`, now a plain card) + bus + tiles; cloud and encrypted link outside on the left. Stacked ≤860: org region (clients ↓ servers) ↓ encrypted ↓ cloud. aria-label updated. Sweep 320–1280: 0 issues; rendered 1280/1000/900/860/700/412/384/360 light+dark. Not committed.
 - #user-interfaces server card: "Agent server cluster" (was Agent servers). Sweep 320–1280 clean.
 - Infrastructure lead now "An agent is drafted with AI in JSON with Python expressions, using twenty commands that reach everything below." (link → framework.html).
+- Infrastructure lead: "drafted with AI" dropped (it is in the figure): "An agent is written in JSON with Python expressions, using twenty commands that reach everything below."
