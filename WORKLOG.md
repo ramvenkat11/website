@@ -1202,3 +1202,9 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Added the same way "Search that executes" was: header `span.tagline` after the logo and footer `<p>` under the logo on all 14 site pages (incl. legal/*, 404), header span in the gen/build.py template (docs rebuilt, 146 pages), `.tagline` rule + ≤900 docs / ≤440 stacking blocks restored in styles.css (from f6b94e7b^). Not added: index <title>/og:title, gen/ogcard.py, gen/linkedin_banner.py. Rendered index header/footer 7 widths light+dark and docs header 1280/860/384/360: clean. Not committed.
 - Infrastructure lead: "so an agent contains only business logic."
 - Hero lead: "execAgent, to safely run the agent on that request."
+
+## 2026-10-28 Conversation figure moved to conversation.html
+- index.html section 2 (#search-and-conversation) removed; its figure (convo + sc-notes) is now the first section of html/conversation.html (#mechanism), replacing the three mechanism paragraphs.
+- Notes rewritten to carry those paragraphs: 1 Discovery adds "no conversation id, so a new, empty conversation started"; 2 unchanged; 3 Conversation context: saved automatically, conv. variables + conversation-scope prompts with history (link → #state); 4 Building on each other: id restores the saved conversation, same prompt name continues the exchange, no agent called the other (link → docs/agent-execution/building-on-each-other.html).
+- styles.css: #search-and-conversation selectors renamed to #mechanism; figure left-aligned (no auto margin) to match the page text; the h2 font-size list lost #search-and-conversation.
+- Rendered conversation.html top at 7 widths light+dark, index join at 1280: clean. Not committed.
