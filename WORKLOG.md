@@ -1271,3 +1271,9 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - "please" added: about.html contact paragraph (2), gettingstarted closing note, site.js termsNotAccepted and bogusEmail.
 - Hero lead: "focus on just the business logic" → "focus on the business logic"; `.as-head .hero-lead` font-size 16px (was 17px, inherited). Three lines at ≥860. Swept 320–1280: 0 issues. Rendered 8 widths, light and dark.
 - Hero lead: bold removed from "handles all the plumbing".
+
+## 2026-10-28 — Demo menu in the header; search page demo replaced
+- Header: a "Demo" dropdown after Product, with "Search and conversation" → conversation.html#demo and "Draft an agent with AI" → framework.html#demo. Added to the 10 site pages that have the Product dropdown and to the gen/build.py docs template; docs rebuilt. The legal pages (flat old nav) and content/demo.html were not changed.
+- search.html #demo: the widget is replaced by a paragraph linking to the conversation page demo; demo.css and demo.js are no longer loaded there.
+- Narrow header CSS: at ≤980 the header-row gap is 0 (nav items were taking the 14px gap), `.brand` gets margin-right 14px, `.docs .theme-toggle` margin-right 12px, and the -12px pull applies only to the first menu. At ≤440 the links use 7px padding at 14px. At 981–1040, `.docs .header-row` gap is 18px (the docs page overflowed by 1px at 981–992).
+- Nav stays on one row from 356px; below that "About" wraps. Sweeps of search, index and docs/index headers from 320 to 1280: 0 issues. On docs at ≤384, Get started sits under the theme button, as at 360 before.
