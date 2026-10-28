@@ -1229,3 +1229,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Infrastructure lead (Ram's idea): "The agent framework and the agent runtime provide everything an agent needs except its business logic." (links framework.html, runtime.html).
 - Infrastructure lead shortened: "The agent framework and the agent runtime provide everything an agent needs."
 - #user-interfaces heading "No dependencies, cloud-managed state"; subheading removed.
+- Infrastructure section lead removed; heading only.
