@@ -1244,3 +1244,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Hero figure: execAgent call now links to conversation.html (runtime still linked from execAgent in the hero text).
 - Footer: Pricing moved from Product to Resources (after Docs) on all 14 site pages and content/demo.html.
 - gettingstarted.html: sign-up label "Work email" → "Email". site.js error for public domains still says "use your work email address" (left).
+- gettingstarted.html: "Your name" → "Name" (matches Email, Account name).
