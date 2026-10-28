@@ -1284,3 +1284,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Header Demo menu items → demo-search.html and demo-draft.html (all site pages and gen/build.py; docs rebuilt).
 - `.fw-page .page-hero h1` now has text-wrap: balance, because "produces" was orphaned at 360. Product-page headings rebalance on phones; desktop is unchanged.
 - Widgets verified over local HTTP (they don't load from file://). Sweeps 320–1280: 0 issues. Link check: 0 broken. content/parts-of-the-system.md still lists framework.html#demo and search.html#demo (a notes file, not changed).
+- Demo pages: the widgets now use the full container width (`.fw-demo-wide { max-width: none; }` on demo-search and demo-draft only; the intro text keeps its reading width). Rendered at 8 widths over HTTP; sweeps 0 issues.
