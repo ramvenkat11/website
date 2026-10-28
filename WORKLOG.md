@@ -1214,3 +1214,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - styles.css: #stateless st-* rules rescoped to #user-interfaces; ui-srv/ui-link/ui-calls/st-wrap/st-fig/st-points rules dropped; stacks at ≤860 (clients ↓ servers ↓ encrypted ↓ cloud), link column 130px (124px ≤1000).
 - Rendered 1280/1000/860/700/384/375/360 light+dark: clean. Not committed.
 - Infrastructure lead: "Agent server takes care of all the plumbing, so an agent contains only business logic."
+
+## 2026-10-28 Hero: Client rail on the right
+- index.html hero: `.as-side.as-user` back (grid rows 1–3, column 3) with actor "Client" and a browser-window icon, dashed rail; right lanes get padding-right to the rail again. CSS restored from HEAD (.as-user, .as-user .rail, .as-user .as-actor, ≤480 column-reverse); ≤400 `.as-right .as-flow .kw` may wrap so the code stays inside the rail. Rendered 7 widths light+dark: clean. Not committed.
