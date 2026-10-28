@@ -1252,3 +1252,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - `.how-step p code` has `font-variant-ligatures: none` because the mono font joined `--` into one glyph.
 - Rendered at all 8 widths in light and dark, and swept 320–1280. The only flags are long code lines scrolling inside code cards, which the page had before this change too.
 - Open: site.js:202 "Please use your work email address." (waiting on Ram).
+- Follow-up: the #run paragraph now also covers `--port` (default 9020), and step 4 says to use the server's address and port instead of 127.0.0.1:9020.
