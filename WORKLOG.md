@@ -1213,3 +1213,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - index.html: #user-interfaces now "Multiple interfaces, Cloud‑managed state" (non-breaking hyphen) / "No dependencies to install or run in your organization." Figure left→right: Search2o Cloud State box, encrypted dashed link (arrow into cloud), Your organization / Agent servers / Source available box, bus, three client tiles. Calls box (Authorization header, search, execAgent) and the old Agent server box removed. #stateless section deleted. aria-label rewritten.
 - styles.css: #stateless st-* rules rescoped to #user-interfaces; ui-srv/ui-link/ui-calls/st-wrap/st-fig/st-points rules dropped; stacks at ≤860 (clients ↓ servers ↓ encrypted ↓ cloud), link column 130px (124px ≤1000).
 - Rendered 1280/1000/860/700/384/375/360 light+dark: clean. Not committed.
+- Infrastructure lead: "Agent server takes care of all the plumbing, so an agent contains only business logic."
