@@ -1208,3 +1208,8 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Notes rewritten to carry those paragraphs: 1 Discovery adds "no conversation id, so a new, empty conversation started"; 2 unchanged; 3 Conversation context: saved automatically, conv. variables + conversation-scope prompts with history (link → #state); 4 Building on each other: id restores the saved conversation, same prompt name continues the exchange, no agent called the other (link → docs/agent-execution/building-on-each-other.html).
 - styles.css: #search-and-conversation selectors renamed to #mechanism; figure left-aligned (no auto margin) to match the page text; the h2 font-size list lost #search-and-conversation.
 - Rendered conversation.html top at 7 widths light+dark, index join at 1280: clean. Not committed.
+
+## 2026-10-28 Multiple interfaces + Managed state merged
+- index.html: #user-interfaces now "Multiple interfaces, Cloud‑managed state" (non-breaking hyphen) / "No dependencies to install or run in your organization." Figure left→right: Search2o Cloud State box, encrypted dashed link (arrow into cloud), Your organization / Agent servers / Source available box, bus, three client tiles. Calls box (Authorization header, search, execAgent) and the old Agent server box removed. #stateless section deleted. aria-label rewritten.
+- styles.css: #stateless st-* rules rescoped to #user-interfaces; ui-srv/ui-link/ui-calls/st-wrap/st-fig/st-points rules dropped; stacks at ≤860 (clients ↓ servers ↓ encrypted ↓ cloud), link column 130px (124px ≤1000).
+- Rendered 1280/1000/860/700/384/375/360 light+dark: clean. Not committed.
