@@ -1245,3 +1245,10 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Footer: Pricing moved from Product to Resources (after Docs) on all 14 site pages and content/demo.html.
 - gettingstarted.html: sign-up label "Work email" → "Email". site.js error for public domains still says "use your work email address" (left).
 - gettingstarted.html: "Your name" → "Name" (matches Email, Account name).
+
+## 2026-10-28 — gettingstarted: source install collapsed, where to run the server
+- #install: "To install from the source" is now a closed `<details class="src-alt">`, summary "Or install from the source instead" (blue, CSS triangle). Lead: "Use your laptop to try Search2o on your own, or a server your team can reach to share it."
+- #run: new paragraph saying to add `--host 0.0.0.0` on a shared server and to use the server's address instead of 127.0.0.1 in the next step; links docs/system-management/agent-servers.html. Verified that agent-server/search2o/main.py passes argv through to Uvicorn.
+- `.how-step p code` has `font-variant-ligatures: none` because the mono font joined `--` into one glyph.
+- Rendered at all 8 widths in light and dark, and swept 320–1280. The only flags are long code lines scrolling inside code cards, which the page had before this change too.
+- Open: site.js:202 "Please use your work email address." (waiting on Ram).
