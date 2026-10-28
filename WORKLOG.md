@@ -1188,3 +1188,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-28 Hero heading and lead
 - index.html hero: h1 "Transform your enterprise AI with Search2o agent server"; new p.hero-lead with Ram's text (grammar: task-focused, a user's, colon + "which" clauses). Links: task-focused agents→demo-agents.html, search→docs/rest-api/search.html, execAgent→conversation.html, building→framework.html, discovering→search.html, running→runtime.html. CSS: .as-head .hero-lead max-width 780px, .hero-lead code mono. .hero-line/.hero-line-soft now unused on index. Rendered 7 widths light+dark: clean. Not committed.
 - IT helpdesk description now "Handles employees' IT support requests." Text only.
+- IT helpdesk description now "Handles employees' IT support requests and service tickets." (two lines at 1280/1000/860). Not committed.
