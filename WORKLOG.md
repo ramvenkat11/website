@@ -1191,3 +1191,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - IT helpdesk description now "Handles employees' IT support requests and service tickets." (two lines at 1280/1000/860). Not committed.
 - IT helpdesk description now two sentences: "Handles employees' IT support requests. Troubleshoots hardware and software, and manages accounts and access." Text only.
 - Hero lead: calls sentence now "Clients use just two calls: search, which routes a request, and execAgent."; "handles all the plumbing" in .hero-accent. Not committed.
+- Hero lead: gradient removed from "handles all the plumbing"; now <strong> (ink, weight 650 via .hero-head strong).
