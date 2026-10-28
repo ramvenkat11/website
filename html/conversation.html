@@ -28,7 +28,7 @@
 
 <header class="site-header">
   <div class="container header-row">
-    <a class="brand" href="index.html" aria-label="Search2o home"><img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61"></a>
+    <a class="brand" href="index.html" aria-label="Search2o home"><img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61"><span class="tagline">Agent server for the enterprise</span></a>
     <nav class="site-nav" aria-label="Main">
       <details class="nav-menu">
         <summary class="navlink">Product<svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
@@ -58,10 +58,37 @@
 
   <section class="fw-sec fw-first" id="mechanism">
     <div class="container">
-      <div class="fw-text">
-        <p>A conversation is an object that the agent server saves after every successful agent run, automatically. A request that carries the conversation&rsquo;s id restores it, automatically, before the next agent runs. A request without an id starts a new, empty conversation.</p>
-        <p>The object holds two things. <b>Variables</b>: whatever an agent explicitly set in the conversation scope, under <code>conv.</code>. <b>Prompts</b>: every prompt an agent used at the conversation scope, with its history of user turns and model answers.</p>
-        <p>That is what lets agents build on each other. The next agent in the conversation, whichever one search matches, reads the variables it needs, if they are set. When it uses a prompt with the same name as an earlier agent, the restored history already holds that agent&rsquo;s exchange, and the model continues from it. No agent calls another, and nothing wires two agents together in advance.</p>
+      <div class="sc-wrap">
+        <div class="convo hero-convo" aria-label="One conversation across two independent agents. Search matches the first request to the Travel desk agent, which asks before booking. A second request is matched to the Reimbursements agent, which continues the same conversation and files the expenses for the trip.">
+          <div class="convo-title">Conversation</div>
+          <div class="convo-body">
+            <div class="turn-user r1">Book my trip for Tuesday's all-day meeting in New York<i class="mk">1</i></div>
+            <aside class="note-bubble first r1"><b><i class="mk">1</i><a href="search.html">Discovery</a></b>Search matched the request to Travel desk agent, and the UI ran it automatically. The request carried no conversation id, so a new, empty conversation started.</aside>
+            <div class="turn-agent r2">
+              <div class="msg ask" aria-label="The agent asks before booking"><i class="mk">2</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>
+                <span class="q">UA1191 departs 06:00 Tuesday, back at 19:30, and a night at the Marriott near the office. $1,240. <b>Book it?</b></span>
+                <span class="opts"><i class="on">Book</i><i>Hold</i></span>
+                <span class="submit">Submit</span>
+              </div>
+            </div>
+            <aside class="note-bubble r2"><b><i class="mk">2</i><a href="docs/commands/ask.html">Human in the loop</a></b>Agent state is stored and when the user answers, it continues where it left off.</aside>
+            <div class="turn-agent r3">
+              <div class="msg"><i class="mk">3</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>Booked UA1191 and the hotel night. The confirmation is in your inbox.</div>
+            </div>
+            <aside class="note-bubble r3"><b><i class="mk">3</i><a href="#state">Conversation context</a></b>Travel desk agent ended here, and the agent server saved the conversation automatically: the variables the agent set under <code>conv.</code>, and its conversation-scope prompts with their history.</aside>
+            <div class="turn-user r4">File the expenses for that trip</div>
+            <div class="turn-agent r5">
+              <div class="msg"><i class="mk">4</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Reimbursements</span>Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
+            </div>
+            <aside class="note-bubble r5"><b><i class="mk">4</i><a href="docs/agent-execution/building-on-each-other.html">Building on each other</a></b>Search matched the follow-up to Reimbursements. The request carried the conversation id, so the saved conversation was restored first. Its prompt has the same name as Travel desk&rsquo;s, so its model continued that exchange. No agent called the other.</aside>
+          </div>
+        </div>
+        <div class="sc-notes">
+          <div class="note"><b><i class="mk">1</i><a href="search.html">Discovery</a></b>Search matched the request to Travel desk agent, and the UI ran it automatically. The request carried no conversation id, so a new, empty conversation started.</div>
+          <div class="note"><b><i class="mk">2</i><a href="docs/commands/ask.html">Human in the loop</a></b>Agent state is stored and when the user answers, it continues where it left off.</div>
+          <div class="note"><b><i class="mk">3</i><a href="#state">Conversation context</a></b>Travel desk agent ended here, and the agent server saved the conversation automatically: the variables the agent set under <code>conv.</code>, and its conversation-scope prompts with their history.</div>
+          <div class="note"><b><i class="mk">4</i><a href="docs/agent-execution/building-on-each-other.html">Building on each other</a></b>Search matched the follow-up to Reimbursements. The request carried the conversation id, so the saved conversation was restored first. Its prompt has the same name as Travel desk&rsquo;s, so its model continued that exchange. No agent called the other.</div>
+        </div>
       </div>
     </div>
   </section>
@@ -166,6 +193,7 @@
     <div class="footer-main">
       <div class="footer-brand">
         <img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61">
+        <p>Agent server for the enterprise</p>
       </div>
       <div class="footer-cols">
         <div class="fcol">

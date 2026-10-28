@@ -1,5 +1,10 @@
-Transform your enterprise AI with Search2o agent server.
+Multiple interfaces:
 
-Developers build task focussed agents corresponding to your existing workflows. Clients use just two calls - search, that routes a request and execAgent. Agent server handles all the plumbing behind building, discovering and running the agents.
+Multiple interfaces, Cloud-managed state
+No dependencies to install or run in your organization.
 
-Links: task focussed agents, building, discovering, running, search, execAgent (Conversation)
+Remove the middle search/execAgent.
+Replace the agent server box here with the agent server box from the next section. Move this to the middle.
+On the left, place the cloud box from the next section.
+
+

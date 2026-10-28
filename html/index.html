@@ -32,7 +32,7 @@
 
 <header class="site-header">
   <div class="container header-row">
-    <a class="brand" href="index.html" aria-label="Search2o home"><img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61"></a>
+    <a class="brand" href="index.html" aria-label="Search2o home"><img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61"><span class="tagline">Agent server for the enterprise</span></a>
     <nav class="site-nav" aria-label="Main">
       <details class="nav-menu">
         <summary class="navlink">Product<svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
@@ -57,7 +57,7 @@
     <div class="container">
       <div class="hero-head as-head">
         <h1 class="hero-claim">Transform your enterprise AI with Search2o agent server</h1>
-        <p class="hero-lead">Developers build <a class="hero-attr" href="docs/introduction/search2o-agents.html">task-focused agents</a> corresponding to your existing workflows. Clients use just two calls: <a class="hero-attr" href="search.html"><code>search</code></a>, to find the agent built for a request, and <a class="hero-attr" href="runtime.html"><code>execAgent</code></a>, to run the agent on that request. Agent server <strong>handles all the plumbing</strong>, so you can focus on just the business logic.</p>
+        <p class="hero-lead">Developers build <a class="hero-attr" href="docs/introduction/search2o-agents.html">task-focused agents</a> corresponding to your existing workflows. Clients use just two calls: <a class="hero-attr" href="search.html"><code>search</code></a>, to find the agent built for a request, and <a class="hero-attr" href="runtime.html"><code>execAgent</code></a>, to safely run the agent on that request. Agent server <strong>handles all the plumbing</strong>, so you can focus on just the business logic.</p>
       </div>
       <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example an IT helpdesk agent that handles employees' IT support requests. Troubleshoots hardware and software, and manages accounts and access. The Search2o agent server holds hundreds of agents. A client calls search with a request such as My laptop keeps freezing, and search returns the IT helpdesk agent. The client calls execAgent with the conversation, the agent and the request, and receives the agent's output, for example Ticket IT-4821 opened. A technician will call at 2 pm.">
         <div class="as-side as-dev">
@@ -84,51 +84,11 @@
       </div>
     </div>
   </section>
-  <section class="section soft" id="search-and-conversation">
-    <div class="container">
-      <div class="section-head center">
-        <h2>Built-in agent discovery and multi-agent conversations</h2>
-        <p>Agents are discovered by search and build on each other in a conversation.</p>
-      </div>
-      <div class="sc-wrap">
-        <div class="convo hero-convo" aria-label="One conversation across two independent agents. Search matches the first request to the Travel desk agent, which asks before booking. A second request is matched to the Reimbursements agent, which continues the same conversation and files the expenses for the trip.">
-          <div class="convo-title">Conversation</div>
-          <div class="convo-body">
-            <div class="turn-user r1">Book my trip for Tuesday's all-day meeting in New York<i class="mk">1</i></div>
-            <aside class="note-bubble first r1"><b><i class="mk">1</i><a href="search.html">Discovery</a></b>Search matched the request to Travel desk agent. The UI is configured to execute the agent automatically.</aside>
-            <div class="turn-agent r2">
-              <div class="msg ask" aria-label="The agent asks before booking"><i class="mk">2</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>
-                <span class="q">UA1191 departs 06:00 Tuesday, back at 19:30, and a night at the Marriott near the office. $1,240. <b>Book it?</b></span>
-                <span class="opts"><i class="on">Book</i><i>Hold</i></span>
-                <span class="submit">Submit</span>
-              </div>
-            </div>
-            <aside class="note-bubble r2"><b><i class="mk">2</i><a href="docs/commands/ask.html">Human in the loop</a></b>Agent state is stored and when the user answers, it continues where it left off.</aside>
-            <div class="turn-agent r3">
-              <div class="msg"><i class="mk">3</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>Booked UA1191 and the hotel night. The confirmation is in your inbox.</div>
-            </div>
-            <aside class="note-bubble r3"><b><i class="mk">3</i><a href="conversation.html#state">Conversation context</a></b>Travel desk agent ended here. Its prompts and other information it chooses stay in the conversation.</aside>
-            <div class="turn-user r4">File the expenses for that trip</div>
-            <div class="turn-agent r5">
-              <div class="msg"><i class="mk">4</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Reimbursements</span>Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
-            </div>
-            <aside class="note-bubble r5"><b><i class="mk">4</i><a href="conversation.html">Building on each other</a></b>Search matched the follow-up request to Reimbursements. It used the saved prompt from Travel desk to do its task.</aside>
-          </div>
-        </div>
-        <div class="sc-notes">
-          <div class="note"><b><i class="mk">1</i><a href="search.html">Discovery</a></b>Search matched the request to Travel desk agent. The UI is configured to execute the agent automatically.</div>
-          <div class="note"><b><i class="mk">2</i><a href="docs/commands/ask.html">Human in the loop</a></b>Agent state is stored and when the user answers, it continues where it left off.</div>
-          <div class="note"><b><i class="mk">3</i><a href="conversation.html#state">Conversation context</a></b>Travel desk agent ended here. Its prompts and other information it chooses stay in the conversation.</div>
-          <div class="note"><b><i class="mk">4</i><a href="conversation.html">Building on each other</a></b>Search matched the follow-up request to Reimbursements. It used the saved prompt from Travel desk to do its task.</div>
-        </div>
-      </div>
-    </div>
-  </section>
   <section class="section" id="framework-runtime">
     <div class="container">
       <div class="section-head center">
         <h2>Built-in agent infrastructure</h2>
-        <p>Agent server takes care of everything else, so your agent contains only business logic.</p>
+        <p>Agent server takes care of everything else, so an agent contains only business logic.</p>
       </div>
       <div class="fw-wrap">
         <div class="fw-fig" aria-label="An agent, which is only business logic, runs inside the agent server. The server around it provides LLM calls, model neutrality, the tool calling loop, API, database and MCP calls, connection pools, a secret vault, error handling, runtime limits, human in the loop, streaming, saving and restoring conversations, memory, externalized prompts, drafting with AI, trace and validation, agent versioning, multi-developer publishing, live configuration, observability and an audit log.">
@@ -163,10 +123,10 @@
   <section class="section soft" id="user-interfaces">
     <div class="container">
       <div class="section-head center">
-        <h2>Multiple interfaces</h2>
-        <p>A client uses just two calls to discover and run hundreds of agents.</p>
+        <h2>Multiple interfaces, Cloud&#8209;managed state</h2>
+        <p>No dependencies to install or run in your organization.</p>
       </div>
-      <div class="ui-fan" aria-label="Three clients, a browser chat, the chat applications and an agent harness, all call the agent server with the same two calls, search to find the agent for a request and execAgent to run it in the conversation, and each call carries an authorization token.">
+      <div class="ui-fan" aria-label="Three clients, a browser chat, the chat applications and an agent harness, all connect to the agent servers in your organization. The agent servers link to their source on GitHub and keep no state of their own: an encrypted link connects them to Search2o Cloud, which keeps the conversations and memories, encrypted by default.">
         <div class="ui-clients">
           <div class="ui-tile">
             <span class="ui-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span>
@@ -183,52 +143,28 @@
         </div>
         <div class="ui-bus" aria-hidden="true"><svg viewBox="0 0 64 300" preserveAspectRatio="none"><line x1="0" y1="50" x2="44" y2="50"/><line x1="0" y1="150" x2="44" y2="150"/><line x1="0" y1="250" x2="44" y2="250"/><line x1="44" y1="50" x2="44" y2="250"/><line x1="44" y1="150" x2="64" y2="150"/></svg></div>
         <div class="ui-down" aria-hidden="true"></div>
-        <div class="ui-calls">
-          <code class="hdr">Authorization: Bearer &lt;token&gt;</code>
-          <code><span class="fn">search</span>() <span class="arr">&rarr;</span> agent</code>
-          <code><span class="fn">execAgent</span>() <span class="arr">&rarr;</span> answer</code>
+        <div class="st-box st-org">
+          <span class="tag">Your organization</span>
+          <span class="cluster" aria-hidden="true">
+            <span class="nodes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><i class="ln"></i><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><i class="ln"></i><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span></span>
+          </span>
+          <b>Agent servers</b>
+          <small><a class="src" href="https://github.com/Search2o" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>Source available</a></small>
         </div>
-        <div class="ui-link" aria-hidden="true"></div>
-        <div class="ui-down" aria-hidden="true"></div>
-        <div class="ui-srv">
-          <span class="t">Agent server</span>
-          <span class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search</span>
-          <span class="r"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/></svg>Agent runtime</span>
+        <div class="st-link" aria-hidden="true">
+          <i class="ln"></i>
+          <span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>encrypted</span>
+        </div>
+        <div class="st-box st-cloud">
+          <span class="tag">Search2o Cloud</span>
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
+          <b>State</b>
+          <small>Conversations, memories <span class="enc">encrypted by default</span></small>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section" id="stateless">
-    <div class="container">
-      <div class="section-head center">
-        <h2>Managed state</h2>
-        <p>No dependencies to install or run in your organization.</p>
-      </div>
-      <div class="st-wrap">
-        <div class="st-fig" aria-label="Stateless agent servers in your organization, connected to Search2o Cloud by an encrypted link. The cloud keeps the conversations and memories, encrypted by default. The agent servers link to their source on GitHub.">
-          <div class="st-box st-org">
-            <span class="tag">Your organization</span>
-            <span class="cluster" aria-hidden="true">
-              <span class="nodes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><i class="ln"></i><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><i class="ln"></i><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span></span>
-            </span>
-            <b>Agent servers</b>
-            <small><a class="src" href="https://github.com/Search2o" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>Source available</a></small>
-          </div>
-          <div class="st-link" aria-hidden="true">
-            <i class="ln"></i>
-            <span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>encrypted</span>
-          </div>
-          <div class="st-box st-cloud">
-            <span class="tag">Search2o Cloud</span>
-            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
-            <b>State</b>
-            <small>Conversations, memories <span class="enc">encrypted by default</span></small>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
   <section class="section soft" id="platform">
     <div class="container">
       <div class="section-head center">
@@ -276,6 +212,7 @@
     <div class="footer-main">
       <div class="footer-brand">
         <img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61">
+        <p>Agent server for the enterprise</p>
       </div>
       <div class="footer-cols">
         <div class="fcol">
