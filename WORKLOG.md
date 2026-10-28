@@ -1182,3 +1182,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 
 ## 2026-10-28 Hero example: IT helpdesk
 - Hero example changed from Travel desk to IT helpdesk ("Grants access and fixes laptop problems."; search/execAgent with "I can't open the finance dashboard"; result "Access requested. Your manager has been asked to approve."). aria-label updated. Text only, no renders. Not committed.
+- Fix: request now "I need access to the finance dashboard" ("I can't open..." would not clearly match IT helpdesk). Text only.
