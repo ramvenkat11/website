@@ -1285,3 +1285,9 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - `.fw-page .page-hero h1` now has text-wrap: balance, because "produces" was orphaned at 360. Product-page headings rebalance on phones; desktop is unchanged.
 - Widgets verified over local HTTP (they don't load from file://). Sweeps 320–1280: 0 issues. Link check: 0 broken. content/parts-of-the-system.md still lists framework.html#demo and search.html#demo (a notes file, not changed).
 - Demo pages: the widgets now use the full container width (`.fw-demo-wide { max-width: none; }` on demo-search and demo-draft only; the intro text keeps its reading width). Rendered at 8 widths over HTTP; sweeps 0 issues.
+
+## 2026-10-28 — footer demo links, heading sizes
+- Footer Product column: "Search and conversation demo" → demo-search.html and "Draft with AI demo" → demo-draft.html, on all site pages and the 4 legal pages. content/demo.html was not changed.
+- Heading sizes unified: every page h1 (`.page-hero h1`, `.pricing h1`) is clamp(26px, 2.8vw, 34px) with text-wrap balance, and the fw-page override was removed. Section h2s are 24px everywhere: pricing 22→24, prose/about 26→24, page-body section-head 26→24, numbered/gettingstarted 23→24, legal 20→24. The home hero claim (28px) is unchanged; asked Ram.
+- Demo width: `.fw-demo-wide` is set to the figure width (1060px). Ram says it is too wide, so asked what width he wants; the intro text is to match it.
+- Pre-existing flags, not mine: legal pages overflow at 960–1100 (old flat header nav), and gettingstarted code lines scroll in their cards.
