@@ -1231,3 +1231,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - #user-interfaces heading "No dependencies, cloud-managed state"; subheading removed.
 - Infrastructure section lead removed; heading only.
 - Hero links: "Build, validate, publish agents" → framework.html, convId → conversation.html; styled as underlined blue-ink links (.as-flow .lbl a). Sweep 320–1280 clean; rendered 1280/412.
+- Hero links revised (Ram): no underline (blue-ink only); convId unlinked; "Describe agents in English" → search.html; search( → search.html; execAgent( → runtime.html; Build… → framework.html. Conversation link to be handled separately. Sweep clean; rendered 1280.
