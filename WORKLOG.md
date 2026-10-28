@@ -1225,3 +1225,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - #user-interfaces server card: "Agent server cluster" (was Agent servers). Sweep 320–1280 clean.
 - Infrastructure lead now "An agent is drafted with AI in JSON with Python expressions, using twenty commands that reach everything below." (link → framework.html).
 - Infrastructure lead: "drafted with AI" dropped (it is in the figure): "An agent is written in JSON with Python expressions, using twenty commands that reach everything below."
+- Infrastructure lead: "An agent is drafted with AI in JSON with Python expressions, using twenty commands."
