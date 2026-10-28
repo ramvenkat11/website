@@ -1270,3 +1270,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - pricing.html: "please" added to the usage-limits request and to the heading "Please tell us what you need".
 - "please" added: about.html contact paragraph (2), gettingstarted closing note, site.js termsNotAccepted and bogusEmail.
 - Hero lead: "focus on just the business logic" → "focus on the business logic"; `.as-head .hero-lead` font-size 16px (was 17px, inherited). Three lines at ≥860. Swept 320–1280: 0 issues. Rendered 8 widths, light and dark.
+- Hero lead: bold removed from "handles all the plumbing".
