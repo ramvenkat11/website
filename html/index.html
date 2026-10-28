@@ -56,40 +56,31 @@
     <div class="hero-bg"></div>
     <div class="container">
       <div class="hero-head as-head">
-        <h1 class="hero-claim"><span class="hero-line">Search2o agent server <span class="hero-accent">handles all the plumbing</span></span> <span class="hero-line hero-line-soft">behind building, discovering and running AI&nbsp;agents,</span> <span class="hero-line">so you can focus on <span class="hero-accent">solving business&nbsp;problems</span>.</span></h1>
+        <h1 class="hero-claim">Transform your enterprise AI with Search2o agent server</h1>
+        <p class="hero-lead">Developers build <a class="hero-attr" href="docs/introduction/search2o-agents.html">task-focused agents</a> corresponding to your existing workflows. Clients use just two calls: <a class="hero-attr" href="search.html"><code>search</code></a>, to find the agent built for a request, and <a class="hero-attr" href="runtime.html"><code>execAgent</code></a>, to run the agent on that request. Agent server <strong>handles all the plumbing</strong>, so you can focus on just the business logic.</p>
       </div>
-      <div class="appsrv" aria-label="The Search2o agent server with three parts: agent framework, search and agent runtime. Developers are on the left, users on the right. A developer builds, validates and publishes agents with the agent framework, and describes them in English to search, for example a Travel desk agent that arranges air travel and hotel stays. A user calls search with a request such as Book a trip to New York, and search returns the Travel desk agent. The user calls execAgent with the conversation, the agent and the request on the agent runtime, and receives the agent's output, for example Booked UA1191, departs 06:00.">
+      <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example an IT helpdesk agent that handles employees' IT support requests. Troubleshoots hardware and software, and manages accounts and access. The Search2o agent server holds hundreds of agents. A client calls search with a request such as My laptop keeps freezing, and search returns the IT helpdesk agent. The client calls execAgent with the conversation, the agent and the request, and receives the agent's output, for example Ticket IT-4821 opened. A technician will call at 2 pm.">
         <div class="as-side as-dev">
-          <div class="as-actor"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 4-4 16"/></svg></span><span class="nm">Developer</span></div>
-          <i class="rail"></i>
-        </div>
-        <div class="as-side as-user">
-          <div class="as-actor"><span class="nm">User</span><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span></div>
+          <div class="as-actor"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 4-4 16"/></svg></span><span class="nm">Developers</span></div>
           <i class="rail"></i>
         </div>
         <div class="as-srv" aria-hidden="true"></div>
         <div class="as-title"><span>Search2o agent server</span><code>pip install search2o</code></div>
-
-        <a class="as-part as-r1" href="framework.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5a2 2 0 0 0 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5a2 2 0 0 1 2-2 2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg>Agent framework</a>
+        <div class="as-agents"><span class="as-agents-lbl">Agents</span><div class="as-agent-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
         <div class="as-lane as-left as-r1">
           <div class="as-flow r"><span class="lbl">Build, validate, publish agents</span><i class="ln"></i></div>
         </div>
-
-        <a class="as-part as-r2 big" href="search.html"><span class="as-pn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Search</span><small>request <span class="as-arr-h">&rarr;</span><span class="as-arr-v" aria-hidden="true">&darr;</span> agent built for it</small></a>
+        <div class="as-lane as-right as-r1">
+          <div class="as-flow l"><span class="lbl"><code>search(<wbr><span class="args"><span class="nw"><span class="kw">"My laptop</span> <span class="kw">keeps freezing")</span></span></span></code></span><i class="ln"></i></div>
+          <div class="as-flow r dot"><i class="ln"></i><span class="sub"><b class="as-agent">IT helpdesk</b></span></div>
+        </div>
         <div class="as-lane as-left as-r2">
-          <div class="as-flow r"><span class="lbl">Describe agents in English</span><i class="ln"></i><span class="sub"><b class="as-agent">Travel desk</b>: Arranges air travel and hotel stays.</span></div>
+          <div class="as-flow r"><span class="lbl">Describe agents in English</span><i class="ln"></i><span class="sub"><b class="as-agent">IT helpdesk</b>: Handles employees&rsquo; IT support requests. Troubleshoots hardware and software, and manages accounts and access.</span></div>
         </div>
         <div class="as-lane as-right as-r2">
-          <div class="as-flow l"><span class="lbl"><code>search(<wbr><span class="args"><span class="nw"><span class="kw">"Book a trip</span> <span class="kw">to New York")</span></span></span></code></span><i class="ln"></i></div>
-          <div class="as-flow r dot"><i class="ln"></i><span class="sub"><b class="as-agent">Travel desk</b></span></div>
+          <div class="as-flow l"><span class="lbl"><code>execAgent(<wbr><span class="args">convId, <span class="kw"><b class="as-agent nw">IT helpdesk</b>,</span> <span class="nw"><span class="kw">"My laptop</span> <span class="kw">keeps freezing")</span></span></span></code></span><i class="ln"></i></div>
+          <div class="as-flow r dot"><i class="ln"></i><span class="sub">Ticket IT-4821 opened. <span class="kw">A technician</span> will call at 2&nbsp;pm.</span></div>
         </div>
-
-        <a class="as-part as-r3 last" href="runtime.html"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M15 2v2M9 2v2M15 20v2M9 20v2M2 9h2M2 15h2M20 9h2M20 15h2"/></svg>Agent runtime</a>
-        <div class="as-lane as-right as-r3">
-          <div class="as-flow l"><span class="lbl"><code>execAgent(<wbr><span class="args">convId, <span class="kw"><b class="as-agent nw">Travel desk</b>,</span> <span class="nw"><span class="kw">"Book a trip</span> <span class="kw">to New York")</span></span></span></code></span><i class="ln"></i></div>
-          <div class="as-flow r dot"><i class="ln"></i><span class="sub">Booked UA1191, <span class="kw">departs 06:00.</span></span></div>
-        </div>
-
       </div>
     </div>
   </section>
@@ -207,6 +198,7 @@
       </div>
     </div>
   </section>
+
   <section class="section" id="stateless">
     <div class="container">
       <div class="section-head center">
