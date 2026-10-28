@@ -1268,3 +1268,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Docs rebuilt (146 pages). The internal link check over html/ found 0 broken. Not uploaded.
 - publishing.html heading → "When the published agent changed after the draft was made"; the link in prompts.html was updated to the new anchor, and the docs were rebuilt. s2oserver/maintenance/data/docs_summaries/agent-definition__prompts.json still has the old anchor (another project, left alone).
 - pricing.html: "please" added to the usage-limits request and to the heading "Please tell us what you need".
+- "please" added: about.html contact paragraph (2), gettingstarted closing note, site.js termsNotAccepted and bogusEmail.
