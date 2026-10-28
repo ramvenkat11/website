@@ -1232,3 +1232,8 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Infrastructure section lead removed; heading only.
 - Hero links: "Build, validate, publish agents" → framework.html, convId → conversation.html; styled as underlined blue-ink links (.as-flow .lbl a). Sweep 320–1280 clean; rendered 1280/412.
 - Hero links revised (Ram): no underline (blue-ink only); convId unlinked; "Describe agents in English" → search.html; search( → search.html; execAgent( → runtime.html; Build… → framework.html. Conversation link to be handled separately. Sweep clean; rendered 1280.
+
+## 2026-10-28 Pre-deploy fixes and og7
+- html/404.html: Conversation added to the Product menu and footer.
+- Stale docs anchors fixed in docsrc (#the-bundled-gui → #the-bundled-ui, #the-gui-s-settings → #the-ui-s-settings) in agent-servers, search-settings, gui/how-the-gui-runs; docs rebuilt (146 pages). Link check over all html (root-relative resolved): 0 broken.
+- gen/ogcard.py now draws html/images/og7.png: wordmark + hairline + tagline "Agent server for the enterprise", heading "Transform your enterprise AI / with Search2o agent server" (72px, ink), rule, search2o.com. og:image → og7 and og:image:alt → "Search2o, agent server for the enterprise. Transform your enterprise AI with Search2o agent server." on all site pages, content/demo.html and the docs template. og6.png left on disk. Not committed, not uploaded.
