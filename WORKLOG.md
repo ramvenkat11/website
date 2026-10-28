@@ -1184,3 +1184,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Hero example changed from Travel desk to IT helpdesk ("Grants access and fixes laptop problems."; search/execAgent with "I can't open the finance dashboard"; result "Access requested. Your manager has been asked to approve."). aria-label updated. Text only, no renders. Not committed.
 - Fix: request now "I need access to the finance dashboard" ("I can't open..." would not clearly match IT helpdesk). Text only.
 - Hero example now the laptop one: "Resets access and fixes laptop problems."; search/execAgent "My laptop keeps freezing"; result "Ticket IT-4821 opened. A technician will call at 2 pm." Text only.
+
+## 2026-10-28 Hero heading and lead
+- index.html hero: h1 "Transform your enterprise AI with Search2o agent server"; new p.hero-lead with Ram's text (grammar: task-focused, a user's, colon + "which" clauses). Links: task-focused agents→demo-agents.html, search→docs/rest-api/search.html, execAgent→conversation.html, building→framework.html, discovering→search.html, running→runtime.html. CSS: .as-head .hero-lead max-width 780px, .hero-lead code mono. .hero-line/.hero-line-soft now unused on index. Rendered 7 widths light+dark: clean. Not committed.
