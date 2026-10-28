@@ -1260,3 +1260,9 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-28 — formal wording on site pages
 - Made the wording formal on about, pricing, search, framework, runtime and conversation (Ram: "do the same for the other pages except home"). Examples: "need not share" → "do not need to share", "on our side" → "in Search2o Cloud", "just JSON" → "JSON", "Get in touch" → "Contact us", "Click on" → "Click". 404 and demo-agents were already formal, so they are unchanged. The legal pages were left as they are.
 - Next: the docs, in a separate pass.
+
+## 2026-10-28 — formal wording across the docs
+- Five agents worked through docsrc/ by folder (72 files, 165 lines). Only informal wording was changed: pick→choose, need no→do not need, just/a few/straight/lands/on our side, rhetorical-question headings in comparisons/langchain, etc. Nothing in <pre>/<code> was touched.
+- My corrections to the agents' edits: controlled-execution kept "a few seconds and a few cents"; draft-with-ai "Enter at least a few words"; "cannot land out of sight" → "is always in view" (draft-with-ai, trace-and-validation).
+- 29 headings were renamed, so their generated anchors changed. No links to the old anchors were found in html/*.html, gen, ../ui1/src or ../s2oserver. development/publishing "When the agent changed under the draft" was kept because prompts.html links to it.
+- Docs rebuilt (146 pages). The internal link check over html/ found 0 broken. Not uploaded.
