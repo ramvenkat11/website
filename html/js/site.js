@@ -198,10 +198,10 @@ function resetAltcha(widget) {
     notHuman: "Human verification failed. Please try again.",
     didYouMean: "Please check your email address. Did you mean {didYouMean}?",
     invalidEmail: "Please enter a valid email address.",
-    bogusEmail: "Disposable email addresses cannot be used to create an account.",
+    bogusEmail: "Disposable email addresses cannot be used to create an account. Please use another email address.",
     freeEmailCurrentlyNotAllowed: "Public email domains are currently not allowed. Please use your work email address.",
     currentlySuspended: "New accounts are paused at the moment due to high volume. Please try again in a few days.",
-    termsNotAccepted: "You must accept the Terms of Service and Privacy Policy to create an account.",
+    termsNotAccepted: "Please accept the Terms of Service and Privacy Policy to create an account.",
       freeAccountExists: "An account already exists for this email address. " +
         "If you lost your license key, please contact us at support@search2o.com."
   };
