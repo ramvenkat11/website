@@ -20,7 +20,6 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/jetbrains-mono-latin.woff2" crossorigin>
 <link rel="stylesheet" href="styles/styles.css">
-<link rel="stylesheet" href="demo/demo.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DYRX3801TG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYRX3801TG');</script>
 </head>
@@ -42,8 +41,8 @@
       <details class="nav-menu">
         <summary class="navlink">Demo<svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
         <div class="nav-menu-list">
-          <a class="navlink" href="conversation.html#demo">Search and conversation</a>
-          <a class="navlink" href="framework.html#demo">Draft an agent with AI</a>
+          <a class="navlink" href="demo-search.html">Search and conversation</a>
+          <a class="navlink" href="demo-draft.html">Draft an agent with AI</a>
         </div>
       </details>
       <a class="navlink" href="docs/index.html">Docs</a>
@@ -203,18 +202,7 @@
       <div class="section-head">
         <span class="kicker">Live demo</span>
         <h2>Describe an agent and read the definition it produces</h2>
-        <p>Draft with AI writes the first draft of an agent from a sentence that describes what the agent should do. The same assistant is available inside the draft editor, where it can also change an agent that already exists. Try it here with a description of your own, or with one of the examples.</p>
-      </div>
-      <div class="fw-demo">
-        <div
-          data-s2o-demo="generate"
-          data-generate-title="Live demo &middot; Draft an agent with AI assistance."
-          data-generate-label=""
-          data-generate-placeholder="Say what the agent should do, or click one of the examples below."
-          data-generate-hint=""
-          data-generate-button="Write the agent"
-          data-generate-example="An agent that looks up an order by its number, checks whether it has shipped, and drafts a status email to the customer."
-        ></div>
+        <p>Draft with AI writes the first draft of an agent from a sentence that describes what the agent should do. The same assistant is available inside the draft editor, where it can also change an agent that already exists. Try it in the <a href="demo-draft.html">Draft with AI demo</a>, with a description of your own or with one of the examples.</p>
       </div>
     </div>
   </section>
@@ -270,6 +258,8 @@
           <a href="runtime.html">Agent runtime</a>
           <a href="search.html">Search</a>
           <a href="conversation.html">Conversation</a>
+          <a href="demo-search.html">Search and conversation demo</a>
+          <a href="demo-draft.html">Draft with AI demo</a>
         </div>
         <div class="fcol">
           <h4>Resources</h4>
@@ -299,7 +289,6 @@
 
 <script src="js/config.js"></script>
 <script src="js/site.js"></script>
-<script type="module" src="demo/demo.js"></script>
 <script>
 (function () {
   function draw(fig) {

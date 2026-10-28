@@ -20,7 +20,6 @@
 <link rel="preload" as="font" type="font/woff2" href="fonts/inter-latin.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="fonts/jetbrains-mono-latin.woff2" crossorigin>
 <link rel="stylesheet" href="styles/styles.css">
-<link rel="stylesheet" href="demo/demo.css">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-DYRX3801TG"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-DYRX3801TG');</script>
 </head>
@@ -42,8 +41,8 @@
       <details class="nav-menu">
         <summary class="navlink">Demo<svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
         <div class="nav-menu-list">
-          <a class="navlink" href="conversation.html#demo">Search and conversation</a>
-          <a class="navlink" href="framework.html#demo">Draft an agent with AI</a>
+          <a class="navlink" href="demo-search.html">Search and conversation</a>
+          <a class="navlink" href="demo-draft.html">Draft an agent with AI</a>
         </div>
       </details>
       <a class="navlink" href="docs/index.html">Docs</a>
@@ -159,19 +158,7 @@
       <div class="section-head">
         <span class="kicker">Live demo</span>
         <h2>Ask for something, then follow up</h2>
-        <p>This demo runs in a live Search2o account with 200 agents, from human resources and finance to engineering and sales. The matched agent runs and answers with mock data. Ask a follow-up and watch the conversation move to another agent that knows what the first one found.</p>
-      </div>
-      <div class="fw-demo">
-        <div
-          data-s2o-demo="search"
-          data-search-title="Live demo"
-          data-search-placeholder="Ask for something&hellip;"
-          data-search-placeholder-followup="Ask a follow-up question. The matched agent will run in the same context."
-          data-search-placeholder-answer="Answer the question above to continue"
-          data-search-hint=""
-          data-search-empty="This demo runs live in a Search2o account with [200 agents](demo-agents.html). The agents use mock data to demonstrate framework features."
-          data-search-disclaimer="This is mock data from a real agent. Click the agent name to see what it does."
-        ></div>
+        <p>The <a href="demo-search.html">search and conversation demo</a> runs in a live Search2o account with 200 agents, from human resources and finance to engineering and sales. Ask for something, then ask a follow-up and watch the conversation move to another agent that knows what the first one found.</p>
       </div>
     </div>
   </section>
@@ -209,6 +196,8 @@
           <a href="runtime.html">Agent runtime</a>
           <a href="search.html">Search</a>
           <a href="conversation.html">Conversation</a>
+          <a href="demo-search.html">Search and conversation demo</a>
+          <a href="demo-draft.html">Draft with AI demo</a>
         </div>
         <div class="fcol">
           <h4>Resources</h4>
@@ -238,6 +227,5 @@
 
 <script src="js/config.js"></script>
 <script src="js/site.js"></script>
-<script type="module" src="demo/demo.js"></script>
 </body>
 </html>
