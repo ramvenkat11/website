@@ -1195,3 +1195,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Hero lead last sentence: "Agent server handles all the plumbing, so you can focus on just the business logic." (building/discovering/running links gone).
 - Hero lead: task-focused agents now links docs/introduction/search2o-agents.html.
 - Hero lead: "execAgent, which runs the agent safely"; search→search.html, execAgent→runtime.html.
+- Hero lead: "search, to discover an agent built for the request".
