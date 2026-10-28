@@ -1,6 +1,5 @@
 """Draws content/linkedin-banner2.png, the LinkedIn company page cover (4200x700, 6:1): the wordmark
-art from gen/assets/wordmark.png, and the home page headline with its gradient
-accent. LinkedIn shows it at 1128x191 and overlays the page logo on the bottom-left corner, so the
+art from gen/assets/wordmark.png with the tagline beneath it, and the home page heading. LinkedIn shows it at 1128x191 and overlays the page logo on the bottom-left corner, so the
 content sits in the middle band with wide margins. Run with the system python3 (needs PIL)."""
 import math, os
 from PIL import Image, ImageDraw, ImageFont
@@ -39,10 +38,12 @@ for y in range(wm.height):
 WM_W = 600
 wm = wm.resize((WM_W, round(wm.height * WM_W / wm.width)), Image.LANCZOS)
 left = 760
-block_h = wm.height
+TAG = "Agent server for the enterprise"; TAG_SIZE = 46; TAG_GAP = 34
+block_h = wm.height + TAG_GAP + TAG_SIZE
 wm_top = round((H - block_h) / 2)
 img.alpha_composite(wm, (left, wm_top))
 d = ImageDraw.Draw(img)
+d.text((left, wm_top + wm.height + TAG_GAP + TAG_SIZE), TAG, font=medium(TAG_SIZE), fill=MUTED, anchor="ls")
 
 # vertical hairline between the wordmark and the headline
 xh = left + WM_W + 120
@@ -50,9 +51,8 @@ d.rectangle([xh, wm_top - 10, xh + 3, wm_top + block_h + 10], fill=HAIR)
 
 # headline: segments per line; "ink" and "muted" are flat, "accent" takes the blue-to-teal gradient over its own span
 LINES = [
-    [("Search2o agent server ", "ink"), ("handles all the plumbing", "accent")],
-    [("behind building, discovering and running AI agents,", "muted")],
-    [("so you can focus on ", "ink"), ("solving business problems", "accent"), (".", "ink")],
+    [("Transform your enterprise AI", "ink")],
+    [("with Search2o agent server", "ink")],
 ]
 def line_width(font, segs): return sum(font.getlength(t) for t, _ in segs)
 def draw_lines(img, x0, top, f, pitch, size):
@@ -73,7 +73,7 @@ def draw_lines(img, x0, top, f, pitch, size):
                 d.text((x, y), t, font=f, fill=INK if kind == "ink" else MUTED)
             x += w
 x0 = xh + 120
-size = 88
+size = 120
 while max(line_width(bold(size), l) for l in LINES) > W - 120 - x0: size -= 1
 f = bold(size); pitch = round(size * 1.27)
 n = len(LINES)

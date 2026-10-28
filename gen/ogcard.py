@@ -1,12 +1,12 @@
-"""Draws the social card html/images/og6.png (1200x630): the wordmark art from gen/assets/wordmark.png,
-the home page headline with its gradient accents, and the address. Run with the system python3 (needs PIL)."""
+"""Draws the social card html/images/og7.png (1200x630): the wordmark art from gen/assets/wordmark.png,
+the tagline, the home page heading, and the address. Run with the system python3 (needs PIL)."""
 from PIL import Image, ImageDraw, ImageFont, ImageChops
 import math
 import os
 S = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
 W, H = 1200, 630
 BASE = (9, 15, 29); GLOW = (28, 48, 93); INK = (238, 243, 251); MUTED = (138, 154, 182)
-BLUE = (77, 141, 255); TEAL = (45, 212, 191); RULE = (34, 44, 66)
+BLUE = (77, 141, 255); TEAL = (45, 212, 191); HAIR = (58, 74, 110); RULE = (34, 44, 66)
 FONT = "/System/Library/Fonts/HelveticaNeue.ttc"
 bold = lambda s: ImageFont.truetype(FONT, s, index=1)
 medium = lambda s: ImageFont.truetype(FONT, s, index=10)
@@ -37,12 +37,15 @@ for y in range(wm.height):
 wm = wm.resize((440, round(331 * 440 / 1810)), Image.LANCZOS)
 img.alpha_composite(wm, (97, 96))
 d = ImageDraw.Draw(img)
+wm_bottom = 96 + wm.height  # the wordmark's baseline (no descenders)
+# hairline + tagline on the wordmark's baseline
+d.rectangle([568, 96, 569, wm_bottom - 1], fill=HAIR)
+d.text((603, wm_bottom), "Agent server for the enterprise", font=medium(34), fill=MUTED, anchor="ls")
 
 # headline: segments per line; "ink" and "muted" are flat, "accent" takes the blue-to-teal gradient over its own span
 LINES = [
-    [("Search2o agent server ", "ink"), ("handles all the plumbing", "accent")],
-    [("behind building, discovering and running AI agents,", "muted")],
-    [("so you can focus on ", "ink"), ("solving business problems", "accent"), (".", "ink")],
+    [("Transform your enterprise AI", "ink")],
+    [("with Search2o agent server", "ink")],
 ]
 def line_width(font, segs): return sum(font.getlength(t) for t, _ in segs)
 def draw_lines(img, x0, top, f, pitch, size):
@@ -62,7 +65,7 @@ def draw_lines(img, x0, top, f, pitch, size):
             else:
                 d.text((x, y), t, font=f, fill=INK if kind == "ink" else MUTED)
             x += w
-size = 60
+size = 72
 while max(line_width(bold(size), l) for l in LINES) > 1006: size -= 1
 f = bold(size); pitch = round(size * 1.3)
 n = len(LINES); top = round((300 + 462) / 2 - n * pitch / 2) + 6
@@ -72,5 +75,5 @@ draw_lines(img, 97, top, f, pitch, size)
 d = ImageDraw.Draw(img)
 d.line([(97, 530), (1103, 530)], fill=RULE, width=1)
 d.text((97, 572), "search2o.com", font=bold(24), fill=INK, anchor="ls")
-out = img.convert("RGB"); out.save(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "html", "images", "og6.png"), optimize=True)
+out = img.convert("RGB"); out.save(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "html", "images", "og7.png"), optimize=True)
 print("saved", out.size, "size", size, "widest line", round(max(line_width(f, l) for l in LINES)), "of 1006")

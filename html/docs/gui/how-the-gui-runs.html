@@ -11,10 +11,10 @@
 <meta property="og:description" content="The UI is Search2o’s official interface: a single-page application bundled with the agent server. It uses the server’s REST API and nothing else, and you can…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/gui/how-the-gui-runs.html">
-<meta property="og:image" content="https://search2o.com/images/og6.png">
+<meta property="og:image" content="https://search2o.com/images/og7.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Search2o agent server handles all the plumbing behind building, discovering and running AI agents, so you can focus on solving business problems.">
+<meta property="og:image:alt" content="Search2o, agent server for the enterprise. Transform your enterprise AI with Search2o agent server.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="../../fonts/inter-latin.woff2" crossorigin>
@@ -73,7 +73,7 @@
 </tbody></table></div>
 
 <h2 id="settings-from-the-agent-server">Settings from the agent server</h2>
-<p>Everything else the UI needs, the REST timeout, how long a notification stays visible and the search behavior, is the <code>uiConfig</code> object of the <a href="../system-management/agent-servers.html#the-gui-s-settings">agent server configuration</a>. The UI fetches it with <code>POST /api/auth/getUiConfig</code> each time the page loads; the call needs no sign-in. A change takes effect when the agent server restarts and each user reloads the UI.</p>
+<p>Everything else the UI needs, the REST timeout, how long a notification stays visible and the search behavior, is the <code>uiConfig</code> object of the <a href="../system-management/agent-servers.html#the-ui-s-settings">agent server configuration</a>. The UI fetches it with <code>POST /api/auth/getUiConfig</code> each time the page loads; the call needs no sign-in. A change takes effect when the agent server restarts and each user reloads the UI.</p>
 
 <h2 id="your-own-interface">Your own interface</h2>
 <p>The UI is one client of the REST API, not a privileged one. A search box in your intranet, a chat bot, or a full application of your own can offer the same experience; see <a href="../rest-api/clients.html">Creating your own client</a> and <a href="../chat-integrations/index.html">Chat integrations</a>.</p>

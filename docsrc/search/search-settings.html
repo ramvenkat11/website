@@ -15,7 +15,7 @@
 <p>A follow-up is a query typed into a conversation that already exists. An interface can search it like a new query and keep the agent that answered last as a fallback or among the choices, or it can keep the whole conversation on the agent that started it. See <a href="how-matching-works.html#follow-ups">Follow-ups</a>.</p>
 
 <h2>The bundled UI</h2>
-<p>The UI reads its behavior from the <code>uiConfig</code> object of the <a href="../system-management/agent-servers.html#the-gui-s-settings">agent server configuration</a> it is served by, so each agent server in an account can behave differently. By default the best match runs at once, and a follow-up is searched again with the previous agent as the fallback. A change takes effect when the agent server restarts and each user reloads the UI.</p>
+<p>The UI reads its behavior from the <code>uiConfig</code> object of the <a href="../system-management/agent-servers.html#the-ui-s-settings">agent server configuration</a> it is served by, so each agent server in an account can behave differently. By default the best match runs at once, and a follow-up is searched again with the previous agent as the fallback. A change takes effect when the agent server restarts and each user reloads the UI.</p>
 <p><code>search.searchBehavior</code>, for a new search:</p>
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Value</th><th>What happens</th></tr></thead>
