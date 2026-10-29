@@ -1340,3 +1340,8 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 
 ## 2026-10-29 — Trace demo in the footer
 - Footer Product column gets "Trace demo" → demo-trace.html after "Draft with AI demo" on all site pages, 404.html and the four legal pages. Not deployed.
+
+## 2026-10-29 — slim footer
+- Ram questioned repeating the header in the footer (header is sticky). Footer on all 17 site/legal/404 pages is now: brand + tagline, one `nav.footer-links` row (Contact, Terms of Service, Privacy Policy, Software License, Intellectual Property), copyright line. Product/Demo/Resources/Company columns removed (briefly had a Demo column with "Draft with AI" / "Chat with agents" / "Trace an agent run").
+- styles.css: `.footer-cols`/`.fcol` rules replaced by `.footer-links` (flex wrap, gap 8px 28px, nowrap links); `.footer-main` now flex-wrap with gap 32px 40px; the ≤640 `.footer-cols` line and the temporary 1000/1100 footer breakpoints removed.
+- Rendered 8 widths light/dark; footer sweep 320–1280 clean on index and legal/terms (legal pages' header overflow at 960–1100 is the old, separate issue). Link check 0 broken. Not deployed.
