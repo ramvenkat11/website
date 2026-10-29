@@ -1372,3 +1372,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-29 — infrastructure boxes: 24
 - index.html #framework-runtime now has Ram's 24 boxes in his order. New: Structured output → docs/commands/llm.html (no anchor exists), Guardrails → docs/gui/guardrails.html, Progress → docs/commands/progress.html, Agent editor (Ram dropped "with code complete") → docs/development/code-editor.html; lucide-style icons (braces, shield-check, loader, code). Figure aria-label lists the four too.
 - Six rows of four on desktop, twelve of two on phones. Rendered 8 widths light/dark; sweep 320–1280 clean. Not deployed.
+- Then (Ram): "Structured output" removed; in its slot (3rd) is "Resumable parallel tasks" → docs/commands/parallel.html#asking-from-a-branch (split icon) — parallel branches that pause to ask, and resume only the paused ones. aria-label updated. Rendered 8 widths light/dark; sweep clean. Not deployed.
