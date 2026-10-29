@@ -1350,3 +1350,7 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Cause: the Product dropdown (2026-10-24) was added to html/*.html only, which missed html/legal/; every later header change followed the same list, so the four legal pages kept the old flat nav (and its 960–1100 overflow).
 - html/legal/{terms,privacy,license,intellectual}.html now carry the about.html header (Product + Demo dropdowns, Docs, Pricing, About, Get started) with ../ paths and no aria-current. site.js already loaded there.
 - Sweep 320–1280: terms, privacy, intellectual clean; license overflows 1px at 320 only, from its own body content (same with the header hidden) — pre-existing. Header rendered 8 widths light/dark. Not deployed.
+
+## 2026-10-29 — license page 320px overflow
+- Cause: the plain-text address "https://search2o.com/legal/privacy.html." in license.html:123 cannot break and passed the edge by 1px at 320. Addresses in the legal text are deliberately full (the license is read outside the site); wording unchanged.
+- styles.css `.legal-body p, .legal-body li` gained `overflow-wrap: break-word` (breaks only a word that cannot fit). Swept all four legal pages 320–1280 step 8: clean. Not deployed.
