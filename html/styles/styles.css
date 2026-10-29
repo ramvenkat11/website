@@ -217,8 +217,8 @@ p { margin: 0; }
 .hero-lead { margin: 0; color: var(--body); font-size: 17px; font-weight: 500; line-height: 1.55; }
 .hero-attrs { margin: 12px 0 0; color: var(--body); font-size: 17px; font-weight: 500; line-height: 1.55; }
 .hero-head strong { color: var(--ink); font-weight: 650; }
-.hero-attr { color: var(--blue-ink); }
-.hero-attr:hover { text-decoration: underline; text-underline-offset: 3px; }
+.hero-attr { color: var(--blue-ink); font-weight: 600; text-decoration: none; background: color-mix(in srgb, var(--blue) 10%, transparent); padding: 1px 4px; margin: 0 -2px; border-radius: 5px; -webkit-box-decoration-break: clone; box-decoration-break: clone; transition: background-color .15s; }
+.hero-attr:hover { background: color-mix(in srgb, var(--blue) 20%, transparent); }
 .hero-term { color: var(--blue-ink); font-weight: 600; white-space: nowrap; }
 .hero-term:hover { text-decoration: underline; text-underline-offset: 3px; }
 .hero-cta { margin: 30px 0 0; color: var(--body); font-size: 20px; font-weight: 500; line-height: 1.5; }
