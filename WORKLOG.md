@@ -1296,3 +1296,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-28 — scripts/refresh-demo-agents.sh
 - New script copies ../s2oserver/docs/demo/agents.json to html/demo-agents.json and mirrors definitions/*.jsonc into html/demo-agents/ (rsync --delete; S2OSERVER overrides the path), then prints git status for those paths.
 - Ran it: agents.json unchanged; all 200 .jsonc changed (182+/1166-) because s2oserver moved prompts into separate *.prompts.json files, so "Show source" on demo-agents.html now shows `"prompt": "default"` instead of the prompt text. The .prompts.json files are not copied. Ram to decide whether to copy them too, and to commit.
+
+## 2026-10-29 — home hero sentence
+- html/index.html hero lead: "Agent server handles all the plumbing behind building and running the agents, so you can focus on the business logic." The lead is now four lines at 860 and wider (was three); its last line is "focus on the business logic." Not deployed.
