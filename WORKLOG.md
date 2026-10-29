@@ -1305,3 +1305,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Demo dropdown gets a third item "Trace an agent run" on all site pages, 404.html and gen/build.py (docs rebuilt).
 - gen/build.py SITE_PAGES now lists demo-search, demo-draft and demo-trace; the sitemap is generated, so the earlier hand-added demo entries had been lost.
 - Rendered 8 widths light/dark and the open menu; sweep 320–1280 clean; link check clean. Footer Product column not changed (has the other two demos). Live run of the widget not tried. Not deployed.
+
+## 2026-10-29 — Demo dropdown order
+- Demo dropdown order is now: Draft an agent with AI, Search and conversation, Trace an agent run (all site pages, 404.html, gen/build.py; docs rebuilt). Footer unchanged. Not deployed.
