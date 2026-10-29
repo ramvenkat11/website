@@ -1320,3 +1320,8 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 
 ## 2026-10-29 — hero first sentence
 - index.html hero lead now opens "Developers turn your existing business workflows into task-focused agents." (link kept on "task-focused agents"). Line breaks unchanged in count: four lines at 860+, last "focus on the business logic." Not deployed.
+
+## 2026-10-29 — hero paragraph rewritten (Ram's text)
+- index.html hero lead is Ram's new three sentences ("Developers turn… / All the agents work as one system with just two calls: search that matches… and execAgent to run… / Agent server handles all the plumbing behind building, discovering and running…"). New link: discovering → search.html (search also → search.html). "business&nbsp;logic" tied to stop a one-word last line at 375–384.
+- `.hero-attr` chip: padding 1px 4px with margin 0 -2px so the following comma/full stop sits against the tint.
+- Rendered 8 widths light/dark; sweep 320–1280 clean. Not deployed.
