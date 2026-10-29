@@ -1345,3 +1345,8 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Ram questioned repeating the header in the footer (header is sticky). Footer on all 17 site/legal/404 pages is now: brand + tagline, one `nav.footer-links` row (Contact, Terms of Service, Privacy Policy, Software License, Intellectual Property), copyright line. Product/Demo/Resources/Company columns removed (briefly had a Demo column with "Draft with AI" / "Chat with agents" / "Trace an agent run").
 - styles.css: `.footer-cols`/`.fcol` rules replaced by `.footer-links` (flex wrap, gap 8px 28px, nowrap links); `.footer-main` now flex-wrap with gap 32px 40px; the ≤640 `.footer-cols` line and the temporary 1000/1100 footer breakpoints removed.
 - Rendered 8 widths light/dark; footer sweep 320–1280 clean on index and legal/terms (legal pages' header overflow at 960–1100 is the old, separate issue). Link check 0 broken. Not deployed.
+
+## 2026-10-29 — legal pages get the site header
+- Cause: the Product dropdown (2026-10-24) was added to html/*.html only, which missed html/legal/; every later header change followed the same list, so the four legal pages kept the old flat nav (and its 960–1100 overflow).
+- html/legal/{terms,privacy,license,intellectual}.html now carry the about.html header (Product + Demo dropdowns, Docs, Pricing, About, Get started) with ../ paths and no aria-current. site.js already loaded there.
+- Sweep 320–1280: terms, privacy, intellectual clean; license overflows 1px at 320 only, from its own body content (same with the header hidden) — pre-existing. Header rendered 8 widths light/dark. Not deployed.
