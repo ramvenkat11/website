@@ -1317,3 +1317,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-29 — hero lead links restyled (no underline)
 - Ram disliked the gradient links and wants no underline. `.hero-attr` is now var(--blue-ink) text at 600 on a soft blue tint (color-mix blue 10%, padding 1px 5px, radius 5px, box-decoration-break clone); hover deepens the tint to 20%. All five links look the same.
 - Rendered 8 widths light/dark; sweep 320–1280 clean. Not deployed.
+
+## 2026-10-29 — hero first sentence
+- index.html hero lead now opens "Developers turn your existing business workflows into task-focused agents." (link kept on "task-focused agents"). Line breaks unchanged in count: four lines at 860+, last "focus on the business logic." Not deployed.
