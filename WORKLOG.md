@@ -1313,3 +1313,7 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - styles.css `.hero-attr` (hero lead links, index only) now uses the blue→teal gradient text of `.hero-accent` instead of var(--blue-ink); hover underline in var(--blue).
 - index.html hero lead: execAgent → conversation.html (was runtime.html); "building" → framework.html and "running" → runtime.html are new links.
 - Rendered 8 widths light/dark; sweep 320–1280 clean. Not deployed.
+
+## 2026-10-29 — hero lead links restyled (no underline)
+- Ram disliked the gradient links and wants no underline. `.hero-attr` is now var(--blue-ink) text at 600 on a soft blue tint (color-mix blue 10%, padding 1px 5px, radius 5px, box-decoration-break clone); hover deepens the tint to 20%. All five links look the same.
+- Rendered 8 widths light/dark; sweep 320–1280 clean. Not deployed.
