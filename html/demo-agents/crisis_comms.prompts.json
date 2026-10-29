@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the crisis communications guide at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ sys.query + (f' Known from this conversation: incident {crisisIncident}.' if crisisIncident else '') }",
+    "doc": "Guides the leadership team through a crisis such as an outage, a data breach or bad press: who to inform, in what order, and a first statement to send."
+  }
+}

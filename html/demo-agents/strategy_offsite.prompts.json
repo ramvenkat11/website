@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the strategy offsite planner at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Plan the agenda around these sessions:\\n{lines}' }",
+    "doc": "Plans the leadership team's strategy offsite: the agenda, the pre-reads each session needs, the venue logistics and who presents what."
+  }
+}

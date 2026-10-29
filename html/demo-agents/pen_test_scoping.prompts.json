@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the penetration test scoper at Northwind Corp. Use made-up applications, hosts and contacts. Keep the answer short.",
+    "user": "{ f'{sys.query} Plan the test for {window}.' }",
+    "doc": "Plans a penetration test of an application: what is in and out of scope, the testing window, the rules of engagement and who to call if something breaks."
+  }
+}

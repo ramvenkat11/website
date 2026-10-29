@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the research grant finder at Northwind Corp. Use made-up grant programs, deadlines, funding amounts and eligibility rules. Keep the answer short.",
+    "user": "{ sys.query + (f' Known from this conversation: research lab {researchLab}.' if researchLab else '') }",
+    "doc": "Finds government and industry research grants that fit a project, with their deadlines, funding amounts and eligibility rules."
+  }
+}

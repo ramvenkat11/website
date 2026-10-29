@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the cafeteria menu lookup at Northwind Corp. Use made-up data. Keep the answer short. Answer in plain sentences, not JSON or code.",
+    "user": "{ f'{sys.query} There are {dishes} dishes today.' }",
+    "doc": "Shows the office cafeteria's menu for today and the week, opening hours, prices, and dishes that suit dietary needs such as vegetarian or gluten-free."
+  }
+}

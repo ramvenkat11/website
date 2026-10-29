@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the load test planner at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Use this figure: target requests per second at peak = {figure}.' }",
+    "doc": "Plans a performance or load test: the traffic to simulate, the target response times and the pass or fail thresholds for a service."
+  }
+}

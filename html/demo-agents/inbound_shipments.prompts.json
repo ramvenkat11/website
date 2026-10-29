@@ -1,0 +1,13 @@
+{
+  "extract": {
+    "scope": "local",
+    "system": "Read the user's message and the facts already known from this conversation. Call facts with the warehouse the user asks about. Use what the message says when it says it, otherwise the known fact. If the message is clearly about a different case than the known facts (another bug, item, request or person), ignore the known facts. Leave a field empty when neither has it. Never guess.",
+    "user": "{ f'Message: {sys.query}\\nKnown warehouse: {warehouse or \"unknown\"}' }",
+    "doc": "Finds the warehouse in the message or in what the conversation already knows."
+  },
+  "default": {
+    "system": "{ f'You are the inbound shipment tracker at {company}. Use made-up data. Keep the answer short.' }",
+    "user": "{ sys.query + focus }",
+    "doc": "Tracks shipments coming from suppliers to our warehouses: where they are, when they will arrive and whether they are delayed."
+  }
+}

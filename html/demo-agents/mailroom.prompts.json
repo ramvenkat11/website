@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the mailroom package notifier at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ sys.query }",
+    "doc": "Tells an employee when a package or letter has arrived for them in the mailroom and where to collect it."
+  }
+}

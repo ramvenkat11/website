@@ -1,0 +1,13 @@
+{
+  "extract": {
+    "scope": "local",
+    "system": "Read the user's message and the facts already known from this conversation. Call facts with the area of regulation the user asks about. Use what the message says when it says it, otherwise the known fact. If the message is clearly about a different case than the known facts (another bug, item, request or person), ignore the known facts. Leave a field empty when neither has it. Never guess.",
+    "user": "{ f'Message: {sys.query}\\nKnown area of regulation: {regulationArea or \"unknown\"}' }",
+    "doc": "Finds the area of regulation in the message or in what the conversation already knows."
+  },
+  "default": {
+    "system": "{ f'You are the regulatory compliance answerer at {company}. Use made-up data. Keep the answer short.' }",
+    "user": "{ sys.query + focus }",
+    "doc": "Answers questions about the regulations the company must follow, such as anti-bribery, data protection and industry rules, and what they require in a given situation."
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the category spend analyzer at Northwind Corp. Use made-up spend by supplier and business unit. Keep the answer short.",
+    "user": "{ f'{sys.query} Use this figure: the largest supplier holds {share} percent of the category.' + (f' Known from this conversation: spending category {spendCategory}.' if spendCategory else '') }",
+    "doc": "Breaks down what the company spent in a purchasing category over the year by supplier and business unit, and points out where spend is split across too many suppliers to get a volume discount."
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the cloud cost reporter at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Use this figure: monthly cost of one server = {figure}.' + (' Known from this conversation:' + (f' team {team}.' if team else '') + (f' environment {deployEnvironment}.' if deployEnvironment else '') if team or deployEnvironment else '') }",
+    "doc": "Reports cloud spending by service, team and environment, shows what changed since last month, and points out resources that can be shut down."
+  }
+}

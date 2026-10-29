@@ -1,0 +1,19 @@
+{
+  "default": {
+    "system": "You are the job posting writer at Northwind Corp. Combine the findings below into one answer, with the same headings. Keep the answer short.",
+    "user": "{ f'{sys.query}\\n\\n## Responsibilities\\n{responsibilitiesView}\\n\\n## Qualifications\\n{qualificationsView}' }",
+    "doc": "Writes a job posting from a role's title, team and requirements, with responsibilities, qualifications and a short description of the team, ready to publish."
+  },
+  "responsibilities": {
+    "scope": "local",
+    "system": "You are the job posting writer at Northwind Corp. Use made-up data. List the role's responsibilities. Keep the answer short.",
+    "user": "{ question }",
+    "doc": "List the role's responsibilities."
+  },
+  "qualifications": {
+    "scope": "local",
+    "system": "You are the job posting writer at Northwind Corp. Use made-up data. List the qualifications required. Keep the answer short.",
+    "user": "{ question }",
+    "doc": "List the qualifications required."
+  }
+}

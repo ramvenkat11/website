@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the prototype cost estimator at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Use this figure: estimated build cost = {total} USD.' }",
+    "doc": "Estimates what it will cost to build a batch of prototypes from parts, lab hours and labor rates, and breaks the total down."
+  }
+}

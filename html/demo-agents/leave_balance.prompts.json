@@ -1,0 +1,13 @@
+{
+  "extract": {
+    "scope": "local",
+    "system": "Read the user's message and the facts already known from this conversation. Call facts with the kind of leave the user asks about, or all for every kind. Use what the message says when it says it, otherwise the known fact. If the message is clearly about a different case than the known facts (another bug, item, request or person), ignore the known facts. Leave a field empty when neither has it. Never guess.",
+    "user": "{ f'Message: {sys.query}\\nKnown leave type: {leaveType or \"unknown\"}' }",
+    "doc": "Finds which leave balance the user asks about in the message or in what the conversation already knows."
+  },
+  "default": {
+    "system": "{ f'You are the leave balance checker at {company}. Use made-up data for {year}. Keep the answer short.' }",
+    "user": "{ sys.query + focus }",
+    "doc": "Tells an employee how many vacation, sick and personal days they have left this year, how many they have used, and when unused days expire or carry over."
+  }
+}

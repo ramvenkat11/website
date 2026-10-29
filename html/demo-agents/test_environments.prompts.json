@@ -1,0 +1,13 @@
+{
+  "extract": {
+    "scope": "local",
+    "system": "Read the user's message and the facts already known from this conversation. Call facts with the test environment the user wants to book and whether it is production. Use what the message says when it says it, otherwise the known fact. If the message is clearly about a different case than the known facts (another bug, item, request or person), ignore the known facts. Leave a field empty when neither has it. Never guess.",
+    "user": "{ f'Message: {sys.query}\\nKnown test environment: {testEnvironment or \"unknown\"}' }",
+    "doc": "Finds the test environment in the message or in what the conversation already knows."
+  },
+  "default": {
+    "system": "You are the test environment booking assistant at Northwind Corp. Use made-up data. Testing is not allowed in production; if asked for production, refuse and suggest QA-1, QA-2 or Staging. Keep the answer short.",
+    "user": "{ f'{sys.query} (environment: {testEnvironment})' }",
+    "doc": "Books a shared QA or staging environment for a test run, shows who has it now and when it frees up, and refuses test runs against production."
+  }
+}

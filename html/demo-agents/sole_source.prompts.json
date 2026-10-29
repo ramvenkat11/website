@@ -1,0 +1,13 @@
+{
+  "extract": {
+    "scope": "local",
+    "system": "Read the user's message and the facts already known from this conversation. Call facts with the purchase amount in US dollars. Use what the message says when it says it, otherwise the known fact. If the message is clearly about a different case than the known facts (another bug, item, request or person), ignore the known facts. Leave a field empty when neither has it. Never guess.",
+    "user": "{ f'Message: {sys.query}\\nKnown purchase amount in US dollars: {purchaseAmount if purchaseAmount > 0 else \"unknown\"}' }",
+    "doc": "Finds the purchase value in the message or in what the conversation already knows."
+  },
+  "default": {
+    "system": "You are the sole-source justification writer at Northwind Corp. Use made-up details. Keep the answer short.",
+    "user": "{ f'{sys.query} (purchase value: ${round(purchaseAmount)})' }",
+    "doc": "Writes the justification needed to buy from a single supplier without competitive bids, explaining why no other supplier can meet the need, for purchases within the sole-source limit."
+  }
+}

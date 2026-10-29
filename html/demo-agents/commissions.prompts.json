@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the sales commission calculator at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Use this figure: commission = {figure}.' }",
+    "doc": "Calculates a salesperson's commission for a quarter from their closed deals, quota attainment and commission plan, and explains each line of the payout."
+  }
+}

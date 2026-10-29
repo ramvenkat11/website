@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the defect metrics reporter at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Use this figure: defect escape rate percent = {figure}.' + (f' Known from this conversation: product area {productArea}.' if productArea else '') }",
+    "doc": "Reports quality numbers for a product or sprint: bugs found and fixed, open defects by severity, and how many defects escaped to production."
+  }
+}

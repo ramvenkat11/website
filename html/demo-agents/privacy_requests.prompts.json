@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the personal data request handler at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Use this figure: days left to respond = {figure}.' }",
+    "doc": "Handles a person's request to see, correct or delete the personal data the company holds about them, and tracks the legal response deadline."
+  }
+}

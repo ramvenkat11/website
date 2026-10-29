@@ -5,8 +5,9 @@
 #
 # html/demo-agents.json       <- s2oserver docs/demo/agents.json (the list demo-agents.html draws)
 # html/demo-agents/*.jsonc    <- s2oserver docs/demo/definitions/*.jsonc (the "Show source" files)
+# html/demo-agents/*.prompts.json <- s2oserver docs/demo/definitions/*.prompts.json (the "Show prompts" files)
 #
-# The definitions folder is mirrored: a .jsonc that no longer exists in s2oserver is removed here.
+# The definitions folder is mirrored: a file that no longer exists in s2oserver is removed here.
 # S2OSERVER overrides the location of the s2oserver checkout.
 set -euo pipefail
 
@@ -19,7 +20,7 @@ HTML="$ROOT/html"
 [ -d "$SOURCE/definitions" ] || { echo "Not found: $SOURCE/definitions" >&2; exit 1; }
 
 cp "$SOURCE/agents.json" "$HTML/demo-agents.json"
-rsync -a --delete --itemize-changes --include "*.jsonc" --exclude "*" \
+rsync -a --delete --itemize-changes --include "*.jsonc" --include "*.prompts.json" --exclude "*" \
     "$SOURCE/definitions/" "$HTML/demo-agents/"
 
 echo

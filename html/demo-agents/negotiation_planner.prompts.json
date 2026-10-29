@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the supplier negotiation planner at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Use this figure: target price = {target} dollars against a quote of 48000.' }",
+    "doc": "Prepares a buyer for a price negotiation with a supplier: a target price, a walk-away point, the arguments to use and the concessions to ask for in return."
+  }
+}

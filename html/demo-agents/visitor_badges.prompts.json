@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the visitor badge registration at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Use this figure: hours on site = {figure}.' }",
+    "doc": "Registers a visitor coming to the office, prints their badge details, and tells the host when they arrive."
+  }
+}

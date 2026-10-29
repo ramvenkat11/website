@@ -1,0 +1,13 @@
+{
+  "extract": {
+    "scope": "local",
+    "system": "Read the user's message and the facts already known from this conversation. Call facts with what the user wants to check for accessibility. Use what the message says when it says it, otherwise the known fact. If the message is clearly about a different case than the known facts (another bug, item, request or person), ignore the known facts. Leave a field empty when neither has it. Never guess.",
+    "user": "{ f'Message: {sys.query}\\nKnown accessibility check: {accessibilityCheck or \"unknown\"}' }",
+    "doc": "Finds what to check in the message or in what the conversation already knows."
+  },
+  "default": {
+    "system": "You are the accessibility test guide at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} (check: {accessibilityCheck})' }",
+    "doc": "Explains how to test a screen or page for accessibility, such as screen reader, keyboard and color contrast checks, and what counts as a pass."
+  }
+}

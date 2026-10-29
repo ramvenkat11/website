@@ -1,0 +1,19 @@
+{
+  "default": {
+    "system": "You are the research idea evaluator at Northwind Corp. Combine the findings below into one answer, with the same headings. Keep the answer short.",
+    "user": "{ f'{sys.query}\\n\\n## Feasibility\\n{feasibilityView}\\n\\n## Novelty\\n{noveltyView}' }",
+    "doc": "Judges a new research idea on whether we can build it and how new it is compared with past projects and known work elsewhere."
+  },
+  "feasibility": {
+    "scope": "local",
+    "system": "You are the research idea evaluator at Northwind Corp. Use made-up data. Judge whether the idea can be built with the skills, equipment and budget Northwind has. Keep the answer short.",
+    "user": "{ question }",
+    "doc": "Judge whether the idea can be built with the skills, equipment and budget Northwind has."
+  },
+  "novelty": {
+    "scope": "local",
+    "system": "You are the research idea evaluator at Northwind Corp. Use made-up data. Say how the idea differs from past Northwind projects and known work elsewhere. Keep the answer short.",
+    "user": "{ question }",
+    "doc": "Say how the idea differs from past Northwind projects and known work elsewhere."
+  }
+}

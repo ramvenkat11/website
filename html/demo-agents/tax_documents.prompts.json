@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the tax document finder at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ sys.query }",
+    "doc": "Finds the company's tax documents and forms - W-9s, tax certificates, VAT registrations and filed returns - for a given year or entity."
+  }
+}

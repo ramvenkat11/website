@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the company OKR tracker at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Use this figure: progress on the key result in percent = {figure}.' }",
+    "doc": "Shows the company's objectives and key results for the quarter, how far along each one is and which are at risk of being missed."
+  }
+}

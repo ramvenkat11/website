@@ -1,0 +1,13 @@
+{
+  "extract": {
+    "scope": "local",
+    "system": "Read the user's message and the facts already known from this conversation. Call facts with the insurance policy the user asks about. Use what the message says when it says it, otherwise the known fact. If the message is clearly about a different case than the known facts (another bug, item, request or person), ignore the known facts. Leave a field empty when neither has it. Never guess.",
+    "user": "{ f'Message: {sys.query}\\nKnown insurance policy: {insurancePolicy or \"unknown\"}' }",
+    "doc": "Finds the insurance policy in the message or in what the conversation already knows."
+  },
+  "default": {
+    "system": "{ f'You are the corporate insurance policy guide at {company}. Use made-up data. Keep the answer short.' }",
+    "user": "{ sys.query + focus }",
+    "doc": "Explains what the company's own insurance covers - property, liability, cyber and travel - and what to do and whom to contact when something needs to be claimed."
+  }
+}

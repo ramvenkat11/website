@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the meeting room booker at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Offer meeting room times on these weekdays: {slots}' }",
+    "doc": "Finds and books a meeting room for a given time and number of people, with the equipment needed, such as a screen or video conferencing."
+  }
+}

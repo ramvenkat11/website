@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the budget vs actual reporter at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Use this figure: variance percent = {figure}.' + (f' Known from this conversation: team {team}.' if team else '') }",
+    "doc": "Compares a department's actual spending with its budget for the month or quarter, shows where it is over or under, and by how much."
+  }
+}

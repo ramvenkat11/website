@@ -16,7 +16,7 @@ SITE_URL="https://search2o.com"
 # docsweb/ is excluded from the sync itself: it holds the in-app docs data that s2oserver's
 # maintenance/docswebuploader.py maintains, so --delete must never touch it.
 SYNC_EXCLUDES=(--exclude ".DS_Store" --exclude "*/.DS_Store" --exclude "docsweb/*")
-CACHE_CONTROL="public, max-age=600"   # pages, CSS, JS: short, so a deploy reaches browsers within minutes
+CACHE_CONTROL="no-cache"   # pages, CSS, JS: browsers revalidate on every load, so a deploy is seen at once
 IMAGE_CACHE_CONTROL="public, max-age=2592000"   # images, icons and fonts: 30 days; they change rarely
 IMAGE_INCLUDES=(--exclude "*" --include "*.png" --include "*.svg" --include "*.jpg" --include "*.ico" --include "*.woff2")
 IMAGE_EXCLUDES=(--exclude "*.png" --exclude "*.svg" --exclude "*.jpg" --exclude "*.ico" --exclude "*.woff2")

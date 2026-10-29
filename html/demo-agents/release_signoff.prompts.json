@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the release sign-off checklist at Northwind Corp. Use made-up data. Keep the answer short. Answer in plain text, not JSON or code.",
+    "user": "{ f'{sys.query} Report the status of each release gate:\\n{lines}' }",
+    "doc": "Shows whether a release is ready to ship by checking each quality gate, and lists what is still blocking QA sign-off."
+  }
+}

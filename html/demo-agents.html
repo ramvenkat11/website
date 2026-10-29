@@ -140,11 +140,15 @@
         item.appendChild(head);
         var body = el("div", "agent-body");
         body.appendChild(el("p", null, agent.description));
-        var button = el("button", "agent-source-btn", SHOW_LABEL);
-        button.type = "button";
-        button.setAttribute("aria-expanded", "false");
-        button.addEventListener("click", function () { toggleSource(item, agent.agentName); });
-        body.appendChild(button);
+        var actions = el("div", "agent-actions");
+        PANELS.forEach(function (panel) {
+          var button = el("button", "agent-btn " + panel.buttonClass, panel.show);
+          button.type = "button";
+          button.setAttribute("aria-expanded", "false");
+          button.addEventListener("click", function () { togglePanel(item, agent.agentName, panel); });
+          actions.appendChild(button);
+        });
+        body.appendChild(actions);
         item.appendChild(body);
         list.appendChild(item);
       });
@@ -157,9 +161,8 @@
     window.addEventListener("hashchange", openFromHash);
   }
 
-  var SHOW_LABEL = "Show source";
-  var HIDE_LABEL = "Hide source";
   var SOURCE_DIR = "demo-agents/";
+  var PROMPT_FIELDS = [["system", "System"], ["user", "User"]];
   var TOKEN_RULES = [
     [/\/\/[^\n]*/, "cm"],
     [/\/\*[\s\S]*?\*\//, "cm"],
@@ -215,29 +218,57 @@
     return card;
   }
 
-  function toggleSource(item, name) {
-    var button = item.querySelector(".agent-source-btn");
-    var holder = item.querySelector(".agent-source");
+  function promptsView(code) {
+    var prompts = JSON.parse(code);
+    var view = el("div", "agent-prompt-list");
+    Object.keys(prompts).forEach(function (promptName) {
+      var prompt = prompts[promptName];
+      var card = el("div", "agent-prompt");
+      card.appendChild(el("h4", null, promptName));
+      var fields = el("dl");
+      PROMPT_FIELDS.forEach(function (field) {
+        if (prompt[field[0]] === undefined) return;
+        fields.appendChild(el("dt", null, field[1]));
+        var value = el("dd", "agent-prompt-" + field[0]);
+        value.appendChild(el(field[0] === "user" ? "code" : "span", null, prompt[field[0]]));
+        fields.appendChild(value);
+      });
+      card.appendChild(fields);
+      view.appendChild(card);
+    });
+    return view;
+  }
+
+  var PANELS = [
+    { buttonClass: "agent-source-btn", holderClass: "agent-source", show: "Show source", hide: "Hide source",
+      file: ".jsonc", view: function (name, code) { return sourceCard(name, code); } },
+    { buttonClass: "agent-prompts-btn", holderClass: "agent-prompts", show: "Show prompts", hide: "Hide prompts",
+      file: ".prompts.json", view: function (name, code) { return promptsView(code); } }
+  ];
+
+  function togglePanel(item, name, panel) {
+    var button = item.querySelector("." + panel.buttonClass);
+    var holder = item.querySelector("." + panel.holderClass);
     if (holder) {
       holder.hidden = !holder.hidden;
-      button.textContent = holder.hidden ? SHOW_LABEL : HIDE_LABEL;
+      button.textContent = holder.hidden ? panel.show : panel.hide;
       button.setAttribute("aria-expanded", String(!holder.hidden));
       return;
     }
-    holder = el("div", "agent-source");
+    holder = el("div", "agent-panel " + panel.holderClass);
     item.appendChild(holder);
     button.textContent = "Loading\u2026";
-    var url = SOURCE_DIR + name + ".jsonc";
+    var url = SOURCE_DIR + name + panel.file;
     fetch(url)
       .then(function (response) {
         if (!response.ok) throw new Error(response.status);
         return response.text();
       })
       .then(function (code) {
-        holder.appendChild(sourceCard(name, code));
+        holder.appendChild(panel.view(name, code));
       })
       .catch(function () {
-        var note = el("p", "agents-status", "The source did not load. Open ");
+        var note = el("p", "agents-status", "The file did not load. Open ");
         var link = el("a", null, url);
         link.href = url;
         note.appendChild(link);
@@ -245,7 +276,7 @@
         holder.appendChild(note);
       })
       .then(function () {
-        button.textContent = HIDE_LABEL;
+        button.textContent = panel.hide;
         button.setAttribute("aria-expanded", "true");
       });
   }
@@ -255,7 +286,7 @@
     if (!name) return;
     var item = document.getElementById(name);
     if (!item || !item.classList.contains("agent-list-item")) return;
-    if (!item.querySelector(".agent-source")) toggleSource(item, name);
+    if (!item.querySelector(".agent-source")) togglePanel(item, name, PANELS[0]);
     item.scrollIntoView();
   }
 

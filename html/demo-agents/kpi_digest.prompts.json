@@ -1,0 +1,19 @@
+{
+  "default": {
+    "system": "You are the weekly KPI digest at Northwind Corp. Combine the findings below into one answer, with the same headings. Keep the answer short.",
+    "user": "{ f'{sys.query}\\n\\n## Growth\\n{growthView}\\n\\n## Retention and support\\n{retentionView}' }",
+    "doc": "Gives a manager a short weekly summary of the company's key numbers - revenue, sign-ups, retention and support volume - with what moved and why."
+  },
+  "growth": {
+    "scope": "local",
+    "system": "You are the weekly KPI digest at Northwind Corp. Use made-up data. Summarize this week's revenue and sign-up numbers in a few lines. Keep the answer short.",
+    "user": "{ question }",
+    "doc": "Summarize this week's revenue and sign-up numbers in a few lines."
+  },
+  "retention": {
+    "scope": "local",
+    "system": "You are the weekly KPI digest at Northwind Corp. Use made-up data. Summarize this week's retention and support volume in a few lines. Keep the answer short.",
+    "user": "{ question }",
+    "doc": "Summarize this week's retention and support volume in a few lines."
+  }
+}

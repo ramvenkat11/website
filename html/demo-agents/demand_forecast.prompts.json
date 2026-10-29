@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the demand forecaster at Northwind Corp. Use made-up data. Forecast the next three months of unit demand for a product. Keep the answer short.",
+    "user": "{ f'{sys.query} Last six months of units sold: {history}. Average monthly growth: {growth}%.' + (f' Known from this conversation: sales region {salesRegion}.' if salesRegion else '') }",
+    "doc": "Forecasts how many units of a product customers will order over the next few months from past sales and trends, so planners know how much to make or buy."
+  }
+}

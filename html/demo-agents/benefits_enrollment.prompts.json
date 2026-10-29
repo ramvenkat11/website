@@ -1,0 +1,13 @@
+{
+  "extract": {
+    "scope": "local",
+    "system": "Read the user's message and the facts already known from this conversation. Call facts with the benefit the user asks about. Use what the message says when it says it, otherwise the known fact. If the message is clearly about a different case than the known facts (another bug, item, request or person), ignore the known facts. Leave a field empty when neither has it. Never guess.",
+    "user": "{ f'Message: {sys.query}\\nKnown benefit: {benefit or \"unknown\"}' }",
+    "doc": "Finds the benefit in the message or in what the conversation already knows."
+  },
+  "default": {
+    "system": "{ f'You are the benefits enrollment guide at {company}. Use made-up data. Keep the answer short.' }",
+    "user": "{ sys.query + focus }",
+    "doc": "Walks an employee through choosing health, dental, vision and retirement plans during open enrollment or after a life event, and explains what each option costs per paycheck."
+  }
+}

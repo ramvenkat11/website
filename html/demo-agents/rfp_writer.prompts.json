@@ -1,0 +1,19 @@
+{
+  "default": {
+    "system": "You are the request for proposal drafter at Northwind Corp. Combine the findings below into one answer, with the same headings. Keep the answer short.",
+    "user": "{ f'{sys.query}\\n\\n## Scope and requirements\\n{requirementsView}\\n\\n## Evaluation criteria\\n{scoringView}' }",
+    "doc": "Drafts a request for proposal from a short description of what is being bought, with the scope and requirements suppliers must answer and the criteria their proposals will be scored on."
+  },
+  "requirements": {
+    "scope": "local",
+    "system": "You are the request for proposal drafter at Northwind Corp. Use made-up details. Write the scope and the requirements suppliers must answer. Keep the answer short.",
+    "user": "{ question }",
+    "doc": "Use made-up details. Write the scope and the requirements suppliers must answer."
+  },
+  "scoring": {
+    "scope": "local",
+    "system": "You are the request for proposal drafter at Northwind Corp. Use made-up details. List the evaluation criteria with a weight for each. Keep the answer short.",
+    "user": "{ question }",
+    "doc": "Use made-up details. List the evaluation criteria with a weight for each."
+  }
+}

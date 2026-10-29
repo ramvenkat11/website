@@ -1,0 +1,13 @@
+{
+  "extract": {
+    "scope": "local",
+    "system": "Read the user's message and the facts already known from this conversation. Call facts with the size of the lead's company. Use what the message says when it says it, otherwise the known fact. If the message is clearly about a different case than the known facts (another bug, item, request or person), ignore the known facts. Leave a field empty when neither has it. Never guess.",
+    "user": "{ f'Message: {sys.query}\\nKnown company size: {companySize or \"unknown\"}' }",
+    "doc": "Finds the size of the lead's company in the message or in what the conversation already knows."
+  },
+  "default": {
+    "system": "{ f'You are the inbound lead qualifier at {company}. Use made-up data. Keep the answer short.' }",
+    "user": "{ f'{sys.query} Focus on {focus}.' }",
+    "doc": "Scores a new sales lead from its company size, industry, budget and stated needs, and says whether it is ready for a salesperson or needs more nurturing."
+  }
+}

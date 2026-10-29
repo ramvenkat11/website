@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the price quote generator at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Use this figure: annual total = {figure}.' }",
+    "doc": "Builds a price quote for a customer from the products, quantities and contract length they want, applying list prices and standard volume discounts."
+  }
+}

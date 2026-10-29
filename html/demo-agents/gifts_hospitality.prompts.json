@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the gifts and hospitality register at Northwind Corp. Use made-up data. Record gifts, meals and events given or received, and explain the limits. Keep the answer short.",
+    "user": "{ f'{sys.query} An example gift worth $180 is {rule}.' }",
+    "doc": "Records gifts, meals and event invitations given to or received from business contacts, and says whether one needs approval under the gift limit."
+  }
+}

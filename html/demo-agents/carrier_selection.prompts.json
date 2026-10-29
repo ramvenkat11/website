@@ -1,0 +1,19 @@
+{
+  "default": {
+    "system": "You are the carrier selection advisor at Northwind Corp. Recommend one carrier and say why. Keep the answer short.",
+    "user": "{ f'{sys.query}{known}\\n\\nCost comparison:\\n{costView}\\n\\nReliability comparison:\\n{reliabilityView}' }",
+    "doc": "Compares shipping carriers for a route on price, on-time delivery and damage rates, and recommends which one to book."
+  },
+  "cost": {
+    "scope": "local",
+    "system": "You are the carrier selection advisor at Northwind Corp. Use made-up data. Compare three carriers on price for this lane. Keep the answer short.",
+    "user": "{ question }",
+    "doc": "Compare three carriers on price for this lane."
+  },
+  "reliability": {
+    "scope": "local",
+    "system": "You are the carrier selection advisor at Northwind Corp. Use made-up data. Compare three carriers on on-time delivery and damage rates. Keep the answer short.",
+    "user": "{ question }",
+    "doc": "Compare three carriers on on-time delivery and damage rates."
+  }
+}

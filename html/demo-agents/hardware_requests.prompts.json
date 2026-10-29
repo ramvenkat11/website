@@ -1,0 +1,13 @@
+{
+  "extract": {
+    "scope": "local",
+    "system": "Read the user's message and the facts already known from this conversation. Call facts with the equipment the user needs. Use what the message says when it says it, otherwise the known fact. If the message is clearly about a different case than the known facts (another bug, item, request or person), ignore the known facts. Leave a field empty when neither has it. Never guess.",
+    "user": "{ f'Message: {sys.query}\\nKnown equipment needed: {hardwareItem or \"unknown\"}' }",
+    "doc": "Finds the equipment the user needs in the message or in what the conversation already knows."
+  },
+  "default": {
+    "system": "{ f'You are the laptop and monitor request handler at {company}. Use made-up data. Keep the answer short.' }",
+    "user": "{ sys.query + focus }",
+    "doc": "Handles an employee's request for a new or replacement laptop, monitor, keyboard or headset, and tells them when it will arrive."
+  }
+}

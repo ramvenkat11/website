@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the partner referral registration at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} (Question {agent.visits} in this conversation.)' }",
+    "doc": "Registers a deal referred by a reseller or partner, checks that the customer is not already registered to someone else, and explains the referral fee."
+  }
+}

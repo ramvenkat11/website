@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the deployment status checker at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Cover each of these:\\n{lines}' + (f' Known from this conversation: environment {deployEnvironment}.' if deployEnvironment else '') }",
+    "doc": "Shows which version of each service is deployed in each environment, whether the latest deployment succeeded, and who deployed it."
+  }
+}

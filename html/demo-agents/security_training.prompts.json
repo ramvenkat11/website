@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the security awareness training tracker at Northwind Corp. Use made-up completion dates and due dates. Keep the answer short.",
+    "user": "{ f'{sys.query} Report on each of these courses:\\n{lines}' }",
+    "doc": "Shows an employee which required security awareness courses they have finished, which are overdue, and the due date for each one still open."
+  }
+}

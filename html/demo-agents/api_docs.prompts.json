@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the api documentation finder at Northwind Corp. Find internal API documentation. Keep the answer short. Answer in plain text, not JSON or code.",
+    "user": "{ sys.query }",
+    "doc": "Finds the documentation for an internal API: its endpoints, parameters, example requests and responses, and which team owns it."
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the printer problem solver at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ sys.query }",
+    "doc": "Fixes common office printer problems - paper jams, offline printers, driver errors and print queues - and shows how to add a printer."
+  }
+}

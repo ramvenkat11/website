@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the candidate interview scheduler at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Offer interview slots on these weekdays: {slots}' }",
+    "doc": "Finds times when a candidate and the interview panel are all free, proposes an interview schedule, and drafts the invitation the candidate receives."
+  }
+}

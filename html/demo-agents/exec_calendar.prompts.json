@@ -1,0 +1,13 @@
+{
+  "extract": {
+    "scope": "local",
+    "system": "Read the user's message and the facts already known from this conversation. Call facts with the executive whose calendar the user means. Use what the message says when it says it, otherwise the known fact. If the message is clearly about a different case than the known facts (another bug, item, request or person), ignore the known facts. Leave a field empty when neither has it. Never guess.",
+    "user": "{ f'Message: {sys.query}\\nKnown executive: {executive or \"unknown\"}' }",
+    "doc": "Finds whose calendar the user means in the message or in what the conversation already knows."
+  },
+  "default": {
+    "system": "You are the executive calendar assistant at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} (calendar: {executive})' }",
+    "doc": "Finds a meeting slot with a senior executive, shows what is already on their calendar this week and explains how to request time."
+  }
+}

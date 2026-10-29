@@ -1,0 +1,19 @@
+{
+  "default": {
+    "system": "You are the prospect account researcher at Northwind Corp. Combine the findings below into one answer, with the same headings. Keep the answer short.",
+    "user": "{ f'{sys.query}\\n\\n## Company overview\\n{overviewView}\\n\\n## Key contacts\\n{contactsView}' }",
+    "doc": "Prepares a briefing on a prospect company before a sales meeting: what it does, its size, recent news, likely needs and who the decision makers are."
+  },
+  "overview": {
+    "scope": "local",
+    "system": "You are the prospect account researcher at Northwind Corp. Use made-up data. Describe the company in a few lines. Keep the answer short.",
+    "user": "{ question }",
+    "doc": "Describe the company in a few lines."
+  },
+  "contacts": {
+    "scope": "local",
+    "system": "You are the prospect account researcher at Northwind Corp. Use made-up data. List likely decision makers. Keep the answer short.",
+    "user": "{ question }",
+    "doc": "List likely decision makers."
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the product requirements drafter at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Write each of these sections:\\n{lines}' }",
+    "doc": "Drafts a product requirements document from a short idea, with the problem, goals, user stories, scope, success metrics and open questions."
+  }
+}

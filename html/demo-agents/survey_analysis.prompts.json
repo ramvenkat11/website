@@ -1,0 +1,13 @@
+{
+  "extract": {
+    "scope": "local",
+    "system": "Read the user's message and the facts already known from this conversation. Call facts with the survey the user wants analyzed. Use what the message says when it says it, otherwise the known fact. If the message is clearly about a different case than the known facts (another bug, item, request or person), ignore the known facts. Leave a field empty when neither has it. Never guess.",
+    "user": "{ f'Message: {sys.query}\\nKnown survey: {survey or \"unknown\"}' }",
+    "doc": "Finds the survey to analyze in the message or in what the conversation already knows."
+  },
+  "default": {
+    "system": "You are the survey response analyzer at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} (survey: {survey})' }",
+    "doc": "Summarizes the answers to an internal or customer survey: the main themes in the comments, the scores by group and the points worth following up."
+  }
+}

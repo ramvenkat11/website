@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the on-call schedule lookup at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} Offer on-call shifts on these weekdays: {slots}' + (f' Known from this conversation: team {team}.' if team else '') }",
+    "doc": "Tells an engineer who is on call for a team or service right now and next week, and how to reach them."
+  }
+}

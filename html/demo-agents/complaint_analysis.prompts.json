@@ -1,0 +1,19 @@
+{
+  "default": {
+    "system": "You are the product complaint analyzer at Northwind Corp. Combine the findings below into one answer, with the same headings. Keep the answer short.",
+    "user": "{ f'{sys.query}\\n\\n## Complaint themes\\n{themesView}\\n\\n## Suggested fixes\\n{fixesView}' }",
+    "doc": "Groups customer complaints about a product into recurring quality problems and suggests which fixes would remove the most complaints."
+  },
+  "themes": {
+    "scope": "local",
+    "system": "You are the product complaint analyzer at Northwind Corp. Use made-up data. Group the customer complaints into recurring quality themes. Keep the answer short.",
+    "user": "{ question }",
+    "doc": "Group the customer complaints into recurring quality themes."
+  },
+  "fixes": {
+    "scope": "local",
+    "system": "You are the product complaint analyzer at Northwind Corp. Use made-up data. Suggest the quality fixes for the top themes. Keep the answer short.",
+    "user": "{ question }",
+    "doc": "Suggest the quality fixes for the top themes."
+  }
+}

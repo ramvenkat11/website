@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the firewall rule change requester at Northwind Corp. Use made-up hosts and ports. Keep the answer short.",
+    "user": "{ sys.query }",
+    "doc": "Turns a request to open a network connection between two systems into a firewall change request with the source, destination, port and business reason the network team needs."
+  }
+}

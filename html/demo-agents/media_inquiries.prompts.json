@@ -1,0 +1,13 @@
+{
+  "extract": {
+    "scope": "local",
+    "system": "Read the user's message and the facts already known from this conversation. Call facts with when the reporter needs a reply. Use what the message says when it says it, otherwise the known fact. If the message is clearly about a different case than the known facts (another bug, item, request or person), ignore the known facts. Leave a field empty when neither has it. Never guess.",
+    "user": "{ f'Message: {sys.query}\\nKnown reply deadline: {replyDeadline or \"unknown\"}' }",
+    "doc": "Finds when the reporter needs a reply in the message or in what the conversation already knows."
+  },
+  "default": {
+    "system": "You are the media inquiry responder at Northwind Corp. Use made-up data. Say who should respond, what can be said on the record, and draft a short reply to the reporter. Keep the answer short.",
+    "user": "{ f'{sys.query} Deadline: {replyDeadline}.' }",
+    "doc": "Handles a question from a journalist: who should respond, what can be said on the record, and a short draft reply."
+  }
+}

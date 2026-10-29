@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the database query helper at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} (Question {agent.visits} in this conversation.)' }",
+    "doc": "Writes and explains SQL queries against the company's data warehouse from a plain-language question, and fixes queries that return errors."
+  }
+}

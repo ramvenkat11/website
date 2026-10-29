@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the order status lookup at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} There are {orderNo} as the order number.' }",
+    "doc": "Tells a customer where their order is: whether it has shipped, the carrier and tracking number, and the expected delivery date."
+  }
+}

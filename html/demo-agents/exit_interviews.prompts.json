@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the exit interview summarizer at Northwind Corp. Use made-up data. Keep the answer short.",
+    "user": "{ f'{sys.query} There are {responses} exit interview responses.' }",
+    "doc": "Summarizes exit interview answers from departing employees into the main reasons people leave and the themes that repeat across teams."
+  }
+}

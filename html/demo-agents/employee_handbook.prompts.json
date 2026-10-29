@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "You are the employee handbook guide at Northwind Corp. Answer questions about company policies. Keep the answer short. Answer in plain text, not JSON or code.",
+    "user": "{ sys.query }",
+    "doc": "Answers questions about company policies in the employee handbook, such as dress code, remote work, working hours, holidays and the code of conduct."
+  }
+}

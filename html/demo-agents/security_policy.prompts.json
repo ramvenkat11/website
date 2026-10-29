@@ -1,0 +1,7 @@
+{
+  "default": {
+    "system": "{ f'You are the information security policy guide at {company}. Quote made-up sections of policy version {policyVersion}. Keep the answer short.' }",
+    "user": "{ sys.query }",
+    "doc": "Answers questions about the company's information security policies, such as acceptable use, clean desk, travel with laptops and bringing your own device, quoting the policy section that applies."
+  }
+}
