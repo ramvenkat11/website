@@ -1308,3 +1308,8 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 
 ## 2026-10-29 — Demo dropdown order
 - Demo dropdown order is now: Draft an agent with AI, Search and conversation, Trace an agent run (all site pages, 404.html, gen/build.py; docs rebuilt). Footer unchanged. Not deployed.
+
+## 2026-10-29 — hero lead links in the gradient
+- styles.css `.hero-attr` (hero lead links, index only) now uses the blue→teal gradient text of `.hero-accent` instead of var(--blue-ink); hover underline in var(--blue).
+- index.html hero lead: execAgent → conversation.html (was runtime.html); "building" → framework.html and "running" → runtime.html are new links.
+- Rendered 8 widths light/dark; sweep 320–1280 clean. Not deployed.
