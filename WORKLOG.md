@@ -1328,3 +1328,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 
 ## 2026-10-29 — hero calls sentence shortened
 - index.html hero lead second sentence: "The agents work as one system with just two calls: search and execAgent." (links kept). Three lines at 860+. Rendered 8 widths light/dark; sweep clean. Not deployed.
+
+## 2026-10-29 — hero "The agent server"
+- index.html hero lead: "Agent server handles…" → "The agent server handles…". Still three lines at 860+; no one-word last line at any measured width. Not deployed.
