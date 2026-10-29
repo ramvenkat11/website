@@ -1334,3 +1334,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 
 ## 2026-10-29 — Demo menu label "Chat with agents"
 - Demo dropdown item for demo-search.html renamed "Search and conversation" → "Chat with agents" on all site pages, 404.html and gen/build.py (docs rebuilt). Footer links ("Search and conversation demo") and the page's <title> unchanged. Not deployed.
+
+## 2026-10-29 — "Chat with agents demo" footer and title
+- Footer link "Search and conversation demo" → "Chat with agents demo" on all site pages, 404.html and the four legal pages; demo-search.html <title> and og:title now "Chat with agents demo — Search2o". No "Search and conversation" text left in html/ or gen/. Not deployed.
