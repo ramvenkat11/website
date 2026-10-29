@@ -1354,3 +1354,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-29 — license page 320px overflow
 - Cause: the plain-text address "https://search2o.com/legal/privacy.html." in license.html:123 cannot break and passed the edge by 1px at 320. Addresses in the legal text are deliberately full (the license is read outside the site); wording unchanged.
 - styles.css `.legal-body p, .legal-body li` gained `overflow-wrap: break-word` (breaks only a word that cannot fit). Swept all four legal pages 320–1280 step 8: clean. Not deployed.
+
+## 2026-10-29 — #user-interfaces heading
+- index.html:137 h2 "No dependencies, cloud‑managed state" → "Multiple interfaces, cloud‑managed state" (non-breaking hyphen kept). One line ≥700; breaks after the comma on phones. Not deployed.
