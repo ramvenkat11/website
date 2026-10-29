@@ -1292,3 +1292,7 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Demo width: `.fw-demo-wide` is set to the figure width (1060px). Ram says it is too wide, so asked what width he wants; the intro text is to match it.
 - Pre-existing flags, not mine: legal pages overflow at 960–1100 (old flat header nav), and gettingstarted code lines scroll in their cards.
 - Demo pages: widget and intro text share `--demo-w: 860px` (Ram picked 860 after seeing 760 and 860). Page headings (`.page-hero h1`, `.pricing h1`) are back to clamp(22px, 2.4vw, 28px) on every page except home (Ram: smaller). Section h2s stay 24px. Rendered at 8 widths light/dark; sweeps 0 issues.
+
+## 2026-10-28 — scripts/refresh-demo-agents.sh
+- New script copies ../s2oserver/docs/demo/agents.json to html/demo-agents.json and mirrors definitions/*.jsonc into html/demo-agents/ (rsync --delete; S2OSERVER overrides the path), then prints git status for those paths.
+- Ran it: agents.json unchanged; all 200 .jsonc changed (182+/1166-) because s2oserver moved prompts into separate *.prompts.json files, so "Show source" on demo-agents.html now shows `"prompt": "default"` instead of the prompt text. The .prompts.json files are not copied. Ram to decide whether to copy them too, and to commit.
