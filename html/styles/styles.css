@@ -1109,7 +1109,7 @@ a.arch-lbl { color: var(--blue-ink); }
 .legal-body { max-width: 780px; }
 .legal-body h2 { font-size: 24px; margin: 34px 0 10px; }
 .legal-body h3 { font-size: 16.5px; margin: 24px 0 8px; }
-.legal-body p, .legal-body li { font-size: 15.5px; line-height: 1.7; color: var(--body); }
+.legal-body p, .legal-body li { font-size: 15.5px; line-height: 1.7; color: var(--body); overflow-wrap: break-word; }
 .legal-body p { margin: 0 0 14px; }
 .legal-body ul { margin: 0 0 14px; padding-left: 24px; }
 .legal-body li { margin: 6px 0; }

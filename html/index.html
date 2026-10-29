@@ -47,7 +47,7 @@
         <summary class="navlink">Demo<svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
         <div class="nav-menu-list">
           <a class="navlink" href="demo-draft.html">Draft an agent with AI</a>
-          <a class="navlink" href="demo-search.html">Search and conversation</a>
+          <a class="navlink" href="demo-search.html">Chat with agents</a>
           <a class="navlink" href="demo-trace.html">Trace an agent run</a>
         </div>
       </details>
@@ -65,7 +65,7 @@
     <div class="container">
       <div class="hero-head as-head">
         <h1 class="hero-claim">Transform your enterprise AI with Search2o agent server</h1>
-        <p class="hero-lead">Developers turn your existing business workflows into <a class="hero-attr" href="docs/introduction/search2o-agents.html">task-focused agents</a>. The agents work as one system with just two calls: <a class="hero-attr" href="search.html"><code>search</code></a> and <a class="hero-attr" href="conversation.html"><code>execAgent</code></a>. Agent server handles all the plumbing behind <a class="hero-attr" href="framework.html">building</a>, <a class="hero-attr" href="search.html">discovering</a> and <a class="hero-attr" href="runtime.html">running</a> the agents, so you can focus on the business&nbsp;logic.</p>
+        <p class="hero-lead">Developers turn your existing business workflows into <a class="hero-attr" href="docs/introduction/search2o-agents.html">task-focused agents</a>. The agents work as one system with just two calls: <a class="hero-attr" href="search.html"><code>search</code></a> and <a class="hero-attr" href="conversation.html"><code>execAgent</code></a>. The agent server handles all the plumbing behind <a class="hero-attr" href="framework.html">building</a>, <a class="hero-attr" href="search.html">discovering</a> and <a class="hero-attr" href="runtime.html">running</a> the agents, so you can focus on the business&nbsp;logic.</p>
       </div>
       <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example an IT helpdesk agent that handles employees' IT support requests. Troubleshoots hardware and software, and manages accounts and access. The Search2o agent server holds hundreds of agents. A client calls search with a request such as My laptop keeps freezing, and search returns the IT helpdesk agent. The client calls execAgent with the conversation, the agent and the request, and receives the agent's output, for example Ticket IT-4821 opened. A technician will call at 2 pm.">
         <div class="as-side as-dev">
@@ -134,7 +134,7 @@
   <section class="section" id="user-interfaces">
     <div class="container">
       <div class="section-head center">
-        <h2>No dependencies, cloud&#8209;managed state</h2>
+        <h2>Stateless agent server, cloud&#8209;managed state</h2>
       </div>
       <div class="ui-fan" aria-label="Your organization runs the agent servers and three clients, a browser chat, the chat applications and an agent harness, which all connect to the agent server cluster. The agent servers link to their source on GitHub and keep no state of their own: an encrypted link connects them to Search2o Cloud, which keeps the conversations and memories, encrypted by default.">
         <div class="ui-org">
@@ -226,35 +226,13 @@
         <img class="logo-light" src="images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="images/logo-dark.png" alt="Search2o" width="336" height="61">
         <p>Agent server for the enterprise</p>
       </div>
-      <div class="footer-cols">
-        <div class="fcol">
-          <h4>Product</h4>
-          <a href="framework.html">Agent framework</a>
-          <a href="runtime.html">Agent runtime</a>
-          <a href="search.html">Search</a>
-          <a href="conversation.html">Conversation</a>
-          <a href="demo-search.html">Search and conversation demo</a>
-          <a href="demo-draft.html">Draft with AI demo</a>
-        </div>
-        <div class="fcol">
-          <h4>Resources</h4>
-          <a href="gettingstarted.html">Getting started</a>
-          <a href="docs/index.html">Docs</a>
-          <a href="pricing.html">Pricing</a>
-        </div>
-        <div class="fcol">
-          <h4>Company</h4>
-          <a href="about.html">About</a>
-          <a href="about.html#contact">Contact</a>
-        </div>
-        <div class="fcol">
-          <h4>Legal</h4>
-          <a href="legal/terms.html">Terms of Service</a>
-          <a href="legal/privacy.html">Privacy Policy</a>
-          <a href="legal/license.html">Software License</a>
-          <a href="legal/intellectual.html">Intellectual Property</a>
-        </div>
-      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="about.html#contact">Contact</a>
+        <a href="legal/terms.html">Terms of Service</a>
+        <a href="legal/privacy.html">Privacy Policy</a>
+        <a href="legal/license.html">Software License</a>
+        <a href="legal/intellectual.html">Intellectual Property</a>
+      </nav>
     </div>
     <div class="footer-base">
       <span>&copy; <span id="year">2026</span> Search2o &middot; Virginia, USA</span>
