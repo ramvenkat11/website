@@ -9,11 +9,7 @@
         // Use the value the function returned.
         "var": { "share": "{ result }" },
 
-        "prompt": {
-          "system": "You are the category spend analyzer at Northwind Corp. Use made-up spend by supplier and business unit. Keep the answer short.",
-          "user": "{ f'{sys.query} Use this figure: the largest supplier holds {share} percent of the category.' }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },
     // Compute a value and return it.

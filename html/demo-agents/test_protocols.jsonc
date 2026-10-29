@@ -51,11 +51,7 @@
           "else": { "var": { "depth": "a short exploratory test plan" } }
         },
 
-        "prompt": {
-          "system": "You are the test protocol writer at Northwind Corp. Use made-up data. Write the objective, setup, steps, measurements and acceptance criteria. Keep the answer short.",
-          "user": "{ f'{sys.query} Stage: {stage}. Write {depth}.' }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

@@ -17,11 +17,6 @@
     "growth": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "growth",
-          "system": "You are the weekly KPI digest at Northwind Corp. Use made-up data. Summarize this week's revenue and sign-up numbers in a few lines. Keep the answer short.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "gemini_flash", "prompt": "growth" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -31,11 +26,6 @@
     "retention": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "retention",
-          "system": "You are the weekly KPI digest at Northwind Corp. Use made-up data. Summarize this week's retention and support volume in a few lines. Keep the answer short.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "gemini_flash", "prompt": "retention" },
         // Hand the result back to the caller.
         "return": "{ result }"

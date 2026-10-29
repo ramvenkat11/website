@@ -62,11 +62,7 @@
         },
 
         // The LLM reads the material from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the hazardous materials handling guide at Northwind Corp. Use made-up data. If the material is unknown, tell the user not to touch it and to call the safety officer. Keep the answer short.",
-          "user": "{ f'{sys.query} (material: {material})' if material else sys.query }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }
   }

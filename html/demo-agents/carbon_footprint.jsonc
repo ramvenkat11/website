@@ -12,11 +12,7 @@
         // Shown only when the agent is validated.
         "trace": "{ 'Estimated kg CO2: ' + str(co2) }",
 
-        "prompt": {
-          "system": "You are the shipping emissions calculator at Northwind Corp. Use made-up data. Estimate emissions for shipments and suggest lower-carbon options. Keep the answer short.",
-          "user": "{ f'{sys.query} Example shipment emits {co2} kg of CO2 by truck.' }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },
     // Compute a value and return it.

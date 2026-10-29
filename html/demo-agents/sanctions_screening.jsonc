@@ -55,11 +55,7 @@
         "log": { "level": "info", "message": "{ 'sanctions screening requested for a name of length ' + str(len(party)) if party else 'sanctions screening requested for a name given in the message' }" },
 
         // The LLM reads the name from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the sanctions screening checker at Northwind Corp. Use made-up data. Say whether the name matches any sanctions or denied-party list, how close the match is, and what to do next. Keep the answer short.",
-          "user": "{ f'{sys.query} Name to screen: {party}.' if party else sys.query }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }
   }

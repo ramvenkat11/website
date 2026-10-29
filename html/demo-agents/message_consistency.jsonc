@@ -17,11 +17,6 @@
     "facts": {
       "args": { "draft": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "facts",
-          "system": "You are the key message consistency checker at Northwind Corp. Use made-up approved key messages. Point out any statement in the draft that contradicts or goes beyond them. Keep the answer short.",
-          "user": "{ draft }"
-        },
         "llm": { "profile": "gpt5_mini", "prompt": "facts" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -31,11 +26,6 @@
     "tone": {
       "args": { "draft": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "tone",
-          "system": "You are the key message consistency checker at Northwind Corp. Say whether the draft sounds like Northwind: plain, confident and never dismissive. Keep the answer short.",
-          "user": "{ draft }"
-        },
         "llm": { "profile": "gpt5_mini", "prompt": "tone" },
         // Hand the result back to the caller.
         "return": "{ result }"

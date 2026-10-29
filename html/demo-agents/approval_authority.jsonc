@@ -69,11 +69,7 @@
         },
 
         // The LLM reads the decision from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the approval authority lookup at Northwind Corp. Use made-up data. Contracts also need a legal review before signing. Keep the answer short.",
-          "user": "{ sys.query + (f' Decision: {decision}.' if decision else '') + note }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

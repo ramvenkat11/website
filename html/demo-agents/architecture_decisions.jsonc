@@ -64,11 +64,7 @@
         // Tell the user what is happening while they wait.
         "progress": "Working on it...",
 
-        "prompt": {
-          "system": "{ f'You are the architecture decision record writer at {company}. Use made-up data. Keep the answer short.' }",
-          "user": "{ sys.query + focus }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }
   }

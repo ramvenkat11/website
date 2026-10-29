@@ -70,11 +70,7 @@
         // Tell the user what is happening while they wait.
         "progress": "Working on it...",
 
-        "prompt": {
-          "system": "{ f'You are the social media post writer at {company}. Use made-up data. Keep the answer short.' }",
-          "user": "{ sys.query + focus }"
-        },
-        "llm": { "profile": "gemini_flash", "streamOutput": true }
+        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }
   }

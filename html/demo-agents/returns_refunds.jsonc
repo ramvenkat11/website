@@ -62,11 +62,7 @@
         },
 
         // The LLM reads the reason from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the return and refund processor at Northwind Corp. Use made-up data. Items used for over a year cannot be returned; if the item was used for over a year, say so instead of processing the return. Keep the answer short.",
-          "user": "{ f'{sys.query} (reason: {reason})' if reason else sys.query }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

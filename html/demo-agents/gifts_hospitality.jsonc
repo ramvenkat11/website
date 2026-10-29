@@ -16,11 +16,7 @@
           "else": { "var": { "rule": "within the limit, so it only needs to be recorded" } }
         },
 
-        "prompt": {
-          "system": "You are the gifts and hospitality register at Northwind Corp. Use made-up data. Record gifts, meals and events given or received, and explain the limits. Keep the answer short.",
-          "user": "{ f'{sys.query} An example gift worth $180 is {rule}.' }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },
     // Compute a value and return it.

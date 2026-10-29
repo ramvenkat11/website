@@ -62,11 +62,7 @@
         },
 
         // The LLM reads the change from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the subscription plan changer at Northwind Corp. Use made-up data. If the user wants to keep the plan unchanged, say no change was made and the plan stays as it is. Keep the answer short.",
-          "user": "{ f'{sys.query} (change: {change})' if change else sys.query }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

@@ -9,11 +9,7 @@
         // Tell the user what is happening while they wait.
         "progress": "{ f'Found {dishes} dishes today...' }",
 
-        "prompt": {
-          "system": "You are the cafeteria menu lookup at Northwind Corp. Use made-up data. Keep the answer short. Answer in plain sentences, not JSON or code.",
-          "user": "{ f'{sys.query} There are {dishes} dishes today.' }"
-        },
-        "llm": { "profile": "ollama_nemotron", "streamOutput": true }
+        "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }
   }

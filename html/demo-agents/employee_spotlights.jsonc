@@ -52,11 +52,7 @@
         },
 
         // The LLM reads the notes from the message; the asked ones are added only when there was an ask.
-        "prompt": {
-          "system": "You are the employee spotlight writer at Northwind Corp. Write a warm short profile for the intranet. Do not invent personal details beyond the notes.",
-          "user": "{ f'{sys.query}\\n\\nNotes:\\n{notes}' if notes else sys.query }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

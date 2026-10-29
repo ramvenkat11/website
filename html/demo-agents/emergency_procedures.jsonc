@@ -17,11 +17,6 @@
     "steps": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "steps",
-          "system": "You are the emergency procedures guide at Northwind Corp. Use made-up data. List the steps to take right now. Keep the answer short.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "gpt5_mini", "prompt": "steps" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -31,11 +26,6 @@
     "contacts": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "contacts",
-          "system": "You are the emergency procedures guide at Northwind Corp. Use made-up data. List whom to call. Keep the answer short.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "gpt5_mini", "prompt": "contacts" },
         // Hand the result back to the caller.
         "return": "{ result }"

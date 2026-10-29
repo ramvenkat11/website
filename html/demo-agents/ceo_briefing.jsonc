@@ -17,11 +17,6 @@
     "headlines": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "headlines",
-          "system": "You are the CEO briefing builder at Northwind Corp. Use made-up data. List the key business headlines for this week. Keep the answer short.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "gpt5_mini", "prompt": "headlines" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -31,11 +26,6 @@
     "risks": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "risks",
-          "system": "You are the CEO briefing builder at Northwind Corp. Use made-up data. List the risks and decisions that need the CEO's attention. Keep the answer short.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "gpt5_mini", "prompt": "risks" },
         // Hand the result back to the caller.
         "return": "{ result }"

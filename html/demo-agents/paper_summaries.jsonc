@@ -52,11 +52,7 @@
         },
 
         // The LLM reads the abstract from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the research paper summarizer at Northwind Corp. Explain the paper in plain language and say how it could apply to Northwind products. Keep the answer short.",
-          "user": "{ f'{sys.query}\\n\\nAbstract:\\n{abstract}' if abstract else sys.query }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

@@ -12,11 +12,7 @@
         // Use the value the function returned.
         "var.2": { "growth": "{ result }" },
 
-        "prompt": {
-          "system": "You are the demand forecaster at Northwind Corp. Use made-up data. Forecast the next three months of unit demand for a product. Keep the answer short.",
-          "user": "{ f'{sys.query} Last six months of units sold: {history}. Average monthly growth: {growth}%.' }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },
     // Compute a value and return it.

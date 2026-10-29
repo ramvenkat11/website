@@ -46,11 +46,7 @@
         },
 
         // The LLM reads the speaker from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the executive speech writer at Northwind Corp. Use made-up facts. Write remarks meant to be spoken aloud, with a strong opening and a clear close. Keep the answer short.",
-          "user": "{ f'{sys.query} The speaker is the {speaker}.' if speaker else sys.query }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

@@ -17,11 +17,6 @@
     "requirements": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "requirements",
-          "system": "You are the request for proposal drafter at Northwind Corp. Use made-up details. Write the scope and the requirements suppliers must answer. Keep the answer short.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "gpt5_mini", "prompt": "requirements" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -31,11 +26,6 @@
     "scoring": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "scoring",
-          "system": "You are the request for proposal drafter at Northwind Corp. Use made-up details. List the evaluation criteria with a weight for each. Keep the answer short.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "gpt5_mini", "prompt": "scoring" },
         // Hand the result back to the caller.
         "return": "{ result }"

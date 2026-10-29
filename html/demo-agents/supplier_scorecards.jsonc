@@ -9,11 +9,7 @@
         // Shared by every agent in the conversation.
         "var.2": { "conv.lastTopic": "supplier scorecards" },
 
-        "prompt": {
-          "system": "You are the supplier performance scorecard at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (Question {agent.visits} in this conversation.)' }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

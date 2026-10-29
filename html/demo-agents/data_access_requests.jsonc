@@ -62,11 +62,7 @@
         },
 
         // The LLM reads the kind of data from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the dataset access request helper at Northwind Corp. Use made-up data. Access to customer personal data goes through the privacy office and needs a privacy review first. Keep the answer short.",
-          "user": "{ f'{sys.query} (data needed: {dataKind})' if dataKind else sys.query }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

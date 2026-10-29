@@ -17,11 +17,6 @@
     "outline": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "outline",
-          "system": "You are the blog article drafter at Northwind Corp. Use made-up data. Write a short outline.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "claude_haiku", "prompt": "outline" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -31,11 +26,6 @@
     "headlines": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "headlines",
-          "system": "You are the blog article drafter at Northwind Corp. Use made-up data. Suggest three headlines.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "claude_haiku", "prompt": "headlines" },
         // Hand the result back to the caller.
         "return": "{ result }"

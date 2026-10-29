@@ -46,11 +46,7 @@
         },
 
         // The LLM reads the scope from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the test plan writer at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (scope: {scope})' if scope else sys.query }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

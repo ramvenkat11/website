@@ -9,11 +9,7 @@
         // Tell the user what is happening while they wait.
         "progress": "Looking up the policy...",
 
-        "prompt": {
-          "system": "{ f'You are the information security policy guide at {company}. Quote made-up sections of policy version {policyVersion}. Keep the answer short.' }",
-          "user": "{ sys.query }"
-        },
-        "llm": { "profile": "gemini_flash", "streamOutput": true }
+        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }
   }

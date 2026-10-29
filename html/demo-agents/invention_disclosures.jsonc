@@ -46,11 +46,7 @@
         },
 
         // The LLM reads the lab from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the invention disclosure helper at Northwind Corp. Use made-up data. Help the inventor describe the problem, the solution, what is new and who contributed. Keep the answer short.",
-          "user": "{ f'{sys.query} The inventor works in the {lab} lab.' if lab else sys.query }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }
   }

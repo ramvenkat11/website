@@ -17,11 +17,6 @@
     "overview": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "overview",
-          "system": "You are the prospect account researcher at Northwind Corp. Use made-up data. Describe the company in a few lines. Keep the answer short.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "claude_haiku", "prompt": "overview" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -31,11 +26,6 @@
     "contacts": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "contacts",
-          "system": "You are the prospect account researcher at Northwind Corp. Use made-up data. List likely decision makers. Keep the answer short.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "claude_haiku", "prompt": "contacts" },
         // Hand the result back to the caller.
         "return": "{ result }"

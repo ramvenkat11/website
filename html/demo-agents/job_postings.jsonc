@@ -17,11 +17,6 @@
     "responsibilities": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "responsibilities",
-          "system": "You are the job posting writer at Northwind Corp. Use made-up data. List the role's responsibilities. Keep the answer short.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "gpt5_mini", "prompt": "responsibilities" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -31,11 +26,6 @@
     "qualifications": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "qualifications",
-          "system": "You are the job posting writer at Northwind Corp. Use made-up data. List the qualifications required. Keep the answer short.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "gpt5_mini", "prompt": "qualifications" },
         // Hand the result back to the caller.
         "return": "{ result }"

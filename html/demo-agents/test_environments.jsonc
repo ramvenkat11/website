@@ -62,11 +62,7 @@
         },
 
         // The LLM reads the environment from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the test environment booking assistant at Northwind Corp. Use made-up data. Testing is not allowed in production; if asked for production, refuse and suggest QA-1, QA-2 or Staging. Keep the answer short.",
-          "user": "{ f'{sys.query} (environment: {env})' if env else sys.query }"
-        },
-        "llm": { "profile": "gemini_flash", "streamOutput": true }
+        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }
   }

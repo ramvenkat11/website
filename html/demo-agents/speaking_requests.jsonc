@@ -62,11 +62,7 @@
         },
 
         // The LLM reads the audience from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the speaking request screener at Northwind Corp. Use made-up data. Executives do not speak at political events; decline such requests. Keep the answer short.",
-          "user": "{ f'{sys.query} (audience: {audience})' if audience else sys.query }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }
   }

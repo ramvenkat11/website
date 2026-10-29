@@ -69,11 +69,7 @@
         },
 
         // The LLM reads the customer type from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the customer due diligence helper at Northwind Corp. Use made-up data. List the documents to collect and the checks to run before onboarding a customer. Keep the answer short.",
-          "user": "{ sys.query + (f' Customer type: {customerType}.' if customerType else '') + f' Apply {depth}.' }"
-        },
-        "llm": { "profile": "gemini_flash", "streamOutput": true }
+        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }
   }

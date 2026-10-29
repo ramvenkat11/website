@@ -17,11 +17,6 @@
     "security": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "security",
-          "system": "You are the third party risk assessor at Northwind Corp. Use made-up data. Rate the vendor's security and privacy risk from its questionnaire answers. Keep the answer short.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "claude_haiku", "prompt": "security" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -31,11 +26,6 @@
     "financial": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "financial",
-          "system": "You are the third party risk assessor at Northwind Corp. Use made-up data. Rate the vendor's financial stability and dependency risk. Keep the answer short.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "claude_haiku", "prompt": "financial" },
         // Hand the result back to the caller.
         "return": "{ result }"

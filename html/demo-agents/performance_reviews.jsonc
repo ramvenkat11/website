@@ -46,11 +46,7 @@
         },
 
         // The LLM reads the style from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the performance review helper at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} The user prefers style: {style}.' if style else sys.query }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

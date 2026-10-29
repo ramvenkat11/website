@@ -52,11 +52,7 @@
           "else": { "var": { "unit": "per container or truckload" } }
         },
 
-        "prompt": {
-          "system": "You are the freight rate finder at Northwind Corp. Use made-up data. Quote current contracted freight rates and transit times. Keep the answer short.",
-          "user": "{ f'{sys.query} Mode: {mode}. Quote rates {unit}.' }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

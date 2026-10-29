@@ -62,11 +62,7 @@
         },
 
         // The LLM reads the incident from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the crisis statement drafter at Northwind Corp. Use made-up details. Write a calm holding statement: what happened, what we are doing, and when we will update. If the incident is about a pending lawsuit, do not draft a statement; say statements about pending lawsuits must come from the legal team. Keep the answer short.",
-          "user": "{ f'{sys.query} (incident: {incident})' if incident else sys.query }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }
   }

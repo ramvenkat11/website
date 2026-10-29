@@ -62,11 +62,7 @@
         },
 
         // The LLM reads the incident from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the security incident reporter at Northwind Corp. Use made-up data. If an attack is in progress, tell the user to call the security operations hotline now on extension 5000 and not to turn off the affected computer. Keep the answer short.",
-          "user": "{ f'{sys.query} (incident: {incident})' if incident else sys.query }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

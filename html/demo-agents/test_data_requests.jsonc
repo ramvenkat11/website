@@ -62,11 +62,7 @@
         },
 
         // The LLM reads the test data from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the test data request desk at Northwind Corp. Use made-up data. Real customer data cannot be used for testing; suggest masked customer data instead. Keep the answer short.",
-          "user": "{ f'{sys.query} (data: {data})' if data else sys.query }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

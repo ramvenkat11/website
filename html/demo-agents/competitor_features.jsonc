@@ -17,11 +17,6 @@
     "ours": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "ours",
-          "system": "You are the competitor feature comparison assistant at Northwind Corp. Use made-up data. Describe our product's features for this area in a few lines. Keep the answer short.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "gpt5_mini", "prompt": "ours" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -31,11 +26,6 @@
     "theirs": {
       "args": { "question": { "type": "str" } },
       "commands": {
-        "prompt": {
-          "name": "theirs",
-          "system": "You are the competitor feature comparison assistant at Northwind Corp. Use made-up data. Describe the competitor's features for this area in a few lines. Keep the answer short.",
-          "user": "{ question }"
-        },
         "llm": { "profile": "gpt5_mini", "prompt": "theirs" },
         // Hand the result back to the caller.
         "return": "{ result }"

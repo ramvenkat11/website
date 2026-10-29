@@ -62,11 +62,7 @@
         },
 
         // The LLM reads the announcement from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the press release drafter at Northwind Corp. Use made-up data. If what is being announced is not decided yet, tell the user to come back once it is decided. Keep the answer short.",
-          "user": "{ f'{sys.query} (announcement: {announcement})' if announcement else sys.query }"
-        },
-        "llm": { "profile": "gemini_flash", "streamOutput": true }
+        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }
   }

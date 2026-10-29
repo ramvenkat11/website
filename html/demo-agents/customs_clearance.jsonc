@@ -78,11 +78,7 @@
         },
 
         // The LLM reads the goods and origin from the message; the asked ones are added only when there was an ask.
-        "prompt": {
-          "system": "You are the customs clearance assistant at Northwind Corp. Use made-up data. Give the likely tariff code, duty rate and the documents the broker needs. Keep the answer short.",
-          "user": "{ sys.query + (f' Importing {goods} from {origin}.' if goods and origin else f' Importing {goods}.' if goods else f' Importing from {origin}.' if origin else '') }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }
   }

@@ -64,11 +64,7 @@
         // Tell the user what is happening while they wait.
         "progress": "Working on it...",
 
-        "prompt": {
-          "system": "{ f'You are the corporate insurance policy guide at {company}. Use made-up data. Keep the answer short.' }",
-          "user": "{ sys.query + focus }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

@@ -9,11 +9,7 @@
         // Use the value the function returned.
         "var": { "total": "{ result }" },
 
-        "prompt": {
-          "system": "You are the prototype cost estimator at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} Use this figure: estimated build cost = {total} USD.' }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },
     // Compute a value and return it.

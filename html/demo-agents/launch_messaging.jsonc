@@ -9,11 +9,7 @@
         // Shared by every agent in the conversation.
         "var.2": { "conv.lastTopic": "launch messaging" },
 
-        "prompt": {
-          "system": "You are the product launch messaging writer at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (Question {agent.visits} in this conversation.)' }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }
   }

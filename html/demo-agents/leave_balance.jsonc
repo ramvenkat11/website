@@ -67,13 +67,9 @@
         // Tell the user what is happening while they wait.
         "progress": "Checking your balance...",
 
-        "prompt": {
-          "system": "{ f'You are the leave balance checker at {company}. Use made-up data for {year}. Keep the answer short.' }",
-          "user": "{ sys.query + focus }"
-        },
 
         "llm": {
-          "profile": "claude_haiku",
+          "profile": "claude_haiku", "prompt": "default",
           "streamOutput": true
         }
       }

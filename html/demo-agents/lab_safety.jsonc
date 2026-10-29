@@ -62,11 +62,7 @@
         },
 
         // The LLM reads the work from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the lab safety checker at Northwind Corp. Use made-up data. If the work involves an unknown substance, tell the user not to handle it, to seal it and to call the lab safety officer on extension 4400. List the protective equipment, training and approvals needed. Keep the answer short.",
-          "user": "{ f'{sys.query} (work: {work})' if work else sys.query }"
-        },
-        "llm": { "profile": "gemini_flash", "streamOutput": true }
+        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }
   }

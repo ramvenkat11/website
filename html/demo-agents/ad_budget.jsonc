@@ -9,11 +9,7 @@
         // Use the value the function returned.
         "var": { "figure": "{ result }" },
 
-        "prompt": {
-          "system": "You are the advertising budget allocator at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} Use this figure: search budget = {figure}.' }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },
     // Compute a value and return it.

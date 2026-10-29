@@ -65,11 +65,7 @@
           "then": { "end": "Our books are already in USD, so no conversion is needed." }
         },
 
-        "prompt": {
-          "system": "You are the foreign exchange rate lookup at Northwind Corp. Our books are kept in USD; if the message does not name the currency to convert from, convert from USD. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (converting to: {currency})' if currency else sys.query }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }
   }

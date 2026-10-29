@@ -15,11 +15,7 @@
           }
         },
 
-        "prompt": {
-          "system": "You are the product requirements drafter at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} Write each of these sections:\\n{lines}' }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }
   }

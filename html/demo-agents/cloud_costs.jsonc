@@ -9,11 +9,7 @@
         // Use the value the function returned.
         "var": { "figure": "{ result }" },
 
-        "prompt": {
-          "system": "You are the cloud cost reporter at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} Use this figure: monthly cost of one server = {figure}.' }"
-        },
-        "llm": { "profile": "gemini_flash", "streamOutput": true }
+        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },
     // Compute a value and return it.

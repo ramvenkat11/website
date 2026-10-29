@@ -69,11 +69,7 @@
         },
 
         // The LLM reads the source from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the feature request triage assistant at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (source: {source}; to judge urgency, {urgency})' if source else f'{sys.query} (to judge urgency, {urgency})' }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

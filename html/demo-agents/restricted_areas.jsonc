@@ -62,11 +62,7 @@
         },
 
         // The LLM reads the area from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the restricted area access requester at Northwind Corp. Use made-up data. Unescorted data center access is only granted to the infrastructure team. Keep the answer short.",
-          "user": "{ f'{sys.query} (area: {area})' if area else sys.query }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

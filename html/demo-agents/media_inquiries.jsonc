@@ -49,11 +49,7 @@
         },
 
         // The LLM reads the deadline from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the media inquiry responder at Northwind Corp. Use made-up data. Say who should respond, what can be said on the record, and draft a short reply to the reporter. Keep the answer short.",
-          "user": "{ f'{sys.query} Deadline: {deadline}.' if deadline else sys.query }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }
   }

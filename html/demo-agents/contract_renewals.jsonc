@@ -46,11 +46,7 @@
         },
 
         // The LLM reads the category from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the supplier contract renewal tracker at Northwind Corp. Use made-up contracts, end dates, notice periods and values. Keep the answer short.",
-          "user": "{ f'{sys.query} The user manages the category: {category}.' if category else sys.query }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

@@ -9,11 +9,7 @@
         // Use the value the function returned.
         "var": { "window": "{ result }" },
 
-        "prompt": {
-          "system": "You are the penetration test scoper at Northwind Corp. Use made-up applications, hosts and contacts. Keep the answer short.",
-          "user": "{ f'{sys.query} Plan the test for {window}.' }"
-        },
-        "llm": { "profile": "gemini_flash", "streamOutput": true }
+        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },
     // Build a value and return it.

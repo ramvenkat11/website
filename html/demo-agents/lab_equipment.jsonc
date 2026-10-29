@@ -46,11 +46,7 @@
         },
 
         // The LLM reads the instrument from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the lab equipment booker at Northwind Corp. Use made-up data for instrument availability, time slots and training requirements. Keep the answer short.",
-          "user": "{ f'{sys.query} (instrument: {instrument})' if instrument else sys.query }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

@@ -46,11 +46,7 @@
         },
 
         // The LLM reads the goal from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the user interview guide builder at Northwind Corp. Use made-up data. Keep the answer short.",
-          "user": "{ f'{sys.query} (research goal: {goal})' if goal else sys.query }"
-        },
-        "llm": { "profile": "gemini_flash", "streamOutput": true }
+        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }
   }

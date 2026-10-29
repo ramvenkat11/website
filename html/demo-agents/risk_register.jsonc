@@ -46,11 +46,7 @@
         },
 
         // The LLM reads the business unit from the message; the asked one is added only when there was an ask.
-        "prompt": {
-          "system": "You are the risk register keeper at Northwind Corp. Use made-up data. List the unit's top risks with likelihood, impact, owner, mitigation and review date. Keep the answer short.",
-          "user": "{ f'{sys.query} The user owns business unit: {unit}.' if unit else sys.query }"
-        },
-        "llm": { "profile": "claude_haiku", "streamOutput": true }
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }
   }

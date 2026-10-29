@@ -51,11 +51,7 @@
           "then": { "end": "Purchases under $1,000 need no approval. Use your purchasing card or the catalog." }
         },
 
-        "prompt": {
-          "system": "You are the purchasing approval threshold guide at Northwind Corp. Use made-up approval rules. Keep the answer short.",
-          "user": "{ f'{sys.query} (amount: {amount})' }"
-        },
-        "llm": { "profile": "gpt5_mini", "streamOutput": true }
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }
   }
