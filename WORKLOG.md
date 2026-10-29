@@ -1331,3 +1331,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 
 ## 2026-10-29 — hero "The agent server"
 - index.html hero lead: "Agent server handles…" → "The agent server handles…". Still three lines at 860+; no one-word last line at any measured width. Not deployed.
+
+## 2026-10-29 — Demo menu label "Chat with agents"
+- Demo dropdown item for demo-search.html renamed "Search and conversation" → "Chat with agents" on all site pages, 404.html and gen/build.py (docs rebuilt). Footer links ("Search and conversation demo") and the page's <title> unchanged. Not deployed.
