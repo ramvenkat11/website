@@ -1368,3 +1368,7 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - html/demo-agents.html: each agent has "Show source" and "Show prompts" (Ram chose a separate toggle). The two share one togglePanel(item, name, panel) with a PANELS table (replaces toggleSource); prompts view lists each prompt by name (file order, e.g. extract then default) with System text and User in mono; doc and scope are not shown. #hash still opens the source.
 - styles.css: .agent-source-btn → .agent-btn (+ .agent-actions row), .agent-source → .agent-panel; new .agent-prompt* rules; ≤640 stacks System/User labels above text.
 - Rendered access_reviews (2 prompts) and vpn_help open at 8 widths light/dark: no overflow. Checked hash-open, source click, prompts toggle; every agent has a prompts file. Not deployed.
+
+## 2026-10-29 — infrastructure boxes: 24
+- index.html #framework-runtime now has Ram's 24 boxes in his order. New: Structured output → docs/commands/llm.html (no anchor exists), Guardrails → docs/gui/guardrails.html, Progress → docs/commands/progress.html, Agent editor (Ram dropped "with code complete") → docs/development/code-editor.html; lucide-style icons (braces, shield-check, loader, code). Figure aria-label lists the four too.
+- Six rows of four on desktop, twelve of two on phones. Rendered 8 widths light/dark; sweep 320–1280 clean. Not deployed.
