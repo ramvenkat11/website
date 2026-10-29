@@ -1357,3 +1357,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 
 ## 2026-10-29 — #user-interfaces heading
 - index.html:137 h2 "No dependencies, cloud‑managed state" → "Multiple interfaces, cloud‑managed state" (non-breaking hyphen kept). One line ≥700; breaks after the comma on phones. Not deployed.
+- Then (Ram): h2 is now "Stateless agent server, cloud‑managed state" (hyphen kept as a compound adjective). One line ≥700; breaks after the comma on phones.
