@@ -1144,14 +1144,13 @@ a.arch-lbl { color: var(--blue-ink); }
 .info-card p { color: var(--muted); font-size: 15px; }
 
 .site-footer { background: var(--footer-bg); color: #93a5c4; }
-.footer-main { display: flex; align-items: flex-start; justify-content: space-between; gap: 40px; padding: 52px 0 40px; }
+.footer-main { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: 32px 40px; padding: 52px 0 40px; }
 .footer-brand img { width: 150px; height: auto; opacity: .92; }
 .footer-brand .logo-light { display: none; }
 .footer-brand p { margin-top: 14px; max-width: 34ch; font-size: 13.5px; line-height: 1.6; color: #7d90b3; }
-.footer-cols { display: flex; gap: 72px; }
-.fcol h4 { color: #cdd8ec; font-size: 13px; font-weight: 700; margin-bottom: 14px; }
-.fcol a { display: block; padding: 4px 0; color: #93a5c4; font-size: 14px; }
-.fcol a:hover { color: #fff; text-decoration: none; }
+.footer-links { display: flex; flex-wrap: wrap; gap: 8px 28px; padding-top: 6px; }
+.footer-links a { color: #93a5c4; font-size: 14px; white-space: nowrap; }
+.footer-links a:hover { color: #fff; text-decoration: none; }
 .footer-base {
   display: flex; align-items: center; justify-content: space-between; gap: 16px;
   padding: 20px 0 26px; border-top: 1px solid rgba(143, 161, 189, .16);
@@ -1232,7 +1231,6 @@ a.arch-lbl { color: var(--blue-ink); }
   .header-cta { display: none; }
   .cardgrid, .form-grid, .how-steps { grid-template-columns: 1fr; }
   .footer-main { flex-direction: column; gap: 32px; }
-  .footer-cols { gap: 40px; flex-wrap: wrap; }
   .footer-base { flex-direction: column; align-items: flex-start; }
   .numbered .step-sec { padding-left: 0; padding-bottom: 44px; }
   .numbered .step-sec::before { position: static; margin-bottom: 14px; }
