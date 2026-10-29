@@ -3,73 +3,67 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it gives the kind of customer, and whether that is a corporation or government body.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "customerType": {
-                "type": "choice",
-                "instructions": "Whether the message says the kind of customer being onboarded",
-                "criteria": {
-                  "stated": "The message says the kind of customer being onboarded, for example a small business or a charity",
-                  "not stated": "The message does not say the kind of customer"
-                }
-              },
-              "largeEntity": {
-                "type": "choice",
-                "instructions": "Whether the customer is a corporation or a government body",
-                "criteria": {
-                  "Yes": "The customer is a corporation or a government body",
-                  "No": "The customer is something other than a corporation or a government body",
-                  "cannot tell": "The message does not say what kind of customer it is"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "customerType": "{ conv.customerType if sys.exists('conv', 'customerType') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "customerTypeStated": "{ jev['customerType']['choice'] if 'customerType' in jev and 'choice' in jev['customerType'] else 'not stated' }",
-          "largeEntity": "{ jev['largeEntity']['choice'] if 'largeEntity' in jev and 'choice' in jev['largeEntity'] else 'cannot tell' }",
-          "customerType": ""
+        "var.3": {
+          "customerType": "{ facts['customerType'] if 'customerType' in facts and facts['customerType'] else customerType }",
+          "largeEntity": "{ facts['largeEntity'] if 'largeEntity' in facts and facts['largeEntity'] is not None else None }"
         },
 
-        // Ask the user only when the message does not say the kind of customer.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ customerTypeStated == 'not stated' }",
+          "condition": "{ customerType == '' }",
           "then": {
             "ask": {
               "message": "What kind of customer is this?",
               "inputs": [ { "name": "customerType", "type": "str", "description": "For example Individual, Small business, Corporation or Government body." } ]
             },
-            "var": { "customerType": "{ result['customerType'] }" }
+            "var": { "customerType": "{ result['customerType'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "largeEntity": "{ facts['largeEntity'] if 'largeEntity' in facts and facts['largeEntity'] is not None else None }" }
           }
         },
 
         // Branch on a condition.
         "if.3": {
-          "condition": "{ largeEntity == 'Yes' }",
+          "condition": "{ largeEntity == True }",
           "then": { "var": { "depth": "enhanced due diligence, including beneficial owners" } },
           "else": {
             "if": {
-              "condition": "{ largeEntity == 'No' }",
+              "condition": "{ largeEntity == False }",
               "then": { "var": { "depth": "standard identity and address checks" } },
               "else": { "var": { "depth": "enhanced due diligence, including beneficial owners, for a corporation or government body, otherwise standard identity and address checks" } }
             }
           }
         },
 
-        // The LLM reads the customer type from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.customerType": "{ customerType }" },
+
+        "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the kind of customer being onboarded.",
+      "args": {
+        "customerType": { "type": "str", "required": false, "description": "The kind of customer being onboarded, for example an individual, a small business or a charity. Empty if unknown." },
+        "largeEntity": { "type": "bool | null", "required": false, "description": "True if the customer is a corporation or a government body, False if it is something else, null when neither the message nor the known facts say." }
       }
     }
   }

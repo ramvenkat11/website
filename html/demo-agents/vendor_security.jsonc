@@ -10,7 +10,9 @@
         },
 
         // parallel returns a dict keyed by function name.
-        "output": "{ '## Controls in place\\n' + result['strengths'] + '\\n\\n## Gaps to close\\n' + result['gaps'] }"
+        "var": { "strengthsView": "{ result['strengths'] }", "gapsView": "{ result['gaps'] }" },
+
+        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },
     // Takes one argument; parallel runs it alongside the other function.

@@ -3,69 +3,56 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says which currencies it names.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "to_currency": {
-                "type": "choice",
-                "instructions": "Which currency the user wants to convert to, or get the rate in",
-                "criteria": {
-                  "USD": "The message names US dollars as the currency to convert to",
-                  "another currency": "The message names a currency other than US dollars to convert to",
-                  "not stated": "The message does not name the currency to convert to"
-                }
-              },
-              "from_currency": {
-                "type": "choice",
-                "instructions": "Which currency the user is converting from",
-                "criteria": {
-                  "USD": "The message names US dollars as the currency to convert from",
-                  "another currency": "The message names a currency other than US dollars to convert from",
-                  "not stated": "The message does not name the currency to convert from"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "fromCurrency": "{ conv.fromCurrency if sys.exists('conv', 'fromCurrency') else '' }",
+          "toCurrency": "{ conv.toCurrency if sys.exists('conv', 'toCurrency') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "to": "{ jev['to_currency']['choice'] if 'to_currency' in jev and 'choice' in jev['to_currency'] else 'not stated' }",
-          "source": "{ jev['from_currency']['choice'] if 'from_currency' in jev and 'choice' in jev['from_currency'] else 'not stated' }",
-          "currency": ""
+        "var.3": {
+          "fromCurrency": "{ facts['fromCurrency'] if 'fromCurrency' in facts and facts['fromCurrency'] else fromCurrency }",
+          "toCurrency": "{ facts['toCurrency'] if 'toCurrency' in facts and facts['toCurrency'] else toCurrency }"
         },
 
-        // Ask the user only when the message does not name the target currency.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ to == 'not stated' }",
+          "condition": "{ toCurrency == '' }",
           "then": {
             "ask": {
               "message": "Converting to which currency?",
-              "inputs": [ { "name": "currency", "type": "str", "description": "For example USD, EUR, GBP or JPY." } ]
+              "inputs": [ { "name": "toCurrency", "type": "str", "description": "For example USD, EUR, GBP or JPY." } ]
             },
-            "var": {
-              "currency": "{ result['currency'] }",
-              "to": "{ 'USD' if result['currency'].strip().upper() == 'USD' else 'another currency' }"
-            }
+            "var": { "toCurrency": "{ result['toCurrency'] }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.fromCurrency": "{ fromCurrency }", "conv.toCurrency": "{ toCurrency }" },
+
         // Finish early with a message; no LLM call needed.
         "if.3": {
-          "condition": "{ to == 'USD' and source in ['USD', 'not stated'] }",
+          "condition": "{ toCurrency.strip().upper() == 'USD' and fromCurrency.strip().upper() in ['USD', ''] }",
           "then": { "end": "Our books are already in USD, so no conversion is needed." }
         },
 
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the currencies the user is converting between.",
+      "args": {
+        "fromCurrency": { "type": "str", "required": false, "description": "The currency the user is converting from, as its code, for example USD or EUR. Empty if unknown." },
+        "toCurrency": { "type": "str", "required": false, "description": "The currency the user wants to convert to, or get the rate in, as its code, for example USD or JPY. Empty if unknown." }
       }
     }
   }

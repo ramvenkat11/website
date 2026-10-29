@@ -3,50 +3,47 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it names what to check.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "check": {
-                "type": "choice",
-                "instructions": "Whether the message names what the user wants to check for accessibility",
-                "criteria": {
-                  "stated": "The message names what the user wants to check for accessibility, for example color contrast or keyboard navigation",
-                  "not stated": "The message does not name anything to check"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "accessibilityCheck": "{ conv.accessibilityCheck if sys.exists('conv', 'accessibilityCheck') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "checkStated": "{ jev['check']['choice'] if 'check' in jev and 'choice' in jev['check'] else 'not stated' }",
-          "check": ""
+        "var.3": {
+          "accessibilityCheck": "{ facts['accessibilityCheck'] if 'accessibilityCheck' in facts and facts['accessibilityCheck'] else accessibilityCheck }"
         },
 
-        // Ask the user only when the message does not name what to check.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ checkStated == 'not stated' }",
+          "condition": "{ accessibilityCheck == '' }",
           "then": {
             "ask": {
               "message": "What do you want to check?",
-              "inputs": [ { "name": "check", "type": "str", "description": "For example Screen reader, Keyboard navigation, Color contrast or Captions." } ]
+              "inputs": [ { "name": "accessibilityCheck", "type": "str", "description": "For example Screen reader, Keyboard navigation, Color contrast or Captions." } ]
             },
-            "var": { "check": "{ result['check'] }" }
+            "var": { "accessibilityCheck": "{ result['accessibilityCheck'] }" }
           }
         },
 
-        // The LLM reads the check from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.accessibilityCheck": "{ accessibilityCheck }" },
+
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records what the user wants to check for accessibility.",
+      "args": {
+        "accessibilityCheck": { "type": "str", "required": false, "description": "What the user wants to check for accessibility, for example color contrast or keyboard navigation. Empty if unknown." }
       }
     }
   }

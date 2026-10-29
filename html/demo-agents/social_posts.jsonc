@@ -6,71 +6,58 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Jev reads the message and says whether it names the platform, and whether the user wants every platform.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "platform": {
-                "type": "choice",
-                "instructions": "Whether the message says which platform the post is for",
-                "criteria": {
-                  "stated": "The message names the platform the post is for, for example LinkedIn or Instagram, or says the post is for every platform",
-                  "not stated": "The message does not say which platform the post is for"
-                }
-              },
-              "allPlatforms": {
-                "type": "choice",
-                "instructions": "Whether the user wants posts for every platform",
-                "criteria": {
-                  "Yes": "The user wants posts for every platform",
-                  "No": "The user wants a post for one or more named platforms, not for every platform",
-                  "cannot tell": "The message does not clearly say"
-                }
-              }
-            }
-          }
-        },
-        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+        // What this or another agent already learned in this conversation.
+        "var.2": { "socialPlatform": "{ conv.socialPlatform if sys.exists('conv', 'socialPlatform') else '' }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.3": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.3": {
-          "platformStated": "{ jev['platform']['choice'] if 'platform' in jev and 'choice' in jev['platform'] else 'not stated' }",
-          "allPlatforms": "{ jev['allPlatforms']['choice'] if 'allPlatforms' in jev and 'choice' in jev['allPlatforms'] else 'cannot tell' }",
-          "platform": ""
+        "var.4": {
+          "socialPlatform": "{ facts['socialPlatform'] if 'socialPlatform' in facts and facts['socialPlatform'] else socialPlatform }"
         },
 
-        // Ask the user only when the message does not name the platform.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ platformStated == 'not stated' }",
+          "condition": "{ socialPlatform == '' }",
           "then": {
             "ask": {
               "message": "Which platform?",
               "inputs": [
-                { "name": "platform", "type": "str", "description": "For example All, LinkedIn, X or Instagram." }
+                { "name": "socialPlatform", "type": "str", "description": "For example All, LinkedIn, X or Instagram." }
               ]
             },
-            "var": { "platform": "{ result['platform'] }" }
+            "var": { "socialPlatform": "{ result['socialPlatform'] }" }
           }
         },
+        "var.5": { "allPlatforms": "{ socialPlatform.strip().lower() in ['all', 'all platforms', 'every platform', 'any'] }" },
 
-        // Branch on a condition. The LLM reads a platform the message names; an asked one is added here.
+        // Branch on a condition.
         "if.3": {
-          "condition": "{ allPlatforms == 'Yes' }",
+          "condition": "{ allPlatforms == True }",
           "then": { "var": { "focus": " Focus on every platform." } },
-          "else": { "var": { "focus": "{ f' Focus on {platform.lower()}.' if platform else '' }" } }
+          "else": { "var": { "focus": "{ f' Focus on {socialPlatform.lower()}.' if socialPlatform else '' }" } }
         },
 
         // Tell the user what is happening while they wait.
         "progress": "Working on it...",
 
-        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.6": { "conv.socialPlatform": "{ socialPlatform }" },
+
+        "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the social media post the user wants written.",
+      "args": {
+        "socialPlatform": { "type": "str", "required": false, "description": "The platform the post is for, for example LinkedIn or Instagram, or All when the user wants every platform. Empty if unknown." }
       }
     }
   }

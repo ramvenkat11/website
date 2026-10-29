@@ -3,66 +3,60 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it says how often the report is sent, and whether that is hourly or more often.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "frequency": {
-                "type": "choice",
-                "instructions": "Whether the message says how often the user wants the report sent",
-                "criteria": {
-                  "stated": "The message says how often the user wants the report sent, for example weekly or every quarter",
-                  "not stated": "The message does not say how often the report should be sent"
-                }
-              },
-              "hourly": {
-                "type": "choice",
-                "instructions": "Whether the report should be sent hourly or more often",
-                "criteria": {
-                  "Yes": "The report should be sent hourly or more often",
-                  "No": "The report should be sent less often than hourly",
-                  "cannot tell": "The message does not say enough to tell"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "reportFrequency": "{ conv.reportFrequency if sys.exists('conv', 'reportFrequency') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "frequencyStated": "{ jev['frequency']['choice'] if 'frequency' in jev and 'choice' in jev['frequency'] else 'not stated' }",
-          "hourly": "{ jev['hourly']['choice'] if 'hourly' in jev and 'choice' in jev['hourly'] else 'cannot tell' }",
-          "frequency": ""
+        "var.3": {
+          "reportFrequency": "{ facts['reportFrequency'] if 'reportFrequency' in facts and facts['reportFrequency'] else reportFrequency }",
+          "hourly": "{ facts['hourly'] if 'hourly' in facts and facts['hourly'] is not None else None }"
         },
 
-        // Ask the user only when the message does not say how often.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ frequencyStated == 'not stated' }",
+          "condition": "{ reportFrequency == '' }",
           "then": {
             "ask": {
               "message": "How often should the report be sent?",
-              "inputs": [ { "name": "frequency", "type": "str", "description": "For example Daily, Weekly, Monthly or Every hour." } ]
+              "inputs": [ { "name": "reportFrequency", "type": "str", "description": "For example Daily, Weekly, Monthly or Every hour." } ]
             },
-            "var": { "frequency": "{ result['frequency'] }" }
+            "var": { "reportFrequency": "{ result['reportFrequency'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "hourly": "{ facts['hourly'] if 'hourly' in facts and facts['hourly'] is not None else None }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.reportFrequency": "{ reportFrequency }" },
+
         // Stop with an error the user sees.
         "if.3": {
-          "condition": "{ hourly == 'Yes' }",
+          "condition": "{ hourly == True }",
           "then": { "fail": "Hourly report emails are not allowed. Use a live dashboard instead." }
         },
 
-        // The LLM reads the frequency from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records how often the user wants the report sent.",
+      "args": {
+        "reportFrequency": { "type": "str", "required": false, "description": "How often the user wants the report sent, for example weekly or every quarter. Empty if unknown." },
+        "hourly": { "type": "bool | null", "required": false, "description": "True if the report should be sent hourly or more often, false if less often, null when neither the message nor the known facts say." }
       }
     }
   }

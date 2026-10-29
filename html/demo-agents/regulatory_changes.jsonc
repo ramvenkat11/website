@@ -3,6 +3,11 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "regulationArea": "{ conv.regulationArea if sys.exists('conv', 'regulationArea') and conv.regulationArea.strip().lower() not in ['all', 'any', 'anything'] else '' }"
+        },
+
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

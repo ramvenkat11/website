@@ -6,65 +6,60 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Jev reads the message and says whether it asks about one policy, every policy, or names none.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "policy": {
-                "type": "choice",
-                "instructions": "Which insurance policy the user asks about",
-                "criteria": {
-                  "all": "The user asks about every policy",
-                  "one policy": "The message names one insurance policy, for example cyber, property or travel",
-                  "not stated": "The message does not say which policy"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var.2": {
+          "insurancePolicy": "{ conv.insurancePolicy if sys.exists('conv', 'insurancePolicy') else '' }"
         },
-        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.3": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.3": {
-          "policyScope": "{ jev['policy']['choice'] if 'policy' in jev and 'choice' in jev['policy'] else 'not stated' }",
-          "policy": ""
+        "var.4": {
+          "insurancePolicy": "{ facts['insurancePolicy'] if 'insurancePolicy' in facts and facts['insurancePolicy'] else insurancePolicy }"
         },
 
-        // Ask the user only when the message does not say which policy.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ policyScope == 'not stated' }",
+          "condition": "{ insurancePolicy == '' }",
           "then": {
             "ask": {
               "message": "Which policy?",
               "inputs": [
-                { "name": "policy", "type": "str", "description": "For example All, Property, Liability, Cyber or Travel." }
+                { "name": "insurancePolicy", "type": "str", "description": "For example All, Property, Liability, Cyber or Travel." }
               ]
             },
-            "var": {
-              "policy": "{ result['policy'] }",
-              "policyScope": "{ 'all' if result['policy'].strip().lower() == 'all' else 'one policy' }"
-            }
+            "var": { "insurancePolicy": "{ result['insurancePolicy'] }" }
           }
         },
+        "var.5": { "policyScope": "{ 'all' if insurancePolicy.strip().lower() == 'all' else ('one policy' if insurancePolicy else 'not stated') }" },
 
-        // Branch on a condition. The LLM reads a policy the message names; an asked one is added here.
+        // Branch on a condition.
         "if.3": {
           "condition": "{ policyScope == 'all' }",
           "then": { "var": { "focus": " Focus on every policy." } },
-          "else": { "var": { "focus": "{ f' Focus on {policy.lower()}.' if policy else '' }" } }
+          "else": { "var": { "focus": "{ f' Focus on {insurancePolicy.lower()}.' if insurancePolicy else '' }" } }
         },
 
         // Tell the user what is happening while they wait.
         "progress": "Working on it...",
 
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.6": { "conv.insurancePolicy": "{ insurancePolicy }" },
+
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the insurance policy the user is asking about.",
+      "args": {
+        "insurancePolicy": { "type": "str", "required": false, "description": "The insurance policy the user asks about, for example cyber, property or travel, or all when the user asks about every policy. Empty if unknown." }
       }
     }
   }

@@ -3,50 +3,47 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it gives the seat preference.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "seat": {
-                "type": "choice",
-                "instructions": "Whether the message says which seat the executive prefers",
-                "criteria": {
-                  "stated": "The message says which seat the executive prefers, for example aisle or window, or says there is no preference",
-                  "not stated": "The message does not say which seat the executive prefers"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "seatPreference": "{ conv.seatPreference if sys.exists('conv', 'seatPreference') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "seatStated": "{ jev['seat']['choice'] if 'seat' in jev and 'choice' in jev['seat'] else 'not stated' }",
-          "seat": ""
+        "var.3": {
+          "seatPreference": "{ facts['seatPreference'] if 'seatPreference' in facts and facts['seatPreference'] else seatPreference }"
         },
 
-        // Ask the user only when the message does not give the seat preference.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ seatStated == 'not stated' }",
+          "condition": "{ seatPreference == '' }",
           "then": {
             "ask": {
               "message": "Which seat does the executive prefer?",
-              "inputs": [ { "name": "seat", "type": "str", "description": "For example Aisle, Window or No preference." } ]
+              "inputs": [ { "name": "seatPreference", "type": "str", "description": "For example Aisle, Window or No preference." } ]
             },
-            "var": { "seat": "{ result['seat'] }" }
+            "var": { "seatPreference": "{ result['seatPreference'] }" }
           }
         },
 
-        // The LLM reads the seat from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.seatPreference": "{ seatPreference }" },
+
+        "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the seat the executive prefers.",
+      "args": {
+        "seatPreference": { "type": "str", "required": false, "description": "The seat the executive prefers, for example Aisle or Window, or No preference. Empty if unknown." }
       }
     }
   }

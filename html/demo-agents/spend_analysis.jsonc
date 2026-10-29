@@ -3,11 +3,16 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "spendCategory": "{ conv.spendCategory if sys.exists('conv', 'spendCategory') else '' }"
+        },
+
         // Call a function with arguments.
         "func": { "name": "top_share", "args": { "topSupplier": 412000.0, "totalSpend": 1380000.0 } },
 
         // Use the value the function returned.
-        "var": { "share": "{ result }" },
+        "var.2": { "share": "{ result }" },
 
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }

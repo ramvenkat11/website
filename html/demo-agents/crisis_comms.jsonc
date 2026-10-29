@@ -3,6 +3,11 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "crisisIncident": "{ conv.crisisIncident if sys.exists('conv', 'crisisIncident') else '' }"
+        },
+
         // Write to the agent server's log.
         "log": { "level": "info", "message": "{ 'crisis_comms asked: ' + sys.query[:80] }" },
 

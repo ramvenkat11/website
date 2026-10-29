@@ -3,8 +3,13 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "spendCategory": "{ conv.spendCategory if sys.exists('conv', 'spendCategory') else '' }"
+        },
+
         // The list to work through.
-        "var": { "certifications": ["Small business", "Minority-owned", "Women-owned", "Veteran-owned"], "lines": "" },
+        "var.2": { "certifications": ["Small business", "Minority-owned", "Women-owned", "Veteran-owned"], "lines": "" },
 
         // Go through each item in turn.
         "for": {

@@ -3,14 +3,24 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "shippingMode": "{ conv.shippingMode if sys.exists('conv', 'shippingMode') else '' }",
+          "originCountry": "{ conv.originCountry if sys.exists('conv', 'originCountry') else '' }",
+          "destinationCountry": "{ conv.destinationCountry if sys.exists('conv', 'destinationCountry') else '' }"
+        },
+        "var.3": {
+          "known": "{ (' Known from this conversation:' + (f' shipping mode {shippingMode}.' if shippingMode else '') + (f' origin country {originCountry}.' if originCountry else '') + (f' destination country {destinationCountry}.' if destinationCountry else '')) if shippingMode or originCountry or destinationCountry else '' }"
+        },
+
         // Run both functions at the same time.
         "parallel": {
-          "cost": { "question": "{ sys.query }" },
-          "reliability": { "question": "{ sys.query }" }
+          "cost": { "question": "{ sys.query + known }" },
+          "reliability": { "question": "{ sys.query + known }" }
         },
 
         // Copy the result into a variable right away.
-        "var": { "costView": "{ result['cost'] }", "reliabilityView": "{ result['reliability'] }" },
+        "var.2": { "costView": "{ result['cost'] }", "reliabilityView": "{ result['reliability'] }" },
 
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }

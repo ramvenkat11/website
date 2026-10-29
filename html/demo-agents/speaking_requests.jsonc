@@ -3,66 +3,58 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it describes the audience, and whether the event is a political event.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "audience": {
-                "type": "choice",
-                "instructions": "Whether the message says who the audience of the speaking event is",
-                "criteria": {
-                  "stated": "The message says who the audience of the speaking event is, for example customers or an industry conference",
-                  "not stated": "The message does not say who the audience is"
-                }
-              },
-              "politicalEvent": {
-                "type": "choice",
-                "instructions": "Whether the speaking event is a political event",
-                "criteria": {
-                  "Yes": "The event is a political event",
-                  "No": "The event is not a political event",
-                  "cannot tell": "The message does not clearly say"
-                }
-              }
-            }
-          }
-        },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+        // What this or another agent already learned in this conversation.
+        "var": { "speakingAudience": "{ conv.speakingAudience if sys.exists('conv', 'speakingAudience') else '' }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "audienceStated": "{ jev['audience']['choice'] if 'audience' in jev and 'choice' in jev['audience'] else 'not stated' }",
-          "politicalEvent": "{ jev['politicalEvent']['choice'] if 'politicalEvent' in jev and 'choice' in jev['politicalEvent'] else 'cannot tell' }",
-          "audience": ""
+        "var.3": {
+          "speakingAudience": "{ facts['speakingAudience'] if 'speakingAudience' in facts and facts['speakingAudience'] else speakingAudience }",
+          "politicalEvent": "{ facts['politicalEvent'] if 'politicalEvent' in facts and facts['politicalEvent'] is not None else None }"
         },
 
-        // Ask the user only when the message does not describe the audience.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ audienceStated == 'not stated' }",
+          "condition": "{ speakingAudience == '' }",
           "then": {
             "ask": {
               "message": "Who is the audience?",
-              "inputs": [ { "name": "audience", "type": "str", "description": "For example Customers, Industry conference, Press or Political event." } ]
+              "inputs": [ { "name": "speakingAudience", "type": "str", "description": "For example Customers, Industry conference, Press or Political event." } ]
             },
-            "var": { "audience": "{ result['audience'] }" }
+            "var": { "speakingAudience": "{ result['speakingAudience'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "politicalEvent": "{ facts['politicalEvent'] if 'politicalEvent' in facts and facts['politicalEvent'] is not None else None }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.speakingAudience": "{ speakingAudience }" },
+
         // Finish early with a message; no LLM call needed.
         "if.3": {
-          "condition": "{ politicalEvent == 'Yes' }",
+          "condition": "{ politicalEvent == True }",
           "then": { "end": "Executives do not speak at political events. The request has been declined." }
         },
 
-        // The LLM reads the audience from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the speaking event the user is asking about.",
+      "args": {
+        "speakingAudience": { "type": "str", "required": false, "description": "Who the audience of the speaking event is, for example customers or an industry conference. Empty if unknown." },
+        "politicalEvent": { "type": "bool | null", "required": false, "description": "True if the event is a political event, false if it is not, null when neither the message nor the known facts say." }
       }
     }
   }

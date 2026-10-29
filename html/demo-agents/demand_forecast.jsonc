@@ -3,14 +3,19 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "salesRegion": "{ conv.salesRegion if sys.exists('conv', 'salesRegion') else '' }"
+        },
+
         // Past monthly sales.
-        "var": { "history": [1180, 1245, 1310, 1290, 1402, 1455] },
+        "var.2": { "history": [1180, 1245, 1310, 1290, 1402, 1455] },
 
         // Call a function with arguments.
         "func": { "name": "trend", "args": { "units": "{ history }" } },
 
         // Use the value the function returned.
-        "var.2": { "growth": "{ result }" },
+        "var.3": { "growth": "{ result }" },
 
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }

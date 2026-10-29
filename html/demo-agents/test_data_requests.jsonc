@@ -3,66 +3,58 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it describes the test data, and whether that is real customer data.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "data": {
-                "type": "choice",
-                "instructions": "Whether the message says what test data the user needs",
-                "criteria": {
-                  "stated": "The message describes the test data the user needs, for example sample orders or test accounts",
-                  "not stated": "The message does not say what test data is needed"
-                }
-              },
-              "realCustomerData": {
-                "type": "choice",
-                "instructions": "Whether the user wants real (unmasked) customer data",
-                "criteria": {
-                  "Yes": "The user wants real, unmasked customer data",
-                  "No": "The user wants something other than real customer data, such as masked or made-up data",
-                  "cannot tell": "The message does not clearly say"
-                }
-              }
-            }
-          }
-        },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+        // What this or another agent already learned in this conversation.
+        "var": { "testData": "{ conv.testData if sys.exists('conv', 'testData') else '' }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "dataStated": "{ jev['data']['choice'] if 'data' in jev and 'choice' in jev['data'] else 'not stated' }",
-          "realCustomerData": "{ jev['realCustomerData']['choice'] if 'realCustomerData' in jev and 'choice' in jev['realCustomerData'] else 'cannot tell' }",
-          "data": ""
+        "var.3": {
+          "testData": "{ facts['testData'] if 'testData' in facts and facts['testData'] else testData }",
+          "realCustomerData": "{ facts['realCustomerData'] if 'realCustomerData' in facts and facts['realCustomerData'] is not None else None }"
         },
 
-        // Ask the user only when the message does not describe the test data.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ dataStated == 'not stated' }",
+          "condition": "{ testData == '' }",
           "then": {
             "ask": {
               "message": "What test data do you need?",
-              "inputs": [ { "name": "data", "type": "str", "description": "For example Test accounts, Sample orders or Masked customer data." } ]
+              "inputs": [ { "name": "testData", "type": "str", "description": "For example Test accounts, Sample orders or Masked customer data." } ]
             },
-            "var": { "data": "{ result['data'] }" }
+            "var": { "testData": "{ result['testData'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "realCustomerData": "{ facts['realCustomerData'] if 'realCustomerData' in facts and facts['realCustomerData'] is not None else None }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.testData": "{ testData }" },
+
         // Finish early with a message; no LLM call needed.
         "if.3": {
-          "condition": "{ realCustomerData == 'Yes' }",
+          "condition": "{ realCustomerData == True }",
           "then": { "end": "Real customer data cannot be used for testing. Ask for masked customer data instead." }
         },
 
-        // The LLM reads the test data from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the test data the user is asking for.",
+      "args": {
+        "testData": { "type": "str", "required": false, "description": "The test data the user needs, for example sample orders or test accounts. Empty if unknown." },
+        "realCustomerData": { "type": "bool | null", "required": false, "description": "True if the user wants real, unmasked customer data, false if they want masked or made-up data or anything else, null when neither the message nor the known facts say." }
       }
     }
   }

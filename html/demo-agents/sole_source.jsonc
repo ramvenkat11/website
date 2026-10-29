@@ -3,55 +3,56 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says which purchase value band it gives.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "value": {
-                "type": "choice",
-                "instructions": "The value of the purchase",
-                "criteria": {
-                  "Under $25k": "The purchase value is under $25,000",
-                  "$25k to $100k": "The purchase value is from $25,000 to $100,000, for example $40,000",
-                  "$100k to $250k": "The purchase value is from $100,000 to $250,000",
-                  "Over $250k": "The purchase value is over $250,000",
-                  "not stated": "The message does not give a purchase value"
-                }
-              }
-            }
-          }
-        },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+        // What this or another agent already learned in this conversation.
+        "var": { "purchaseAmount": "{ conv.purchaseAmount if sys.exists('conv', 'purchaseAmount') else 0 }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": { "value": "{ jev['value']['choice'] if 'value' in jev and 'choice' in jev['value'] else 'not stated' }" },
+        "var.3": {
+          "purchaseAmount": "{ float(facts['purchaseAmount']) if 'purchaseAmount' in facts and facts['purchaseAmount'] else purchaseAmount }"
+        },
 
-        // Ask the user only when the message does not give the purchase value.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ value == 'not stated' }",
+          "condition": "{ purchaseAmount <= 0 }",
           "then": {
             "ask": {
-              "message": "What is the purchase value?",
-              "inputs": [ { "name": "value", "type": "chooseOne", "options": ["Under $25k", "$25k to $100k", "$100k to $250k", "Over $250k"] } ]
+              "message": "What is the purchase value, in US dollars?",
+              "inputs": [ { "name": "purchaseAmount", "type": "str", "description": "The total in US dollars, for example 15000 or $15k." } ]
             },
-            "var": { "value": "{ result['value'] }" }
+            "var": { "amountText": "{ result['purchaseAmount'].lower().replace('$', '').replace(',', '').strip() }" },
+            "if": {
+              "condition": "{ not amountText.rstrip('k').replace('.', '', 1).isdigit() }",
+              "then": { "fail": "Please give the amount as a number, for example 15000." }
+            },
+            "var.2": { "purchaseAmount": "{ float(amountText.rstrip('k')) * (1000 if amountText.endswith('k') else 1) }" }
           }
         },
+
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.purchaseAmount": "{ purchaseAmount }" },
 
         // Stop with an error the user sees.
         "if.3": {
-          "condition": "{ value == 'Over $250k' }",
+          "condition": "{ purchaseAmount > 250000 }",
           "then": { "fail": "Purchases over $250k cannot be sole-sourced. They must go out to competitive bid." }
         },
 
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the value of the purchase the user wants to sole-source.",
+      "args": {
+        "purchaseAmount": { "type": "float | null", "required": false, "description": "The total cost of the purchase in US dollars, for example 15000 for $15k. Empty if not stated." }
       }
     }
   }

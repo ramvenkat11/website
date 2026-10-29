@@ -3,55 +3,51 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says which skill level it gives.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "level": {
-                "type": "choice",
-                "instructions": "The user's skill level",
-                "criteria": {
-                  "Beginner": "The user is a beginner or new to the subject",
-                  "Intermediate": "The user has some experience with the subject",
-                  "Advanced": "The user is advanced or an expert",
-                  "Not sure": "The user says they do not know their level",
-                  "not stated": "The message does not say the user's level"
-                }
-              }
-            }
-          }
-        },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+        // What this or another agent already learned in this conversation.
+        "var": { "skillLevel": "{ conv.skillLevel if sys.exists('conv', 'skillLevel') else '' }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": { "level": "{ jev['level']['choice'] if 'level' in jev and 'choice' in jev['level'] else 'not stated' }" },
+        "var.3": {
+          "skillLevel": "{ facts['skillLevel'] if 'skillLevel' in facts and facts['skillLevel'] else skillLevel }"
+        },
 
-        // Ask the user only when the message does not say the level.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ level == 'not stated' }",
+          "condition": "{ skillLevel == '' }",
           "then": {
             "ask": {
               "message": "What level are you?",
-              "inputs": [ { "name": "level", "type": "chooseOne", "options": ["Beginner", "Intermediate", "Advanced", "Not sure"] } ]
+              "inputs": [ { "name": "skillLevel", "type": "chooseOne", "options": ["Beginner", "Intermediate", "Advanced", "Not sure"] } ]
             },
-            "var": { "level": "{ result['level'] }" }
+            "var": { "skillLevel": "{ result['skillLevel'] }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.skillLevel": "{ skillLevel }" },
+
         // Finish early with a message; no LLM call needed.
         "if.3": {
-          "condition": "{ level == 'Not sure' }",
+          "condition": "{ skillLevel == 'Not sure' }",
           "then": { "end": "Take the skills check in the learning portal first, then ask again." }
         },
 
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the skill level of the user looking for training.",
+      "args": {
+        "skillLevel": { "type": "str", "required": false, "description": "The user's skill level, exactly one of: Beginner (new to the subject), Intermediate (some experience), Advanced (advanced or an expert), Not sure (the user says they do not know their level). Empty if not stated." }
       }
     }
   }

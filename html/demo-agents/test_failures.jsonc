@@ -3,6 +3,11 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "productArea": "{ conv.productArea if sys.exists('conv', 'productArea') else '' }"
+        },
+
         // Write to the agent server's log.
         "log": { "level": "warning", "message": "{ 'test_failures asked: ' + sys.query[:80] }" },
 

@@ -3,11 +3,16 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "productArea": "{ conv.productArea if sys.exists('conv', 'productArea') else '' }"
+        },
+
         // Call a function with arguments.
         "func": { "name": "escape_rate", "args": { "found_in_test": 184, "found_in_production": 23 } },
 
         // Use the value the function returned.
-        "var": { "figure": "{ result }" },
+        "var.2": { "figure": "{ result }" },
 
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }

@@ -3,66 +3,60 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it says who would see the test, and whether that is existing customers at renewal.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "audience": {
-                "type": "choice",
-                "instructions": "Whether the message says which customers would see the price test",
-                "criteria": {
-                  "stated": "The message says which customers would see the price test, for example trial users or enterprise accounts",
-                  "not stated": "The message does not say which customers would see the test"
-                }
-              },
-              "atRenewal": {
-                "type": "choice",
-                "instructions": "Whether the price test would show to existing customers at renewal",
-                "criteria": {
-                  "Yes": "The test would show to existing customers at renewal",
-                  "No": "The test would show to other customers, not to existing customers at renewal",
-                  "cannot tell": "The message does not say enough to tell"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "priceTestAudience": "{ conv.priceTestAudience if sys.exists('conv', 'priceTestAudience') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "audienceStated": "{ jev['audience']['choice'] if 'audience' in jev and 'choice' in jev['audience'] else 'not stated' }",
-          "atRenewal": "{ jev['atRenewal']['choice'] if 'atRenewal' in jev and 'choice' in jev['atRenewal'] else 'cannot tell' }",
-          "audience": ""
+        "var.3": {
+          "priceTestAudience": "{ facts['priceTestAudience'] if 'priceTestAudience' in facts and facts['priceTestAudience'] else priceTestAudience }",
+          "atRenewal": "{ facts['atRenewal'] if 'atRenewal' in facts and facts['atRenewal'] is not None else None }"
         },
 
-        // Ask the user only when the message does not say who would see the test.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ audienceStated == 'not stated' }",
+          "condition": "{ priceTestAudience == '' }",
           "then": {
             "ask": {
               "message": "Which customers would see the test?",
-              "inputs": [ { "name": "audience", "type": "str", "description": "For example New sign-ups, Trial users or Existing customers at renewal." } ]
+              "inputs": [ { "name": "priceTestAudience", "type": "str", "description": "For example New sign-ups, Trial users or Existing customers at renewal." } ]
             },
-            "var": { "audience": "{ result['audience'] }" }
+            "var": { "priceTestAudience": "{ result['priceTestAudience'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "atRenewal": "{ facts['atRenewal'] if 'atRenewal' in facts and facts['atRenewal'] is not None else None }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.priceTestAudience": "{ priceTestAudience }" },
+
         // Stop with an error the user sees.
         "if.3": {
-          "condition": "{ atRenewal == 'Yes' }",
+          "condition": "{ atRenewal == True }",
           "then": { "fail": "Price tests on existing customers at renewal need approval from the pricing committee first." }
         },
 
-        // The LLM reads the test audience from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records which customers would see the price test.",
+      "args": {
+        "priceTestAudience": { "type": "str", "required": false, "description": "Which customers would see the price test, for example trial users or enterprise accounts. Empty if unknown." },
+        "atRenewal": { "type": "bool | null", "required": false, "description": "True if the test would show to existing customers at renewal, false if it would show to other customers, null when neither the message nor the known facts say." }
       }
     }
   }

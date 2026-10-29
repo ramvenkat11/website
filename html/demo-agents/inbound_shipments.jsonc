@@ -6,40 +6,27 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Jev reads the message and says whether it asks about one warehouse, every warehouse, or names none.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "warehouse": {
-                "type": "choice",
-                "instructions": "Which warehouse the user asks about",
-                "criteria": {
-                  "all": "The user asks about every warehouse",
-                  "one warehouse": "The message names one warehouse, for example Dallas or Chicago",
-                  "not stated": "The message does not say which warehouse"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var.2": {
+          "warehouse": "{ conv.warehouse if sys.exists('conv', 'warehouse') else '' }"
         },
-        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.3": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.3": {
-          "warehouseScope": "{ jev['warehouse']['choice'] if 'warehouse' in jev and 'choice' in jev['warehouse'] else 'not stated' }",
-          "warehouse": ""
+        "var.4": {
+          "warehouse": "{ facts['warehouse'] if 'warehouse' in facts and facts['warehouse'] else warehouse }"
         },
 
-        // Ask the user only when the message does not say which warehouse.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ warehouseScope == 'not stated' }",
+          "condition": "{ warehouse == '' }",
           "then": {
             "ask": {
               "message": "Which warehouse?",
@@ -47,14 +34,12 @@
                 { "name": "warehouse", "type": "str", "description": "For example All, Chicago, Dallas or Newark." }
               ]
             },
-            "var": {
-              "warehouse": "{ result['warehouse'] }",
-              "warehouseScope": "{ 'all' if result['warehouse'].strip().lower() == 'all' else 'one warehouse' }"
-            }
+            "var": { "warehouse": "{ result['warehouse'] }" }
           }
         },
+        "var.5": { "warehouseScope": "{ 'all' if warehouse.strip().lower() == 'all' else ('one warehouse' if warehouse else 'not stated') }" },
 
-        // Branch on a condition. The LLM reads a warehouse the message names; an asked one is added here.
+        // Branch on a condition.
         "if.3": {
           "condition": "{ warehouseScope == 'all' }",
           "then": { "var": { "focus": " Focus on every warehouse." } },
@@ -64,7 +49,17 @@
         // Tell the user what is happening while they wait.
         "progress": "Working on it...",
 
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.6": { "conv.warehouse": "{ warehouse }" },
+
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the warehouse the user is asking about.",
+      "args": {
+        "warehouse": { "type": "str", "required": false, "description": "The warehouse the user asks about, for example Dallas or Chicago, or all when the user asks about every warehouse. Empty if unknown." }
       }
     }
   }

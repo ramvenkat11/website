@@ -3,54 +3,53 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether the user clicked a link in the email.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "clicked": {
-                "type": "choice",
-                "instructions": "Whether the user clicked a link or opened an attachment in the email",
-                "criteria": {
-                  "No": "The user says they did not click a link or open an attachment in the email",
-                  "Yes": "The user says they clicked a link or opened an attachment in the email",
-                  "Not sure": "The user says they are not sure whether they clicked a link or opened an attachment",
-                  "not stated": "The message does not clearly say whether the user clicked a link or opened an attachment"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "phishingClicked": "{ conv.phishingClicked if sys.exists('conv', 'phishingClicked') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": { "clicked": "{ jev['clicked']['choice'] if 'clicked' in jev and 'choice' in jev['clicked'] else 'not stated' }" },
+        "var.3": {
+          "phishingClicked": "{ facts['phishingClicked'] if 'phishingClicked' in facts and facts['phishingClicked'] else phishingClicked }"
+        },
 
-        // Ask the user only when the message does not say whether the user clicked.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ clicked == 'not stated' }",
+          "condition": "{ phishingClicked == '' }",
           "then": {
             "ask": {
               "message": "Did you click a link in it?",
-              "inputs": [ { "name": "clicked", "type": "chooseOne", "options": ["No", "Yes", "Not sure"] } ]
+              "inputs": [ { "name": "phishingClicked", "type": "chooseOne", "options": ["No", "Yes", "Not sure"] } ]
             },
-            "var": { "clicked": "{ result['clicked'] }" }
+            "var": { "phishingClicked": "{ result['phishingClicked'] }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.phishingClicked": "{ phishingClicked }" },
+
         // Stop with an error the user sees.
         "if.3": {
-          "condition": "{ clicked == 'Yes' }",
+          "condition": "{ phishingClicked == 'Yes' }",
           "then": { "fail": "Disconnect from the network now and call the IT security line." }
         },
 
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records whether the user clicked a link or opened an attachment in the suspicious email.",
+      "args": {
+        "phishingClicked": { "type": "str", "required": false, "description": "Whether the user clicked a link or opened an attachment in the email, exactly one of: No (they say they did not), Yes (they say they did), Not sure (they say they are not sure). Empty if not stated." }
       }
     }
   }

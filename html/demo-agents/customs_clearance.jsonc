@@ -3,63 +3,41 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it names the origin country and the goods.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "origin": {
-                "type": "choice",
-                "instructions": "Whether the message names the country the goods are imported from",
-                "criteria": {
-                  "stated": "The message names the country the goods are imported from, for example Vietnam or Mexico",
-                  "not stated": "The message does not name the country the goods come from"
-                }
-              },
-              "goods": {
-                "type": "choice",
-                "instructions": "Whether the message says what goods are being imported",
-                "criteria": {
-                  "stated": "The message says what goods are being imported, for example steel brackets or cotton shirts",
-                  "not stated": "The message does not say what goods are being imported"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "originCountry": "{ conv.originCountry if sys.exists('conv', 'originCountry') else '' }",
+          "goods": "{ conv.goods if sys.exists('conv', 'goods') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "originStated": "{ jev['origin']['choice'] if 'origin' in jev and 'choice' in jev['origin'] else 'not stated' }",
-          "goodsStated": "{ jev['goods']['choice'] if 'goods' in jev and 'choice' in jev['goods'] else 'not stated' }",
-          "origin": "",
-          "goods": ""
+        "var.3": {
+          "originCountry": "{ facts['originCountry'] if 'originCountry' in facts and facts['originCountry'] else originCountry }",
+          "goods": "{ facts['goods'] if 'goods' in facts and facts['goods'] else goods }"
         },
 
-        // Ask the user only when the message does not name the origin country.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ originStated == 'not stated' }",
+          "condition": "{ originCountry == '' }",
           "then": {
             "ask": {
               "message": "Which country are the goods coming from?",
               "inputs": [
-                { "name": "origin", "type": "str", "description": "For example China, Mexico, Germany or Vietnam." }
+                { "name": "originCountry", "type": "str", "description": "For example China, Mexico, Germany or Vietnam." }
               ]
             },
-            "var": { "origin": "{ result['origin'] }" }
+            "var": { "originCountry": "{ result['originCountry'] }" }
           }
         },
-
-        // Ask the user only when the message does not say what the goods are.
         "if.3": {
-          "condition": "{ goodsStated == 'not stated' }",
+          "condition": "{ goods == '' }",
           "then": {
             "ask": {
               "message": "What goods are you importing?",
@@ -77,8 +55,18 @@
           }
         },
 
-        // The LLM reads the goods and origin from the message; the asked ones are added only when there was an ask.
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.originCountry": "{ originCountry }", "conv.goods": "{ goods }" },
+
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the import shipment the user is asking about.",
+      "args": {
+        "originCountry": { "type": "str", "required": false, "description": "The country the goods are imported from, for example Vietnam. Empty if unknown." },
+        "goods": { "type": "str", "required": false, "description": "The goods being imported, for example cotton shirts. Empty if unknown." }
       }
     }
   }

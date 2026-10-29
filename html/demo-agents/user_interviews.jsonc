@@ -3,50 +3,45 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it says what the user wants to learn.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "goal": {
-                "type": "choice",
-                "instructions": "Whether the message says what the user wants to learn from the interviews",
-                "criteria": {
-                  "stated": "The message says what the user wants to learn from the interviews, for example to understand churn or test a concept",
-                  "not stated": "The message does not say what the user wants to learn"
-                }
-              }
-            }
-          }
-        },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+        // What this or another agent already learned in this conversation.
+        "var": { "interviewGoal": "{ conv.interviewGoal if sys.exists('conv', 'interviewGoal') else '' }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "goalStated": "{ jev['goal']['choice'] if 'goal' in jev and 'choice' in jev['goal'] else 'not stated' }",
-          "goal": ""
+        "var.3": {
+          "interviewGoal": "{ facts['interviewGoal'] if 'interviewGoal' in facts and facts['interviewGoal'] else interviewGoal }"
         },
 
-        // Ask the user only when the message does not say what the user wants to learn.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ goalStated == 'not stated' }",
+          "condition": "{ interviewGoal == '' }",
           "then": {
             "ask": {
               "message": "What do you want to learn?",
-              "inputs": [ { "name": "goal", "type": "str", "description": "For example Discover problems, Test a concept or Understand churn." } ]
+              "inputs": [ { "name": "interviewGoal", "type": "str", "description": "For example Discover problems, Test a concept or Understand churn." } ]
             },
-            "var": { "goal": "{ result['goal'] }" }
+            "var": { "interviewGoal": "{ result['interviewGoal'] }" }
           }
         },
 
-        // The LLM reads the goal from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.interviewGoal": "{ interviewGoal }" },
+
+        "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records what the user wants to learn from the interviews.",
+      "args": {
+        "interviewGoal": { "type": "str", "required": false, "description": "What the user wants to learn from the interviews, for example to understand churn or test a concept. Empty if unknown." }
       }
     }
   }

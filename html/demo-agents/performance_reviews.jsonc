@@ -3,50 +3,47 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it says how the feedback should be written.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "style": {
-                "type": "choice",
-                "instructions": "Whether the message says how the user wants the review feedback written",
-                "criteria": {
-                  "stated": "The message says how the user wants the review feedback written, for example brief or detailed with examples",
-                  "not stated": "The message does not say how the feedback should be written"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "feedbackStyle": "{ conv.feedbackStyle if sys.exists('conv', 'feedbackStyle') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "styleStated": "{ jev['style']['choice'] if 'style' in jev and 'choice' in jev['style'] else 'not stated' }",
-          "style": ""
+        "var.3": {
+          "feedbackStyle": "{ facts['feedbackStyle'] if 'feedbackStyle' in facts and facts['feedbackStyle'] else feedbackStyle }"
         },
 
-        // Ask the user only when the message does not say the style.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ styleStated == 'not stated' }",
+          "condition": "{ feedbackStyle == '' }",
           "then": {
             "ask": {
               "message": "How do you like feedback written?",
-              "inputs": [ { "name": "style", "type": "str", "description": "For example Brief or Detailed." } ]
+              "inputs": [ { "name": "feedbackStyle", "type": "str", "description": "For example Brief or Detailed." } ]
             },
-            "var": { "style": "{ result['style'] }" }
+            "var": { "feedbackStyle": "{ result['feedbackStyle'] }" }
           }
         },
 
-        // The LLM reads the style from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.feedbackStyle": "{ feedbackStyle }" },
+
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records how the user wants review feedback written.",
+      "args": {
+        "feedbackStyle": { "type": "str", "required": false, "description": "How the user wants the review feedback written, for example brief or detailed with examples. Empty if unknown." }
       }
     }
   }

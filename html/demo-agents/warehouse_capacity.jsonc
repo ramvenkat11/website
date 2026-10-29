@@ -3,8 +3,13 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "warehouse": "{ conv.warehouse if sys.exists('conv', 'warehouse') and conv.warehouse.strip().lower() not in ['all', 'any', 'anything'] else '' }"
+        },
+
         // The list to work through.
-        "var": { "sites": ["Dallas", "Columbus", "Reno", "Savannah"], "lines": "" },
+        "var.2": { "sites": ["Dallas", "Columbus", "Reno", "Savannah"], "lines": "" },
 
         // Go through each item in turn.
         "for": {

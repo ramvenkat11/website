@@ -3,6 +3,11 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "dataKind": "{ conv.dataKind if sys.exists('conv', 'dataKind') else '' }"
+        },
+
         // Write to the agent server's log.
         "log": { "level": "info", "message": "{ 'data catalog asked: ' + sys.query[:80] }" },
 

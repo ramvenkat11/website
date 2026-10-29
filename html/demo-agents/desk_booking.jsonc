@@ -3,39 +3,27 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it names the floor.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "floor": {
-                "type": "choice",
-                "instructions": "Whether the message names the floor the user wants a desk on",
-                "criteria": {
-                  "stated": "The message names the floor the user wants, for example Floor 2",
-                  "not stated": "The message does not name a floor"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "floor": "{ conv.floor if sys.exists('conv', 'floor') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "floorStated": "{ jev['floor']['choice'] if 'floor' in jev and 'choice' in jev['floor'] else 'not stated' }",
-          "floor": ""
+        "var.3": {
+          "floor": "{ facts['floor'] if 'floor' in facts and facts['floor'] else floor }"
         },
 
-        // Ask the user only when the message does not name the floor.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ floorStated == 'not stated' }",
+          "condition": "{ floor == '' }",
           "then": {
             "ask": {
               "message": "Which floor do you prefer?",
@@ -45,8 +33,17 @@
           }
         },
 
-        // The LLM reads the floor from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.floor": "{ floor }" },
+
+        "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the floor the user wants a desk on.",
+      "args": {
+        "floor": { "type": "str", "required": false, "description": "The floor the user wants a desk on, for example Floor 2. Empty if unknown." }
       }
     }
   }

@@ -3,50 +3,47 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it names the system.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "system": {
-                "type": "choice",
-                "instructions": "Whether the message names the system whose user access is being reviewed",
-                "criteria": {
-                  "stated": "The message names the system whose user access is being reviewed, for example CRM or Payroll",
-                  "not stated": "The message does not name a system"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "accessSystem": "{ conv.accessSystem if sys.exists('conv', 'accessSystem') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "systemStated": "{ jev['system']['choice'] if 'system' in jev and 'choice' in jev['system'] else 'not stated' }",
-          "system": ""
+        "var.3": {
+          "accessSystem": "{ facts['accessSystem'] if 'accessSystem' in facts and facts['accessSystem'] else accessSystem }"
         },
 
-        // Ask the user only when the message does not name the system.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ systemStated == 'not stated' }",
+          "condition": "{ accessSystem == '' }",
           "then": {
             "ask": {
               "message": "Which system are you reviewing?",
-              "inputs": [ { "name": "system", "type": "str", "description": "For example ERP, CRM, Payroll or Code repository." } ]
+              "inputs": [ { "name": "accessSystem", "type": "str", "description": "For example ERP, CRM, Payroll or Code repository." } ]
             },
-            "var": { "system": "{ result['system'] }" }
+            "var": { "accessSystem": "{ result['accessSystem'] }" }
           }
         },
 
-        // The LLM reads the system from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.accessSystem": "{ accessSystem }" },
+
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the system whose user access the user is reviewing.",
+      "args": {
+        "accessSystem": { "type": "str", "required": false, "description": "The system whose user access is being reviewed, for example CRM or Payroll. Empty if unknown." }
       }
     }
   }

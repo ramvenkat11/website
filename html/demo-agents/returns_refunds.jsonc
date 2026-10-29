@@ -3,66 +3,58 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it gives the reason for the return, and whether the item was used for over a year.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "reason": {
-                "type": "choice",
-                "instructions": "Whether the message says why the user is returning the item",
-                "criteria": {
-                  "stated": "The message says why the user is returning the item, for example it is damaged or arrived late",
-                  "not stated": "The message does not say why the item is being returned"
-                }
-              },
-              "usedOverAYear": {
-                "type": "choice",
-                "instructions": "Whether the item was used for over a year",
-                "criteria": {
-                  "Yes": "The message says the item was used for over a year",
-                  "No": "The message says the item was used for a year or less, or not used at all",
-                  "cannot tell": "The message does not clearly say how long the item was used"
-                }
-              }
-            }
-          }
-        },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+        // What this or another agent already learned in this conversation.
+        "var": { "returnReason": "{ conv.returnReason if sys.exists('conv', 'returnReason') else '' }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "reasonStated": "{ jev['reason']['choice'] if 'reason' in jev and 'choice' in jev['reason'] else 'not stated' }",
-          "usedOverAYear": "{ jev['usedOverAYear']['choice'] if 'usedOverAYear' in jev and 'choice' in jev['usedOverAYear'] else 'cannot tell' }",
-          "reason": ""
+        "var.3": {
+          "returnReason": "{ facts['returnReason'] if 'returnReason' in facts and facts['returnReason'] else returnReason }",
+          "usedOverAYear": "{ facts['usedOverAYear'] if 'usedOverAYear' in facts and facts['usedOverAYear'] is not None else None }"
         },
 
-        // Ask the user only when the message does not give the reason.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ reasonStated == 'not stated' }",
+          "condition": "{ returnReason == '' }",
           "then": {
             "ask": {
               "message": "Why are you returning it?",
-              "inputs": [ { "name": "reason", "type": "str", "description": "For example Damaged, Wrong item, Changed my mind or Used for over a year." } ]
+              "inputs": [ { "name": "returnReason", "type": "str", "description": "For example Damaged, Wrong item, Changed my mind or Used for over a year." } ]
             },
-            "var": { "reason": "{ result['reason'] }" }
+            "var": { "returnReason": "{ result['returnReason'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "usedOverAYear": "{ facts['usedOverAYear'] if 'usedOverAYear' in facts and facts['usedOverAYear'] is not None else None }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.returnReason": "{ returnReason }" },
+
         // Stop with an error the user sees.
         "if.3": {
-          "condition": "{ usedOverAYear == 'Yes' }",
+          "condition": "{ usedOverAYear == True }",
           "then": { "fail": "Items used for over a year cannot be returned." }
         },
 
-        // The LLM reads the reason from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the return the user is asking about.",
+      "args": {
+        "returnReason": { "type": "str", "required": false, "description": "Why the user is returning the item, for example it is damaged or arrived late. Empty if unknown." },
+        "usedOverAYear": { "type": "bool | null", "required": false, "description": "True if the message says the item was used for over a year, false if it says a year or less or not used at all, null when neither the message nor the known facts say." }
       }
     }
   }

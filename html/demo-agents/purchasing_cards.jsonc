@@ -6,66 +6,61 @@
         // Values used below.
         "var": { "company": "Northwind Corp", "standardLimit": 5000 },
 
-        // Jev reads the message and says whether it says what the user needs, and whether that is a higher limit.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "request": {
-                "type": "choice",
-                "instructions": "Whether the message says what the user needs for a purchasing card",
-                "criteria": {
-                  "stated": "The message says what the user needs for a purchasing card, for example a higher limit or a replacement for a lost card",
-                  "not stated": "The message does not say what the user needs"
-                }
-              },
-              "higherLimit": {
-                "type": "choice",
-                "instructions": "Whether the user wants a higher card limit",
-                "criteria": {
-                  "Yes": "The user wants a higher card limit",
-                  "No": "The user wants something other than a higher card limit",
-                  "cannot tell": "The message does not say enough to tell"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var.2": {
+          "cardRequest": "{ conv.cardRequest if sys.exists('conv', 'cardRequest') else '' }"
         },
-        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.3": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.3": {
-          "requestStated": "{ jev['request']['choice'] if 'request' in jev and 'choice' in jev['request'] else 'not stated' }",
-          "higherLimit": "{ jev['higherLimit']['choice'] if 'higherLimit' in jev and 'choice' in jev['higherLimit'] else 'cannot tell' }",
-          "request": ""
+        "var.4": {
+          "cardRequest": "{ facts['cardRequest'] if 'cardRequest' in facts and facts['cardRequest'] else cardRequest }",
+          "higherLimit": "{ facts['higherLimit'] if 'higherLimit' in facts and facts['higherLimit'] is not None else None }"
         },
 
-        // Ask the user only when the message does not say what the user needs.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ requestStated == 'not stated' }",
+          "condition": "{ cardRequest == '' }",
           "then": {
             "ask": {
               "message": "What do you need?",
-              "inputs": [ { "name": "request", "type": "str", "description": "For example New card, Higher limit or Allowed purchases." } ]
+              "inputs": [ { "name": "cardRequest", "type": "str", "description": "For example New card, Higher limit or Allowed purchases." } ]
             },
-            "var": { "request": "{ result['request'] }" }
+            "var": { "cardRequest": "{ result['cardRequest'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "higherLimit": "{ facts['higherLimit'] if 'higherLimit' in facts and facts['higherLimit'] is not None else None }" }
           }
         },
 
-        // Branch on a condition. The LLM reads a request the message states; an asked one is added here.
+        // Branch on a condition.
         "if.3": {
-          "condition": "{ higherLimit == 'Yes' }",
+          "condition": "{ higherLimit == True }",
           "then": { "var": { "focus": "{ ' The user asks about a monthly limit above the standard ' + str(standardLimit) + ' dollars.' }" } },
-          "else": { "var": { "focus": "{ f' The user asks about {request.lower()}.' if request else '' }" } }
+          "else": { "var": { "focus": "{ f' The user asks about {cardRequest.lower()}.' if cardRequest else '' }" } }
         },
 
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.5": { "conv.cardRequest": "{ cardRequest }" },
+
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records what the user needs for a purchasing card.",
+      "args": {
+        "cardRequest": { "type": "str", "required": false, "description": "What the user needs for a purchasing card, for example a higher limit or a replacement for a lost card. Empty if unknown." },
+        "higherLimit": { "type": "bool | null", "required": false, "description": "True if the user wants a higher card limit, false if they want something else, null when neither the message nor the known facts say." }
       }
     }
   }

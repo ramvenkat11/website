@@ -3,8 +3,13 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "warehouse": "{ conv.warehouse if sys.exists('conv', 'warehouse') and conv.warehouse.strip().lower() not in ['all', 'any', 'anything'] else '' }"
+        },
+
         // Uses an allowlisted function.
-        "var": { "units": "{ randint(0, 500) }" },
+        "var.2": { "units": "{ randint(0, 500) }" },
 
         // Tell the user what is happening while they wait.
         "progress": "{ f'Found {units} units in stock...' }",

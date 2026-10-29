@@ -3,6 +3,11 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "warehouse": "{ conv.warehouse if sys.exists('conv', 'warehouse') and conv.warehouse.strip().lower() not in ['all', 'any', 'anything'] else '' }"
+        },
+
         // Write to the agent server's log.
         "log": { "level": "info", "message": "{ 'pick_lists asked: ' + sys.query[:80] }" },
 

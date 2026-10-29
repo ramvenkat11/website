@@ -3,11 +3,16 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "spendCategory": "{ conv.spendCategory if sys.exists('conv', 'spendCategory') else '' }"
+        },
+
         // Kept for this agent across the conversation.
-        "var": { "agent.visits": "{ agent.visits + 1 if sys.exists('agent', 'visits') else 1 }" },
+        "var.2": { "agent.visits": "{ agent.visits + 1 if sys.exists('agent', 'visits') else 1 }" },
 
         // Shared by every agent in the conversation.
-        "var.2": { "conv.lastTopic": "supplier scorecards" },
+        "var.3": { "conv.lastTopic": "supplier scorecards" },
 
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }

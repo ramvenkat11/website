@@ -10,7 +10,9 @@
         },
 
         // parallel returns a dict keyed by function name.
-        "output": "{ '## Scope and requirements\\n' + result['requirements'] + '\\n\\n## Evaluation criteria\\n' + result['scoring'] }"
+        "var": { "requirementsView": "{ result['requirements'] }", "scoringView": "{ result['scoring'] }" },
+
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },
     // Takes one argument; parallel runs it alongside the other function.

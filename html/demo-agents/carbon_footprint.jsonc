@@ -3,11 +3,22 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "shippingMode": "{ conv.shippingMode if sys.exists('conv', 'shippingMode') else '' }"
+        },
+
+        // kg CO2 per tonne-km for each mode; truck when the mode is not known.
+        "var.2": {
+          "factors": { "ocean": 0.008, "rail": 0.022, "truck": 0.062, "air": 0.6 },
+          "mode": "{ shippingMode.strip().lower() if shippingMode.strip().lower() in ['ocean', 'rail', 'truck', 'air'] else 'truck' }"
+        },
+
         // Call a function with arguments.
-        "func": { "name": "emissions", "args": { "tonnes": 18.0, "km": 2400.0, "factor": 0.062 } },
+        "func": { "name": "emissions", "args": { "tonnes": 18.0, "km": 2400.0, "factor": "{ factors[mode] }" } },
 
         // Use the value the function returned.
-        "var": { "co2": "{ result }" },
+        "var.3": { "co2": "{ result }" },
 
         // Shown only when the agent is validated.
         "trace": "{ 'Estimated kg CO2: ' + str(co2) }",

@@ -3,66 +3,60 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it names the incident, and whether that is a pending lawsuit.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "incident": {
-                "type": "choice",
-                "instructions": "Whether the message names the kind of incident the statement is about",
-                "criteria": {
-                  "stated": "The message names the kind of incident the statement is about, for example a data breach or a service outage",
-                  "not stated": "The message does not name the kind of incident"
-                }
-              },
-              "lawsuit": {
-                "type": "choice",
-                "instructions": "Whether the incident is about a pending lawsuit",
-                "criteria": {
-                  "Yes": "The incident is about a pending lawsuit",
-                  "No": "The incident is about something other than a pending lawsuit",
-                  "cannot tell": "The message does not say enough to tell"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "crisisIncident": "{ conv.crisisIncident if sys.exists('conv', 'crisisIncident') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "incidentStated": "{ jev['incident']['choice'] if 'incident' in jev and 'choice' in jev['incident'] else 'not stated' }",
-          "lawsuit": "{ jev['lawsuit']['choice'] if 'lawsuit' in jev and 'choice' in jev['lawsuit'] else 'cannot tell' }",
-          "incident": ""
+        "var.3": {
+          "crisisIncident": "{ facts['crisisIncident'] if 'crisisIncident' in facts and facts['crisisIncident'] else crisisIncident }",
+          "lawsuit": "{ facts['lawsuit'] if 'lawsuit' in facts and facts['lawsuit'] is not None else None }"
         },
 
-        // Ask the user only when the message does not name the incident.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ incidentStated == 'not stated' }",
+          "condition": "{ crisisIncident == '' }",
           "then": {
             "ask": {
               "message": "What kind of incident is it?",
-              "inputs": [ { "name": "incident", "type": "str", "description": "For example Service outage, Data breach, Product safety or Pending lawsuit." } ]
+              "inputs": [ { "name": "crisisIncident", "type": "str", "description": "For example Service outage, Data breach, Product safety or Pending lawsuit." } ]
             },
-            "var": { "incident": "{ result['incident'] }" }
+            "var": { "crisisIncident": "{ result['crisisIncident'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "lawsuit": "{ facts['lawsuit'] if 'lawsuit' in facts and facts['lawsuit'] is not None else None }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.crisisIncident": "{ crisisIncident }" },
+
         // Finish early with a message; no LLM call needed.
         "if.3": {
-          "condition": "{ lawsuit == 'Yes' }",
+          "condition": "{ lawsuit == True }",
           "then": { "end": "Statements about pending lawsuits must come from the legal team. Please contact legal before saying anything publicly." }
         },
 
-        // The LLM reads the incident from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the incident the crisis statement is about.",
+      "args": {
+        "crisisIncident": { "type": "str", "required": false, "description": "The kind of incident the statement is about, for example a data breach or a service outage. Empty if unknown." },
+        "lawsuit": { "type": "bool | null", "required": false, "description": "True if the incident is about a pending lawsuit, False if it is about something else, null when neither the message nor the known facts say." }
       }
     }
   }

@@ -6,65 +6,63 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Jev reads the message and says whether it names one rule, says any rule, or names none.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "rule": {
-                "type": "choice",
-                "instructions": "Which area of regulation the user asks about",
-                "criteria": {
-                  "any": "The user says any rule",
-                  "one rule": "The message names one area of regulation, for example data protection, anti-bribery or competition",
-                  "not stated": "The message does not say which rule"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var.2": {
+          "regulationArea": "{ conv.regulationArea if sys.exists('conv', 'regulationArea') else '' }"
         },
-        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.3": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.3": {
-          "ruleScope": "{ jev['rule']['choice'] if 'rule' in jev and 'choice' in jev['rule'] else 'not stated' }",
-          "rule": ""
+        "var.4": {
+          "regulationArea": "{ facts['regulationArea'] if 'regulationArea' in facts and facts['regulationArea'] else regulationArea }"
         },
+        "var.5": { "regulationAreaScope": "{ 'not stated' if regulationArea == '' else ('any' if regulationArea.strip().lower() == 'any' else 'one rule') }" },
 
-        // Ask the user only when the message does not say which rule.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ ruleScope == 'not stated' }",
+          "condition": "{ regulationArea == '' }",
           "then": {
             "ask": {
               "message": "Which rule?",
               "inputs": [
-                { "name": "rule", "type": "str", "description": "For example Any, Anti-bribery, Data protection or Competition." }
-              ]
+              { "name": "regulationArea", "type": "str", "description": "For example Any, Anti-bribery, Data protection or Competition." }
+            ]
             },
             "var": {
-              "rule": "{ result['rule'] }",
-              "ruleScope": "{ 'any' if result['rule'].strip().lower() == 'any' else 'one rule' }"
+              "regulationArea": "{ result['regulationArea'] }",
+              "regulationAreaScope": "{ 'any' if result['regulationArea'].strip().lower() == 'any' else 'one rule' }"
             }
           }
         },
 
-        // Branch on a condition. The LLM reads a rule the message names; an asked one is added here.
+        // Branch on a condition.
         "if.3": {
-          "condition": "{ ruleScope == 'any' }",
+          "condition": "{ regulationAreaScope == 'any' }",
           "then": { "var": { "focus": " Focus on any rule." } },
-          "else": { "var": { "focus": "{ f' Focus on {rule.lower()}.' if rule else '' }" } }
+          "else": { "var": { "focus": "{ f' Focus on {regulationArea.lower()}.' if regulationArea else '' }" } }
         },
 
         // Tell the user what is happening while they wait.
         "progress": "Working on it...",
 
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.6": { "conv.regulationArea": "{ regulationArea }" },
+
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records which area of regulation the user asks about.",
+      "args": {
+        "regulationArea": { "type": "str", "required": false, "description": "The area of regulation the user asks about, for example data protection, anti-bribery or competition, or 'any' when the user says any rule. Empty if unknown." }
       }
     }
   }

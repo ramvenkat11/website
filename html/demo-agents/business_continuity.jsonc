@@ -3,53 +3,50 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it names the disruption.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "scenario": {
-                "type": "choice",
-                "instructions": "Whether the message names the disruption the user is planning for",
-                "criteria": {
-                  "stated": "The message names the disruption the user is planning for, for example a site outage or a lost key supplier",
-                  "not stated": "The message does not name a disruption"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "disruptionScenario": "{ conv.disruptionScenario if sys.exists('conv', 'disruptionScenario') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "scenarioStated": "{ jev['scenario']['choice'] if 'scenario' in jev and 'choice' in jev['scenario'] else 'not stated' }",
-          "scenario": ""
+        "var.3": {
+          "disruptionScenario": "{ facts['disruptionScenario'] if 'disruptionScenario' in facts and facts['disruptionScenario'] else disruptionScenario }"
         },
 
-        // Ask the user only when the message does not name the disruption.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ scenarioStated == 'not stated' }",
+          "condition": "{ disruptionScenario == '' }",
           "then": {
             "ask": {
               "message": "Which disruption are you planning for?",
-              "inputs": [ { "name": "scenario", "type": "str", "description": "For example Site outage, IT system down, Key supplier lost or Pandemic." } ]
+              "inputs": [ { "name": "disruptionScenario", "type": "str", "description": "For example Site outage, IT system down, Key supplier lost or Pandemic." } ]
             },
-            "var": { "scenario": "{ result['scenario'] }" }
+            "var": { "disruptionScenario": "{ result['disruptionScenario'] }" }
           }
         },
 
         // Write to the agent server's log.
-        "log": { "level": "info", "message": "{ 'continuity plan requested: ' + (scenario if scenario else 'named in the message') }" },
+        "log": { "level": "info", "message": "{ 'continuity plan requested: ' + (disruptionScenario if disruptionScenario else 'named in the message') }" },
 
-        // The LLM reads the scenario from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.disruptionScenario": "{ disruptionScenario }" },
+
+        "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the disruption the user is planning for.",
+      "args": {
+        "disruptionScenario": { "type": "str", "required": false, "description": "The disruption the user is planning for, for example a site outage or a lost key supplier. Empty if unknown." }
       }
     }
   }

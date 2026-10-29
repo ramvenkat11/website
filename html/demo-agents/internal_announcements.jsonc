@@ -3,50 +3,47 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it says who the announcement is for.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "audience": {
-                "type": "choice",
-                "instructions": "Whether the message says who the announcement is for",
-                "criteria": {
-                  "stated": "The message says who the announcement is for, for example all employees or the London office",
-                  "not stated": "The message does not say who the announcement is for"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "announcementAudience": "{ conv.announcementAudience if sys.exists('conv', 'announcementAudience') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "audienceStated": "{ jev['audience']['choice'] if 'audience' in jev and 'choice' in jev['audience'] else 'not stated' }",
-          "audience": ""
+        "var.3": {
+          "announcementAudience": "{ facts['announcementAudience'] if 'announcementAudience' in facts and facts['announcementAudience'] else announcementAudience }"
         },
 
-        // Ask the user only when the message does not say who the announcement is for.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ audienceStated == 'not stated' }",
+          "condition": "{ announcementAudience == '' }",
           "then": {
             "ask": {
               "message": "Who is the announcement for?",
-              "inputs": [ { "name": "audience", "type": "str", "description": "For example All employees, One department, Managers only or One office." } ]
+              "inputs": [ { "name": "announcementAudience", "type": "str", "description": "For example All employees, One department, Managers only or One office." } ]
             },
-            "var": { "audience": "{ result['audience'] }" }
+            "var": { "announcementAudience": "{ result['announcementAudience'] }" }
           }
         },
 
-        // The LLM reads the audience from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.announcementAudience": "{ announcementAudience }" },
+
+        "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records who the announcement is for.",
+      "args": {
+        "announcementAudience": { "type": "str", "required": false, "description": "Who the announcement is for, for example all employees or the London office. Empty if unknown." }
       }
     }
   }

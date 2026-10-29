@@ -10,7 +10,9 @@
         },
 
         // parallel returns a dict keyed by function name.
-        "output": "{ '## Growth\\n' + result['growth'] + '\\n\\n## Retention and support\\n' + result['retention'] }"
+        "var": { "growthView": "{ result['growth'] }", "retentionView": "{ result['retention'] }" },
+
+        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },
     // Takes one argument; parallel runs it alongside the other function.

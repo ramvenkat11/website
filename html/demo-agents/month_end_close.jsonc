@@ -10,7 +10,9 @@
         },
 
         // parallel returns a dict keyed by function name.
-        "output": "{ '## Completed\\n' + result['done'] + '\\n\\n## Still open\\n' + result['open'] }"
+        "var": { "doneView": "{ result['done'] }", "openView": "{ result['open'] }" },
+
+        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },
     // Takes one argument; parallel runs it alongside the other function.

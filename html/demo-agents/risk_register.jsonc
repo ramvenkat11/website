@@ -3,50 +3,45 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it names the business unit.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "unit": {
-                "type": "choice",
-                "instructions": "Whether the message names the business unit whose risks the user owns",
-                "criteria": {
-                  "stated": "The message names the business unit whose risks the user owns, for example retail or manufacturing",
-                  "not stated": "The message does not name a business unit"
-                }
-              }
-            }
-          }
-        },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+        // What this or another agent already learned in this conversation.
+        "var": { "businessUnit": "{ conv.businessUnit if sys.exists('conv', 'businessUnit') else '' }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "unitStated": "{ jev['unit']['choice'] if 'unit' in jev and 'choice' in jev['unit'] else 'not stated' }",
-          "unit": ""
+        "var.3": {
+          "businessUnit": "{ facts['businessUnit'] if 'businessUnit' in facts and facts['businessUnit'] else businessUnit }"
         },
 
-        // Ask the user only when the message does not name the business unit.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ unitStated == 'not stated' }",
+          "condition": "{ businessUnit == '' }",
           "then": {
             "ask": {
               "message": "Which business unit's risks do you own?",
-              "inputs": [ { "name": "unit", "type": "str", "description": "For example Manufacturing, Retail, Digital or Corporate." } ]
+              "inputs": [ { "name": "businessUnit", "type": "str", "description": "For example Manufacturing, Retail, Digital or Corporate." } ]
             },
-            "var": { "unit": "{ result['unit'] }" }
+            "var": { "businessUnit": "{ result['businessUnit'] }" }
           }
         },
 
-        // The LLM reads the business unit from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.businessUnit": "{ businessUnit }" },
+
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the business unit whose risks the user owns.",
+      "args": {
+        "businessUnit": { "type": "str", "required": false, "description": "The business unit whose risks the user owns, for example retail or manufacturing. Empty if unknown." }
       }
     }
   }

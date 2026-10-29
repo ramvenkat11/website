@@ -3,66 +3,60 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it gives the kind of expense, and whether that is a personal one.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "kind": {
-                "type": "choice",
-                "instructions": "Whether the message says the kind of expense being claimed",
-                "criteria": {
-                  "stated": "The message says the kind of expense being claimed, for example meals or office supplies",
-                  "not stated": "The message does not say the kind of expense"
-                }
-              },
-              "personal": {
-                "type": "choice",
-                "instructions": "Whether the expense is a personal one rather than a business one",
-                "criteria": {
-                  "Yes": "The expense is a personal one",
-                  "No": "The expense is a business one",
-                  "cannot tell": "The message does not say what the expense is"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "expenseKind": "{ conv.expenseKind if sys.exists('conv', 'expenseKind') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "kindStated": "{ jev['kind']['choice'] if 'kind' in jev and 'choice' in jev['kind'] else 'not stated' }",
-          "personal": "{ jev['personal']['choice'] if 'personal' in jev and 'choice' in jev['personal'] else 'cannot tell' }",
-          "kind": ""
+        "var.3": {
+          "expenseKind": "{ facts['expenseKind'] if 'expenseKind' in facts and facts['expenseKind'] else expenseKind }",
+          "personal": "{ facts['personal'] if 'personal' in facts and facts['personal'] is not None else None }"
         },
 
-        // Ask the user only when the message does not say the kind of expense.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ kindStated == 'not stated' }",
+          "condition": "{ expenseKind == '' }",
           "then": {
             "ask": {
               "message": "What kind of expense?",
-              "inputs": [ { "name": "kind", "type": "str", "description": "For example Travel, Meals, Software or Personal." } ]
+              "inputs": [ { "name": "expenseKind", "type": "str", "description": "For example Travel, Meals, Software or Personal." } ]
             },
-            "var": { "kind": "{ result['kind'] }" }
+            "var": { "expenseKind": "{ result['expenseKind'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "personal": "{ facts['personal'] if 'personal' in facts and facts['personal'] is not None else None }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.expenseKind": "{ expenseKind }" },
+
         // Stop with an error the user sees.
         "if.3": {
-          "condition": "{ personal == 'Yes' }",
+          "condition": "{ personal == True }",
           "then": { "fail": "Personal expenses cannot be claimed." }
         },
 
-        // The LLM reads the kind from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the expense the user is claiming.",
+      "args": {
+        "expenseKind": { "type": "str", "required": false, "description": "The kind of expense being claimed, for example Meals or Office supplies. Empty if unknown." },
+        "personal": { "type": "bool | null", "required": false, "description": "True if the expense is a personal one, False if it is a business one, null when neither the message nor the known facts say." }
       }
     }
   }

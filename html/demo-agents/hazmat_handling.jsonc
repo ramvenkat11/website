@@ -3,66 +3,60 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it names the material, and whether the user does not know what it is.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "material": {
-                "type": "choice",
-                "instructions": "Whether the message names the hazardous material in question",
-                "criteria": {
-                  "stated": "The message names the hazardous material, for example paint or solvent",
-                  "not stated": "The message does not name a material"
-                }
-              },
-              "unknownMaterial": {
-                "type": "choice",
-                "instructions": "Whether the user says they do not know what the material is",
-                "criteria": {
-                  "Yes": "The user says they do not know what the material is",
-                  "No": "The user knows what the material is",
-                  "cannot tell": "The message does not describe the material"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "hazardousMaterial": "{ conv.hazardousMaterial if sys.exists('conv', 'hazardousMaterial') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "materialStated": "{ jev['material']['choice'] if 'material' in jev and 'choice' in jev['material'] else 'not stated' }",
-          "unknownMaterial": "{ jev['unknownMaterial']['choice'] if 'unknownMaterial' in jev and 'choice' in jev['unknownMaterial'] else 'cannot tell' }",
-          "material": ""
+        "var.3": {
+          "hazardousMaterial": "{ facts['hazardousMaterial'] if 'hazardousMaterial' in facts and facts['hazardousMaterial'] else hazardousMaterial }",
+          "unknownMaterial": "{ facts['unknownMaterial'] if 'unknownMaterial' in facts and facts['unknownMaterial'] is not None else None }"
         },
 
-        // Ask the user only when the message does not name the material.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ materialStated == 'not stated' }",
+          "condition": "{ hazardousMaterial == '' }",
           "then": {
             "ask": {
               "message": "What material?",
-              "inputs": [ { "name": "material", "type": "str", "description": "For example Batteries, Paint, Cleaning products or Unknown." } ]
+              "inputs": [ { "name": "hazardousMaterial", "type": "str", "description": "For example Batteries, Paint, Cleaning products or Unknown." } ]
             },
-            "var": { "material": "{ result['material'] }" }
+            "var": { "hazardousMaterial": "{ result['hazardousMaterial'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "unknownMaterial": "{ facts['unknownMaterial'] if 'unknownMaterial' in facts and facts['unknownMaterial'] is not None else None }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.hazardousMaterial": "{ hazardousMaterial }" },
+
         // Stop with an error the user sees.
         "if.3": {
-          "condition": "{ unknownMaterial == 'Yes' }",
+          "condition": "{ unknownMaterial == True }",
           "then": { "fail": "Do not touch it. Call the safety officer." }
         },
 
-        // The LLM reads the material from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the hazardous material the user is asking about.",
+      "args": {
+        "hazardousMaterial": { "type": "str", "required": false, "description": "The hazardous material in question, for example paint or solvent, or Unknown when the user does not know what it is. Empty if not described." },
+        "unknownMaterial": { "type": "bool | null", "required": false, "description": "True if the user says they do not know what the material is, False if they know, null when neither the message nor the known facts say." }
       }
     }
   }

@@ -3,50 +3,47 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it names the instrument.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "instrument": {
-                "type": "choice",
-                "instructions": "Whether the message names the instrument the user needs",
-                "criteria": {
-                  "stated": "The message names the instrument the user needs, for example an electron microscope or a 3D printer",
-                  "not stated": "The message does not name an instrument"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "labInstrument": "{ conv.labInstrument if sys.exists('conv', 'labInstrument') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "instrumentStated": "{ jev['instrument']['choice'] if 'instrument' in jev and 'choice' in jev['instrument'] else 'not stated' }",
-          "instrument": ""
+        "var.3": {
+          "labInstrument": "{ facts['labInstrument'] if 'labInstrument' in facts and facts['labInstrument'] else labInstrument }"
         },
 
-        // Ask the user only when the message does not name the instrument.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ instrumentStated == 'not stated' }",
+          "condition": "{ labInstrument == '' }",
           "then": {
             "ask": {
               "message": "Which instrument do you need?",
-              "inputs": [ { "name": "instrument", "type": "str", "description": "For example Mass spectrometer, Electron microscope or 3D printer." } ]
+              "inputs": [ { "name": "labInstrument", "type": "str", "description": "For example Mass spectrometer, Electron microscope or 3D printer." } ]
             },
-            "var": { "instrument": "{ result['instrument'] }" }
+            "var": { "labInstrument": "{ result['labInstrument'] }" }
           }
         },
 
-        // The LLM reads the instrument from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.labInstrument": "{ labInstrument }" },
+
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the instrument the user needs.",
+      "args": {
+        "labInstrument": { "type": "str", "required": false, "description": "The instrument the user needs, for example an electron microscope or a 3D printer. Empty if unknown." }
       }
     }
   }

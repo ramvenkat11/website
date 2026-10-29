@@ -3,66 +3,60 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it says who the permit is for, and whether that is a delivery.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "who": {
-                "type": "choice",
-                "instructions": "Whether the message says who the parking permit is for",
-                "criteria": {
-                  "stated": "The message says who the parking permit is for, for example the user, a visitor, a contractor or a delivery",
-                  "not stated": "The message does not say who the permit is for"
-                }
-              },
-              "isDelivery": {
-                "type": "choice",
-                "instructions": "Whether the parking permit is for a delivery",
-                "criteria": {
-                  "Yes": "The permit is for a delivery",
-                  "No": "The permit is for someone or something other than a delivery",
-                  "cannot tell": "The message does not say enough to tell"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "permitFor": "{ conv.permitFor if sys.exists('conv', 'permitFor') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "whoStated": "{ jev['who']['choice'] if 'who' in jev and 'choice' in jev['who'] else 'not stated' }",
-          "isDelivery": "{ jev['isDelivery']['choice'] if 'isDelivery' in jev and 'choice' in jev['isDelivery'] else 'cannot tell' }",
-          "who": ""
+        "var.3": {
+          "permitFor": "{ facts['permitFor'] if 'permitFor' in facts and facts['permitFor'] else permitFor }",
+          "isDelivery": "{ facts['isDelivery'] if 'isDelivery' in facts and facts['isDelivery'] is not None else None }"
         },
 
-        // Ask the user only when the message does not say who the permit is for.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ whoStated == 'not stated' }",
+          "condition": "{ permitFor == '' }",
           "then": {
             "ask": {
               "message": "Who is the permit for?",
-              "inputs": [ { "name": "who", "type": "str", "description": "For example Me, A visitor or A delivery." } ]
+              "inputs": [ { "name": "permitFor", "type": "str", "description": "For example Me, A visitor or A delivery." } ]
             },
-            "var": { "who": "{ result['who'] }" }
+            "var": { "permitFor": "{ result['permitFor'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "isDelivery": "{ facts['isDelivery'] if 'isDelivery' in facts and facts['isDelivery'] is not None else None }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.permitFor": "{ permitFor }" },
+
         // Finish early with a message; no LLM call needed.
         "if.3": {
-          "condition": "{ isDelivery == 'Yes' }",
+          "condition": "{ isDelivery == True }",
           "then": { "end": "Deliveries use the loading dock and need no permit." }
         },
 
-        // The LLM reads the permit holder from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records who the parking permit is for.",
+      "args": {
+        "permitFor": { "type": "str", "required": false, "description": "Who the parking permit is for, for example the user, a visitor, a contractor or a delivery. Empty if unknown." },
+        "isDelivery": { "type": "bool | null", "required": false, "description": "True if the parking permit is for a delivery, false if it is for someone or something else, null when neither the message nor the known facts say." }
       }
     }
   }

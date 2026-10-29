@@ -3,50 +3,47 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it says which lab the inventor works in.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "lab": {
-                "type": "choice",
-                "instructions": "Whether the message says which research lab the inventor works in",
-                "criteria": {
-                  "stated": "The message says which research lab the user works in, for example Electronics or Biotech",
-                  "not stated": "The message does not say which lab the user is in"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "researchLab": "{ conv.researchLab if sys.exists('conv', 'researchLab') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "labStated": "{ jev['lab']['choice'] if 'lab' in jev and 'choice' in jev['lab'] else 'not stated' }",
-          "lab": ""
+        "var.3": {
+          "researchLab": "{ facts['researchLab'] if 'researchLab' in facts and facts['researchLab'] else researchLab }"
         },
 
-        // Ask the user only when the message does not say which lab.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ labStated == 'not stated' }",
+          "condition": "{ researchLab == '' }",
           "then": {
             "ask": {
               "message": "Which lab are you in?",
-              "inputs": [ { "name": "lab", "type": "str", "description": "For example Materials, Electronics, Software or Biotech." } ]
+              "inputs": [ { "name": "researchLab", "type": "str", "description": "For example Materials, Electronics, Software or Biotech." } ]
             },
-            "var": { "lab": "{ result['lab'] }" }
+            "var": { "researchLab": "{ result['researchLab'] }" }
           }
         },
 
-        // The LLM reads the lab from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.researchLab": "{ researchLab }" },
+
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the research lab the inventor works in.",
+      "args": {
+        "researchLab": { "type": "str", "required": false, "description": "The research lab the inventor works in, for example Electronics or Biotech. Empty if unknown." }
       }
     }
   }

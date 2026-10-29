@@ -10,7 +10,9 @@
         },
 
         // parallel returns a dict keyed by function name.
-        "output": "{ '## Possible bugs\\n' + result['bugs'] + '\\n\\n## Style notes\\n' + result['style'] }"
+        "var": { "bugsView": "{ result['bugs'] }", "styleView": "{ result['style'] }" },
+
+        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },
     // Takes one argument; parallel runs it alongside the other function.

@@ -6,55 +6,39 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Jev reads the message and says whether it names one device, says any device, or names none.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "device": {
-                "type": "choice",
-                "instructions": "Which device the user is setting up",
-                "criteria": {
-                  "any": "The user says any device",
-                  "one device": "The message names one device, for example an iPhone or a Pixel 8",
-                  "not stated": "The message does not name a device"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var.2": {
+          "device": "{ conv.device if sys.exists('conv', 'device') else '' }"
         },
-        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.3": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.3": {
-          "deviceScope": "{ jev['device']['choice'] if 'device' in jev and 'choice' in jev['device'] else 'not stated' }",
-          "device": ""
+        "var.4": {
+          "device": "{ facts['device'] if 'device' in facts and facts['device'] else device }"
         },
 
-        // Ask the user only when the message does not name the device.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ deviceScope == 'not stated' }",
+          "condition": "{ device == '' }",
           "then": {
             "ask": {
               "message": "Which device?",
-              "inputs": [
-                { "name": "device", "type": "str", "description": "For example Any, iPhone, Android or iPad." }
-              ]
+              "inputs": [ { "name": "device", "type": "str", "description": "For example Any, iPhone, Android or iPad." } ]
             },
-            "var": {
-              "device": "{ result['device'] }",
-              "deviceScope": "{ 'any' if result['device'].strip().lower() == 'any' else 'one device' }"
-            }
+            "var": { "device": "{ result['device'] }" }
           }
         },
 
-        // Branch on a condition. The LLM reads a device the message names; an asked one is added here.
+        "var.5": { "deviceScope": "{ 'any' if device.strip().lower() == 'any' else ('one device' if device else 'not stated') }" },
+
+        // Branch on a condition.
         "if.3": {
           "condition": "{ deviceScope == 'any' }",
           "then": { "var": { "focus": " Focus on any device." } },
@@ -64,7 +48,17 @@
         // Tell the user what is happening while they wait.
         "progress": "Working on it...",
 
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.6": { "conv.device": "{ device }" },
+
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the device the user is setting up.",
+      "args": {
+        "device": { "type": "str", "required": false, "description": "The device the user is setting up, for example an iPhone or a Pixel 8, or any when the user says any device. Empty if unknown." }
       }
     }
   }

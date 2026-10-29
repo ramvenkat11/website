@@ -10,7 +10,9 @@
         },
 
         // parallel returns a dict keyed by function name.
-        "output": "{ '## Outline\\n' + result['outline'] + '\\n\\n## Headline ideas\\n' + result['headlines'] }"
+        "var": { "outlineView": "{ result['outline'] }", "headlinesView": "{ result['headlines'] }" },
+
+        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },
     // Takes one argument; parallel runs it alongside the other function.

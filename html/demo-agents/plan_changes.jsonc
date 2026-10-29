@@ -3,66 +3,60 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it says which change the user wants, and whether that is to keep the plan unchanged.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "change": {
-                "type": "choice",
-                "instructions": "Whether the message says what change the user wants to their subscription plan",
-                "criteria": {
-                  "stated": "The message says what the user wants for their subscription plan, for example an upgrade, a switch to annual billing or keeping the plan as it is",
-                  "not stated": "The message does not say what change the user wants"
-                }
-              },
-              "noChange": {
-                "type": "choice",
-                "instructions": "Whether the user wants to keep the plan unchanged",
-                "criteria": {
-                  "Yes": "The user wants to keep the plan unchanged",
-                  "No": "The user wants a change to the plan",
-                  "cannot tell": "The message does not say enough to tell"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "planChange": "{ conv.planChange if sys.exists('conv', 'planChange') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "changeStated": "{ jev['change']['choice'] if 'change' in jev and 'choice' in jev['change'] else 'not stated' }",
-          "noChange": "{ jev['noChange']['choice'] if 'noChange' in jev and 'choice' in jev['noChange'] else 'cannot tell' }",
-          "change": ""
+        "var.3": {
+          "planChange": "{ facts['planChange'] if 'planChange' in facts and facts['planChange'] else planChange }",
+          "noChange": "{ facts['noChange'] if 'noChange' in facts and facts['noChange'] is not None else None }"
         },
 
-        // Ask the user only when the message does not say which change.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ changeStated == 'not stated' }",
+          "condition": "{ planChange == '' }",
           "then": {
             "ask": {
               "message": "What change?",
-              "inputs": [ { "name": "change", "type": "str", "description": "For example Upgrade, Downgrade, Pause or Keep my plan." } ]
+              "inputs": [ { "name": "planChange", "type": "str", "description": "For example Upgrade, Downgrade, Pause or Keep my plan." } ]
             },
-            "var": { "change": "{ result['change'] }" }
+            "var": { "planChange": "{ result['planChange'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "noChange": "{ facts['noChange'] if 'noChange' in facts and facts['noChange'] is not None else None }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.planChange": "{ planChange }" },
+
         // Finish early with a message; no LLM call needed.
         "if.3": {
-          "condition": "{ noChange == 'Yes' }",
+          "condition": "{ noChange == True }",
           "then": { "end": "No change made. Your plan stays as it is." }
         },
 
-        // The LLM reads the change from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the change the user wants to their subscription plan.",
+      "args": {
+        "planChange": { "type": "str", "required": false, "description": "What the user wants for their subscription plan, for example an upgrade, a switch to annual billing or keeping the plan as it is. Empty if unknown." },
+        "noChange": { "type": "bool | null", "required": false, "description": "True if the user wants to keep the plan unchanged, false if they want a change, null when neither the message nor the known facts say." }
       }
     }
   }

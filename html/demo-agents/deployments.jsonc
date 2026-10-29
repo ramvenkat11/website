@@ -3,8 +3,13 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "deployEnvironment": "{ conv.deployEnvironment if sys.exists('conv', 'deployEnvironment') else '' }"
+        },
+
         // The list to work through.
-        "var": { "services": ["api", "web", "worker", "billing"], "lines": "" },
+        "var.2": { "services": ["api", "web", "worker", "billing"], "lines": "" },
 
         // Go through each item in turn.
         "for": {

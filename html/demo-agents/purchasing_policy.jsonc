@@ -3,55 +3,58 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says which cost band the purchase falls in.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "amount": {
-                "type": "choice",
-                "instructions": "The total cost of the purchase",
-                "criteria": {
-                  "Under $1,000": "The purchase costs less than $1,000",
-                  "$1,000 to $10,000": "The purchase costs between $1,000 and $10,000",
-                  "$10,000 to $100,000": "The purchase costs between $10,000 and $100,000, for example $15k",
-                  "Over $100,000": "The purchase costs more than $100,000",
-                  "not stated": "The message does not give a cost"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "purchaseAmount": "{ conv.purchaseAmount if sys.exists('conv', 'purchaseAmount') else 0 }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": { "amount": "{ jev['amount']['choice'] if 'amount' in jev and 'choice' in jev['amount'] else 'not stated' }" },
+        "var.3": {
+          "purchaseAmount": "{ float(facts['purchaseAmount']) if 'purchaseAmount' in facts and facts['purchaseAmount'] else purchaseAmount }"
+        },
 
-        // Ask the user only when the message does not give a cost.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ amount == 'not stated' }",
+          "condition": "{ purchaseAmount <= 0 }",
           "then": {
             "ask": {
-              "message": "How much will it cost?",
-              "inputs": [ { "name": "amount", "type": "chooseOne", "options": ["Under $1,000", "$1,000 to $10,000", "$10,000 to $100,000", "Over $100,000"] } ]
+              "message": "How much will it cost, in US dollars?",
+              "inputs": [ { "name": "purchaseAmount", "type": "str", "description": "The total in US dollars, for example 15000 or $15k." } ]
             },
-            "var": { "amount": "{ result['amount'] }" }
+            "var": { "amountText": "{ result['purchaseAmount'].lower().replace('$', '').replace(',', '').strip() }" },
+            "if": {
+              "condition": "{ not amountText.rstrip('k').replace('.', '', 1).isdigit() }",
+              "then": { "fail": "Please give the amount as a number, for example 15000." }
+            },
+            "var.2": { "purchaseAmount": "{ float(amountText.rstrip('k')) * (1000 if amountText.endswith('k') else 1) }" }
           }
         },
+
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.purchaseAmount": "{ purchaseAmount }" },
 
         // Finish early with a message; no LLM call needed.
         "if.3": {
-          "condition": "{ amount == 'Under $1,000' }",
+          "condition": "{ purchaseAmount < 1000 }",
           "then": { "end": "Purchases under $1,000 need no approval. Use your purchasing card or the catalog." }
         },
 
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the cost of the purchase.",
+      "args": {
+        "purchaseAmount": { "type": "float | null", "required": false, "description": "The total cost of the purchase in US dollars, for example 15000 for $15k. Empty if not stated." }
       }
     }
   }

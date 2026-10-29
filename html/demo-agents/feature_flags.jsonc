@@ -3,50 +3,47 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it names the environment.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "environment": {
-                "type": "choice",
-                "instructions": "Whether the message names the environment the user works in",
-                "criteria": {
-                  "stated": "The message names the environment the user works in, for example Staging or Production",
-                  "not stated": "The message does not name an environment"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "deployEnvironment": "{ conv.deployEnvironment if sys.exists('conv', 'deployEnvironment') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "environmentStated": "{ jev['environment']['choice'] if 'environment' in jev and 'choice' in jev['environment'] else 'not stated' }",
-          "environment": ""
+        "var.3": {
+          "deployEnvironment": "{ facts['deployEnvironment'] if 'deployEnvironment' in facts and facts['deployEnvironment'] else deployEnvironment }"
         },
 
-        // Ask the user only when the message does not name the environment.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ environmentStated == 'not stated' }",
+          "condition": "{ deployEnvironment == '' }",
           "then": {
             "ask": {
               "message": "Which environment do you use?",
-              "inputs": [ { "name": "environment", "type": "str", "description": "For example Development, Staging or Production." } ]
+              "inputs": [ { "name": "deployEnvironment", "type": "str", "description": "For example Development, Staging or Production." } ]
             },
-            "var": { "environment": "{ result['environment'] }" }
+            "var": { "deployEnvironment": "{ result['deployEnvironment'] }" }
           }
         },
 
-        // The LLM reads the environment from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.deployEnvironment": "{ deployEnvironment }" },
+
+        "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the environment the user works in.",
+      "args": {
+        "deployEnvironment": { "type": "str", "required": false, "description": "The environment the user works in, for example Staging or Production. Empty if unknown." }
       }
     }
   }

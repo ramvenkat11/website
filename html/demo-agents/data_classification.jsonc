@@ -6,60 +6,58 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Jev reads the message and says whether it only asks for the classification, names another action, or names none.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "action": {
-                "type": "choice",
-                "instructions": "What the user plans to do with the data",
-                "criteria": {
-                  "just classify it": "The user only wants to know the classification of the data",
-                  "another action": "The message says what the user plans to do with the data, for example email it outside or upload it to a cloud drive",
-                  "not stated": "The message does not say what the user plans to do with the data"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var.2": {
+          "dataAction": "{ conv.dataAction if sys.exists('conv', 'dataAction') else '' }"
         },
-        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.3": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.3": {
-          "actionScope": "{ jev['action']['choice'] if 'action' in jev and 'choice' in jev['action'] else 'not stated' }",
-          "action": ""
+        "var.4": {
+          "dataAction": "{ facts['dataAction'] if 'dataAction' in facts and facts['dataAction'] else dataAction }"
         },
+        "var.5": { "dataActionScope": "{ 'not stated' if dataAction == '' else ('just classify it' if dataAction.strip().lower() == 'just classify it' else 'another action') }" },
 
-        // Ask the user only when the message does not say what the user plans to do.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ actionScope == 'not stated' }",
+          "condition": "{ dataAction == '' }",
           "then": {
             "ask": {
               "message": "What are you planning to do with the data?",
-              "inputs": [ { "name": "action", "type": "str", "description": "For example Just classify it, Email it outside or Upload it to a cloud drive." } ]
+              "inputs": [ { "name": "dataAction", "type": "str", "description": "For example Just classify it, Email it outside or Upload it to a cloud drive." } ]
             },
             "var": {
-              "action": "{ result['action'] }",
-              "actionScope": "{ 'just classify it' if result['action'].strip().lower() == 'just classify it' else 'another action' }"
+              "dataAction": "{ result['dataAction'] }",
+              "dataActionScope": "{ 'just classify it' if result['dataAction'].strip().lower() == 'just classify it' else 'another action' }"
             }
           }
         },
 
-        // Branch on a condition. The LLM reads an action the message names; an asked one is added here.
+        // Branch on a condition.
         "if.3": {
-          "condition": "{ actionScope == 'just classify it' }",
+          "condition": "{ dataActionScope == 'just classify it' }",
           "then": { "var": { "focus": " Explain which classification level applies." } },
-          "else": { "var": { "focus": "{ f' Explain whether it is allowed to {action.lower()}.' if action else '' }" } }
+          "else": { "var": { "focus": "{ f' Explain whether it is allowed to {dataAction.lower()}.' if dataAction else '' }" } }
         },
 
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.6": { "conv.dataAction": "{ dataAction }" },
+
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records what the user plans to do with the data.",
+      "args": {
+        "dataAction": { "type": "str", "required": false, "description": "What the user plans to do with the data, for example email it outside or upload it to a cloud drive, or 'just classify it' when the user only wants the classification. Empty if unknown." }
       }
     }
   }

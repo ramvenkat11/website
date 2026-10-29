@@ -3,8 +3,13 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "team": "{ conv.team if sys.exists('conv', 'team') else '' }"
+        },
+
         // A number and a list used below.
-        "var": { "offset": 0, "slots": [] },
+        "var.2": { "offset": 0, "slots": [] },
 
         // Loop over dates, skipping some with continue and stopping with break.
         "while": {

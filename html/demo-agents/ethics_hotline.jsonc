@@ -3,66 +3,60 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it names the concern, and whether someone is in danger now.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "topic": {
-                "type": "choice",
-                "instructions": "Whether the message names what the user's concern is about",
-                "criteria": {
-                  "stated": "The message names what the concern is about, for example harassment or fraud",
-                  "not stated": "The message does not name what the concern is about"
-                }
-              },
-              "danger": {
-                "type": "choice",
-                "instructions": "Whether someone is in danger right now",
-                "criteria": {
-                  "Yes": "Someone is in danger right now",
-                  "No": "Nobody is in danger right now",
-                  "cannot tell": "The message does not say enough to tell"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "ethicsTopic": "{ conv.ethicsTopic if sys.exists('conv', 'ethicsTopic') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "topicStated": "{ jev['topic']['choice'] if 'topic' in jev and 'choice' in jev['topic'] else 'not stated' }",
-          "danger": "{ jev['danger']['choice'] if 'danger' in jev and 'choice' in jev['danger'] else 'cannot tell' }",
-          "topic": ""
+        "var.3": {
+          "ethicsTopic": "{ facts['ethicsTopic'] if 'ethicsTopic' in facts and facts['ethicsTopic'] else ethicsTopic }",
+          "danger": "{ facts['danger'] if 'danger' in facts and facts['danger'] is not None else None }"
         },
 
-        // Ask the user only when the message does not name the concern.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ topicStated == 'not stated' }",
+          "condition": "{ ethicsTopic == '' }",
           "then": {
             "ask": {
               "message": "What is your concern about?",
-              "inputs": [ { "name": "topic", "type": "str", "description": "For example Fraud, Harassment, Safety or Conflict of interest." } ]
+              "inputs": [ { "name": "ethicsTopic", "type": "str", "description": "For example Fraud, Harassment, Safety or Conflict of interest." } ]
             },
-            "var": { "topic": "{ result['topic'] }" }
+            "var": { "ethicsTopic": "{ result['ethicsTopic'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "danger": "{ facts['danger'] if 'danger' in facts and facts['danger'] is not None else None }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.ethicsTopic": "{ ethicsTopic }" },
+
         // Finish early with a message; no LLM call needed.
         "if.3": {
-          "condition": "{ danger == 'Yes' }",
+          "condition": "{ danger == True }",
           "then": { "end": "Call emergency services now, then Northwind Security on extension 5555." }
         },
 
-        // The LLM reads the concern from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records what the user's ethics concern is about.",
+      "args": {
+        "ethicsTopic": { "type": "str", "required": false, "description": "What the user's concern is about, for example harassment or fraud. Empty if unknown." },
+        "danger": { "type": "bool | null", "required": false, "description": "True if someone is in danger right now, False if nobody is, null when neither the message nor the known facts say." }
       }
     }
   }

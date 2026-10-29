@@ -10,7 +10,9 @@
         },
 
         // parallel returns a dict keyed by function name.
-        "output": "{ '## Lowest price\\n' + result['cheapest'] + '\\n\\n## Fastest delivery\\n' + result['fastest'] }"
+        "var": { "cheapestView": "{ result['cheapest'] }", "fastestView": "{ result['fastest'] }" },
+
+        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },
     // Takes one argument; parallel runs it alongside the other function.

@@ -3,56 +3,54 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says how bad the bug is.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "severity": {
-                "type": "choice",
-                "instructions": "How bad the bug is",
-                "criteria": {
-                  "Crash or data loss": "The bug crashes the app or loses data, for example the app keeps crashing",
-                  "Feature broken": "A feature does not work",
-                  "Cosmetic": "The bug only affects how something looks, for example a button is the wrong color",
-                  "Not sure": "The user says they do not know how bad the bug is",
-                  "not stated": "The message does not say how bad the bug is"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "bugSeverity": "{ conv.bugSeverity if sys.exists('conv', 'bugSeverity') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": { "severity": "{ jev['severity']['choice'] if 'severity' in jev and 'choice' in jev['severity'] else 'not stated' }" },
+        "var.3": {
+          "bugSeverity": "{ facts['bugSeverity'] if 'bugSeverity' in facts and facts['bugSeverity'] else bugSeverity }"
+        },
 
-        // Ask the user only when the message does not say how bad the bug is.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ severity == 'not stated' }",
+          "condition": "{ bugSeverity == '' }",
           "then": {
             "ask": {
               "message": "How bad is the bug?",
-              "inputs": [ { "name": "severity", "type": "chooseOne", "options": ["Crash or data loss", "Feature broken", "Cosmetic", "Not sure"] } ]
+              "inputs": [ { "name": "bugSeverity", "type": "chooseOne", "options": ["Crash or data loss", "Feature broken", "Cosmetic", "Not sure"] } ]
             },
-            "var": { "severity": "{ result['severity'] }" }
+            "var": { "bugSeverity": "{ result['bugSeverity'] }" }
           }
         },
 
         // Branch on a condition.
         "if.3": {
-          "condition": "{ severity == 'Crash or data loss' }",
+          "condition": "{ bugSeverity == 'Crash or data loss' }",
           "then": { "var": { "priority": "P1 - fix before anything else" } },
           "else": { "var": { "priority": "to be decided by the triage meeting" } }
         },
 
-        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.bugSeverity": "{ bugSeverity }" },
+
+        "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records how bad the reported bug is.",
+      "args": {
+        "bugSeverity": { "type": "str", "required": false, "description": "How bad the bug is, exactly one of: Crash or data loss (the app crashes or loses data), Feature broken (a feature does not work), Cosmetic (only how something looks), Not sure (the user says they do not know). Empty if not stated." }
       }
     }
   }

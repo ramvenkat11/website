@@ -3,11 +3,16 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "auditArea": "{ conv.auditArea if sys.exists('conv', 'auditArea') else '' }"
+        },
+
         // Call a function with arguments.
         "func": { "name": "pass_rate", "args": { "tested": 48, "failed": 3 } },
 
         // Use the value the function returned.
-        "var": { "rate": "{ result }" },
+        "var.2": { "rate": "{ result }" },
 
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }

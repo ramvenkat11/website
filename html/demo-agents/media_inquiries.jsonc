@@ -6,50 +6,47 @@
         // Write to the agent server's log.
         "log": { "level": "info", "message": "{ 'media_inquiries asked: ' + sys.query[:80] }" },
 
-        // Jev reads the message and says whether it says when the reporter needs a reply.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "deadline": {
-                "type": "choice",
-                "instructions": "Whether the message says when the reporter needs a reply",
-                "criteria": {
-                  "stated": "The message says when the reporter needs a reply, for example today or Friday noon, or says there is no deadline",
-                  "not stated": "The message does not say when the reporter needs a reply"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "replyDeadline": "{ conv.replyDeadline if sys.exists('conv', 'replyDeadline') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "deadlineStated": "{ jev['deadline']['choice'] if 'deadline' in jev and 'choice' in jev['deadline'] else 'not stated' }",
-          "deadline": ""
+        "var.3": {
+          "replyDeadline": "{ facts['replyDeadline'] if 'replyDeadline' in facts and facts['replyDeadline'] else replyDeadline }"
         },
 
-        // Ask the user only when the message does not say the deadline.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ deadlineStated == 'not stated' }",
+          "condition": "{ replyDeadline == '' }",
           "then": {
             "ask": {
               "message": "Is the reporter on deadline?",
-              "inputs": [ { "name": "deadline", "type": "str", "description": "For example Today, This week or No deadline." } ]
+              "inputs": [ { "name": "replyDeadline", "type": "str", "description": "For example Today, This week or No deadline." } ]
             },
-            "var": { "deadline": "{ result['deadline'] }" }
+            "var": { "replyDeadline": "{ result['replyDeadline'] }" }
           }
         },
 
-        // The LLM reads the deadline from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.replyDeadline": "{ replyDeadline }" },
+
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records when the reporter needs a reply.",
+      "args": {
+        "replyDeadline": { "type": "str", "required": false, "description": "When the reporter needs a reply, for example today or Friday noon, or no deadline. Empty if unknown." }
       }
     }
   }

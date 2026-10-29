@@ -3,40 +3,28 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it names one catalog, wants every catalog, or names none.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "catalog": {
-                "type": "choice",
-                "instructions": "Which catalog the user wants to search",
-                "criteria": {
-                  "any": "The user wants every catalog searched",
-                  "one catalog": "The message names one catalog, for example furniture, IT equipment or lab supplies",
-                  "not stated": "The message does not say which catalog"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "catalog": "{ conv.catalog if sys.exists('conv', 'catalog') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "catalogScope": "{ jev['catalog']['choice'] if 'catalog' in jev and 'choice' in jev['catalog'] else 'not stated' }",
-          "catalog": ""
+        "var.3": {
+          "catalog": "{ facts['catalog'] if 'catalog' in facts and facts['catalog'] else catalog }"
         },
+        "var.4": { "catalogScope": "{ 'not stated' if catalog == '' else ('any' if catalog.strip().lower() == 'any' else 'one catalog') }" },
 
-        // Ask the user only when the message does not say which catalog.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ catalogScope == 'not stated' }",
+          "condition": "{ catalog == '' }",
           "then": {
             "ask": {
               "message": "Which catalog?",
@@ -49,14 +37,24 @@
           }
         },
 
-        // Branch on a condition. The LLM reads a catalog the message names; an asked one is added here.
+        // Branch on a condition.
         "if.3": {
           "condition": "{ catalogScope == 'any' }",
           "then": { "var": { "focus": " Search every approved catalog." } },
           "else": { "var": { "focus": "{ f' Search the {catalog.lower()} catalog.' if catalog else '' }" } }
         },
 
-        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.5": { "conv.catalog": "{ catalog }" },
+
+        "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records which catalog the user wants to search.",
+      "args": {
+        "catalog": { "type": "str", "required": false, "description": "The catalog the user wants to search, for example furniture, IT equipment or lab supplies, or 'any' when the user wants every catalog searched. Empty if unknown." }
       }
     }
   }

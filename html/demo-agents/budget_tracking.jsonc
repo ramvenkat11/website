@@ -3,11 +3,16 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "team": "{ conv.team if sys.exists('conv', 'team') else '' }"
+        },
+
         // Call a function with arguments.
         "func": { "name": "variance", "args": { "budget": 120000.0, "actual": 131500.0 } },
 
         // Use the value the function returned.
-        "var": { "figure": "{ result }" },
+        "var.2": { "figure": "{ result }" },
 
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }

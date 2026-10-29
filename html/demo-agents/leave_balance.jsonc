@@ -9,55 +9,39 @@
           "year": 2026
         },
 
-        // Jev reads the message and says whether it asks about one kind of leave, every kind, or names none.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "leaveType": {
-                "type": "choice",
-                "instructions": "Which leave balance the user asks about",
-                "criteria": {
-                  "all": "The user asks about every kind of leave",
-                  "one kind": "The message names one kind of leave, for example vacation, sick or parental",
-                  "not stated": "The message does not say which kind of leave"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var.2": {
+          "leaveType": "{ conv.leaveType if sys.exists('conv', 'leaveType') else '' }"
         },
-        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.3": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.3": {
-          "leaveScope": "{ jev['leaveType']['choice'] if 'leaveType' in jev and 'choice' in jev['leaveType'] else 'not stated' }",
-          "leaveType": ""
+        "var.4": {
+          "leaveType": "{ facts['leaveType'] if 'leaveType' in facts and facts['leaveType'] else leaveType }"
         },
 
-        // Ask the user only when the message does not say which kind.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ leaveScope == 'not stated' }",
+          "condition": "{ leaveType == '' }",
           "then": {
             "ask": {
               "message": "Which leave balance?",
-              "inputs": [
-                { "name": "leaveType", "type": "str", "description": "For example All, Vacation, Sick or Personal." }
-              ]
+              "inputs": [ { "name": "leaveType", "type": "str", "description": "For example All, Vacation, Sick or Personal." } ]
             },
-            "var": {
-              "leaveType": "{ result['leaveType'] }",
-              "leaveScope": "{ 'all' if result['leaveType'].strip().lower() == 'all' else 'one kind' }"
-            }
+            "var": { "leaveType": "{ result['leaveType'] }" }
           }
         },
 
-        // Branch on a condition. The LLM reads a kind the message names; an asked one is added here.
+        "var.5": { "leaveScope": "{ 'all' if leaveType.strip().lower() == 'all' else ('one kind' if leaveType else 'not stated') }" },
+
+        // Branch on a condition.
         "if.3": {
           "condition": "{ leaveScope == 'all' }",
           "then": { "var": { "focus": " Show all leave types." } },
@@ -67,11 +51,17 @@
         // Tell the user what is happening while they wait.
         "progress": "Checking your balance...",
 
+        // Shared with every agent in the conversation.
+        "var.6": { "conv.leaveType": "{ leaveType }" },
 
-        "llm": {
-          "profile": "claude_haiku", "prompt": "default",
-          "streamOutput": true
-        }
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records which leave balance the user asks about.",
+      "args": {
+        "leaveType": { "type": "str", "required": false, "description": "The kind of leave the user asks about, for example vacation, sick or parental, or all when they ask about every kind. Empty if unknown." }
       }
     }
   }

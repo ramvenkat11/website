@@ -3,66 +3,60 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it gives the discount, and whether that is over 40%.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "discount": {
-                "type": "choice",
-                "instructions": "Whether the message gives the discount being requested",
-                "criteria": {
-                  "stated": "The message gives the discount being requested, for example 25%",
-                  "not stated": "The message does not give a discount"
-                }
-              },
-              "overForty": {
-                "type": "choice",
-                "instructions": "Whether the discount requested is more than 40%",
-                "criteria": {
-                  "Yes": "The discount requested is more than 40%",
-                  "No": "The discount requested is 40% or less",
-                  "cannot tell": "The message does not give a discount"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "discount": "{ conv.discount if sys.exists('conv', 'discount') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "discountStated": "{ jev['discount']['choice'] if 'discount' in jev and 'choice' in jev['discount'] else 'not stated' }",
-          "overForty": "{ jev['overForty']['choice'] if 'overForty' in jev and 'choice' in jev['overForty'] else 'cannot tell' }",
-          "discount": ""
+        "var.3": {
+          "discount": "{ facts['discount'] if 'discount' in facts and facts['discount'] else discount }",
+          "overForty": "{ facts['overForty'] if 'overForty' in facts and facts['overForty'] is not None else None }"
         },
 
-        // Ask the user only when the message does not give the discount.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ discountStated == 'not stated' }",
+          "condition": "{ discount == '' }",
           "then": {
             "ask": {
               "message": "How big a discount?",
               "inputs": [ { "name": "discount", "type": "str", "description": "For example 10%, 20%, 30% or Over 40%." } ]
             },
-            "var": { "discount": "{ result['discount'] }" }
+            "var": { "discount": "{ result['discount'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "overForty": "{ facts['overForty'] if 'overForty' in facts and facts['overForty'] is not None else None }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.discount": "{ discount }" },
+
         // Stop with an error the user sees.
         "if.3": {
-          "condition": "{ overForty == 'Yes' }",
+          "condition": "{ overForty == True }",
           "then": { "fail": "Discounts over 40% need the sales director's approval in person." }
         },
 
-        // The LLM reads the discount from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the discount the user is requesting.",
+      "args": {
+        "discount": { "type": "str", "required": false, "description": "The discount being requested, for example 25%. Empty if unknown." },
+        "overForty": { "type": "bool | null", "required": false, "description": "True if the discount requested is more than 40%, False if it is 40% or less, null when neither the message nor the known facts say." }
       }
     }
   }

@@ -3,73 +3,67 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it gives the source of the request, and whether that is a customer.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "source": {
-                "type": "choice",
-                "instructions": "Whether the message says where the feature request came from",
-                "criteria": {
-                  "stated": "The message says where the feature request came from, for example a customer or a partner",
-                  "not stated": "The message does not say where the request came from"
-                }
-              },
-              "fromCustomer": {
-                "type": "choice",
-                "instructions": "Whether the feature request came directly from a customer",
-                "criteria": {
-                  "Yes": "The request came directly from a customer",
-                  "No": "The request came from somewhere other than a customer",
-                  "cannot tell": "The message does not say where the request came from"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "requestSource": "{ conv.requestSource if sys.exists('conv', 'requestSource') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "sourceStated": "{ jev['source']['choice'] if 'source' in jev and 'choice' in jev['source'] else 'not stated' }",
-          "fromCustomer": "{ jev['fromCustomer']['choice'] if 'fromCustomer' in jev and 'choice' in jev['fromCustomer'] else 'cannot tell' }",
-          "source": ""
+        "var.3": {
+          "requestSource": "{ facts['requestSource'] if 'requestSource' in facts and facts['requestSource'] else requestSource }",
+          "fromCustomer": "{ facts['fromCustomer'] if 'fromCustomer' in facts and facts['fromCustomer'] is not None else None }"
         },
 
-        // Ask the user only when the message does not say where the request came from.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ sourceStated == 'not stated' }",
+          "condition": "{ requestSource == '' }",
           "then": {
             "ask": {
               "message": "Where did the request come from?",
-              "inputs": [ { "name": "source", "type": "str", "description": "For example Customer, Sales team, Support ticket or Internal team." } ]
+              "inputs": [ { "name": "requestSource", "type": "str", "description": "For example Customer, Sales team, Support ticket or Internal team." } ]
             },
-            "var": { "source": "{ result['source'] }" }
+            "var": { "requestSource": "{ result['requestSource'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "fromCustomer": "{ facts['fromCustomer'] if 'fromCustomer' in facts and facts['fromCustomer'] is not None else None }" }
           }
         },
 
         // Branch on a condition.
         "if.3": {
-          "condition": "{ fromCustomer == 'Yes' }",
+          "condition": "{ fromCustomer == True }",
           "then": { "var": { "urgency": "check the customer's plan and renewal date" } },
           "else": {
             "if": {
-              "condition": "{ fromCustomer == 'No' }",
+              "condition": "{ fromCustomer == False }",
               "then": { "var": { "urgency": "check how many customers are affected" } },
               "else": { "var": { "urgency": "check the customer's plan and renewal date if it came from a customer, otherwise check how many customers are affected" } }
             }
           }
         },
 
-        // The LLM reads the source from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.requestSource": "{ requestSource }" },
+
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records where the feature request came from.",
+      "args": {
+        "requestSource": { "type": "str", "required": false, "description": "Where the feature request came from, for example a customer or a partner. Empty if unknown." },
+        "fromCustomer": { "type": "bool | null", "required": false, "description": "True if the request came directly from a customer, False if it came from somewhere else, null when neither the message nor the known facts say." }
       }
     }
   }

@@ -3,55 +3,52 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says which stage of the product it is testing.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "stage": {
-                "type": "choice",
-                "instructions": "The stage of the product being tested",
-                "criteria": {
-                  "Early prototype": "The product is an early prototype or a proof of concept",
-                  "Pre-production unit": "The product is a pre-production unit",
-                  "Final design": "The product is the final design",
-                  "not stated": "The message does not say which stage the product is at"
-                }
-              }
-            }
-          }
-        },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+        // What this or another agent already learned in this conversation.
+        "var": { "productStage": "{ conv.productStage if sys.exists('conv', 'productStage') else '' }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": { "stage": "{ jev['stage']['choice'] if 'stage' in jev and 'choice' in jev['stage'] else 'not stated' }" },
+        "var.3": {
+          "productStage": "{ facts['productStage'] if 'productStage' in facts and facts['productStage'] else productStage }"
+        },
 
-        // Ask the user only when the message does not say the stage.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ stage == 'not stated' }",
+          "condition": "{ productStage == '' }",
           "then": {
             "ask": {
               "message": "What are you testing?",
-              "inputs": [ { "name": "stage", "type": "chooseOne", "options": ["Early prototype", "Pre-production unit", "Final design"], "default": "Early prototype" } ]
+              "inputs": [ { "name": "productStage", "type": "chooseOne", "options": ["Early prototype", "Pre-production unit", "Final design"], "default": "Early prototype" } ]
             },
-            "var": { "stage": "{ result['stage'] }" }
+            "var": { "productStage": "{ result['productStage'] }" }
           }
         },
 
         // Branch on a condition.
         "if.3": {
-          "condition": "{ stage == 'Final design' }",
+          "condition": "{ productStage == 'Final design' }",
           "then": { "var": { "depth": "full qualification with pass and fail limits" } },
           "else": { "var": { "depth": "a short exploratory test plan" } }
         },
 
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.productStage": "{ productStage }" },
+
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the stage of the product the user is testing.",
+      "args": {
+        "productStage": { "type": "str", "required": false, "description": "The stage of the product being tested, exactly one of: Early prototype (an early prototype or a proof of concept), Pre-production unit, Final design. Empty if not stated." }
       }
     }
   }

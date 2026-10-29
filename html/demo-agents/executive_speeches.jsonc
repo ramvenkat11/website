@@ -3,50 +3,47 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it names the speaker.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "speaker": {
-                "type": "choice",
-                "instructions": "Whether the message names the executive who will give the speech",
-                "criteria": {
-                  "stated": "The message names the executive who will give the speech, for example the CEO or the CFO",
-                  "not stated": "The message does not name who will give the speech"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "executive": "{ conv.executive if sys.exists('conv', 'executive') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "speakerStated": "{ jev['speaker']['choice'] if 'speaker' in jev and 'choice' in jev['speaker'] else 'not stated' }",
-          "speaker": ""
+        "var.3": {
+          "executive": "{ facts['executive'] if 'executive' in facts and facts['executive'] else executive }"
         },
 
-        // Ask the user only when the message does not name the speaker.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ speakerStated == 'not stated' }",
+          "condition": "{ executive == '' }",
           "then": {
             "ask": {
               "message": "Who usually gives the speeches you write?",
-              "inputs": [ { "name": "speaker", "type": "str", "description": "For example CEO, CFO, CTO or Head of People." } ]
+              "inputs": [ { "name": "executive", "type": "str", "description": "For example CEO, CFO, COO or CTO." } ]
             },
-            "var": { "speaker": "{ result['speaker'] }" }
+            "var": { "executive": "{ result['executive'] }" }
           }
         },
 
-        // The LLM reads the speaker from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.executive": "{ executive }" },
+
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records who will give the speech.",
+      "args": {
+        "executive": { "type": "str", "required": false, "description": "The executive who will give the speech, for example the CEO or the CFO. Empty if unknown." }
       }
     }
   }

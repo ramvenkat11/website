@@ -6,46 +6,34 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Jev reads the message and says whether it asks about one benefit, every benefit, or names none.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "benefit": {
-                "type": "choice",
-                "instructions": "Which benefit the user asks about",
-                "criteria": {
-                  "all": "The user asks about every benefit",
-                  "one benefit": "The message names one benefit, for example dental, health or retirement",
-                  "not stated": "The message does not say which benefit"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var.2": {
+          "benefit": "{ conv.benefit if sys.exists('conv', 'benefit') else '' }"
         },
-        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.3": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.3": {
-          "benefitScope": "{ jev['benefit']['choice'] if 'benefit' in jev and 'choice' in jev['benefit'] else 'not stated' }",
-          "benefit": ""
+        "var.4": {
+          "benefit": "{ facts['benefit'] if 'benefit' in facts and facts['benefit'] else benefit }"
         },
+        "var.5": { "benefitScope": "{ 'not stated' if benefit == '' else ('all' if benefit.strip().lower() == 'all' else 'one benefit') }" },
 
-        // Ask the user only when the message does not say which benefit.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ benefitScope == 'not stated' }",
+          "condition": "{ benefit == '' }",
           "then": {
             "ask": {
               "message": "Which benefit?",
               "inputs": [
-                { "name": "benefit", "type": "str", "description": "For example All, Health, Dental, Vision or Retirement." }
-              ]
+              { "name": "benefit", "type": "str", "description": "For example All, Health, Dental, Vision or Retirement." }
+            ]
             },
             "var": {
               "benefit": "{ result['benefit'] }",
@@ -54,7 +42,7 @@
           }
         },
 
-        // Branch on a condition. The LLM reads a benefit the message names; an asked one is added here.
+        // Branch on a condition.
         "if.3": {
           "condition": "{ benefitScope == 'all' }",
           "then": { "var": { "focus": " Focus on every benefit." } },
@@ -64,7 +52,17 @@
         // Tell the user what is happening while they wait.
         "progress": "Working on it...",
 
-        "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.6": { "conv.benefit": "{ benefit }" },
+
+        "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records which benefit the user asks about.",
+      "args": {
+        "benefit": { "type": "str", "required": false, "description": "The benefit the user asks about, for example dental, health or retirement, or 'all' when the user asks about every benefit. Empty if unknown." }
       }
     }
   }

@@ -3,50 +3,47 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it says which update the user wants.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "period": {
-                "type": "choice",
-                "instructions": "Whether the message says which investor update the user wants",
-                "criteria": {
-                  "stated": "The message says which investor update the user wants, for example monthly, quarterly or the annual letter",
-                  "not stated": "The message does not say which investor update"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "investorUpdate": "{ conv.investorUpdate if sys.exists('conv', 'investorUpdate') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "periodStated": "{ jev['period']['choice'] if 'period' in jev and 'choice' in jev['period'] else 'not stated' }",
-          "period": ""
+        "var.3": {
+          "investorUpdate": "{ facts['investorUpdate'] if 'investorUpdate' in facts and facts['investorUpdate'] else investorUpdate }"
         },
 
-        // Ask the user only when the message does not say which update.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ periodStated == 'not stated' }",
+          "condition": "{ investorUpdate == '' }",
           "then": {
             "ask": {
               "message": "Which update?",
-              "inputs": [ { "name": "period", "type": "str", "description": "For example Monthly, Quarterly or Annual letter." } ]
+              "inputs": [ { "name": "investorUpdate", "type": "str", "description": "For example Monthly, Quarterly or Annual letter." } ]
             },
-            "var": { "period": "{ result['period'] }" }
+            "var": { "investorUpdate": "{ result['investorUpdate'] }" }
           }
         },
 
-        // The LLM reads the update from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.investorUpdate": "{ investorUpdate }" },
+
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the investor update the user wants.",
+      "args": {
+        "investorUpdate": { "type": "str", "required": false, "description": "The investor update the user wants, for example Monthly, Quarterly or Annual letter. Empty if unknown." }
       }
     }
   }

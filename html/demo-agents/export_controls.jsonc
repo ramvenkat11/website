@@ -3,66 +3,60 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it names the destination country, and whether that is embargoed.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "country": {
-                "type": "choice",
-                "instructions": "Whether the message names the country the goods are going to",
-                "criteria": {
-                  "stated": "The message names the country the goods are going to, for example Brazil or Germany",
-                  "not stated": "The message does not name a destination country"
-                }
-              },
-              "embargoed": {
-                "type": "choice",
-                "instructions": "Whether the country the goods are going to is under a trade embargo",
-                "criteria": {
-                  "Yes": "The destination country is under a trade embargo",
-                  "No": "The destination country is not under a trade embargo",
-                  "cannot tell": "The message does not name a destination country"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "destinationCountry": "{ conv.destinationCountry if sys.exists('conv', 'destinationCountry') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "countryStated": "{ jev['country']['choice'] if 'country' in jev and 'choice' in jev['country'] else 'not stated' }",
-          "embargoed": "{ jev['embargoed']['choice'] if 'embargoed' in jev and 'choice' in jev['embargoed'] else 'cannot tell' }",
-          "country": ""
+        "var.3": {
+          "destinationCountry": "{ facts['destinationCountry'] if 'destinationCountry' in facts and facts['destinationCountry'] else destinationCountry }",
+          "embargoed": "{ facts['embargoed'] if 'embargoed' in facts and facts['embargoed'] is not None else None }"
         },
 
-        // Ask the user only when the message does not name the destination country.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ countryStated == 'not stated' }",
+          "condition": "{ destinationCountry == '' }",
           "then": {
             "ask": {
               "message": "Where is it going?",
-              "inputs": [ { "name": "country", "type": "str", "description": "For example Canada, Germany or Japan." } ]
+              "inputs": [ { "name": "destinationCountry", "type": "str", "description": "For example Canada, Germany or Japan." } ]
             },
-            "var": { "country": "{ result['country'] }" }
+            "var": { "destinationCountry": "{ result['destinationCountry'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "embargoed": "{ facts['embargoed'] if 'embargoed' in facts and facts['embargoed'] is not None else None }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.destinationCountry": "{ destinationCountry }" },
+
         // Stop with an error the user sees.
         "if.3": {
-          "condition": "{ embargoed == 'Yes' }",
+          "condition": "{ embargoed == True }",
           "then": { "fail": "Shipping to embargoed countries is not allowed." }
         },
 
-        // The LLM reads the country from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records where the goods are going.",
+      "args": {
+        "destinationCountry": { "type": "str", "required": false, "description": "The country the goods are going to, for example Brazil or Germany. Empty if unknown." },
+        "embargoed": { "type": "bool | null", "required": false, "description": "True if the destination country is under a trade embargo, False if it is not, null when neither the message nor the known facts say." }
       }
     }
   }

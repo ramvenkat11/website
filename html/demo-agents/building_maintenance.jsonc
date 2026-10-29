@@ -6,65 +6,63 @@
         // Values used below.
         "var": { "company": "Northwind Corp" },
 
-        // Jev reads the message and says whether it names one kind of problem, says some other kind, or names none.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "problem": {
-                "type": "choice",
-                "instructions": "Which kind of building problem the user reports",
-                "criteria": {
-                  "other": "The message says the problem is of some other kind, without naming the kind",
-                  "one kind": "The message names the kind of building problem, for example heating, lighting, plumbing or a door",
-                  "not stated": "The message does not report a building problem"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var.2": {
+          "buildingProblem": "{ conv.buildingProblem if sys.exists('conv', 'buildingProblem') else '' }"
         },
-        "var.2": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.3": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.3": {
-          "problemScope": "{ jev['problem']['choice'] if 'problem' in jev and 'choice' in jev['problem'] else 'not stated' }",
-          "problem": ""
+        "var.4": {
+          "buildingProblem": "{ facts['buildingProblem'] if 'buildingProblem' in facts and facts['buildingProblem'] else buildingProblem }"
         },
+        "var.5": { "buildingProblemScope": "{ 'not stated' if buildingProblem == '' else ('other' if buildingProblem.strip().lower() == 'other' else 'one kind') }" },
 
-        // Ask the user only when the message does not say which problem.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ problemScope == 'not stated' }",
+          "condition": "{ buildingProblem == '' }",
           "then": {
             "ask": {
               "message": "What is the problem?",
               "inputs": [
-                { "name": "problem", "type": "str", "description": "For example Other, Heating, Lighting, Plumbing or Door." }
-              ]
+              { "name": "buildingProblem", "type": "str", "description": "For example Other, Heating, Lighting, Plumbing or Door." }
+            ]
             },
             "var": {
-              "problem": "{ result['problem'] }",
-              "problemScope": "{ 'other' if result['problem'].strip().lower() == 'other' else 'one kind' }"
+              "buildingProblem": "{ result['buildingProblem'] }",
+              "buildingProblemScope": "{ 'other' if result['buildingProblem'].strip().lower() == 'other' else 'one kind' }"
             }
           }
         },
 
-        // Branch on a condition. The LLM reads a problem the message names; an asked one is added here.
+        // Branch on a condition.
         "if.3": {
-          "condition": "{ problemScope == 'other' }",
+          "condition": "{ buildingProblemScope == 'other' }",
           "then": { "var": { "focus": " Focus on the problem described." } },
-          "else": { "var": { "focus": "{ f' Focus on {problem.lower()}.' if problem else '' }" } }
+          "else": { "var": { "focus": "{ f' Focus on {buildingProblem.lower()}.' if buildingProblem else '' }" } }
         },
 
         // Tell the user what is happening while they wait.
         "progress": "Working on it...",
 
-        "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.6": { "conv.buildingProblem": "{ buildingProblem }" },
+
+        "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the kind of building problem the user reports.",
+      "args": {
+        "buildingProblem": { "type": "str", "required": false, "description": "The kind of building problem the user reports, for example heating, lighting, plumbing or door, or 'other' when the user says it is some other kind without naming it. Empty if unknown." }
       }
     }
   }

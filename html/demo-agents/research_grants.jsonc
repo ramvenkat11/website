@@ -3,6 +3,11 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "researchLab": "{ conv.researchLab if sys.exists('conv', 'researchLab') else '' }"
+        },
+
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

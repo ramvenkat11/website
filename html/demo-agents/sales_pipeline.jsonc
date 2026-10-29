@@ -3,8 +3,13 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "salesRegion": "{ conv.salesRegion if sys.exists('conv', 'salesRegion') else '' }"
+        },
+
         // The list to work through.
-        "var": { "stages": ["Prospecting", "Qualified", "Proposal", "Negotiation", "Closed won"], "lines": "" },
+        "var.2": { "stages": ["Prospecting", "Qualified", "Proposal", "Negotiation", "Closed won"], "lines": "" },
 
         // Go through each item in turn.
         "for": {

@@ -3,56 +3,53 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it already gives the abstract of the paper.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "abstract": {
-                "type": "choice",
-                "instructions": "Whether the message gives the text of the paper's abstract",
-                "criteria": {
-                  "stated": "The message gives the text of the paper's abstract",
-                  "not stated": "The message gives no abstract"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "paperAbstract": "{ conv.paperAbstract if sys.exists('conv', 'paperAbstract') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "abstractStated": "{ jev['abstract']['choice'] if 'abstract' in jev and 'choice' in jev['abstract'] else 'not stated' }",
-          "abstract": ""
+        "var.3": {
+          "paperAbstract": "{ facts['paperAbstract'] if 'paperAbstract' in facts and facts['paperAbstract'] else paperAbstract }"
         },
 
-        // Ask the user only when the message gives no abstract.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ abstractStated == 'not stated' }",
+          "condition": "{ paperAbstract == '' }",
           "then": {
             "ask": {
               "message": "Paste the abstract of the paper.",
-              "inputs": [ { "name": "abstract", "type": "text", "label": "Abstract" } ]
+              "inputs": [ { "name": "paperAbstract", "type": "text", "label": "Abstract" } ]
             },
-            "var": { "abstract": "{ result['abstract'] }" },
+            "var": { "paperAbstract": "{ result['paperAbstract'] }" },
 
             // Stop with an error the user sees.
             "if": {
-              "condition": "{ len(abstract.strip()) < 50 }",
+              "condition": "{ len(paperAbstract.strip()) < 50 }",
               "then": { "fail": "The abstract is too short to summarize." }
             }
           }
         },
 
-        // The LLM reads the abstract from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.paperAbstract": "{ paperAbstract }" },
+
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the abstract of the paper to summarize.",
+      "args": {
+        "paperAbstract": { "type": "str", "required": false, "description": "The text of the paper's abstract, as given. Empty if unknown." }
       }
     }
   }

@@ -3,66 +3,58 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it names the area, and whether the user asks for unescorted data center access.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "area": {
-                "type": "choice",
-                "instructions": "Whether the message names the area the user wants access to",
-                "criteria": {
-                  "stated": "The message names the area the user wants access to, for example the server room or the data center",
-                  "not stated": "The message does not name an area"
-                }
-              },
-              "unescortedDataCenter": {
-                "type": "choice",
-                "instructions": "Whether the user asks to enter the data center without an escort",
-                "criteria": {
-                  "Yes": "The user asks to enter the data center without an escort",
-                  "No": "The user asks for another area, or for escorted access to the data center",
-                  "cannot tell": "The message does not say enough to tell"
-                }
-              }
-            }
-          }
-        },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
+        // What this or another agent already learned in this conversation.
+        "var": { "restrictedArea": "{ conv.restrictedArea if sys.exists('conv', 'restrictedArea') else '' }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "areaStated": "{ jev['area']['choice'] if 'area' in jev and 'choice' in jev['area'] else 'not stated' }",
-          "unescortedDataCenter": "{ jev['unescortedDataCenter']['choice'] if 'unescortedDataCenter' in jev and 'choice' in jev['unescortedDataCenter'] else 'cannot tell' }",
-          "area": ""
+        "var.3": {
+          "restrictedArea": "{ facts['restrictedArea'] if 'restrictedArea' in facts and facts['restrictedArea'] else restrictedArea }",
+          "unescortedDataCenter": "{ facts['unescortedDataCenter'] if 'unescortedDataCenter' in facts and facts['unescortedDataCenter'] is not None else None }"
         },
 
-        // Ask the user only when the message does not name the area.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ areaStated == 'not stated' }",
+          "condition": "{ restrictedArea == '' }",
           "then": {
             "ask": {
               "message": "Which area?",
-              "inputs": [ { "name": "area", "type": "str", "description": "For example Server room, Research lab, Executive floor or Data center." } ]
+              "inputs": [ { "name": "restrictedArea", "type": "str", "description": "For example Server room, Research lab, Executive floor or Data center." } ]
             },
-            "var": { "area": "{ result['area'] }" }
+            "var": { "restrictedArea": "{ result['restrictedArea'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "unescortedDataCenter": "{ facts['unescortedDataCenter'] if 'unescortedDataCenter' in facts and facts['unescortedDataCenter'] is not None else None }" }
           }
         },
 
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.restrictedArea": "{ restrictedArea }" },
+
         // Stop with an error the user sees.
         "if.3": {
-          "condition": "{ unescortedDataCenter == 'Yes' }",
+          "condition": "{ unescortedDataCenter == True }",
           "then": { "fail": "Unescorted data center access is only granted to the infrastructure team." }
         },
 
-        // The LLM reads the area from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the restricted area access the user is asking for.",
+      "args": {
+        "restrictedArea": { "type": "str", "required": false, "description": "The area the user wants access to, for example the server room or the data center. Empty if unknown." },
+        "unescortedDataCenter": { "type": "bool | null", "required": false, "description": "True if the user asks to enter the data center without an escort, false if they ask for another area or for escorted access to the data center, null when neither the message nor the known facts say." }
       }
     }
   }

@@ -3,8 +3,13 @@
   "functions": {
     "main": {
       "commands": {
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "device": "{ conv.device if sys.exists('conv', 'device') and conv.device.strip().lower() not in ['all', 'any', 'anything'] else '' }"
+        },
+
         // The list to work through.
-        "var": { "fixs": ["Check your internet", "Restart the VPN client", "Update the VPN client", "Try another network"], "lines": "" },
+        "var.2": { "fixs": ["Check your internet", "Restart the VPN client", "Update the VPN client", "Try another network"], "lines": "" },
 
         // Go through each item in turn.
         "for": {

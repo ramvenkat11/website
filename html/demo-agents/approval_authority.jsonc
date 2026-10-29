@@ -3,73 +3,67 @@
   "functions": {
     "main": {
       "commands": {
-        // Jev reads the message and says whether it names the decision, and whether that is a contract.
-        "api": {
-          "profile": "jev",
-          "body": {
-            "model": "jev-latest",
-            "state": "{ sys.query }",
-            "questions": {
-              "decision": {
-                "type": "choice",
-                "instructions": "Whether the message names the kind of decision that needs approval",
-                "criteria": {
-                  "stated": "The message names the kind of decision that needs approval, for example hiring or spending",
-                  "not stated": "The message does not name the kind of decision"
-                }
-              },
-              "isContract": {
-                "type": "choice",
-                "instructions": "Whether the decision that needs approval is signing a contract",
-                "criteria": {
-                  "Yes": "The decision is signing a contract",
-                  "No": "The decision is something other than signing a contract",
-                  "cannot tell": "The message does not say enough to tell"
-                }
-              }
-            }
-          }
+        // What this or another agent already learned in this conversation.
+        "var": {
+          "approvalDecision": "{ conv.approvalDecision if sys.exists('conv', 'approvalDecision') else '' }"
         },
-        "var": { "jev": "{ result['answers'] if isinstance(result, dict) and 'answers' in result else {} }", "jevReply": "{ str(result)[:300] }" },
 
-        // A Jev failure must show in the log; the agent then asks instead of guessing.
+        // The message wins over what was known; a field neither has comes back empty.
+        "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+        "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+
+        // An extraction failure must show in the log; the agent then asks instead of guessing.
         "if": {
-          "condition": "{ len(jev) == 0 }",
-          "then": { "log": { "level": "error", "message": "{ 'Jev returned no answers: ' + jevReply }" } }
+          "condition": "{ len(facts) == 0 }",
+          "then": { "log": { "level": "error", "message": "Extraction returned no facts" } }
         },
-        "var.2": {
-          "decisionStated": "{ jev['decision']['choice'] if 'decision' in jev and 'choice' in jev['decision'] else 'not stated' }",
-          "isContract": "{ jev['isContract']['choice'] if 'isContract' in jev and 'choice' in jev['isContract'] else 'cannot tell' }",
-          "decision": ""
+        "var.3": {
+          "approvalDecision": "{ facts['approvalDecision'] if 'approvalDecision' in facts and facts['approvalDecision'] else approvalDecision }",
+          "isContract": "{ facts['isContract'] if 'isContract' in facts and facts['isContract'] is not None else None }"
         },
 
-        // Ask the user only when the message does not name the decision.
+        // Ask only for what neither the message nor the conversation has.
         "if.2": {
-          "condition": "{ decisionStated == 'not stated' }",
+          "condition": "{ approvalDecision == '' }",
           "then": {
             "ask": {
               "message": "What needs approval?",
-              "inputs": [ { "name": "decision", "type": "str", "description": "For example Spending, Hiring, Contract signing or Pricing change." } ]
+              "inputs": [ { "name": "approvalDecision", "type": "str", "description": "For example Spending, Hiring, Contract signing or Pricing change." } ]
             },
-            "var": { "decision": "{ result['decision'] }" }
+            "var": { "approvalDecision": "{ result['approvalDecision'] }" },
+
+            // Check the typed answer as well.
+            "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
+            "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
+            "var.3": { "isContract": "{ facts['isContract'] if 'isContract' in facts and facts['isContract'] is not None else None }" }
           }
         },
 
         // Branch on a condition.
         "if.3": {
-          "condition": "{ isContract == 'Yes' }",
+          "condition": "{ isContract == True }",
           "then": { "var": { "note": " Contracts also need a legal review before signing." } },
           "else": {
             "if": {
-              "condition": "{ isContract == 'No' }",
+              "condition": "{ isContract == False }",
               "then": { "var": { "note": " No extra review is needed." } },
               "else": { "var": { "note": "" } }
             }
           }
         },
 
-        // The LLM reads the decision from the message; the asked one is added only when there was an ask.
-        "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+        // Shared with every agent in the conversation.
+        "var.4": { "conv.approvalDecision": "{ approvalDecision }" },
+
+        "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
+      }
+    },
+    // The shape of the extraction; never run.
+    "facts": {
+      "description": "Records the decision the user needs approved.",
+      "args": {
+        "approvalDecision": { "type": "str", "required": false, "description": "The kind of decision that needs approval, for example hiring or spending. Empty if unknown." },
+        "isContract": { "type": "bool | null", "required": false, "description": "True if the decision is signing a contract, False if it is something else, null when neither the message nor the known facts say." }
       }
     }
   }
