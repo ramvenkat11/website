@@ -1362,3 +1362,9 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-29 — deploy cache header
 - Ram saw the old trace demo after deploying (10-minute browser cache). scripts/deploy.sh:19 CACHE_CONTROL is now "no-cache" (pages, CSS, JS revalidate on each load); images/fonts keep 30 days. bash -n ok. Not run.
 - Caveat: `aws s3 sync` uploads only changed files, so unchanged objects keep max-age=600 until re-uploaded; a one-time metadata rewrite of the non-image objects would apply it everywhere (needs Ram's go-ahead).
+
+## 2026-10-29 — demo agents: Show prompts
+- scripts/refresh-demo-agents.sh now also mirrors definitions/*.prompts.json into html/demo-agents/ (ran it: 200 new files, untracked, for Ram to commit).
+- html/demo-agents.html: each agent has "Show source" and "Show prompts" (Ram chose a separate toggle). The two share one togglePanel(item, name, panel) with a PANELS table (replaces toggleSource); prompts view lists each prompt by name (file order, e.g. extract then default) with System text and User in mono; doc and scope are not shown. #hash still opens the source.
+- styles.css: .agent-source-btn → .agent-btn (+ .agent-actions row), .agent-source → .agent-panel; new .agent-prompt* rules; ≤640 stacks System/User labels above text.
+- Rendered access_reviews (2 prompts) and vpn_help open at 8 widths light/dark: no overflow. Checked hash-open, source click, prompts toggle; every agent has a prompts file. Not deployed.
