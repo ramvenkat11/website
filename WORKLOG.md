@@ -1382,3 +1382,8 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Meta description and og:description of demo-draft, demo-search and demo-trace rewritten to match the new headings and leads.
 - demo-trace: "Secrets never appear… masked." → "Sensitive information is masked." in the lead and in both meta descriptions.
 - demo-draft lead split in two: "Draft with AI writes or edits… agent editor." / "Search2o agents follow a defined schema… by name."
+
+## 2026-10-30 — Agent infrastructure figure split into Build, Discover, Execute
+- `html/index.html` `#framework-runtime`: boxes regrouped under muted `p.fw-group` titles with a hairline. Build (8): Agent editor, Draft with AI, Externalized prompts, Trace and validation, Agent versioning, Multi-developer publishing, Live configuration, Audit log. Discover: title plus an empty `.fw-empty` band (Ram will add boxes next). Execute (16): the rest. Your agent stays at the bottom. aria-label lists the three groups.
+- `styles.css`: added `.fw-group`, `.fw-empty`; removed the old `nth-child` `order` rules (they would have lifted boxes above the Build title).
+- Rendered 1280–360 light/dark; sweep 320–1280 clean. Next: Ram's Discover boxes.
