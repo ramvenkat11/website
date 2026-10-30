@@ -1387,3 +1387,8 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - `html/index.html` `#framework-runtime`: boxes regrouped under muted `p.fw-group` titles with a hairline. Build (8): Agent editor, Draft with AI, Externalized prompts, Trace and validation, Agent versioning, Multi-developer publishing, Live configuration, Audit log. Discover: title plus an empty `.fw-empty` band (Ram will add boxes next). Execute (16): the rest. Your agent stays at the bottom. aria-label lists the three groups.
 - `styles.css`: added `.fw-group`, `.fw-empty`; removed the old `nth-child` `order` rules (they would have lifted boxes above the Build title).
 - Rendered 1280–360 light/dark; sweep 320–1280 clean. Next: Ram's Discover boxes.
+
+## 2026-10-30 — Build group: three more boxes
+- `html/index.html` `#framework-runtime` Build now has 11: added Private drafts (→ docs/development/drafts.html) after Draft with AI, Externalized system calls (→ docs/profiles/overview.html; Ram's name for profiles) after Externalized prompts, Hooks (→ docs/hooks/overview.html) before Audit log. aria-label updated.
+- Ram's rule: the figure lists features only, never documentation topics (language constructs, setup patterns, search quality etc. rejected).
+- Renders 1280–360 light/dark; sweep clean. Build's last desktop row has 3 boxes. Discover still empty.
