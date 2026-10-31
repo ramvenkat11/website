@@ -1496,3 +1496,6 @@ Ram: use one word. Replaced every "organization(s)" on html/index.html (figure t
 
 ## 2026-10-31 — Home system figure: four more links
 Per Ram ("Do the first four"): Enterprise systems → docs/profiles/overview.html with APIs / Databases / MCP servers → api-profiles / db-profiles / mcp-servers; Local LLMs and External LLMs → docs/llm/vendors.html, "Other" → docs/llm/llm-adapters.html; User · Developer · Admin chip → docs/system-management/users-and-roles.html. Box-title links styled like the client titles (inherit colour, blue on hover); the span links are blue like the server's link line; the roles chip inherits like the Bot chip. Rendered 8 widths light+dark, sweep clean.
+
+## 2026-10-31 — Home system figure: cloud arrow direction
+Per Ram: the server→cloud link is now one-way downward (`.arch-link.lnk`, no `two`), the "sensitive data encrypted" label is gone, and "encrypted by default" in the cloud card links to docs/security/encryption.html. The cloud tag moved back to the left (default `.arch-cloud-lbl` position) so the arrowhead is visible at the cloud's top centre. Rendered 8 widths light+dark, sweep clean.
