@@ -1505,3 +1505,6 @@ Per Ram ("Interface arrow directions are also wrong"): removed the `.cc-join i::
 
 ## 2026-10-31 — Home: "Built for the enterprise" → "Operations controls"
 `#platform` h2 changed after a Q&A with Ram (reader: the operations team; takeaway: nothing is missing; tone: a label for what the six cards say). Text-only; no renders.
+
+## 2026-10-31 — Home: heading reverted
+Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
