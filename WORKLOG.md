@@ -1460,3 +1460,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-31 — Hero lead: closing clause dropped
 - "…running the agents, so you can focus on the business logic." → "…running the agents." (Ram; the infrastructure figure's "Business logic only" carries the point). Ram kept "building, discovering and running" over "building, running and using". Rendered `.hero-head` at 8 widths light/dark; sweep clean.
 - Hero lead: "handles all the plumbing" → "handles the plumbing" (Ram: "all" appeared twice).
+- Hero lead, option 2 chosen: "Your agents work as one system: …" and "handles all the plumbing" restored. (I had applied option 1 before Ram chose; he wanted suggestions first.) Rendered 8 widths light/dark; sweep clean.
