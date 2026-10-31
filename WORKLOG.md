@@ -1453,3 +1453,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Follow-up: card ends "…so the same agent runs unchanged in dev and prod." with the link back on "dev and prod". Still four lines at 1280.
 - `#user-interfaces` h2: "Stateless agent server, cloud‑managed state" → "Cloud‑managed state" (Ram). Text-only.
 - Hero lead: "The agents work as one system…" → "All the agents work as one system…" (Ram). Text-only.
+- Hero lead: "just" dropped → "All the agents work as one system with two calls: search and execAgent."
