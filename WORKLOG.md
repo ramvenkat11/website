@@ -1487,3 +1487,6 @@ Per Ram ("make the change on the home page"). A small "2o" badge (`.s2o-badge`, 
 
 ## 2026-10-31 — Home system figure: badges removed
 Ram: "The badge is not worth it". `.s2o-badge` markup, the `.fig-note` legend, the aria-label sentence and the CSS block are gone; figure back to the state before the badges. Rendered 1280/375 light, sweep clean.
+
+## 2026-10-31 — Hero lead: AI first draft
+First sentence now ends ", with [AI writing the first draft](demo-draft.html)." (Ram proposed "with AI help"; I suggested the concrete phrase and he applied it.) Still four lines at 1280. Rendered 8 widths light+dark; sweep clean.
