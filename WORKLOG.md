@@ -1440,3 +1440,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-30 — "Source available" removed from the stateless section figure
 - `index.html` `#user-interfaces`: the `<small><a class="src">` GitHub line under "Agent server cluster" is gone; aria-label no longer mentions GitHub. `.st-srv .src` CSS removed. The separate "Source available" h3 lower on the page (line ~205) was not asked about and is untouched.
 - Rendered `.ui-fan` at 8 widths light/dark; sweep clean.
+- Follow-up: the removed line is replaced by `<small>Stateless</small>` under "Agent server cluster" (muted, existing `.st-srv small` style). Re-rendered; sweep clean.
