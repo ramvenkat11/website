@@ -1455,3 +1455,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Hero lead: "The agents work as one system…" → "All the agents work as one system…" (Ram). Text-only.
 - Hero lead: "just" dropped → "All the agents work as one system with two calls: search and execAgent."
 - Hero lead: "with two calls" → "through two calls".
+- Hero lead, final (Ram's wording): "All your agents work as one system: `search` finds the right agent, and `execAgent` runs it." Links kept (search.html, conversation.html). Rendered `.hero-head` at 8 widths light/dark; sweep clean.
