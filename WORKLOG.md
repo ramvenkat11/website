@@ -1499,3 +1499,6 @@ Per Ram ("Do the first four"): Enterprise systems → docs/profiles/overview.htm
 
 ## 2026-10-31 — Home system figure: cloud arrow direction
 Per Ram: the server→cloud link is now one-way downward (`.arch-link.lnk`, no `two`), the "sensitive data encrypted" label is gone, and "encrypted by default" in the cloud card links to docs/security/encryption.html. The cloud tag moved back to the left (default `.arch-cloud-lbl` position) so the arrowhead is visible at the cloud's top centre. Rendered 8 widths light+dark, sweep clean.
+
+## 2026-10-31 — Home system figure: arrows end only at the server
+Per Ram ("Interface arrow directions are also wrong"): removed the `.cc-join i::before` up-arrowheads into the three client boxes; the client join now has heads only where the line enters the agent server. Also at ≤640 the cloud tag is centred again and the server→cloud arrow ends at the tag's top edge (`.lnk` 59px + 9px bottom margin), since the narrow cloud card cannot fit the tag beside the arrow. Rendered 8 widths light+dark, sweep clean.
