@@ -1502,3 +1502,6 @@ Per Ram: the server→cloud link is now one-way downward (`.arch-link.lnk`, no `
 
 ## 2026-10-31 — Home system figure: arrows end only at the server
 Per Ram ("Interface arrow directions are also wrong"): removed the `.cc-join i::before` up-arrowheads into the three client boxes; the client join now has heads only where the line enters the agent server. Also at ≤640 the cloud tag is centred again and the server→cloud arrow ends at the tag's top edge (`.lnk` 59px + 9px bottom margin), since the narrow cloud card cannot fit the tag beside the arrow. Rendered 8 widths light+dark, sweep clean.
+
+## 2026-10-31 — Home: "Built for the enterprise" → "Operations controls"
+`#platform` h2 changed after a Q&A with Ram (reader: the operations team; takeaway: nothing is missing; tone: a label for what the six cards say). Text-only; no renders.
