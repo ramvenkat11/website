@@ -1518,3 +1518,4 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - Next: Ram may reword the heading; subheading idea for this section is dropped unless he raises it.
 - Follow-up: "JSON + Python expressions" in the agent box now links to `framework.html` (`.fw-agent > small a` inherits muted colour, blue-ink on hover, no underline). Rendered 1280 and 360 light+dark; unchanged layout.
 - Heading now "An agent is business logic, expressed as configuration" (Ram chose the first variation). Breaks after the comma at 360; one line at 700.
+- Final: h2 back to "Built-in agent infrastructure"; agent box label "business logic, expressed as configuration" (linked to framework.html); aria-label matches. Box widens at 1280 (one line), two lines at 412, three at 360; sweep clean.
