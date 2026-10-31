@@ -1478,3 +1478,6 @@ Per Ram. Bottom row `.arch-out` now: Search2o Cloud under the agent server (colu
 
 ## 2026-10-31 — Home system figure: gap before External LLMs
 External LLMs box now has margin-left 34px (12px at ≤640), so it lines up under Local LLMs and sits clear of the cloud; `.out-llm` carries the same margin so the vertical line stays centred on the box, and the placeholder's horizontal segment is `calc(50% + 34px)` (18px at ≤640). Rendered 8 widths light+dark, sweep clean; looked at 1280, 375, 360. On phones the vendor list wraps to three lines.
+
+## 2026-10-31 — Home: section heading
+`#user-interfaces` h2 is now "How it fits in your enterprise" (was "Cloud‑managed state"). Text-only; no renders.
