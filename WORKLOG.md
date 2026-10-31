@@ -1419,3 +1419,8 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-30 — Infrastructure figure flattened again
 - Ram chose no groups. `p.fw-group` titles and `.fw-group` CSS removed; 27 boxes in one grid, order kept (editor → … → observability), hairline + request ▸ Your agent ▸ response row below. aria-label is one flat list again. Ram will pick a 28th box.
 - Rendered 8 widths light/dark; sweep clean.
+
+## 2026-10-30 — Private drafts out, Authentication in
+- `index.html` figure: Private drafts removed (a workflow stage, covered by Agent editor / Draft with AI). Authentication (→ docs/system-management/authentication.html, key icon) added after Secret vault. Still 27 boxes. aria-label updated.
+- Ram's rule, sharpened: repetition with other parts of the home page is fine; no box may duplicate another box in this figure. Allowlist therefore rejected (inside Guardrails). Noted to Ram: Runtime limits is also inside Guardrails' page.
+- Rendered 8 widths light/dark; sweep clean.
