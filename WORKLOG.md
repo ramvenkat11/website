@@ -1410,3 +1410,8 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-30 — Infrastructure figure: hairline above Your agent, lighter labels
 - `styles.css`: `.fw-run` gets `padding-top: 18px; border-top: 1px solid var(--line)` (margin `6px 0 2px`), so the request → Your agent → response row reads as the figure's conclusion. `.fw-piece` font-weight 600 → 500; the Discover strip's bold stays 600.
 - Ram declined option 1 (the empty Build slot). Rendered 8 widths light/dark; sweep clean.
+
+## 2026-10-30 — Discover removed; search tried in the flow row and removed again
+- Ram chose moving search into the bottom row (request ▸ search ▸ Your agent ▸ response), then dropped it: "not sure search fits there". Discover group and strip are gone. The row is back to request ▸ Your agent ▸ response, now with explicit `i.fw-arr` triangles instead of `::after` arrows; hairline above it stays. `.fw-discover`, `.fw-arrow`, `.fw-io.step` and the stacking rule were removed.
+- Build has 11 boxes; Ram will add a twelfth. Open question from Ram: drop the Build/Execute groups altogether, since part of the split looks artificial. Answered with options; awaiting his choice.
+- Rendered 8 widths light/dark; sweep clean.
