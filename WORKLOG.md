@@ -1490,3 +1490,6 @@ Ram: "The badge is not worth it". `.s2o-badge` markup, the `.fig-note` legend, t
 
 ## 2026-10-31 — Hero lead: AI first draft
 First sentence now ends ", with [AI writing the first draft](demo-draft.html)." (Ram proposed "with AI help"; I suggested the concrete phrase and he applied it.) Still four lines at 1280. Rendered 8 widths light+dark; sweep clean.
+
+## 2026-10-31 — "organization" → "enterprise" on the site pages
+Ram: use one word. Replaced every "organization(s)" on html/index.html (figure tag "Your enterprise", aria-label, Source available card), conversation.html, pricing.html and runtime.html. Docs untouched: 33 uses in 16 docsrc files, including the "Your organization" tag of the figure moved to Parts of the system; reported to Ram. Home figure rendered 1280/375, sweep clean.
