@@ -217,8 +217,9 @@ p { margin: 0; }
 .hero-lead { margin: 0; color: var(--body); font-size: 17px; font-weight: 500; line-height: 1.55; }
 .hero-attrs { margin: 12px 0 0; color: var(--body); font-size: 17px; font-weight: 500; line-height: 1.55; }
 .hero-head strong { color: var(--ink); font-weight: 650; }
-.hero-attr { color: var(--blue-ink); font-weight: 600; text-decoration: none; background: color-mix(in srgb, var(--blue) 10%, transparent); padding: 1px 4px; margin: 0 -2px; border-radius: 5px; -webkit-box-decoration-break: clone; box-decoration-break: clone; transition: background-color .15s; }
-.hero-attr:hover { background: color-mix(in srgb, var(--blue) 20%, transparent); }
+.hero-attr { color: var(--blue-ink); font-weight: 600; text-decoration: none; white-space: nowrap; transition: color .15s; }
+.hero-attr:hover { color: var(--blue); }
+.hero-attr code { color: inherit; font-weight: 600; }
 .hero-term { color: var(--blue-ink); font-weight: 600; white-space: nowrap; }
 .hero-term:hover { text-decoration: underline; text-underline-offset: 3px; }
 .hero-cta { margin: 30px 0 0; color: var(--body); font-size: 20px; font-weight: 500; line-height: 1.5; }
@@ -471,22 +472,19 @@ p { margin: 0; }
 #framework-runtime .fw-wrap { max-width: 760px; margin: 0 auto; }
 #framework-runtime .fw-fig { position: relative; padding: 34px 22px 26px; border: 2px dashed var(--org-border); border-radius: 22px; background: var(--org-bg); }
 #framework-runtime .fw-tag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); padding: 2px 11px; border: 1px solid var(--org-border); border-radius: 999px; background: linear-gradient(var(--org-bg), var(--org-bg)), var(--bg); color: var(--muted); font-size: 11.5px; font-weight: 700; white-space: nowrap; }
-#framework-runtime .fw-run { grid-column: 1 / -1; display: grid; grid-template-columns: auto auto auto; justify-content: center; align-items: center; gap: 26px; margin: 6px 0; }
+#framework-runtime .fw-run { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(5, auto); justify-content: center; align-items: center; gap: 16px; margin: 6px 0 2px; padding: 18px 0 2px; border-top: 1px solid var(--line); }
 #framework-runtime .fw-io { position: relative; display: grid; justify-items: center; text-align: center; }
 #framework-runtime .fw-io b { padding: 5px 10px; border-radius: 9px; background: var(--navy); color: #fff; font-size: 12px; font-weight: 600; }
 #framework-runtime .fw-io.out b { background: var(--card); color: var(--ink); border: 1px solid var(--line); }
-#framework-runtime .fw-io::after { content: ""; position: absolute; top: 50%; margin-top: -5px; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
-#framework-runtime .fw-io.in::after { right: -16px; border-left: 8px solid var(--slate); }
-#framework-runtime .fw-io.out::after { left: -16px; border-left: 8px solid var(--slate); }
+#framework-runtime .fw-arr { width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid var(--slate); }
 #framework-runtime .fw-ring { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; align-items: center; }
-#framework-runtime .fw-piece { display: flex; align-items: center; gap: 9px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); box-shadow: var(--card-shadow); color: var(--ink); font-size: 13px; font-weight: 600; line-height: 1.25; }
+#framework-runtime .fw-piece { display: flex; align-items: center; gap: 9px; padding: 9px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); box-shadow: var(--card-shadow); color: var(--ink); font-size: 13px; font-weight: 500; line-height: 1.25; }
 #framework-runtime .fw-piece .ic { display: grid; place-items: center; flex: 0 0 auto; width: 30px; height: 30px; border-radius: 9px; background: var(--icon-bg); color: var(--icon-fg); }
 #framework-runtime .fw-piece .ic svg { width: 16px; height: 16px; }
 #framework-runtime .fw-piece:hover { border-color: var(--blue); color: var(--blue-ink); text-decoration: none; }
 #framework-runtime .fw-agent { position: relative; display: grid; justify-items: center; gap: 4px; min-width: 240px; padding: 22px 28px; border: 1px solid var(--blue); border-radius: 16px; background: var(--card); box-shadow: var(--card-shadow-lg); text-align: center; }
 #framework-runtime .fw-agent > b { color: var(--ink); font-size: 17px; font-weight: 800; letter-spacing: -0.02em; }
 #framework-runtime .fw-agent > small { color: var(--muted); font-size: 13px; font-weight: 500; }
-#framework-runtime .fw-piece:nth-child(-n+3) { order: -1; }
 @media (max-width: 1000px) {
   #framework-runtime .fw-wrap { max-width: 600px; }
   #framework-runtime .fw-ring { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -494,11 +492,7 @@ p { margin: 0; }
 @media (max-width: 860px) {
   #framework-runtime .fw-fig { padding: 30px 16px 20px; }
   #framework-runtime .fw-ring { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
-  #framework-runtime .fw-piece:nth-child(-n+3) { order: 0; }
-  #framework-runtime .fw-piece:nth-child(-n+2) { order: -1; }
-  #framework-runtime .fw-run { gap: 14px; }
-  #framework-runtime .fw-io.in::after { right: -12px; }
-  #framework-runtime .fw-io.out::after { left: -12px; }
+  #framework-runtime .fw-run { gap: 10px; }
   #framework-runtime .fw-agent { min-width: 0; padding: 14px 12px; }
 }
 @media (max-width: 420px) {
@@ -507,10 +501,8 @@ p { margin: 0; }
   #framework-runtime .fw-piece { gap: 7px; padding: 8px 9px; font-size: 12px; }
   #framework-runtime .fw-piece .ic { width: 26px; height: 26px; border-radius: 8px; }
   #framework-runtime .fw-piece .ic svg { width: 14px; height: 14px; }
-  #framework-runtime .fw-run { gap: 10px; }
+  #framework-runtime .fw-run { gap: 7px; }
   #framework-runtime .fw-io b { padding: 4px 7px; font-size: 11px; }
-  #framework-runtime .fw-io.in::after { right: -9px; }
-  #framework-runtime .fw-io.out::after { left: -9px; }
   #framework-runtime .fw-agent { padding: 12px 8px; }
   #framework-runtime .fw-agent > b { font-size: 15px; }
   #framework-runtime .fw-agent > small { font-size: 12px; line-height: 1.3; }
