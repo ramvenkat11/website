@@ -1447,3 +1447,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 
 ## 2026-10-30 — Source available card padded to match siblings
 - `html/index.html`: card now ends "Set the logging configuration to see every call to the cloud." (link → docs/system-management/agent-servers.html#what-a-configuration-sets, the `logs` object). Ram's wording, paraphrased; 162 chars vs siblings' 153–161. Text-only.
+
+## 2026-10-30 — Home page review; Multiple environments card grammar
+- Full-page review at 1280/375 light+dark, sweep 320–1280 clean. Findings given to Ram: (1) card grammar, fixed: "Dev and prod environment's profiles point at its own systems" → "Each environment's profiles point at its own systems" (link moved to "Each environment's"); (2) phone hero figure squeezed — Ram keeps three columns unless a better alternative is shown; (3) two headings start with "Built" — Ram would rather rename "Built-in agent infrastructure"; alternatives proposed, awaiting choice; (4) no search/conversation section on home — deferred by Ram.
