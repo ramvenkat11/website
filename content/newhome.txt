@@ -1,10 +1,8 @@
-Multiple interfaces:
+Parts of the system picture:
 
-Multiple interfaces, Cloud-managed state
-No dependencies to install or run in your organization.
+- Change OpenAI, Anthropic, Gemini to ChatGPT, Claude, Gemini
+- Move these three to outside the organization in a separate box, called external LLM
+- The other ones are local LLM
 
-Remove the middle search/execAgent.
-Replace the agent server box here with the agent server box from the next section. Move this to the middle.
-On the left, place the cloud box from the next section.
 
 
