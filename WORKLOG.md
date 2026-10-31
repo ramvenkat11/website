@@ -1436,3 +1436,7 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-30 — Search2o agents docs page: Ram's rewrite applied
 - `docsrc/introduction/search2o-agents.html` rewritten from Ram's edits in `content/page-search2o-agents.md`, with grammar and readability fixes: lead is the microservices line; three examples instead of six; the state-in-the-conversation paragraph and the "these are not Search2o agents" list are gone; new "What a Search2o agent is not" bullets; added sentence on boundary overlap and search. Sections from "How a Search2o agent runs" down are unchanged. The .md now mirrors the final text.
 - Docs rebuilt with `python3 gen/build.py`. Not deployed.
+
+## 2026-10-30 — "Source available" removed from the stateless section figure
+- `index.html` `#user-interfaces`: the `<small><a class="src">` GitHub line under "Agent server cluster" is gone; aria-label no longer mentions GitHub. `.st-srv .src` CSS removed. The separate "Source available" h3 lower on the page (line ~205) was not asked about and is untouched.
+- Rendered `.ui-fan` at 8 widths light/dark; sweep clean.
