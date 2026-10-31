@@ -1401,3 +1401,8 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-30 — Hero lead links quieter
 - `styles.css` `.hero-attr`: dropped the tinted pill (background, padding, negative margins, box-decoration-break); links are now blue-ink weight 600, no underline, nowrap, hover turns `--blue`. `.hero-attr code` inherits the colour. The pills had made the six links in three lines look busy and pushed punctuation against them.
 - Rendered `.hero-head` at the 8 widths light/dark; sweep 320–1280 clean.
+
+## 2026-10-30 — Discover band filled
+- `index.html` `#framework-runtime`: `.fw-empty` replaced by `a.fw-discover` → search.html, a full-width strip with a search icon and "**User request** → **agent built for it**" (Ram's wording; a two-sentence version was rejected as "an essay"). aria-label updated.
+- `styles.css`: `.fw-discover`, `.fw-arrow`; `.ic` rules shared with `.fw-piece`; `.fw-run` margin now `14px 0 2px` for a little more air above Your agent. 420px rule shrinks the strip.
+- Rendered 8 widths light/dark; sweep 320–1280 clean.
