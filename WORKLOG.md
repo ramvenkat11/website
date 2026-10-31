@@ -1451,3 +1451,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 ## 2026-10-30 — Home page review; Multiple environments card grammar
 - Full-page review at 1280/375 light+dark, sweep 320–1280 clean. Findings given to Ram: (1) card grammar, fixed: "Dev and prod environment's profiles point at its own systems" → "Each environment's profiles point at its own systems" (link moved to "Each environment's"); (2) phone hero figure squeezed — Ram keeps three columns unless a better alternative is shown; (3) two headings start with "Built" — Ram would rather rename "Built-in agent infrastructure"; alternatives proposed, awaiting choice; (4) no search/conversation section on home — deferred by Ram.
 - Follow-up: card ends "…so the same agent runs unchanged in dev and prod." with the link back on "dev and prod". Still four lines at 1280.
+- `#user-interfaces` h2: "Stateless agent server, cloud‑managed state" → "Cloud‑managed state" (Ram). Text-only.
