@@ -1511,3 +1511,8 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 
 ## 2026-10-31 — Home: "Built for enterprise operations"
 `#platform` h2 is now "Built for enterprise operations" (Ram's wording, after "Operations controls" was applied and reverted). Text-only; no renders.
+
+## 2026-10-31 — Framework section heading and agent label
+- `html/index.html` `#framework-runtime`: h2 "Built-in agent infrastructure" → "Agents are business logic expressed as configuration" (Ram's "something like that" for "Agents are just business logic expressed as config"); bottom-row label "Business logic only" → "JSON + Python expressions"; figure aria-label updated to match.
+- Rendered 1280/1000/860/700/412/384/375/360 light+dark; heading two lines at 360; sweep 320–1280 clean. Not committed, not deployed.
+- Next: Ram may reword the heading; subheading idea for this section is dropped unless he raises it.
