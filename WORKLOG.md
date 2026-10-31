@@ -1424,3 +1424,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - `index.html` figure: Private drafts removed (a workflow stage, covered by Agent editor / Draft with AI). Authentication (→ docs/system-management/authentication.html, key icon) added after Secret vault. Still 27 boxes. aria-label updated.
 - Ram's rule, sharpened: repetition with other parts of the home page is fine; no box may duplicate another box in this figure. Allowlist therefore rejected (inside Guardrails). Noted to Ram: Runtime limits is also inside Guardrails' page.
 - Rendered 8 widths light/dark; sweep clean.
+
+## 2026-10-30 — "Memory" → "Agent memory"
+- `index.html` figure box and aria-label renamed. Still 27 boxes. Ram's frame for the figure: agent development and running only — REST API, roles, Ask the docs and Semantic search all rejected as 28th. Rendered 8 widths light/dark; sweep clean.
