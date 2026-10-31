@@ -1430,3 +1430,4 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 
 ## 2026-10-30 — API/database/MCP split into two boxes
 - `index.html` figure: "API, database and MCP calls" → "API and database calls" (→ docs/profiles/index.html, same link) plus new "MCP calls" (→ docs/profiles/mcp-servers.html, node-tree icon). 28 boxes, seven full rows of four. aria-label updated. Rendered 8 widths light/dark; sweep clean.
+- Externalized system calls box now links to docs/profiles/index.html (was overview.html), per Ram. One other overview.html link remains elsewhere on index.html, untouched.
