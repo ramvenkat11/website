@@ -1441,3 +1441,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - `index.html` `#user-interfaces`: the `<small><a class="src">` GitHub line under "Agent server cluster" is gone; aria-label no longer mentions GitHub. `.st-srv .src` CSS removed. The separate "Source available" h3 lower on the page (line ~205) was not asked about and is untouched.
 - Rendered `.ui-fan` at 8 widths light/dark; sweep clean.
 - Follow-up: the removed line is replaced by `<small>Stateless</small>` under "Agent server cluster" (muted, existing `.st-srv small` style). Re-rendered; sweep clean.
+
+## 2026-10-30 — "Contact us for customizations" sentence removed
+- `html/index.html` Source available card (line ~207): the closing sentence and its about.html#contact link are gone; the card now ends after "…and the UI." Text-only; no render.
