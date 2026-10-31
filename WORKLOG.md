@@ -1444,3 +1444,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 
 ## 2026-10-30 — "Contact us for customizations" sentence removed
 - `html/index.html` Source available card (line ~207): the closing sentence and its about.html#contact link are gone; the card now ends after "…and the UI." Text-only; no render.
+
+## 2026-10-30 — Source available card padded to match siblings
+- `html/index.html`: card now ends "Set the logging configuration to see every call to the cloud." (link → docs/system-management/agent-servers.html#what-a-configuration-sets, the `logs` object). Ram's wording, paraphrased; 162 chars vs siblings' 153–161. Text-only.
