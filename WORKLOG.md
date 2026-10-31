@@ -1481,3 +1481,6 @@ External LLMs box now has margin-left 34px (12px at ≤640), so it lines up unde
 
 ## 2026-10-31 — Home: section heading
 `#user-interfaces` h2 is now "How it fits in your enterprise" (was "Cloud‑managed state"). Text-only; no renders.
+
+## 2026-10-31 — Home system figure: "2o" badges and legend
+Per Ram ("make the change on the home page"). A small "2o" badge (`.s2o-badge`, from the wordmark's blue 2o) marks each Search2o-provided component: Browser box, agent server, Search2o Cloud (lighter badge variant on navy), and the search2o-skill chip. Legend `<p class="fig-note">` under the aside: "2o provided by Search2o". aria-label extended. CSS in styles.css after `#user-interfaces .ui-fig`; ≤640 the badge shrinks and the chip's badge is hidden (the chip would overflow its box). Earlier mocks (navy header band, blue border + tag) rejected by Ram; files in scratchpad variants/. Rendered 8 widths light+dark, sweep clean; looked at 1280, 700, 375.
