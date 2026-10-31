@@ -563,8 +563,6 @@ p { margin: 0; }
 #user-interfaces .st-srv { background: var(--card); box-shadow: var(--card-shadow); color: var(--ink); }
 #user-interfaces .st-srv .ic { background: var(--icon-bg); color: var(--icon-fg); }
 #user-interfaces .st-srv small { color: var(--muted); }
-#user-interfaces .st-srv .src { color: var(--blue-ink); font-weight: 600; text-decoration: none; white-space: nowrap; }
-#user-interfaces .st-srv .src svg { width: 13px; height: 13px; margin-right: 4px; vertical-align: -2px; }
 #user-interfaces .st-srv .src:hover { text-decoration: underline; }
 #user-interfaces .st-cloud { background: var(--cloud-bg); border-color: var(--cloud-border); color: #fff; box-shadow: var(--card-shadow-lg); }
 #user-interfaces .st-cloud .tag { background: var(--navy-deep); border: 1px solid var(--cloud-border); color: #a9c6ff; }

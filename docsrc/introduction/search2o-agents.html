@@ -1,10 +1,10 @@
-<p class="lead">A Search2o agent is an independent unit built for a single task. Agents do not call other agents. An agent is expected to run thousands of times, for different users, quickly and at low cost. It is to AI what a microservice is to an application.</p>
+<p class="lead">Search2o agents are to AI what microservices are to applications.</p>
 
-<p>A Search2o agent has clear boundaries: the systems it can reach, and its time and LLM cost budgets. It has every capability the agent runtime offers, but its workflow is built for that one task.</p>
+<p>A Search2o agent is built for a single task and runs on the agent server. It does not call other agents. It takes an input, produces an output and finishes in seconds, and it is expected to run thousands of times, for different users.</p>
 
-<p>It also carries a plain-language description of the task and its boundaries. Search reads that description to find the agent for a request.</p>
+<p>A Search2o agent has clear boundaries: the systems it can reach, its maximum run time and its LLM cost.</p>
 
-<p>A Search2o agent keeps its state in the conversation, not on the agent server. It has state of its own, the <code>agent</code> scope, which only it reads, and it shares state with every agent in the conversation through the <code>conversation</code> scope. The agent server saves both when a run ends or pauses, so what one agent produces is available to the next one that runs in the same conversation. The state is per conversation: another conversation cannot see it, and a conversation belongs to one user, so another user cannot see it either. See <a href="../agent-execution/conversation-state.html">Conversation state</a>.</p>
+<p>A Search2o agent also carries a plain-language description of the task and its boundaries. Search uses that description to find the agent for a request.</p>
 
 <h2>Examples</h2>
 <p>Search2o agents:</p>
@@ -12,19 +12,17 @@
   <li><strong>Vacation request</strong>: takes the dates, checks the balance, files the request, reports the result.</li>
   <li><strong>Invoice status</strong>: an invoice number in, where it stands in accounts payable out.</li>
   <li><strong>Expense filing for a trip</strong>: retrieves the trip's amounts, files the claim, asks before submitting.</li>
-  <li><strong>Meeting-room booking</strong>: a time and a head count in, a booked room out.</li>
-  <li><strong>Expense policy questions</strong>: answers from the policy documents and points to the form; it approves nothing.</li>
-  <li><strong>Contract renewal</strong>: drafts the renewal at agreed terms and sends it for signature after an approval.</li>
 </ul>
 <p>Each is one verb, one or two systems, and a run measured in seconds.</p>
-<p>These are not Search2o agents, though useful for other reasons:</p>
+<p>The same rule applies in every case: a Search2o agent has a boundary on systems, time and cost, and a small set of paths that can be validated. That boundary is also what makes a description precise enough for search to match. The less the boundaries of agents overlap, the more easily search matches a request to a single agent.</p>
+
+<h2>What a Search2o agent is not</h2>
 <ul>
-  <li><strong>A general assistant</strong>, the chat box that takes any question about the company. Broad by intent, so there is no single boundary to validate against.</li>
-  <li><strong>An HR assistant</strong> that covers vacation, payroll, onboarding and benefits in one agent: a department's worth of tasks behind one description. In Search2o that is several agents, one per task, sharing a conversation.</li>
-  <li><strong>Month-end close</strong>, a process that runs for days with approvals from several people. Each step can be a Search2o agent; the whole is not one.</li>
-  <li><strong>An analysis workbench</strong> that writes and runs queries against the warehouse on request. The path is decided at run time, so neither the cost nor the reach is known in advance.</li>
+  <li>An agent that runs on a person's own machine.</li>
+  <li>An agent built to run for hours or days.</li>
+  <li>An agent run only by the people who built it.</li>
+  <li>A general-purpose agent that calls other agents for specific tasks.</li>
 </ul>
-<p>The same rule applies in every case. A Search2o agent has a boundary you can write down, on systems, time and cost, and a small set of paths that can be validated. That boundary is also what makes a description precise enough for search to match.</p>
 
 <h2>How a Search2o agent runs</h2>
 <p>A request that matches the agent's description starts it; see <a href="../search/how-matching-works.html">How matching behaves</a>. The agent runs for a short time, may ask the user for inputs or an approval on the way, and produces a response.</p>

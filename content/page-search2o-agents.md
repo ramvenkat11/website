@@ -4,25 +4,32 @@
 
 # Search2o agents
 
-A Search2o agent is an independent unit built for a single task that runs on the agent server. They do not call other agents. An agent is expected to run thousands of times, for different users, complete running in a short amount of time, take an input and produce an output. Search2o agents are to AI what microservices are to applications.
+Search2o agents are to AI what microservices are to applications.
 
-A Search2o agent has clear boundaries: the systems it can reach, and its time and LLM cost budgets. 
+A Search2o agent is built for a single task and runs on the agent server. It does not call other agents. It takes an input, produces an output and finishes in seconds, and it is expected to run thousands of times, for different users.
 
-A Search2o agent also carries a plain-language description of the task and its boundaries. Search reads that description to find the agent for a request.
+A Search2o agent has clear boundaries: the systems it can reach, its maximum run time and its LLM cost.
 
-A Search2o agent keeps its state in the conversation, not on the agent server. It has state of its own, the `agent` scope, which only it reads, and it shares state with every agent in the conversation through the `conversation` scope. The agent server saves both when a run ends or pauses, so what one agent produces is available to the next one that runs in the same conversation. The state is per conversation: another conversation cannot see it, and a conversation belongs to one user, so another user cannot see it either. See [Conversation state](../agent-execution/conversation-state.html).
+A Search2o agent also carries a plain-language description of the task and its boundaries. Search uses that description to find the agent for a request.
 
 ## Examples
 
 Search2o agents:
 
-- **Vacation request** : takes the dates, checks the balance, files the request, reports the result.
-- **Invoice status** : an invoice number in, where it stands in accounts payable out.
-- **Expense filing for a trip** : retrieves the trip's amounts, files the claim, asks before submitting.
+- **Vacation request**: takes the dates, checks the balance, files the request, reports the result.
+- **Invoice status**: an invoice number in, where it stands in accounts payable out.
+- **Expense filing for a trip**: retrieves the trip's amounts, files the claim, asks before submitting.
 
 Each is one verb, one or two systems, and a run measured in seconds.
 
-The same rule applies in every case. A Search2o agent has a boundary on systems, time and cost, and a small set of paths that can be validated. That boundary is also what makes a description precise enough for search to match. The less overlap one has on the boundaries, more easily search would be able to match a request to a single agent. 
+The same rule applies in every case: a Search2o agent has a boundary on systems, time and cost, and a small set of paths that can be validated. That boundary is also what makes a description precise enough for search to match. The less the boundaries of agents overlap, the more easily search matches a request to a single agent.
+
+## What a Search2o agent is not
+
+- An agent that runs on a person's own machine.
+- An agent built to run for hours or days.
+- An agent run only by the people who built it.
+- A general-purpose agent that calls other agents for specific tasks.
 
 ## How a Search2o agent runs
 
