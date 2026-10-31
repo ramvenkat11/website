@@ -1427,3 +1427,6 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 
 ## 2026-10-30 — "Memory" → "Agent memory"
 - `index.html` figure box and aria-label renamed. Still 27 boxes. Ram's frame for the figure: agent development and running only — REST API, roles, Ask the docs and Semantic search all rejected as 28th. Rendered 8 widths light/dark; sweep clean.
+
+## 2026-10-30 — API/database/MCP split into two boxes
+- `index.html` figure: "API, database and MCP calls" → "API and database calls" (→ docs/profiles/index.html, same link) plus new "MCP calls" (→ docs/profiles/mcp-servers.html, node-tree icon). 28 boxes, seven full rows of four. aria-label updated. Rendered 8 widths light/dark; sweep clean.
