@@ -1517,3 +1517,4 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - Rendered 1280/1000/860/700/412/384/375/360 light+dark; heading two lines at 360; sweep 320–1280 clean. Not committed, not deployed.
 - Next: Ram may reword the heading; subheading idea for this section is dropped unless he raises it.
 - Follow-up: "JSON + Python expressions" in the agent box now links to `framework.html` (`.fw-agent > small a` inherits muted colour, blue-ink on hover, no underline). Rendered 1280 and 360 light+dark; unchanged layout.
+- Heading now "An agent is business logic, expressed as configuration" (Ram chose the first variation). Breaks after the comma at 360; one line at 700.
