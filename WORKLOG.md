@@ -1432,3 +1432,7 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - `index.html` figure: "API, database and MCP calls" → "API and database calls" (→ docs/profiles/index.html, same link) plus new "MCP calls" (→ docs/profiles/mcp-servers.html, node-tree icon). 28 boxes, seven full rows of four. aria-label updated. Rendered 8 widths light/dark; sweep clean.
 - Externalized system calls box now links to docs/profiles/index.html (was overview.html), per Ram. One other overview.html link remains elsewhere on index.html, untouched.
 - "MCP calls" box → "MCP" (label and aria-label).
+
+## 2026-10-30 — Search2o agents docs page: Ram's rewrite applied
+- `docsrc/introduction/search2o-agents.html` rewritten from Ram's edits in `content/page-search2o-agents.md`, with grammar and readability fixes: lead is the microservices line; three examples instead of six; the state-in-the-conversation paragraph and the "these are not Search2o agents" list are gone; new "What a Search2o agent is not" bullets; added sentence on boundary overlap and search. Sections from "How a Search2o agent runs" down are unchanged. The .md now mirrors the final text.
+- Docs rebuilt with `python3 gen/build.py`. Not deployed.
