@@ -1406,3 +1406,7 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - `index.html` `#framework-runtime`: `.fw-empty` replaced by `a.fw-discover` → search.html, a full-width strip with a search icon and "**User request** → **agent built for it**" (Ram's wording; a two-sentence version was rejected as "an essay"). aria-label updated.
 - `styles.css`: `.fw-discover`, `.fw-arrow`; `.ic` rules shared with `.fw-piece`; `.fw-run` margin now `14px 0 2px` for a little more air above Your agent. 420px rule shrinks the strip.
 - Rendered 8 widths light/dark; sweep 320–1280 clean.
+
+## 2026-10-30 — Infrastructure figure: hairline above Your agent, lighter labels
+- `styles.css`: `.fw-run` gets `padding-top: 18px; border-top: 1px solid var(--line)` (margin `6px 0 2px`), so the request → Your agent → response row reads as the figure's conclusion. `.fw-piece` font-weight 600 → 500; the Discover strip's bold stays 600.
+- Ram declined option 1 (the empty Build slot). Rendered 8 widths light/dark; sweep clean.
