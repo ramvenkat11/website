@@ -1415,3 +1415,7 @@ Phone check: at 360 "single sign-on" broke at the hyphen leaving "on." alone, so
 - Ram chose moving search into the bottom row (request ▸ search ▸ Your agent ▸ response), then dropped it: "not sure search fits there". Discover group and strip are gone. The row is back to request ▸ Your agent ▸ response, now with explicit `i.fw-arr` triangles instead of `::after` arrows; hairline above it stays. `.fw-discover`, `.fw-arrow`, `.fw-io.step` and the stacking rule were removed.
 - Build has 11 boxes; Ram will add a twelfth. Open question from Ram: drop the Build/Execute groups altogether, since part of the split looks artificial. Answered with options; awaiting his choice.
 - Rendered 8 widths light/dark; sweep clean.
+
+## 2026-10-30 — Infrastructure figure flattened again
+- Ram chose no groups. `p.fw-group` titles and `.fw-group` CSS removed; 27 boxes in one grid, order kept (editor → … → observability), hairline + request ▸ Your agent ▸ response row below. aria-label is one flat list again. Ram will pick a 28th box.
+- Rendered 8 widths light/dark; sweep clean.
