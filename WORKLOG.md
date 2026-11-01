@@ -1537,3 +1537,7 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - `#user-interfaces` h2 → "Fits into your environment as is" (Ram's wording; "as&nbsp;is" unbreakable). Replaces "How it fits in your enterprise".
 - Multiple environments card (`html/index.html:220`): "Each environment’s profiles point at its own systems, so the same agent runs unchanged in dev and prod." → "Dev and prod profiles point at their own systems, so the same agent runs unchanged." (link moved to "Dev and prod").
 - `#platform` h2 back to "Built for enterprise operations" (Ram: "in a box" is marketing register; page headings must be developer words). Final home headings: "Your agents are just business logic" / "Fits into your environment as is" / "Built for enterprise operations".
+
+## 2026-11-01 — Home page full render and review
+- Rendered the whole page at 1280/1000/860/700/412/384/375/360 light+dark (`$S/home-full`), no overflow at any width; 2x close-ups of the hero figure and the cards at 360/375 (`$S/home-close`) clean. Links: every local href resolves.
+- Review findings reported, not fixed: JSON-LD `"@type":"Enterprise"` (invalid schema.org type, should be Organization; already in HEAD); meta/og descriptions still say "microagents"; straight apostrophe in "server's" (Integration card); "without restart" vs runtime page's "without a restart"; "Everything that runs…" absolute in Source available; comma pile in Security card; "all the plumbing" in the hero; h1 "Transform your enterprise AI" is marketing register against today's developer-words rule.
