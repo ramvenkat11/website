@@ -1531,3 +1531,4 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - `#framework-runtime` h2 → "What is built-in" (Ram's wording, no trailing period to match the other section headings).
 - Agent box label → "Your business logic: calls, prompts, decisions" (linked to framework.html); aria-label matches. One line at 1280, two at 412, four at 360; sweep clean. shot.mjs had been wiped from the scratchpad at midnight (several render folders emptied too); restored it from the session transcript.
 - Agent box label → "Agentic workflow: calls, prompts, decisions"; aria-label matches. Rendered 1280/412/360 light+dark.
+- `#framework-runtime` h2 → "Your agents are just business logic" (Ram's wording). One line from 700 up; breaks after "just" at 360.
