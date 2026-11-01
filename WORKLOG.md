@@ -1536,3 +1536,4 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - `#user-interfaces` h2 still "How it fits in your enterprise"; quick-start wording options offered ("One pip install, state in the cloud", "No assembly required"), undecided.
 - `#user-interfaces` h2 → "Fits into your environment as is" (Ram's wording; "as&nbsp;is" unbreakable). Replaces "How it fits in your enterprise".
 - Multiple environments card (`html/index.html:220`): "Each environment’s profiles point at its own systems, so the same agent runs unchanged in dev and prod." → "Dev and prod profiles point at their own systems, so the same agent runs unchanged." (link moved to "Dev and prod").
+- `#platform` h2 back to "Built for enterprise operations" (Ram: "in a box" is marketing register; page headings must be developer words). Final home headings: "Your agents are just business logic" / "Fits into your environment as is" / "Built for enterprise operations".
