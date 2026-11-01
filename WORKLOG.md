@@ -1534,3 +1534,4 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - `#framework-runtime` h2 → "Your agents are just business logic" (Ram's wording). One line from 700 up; breaks after "just" at 360.
 - `#platform` h2 → "Enterprise agent platform in a box" (Ram's choice over "Built for enterprise operations"); "in&nbsp;a&nbsp;box" kept unbreakable so phones show "Enterprise agent platform / in a box" instead of orphaning "a box". One line at 700+.
 - `#user-interfaces` h2 still "How it fits in your enterprise"; quick-start wording options offered ("One pip install, state in the cloud", "No assembly required"), undecided.
+- `#user-interfaces` h2 → "Fits into your environment as is" (Ram's wording; "as&nbsp;is" unbreakable). Replaces "How it fits in your enterprise".
