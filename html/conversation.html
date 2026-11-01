@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Conversation — Search2o</title>
-<meta name="description" content="Conversations let agents build on each other. A conversation keeps what every agent in it did, said and was told. A follow-up is searched like a new request, and the agent that matches continues from that record.">
+<meta name="description" content="Conversations let agents build on each other. A conversation keeps variables and prompts. A follow-up is searched like a new request, and the matching agent continues from that record.">
 <meta property="og:title" content="Conversation — Search2o">
-<meta property="og:description" content="Conversations let agents build on each other. A conversation keeps what every agent in it did, said and was told. A follow-up is searched like a new request, and the agent that matches continues from that record.">
+<meta property="og:description" content="Conversations let agents build on each other. A conversation keeps variables and prompts. A follow-up is searched like a new request, and the matching agent continues from that record.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://search2o.com/conversation.html">
 <meta property="og:url" content="https://search2o.com/conversation.html">
@@ -59,18 +59,18 @@
     <div class="container">
       <span class="kicker">Conversation</span>
       <h1>Conversations let agents build on each other.</h1>
-      <p class="lead">A conversation keeps what every agent in it did, said and was told. A follow-up is searched like a new request, and the agent that matches continues from that record. No agent calls another; the conversation carries the work from one to the next.</p>
+      <p class="lead">A conversation keeps variables and prompts. A follow-up is searched like a new request, and the matching agent continues from that record. No agent calls another; the conversation carries the work from one agent to the next.</p>
     </div>
   </section>
 
   <section class="fw-sec fw-first" id="mechanism">
     <div class="container">
       <div class="sc-wrap">
-        <div class="convo hero-convo" aria-label="One conversation across two independent agents. Search matches the first request to the Travel desk agent, which asks before booking. A second request is matched to the Reimbursements agent, which continues the same conversation and files the expenses for the trip.">
+        <div class="convo hero-convo" aria-label="One conversation across two independent agents. Search matches the first request to the Travel desk agent, which asks for confirmation before booking. It matches a second request to the Reimbursements agent, which continues the same conversation and files the trip expenses.">
           <div class="convo-title">Conversation</div>
           <div class="convo-body">
             <div class="turn-user r1">Book my trip for Tuesday's all-day meeting in New York<i class="mk">1</i></div>
-            <aside class="note-bubble first r1"><b><i class="mk">1</i><a href="search.html">Discovery</a></b>Search matched the request to Travel desk agent, and the UI ran it automatically. The request carried no conversation id, so a new, empty conversation started.</aside>
+            <aside class="note-bubble first r1"><b><i class="mk">1</i><a href="search.html">Discovery</a></b>Search matched the request to the Travel desk agent, and the UI ran it automatically. The request had no conversation ID, so a new, empty conversation started.</aside>
             <div class="turn-agent r2">
               <div class="msg ask" aria-label="The agent asks before booking"><i class="mk">2</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>
                 <span class="q">UA1191 departs 06:00 Tuesday, back at 19:30, and a night at the Marriott near the office. $1,240. <b>Book it?</b></span>
@@ -82,19 +82,19 @@
             <div class="turn-agent r3">
               <div class="msg"><i class="mk">3</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>Booked UA1191 and the hotel night. The confirmation is in your inbox.</div>
             </div>
-            <aside class="note-bubble r3"><b><i class="mk">3</i><a href="#state">Conversation context</a></b>Travel desk agent ended here, and the agent server saved the conversation automatically: the variables the agent set under <code>conv.</code>, and its conversation-scope prompts with their history.</aside>
+            <aside class="note-bubble r3"><b><i class="mk">3</i><a href="#state">Conversation context</a></b>The Travel desk agent ended here, and the agent server automatically saved the conversation: the variables the agent set under <code>conv.</code>, plus its conversation-scoped prompts and their history.</aside>
             <div class="turn-user r4">File the expenses for that trip</div>
             <div class="turn-agent r5">
               <div class="msg"><i class="mk">4</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Reimbursements</span>Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
             </div>
-            <aside class="note-bubble r5"><b><i class="mk">4</i><a href="docs/agent-execution/building-on-each-other.html">Building on each other</a></b>Search matched the follow-up to Reimbursements. The request carried the conversation id, so the saved conversation was restored first. Its prompt has the same name as Travel desk&rsquo;s, so its model continued that exchange. No agent called the other.</aside>
+            <aside class="note-bubble r5"><b><i class="mk">4</i><a href="docs/agent-execution/building-on-each-other.html">Building on each other</a></b>Search matched the follow-up to Reimbursements. The request included the conversation ID, so the saved conversation was restored first. Its prompt has the same name as the Travel desk prompt, so its model continued that exchange. Neither agent called the other.</aside>
           </div>
         </div>
         <div class="sc-notes">
-          <div class="note"><b><i class="mk">1</i><a href="search.html">Discovery</a></b>Search matched the request to Travel desk agent, and the UI ran it automatically. The request carried no conversation id, so a new, empty conversation started.</div>
+          <div class="note"><b><i class="mk">1</i><a href="search.html">Discovery</a></b>Search matched the request to the Travel desk agent, and the UI ran it automatically. The request had no conversation ID, so a new, empty conversation started.</div>
           <div class="note"><b><i class="mk">2</i><a href="docs/commands/ask.html">Human in the loop</a></b>The agent&rsquo;s state is stored, and when the user answers, the agent continues from where it paused.</div>
-          <div class="note"><b><i class="mk">3</i><a href="#state">Conversation context</a></b>Travel desk agent ended here, and the agent server saved the conversation automatically: the variables the agent set under <code>conv.</code>, and its conversation-scope prompts with their history.</div>
-          <div class="note"><b><i class="mk">4</i><a href="docs/agent-execution/building-on-each-other.html">Building on each other</a></b>Search matched the follow-up to Reimbursements. The request carried the conversation id, so the saved conversation was restored first. Its prompt has the same name as Travel desk&rsquo;s, so its model continued that exchange. No agent called the other.</div>
+          <div class="note"><b><i class="mk">3</i><a href="#state">Conversation context</a></b>The Travel desk agent ended here, and the agent server automatically saved the conversation: the variables the agent set under <code>conv.</code>, plus its conversation-scoped prompts and their history.</div>
+          <div class="note"><b><i class="mk">4</i><a href="docs/agent-execution/building-on-each-other.html">Building on each other</a></b>Search matched the follow-up to Reimbursements. The request included the conversation ID, so the saved conversation was restored first. Its prompt has the same name as the Travel desk prompt, so its model continued that exchange. Neither agent called the other.</div>
         </div>
       </div>
     </div>
@@ -104,12 +104,12 @@
     <div class="container">
       <div class="section-head">
         <h2>What a conversation keeps</h2>
-        <p>When an agent ends or pauses, the agent server saves the conversation&rsquo;s state. The agent does nothing for this. The next run in the conversation, by the same agent or another, starts from it. Another conversation cannot see it, and a conversation belongs to one user, so another user cannot see it either.</p>
+        <p>When an agent ends or pauses, the agent server saves the conversation&rsquo;s state automatically. The next run in the conversation, whether by the same agent or another, starts from that state. Other conversations cannot see it. A conversation also belongs to one user, so other users cannot see it either.</p>
       </div>
       <div class="fw-text">
-        <p><b>The runs so far.</b> Which agent ran, with which inputs, what it answered, and where it stopped when it paused with a question.</p>
-        <p><b>The prompts.</b> For every prompt used in the conversation, its history: the user turns, the model&rsquo;s answers and the tool results. This history is what lets a model in a follow-up remember the earlier exchange.</p>
-        <p><b>The variables.</b> Conversation variables, which every agent in the conversation reads and writes, and each agent&rsquo;s own variables. An agent saves what later agents will need as a conversation variable, such as the trip.</p>
+        <p><b>The runs so far.</b> Which agent ran, what inputs it received, what it answered, and where it stopped if it paused to ask a question.</p>
+        <p><b>The prompts.</b> The history of every prompt used in the conversation: the user&rsquo;s turns, the model&rsquo;s answers, and the tool results. This history lets a model handling a follow-up remember the earlier exchange.</p>
+        <p><b>The variables.</b> The conversation variables that every agent in the conversation can read and write, plus each agent&rsquo;s own variables. An agent stores information that later agents will need, such as trip details, in a conversation variable.</p>
       </div>
     </div>
   </section>
@@ -118,13 +118,13 @@
     <div class="container">
       <div class="section-head">
         <h2>Prompts carry the exchange</h2>
-        <p>A prompt is what an <code>llm</code> command sends to a model: a system text, a user text and the history of the exchange so far. Each prompt has a scope, which says how long its history lives and which agents share it.</p>
+        <p>A prompt is what an <code>llm</code> command sends to a model: system text, user text, and the history of the exchange so far. Each prompt has a scope that determines how long its history lasts and which agents share it.</p>
       </div>
       <div class="fw-text">
-        <p><b>conversation</b>, the default. One history for the whole conversation, shared by every agent that has a prompt of the same name. A second agent sees what was said to the first.</p>
-        <p><b>agent</b>. The agent&rsquo;s own history for the whole conversation. Another agent in the same conversation does not see it.</p>
-        <p><b>local</b>. A history for one run, empty at the start of every run. For one-off tasks inside a run, such as classifying or summarizing, where earlier runs should not influence the answer.</p>
-        <p>Each prompt has a name, and the name is what connects agents. A second agent continues the first agent&rsquo;s exchange only when its prompt has the same name and the conversation scope. A prompt with another name starts a history of its own. How a prompt is written and evaluated is in <a href="docs/agent-definition/prompts.html">Prompts</a>.</p>
+        <p><b>conversation</b> (the default). One history for the whole conversation, shared by every agent that has a prompt with the same name. A second agent can see what was said to the first.</p>
+        <p><b>agent</b>. The agent&rsquo;s own history for the whole conversation. Other agents in the same conversation cannot see it.</p>
+        <p><b>local</b>. A history for one run, empty at the start of every run. Use it for one-off tasks, such as classifying or summarizing, where earlier runs should not affect the answer.</p>
+        <p>Each prompt has a name, and that name connects agents. A second agent continues the first agent&rsquo;s exchange only when its prompt has the same name and uses the conversation scope. A prompt with a different name starts its own history. <a href="docs/agent-definition/prompts.html">Prompts</a> explains how prompts are written and evaluated.</p>
       </div>
     </div>
   </section>
@@ -133,10 +133,10 @@
     <div class="container">
       <div class="section-head">
         <h2>Agree on names</h2>
-        <p>Agents build on each other through names: the prompt name that continues the exchange, and the conversation variables that carry what one agent found to the next. Nothing enforces the names, so an enterprise agrees on them before its agents can work together.</p>
+        <p>Agents build on each other through names: the prompt name that continues the exchange, and the conversation variables that pass one agent&rsquo;s findings to the next. The system does not enforce these names, so an enterprise must agree on them before its agents can work together.</p>
       </div>
       <div class="fw-text">
-        <p>A naming scheme is short. One standard prompt name, such as <code>chat</code>, for every agent&rsquo;s exchange with the user. A name for each thing agents hand to each other, such as <code>conv.trip</code>, <code>conv.customer</code> or <code>conv.order</code>, with what it holds. An agent that follows the scheme fits into any conversation in the account. One that invents its own names starts from nothing, and leaves nothing the next agent can find. See <a href="docs/agent-execution/building-on-each-other.html#agree-on-names">Agreeing on names</a> in the documentation.</p>
+        <p>A naming scheme can be short: one standard prompt name, such as <code>chat</code>, for every agent&rsquo;s exchange with the user, and one name for each item agents pass to each other, such as <code>conv.trip</code>, <code>conv.customer</code>, or <code>conv.order</code>, along with what it holds. An agent that follows the scheme fits into any conversation in the account. An agent that invents its own names starts with nothing and leaves nothing the next agent can find. See <a href="docs/agent-execution/building-on-each-other.html#agree-on-names">Agreeing on names</a> in the documentation.</p>
       </div>
     </div>
   </section>
@@ -145,11 +145,11 @@
     <div class="container">
       <div class="section-head">
         <h2>A follow-up can go to a different agent</h2>
-        <p>A follow-up in a conversation is searched like a new request. When it belongs to another agent, that agent runs next, with the conversation&rsquo;s state in place. When nothing new matches, the agent that answered last answers again.</p>
+        <p>A follow-up in a conversation is searched like a new request. If it belongs to another agent, that agent runs next with the conversation&rsquo;s state already in place. If no new agent matches, the agent that answered last answers again.</p>
       </div>
       <div class="fw-text">
-        <p>What an interface does with the matches is its own <a href="docs/search/search-settings.html">search behavior</a>: the bundled UI runs the best match at once; your own interface can offer the two best as a choice.</p>
-        <p>Which agent runs next is always the client&rsquo;s decision. An agent cannot run another agent. A request with several parts is driven from outside: an agent harness with the Search2o skill splits it, sends each part through search and <code>execAgent</code> on the same conversation, and composes one answer. <a href="docs/agent-execution/building-on-each-other.html">How agents build on each other</a>.</p>
+        <p>What an interface does with the matches depends on its <a href="docs/search/search-settings.html">search behavior</a>. The bundled UI runs the best match immediately; your own interface can let the user choose between the two best matches.</p>
+        <p>The client always decides which agent runs next. An agent cannot run another agent. A request with several parts is coordinated from outside: an agent harness with the Search2o skill splits the request, sends each part through search and <code>execAgent</code> in the same conversation, and combines the results into one answer. See <a href="docs/agent-execution/building-on-each-other.html">How agents build on each other</a>.</p>
       </div>
     </div>
   </section>
@@ -168,7 +168,7 @@
     <div class="container">
       <div class="section-head">
         <h2>Kept safe, kept yours</h2>
-        <p>State is <a href="docs/security/encryption.html">encrypted</a> before it leaves the agent server, and the cloud never decrypts it. An account can <a href="docs/hooks/conversation-state.html">keep the state in its own enterprise</a> instead of the cloud. On the free service, a conversation unused for 7 days is deleted unless the user <a href="docs/rest-api/conversations.html">pins</a> it, and a user can delete a conversation at any time.</p>
+        <p>State is <a href="docs/security/encryption.html">encrypted</a> before it leaves the agent server, and the cloud never decrypts it. An account can <a href="docs/hooks/conversation-state.html">keep the state in its own enterprise</a> instead of storing it in the cloud. On the free service, a conversation that has been unused for 7 days is deleted unless the user <a href="docs/rest-api/conversations.html">pins</a> it. A user can also delete a conversation at any time.</p>
       </div>
     </div>
   </section>
