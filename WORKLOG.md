@@ -1559,3 +1559,4 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 ## 2026-11-01: Docs "organization" -> "enterprise"; hero "safe" link
 - All docs sources that said organization (16 files: security pages, parts-of-the-system, agent-servers, controlled-execution, conversation-state, const, langchain) now say enterprise. Docs rebuilt. The top-level pages were switched earlier; the only remaining "Organization" on the site is the schema.org type in index.html, which must stay.
 - Hero lead "safe" now links to docs/runtime/controlled-execution.html instead of the guardrails page (Ram's choice).
+- Hero lead last sentence is now "The agent server handles all the plumbing behind building and running the agents, while keeping them safe and observable." ("discovering" and its duplicate search link dropped; "and keeps" -> "while keeping").
