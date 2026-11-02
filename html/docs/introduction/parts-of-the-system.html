@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Parts of the system — Search2o docs</title>
-<meta name="description" content="Search2o has three parts: a cloud service, an agent server that runs in your enterprise, and a UI served by that agent server.">
+<meta name="description" content="Search2o has three parts: a cloud service, an agent server that runs in your enterprise, and the interfaces through which people and programs reach that agen…">
 <link rel="canonical" href="https://search2o.com/docs/introduction/parts-of-the-system.html">
 <meta property="og:title" content="Parts of the system — Search2o docs">
-<meta property="og:description" content="Search2o has three parts: a cloud service, an agent server that runs in your enterprise, and a UI served by that agent server.">
+<meta property="og:description" content="Search2o has three parts: a cloud service, an agent server that runs in your enterprise, and the interfaces through which people and programs reach that agen…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/introduction/parts-of-the-system.html">
 <meta property="og:image" content="https://search2o.com/images/og7.png">
@@ -64,10 +64,10 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../introduction/index.html'>Introduction</a></div>
     <article class="docs-article">
       <h1>Parts of the system</h1>
-      <p class="lead">Search2o has three parts: a cloud service, an agent server that runs in your enterprise, and a UI served by that agent server.</p>
+      <p class="lead">Search2o has three parts: a cloud service, an agent server that runs in your enterprise, and the interfaces through which people and programs reach that agent server.</p>
 
 <div class="docs-arch">
-  <div class="ui-fan" aria-label="Your enterprise runs the agent servers and three clients, a browser chat, the chat applications and an agent harness, which all connect to the agent server cluster. The agent servers keep no state of their own: an encrypted link connects them to Search2o Cloud, which keeps the conversations and memories, encrypted by default.">
+  <div class="ui-fan" aria-label="Your enterprise runs the agent servers and four clients, a browser chat, the chat applications, an agent harness and your own REST client, which all connect to the agent server cluster. The agent servers keep no state of their own: an encrypted link connects them to Search2o Cloud, which keeps the conversations and memories, encrypted by default.">
     <div class="ui-org">
       <span class="tag">Your enterprise</span>
       <div class="ui-clients">
@@ -83,8 +83,12 @@
           <span class="ui-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-5-6-5"/><path d="M12 19h8"/></svg></span>
           <span><b>Agent harness</b><small><a href="https://github.com/Search2o/search2o-skill" target="_blank" rel="noopener">search2o-skill</a> &middot; <a href="../skill-integration/index.html">Skill integration</a></small></span>
         </div>
+        <div class="ui-tile">
+          <span class="ui-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg></span>
+          <span><b>REST client</b><small>Your own <a href="../rest-api/clients.html">application</a> on the <a href="../rest-api/index.html">REST&nbsp;API</a>.</small></span>
+        </div>
       </div>
-      <div class="ui-bus" aria-hidden="true"><svg viewBox="0 0 64 300" preserveAspectRatio="none"><line x1="0" y1="50" x2="44" y2="50"/><line x1="0" y1="150" x2="44" y2="150"/><line x1="0" y1="250" x2="44" y2="250"/><line x1="44" y1="50" x2="44" y2="250"/><line x1="44" y1="150" x2="64" y2="150"/></svg></div>
+      <div class="ui-bus" aria-hidden="true"><svg viewBox="0 0 64 400" preserveAspectRatio="none"><line x1="0" y1="50" x2="44" y2="50"/><line x1="0" y1="150" x2="44" y2="150"/><line x1="0" y1="250" x2="44" y2="250"/><line x1="0" y1="350" x2="44" y2="350"/><line x1="44" y1="50" x2="44" y2="350"/><line x1="44" y1="200" x2="64" y2="200"/></svg></div>
       <div class="ui-down" aria-hidden="true"></div>
       <div class="st-box st-srv">
         <span class="cluster" aria-hidden="true">
@@ -113,13 +117,25 @@
 <p>The agent server, with the bundled UI, is a Python 3.12+ package installed with <code>pip install search2o</code>. It runs inside your enterprise and holds no state. At startup it loads the account's configuration, keeps that configuration current, and runs agents. Its REST API is described at <code>/openapi.json</code>, with Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>.</p>
 <p>The server is asynchronous and needs nothing beyond its Python packages. Run one on a laptop, run one as a standalone server, or run several as a load-balanced cluster. No server holds state, so any server can serve any request.</p>
 
-<h2 id="the-ui">The UI</h2>
-<p>The UI is a single-page application bundled with the agent server and served at <code>/ui</code>. It uses only the agent server's REST API. What a person sees depends on their role. Users get search and conversations. Developers also get drafts, the editor with Draft with AI, validation and publishing, agent configuration and agent execution reports. Administrators also get users, authentication, system configuration and user reports. Owners get account settings and billing as well.</p>
+<h2 id="interfaces">Interfaces</h2>
+<p>Every interface is a client of the agent server's REST API. Four kinds are in use.</p>
+
+<h3 id="browser-chat">Browser chat</h3>
+<p>The bundled UI is a single-page application served by the agent server at <code>/ui</code>. What a person sees depends on their role. Users get search and conversations. Developers also get drafts, the editor with Draft with AI, validation and publishing, agent configuration and agent execution reports. Administrators also get users, authentication, system configuration and user reports. Owners get account settings and billing as well. A chat of your own can replace it, since it uses nothing but the REST API. See <a href="../gui/index.html">UI</a>.</p>
+
+<h3 id="chat-applications">Chat applications</h3>
+<p>People can use agents from Slack, Microsoft Teams or Google Chat. Search2o provides the integration points; the bot that sits between the chat application and the agent server is written by your company. See <a href="../chat-integrations/index.html">Chat integrations</a>.</p>
+
+<h3 id="agent-harness">Agent harness</h3>
+<p>An agent harness such as Claude Code, or any client that implements Agent Skills, uses your agents through one skill, <a href="https://github.com/Search2o/search2o-skill" target="_blank" rel="noopener">search2o-skill</a>. The assistant chooses which published agent runs, the agent runs on your agent server, and each person authenticates with their own integration token. See <a href="../skill-integration/index.html">Skill integration</a>.</p>
+
+<h3 id="rest-client">REST client</h3>
+<p>Your own scripts, schedulers and applications call the same REST API the bundled UI uses. Every call under <code>/api/</code> is an HTTP POST with a JSON body, and the API is described at <code>/openapi.json</code> on the agent server. See <a href="../rest-api/index.html">REST API</a> and <a href="../rest-api/clients.html">Creating your own client</a>.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../introduction/search2o-agents.html'><small>Previous</small>Search2o agents</a><a class=next href='../introduction/how-it-fits-together.html'><small>Next</small>How it fits together</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#search2o-cloud'>Search2o Cloud</a></li><li class=l2><a href='#the-agent-server'>The agent server</a></li><li class=l2><a href='#the-ui'>The UI</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#search2o-cloud'>Search2o Cloud</a></li><li class=l2><a href='#the-agent-server'>The agent server</a></li><li class=l2><a href='#interfaces'>Interfaces</a></li><li class=l3><a href='#browser-chat'>Browser chat</a></li><li class=l3><a href='#chat-applications'>Chat applications</a></li><li class=l3><a href='#agent-harness'>Agent harness</a></li><li class=l3><a href='#rest-client'>REST client</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

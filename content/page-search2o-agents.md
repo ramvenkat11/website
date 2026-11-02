@@ -4,8 +4,6 @@
 
 # Search2o agents
 
-Search2o agents are to AI what microservices are to applications.
-
 A Search2o agent is built for a single task and runs on the agent server. It does not call other agents. It takes an input, produces an output and finishes in seconds, and it is expected to run thousands of times, for different users.
 
 A Search2o agent has clear boundaries: the systems it can reach, its maximum run time and its LLM cost.
