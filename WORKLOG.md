@@ -1548,3 +1548,4 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - Dropped: "turn your existing business workflows into", "Teams add agents over time", "the whole collection". Added: "hundreds of agents", "keeps them safe and observable".
 - Text only, no renders. Still open: home page `<title>` ("Search2o" alone; tagline variant discussed, no decision), docs "organization" wording, other items listed in earlier entries.
 - Follow-up: dropped ", with AI writing the first draft" from the hero lead at Ram's request (distracting, not the distinguishing feature). First sentence is now "Developers create task-focused agents." The demo-draft.html link remains elsewhere on the page.
+- Hero lead: "safe" now links to docs/gui/guardrails.html and "observable" to docs/reports/index.html (same target as the Observability piece in the built-in figure).
