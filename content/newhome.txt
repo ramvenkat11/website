@@ -1,8 +1,2 @@
-Parts of the system picture:
-
-- Change OpenAI, Anthropic, Gemini to ChatGPT, Claude, Gemini
-- Move these three to outside the organization in a separate box, called external LLM
-- The other ones are local LLM
-
-
+Developers create, validate and publish task-focused agents on the server. Users just ask for what they need: the built-in search picks the right agent, and the client runs it on the server. Hundreds of agents work as one safe and observable application for any client, including an agent harness.
 

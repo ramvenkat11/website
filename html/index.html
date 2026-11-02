@@ -65,7 +65,7 @@
     <div class="container">
       <div class="hero-head as-head">
         <h1 class="hero-claim">Transform your enterprise AI with Search2o agent server</h1>
-        <p class="hero-lead">Developers create <a class="hero-attr" href="docs/introduction/search2o-agents.html">task-focused agents</a>. Users never learn their names: they ask for what they need, <a class="hero-attr" href="search.html">search picks the agent</a>, and hundreds of agents work as <a class="hero-attr" href="conversation.html">one application</a>. The agent server handles all the plumbing behind <a class="hero-attr" href="framework.html">building</a> and <a class="hero-attr" href="runtime.html">running</a> the agents, while keeping them <a class="hero-attr" href="docs/runtime/controlled-execution.html">safe</a> and <a class="hero-attr" href="docs/reports/index.html">observable</a>.</p>
+        <p class="hero-lead">Developers <a class="hero-attr" href="framework.html">build</a> and <a class="hero-attr" href="search.html#description">describe</a> task-focused <a class="hero-attr" href="docs/introduction/search2o-agents.html">agents</a> on the server. Users just ask for what they need: the built-in <a class="hero-attr" href="search.html">search</a> picks the right agent, and the client <a class="hero-attr" href="conversation.html">runs</a> it on the server. Hundreds of agents work as one <a class="hero-attr" href="docs/runtime/controlled-execution.html">safe</a> and <a class="hero-attr" href="docs/reports/index.html">observable</a> application for any client, including an agent harness.</p>
       </div>
       <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example an IT helpdesk agent that handles employees' IT support requests. Troubleshoots hardware and software, and manages accounts and access. The Search2o agent server holds hundreds of agents. A client calls search with a request such as My laptop keeps freezing, and search returns the IT helpdesk agent. The client calls execAgent with the conversation, the agent and the request, and receives the agent's output, for example Ticket IT-4821 opened. A technician will call at 2 pm.">
         <div class="as-side as-dev">
@@ -99,7 +99,7 @@
   <section class="section soft" id="framework-runtime">
     <div class="container">
       <div class="section-head center">
-        <h2>Your agents are just business logic</h2>
+        <h2>Agent server takes care of all the plumbing</h2>
       </div>
       <div class="fw-wrap">
         <div class="fw-fig" aria-label="An agent, an agentic workflow of calls, prompts and decisions, runs inside the agent server. The server around it provides an agent editor, drafting with AI, externalized prompts, externalized system calls, trace and validation, agent versioning, multi-developer publishing, live configuration, hooks, an audit log, LLM calls, model neutrality, the tool calling loop, API and database calls, MCP, connection pools, a secret vault, authentication, parallel execution, error handling, runtime limits, guardrails, human in the loop, streaming, progress, saving and restoring conversations, agent memory and observability.">
@@ -145,7 +145,7 @@
         <h2>Fits into your environment as&nbsp;is</h2>
       </div>
       <div class="ui-fig">
-      <aside class="arch cc-arch hero-arch" aria-label="A browser used by users, developers and admins, Slack, Teams or Google Chat, and an agent harness send requests to the Search2o agent server in your enterprise. The agent server runs the agents and calls enterprise systems and local LLMs inside the enterprise, and external LLMs outside it. The agent server keeps no state: an encrypted link connects it to Search2o Cloud, which keeps the conversations and memories, encrypted by default.">
+      <aside class="arch cc-arch hero-arch" aria-label="A browser used by users, developers and admins, Slack, Teams or Google Chat, an agent harness and your own REST client send requests to the Search2o agent server in your enterprise. The agent server runs the agents and calls enterprise systems and local LLMs inside the enterprise, and external LLMs outside it. The agent server keeps no state: an encrypted link connects it to Search2o Cloud, which keeps the conversations and memories, encrypted by default.">
           <div class="arch-flow">
             <div class="arch-org">
             <span class="arch-org-lbl">Your enterprise</span>
@@ -153,8 +153,9 @@
               <div class="arch-node cc-cc"><strong><a href="docs/gui/index.html">Browser</a></strong><div class="arch-chips cc-skill cc-roles"><span><a href="docs/system-management/users-and-roles.html">User &middot; Developer &middot; Admin</a></span></div></div>
               <div class="arch-node cc-cc"><strong><a href="docs/chat-integrations/index.html">Slack, Teams, Google&nbsp;Chat</a></strong><div class="arch-chips cc-skill"><span><a href="docs/chat-integrations/index.html">Bot</a></span></div></div>
               <div class="arch-node cc-cc"><strong><a href="docs/skill-integration/index.html">Agent harness</a></strong><div class="arch-chips cc-skill"><span><a href="https://github.com/Search2o/search2o-skill" target="_blank" rel="noopener">search2o-skill</a></span></div></div>
+              <div class="arch-node cc-cc"><strong><a href="docs/rest-api/clients.html">REST client</a></strong><div class="arch-chips cc-skill"><span><a href="docs/rest-api/overview.html">REST&nbsp;API</a></span></div></div>
             </div>
-            <div class="cc-join" aria-hidden="true"><i></i><i></i><i></i><b></b></div>
+            <div class="cc-join" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
             <div class="arch-link cc-down" aria-hidden="true"></div>
             <div class="cc-main">
               <div class="arch-node cc-server">
