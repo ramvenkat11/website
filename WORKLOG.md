@@ -1588,3 +1588,4 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - Hero lead sentence 1 (Ram): "Developers create and describe task-focused agents on the server." create -> framework.html, describe -> docs/search/describing-an-agent.html (my pick; search.html#description was the alternative, but search.html is already linked from "built-in search"), agents -> docs/introduction/search2o-agents.html (link moved off "task-focused"). Text-only. Not committed.
 - Hero lead: search link narrowed to "search" ("built-in" plain). Text-only. Not committed.
 - Hero lead: "describe" now links search.html#description (the site page's "The description is what search matches against" section) instead of the docs page (Ram). Text-only. Not committed.
+- Home h2 "Your agents are just business logic" -> "Agent server takes care of all the plumbing" (Ram's wording). Text-only. Not committed.
