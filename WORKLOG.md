@@ -1590,3 +1590,4 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - Hero lead: "describe" now links search.html#description (the site page's "The description is what search matches against" section) instead of the docs page (Ram). Text-only. Not committed.
 - Home h2 "Your agents are just business logic" -> "Agent server takes care of all the plumbing" (Ram's wording). Text-only. Not committed.
 - Hero lead: "create" -> "build" (matches the figure's "Build, validate, publish agents"). Text-only. Not committed.
+- Home h2 "Agent server takes care of all the plumbing" -> "All the plumbing taken care of" (Ram; fragment form like the two sibling headings). Text-only. Not committed.
