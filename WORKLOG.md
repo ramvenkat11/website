@@ -1583,3 +1583,4 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - Hero lead: both "in the server" -> "on the server" (Ram asked which; "on" is the idiom for where software runs). Text-only. Not committed.
 - Hero lead: last sentence ("The agent server handles all the plumbing … safe and observable") removed (Ram; its four pages are all linked lower on the page). Sentence 3 is now "Hundreds of agents work as one safe and observable application for any client, including an agent harness." with safe -> controlled-execution, observable -> reports, application -> conversation.html. Framework and runtime links left the hero. Text-only. Not committed.
 - Hero lead: "create" links framework.html; the search link narrowed to "built-in search". Text-only. Not committed.
+- Hero lead: agents link narrowed to "task-focused"; "application" no longer links conversation.html (the page still links it twice elsewhere). Text-only. Not committed.
