@@ -1557,5 +1557,5 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - Docs rebuilt (146 pages; nav changed so every html/docs page is modified). Rendered the renamed page at 1280: h1 on one line, sidebar entry wraps to two lines like other long titles. Not committed, not deployed.
 
 ## 2026-11-01: Docs "organization" -> "enterprise"; hero "safe" link
-- All docs sources that said organization (11 files, 19 occurrences: security pages, parts-of-the-system, agent-servers, controlled-execution, conversation-state, const, langchain) now say enterprise. Docs rebuilt. The top-level pages were switched earlier; the only remaining "Organization" on the site is the schema.org type in index.html, which must stay.
+- All docs sources that said organization (16 files: security pages, parts-of-the-system, agent-servers, controlled-execution, conversation-state, const, langchain) now say enterprise. Docs rebuilt. The top-level pages were switched earlier; the only remaining "Organization" on the site is the schema.org type in index.html, which must stay.
 - Hero lead "safe" now links to docs/runtime/controlled-execution.html instead of the guardrails page (Ram's choice).
