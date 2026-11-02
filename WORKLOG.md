@@ -1560,3 +1560,7 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - All docs sources that said organization (16 files: security pages, parts-of-the-system, agent-servers, controlled-execution, conversation-state, const, langchain) now say enterprise. Docs rebuilt. The top-level pages were switched earlier; the only remaining "Organization" on the site is the schema.org type in index.html, which must stay.
 - Hero lead "safe" now links to docs/runtime/controlled-execution.html instead of the guardrails page (Ram's choice).
 - Hero lead last sentence is now "The agent server handles all the plumbing behind building and running the agents, while keeping them safe and observable." ("discovering" and its duplicate search link dropped; "and keeps" -> "while keeping").
+
+## 2026-11-01: Microservices analogy
+- `docsrc/introduction/search2o-agents.html` and `content/page-search2o-agents.md` lead: "Search2o agents are to AI what microservices are to applications." -> "Search2o agents are task-focused, repeatable and bounded." Docs rebuilt (the introduction index blurb follows the lead).
+- Remaining microservice mentions reported to Ram, not changed: docsrc/comparisons/langchain.html:37 "Like a microservice, an agent holds nothing on the server between runs"; content/langchain.md lines 9, 52, 89 (its source); content/wiki_microagents.md (research note about the term, not site copy).
