@@ -79,7 +79,7 @@ TOC = [
     ]),
     ("runtime", "Agent runtime", [
         ("controlled-execution", "Controlled execution"),
-        ("overview", "Overview"),
+        ("overview", "Runtime sync"),
         ("allowlist", "Allowlist"),
         ("system-variables", "System variables"),
         ("compile-rules", "Compile rules"),

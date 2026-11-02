@@ -11,10 +11,10 @@
 <h2>Rewriting an operator</h2>
 <p>Every use of a rewritten operator becomes a call to the named function with the operator's two operands: <code>a ** b</code> becomes <code>bounded_pow(a, b)</code>. Write the function yourself, install the package on every agent server, and put the function on the <a href="allowlist.html">allowlist</a> under the name you enter.</p>
 <p>The function keeps the operator's shape: two arguments, the left operand and the right operand. When the settings are saved, the agent server checks each named function: it must be on the allowlist, it must accept two arguments, and it must return a result for two sample numbers. If a function fails the check, the save is refused and the reason is shown. For matrix multiplication, <code>@</code>, only the two-argument shape is checked.</p>
-<p>Rewriting is how an expensive operation is kept within bounds. A function that stands in for <code>**</code> can refuse an exponent above a limit, and a function that stands in for <code>*</code> can refuse a result that would not fit in 64 bits.</p>
+<p>Rewriting is how an expensive operation is kept within limits. A function that stands in for <code>**</code> can refuse an exponent above a limit, and a function that stands in for <code>*</code> can refuse a result that would not fit in 64 bits.</p>
 
 <h2>Comprehensions</h2>
-<p>A comprehension may be nested only so deep, and a single comprehension may have only so many <code>for</code> clauses. Both bounds are settings below.</p>
+<p>A comprehension may be nested only so deep, and a single comprehension may have only so many <code>for</code> clauses. Both limits are settings below.</p>
 <!--fields:model:CompileOptions-->
 
 <h2>What validation refuses</h2>

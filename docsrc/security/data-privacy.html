@@ -1,6 +1,6 @@
-<p class="lead">Data falls into four categories: what never leaves your organization, what leaves only in encrypted form, what leaves in plain form but is stored encrypted, and what leaves and is stored in plain form. For each, the tables below say who can read the data and how long the cloud keeps it. The 7-day periods are the free account's limits; the paid service has no such limits.</p>
+<p class="lead">Data falls into four categories: what never leaves your enterprise, what leaves only in encrypted form, what leaves in plain form but is stored encrypted, and what leaves and is stored in plain form. For each, the tables below say who can read the data and how long the cloud keeps it. The 7-day periods are the free account's limits; the paid service has no such limits.</p>
 
-<h2>What never leaves your organization</h2>
+<h2>What never leaves your enterprise</h2>
 <p>Secrets read with <code>sys.secret</code> never leave the agent server, whichever source they come from: the environment, files, or your vault through the <code>vault</code> hook. Conversation state never leaves either when the account uses the <a href="../hooks/conversation-state.html">conversation state hooks</a>; the agent server then hands each conversation's state to your own code, in plain form, and reads it back from there. Agents run on the agent server, and every call to your APIs, databases, LLM providers and MCP servers leaves from there. What those calls return stays on the agent server, unless an agent writes it into its output or into a conversation variable. The <code>log</code> command writes to the agent server's own log, and nothing in that log is sent to the cloud.</p>
 
 <h2>What leaves only in encrypted form</h2>
@@ -37,4 +37,4 @@
 </tbody></table></div>
 
 <h2>Who else can see it</h2>
-<p>Search2o Cloud runs on Google Cloud Platform. Search2o staff, and Google as the provider of the underlying infrastructure, can in principle see the data stored in plain form. With the default setting the account's key is managed by Search2o, so Search2o and Google can in principle read the encrypted data as well. With end-to-end encryption the key never leaves your organization, and neither Search2o nor Google can read what is stored encrypted. The <a href="../../legal/privacy.html">privacy policy</a> is authoritative.</p>
+<p>Search2o Cloud runs on Google Cloud Platform. Search2o staff, and Google as the provider of the underlying infrastructure, can in principle see the data stored in plain form. With the default setting the account's key is managed by Search2o, so Search2o and Google can in principle read the encrypted data as well. With end-to-end encryption the key never leaves your enterprise, and neither Search2o nor Google can read what is stored encrypted. The <a href="../../legal/privacy.html">privacy policy</a> is authoritative.</p>

@@ -1,7 +1,7 @@
 <p class="lead">The allowlist is the complete set of names that an agent's Python expressions may use. Expressions do not get Python's builtins; the allowlist takes their place. A name that is not on the allowlist does not exist for an agent, and an expression that uses it is refused before the agent ever runs. The allowlist applies to every agent in the account, and developers edit it in the UI under Guardrails.</p>
 
 <h2>How expressions are contained</h2>
-<p>Expressions are contained at the application level, not by the operating system. Four things decide what an expression may do. The allowlist decides which names it can reach. The <a href="compile-rules.html">compile rules</a> decide which operators and which shapes of expression are accepted. The <a href="runtime-limits.html">runtime limits</a> bound a run in time, iterations, rows and LLM spend. The scope rules below decide which variables are visible. The runtime does not limit memory or CPU; rewriting an operator to a function of your own is the tool for operations that could load the agent server.</p>
+<p>Expressions are contained at the application level, not by the operating system. Four things decide what an expression may do. The allowlist decides which names it can reach. The <a href="compile-rules.html">compile rules</a> decide which operators and which shapes of expression are accepted. The <a href="runtime-limits.html">runtime limits</a> cap a run in time, iterations, rows and LLM spend. The scope rules below decide which variables are visible. The runtime does not limit memory or CPU; rewriting an operator to a function of your own is the tool for operations that could load the agent server.</p>
 <!--figure:expression-bounds-->
 
 <h2>One entry per line</h2>
