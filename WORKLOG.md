@@ -1667,3 +1667,7 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 ## 2026-11-04 — Home conversation section: subheading reworded again
 - p now "Agents stay independent and build on each other within a&nbsp;conversation." Rendered
   at 1280/700/412/375/320 light+dark (cv6). Not committed, not uploaded.
+
+## 2026-11-04 — Home section 2: title back to "All the plumbing taken care of"
+- h2 restored (with care&nbsp;of); p "Your agent code is just the business logic." unchanged.
+  Rendered the heading block at 1280/700/375/320 light+dark (fr1). Not committed, not uploaded.
