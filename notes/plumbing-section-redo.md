@@ -99,4 +99,32 @@ Open discussion, 2026-11-04. Picked option C and built it into section 2 (uncomm
 - The figure's layout rules were scoped to #mechanism; now `:is(#mechanism, #conversations)`
   so both pages share them. A plain class lost to the 1000px .hero-convo rule and pushed the
   second note below the chat, hence the id-level selector.
-- Next: section 3 "three surfaces" (clients), parked since 2026-10-24, can now be built.
+- Ram, same day: the parked "three surfaces" clients section is not needed with the home page as it is now. Dropped.
+- Ram, same day: the conversation page's top figure (#mechanism) is removed; the home page
+  carries it now. "What a conversation keeps" is the page's first section. CSS rules now scoped
+  to #conversations only.
+- Section 4 "Fits into your environment as is" got a subheading (decided with Ram, 2026-11-04):
+  "Chat from the apps you already use. Automate through REST. Open your enterprise agentic
+  workflows to agent harnesses." Non-breaking space in "agent harnesses".
+- Section 4 title is now "Interfaces for people, programs and agent harnesses" (Ram picked it,
+  2026-11-04); the old "Fits into your environment as is" is gone. The title's three nouns match
+  the subheading's three sentences in order.
+- Conversation section wording, Ram 2026-11-04: title "Let users converse with your enterprise
+  agents" (no "your" before users), subheading "Conversations run multiple agents in the same
+  context." Then changed to "Agents stay independent and build on each other within a conversation."
+- Ram, 2026-11-04 (later): section 2 title back to "All the plumbing taken care of". Subheading
+  "Your agent code is just the business logic." stays.
+- Section 4 caption under the figure (2026-11-04): "The agent server keeps no state.
+  Conversations and memories live in Search2o Cloud, encrypted by default." Links to
+  docs/security/data-privacy.html and docs/security/encryption.html, same two the figure's cloud
+  box uses. Reuses the hero-caption style.
+- Cloud state wording moved into the figure's State box (Ram did not want a caption below the
+  image): "Conversations and memories live here, / encrypted by default". The "keeps no state"
+  sentence was dropped because the server box already says Stateless. Span max-width 300px.
+- Section 4 title changed again (Ram, 2026-11-04): "Cloud managed state, multiple client
+  interfaces". No period, to match the other home h2s.
+- Section 4 subheading cut to one sentence (Ram, 2026-11-04): "Open your enterprise agentic
+  workflows to agent harnesses." The chat and REST sentences are gone; the title now carries
+  "multiple client interfaces".
+- Section 4 subheading (Ram picked, 2026-11-04): "One skill opens hundreds of repeatable,
+  bounded, cost-effective agents to agent harnesses."
