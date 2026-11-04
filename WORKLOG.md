@@ -1699,3 +1699,11 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - p now "One skill opens hundreds of repeatable, bounded, cost-effective agents to
   agent&nbsp;harnesses." Rendered the heading block at 1280/700/412/375/320 light+dark (ui10).
   Not committed, not uploaded.
+
+## 2026-11-04 Section 3 rethink: four mockups
+- Ram asked for a rethink of the plumbing section (section 3 of the home page): same message, add
+  model neutrality with the supported LLMs, say that develop/publish/run are easy, no "N boxes".
+- Built notes/section3-mockups.html with options A (three-stage path), B (annotated whole agent
+  with a model switch), C (what you write / what the server does), D (one run as a trace).
+  Rendered 1280 and 375, light and dark, no overflow. Notes in notes/plumbing-section-redo.md.
+- State: discussion only; html/ untouched. Next: Ram picks an option or combination.
