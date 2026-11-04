@@ -97,44 +97,98 @@
       <p class="hero-caption">Live demo: <a href="demo-draft.html">Draft an agent with AI</a> &middot; <a href="demo-search.html">Chat with agents</a> &middot; <a href="demo-trace.html">Trace an agent run</a></p>
     </div>
   </section>
+  <section class="section" id="conversations">
+    <div class="container">
+      <div class="section-head center">
+        <h2>Let your users converse with your enterprise&nbsp;agents</h2>
+        <p>A follow-up can go to a different agent. No agent calls&nbsp;another.</p>
+      </div>
+      <div class="sc-wrap">
+        <div class="convo hero-convo" aria-label="One conversation across two independent agents. Search matches the first request to the Travel desk agent, which asks for confirmation before booking. It matches a second request to the Reimbursements agent, which continues the same conversation and files the trip expenses.">
+          <div class="convo-title">Conversation</div>
+          <div class="convo-body">
+            <div class="turn-user r1">Book my trip for Tuesday's all-day meeting in New York<i class="mk">1</i></div>
+            <aside class="note-bubble first r1"><b><i class="mk">1</i><a href="search.html">Discovery</a></b>Search matched the request to the Travel desk agent and started a new conversation.</aside>
+            <div class="turn-agent r2">
+              <div class="msg ask" aria-label="The agent asks before booking"><i class="mk">2</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>
+                <span class="q">UA1191 departs 06:00 Tuesday, back at 19:30, and a night at the Marriott near the office. $1,240. <b>Book it?</b></span>
+                <span class="opts"><i class="on">Book</i><i>Hold</i></span>
+                <span class="submit">Submit</span>
+              </div>
+            </div>
+            <aside class="note-bubble r2"><b><i class="mk">2</i><a href="docs/commands/ask.html">Human in the loop</a></b>The agent paused for an answer and continued from where it stopped.</aside>
+            <div class="turn-agent r3">
+              <div class="msg"><i class="mk">3</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>Booked UA1191 and the hotel night. The confirmation is in your inbox.</div>
+            </div>
+            <aside class="note-bubble r3"><b><i class="mk">3</i><a href="conversation.html#state">Conversation context</a></b>When the agent ended, the server saved the conversation: its variables and prompts.</aside>
+            <div class="turn-user r4">File the expenses for that trip</div>
+            <div class="turn-agent r5">
+              <div class="msg"><i class="mk">4</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Reimbursements</span>Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
+            </div>
+            <aside class="note-bubble r5"><b><i class="mk">4</i><a href="docs/agent-execution/building-on-each-other.html">Building on each other</a></b>Search sent the follow-up to Reimbursements, which continued the same conversation. Neither agent called the other.</aside>
+          </div>
+        </div>
+        <div class="sc-notes">
+          <div class="note"><b><i class="mk">1</i><a href="search.html">Discovery</a></b>Search matched the request to the Travel desk agent and started a new conversation.</div>
+          <div class="note"><b><i class="mk">2</i><a href="docs/commands/ask.html">Human in the loop</a></b>The agent paused for an answer and continued from where it stopped.</div>
+          <div class="note"><b><i class="mk">3</i><a href="conversation.html#state">Conversation context</a></b>When the agent ended, the server saved the conversation: its variables and prompts.</div>
+          <div class="note"><b><i class="mk">4</i><a href="docs/agent-execution/building-on-each-other.html">Building on each other</a></b>Search sent the follow-up to Reimbursements, which continued the same conversation. Neither agent called the other.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="section soft" id="framework-runtime">
     <div class="container">
       <div class="section-head center">
-        <h2>All the plumbing taken care of</h2>
+        <h2>One server that includes everything you&nbsp;need</h2>
+        <p>Your agent code is just the business&nbsp;logic.</p>
       </div>
       <div class="fw-wrap">
-        <div class="fw-fig" aria-label="An agent, an agentic workflow of calls, prompts and decisions, runs inside the agent server. The server around it provides an agent editor, drafting with AI, externalized prompts, externalized system calls, trace and validation, agent versioning, multi-developer publishing, live configuration, hooks, an audit log, LLM calls, model neutrality, the tool calling loop, API and database calls, MCP, connection pools, a secret vault, authentication, parallel execution, error handling, runtime limits, guardrails, human in the loop, streaming, progress, saving and restoring conversations, agent memory and observability.">
+        <div class="fw-fig" aria-label="The agent server provides six parts. LLMs: LLM calls, Tool calling loop, MCP, Model neutrality. Agent workflow: API and database calls, Parallel execution, Error handling, Human in the loop, Progress, Streaming, Externalized prompts, Externalized system calls. Development environment: Draft with AI, Agent editor, Trace and validation, Agent versioning, Multi-developer publishing. Routing: Search picks the agent. Runtime: Live configuration, Hooks, Audit log, Connection pools, Secret vault, Authentication, Runtime limits, Guardrails, Observability. State management: Save/Restore conversations, Agent memory.">
           <span class="fw-tag">Agent server</span>
-          <div class="fw-ring">
-          <a class="fw-piece" href="docs/development/code-editor.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></svg></i>Agent editor</a>
-          <a class="fw-piece" href="docs/development/draft-with-ai.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8z"/></svg></i>Draft with AI</a>
-          <a class="fw-piece" href="docs/agent-definition/prompts.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></i>Externalized prompts</a>
-          <a class="fw-piece" href="docs/profiles/index.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6"/><path d="m21 3-9 9"/><path d="M15 3h6v6"/></svg></i>Externalized system calls</a>
-          <a class="fw-piece" href="docs/development/trace-and-validation.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></i>Trace and validation</a>
-          <a class="fw-piece" href="docs/development/publishing.html#versions"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2"/><circle cx="6" cy="18" r="2"/><circle cx="18" cy="8" r="2"/><path d="M6 8v8M18 10a6 6 0 0 1-6 6H8"/></svg></i>Agent versioning</a>
-          <a class="fw-piece" href="docs/development/publishing.html#when-several-developers-change-the-same-agent"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9"/><path d="M16 3.1a4 4 0 0 1 0 7.8"/></svg></i>Multi&#8209;developer publishing</a>
-          <a class="fw-piece" href="docs/runtime/overview.html#how-a-change-reaches-every-agent-server"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></i>Live configuration</a>
-          <a class="fw-piece" href="docs/hooks/overview.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.439 7.85c-.049.322.059.648.289.878l1.568 1.568c.47.47.706 1.087.706 1.704s-.235 1.233-.706 1.704l-1.611 1.611a.98.98 0 0 1-.837.276c-.47-.07-.802-.48-.968-.925a2.501 2.501 0 1 0-3.214 3.214c.446.166.855.497.925.968a.979.979 0 0 1-.276.837l-1.61 1.61a2.404 2.404 0 0 1-1.705.707 2.402 2.402 0 0 1-1.704-.706l-1.568-1.568a1.026 1.026 0 0 0-.877-.29c-.493.074-.84.504-1.02.968a2.5 2.5 0 1 1-3.237-3.237c.464-.18.894-.527.967-1.02a1.026 1.026 0 0 0-.289-.877l-1.568-1.568A2.402 2.402 0 0 1 1.998 12c0-.617.236-1.234.706-1.704L4.23 8.77c.24-.24.581-.353.917-.303.515.077.877.528 1.073 1.01a2.5 2.5 0 1 0 3.259-3.259c-.482-.196-.933-.558-1.01-1.073-.05-.336.062-.676.303-.917l1.525-1.525A2.402 2.402 0 0 1 12 1.998c.617 0 1.234.236 1.704.706l1.568 1.568c.23.23.556.338.877.29.493-.074.84-.504 1.02-.968a2.5 2.5 0 1 1 3.237 3.237c-.464.18-.894.527-.967 1.02Z"/></svg></i>Hooks</a>
-          <a class="fw-piece" href="docs/system-management/audit-log.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 12h-5M15 8h-5"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></svg></i>Audit log</a>
-          <a class="fw-piece" href="docs/commands/llm.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1.1-4.2A8 8 0 1 1 21 12Z"/></svg></i>LLM calls</a>
-          <a class="fw-piece" href="docs/llm/vendors.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 8.5 4.5L12 11 3.5 6.5 12 2z"/><path d="m3.5 11.5 8.5 4.5 8.5-4.5"/><path d="m3.5 16.5 8.5 4.5 8.5-4.5"/></svg></i>Model neutrality</a>
-          <a class="fw-piece" href="docs/commands/llm.html#tool-calling"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 3v5h-5"/><path d="M9 12h6M12 9v6"/></svg></i>Tool calling loop</a>
-          <a class="fw-piece" href="docs/profiles/index.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 2v5M15 2v5M6 7h12v4a6 6 0 0 1-12 0V7Z"/><path d="M12 17v5"/></svg></i>API and database calls</a>
-          <a class="fw-piece" href="docs/profiles/mcp-servers.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="8.5" y="14" width="7" height="7" rx="1.5"/><path d="M6.5 10v2a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-2"/></svg></i>MCP</a>
-          <a class="fw-piece" href="docs/runtime/connection-pools.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.5-1.5"/></svg></i>Connection pools</a>
-          <a class="fw-piece" href="docs/security/secret-vault.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="18" height="11" x="3" y="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></i>Secret vault</a>
-          <a class="fw-piece" href="docs/system-management/authentication.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="15.5" r="4.5"/><path d="m21 2-9.6 9.6"/><path d="m15.5 7.5 3 3L22 7l-3-3"/></svg></i>Authentication</a>
-          <a class="fw-piece" href="docs/commands/parallel.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5M8 3H3v5"/><path d="M12 22v-8.3a4 4 0 0 0-1.2-2.8L3 3"/><path d="m15 9 6-6"/></svg></i>Parallel execution</a>
-          <a class="fw-piece" href="docs/agent-execution/error-handling.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 2 20h20L12 3z"/><path d="M12 10v4M12 17.5h.01"/></svg></i>Error handling</a>
-          <a class="fw-piece" href="docs/runtime/runtime-limits.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg></i>Runtime limits</a>
-          <a class="fw-piece" href="docs/gui/guardrails.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 13c0 5-3.5 7.5-7.7 9a1 1 0 0 1-.6 0C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.2-2.7a1.2 1.2 0 0 1 1.6 0C14.5 3.8 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg></i>Guardrails</a>
-          <a class="fw-piece" href="docs/commands/ask.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></i>Human in the loop</a>
-          <a class="fw-piece" href="docs/rest-api/streaming.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></i>Streaming</a>
-          <a class="fw-piece" href="docs/commands/progress.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v4M12 18v4M4.9 4.9l2.9 2.9M16.2 16.2l2.9 2.9M2 12h4M18 12h4M4.9 19.1l2.9-2.9M16.2 7.8l2.9-2.9"/></svg></i>Progress</a>
-          <a class="fw-piece" href="docs/agent-execution/conversation-state.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 0 1-15.5 6.2M3 12a9 9 0 0 1 15.5-6.2"/><path d="M3 7v5h5M21 17v-5h-5"/></svg></i>Save/Restore conversations</a>
-          <a class="fw-piece" href="docs/commands/memory.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a7 7 0 0 0-7 7c0 2.4 1.2 4.1 2.5 5.3V19h9v-3.7C17.8 14.1 19 12.4 19 10a7 7 0 0 0-7-7Z"/><path d="M9 22h6"/></svg></i>Agent memory</a>
-          <a class="fw-piece" href="docs/reports/index.html"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="M7 15v-4M12 15V8M17 15v-6"/></svg></i>Observability</a>
-            <div class="fw-run"><span class="fw-io in"><b>request</b></span><i class="fw-arr" aria-hidden="true"></i><div class="fw-agent"><b>Your agent</b><small><a href="framework.html">Agentic workflow: calls, prompts, decisions</a></small></div><i class="fw-arr" aria-hidden="true"></i><span class="fw-io out"><b>response</b></span></div>
+          <div class="fw-parts">
+            <div class="fw-part fw-llm"><a class="fw-part-title" href="docs/llm/index.html">LLMs</a><div class="fw-pieces">
+              <a class="fw-piece" href="docs/commands/llm.html">LLM calls</a>
+              <a class="fw-piece" href="docs/commands/llm.html#tool-calling">Tool calling loop</a>
+              <a class="fw-piece" href="docs/profiles/mcp-servers.html">MCP</a>
+              <a class="fw-piece" href="docs/llm/vendors.html">Model neutrality</a>
+            </div></div>
+            <div class="fw-part fw-wf"><a class="fw-part-title" href="framework.html">Agent workflow</a><div class="fw-pieces">
+              <a class="fw-piece" href="docs/profiles/index.html">API and database calls</a>
+              <a class="fw-piece" href="docs/commands/parallel.html">Parallel execution</a>
+              <a class="fw-piece" href="docs/agent-execution/error-handling.html">Error handling</a>
+              <a class="fw-piece" href="docs/commands/ask.html">Human in the loop</a>
+              <a class="fw-piece" href="docs/commands/progress.html">Progress</a>
+              <a class="fw-piece" href="docs/rest-api/streaming.html">Streaming</a>
+              <a class="fw-piece" href="docs/agent-definition/prompts.html">Externalized prompts</a>
+              <a class="fw-piece" href="docs/profiles/index.html">Externalized system calls</a>
+            </div></div>
+            <div class="fw-part fw-ide"><a class="fw-part-title" href="docs/development/index.html">Development environment</a><div class="fw-pieces">
+              <a class="fw-piece" href="docs/development/draft-with-ai.html">Draft with AI</a>
+              <a class="fw-piece" href="docs/development/code-editor.html">Agent editor</a>
+              <a class="fw-piece" href="docs/development/trace-and-validation.html">Trace and validation</a>
+              <a class="fw-piece" href="docs/development/publishing.html#versions">Agent versioning</a>
+              <a class="fw-piece" href="docs/development/publishing.html#when-several-developers-change-the-same-agent">Multi&#8209;developer publishing</a>
+            </div></div>
+            <div class="fw-part fw-ro"><a class="fw-part-title" href="search.html">Routing</a><div class="fw-pieces">
+              <a class="fw-piece" href="search.html">Search picks the agent</a>
+            </div></div>
+            <div class="fw-part fw-rt"><a class="fw-part-title" href="runtime.html">Runtime</a><div class="fw-pieces">
+              <a class="fw-piece" href="docs/runtime/overview.html#how-a-change-reaches-every-agent-server">Live configuration</a>
+              <a class="fw-piece" href="docs/hooks/overview.html">Hooks</a>
+              <a class="fw-piece" href="docs/system-management/audit-log.html">Audit log</a>
+              <a class="fw-piece" href="docs/runtime/connection-pools.html">Connection pools</a>
+              <a class="fw-piece" href="docs/security/secret-vault.html">Secret vault</a>
+              <a class="fw-piece" href="docs/system-management/authentication.html">Authentication</a>
+              <a class="fw-piece" href="docs/runtime/runtime-limits.html">Runtime limits</a>
+              <a class="fw-piece" href="docs/gui/guardrails.html">Guardrails</a>
+              <a class="fw-piece" href="docs/reports/index.html">Observability</a>
+            </div></div>
+            <div class="fw-part fw-st"><a class="fw-part-title" href="conversation.html">State management</a><div class="fw-pieces">
+              <a class="fw-piece" href="docs/agent-execution/conversation-state.html">Save/Restore conversations</a>
+              <a class="fw-piece" href="docs/commands/memory.html">Agent memory</a>
+            </div></div>
           </div>
         </div>
       </div>

@@ -1,2 +1,4 @@
 Developers create, validate and publish task-focused agents on the server. Users just ask for what they need: the built-in search picks the right agent, and the client runs it on the server. Hundreds of agents work as one safe and observable application for any client, including an agent harness.
 
+Show HN: Agent server = Framework + IDE + Runtime + Router + State management
+Show HN: Agent server with framework, IDE, runtime, router and state management

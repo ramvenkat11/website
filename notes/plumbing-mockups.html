@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Section 2 mockups</title>
+<link rel="stylesheet" href="../html/styles/styles.css">
+<style>
+.mk { padding: 56px 0; }
+.mk .section-head { margin-bottom: 36px; }
+.mk .section-head h2 { font-size: 24px; }
+.mk-opt { display: block; margin: 0 0 18px; color: var(--blue-ink); font-size: 13px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; }
+.mk-note { margin: 18px auto 0; max-width: 720px; text-align: center; color: var(--faint); font-size: 13px; }
+.mk-wrap { max-width: 980px; margin: 0 auto; }
+.mk-fig { position: relative; padding: 34px 22px 26px; border: 2px dashed var(--org-border); border-radius: 22px; background: var(--org-bg); }
+.mk-tag { position: absolute; top: -12px; left: 50%; transform: translateX(-50%); padding: 2px 11px; border: 1px solid var(--org-border); border-radius: 999px; background: linear-gradient(var(--org-bg), var(--org-bg)), var(--bg); color: var(--muted); font-size: 11.5px; font-weight: 700; white-space: nowrap; }
+.mk-part { display: grid; align-content: start; gap: 10px; min-width: 0; padding: 14px 16px 15px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); box-shadow: var(--card-shadow); }
+.mk-title { color: var(--ink); font-size: 16px; font-weight: 750; letter-spacing: -0.02em; }
+.mk-title:hover { color: var(--blue-ink); text-decoration: none; }
+.mk-pieces { display: flex; flex-wrap: wrap; gap: 6px; }
+.mk-piece { padding: 3px 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg-soft); color: var(--body); font-size: 12px; font-weight: 500; line-height: 1.3; }
+.mk-piece:hover { border-color: var(--blue); color: var(--blue-ink); text-decoration: none; }
+.mk-run { display: grid; grid-template-columns: repeat(5, auto); justify-content: center; align-items: center; gap: 16px; min-width: 0; }
+.mk-io { display: grid; justify-items: center; text-align: center; }
+.mk-io b { padding: 5px 10px; border-radius: 9px; background: var(--navy); color: #fff; font-size: 12px; font-weight: 600; }
+.mk-io.out b { background: var(--card); color: var(--ink); border: 1px solid var(--line); }
+.mk-arr { width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid var(--slate); }
+.mk-agent { display: grid; justify-items: center; gap: 4px; min-width: 240px; padding: 22px 28px; border: 1px solid var(--blue); border-radius: 16px; background: var(--card); box-shadow: var(--card-shadow-lg); text-align: center; }
+.mk-agent > b { color: var(--ink); font-size: 17px; font-weight: 800; letter-spacing: -0.02em; }
+.mk-agent > small { color: var(--muted); font-size: 13px; font-weight: 500; }
+.mk-agent > small a { color: inherit; }
+.mk-agent > small a:hover { color: var(--blue-ink); text-decoration: none; }
+
+.mk-grid-a { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 14px; align-items: start; }
+.mk-grid-a .mk-run { grid-column: 1 / -1; padding: 10px 0; }
+.mk-col { display: grid; gap: 14px; align-content: start; }
+
+.mk-stack { display: grid; gap: 12px; }
+.mk-stack .mk-run { padding: 8px 0; }
+.mk-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; }
+
+.mk-ringgrid { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); grid-template-areas: "fw fw fw" "ide run rt" "ro run st"; gap: 12px; align-items: stretch; }
+.mk-ringgrid .mk-fw { grid-area: fw; }
+.mk-ringgrid .mk-ide { grid-area: ide; }
+.mk-ringgrid .mk-run { grid-area: run; align-self: center; padding: 0 6px; }
+.mk-ringgrid .mk-rt { grid-area: rt; }
+.mk-ringgrid .mk-ro { grid-area: ro; }
+.mk-ringgrid .mk-st { grid-area: st; }
+.mk-ringgrid .mk-run { grid-template-columns: auto; justify-items: center; gap: 10px; }
+.mk-ringgrid .mk-arr { transform: rotate(90deg); }
+
+.mk-theme { position: fixed; right: 14px; bottom: 14px; z-index: 9; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); font: 600 12px var(--font); cursor: pointer; }
+
+@media (max-width: 860px) {
+  .mk-fig { padding: 30px 16px 20px; }
+  .mk-run { gap: 10px; }
+  .mk-agent { min-width: 0; padding: 14px 12px; }
+  .mk-ringgrid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-areas: "fw fw" "run run" "ide rt" "ro st"; }
+  .mk-ringgrid .mk-run { grid-template-columns: repeat(5, auto); }
+  .mk-ringgrid .mk-arr { transform: none; }
+}
+@media (max-width: 700px) {
+  .mk-grid-a, .mk-row, .mk-ringgrid { grid-template-columns: minmax(0, 1fr); }
+  .mk-ringgrid { grid-template-areas: "fw" "run" "ide" "rt" "ro" "st"; }
+}
+@media (max-width: 420px) {
+  .mk-fig { padding: 26px 12px 16px; }
+  .mk-part { padding: 12px 12px 13px; }
+  .mk-piece { font-size: 11.5px; }
+  .mk-run { gap: 7px; }
+  .mk-io b { padding: 4px 7px; font-size: 11px; }
+  .mk-agent { padding: 12px 8px; }
+  .mk-agent > b { font-size: 15px; }
+  .mk-agent > small { font-size: 12px; line-height: 1.3; }
+}
+</style>
+</head>
+<body>
+<button class="mk-theme" type="button">Toggle dark</button>
+<section class="section soft mk" id="opt-a"><div class="container"><span class="mk-opt">A. Five blocks inside the server</span><div class="section-head center"><h2>All the plumbing taken care of</h2><p>The agent server includes everything needed: framework, IDE, runtime, routing and state management.</p></div><div class="mk-wrap"><div class="mk-fig mk-a"><span class="mk-tag">Agent server</span><div class="mk-grid-a"><div class="mk-part mk-fw"><a class="mk-title" href="../html/framework.html">Framework</a><div class="mk-pieces"><a class="mk-piece" href="../html/docs/agent-definition/prompts.html">Externalized prompts</a><a class="mk-piece" href="../html/docs/profiles/index.html">Externalized system calls</a><a class="mk-piece" href="../html/docs/commands/llm.html">LLM calls</a><a class="mk-piece" href="../html/docs/commands/llm.html#tool-calling">Tool calling loop</a><a class="mk-piece" href="../html/docs/profiles/index.html">API and database calls</a><a class="mk-piece" href="../html/docs/profiles/mcp-servers.html">MCP</a><a class="mk-piece" href="../html/docs/commands/parallel.html">Parallel execution</a><a class="mk-piece" href="../html/docs/agent-execution/error-handling.html">Error handling</a><a class="mk-piece" href="../html/docs/commands/ask.html">Human in the loop</a><a class="mk-piece" href="../html/docs/commands/progress.html">Progress</a><a class="mk-piece" href="../html/docs/rest-api/streaming.html">Streaming</a></div></div><div class="mk-part mk-ide"><a class="mk-title" href="../html/docs/development/index.html">IDE</a><div class="mk-pieces"><a class="mk-piece" href="../html/docs/development/code-editor.html">Agent editor</a><a class="mk-piece" href="../html/docs/development/draft-with-ai.html">Draft with AI</a><a class="mk-piece" href="../html/docs/development/trace-and-validation.html">Trace and validation</a><a class="mk-piece" href="../html/docs/development/publishing.html#versions">Agent versioning</a><a class="mk-piece" href="../html/docs/development/publishing.html#when-several-developers-change-the-same-agent">Multi‑developer publishing</a></div></div><div class="mk-run"><span class="mk-io in"><b>request</b></span><i class="mk-arr" aria-hidden="true"></i><div class="mk-agent"><b>Your agent</b><small><a href="../html/framework.html">Agentic workflow: calls, prompts, decisions</a></small></div><i class="mk-arr" aria-hidden="true"></i><span class="mk-io out"><b>response</b></span></div><div class="mk-part mk-rt"><a class="mk-title" href="../html/runtime.html">Runtime</a><div class="mk-pieces"><a class="mk-piece" href="../html/docs/runtime/overview.html#how-a-change-reaches-every-agent-server">Live configuration</a><a class="mk-piece" href="../html/docs/hooks/overview.html">Hooks</a><a class="mk-piece" href="../html/docs/system-management/audit-log.html">Audit log</a><a class="mk-piece" href="../html/docs/llm/vendors.html">Model neutrality</a><a class="mk-piece" href="../html/docs/runtime/connection-pools.html">Connection pools</a><a class="mk-piece" href="../html/docs/security/secret-vault.html">Secret vault</a><a class="mk-piece" href="../html/docs/system-management/authentication.html">Authentication</a><a class="mk-piece" href="../html/docs/runtime/runtime-limits.html">Runtime limits</a><a class="mk-piece" href="../html/docs/gui/guardrails.html">Guardrails</a><a class="mk-piece" href="../html/docs/reports/index.html">Observability</a></div></div><div class="mk-col"><div class="mk-part mk-ro"><a class="mk-title" href="../html/search.html">Routing</a><div class="mk-pieces"><a class="mk-piece" href="../html/search.html">Search picks the agent</a></div></div><div class="mk-part mk-st"><a class="mk-title" href="../html/conversation.html">State management</a><div class="mk-pieces"><a class="mk-piece" href="../html/docs/agent-execution/conversation-state.html">Save/Restore conversations</a><a class="mk-piece" href="../html/docs/commands/memory.html">Agent memory</a></div></div></div></div></div></div><p class="mk-note">Framework and IDE above the agent, runtime, routing and state below it.</p></div></section><section class="section soft mk" id="opt-b"><div class="container"><span class="mk-opt">B. Layer stack</span><div class="section-head center"><h2>All the plumbing taken care of</h2><p>The agent server includes everything needed: framework, IDE, runtime, routing and state management.</p></div><div class="mk-wrap"><div class="mk-fig mk-b"><span class="mk-tag">Agent server</span><div class="mk-stack"><div class="mk-part mk-ide"><a class="mk-title" href="../html/docs/development/index.html">IDE</a><div class="mk-pieces"><a class="mk-piece" href="../html/docs/development/code-editor.html">Agent editor</a><a class="mk-piece" href="../html/docs/development/draft-with-ai.html">Draft with AI</a><a class="mk-piece" href="../html/docs/development/trace-and-validation.html">Trace and validation</a><a class="mk-piece" href="../html/docs/development/publishing.html#versions">Agent versioning</a><a class="mk-piece" href="../html/docs/development/publishing.html#when-several-developers-change-the-same-agent">Multi‑developer publishing</a></div></div><div class="mk-run"><span class="mk-io in"><b>request</b></span><i class="mk-arr" aria-hidden="true"></i><div class="mk-agent"><b>Your agent</b><small><a href="../html/framework.html">Agentic workflow: calls, prompts, decisions</a></small></div><i class="mk-arr" aria-hidden="true"></i><span class="mk-io out"><b>response</b></span></div><div class="mk-part mk-fw"><a class="mk-title" href="../html/framework.html">Framework</a><div class="mk-pieces"><a class="mk-piece" href="../html/docs/agent-definition/prompts.html">Externalized prompts</a><a class="mk-piece" href="../html/docs/profiles/index.html">Externalized system calls</a><a class="mk-piece" href="../html/docs/commands/llm.html">LLM calls</a><a class="mk-piece" href="../html/docs/commands/llm.html#tool-calling">Tool calling loop</a><a class="mk-piece" href="../html/docs/profiles/index.html">API and database calls</a><a class="mk-piece" href="../html/docs/profiles/mcp-servers.html">MCP</a><a class="mk-piece" href="../html/docs/commands/parallel.html">Parallel execution</a><a class="mk-piece" href="../html/docs/agent-execution/error-handling.html">Error handling</a><a class="mk-piece" href="../html/docs/commands/ask.html">Human in the loop</a><a class="mk-piece" href="../html/docs/commands/progress.html">Progress</a><a class="mk-piece" href="../html/docs/rest-api/streaming.html">Streaming</a></div></div><div class="mk-row"><div class="mk-part mk-ro"><a class="mk-title" href="../html/search.html">Routing</a><div class="mk-pieces"><a class="mk-piece" href="../html/search.html">Search picks the agent</a></div></div><div class="mk-part mk-st"><a class="mk-title" href="../html/conversation.html">State management</a><div class="mk-pieces"><a class="mk-piece" href="../html/docs/agent-execution/conversation-state.html">Save/Restore conversations</a><a class="mk-piece" href="../html/docs/commands/memory.html">Agent memory</a></div></div></div><div class="mk-part mk-rt"><a class="mk-title" href="../html/runtime.html">Runtime</a><div class="mk-pieces"><a class="mk-piece" href="../html/docs/runtime/overview.html#how-a-change-reaches-every-agent-server">Live configuration</a><a class="mk-piece" href="../html/docs/hooks/overview.html">Hooks</a><a class="mk-piece" href="../html/docs/system-management/audit-log.html">Audit log</a><a class="mk-piece" href="../html/docs/llm/vendors.html">Model neutrality</a><a class="mk-piece" href="../html/docs/runtime/connection-pools.html">Connection pools</a><a class="mk-piece" href="../html/docs/security/secret-vault.html">Secret vault</a><a class="mk-piece" href="../html/docs/system-management/authentication.html">Authentication</a><a class="mk-piece" href="../html/docs/runtime/runtime-limits.html">Runtime limits</a><a class="mk-piece" href="../html/docs/gui/guardrails.html">Guardrails</a><a class="mk-piece" href="../html/docs/reports/index.html">Observability</a></div></div></div></div></div><p class="mk-note">IDE on top, the agent runs on the framework, routing and state beside, runtime underneath.</p></div></section><section class="section soft mk" id="opt-c"><div class="container"><span class="mk-opt">C. Ring divided into five arcs</span><div class="section-head center"><h2>All the plumbing taken care of</h2><p>The agent server includes everything needed: framework, IDE, runtime, routing and state management.</p></div><div class="mk-wrap"><div class="mk-fig mk-c"><span class="mk-tag">Agent server</span><div class="mk-ringgrid"><div class="mk-part mk-fw"><a class="mk-title" href="../html/framework.html">Framework</a><div class="mk-pieces"><a class="mk-piece" href="../html/docs/agent-definition/prompts.html">Externalized prompts</a><a class="mk-piece" href="../html/docs/profiles/index.html">Externalized system calls</a><a class="mk-piece" href="../html/docs/commands/llm.html">LLM calls</a><a class="mk-piece" href="../html/docs/commands/llm.html#tool-calling">Tool calling loop</a><a class="mk-piece" href="../html/docs/profiles/index.html">API and database calls</a><a class="mk-piece" href="../html/docs/profiles/mcp-servers.html">MCP</a><a class="mk-piece" href="../html/docs/commands/parallel.html">Parallel execution</a><a class="mk-piece" href="../html/docs/agent-execution/error-handling.html">Error handling</a><a class="mk-piece" href="../html/docs/commands/ask.html">Human in the loop</a><a class="mk-piece" href="../html/docs/commands/progress.html">Progress</a><a class="mk-piece" href="../html/docs/rest-api/streaming.html">Streaming</a></div></div><div class="mk-part mk-ide"><a class="mk-title" href="../html/docs/development/index.html">IDE</a><div class="mk-pieces"><a class="mk-piece" href="../html/docs/development/code-editor.html">Agent editor</a><a class="mk-piece" href="../html/docs/development/draft-with-ai.html">Draft with AI</a><a class="mk-piece" href="../html/docs/development/trace-and-validation.html">Trace and validation</a><a class="mk-piece" href="../html/docs/development/publishing.html#versions">Agent versioning</a><a class="mk-piece" href="../html/docs/development/publishing.html#when-several-developers-change-the-same-agent">Multi‑developer publishing</a></div></div><div class="mk-run"><span class="mk-io in"><b>request</b></span><i class="mk-arr" aria-hidden="true"></i><div class="mk-agent"><b>Your agent</b><small><a href="../html/framework.html">Agentic workflow: calls, prompts, decisions</a></small></div><i class="mk-arr" aria-hidden="true"></i><span class="mk-io out"><b>response</b></span></div><div class="mk-part mk-rt"><a class="mk-title" href="../html/runtime.html">Runtime</a><div class="mk-pieces"><a class="mk-piece" href="../html/docs/runtime/overview.html#how-a-change-reaches-every-agent-server">Live configuration</a><a class="mk-piece" href="../html/docs/hooks/overview.html">Hooks</a><a class="mk-piece" href="../html/docs/system-management/audit-log.html">Audit log</a><a class="mk-piece" href="../html/docs/llm/vendors.html">Model neutrality</a><a class="mk-piece" href="../html/docs/runtime/connection-pools.html">Connection pools</a><a class="mk-piece" href="../html/docs/security/secret-vault.html">Secret vault</a><a class="mk-piece" href="../html/docs/system-management/authentication.html">Authentication</a><a class="mk-piece" href="../html/docs/runtime/runtime-limits.html">Runtime limits</a><a class="mk-piece" href="../html/docs/gui/guardrails.html">Guardrails</a><a class="mk-piece" href="../html/docs/reports/index.html">Observability</a></div></div><div class="mk-part mk-ro"><a class="mk-title" href="../html/search.html">Routing</a><div class="mk-pieces"><a class="mk-piece" href="../html/search.html">Search picks the agent</a></div></div><div class="mk-part mk-st"><a class="mk-title" href="../html/conversation.html">State management</a><div class="mk-pieces"><a class="mk-piece" href="../html/docs/agent-execution/conversation-state.html">Save/Restore conversations</a><a class="mk-piece" href="../html/docs/commands/memory.html">Agent memory</a></div></div></div></div></div><p class="mk-note">The ring of pieces kept, but grouped into five labelled regions around the agent.</p></div></section>
+<script>
+document.querySelector(".mk-theme").addEventListener("click", function () {
+  var root = document.documentElement;
+  var dark = root.dataset.theme === "dark" || (!root.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+  root.dataset.theme = dark ? "light" : "dark";
+});
+</script>
+</body>
+</html>
