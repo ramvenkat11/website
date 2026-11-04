@@ -1671,3 +1671,9 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 ## 2026-11-04 — Home section 2: title back to "All the plumbing taken care of"
 - h2 restored (with care&nbsp;of); p "Your agent code is just the business logic." unchanged.
   Rendered the heading block at 1280/700/375/320 light+dark (fr1). Not committed, not uploaded.
+
+## 2026-11-04 — Home section 4: cloud state caption
+- Added `<p class="hero-caption">` after .ui-fig in #user-interfaces: "The agent server keeps no
+  state. Conversations and memories live in Search2o Cloud, encrypted by&nbsp;default." Sweep
+  0/241; section rendered at 1280/1000/860/700/412/384/375/360/320 light+dark (ui3). Not
+  committed, not uploaded.
