@@ -1615,3 +1615,9 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - Sweep 320–1280: 0 of 241 flagged. Rendered 1280/1000/860/700/420/412/384/375/360/320 light and
   dark (scratchpad fin5). Reported: LLMs box stretches to Agent workflow's row height at 1280.
 - Not committed, not uploaded. Open: question 6 (routing/state management scope).
+
+## 2026-11-04 — Section 2: externalized pieces to Agent workflow, dev left / running right
+- Externalized prompts and Externalized system calls now end Agent workflow. Grid areas
+  "llm run ro" / "wf run rt" / "ide run st"; 860: "llm ro" "run run" "wf rt" "ide st"; 700: llm,
+  wf, ide, run, ro, rt, st. DOM order and aria-label follow. Sweep 0/241; ten widths light+dark
+  rendered (scratchpad fin6) and inspected. Not committed, not uploaded.
