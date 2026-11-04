@@ -1688,3 +1688,5 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 ## 2026-11-04 — Home section 4: title now "Cloud managed state, multiple client interfaces"
 - h2 replaced in html/index.html (client&nbsp;interfaces). Rendered the heading block at
   1280/700/412/375/320 light+dark (ui6). Not committed, not uploaded.
+- Title wrap tuned: nbsp between "multiple" and "client" so 412 breaks at the comma and 320
+  gives "Cloud managed state, / multiple client / interfaces" (ui7, ui8).
