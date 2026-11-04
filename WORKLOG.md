@@ -1639,3 +1639,10 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - Sweep 0/241; #conversations rendered at ten widths light+dark (cv3), conversation.html
   #mechanism at 1280/1000/860/375 to confirm no regression, full page top at 1280. Not committed,
   not uploaded. Next: section 3 "three surfaces".
+
+## 2026-11-04 — Conversation page: hero figure removed
+- Ram: the home page now carries the figure. Deleted the #mechanism section from
+  html/conversation.html; fw-first moved to #state. styles.css: `:is(#mechanism, #conversations)`
+  → `#conversations`. No other page linked to #mechanism; no body text referred to the figure.
+  Rendered conversation.html top at 1280 light/dark and 375, home #conversations at 1280/860/375
+  (cv4). Not committed, not uploaded.
