@@ -1628,3 +1628,14 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
   the h2. Grid "llm wf ide" / "ro rt st"; 860: "llm wf" "ide ro" "rt st"; 700: one column.
   aria-label trimmed. Sweep 0/241; ten widths light+dark rendered (fin7), heading block re-rendered
   at 384/375/360/320 after the nbsp (fin8). Not committed, not uploaded.
+
+## 2026-11-04 — Home: conversation section added after the hero
+- #conversations in html/index.html: h2 "Let your users converse with your enterprise agents",
+  p "A follow-up can go to a different agent. No agent calls another.", then the conversation
+  page's hero figure with one-line notes. CSS: #mechanism rules now `:is(#mechanism,
+  #conversations)`; `#conversations .sc-wrap { margin: 0 auto }`; h2 size list extended. A class
+  selector was tried first and lost to the 1000px .hero-convo note rule (note 2 fell below the
+  chat); reverted to id strength. conversation.html untouched apart from a class added then removed.
+- Sweep 0/241; #conversations rendered at ten widths light+dark (cv3), conversation.html
+  #mechanism at 1280/1000/860/375 to confirm no regression, full page top at 1280. Not committed,
+  not uploaded. Next: section 3 "three surfaces".
