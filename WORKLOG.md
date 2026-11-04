@@ -1663,3 +1663,7 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - h2 "Let users converse with your enterprise&nbsp;agents", p "Conversations run multiple agents
   in the same&nbsp;context." Heading block rendered at 1280/860/700/412/384/375/360/320 light+dark
   (cv5); no orphans. Not committed, not uploaded.
+
+## 2026-11-04 — Home conversation section: subheading reworded again
+- p now "Agents stay independent and build on each other within a&nbsp;conversation." Rendered
+  at 1280/700/412/375/320 light+dark (cv6). Not committed, not uploaded.
