@@ -1652,3 +1652,9 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
   REST. Open your enterprise agentic workflows to agent&nbsp;harnesses." Rendered the heading block
   at 1280/860/700/412/384/375/360/320 light+dark (ui1); no orphan at any width. Not committed, not
   uploaded.
+
+## 2026-11-04 — Home section 4: title changed
+- "Fits into your environment as is" → "Interfaces for people, programs and agent&nbsp;harnesses"
+  in html/index.html. No other page referenced the old title. Heading block rendered at
+  1280/860/700/412/384/375/360/320 light+dark (ui2): one line at 860 and up, two at 412, three at
+  375 and 320, no orphan. Not committed, not uploaded.
