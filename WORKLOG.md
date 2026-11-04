@@ -1694,3 +1694,8 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 ## 2026-11-04 — Home section 4: subheading cut to the harness sentence
 - p is now "Open your enterprise agentic workflows to agent&nbsp;harnesses." Rendered the heading
   block at 1280/700/412/375/320 light+dark (ui9). Not committed, not uploaded.
+
+## 2026-11-04 — Home section 4: subheading on the skill
+- p now "One skill opens hundreds of repeatable, bounded, cost-effective agents to
+  agent&nbsp;harnesses." Rendered the heading block at 1280/700/412/375/320 light+dark (ui10).
+  Not committed, not uploaded.
