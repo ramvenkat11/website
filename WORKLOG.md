@@ -1646,3 +1646,9 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
   → `#conversations`. No other page linked to #mechanism; no body text referred to the figure.
   Rendered conversation.html top at 1280 light/dark and 375, home #conversations at 1280/860/375
   (cv4). Not committed, not uploaded.
+
+## 2026-11-04 — Home section 4: subheading added
+- Under "Fits into your environment as is": "Chat from the apps you already use. Automate through
+  REST. Open your enterprise agentic workflows to agent&nbsp;harnesses." Rendered the heading block
+  at 1280/860/700/412/384/375/360/320 light+dark (ui1); no orphan at any width. Not committed, not
+  uploaded.
