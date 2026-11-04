@@ -1677,3 +1677,10 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
   state. Conversations and memories live in Search2o Cloud, encrypted by&nbsp;default." Sweep
   0/241; section rendered at 1280/1000/860/700/412/384/375/360/320 light+dark (ui3). Not
   committed, not uploaded.
+
+## 2026-11-04 — Home section 4: caption dropped, State box text instead
+- Ram did not want the caption under the figure; removed it. The cloud State box now reads
+  "Conversations and memories live&nbsp;here," + em "encrypted by default" (first draft repeated
+  "keeps no state", dropped since the server box says Stateless). styles.css: `.cc-arch .arch-out
+  .cloud > span` max-width 300px. Sweep 0/241; figure rendered at ten widths (ui4) and the bottom
+  row at six (ui5). Not committed, not uploaded.
