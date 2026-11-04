@@ -1658,3 +1658,8 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
   in html/index.html. No other page referenced the old title. Heading block rendered at
   1280/860/700/412/384/375/360/320 light+dark (ui2): one line at 860 and up, two at 412, three at
   375 and 320, no orphan. Not committed, not uploaded.
+
+## 2026-11-04 — Home conversation section: heading reworded
+- h2 "Let users converse with your enterprise&nbsp;agents", p "Conversations run multiple agents
+  in the same&nbsp;context." Heading block rendered at 1280/860/700/412/384/375/360/320 light+dark
+  (cv5); no orphans. Not committed, not uploaded.
