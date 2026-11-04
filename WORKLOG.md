@@ -1603,3 +1603,15 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - Ram picked C. Built it in html/index.html `#framework-runtime`: `.fw-parts` grid (areas fw/ide/run/rt/ro/st) with five `.fw-part` boxes (`.fw-part-title` link + `.fw-pieces` of small `.fw-piece` chips, no icons), strip vertical in the middle column; aria-label rewritten per part. Agent subtitle back to "Your business logic: calls, prompts, decisions" (Ram: "just business logic, like before"). styles.css: old ring/icon rules replaced; fw-wrap 980px; breakpoints 860 (horizontal strip, 2 cols), 700 (1 col), 420 (strip vertical again). Sweep 320–1280: 0 of 241 flagged; rendered 1280/1000/860/700/420/412/384/375/360/320 light+dark and inspected. Not committed, not uploaded. Next: routing/state scope (question 6), possible heading rename.
 - Section 2 h2 -> "One server that includes everything you need" (Ram's wording); lead line under it removed. Text-only; heading rendered at 1280/700/360/320 to check the wrap.
 - Section 2: non-breaking space in "you&nbsp;need"; IDE part -> "Development environment"; Externalized prompts and Externalized system calls moved from Framework into it (first two chips); aria-label updated. Sweep 320–1280: 0 flagged; rendered 9 widths light+dark. At 1280 Framework's last chip "Streaming" sits alone on its second line. Not committed.
+
+## 2026-11-04 — Section 2: Framework split into LLMs and Agent workflow
+- Ram's decision after discussion: Framework → LLMs (LLM calls, Tool calling loop, MCP, Model
+  neutrality moved in from Runtime; links docs/llm/index.html) and Agent workflow (API and
+  database calls, Parallel execution, Error handling, Human in the loop, Progress, Streaming;
+  links framework.html). Development environment reordered: Draft with AI leads, the two
+  Externalized pieces last. aria-label updated to six parts.
+- Grid areas in html/styles/styles.css now "llm run wf" / "ide run rt" / "ro run st"; 860 and 700
+  breakpoints updated to match. fw-fw class and area removed.
+- Sweep 320–1280: 0 of 241 flagged. Rendered 1280/1000/860/700/420/412/384/375/360/320 light and
+  dark (scratchpad fin5). Reported: LLMs box stretches to Agent workflow's row height at 1280.
+- Not committed, not uploaded. Open: question 6 (routing/state management scope).
