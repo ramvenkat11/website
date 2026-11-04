@@ -1707,3 +1707,8 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
   with a model switch), C (what you write / what the server does), D (one run as a trace).
   Rendered 1280 and 375, light and dark, no overflow. Notes in notes/plumbing-section-redo.md.
 - State: discussion only; html/ untouched. Next: Ram picks an option or combination.
+- Ram picked B. Built it into html/index.html section 3 (#framework-runtime): it_helpdesk.json
+  code card with six numbered highlights and six notes; vendors named in note 3 ("models you
+  host"); no model switch. CSS: old .fw-* part rules replaced by #framework-runtime .pl-* rules,
+  two columns to 860, one below; code font 11px at 420, 10px at 360. Rendered 1280 to 320 light
+  and dark, sweep 0 of 241, no inner scroll in the code card at any width. Ram commits.
