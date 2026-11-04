@@ -1621,3 +1621,10 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
   "llm run ro" / "wf run rt" / "ide run st"; 860: "llm ro" "run run" "wf rt" "ide st"; 700: llm,
   wf, ide, run, ro, rt, st. DOM order and aria-label follow. Sweep 0/241; ten widths light+dark
   rendered (scratchpad fin6) and inspected. Not committed, not uploaded.
+
+## 2026-11-04 — Section 2: strip removed, subheading added, two rows of three
+- Ram questioned the middle strip; agreed it was a spacer now. Removed .fw-run/.fw-io/.fw-arr/
+  .fw-agent markup and CSS. Subheading "Your agent code is just the business&nbsp;logic." under
+  the h2. Grid "llm wf ide" / "ro rt st"; 860: "llm wf" "ide ro" "rt st"; 700: one column.
+  aria-label trimmed. Sweep 0/241; ten widths light+dark rendered (fin7), heading block re-rendered
+  at 384/375/360/320 after the nbsp (fin8). Not committed, not uploaded.
