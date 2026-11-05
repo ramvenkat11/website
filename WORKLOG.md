@@ -1727,3 +1727,8 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - Next: Ram is editing notes/section3-notes.md; apply to the six section 3 notes when he says so.
 - Conversation subheading changed to "Agents stay focused and independent, yet build on each
   other in a conversation." (html/index.html:104). Rendered the head at 1280/700/412/384/375/360/320.
+- Section 3 notes redone per Ram: note 1 "The complete agent" (JSON with Python expressions,
+  Draft with AI, agent editor, trace, validation, publishing), note 2 "Calling enterprise
+  systems", note 3 "LLM calls", note 6 drops the saved-conversation sentence. aria-label
+  updated. notes/section3-notes.md overwritten. Rendered #framework-runtime at
+  1280/1000/860/700/412/384/375/360/320 light and dark, sweep 0 of 241.
