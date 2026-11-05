@@ -1713,3 +1713,5 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
   two columns to 860, one below; code font 11px at 420, 10px at 360. Rendered 1280 to 320 light
   and dark, sweep 0 of 241, no inner scroll in the code card at any width. Ram commits.
 - Wrote notes/section3-notes.md: the six note texts and links as they stand, for Ram to edit.
+- Section 4 subheading changed per Ram: "One skill opens hundreds of bounded, cost-effective,
+  observable agents to agent harnesses."
