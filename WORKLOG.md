@@ -1732,3 +1732,5 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
   systems", note 3 "LLM calls", note 6 drops the saved-conversation sentence. aria-label
   updated. notes/section3-notes.md overwritten. Rendered #framework-runtime at
   1280/1000/860/700/412/384/375/360/320 light and dark, sweep 0 of 241.
+- notes/section3-notes.md: appended the previous six-part figure (parts and their chips, from
+  commit 8d0c7fcb) at Ram's request.
