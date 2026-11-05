@@ -1715,3 +1715,13 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - Wrote notes/section3-notes.md: the six note texts and links as they stand, for Ram to edit.
 - Section 4 subheading changed per Ram: "One skill opens hundreds of bounded, cost-effective,
   observable agents to agent harnesses."
+
+## 2026-11-05 Home conversation section: detailed notes restored
+- Ram: restore the fuller annotations the conversation page's figure had. Replaced the four
+  one-line notes in html/index.html #conversations (side bubbles and the .sc-notes copies) with
+  the original texts from html/conversation.html at commit 4cbc73b9; `#state` link became
+  conversation.html#state. No CSS change. Rendered #conversations at
+  1280/1000/860/700/412/384/375/360/320 light and dark, sweep 0 of 241. Uncommitted; Ram commits.
+- Earlier (2026-11-04, unlogged): section 4 subheading got a non-breaking hyphen in
+  cost-effective after a break at 412.
+- Next: Ram is editing notes/section3-notes.md; apply to the six section 3 notes when he says so.
