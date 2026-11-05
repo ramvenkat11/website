@@ -1725,3 +1725,5 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - Earlier (2026-11-04, unlogged): section 4 subheading got a non-breaking hyphen in
   cost-effective after a break at 412.
 - Next: Ram is editing notes/section3-notes.md; apply to the six section 3 notes when he says so.
+- Conversation subheading changed to "Agents stay focused and independent, yet build on each
+  other in a conversation." (html/index.html:104). Rendered the head at 1280/700/412/384/375/360/320.
