@@ -128,3 +128,32 @@ Open discussion, 2026-11-04. Picked option C and built it into section 2 (uncomm
   "multiple client interfaces".
 - Section 4 subheading (Ram picked, 2026-11-04): "One skill opens hundreds of repeatable,
   bounded, cost-effective agents to agent harnesses."
+
+## Rethink, 2026-11-04 (Ram: "N boxes is highly unimaginative")
+- Brief: same message (plumbing done, agent is business logic), add model neutrality with the
+  supported LLMs (frontier and free), and make the section say that developing, publishing and
+  running agents are easy.
+- Four mockups in notes/section3-mockups.html (open in a browser; button at bottom right flips
+  dark mode). All use the orders agent from framework.html, shortened.
+  A. The path: Develop -> Publish -> Run as three stage cards, each showing the thing itself
+     (the sentence to Draft with AI, the published card with version and description, the user's
+     question and answer) plus one line on what the server did. LLM chips in Run.
+  B. This is the whole agent: the agent definition is the figure; six numbered lines map to what
+     the server does around them. A row of model buttons rewrites the profile line.
+  C. What you write / what the server does: code left, three stage paragraphs right.
+  D. One run, as the server sees it: code left (two highlighted commands), a timed trace right
+     where two lines are the agent's and the rest is the server's. Model chips under the code.
+- Nothing in html/ changed. Waiting for Ram's pick and answers.
+- Ram picked B (2026-11-04): no model switch box, "models you host" not "free", the IT helpdesk
+  agent from the hero instead of orders, title held as is. Built into section 3 of
+  html/index.html: a codecard it_helpdesk.json (openTicket tool over the helpdesk API, main with
+  an llm command) and six numbered notes. The six vendors are named in note 3. The old part
+  boxes and their CSS are gone; new rules are the #framework-runtime .pl-* block.
+- Section 4 subheading (Ram, 2026-11-04): "One skill opens hundreds of bounded, cost-effective,
+  observable agents to agent harnesses." ("repeatable" dropped, "observable" added.)
+- Conversation section notes restored to the full texts the conversation page's figure had
+  (Ram, 2026-11-05): the one-line cuts are gone from both the side bubbles and the stacked
+  phone notes. Source: html/conversation.html at commit 4cbc73b9. Only change: the
+  Conversation context link is conversation.html#state, not #state.
+- Conversation subheading (Ram, 2026-11-05): "Agents stay focused and independent, yet build on
+  each other in a conversation." American "focused"; "yet" for the contrast; "in" not "within".

@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Section 3 mockups</title>
+<link rel="stylesheet" href="../html/styles/styles.css">
+<style>
+.mk { padding: 56px 0; }
+.mk .section-head { margin-bottom: 36px; }
+.mk .section-head h2 { font-size: 24px; }
+.mk-opt { display: block; margin: 0 0 18px; color: var(--blue-ink); font-size: 13px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; }
+.mk-note { margin: 18px auto 0; max-width: 720px; text-align: center; color: var(--faint); font-size: 13px; }
+.mk-theme { position: fixed; right: 14px; bottom: 14px; z-index: 9; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); font: 600 12px var(--font); cursor: pointer; }
+.s3-wrap { max-width: 980px; margin: 0 auto; }
+.s3-link { color: var(--blue-ink); font-weight: 600; }
+.s3-link:hover { color: var(--blue); }
+
+/* shared: code card sizing */
+.s3-code pre { padding: 14px 18px; font-size: 12.5px; line-height: 1.75; }
+.s3-code .bar { padding: 8px 12px; }
+.s3-code .hl { display: inline-block; margin: 0 -5px; padding: 0 5px; border-radius: 5px; background: rgba(157, 180, 224, .14); box-shadow: inset 0 0 0 1px rgba(157, 180, 224, .22); }
+.s3-code .an { display: inline-flex; align-items: center; justify-content: center; width: 17px; height: 17px; margin-left: 8px; border-radius: 50%; background: var(--blue); color: #fff; font-family: var(--font); font-size: 10.5px; font-weight: 700; vertical-align: 1px; }
+
+/* ===== A. the path ===== */
+.pa { display: grid; grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr) 28px minmax(0, 1fr); gap: 14px; align-items: stretch; }
+.pa-stage { display: grid; grid-template-rows: auto 1fr auto; gap: 12px; min-width: 0; padding: 16px 16px 15px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); box-shadow: var(--card-shadow); }
+.pa-head { display: flex; align-items: baseline; gap: 10px; }
+.pa-head .n { flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 12.5px; font-weight: 700; line-height: 24px; text-align: center; align-self: center; }
+.pa-head b { color: var(--ink); font-size: 17px; font-weight: 800; letter-spacing: -0.02em; }
+.pa-head small { color: var(--muted); font-size: 13px; font-weight: 500; }
+.pa-art { display: grid; gap: 8px; align-content: start; }
+.pa-say { position: relative; padding: 9px 12px; border-radius: 12px 12px 12px 3px; background: var(--navy); color: #fff; font-size: 13px; line-height: 1.45; }
+.pa-say small { display: block; margin-bottom: 3px; color: #a9c6ff; font-family: var(--mono); font-size: 10.5px; font-weight: 700; }
+.pa-reply { padding: 9px 12px; border: 1px solid var(--line); border-radius: 12px 12px 3px 12px; background: var(--bg-soft); color: var(--body); font-size: 13px; line-height: 1.45; }
+.pa-reply small { display: block; margin-bottom: 3px; color: var(--blue-ink); font-family: var(--mono); font-size: 10.5px; font-weight: 700; }
+.pa-mini { padding: 9px 12px; border-radius: 10px; background: #0f1a33; color: #c7d3ea; font-family: var(--mono); font-size: 11px; line-height: 1.6; white-space: pre; overflow: hidden; }
+.pa-mini .key { color: #9db4e0; } .pa-mini .str { color: #b5e0a8; }
+.pa-card { display: grid; gap: 4px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-soft); }
+.pa-card .t { display: flex; align-items: center; gap: 8px; color: var(--ink); font-size: 14px; font-weight: 700; }
+.pa-card .v { padding: 1px 7px; border-radius: 999px; background: var(--blue); color: #fff; font-family: var(--mono); font-size: 10.5px; font-weight: 700; }
+.pa-card .d { color: var(--body); font-size: 12.5px; line-height: 1.45; }
+.pa-card .d em { font-style: normal; color: var(--muted); }
+.pa-foot { display: grid; gap: 6px; padding-top: 10px; border-top: 1px dashed var(--line); color: var(--body); font-size: 12.5px; line-height: 1.5; }
+.pa-foot b { color: var(--ink); font-weight: 700; }
+.pa-arr { align-self: center; justify-self: center; width: 0; height: 0; border-top: 7px solid transparent; border-bottom: 7px solid transparent; border-left: 11px solid var(--slate); }
+.pa-llms { display: flex; flex-wrap: wrap; gap: 5px; }
+.pa-llms i { font-style: normal; padding: 2px 7px; border: 1px solid var(--line); border-radius: 7px; background: var(--card); color: var(--body); font-size: 11.5px; font-weight: 600; }
+.pa-llms i.free { border-style: dashed; }
+@media (max-width: 860px) {
+  .pa { grid-template-columns: minmax(0, 1fr); }
+  .pa-arr { transform: rotate(90deg); margin: -6px 0; }
+}
+
+/* ===== B. the whole agent ===== */
+.wb { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.wb-notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.wb-notes li { position: relative; padding-left: 32px; color: var(--body); font-size: 13.5px; line-height: 1.5; }
+.wb-notes li b { display: block; color: var(--ink); font-size: 14px; font-weight: 700; }
+.wb-notes .an { position: absolute; left: 0; top: 2px; display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 11px; font-weight: 700; }
+.wb-sw { display: grid; gap: 8px; margin-top: 14px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); box-shadow: var(--card-shadow); }
+.wb-sw > b { color: var(--ink); font-size: 13px; font-weight: 700; }
+.wb-sw > b small { margin-left: 6px; color: var(--muted); font-weight: 500; }
+.wb-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.wb-row button { padding: 4px 9px; border: 1px solid var(--line); border-radius: 8px; background: var(--bg-soft); color: var(--body); font: 600 12px var(--font); cursor: pointer; }
+.wb-row button.free { border-style: dashed; }
+.wb-row button.on { border-color: var(--blue); background: var(--blue); color: #fff; }
+.wb-row button:hover:not(.on) { border-color: var(--blue); color: var(--blue-ink); }
+.wb-sw p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+@media (max-width: 860px) {
+  .wb { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  .s3-code pre { padding: 12px 12px; font-size: 11px; line-height: 1.7; }
+  .s3-code .an { width: 15px; height: 15px; margin-left: 5px; font-size: 9.5px; }
+}
+
+/* ===== C. what you write / what you get ===== */
+.wc { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+.wc-col > b { display: block; margin-bottom: 10px; color: var(--ink); font-size: 15px; font-weight: 800; letter-spacing: -0.01em; }
+.wc-col > b small { margin-left: 8px; color: var(--muted); font-size: 12.5px; font-weight: 500; letter-spacing: 0; }
+.wc-get { display: grid; gap: 10px; }
+.wc-step { display: grid; grid-template-columns: 24px 1fr; gap: 10px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); box-shadow: var(--card-shadow); }
+.wc-step .n { width: 24px; height: 24px; border-radius: 50%; background: var(--blue); color: #fff; font-size: 12.5px; font-weight: 700; line-height: 24px; text-align: center; }
+.wc-step b { display: block; margin-bottom: 2px; color: var(--ink); font-size: 14.5px; font-weight: 750; }
+.wc-step p { margin: 0; color: var(--body); font-size: 13px; line-height: 1.5; }
+.wc-step p + p { margin-top: 4px; }
+@media (max-width: 860px) {
+  .wc { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ===== D. a run as the server sees it ===== */
+.rd { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 20px; align-items: start; }
+.rd-col > b { display: block; margin-bottom: 10px; color: var(--ink); font-size: 15px; font-weight: 800; }
+.rd-col > b small { margin-left: 8px; color: var(--muted); font-size: 12.5px; font-weight: 500; }
+.rd-trace { padding: 12px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); box-shadow: var(--card-shadow); }
+.rd-trace .q { margin: 0 0 8px; padding: 7px 10px; border-radius: 10px 10px 10px 3px; background: var(--navy); color: #fff; font-size: 12.5px; }
+.rd-ln { display: grid; grid-template-columns: 50px 1fr; gap: 8px; padding: 3px 0; font-size: 12.5px; line-height: 1.45; border-bottom: 1px solid var(--line); }
+.rd-ln:last-child { border-bottom: 0; }
+.rd-ln .t { color: var(--faint); font-family: var(--mono); font-size: 11px; font-variant-numeric: tabular-nums; padding-top: 2px; }
+.rd-ln .w { color: var(--body); }
+.rd-ln .w a { font-weight: 600; }
+.rd-ln.you .w { color: var(--ink); font-weight: 700; }
+.rd-ln.you .w code { font-family: var(--mono); font-size: 11.5px; font-weight: 600; padding: 0 4px; border-radius: 4px; background: rgba(37, 99, 235, .12); }
+.rd-key { display: flex; gap: 14px; margin-top: 10px; color: var(--muted); font-size: 12px; }
+.rd-key i { font-style: normal; display: inline-flex; align-items: center; gap: 5px; }
+.rd-key i::before { content: ""; width: 10px; height: 10px; border-radius: 3px; background: rgba(37, 99, 235, .25); }
+.rd-key i.srv::before { background: var(--line); }
+@media (max-width: 860px) {
+  .rd { grid-template-columns: minmax(0, 1fr); }
+}
+</style>
+</head>
+<body>
+<button class="mk-theme" type="button">Toggle dark</button>
+
+<!-- ============ A ============ -->
+<section class="section soft mk" id="opt-a"><div class="container">
+<span class="mk-opt">A. The path: write it, publish it, run it</span>
+<div class="section-head center"><h2>All the plumbing taken care&nbsp;of</h2><p>Your agent code is just the business&nbsp;logic.</p></div>
+<div class="s3-wrap"><div class="pa">
+  <div class="pa-stage">
+    <div class="pa-head"><span class="n">1</span><b>Develop</b><small>from a sentence</small></div>
+    <div class="pa-art">
+      <div class="pa-say"><small>Developer</small>An agent that answers questions about orders, looking them up in the orders API.</div>
+      <div class="pa-reply"><small>Draft with AI</small>Wrote the agent: a <code>getOrder</code> tool over the orders API and an <code>llm</code> command that calls it.</div>
+      <div class="pa-mini">{ <span class="key">"functions"</span>: {
+    <span class="key">"getOrder"</span>: { <span class="key">"api"</span>: { … } },
+    <span class="key">"main"</span>: { <span class="key">"llm"</span>: { … } }
+} }</div>
+    </div>
+    <div class="pa-foot"><span><b>Validate:</b> the server runs the draft once and shows every command, value and result.</span><span><a class="s3-link" href="../html/docs/development/draft-with-ai.html">Draft with AI</a> · <a class="s3-link" href="../html/docs/development/code-editor.html">Editor</a> · <a class="s3-link" href="../html/docs/development/trace-and-validation.html">Trace</a></span></div>
+  </div>
+  <i class="pa-arr" aria-hidden="true"></i>
+  <div class="pa-stage">
+    <div class="pa-head"><span class="n">2</span><b>Publish</b><small>one click</small></div>
+    <div class="pa-art">
+      <div class="pa-card"><span class="t">Orders <span class="v">v3</span></span><span class="d">Answers questions about orders: status, delivery date and contents. <em>Looks the order up by its number.</em></span></div>
+      <div class="pa-reply"><small>Search</small>Indexed. Users find the agent by asking for what it does, in their own words.</div>
+    </div>
+    <div class="pa-foot"><span><b>Every publish</b> is a version. Several developers can change the same agent.</span><span><a class="s3-link" href="../html/docs/development/publishing.html#versions">Versions</a> · <a class="s3-link" href="../html/search.html#description">Describing an agent</a></span></div>
+  </div>
+  <i class="pa-arr" aria-hidden="true"></i>
+  <div class="pa-stage">
+    <div class="pa-head"><span class="n">3</span><b>Run</b><small>on any LLM</small></div>
+    <div class="pa-art">
+      <div class="pa-say"><small>User</small>Where is order 4821?</div>
+      <div class="pa-reply"><small>Orders</small>Shipped Monday from Newark. Arrives tomorrow by 8 pm.</div>
+      <div class="pa-llms"><i>OpenAI</i><i>Anthropic</i><i>Gemini</i><i class="free">Ollama</i><i class="free">vLLM</i><i class="free">SGLang</i></div>
+    </div>
+    <div class="pa-foot"><span><b>The server did the rest:</b> picked the agent, looped the tool calls, pooled the connection, kept the secrets, streamed the answer, saved the conversation, enforced the limits and logged the run.</span><span><a class="s3-link" href="../html/docs/llm/vendors.html">LLM vendors</a> · <a class="s3-link" href="../html/runtime.html">Runtime</a></span></div>
+  </div>
+</div></div>
+<p class="mk-note">Three stages as a path. Each stage shows the thing itself (the sentence, the published card, the answer) and one line on what the server did. Dashed chips are free models you host.</p>
+</div></section>
+
+<!-- ============ B ============ -->
+<section class="section soft mk" id="opt-b"><div class="container">
+<span class="mk-opt">B. This is the whole agent</span>
+<div class="section-head center"><h2>All the plumbing taken care&nbsp;of</h2><p>Your agent code is just the business&nbsp;logic.</p></div>
+<div class="s3-wrap"><div class="wb">
+  <div>
+    <div class="codecard s3-code"><div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">orders.json</span></div><pre><code>{
+  <span class=key>"functions"</span>: {
+    <span class=key>"getOrder"</span>: {<span class="an">1</span>
+      <span class=key>"description"</span>: <span class=str>"Looks up one order."</span>,
+      <span class=key>"args"</span>: { <span class=key>"orderId"</span>: { <span class=key>"type"</span>: <span class=str>"str"</span> } },
+      <span class=key>"commands"</span>: {
+        <span class="hl"><span class=key>"api"</span>: {</span><span class="an">2</span>
+          <span class=key>"profile"</span>: <span class=str>"orders"</span>,
+          <span class=key>"path"</span>: <span class=str>"{ f'/orders/{orderId}' }"</span>
+        },
+        <span class=key>"return"</span>: <span class=str>"{ result }"</span>
+      }
+    },
+    <span class=key>"main"</span>: {
+      <span class=key>"commands"</span>: {
+        <span class=key>"llm"</span>: {
+          <span class="hl"><span class=key>"profile"</span>: <span class=str>"<span id="wb-prof">gpt5_mini</span>"</span>,</span><span class="an">3</span>
+          <span class="hl"><span class=key>"prompt"</span>: <span class=str>"orders"</span>,</span><span class="an">4</span>
+          <span class="hl"><span class=key>"functions"</span>: [<span class=str>"getOrder"</span>],</span><span class="an">5</span>
+          <span class="hl"><span class=key>"streamOutput"</span>: <span class=kw>true</span></span><span class="an">6</span>
+        }
+      }
+    }
+  }
+}</code></pre></div>
+    <div class="wb-sw"><b>Change the model by changing one word<small>nothing else in the agent changes</small></b>
+      <div class="wb-row">
+        <button type="button" class="on" data-p="gpt5_mini">OpenAI</button>
+        <button type="button" data-p="claude_haiku">Anthropic</button>
+        <button type="button" data-p="gemini_flash">Gemini</button>
+        <button type="button" class="free" data-p="ollama_qwen25">Ollama</button>
+        <button type="button" class="free" data-p="vllm_qwen25">vLLM</button>
+        <button type="button" class="free" data-p="sglang_qwen25">SGLang</button>
+      </div>
+      <p>Frontier models from OpenAI, Anthropic and Google. Free, open models on your own machines through Ollama, vLLM and SGLang. <a class="s3-link" href="../html/docs/llm/llm-adapters.html">Any other LLM</a> with an adapter.</p>
+    </div>
+  </div>
+  <ol class="wb-notes">
+    <li><span class="an">1</span><b>Written from a sentence</b><a class="s3-link" href="../html/docs/development/draft-with-ai.html">Draft with AI</a> wrote this file from "answers questions about orders". Validation ran it once with a full trace. Publishing gave it a version and a description that search indexes.</li>
+    <li><span class="an">2</span><b>One line calls your API</b>The host, credentials, headers, connection pool and error handling come from the <a class="s3-link" href="../html/docs/profiles/index.html">orders profile</a>. The agent holds only the path. Databases and MCP servers work the same way.</li>
+    <li><span class="an">3</span><b>Any model</b>The profile names the model and holds the key. <a class="s3-link" href="../html/docs/llm/vendors.html">Six adapters</a> are bundled, for frontier and free models. Try the buttons.</li>
+    <li><span class="an">4</span><b>Prompts live outside the code</b>The prompt is written and changed in the UI, so a wording change is not a code change. <a class="s3-link" href="../html/docs/agent-definition/prompts.html">Prompts</a></li>
+    <li><span class="an">5</span><b>The tool loop is the server's job</b>The model calls <code>getOrder</code> as often as a question needs. The server runs each call and feeds the result back. <a class="s3-link" href="../html/docs/commands/llm.html#tool-calling">Tool calling</a></li>
+    <li><span class="an">6</span><b>Everything after the answer</b>The answer streams to the client. The conversation is saved for the next turn. Limits, guardrails, the audit log and the cost report need nothing from the agent. <a class="s3-link" href="../html/runtime.html">Runtime</a></li>
+  </ol>
+</div></div>
+<p class="mk-note">The agent is the figure. Every highlighted line maps to what the server does around it. The model switch rewrites the profile line.</p>
+</div></section>
+
+<!-- ============ C ============ -->
+<section class="section soft mk" id="opt-c"><div class="container">
+<span class="mk-opt">C. What you write, what you get</span>
+<div class="section-head center"><h2>All the plumbing taken care&nbsp;of</h2><p>Your agent code is just the business&nbsp;logic.</p></div>
+<div class="s3-wrap"><div class="wc">
+  <div class="wc-col"><b>What you write<small>the complete agent</small></b>
+    <div class="codecard s3-code"><div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">orders.json</span></div><pre><code>{
+  <span class=key>"functions"</span>: {
+    <span class=key>"getOrder"</span>: {
+      <span class=key>"description"</span>: <span class=str>"Looks up one order."</span>,
+      <span class=key>"args"</span>: { <span class=key>"orderId"</span>: { <span class=key>"type"</span>: <span class=str>"str"</span> } },
+      <span class=key>"commands"</span>: {
+        <span class=key>"api"</span>: {
+          <span class=key>"profile"</span>: <span class=str>"orders"</span>,
+          <span class=key>"path"</span>: <span class=str>"{ f'/orders/{orderId}' }"</span>
+        },
+        <span class=key>"return"</span>: <span class=str>"{ result }"</span>
+      }
+    },
+    <span class=key>"main"</span>: {
+      <span class=key>"commands"</span>: {
+        <span class=key>"llm"</span>: {
+          <span class=key>"profile"</span>: <span class=str>"gpt5_mini"</span>,
+          <span class=key>"prompt"</span>: <span class=str>"orders"</span>,
+          <span class=key>"functions"</span>: [<span class=str>"getOrder"</span>],
+          <span class=key>"streamOutput"</span>: <span class=kw>true</span>
+        }
+      }
+    }
+  }
+}</code></pre></div>
+  </div>
+  <div class="wc-col"><b>What the server does<small>without a line from you</small></b>
+    <div class="wc-get">
+      <div class="wc-step"><span class="n">1</span><div><b>Develop</b><p><a class="s3-link" href="../html/docs/development/draft-with-ai.html">Draft with AI</a> writes the first version from a sentence. The editor knows every command and points out mistakes as you type. Validation runs the draft and shows the trace.</p></div></div>
+      <div class="wc-step"><span class="n">2</span><div><b>Publish</b><p>One click gives the agent a version and a plain-English description. <a class="s3-link" href="../html/search.html">Search</a> indexes it, and users find it by asking.</p></div></div>
+      <div class="wc-step"><span class="n">3</span><div><b>Run</b><p>Search picks the agent. The server calls the model you named: OpenAI, Anthropic, Gemini, or a free model you host with Ollama, vLLM or SGLang. Change the model by changing the name.</p><p>It holds the secrets, pools the connections, loops the tool calls, streams the answer, saves the conversation, and enforces the limits and guardrails. Every run is traced, audited and reported.</p></div></div>
+    </div>
+  </div>
+</div></div>
+<p class="mk-note">Plainest form. The code proves the subheading; the right column says what happens in three sentences per stage.</p>
+</div></section>
+
+<!-- ============ D ============ -->
+<section class="section soft mk" id="opt-d"><div class="container">
+<span class="mk-opt">D. One run, as the server sees it</span>
+<div class="section-head center"><h2>All the plumbing taken care&nbsp;of</h2><p>Your agent code is just the business&nbsp;logic.</p></div>
+<div class="s3-wrap"><div class="rd">
+  <div class="rd-col"><b>Your agent<small>two commands</small></b>
+    <div class="codecard s3-code"><div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">orders.json</span></div><pre><code>{
+  <span class=key>"functions"</span>: {
+    <span class=key>"getOrder"</span>: {
+      <span class=key>"args"</span>: { <span class=key>"orderId"</span>: { <span class=key>"type"</span>: <span class=str>"str"</span> } },
+      <span class=key>"commands"</span>: {
+        <span class="hl"><span class=key>"api"</span>: { <span class=key>"profile"</span>: <span class=str>"orders"</span>, … }</span>,
+        <span class=key>"return"</span>: <span class=str>"{ result }"</span>
+      }
+    },
+    <span class=key>"main"</span>: {
+      <span class=key>"commands"</span>: {
+        <span class="hl"><span class=key>"llm"</span>: { <span class=key>"profile"</span>: <span class=str>"gpt5_mini"</span>, … }</span>
+      }
+    }
+  }
+}</code></pre></div>
+    <div class="wb-sw"><b>Runs on any model<small>change one word</small></b>
+      <div class="pa-llms"><i>OpenAI</i><i>Anthropic</i><i>Gemini</i><i class="free">Ollama</i><i class="free">vLLM</i><i class="free">SGLang</i></div>
+      <p>Frontier models from the three vendors; free, open models on your own machines.</p>
+    </div>
+  </div>
+  <div class="rd-col"><b>One run<small>what the server did around them</small></b>
+    <div class="rd-trace">
+      <p class="q">Where is order 4821?</p>
+      <div class="rd-ln"><span class="t">0 ms</span><span class="w"><a class="s3-link" href="../html/search.html">Search</a> matched the request to Orders v3</span></div>
+      <div class="rd-ln"><span class="t">4 ms</span><span class="w">User authenticated. Conversation restored from <a class="s3-link" href="../html/docs/agent-execution/conversation-state.html">cloud state</a></span></div>
+      <div class="rd-ln"><span class="t">6 ms</span><span class="w">Guardrails and <a class="s3-link" href="../html/docs/runtime/runtime-limits.html">limits</a> set for this run</span></div>
+      <div class="rd-ln you"><span class="t">8 ms</span><span class="w"><code>llm</code> gpt5_mini, prompt "orders", tools: getOrder</span></div>
+      <div class="rd-ln"><span class="t">620 ms</span><span class="w">Model asked for getOrder("4821"). <a class="s3-link" href="../html/docs/commands/llm.html#tool-calling">Tool loop</a> runs it</span></div>
+      <div class="rd-ln you"><span class="t">622 ms</span><span class="w"><code>api</code> GET /orders/4821</span></div>
+      <div class="rd-ln"><span class="t">623 ms</span><span class="w">Key from the <a class="s3-link" href="../html/docs/security/secret-vault.html">secret vault</a>, connection from the <a class="s3-link" href="../html/docs/runtime/connection-pools.html">pool</a>, 200 in 180 ms, JSON parsed into <code>result</code></span></div>
+      <div class="rd-ln"><span class="t">810 ms</span><span class="w">Result returned to the model. Answer <a class="s3-link" href="../html/docs/rest-api/streaming.html">streamed</a> to the client</span></div>
+      <div class="rd-ln"><span class="t">1.9 s</span><span class="w">Conversation saved. <a class="s3-link" href="../html/docs/system-management/audit-log.html">Audit log</a> and <a class="s3-link" href="../html/docs/reports/index.html">cost report</a> updated</span></div>
+      <div class="rd-key"><i>Your commands</i><i class="srv">The server</i></div>
+    </div>
+  </div>
+</div></div>
+<p class="mk-note">Shows the plumbing working rather than listing it: two of the lines are the agent's, the rest is the server. Times are illustrative.</p>
+</div></section>
+
+<script>
+document.querySelector(".mk-theme").addEventListener("click", function () {
+  var root = document.documentElement;
+  var dark = root.dataset.theme === "dark" || (!root.dataset.theme && matchMedia("(prefers-color-scheme: dark)").matches);
+  root.dataset.theme = dark ? "light" : "dark";
+});
+document.querySelectorAll(".wb-row button").forEach(function (b) {
+  b.addEventListener("click", function () {
+    document.querySelectorAll(".wb-row button").forEach(function (x) { x.classList.remove("on"); });
+    b.classList.add("on");
+    document.getElementById("wb-prof").textContent = b.dataset.p;
+  });
+});
+</script>
+</body>
+</html>
