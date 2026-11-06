@@ -1810,3 +1810,7 @@ ask_the_docs.json (api, llm, output) in the overlap. html/index.html #framework-
 below, tighter pills and card at 360 and under). Rendered 1280/860/700/600/412/384/375/360/320
 light and dark; sweep 0 of 241. Not committed, not uploaded. Next: Ram's verdict on the five
 runtime items and the agent's steps.
+
+## 2026-11-06: section title final wording
+Ram picked "Agents as dependable as code, yet as easy to create as a prompt" for #framework-runtime
+in html/index.html. Applied; head rendered 1280 to 320 light. Not committed, not uploaded.
