@@ -1753,3 +1753,9 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
   rows with inline code split into extra grid cells (values now wrapped in one span); 320 code
   overflow (query param renamed to user). Rendered 1280/1000/860/700/412/384/375/360/320 light
   and dark; pre scrollWidth == clientWidth at every width; sweep 0 of 241.
+- Section 3 split: new #approach (three-way positioning grid, program/prompt/spec, six rows,
+  display:contents columns that stack as cards under 700) inserted before #framework-runtime;
+  example section retitled "Nothing new to learn" with Ram's subheading, Draft with AI kicker
+  line, caption dropped. CSS #approach .ap-* added; .pl-cap rules replaced by .pl-kick.
+  Rendered #approach at 1280/1000/860/700/412/384/375/360/320 light and dark and
+  #framework-runtime at 1280/860/412/320; sweep 0 of 241.
