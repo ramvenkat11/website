@@ -1823,3 +1823,8 @@ notes/circles-code-prompt.html (own CSS, .cp-*): side-by-side circles with a 236
 ask_the_docs.json (api, llm, output) in the lens; below 640px the circles stack and the card bridges
 them in flow with negative margins. Rendered 1280/700/640/412/375/320 light and dark. Home page
 unchanged (still Development vs Runtime). Waiting for Ram's choice.
+
+## 2026-11-06: selling directions for the Code vs Prompt section
+Ram: the section must sell, not explain, and talk about JSON with Python expressions. Offered three
+directions (evidence-filled circles, positioning map, three benefit lines a side) and a caption for
+the format; recorded in notes/plumbing-section-redo.md. No files changed. Waiting for his pick.
