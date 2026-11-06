@@ -1800,3 +1800,13 @@ description, like a prompt." for #framework-runtime (html/index.html). Applied. 
 "First draft created" reads as if agents cannot be edited afterwards; I proposed "Drafted from a
 description, like a prompt." Also open: the Draft with AI line under the figure now repeats the
 subtitle, and the six parts in the server block may become the subtitle's qualities.
+
+## 2026-11-06: home section figure is two circles
+Ram rejected the server-block picture; the section now shows two overlapping circles,
+Development (Draft with AI, Code editor, Validate, Publish, Describe) and Runtime (Guardrails,
+Secret vault, Runtime limits, Audit log, Cost report), each pill a link, with a small RAG agent
+ask_the_docs.json (api, llm, output) in the overlap. html/index.html #framework-runtime, CSS
+#framework-runtime .vn-* (aspect-ratio circles in percentages; side by side above 600px, stacked
+below, tighter pills and card at 360 and under). Rendered 1280/860/700/600/412/384/375/360/320
+light and dark; sweep 0 of 241. Not committed, not uploaded. Next: Ram's verdict on the five
+runtime items and the agent's steps.
