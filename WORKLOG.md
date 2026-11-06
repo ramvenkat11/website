@@ -1835,3 +1835,10 @@ arrow, ask_the_docs.json card with "JSON with Python expressions" caption, Valid
 Every run receipt (validated, allowlist, vault, time, cost, audit log). New subtitle. Three columns
 from 900 up, stacked below; middle column widened after the 900 render clipped the code. Rendered
 1280/1000/900/860/700/412/375/360/320 light and dark, sweep 0 of 241. Home page unchanged.
+
+## 2026-11-06: strip placed on the home page
+Ram approved the sentence-to-run idea. html/index.html #framework-runtime now holds it (circles and
+#framework-runtime .vn-* CSS removed; .ss-* CSS added). Head max-width 860px for a longer
+subheading, code card 300px, description as a quiet input-style box. Rendered
+1280/1000/999/860/700/412/384/375/360/320 light and dark; sweep 0 of 241. Not committed, not
+uploaded. Next: the Every run line items and the subheading wording, with Ram.
