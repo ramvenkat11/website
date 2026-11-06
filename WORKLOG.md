@@ -1746,3 +1746,10 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
   Rendered the sidebar at 1280/1000 and the page at 1280/375 light and dark.
 - notes/task-focused-agents.md: markdown copy of docsrc/introduction/search2o-agents.html for
   Ram to edit. When he is done, carry it back into the docsrc file and rebuild.
+- Section 3 rebuilt as "document, not program": my_tickets.json with four step badges and three
+  highlighted names, three cards (API profile, LLM profile, prompt) showing what the names
+  stand for, JS-drawn connectors (site.js, hidden under 860), caption "The server runs the
+  steps. The model is one of them..." CSS block #framework-runtime .pl-* rewritten. Fixed: card
+  rows with inline code split into extra grid cells (values now wrapped in one span); 320 code
+  overflow (query param renamed to user). Rendered 1280/1000/860/700/412/384/375/360/320 light
+  and dark; pre scrollWidth == clientWidth at every width; sweep 0 of 241.
