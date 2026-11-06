@@ -1782,3 +1782,13 @@ imbalance, no code" (small You write card: steps, prompts, description, or one s
 with AI; large The agent server does card with eight plumbing rows) and option 2 "Hello, World"
 (five-line hello.json beside the twenty command chips, a Python-expression line and a server-does
 box). Rendered 1280 and 375 light and dark. Waiting for Ram's pick.
+
+## 2026-11-06: home "Nothing new to learn" rebuilt as one picture
+After Ram rejected the two text mockups ("do not write essays on the home page"), the section is
+now a dark Agent server block holding a small white my_tickets.json document with three numbered
+steps (api, llm, output) and six dashed parts (Connections, Models, Streaming, Conversation state,
+Limits, Audit log), plus one line "Draft with AI writes it from one sentence." (html/index.html
+#framework-runtime, CSS #framework-runtime .srv-* in html/styles/styles.css; the block uses the
+code card's colours, border and shadow so it stands out in dark mode too). Rendered 1280 to 320
+light and dark, sweep 0 of 241. Memory feedback-no-essays-home-page saved. Not committed, not
+uploaded. Next: Ram's verdict on the picture and its six part labels.
