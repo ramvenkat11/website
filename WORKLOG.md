@@ -1828,3 +1828,10 @@ unchanged (still Development vs Runtime). Waiting for Ram's choice.
 Ram: the section must sell, not explain, and talk about JSON with Python expressions. Offered three
 directions (evidence-filled circles, positioning map, three benefit lines a side) and a caption for
 the format; recorded in notes/plumbing-section-redo.md. No files changed. Waiting for his pick.
+
+## 2026-11-06: sentence-to-run strip mockup
+Ram gave full freedom on the section. Built notes/sell-strip.html: Describe bubble, Draft with AI
+arrow, ask_the_docs.json card with "JSON with Python expressions" caption, Validate/publish arrow,
+Every run receipt (validated, allowlist, vault, time, cost, audit log). New subtitle. Three columns
+from 900 up, stacked below; middle column widened after the 900 render clipped the code. Rendered
+1280/1000/900/860/700/412/375/360/320 light and dark, sweep 0 of 241. Home page unchanged.
