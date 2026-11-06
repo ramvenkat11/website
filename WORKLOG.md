@@ -1734,3 +1734,8 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
   1280/1000/860/700/412/384/375/360/320 light and dark, sweep 0 of 241.
 - notes/section3-notes.md: appended the previous six-part figure (parts and their chips, from
   commit 8d0c7fcb) at Ram's request.
+
+## 2026-11-06 Hero first sentence
+- html/index.html:68 now "Developers build agents that are task-focused and describe them in
+  plain English." task-focused carries the agents link; non-breaking hyphen. Rendered .hero-lead
+  at 1280/1000/860/700/412/384/375/360/320 light and dark, sweep run.
