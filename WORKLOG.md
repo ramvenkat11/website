@@ -1739,3 +1739,8 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
 - html/index.html:68 now "Developers build agents that are task-focused and describe them in
   plain English." task-focused carries the agents link; non-breaking hyphen. Rendered .hero-lead
   at 1280/1000/860/700/412/384/375/360/320 light and dark, sweep run.
+- Docs page title "Search2o agents" -> "Task-focused agents" (Ram): gen/toc.py line 10, then
+  gen/build.py (146 pages, 0 missing sources). Every docs page's sidebar changed by that one
+  label; the page itself got the new title, og:title and h1; docs/index.html and
+  introduction/index.html cards too. File name search2o-agents.html and body text unchanged.
+  Rendered the sidebar at 1280/1000 and the page at 1280/375 light and dark.
