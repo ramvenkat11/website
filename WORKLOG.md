@@ -1744,3 +1744,5 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
   label; the page itself got the new title, og:title and h1; docs/index.html and
   introduction/index.html cards too. File name search2o-agents.html and body text unchanged.
   Rendered the sidebar at 1280/1000 and the page at 1280/375 light and dark.
+- notes/task-focused-agents.md: markdown copy of docsrc/introduction/search2o-agents.html for
+  Ram to edit. When he is done, carry it back into the docsrc file and rebuild.
