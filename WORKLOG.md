@@ -1792,3 +1792,11 @@ Limits, Audit log), plus one line "Draft with AI writes it from one sentence." (
 code card's colours, border and shadow so it stands out in dark mode too). Rendered 1280 to 320
 light and dark, sweep 0 of 241. Memory feedback-no-essays-home-page saved. Not committed, not
 uploaded. Next: Ram's verdict on the picture and its six part labels.
+
+## 2026-11-06: home section head, positioning words
+Ram chose the title "As dependable as code, as easy as a prompt" and his subtitle "Safe,
+cost-efficient and observable, like an agent coded in Python. First draft created from a
+description, like a prompt." for #framework-runtime (html/index.html). Applied. Open: Ram worries
+"First draft created" reads as if agents cannot be edited afterwards; I proposed "Drafted from a
+description, like a prompt." Also open: the Draft with AI line under the figure now repeats the
+subtitle, and the six parts in the server block may become the subtitle's qualities.
