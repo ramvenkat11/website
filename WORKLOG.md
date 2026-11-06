@@ -1763,3 +1763,15 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
   row label sits on its own line with the three values side by side under it; ours column stays
   a tinted box, with a ::after strip (border-box, else 2px wide) behind each label row. Rendered
   700/412/384/375/360/320 light and dark, close-up at 3x checked, sweep 0 of 241.
+
+## 2026-11-06: approach section dropped; example figure moved to framework.html
+Ram dropped "Three ways to build an agent" (#approach removed from html/index.html and
+html/styles/styles.css) and asked for the code to leave the home "Nothing new to learn" section. That
+section now holds only its head, pending a redesign without JSON (or a Hello World at most). The
+annotated my_tickets.json figure moved to html/framework.html as #outside-the-agent ("The agent holds
+only the steps") between the orders agent and the commands list. CSS rescoped to .pl-* (phone pre
+font rules made .pl-fig .pl-code pre so they beat .codecard pre), .fw-page .pl-wrap left-aligned,
+site.js looks up .pl-fig without the section id. Rendered #outside-the-agent at
+1280/1000/860/700/412/384/375/360/320 light and dark, pre scrollWidth == clientWidth at every width;
+sweep 0 of 241 on both pages. Nothing committed, nothing uploaded. Next: agree the new content of
+the home section with Ram.
