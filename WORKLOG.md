@@ -1759,3 +1759,7 @@ Ram: "Revert it". `#platform` h2 is "Built for the enterprise" again.
   line, caption dropped. CSS #approach .ap-* added; .pl-cap rules replaced by .pl-kick.
   Rendered #approach at 1280/1000/860/700/412/384/375/360/320 light and dark and
   #framework-runtime at 1280/860/412/320; sweep 0 of 241.
+- #approach under 700 (Ram: a 4-column table breaks on phones): the label column goes, each
+  row label sits on its own line with the three values side by side under it; ours column stays
+  a tinted box, with a ::after strip (border-box, else 2px wide) behind each label row. Rendered
+  700/412/384/375/360/320 light and dark, close-up at 3x checked, sweep 0 of 241.
