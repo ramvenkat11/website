@@ -1814,3 +1814,12 @@ runtime items and the agent's steps.
 ## 2026-11-06: section title final wording
 Ram picked "Agents as dependable as code, yet as easy to create as a prompt" for #framework-runtime
 in html/index.html. Applied; head rendered 1280 to 320 light. Not committed, not uploaded.
+
+## 2026-11-06: Code vs Prompt circles mockup
+Ram asked whether the circles should be Code (LangChain, agent SDKs: Validated, Repeatable, Safe,
+Cost-efficient, Observable) vs Prompt (Claude Code, Copilot agents: From a description, Written in
+minutes, No plumbing, Edited any time), with real JSON in the overlap. Mockup at
+notes/circles-code-prompt.html (own CSS, .cp-*): side-by-side circles with a 236px code card
+ask_the_docs.json (api, llm, output) in the lens; below 640px the circles stack and the card bridges
+them in flow with negative margins. Rendered 1280/700/640/412/375/320 light and dark. Home page
+unchanged (still Development vs Runtime). Waiting for Ram's choice.
