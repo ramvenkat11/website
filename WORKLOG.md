@@ -1775,3 +1775,10 @@ site.js looks up .pl-fig without the section id. Rendered #outside-the-agent at
 1280/1000/860/700/412/384/375/360/320 light and dark, pre scrollWidth == clientWidth at every width;
 sweep 0 of 241 on both pages. Nothing committed, nothing uploaded. Next: agree the new content of
 the home section with Ram.
+
+## 2026-11-06: two mockups for the home "Nothing new to learn" section
+notes/nothing-new-mockups.html (uses ../html/styles/styles.css, Theme button): option 1 "the
+imbalance, no code" (small You write card: steps, prompts, description, or one sentence for Draft
+with AI; large The agent server does card with eight plumbing rows) and option 2 "Hello, World"
+(five-line hello.json beside the twenty command chips, a Python-expression line and a server-does
+box). Rendered 1280 and 375 light and dark. Waiting for Ram's pick.
