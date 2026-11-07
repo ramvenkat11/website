@@ -1848,3 +1848,10 @@ Per Ram: description sentence and run receipt removed from #framework-runtime; t
 sits between a Development pill box and a Runtime pill box (the circle features), no arrows. CSS
 #framework-runtime .ss-box/.ss-h; two-column boxes under the code below 1000, one column below
 420. Rendered 1280/1000/999/860/700/421/412/384/375/360/320 light and dark, sweep 0 of 241.
+
+## 2026-11-06: six plumbing boxes around the code
+Ram meant the old six-box "Agent server" figure. #framework-runtime now: dashed Agent server frame,
+code card centre, Development environment / Agent workflow / LLMs left, Runtime / State management
+/ Routing right (chips and links from commit 1757653b^), smaller type. Tablet placement fixed with
+explicit grid rows (code row 1, sides row 2). Agent code: output command replaced by
+"streamOutput": true on the llm command. Rendered 1280 to 320 light and dark, sweep 0 of 241.
