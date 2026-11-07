@@ -1917,3 +1917,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Hero p3 is now "The agent server keeps every run safe, bounded and observable." All widths clean, sweep 0 of 241.
 - Hero p1 split in two sentences: "Developers build, validate and publish agents. They describe when to use each one in plain English." All widths clean, sweep 0 of 241.
 - #conversations title renamed "How a conversation works" (was "Let users converse with your enterprise agents"); subtitle unchanged.
+- Hero figure (.appsrv) right side rebuilt: actor "Client" -> "Users" (users icon). The search()/execAgent() calls
+  are gone; each right lane is one arrow toward the server with the request above ("Book a room for 8 tomorrow at 10",
+  "Invite the data team") and the response below, prefixed by the matched agent (Room booking, Calendar; the second
+  builds on the first). Left lane 2 now carries both agents' descriptions. Unused CSS for code labels, .kw/.nw and
+  dotted return arrows removed; `.as-flow .sub + .sub` added. Generator: scratchpad hero-figure.mjs.
+  Verified 1280..320 light+dark (long strings shortened after 360/320 touched the rail); sweep 0 of 241.
