@@ -1842,3 +1842,9 @@ Ram approved the sentence-to-run idea. html/index.html #framework-runtime now ho
 subheading, code card 300px, description as a quiet input-style box. Rendered
 1280/1000/999/860/700/412/384/375/360/320 light and dark; sweep 0 of 241. Not committed, not
 uploaded. Next: the Every run line items and the subheading wording, with Ram.
+
+## 2026-11-06: feature-pill boxes around the code
+Per Ram: description sentence and run receipt removed from #framework-runtime; the JSON card now
+sits between a Development pill box and a Runtime pill box (the circle features), no arrows. CSS
+#framework-runtime .ss-box/.ss-h; two-column boxes under the code below 1000, one column below
+420. Rendered 1280/1000/999/860/700/421/412/384/375/360/320 light and dark, sweep 0 of 241.
