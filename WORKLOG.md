@@ -1861,3 +1861,9 @@ Per Ram: the code card's bar now reads "Agent code is just JSON with Python expr
 docs/agent-definition/syntax.html) in place of the file name; the caption under the card is gone
 (.ss-fmt removed, .ss-bar-title added). The sentence wraps to two lines in the 300px bar at every
 width. Rendered 1280/1000/860/700/412/384/375/360/320 light and dark, sweep 0 of 241.
+
+## 2026-11-06: four boxes around the code
+Per Ram: LLMs box folded away (LLM calls, Tool calling loop, MCP into Agent workflow after API and
+database calls; Model neutrality at the end of Runtime) and the Routing box removed. Two boxes a
+side now. aria-label updated. Rendered 1280/1000/860/700/412/384/375/360/320 light and dark,
+sweep 0 of 241.
