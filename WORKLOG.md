@@ -1855,3 +1855,9 @@ code card centre, Development environment / Agent workflow / LLMs left, Runtime 
 / Routing right (chips and links from commit 1757653b^), smaller type. Tablet placement fixed with
 explicit grid rows (code row 1, sides row 2). Agent code: output command replaced by
 "streamOutput": true on the llm command. Rendered 1280 to 320 light and dark, sweep 0 of 241.
+
+## 2026-11-06: code card title
+Per Ram: the code card's bar now reads "Agent code is just JSON with Python expressions" (link to
+docs/agent-definition/syntax.html) in place of the file name; the caption under the card is gone
+(.ss-fmt removed, .ss-bar-title added). The sentence wraps to two lines in the 300px bar at every
+width. Rendered 1280/1000/860/700/412/384/375/360/320 light and dark, sweep 0 of 241.
