@@ -1867,3 +1867,7 @@ Per Ram: LLMs box folded away (LLM calls, Tool calling loop, MCP into Agent work
 database calls; Model neutrality at the end of Runtime) and the Routing box removed. Two boxes a
 side now. aria-label updated. Rendered 1280/1000/860/700/412/384/375/360/320 light and dark,
 sweep 0 of 241.
+
+## 2026-11-06: hero lead comma
+Per Ram: hero lead now "task-focused, and describe them in plain English" (comma before "and").
+Text only, no render.
