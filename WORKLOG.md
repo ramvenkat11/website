@@ -1910,3 +1910,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - styles.css: `.as-head .hero-lead + .hero-lead { margin-top: 12px }`; `.hero-attr-wrap` lets the long
   "build, validate and publish" link wrap (at 320 "Developers" sat alone otherwise). "Follow-up" uses a non-breaking hyphen.
 - Verified 1280/1000/860/700/412/384/375/360/320 light+dark, sweep 0 of 241. Uncommitted; Ram commits.
+- Hero second paragraph shortened: "Follow-up requests can bring in other agents, and build on previous results." Re-rendered all widths, sweep 0 of 241.
