@@ -1924,3 +1924,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
   dotted return arrows removed; `.as-flow .sub + .sub` added. Generator: scratchpad hero-figure.mjs.
   Verified 1280..320 light+dark (long strings shortened after 360/320 touched the rail); sweep 0 of 241.
 - #conversations subtitle: "Agents stay independent, yet build on each other in a conversation."
+- Hero title: "Let your users converse with hundreds of task-focused AI agents".
