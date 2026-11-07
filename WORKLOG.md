@@ -1926,3 +1926,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #conversations subtitle: "Agents stay independent, yet build on each other in a conversation."
 - Hero title: "Let your users converse with hundreds of task-focused AI agents".
 - Hero figure example is now Inventory -> Purchasing: "Stock of part 7731 in Berlin?" / "Reorder up to the usual level"; descriptions updated; aria-label updated. All widths clean, sweep 0 of 241.
+- Hero p2: "The built-in search finds and runs the right agent on that request."
