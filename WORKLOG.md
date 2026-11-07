@@ -1916,3 +1916,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Hero lead set to the final three paragraphs from content/newhome.txt (build / agents / describe; search; agent server ... safe, bounded, observable). All widths clean, sweep 0 of 241.
 - Hero p3 is now "The agent server keeps every run safe, bounded and observable." All widths clean, sweep 0 of 241.
 - Hero p1 split in two sentences: "Developers build, validate and publish agents. They describe when to use each one in plain English." All widths clean, sweep 0 of 241.
+- #conversations title renamed "How a conversation works" (was "Let users converse with your enterprise agents"); subtitle unchanged.
