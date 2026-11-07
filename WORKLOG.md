@@ -1871,3 +1871,16 @@ sweep 0 of 241.
 ## 2026-11-06: hero lead comma
 Per Ram: hero lead now "task-focused, and describe them in plain English" (comma before "and").
 Text only, no render.
+
+## 2026-11-06: syntax section, one tool function
+Ram: remove the feature boxes; let #framework-runtime explain the agent syntax (Python
+expressions, tool calling) and show the 20 commands. Built: code card (400px, support agent
+with one tool function findOrders, a db call, llm with functions and streamOutput) on the left;
+right column of three cards: Python expressions ("A string value in braces is Python, run on
+every call", corrected from "anything in braces" per Ram) with the two expressions from the
+code as mono chips; Tool calling (Your functions, MCP tools, Vendor tools); 20 commands grouped
+Variables/Flow/LLM/Systems/People/Output/End/Observe, each chip linking to docs/commands/*.html.
+Dashed Agent server frame, tag and the four pill boxes removed (no .ss-tag/.ss-part/.ss-side
+left). Stacks below 860. Pre font 10px, 9px below 360, 8.5px below 340 (longest line 51 chars).
+Verified 1280/1000/860/700/412/375/360/320 light and dark; sweep 0 of 241.
+Next: Ram reviews; subheading still opens "A sentence becomes an agent".
