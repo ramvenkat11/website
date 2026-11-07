@@ -1900,3 +1900,13 @@ Fixes on the way: arrow was invisible in light mode (now --muted at .55); dot se
 strip landed at line starts when wrapping (now flex gaps, no dots); stacked bubble centred.
 Verified 1280/1100/1000/860/760/700/412/384/375/360/320 light and dark; sweep 0 of 241.
 Old .ss-* markup and CSS removed. Next: Ram reviews.
+
+## 2026-11-07: Hero copy replaced (content/newhome.txt)
+- html/index.html hero: title "Let your users converse with hundreds of task-focused agents"; the lead is now three
+  `p.hero-lead` paragraphs (developers build/describe; users converse, search finds and runs, follow-ups bring in other
+  agents; the conversation makes independent task-focused agents one application, safe and observable). Links:
+  framework.html, search.html#description, search.html, docs/introduction/search2o-agents.html,
+  docs/runtime/controlled-execution.html, docs/reports/index.html.
+- styles.css: `.as-head .hero-lead + .hero-lead { margin-top: 12px }`; `.hero-attr-wrap` lets the long
+  "build, validate and publish" link wrap (at 320 "Developers" sat alone otherwise). "Follow-up" uses a non-breaking hyphen.
+- Verified 1280/1000/860/700/412/384/375/360/320 light+dark, sweep 0 of 241. Uncommitted; Ram commits.
