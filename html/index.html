@@ -140,12 +140,16 @@
   <section class="section soft" id="framework-runtime">
     <div class="container">
       <div class="section-head center">
-        <h2>Agents as dependable as code, yet as easy to create as a&nbsp;prompt</h2>
-        <p>A sentence becomes an agent in JSON with Python expressions. The agent server validates it, then guards and records every&nbsp;run.</p>
+        <h2>Nothing new to learn</h2>
+        <p>An agent is a JSON document with Python expressions that spells out the steps. The agent server is the program that runs&nbsp;it.</p>
       </div>
-      <figure class="ss" aria-label="A Search2o support agent in JSON with Python expressions. Its llm command calls the model with one tool function, findOrders, a database call, and streams the answer. Beside the code: Python expressions, a string value in braces is Python and runs on every call; Tool calling, your functions, MCP tools and vendor tools, with the server running the loop; and the 20 commands: var, if, while, for, break, continue, func, return, parallel, llm, memory, api, db, ask, output, end, fail, progress, trace, log.">
-        <div class="codecard ss-agent">
-          <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><a class="ss-bar-title" href="docs/agent-definition/syntax.html">Agent code is just JSON with Python&nbsp;expressions</a></div>
+      <figure class="dr" aria-label="One sentence, Help customers with their orders, goes to Draft with AI, which writes the agent: orders.json, a JSON document with one tool function, findOrders, that runs a database query and returns the rows, and a main function whose llm command calls the model with that tool and streams the answer. Three notes point into the code. 1, Python expression: a string value in braces is Python, run on every call. 2, Tool calling: the model may call findOrders, and the server runs the loop. 3, 20 commands, three in use here: var, if, while, for, break, continue, func, return, parallel, llm, memory, api, db, ask, output, end, fail, progress, trace, log.">
+        <div class="dr-ask">
+          <div class="dr-bubble">Help customers with their&nbsp;orders.</div>
+        </div>
+        <div class="dr-arr"><b><a href="docs/development/draft-with-ai.html">Draft with AI</a></b><i></i></div>
+        <div class="codecard dr-agent">
+          <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">orders.json</span></div>
           <pre><code>{
   <span class=key>"functions"</span>: {
     <span class=key>"findOrders"</span>: {
@@ -159,17 +163,17 @@
       <span class=key>"commands"</span>: {
         <span class=key>"db"</span>: {
           <span class=key>"profile"</span>: <span class=str>"orders"</span>,
-          <span class=key>"sql"</span>: <span class=str>"<span class=ex>{ sql.recent_orders }</span>"</span>
+          <span class=key>"sql"</span>: <span class=str>"<span class=ex>{ sql.recent_orders }</span>"</span> <span class="dr-mk" aria-hidden="true">1</span>
         },
         <span class=key>"return"</span>: <span class=str>"<span class=ex>{ {'orders': result} }</span>"</span>
       }
     },
     <span class=key>"main"</span>: {
       <span class=key>"commands"</span>: {
-        <span class=key>"llm"</span>: {
+        <span class=key>"llm"</span>: { <span class="dr-mk" aria-hidden="true">3</span>
           <span class=key>"profile"</span>: <span class=str>"gpt5_mini"</span>,
           <span class=key>"prompt"</span>: <span class=str>"support"</span>,
-          <span class=key>"functions"</span>: [<span class=str>"findOrders"</span>],
+          <span class=key>"functions"</span>: [<span class=str>"findOrders"</span>], <span class="dr-mk" aria-hidden="true">2</span>
           <span class=key>"streamOutput"</span>: <span class=tk-bool>true</span>
         }
       }
@@ -177,27 +181,18 @@
   }
 }</code></pre>
         </div>
-        <div class="ss-notes">
-          <div class="ss-note">
-            <a class="ss-note-title" href="docs/agent-definition/python-expressions.html">Python expressions</a>
-            <p class="ss-note-line">A string value in braces is Python, run on every&nbsp;call</p>
-            <div class="ss-exs"><code>{ sql.recent_orders }</code><code>{ {'orders': result} }</code></div>
+        <div class="dr-notes">
+          <div class="dr-note">
+            <span class="dr-mk">1</span>
+            <div><a class="dr-note-title" href="docs/agent-definition/python-expressions.html">Python expression</a><span class="dr-note-line">A string value in braces is Python, run on every&nbsp;call</span></div>
           </div>
-          <div class="ss-note">
-            <a class="ss-note-title" href="docs/commands/llm.html#tool-calling">Tool calling</a>
-            <p class="ss-note-line">Name the tools in the llm command. The server runs the&nbsp;loop</p>
-            <div class="ss-exs"><a href="docs/agent-definition/functions.html">Your functions</a><a href="docs/profiles/mcp-servers.html">MCP tools</a><a href="docs/commands/llm.html#fields">Vendor tools</a></div>
+          <div class="dr-note">
+            <span class="dr-mk">2</span>
+            <div><a class="dr-note-title" href="docs/commands/llm.html#tool-calling">Tool calling</a><span class="dr-note-line">The model may call findOrders. The server runs the&nbsp;loop</span></div>
           </div>
-          <div class="ss-note ss-cmds">
-            <a class="ss-note-title" href="docs/commands/index.html">20 commands</a>
-          <div class="ss-cmd-group"><span class="ss-cmd-label">Variables</span><a class="ss-cmd" href="docs/commands/var.html">var</a></div>
-          <div class="ss-cmd-group"><span class="ss-cmd-label">Flow</span><a class="ss-cmd" href="docs/commands/if.html">if</a><a class="ss-cmd" href="docs/commands/while.html">while</a><a class="ss-cmd" href="docs/commands/for.html">for</a><a class="ss-cmd" href="docs/commands/break.html">break</a><a class="ss-cmd" href="docs/commands/continue.html">continue</a><a class="ss-cmd" href="docs/commands/func.html">func</a><a class="ss-cmd" href="docs/commands/return.html">return</a><a class="ss-cmd" href="docs/commands/parallel.html">parallel</a></div>
-          <div class="ss-cmd-group"><span class="ss-cmd-label">LLM</span><a class="ss-cmd" href="docs/commands/llm.html">llm</a><a class="ss-cmd" href="docs/commands/memory.html">memory</a></div>
-          <div class="ss-cmd-group"><span class="ss-cmd-label">Systems</span><a class="ss-cmd" href="docs/commands/api.html">api</a><a class="ss-cmd" href="docs/commands/db.html">db</a></div>
-          <div class="ss-cmd-group"><span class="ss-cmd-label">People</span><a class="ss-cmd" href="docs/commands/ask.html">ask</a></div>
-          <div class="ss-cmd-group"><span class="ss-cmd-label">Output</span><a class="ss-cmd" href="docs/commands/output.html">output</a></div>
-          <div class="ss-cmd-group"><span class="ss-cmd-label">End</span><a class="ss-cmd" href="docs/commands/end.html">end</a><a class="ss-cmd" href="docs/commands/fail.html">fail</a></div>
-          <div class="ss-cmd-group"><span class="ss-cmd-label">Observe</span><a class="ss-cmd" href="docs/commands/progress.html">progress</a><a class="ss-cmd" href="docs/commands/trace.html">trace</a><a class="ss-cmd" href="docs/commands/log.html">log</a></div>
+          <div class="dr-note">
+            <span class="dr-mk">3</span>
+            <div><a class="dr-note-title" href="docs/commands/index.html">20 commands</a><span class="dr-note-line">Three in use&nbsp;here</span><p class="dr-cmds"><a href="docs/commands/var.html">var</a> <a href="docs/commands/if.html">if</a> <a href="docs/commands/while.html">while</a> <a href="docs/commands/for.html">for</a> <a href="docs/commands/break.html">break</a> <a href="docs/commands/continue.html">continue</a> <a href="docs/commands/func.html">func</a> <a class="on" href="docs/commands/return.html">return</a> <a href="docs/commands/parallel.html">parallel</a> <a class="on" href="docs/commands/llm.html">llm</a> <a href="docs/commands/memory.html">memory</a> <a href="docs/commands/api.html">api</a> <a class="on" href="docs/commands/db.html">db</a> <a href="docs/commands/ask.html">ask</a> <a href="docs/commands/output.html">output</a> <a href="docs/commands/end.html">end</a> <a href="docs/commands/fail.html">fail</a> <a href="docs/commands/progress.html">progress</a> <a href="docs/commands/trace.html">trace</a> <a href="docs/commands/log.html">log</a></p></div>
           </div>
         </div>
       </figure>

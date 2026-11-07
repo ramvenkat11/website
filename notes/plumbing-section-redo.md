@@ -310,3 +310,8 @@ Below 1000 the code sits on top and the boxes form two columns; below 600 one co
 Ram dropped the feature boxes. The section now explains the syntax: code card with one tool
 function (findOrders, db), and three cards beside it: Python expressions, Tool calling,
 20 commands. Two-tool version was built first and cut to one for height.
+
+## Drafted with AI (2026-11-06)
+Title "Nothing new to learn" back, with its earlier subtitle. Figure: bubble -> Draft with AI
+arrow -> orders.json with markers 1-3 and margin notes (Python expression, Tool calling, 20
+commands as a mono strip with the three used ones in bold). No boxes.
