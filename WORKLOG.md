@@ -1928,3 +1928,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Hero figure example is now Inventory -> Purchasing: "Stock of part 7731 in Berlin?" / "Reorder up to the usual level"; descriptions updated; aria-label updated. All widths clean, sweep 0 of 241.
 - Hero p2: "The built-in search finds and runs the right agent on that request."
 - Hero figure requests/responses in full English: "Is part 7731 in stock in Berlin?" -> Inventory: Berlin has 42 units of part 7731, below its reorder point of 60. / "Order enough to bring it back up to 60." -> Purchasing: Done. PO-5519 orders 18 units of part 7731 for Berlin. Non-breaking hyphen in PO-5519.
+- #conversations note 3 (both desktop aside and mobile note): "...the agent server saved the conversation context automatically: the agent's variables and its prompts, the messages it exchanged with the LLMs."
