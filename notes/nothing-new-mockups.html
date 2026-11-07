@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nothing new to learn: mockups</title>
+<link rel="stylesheet" href="../html/styles/styles.css">
+<style>
+.mk { padding: 56px 0; }
+.mk .section-head { margin-bottom: 36px; }
+.mk .section-head h2 { font-size: 24px; }
+.mk-opt { display: none; margin: 0 0 18px; color: var(--blue-ink); font-size: 13px; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; }
+.mk-theme { display: none; position: fixed; right: 14px; bottom: 14px; z-index: 9; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); font: 600 12px var(--font); cursor: pointer; }
+.nn-wrap { max-width: 980px; margin: 0 auto; }
+.nn-kick { margin: 18px 0 0; color: var(--muted); font-size: 14px; line-height: 1.5; text-align: center; }
+.nn-kick a { font-weight: 600; }
+.nn-fig { margin: 0; }
+.nn-fig a { font-weight: 600; }
+
+/* ===== 1. the imbalance ===== */
+.im { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 20px; align-items: start; }
+.im-box { padding: 16px 18px 18px; border: 1px solid var(--line); border-radius: 16px; background: var(--card); box-shadow: var(--card-shadow); }
+.im-you { border-color: rgba(37, 99, 235, .35); background: rgba(37, 99, 235, .06); }
+.im-h { display: block; margin-bottom: 12px; color: var(--ink); font-size: 16px; font-weight: 700; letter-spacing: -0.01em; }
+.im-you .im-h { color: var(--blue-ink); }
+.im-row { display: block; padding: 9px 0; border-top: 1px solid var(--line); color: var(--body); font-size: 13.5px; line-height: 1.45; }
+.im-row b { display: block; color: var(--ink); font-size: 14px; font-weight: 700; }
+.im-srv { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 22px; }
+.im-srv .im-h { grid-column: 1 / -1; }
+.im-srv .im-row b { font-weight: 600; }
+.im-row span { display: block; color: var(--muted); font-size: 13px; }
+.im-foot { grid-column: 1 / -1; margin-top: 10px; color: var(--muted); font-size: 13px; }
+@media (max-width: 700px) {
+  .im { grid-template-columns: minmax(0, 1fr); }
+  .im-srv { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ===== 2. hello, world ===== */
+.hw { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 20px 32px; align-items: start; }
+.hw-code pre { padding: 14px 18px; font-size: 13px; line-height: 1.8; }
+.hw-code .bar { padding: 8px 12px; }
+.hw-cap { margin: 10px 0 0; color: var(--muted); font-size: 13px; }
+.hw-side p { margin: 0 0 12px; color: var(--body); font-size: 15px; line-height: 1.6; }
+.hw-side p b { color: var(--ink); }
+.hw-cmds { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 16px; }
+.hw-cmds code { padding: 2px 8px; border: 1px solid var(--line); border-radius: 6px; background: var(--card); color: var(--ink); font-family: var(--mono); font-size: 12.5px; }
+.hw-cmds code.on { border-color: rgba(37, 99, 235, .4); background: rgba(37, 99, 235, .08); color: var(--blue-ink); }
+.hw-srv { padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg-soft); color: var(--body); font-size: 13.5px; line-height: 1.5; }
+.hw-srv b { color: var(--ink); }
+@media (max-width: 860px) {
+  .hw { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  .hw-code pre { padding: 12px; font-size: 11px; }
+}
+</style>
+</head>
+<body>
+<button class="mk-theme" type="button">Theme</button>
+
+<section class="section soft mk" id="opt1">
+  <div class="container">
+    <div class="section-head center">
+      <h2>Nothing new to&nbsp;learn</h2>
+      <p>An agent is a JSON document with Python expressions that spells out the steps. The agent server is the program that runs&nbsp;it.</p>
+    </div>
+    <div class="nn-wrap">
+      <figure class="nn-fig im" aria-label="What you write beside what the server does">
+        <div class="im-box im-you">
+          <span class="im-h">You write</span>
+          <span class="im-row"><b>The steps</b><span><a href="../html/docs/agent-definition/syntax.html">JSON with Python expressions</a></span></span>
+          <span class="im-row"><b>The prompts</b><span>In the UI</span></span>
+          <span class="im-row"><b>The description</b><span>One sentence, for search</span></span>
+        </div>
+        <div class="im-box im-srv">
+          <span class="im-h">The agent server does</span>
+          <span class="im-row"><b>API and database calls</b></span>
+          <span class="im-row"><b>LLM calls</b></span>
+          <span class="im-row"><b>Streaming</b></span>
+          <span class="im-row"><b>Questions to the user</b></span>
+          <span class="im-row"><b>Conversation state</b></span>
+          <span class="im-row"><b>Time and cost limits</b></span>
+          <span class="im-row"><b>Audit log</b></span>
+          <span class="im-row"><b>Validation and publishing</b></span>
+        </div>
+      </figure>
+      <p class="nn-kick nn-after">Or give <a href="../html/docs/development/draft-with-ai.html">Draft with AI</a> one sentence.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section mk" id="opt2">
+  <div class="container">
+    <div class="section-head center">
+      <h2>Nothing new to&nbsp;learn</h2>
+      <p>An agent is a JSON document with Python expressions that spells out the steps. The agent server is the program that runs&nbsp;it.</p>
+    </div>
+    <div class="nn-wrap">
+      <figure class="nn-fig hw" aria-label="The smallest agent beside the twenty commands">
+        <div>
+          <div class="codecard hw-code">
+            <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">hello.json</span></div>
+            <pre><code>{
+  <span class=key>"functions"</span>: {
+    <span class=key>"main"</span>: {
+      <span class=key>"commands"</span>: {
+        <span class=key>"output"</span>: <span class=str>"Hello, World"</span>
+      }
+    }
+  }
+}</code></pre>
+          </div>
+          <p class="hw-cap">A complete agent.</p>
+        </div>
+        <div class="hw-side">
+          <p><b>Twenty commands</b></p>
+          <div class="hw-cmds">
+            <code>var</code><code>if</code><code>while</code><code>for</code><code>break</code><code>continue</code><code>func</code><code>return</code><code>parallel</code><code>llm</code><code>memory</code><code>api</code><code>db</code><code>ask</code><code class="on">output</code><code>end</code><code>fail</code><code>progress</code><code>trace</code><code>log</code>
+          </div>
+          <p><b>The agent server does the rest.</b></p>
+          <p class="hw-cap">Or give <a href="../html/docs/development/draft-with-ai.html">Draft with AI</a> one sentence.</p>
+        </div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<script>
+document.querySelector(".mk-theme").addEventListener("click", function () {
+  var r = document.documentElement;
+  r.setAttribute("data-theme", r.getAttribute("data-theme") === "dark" ? "light" : "dark");
+});
+</script>
+</body>
+</html>

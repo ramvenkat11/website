@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Code vs prompt circles: mockup</title>
+<link rel="stylesheet" href="../html/styles/styles.css">
+<style>
+.mk { padding: 56px 0; }
+.mk .section-head { margin-bottom: 36px; }
+.mk .section-head h2 { font-size: 24px; }
+.mk-theme { position: fixed; right: 14px; bottom: 14px; z-index: 9; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); font: 600 12px var(--font); cursor: pointer; }
+.cp-wrap { max-width: 720px; margin: 0 auto; }
+.cp { position: relative; width: 100%; aspect-ratio: 720 / 480; margin: 0; }
+.cp-c { position: absolute; top: 0; width: 66.667%; aspect-ratio: 1; border-radius: 50%; border: 1.5px solid; }
+.cp-code { left: 0; background: rgba(37, 99, 235, .07); border-color: rgba(37, 99, 235, .4); }
+.cp-prompt { right: 0; background: rgba(8, 145, 178, .07); border-color: rgba(8, 145, 178, .4); }
+.cp-col { position: absolute; top: 50%; width: 36%; transform: translateY(-50%); text-align: center; }
+.cp-code .cp-col { left: 8%; }
+.cp-prompt .cp-col { right: 8%; }
+.cp-h { display: block; font-size: 11.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.cp-code .cp-h { color: var(--blue-ink); }
+.cp-prompt .cp-h { color: var(--teal); }
+.cp-sub { display: block; margin: 2px 0 10px; color: var(--muted); font-size: 11.5px; }
+.cp-col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.cp-col li { padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); box-shadow: var(--card-shadow); color: var(--ink); font-size: 12.5px; font-weight: 600; line-height: 1.3; white-space: nowrap; }
+.cp-agent { position: absolute; top: 50%; left: 50%; width: 236px; transform: translate(-50%, -50%); }
+.cp-agent .bar { padding: 7px 10px; }
+.cp-agent .bar .fname { font-size: 11px; }
+.cp-agent pre { padding: 10px 12px; font-size: 10.5px; line-height: 1.5; }
+.cp-cap { margin: 14px 0 0; color: var(--muted); font-size: 13.5px; text-align: center; }
+.cp-cap a { font-weight: 600; }
+@media (max-width: 640px) {
+  .cp { aspect-ratio: auto; display: grid; }
+  .cp-c { position: relative; width: 100%; }
+  .cp-col { top: auto; left: 50% !important; right: auto !important; width: 86%; transform: translateX(-50%); }
+  .cp-code .cp-col { top: 7%; }
+  .cp-prompt .cp-col { bottom: 7%; }
+  .cp-col ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; }
+  .cp-col li { padding: 4px 8px; font-size: 11.5px; }
+  .cp-agent { position: relative; top: auto; left: auto; z-index: 1; width: min(100%, 280px); margin: -30% auto; transform: none; }
+  .cp-code { order: 0; }
+  .cp-agent { order: 1; }
+  .cp-prompt { order: 2; }
+  .cp-agent pre { font-size: 10px; line-height: 1.45; }
+}
+</style>
+</head>
+<body>
+<button class="mk-theme" type="button">Theme</button>
+
+<section class="section soft mk" id="opt">
+  <div class="container">
+    <div class="section-head center">
+      <h2>Agents as dependable as code, yet as easy to create as a&nbsp;prompt</h2>
+      <p>Safe, cost-efficient and observable, like an agent coded in Python. Drafted from a description, like a&nbsp;prompt.</p>
+    </div>
+    <div class="cp-wrap">
+      <figure class="cp" aria-label="Two overlapping circles, Code and Prompt, with a Search2o agent in JSON in the overlap">
+        <div class="cp-c cp-code">
+          <div class="cp-col">
+            <span class="cp-h">Code</span>
+            <span class="cp-sub">LangChain, agent SDKs</span>
+            <ul><li>Validated</li><li>Repeatable</li><li>Safe</li><li>Cost-efficient</li><li>Observable</li></ul>
+          </div>
+        </div>
+        <div class="cp-c cp-prompt">
+          <div class="cp-col">
+            <span class="cp-h">Prompt</span>
+            <span class="cp-sub">Claude Code, Copilot agents</span>
+            <ul><li>Draft with AI</li><li>One file, not a project</li><li>Nothing to build or deploy</li><li>Prompts edited in the UI</li><li>Live on the next run</li></ul>
+          </div>
+        </div>
+        <div class="codecard cp-agent">
+          <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">ask_the_docs.json</span></div>
+          <pre><code>{
+  <span class=key>"functions"</span>: {
+    <span class=key>"main"</span>: {
+      <span class=key>"commands"</span>: {
+        <span class=key>"api"</span>: {
+          <span class=key>"profile"</span>: <span class=str>"docs"</span>,
+          <span class=key>"path"</span>: <span class=str>"/search"</span>,
+          <span class=key>"queryParams"</span>: {
+            <span class=key>"q"</span>: <span class=str>"{ sys.query }"</span>
+          }
+        },
+        <span class=key>"llm"</span>: {
+          <span class=key>"profile"</span>: <span class=str>"gpt5_mini"</span>,
+          <span class=key>"prompt"</span>: <span class=str>"answer"</span>
+        },
+        <span class=key>"output"</span>: <span class=str>"{ result }"</span>
+      }
+    }
+  }
+}</code></pre>
+        </div>
+      </figure>
+      <p class="cp-cap">A Search2o agent: the steps, in <a href="../html/docs/agent-definition/syntax.html">JSON with Python expressions</a>.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+document.querySelector(".mk-theme").addEventListener("click", function () {
+  var r = document.documentElement;
+  r.setAttribute("data-theme", r.getAttribute("data-theme") === "dark" ? "light" : "dark");
+});
+</script>
+</body>
+</html>
