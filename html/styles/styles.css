@@ -230,6 +230,7 @@ p { margin: 0; }
 .as-head .hero-claim { margin-bottom: 14px; font-size: clamp(21px, 2.2vw, 28px); line-height: 1.3; text-wrap: balance; }
 .hero-line { display: block; text-wrap: balance; }
 .as-head .hero-lead { max-width: 780px; margin: 0 auto; font-size: 16px; text-wrap: pretty; }
+.as-head .hero-lead + .hero-lead { margin-top: 12px; }
 .hero-lead code { font-family: var(--mono); font-size: .92em; }
 .hero-caption { max-width: 900px; margin: 20px auto 0; text-align: center; color: var(--muted); font-size: 13.5px; font-weight: 500; }
 .hero-caption a { color: var(--blue-ink); font-weight: 600; white-space: nowrap; }
@@ -270,22 +271,17 @@ p { margin: 0; }
 .as-right { --as-line: var(--as-user); grid-column: 3; padding-right: calc(var(--as-rail) - 1px); }
 .as-flow { display: block; }
 .as-flow .lbl { display: flex; align-items: flex-start; gap: 7px; padding: 0 8px 6px 22px; color: var(--ink); font-size: 13px; font-weight: 600; line-height: 18px; text-align: left; }
-.as-flow .lbl code { font-family: var(--mono); font-size: 12.5px; font-weight: 500; }
 .as-dev .ic { color: var(--as-dev-fg, #fff); }
 .as-flow .ln { position: relative; display: block; height: 2px; background: var(--as-line); }
 .as-flow .ln::before, .as-flow .ln::after { position: absolute; top: -4px; width: 0; height: 0; border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
 .as-flow.r .ln::after { content: ""; right: -1px; border-left: 9px solid var(--as-line); }
 .as-flow.l .ln::before { content: ""; left: -1px; border-right: 9px solid var(--as-line); }
-.as-flow.dot .ln { height: 0; background: none; border-top: 2px dashed var(--as-line); }
-.as-flow.dot .ln::before, .as-flow.dot .ln::after { top: -6px; }
 .as-flow .sub { display: block; padding: 6px 8px 0 22px; color: var(--muted); font-size: 12.5px; font-style: italic; line-height: 1.35; text-wrap: pretty; }
-.as-flow .nw { white-space: nowrap; }
-.as-flow .kw { white-space: nowrap; }
+.as-flow .sub + .sub { padding-top: 3px; }
 .as-agent { font-family: var(--font); font-size: 13px; font-style: normal; font-weight: 700; color: var(--ink); }
 @media (max-width: 1000px) {
   .appsrv { --as-rail: 22px; grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr) minmax(0, 1.1fr); }
   .as-flow .lbl { font-size: 12px; }
-  .as-flow .lbl code { font-size: 11.5px; }
   .as-flow .sub { font-size: 11.5px; }
   .as-agent { font-size: 12px; }
 }
@@ -301,24 +297,15 @@ p { margin: 0; }
   .as-lane { gap: 8px; padding-top: 12px; padding-bottom: 12px; }
   .as-flow .lbl { gap: 3px; padding: 0 8px 4px 4px; font-size: 10.5px; line-height: 14px; }
   .as-left .as-flow .lbl { padding-left: 6px; padding-right: 4px; }
-  .as-flow .lbl code { font-size: 9.5px; overflow-wrap: anywhere; }
         .as-flow .ln::before, .as-flow .ln::after { top: -3px; border-top-width: 4px; border-bottom-width: 4px; }
   .as-flow.r .ln::after { border-left-width: 7px; }
   .as-flow.l .ln::before { border-right-width: 7px; }
-  .as-flow.dot .ln::before, .as-flow.dot .ln::after { top: -5px; }
   .as-agent { font-size: 10.5px; }
-  .as-right .as-flow .lbl { display: block; padding-right: 4px; }
-  .as-flow .nw { white-space: normal; }
-  .as-flow .as-agent.nw { white-space: nowrap; }
-  .as-right .as-flow .kw { white-space: normal; }
-  .as-right .as-flow .lbl .args { display: block; padding-left: 12px; }
   .as-flow .sub { padding: 4px 6px 0 4px; font-size: 10.5px; line-height: 1.3; }
   .as-left .as-flow .sub { padding-left: 6px; }
 }
 @media (max-width: 400px) {
   .as-head .hero-claim { font-size: 20px; }
-  .as-right .as-flow .lbl .args { padding-left: 0; }
-  .as-flow .lbl code { font-size: 9px; }
 }
 @media (max-width: 480px) {
   .as-actor { flex-direction: column; align-items: flex-start; gap: 5px; }

@@ -64,16 +64,18 @@
     <div class="hero-bg"></div>
     <div class="container">
       <div class="hero-head as-head">
-        <h1 class="hero-claim">Transform your enterprise AI with Search2o agent server</h1>
-        <p class="hero-lead">Developers <a class="hero-attr" href="framework.html">build</a> agents that are <a class="hero-attr" href="docs/introduction/search2o-agents.html">task&#8209;focused</a>, and <a class="hero-attr" href="search.html#description">describe</a> them in plain English. Users just ask for what they need: the built-in <a class="hero-attr" href="search.html">search</a> picks the right agent, and the client <a class="hero-attr" href="conversation.html">runs</a> it on the server. Hundreds of agents work as one <a class="hero-attr" href="docs/runtime/controlled-execution.html">safe</a> and <a class="hero-attr" href="docs/reports/index.html">observable</a> application for any client, including an agent harness.</p>
+        <h1 class="hero-claim">Let your users converse with hundreds of task&#8209;focused AI agents</h1>
+        <p class="hero-lead">Developers <a class="hero-attr" href="framework.html">build</a>, validate and publish <a class="hero-attr" href="docs/introduction/search2o-agents.html">agents</a>. They <a class="hero-attr" href="search.html#description">describe</a> when to use each one in plain English.</p>
+        <p class="hero-lead">Users start a conversation with a request. The built-in <a class="hero-attr" href="search.html">search</a> finds and runs the right agent. Follow&#8209;up requests can bring in other agents, and build on previous results.</p>
+        <p class="hero-lead">The agent server keeps every run <a class="hero-attr" href="docs/runtime/controlled-execution.html">safe</a>, <a class="hero-attr" href="docs/runtime/runtime-limits.html">bounded</a> and <a class="hero-attr" href="docs/reports/index.html">observable</a>.</p>
       </div>
-      <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example an IT helpdesk agent that handles employees' IT support requests. Troubleshoots hardware and software, and manages accounts and access. The Search2o agent server holds hundreds of agents. A client calls search with a request such as My laptop keeps freezing, and search returns the IT helpdesk agent. The client calls execAgent with the conversation, the agent and the request, and receives the agent's output, for example Ticket IT-4821 opened. A technician will call at 2 pm.">
+      <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example Room booking, which books meeting rooms and checks capacity and availability, and Calendar, which sends invites and manages meetings. The Search2o agent server holds hundreds of agents. Users converse with it: a first request, Book a room for 8 tomorrow at 10, is matched to Room booking, which answers Room 4B booked, tomorrow 10 to 11 am. A follow-up, Invite the data team, is matched to Calendar, which answers Invites for Room 4B at 10 am sent to the data team.">
         <div class="as-side as-dev">
           <div class="as-actor"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 4-4 16"/></svg></span><span class="nm">Developers</span></div>
           <i class="rail"></i>
         </div>
         <div class="as-side as-user">
-          <div class="as-actor"><span class="nm">Client</span><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span></div>
+          <div class="as-actor"><span class="nm">Users</span><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span></div>
           <i class="rail"></i>
         </div>
         <div class="as-srv" aria-hidden="true"></div>
@@ -83,15 +85,13 @@
           <div class="as-flow r"><span class="lbl">Build, validate, publish agents</span><i class="ln"></i></div>
         </div>
         <div class="as-lane as-right as-r1">
-          <div class="as-flow l"><span class="lbl"><code>search(<wbr><span class="args"><span class="nw"><span class="kw">"My laptop</span> <span class="kw">keeps freezing")</span></span></span></code></span><i class="ln"></i></div>
-          <div class="as-flow r dot"><i class="ln"></i><span class="sub"><b class="as-agent">IT helpdesk</b></span></div>
+          <div class="as-flow l"><span class="lbl">Book a room for 8 tomorrow at&nbsp;10</span><i class="ln"></i><span class="sub"><b class="as-agent">Room booking</b>: Room 4B booked, tomorrow 10 to 11&nbsp;am.</span></div>
         </div>
         <div class="as-lane as-left as-r2">
-          <div class="as-flow r"><span class="lbl">Describe agents in English</span><i class="ln"></i><span class="sub"><b class="as-agent">IT helpdesk</b>: Handles employees&rsquo; IT support requests. Troubleshoots hardware and software, and manages accounts and access.</span></div>
+          <div class="as-flow r"><span class="lbl">Describe agents in English</span><i class="ln"></i><span class="sub"><b class="as-agent">Room booking</b>: Books meeting rooms. Checks capacity and availability.</span><span class="sub"><b class="as-agent">Calendar</b>: Sends invites and manages meetings.</span></div>
         </div>
         <div class="as-lane as-right as-r2">
-          <div class="as-flow l"><span class="lbl"><code>execAgent(<wbr><span class="args">convId, <span class="kw"><b class="as-agent nw">IT helpdesk</b>,</span> <span class="nw"><span class="kw">"My laptop</span> <span class="kw">keeps freezing")</span></span></span></code></span><i class="ln"></i></div>
-          <div class="as-flow r dot"><i class="ln"></i><span class="sub">Ticket IT-4821 opened. <span class="kw">A technician</span> will call at 2&nbsp;pm.</span></div>
+          <div class="as-flow l"><span class="lbl">Invite the data team</span><i class="ln"></i><span class="sub"><b class="as-agent">Calendar</b>: Invites for Room 4B at 10&nbsp;am sent to the data team.</span></div>
         </div>
       </div>
       <p class="hero-caption">Live demo: <a href="demo-draft.html">Draft an agent with AI</a> &middot; <a href="demo-search.html">Chat with agents</a> &middot; <a href="demo-trace.html">Trace an agent run</a></p>
@@ -100,8 +100,8 @@
   <section class="section" id="conversations">
     <div class="container">
       <div class="section-head center">
-        <h2>Let users converse with your enterprise&nbsp;agents</h2>
-        <p>Agents stay focused and independent, yet build on each other in a&nbsp;conversation.</p>
+        <h2>How a conversation works</h2>
+        <p>Agents stay independent, yet build on each other in a&nbsp;conversation.</p>
       </div>
       <div class="sc-wrap">
         <div class="convo hero-convo" aria-label="One conversation across two independent agents. Search matches the first request to the Travel desk agent, which asks for confirmation before booking. It matches a second request to the Reimbursements agent, which continues the same conversation and files the trip expenses.">
