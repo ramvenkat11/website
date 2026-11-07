@@ -157,3 +157,156 @@ Open discussion, 2026-11-04. Picked option C and built it into section 2 (uncomm
   Conversation context link is conversation.html#state, not #state.
 - Conversation subheading (Ram, 2026-11-05): "Agents stay focused and independent, yet build on
   each other in a conversation." American "focused"; "yet" for the contrast; "in" not "within".
+- Section 3 notes redone (Ram, 2026-11-05): conversation state is the conversation section's
+  job now, so note 6 no longer mentions saving the conversation. Note 1 is "The complete agent":
+  JSON with Python expressions, Draft with AI, agent editor, trace, validation, publishing.
+  Note 2 "Calling enterprise systems" (Ram's title) names what the profile carries and that
+  result holds the response. Note 3 "LLM calls" (Ram's title). Notes 4 and 5 unchanged.
+  notes/section3-notes.md overwritten with the new texts.
+- Hero first sentence (Ram, 2026-11-06): "Developers build agents that are task-focused and
+  describe them in plain English." Links: build -> framework.html, task-focused ->
+  docs/introduction/search2o-agents.html (was on "agents"), describe -> search.html#description.
+  Non-breaking hyphen in task-focused. "on the server" dropped from this sentence.
+
+## Rebuilt, 2026-11-06 (Ram: "Go for it")
+- Idea: an agent is a document, not a program. A program contains its plumbing; a document
+  names things and leaves them where they are. Against a harness subagent (a prompt the model
+  improvises from) the document holds the steps, and the model is one of them.
+- Figure: my_tickets.json (main with four steps: api, var, llm, output; no tool calling) on the
+  left, numbered step badges on the command keys, three names highlighted (helpdesk,
+  gpt5_mini, ticket_status). Three cards on the right show what the names stand for: the API
+  profile (URL, Authorization header reading the vault, pool), the LLM profile (vendor, key,
+  prices, six adapters) and the prompt (system, user, scope). Curved connectors drawn by a
+  small script in js/site.js (hidden under 860, where the figure stacks). File tab links
+  "JSON with Python expressions" to the syntax page.
+- Caption: "The server runs the steps. The model is one of them. Not a prompt the model
+  improvises from. Not a program you deploy." + Agent workflow link. Title and subheading
+  unchanged. The six notes are gone; notes/section3-notes.md is now history.
+
+## Split into two sections, 2026-11-06 (Ram)
+- New section #approach before #framework-runtime: the positioning. Three columns, A program
+  (LangChain, an agents SDK), A prompt (a Claude Code subagent, a Copilot agent), A spec
+  (Search2o, highlighted), each with a small silhouette, compared on six rows: what you write,
+  who works out the steps, who runs it, the same result every run, systems/time/cost bounded,
+  checked before users get it. Draft with AI is in the second row. Provisional title "Three
+  ways to build an agent" / "A program, a prompt, or a spec that a server runs." Plain
+  background (not .soft) so the other sections' backgrounds stay as they were. Under 700 the
+  three columns stack as cards with the row labels inside each.
+- Example section (#framework-runtime): title "Nothing new to learn", subheading "An agent is a
+  JSON document with Python expressions that spells out the steps. The agent server is the
+  program that runs it.", kicker line above the code card "Draft with AI wrote this from 'Tell
+  users where their open IT tickets stand.'", caption removed.
+
+## 2026-11-06, later: approach section dropped, code figure moved to the framework page
+
+Ram: "I changed my mind on the section: Three ways to build an agent. I don't want it anymore. In
+'Nothing new to learn': Remove the code - Once we introduce code, we have to start explaining
+everything. But, the current picture is good and keep it for the framework page - you can move it
+there now, if you want. Let's restart the discussion on this section - with the understanding that
+we are not going to show JSON code here - or show something minimal like 'Hello, World'".
+
+Done:
+- #approach section removed from html/index.html, with its CSS (#approach .ap-*), and the
+  #approach entry in the 24px h2 rule.
+- #framework-runtime on the home page keeps only its head (Nothing new to learn + subtitle) as a
+  placeholder while the section is rethought.
+- The my_tickets.json figure (kick line, code card, three cards, connectors) moved to
+  html/framework.html as a new section #outside-the-agent between #second-agent and #commands,
+  head "The agent holds only the steps". CSS rescoped from #framework-runtime .pl-* to .pl-* (phone
+  pre rules needed .pl-fig .pl-code pre to beat .codecard pre); .fw-page .pl-wrap left-aligned;
+  site.js connector code now finds .pl-fig on any page.
+
+Open: what the home section shows instead of code.
+
+## 2026-11-06, later: the section rebuilt as one picture
+
+Ram on the two label-only mockups (notes/nothing-new-mockups.html): "Both break the basic rule I
+gave you ... do not write essays on the home page." Then: "You know the product so well. Yet, you
+are failing miserably to design this section reasonably well. What is the issue?" My answer: I
+design by enumeration; the section has to prove one sentence (the agent is a small document of
+steps, the server is the program) with a picture, not a list. Ram: "Go ahead".
+
+Built in html/index.html #framework-runtime: a dark "Agent server" block (code-card colours and
+border) holding a small white document my_tickets.json with three numbered steps (api, llm,
+output) and six dashed parts (Connections, Models, Streaming, Conversation state, Limits, Audit
+log). One line under it: "Draft with AI writes it from one sentence." CSS under
+#framework-runtime .srv-*; stacks at 700 (document centred, parts in two columns).
+
+## 2026-11-06, later: head settled, figure is two circles
+
+Title "As dependable as code, as easy as a prompt". Subtitle (Ram's words, second sentence softened
+at his concern that "First draft created" implied no editing): "Safe, cost-efficient and
+observable, like an agent coded in Python. Drafted from a description, like a prompt."
+
+Ram rejected the server-block picture and asked for two intersecting circles: development on one
+side (Draft with AI, Code editor, Validate, Publish, Describe), runtime on the other, a small RAG
+agent in the overlap. Built as #framework-runtime .vn-*: Development circle (blue) and Runtime
+circle (teal; Guardrails, Secret vault, Runtime limits, Audit log, Cost report, each a link), the
+agent ask_the_docs.json with steps api, llm, output in the lens. Circles side by side above 600,
+stacked below it. The Draft with AI line under the figure is gone; it is a pill in the circle.
+
+## 2026-11-06, later: Ram wants the section to sell, not explain
+
+Ram on the Code vs Prompt mockup: Draft with AI must stay on the Prompt side, the other Prompt
+points were weak. Then: "It needs to sell - not explain - but it does need to talk about JSON with
+Python expressions." Three directions offered, no edits yet:
+
+A (recommended). Keep his two circles and the JSON lens, but fill the circles with evidence instead
+of adjectives. Prompt circle (left): a chat bubble with one sentence, "Answer questions from the
+docs site.", and a Draft with AI button. Code circle (right): a run receipt: Validated, Allowlist:
+docs API, 1.8 s of 30 s, $0.003, Audit log. The lens keeps ask_the_docs.json; a caption under it
+carries the format: "JSON with Python expressions. Nothing new to learn." (or "The whole agent:
+20 lines of JSON with Python expressions.").
+
+B. A positioning map: Dependable up, Easy to create right; Coded agents (LangChain, agent SDKs)
+top-left, Prompt agents (Claude Code, Copilot agents) bottom-right, the JSON card top-right with
+dotted guide lines from both. Draws the title literally; risk: analyst-slide cliché, and it ranks
+named products below us.
+
+C. Same circles, three benefit lines a side instead of five adjectives. Code: Validated before
+release, Runs inside limits, Every run on record. Prompt: Drafted from a sentence, Readable by
+anyone, Live on the next run. Same caption as A.
+
+Rejected: a three-column check-mark table (Python project / JSON with Python expressions / a page
+of text). Honest marks for LangChain are "you build it" and "LangSmith", which makes it muddy;
+crisp marks would be unfair.
+
+## 2026-11-06, later: full freedom, one mockup
+
+Ram: "You can completely move away from circles ... You can change the title and sub title. You
+have full freedom. But I need something good." Built notes/sell-strip.html: a three-beat strip,
+Describe (a chat bubble, "Answer questions from the docs site.") > Draft with AI > The agent
+(ask_the_docs.json code card, Python expressions in yellow, caption "JSON with Python expressions")
+> Validate, publish > Every run (a receipt: Validated, Allowlist docs API, API key from the vault,
+Time 1.8 s of 30 s, Cost $0.003 of $0.05, Audit log run 4812). Subtitle changed to "A sentence
+becomes an agent in JSON with Python expressions. The agent server validates it, then guards and
+records every run." Stacks below 900. Rendered 1280 to 320 light and dark; sweep 0 of 241.
+
+Ram: "The idea is fine. We have to discuss details. You can place this in index.html." Placed in
+html/index.html #framework-runtime (replacing the .vn-* circles; CSS now #framework-runtime .ss-*).
+His three details applied: section head widened to 860px for a longer subheading; code card fixed
+at 300px wide; the description is a quiet input-style box (soft background, body text), not a navy
+bubble. Three columns from 1000 up, stacked below. Open: the Every run line items (his: "we can do
+that later"), the subheading wording.
+
+Ram: "Describe" in the hero means the search description, so showing a description sentence here
+confuses the two; not sure about the right-side box and the arrows; bring back the feature-pill
+boxes, smaller, around the central JSON. Done in html/index.html: the code card in the middle,
+a Development box (Draft with AI, Code editor, Validate, Publish, Describe) on the left and a
+Runtime box (Guardrails, Secret vault, Runtime limits, Audit log, Cost report) on the right, each
+a 300px card of wrapped pills, no arrows. Below 1000 the code comes first and the two boxes sit
+side by side under it; below 420 they stack. Subtitle unchanged, still to be reworked by Ram.
+
+Ram: "I was talking about the boxes with pills we had before: LLM, dev, runtime etc", i.e. the
+six plumbing boxes of the old "All the plumbing taken care of" figure (commit 1757653b^). Rebuilt
+in html/index.html: a dashed "Agent server" frame holding the code card in the middle, three boxes
+on the left (Development environment, Agent workflow, LLMs) and three on the right (Runtime, State
+management, Routing), chips and links as before, everything smaller (13.5px titles, 11.5px chips).
+Below 1000 the code sits on top and the boxes form two columns; below 600 one column. Ram also:
+"no need to use output - just use streamOutput": the agent is now api + llm with
+"streamOutput": true, no output command.
+
+## Syntax section (2026-11-06)
+Ram dropped the feature boxes. The section now explains the syntax: code card with one tool
+function (findOrders, db), and three cards beside it: Python expressions, Tool calling,
+20 commands. Two-tool version was built first and cut to one for height.

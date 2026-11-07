@@ -65,7 +65,7 @@
     <div class="container">
       <div class="hero-head as-head">
         <h1 class="hero-claim">Transform your enterprise AI with Search2o agent server</h1>
-        <p class="hero-lead">Developers <a class="hero-attr" href="framework.html">build</a> and <a class="hero-attr" href="search.html#description">describe</a> task-focused <a class="hero-attr" href="docs/introduction/search2o-agents.html">agents</a> on the server. Users just ask for what they need: the built-in <a class="hero-attr" href="search.html">search</a> picks the right agent, and the client <a class="hero-attr" href="conversation.html">runs</a> it on the server. Hundreds of agents work as one <a class="hero-attr" href="docs/runtime/controlled-execution.html">safe</a> and <a class="hero-attr" href="docs/reports/index.html">observable</a> application for any client, including an agent harness.</p>
+        <p class="hero-lead">Developers <a class="hero-attr" href="framework.html">build</a> agents that are <a class="hero-attr" href="docs/introduction/search2o-agents.html">task&#8209;focused</a>, and <a class="hero-attr" href="search.html#description">describe</a> them in plain English. Users just ask for what they need: the built-in <a class="hero-attr" href="search.html">search</a> picks the right agent, and the client <a class="hero-attr" href="conversation.html">runs</a> it on the server. Hundreds of agents work as one <a class="hero-attr" href="docs/runtime/controlled-execution.html">safe</a> and <a class="hero-attr" href="docs/reports/index.html">observable</a> application for any client, including an agent harness.</p>
       </div>
       <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example an IT helpdesk agent that handles employees' IT support requests. Troubleshoots hardware and software, and manages accounts and access. The Search2o agent server holds hundreds of agents. A client calls search with a request such as My laptop keeps freezing, and search returns the IT helpdesk agent. The client calls execAgent with the conversation, the agent and the request, and receives the agent's output, for example Ticket IT-4821 opened. A technician will call at 2 pm.">
         <div class="as-side as-dev">
@@ -137,55 +137,70 @@
       </div>
     </div>
   </section>
-
   <section class="section soft" id="framework-runtime">
     <div class="container">
       <div class="section-head center">
-        <h2>All the plumbing taken care&nbsp;of</h2>
-        <p>Your agent code is just the business&nbsp;logic.</p>
+        <h2>Agents as dependable as code, yet as easy to create as a&nbsp;prompt</h2>
+        <p>A sentence becomes an agent in JSON with Python expressions. The agent server validates it, then guards and records every&nbsp;run.</p>
       </div>
-      <div class="pl-wrap">
-        <figure class="pl-fig" aria-label="A complete IT helpdesk agent, annotated. The file has two functions. openTicket declares a summary argument and calls the helpdesk API with an api command, then returns the result. main runs an llm command that names the gpt5_mini profile and the helpdesk prompt, lists openTicket as a tool, and streams its output. Six notes say what the agent server does around these lines: Draft with AI wrote the file from a sentence, the API profile holds the connection details, the LLM profile names the model and any of six adapters can serve it, the prompt lives in the UI, the server runs the tool calling loop, and after the answer it streams, saves the conversation, enforces limits and logs the run.">
-          <div class="codecard pl-code"><div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">it_helpdesk.json</span></div><pre><code>{
+      <figure class="ss" aria-label="A Search2o support agent in JSON with Python expressions. Its llm command calls the model with one tool function, findOrders, a database call, and streams the answer. Beside the code: Python expressions, a string value in braces is Python and runs on every call; Tool calling, your functions, MCP tools and vendor tools, with the server running the loop; and the 20 commands: var, if, while, for, break, continue, func, return, parallel, llm, memory, api, db, ask, output, end, fail, progress, trace, log.">
+        <div class="codecard ss-agent">
+          <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><a class="ss-bar-title" href="docs/agent-definition/syntax.html">Agent code is just JSON with Python&nbsp;expressions</a></div>
+          <pre><code>{
   <span class=key>"functions"</span>: {
-    <span class=key>"openTicket"</span>: {<span class="pl-an">1</span>
-      <span class=key>"description"</span>: <span class=str>"Opens a ticket."</span>,
+    <span class=key>"findOrders"</span>: {
+      <span class=key>"description"</span>: <span class=str>"Lists a customer's orders."</span>,
       <span class=key>"args"</span>: {
-        <span class=key>"summary"</span>: { <span class=key>"type"</span>: <span class=str>"str"</span> }
+        <span class=key>"email"</span>: {
+          <span class=key>"type"</span>: <span class=str>"str"</span>,
+          <span class=key>"description"</span>: <span class=str>"The customer's email."</span>
+        }
       },
       <span class=key>"commands"</span>: {
-        <span class="pl-hl"><span class=key>"api"</span>: {</span><span class="pl-an">2</span>
-          <span class=key>"profile"</span>: <span class=str>"helpdesk"</span>,
-          <span class=key>"path"</span>: <span class=str>"/tickets"</span>,
-          <span class=key>"body"</span>: {
-            <span class=key>"summary"</span>: <span class=str>"{ summary }"</span>
-          }
+        <span class=key>"db"</span>: {
+          <span class=key>"profile"</span>: <span class=str>"orders"</span>,
+          <span class=key>"sql"</span>: <span class=str>"<span class=ex>{ sql.recent_orders }</span>"</span>
         },
-        <span class=key>"return"</span>: <span class=str>"{ result }"</span>
+        <span class=key>"return"</span>: <span class=str>"<span class=ex>{ {'orders': result} }</span>"</span>
       }
     },
     <span class=key>"main"</span>: {
       <span class=key>"commands"</span>: {
         <span class=key>"llm"</span>: {
-          <span class="pl-hl"><span class=key>"profile"</span>: <span class=str>"gpt5_mini"</span>,</span><span class="pl-an">3</span>
-          <span class="pl-hl"><span class=key>"prompt"</span>: <span class=str>"helpdesk"</span>,</span><span class="pl-an">4</span>
-          <span class="pl-hl"><span class=key>"functions"</span>: [<span class=str>"openTicket"</span>],</span><span class="pl-an">5</span>
-          <span class="pl-hl"><span class=key>"streamOutput"</span>: <span class=kw>true</span></span><span class="pl-an">6</span>
+          <span class=key>"profile"</span>: <span class=str>"gpt5_mini"</span>,
+          <span class=key>"prompt"</span>: <span class=str>"support"</span>,
+          <span class=key>"functions"</span>: [<span class=str>"findOrders"</span>],
+          <span class=key>"streamOutput"</span>: <span class=tk-bool>true</span>
         }
       }
     }
   }
-}</code></pre></div>
-          <ol class="pl-notes">
-            <li><span class="pl-an">1</span><b>Written from a sentence</b><a href="docs/development/draft-with-ai.html">Draft with AI</a> wrote this file from &ldquo;handles employees&rsquo; IT support requests&rdquo;. <a href="docs/development/trace-and-validation.html">Validation</a> ran it once with a full trace. <a href="docs/development/publishing.html">Publishing</a> gave it a version and a description that search indexes.</li>
-            <li><span class="pl-an">2</span><b>One command calls your API</b>The host, credentials, headers, connection pool and error handling come from the <a href="docs/profiles/index.html">helpdesk profile</a>. The agent holds only the path and the body. Databases and MCP servers work the same way.</li>
-            <li><span class="pl-an">3</span><b>Any model</b>The profile names the model and holds the key. <a href="docs/llm/vendors.html">Six adapters</a> are bundled: OpenAI, Anthropic and Gemini, and Ollama, vLLM and SGLang for models you host. Change the model by changing this one word.</li>
-            <li><span class="pl-an">4</span><b>Prompts live outside the code</b>The <a href="docs/agent-definition/prompts.html">prompt</a> is written and changed in the UI, so a wording change is not a code change.</li>
-            <li><span class="pl-an">5</span><b>The tool loop is the server&rsquo;s job</b>The model calls <code>openTicket</code> when a request needs a ticket. The server runs the call and feeds the result back. <a href="docs/commands/llm.html#tool-calling">Tool calling</a></li>
-            <li><span class="pl-an">6</span><b>Everything after the answer</b>The answer streams to the client. The conversation is saved for the next turn. Limits, guardrails, the audit log and the cost report need nothing from the agent. <a href="runtime.html">Runtime</a></li>
-          </ol>
-        </figure>
-      </div>
+}</code></pre>
+        </div>
+        <div class="ss-notes">
+          <div class="ss-note">
+            <a class="ss-note-title" href="docs/agent-definition/python-expressions.html">Python expressions</a>
+            <p class="ss-note-line">A string value in braces is Python, run on every&nbsp;call</p>
+            <div class="ss-exs"><code>{ sql.recent_orders }</code><code>{ {'orders': result} }</code></div>
+          </div>
+          <div class="ss-note">
+            <a class="ss-note-title" href="docs/commands/llm.html#tool-calling">Tool calling</a>
+            <p class="ss-note-line">Name the tools in the llm command. The server runs the&nbsp;loop</p>
+            <div class="ss-exs"><a href="docs/agent-definition/functions.html">Your functions</a><a href="docs/profiles/mcp-servers.html">MCP tools</a><a href="docs/commands/llm.html#fields">Vendor tools</a></div>
+          </div>
+          <div class="ss-note ss-cmds">
+            <a class="ss-note-title" href="docs/commands/index.html">20 commands</a>
+          <div class="ss-cmd-group"><span class="ss-cmd-label">Variables</span><a class="ss-cmd" href="docs/commands/var.html">var</a></div>
+          <div class="ss-cmd-group"><span class="ss-cmd-label">Flow</span><a class="ss-cmd" href="docs/commands/if.html">if</a><a class="ss-cmd" href="docs/commands/while.html">while</a><a class="ss-cmd" href="docs/commands/for.html">for</a><a class="ss-cmd" href="docs/commands/break.html">break</a><a class="ss-cmd" href="docs/commands/continue.html">continue</a><a class="ss-cmd" href="docs/commands/func.html">func</a><a class="ss-cmd" href="docs/commands/return.html">return</a><a class="ss-cmd" href="docs/commands/parallel.html">parallel</a></div>
+          <div class="ss-cmd-group"><span class="ss-cmd-label">LLM</span><a class="ss-cmd" href="docs/commands/llm.html">llm</a><a class="ss-cmd" href="docs/commands/memory.html">memory</a></div>
+          <div class="ss-cmd-group"><span class="ss-cmd-label">Systems</span><a class="ss-cmd" href="docs/commands/api.html">api</a><a class="ss-cmd" href="docs/commands/db.html">db</a></div>
+          <div class="ss-cmd-group"><span class="ss-cmd-label">People</span><a class="ss-cmd" href="docs/commands/ask.html">ask</a></div>
+          <div class="ss-cmd-group"><span class="ss-cmd-label">Output</span><a class="ss-cmd" href="docs/commands/output.html">output</a></div>
+          <div class="ss-cmd-group"><span class="ss-cmd-label">End</span><a class="ss-cmd" href="docs/commands/end.html">end</a><a class="ss-cmd" href="docs/commands/fail.html">fail</a></div>
+          <div class="ss-cmd-group"><span class="ss-cmd-label">Observe</span><a class="ss-cmd" href="docs/commands/progress.html">progress</a><a class="ss-cmd" href="docs/commands/trace.html">trace</a><a class="ss-cmd" href="docs/commands/log.html">log</a></div>
+          </div>
+        </div>
+      </figure>
     </div>
   </section>
   <section class="section" id="user-interfaces">

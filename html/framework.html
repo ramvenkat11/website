@@ -174,6 +174,74 @@
     </div>
   </section>
 
+  <section class="fw-sec" id="outside-the-agent">
+    <div class="container">
+      <div class="section-head">
+        <h2>The agent holds only the steps</h2>
+        <p>Connection details, the model and its key, and the prompt text live outside the agent, in profiles and prompts that every agent can name. This agent lists a user&rsquo;s open IT tickets and has the model say where each one stands.</p>
+      </div>
+      <div class="pl-wrap">
+        <figure class="pl-fig" aria-label="A complete agent beside the three things it names, with the sentence Draft with AI wrote it from above the code. The file my_tickets.json has one function, main, with four steps: an api command that lists the user's open tickets through the helpdesk profile, a var command that keeps the result as tickets, an llm command that names the gpt5_mini profile and the ticket_status prompt, and an output command. Three cards show what the names stand for on the server: the helpdesk API profile with its URL, its key read from the secret vault and its connection pool; the gpt5_mini LLM profile with its vendor, model, key and prices; and the ticket_status prompt with its system text, user text and scope.">
+          <p class="pl-kick"><a href="docs/development/draft-with-ai.html">Draft with AI</a> wrote this from &ldquo;Tell users where their open IT tickets stand.&rdquo;</p>
+          <div class="codecard pl-code">
+            <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">my_tickets.json</span><a class="pl-lang" href="docs/agent-definition/syntax.html">JSON with Python expressions</a></div>
+            <pre><code>{
+  <span class=key>"functions"</span>: {
+    <span class=key>"main"</span>: {
+      <span class=key>"commands"</span>: {
+        <span class="pl-step">"api"</span>: {
+          <span class=key>"profile"</span>: <span class="str pl-ref" data-ref="helpdesk">"helpdesk"</span>,
+          <span class=key>"path"</span>: <span class=str>"/tickets"</span>,
+          <span class=key>"queryParams"</span>: {
+            <span class=key>"user"</span>: <span class=str>"{ sys.userEmail }"</span>,
+            <span class=key>"status"</span>: <span class=str>"open"</span>
+          }
+        },
+        <span class="pl-step">"var"</span>: {
+          <span class=key>"tickets"</span>: <span class=str>"{ result }"</span>
+        },
+        <span class="pl-step">"llm"</span>: {
+          <span class=key>"profile"</span>: <span class="str pl-ref" data-ref="gpt5_mini">"gpt5_mini"</span>,
+          <span class=key>"prompt"</span>: <span class="str pl-ref" data-ref="ticket_status">"ticket_status"</span>
+        },
+        <span class="pl-step">"output"</span>: <span class=str>"{ result }"</span>
+      }
+    }
+  }
+}</code></pre>
+          </div>
+          <div class="pl-side">
+            <div class="pl-card" data-ref="helpdesk">
+              <span class="pl-kind"><a href="docs/profiles/api-profiles.html">API profile</a></span>
+              <span class="pl-name">helpdesk</span>
+              <span class="pl-row"><span>URL</span><span><code>https://helpdesk.example.com/api</code></span></span>
+              <span class="pl-row"><span>Header</span><span><code>Authorization: Bearer { sys.secret['HELPDESK_KEY'] }</code></span></span>
+              <span class="pl-row"><span>Pool</span><span>8 connections, 10&nbsp;s timeout, 3&nbsp;retries</span></span>
+              <span class="pl-foot">One profile for every agent that calls the helpdesk.</span>
+            </div>
+            <div class="pl-card" data-ref="gpt5_mini">
+              <span class="pl-kind"><a href="docs/profiles/llm-profiles.html">LLM profile</a></span>
+              <span class="pl-name">gpt5_mini</span>
+              <span class="pl-row"><span>Vendor</span><span>OpenAI, <code>gpt-5-mini</code></span></span>
+              <span class="pl-row"><span>Key</span><span><code>{ sys.secret['OPENAI_API_KEY'] }</code></span></span>
+              <span class="pl-row"><span>Prices</span><span>Per million tokens in and out, for the cost report</span></span>
+              <span class="pl-foot"><a href="docs/llm/vendors.html">Six adapters</a>: OpenAI, Anthropic, Gemini, Ollama, vLLM, SGLang.</span>
+            </div>
+            <div class="pl-card" data-ref="ticket_status">
+              <span class="pl-kind"><a href="docs/agent-definition/prompts.html">Prompt</a></span>
+              <span class="pl-name">ticket_status</span>
+              <span class="pl-row"><span>System</span><span>You are the IT helpdesk. The user&rsquo;s open tickets: <code>{ tickets }</code>. Say where each one stands, in under 80 words.</span></span>
+              <span class="pl-row"><span>User</span><span><code>{ sys.query }</code></span></span>
+              <span class="pl-row"><span>Scope</span><span>conversation</span></span>
+              <span class="pl-foot">Edited in the UI, not in the code.</span>
+            </div>
+          </div>
+          <svg class="pl-links" aria-hidden="true"></svg>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <section class="fw-sec" id="commands">
     <div class="container">
       <div class="section-head">

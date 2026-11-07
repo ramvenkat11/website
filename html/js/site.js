@@ -434,3 +434,30 @@ function resetAltcha(widget) {
   document.addEventListener("click", function (e) { tips.forEach(function (tip) { if (!tip.contains(e.target)) close(tip); }); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") tips.forEach(close); });
 })();
+
+(function () {
+  var fig = document.querySelector(".pl-fig");
+  if (!fig) return;
+  var svg = fig.querySelector(".pl-links");
+  var refs = fig.querySelectorAll(".pl-ref[data-ref]");
+  function draw() {
+    if (!svg || getComputedStyle(svg).display === "none") return;
+    var base = fig.getBoundingClientRect();
+    var out = "";
+    refs.forEach(function (ref) {
+      var card = fig.querySelector('.pl-card[data-ref="' + ref.getAttribute("data-ref") + '"]');
+      if (!card) return;
+      var a = ref.getBoundingClientRect(), b = card.getBoundingClientRect();
+      var x1 = a.right - base.left + 4, y1 = a.top + a.height / 2 - base.top;
+      var x2 = b.left - base.left, y2 = b.top + 22 - base.top;
+      var mx = (x1 + x2) / 2;
+      out += '<path d="M' + x1 + ' ' + y1 + ' C' + mx + ' ' + y1 + ' ' + mx + ' ' + y2 + ' ' + x2 + ' ' + y2 + '"/>';
+      out += '<circle cx="' + x2 + '" cy="' + y2 + '" r="3"/>';
+    });
+    svg.innerHTML = out;
+  }
+  draw();
+  window.addEventListener("resize", draw);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+  window.addEventListener("load", draw);
+})();
