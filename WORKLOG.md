@@ -1884,3 +1884,19 @@ Dashed Agent server frame, tag and the four pill boxes removed (no .ss-tag/.ss-p
 left). Stacks below 860. Pre font 10px, 9px below 360, 8.5px below 340 (longest line 51 chars).
 Verified 1280/1000/860/700/412/375/360/320 light and dark; sweep 0 of 241.
 Next: Ram reviews; subheading still opens "A sentence becomes an agent".
+
+## 2026-11-06: Nothing new to learn, drafted with AI
+Ram: show that the agent can be drafted with AI, no more boxes, title "Nothing new to learn",
+subtitle the earlier one ("An agent is a JSON document with Python expressions that spells out
+the steps. The agent server is the program that runs it."). #framework-runtime figure is now
+.dr: a chat bubble "Help customers with their orders." -> "Draft with AI" arrow (links to
+docs/development/draft-with-ai.html) -> orders.json code card (one tool function findOrders,
+db + return, main llm with functions and streamOutput) with numbered markers on three lines,
+and margin notes 1 Python expression, 2 Tool calling, 3 20 commands with the command names as
+a plain mono strip (db, return, llm in bold ink; each a link to docs/commands/*.html).
+Grid 190|72|400|1fr at >=1100 (max 960); 1099 and below notes move under the code in two
+columns; 760 and below one column with a vertical arrow. Pre 10px, 9px <=360, 8.5px <=340.
+Fixes on the way: arrow was invisible in light mode (now --muted at .55); dot separators in the
+strip landed at line starts when wrapping (now flex gaps, no dots); stacked bubble centred.
+Verified 1280/1100/1000/860/760/700/412/384/375/360/320 light and dark; sweep 0 of 241.
+Old .ss-* markup and CSS removed. Next: Ram reviews.
