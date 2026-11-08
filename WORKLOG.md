@@ -1935,3 +1935,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Hero live demo caption now links only "Chat with agents" (demo-search.html); the draft and trace demo links are gone from the hero.
 - #conversations: "Live demo: Trace an agent run" caption (demo-trace.html) added under the conversation figure, same .hero-caption style as the hero.
 - Mock of two inline-annotation layouts for #conversations (A transcript one column, B grid of siblings) at scratchpad compare-conversation.html; not in the project. Awaiting Ram's pick.
+- #conversations rebuilt as one grid (.cv): title, turns and notes are siblings with r2..r6 rows; notes (.cv-note) sit
+  beside their turn at every width (1.7fr/1fr desktop, 1.15fr/1fr with smaller type at <=860, inline blue-ruled
+  notes below 360). Card frame is .cv::before spanning column 1. Old .hero-convo/.note-bubble/.sc-notes/.mk markup and
+  CSS removed; dark shadow rules extended to .cv::before. Generator: scratchpad conversation-c.mjs.
+  Verified 1280/1000/860/700/412/384/375/360/320 light+dark; sweep 0 of 241.
