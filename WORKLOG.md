@@ -1996,3 +1996,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Ram then removed "on the agent server" again; html/index.html:68 is back to "...publish task-focused agents. They describe...". Re-rendered after the change.
 - Ram asked for hero paragraph 1 to fit on one line at desktop. Measured: box 780px, text 869px at 16px. Offered wider box (900px) or dropping "task-focused" from the link; Ram chose the cut. html/index.html:68 link text is now "agents" (~765px). Rendered nine widths light+dark: 18 clean.
 - Ram reverted the cut: html/index.html:68 link is "task-focused agents" again (two lines at desktop, as before; rendered clean earlier this session).
+- Hero figure second request (html/index.html:94) is now "Reorder the part." (was "Order enough to bring it back up to 60."); aria-label on line 72 updated to match. Rendered .appsrv at nine widths light+dark: 18 clean; sweep 0 of 241.
