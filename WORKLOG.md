@@ -2020,3 +2020,10 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - New generator scratchpad agent-figure4.mjs (replaces agent-figure3.mjs as source of truth): 8 grid rows, 23 code lines. openOrders(email): api profile orders, path f-string, return list comprehension keeping open orders; main: func openOrders with sys.userEmail, return result. Notes: Structure r1, Commands r3 (api line), Python expression r5 (return comprehension), main r7. All notes span 2 rows, top-aligned; no mid rows, no margin-top hacks.
 - Rendered nine widths light+dark: 18 clean, sweep 0 of 241. Desktop/tablet: no gaps in JSON. Phones (412 and below): notes taller than their rows, so small gaps appear after "api": {, before the } after return, and before "main". Reported to Ram with options (shorter notes, or fold main into Structure).
 - Uncommitted; no upload.
+
+## 2026-11-08 Section 3 figure: simple RAG (api + llm), main only
+- Ram: one function, no return (main uses output); then: must show llm too, api + llm as a simple RAG. Generator is now scratchpad agent-figure8.mjs (figure4..7 are the intermediate steps).
+- Agent: main with api (profile knowledgeBase, queryParams q = sys.query), var passages = [hit[text] for hit in result[:5]], llm (profile gpt5_mini, prompt answer, streamOutput true). 17 code lines, 6 grid rows.
+- Notes: Structure (r1, folded main in), Commands (api line, 20 commands link), Python expression (var line, one sentence), Prompt (prompt line; link to prompts page and llm command page).
+- Layout lessons: a block-level .hl followed by a newline inside pre-wrap adds a blank line (removed); a note spanning two auto rows gets its extra height split across both rows, so the first highlight row and the last row are merged with their following lines, which moves the overflow to the card bottom / before the api band instead of inside a block.
+- Rendered nine widths light+dark: 18 clean, sweep 0 of 241. Desktop/tablet no gaps. Phones: one gap before the "api" band (Structure note taller than its four lines), ~45px at 412, ~70px at 320. Reported to Ram.
