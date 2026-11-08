@@ -1976,3 +1976,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #framework-runtime Structure note: "An agent is a set of functions. Each function contains a list of commands. There are 20 commands in all."
 - #framework-runtime: Tool function note offset raised to 62px (<=560) and 78px (<=360) so the longer Structure note no longer touches it on phones.
 - #framework-runtime Tool function note: "description and args are optional fields on a function. They are needed only when a function is used in tool calling." (field names in code).
+- #framework-runtime Python expression note: "A string value in braces is interpreted as Python."
