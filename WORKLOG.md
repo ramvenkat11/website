@@ -1933,3 +1933,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #conversations note 3 (both copies) now ends: "...the agent's variables and its prompts. A prompt is the chain of messages exchanged with an LLM, kept in the conversation in a standard format."
 - #conversations subtitle: "Each agent in a conversation picks up the chain of LLM messages the previous agent left behind."
 - Hero live demo caption now links only "Chat with agents" (demo-search.html); the draft and trace demo links are gone from the hero.
+- #conversations: "Live demo: Trace an agent run" caption (demo-trace.html) added under the conversation figure, same .hero-caption style as the hero.
