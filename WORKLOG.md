@@ -1970,3 +1970,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
   expression note shortened to one line. 13 grid rows. Generator agent-figure3.mjs. Verified 1280..320 light+dark;
   sweep 0 of 241.
 - Hero p1 link text back to "task-focused agents" (Ram).
+- #framework-runtime figure: Structure note added at the opening brace ("A set of functions, each a list of commands. There are 20 commands in all."), 20 commands/db note removed; Tool function note pushed down (margin-top 35/48/42/56px by width) so the two do not touch. 12 grid rows. Sweep 0 of 241.
