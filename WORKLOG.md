@@ -2012,3 +2012,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Rebuilt docs: 13 built pages changed (11 edited pages + introduction/index.html and system-management/index.html, which repeat the child-page leads). 0 left in html/docs.
 - Rendered home .hero-arch and docs .ui-fan at nine widths light+dark: 36 clean views; home sweep 0 of 241.
 - Uncommitted for Ram; no upload.
+- Section 4 title (html/index.html:181) is now "How it fits into your organization" (Ram: name what the section is, like section 2, rather than a benefit). Subtitle unchanged; the "no internal dependencies" point is now nowhere on the page, offered as a subtitle addition. A sed & slip garbled the line once; fixed before rendering. Rendered the section head at nine widths light+dark: 18 clean.
