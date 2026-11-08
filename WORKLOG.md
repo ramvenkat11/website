@@ -1950,3 +1950,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
   Python expression, 20 commands, Tool calling), two columns at every width down to 560, inline notes inside the card
   below. Code lines wrap below 860. Old .dr figure and CSS removed. Caption "Live demo: Draft with AI" (demo-draft.html).
   Verified 1280..320 light+dark; sweep 0 of 241.
+- #framework-runtime figure, second pass (Ram: must keep two columns on mobile and point at the lines): grid is now
+  10 rows (bar, then plain code / highlighted block alternating); each highlighted block (.fr-code.hlrow) is its own
+  row, tinted blue with a numbered marker, and its note (.fr-note, same number) shares the row. Two columns at every
+  width (1.3fr/1fr; 1.4fr/1fr <=860; 1.25fr/1fr <=560 with 9px code); no stacking. Generator: scratchpad
+  agent-figure2.mjs. Verified 1280..320 light+dark; sweep 0 of 241.
