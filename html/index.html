@@ -134,37 +134,38 @@
         <h2>Build agents interactively with AI, like vibe&nbsp;coding</h2>
         <p>An agent is a structured JSON document with a schema, so <a href="docs/development/draft-with-ai.html">AI generates</a> well&#8209;formed&nbsp;agents.</p>
       </div>
-      <div class="fr" aria-label="An agent. It is a JSON document with two functions. findOrders is a tool function: it has a description and a typed, described argument, email; its commands run a db query with email as a parameter and return the rows with a Python expression. main runs an llm command that names findOrders as a tool and streams the answer. Seven notes point at the lines: Structure, Tool function, Python expression, main, LLM profile, Prompt, Tool calling.">
+      <div class="fr" aria-label="An agent. It is a JSON document with two functions. findOrders is a tool function: it has a description and a typed, described argument, email; its commands run a db query with email as a parameter and return the rows through the result variable. main runs an llm command that names findOrders as a tool and streams the answer. Eight notes point at the lines: Structure, Tool function, Python expression, result, main, LLM profile, Prompt, Tool calling.">
         <pre class="fr-code r1 hlrow"><code><span class="hl">{</span></code></pre>
-        <aside class="fr-note r1"><b><a href="docs/agent-definition/structure.html">Structure</a></b>A set of functions, each a list of commands. There are <a href="docs/commands/index.html">20 commands</a> in&nbsp;all.</aside>
+        <aside class="fr-note r1"><b><a href="docs/agent-definition/structure.html">Structure</a></b>An agent is a set of functions. Each function contains a list of commands. There are <a href="docs/commands/index.html">20 commands</a> in&nbsp;all.</aside>
         <pre class="fr-code r2"><code>  <span class=key>"functions"</span>: {
     <span class=key>"findOrders"</span>: {</code></pre>
         <pre class="fr-code r3 hlrow"><code><span class="hl">      <span class=key>"description"</span>: <span class=str>"Lists a customer's orders."</span>,
       <span class=key>"args"</span>: {
         <span class=key>"email"</span>: { <span class=key>"type"</span>: <span class=str>"str"</span>, <span class=key>"description"</span>: <span class=str>"Customer email."</span> }
       },</span></code></pre>
-        <aside class="fr-note r3 fn"><b><a href="docs/agent-definition/functions.html">Tool function</a></b>A function with a description and typed, described arguments. The model can call it as a&nbsp;tool.</aside>
+        <aside class="fr-note r3 fn"><b><a href="docs/agent-definition/functions.html">Tool function</a></b><code>description</code> and <code>args</code> are optional fields on a function. They are needed only when a function is used in tool&nbsp;calling.</aside>
         <pre class="fr-code r4"><code>      <span class=key>"commands"</span>: {
         <span class=key>"db"</span>: {
           <span class=key>"profile"</span>: <span class=str>"orders"</span>,
-          <span class=key>"sql"</span>: <span class=str>"select * from orders where email = :email"</span>,
-          <span class=key>"params"</span>: { <span class=key>"email"</span>: <span class=str>"<span class=ex>{ email }</span>"</span> }
-        },</code></pre>
-        <pre class="fr-code r5 hlrow"><code><span class="hl">        <span class=key>"return"</span>: <span class=str>"<span class=ex>{ result }</span>"</span></span></code></pre>
-        <aside class="fr-note r5"><b><a href="docs/agent-definition/python-expressions.html">Python expression</a></b>A string value in braces is&nbsp;Python.</aside>
-        <pre class="fr-code r6"><code>      }
+          <span class=key>"sql"</span>: <span class=str>"select * from orders where email = :email"</span>,</code></pre>
+        <pre class="fr-code r5 hlrow mid"><code><span class="hl">          <span class=key>"params"</span>: { <span class=key>"email"</span>: <span class=str>"<span class=ex>{ email }</span>"</span> }</span></code></pre>
+        <aside class="fr-note r5 mid"><b><a href="docs/agent-definition/python-expressions.html">Python expression</a></b>A string value in braces is interpreted as&nbsp;Python.</aside>
+        <pre class="fr-code r6"><code>        },</code></pre>
+        <pre class="fr-code r7 hlrow mid"><code><span class="hl">        <span class=key>"return"</span>: <span class=str>"<span class=ex>{ result }</span>"</span></span></code></pre>
+        <aside class="fr-note r7 mid"><b><a href="docs/agent-definition/variables.html#result-and-exc">result</a></b>A variable the runtime sets to the last command&rsquo;s result. Here, the query&nbsp;rows.</aside>
+        <pre class="fr-code r8"><code>      }
     },</code></pre>
-        <pre class="fr-code r7 hlrow"><code><span class="hl">    <span class=key>"main"</span>: {</span></code></pre>
-        <aside class="fr-note r7"><b><a href="docs/agent-definition/structure.html#main">main</a></b>Every run starts here, with the user&rsquo;s&nbsp;request.</aside>
-        <pre class="fr-code r8"><code>      <span class=key>"commands"</span>: {
+        <pre class="fr-code r9 hlrow"><code><span class="hl">    <span class=key>"main"</span>: {</span></code></pre>
+        <aside class="fr-note r9"><b><a href="docs/agent-definition/structure.html#main">main</a></b>Every run starts here, with the user&rsquo;s request set in a variable called <a href="docs/agent-definition/namespaces.html#sys"><code>sys.query</code></a>.</aside>
+        <pre class="fr-code r10"><code>      <span class=key>"commands"</span>: {
         <span class=key>"llm"</span>: {</code></pre>
-        <pre class="fr-code r9 hlrow mid"><code><span class="hl">          <span class=key>"profile"</span>: <span class=str>"gpt5_mini"</span>,</span></code></pre>
-        <aside class="fr-note r9 mid"><b><a href="docs/profiles/llm-profiles.html">LLM profile</a></b>Names the vendor, model and call settings, defined once by&nbsp;admins.</aside>
-        <pre class="fr-code r10 hlrow mid"><code><span class="hl">          <span class=key>"prompt"</span>: <span class=str>"support"</span>,</span></code></pre>
-        <aside class="fr-note r10 mid"><b><a href="docs/agent-definition/prompts.html">Prompt</a></b>One of the agent&rsquo;s prompts, by name. Its history is kept under that&nbsp;name.</aside>
-        <pre class="fr-code r11 hlrow mid"><code><span class="hl">          <span class=key>"functions"</span>: [<span class=str>"findOrders"</span>],</span></code></pre>
-        <aside class="fr-note r11 mid"><b><a href="docs/commands/llm.html#tool-calling">Tool calling</a></b>The llm command lists its tools. The agent server runs the call loop until the model answers, and streams the&nbsp;answer.</aside>
-        <pre class="fr-code r12"><code>          <span class=key>"streamOutput"</span>: <span class=tk-bool>true</span>
+        <pre class="fr-code r11 hlrow mid"><code><span class="hl">          <span class=key>"profile"</span>: <span class=str>"gpt5_mini"</span>,</span></code></pre>
+        <aside class="fr-note r11 mid"><b><a href="docs/profiles/index.html">Profile</a></b>Profiles keep configs outside agent code. There are four kinds: <a href="docs/profiles/llm-profiles.html">llm</a>, <a href="docs/profiles/db-profiles.html">db</a>, <a href="docs/profiles/api-profiles.html">api</a> and <a href="docs/profiles/mcp-servers.html">mcp</a>.</aside>
+        <pre class="fr-code r12 hlrow mid"><code><span class="hl">          <span class=key>"prompt"</span>: <span class=str>"support"</span>,</span></code></pre>
+        <aside class="fr-note r12 mid"><b><a href="docs/agent-definition/prompts.html">Prompt</a></b>Prompts are specific to an agent. They are defined outside the agent code, so they can change without changing an agent&rsquo;s&nbsp;version.</aside>
+        <pre class="fr-code r13 hlrow mid"><code><span class="hl">          <span class=key>"functions"</span>: [<span class=str>"findOrders"</span>],</span></code></pre>
+        <aside class="fr-note r13 mid"><b><a href="docs/commands/llm.html#tool-calling">Tool calling</a></b>The llm command lists its tools. The agent server runs the call loop until the model&nbsp;answers.</aside>
+        <pre class="fr-code r14"><code>          <span class=key>"streamOutput"</span>: <span class=tk-bool>true</span>
         }
       }
     }
