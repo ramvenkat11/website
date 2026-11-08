@@ -2046,3 +2046,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-08 Section 3 code card stretched, formal comments
 - .fr grid now align-items: stretch, so the code card matches the commands card height at every two-column width. Comments rewritten as full sentences (five: API profile, user request, first five hits, LLM profile, prompt) and rendered as block spans with a 3ch hanging indent so wrapped comments continue under their own text (.cm.i10/.cm.i12 set the indent). Tablet (≤860) command groups stay two-column (118px label, 12px) instead of one-column, which keeps the commands card short enough. Generator: scratchpad agent-figure15.mjs. 9 widths light+dark, 18 clean, sweep 0 of 241.
+
+## 2026-11-08 Section 3 title -> Anatomy of an agent
+- h2 at html/index.html:134 is now "Anatomy of an&nbsp;agent" (names the subject like the other section titles; subtitle keeps "in minutes"). Text-only change, no render.
