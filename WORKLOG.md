@@ -1998,3 +1998,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Ram reverted the cut: html/index.html:68 link is "task-focused agents" again (two lines at desktop, as before; rendered clean earlier this session).
 - Hero figure second request (html/index.html:94) is now "Reorder the part." (was "Order enough to bring it back up to 60."); aria-label on line 72 updated to match. Rendered .appsrv at nine widths light+dark: 18 clean; sweep 0 of 241.
 - Hero paragraph 2 (html/index.html:69) back to "finds and runs the right agent on that request." This exact wording was rendered clean at nine widths light+dark earlier this session.
+
+## 2026-11-08 Controlled execution: time/cost section removed
+- docsrc/runtime/controlled-execution.html: removed the "Two limits on every agent: time and cost" section (Ram: belongs to Runtime limits, not controlled execution). The next section opener "Besides its own two limits, an agent runs under..." would have dangled, so it now starts "An agent runs under the account's runtime limits...".
+- Rebuilt with python3 gen/build.py (146 pages). md5 check: the build changed only html/docs/runtime/controlled-execution.html; docsrc had no uncommitted edits so nothing else was swept in. No anchors to the removed heading anywhere outside the regenerated page toc.
+- Reported, not changed: the lead paragraph still says "It limits every agent in time and cost".
+- Uncommitted for Ram; no upload.
