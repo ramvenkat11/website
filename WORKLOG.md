@@ -1941,3 +1941,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
   CSS removed; dark shadow rules extended to .cv::before. Generator: scratchpad conversation-c.mjs.
   Verified 1280/1000/860/700/412/384/375/360/320 light+dark; sweep 0 of 241.
 - Section subtitle (line ~196) replaced: "The agent server runs stateless in your organization and keeps its state in the cloud."
+- #user-interfaces h2: "Cloud managed state, multiple client interfaces" -> "Fits right in, with no internal dependencies" (Ram asked for a paraphrase of "Fits right in your organization" that says no internal dependency).
