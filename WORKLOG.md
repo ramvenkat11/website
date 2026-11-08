@@ -2055,3 +2055,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-08 Section 3 comments: Ram's wording
 - Five comments replaced with Ram's text, grammar fixed (contains, An LLM, vendor and model). Comments now wrap to 2-3 lines with the hanging indent; code card is now the taller of the two at desktop, commands card stretches to match. Generator agent-figure16.mjs. 18 views clean, sweep 0 of 241.
+
+## 2026-11-08 Section 3 subtitle
+- html/index.html:135 subtitle now ends "help you build an agent in minutes, just by describing&nbsp;it." (Ram's wording, "them" -> "it" for the singular agent). Section head rendered 9 widths light+dark, 18 clean.
