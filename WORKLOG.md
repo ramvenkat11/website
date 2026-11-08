@@ -2013,3 +2013,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Rendered home .hero-arch and docs .ui-fan at nine widths light+dark: 36 clean views; home sweep 0 of 241.
 - Uncommitted for Ram; no upload.
 - Section 4 title (html/index.html:181) is now "How it fits into your organization" (Ram: name what the section is, like section 2, rather than a benefit). Subtitle unchanged; the "no internal dependencies" point is now nowhere on the page, offered as a subtitle addition. A sed & slip garbled the line once; fixed before rendering. Rendered the section head at nine widths light+dark: 18 clean.
+- Section 5 title (html/index.html:237) "Built for enterprise operations" -> "Enterprise features" (names the card list rather than a claim). No other references to the old title. Rendered the section head at 1280/700/320 light+dark: 6 clean; a two-word h2 cannot wrap or overflow.
