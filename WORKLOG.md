@@ -1931,3 +1931,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #conversations note 3 (both desktop aside and mobile note): "...the agent server saved the conversation context automatically: the agent's variables and its prompts, the messages it exchanged with the LLMs."
 - #conversations note 4 (both copies): "The request carried the conversation ID, so the agent server restored the saved context first. Search then matched the follow-up to the Reimbursements agent, which continued the same prompt exchange. To the LLM it looks like one continuous conversation." ("Neither agent called the other" dropped per Ram's paraphrase.)
 - #conversations note 3 (both copies) now ends: "...the agent's variables and its prompts. A prompt is the chain of messages exchanged with an LLM, kept in the conversation in a standard format."
+- #conversations subtitle: "Each agent in a conversation picks up the chain of LLM messages the previous agent left behind."
