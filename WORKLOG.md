@@ -2043,3 +2043,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-08 Section 3 structure line reworded
 - Commands card second paragraph is now: "An agent is a set of functions. main is a special function where every run starts. Each function contains a list of commands from the set shown below." Links unchanged (functions, main, commands). Source of truth: scratchpad agent-figure14.mjs. Rendered 9 widths light+dark, 18 clean, sweep 0 of 241.
+
+## 2026-11-08 Section 3 code card stretched, formal comments
+- .fr grid now align-items: stretch, so the code card matches the commands card height at every two-column width. Comments rewritten as full sentences (five: API profile, user request, first five hits, LLM profile, prompt) and rendered as block spans with a 3ch hanging indent so wrapped comments continue under their own text (.cm.i10/.cm.i12 set the indent). Tablet (≤860) command groups stay two-column (118px label, 12px) instead of one-column, which keeps the commands card short enough. Generator: scratchpad agent-figure15.mjs. 9 widths light+dark, 18 clean, sweep 0 of 241.
