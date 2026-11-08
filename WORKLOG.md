@@ -1943,3 +1943,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Section subtitle (line ~196) replaced: "The agent server runs stateless in your organization and keeps its state in the cloud."
 - #user-interfaces h2: "Cloud managed state, multiple client interfaces" -> "Fits right in, with no internal dependencies" (Ram asked for a paraphrase of "Fits right in your organization" that says no internal dependency).
 - #framework-runtime head: h2 "Build agents interactively with AI, like vibe coding"; subtitle "An agent is a JSON document where a string value can be a Python expression. A JSON schema defines its structure, so AI generates well-formed agents." Figure redo pending.
+- #framework-runtime subtitle: "An agent is a structured JSON document with a schema, so AI generates well-formed agents."
