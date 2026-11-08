@@ -134,37 +134,37 @@
         <h2>Build agents interactively with AI, like vibe&nbsp;coding</h2>
         <p>An agent is a structured JSON document with a schema, so <a href="docs/development/draft-with-ai.html">AI generates</a> well&#8209;formed&nbsp;agents.</p>
       </div>
-      <div class="fr" aria-label="An agent. It is a JSON document with two functions. findOrders is a tool function: it has a description and a typed, described argument, email; its commands run a db query with email as a parameter and return the rows with a Python expression. main runs an llm command that names findOrders as a tool and streams the answer. Seven notes point at the lines: Tool function, 20 commands, Python expression, main, LLM profile, Prompt, Tool calling.">
-        <pre class="fr-code r1"><code>{
-  <span class=key>"functions"</span>: {
+      <div class="fr" aria-label="An agent. It is a JSON document with two functions. findOrders is a tool function: it has a description and a typed, described argument, email; its commands run a db query with email as a parameter and return the rows with a Python expression. main runs an llm command that names findOrders as a tool and streams the answer. Seven notes point at the lines: Structure, Tool function, Python expression, main, LLM profile, Prompt, Tool calling.">
+        <pre class="fr-code r1 hlrow"><code><span class="hl">{</span></code></pre>
+        <aside class="fr-note r1"><b><a href="docs/agent-definition/structure.html">Structure</a></b>A set of functions, each a list of commands. There are <a href="docs/commands/index.html">20 commands</a> in&nbsp;all.</aside>
+        <pre class="fr-code r2"><code>  <span class=key>"functions"</span>: {
     <span class=key>"findOrders"</span>: {</code></pre>
-        <pre class="fr-code r2 hlrow"><code><span class="hl">      <span class=key>"description"</span>: <span class=str>"Lists a customer's orders."</span>,
+        <pre class="fr-code r3 hlrow"><code><span class="hl">      <span class=key>"description"</span>: <span class=str>"Lists a customer's orders."</span>,
       <span class=key>"args"</span>: {
         <span class=key>"email"</span>: { <span class=key>"type"</span>: <span class=str>"str"</span>, <span class=key>"description"</span>: <span class=str>"Customer email."</span> }
       },</span></code></pre>
-        <aside class="fr-note r2"><b><a href="docs/agent-definition/functions.html">Tool function</a></b>A function with a description and typed, described arguments. The model can call it as a&nbsp;tool.</aside>
-        <pre class="fr-code r3"><code>      <span class=key>"commands"</span>: {</code></pre>
-        <pre class="fr-code r4 hlrow"><code><span class="hl">        <span class=key>"db"</span>: {</span></code></pre>
-        <aside class="fr-note r4"><b><a href="docs/commands/index.html">20 commands</a></b><code>db</code>, <code>return</code> and <code>llm</code> are three of&nbsp;them.</aside>
-        <pre class="fr-code r5"><code>          <span class=key>"profile"</span>: <span class=str>"orders"</span>,
+        <aside class="fr-note r3 fn"><b><a href="docs/agent-definition/functions.html">Tool function</a></b>A function with a description and typed, described arguments. The model can call it as a&nbsp;tool.</aside>
+        <pre class="fr-code r4"><code>      <span class=key>"commands"</span>: {
+        <span class=key>"db"</span>: {
+          <span class=key>"profile"</span>: <span class=str>"orders"</span>,
           <span class=key>"sql"</span>: <span class=str>"select * from orders where email = :email"</span>,
           <span class=key>"params"</span>: { <span class=key>"email"</span>: <span class=str>"<span class=ex>{ email }</span>"</span> }
         },</code></pre>
-        <pre class="fr-code r6 hlrow"><code><span class="hl">        <span class=key>"return"</span>: <span class=str>"<span class=ex>{ result }</span>"</span></span></code></pre>
-        <aside class="fr-note r6"><b><a href="docs/agent-definition/python-expressions.html">Python expression</a></b>A string value in braces is&nbsp;Python.</aside>
-        <pre class="fr-code r7"><code>      }
+        <pre class="fr-code r5 hlrow"><code><span class="hl">        <span class=key>"return"</span>: <span class=str>"<span class=ex>{ result }</span>"</span></span></code></pre>
+        <aside class="fr-note r5"><b><a href="docs/agent-definition/python-expressions.html">Python expression</a></b>A string value in braces is&nbsp;Python.</aside>
+        <pre class="fr-code r6"><code>      }
     },</code></pre>
-        <pre class="fr-code r8 hlrow"><code><span class="hl">    <span class=key>"main"</span>: {</span></code></pre>
-        <aside class="fr-note r8"><b><a href="docs/agent-definition/structure.html#main">main</a></b>Every run starts here, with the user&rsquo;s&nbsp;request.</aside>
-        <pre class="fr-code r9"><code>      <span class=key>"commands"</span>: {
+        <pre class="fr-code r7 hlrow"><code><span class="hl">    <span class=key>"main"</span>: {</span></code></pre>
+        <aside class="fr-note r7"><b><a href="docs/agent-definition/structure.html#main">main</a></b>Every run starts here, with the user&rsquo;s&nbsp;request.</aside>
+        <pre class="fr-code r8"><code>      <span class=key>"commands"</span>: {
         <span class=key>"llm"</span>: {</code></pre>
-        <pre class="fr-code r10 hlrow mid"><code><span class="hl">          <span class=key>"profile"</span>: <span class=str>"gpt5_mini"</span>,</span></code></pre>
-        <aside class="fr-note r10 mid"><b><a href="docs/profiles/llm-profiles.html">LLM profile</a></b>Names the vendor, model and call settings, defined once by&nbsp;admins.</aside>
-        <pre class="fr-code r11 hlrow mid"><code><span class="hl">          <span class=key>"prompt"</span>: <span class=str>"support"</span>,</span></code></pre>
-        <aside class="fr-note r11 mid"><b><a href="docs/agent-definition/prompts.html">Prompt</a></b>One of the agent&rsquo;s prompts, by name. Its history is kept under that&nbsp;name.</aside>
-        <pre class="fr-code r12 hlrow mid"><code><span class="hl">          <span class=key>"functions"</span>: [<span class=str>"findOrders"</span>],</span></code></pre>
-        <aside class="fr-note r12 mid"><b><a href="docs/commands/llm.html#tool-calling">Tool calling</a></b>The llm command lists its tools. The agent server runs the call loop until the model answers, and streams the&nbsp;answer.</aside>
-        <pre class="fr-code r13"><code>          <span class=key>"streamOutput"</span>: <span class=tk-bool>true</span>
+        <pre class="fr-code r9 hlrow mid"><code><span class="hl">          <span class=key>"profile"</span>: <span class=str>"gpt5_mini"</span>,</span></code></pre>
+        <aside class="fr-note r9 mid"><b><a href="docs/profiles/llm-profiles.html">LLM profile</a></b>Names the vendor, model and call settings, defined once by&nbsp;admins.</aside>
+        <pre class="fr-code r10 hlrow mid"><code><span class="hl">          <span class=key>"prompt"</span>: <span class=str>"support"</span>,</span></code></pre>
+        <aside class="fr-note r10 mid"><b><a href="docs/agent-definition/prompts.html">Prompt</a></b>One of the agent&rsquo;s prompts, by name. Its history is kept under that&nbsp;name.</aside>
+        <pre class="fr-code r11 hlrow mid"><code><span class="hl">          <span class=key>"functions"</span>: [<span class=str>"findOrders"</span>],</span></code></pre>
+        <aside class="fr-note r11 mid"><b><a href="docs/commands/llm.html#tool-calling">Tool calling</a></b>The llm command lists its tools. The agent server runs the call loop until the model answers, and streams the&nbsp;answer.</aside>
+        <pre class="fr-code r12"><code>          <span class=key>"streamOutput"</span>: <span class=tk-bool>true</span>
         }
       }
     }
