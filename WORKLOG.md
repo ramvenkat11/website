@@ -2052,3 +2052,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-08 Section 3 title -> How an agent is defined, singular throughout
 - h2 at html/index.html:134 "How an agent is&nbsp;defined"; subtitle "help you build an agent in minutes"; card first line "An agent is defined in JSONC, ..."; aria-label matched. Generator agent-figure15.mjs updated.
+
+## 2026-11-08 Section 3 comments: Ram's wording
+- Five comments replaced with Ram's text, grammar fixed (contains, An LLM, vendor and model). Comments now wrap to 2-3 lines with the hanging indent; code card is now the taller of the two at desktop, commands card stretches to match. Generator agent-figure16.mjs. 18 views clean, sweep 0 of 241.
