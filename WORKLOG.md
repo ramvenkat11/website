@@ -2049,3 +2049,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-08 Section 3 title -> Anatomy of an agent
 - h2 at html/index.html:134 is now "Anatomy of an&nbsp;agent" (names the subject like the other section titles; subtitle keeps "in minutes"). Text-only change, no render.
+
+## 2026-11-08 Section 3 title -> How an agent is defined, singular throughout
+- h2 at html/index.html:134 "How an agent is&nbsp;defined"; subtitle "help you build an agent in minutes"; card first line "An agent is defined in JSONC, ..."; aria-label matched. Generator agent-figure15.mjs updated.
