@@ -131,31 +131,44 @@
   <section class="section soft" id="framework-runtime">
     <div class="container">
       <div class="section-head center">
-        <h2>Build agents interactively with AI, like vibe&nbsp;coding</h2>
-        <p><a href="docs/development/draft-with-ai.html">Draft with AI</a> and the <a href="docs/development/code-editor.html">schema&#8209;aware code editor</a> help you build agents in&nbsp;minutes.</p>
+        <h2>How an agent is&nbsp;defined</h2>
+        <p><a href="docs/development/draft-with-ai.html">Draft with AI</a> and the <a href="docs/development/code-editor.html">schema&#8209;aware code editor</a> help you build an agent in minutes, just by describing&nbsp;it.</p>
       </div>
-      <div class="fr" aria-label="An agent that answers from a knowledge base. It is a JSON document with one function, main, holding three commands. api searches the knowledge base with sys.query. var keeps the text of the first five hits as passages, with a Python list comprehension. llm sends the prompt named answer to gpt5_mini and streams the answer to the user. Three notes point at the lines: Structure, Commands, Python expression.">
-        <pre class="fr-code r1 hlrow"><code><span class="hl">{</span>  <span class=key>"functions"</span>: {
+      <div class="fr" aria-label="An agent that answers from a knowledge base, beside a card that explains the agent syntax and structure and lists the 20 commands. A top-level comment calls it a simple RAG agent that answers from a knowledge base. The agent is a JSONC document with one function, main, holding three commands, with comments explaining the API profile, the query parameter, the variable, the LLM profile and the prompt: api searches the knowledge base with sys.query, var keeps the text of the first five hits as passages with a Python list comprehension, and llm sends the prompt named answer to gpt5_mini and streams the answer to the user. The card says an agent is defined in JSONC, JSON with comments, where a string in braces is a Python expression evaluated in a controlled runtime, and that an agent is a set of functions, each a list of commands, with every run starting in main. It lists the 20 commands in eight groups: Variables, Flow control, LLM interaction, External systems, Human-in-the-loop, Agent output, Agent termination, Observability.">
+        <pre class="fr-code"><code><span class="cm i0">// A simple RAG agent that answers from a knowledge base.</span>{
+  <span class=key>"functions"</span>: {
     <span class=key>"main"</span>: {
-      <span class=key>"commands"</span>: {</code></pre>
-        <aside class="fr-note r1"><b><a href="docs/agent-definition/structure.html">Structure</a></b>An agent is a set of functions. Each function contains a list of commands. Every run starts in <a href="docs/agent-definition/structure.html#main"><code>main</code></a>.</aside>
-        <pre class="fr-code r2 hlrow"><code><span class="hl">        <span class=key>"api"</span>: {</span></code></pre>
-        <aside class="fr-note r2"><b><a href="docs/commands/index.html">Commands</a></b><code>api</code> is one of <a href="docs/commands/index.html">20 commands</a>. They call APIs, databases and LLMs, and control the&nbsp;flow.</aside>
-        <pre class="fr-code r3"><code>          <span class=key>"profile"</span>: <span class=str>"knowledgeBase"</span>,
-          <span class=key>"queryParams"</span>: { <span class=key>"q"</span>: <span class=str>"<span class=ex>{ sys.query }</span>"</span> }
-        },</code></pre>
-        <pre class="fr-code r4 hlrow"><code><span class="hl">        <span class=key>"var"</span>: { <span class=key>"passages"</span>: <span class=str>"<span class=ex>{ [hit['text'] for hit in result[:5]] }</span>"</span> },</span></code></pre>
-        <aside class="fr-note r4"><b><a href="docs/agent-definition/python-expressions.html">Python expression</a></b>A string value in braces is interpreted as&nbsp;Python.</aside>
-        <pre class="fr-code r5"><code>        <span class=key>"llm"</span>: {
-          <span class=key>"profile"</span>: <span class=str>"gpt5_mini"</span>,
-          <span class=key>"prompt"</span>: <span class=str>"answer"</span>,
+      <span class=key>"commands"</span>: {
+        <span class=key>"api"</span>: {
+<span class="cm i10">// The API profile 'knowledgeBase', defined externally, is used to connect.</span>          <span class=key>"profile"</span>: <span class=str>"knowledgeBase"</span>,
+          <span class=key>"queryParams"</span>: {
+<span class="cm i12">// The API query parameter is set to sys.query, a built-in variable that contains the user&rsquo;s request.</span>            <span class=key>"q"</span>: <span class=str>"<span class=ex>{ sys.query }</span>"</span>
+          }
+        },
+        <span class=key>"var"</span>: {
+<span class="cm i10">// A variable called 'passages' is set with a Python expression.</span>          <span class=key>"passages"</span>: <span class=str>"<span class=ex>{ [hit['text'] for hit in result[:5]] }</span>"</span>
+        },
+        <span class=key>"llm"</span>: {
+<span class="cm i10">// An LLM profile, 'gpt5_mini', is used. LLM profiles specify the vendor and the model in use.</span>          <span class=key>"profile"</span>: <span class=str>"gpt5_mini"</span>,
+<span class="cm i10">// A prompt named 'answer' is used to talk to the LLM. This prompt is specific to this agent and defined externally.</span>          <span class=key>"prompt"</span>: <span class=str>"answer"</span>,
           <span class=key>"streamOutput"</span>: <span class=tk-bool>true</span>
         }
       }
     }
   }
 }</code></pre>
-
+        <aside class="cmdcard fr-cmds">
+          <p class="fr-struct">An agent is defined in <a href="docs/agent-definition/syntax.html">JSONC</a>, JSON with comments. A string enclosed in braces is interpreted as a <a href="docs/agent-definition/python-expressions.html">Python expression</a>, evaluated in a <a href="docs/runtime/controlled-execution.html">controlled&nbsp;runtime</a>.</p>
+          <p class="fr-struct fr-struct-last">An agent is a set of <a href="docs/agent-definition/structure.html">functions</a>. <a href="docs/agent-definition/structure.html#main"><code>main</code></a> is a special function where every run starts. Each function contains a list of <a href="docs/commands/index.html">commands</a> from the set shown below.</p>
+          <div class="cg"><span class="cg-l">Variables</span><span class="cg-c"><a href="docs/commands/var.html"><code>var</code></a></span></div>
+          <div class="cg"><span class="cg-l">Flow control</span><span class="cg-c"><a href="docs/commands/if.html"><code>if</code></a><a href="docs/commands/while.html"><code>while</code></a><a href="docs/commands/for.html"><code>for</code></a><a href="docs/commands/break.html"><code>break</code></a><a href="docs/commands/continue.html"><code>continue</code></a><a href="docs/commands/func.html"><code>func</code></a><a href="docs/commands/return.html"><code>return</code></a><a href="docs/commands/parallel.html"><code>parallel</code></a></span></div>
+          <div class="cg"><span class="cg-l">LLM interaction</span><span class="cg-c"><a href="docs/commands/llm.html"><code>llm</code></a><a href="docs/commands/memory.html"><code>memory</code></a></span></div>
+          <div class="cg"><span class="cg-l">External systems</span><span class="cg-c"><a href="docs/commands/api.html"><code>api</code></a><a href="docs/commands/db.html"><code>db</code></a></span></div>
+          <div class="cg"><span class="cg-l">Human-in-the-loop</span><span class="cg-c"><a href="docs/commands/ask.html"><code>ask</code></a></span></div>
+          <div class="cg"><span class="cg-l">Agent output</span><span class="cg-c"><a href="docs/commands/output.html"><code>output</code></a></span></div>
+          <div class="cg"><span class="cg-l">Agent termination</span><span class="cg-c"><a href="docs/commands/end.html"><code>end</code></a><a href="docs/commands/fail.html"><code>fail</code></a></span></div>
+          <div class="cg"><span class="cg-l">Observability</span><span class="cg-c"><a href="docs/commands/progress.html"><code>progress</code></a><a href="docs/commands/trace.html"><code>trace</code></a><a href="docs/commands/log.html"><code>log</code></a></span></div>
+        </aside>
       </div>
       <p class="hero-caption">Live demo: <a href="demo-draft.html">Draft with AI</a></p>
     </div>
