@@ -1934,3 +1934,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #conversations subtitle: "Each agent in a conversation picks up the chain of LLM messages the previous agent left behind."
 - Hero live demo caption now links only "Chat with agents" (demo-search.html); the draft and trace demo links are gone from the hero.
 - #conversations: "Live demo: Trace an agent run" caption (demo-trace.html) added under the conversation figure, same .hero-caption style as the hero.
+- Mock of two inline-annotation layouts for #conversations (A transcript one column, B grid of siblings) at scratchpad compare-conversation.html; not in the project. Awaiting Ram's pick.
