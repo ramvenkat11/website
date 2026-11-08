@@ -2036,3 +2036,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - CSS: #framework-runtime .fr is a plain 1.15fr/1fr grid; one column at <=700 (card under code); .cg labels above chips at 861..700 and <=440. Old .fr-note/.hl/row rules removed.
 - Rendered nine widths light+dark: 18 clean, sweep 0 of 241. Desktop code card is shorter than the commands card (ends at ~4/5 of its height).
 - Section 3 title (html/index.html:134) -> "An agent is structured JSON, built interactively with AI" (Ram asked for a paraphrase of "An agent is structured JSON that is built interactively with AI"). Rendered the section head at nine widths light+dark.
+- Section 3 title (html/index.html:134) -> "Agents are structured JSON that you build interactively with AI" (Ram picked the alternative). Rendered the section head at nine widths light+dark.
