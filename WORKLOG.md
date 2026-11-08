@@ -2029,3 +2029,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Rendered nine widths light+dark: 18 clean, sweep 0 of 241. Desktop/tablet no gaps. Phones: one gap before the "api" band (Structure note taller than its four lines), ~45px at 412, ~70px at 320. Reported to Ram.
 - Section 3 subtitle (html/index.html:135) -> "Draft with AI and the schema-aware code editor help you build agents in minutes." Links: docs/development/draft-with-ai.html and docs/development/code-editor.html. Rendered the section head at nine widths light+dark.
 - Section 3: Prompt note removed (Ram). prompt line is plain and sits in the llm block row; generator now scratchpad agent-figure9.mjs; 5 grid rows, three notes. aria-label updated. Rendered nine widths light+dark: 18 clean, sweep 0 of 241.
+
+## 2026-11-08 Section 3: commands card back in place of the annotations
+- Ram asked for the months-old block that explained agent structure and listed all commands (the September .cmdcard with grouped .cg rows, last in commit 4738c25a; .cmdcard/.cg CSS still in styles.css, also used by framework.html).
+- Generator scratchpad agent-figure10.mjs: left, the RAG agent as a plain dark code card (no highlights); right, aside.cmdcard.fr-cmds with the structure sentence ("An agent is a set of functions. Each function contains a list of commands. Every run starts in main.", functions and main linked), head "20 commands | Command reference ->", and the eight editor groups from gen/toc.py (var; if while for break continue func return parallel; llm memory; api db; ask; output; end fail; progress trace log), every chip linking to docs/commands/*.html. Generator asserts 20.
+- CSS: #framework-runtime .fr is a plain 1.15fr/1fr grid; one column at <=700 (card under code); .cg labels above chips at 861..700 and <=440. Old .fr-note/.hl/row rules removed.
+- Rendered nine widths light+dark: 18 clean, sweep 0 of 241. Desktop code card is shorter than the commands card (ends at ~4/5 of its height).
