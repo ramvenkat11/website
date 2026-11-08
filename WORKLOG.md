@@ -1964,3 +1964,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
   "A string value in braces is Python. This one returns the query rows as a dict." Generator: scratchpad
   agent-figure3.mjs. Verified 1280..320 light+dark; sweep 0 of 241.
 - #user-interfaces h2: "Fits right in, with no internal dependencies in your organization".
+- #framework-runtime agent: return simplified to "{ result }"; llm gets "streamOutput": true back so the agent produces output; Python note "This one returns the query rows."; Tool calling note ends "and streams the answer." Regenerated via agent-figure3.mjs; sweep 0 of 241.
