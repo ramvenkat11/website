@@ -2014,3 +2014,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Uncommitted for Ram; no upload.
 - Section 4 title (html/index.html:181) is now "How it fits into your organization" (Ram: name what the section is, like section 2, rather than a benefit). Subtitle unchanged; the "no internal dependencies" point is now nowhere on the page, offered as a subtitle addition. A sed & slip garbled the line once; fixed before rendering. Rendered the section head at nine widths light+dark: 18 clean.
 - Section 5 title (html/index.html:237) "Built for enterprise operations" -> "Enterprise features" (names the card list rather than a claim). No other references to the old title. Rendered the section head at 1280/700/320 light+dark: 6 clean; a two-word h2 cannot wrap or overflow.
+
+## 2026-11-08 Section 3 figure rebuilt: shorter api example
+- Ram: section 3 too long; new example from the annotations (structure, python expression, commands->20 commands link; main optional; second function ok; api not db; no tool calling).
+- New generator scratchpad agent-figure4.mjs (replaces agent-figure3.mjs as source of truth): 8 grid rows, 23 code lines. openOrders(email): api profile orders, path f-string, return list comprehension keeping open orders; main: func openOrders with sys.userEmail, return result. Notes: Structure r1, Commands r3 (api line), Python expression r5 (return comprehension), main r7. All notes span 2 rows, top-aligned; no mid rows, no margin-top hacks.
+- Rendered nine widths light+dark: 18 clean, sweep 0 of 241. Desktop/tablet: no gaps in JSON. Phones (412 and below): notes taller than their rows, so small gaps appear after "api": {, before the } after return, and before "main". Reported to Ram with options (shorter notes, or fold main into Structure).
+- Uncommitted; no upload.
