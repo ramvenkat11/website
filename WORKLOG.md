@@ -2064,3 +2064,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-08 Section 3 var comment
 - var comment now: "'result' is a built-in variable that is set to the result of the API call. A variable called 'passages' is set with a Python expression using 'result'." Generator agent-figure18.mjs. 18 views clean, sweep 0 of 241.
+
+## 2026-11-08 Section 3 card: arguments and description
+- Second paragraph of the commands card now ends "A function can take arguments. One that is used in a tool call also has a description." with links to functions.html#arguments, llm.html#tool-calling, functions.html#description. aria-label updated. Generator agent-figure19.mjs. 18 views clean, sweep 0 of 241.
