@@ -1971,3 +1971,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
   sweep 0 of 241.
 - Hero p1 link text back to "task-focused agents" (Ram).
 - #framework-runtime figure: Structure note added at the opening brace ("A set of functions, each a list of commands. There are 20 commands in all."), 20 commands/db note removed; Tool function note pushed down (margin-top 35/48/42/56px by width) so the two do not touch. 12 grid rows. Sweep 0 of 241.
+- #framework-runtime Structure note: "20 commands" linked to docs/commands/index.html; .fr-note a styled blue-ink 600.
