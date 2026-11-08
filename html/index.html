@@ -66,10 +66,10 @@
       <div class="hero-head as-head">
         <h1 class="hero-claim">Let your users converse with hundreds of task&#8209;focused AI agents</h1>
         <p class="hero-lead">Developers <a class="hero-attr" href="framework.html">build</a>, validate and publish <a class="hero-attr" href="docs/introduction/search2o-agents.html">agents</a>. They <a class="hero-attr" href="search.html#description">describe</a> when to use each one in plain English.</p>
-        <p class="hero-lead">Users start a conversation with a request. The built-in <a class="hero-attr" href="search.html">search</a> finds and runs the right agent. Follow&#8209;up requests can bring in other agents, and build on previous results.</p>
+        <p class="hero-lead">Users start a conversation with a request. The built-in <a class="hero-attr" href="search.html">search</a> finds and runs the right agent on that request. Follow&#8209;up requests can bring in other agents, and build on previous results.</p>
         <p class="hero-lead">The agent server keeps every run <a class="hero-attr" href="docs/runtime/controlled-execution.html">safe</a>, <a class="hero-attr" href="docs/runtime/runtime-limits.html">bounded</a> and <a class="hero-attr" href="docs/reports/index.html">observable</a>.</p>
       </div>
-      <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example Room booking, which books meeting rooms and checks capacity and availability, and Calendar, which sends invites and manages meetings. The Search2o agent server holds hundreds of agents. Users converse with it: a first request, Book a room for 8 tomorrow at 10, is matched to Room booking, which answers Room 4B booked, tomorrow 10 to 11 am. A follow-up, Invite the data team, is matched to Calendar, which answers Invites for Room 4B at 10 am sent to the data team.">
+      <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example Inventory, which reports stock levels by part and site, and Purchasing, which raises purchase orders with approved suppliers. The Search2o agent server holds hundreds of agents. Users converse with it: a first request, Is part 7731 in stock in Berlin?, is matched to Inventory, which answers Berlin has 42 units of part 7731, below its reorder point of 60. A follow-up, Order enough to bring it back up to 60, is matched to Purchasing, which answers Done. PO-5519 orders 18 units of part 7731 for Berlin.">
         <div class="as-side as-dev">
           <div class="as-actor"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 4-4 16"/></svg></span><span class="nm">Developers</span></div>
           <i class="rail"></i>
@@ -85,56 +85,47 @@
           <div class="as-flow r"><span class="lbl">Build, validate, publish agents</span><i class="ln"></i></div>
         </div>
         <div class="as-lane as-right as-r1">
-          <div class="as-flow l"><span class="lbl">Book a room for 8 tomorrow at&nbsp;10</span><i class="ln"></i><span class="sub"><b class="as-agent">Room booking</b>: Room 4B booked, tomorrow 10 to 11&nbsp;am.</span></div>
+          <div class="as-flow l"><span class="lbl">Is part 7731 in stock in Berlin?</span><i class="ln"></i><span class="sub"><b class="as-agent">Inventory</b>: Berlin has 42 units of part 7731, below its reorder point of&nbsp;60.</span></div>
         </div>
         <div class="as-lane as-left as-r2">
-          <div class="as-flow r"><span class="lbl">Describe agents in English</span><i class="ln"></i><span class="sub"><b class="as-agent">Room booking</b>: Books meeting rooms. Checks capacity and availability.</span><span class="sub"><b class="as-agent">Calendar</b>: Sends invites and manages meetings.</span></div>
+          <div class="as-flow r"><span class="lbl">Describe agents in English</span><i class="ln"></i><span class="sub"><b class="as-agent">Inventory</b>: Reports stock levels by part and site.</span><span class="sub"><b class="as-agent">Purchasing</b>: Raises purchase orders with approved suppliers.</span></div>
         </div>
         <div class="as-lane as-right as-r2">
-          <div class="as-flow l"><span class="lbl">Invite the data team</span><i class="ln"></i><span class="sub"><b class="as-agent">Calendar</b>: Invites for Room 4B at 10&nbsp;am sent to the data team.</span></div>
+          <div class="as-flow l"><span class="lbl">Order enough to bring it back up to&nbsp;60.</span><i class="ln"></i><span class="sub"><b class="as-agent">Purchasing</b>: Done. PO&#8209;5519 orders 18 units of part 7731 for&nbsp;Berlin.</span></div>
         </div>
       </div>
-      <p class="hero-caption">Live demo: <a href="demo-draft.html">Draft an agent with AI</a> &middot; <a href="demo-search.html">Chat with agents</a> &middot; <a href="demo-trace.html">Trace an agent run</a></p>
+      <p class="hero-caption">Live demo: <a href="demo-search.html">Chat with agents</a></p>
     </div>
   </section>
   <section class="section" id="conversations">
     <div class="container">
       <div class="section-head center">
         <h2>How a conversation works</h2>
-        <p>Agents stay independent, yet build on each other in a&nbsp;conversation.</p>
+        <p>Each agent in a conversation picks up the chain of LLM messages the previous agent left&nbsp;behind.</p>
       </div>
-      <div class="sc-wrap">
-        <div class="convo hero-convo" aria-label="One conversation across two independent agents. Search matches the first request to the Travel desk agent, which asks for confirmation before booking. It matches a second request to the Reimbursements agent, which continues the same conversation and files the trip expenses.">
-          <div class="convo-title">Conversation</div>
-          <div class="convo-body">
-            <div class="turn-user r1">Book my trip for Tuesday's all-day meeting in New York<i class="mk">1</i></div>
-            <aside class="note-bubble first r1"><b><i class="mk">1</i><a href="search.html">Discovery</a></b>Search matched the request to the Travel desk agent, and the UI ran it automatically. The request had no conversation ID, so a new, empty conversation started.</aside>
-            <div class="turn-agent r2">
-              <div class="msg ask" aria-label="The agent asks before booking"><i class="mk">2</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>
-                <span class="q">UA1191 departs 06:00 Tuesday, back at 19:30, and a night at the Marriott near the office. $1,240. <b>Book it?</b></span>
-                <span class="opts"><i class="on">Book</i><i>Hold</i></span>
-                <span class="submit">Submit</span>
-              </div>
-            </div>
-            <aside class="note-bubble r2"><b><i class="mk">2</i><a href="docs/commands/ask.html">Human in the loop</a></b>The agent&rsquo;s state is stored, and when the user answers, the agent continues from where it paused.</aside>
-            <div class="turn-agent r3">
-              <div class="msg"><i class="mk">3</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>Booked UA1191 and the hotel night. The confirmation is in your inbox.</div>
-            </div>
-            <aside class="note-bubble r3"><b><i class="mk">3</i><a href="conversation.html#state">Conversation context</a></b>The Travel desk agent ended here, and the agent server automatically saved the conversation: the variables the agent set under <code>conv.</code>, plus its conversation-scoped prompts and their history.</aside>
-            <div class="turn-user r4">File the expenses for that trip</div>
-            <div class="turn-agent r5">
-              <div class="msg"><i class="mk">4</i><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Reimbursements</span>Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
-            </div>
-            <aside class="note-bubble r5"><b><i class="mk">4</i><a href="docs/agent-execution/building-on-each-other.html">Building on each other</a></b>Search matched the follow-up to Reimbursements. The request included the conversation ID, so the saved conversation was restored first. Its prompt has the same name as the Travel desk prompt, so its model continued that exchange. Neither agent called the other.</aside>
+      <div class="cv" aria-label="One conversation across two independent agents, with four notes. Search matches the first request to the Travel desk agent, which asks for confirmation before booking. The agent server saves the conversation context when the agent ends. A second request is matched to the Reimbursements agent, which continues the same conversation and files the trip expenses.">
+        <div class="cv-title">Conversation</div>
+        <div class="turn-user r2">Book my trip for Tuesday's all-day meeting in New York</div>
+        <aside class="cv-note r2"><b><a href="search.html">Discovery</a></b>Search matched the request to the Travel desk agent, and the UI ran it automatically. The request had no conversation ID, so a new, empty conversation started.</aside>
+        <div class="turn-agent r3">
+          <div class="msg ask" aria-label="The agent asks before booking"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>
+            <span class="q">UA1191 departs 06:00 Tuesday, back at 19:30, and a night at the Marriott near the office. $1,240. <b>Book it?</b></span>
+            <span class="opts"><i class="on">Book</i><i>Hold</i></span>
+            <span class="submit">Submit</span>
           </div>
         </div>
-        <div class="sc-notes">
-          <div class="note"><b><i class="mk">1</i><a href="search.html">Discovery</a></b>Search matched the request to the Travel desk agent, and the UI ran it automatically. The request had no conversation ID, so a new, empty conversation started.</div>
-          <div class="note"><b><i class="mk">2</i><a href="docs/commands/ask.html">Human in the loop</a></b>The agent&rsquo;s state is stored, and when the user answers, the agent continues from where it paused.</div>
-          <div class="note"><b><i class="mk">3</i><a href="conversation.html#state">Conversation context</a></b>The Travel desk agent ended here, and the agent server automatically saved the conversation: the variables the agent set under <code>conv.</code>, plus its conversation-scoped prompts and their history.</div>
-          <div class="note"><b><i class="mk">4</i><a href="docs/agent-execution/building-on-each-other.html">Building on each other</a></b>Search matched the follow-up to Reimbursements. The request included the conversation ID, so the saved conversation was restored first. Its prompt has the same name as the Travel desk prompt, so its model continued that exchange. Neither agent called the other.</div>
+        <aside class="cv-note r3"><b><a href="docs/commands/ask.html">Human in the loop</a></b>The agent&rsquo;s state is stored, and when the user answers, the agent continues from where it paused.</aside>
+        <div class="turn-agent r4">
+          <div class="msg"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>Booked UA1191 and the hotel night. The confirmation is in your inbox.</div>
         </div>
+        <aside class="cv-note r4"><b><a href="conversation.html#state">Conversation context</a></b>The Travel desk agent ended here, and the agent server saved the conversation context automatically: the agent&rsquo;s variables and its prompts. A prompt is the chain of messages exchanged with an LLM, kept in the conversation in a standard format.</aside>
+        <div class="turn-user r5">File the expenses for that trip</div>
+        <div class="turn-agent r6">
+          <div class="msg"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Reimbursements</span>Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
+        </div>
+        <aside class="cv-note r6"><b><a href="docs/agent-execution/building-on-each-other.html">Building on each other</a></b>The request carried the conversation ID, so the agent server restored the saved context first. Search then matched the follow-up to the Reimbursements agent, which continued the same prompt exchange. To the LLM it looks like one continuous conversation.</aside>
       </div>
+      <p class="hero-caption">Live demo: <a href="demo-trace.html">Trace an agent run</a></p>
     </div>
   </section>
   <section class="section soft" id="framework-runtime">
