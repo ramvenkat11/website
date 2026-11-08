@@ -1956,3 +1956,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
   width (1.3fr/1fr; 1.4fr/1fr <=860; 1.25fr/1fr <=560 with 9px code); no stacking. Generator: scratchpad
   agent-figure2.mjs. Verified 1280..320 light+dark; sweep 0 of 241.
 - #framework-runtime: "Drafted with AI" chip removed from the code card bar; subtitle now links "AI generates" to docs/development/draft-with-ai.html. Highlight band hugs the highlighted lines only (row no longer stretched). Window dots back at all widths.
+- #framework-runtime figure: card bar (dots + orders.json) and the numbered markers removed; rows renumbered r1..r9; notes keep title + text only. Generator scratchpad agent-figure2.mjs is now behind the live markup (bar/markers edited out by hand).
