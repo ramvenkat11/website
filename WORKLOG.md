@@ -1965,3 +1965,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
   agent-figure3.mjs. Verified 1280..320 light+dark; sweep 0 of 241.
 - #user-interfaces h2: "Fits right in, with no internal dependencies in your organization".
 - #framework-runtime agent: return simplified to "{ result }"; llm gets "streamOutput": true back so the agent produces output; Python note "This one returns the query rows."; Tool calling note ends "and streams the answer." Regenerated via agent-figure3.mjs; sweep 0 of 241.
+- #framework-runtime figure: three notes added (main at "main": {, LLM profile at profile, Prompt at prompt); the llm
+  block's profile/prompt/functions rows are elongated to note height (.mid, centred) per Ram's choice; Python
+  expression note shortened to one line. 13 grid rows. Generator agent-figure3.mjs. Verified 1280..320 light+dark;
+  sweep 0 of 241.
+- Hero p1 link text back to "task-focused agents" (Ram).
