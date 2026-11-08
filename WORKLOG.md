@@ -1944,3 +1944,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #user-interfaces h2: "Cloud managed state, multiple client interfaces" -> "Fits right in, with no internal dependencies" (Ram asked for a paraphrase of "Fits right in your organization" that says no internal dependency).
 - #framework-runtime head: h2 "Build agents interactively with AI, like vibe coding"; subtitle "An agent is a JSON document where a string value can be a Python expression. A JSON schema defines its structure, so AI generates well-formed agents." Figure redo pending.
 - #framework-runtime subtitle: "An agent is a structured JSON document with a schema, so AI generates well-formed agents."
+- #framework-runtime figure rebuilt (.fr grid, generator scratchpad agent-figure.mjs): dark code card (bar with
+  orders.json + "Drafted with AI" chip linking docs/development/draft-with-ai.html) split into four code chunks
+  (tool function; db command with "{ email }" expression; return; main/llm) with a note beside each (Tool function,
+  Python expression, 20 commands, Tool calling), two columns at every width down to 560, inline notes inside the card
+  below. Code lines wrap below 860. Old .dr figure and CSS removed. Caption "Live demo: Draft with AI" (demo-draft.html).
+  Verified 1280..320 light+dark; sweep 0 of 241.
