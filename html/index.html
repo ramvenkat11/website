@@ -65,7 +65,7 @@
     <div class="container">
       <div class="hero-head as-head">
         <h1 class="hero-claim">Let your users converse with hundreds of task&#8209;focused AI agents</h1>
-        <p class="hero-lead">Developers <a class="hero-attr" href="framework.html">build</a>, validate and publish <a class="hero-attr" href="docs/introduction/search2o-agents.html">agents</a>. They <a class="hero-attr" href="search.html#description">describe</a> when to use each one in plain English.</p>
+        <p class="hero-lead">Developers <a class="hero-attr" href="framework.html">build</a>, validate and publish <a class="hero-attr" href="docs/introduction/search2o-agents.html">task&#8209;focused agents</a>. They <a class="hero-attr" href="search.html#description">describe</a> when to use each one in plain English.</p>
         <p class="hero-lead">Users start a conversation with a request. The built-in <a class="hero-attr" href="search.html">search</a> finds and runs the right agent on that request. Follow&#8209;up requests can bring in other agents, and build on previous results.</p>
         <p class="hero-lead">The agent server keeps every run <a class="hero-attr" href="docs/runtime/controlled-execution.html">safe</a>, <a class="hero-attr" href="docs/runtime/runtime-limits.html">bounded</a> and <a class="hero-attr" href="docs/reports/index.html">observable</a>.</p>
       </div>
@@ -131,68 +131,53 @@
   <section class="section soft" id="framework-runtime">
     <div class="container">
       <div class="section-head center">
-        <h2>Nothing new to learn</h2>
-        <p>An agent is a JSON document with Python expressions that spells out the steps. The agent server is the program that runs&nbsp;it.</p>
+        <h2>Build agents interactively with AI, like vibe&nbsp;coding</h2>
+        <p>An agent is a structured JSON document with a schema, so <a href="docs/development/draft-with-ai.html">AI generates</a> well&#8209;formed&nbsp;agents.</p>
       </div>
-      <figure class="dr" aria-label="One sentence, Help customers with their orders, goes to Draft with AI, which writes the agent: orders.json, a JSON document with one tool function, findOrders, that runs a database query and returns the rows, and a main function whose llm command calls the model with that tool and streams the answer. Three notes point into the code. 1, Python expression: a string value in braces is Python, run on every call. 2, Tool calling: the model may call findOrders, and the server runs the loop. 3, 20 commands, three in use here: var, if, while, for, break, continue, func, return, parallel, llm, memory, api, db, ask, output, end, fail, progress, trace, log.">
-        <div class="dr-ask">
-          <div class="dr-bubble">Help customers with their&nbsp;orders.</div>
-        </div>
-        <div class="dr-arr"><b><a href="docs/development/draft-with-ai.html">Draft with AI</a></b><i></i></div>
-        <div class="codecard dr-agent">
-          <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">orders.json</span></div>
-          <pre><code>{
+      <div class="fr" aria-label="An agent. It is a JSON document with two functions. findOrders is a tool function: it has a description and a typed, described argument, email; its commands run a db query with email as a parameter and return the rows with a Python expression. main runs an llm command that names findOrders as a tool and streams the answer. Seven notes point at the lines: Tool function, 20 commands, Python expression, main, LLM profile, Prompt, Tool calling.">
+        <pre class="fr-code r1"><code>{
   <span class=key>"functions"</span>: {
-    <span class=key>"findOrders"</span>: {
-      <span class=key>"description"</span>: <span class=str>"Lists a customer's orders."</span>,
+    <span class=key>"findOrders"</span>: {</code></pre>
+        <pre class="fr-code r2 hlrow"><code><span class="hl">      <span class=key>"description"</span>: <span class=str>"Lists a customer's orders."</span>,
       <span class=key>"args"</span>: {
-        <span class=key>"email"</span>: {
-          <span class=key>"type"</span>: <span class=str>"str"</span>,
-          <span class=key>"description"</span>: <span class=str>"The customer's email."</span>
-        }
-      },
-      <span class=key>"commands"</span>: {
-        <span class=key>"db"</span>: {
-          <span class=key>"profile"</span>: <span class=str>"orders"</span>,
-          <span class=key>"sql"</span>: <span class=str>"<span class=ex>{ sql.recent_orders }</span>"</span> <span class="dr-mk" aria-hidden="true">1</span>
-        },
-        <span class=key>"return"</span>: <span class=str>"<span class=ex>{ {'orders': result} }</span>"</span>
-      }
-    },
-    <span class=key>"main"</span>: {
-      <span class=key>"commands"</span>: {
-        <span class=key>"llm"</span>: { <span class="dr-mk" aria-hidden="true">3</span>
-          <span class=key>"profile"</span>: <span class=str>"gpt5_mini"</span>,
-          <span class=key>"prompt"</span>: <span class=str>"support"</span>,
-          <span class=key>"functions"</span>: [<span class=str>"findOrders"</span>], <span class="dr-mk" aria-hidden="true">2</span>
-          <span class=key>"streamOutput"</span>: <span class=tk-bool>true</span>
+        <span class=key>"email"</span>: { <span class=key>"type"</span>: <span class=str>"str"</span>, <span class=key>"description"</span>: <span class=str>"Customer email."</span> }
+      },</span></code></pre>
+        <aside class="fr-note r2"><b><a href="docs/agent-definition/functions.html">Tool function</a></b>A function with a description and typed, described arguments. The model can call it as a&nbsp;tool.</aside>
+        <pre class="fr-code r3"><code>      <span class=key>"commands"</span>: {</code></pre>
+        <pre class="fr-code r4 hlrow"><code><span class="hl">        <span class=key>"db"</span>: {</span></code></pre>
+        <aside class="fr-note r4"><b><a href="docs/commands/index.html">20 commands</a></b><code>db</code>, <code>return</code> and <code>llm</code> are three of&nbsp;them.</aside>
+        <pre class="fr-code r5"><code>          <span class=key>"profile"</span>: <span class=str>"orders"</span>,
+          <span class=key>"sql"</span>: <span class=str>"select * from orders where email = :email"</span>,
+          <span class=key>"params"</span>: { <span class=key>"email"</span>: <span class=str>"<span class=ex>{ email }</span>"</span> }
+        },</code></pre>
+        <pre class="fr-code r6 hlrow"><code><span class="hl">        <span class=key>"return"</span>: <span class=str>"<span class=ex>{ result }</span>"</span></span></code></pre>
+        <aside class="fr-note r6"><b><a href="docs/agent-definition/python-expressions.html">Python expression</a></b>A string value in braces is&nbsp;Python.</aside>
+        <pre class="fr-code r7"><code>      }
+    },</code></pre>
+        <pre class="fr-code r8 hlrow"><code><span class="hl">    <span class=key>"main"</span>: {</span></code></pre>
+        <aside class="fr-note r8"><b><a href="docs/agent-definition/structure.html#main">main</a></b>Every run starts here, with the user&rsquo;s&nbsp;request.</aside>
+        <pre class="fr-code r9"><code>      <span class=key>"commands"</span>: {
+        <span class=key>"llm"</span>: {</code></pre>
+        <pre class="fr-code r10 hlrow mid"><code><span class="hl">          <span class=key>"profile"</span>: <span class=str>"gpt5_mini"</span>,</span></code></pre>
+        <aside class="fr-note r10 mid"><b><a href="docs/profiles/llm-profiles.html">LLM profile</a></b>Names the vendor, model and call settings, defined once by&nbsp;admins.</aside>
+        <pre class="fr-code r11 hlrow mid"><code><span class="hl">          <span class=key>"prompt"</span>: <span class=str>"support"</span>,</span></code></pre>
+        <aside class="fr-note r11 mid"><b><a href="docs/agent-definition/prompts.html">Prompt</a></b>One of the agent&rsquo;s prompts, by name. Its history is kept under that&nbsp;name.</aside>
+        <pre class="fr-code r12 hlrow mid"><code><span class="hl">          <span class=key>"functions"</span>: [<span class=str>"findOrders"</span>],</span></code></pre>
+        <aside class="fr-note r12 mid"><b><a href="docs/commands/llm.html#tool-calling">Tool calling</a></b>The llm command lists its tools. The agent server runs the call loop until the model answers, and streams the&nbsp;answer.</aside>
+        <pre class="fr-code r13"><code>          <span class=key>"streamOutput"</span>: <span class=tk-bool>true</span>
         }
       }
     }
   }
 }</code></pre>
-        </div>
-        <div class="dr-notes">
-          <div class="dr-note">
-            <span class="dr-mk">1</span>
-            <div><a class="dr-note-title" href="docs/agent-definition/python-expressions.html">Python expression</a><span class="dr-note-line">A string value in braces is Python, run on every&nbsp;call</span></div>
-          </div>
-          <div class="dr-note">
-            <span class="dr-mk">2</span>
-            <div><a class="dr-note-title" href="docs/commands/llm.html#tool-calling">Tool calling</a><span class="dr-note-line">The model may call findOrders. The server runs the&nbsp;loop</span></div>
-          </div>
-          <div class="dr-note">
-            <span class="dr-mk">3</span>
-            <div><a class="dr-note-title" href="docs/commands/index.html">20 commands</a><span class="dr-note-line">Three in use&nbsp;here</span><p class="dr-cmds"><a href="docs/commands/var.html">var</a> <a href="docs/commands/if.html">if</a> <a href="docs/commands/while.html">while</a> <a href="docs/commands/for.html">for</a> <a href="docs/commands/break.html">break</a> <a href="docs/commands/continue.html">continue</a> <a href="docs/commands/func.html">func</a> <a class="on" href="docs/commands/return.html">return</a> <a href="docs/commands/parallel.html">parallel</a> <a class="on" href="docs/commands/llm.html">llm</a> <a href="docs/commands/memory.html">memory</a> <a href="docs/commands/api.html">api</a> <a class="on" href="docs/commands/db.html">db</a> <a href="docs/commands/ask.html">ask</a> <a href="docs/commands/output.html">output</a> <a href="docs/commands/end.html">end</a> <a href="docs/commands/fail.html">fail</a> <a href="docs/commands/progress.html">progress</a> <a href="docs/commands/trace.html">trace</a> <a href="docs/commands/log.html">log</a></p></div>
-          </div>
-        </div>
-      </figure>
+      </div>
+      <p class="hero-caption">Live demo: <a href="demo-draft.html">Draft with AI</a></p>
     </div>
   </section>
   <section class="section" id="user-interfaces">
     <div class="container">
       <div class="section-head center">
-        <h2>Fits right in, with no internal&nbsp;dependencies</h2>
+        <h2>Fits right in, with no internal dependencies in your&nbsp;organization</h2>
         <p>The agent server runs stateless in your organization and keeps its state in the&nbsp;cloud.</p>
       </div>
       <div class="ui-fig">

@@ -460,51 +460,48 @@ p { margin: 0; }
   #conversations .cv-note:last-child { margin-bottom: 16px; }
 }
 #framework-runtime .section-head { max-width: 860px; }
-#framework-runtime .dr { display: grid; grid-template-columns: 190px 72px 400px minmax(0, 1fr); align-items: center; gap: 0 14px; max-width: 960px; margin: 0 auto; }
-#framework-runtime .dr-ask { display: grid; justify-items: end; }
-#framework-runtime .dr-bubble { padding: 10px 14px; border-radius: 14px 14px 4px 14px; background: var(--bubble-bg); color: #eef2f9; font-size: 14px; line-height: 1.45; }
-#framework-runtime .dr-arr { display: grid; justify-items: center; align-content: center; gap: 6px; min-width: 0; }
-#framework-runtime .dr-arr b { padding: 3px 8px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--ink); font-size: 11px; font-weight: 650; white-space: nowrap; }
-#framework-runtime .dr-arr b a { color: inherit; }
-#framework-runtime .dr-arr b a:hover { color: var(--blue-ink); }
-#framework-runtime .dr-arr i { position: relative; display: block; width: 100%; height: 2px; background: var(--muted); opacity: .55; }
-#framework-runtime .dr-arr i::after { content: ""; position: absolute; right: -1px; top: -4px; width: 8px; height: 8px; border-top: 2px solid var(--muted); border-right: 2px solid var(--muted); transform: rotate(45deg); }
-#framework-runtime .dr-agent .bar { padding: 8px 12px; }
-#framework-runtime .dr-agent .bar .fname { font-size: 11.5px; }
-#framework-runtime .dr-agent pre { padding: 12px 14px; font-size: 10px; line-height: 1.5; }
-#framework-runtime .dr-agent .ex { color: #f0c674; }
-#framework-runtime .dr-mk { display: inline-flex; align-items: center; justify-content: center; width: 15px; height: 15px; border-radius: 50%; background: var(--blue); color: #fff; font-family: var(--font); font-size: 9.5px; font-weight: 700; line-height: 1; vertical-align: middle; }
-#framework-runtime .dr-agent .dr-mk { margin-left: 6px; }
-#framework-runtime .dr-notes { display: grid; gap: 18px; align-content: center; min-width: 0; padding-left: 10px; }
-#framework-runtime .dr-note { display: grid; grid-template-columns: 15px minmax(0, 1fr); gap: 9px; align-items: start; min-width: 0; }
-#framework-runtime .dr-note .dr-mk { margin-top: 1px; }
-#framework-runtime .dr-note > div { display: grid; gap: 3px; min-width: 0; }
-#framework-runtime .dr-note-title { color: var(--ink); font-size: 13.5px; font-weight: 750; letter-spacing: -0.01em; line-height: 1.3; }
-#framework-runtime .dr-note-title:hover { color: var(--blue-ink); }
-#framework-runtime .dr-note-line { color: var(--muted); font-size: 12.5px; line-height: 1.4; }
-#framework-runtime .dr-cmds { display: flex; flex-wrap: wrap; gap: 4px 13px; margin: 6px 0 0; padding-top: 8px; border-top: 1px solid var(--line-soft); color: var(--muted); font-family: var(--mono); font-size: 11px; line-height: 1.5; }
-#framework-runtime .dr-cmds a { color: inherit; }
-#framework-runtime .dr-cmds a:hover { color: var(--blue-ink); }
-#framework-runtime .dr-cmds a.on { color: var(--ink); font-weight: 700; }
-@media (max-width: 1099px) {
-  #framework-runtime .dr { grid-template-columns: 190px 72px minmax(0, 1fr); gap: 0 14px; max-width: 760px; }
-  #framework-runtime .dr-agent { width: min(100%, 400px); }
-  #framework-runtime .dr-notes { grid-column: 3; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 18px; margin-top: 18px; padding-left: 0; }
-  #framework-runtime .dr-notes .dr-note:last-child { grid-column: 1 / -1; }
+#framework-runtime .fr { position: relative; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); grid-template-rows: repeat(13, auto); column-gap: 22px; align-items: start; max-width: 940px; margin: 0 auto; }
+#framework-runtime .fr::before { content: ""; grid-column: 1; grid-row: 1 / -1; align-self: stretch; justify-self: stretch; border: 1px solid #22304f; border-radius: 16px; background: #101b33; box-shadow: 0 30px 70px -28px rgba(16, 27, 51, .55); }
+#framework-runtime .fr > * { position: relative; min-width: 0; }
+#framework-runtime .fr > .r1 { grid-row: 1; } #framework-runtime .fr > .r2 { grid-row: 2; } #framework-runtime .fr > .r3 { grid-row: 3; } #framework-runtime .fr > .r4 { grid-row: 4; } #framework-runtime .fr > .r5 { grid-row: 5; } #framework-runtime .fr > .r6 { grid-row: 6; } #framework-runtime .fr > .r7 { grid-row: 7; } #framework-runtime .fr > .r8 { grid-row: 8; } #framework-runtime .fr > .r9 { grid-row: 9; } #framework-runtime .fr > .r10 { grid-row: 10; } #framework-runtime .fr > .r11 { grid-row: 11; } #framework-runtime .fr > .r12 { grid-row: 12; } #framework-runtime .fr > .r13 { grid-row: 13; }
+#framework-runtime .fr-note.r2 { grid-row: 2 / span 2; } #framework-runtime .fr-note.r4 { grid-row: 4 / span 2; } #framework-runtime .fr-note.r6 { grid-row: 6 / span 2; } #framework-runtime .fr-note.r8 { grid-row: 8 / span 2; }
+#framework-runtime .fr > .mid { align-self: center; }
+#framework-runtime .fr-note.mid::before { top: 50%; }
+#framework-runtime .fr-code { --fr-pad: 16px; grid-column: 1; margin: 0; padding: 0 var(--fr-pad); overflow: visible; font-family: var(--mono); font-size: 11px; line-height: 1.6; color: #c7d3ea; white-space: pre-wrap; overflow-wrap: anywhere; }
+#framework-runtime .fr-code.r1 { padding-top: 14px; }
+#framework-runtime .fr-code.r13 { padding-bottom: 14px; }
+#framework-runtime .fr-code .key { color: #9db4e0; }
+#framework-runtime .fr-code .str { color: #b5e0a8; }
+#framework-runtime .fr-code .ex { color: #f0c674; }
+#framework-runtime .fr-code .hl { display: block; margin: 0 calc(-1 * var(--fr-pad)); padding: 3px var(--fr-pad); background: rgba(59, 130, 246, .16); box-shadow: inset 3px 0 0 var(--blue); }
+#framework-runtime .fr-note { grid-column: 2; align-self: start; margin: 0; padding: 8px 11px 9px; border: 1px solid var(--line); border-radius: 9px; background: var(--card); color: var(--body); font-size: 12.5px; line-height: 1.45; text-wrap: pretty; }
+#framework-runtime .fr-note::before { content: ""; position: absolute; left: -6px; top: 12px; width: 10px; height: 10px; transform: translateY(-50%) rotate(45deg); border-left: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--card); }
+#framework-runtime .fr-note b { display: block; margin-bottom: 3px; font-size: 13px; color: var(--blue-ink); }
+#framework-runtime .fr-note b a { color: inherit; font-weight: 600; }
+#framework-runtime .fr-note b a:hover { color: var(--blue); }
+#framework-runtime .fr-note code { font-family: var(--mono); font-size: 11.5px; color: var(--ink); }
+@media (max-width: 860px) {
+  #framework-runtime .fr { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); column-gap: 12px; }
+  #framework-runtime .fr-code { --fr-pad: 12px; font-size: 10px; }
+  #framework-runtime .fr-note { padding: 7px 9px 8px; font-size: 11.5px; }
+  #framework-runtime .fr-note::before { top: 11px; }
+  #framework-runtime .fr-note b { font-size: 12px; }
+  #framework-runtime .fr-note code { font-size: 10.5px; }
 }
-@media (max-width: 760px) {
-  #framework-runtime .dr { grid-template-columns: minmax(0, 1fr); justify-items: center; gap: 10px; }
-  #framework-runtime .dr-ask { justify-items: center; }
-  #framework-runtime .dr-arr { width: 100%; gap: 5px; }
-  #framework-runtime .dr-arr i { width: 2px; height: 22px; }
-  #framework-runtime .dr-arr i::after { right: auto; top: auto; left: -3px; bottom: -1px; transform: rotate(135deg); }
-  #framework-runtime .dr-notes { grid-column: 1; grid-template-columns: minmax(0, 1fr); width: min(100%, 400px); margin-top: 8px; }
+@media (max-width: 560px) {
+  #framework-runtime .fr { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); column-gap: 9px; }
+  #framework-runtime .fr::before { border-radius: 12px; }
+  #framework-runtime .fr-code { --fr-pad: 10px; font-size: 9px; line-height: 1.55; }
+  #framework-runtime .fr-code.r1 { padding-top: 10px; }
+  #framework-runtime .fr-code.r13 { padding-bottom: 10px; }
+  #framework-runtime .fr-note { padding: 6px 8px 7px; border-radius: 8px; font-size: 10.5px; line-height: 1.4; }
+  #framework-runtime .fr-note::before { left: -5px; top: 10px; width: 8px; height: 8px; }
+  #framework-runtime .fr-note b { margin-bottom: 2px; font-size: 11px; }
+  #framework-runtime .fr-note code { font-size: 9.5px; }
 }
 @media (max-width: 360px) {
-  #framework-runtime .dr-agent pre { padding: 10px 8px; font-size: 9px; }
-}
-@media (max-width: 340px) {
-  #framework-runtime .dr-agent pre { padding: 10px 6px; font-size: 8.5px; }
+  #framework-runtime .fr-code { --fr-pad: 8px; font-size: 8.5px; }
+  #framework-runtime .fr-note { padding: 5px 7px 6px; font-size: 10px; }
 }
 
 .pl-wrap { max-width: 1040px; margin: 0 auto; }
