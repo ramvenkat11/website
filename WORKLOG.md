@@ -2067,3 +2067,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-08 Section 3 card: arguments and description
 - Second paragraph of the commands card now ends "A function can take arguments. One that is used in a tool call also has a description." with links to functions.html#arguments, llm.html#tool-calling, functions.html#description. aria-label updated. Generator agent-figure19.mjs. 18 views clean, sweep 0 of 241.
+
+## 2026-11-08 Live demo captions more prominent
+- .hero-caption (styles.css ~235): 15px, body colour; the link is now a pill (card background, line border, 999px radius, 5px 13px padding) with a trailing arrow via ::after; hover turns blue. Applies to all three captions (hero, conversations, framework-runtime). 9 widths light+dark, 18 clean, sweep 0 of 241.
