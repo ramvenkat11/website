@@ -2,7 +2,7 @@
 
 ## Hybrid architecture
 
-Agent server has no dependency in your enterprise. It is stateless and maintains its state in the Search2o cloud. Conversations and other sensitive information are encrypted. 
+Agent server has no dependency in your organization. It is stateless and maintains its state in the Search2o cloud. Conversations and other sensitive information are encrypted. 
 
 Links:
 - Parts of the system -> docs/introduction/parts-of-the-system.html

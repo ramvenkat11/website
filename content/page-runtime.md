@@ -103,7 +103,7 @@ When an agent run starts, the agent server contacts the cloud. The reply include
 
 The server builds a new runtime from the changed parts and the unchanged parts of the old runtime. The agent run then starts with the new runtime. Two servers that start the same agent at the same time use the same runtime.
 
-An agent keeps the runtime it started with for the entire run. The old runtime’s connections stay open until the last agent using them finishes, so a change never interrupts an agent in the middle of a call. The agent server is a stateless process. It runs within your enterprise’s chosen isolation and in a [cluster](docs/system-management/agent-servers.html).
+An agent keeps the runtime it started with for the entire run. The old runtime’s connections stay open until the last agent using them finishes, so a change never interrupts an agent in the middle of a call. The agent server is a stateless process. It runs within your organization’s chosen isolation and in a [cluster](docs/system-management/agent-servers.html).
 
 ## What leaves the agent server
 

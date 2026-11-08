@@ -11,10 +11,10 @@
 <meta property="og:description" content="Each time an agent ends successfully or pauses on an ask, the conversation state is encrypted and stored in Search2o Cloud, or handed to your own code when t…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/agent-execution/conversation-state.html">
-<meta property="og:image" content="https://search2o.com/images/og7.png">
+<meta property="og:image" content="https://search2o.com/images/og8.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Search2o, agent server for the enterprise. Transform your enterprise AI with Search2o agent server.">
+<meta property="og:image:alt" content="Search2o, agent server for the enterprise. Let your users converse with hundreds of task-focused AI agents.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="../../fonts/inter-latin.woff2" crossorigin>
@@ -80,18 +80,18 @@
 <p>State is saved when a run ends with <code>end</code>, with <code>return</code> from <code>main</code>, or by pausing on <code>ask</code>. It is <em>not</em> saved when the run ends with <code>fail</code> or with an error, so a follow-up sees the state as it was before the failed run.</p>
 
 <h2 id="encryption">Encryption</h2>
-<p>State is encrypted before it leaves the agent server, and the cloud never decrypts it. By default Search2o manages the key for your account. An administrator can switch to keys held entirely in your enterprise. See <a href="../security/encryption.html">Encryption</a>.</p>
+<p>State is encrypted before it leaves the agent server, and the cloud never decrypts it. By default Search2o manages the key for your account. An administrator can switch to keys held entirely in your organization. See <a href="../security/encryption.html">Encryption</a>.</p>
 
-<h2 id="keeping-the-state-in-your-enterprise">Keeping the state in your enterprise</h2>
-<p>With the <a href="../hooks/conversation-state.html">conversation state hooks</a> set, the agent server stores each conversation's state through your own code instead of the cloud. A <code>save</code> function receives the state, a <code>restore</code> function returns it for a follow-up or for the UI's conversation view, and a <code>deleteConversation</code> function is called when a user deletes the conversation. The state never leaves your enterprise. It is handed over in plain form, so encrypting what you store is your choice, and <code>restore</code> receives the user's email so that your code can check who the conversation belongs to. The cloud keeps only the conversation's entry: its encrypted title and when it was last used. Validation runs keep their state in the cloud.</p>
+<h2 id="keeping-the-state-in-your-organization">Keeping the state in your organization</h2>
+<p>With the <a href="../hooks/conversation-state.html">conversation state hooks</a> set, the agent server stores each conversation's state through your own code instead of the cloud. A <code>save</code> function receives the state, a <code>restore</code> function returns it for a follow-up or for the UI's conversation view, and a <code>deleteConversation</code> function is called when a user deletes the conversation. The state never leaves your organization. It is handed over in plain form, so encrypting what you store is your choice, and <code>restore</code> receives the user's email so that your code can check who the conversation belongs to. The cloud keeps only the conversation's entry: its encrypted title and when it was last used. Validation runs keep their state in the cloud.</p>
 
 <h2 id="retention">Retention</h2>
-<p>A conversation is deleted after 7 days without use, counted from the last time an agent ran in the conversation or the conversation was read, whichever is later. The paid service has no such limit. A user can pin a conversation to keep it, and can delete a conversation at any time. When the state is kept in your enterprise, that retention still removes the conversation from the list. The stored state itself is deleted by your <code>deleteConversation</code> function when the user deletes the conversation; expiring anything else is your decision.</p>
+<p>A conversation is deleted after 7 days without use, counted from the last time an agent ran in the conversation or the conversation was read, whichever is later. The paid service has no such limit. A user can pin a conversation to keep it, and can delete a conversation at any time. When the state is kept in your organization, that retention still removes the conversation from the list. The stored state itself is deleted by your <code>deleteConversation</code> function when the user deletes the conversation; expiring anything else is your decision.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../agent-execution/error-handling.html'><small>Previous</small>Error handling</a><a class=next href='../agent-execution/building-on-each-other.html'><small>Next</small>Agents building on each other</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#what-the-state-holds'>What the state holds</a></li><li class=l2><a href='#when-state-is-saved'>When state is saved</a></li><li class=l2><a href='#encryption'>Encryption</a></li><li class=l2><a href='#keeping-the-state-in-your-enterprise'>Keeping the state in your enterprise</a></li><li class=l2><a href='#retention'>Retention</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#what-the-state-holds'>What the state holds</a></li><li class=l2><a href='#when-state-is-saved'>When state is saved</a></li><li class=l2><a href='#encryption'>Encryption</a></li><li class=l2><a href='#keeping-the-state-in-your-organization'>Keeping the state in your organization</a></li><li class=l2><a href='#retention'>Retention</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

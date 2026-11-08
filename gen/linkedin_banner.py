@@ -51,8 +51,8 @@ d.rectangle([xh, wm_top - 10, xh + 3, wm_top + block_h + 10], fill=HAIR)
 
 # headline: segments per line; "ink" and "muted" are flat, "accent" takes the blue-to-teal gradient over its own span
 LINES = [
-    [("Transform your enterprise AI", "ink")],
-    [("with Search2o agent server", "ink")],
+    [("Let your users converse with", "ink")],
+    [("hundreds of task-focused AI agents", "ink")],
 ]
 def line_width(font, segs): return sum(font.getlength(t) for t, _ in segs)
 def draw_lines(img, x0, top, f, pitch, size):

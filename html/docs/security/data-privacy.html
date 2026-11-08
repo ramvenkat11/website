@@ -5,16 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Data privacy — Search2o docs</title>
-<meta name="description" content="Data falls into four categories: what never leaves your enterprise, what leaves only in encrypted form, what leaves in plain form but is stored encrypted, an…">
+<meta name="description" content="Data falls into four categories: what never leaves your organization, what leaves only in encrypted form, what leaves in plain form but is stored encrypted, …">
 <link rel="canonical" href="https://search2o.com/docs/security/data-privacy.html">
 <meta property="og:title" content="Data privacy — Search2o docs">
-<meta property="og:description" content="Data falls into four categories: what never leaves your enterprise, what leaves only in encrypted form, what leaves in plain form but is stored encrypted, an…">
+<meta property="og:description" content="Data falls into four categories: what never leaves your organization, what leaves only in encrypted form, what leaves in plain form but is stored encrypted, …">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/security/data-privacy.html">
-<meta property="og:image" content="https://search2o.com/images/og7.png">
+<meta property="og:image" content="https://search2o.com/images/og8.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Search2o, agent server for the enterprise. Transform your enterprise AI with Search2o agent server.">
+<meta property="og:image:alt" content="Search2o, agent server for the enterprise. Let your users converse with hundreds of task-focused AI agents.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="../../fonts/inter-latin.woff2" crossorigin>
@@ -64,9 +64,9 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../security/index.html'>Security and privacy</a></div>
     <article class="docs-article">
       <h1>Data privacy</h1>
-      <p class="lead">Data falls into four categories: what never leaves your enterprise, what leaves only in encrypted form, what leaves in plain form but is stored encrypted, and what leaves and is stored in plain form. For each, the tables below say who can read the data and how long the cloud keeps it. The 7-day periods are the free account's limits; the paid service has no such limits.</p>
+      <p class="lead">Data falls into four categories: what never leaves your organization, what leaves only in encrypted form, what leaves in plain form but is stored encrypted, and what leaves and is stored in plain form. For each, the tables below say who can read the data and how long the cloud keeps it. The 7-day periods are the free account's limits; the paid service has no such limits.</p>
 
-<h2 id="what-never-leaves-your-enterprise">What never leaves your enterprise</h2>
+<h2 id="what-never-leaves-your-organization">What never leaves your organization</h2>
 <p>Secrets read with <code>sys.secret</code> never leave the agent server, whichever source they come from: the environment, files, or your vault through the <code>vault</code> hook. Conversation state never leaves either when the account uses the <a href="../hooks/conversation-state.html">conversation state hooks</a>; the agent server then hands each conversation's state to your own code, in plain form, and reads it back from there. Agents run on the agent server, and every call to your APIs, databases, LLM providers and MCP servers leaves from there. What those calls return stays on the agent server, unless an agent writes it into its output or into a conversation variable. The <code>log</code> command writes to the agent server's own log, and nothing in that log is sent to the cloud.</p>
 
 <h2 id="what-leaves-only-in-encrypted-form">What leaves only in encrypted form</h2>
@@ -103,12 +103,12 @@
 </tbody></table></div>
 
 <h2 id="who-else-can-see-it">Who else can see it</h2>
-<p>Search2o Cloud runs on Google Cloud Platform. Search2o staff, and Google as the provider of the underlying infrastructure, can in principle see the data stored in plain form. With the default setting the account's key is managed by Search2o, so Search2o and Google can in principle read the encrypted data as well. With end-to-end encryption the key never leaves your enterprise, and neither Search2o nor Google can read what is stored encrypted. The <a href="../../legal/privacy.html">privacy policy</a> is authoritative.</p>
+<p>Search2o Cloud runs on Google Cloud Platform. Search2o staff, and Google as the provider of the underlying infrastructure, can in principle see the data stored in plain form. With the default setting the account's key is managed by Search2o, so Search2o and Google can in principle read the encrypted data as well. With end-to-end encryption the key never leaves your organization, and neither Search2o nor Google can read what is stored encrypted. The <a href="../../legal/privacy.html">privacy policy</a> is authoritative.</p>
 
     </article>
     <nav class=prevnext><a class=prev href='../security/encryption.html'><small>Previous</small>Encryption</a><a class=next href='../security/multiple-environments.html'><small>Next</small>Running multiple environments</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#what-never-leaves-your-enterprise'>What never leaves your enterprise</a></li><li class=l2><a href='#what-leaves-only-in-encrypted-form'>What leaves only in encrypted form</a></li><li class=l2><a href='#what-leaves-in-plain-form-but-is-stored-encrypted'>What leaves in plain form but is stored encrypted</a></li><li class=l2><a href='#what-leaves-and-is-stored-in-plain-form'>What leaves and is stored in plain form</a></li><li class=l2><a href='#who-else-can-see-it'>Who else can see it</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#what-never-leaves-your-organization'>What never leaves your organization</a></li><li class=l2><a href='#what-leaves-only-in-encrypted-form'>What leaves only in encrypted form</a></li><li class=l2><a href='#what-leaves-in-plain-form-but-is-stored-encrypted'>What leaves in plain form but is stored encrypted</a></li><li class=l2><a href='#what-leaves-and-is-stored-in-plain-form'>What leaves and is stored in plain form</a></li><li class=l2><a href='#who-else-can-see-it'>Who else can see it</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

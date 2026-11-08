@@ -10,10 +10,10 @@
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://search2o.com/">
 <meta property="og:url" content="https://search2o.com/">
-<meta property="og:image" content="https://search2o.com/images/og7.png">
+<meta property="og:image" content="https://search2o.com/images/og8.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Search2o, agent server for the enterprise. Transform your enterprise AI with Search2o agent server.">
+<meta property="og:image:alt" content="Search2o, agent server for the enterprise. Let your users converse with hundreds of task-focused AI agents.">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
@@ -66,10 +66,10 @@
       <div class="hero-head as-head">
         <h1 class="hero-claim">Let your users converse with hundreds of task&#8209;focused AI agents</h1>
         <p class="hero-lead">Developers <a class="hero-attr" href="framework.html">build</a>, validate and publish <a class="hero-attr" href="docs/introduction/search2o-agents.html">task&#8209;focused agents</a>. They <a class="hero-attr" href="search.html#description">describe</a> when to use each one in plain English.</p>
-        <p class="hero-lead">Users start a conversation with a request. The built-in <a class="hero-attr" href="search.html">search</a> finds and runs the right agent on that request. Follow&#8209;up requests can bring in other agents, and build on previous results.</p>
+        <p class="hero-lead">Users start a <a class="hero-attr" href="conversation.html">conversation</a> with a request. The built-in <a class="hero-attr" href="search.html">search</a> finds and runs the right agent on that request. Follow&#8209;up requests can bring in other agents, and build on previous results.</p>
         <p class="hero-lead">The agent server keeps every run <a class="hero-attr" href="docs/runtime/controlled-execution.html">safe</a>, <a class="hero-attr" href="docs/runtime/runtime-limits.html">bounded</a> and <a class="hero-attr" href="docs/reports/index.html">observable</a>.</p>
       </div>
-      <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example Inventory, which reports stock levels by part and site, and Purchasing, which raises purchase orders with approved suppliers. The Search2o agent server holds hundreds of agents. Users converse with it: a first request, Is part 7731 in stock in Berlin?, is matched to Inventory, which answers Berlin has 42 units of part 7731, below its reorder point of 60. A follow-up, Order enough to bring it back up to 60, is matched to Purchasing, which answers Done. PO-5519 orders 18 units of part 7731 for Berlin.">
+      <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example Inventory, which reports stock levels by part and site, and Purchasing, which raises purchase orders with approved suppliers. The Search2o agent server holds hundreds of agents. Users converse with it: a first request, Is part 7731 in stock in Berlin?, is matched to Inventory, which answers Berlin has 42 units of part 7731, below its reorder point of 60. A follow-up, Reorder the part, is matched to Purchasing, which answers Done. PO-5519 orders 18 units of part 7731 for Berlin.">
         <div class="as-side as-dev">
           <div class="as-actor"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 4-4 16"/></svg></span><span class="nm">Developers</span></div>
           <i class="rail"></i>
@@ -91,7 +91,7 @@
           <div class="as-flow r"><span class="lbl">Describe agents in English</span><i class="ln"></i><span class="sub"><b class="as-agent">Inventory</b>: Reports stock levels by part and site.</span><span class="sub"><b class="as-agent">Purchasing</b>: Raises purchase orders with approved suppliers.</span></div>
         </div>
         <div class="as-lane as-right as-r2">
-          <div class="as-flow l"><span class="lbl">Order enough to bring it back up to&nbsp;60.</span><i class="ln"></i><span class="sub"><b class="as-agent">Purchasing</b>: Done. PO&#8209;5519 orders 18 units of part 7731 for&nbsp;Berlin.</span></div>
+          <div class="as-flow l"><span class="lbl">Reorder the part.</span><i class="ln"></i><span class="sub"><b class="as-agent">Purchasing</b>: Done. PO&#8209;5519 orders 18 units of part 7731 for&nbsp;Berlin.</span></div>
         </div>
       </div>
       <p class="hero-caption">Live demo: <a href="demo-search.html">Chat with agents</a></p>
@@ -178,14 +178,14 @@
   <section class="section" id="user-interfaces">
     <div class="container">
       <div class="section-head center">
-        <h2>Fits right in, with no internal dependencies in your&nbsp;organization</h2>
+        <h2>Fits right into your organization with no internal&nbsp;dependencies</h2>
         <p>The agent server runs stateless in your organization and keeps its state in the&nbsp;cloud.</p>
       </div>
       <div class="ui-fig">
-      <aside class="arch cc-arch hero-arch" aria-label="A browser used by users, developers and admins, Slack, Teams or Google Chat, an agent harness and your own REST client send requests to the Search2o agent server in your enterprise. The agent server runs the agents and calls enterprise systems and local LLMs inside the enterprise, and external LLMs outside it. The agent server keeps no state: an encrypted link connects it to Search2o Cloud, which keeps the conversations and memories, encrypted by default.">
+      <aside class="arch cc-arch hero-arch" aria-label="A browser used by users, developers and admins, Slack, Teams or Google Chat, an agent harness and your own REST client send requests to the Search2o agent server in your organization. The agent server runs the agents and calls enterprise systems and local LLMs inside the enterprise, and external LLMs outside it. The agent server keeps no state: an encrypted link connects it to Search2o Cloud, which keeps the conversations and memories, encrypted by default.">
           <div class="arch-flow">
             <div class="arch-org">
-            <span class="arch-org-lbl">Your enterprise</span>
+            <span class="arch-org-lbl">Your organization</span>
             <div class="cc-clients">
               <div class="arch-node cc-cc"><strong><a href="docs/gui/index.html">Browser</a></strong><div class="arch-chips cc-skill cc-roles"><span><a href="docs/system-management/users-and-roles.html">User &middot; Developer &middot; Admin</a></span></div></div>
               <div class="arch-node cc-cc"><strong><a href="docs/chat-integrations/index.html">Slack, Teams, Google&nbsp;Chat</a></strong><div class="arch-chips cc-skill"><span><a href="docs/chat-integrations/index.html">Bot</a></span></div></div>
@@ -250,7 +250,7 @@
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m10 12.5-2 2.5 2 2.5M14 12.5l2 2.5-2 2.5"/></svg></div>
           <h3>Source available</h3>
-          <p>Everything that runs in your enterprise can be built from the source: the <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">agent server</a> and the <a href="https://github.com/Search2o/ui" target="_blank" rel="noopener">UI</a>. Set the <a href="docs/system-management/agent-servers.html#what-a-configuration-sets">logging configuration</a> to see every call to the cloud.</p>
+          <p>Everything that runs in your organization can be built from the source: the <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">agent server</a> and the <a href="https://github.com/Search2o/ui" target="_blank" rel="noopener">UI</a>. Set the <a href="docs/system-management/agent-servers.html#what-a-configuration-sets">logging configuration</a> to see every call to the cloud.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/></svg></div>
