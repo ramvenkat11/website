@@ -1963,3 +1963,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
   (description/args), 20 commands ("db": {), Python expression (return), Tool calling (functions). Python note text:
   "A string value in braces is Python. This one returns the query rows as a dict." Generator: scratchpad
   agent-figure3.mjs. Verified 1280..320 light+dark; sweep 0 of 241.
+- #user-interfaces h2: "Fits right in, with no internal dependencies in your organization".
