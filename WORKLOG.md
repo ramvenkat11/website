@@ -1957,3 +1957,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
   agent-figure2.mjs. Verified 1280..320 light+dark; sweep 0 of 241.
 - #framework-runtime: "Drafted with AI" chip removed from the code card bar; subtitle now links "AI generates" to docs/development/draft-with-ai.html. Highlight band hugs the highlighted lines only (row no longer stretched). Window dots back at all widths.
 - #framework-runtime figure: card bar (dots + orders.json) and the numbered markers removed; rows renumbered r1..r9; notes keep title + text only. Generator scratchpad agent-figure2.mjs is now behind the live markup (bar/markers edited out by hand).
+- #framework-runtime figure, third pass (Ram: the JSON must not leave gaps): notes are top-aligned and span their
+  highlight row plus the next plain row, so the code flows continuously and each note hangs beside the code below its
+  line; arrow fixed near the note top pointing at the band. Highlights moved so no note collides: Tool function
+  (description/args), 20 commands ("db": {), Python expression (return), Tool calling (functions). Python note text:
+  "A string value in braces is Python. This one returns the query rows as a dict." Generator: scratchpad
+  agent-figure3.mjs. Verified 1280..320 light+dark; sweep 0 of 241.
