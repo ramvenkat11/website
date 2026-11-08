@@ -2004,3 +2004,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Rebuilt with python3 gen/build.py (146 pages). md5 check: the build changed only html/docs/runtime/controlled-execution.html; docsrc had no uncommitted edits so nothing else was swept in. No anchors to the removed heading anywhere outside the regenerated page toc.
 - Reported, not changed: the lead paragraph still says "It limits every agent in time and cost".
 - Uncommitted for Ram; no upload.
+- Hero paragraph 2 (html/index.html:69): "conversation" now links to conversation.html with class hero-attr. Rendered nine widths light+dark.
