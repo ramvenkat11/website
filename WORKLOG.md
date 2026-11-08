@@ -1979,3 +1979,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #framework-runtime Python expression note: "A string value in braces is interpreted as Python."
 - #framework-runtime main note: "Every run starts here, with the user's request set in a variable called sys.query" (sys.query linked to docs/agent-definition/namespaces.html#sys).
 - #framework-runtime profile note retitled "Profile" (links docs/profiles/index.html): "Profiles keep configs outside agent code. There are four kinds: llm, db, api and mcp." with each kind linked to its profiles page.
+- #framework-runtime Prompt note: "Prompts are specific to an agent. They are defined outside the agent code, so they can change without changing an agent's version." Tool calling note: "The llm command lists its tools. The agent server runs the call loop until the model answers."
