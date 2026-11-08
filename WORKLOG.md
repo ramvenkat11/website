@@ -1980,3 +1980,10 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #framework-runtime main note: "Every run starts here, with the user's request set in a variable called sys.query" (sys.query linked to docs/agent-definition/namespaces.html#sys).
 - #framework-runtime profile note retitled "Profile" (links docs/profiles/index.html): "Profiles keep configs outside agent code. There are four kinds: llm, db, api and mcp." with each kind linked to its profiles page.
 - #framework-runtime Prompt note: "Prompts are specific to an agent. They are defined outside the agent code, so they can change without changing an agent's version." Tool calling note: "The llm command lists its tools. The agent server runs the call loop until the model answers."
+- Social card og8: gen/ogcard.py now draws html/images/og8.png with the hero heading "Let your users converse / with
+  hundreds of / task-focused AI agents" (64px, three lines). og:image -> og8 and og:image:alt -> "Search2o, agent server
+  for the enterprise. Let your users converse with hundreds of task-focused AI agents." on all site pages, html/docs
+  (146 pages edited in place, not rebuilt), content/demo.html and gen/build.py. No og7 reference left.
+- content/linkedin-banner2.png regenerated (same file) via gen/linkedin_banner.py with the same heading on two lines;
+  right edge 3641 of 4200.
+- #user-interfaces h2: "Fits right into your organization with no internal dependencies".
