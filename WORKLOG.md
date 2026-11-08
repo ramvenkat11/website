@@ -1993,3 +1993,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Rendered .as-head at 1280/1000/860/700/412/384/375/360/320 light+dark: 18 clean views, no orphans or broken words.
 - State: uncommitted with the rest of the home redesign; no upload.
 - Also hero paragraph 2 (html/index.html:69): "finds the right agent and the agent runs on that request." Re-rendered the nine widths light+dark: 18 clean views.
+- Ram then removed "on the agent server" again; html/index.html:68 is back to "...publish task-focused agents. They describe...". Re-rendered after the change.
