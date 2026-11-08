@@ -2058,3 +2058,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-08 Section 3 subtitle
 - html/index.html:135 subtitle now ends "help you build an agent in minutes, just by describing&nbsp;it." (Ram's wording, "them" -> "it" for the singular agent). Section head rendered 9 widths light+dark, 18 clean.
+
+## 2026-11-08 Section 3 top-level comment
+- Code card now opens with "// A simple RAG agent that answers from a knowledge base." above the root brace; aria-label updated. Generator agent-figure17.mjs. 18 views clean, sweep 0 of 241.
