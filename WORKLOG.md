@@ -1987,3 +1987,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - content/linkedin-banner2.png regenerated (same file) via gen/linkedin_banner.py with the same heading on two lines;
   right edge 3641 of 4200.
 - #user-interfaces h2: "Fits right into your organization with no internal dependencies".
+
+## 2026-11-08 Hero paragraph 1: "on the agent server"
+- html/index.html:68 now reads "...publish task-focused agents on the agent server. They describe...". Ram asked on vs in; answered "on", he said apply.
+- Rendered .as-head at 1280/1000/860/700/412/384/375/360/320 light+dark: 18 clean views, no orphans or broken words.
+- State: uncommitted with the rest of the home redesign; no upload.
