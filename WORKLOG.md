@@ -2005,3 +2005,10 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Reported, not changed: the lead paragraph still says "It limits every agent in time and cost".
 - Uncommitted for Ram; no upload.
 - Hero paragraph 2 (html/index.html:69): "conversation" now links to conversation.html with class hero-attr. Rendered nine widths light+dark.
+
+## 2026-11-08 "your enterprise" -> "your organization" everywhere
+- Ram chose "organization" over "enterprise" in prose; "for the enterprise" (tagline, og) and other "enterprise" nouns untouched.
+- sed over 17 files: html/index.html (figure label "Your organization" + aria + GitHub para), html/pricing.html, html/gettingstarted.html, html/runtime.html, 11 docsrc pages, content/parts-of-the-system.md, content/page-runtime.md. 0 occurrences left outside html/docs.
+- Rebuilt docs: 13 built pages changed (11 edited pages + introduction/index.html and system-management/index.html, which repeat the child-page leads). 0 left in html/docs.
+- Rendered home .hero-arch and docs .ui-fan at nine widths light+dark: 36 clean views; home sweep 0 of 241.
+- Uncommitted for Ram; no upload.
