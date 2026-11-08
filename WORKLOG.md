@@ -2061,3 +2061,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-08 Section 3 top-level comment
 - Code card now opens with "// A simple RAG agent that answers from a knowledge base." above the root brace; aria-label updated. Generator agent-figure17.mjs. 18 views clean, sweep 0 of 241.
+
+## 2026-11-08 Section 3 var comment
+- var comment now: "'result' is a built-in variable that is set to the result of the API call. A variable called 'passages' is set with a Python expression using 'result'." Generator agent-figure18.mjs. 18 views clean, sweep 0 of 241.
