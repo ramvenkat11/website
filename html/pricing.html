@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pricing — Search2o</title>
-<meta name="description" content="The Search2o agent server has no license fee. Search2o Cloud is free during the beta. Production pricing will have a platform fee, a fee per developer, a storage fee and a usage fee, with no fee per user.">
+<meta name="description" content="The Search2o agent server has no license fee. Search2o Cloud is free during beta and becomes a paid service at general availability. Get started without a credit card.">
 <meta property="og:title" content="Pricing — Search2o">
-<meta property="og:description" content="The Search2o agent server has no license fee. Search2o Cloud is free during the beta. Production pricing will have a platform fee, a fee per developer, a storage fee and a usage fee, with no fee per user.">
+<meta property="og:description" content="The Search2o agent server has no license fee. Search2o Cloud is free during beta and becomes a paid service at general availability. Get started without a credit card.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://search2o.com/pricing.html">
 <meta property="og:url" content="https://search2o.com/pricing.html">
@@ -56,24 +56,47 @@
   <section class="page-body pricing">
     <div class="container">
       <h1>Pricing</h1>
+      <div class="price-fig-wrap">
+        <div class="ui-fan price-fig" aria-label="The agent server runs in your organization and is always free. An encrypted link connects it to Search2o Cloud, which keeps the state and is free during the beta.">
+          <div class="ui-org">
+            <span class="tag">Your organization</span>
+            <div class="st-box st-srv">
+              <span class="cluster" aria-hidden="true">
+                <span class="nodes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><i class="ln"></i><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><i class="ln"></i><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span></span>
+              </span>
+              <b>Agent server</b>
+              <span class="free">Always free</span>
+            </div>
+          </div>
+          <div class="st-link" aria-hidden="true">
+            <i class="ln"></i>
+            <span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>encrypted</span>
+          </div>
+          <div class="st-box st-cloud">
+            <span class="tag">Search2o Cloud</span>
+            <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
+            <b>State</b>
+            <span class="free">Free during beta</span>
+          </div>
+        </div>
+      </div>
 
-      <h2>The agent server is free</h2>
-      <p>Search2o agent server runs in your organization. It is source available and has no license fee.</p>
+      <h2>Get started, no credit card needed</h2>
+      <p><a href="gettingstarted.html">Create an account</a>, install the agent server and start using it. Everything is currently free, and you will hear from us before anything changes.</p>
+      <div class="cta"><a class="btn btn-blue btn-lg" href="gettingstarted.html">Get started</a></div>
 
-      <h2>Search2o Cloud is free during the beta</h2>
-      <p>The agent server uses Search2o Cloud to manage state. This service will be charged for when it becomes generally available. The platform is currently in beta and is free of charge.</p>
+      <h2>The agent server is always free</h2>
+      <p>The Search2o agent server has no license fee. It is <a href="docs/runtime/overview.html">stateless</a> and runs in your organization, either standalone or in a load-balanced <a href="docs/system-management/agent-servers.html">cluster</a>. Install the server and UI with <a href="docs/getting-started/registering-and-downloading.html#install"><code>pip install search2o</code></a>.</p>
+      <p>Both the <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">agent server</a> and <a href="https://github.com/Search2o/ui" target="_blank" rel="noopener">UI</a> are source-available and can also be <a href="docs/getting-started/registering-and-downloading.html#to-install-from-the-source">installed from source</a>.</p>
 
-      <h2>General availability pricing</h2>
-      <p>General availability pricing is expected to have four parts: a platform fee, a fee per developer, a storage fee based on units stored, and a usage fee based on calls to the cloud. There will be no fee per user, so you pay only for what you use. These rates are expected to be comparable to those of other AI platforms.</p>
+      <h2>Search2o Cloud is free during beta</h2>
+      <p>The agent server stores state in Search2o Cloud. The cloud service is in beta and free to use. It becomes a paid service at general availability, planned for January 2027. You can then upgrade from the Account page.</p>
 
-      <h2>Usage limits</h2>
-      <p>Your free account has usage limits. If they limit your work, please send us a message from the UI and we will raise them.</p>
-
-      <h2>Switching to the paid service</h2>
-      <p>When the paid service is available, you will be able to upgrade from the Account page. We plan to offer the paid service in January 2027.</p>
+      <h2>Usage limits and restrictions</h2>
+      <p>Your free account has usage limits. If they get in the way of your work, send us a message from the UI and we will raise them. Please coordinate with us before running load or stress tests.</p>
 
       <h2>Please tell us what you need</h2>
-      <p>We are committed to the success of your project. If you have questions, find a bug or need a feature, please contact us. When you are signed in, send a message from the message icon in the UI. Before you have an account, use the <a href="about.html#contact">contact page</a>.</p>
+      <p>We are committed to the success of your project. If you have questions, find a bug or need a feature, contact us. When you are signed in, send a message from the message icon in the UI. Before you have an account, use the <a href="about.html#contact">contact page</a>.</p>
       <div class="cta"><a class="btn btn-ghost btn-lg" href="about.html#contact">Contact us</a></div>
     </div>
   </section>

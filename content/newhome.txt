@@ -1,7 +1,4 @@
-# Let your users converse with hundreds of task-focused agents
+Search2o agent server is stateless and runs in your organization. It has no license fee. You can run it standalone or in a load balanced cluster. You can install it with pip install search2o, which includes the UI.
 
-Developers [build](), validate and publish [agents](). They [describe]() when to use each one in plain English.
+The agent server and the UI are source available and can also be installed from source.
 
-Users start a conversation with a request. The built-in [search]() finds and runs the right agent. Follow‑up requests can bring in other agents, and build on previous results.
-
-The agent server keeps every run [safe](), [bounded]() and [observable]().

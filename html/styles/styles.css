@@ -1168,6 +1168,37 @@ a.arch-lbl { color: var(--blue-ink); }
 .pricing h1 { margin: 42px 0 0; font-size: clamp(22px, 2.4vw, 28px); font-weight: 700; }
 .pricing h2 { margin: 44px 0 0; font-size: 24px; letter-spacing: -0.015em; }
 .pricing h1 + h2 { margin-top: 30px; }
+.price-fig-wrap { container-type: inline-size; margin: 24px 0 0; }
+.price-fig-wrap + h2 { margin-top: 32px; }
+.price-fig { grid-template-columns: minmax(0, 204px) 156px minmax(0, 204px); justify-content: start; align-items: center; margin: 0; }
+.price-fig .ui-org { grid-column: 1; grid-row: 1; grid-template-columns: minmax(0, 1fr); padding: 20px 10px 10px; border-radius: 16px; }
+.price-fig .ui-org > .tag { font-size: 11px; }
+.price-fig .st-srv { grid-column: 1; grid-row: 1; align-self: auto; }
+.price-fig .st-srv::after { display: none; }
+.price-fig .st-link { grid-column: 2; grid-row: 1; height: 40px; margin: 0; }
+.price-fig .st-link .ln { top: 50%; bottom: auto; left: 0; right: 8px; width: auto; height: 0; margin: -1px 0 0; border-left: 0; border-top: 2px dashed var(--slate); }
+.price-fig .st-link .ln::after { left: auto; right: -1px; bottom: auto; top: -6px; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 8px solid var(--slate); }
+.price-fig .st-link .lock { padding: 2px 9px; font-size: 11.5px; }
+.price-fig .st-cloud { grid-column: 3; grid-row: 1; margin: 0; }
+.price-fig .st-box { gap: 7px; padding: 15px 12px 13px; border-radius: 16px; }
+.price-fig .st-box b { font-size: 15px; }
+.price-fig .st-box .tag { font-size: 11px; }
+.price-fig .st-box .cluster .ic { width: 34px; height: 34px; border-radius: 10px; }
+.price-fig .st-box .cluster .ic svg { width: 18px; height: 18px; }
+.price-fig .st-box .nodes .ln { width: 10px; }
+.price-fig .st-cloud .ic { width: 40px; height: 40px; border-radius: 12px; }
+.price-fig .st-cloud .ic svg { width: 22px; height: 22px; }
+.price-fig .free { display: inline-block; margin-top: 1px; padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--blue) 11%, transparent); color: var(--blue-ink); font-size: 12px; font-weight: 700; letter-spacing: .01em; }
+.price-fig .st-cloud .free { background: rgba(255, 255, 255, .12); color: #dbe7ff; }
+@container (max-width: 560px) {
+  .price-fig { grid-template-columns: minmax(0, 1fr); max-width: 260px; margin: 0 auto; }
+  .price-fig .ui-org { padding: 20px 10px 10px; }
+  .price-fig .st-srv { margin-top: 0; }
+  .price-fig .st-link { grid-column: 1; grid-row: 2; height: 64px; margin: -17px 0 0; }
+  .price-fig .st-link .ln { top: 0; bottom: 14px; left: 50%; right: auto; width: 0; height: auto; margin: 0 0 0 -1px; border-top: 0; border-left: 2px dashed var(--slate); }
+  .price-fig .st-link .ln::after { left: -6px; right: auto; top: auto; bottom: -1px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 8px solid var(--slate); border-bottom: 0; }
+  .price-fig .st-cloud { grid-column: 1; grid-row: 3; width: 100%; max-width: none; }
+}
 .pricing h2 ~ p { margin-top: 12px; max-width: 70ch; color: var(--body); font-size: 15.5px; line-height: 1.65; }
 .page-hero .hero-actions { margin-top: 26px; }
 .pricing h2 .dash { color: var(--faint); font-weight: 500; }
