@@ -232,8 +232,10 @@ p { margin: 0; }
 .as-head .hero-lead { max-width: 780px; margin: 0 auto; font-size: 16px; text-wrap: pretty; }
 .as-head .hero-lead + .hero-lead { margin-top: 12px; }
 .hero-lead code { font-family: var(--mono); font-size: .92em; }
-.hero-caption { max-width: 900px; margin: 20px auto 0; text-align: center; color: var(--muted); font-size: 13.5px; font-weight: 500; }
-.hero-caption a { color: var(--blue-ink); font-weight: 600; white-space: nowrap; }
+.hero-caption { max-width: 900px; margin: 22px auto 0; text-align: center; color: var(--body); font-size: 15px; font-weight: 500; }
+.hero-caption a { display: inline-block; margin-left: 2px; padding: 5px 13px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); color: var(--blue-ink); font-weight: 600; white-space: nowrap; }
+.hero-caption a::after { content: " \2192"; }
+.hero-caption a:hover { border-color: var(--blue); color: var(--blue); }
 .hero-line-soft { color: var(--body); font-weight: 500; }
 .appsrv {
   --as-dev: var(--ink); --as-user: var(--blue); --as-rail: 26px;
