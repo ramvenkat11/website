@@ -511,7 +511,7 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
 <meta property="og:description" content="{html.escape(description)}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{SITE}/{path}">
-<meta property="og:image" content="{SITE}/images/og8.png">
+<meta property="og:image" content="{SITE}/images/og9.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Search2o, agent server built around search. Let your users converse with hundreds of task-focused AI agents.">

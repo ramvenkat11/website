@@ -1,4 +1,4 @@
-"""Draws the social card html/images/og8.png (1200x630): the wordmark art from gen/assets/wordmark.png,
+"""Draws the social card html/images/og9.png (1200x630): the wordmark art from gen/assets/wordmark.png,
 the tagline, the home page heading, and the address. Run with the system python3 (needs PIL)."""
 from PIL import Image, ImageDraw, ImageFont, ImageChops
 import math
@@ -76,5 +76,5 @@ draw_lines(img, 97, top, f, pitch, size)
 d = ImageDraw.Draw(img)
 d.line([(97, 530), (1103, 530)], fill=RULE, width=1)
 d.text((97, 572), "search2o.com", font=bold(24), fill=INK, anchor="ls")
-out = img.convert("RGB"); out.save(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "html", "images", "og8.png"), optimize=True)
+out = img.convert("RGB"); out.save(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "html", "images", "og9.png"), optimize=True)
 print("saved", out.size, "size", size, "widest line", round(max(line_width(f, l) for l in LINES)), "of 1006")
