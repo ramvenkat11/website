@@ -38,7 +38,7 @@ for y in range(wm.height):
 WM_W = 600
 wm = wm.resize((WM_W, round(wm.height * WM_W / wm.width)), Image.LANCZOS)
 left = 760
-TAG = "Agent server for the enterprise"; TAG_SIZE = 46; TAG_GAP = 34
+TAG = "Agent server built around search"; TAG_SIZE = 46; TAG_GAP = 34
 block_h = wm.height + TAG_GAP + TAG_SIZE
 wm_top = round((H - block_h) / 2)
 img.alpha_composite(wm, (left, wm_top))

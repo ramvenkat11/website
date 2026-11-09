@@ -40,7 +40,7 @@ d = ImageDraw.Draw(img)
 wm_bottom = 96 + wm.height  # the wordmark's baseline (no descenders)
 # hairline + tagline on the wordmark's baseline
 d.rectangle([568, 96, 569, wm_bottom - 1], fill=HAIR)
-d.text((603, wm_bottom), "Agent server for the enterprise", font=medium(34), fill=MUTED, anchor="ls")
+d.text((603, wm_bottom), "Agent server built around search", font=medium(34), fill=MUTED, anchor="ls")
 
 # headline: segments per line; "ink" and "muted" are flat, "accent" takes the blue-to-teal gradient over its own span
 LINES = [
