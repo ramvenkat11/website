@@ -2090,3 +2090,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Section 3 caption → "Demo: Draft an agent with AI", matching the Demo menu entry in the header (index.html:49). Rendered at 1280/375/320 light+dark: one line, no overflow.
 - Hero (Ram): "agent server" kept in full only in paragraph 1; paragraphs 2 and 3 now say "The server finds…" and "The server keeps…". Rendered .hero-head at 9 widths light+dark, no overflow.
 - Reverted (Ram: "the server" doesn't sound right): paragraphs 2 and 3 say "The agent server" again. Re-rendered 1280/375 light, no overflow; paragraph 2 is three lines at 1280 as before.
+- Docs index (Ram): the introductory lead paragraph is gone; the lead now reads "Ask a question below. The answer is drawn from the entire documentation." Edited in docsrc/index.html and html/docs/index.html in place (no full rebuild). Rendered the article at 1280/375 light+dark.
