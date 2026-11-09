@@ -53,7 +53,7 @@
     "agentName": "employee_handbook",
     "title": "Employee Handbook Guide",
     "description": "Answers questions about company policies in the employee handbook, such as dress code, remote work, working hours, holidays and the code of conduct.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Human Resources",
@@ -123,7 +123,7 @@
     "agentName": "cash_flow",
     "title": "Cash Flow Summarizer",
     "description": "Summarizes the company's cash coming in and going out for a period, the current cash position, and the largest payments due in the coming weeks.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Finance",
@@ -172,7 +172,7 @@
     "agentName": "battlecards",
     "title": "Competitor Battlecard Writer",
     "description": "Writes a battlecard comparing our product with a named competitor: where we win, where they win, common objections and how to answer them.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Sales",
@@ -207,14 +207,14 @@
     "agentName": "call_notes",
     "title": "Sales Call Notes Logger",
     "description": "Turns a salesperson's notes from a customer call into a clean summary with next steps, decision makers mentioned and follow-up dates.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Marketing",
     "agentName": "campaign_results",
     "title": "Campaign Performance Reporter",
     "description": "Reports how a marketing campaign performed - impressions, clicks, leads generated, cost per lead and conversions - compared with its goals.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Marketing",
@@ -235,7 +235,7 @@
     "agentName": "brand_guidelines",
     "title": "Brand Guideline Checker",
     "description": "Checks text or a design description against the company's brand guidelines - logo use, colors, fonts, tone of voice and approved terms - and lists what to change.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Marketing",
@@ -340,7 +340,7 @@
     "agentName": "loyalty_points",
     "title": "Loyalty Points Lookup",
     "description": "Tells a customer how many loyalty points they have, how they earned them, when they expire and what they can redeem them for.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Customer Support",
@@ -410,7 +410,7 @@
     "agentName": "distribution_lists",
     "title": "Email Distribution List Manager",
     "description": "Creates email distribution lists and adds or removes members, and tells an employee which lists they belong to.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "IT",
@@ -452,7 +452,7 @@
     "agentName": "api_docs",
     "title": "API Documentation Finder",
     "description": "Finds the documentation for an internal API: its endpoints, parameters, example requests and responses, and which team owns it.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Engineering",
@@ -557,7 +557,7 @@
     "agentName": "conflict_of_interest",
     "title": "Conflict of Interest Declaration Handler",
     "description": "Helps an employee declare an outside job, investment or relationship that might be a conflict of interest, and explains what happens next.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Operations",
@@ -585,7 +585,7 @@
     "agentName": "inventory",
     "title": "Inventory Level Checker",
     "description": "Shows how much of a product is in stock at each warehouse, what is on order, and which items are running low.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Operations",
@@ -606,7 +606,7 @@
     "agentName": "fleet_maintenance",
     "title": "Fleet Maintenance Scheduler",
     "description": "Schedules servicing and inspections for company vehicles and trucks, and shows which vehicles are due or overdue.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Operations",
@@ -676,7 +676,7 @@
     "agentName": "cafeteria_menu",
     "title": "Cafeteria Menu Lookup",
     "description": "Shows the office cafeteria's menu for today and the week, opening hours, prices, and dishes that suit dietary needs such as vegetarian or gluten-free.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Facilities",
@@ -690,7 +690,7 @@
     "agentName": "lost_and_found",
     "title": "Lost and Found Desk",
     "description": "Reports an item lost in the office or checks whether an item someone found has been handed in, and how to collect it.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Facilities",
@@ -739,7 +739,7 @@
     "agentName": "invoice_matching",
     "title": "Invoice Three-Way Match Checker",
     "description": "Checks a supplier invoice against its purchase order and the goods received, and explains any mismatch in quantity or price that is holding the invoice back from payment.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Procurement",
@@ -977,7 +977,7 @@
     "agentName": "feature_retirement",
     "title": "Feature Retirement Planner",
     "description": "Plans how to retire an old product feature: who still uses it, the announcement and sunset dates, the migration path and what to tell customers.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Supply Chain",
@@ -1019,7 +1019,7 @@
     "agentName": "supply_disruptions",
     "title": "Supply Disruption Monitor",
     "description": "Shows current events that could delay supplies - port congestion, strikes, storms or supplier outages - and which open orders each one affects.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Supply Chain",
@@ -1075,7 +1075,7 @@
     "agentName": "policy_attestations",
     "title": "Policy Attestation Tracker",
     "description": "Shows which employees have signed this year's required policies, such as the code of conduct, who is overdue, and when reminders go out.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Risk & Compliance",
@@ -1131,7 +1131,7 @@
     "agentName": "experiment_log",
     "title": "Experiment Log Summarizer",
     "description": "Summarizes lab notebook entries for an experiment into the method used, the results, anything unexpected and the next steps.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Research & Development",
@@ -1257,7 +1257,7 @@
     "agentName": "comms_calendar",
     "title": "Communications Calendar Planner",
     "description": "Plans the weeks ahead of internal communications so announcements, newsletters and leadership messages do not land on top of each other.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Quality Assurance",
@@ -1278,7 +1278,7 @@
     "agentName": "release_signoff",
     "title": "Release Sign-off Checklist",
     "description": "Shows whether a release is ready to ship by checking each quality gate, and lists what is still blocking QA sign-off.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Quality Assurance",
@@ -1355,7 +1355,7 @@
     "agentName": "all_hands",
     "title": "All-Hands Question Collector",
     "description": "Takes employee questions for the next all-hands meeting, groups similar ones together and shows the answers given to past questions.",
-    "model": "nemotron-3-nano:30b"
+    "model": "gemma4:31b"
   },
   {
     "group": "Executive Office",

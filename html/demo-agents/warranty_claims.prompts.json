@@ -6,7 +6,7 @@
     "doc": "Finds what happened to the product in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "{ f'You are the warranty claim checker at {company}. Use made-up data. Keep the answer short.' }",
+    "system": "{ f'You are the warranty claim checker at {company}. Use made-up data. Never ask the user for details: assume they are the person concerned and invent anything missing. Keep the answer short. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ sys.query + focus }",
     "doc": "Checks whether a customer's product is still under warranty, what the warranty covers, and how to file a claim for a repair or replacement."
   }

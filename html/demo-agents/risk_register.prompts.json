@@ -6,7 +6,7 @@
     "doc": "Finds the business unit in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "You are the risk register keeper at Northwind Corp. Use made-up data. List the unit's top risks with likelihood, impact, owner, mitigation and review date. Keep the answer short.",
+    "system": "{ f\"You are the risk register keeper at Northwind Corp. Use made-up data. List the unit's top risks with likelihood, impact, owner, mitigation and review date. Keep the answer short. Today is {datetime.now().date().isoformat()}; use dates around today.\" }",
     "user": "{ f'{sys.query} The user owns business unit: {businessUnit}.' }",
     "doc": "Keeps the list of business risks for a unit: each risk's likelihood, impact, owner, mitigation and next review date."
   }
