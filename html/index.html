@@ -66,8 +66,8 @@
       <div class="hero-head as-head">
         <h1 class="hero-claim">Let your users converse with hundreds of task&#8209;focused AI agents</h1>
         <p class="hero-lead">Developers <a class="hero-attr" href="framework.html">build</a>, validate and publish <a class="hero-attr" href="docs/introduction/search2o-agents.html">task&#8209;focused agents</a> on the agent server. They <a class="hero-attr" href="search.html#description">describe</a> when to use each one in plain English.</p>
-        <p class="hero-lead">Users start a <a class="hero-attr" href="conversation.html">conversation</a> with a request. The agent server finds the right agent with <a class="hero-attr" href="search.html">semantic search</a>, and runs it on that request. Follow&#8209;up requests can bring in other agents, and build on previous results.</p>
-        <p class="hero-lead">The agent server keeps every run <a class="hero-attr" href="docs/runtime/controlled-execution.html">safe</a>, <a class="hero-attr" href="docs/runtime/runtime-limits.html">bounded</a> and <a class="hero-attr" href="docs/reports/index.html">observable</a>.</p>
+        <p class="hero-lead">Users start a <a class="hero-attr" href="conversation.html">conversation</a> with a request. The agent server finds the right agent with <a class="hero-attr" href="search.html">semantic search</a>, and runs it on that request. Follow&#8209;up requests can bring in other agents, and <a class="hero-attr" href="docs/agent-execution/building-on-each-other.html">build on</a> previous results.</p>
+        <p class="hero-lead">The agent server keeps every run <a class="hero-attr" href="docs/runtime/controlled-execution.html">safe</a> and <a class="hero-attr" href="docs/reports/index.html">observable</a>.</p>
       </div>
       <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example Inventory, which reports stock levels by part and site, and Purchasing, which raises purchase orders with approved suppliers. The Search2o agent server holds hundreds of agents. Users converse with it: a first request, Is part 7731 in stock in Berlin?, is matched to Inventory, which answers Berlin has 42 units of part 7731, below its reorder point of 60. A follow-up, Reorder the part, is matched to Purchasing, which answers Done. PO-5519 orders 18 units of part 7731 for Berlin.">
         <div class="as-side as-dev">
@@ -80,7 +80,7 @@
         </div>
         <div class="as-srv" aria-hidden="true"></div>
         <div class="as-title"><span>Search2o agent server</span><code>pip install search2o</code></div>
-        <div class="as-agents"><span class="as-agents-lbl">Agents</span><div class="as-agent-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        <div class="as-agents"><span class="as-agents-lbl">Agents</span><div class="as-agent-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
         <div class="as-lane as-left as-r1">
           <div class="as-flow r"><span class="lbl">Build, validate, publish agents</span><i class="ln"></i></div>
         </div>
@@ -101,12 +101,12 @@
     <div class="container">
       <div class="section-head center">
         <h2>How a conversation works</h2>
-        <p>Each agent in a conversation picks up the chain of LLM messages the previous agent left&nbsp;behind.</p>
+        <p>Each agent in a conversation inherits variables and LLM message history from the previous&nbsp;agents.</p>
       </div>
       <div class="cv" aria-label="One conversation across two independent agents, with four notes. Search matches the first request to the Travel desk agent, which asks for confirmation before booking. The agent server saves the conversation context when the agent ends. A second request is matched to the Reimbursements agent, which continues the same conversation and files the trip expenses.">
         <div class="cv-title">Conversation</div>
-        <div class="turn-user r2">Book my trip for Tuesday's all-day meeting in New York</div>
-        <aside class="cv-note r2"><b><a href="search.html">Discovery</a></b>Search matched the request to the Travel desk agent, and the UI ran it automatically. The request had no conversation ID, so a new, empty conversation started.</aside>
+        <div class="turn-user r2">Book my trip for Tuesday's all&#8209;day meeting in New York</div>
+        <aside class="cv-note r2"><b><a href="search.html">Discovery</a></b>Search matched the request to the Travel desk agent, and the UI ran it automatically. The UI can also be set to confirm with the user before running an agent. The request had no conversation ID, so a new, empty conversation started.</aside>
         <div class="turn-agent r3">
           <div class="msg ask" aria-label="The agent asks before booking"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>
             <span class="q">UA1191 departs 06:00 Tuesday, back at 19:30, and a night at the Marriott near the office. $1,240. <b>Book it?</b></span>
@@ -146,8 +146,7 @@
           }
         },
         <span class=key>"var"</span>: {
-<span class="cm i10">// 'result' is a built-in variable that is set to the result of the API call. A variable called 'passages' is set with a Python expression using 'result'.</span>          <span class=key>"passages"</span>: <span class=str>"<span class=ex>{ [hit['text'] for hit in result[:5]] }</span>"</span>
-        },
+<span class="cm i10">// 'result' is a built-in variable that is set to the result of the API call. A variable called 'passages' is set with a Python expression using 'result'.</span><span class="wl i10"><span class=key>"passages"</span>: <span class=str>"<span class=ex>{ [hit['text'] for hit in result[:5]] }</span>"</span></span>        },
         <span class=key>"llm"</span>: {
 <span class="cm i10">// An LLM profile, 'gpt5_mini', is used. LLM profiles specify the vendor and the model in use.</span>          <span class=key>"profile"</span>: <span class=str>"gpt5_mini"</span>,
 <span class="cm i10">// A prompt named 'answer' is used to talk to the LLM. This prompt is specific to this agent and defined externally.</span>          <span class=key>"prompt"</span>: <span class=str>"answer"</span>,
@@ -195,15 +194,15 @@
             <div class="cc-main">
               <div class="arch-node cc-server">
                 <div class="cc-server-head"><strong>Search2o agent server</strong></div>
-                <span class="cc-server-links"><a href="docs/runtime/overview.html">Stateless</a>&nbsp;&middot; <a href="docs/runtime/controlled-execution.html">Controlled&nbsp;execution</a>&nbsp;&middot; <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">GitHub</a></span>
+                <span class="cc-server-links"><a href="docs/runtime/overview.html">Stateless</a><i class="sep">&nbsp;&middot; </i><a href="docs/runtime/controlled-execution.html">Controlled&nbsp;execution</a><i class="sep">&nbsp;&middot; </i><a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">GitHub</a></span>
                 <div class="cc-agents">
                   <span class="cc-agents-lbl">Agents</span>
                   <div class="cc-agent-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
                 </div>
               </div>
               <div class="arch-sys">
-                <div class="arch-branch"><div class="arch-node"><strong><a href="docs/profiles/overview.html">Enterprise systems</a></strong><span><a href="docs/profiles/api-profiles.html">APIs</a>&nbsp;&middot; <a href="docs/profiles/db-profiles.html">Databases</a>&nbsp;&middot; <a href="docs/profiles/mcp-servers.html">MCP&nbsp;servers</a></span></div></div>
-                <div class="arch-branch"><div class="arch-node"><strong><a href="docs/llm/vendors.html">Local LLMs</a></strong><span>Ollama&nbsp;&middot; vLLM&nbsp;&middot; SGLang&nbsp;&middot; <a href="docs/llm/llm-adapters.html">Other</a></span></div></div>
+                <div class="arch-branch"><div class="arch-node"><strong><a href="docs/profiles/overview.html">Enterprise systems</a></strong><span><a href="docs/profiles/api-profiles.html">APIs</a><i class="sep">&nbsp;&middot; </i><a href="docs/profiles/db-profiles.html">Databases</a><i class="sep">&nbsp;&middot; </i><a href="docs/profiles/mcp-servers.html">MCP&nbsp;servers</a></span></div></div>
+                <div class="arch-branch"><div class="arch-node"><strong><a href="docs/llm/vendors.html">Local LLMs</a></strong><span>Ollama<i class="sep">&nbsp;&middot; </i>vLLM<i class="sep">&nbsp;&middot; </i>SGLang<i class="sep">&nbsp;&middot; </i><a href="docs/llm/llm-adapters.html">Other</a></span></div></div>
                 <div class="arch-branch arch-branch-ext" aria-hidden="true"></div>
               </div>
             </div>
@@ -220,7 +219,7 @@
               <div class="arch-node arch-ext">
                 <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg></span>
                 <strong><a href="docs/llm/vendors.html">External LLMs</a></strong>
-                <span>ChatGPT&nbsp;&middot; Claude&nbsp;&middot; Gemini</span>
+                <span>ChatGPT<i class="sep">&nbsp;&middot; </i>Claude<i class="sep">&nbsp;&middot; </i>Gemini</span>
               </div>
             </div>
           </div>
