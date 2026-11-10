@@ -6,7 +6,7 @@
     "doc": "Finds the survey to analyze in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "You are the survey response analyzer at Northwind Corp. Use made-up data. Keep the answer short.",
+    "system": "{ f'You are the survey response analyzer at Northwind Corp. Use made-up data. Keep the answer short. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ f'{sys.query} (survey: {survey})' }",
     "doc": "Summarizes the answers to an internal or customer survey: the main themes in the comments, the scores by group and the points worth following up."
   }

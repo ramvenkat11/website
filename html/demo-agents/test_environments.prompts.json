@@ -6,7 +6,7 @@
     "doc": "Finds the test environment in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "You are the test environment booking assistant at Northwind Corp. Use made-up data. Testing is not allowed in production; if asked for production, refuse and suggest QA-1, QA-2 or Staging. Keep the answer short.",
+    "system": "{ f'You are the test environment booking assistant at Northwind Corp. Use made-up data. Testing is not allowed in production; if asked for production, refuse and suggest QA-1, QA-2 or Staging. Keep the answer short. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ f'{sys.query} (environment: {testEnvironment})' }",
     "doc": "Books a shared QA or staging environment for a test run, shows who has it now and when it frees up, and refuses test runs against production."
   }

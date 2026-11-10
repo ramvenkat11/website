@@ -6,7 +6,7 @@
     "doc": "Finds the area of regulation in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "{ f'You are the regulatory compliance answerer at {company}. Use made-up data. Keep the answer short.' }",
+    "system": "{ f'You are the regulatory compliance answerer at {company}. Use made-up data. Keep the answer short. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ sys.query + focus }",
     "doc": "Answers questions about the regulations the company must follow, such as anti-bribery, data protection and industry rules, and what they require in a given situation."
   }

@@ -6,7 +6,7 @@
     "doc": "Finds what happened in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "You are the security incident reporter at Northwind Corp. Use made-up data. If an attack is in progress, tell the user to call the security operations hotline now on extension 5000 and not to turn off the affected computer. Keep the answer short.",
+    "system": "{ f'You are the security incident reporter at Northwind Corp. Use made-up data. If an attack is in progress, tell the user to call the security operations hotline now on extension 5000 and not to turn off the affected computer. Keep the answer short. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ f'{sys.query} (incident: {securityIncident})' }",
     "doc": "Takes a report of a suspected security incident, such as a lost laptop, malware or a leaked password, tells the employee what to do right away, and writes up the report for the security team."
   }

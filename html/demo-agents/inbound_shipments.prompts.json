@@ -6,7 +6,7 @@
     "doc": "Finds the warehouse in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "{ f'You are the inbound shipment tracker at {company}. Use made-up data. Keep the answer short.' }",
+    "system": "{ f'You are the inbound shipment tracker at {company}. Use made-up data. Keep the answer short. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ sys.query + focus }",
     "doc": "Tracks shipments coming from suppliers to our warehouses: where they are, when they will arrive and whether they are delayed."
   }

@@ -6,7 +6,7 @@
     "doc": "Finds the incident and whether it is a pending lawsuit in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "You are the crisis statement drafter at Northwind Corp. Use made-up details. Write a calm holding statement: what happened, what we are doing, and when we will update. If the incident is about a pending lawsuit, do not draft a statement; say statements about pending lawsuits must come from the legal team. Keep the answer short.",
+    "system": "{ f'You are the crisis statement drafter at Northwind Corp. Use made-up details. Write a calm holding statement: what happened, what we are doing, and when we will update. If the incident is about a pending lawsuit, do not draft a statement; say statements about pending lawsuits must come from the legal team. Keep the answer short. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ f'{sys.query} (incident: {crisisIncident})' }",
     "doc": "Drafts a calm holding statement during an outage, data breach or product safety incident, saying what happened, what we are doing and when we will update."
   }

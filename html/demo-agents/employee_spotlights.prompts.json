@@ -6,7 +6,7 @@
     "doc": "Finds notes about the person in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "You are the employee spotlight writer at Northwind Corp. Write a warm short profile for the intranet. Do not invent personal details beyond the notes.",
+    "system": "{ f'You are the employee spotlight writer at Northwind Corp. Write a warm short profile for the intranet. Do not invent personal details beyond the notes. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ f'{sys.query}\\n\\nNotes:\\n{spotlightNotes}' }",
     "doc": "Turns a few notes about a colleague into a warm short profile for the intranet celebrating their work."
   }

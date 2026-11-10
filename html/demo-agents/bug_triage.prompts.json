@@ -6,7 +6,7 @@
     "doc": "Finds how bad the bug is in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "You are the bug triage assistant at Northwind Corp. Use made-up data. Keep the answer short.",
+    "system": "{ f'You are the bug triage assistant at Northwind Corp. Use made-up data. Keep the answer short. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ f'{sys.query} Severity: {bugSeverity}. Priority: {priority}.' }",
     "doc": "Helps decide how serious a newly reported bug is, what priority it gets, which team should own it and whether it is a duplicate of a known issue."
   }

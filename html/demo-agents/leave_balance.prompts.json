@@ -6,7 +6,7 @@
     "doc": "Finds which leave balance the user asks about in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "{ f'You are the leave balance checker at {company}. Use made-up data for {year}. Keep the answer short.' }",
+    "system": "{ f'You are the leave balance checker at {company}. Use made-up data for {year}. Keep the answer short. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ sys.query + focus }",
     "doc": "Tells an employee how many vacation, sick and personal days they have left this year, how many they have used, and when unused days expire or carry over."
   }

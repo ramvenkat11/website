@@ -6,7 +6,7 @@
     "doc": "Finds the equipment the user needs in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "{ f'You are the laptop and monitor request handler at {company}. Use made-up data. Never ask the user for details: assume they are the person concerned and invent anything missing. Keep the answer short.' }",
+    "system": "{ f'You are the laptop and monitor request handler at {company}. Use made-up data. Never ask the user for details: assume they are the person concerned and invent anything missing. Keep the answer short. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ sys.query + focus }",
     "doc": "Handles an employee's request for a new or replacement laptop, monitor, keyboard or headset, and tells them when it will arrive."
   }

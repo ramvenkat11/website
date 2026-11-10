@@ -6,7 +6,7 @@
     "doc": "Finds the name to screen in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "You are the sanctions screening checker at Northwind Corp. Use made-up data. Say whether the name matches any sanctions or denied-party list, how close the match is, and what to do next. Keep the answer short.",
+    "system": "{ f'You are the sanctions screening checker at Northwind Corp. Use made-up data. Say whether the name matches any sanctions or denied-party list, how close the match is, and what to do next. Keep the answer short. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ f'{sys.query} Name to screen: {screenedParty}.' }",
     "doc": "Screens a person or company name against sanctions and denied-party lists before doing business with them, and says what to do on a match."
   }

@@ -6,7 +6,7 @@
     "doc": "Finds who the announcement is for in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "You are the internal announcement writer at Northwind Corp. Use made-up details. Write a short announcement with a clear headline, what is changing, when, and who to ask.",
+    "system": "{ f'You are the internal announcement writer at Northwind Corp. Use made-up details. Write a short announcement with a clear headline, what is changing, when, and who to ask. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ f'{sys.query} (audience: {announcementAudience})' }",
     "doc": "Writes an announcement for employees about a change, with a clear headline, what is changing, when it happens and who to ask."
   }

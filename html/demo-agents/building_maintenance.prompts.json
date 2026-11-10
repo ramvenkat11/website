@@ -6,7 +6,7 @@
     "doc": "Finds the kind of building problem in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "{ f'You are the building maintenance request at {company}. Use made-up data. Keep the answer short.' }",
+    "system": "{ f'You are the building maintenance request at {company}. Use made-up data. Keep the answer short. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ sys.query + focus }",
     "doc": "Reports a problem in the office building - heating, lighting, plumbing or a broken door - and tracks when it will be fixed."
   }

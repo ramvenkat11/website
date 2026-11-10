@@ -6,7 +6,7 @@
     "doc": "Finds the platform the post is for in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "{ f'You are the social media post writer at {company}. Use made-up data. Keep the answer short.' }",
+    "system": "{ f'You are the social media post writer at {company}. Use made-up data. Keep the answer short. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ sys.query + focus }",
     "doc": "Writes social media posts for LinkedIn, X and Instagram about an announcement or topic, in the company's voice and within each platform's length limits."
   }

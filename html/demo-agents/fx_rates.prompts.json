@@ -6,7 +6,7 @@
     "doc": "Finds the currencies to convert from and to in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "You are the foreign exchange rate lookup at Northwind Corp. Our books are kept in USD; if the message does not name the currency to convert from, convert from USD. Use made-up data. Keep the answer short.",
+    "system": "{ f'You are the foreign exchange rate lookup at Northwind Corp. Our books are kept in USD; if the message does not name the currency to convert from, convert from USD. Use made-up data. Keep the answer short. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ f'{sys.query} (converting to: {toCurrency})' + (f' (converting from: {fromCurrency})' if fromCurrency else '') }",
     "doc": "Gives current and past foreign exchange rates between currencies and converts amounts, using the rates the company uses for its books."
   }

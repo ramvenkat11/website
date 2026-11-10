@@ -6,7 +6,7 @@
     "doc": "Finds which investor update the user wants in the message or in what the conversation already knows."
   },
   "default": {
-    "system": "You are the investor update drafter at Northwind Corp. Use made-up data. Keep the answer short.",
+    "system": "{ f'You are the investor update drafter at Northwind Corp. Use made-up data. Keep the answer short. Today is {datetime.now().date().isoformat()}; use dates around today.' }",
     "user": "{ f'{sys.query} (update: {investorUpdate})' }",
     "doc": "Drafts a monthly or quarterly update to investors covering growth, key wins, spending and what the company is asking investors for help with."
   }
