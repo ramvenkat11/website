@@ -84,6 +84,7 @@ TOC = [
         ("system-variables", "System variables"),
         ("compile-rules", "Compile rules"),
         ("runtime-limits", "Runtime limits"),
+        ("time-and-cost-bounds", "Time and cost bounds"),
         ("connection-pools", "Connection pools"),
     ]),
     ("profiles", "Profiles", [

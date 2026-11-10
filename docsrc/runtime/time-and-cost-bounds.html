@@ -1,0 +1,22 @@
+<p class="lead">Search2o agents are built for a short run time and a low cost, so that the same agent can be rerun thousands of times, for many users. Every agent therefore carries two upper bounds: how long it can run, and how much it can spend on LLM calls.</p>
+
+<h2>Long-running work</h2>
+<p>A task that takes hours, or whose cost is not known in advance, is run by an outside agent, such as Claude Code or an application of your own. The outside agent plans the work and keeps it going. Each time it needs one of your company's systems, it calls a Search2o agent as a subagent: through the <a href="../skill-integration/overview.html">skill</a>, or through the <a href="../rest-api/running-agents.html">REST API</a>. Each call is one short run, held to the two bounds of the agent it reaches. Calls made in the same conversation share the conversation's context; see <a href="../agent-execution/building-on-each-other.html">Agents building on each other</a>.</p>
+
+<h2>Time bound</h2>
+<p>The time bound is the number of seconds one run may take, a whole number of at least 1. It covers everything in the run: the commands, the LLM calls, the API and database calls, and the tool calls.</p>
+<p>A run that reaches the bound is stopped at that moment, including an LLM, API or database call in progress. The run ends with the result code <code>timedOut</code>, and the message gives the number of seconds and names the bound. The stop cannot be caught by <a href="../agent-execution/error-handling.html"><code>onError</code></a>.</p>
+<p>The stop takes effect while the agent waits on a call, or between commands. A loop of plain expressions yields to the agent server at the interval that the <em>yield loops after</em> setting in <a href="runtime-limits.html">Runtime limits</a> gives, so that the bound applies inside the loop too.</p>
+
+<h2>Cost bound</h2>
+<p>The cost bound is the most one run may spend on LLM calls, in US dollars, an amount above zero. After every LLM call the agent server prices the call from its token counts and the per-million-token prices in the <a href="../profiles/llm-profiles.html">LLM profile</a>, and adds the amount to the run's total.</p>
+<p>Once the total passes the bound, the run stops with the result code <code>errorInAgent</code>, and the person is told that the request reached the cost limit set for the agent. The stop cannot be caught by <code>onError</code>, and it applies inside tool calls and <code>parallel</code> branches. Retries count toward the total.</p>
+<p>The bound is checked after a call, so the call that crosses the bound is completed and paid for. A profile with no prices adds nothing to the total, so give every LLM profile its prices.</p>
+
+<h2>What one run is</h2>
+<p>Each bound covers one run: from the request to the answer, or to the point where the agent pauses on an <a href="../commands/ask.html"><code>ask</code></a>. The run that continues after the person's answer starts with the full bounds again.</p>
+
+<h2>Setting the bounds</h2>
+<p>The two bounds belong to the agent, not to the account. A new draft starts with the default bounds, 60 seconds and 1 US dollar, and a draft made from a published agent starts with that agent's bounds. The bounds are saved with the <a href="../development/drafts.html">draft</a>, the validation run is held to them, and publishing carries them to the agent.</p>
+<p>A developer can also change the bounds on a published agent's page. That change applies from the next run, does not make a new version, and is recorded in the <a href="../system-management/audit-log.html">audit log</a>.</p>
+<p>Choose both bounds from evidence. The <a href="../reports/performance.html">performance report</a> shows the duration of each agent's runs, and the <a href="../reports/cost.html">cost report</a> shows their LLM cost. Set each bound a little above what a normal run needs, so that a run that goes wrong is stopped early.</p>

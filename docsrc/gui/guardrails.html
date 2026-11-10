@@ -7,4 +7,4 @@
 <p>The functions and objects that expressions may use, one per line, and the <code>sys</code> variables that agents may read. The agent server resolves every entry when the allowlist is saved, and refuses the save if an entry cannot be imported. See <a href="../runtime/allowlist.html">Allowlist</a> and <a href="../runtime/system-variables.html">System variables</a>.</p>
 
 <h2>Runtime</h2>
-<p>Limits on a run: time, loop iterations, database rows, definition size, and LLM spend. See <a href="../runtime/runtime-limits.html">Runtime limits</a>.</p>
+<p>Limits that apply to every agent in the account: loop iterations, database rows and definition size. See <a href="../runtime/runtime-limits.html">Runtime limits</a>. The time and the LLM spend of a run are set for each agent, not here; see <a href="../runtime/time-and-cost-bounds.html">Time and cost bounds</a>.</p>
