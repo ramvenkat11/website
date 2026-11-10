@@ -2121,3 +2121,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Hero p3 (Ram, option 1 of 4): "The agent server keeps every run safe and observable, with any LLM." "bounded" (linked docs/runtime/runtime-limits.html) dropped as overlapping "safe"; "any LLM" links docs/profiles/llm-profiles.html. The home page no longer links runtime-limits from the hero. Rendered hero head at 1280/860/375/320 light. Not committed.
 - Hero p3 "any LLM" link switched to docs/llm/vendors.html (Ram; no dedicated model-neutrality page exists, the vendors page carries the claim). Text-only, no rewrap. Not committed.
 - Hero p3 (Ram): ", with any LLM" removed; now "The agent server keeps every run safe and observable." Third attribute under discussion. Not committed.
+- Hero p3 final (Ram): "The agent server keeps every run safe and observable." No third attribute; cost words all reduce to "bounded". Rendered 1280/375 light. Not committed.
