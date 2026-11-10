@@ -2169,3 +2169,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Page renamed: docsrc/runtime/time-and-cost-bounds.html, TOC title "Time and cost bounds", body says bound(s) (the quoted product message keeps "cost limit"); defaults stated. All links follow the new name. The stale built html/docs/runtime/time-and-cost-limits.html (made earlier today, never committed) was moved to the scratchpad.
 - runtime-limits.html: lead now lists only the account-wide limits and points to the new page; the short "two limits each agent carries" section removed. gui/guardrails.html Runtime paragraph: account-wide limits only, with a pointer for time and LLM spend. html/runtime.html #limits paragraph ends with a link to the new page.
 - Not changed: the words "time limit"/"cost limit" in other pages' own sentences (error-handling, llm, while, skill pages, html/runtime.html). Told Ram. Docs rebuilt, 147 pages. Not committed, not uploaded.
+
+## 2026-11-10 — Time and cost bounds: lead shortened
+- Ram's wording for the second lead sentence ("how long it can run, and how much it can spend on LLM calls"); the third sentence (long-running task runs outside) removed, since "Long-running work" covers it. Docs rebuilt. Not committed.
