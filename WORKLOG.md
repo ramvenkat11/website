@@ -2172,3 +2172,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-10 — Time and cost bounds: lead shortened
 - Ram's wording for the second lead sentence ("how long it can run, and how much it can spend on LLM calls"); the third sentence (long-running task runs outside) removed, since "Long-running work" covers it. Docs rebuilt. Not committed.
+
+## 2026-11-10 — Hero: "bounded" back
+- html/index.html hero last line: "safe, bounded and observable"; "bounded" links to docs/runtime/time-and-cost-bounds.html. Measured 320–1280 every 4px: one line at 183 widths, two lines at the 58 narrow ones. No render viewed (text-only). Not committed.
