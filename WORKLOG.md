@@ -2134,3 +2134,10 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Checked: overflow 0 and joins exact across 320–1280 (measure.mjs in scratchpad); close-ups at 1280, 660, 579/561, 481, 384, 375, 360, 320 in light or dark.
 - Not done: desktop blank band above the first bubble (the Discovery note is taller than the bubble; top-aligning only moves the gap below). Seen, not fixed: around 481–500 the "User · Developer · Admin" chip is wider than the Browser box and touches the dashed border.
 - Not committed (Ram reviews). Not uploaded.
+
+## 2026-11-10 Org figure client chips; section 2 subtitle
+- Browser chip (Ram): the 2×2 client layout now runs to 579px (was 480; four-across put "User · Developer · Admin" outside the Browser box at 481–527). `.cc-down` centring on the server starts at 580. 2×2 boxes get 8px side padding; ≤344 columns 1.25fr/.75fr and roles chip 9px; 580–700 roles chip 10px. Every chip and title ≥8px inside its box, 320–1280.
+- Found at 320–340: Enterprise systems / Local LLMs boxes ran up to 7px past the dashed org border. ≤352: sys padding-left 20px, branch line −20/14px, node padding 9px 5px, sub-line 9.5px. This overflow was the cause of the elbow drift below 352, so the vw compensation on `.arch-branch-ext::before` was removed (right: 53px only, ≤390).
+- Section 2 subtitle (Ram): "Agents share conversation context and build on the LLM message history from previous agents." (full stop added to match the sibling subtitles).
+- Checked: one measured pass 320–1280 every 4px (boxes inside org, elbow, arrow gaps, chip insets, no separator at a line end, overflow 0); close-ups of .ui-fig at 650 dark, 580 light, 500 light, 412 dark, 320 light and dark; subtitle at 1280 and 360.
+- Not committed. Not uploaded.
