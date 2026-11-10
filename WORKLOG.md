@@ -2141,3 +2141,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Section 2 subtitle (Ram): "Agents share conversation context and build on the LLM message history from previous agents." (full stop added to match the sibling subtitles).
 - Checked: one measured pass 320–1280 every 4px (boxes inside org, elbow, arrow gaps, chip insets, no separator at a line end, overflow 0); close-ups of .ui-fig at 650 dark, 580 light, 500 light, 412 dark, 320 light and dark; subtitle at 1280 and 360.
 - Not committed. Not uploaded.
+
+## 2026-11-10 — demo agents refreshed
+- Ran scripts/refresh-demo-agents.sh (Ram: "copy demo agents here"): 174 *.prompts.json modified (206 lines), none added or removed; html/demo-agents.json and all 200 .jsonc unchanged. The change: default system prompts now carry today's date ("Today is {datetime.now().date().isoformat()}; use dates around today."). For Ram to commit; not uploaded.
