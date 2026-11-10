@@ -673,7 +673,7 @@ p { margin: 0; }
 .cc-arch.hero-arch { --g: 10px; display: flex; flex-direction: column; justify-content: center; }
 .hero-arch .cc-row { grid-template-columns: 1fr 1.1fr; gap: 8px; }
 .hero-arch .cc-down { height: 24px; }
-@media (min-width: 481px) {
+@media (min-width: 580px) {
   .hero-arch .cc-down { justify-self: start; margin-left: calc(30% - 1px); }
 }
 .hero-arch .arch-org { padding: 18px 12px 10px; }
@@ -767,6 +767,7 @@ p { margin: 0; }
 @media (min-width: 580px) and (max-width: 700px) {
   .cc-main .arch-sys .arch-node > span { font-size: 10px; }
   .cc-arch .arch-out .arch-ext > span { font-size: 10.5px; }
+  .cc-arch .cc-clients .cc-roles span { font-size: 10px; }
 }
 .cc-arch .arch-out .cloud { justify-items: center; align-content: center; gap: 4px; padding: 20px 14px 14px; text-align: center; }
 .cc-arch .arch-out .cloud .ic { display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 4px; border-radius: 13px; background: rgba(255, 255, 255, .1); color: #a9c6ff; }
@@ -783,9 +784,6 @@ p { margin: 0; }
 }
 @media (max-width: 390px) {
   .cc-arch .arch-sys .arch-branch-ext::before { width: auto; right: 53px; }
-}
-@media (max-width: 352px) {
-  .cc-arch .arch-sys .arch-branch-ext::before { right: calc(53px + (352px - 100vw) * .375); }
 }
 @media (max-width: 640px) {
   .cc-arch .arch-out .out-llm, .cc-arch .arch-out .arch-ext { margin-left: 12px; }
@@ -1450,7 +1448,7 @@ a.arch-lbl { color: var(--blue-ink); }
 .page-body .section-head h2 { font-size: 24px; }
 .tablewrap { overflow-x: auto; margin: 28px 0; }
 
-@media (max-width: 480px) {
+@media (max-width: 579px) {
   .cc-clients { grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr); gap: 24px var(--g); }
   .cc-clients .cc-cc strong { font-size: 11px; }
   .cc-arch .cc-clients .cc-skill span { font-size: 10px; padding: 2px 5px; }
@@ -1458,6 +1456,17 @@ a.arch-lbl { color: var(--blue-ink); }
   .cc-join { display: none; }
   .hero-arch .cc-down { height: 34px; margin-top: 16px; }
   .hero-arch .arch-org { padding: 12px 4px 8px; }
+  .cc-arch .cc-clients .cc-cc { padding-left: 8px; padding-right: 8px; }
+}
+@media (max-width: 344px) {
+  .cc-clients { grid-template-columns: minmax(0, 1.25fr) minmax(0, .75fr); }
+  .cc-arch .cc-clients .cc-roles span { font-size: 9px; }
+}
+@media (max-width: 352px) {
+  .cc-main .arch-sys { padding-left: 20px; }
+  .cc-main .arch-branch::before { left: -20px; width: 14px; }
+  .cc-main .arch-branch .arch-node { padding: 9px 5px; }
+  .cc-main .arch-sys .arch-node > span { font-size: 9.5px; }
 }
 
 @media (max-width: 760px) {
