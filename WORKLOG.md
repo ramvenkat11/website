@@ -2150,3 +2150,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-10 — LinkedIn square logo: nothing new drawn
 - Ram asked for the wide logo on a square filled with the banner colour. That file already exists from 2026-09-28: content/linkedin-logo-wordmark.png (400x400, banner navy, wordmark in light ink), with content/linkedin-logo-mark.png (magnifier mark) beside it, both from gen/linkedin_logo.py. Pointed him to them and gave ideas (mark as the logo; drop the wordmark from the banner if the wordmark logo is used). Waiting for his choice.
+
+## 2026-11-10 — LinkedIn banner without the wordmark; logo pair settled
+- Ram: drop "Search2o" from the banner, make logo and banner one consistent, non-repeating set. gen/linkedin_banner.py: wordmark and hairline removed; heading (132px, two lines) with the tagline beneath (58px muted) centred in the space right of LOGO_END (content 1522–3776 of 4200). content/linkedin-banner2.png regenerated in place. Logo to upload: content/linkedin-logo-wordmark.png (unchanged; same navy, glow and ink as the banner). Checked with a rough overlap mock. Ram uploads both himself.
