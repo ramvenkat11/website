@@ -2122,3 +2122,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Hero p3 "any LLM" link switched to docs/llm/vendors.html (Ram; no dedicated model-neutrality page exists, the vendors page carries the claim). Text-only, no rewrap. Not committed.
 - Hero p3 (Ram): ", with any LLM" removed; now "The agent server keeps every run safe and observable." Third attribute under discussion. Not committed.
 - Hero p3 final (Ram): "The agent server keeps every run safe and observable." No third attribute; cost words all reduce to "bounded". Rendered 1280/375 light. Not committed.
+
+## 2026-11-10 Home page visual review (no edits)
+- Rendered html/index.html, all sections, 8 widths, light and dark; no horizontal overflow. Inspected 1280 and 384 closely, plus spot checks at 860 and 700.
+- Reported to Ram: (1) code block `"passages"` line wraps to column 0 on phones; (2) hero server card mostly empty on phones; (3) conversation figure squeezed two-column on phones with blank band above the first bubble; (4) dangling middle-dot separators in the org figure on phones; (5) External LLMs connector leaves the server at its corner; (6) agent pill fields end on a cut row; (7) hero lead line breaks uneven.
+- State: nothing changed. Next: wait for Ram to pick which to fix.
