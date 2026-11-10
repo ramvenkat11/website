@@ -2153,3 +2153,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-10 — LinkedIn banner without the wordmark; logo pair settled
 - Ram: drop "Search2o" from the banner, make logo and banner one consistent, non-repeating set. gen/linkedin_banner.py: wordmark and hairline removed; heading (132px, two lines) with the tagline beneath (58px muted) centred in the space right of LOGO_END (content 1522–3776 of 4200). content/linkedin-banner2.png regenerated in place. Logo to upload: content/linkedin-logo-wordmark.png (unchanged; same navy, glow and ink as the banner). Checked with a rough overlap mock. Ram uploads both himself.
+
+## 2026-11-10 — LinkedIn banner: tagline is the title
+- Ram: the tagline is the message, so it is the title and "Let your users…" the subtitle. gen/linkedin_banner.py: title "Agent server built around search" 160px bold ink; subtitle on one line, 82px medium, SOFT (176,190,214); block centred right of LOGO_END (1402–3896 of 4200). Unused accent/hairline code and colours removed. content/linkedin-banner2.png regenerated.
+- White outline around the logo: content/linkedin-logo-wordmark.png has navy pixels on every edge, so the outline is LinkedIn's own frame (my mock also drew one). Told Ram; nothing to change in the file.
