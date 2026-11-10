@@ -2147,3 +2147,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-10 — LinkedIn banner moved right
 - Ram: LinkedIn's logo covers the banner's left side up to the "u" of "built" (x≈1097 of 4200 in the old image). gen/linkedin_banner.py: new LOGO_END = 1097; the whole block (wordmark, tagline, hairline, heading) now starts at 1208 and ends at 4089, with 111px free on each side. Sizes unchanged (heading 120px). content/linkedin-banner2.png regenerated in place; Ram uploads it to LinkedIn himself.
+
+## 2026-11-10 — LinkedIn square logo: nothing new drawn
+- Ram asked for the wide logo on a square filled with the banner colour. That file already exists from 2026-09-28: content/linkedin-logo-wordmark.png (400x400, banner navy, wordmark in light ink), with content/linkedin-logo-mark.png (magnifier mark) beside it, both from gen/linkedin_logo.py. Pointed him to them and gave ideas (mark as the logo; drop the wordmark from the banner if the wordmark logo is used). Waiting for his choice.
