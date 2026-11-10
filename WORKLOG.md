@@ -2144,3 +2144,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-10 — demo agents refreshed
 - Ran scripts/refresh-demo-agents.sh (Ram: "copy demo agents here"): 174 *.prompts.json modified (206 lines), none added or removed; html/demo-agents.json and all 200 .jsonc unchanged. The change: default system prompts now carry today's date ("Today is {datetime.now().date().isoformat()}; use dates around today."). For Ram to commit; not uploaded.
+
+## 2026-11-10 — LinkedIn banner moved right
+- Ram: LinkedIn's logo covers the banner's left side up to the "u" of "built" (x≈1097 of 4200 in the old image). gen/linkedin_banner.py: new LOGO_END = 1097; the whole block (wordmark, tagline, hairline, heading) now starts at 1208 and ends at 4089, with 111px free on each side. Sizes unchanged (heading 120px). content/linkedin-banner2.png regenerated in place; Ram uploads it to LinkedIn himself.
