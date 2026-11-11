@@ -2178,3 +2178,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-11 — about.html: Consulting section
 - Ram: add a consulting section (turnkey solutions, agents built to the customer's requirements, everything set up, Ram directly available). New `<h2 id="consulting">` with three paragraphs between Company and Contact in html/about.html; wording is mine for Ram to judge. Text-only, same prose styles; no render. Not committed.
+- Follow-up (Ram: "please contact us", review again): "agents for those tasks" (was the ambiguous "for them"), "When the project ends, your team has" (was "At the end… receives"), "throughout the project" (was "engagement"), "please contact us".
