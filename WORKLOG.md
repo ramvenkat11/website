@@ -2181,3 +2181,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Follow-up (Ram: "please contact us", review again): "agents for those tasks" (was the ambiguous "for them"), "When the project ends, your team has" (was "At the end… receives"), "throughout the project" (was "engagement"), "please contact us".
 - about.html: "focused agents" -> "task-focused agents" (Ram).
 - about.html: "contact us" in Consulting is plain text again (Ram: Contact is right below). Reviewed the whole page for Ram, findings given in chat, no edits.
+
+## 2026-11-11 — about.html: review items applied
+- Ram approved items 1, 2, 3, 5, 6, 7, 8, 9, 10, 11 (not 4). "program" -> "agent" in the opening idea; paragraph 2 now "Search2o is therefore an agent server built around search. Its agents combine…" (em dash gone); encryption sentence ends at "in the cloud"; "Users can get started quickly…" is its own paragraph; Company's last sentence ("same standards…") cut; Contact leads with email, one "please"; meta and og description rewritten (agent, consulting, "Based in Northern Virginia"); indentation fixed. Text-only. Not committed.
