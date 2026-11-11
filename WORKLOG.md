@@ -2186,3 +2186,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Ram approved items 1, 2, 3, 5, 6, 7, 8, 9, 10, 11 (not 4). "program" -> "agent" in the opening idea; paragraph 2 now "Search2o is therefore an agent server built around search. Its agents combine…" (em dash gone); encryption sentence ends at "in the cloud"; "Users can get started quickly…" is its own paragraph; Company's last sentence ("same standards…") cut; Contact leads with email, one "please"; meta and og description rewritten (agent, consulting, "Based in Northern Virginia"); indentation fixed. Text-only. Not committed.
 - about.html Company: "many of them" -> "most of them" (Ram).
 - pricing.html closing paragraph: added "We can also build the agents and set up the system for you; see Consulting." linking about.html#consulting (Ram approved the pointer). Text-only. Not committed.
+
+## 2026-11-11 — search.html: description subtitle
+- Ram: remove "within 30 seconds" and rewrite. #description subtitle now: "A developer describes each agent in plain language when publishing it. Search indexes that description and matches every request against it. The request above matched this one." Text-only. Not committed.
