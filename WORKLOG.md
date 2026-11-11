@@ -2175,3 +2175,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-10 — Hero: "bounded" back
 - html/index.html hero last line: "safe, bounded and observable"; "bounded" links to docs/runtime/time-and-cost-bounds.html. Measured 320–1280 every 4px: one line at 183 widths, two lines at the 58 narrow ones. No render viewed (text-only). Not committed.
+
+## 2026-11-11 — about.html: Consulting section
+- Ram: add a consulting section (turnkey solutions, agents built to the customer's requirements, everything set up, Ram directly available). New `<h2 id="consulting">` with three paragraphs between Company and Contact in html/about.html; wording is mine for Ram to judge. Text-only, same prose styles; no render. Not committed.
