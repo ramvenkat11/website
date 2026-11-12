@@ -2202,3 +2202,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Checked: measured sweep 320-1280 step 4 on all three pages (0 problems); renders at 1280,1000,860,700,412,384,375,360,320 light+dark.
 - Renderer rewritten this session (old scratchpad gone): scratchpad 83324d82-.../shot.mjs, `--mode sweep|shot`, Chrome on port 9333 started separately.
 - Not uploaded. Open: on phones the intro is ~1200px tall before the demo starts.
+
+## 2026-11-12 Demo agents refreshed
+- Ran scripts/refresh-demo-agents.sh (Ram): all 200 .jsonc modified (657+/69-), none added or removed; html/demo-agents.json and the 200 *.prompts.json unchanged. The change: every agent now sets a "progress" message before each LLM wait ("Asking <provider> <model> to ..."), replacing "Working on it..." and a few f-string progress lines. For Ram to commit; not uploaded.
