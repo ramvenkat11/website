@@ -2189,3 +2189,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-11 — search.html: description subtitle
 - Ram: remove "within 30 seconds" and rewrite. #description subtitle now: "A developer describes each agent in plain language when publishing it. Search indexes that description and matches every request against it. The request above matched this one." Text-only. Not committed.
+
+## 2026-11-12 Demo page intros rewritten from content/newhome.txt
+- Rewrote the intro paragraphs above the embedded demo in html/demo-search.html, html/demo-trace.html, html/demo-draft.html to state each demo's purpose and limits (mock data, only the 200 agents, draft cannot be run; no reason given for the last, per Ram).
+- Kept the single-match/two-match/config text on the search page and the editor pointer on trace and draft.
+- Text-only edits, no renders. Home captions and nav labels untouched. Not uploaded.
+- Next: Ram reviews wording; decide later whether the draft page states the security reason.
