@@ -1526,6 +1526,18 @@ a.arch-lbl { color: var(--blue-ink); }
 .fw-demo { max-width: var(--fw-w); }
 .fw-demo-wide { max-width: var(--demo-w); }
 .page-hero .lead.demo-lead { max-width: var(--demo-w); text-wrap: pretty; }
+.demo-guide { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; max-width: var(--demo-w); margin-top: 24px; }
+.demo-guide-card { padding: 18px 20px 20px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--card); box-shadow: var(--card-shadow); }
+.demo-guide h2 { margin: 0 0 12px; font-size: 14px; font-weight: 700; letter-spacing: .02em; color: var(--blue-ink); }
+.demo-guide ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.demo-guide li { position: relative; padding-left: 16px; font-size: 15px; line-height: 1.55; color: var(--body); text-wrap: pretty; }
+.demo-guide li::before { content: ""; position: absolute; left: 0; top: .62em; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); }
+.demo-guide li strong { font-weight: 600; color: var(--ink); }
+.page-hero .note.demo-note { max-width: var(--demo-w); text-wrap: pretty; }
+.demo-guide + .demo-note { margin-top: 20px; }
+@media (max-width: 760px) {
+  .demo-guide { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+}
 .fw-page .numbered { max-width: var(--fw-w); }
 .fw-page .numbered .step-sec { padding-bottom: 36px; }
 .fw-after-steps { margin-top: 28px; }
