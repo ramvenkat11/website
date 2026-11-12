@@ -2195,3 +2195,10 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Kept the single-match/two-match/config text on the search page and the editor pointer on trace and draft.
 - Text-only edits, no renders. Home captions and nav labels untouched. Not uploaded.
 - Next: Ram reviews wording; decide later whether the draft page states the security reason.
+
+## 2026-11-12 Demo page intros: cards instead of paragraphs
+- Ram: no long essay, use formatting; highlight key lines. Each of html/demo-search.html, demo-trace.html, demo-draft.html now has one lead sentence, a `.demo-guide` row of three cards (What it shows / How to use it / Keep in mind), then `.note.demo-note` lines. Key warnings are `<strong>`.
+- New CSS in html/styles/styles.css after `.page-hero .lead.demo-lead`: `.demo-guide*`, `.demo-note`; cards stack at <=760px.
+- Checked: measured sweep 320-1280 step 4 on all three pages (0 problems); renders at 1280,1000,860,700,412,384,375,360,320 light+dark.
+- Renderer rewritten this session (old scratchpad gone): scratchpad 83324d82-.../shot.mjs, `--mode sweep|shot`, Chrome on port 9333 started separately.
+- Not uploaded. Open: on phones the intro is ~1200px tall before the demo starts.
