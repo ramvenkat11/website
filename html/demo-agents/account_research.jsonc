@@ -12,6 +12,8 @@
         // parallel returns a dict keyed by function name.
         "var": { "overviewView": "{ result['overview'] }", "contactsView": "{ result['contacts'] }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Anthropic claude-haiku-4-5 to combine the 2 results into one answer...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },
@@ -19,6 +21,7 @@
     "overview": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking Anthropic claude-haiku-4-5 to describe the company in a few lines (mock data)...",
         "llm": { "profile": "claude_haiku", "prompt": "overview" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -28,6 +31,7 @@
     "contacts": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking Anthropic claude-haiku-4-5 to list likely decision makers (mock data)...",
         "llm": { "profile": "claude_haiku", "prompt": "contacts" },
         // Hand the result back to the caller.
         "return": "{ result }"

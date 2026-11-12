@@ -8,6 +8,8 @@
           "regulationArea": "{ conv.regulationArea if sys.exists('conv', 'regulationArea') and conv.regulationArea.strip().lower() not in ['all', 'any', 'anything'] else '' }"
         },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to generate a mock summary of regulatory changes...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

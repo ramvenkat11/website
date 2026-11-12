@@ -6,9 +6,8 @@
         // Uses an allowlisted function.
         "var": { "dishes": "{ randint(6, 14) }" },
 
-        // Tell the user what is happening while they wait.
-        "progress": "{ f'Found {dishes} dishes today...' }",
-
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Ollama gemma4:31b to generate a mock cafeteria menu...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

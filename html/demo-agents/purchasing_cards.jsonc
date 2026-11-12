@@ -11,6 +11,9 @@
           "cardRequest": "{ conv.cardRequest if sys.exists('conv', 'cardRequest') else '' }"
         },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to find the card request, and whether it is for a higher limit, in your message...",
+
         // The message wins over what was known; a field neither has comes back empty.
         "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
         "var.3": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -35,6 +38,8 @@
             },
             "var": { "cardRequest": "{ result['cardRequest'] }" },
 
+            "progress": "Asking Google gemini-3.6-flash to find the card request, and whether it is for a higher limit, in your answer...",
+
             // Check the typed answer as well.
             "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
             "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -52,6 +57,7 @@
         // Shared with every agent in the conversation.
         "var.5": { "conv.cardRequest": "{ cardRequest }" },
 
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock purchasing card request...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

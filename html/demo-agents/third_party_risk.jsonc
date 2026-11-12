@@ -12,6 +12,8 @@
         // parallel returns a dict keyed by function name.
         "var": { "securityView": "{ result['security'] }", "financialView": "{ result['financial'] }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Anthropic claude-haiku-4-5 to combine the 2 results into one answer...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },
@@ -19,6 +21,7 @@
     "security": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking Anthropic claude-haiku-4-5 to rate the vendor's security and privacy risk from its questionnaire answers (mock data)...",
         "llm": { "profile": "claude_haiku", "prompt": "security" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -28,6 +31,7 @@
     "financial": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking Anthropic claude-haiku-4-5 to rate the vendor's financial stability and dependency risk (mock data)...",
         "llm": { "profile": "claude_haiku", "prompt": "financial" },
         // Hand the result back to the caller.
         "return": "{ result }"

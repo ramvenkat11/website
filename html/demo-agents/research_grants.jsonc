@@ -8,6 +8,8 @@
           "researchLab": "{ conv.researchLab if sys.exists('conv', 'researchLab') else '' }"
         },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to generate a mock list of research grants...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

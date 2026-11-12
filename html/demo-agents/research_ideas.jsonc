@@ -12,6 +12,8 @@
         // parallel returns a dict keyed by function name.
         "var": { "feasibilityView": "{ result['feasibility'] }", "noveltyView": "{ result['novelty'] }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking OpenAI gpt-5-mini to combine the 2 results into one answer...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },
@@ -19,6 +21,7 @@
     "feasibility": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking OpenAI gpt-5-mini to judge whether the idea can be built with the skills, equipment and budget Northwind has (mock data)...",
         "llm": { "profile": "gpt5_mini", "prompt": "feasibility" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -28,6 +31,7 @@
     "novelty": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking OpenAI gpt-5-mini to say how the idea differs from past Northwind projects and known work elsewhere (mock data)...",
         "llm": { "profile": "gpt5_mini", "prompt": "novelty" },
         // Hand the result back to the caller.
         "return": "{ result }"

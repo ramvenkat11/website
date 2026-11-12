@@ -12,6 +12,8 @@
         // parallel returns a dict keyed by function name.
         "var": { "summaryView": "{ result['summary'] }", "ownerView": "{ result['owner'] }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking OpenAI gpt-5-mini to combine the 2 results into one answer...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },
@@ -19,6 +21,7 @@
     "summary": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking OpenAI gpt-5-mini to summarize the complaint (mock data)...",
         "llm": { "profile": "gpt5_mini", "prompt": "summary" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -28,6 +31,7 @@
     "owner": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking OpenAI gpt-5-mini to name the team that should handle it (mock data)...",
         "llm": { "profile": "gpt5_mini", "prompt": "owner" },
         // Hand the result back to the caller.
         "return": "{ result }"

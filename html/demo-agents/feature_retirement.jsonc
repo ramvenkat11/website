@@ -6,6 +6,8 @@
         // The sunset date is 90 days from today.
         "var": { "sunset": "{ (datetime.now().date() + timedelta(days=90)).isoformat() }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Ollama gemma4:31b to generate a mock feature retirement plan...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

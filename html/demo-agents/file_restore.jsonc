@@ -6,9 +6,8 @@
         // Uses an allowlisted function.
         "var": { "versions": "{ randint(3, 30) }" },
 
-        // Tell the user what is happening while they wait.
-        "progress": "{ f'Found {versions} backup versions available...' }",
-
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking OpenAI gpt-5-mini to generate a mock file restore request...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }

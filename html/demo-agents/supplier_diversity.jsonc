@@ -20,6 +20,8 @@
           }
         },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to generate a mock list of diverse suppliers...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

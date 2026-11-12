@@ -3,6 +3,8 @@
   "functions": {
     "main": {
       "commands": {
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Ollama gemma4:31b to generate a mock competitor battlecard...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

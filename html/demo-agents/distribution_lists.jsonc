@@ -9,6 +9,8 @@
         // Shared by every agent in the conversation.
         "var.2": { "conv.lastTopic": "distribution lists" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Ollama gemma4:31b to generate mock distribution list details...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

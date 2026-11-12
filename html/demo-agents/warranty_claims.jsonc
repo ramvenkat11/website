@@ -9,6 +9,9 @@
         // What this or another agent already learned in this conversation.
         "var.2": { "productProblem": "{ conv.productProblem if sys.exists('conv', 'productProblem') else '' }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to find what happened to the product in your message...",
+
         // The message wins over what was known; a field neither has comes back empty.
         "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
         "var.3": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -44,12 +47,10 @@
           "else": { "var": { "focus": "{ f' Focus on {productProblem.lower()}.' if productProblem else '' }" } }
         },
 
-        // Tell the user what is happening while they wait.
-        "progress": "Working on it...",
-
         // Shared with every agent in the conversation.
         "var.6": { "conv.productProblem": "{ productProblem }" },
 
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock warranty check...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

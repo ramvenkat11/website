@@ -8,6 +8,9 @@
           "dataKind": "{ conv.dataKind if sys.exists('conv', 'dataKind') else '' }"
         },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to find the kind of data and whether it includes personal data in your message...",
+
         // The message wins over what was known; a field neither has comes back empty.
         "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
         "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -32,6 +35,8 @@
             },
             "var": { "dataKind": "{ result['dataKind'] }" },
 
+            "progress": "Asking Google gemini-3.6-flash to find the kind of data and whether it includes personal data in your answer...",
+
             // Check the typed answer as well.
             "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
             "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -48,6 +53,7 @@
           "then": { "end": "Access to customer personal data goes through the privacy office. Please file a privacy review first." }
         },
 
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock data access request...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

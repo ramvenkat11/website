@@ -9,6 +9,9 @@
           "toCurrency": "{ conv.toCurrency if sys.exists('conv', 'toCurrency') else '' }"
         },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to find the currencies to convert from and to in your message...",
+
         // The message wins over what was known; a field neither has comes back empty.
         "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
         "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -44,6 +47,7 @@
           "then": { "end": "Our books are already in USD, so no conversion is needed." }
         },
 
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock exchange rates...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

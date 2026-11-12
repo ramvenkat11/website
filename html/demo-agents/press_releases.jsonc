@@ -8,6 +8,9 @@
           "announcement": "{ conv.announcement if sys.exists('conv', 'announcement') else '' }"
         },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to find the announcement, and whether it is decided, in your message...",
+
         // The message wins over what was known; a field neither has comes back empty.
         "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
         "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -32,6 +35,8 @@
             },
             "var": { "announcement": "{ result['announcement'] }" },
 
+            "progress": "Asking Google gemini-3.6-flash to find the announcement, and whether it is decided, in your answer...",
+
             // Check the typed answer as well.
             "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
             "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -48,6 +53,7 @@
           "then": { "end": "Come back once the announcement is decided." }
         },
 
+        "progress.2": "Asking Google gemini-3.6-flash to generate a mock press release...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

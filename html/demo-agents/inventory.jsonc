@@ -11,9 +11,8 @@
         // Uses an allowlisted function.
         "var.2": { "units": "{ randint(0, 500) }" },
 
-        // Tell the user what is happening while they wait.
-        "progress": "{ f'Found {units} units in stock...' }",
-
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Ollama gemma4:31b to generate mock stock levels...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

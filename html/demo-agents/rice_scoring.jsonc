@@ -9,6 +9,8 @@
         // Use the value the function returned.
         "var": { "figure": "{ result }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock RICE scores...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

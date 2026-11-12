@@ -11,6 +11,9 @@
           "companySize": "{ conv.companySize if sys.exists('conv', 'companySize') else '' }"
         },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to find the size of the lead's company in your message...",
+
         // The message wins over what was known; a field neither has comes back empty.
         "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
         "var.3": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -45,12 +48,10 @@
           "else": { "var": { "focus": "{ companySize.lower() }" } }
         },
 
-        // Tell the user what is happening while they wait.
-        "progress": "Working on it...",
-
         // Shared with every agent in the conversation.
         "var.5": { "conv.companySize": "{ companySize }" },
 
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock lead score...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

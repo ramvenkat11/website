@@ -12,6 +12,8 @@
         // parallel returns a dict keyed by function name.
         "var": { "strengthsView": "{ result['strengths'] }", "gapsView": "{ result['gaps'] }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to combine the 2 results into one answer...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },
@@ -19,6 +21,7 @@
     "strengths": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking Google gemini-3.6-flash to list the security controls the vendor has in place (mock data)...",
         "llm": { "profile": "gemini_flash", "prompt": "strengths" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -28,6 +31,7 @@
     "gaps": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking Google gemini-3.6-flash to list the gaps the vendor must close before getting access (mock data)...",
         "llm": { "profile": "gemini_flash", "prompt": "gaps" },
         // Hand the result back to the caller.
         "return": "{ result }"

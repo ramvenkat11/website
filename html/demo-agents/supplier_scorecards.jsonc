@@ -14,6 +14,8 @@
         // Shared by every agent in the conversation.
         "var.3": { "conv.lastTopic": "supplier scorecards" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock supplier scorecards...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }

@@ -8,6 +8,9 @@
           "deployEnvironment": "{ conv.deployEnvironment if sys.exists('conv', 'deployEnvironment') else '' }"
         },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to find your environment in your message...",
+
         // The message wins over what was known; a field neither has comes back empty.
         "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
         "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -36,6 +39,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.deployEnvironment": "{ deployEnvironment }" },
 
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock feature flag settings...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

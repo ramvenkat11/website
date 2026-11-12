@@ -6,6 +6,9 @@
         // What this or another agent already learned in this conversation.
         "var": { "productStage": "{ conv.productStage if sys.exists('conv', 'productStage') else '' }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to find the stage of the product being tested in your message...",
+
         // The message wins over what was known; a field neither has comes back empty.
         "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
         "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -41,6 +44,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.productStage": "{ productStage }" },
 
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock test protocol...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

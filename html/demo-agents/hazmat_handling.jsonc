@@ -8,6 +8,9 @@
           "hazardousMaterial": "{ conv.hazardousMaterial if sys.exists('conv', 'hazardousMaterial') else '' }"
         },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to find the hazardous material in your message, and whether you do not know what it is...",
+
         // The message wins over what was known; a field neither has comes back empty.
         "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
         "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -32,6 +35,8 @@
             },
             "var": { "hazardousMaterial": "{ result['hazardousMaterial'] }" },
 
+            "progress": "Asking Google gemini-3.6-flash to find the hazardous material in your answer, and whether you do not know what it is...",
+
             // Check the typed answer as well.
             "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
             "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -48,6 +53,7 @@
           "then": { "fail": "Do not touch it. Call the safety officer." }
         },
 
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock hazardous material handling rules...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

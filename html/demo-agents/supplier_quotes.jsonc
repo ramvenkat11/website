@@ -12,6 +12,8 @@
         // parallel returns a dict keyed by function name.
         "var": { "cheapestView": "{ result['cheapest'] }", "fastestView": "{ result['fastest'] }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to combine the 2 results into one answer...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },
@@ -19,6 +21,7 @@
     "cheapest": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking Google gemini-3.6-flash to name the cheapest supplier (mock data)...",
         "llm": { "profile": "gemini_flash", "prompt": "cheapest" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -28,6 +31,7 @@
     "fastest": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking Google gemini-3.6-flash to name the fastest supplier (mock data)...",
         "llm": { "profile": "gemini_flash", "prompt": "fastest" },
         // Hand the result back to the caller.
         "return": "{ result }"

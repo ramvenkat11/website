@@ -8,6 +8,9 @@
           "labWork": "{ conv.labWork if sys.exists('conv', 'labWork') else '' }"
         },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to find the kind of lab work in your message, and whether it involves an unknown substance...",
+
         // The message wins over what was known; a field neither has comes back empty.
         "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
         "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -32,6 +35,8 @@
             },
             "var": { "labWork": "{ result['labWork'] }" },
 
+            "progress": "Asking Google gemini-3.6-flash to find the kind of lab work in your answer, and whether it involves an unknown substance...",
+
             // Check the typed answer as well.
             "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
             "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -48,6 +53,7 @@
           "then": { "end": "Do not handle an unknown substance. Seal it and call the lab safety officer on extension 4400." }
         },
 
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock lab safety requirements...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

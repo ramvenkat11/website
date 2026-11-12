@@ -12,6 +12,8 @@
         // parallel returns a dict keyed by function name.
         "var": { "outlineView": "{ result['outline'] }", "headlinesView": "{ result['headlines'] }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Anthropic claude-haiku-4-5 to combine the 2 results into one answer...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },
@@ -19,6 +21,7 @@
     "outline": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking Anthropic claude-haiku-4-5 to write a short outline (mock data)...",
         "llm": { "profile": "claude_haiku", "prompt": "outline" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -28,6 +31,7 @@
     "headlines": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking Anthropic claude-haiku-4-5 to suggest three headlines (mock data)...",
         "llm": { "profile": "claude_haiku", "prompt": "headlines" },
         // Hand the result back to the caller.
         "return": "{ result }"

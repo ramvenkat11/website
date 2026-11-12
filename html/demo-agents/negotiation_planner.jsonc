@@ -9,9 +9,8 @@
         // Use the value the function returned.
         "var": { "target": "{ result }" },
 
-        // Tell the user what is happening while they wait.
-        "progress": "Preparing your negotiation plan...",
-
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate a mock negotiation plan...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

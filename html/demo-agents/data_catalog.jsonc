@@ -14,6 +14,8 @@
         // Shown only when the agent is validated.
         "trace": "{ 'Question length: ' + str(len(sys.query)) }",
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking OpenAI gpt-5-mini to generate a mock data catalog entry...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }

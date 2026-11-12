@@ -8,6 +8,9 @@
           "expenseKind": "{ conv.expenseKind if sys.exists('conv', 'expenseKind') else '' }"
         },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to find the kind of expense in your message, and whether it is personal...",
+
         // The message wins over what was known; a field neither has comes back empty.
         "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
         "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -32,6 +35,8 @@
             },
             "var": { "expenseKind": "{ result['expenseKind'] }" },
 
+            "progress": "Asking Google gemini-3.6-flash to find the kind of expense in your answer, and whether it is personal...",
+
             // Check the typed answer as well.
             "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
             "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -48,6 +53,7 @@
           "then": { "fail": "Personal expenses cannot be claimed." }
         },
 
+        "progress.2": "Asking Google gemini-3.6-flash to generate a mock expense report check...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

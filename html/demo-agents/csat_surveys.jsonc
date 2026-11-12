@@ -9,6 +9,8 @@
         // Use the value the function returned.
         "var": { "figure": "{ result }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to generate mock customer satisfaction results...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

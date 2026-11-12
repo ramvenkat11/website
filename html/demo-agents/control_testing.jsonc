@@ -14,6 +14,8 @@
         // Use the value the function returned.
         "var.2": { "rate": "{ result }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to generate mock control test results...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

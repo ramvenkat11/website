@@ -9,6 +9,8 @@
         // Shown only when the agent is validated.
         "trace": "{ 'Question length: ' + str(len(sys.query)) }",
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Ollama gemma4:31b to generate mock all-hands questions and past answers...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

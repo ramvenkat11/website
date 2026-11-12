@@ -8,6 +8,9 @@
           "purchaseAmount": "{ conv.purchaseAmount if sys.exists('conv', 'purchaseAmount') else 0 }"
         },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to find the purchase amount in your message...",
+
         // The message wins over what was known; a field neither has comes back empty.
         "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
         "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -47,6 +50,7 @@
           "then": { "end": "Purchases under $1,000 need no approval. Use your purchasing card or the catalog." }
         },
 
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock purchasing approval rules...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

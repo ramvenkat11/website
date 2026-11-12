@@ -6,9 +6,8 @@
         // Uses an allowlisted function.
         "var": { "leads": "{ randint(200, 1500) }" },
 
-        // Tell the user what is happening while they wait.
-        "progress": "{ f'Found {leads} leads from the campaign...' }",
-
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Ollama gemma4:31b to generate mock campaign results...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

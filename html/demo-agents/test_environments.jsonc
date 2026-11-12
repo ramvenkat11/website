@@ -6,6 +6,9 @@
         // What this or another agent already learned in this conversation.
         "var": { "testEnvironment": "{ conv.testEnvironment if sys.exists('conv', 'testEnvironment') else '' }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to find the test environment in your message...",
+
         // The message wins over what was known; a field neither has comes back empty.
         "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
         "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -30,6 +33,8 @@
             },
             "var": { "testEnvironment": "{ result['testEnvironment'] }" },
 
+            "progress": "Asking Google gemini-3.6-flash to find the test environment in your answer...",
+
             // Check the typed answer as well.
             "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
             "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -46,6 +51,7 @@
           "then": { "fail": "Testing is not allowed in production. Book QA-1, QA-2 or Staging." }
         },
 
+        "progress.2": "Asking Google gemini-3.6-flash to generate a mock test environment booking...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

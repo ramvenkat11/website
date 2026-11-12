@@ -8,6 +8,9 @@
           "spendCategory": "{ conv.spendCategory if sys.exists('conv', 'spendCategory') else '' }"
         },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to find the spending category in your message...",
+
         // The message wins over what was known; a field neither has comes back empty.
         "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
         "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -36,6 +39,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.spendCategory": "{ spendCategory }" },
 
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock list of contract renewals...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

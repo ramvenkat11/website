@@ -6,9 +6,8 @@
         // Uses an allowlisted function.
         "var": { "days": "{ randint(30, 90) }" },
 
-        // Tell the user what is happening while they wait.
-        "progress": "{ f'Found {days} days of cash on hand...' }",
-
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Ollama gemma4:31b to generate mock cash flow figures...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

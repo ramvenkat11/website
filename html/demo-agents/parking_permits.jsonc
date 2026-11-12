@@ -8,6 +8,9 @@
           "permitFor": "{ conv.permitFor if sys.exists('conv', 'permitFor') else '' }"
         },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to find who the permit is for, and whether that is a delivery, in your message...",
+
         // The message wins over what was known; a field neither has comes back empty.
         "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
         "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -32,6 +35,8 @@
             },
             "var": { "permitFor": "{ result['permitFor'] }" },
 
+            "progress": "Asking Google gemini-3.6-flash to find who the permit is for, and whether that is a delivery, in your answer...",
+
             // Check the typed answer as well.
             "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
             "var.2": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -48,6 +53,7 @@
           "then": { "end": "Deliveries use the loading dock and need no permit." }
         },
 
+        "progress.2": "Asking Google gemini-3.6-flash to generate a mock parking permit...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

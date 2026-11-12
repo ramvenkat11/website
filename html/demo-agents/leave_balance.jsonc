@@ -14,6 +14,9 @@
           "leaveType": "{ conv.leaveType if sys.exists('conv', 'leaveType') else '' }"
         },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to find which leave balance you ask about in your message...",
+
         // The message wins over what was known; a field neither has comes back empty.
         "llm": { "profile": "gemini_flash", "prompt": "extract", "outputFormat": "structured", "functions": ["facts"] },
         "var.3": { "facts": "{ result['facts'] if isinstance(result, dict) and 'facts' in result and isinstance(result['facts'], dict) else {} }" },
@@ -48,12 +51,10 @@
           "else": { "var": { "focus": "{ f' Show {leaveType} leave.' if leaveType else '' }" } }
         },
 
-        // Tell the user what is happening while they wait.
-        "progress": "Checking your balance...",
-
         // Shared with every agent in the conversation.
         "var.6": { "conv.leaveType": "{ leaveType }" },
 
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock leave balance...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

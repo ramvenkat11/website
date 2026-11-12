@@ -12,6 +12,8 @@
         // parallel returns a dict keyed by function name.
         "var": { "bugsView": "{ result['bugs'] }", "styleView": "{ result['style'] }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking OpenAI gpt-5-mini to combine the 2 results into one answer...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },
@@ -19,6 +21,7 @@
     "bugs": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking OpenAI gpt-5-mini to list possible bugs (mock data)...",
         "llm": { "profile": "gpt5_mini", "prompt": "bugs" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -28,6 +31,7 @@
     "style": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking OpenAI gpt-5-mini to list style improvements (mock data)...",
         "llm": { "profile": "gpt5_mini", "prompt": "style" },
         // Hand the result back to the caller.
         "return": "{ result }"

@@ -12,6 +12,8 @@
         // parallel returns a dict keyed by function name.
         "var": { "themesView": "{ result['themes'] }", "fixesView": "{ result['fixes'] }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking OpenAI gpt-5-mini to combine the 2 results into one answer...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },
@@ -19,6 +21,7 @@
     "themes": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking OpenAI gpt-5-mini to group the customer complaints into recurring quality themes (mock data)...",
         "llm": { "profile": "gpt5_mini", "prompt": "themes" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -28,6 +31,7 @@
     "fixes": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking OpenAI gpt-5-mini to suggest the quality fixes for the top themes (mock data)...",
         "llm": { "profile": "gpt5_mini", "prompt": "fixes" },
         // Hand the result back to the caller.
         "return": "{ result }"

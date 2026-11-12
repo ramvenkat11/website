@@ -12,6 +12,8 @@
         // parallel returns a dict keyed by function name.
         "var": { "doneView": "{ result['done'] }", "openView": "{ result['open'] }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to combine the 2 results into one answer...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },
@@ -19,6 +21,7 @@
     "done": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking Google gemini-3.6-flash to list the close tasks already completed (mock data)...",
         "llm": { "profile": "gemini_flash", "prompt": "done" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -28,6 +31,7 @@
     "open": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking Google gemini-3.6-flash to list the close tasks still open and who owns them (mock data)...",
         "llm": { "profile": "gemini_flash", "prompt": "open" },
         // Hand the result back to the caller.
         "return": "{ result }"

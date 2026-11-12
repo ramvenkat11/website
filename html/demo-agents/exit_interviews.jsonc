@@ -6,9 +6,8 @@
         // Uses an allowlisted function.
         "var": { "responses": "{ randint(12, 40) }" },
 
-        // Tell the user what is happening while they wait.
-        "progress": "{ f'Found {responses} exit interview responses...' }",
-
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking OpenAI gpt-5-mini to generate a mock exit interview summary...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }

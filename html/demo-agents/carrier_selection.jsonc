@@ -22,6 +22,8 @@
         // Copy the result into a variable right away.
         "var.2": { "costView": "{ result['cost'] }", "reliabilityView": "{ result['reliability'] }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to recommend one carrier from the 2 comparisons...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },
@@ -29,6 +31,7 @@
     "cost": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking Google gemini-3.6-flash to compare three carriers on price for this lane (mock data)...",
         "llm": { "profile": "gemini_flash", "prompt": "cost" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -38,6 +41,7 @@
     "reliability": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking Google gemini-3.6-flash to compare three carriers on on-time delivery and damage rates (mock data)...",
         "llm": { "profile": "gemini_flash", "prompt": "reliability" },
         // Hand the result back to the caller.
         "return": "{ result }"

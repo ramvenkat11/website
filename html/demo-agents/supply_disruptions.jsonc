@@ -6,9 +6,8 @@
         // Write to the agent server's log.
         "log": { "level": "info", "message": "{ 'supply_disruptions asked: ' + sys.query[:80] }" },
 
-        // Tell the user what is happening while they wait.
-        "progress": "Checking ports, weather and supplier alerts...",
-
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Ollama gemma4:31b to generate mock supply disruption alerts...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

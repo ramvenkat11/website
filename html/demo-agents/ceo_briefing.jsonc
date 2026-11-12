@@ -12,6 +12,8 @@
         // parallel returns a dict keyed by function name.
         "var": { "headlinesView": "{ result['headlines'] }", "risksView": "{ result['risks'] }" },
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking OpenAI gpt-5-mini to combine the 2 results into one answer...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },
@@ -19,6 +21,7 @@
     "headlines": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking OpenAI gpt-5-mini to list the key business headlines for this week (mock data)...",
         "llm": { "profile": "gpt5_mini", "prompt": "headlines" },
         // Hand the result back to the caller.
         "return": "{ result }"
@@ -28,6 +31,7 @@
     "risks": {
       "args": { "question": { "type": "str" } },
       "commands": {
+        "progress": "Asking OpenAI gpt-5-mini to list the risks and decisions that need the CEO's attention (mock data)...",
         "llm": { "profile": "gpt5_mini", "prompt": "risks" },
         // Hand the result back to the caller.
         "return": "{ result }"

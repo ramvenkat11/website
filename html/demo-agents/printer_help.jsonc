@@ -9,6 +9,8 @@
         // Shown only when the agent is validated.
         "trace": "{ 'Question length: ' + str(len(sys.query)) }",
 
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to generate mock printer troubleshooting steps...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

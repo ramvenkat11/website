@@ -6,9 +6,8 @@
         // Uses an allowlisted function.
         "var": { "orderNo": "{ randint(100000, 999999) }" },
 
-        // Tell the user what is happening while they wait.
-        "progress": "{ f'Found {orderNo} as the order number...' }",
-
+        // Tell the user what is happening before each wait for an LLM.
+        "progress": "Asking Google gemini-3.6-flash to generate a mock order status...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }
