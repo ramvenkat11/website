@@ -2270,3 +2270,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - gen/ogcard.py now draws html/images/og10.png with "Transform your enterprise AI / with hundreds of / task-focused agents" (64px, widest line 880 of 1006). og:image → og10.png and og:image:alt → "Search2o, agent server built around search. Transform your enterprise AI with hundreds of task-focused agents." on 166 files: the 17 site pages, 147 docs pages (edited in place, not rebuilt), content/demo.html and gen/build.py. No og9 reference left; og9.png stays on disk (Ram deletes if he wants).
 - content/linkedin-banner2.png regenerated in place via gen/linkedin_banner.py with the new headline as the subtitle (content 1373–3924 of 4200).
 - Looked at both images. For Ram to commit; not uploaded. The banner must be uploaded to LinkedIn by hand.
+
+## 2026-11-13 Hero figure: mock-up of agents calling enterprise systems and LLMs
+- Ram wants the hero figure (.appsrv) to show agents talking to enterprise systems and LLMs. Mock-up (outside the repo): scratchpad 83324d82-.../mock/hero-systems-mock.html from mock/build_ext.py. All three options add a grid row 4 under the server box: a stem from the box bottom branches to two nodes ("Enterprise systems", "LLMs"), placed in grid column 2 and centred so the branch stays under the box at every width. 1 plain cards; 2 round icon badges; 3 cards with an examples line ("APIs · Databases · MCP", "ChatGPT · Claude · Gemini", placeholders).
+- Rendered at 1280,1000,860,700,384,320 light+dark: no overflow. Looked at 1280 light and 384 light for all three, 320 dark for option 3.
+- html/index.html untouched. Next: Ram picks; then build it in with the aria-label and the full sweep.
