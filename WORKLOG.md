@@ -2247,3 +2247,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-13 Home page figure: cloud box says state, search, reports
 - #user-interfaces figure, Search2o Cloud box: title "State" is now "State, search, reports" (State → docs/agent-execution/conversation-state.html, search → search.html, reports → docs/reports/index.html). The line under it ("Conversations and memories live here, encrypted by default") is unchanged; the figure's aria-label mentions state, search and reports.
 - Checked: sweep of .cc-arch 320–1280 step 4 (0 problems); rendered the box at 1280,1000,860,700,412,384,375,360,320 light+dark, looked at light 1280–360 and dark 384, 320. One line down to 412, two lines at 384–360, three at 320, all inside the box. Not uploaded.
+- #user-interfaces h2 is now "System architecture" (Ram). Not uploaded.
