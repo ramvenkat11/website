@@ -2342,3 +2342,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #framework-runtime h2: "environment" → "UI" (Ram): "A development UI that lets you build, validate and publish an agent in minutes". Not uploaded.
 - #framework-runtime h2 (Ram, as written): "UI that lets you build, validate and publish an agent in minutes". Not uploaded.
 - Hero paragraph 1, second sentence (Ram): "They describe when to use each agent in plain English." Not uploaded.
+- Hero paragraph 2, last sentence (Ram): "Follow-up requests in the same conversation can bring in other agents, and build on previous results." Not uploaded.
