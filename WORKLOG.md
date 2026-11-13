@@ -2232,3 +2232,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #user-interfaces subtitle is now "The agent server fits into your organization without any internal dependency. It keeps its state in the cloud." (Ram's text, paraphrased). Flagged that "internal dependency" may read oddly next to a figure where the server calls enterprise systems. Not uploaded.
 - #user-interfaces subtitle, Ram's final wording: "The agent server fits into your organization with no other infrastructure dependency. It uses Search2o Cloud for state, search and reports." ("Cloud" capitalised to match the rest of the site.) Not uploaded.
 - #framework-runtime subtitle (Ram's text, paraphrased): "An agent holds only your business logic. Draft with AI and the schema-aware code editor help you build one in minutes." Both links kept. Not uploaded.
+- #user-interfaces subtitle changed again (Ram): "The agent server is stateless and uses Search2o Cloud for state, search and reports." Not uploaded.
