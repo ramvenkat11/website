@@ -2328,3 +2328,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Hero paragraph 2 opens again with "Users start a conversation with a request." (Ram), with the link to conversation.html restored. Options offered for paragraph 1 ("based on business workflows" is awkward, as was my rewrite); awaiting Ram. Not uploaded.
 - Hero paragraph 1 (Ram: remove ", validate and publish"): "Developers build task-focused agents on the agent server, based on business workflows. They describe when to use each one in plain English." Not uploaded.
 - Hero paragraph 1: link removed from "build" (Ram); the hero no longer links to framework.html. Not uploaded.
+
+## 2026-11-13 Hero headline: workflows in, "dependable" out
+- h1 is now "Transform your enterprise with hundreds of task-focused AI agents based on your workflows" (Ram, after two rounds of comments). Measured wrap: two lines at 700–1280 (568/637px at 1280), three lines at 360–412, four at 320; no CSS change needed.
+- Not changed, reported to Ram: hero paragraph 1 still ends "based on business workflows", repeating the headline; og10.png, og:image:alt (166 files) and content/linkedin-banner2.png still carry "Transform your enterprise AI with hundreds of task-focused agents". Not uploaded.
