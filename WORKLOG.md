@@ -2339,3 +2339,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - His brief, for when he returns to it: the headline goes into og and ads; it must make people read more, not explain, not list features; a benefit, ideally with the "how" clicking.
 - Still stale against the h1: og10.png, og:image:alt on 166 files, content/linkedin-banner2.png (they lack "dependable"). Nothing uploaded today.
 - #framework-runtime h2: "An IDE…" → "A development environment that lets you build, validate and publish an agent in minutes" (Ram). No "IDE" left on the home page. Not uploaded.
+- #framework-runtime h2: "environment" → "UI" (Ram): "A development UI that lets you build, validate and publish an agent in minutes". Not uploaded.
