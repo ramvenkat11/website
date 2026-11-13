@@ -2242,3 +2242,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #conversations subtitle (Ram's text, paraphrased): "Within a conversation, each later agent continues the LLM message exchange that earlier agents started." Avoids repeating "build on" from the title. Not uploaded.
 - Ram found that paraphrase awkward. #conversations subtitle is now close to his own words: "Later agents in a conversation build on the same LLM message exchange as the previous agents." Lesson: when Ram supplies a sentence, fix grammar only; do not restructure it.
 - #conversations subtitle (Ram, grammar only): "Later agents append to the same LLM message exchange as previous agents, so to the LLM it looks like a single agent." Not uploaded.
+- #conversations subtitle final (Ram chose): "Each agent appends to the same LLM message exchange, so the next agent's LLM sees one continuous conversation." Not uploaded.
