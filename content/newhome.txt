@@ -1,9 +1,10 @@
-Give each agent its own identity, scoped to one job, with its own audit trail. Treat the agent like a contractor with a badge, not like a feature of the employee who installed it.
+Let your users converse with hundreds of microagents
 
-Conversations let microagents build on each other
+Microagents are small, task focused agents that run on a server for different users.
 
-Integrated framework and runtime takes care of all the plumbing
+Developers build, validate and publish microagents on the agent server. They describe when to use each one in plain English. Users never learn them.
 
-Many clients including claude code
+Users just start a conversation with a request. The agent server finds the right microagent with semantic search, and runs it on that request. Follow‑up requests can bring in other agents, and build on previous results.
 
-Designed for the enterprise
+The agent server keeps every run safe, bounded and observable.
+

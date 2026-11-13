@@ -230,7 +230,7 @@ p { margin: 0; }
 .hero-head.as-head { max-width: none; }
 .as-head .hero-claim { margin-bottom: 14px; font-size: clamp(21px, 2.2vw, 28px); line-height: 1.3; text-wrap: balance; }
 .hero-line { display: block; text-wrap: balance; }
-.as-head .hero-lead { max-width: 780px; margin: 0 auto; font-size: 16px; text-wrap: balance; }
+.as-head .hero-lead { max-width: 560px; margin: 0 auto; font-size: 16px; text-wrap: balance; }
 .as-head .hero-lead + .hero-lead { margin-top: 12px; }
 .hero-lead code { font-family: var(--mono); font-size: .92em; }
 .hero-caption { max-width: 900px; margin: 22px auto 0; text-align: center; font-size: 15px; }
