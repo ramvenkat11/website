@@ -2253,3 +2253,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #platform h2 is now "Built for enterprise operations" (Ram). Not uploaded.
 - Open: Ram asked for a new hero that first defines a microagent, then the current hero material building on it. Five questions asked (scope of the word, definition traits, contractor-with-a-badge line in content/newhome.txt, form of the definition, fate of the h1); awaiting answers. Plan: mock-up page first.
 - Hero paragraph 2 now opens "Users never need to know which agents exist. They start a conversation with a request. ..." (Ram chose this wording); the rest of the paragraph is unchanged. Text-only, not uploaded.
+
+## 2026-11-13 Hero paragraphs: one column width
+- Ram: the Users paragraph extended wider than the other two. Cause: centred paragraphs each balanced separately under max-width 780px. `.as-head .hero-lead` max-width is now 560px (html/styles/styles.css), so the three paragraphs come out about the same width (2 / 4 / 1 lines at desktop). Also "previous&nbsp;results." so "results." is never alone on a line on phones.
+- Checked: sweep of .hero-head 320–1280 step 4 (0 problems); rendered at 1280,1000,860,700,412,384,375,360,320 light+dark; looked at 1280 light, 860 dark, 700 light and the five phone widths. Not uploaded.
