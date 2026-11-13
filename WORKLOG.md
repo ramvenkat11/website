@@ -2250,3 +2250,5 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #user-interfaces h2 is now "System architecture" (Ram). Not uploaded.
 - #platform h2 is now "Enterprise operations" (Ram). Not uploaded.
 - #user-interfaces h2 is now "Hybrid architecture" (Ram). Not uploaded.
+- #platform h2 is now "Built for enterprise operations" (Ram). Not uploaded.
+- Open: Ram asked for a new hero that first defines a microagent, then the current hero material building on it. Five questions asked (scope of the word, definition traits, contractor-with-a-badge line in content/newhome.txt, form of the definition, fate of the h1); awaiting answers. Plan: mock-up page first.
