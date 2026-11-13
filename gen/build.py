@@ -511,10 +511,10 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
 <meta property="og:description" content="{html.escape(description)}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{SITE}/{path}">
-<meta property="og:image" content="{SITE}/images/og9.png">
+<meta property="og:image" content="{SITE}/images/og10.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Search2o, agent server built around search. Let your users converse with hundreds of task-focused AI agents.">
+<meta property="og:image:alt" content="Search2o, agent server built around search. Transform your enterprise AI with hundreds of task-focused agents.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="{r}images/favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="{r}fonts/inter-latin.woff2" crossorigin>

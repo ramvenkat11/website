@@ -1,4 +1,4 @@
-"""Draws the social card html/images/og9.png (1200x630): the wordmark art from gen/assets/wordmark.png,
+"""Draws the social card html/images/og10.png (1200x630): the wordmark art from gen/assets/wordmark.png,
 the tagline, the home page heading, and the address. Run with the system python3 (needs PIL)."""
 from PIL import Image, ImageDraw, ImageFont, ImageChops
 import math
@@ -44,9 +44,9 @@ d.text((603, wm_bottom), "Agent server built around search", font=medium(34), fi
 
 # headline: segments per line; "ink" and "muted" are flat, "accent" takes the blue-to-teal gradient over its own span
 LINES = [
-    [("Let your users converse", "ink")],
+    [("Transform your enterprise AI", "ink")],
     [("with hundreds of", "ink")],
-    [("task-focused AI agents", "ink")],
+    [("task-focused agents", "ink")],
 ]
 def line_width(font, segs): return sum(font.getlength(t) for t, _ in segs)
 def draw_lines(img, x0, top, f, pitch, size):
@@ -76,5 +76,5 @@ draw_lines(img, 97, top, f, pitch, size)
 d = ImageDraw.Draw(img)
 d.line([(97, 530), (1103, 530)], fill=RULE, width=1)
 d.text((97, 572), "search2o.com", font=bold(24), fill=INK, anchor="ls")
-out = img.convert("RGB"); out.save(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "html", "images", "og9.png"), optimize=True)
+out = img.convert("RGB"); out.save(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "html", "images", "og10.png"), optimize=True)
 print("saved", out.size, "size", size, "widest line", round(max(line_width(f, l) for l in LINES)), "of 1006")
