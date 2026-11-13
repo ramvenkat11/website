@@ -2304,3 +2304,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Ram: revert. The card is back to two paragraphs; the second ends "A function can take arguments. A function used in a tool call includes a description." (the state before the separate-paragraph and llm rewording). Not uploaded.
 - Section 3 card, end of paragraph 2 (Ram, grammar only): "Function names are passed to the llm command for tool calling." replaces the arguments and description sentences; llm → docs/commands/llm.html, tool calling → #tool-calling. Not uploaded.
 - Section 3 card, paragraph 2 (Ram): "Each function contains an ordered map of commands from the set shown below. The commands run in the order in which they are declared." Not uploaded.
+- Section 3 card (Ram): third paragraph "Tool calling is done by passing function names to the llm command." (fr-struct-last moved to it); paragraph 2 ends at "…in which they are declared." Not uploaded.
