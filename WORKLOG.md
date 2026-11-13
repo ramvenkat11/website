@@ -2293,3 +2293,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #framework-runtime subtitle (Ram chose option 3 plus publishing): "Describe an agent to Draft with AI, refine it in the schema-aware code editor, validate it with a trace of every step, and then publish it." Links: the two existing ones plus trace → docs/development/trace-and-validation.html and publish → docs/development/publishing.html. Not uploaded.
 - #framework-runtime h2: "An agent framework and IDE…" → "A framework and IDE that let you build, validate and publish an agent in minutes" (Ram). Not uploaded.
 - #framework-runtime subtitle (Ram's wording; "then" added to join the list): "Describe an agent to Draft with AI, refine it in the schema-aware code editor, then trace and validate it before publishing." Four links kept. Not uploaded.
+- #framework-runtime subtitle gained ", all from one place" at the end (Ram). "then" kept before "trace and validate" as the list's joining word. Not uploaded.
