@@ -2265,3 +2265,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-13 Hero headline
 - h1 is now "Transform your enterprise AI with hundreds of task-focused agents" (Ram: a bold claim, not a feature; he rejected "Run your enterprise on", "Replace one do-everything AI", "Scale your enterprise AI"). Only the h1 changed. The old headline "Let your users converse with hundreds of task-focused AI agents" is still in the social card image and the description meta tags; reported to Ram, not changed. Not uploaded.
+
+## 2026-11-13 Social card og10 and LinkedIn banner for the new headline
+- gen/ogcard.py now draws html/images/og10.png with "Transform your enterprise AI / with hundreds of / task-focused agents" (64px, widest line 880 of 1006). og:image → og10.png and og:image:alt → "Search2o, agent server built around search. Transform your enterprise AI with hundreds of task-focused agents." on 166 files: the 17 site pages, 147 docs pages (edited in place, not rebuilt), content/demo.html and gen/build.py. No og9 reference left; og9.png stays on disk (Ram deletes if he wants).
+- content/linkedin-banner2.png regenerated in place via gen/linkedin_banner.py with the new headline as the subtitle (content 1373–3924 of 4200).
+- Looked at both images. For Ram to commit; not uploaded. The banner must be uploaded to LinkedIn by hand.
