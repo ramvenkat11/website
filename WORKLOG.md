@@ -2237,3 +2237,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #framework-runtime h2 is now "A JSON framework designed for microagents" (Ram; he plans to introduce "microagents" in the hero himself). The rest of the home page still says "agents" (hero, "Conversations let agents build on each other", subtitles): flagged, not changed. Not uploaded.
 - #framework-runtime h2 is now "A structured agent framework designed so AI can draft a complete agent" (Ram's wording, after several rounds of choices). Not uploaded.
 - #framework-runtime h2 shortened (Ram): "A structured framework designed so AI can draft a complete agent". Not uploaded.
+- #platform h2 is now "The agent server includes features for enterprise operations" (Ram's text; only "The" added). "Designed" could not repeat from the section 3 title. Not uploaded.
