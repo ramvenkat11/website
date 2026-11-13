@@ -2221,3 +2221,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-12 Home page: #framework-runtime subtitle
 - html/index.html:135 now "Draft with AI understands the built-in commands and helps you build an agent in minutes." (Ram's wording). The schema-aware code editor link is gone from the home page as a result. Text-only, not uploaded.
 - Later the same day (Ram: keep the editor): subtitle is "Draft with AI and the schema-aware code editor understand the built-in commands and help you build an agent in minutes.", both linked.
+- #framework-runtime h2 is now "An integrated agent framework and runtime take care of the plumbing" (Ram).
