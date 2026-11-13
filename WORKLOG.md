@@ -2249,3 +2249,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Checked: sweep of .cc-arch 320–1280 step 4 (0 problems); rendered the box at 1280,1000,860,700,412,384,375,360,320 light+dark, looked at light 1280–360 and dark 384, 320. One line down to 412, two lines at 384–360, three at 320, all inside the box. Not uploaded.
 - #user-interfaces h2 is now "System architecture" (Ram). Not uploaded.
 - #platform h2 is now "Enterprise operations" (Ram). Not uploaded.
+- #user-interfaces h2 is now "Hybrid architecture" (Ram). Not uploaded.
