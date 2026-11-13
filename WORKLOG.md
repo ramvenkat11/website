@@ -2294,3 +2294,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #framework-runtime h2: "An agent framework and IDE…" → "A framework and IDE that let you build, validate and publish an agent in minutes" (Ram). Not uploaded.
 - #framework-runtime subtitle (Ram's wording; "then" added to join the list): "Describe an agent to Draft with AI, refine it in the schema-aware code editor, then trace and validate it before publishing." Four links kept. Not uploaded.
 - #framework-runtime subtitle gained ", all from one place" at the end (Ram). "then" kept before "trace and validate" as the list's joining word. Not uploaded.
+- #framework-runtime h2 is now "An IDE that lets you build, validate and publish an agent in minutes" (Ram removed "framework"). The figure under it still shows the agent definition and the 20 commands, i.e. the framework: flagged. Not uploaded.
