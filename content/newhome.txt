@@ -1,32 +1,9 @@
-Search demo:
+Give each agent its own identity, scoped to one job, with its own audit trail. Treat the agent like a contractor with a badge, not like a feature of the employee who installed it.
 
-The purpose of the demo is to demo:
-- how accurately search matches your query to an agent
-- how an agent runs, from a user perspective
-- how agents build on information already in the conversation
+Conversations let microagents build on each other
 
-The purpose is not:
-- To show any meaningful results. Do not try to run real searches like you would in Google/chatgpt.
-- allow an arbitrary search like in Google or chatgpt (only 200 mock agents are available)
+Integrated framework and runtime takes care of all the plumbing
 
-Business goal:
-Communicate the effectiveness of search and conversations that build multiple agents together.
+Many clients including claude code
 
-
-Trace demo:
-Similar goals as search demo
-In addition:
-- Show how an agent goes through the steps based on the query. Users can see what each step in an agent does, for their query (tracing).
-- Filters allow users to hone in on certain outputs
-
-
-Draft with AI:
-- Interactively create an agent
-- Ask for modifications in it
-
-The purpose is not:
-- To allow users to run the generated agent (due to security reasons)
-
-
-
-
+Designed for the enterprise
