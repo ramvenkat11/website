@@ -2332,3 +2332,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-13 Hero headline: workflows in, "dependable" out
 - h1 is now "Transform your enterprise with hundreds of task-focused AI agents based on your workflows" (Ram, after two rounds of comments). Measured wrap: two lines at 700–1280 (568/637px at 1280), three lines at 360–412, four at 320; no CSS change needed.
 - Not changed, reported to Ram: hero paragraph 1 still ends "based on business workflows", repeating the headline; og10.png, og:image:alt (166 files) and content/linkedin-banner2.png still carry "Transform your enterprise AI with hundreds of task-focused agents". Not uploaded.
+- Ram: revert the headline. h1 is back to "Transform your enterprise AI with hundreds of dependable, task-focused agents". Not uploaded.
