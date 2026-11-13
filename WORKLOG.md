@@ -2222,3 +2222,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - html/index.html:135 now "Draft with AI understands the built-in commands and helps you build an agent in minutes." (Ram's wording). The schema-aware code editor link is gone from the home page as a result. Text-only, not uploaded.
 - Later the same day (Ram: keep the editor): subtitle is "Draft with AI and the schema-aware code editor understand the built-in commands and help you build an agent in minutes.", both linked.
 - #framework-runtime h2 is now "An integrated agent framework and runtime take care of the plumbing" (Ram).
+
+## 2026-11-12 Home page: #user-interfaces subtitle
+- Ram asked for a new subtitle under "Works with many clients, including Claude Code" without giving wording. Wrote: "Users reach the same agents from a browser, from Slack, Teams or Google Chat, from an agent harness such as Claude Code, or from your own REST client." (matches the four client nodes in the figure). The old sentence about the stateless server and cloud state is gone from the subtitle; the figure still shows it. Wording for Ram to judge. Not uploaded.
