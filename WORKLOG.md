@@ -2327,3 +2327,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Checked with the first two wording changes in: sweep of .hero-head 320–1280 (0 problems); rendered at the nine widths light+dark; looked at 1280 light and 412 light, 384 dark, 375 light, 360 light, 320 dark. Not re-rendered after the last text-only change ("Users just submit a request."). Not uploaded.
 - Hero paragraph 2 opens again with "Users start a conversation with a request." (Ram), with the link to conversation.html restored. Options offered for paragraph 1 ("based on business workflows" is awkward, as was my rewrite); awaiting Ram. Not uploaded.
 - Hero paragraph 1 (Ram: remove ", validate and publish"): "Developers build task-focused agents on the agent server, based on business workflows. They describe when to use each one in plain English." Not uploaded.
+- Hero paragraph 1: link removed from "build" (Ram); the hero no longer links to framework.html. Not uploaded.
