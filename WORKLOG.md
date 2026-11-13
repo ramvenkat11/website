@@ -2229,3 +2229,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-12 Home page: clients heading and Claude Code node
 - #user-interfaces h2 is now "Works with chat applications and Claude Code" (Ram). In the figure the "Agent harness" node is renamed "Claude Code" (same link to docs/skill-integration/index.html, same search2o-skill chip); the figure's aria-label says "Claude Code" too. Text-only (the new label is shorter), not rendered, not uploaded.
+- #user-interfaces subtitle is now "The agent server fits into your organization without any internal dependency. It keeps its state in the cloud." (Ram's text, paraphrased). Flagged that "internal dependency" may read oddly next to a figure where the server calls enterprise systems. Not uploaded.
