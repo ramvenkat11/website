@@ -2217,3 +2217,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-12 Home page: four section headings reworded
 - html/index.html h2s (Ram's notes in content/newhome.txt, paraphrased): #conversations "Conversations let agents build on each other"; #framework-runtime "An integrated framework and runtime take care of the plumbing"; #user-interfaces "Works with many clients, including Claude Code"; #platform "Designed for the enterprise". Subtitles untouched. Ram wrote "microagents"; I used "agents" to match the rest of the page and flagged it. Text-only, not rendered, not uploaded.
+
+## 2026-11-12 Home page: #framework-runtime subtitle
+- html/index.html:135 now "Draft with AI understands the built-in commands and helps you build an agent in minutes." (Ram's wording). The schema-aware code editor link is gone from the home page as a result. Text-only, not uploaded.
