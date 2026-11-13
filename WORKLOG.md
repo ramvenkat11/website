@@ -2225,3 +2225,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-12 Home page: #user-interfaces subtitle
 - Ram asked for a new subtitle under "Works with many clients, including Claude Code" without giving wording. Wrote: "Users reach the same agents from a browser, from Slack, Teams or Google Chat, from an agent harness such as Claude Code, or from your own REST client." (matches the four client nodes in the figure). The old sentence about the stateless server and cloud state is gone from the subtitle; the figure still shows it. Wording for Ram to judge. Not uploaded.
+- Ram: revert. #user-interfaces subtitle is back to "The agent server runs stateless in your organization and keeps its state in the cloud."
