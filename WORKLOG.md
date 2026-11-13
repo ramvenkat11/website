@@ -2347,3 +2347,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Section 2 figure, "Building on each other" note (Ram, grammar only): "…which continued the LLM message thread. To the Reimbursements agent's LLM, it looks like one continuous conversation that started with booking the trip." Not uploaded; figure not rendered (the note is about eight words longer).
 - #framework-runtime h2 (Ram, unchanged wording): "Build, validate and publish agents in minutes, from the UI". Not uploaded.
 - #conversations subtitle (Ram; spelling and a comma only): "Each agent's LLM sees one continuous message thread, starting from the beginning of the conversation." Not uploaded.
+- #user-interfaces subtitle (Ram): "The agent server is stateless and uses the cloud for state, search and reports." ("Search2o Cloud" → "the cloud", since the cloud can now be Search2o Cloud or a private cloud.) Not uploaded.
