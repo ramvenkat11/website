@@ -2343,3 +2343,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #framework-runtime h2 (Ram, as written): "UI that lets you build, validate and publish an agent in minutes". Not uploaded.
 - Hero paragraph 1, second sentence (Ram): "They describe when to use each agent in plain English." Not uploaded.
 - Hero paragraph 2, last sentence (Ram): "Follow-up requests in the same conversation can bring in other agents, and build on previous results." Not uploaded.
+- Section 2 figure, "Conversation context" note (Ram, typo fixed only): "The Travel desk agent ended here, and the agent server saved the conversation context automatically: the agent's variables and its LLM message thread, which is stored in a model-neutral format." The old second sentence defining "prompt" is gone; the last note ("Building on each other") still says "continued the same prompt exchange": flagged. Not uploaded.
