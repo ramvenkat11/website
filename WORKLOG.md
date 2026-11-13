@@ -2214,3 +2214,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-12 Hero clients on the Users line: dropped
 - Ram rejected all four mock-up options (foot box, line under Users, badges on the line, chip per request) and the short-name variants ("Web/Slack/Claude" fits one row from 344px; "Chrome · Slack · Claude" fits no phone). html/index.html and styles.css were never changed for this. Do not re-propose these four.
+
+## 2026-11-12 Home page: four section headings reworded
+- html/index.html h2s (Ram's notes in content/newhome.txt, paraphrased): #conversations "Conversations let agents build on each other"; #framework-runtime "An integrated framework and runtime take care of the plumbing"; #user-interfaces "Works with many clients, including Claude Code"; #platform "Designed for the enterprise". Subtitles untouched. Ram wrote "microagents"; I used "agents" to match the rest of the page and flagged it. Text-only, not rendered, not uploaded.
