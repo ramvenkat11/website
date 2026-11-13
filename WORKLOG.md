@@ -2333,3 +2333,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - h1 is now "Transform your enterprise with hundreds of task-focused AI agents based on your workflows" (Ram, after two rounds of comments). Measured wrap: two lines at 700–1280 (568/637px at 1280), three lines at 360–412, four at 320; no CSS change needed.
 - Not changed, reported to Ram: hero paragraph 1 still ends "based on business workflows", repeating the headline; og10.png, og:image:alt (166 files) and content/linkedin-banner2.png still carry "Transform your enterprise AI with hundreds of task-focused agents". Not uploaded.
 - Ram: revert the headline. h1 is back to "Transform your enterprise AI with hundreds of dependable, task-focused agents". Not uploaded.
+
+## 2026-11-13 Hero headline and first paragraph: Ram is writing them himself
+- After several rounds of options, Ram said he will work on the headline and first paragraph himself. Do not offer more headline copy unless he asks. Current state, unchanged: h1 "Transform your enterprise AI with hundreds of dependable, task-focused agents"; paragraph 1 "Developers build task-focused agents on the agent server, based on business workflows. They describe when to use each one in plain English."; paragraph 2 opens "Users start a conversation with a request."
+- His brief, for when he returns to it: the headline goes into og and ads; it must make people read more, not explain, not list features; a benefit, ideally with the "how" clicking.
+- Still stale against the h1: og10.png, og:image:alt on 166 files, content/linkedin-banner2.png (they lack "dependable"). Nothing uploaded today.
