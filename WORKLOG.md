@@ -2417,3 +2417,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Desktop: the arrowhead was hidden behind the OR label; `.cc-arch .arch-out .lnk` now stops at the label (`--lnk-stop: 10px`, `z-index: 1`). Phones (<=640): the old `margin-bottom: 9px` left a gap; now 0, height 50px.
 - New check `arrowcheck.js` (scratchpad) tests every arrow's start and tip against its boxes. It also found the two side arrows 2px short of Enterprise systems / Local LLMs on desktop; fixed (`.cc-main .arch-branch::before/::after`).
 - arrowcheck and figure sweep clean 320-1280. Not uploaded.
+
+## 2026-11-13: cloud "or" label
+- Ram: all-caps OR read like "operations research". `.cc-arch .cloud-hosts b` is now lowercase italic "or", 15px (13px at <=640), no uppercase transform or letter-spacing, same light pill. `--lnk-stop` 12px to match the taller pill. arrowcheck and sweep clean 320-1280. Not uploaded.
