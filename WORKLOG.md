@@ -2455,3 +2455,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - `html/index.html` line 108: subhead under "Conversations let agents build on each other" is now "Hold conversations in the built-in browser interface, or from Slack and Teams with a bot." (Ram's wording). Text only, no renders. Not uploaded.
 - Open: license-rotation private cloud note awaits Ram; pricing page is Ram's.
 - Same line reworded by Ram: "Users hold conversations from the built-in browser interface, or from Slack and Teams with a bot."
+
+## 2026-11-14: hero title
+- `html/index.html` line 67 h1 is now "Semantic search makes hundreds of task-focused AI agents work as one application" (Ram's wording). Two lines from 700 up, three on phones, four at 320; no overflow at the nine widths. Not uploaded.
+- Stale against the new h1: og:image:alt (line 16), og10.png, LinkedIn banner. Not changed.
