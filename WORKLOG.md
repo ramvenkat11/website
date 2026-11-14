@@ -2399,3 +2399,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Server box: `<strong>Agent server cluster</strong>` and the three-server icon; aria-label says "runs as a cluster".
 - Phones (<=579): the server box covers only the left 60%, so the client line had to move left to land on it. The narrow client column is now on the left (Slack, REST client) and the wide one on the right (Browser, Claude Code); `--spine-ratio` .425 / .375. Phone block uses its own `--spine-line`, `--spine-stroke`.
 - Checks: spinecheck 320-578 clean, pixel line check straight at 2x and 3x, figure sweep 320-1280 clean. Not uploaded.
+
+## 2026-11-13: cloud box line removed
+- Ram: removed "Conversations and memories live here, encrypted by default" from the cloud box of the hybrid figure in `html/index.html`, and the matching clause from the figure's aria-label. Sweep 320-1280 clean. Not uploaded.
