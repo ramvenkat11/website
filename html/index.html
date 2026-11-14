@@ -185,7 +185,7 @@
         <p>The agent server is stateless and uses the cloud for state, search and&nbsp;reports.</p>
       </div>
       <div class="ui-fig">
-      <aside class="arch cc-arch hero-arch" aria-label="A browser used by users, developers and admins, Slack, Teams or Google Chat, Claude Code and your own REST client send requests to a cluster of Search2o agent servers in your organization. The agent servers run the agents and calls enterprise systems and local LLMs inside the enterprise, and external LLMs outside it. The agent server keeps no state: an encrypted link connects it to Search2o Cloud or to your private cloud. Either one provides state, search and reports, and keeps the conversations and memories, encrypted by default.">
+      <aside class="arch cc-arch hero-arch" aria-label="A browser used by users, developers and admins, Slack, Teams or Google Chat, Claude Code and your own REST client send requests to the Search2o agent server in your organization, which runs as a cluster. The agent server runs the agents and calls enterprise systems and local LLMs inside the enterprise, and external LLMs outside it. The agent server keeps no state: an encrypted link connects it to Search2o Cloud or to your private cloud. Either one provides state, search and reports.">
           <div class="arch-flow">
             <div class="arch-org">
             <span class="arch-org-lbl">Your organization</span>
@@ -199,16 +199,11 @@
             <div class="arch-link cc-down" aria-hidden="true"></div>
             <div class="cc-main">
               <div class="arch-node cc-server">
-                <div class="cc-server-head"><strong>Search2o agent servers</strong></div>
-                <span class="cc-server-links"><a href="docs/runtime/overview.html">Stateless</a><i class="sep">&nbsp;&middot; </i><a href="docs/runtime/controlled-execution.html">Controlled&nbsp;execution</a><i class="sep">&nbsp;&middot; </i><a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">GitHub</a></span>
-                <div class="cc-agents">
-                  <span class="cc-agents-lbl">Agents</span>
-                  <div class="cc-agent-field" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                </div>
+                <div class="cc-server-head"><span class="cc-cluster" aria-hidden="true"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></i><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></i><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></i></span><strong>Agent server cluster</strong></div>
               </div>
               <div class="arch-sys">
-                <div class="arch-branch"><div class="arch-node"><strong><a href="docs/profiles/overview.html">Enterprise systems</a></strong><span><a href="docs/profiles/api-profiles.html">APIs</a><i class="sep">&nbsp;&middot; </i><a href="docs/profiles/db-profiles.html">Databases</a><i class="sep">&nbsp;&middot; </i><a href="docs/profiles/mcp-servers.html">MCP&nbsp;servers</a></span></div></div>
-                <div class="arch-branch"><div class="arch-node"><strong><a href="docs/llm/vendors.html">Local LLMs</a></strong><span>Ollama<i class="sep">&nbsp;&middot; </i>vLLM<i class="sep">&nbsp;&middot; </i>SGLang<i class="sep">&nbsp;&middot; </i><a href="docs/llm/llm-adapters.html">Other</a></span></div></div>
+                <div class="arch-branch"><div class="arch-node"><i class="sys-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></i><strong><a href="docs/profiles/overview.html">Enterprise systems</a></strong><span><a href="docs/profiles/api-profiles.html">APIs</a><i class="sep">&nbsp;&middot; </i><a href="docs/profiles/db-profiles.html">Databases</a><i class="sep">&nbsp;&middot; </i><a href="docs/profiles/mcp-servers.html">MCP&nbsp;servers</a></span></div></div>
+                <div class="arch-branch"><div class="arch-node"><i class="sys-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg></i><strong><a href="docs/llm/vendors.html">Local LLMs</a></strong><span>Ollama<i class="sep">&nbsp;&middot; </i>vLLM<i class="sep">&nbsp;&middot; </i>SGLang<i class="sep">&nbsp;&middot; </i><a href="docs/llm/llm-adapters.html">Other</a></span></div></div>
                 <div class="arch-branch arch-branch-ext" aria-hidden="true"></div>
               </div>
             </div>
@@ -216,11 +211,18 @@
             <div class="arch-out">
               <div class="arch-link lnk" aria-hidden="true"></div>
               <div class="arch-link out-llm" aria-hidden="true"></div>
-              <div class="arch-node cloud arch-cloud-state">
-                <div class="cloud-hosts"><a class="cloud-host" href="docs/security/data-privacy.html">Search2o Cloud</a><b>or</b><span class="cloud-host cloud-host-own">Your private cloud</span></div>
-                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
-                <strong><a href="docs/agent-execution/conversation-state.html">State</a>, <a href="search.html">search</a>, <a href="docs/reports/index.html">reports</a></strong>
-                <span>Conversations and memories live&nbsp;here,<em><a href="docs/security/encryption.html">encrypted by default</a></em></span>
+              <div class="cloud-pair">
+                <div class="arch-node cloud cloud-s2o">
+                  <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
+                  <strong><a href="docs/security/data-privacy.html">Search2o Cloud</a></strong>
+                  <span class="cloud-what"><a href="docs/agent-execution/conversation-state.html">State</a>&nbsp;&middot; <a href="search.html">Search</a>&nbsp;&middot; <a href="docs/reports/index.html">Reports</a></span>
+                </div>
+                <b class="cloud-or">or</b>
+                <div class="arch-node cloud cloud-own">
+                  <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
+                  <strong>Your private cloud</strong>
+                  <span class="cloud-what"><a href="docs/agent-execution/conversation-state.html">State</a>&nbsp;&middot; <a href="search.html">Search</a>&nbsp;&middot; <a href="docs/reports/index.html">Reports</a></span>
+                </div>
               </div>
               <div class="arch-node arch-ext">
                 <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg></span>

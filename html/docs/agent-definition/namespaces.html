@@ -67,7 +67,7 @@
       <p class="lead">Besides its <a href="variables.html">variables</a>, an agent reads three namespaces the runtime provides: the <code>const</code>, <code>sys</code> and the current <code>command</code>. They are read-only: an agent cannot assign to them.</p>
 
 <h2 id="const">const</h2>
-<p><code>const</code> holds the agent's <a href="const.html">const</a>: a JSON object of fixed values that is part of the agent meta, like the prompts, and read as <code>const.name</code>. The object is encrypted on its way to and from Search2o Cloud, so the cloud never reads it. An agent cannot assign to <code>const</code>, and each run gets a fresh copy. Validation checks every top-level key the agent reads against the const.</p>
+<p><code>const</code> holds the agent's <a href="const.html">const</a>: a JSON object of fixed values that is part of the agent meta, like the prompts, and read as <code>const.name</code>. The object is encrypted on its way to and from the cloud, which never reads it. An agent cannot assign to <code>const</code>, and each run gets a fresh copy. Validation checks every top-level key the agent reads against the const.</p>
 
 <h2 id="sys">sys</h2>
 <p>The runtime provides <code>sys</code>. These names are always present:</p>

@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Conversation state — Search2o docs</title>
-<meta name="description" content="By default the agent server encrypts a conversation&#x27;s state and stores the ciphertext in Search2o Cloud. With these three hooks, your own code stores the sta…">
+<meta name="description" content="By default the agent server encrypts a conversation&#x27;s state and stores the ciphertext in the cloud. With these three hooks, your own code stores the state in…">
 <link rel="canonical" href="https://search2o.com/docs/hooks/conversation-state.html">
 <meta property="og:title" content="Conversation state — Search2o docs">
-<meta property="og:description" content="By default the agent server encrypts a conversation&#x27;s state and stores the ciphertext in Search2o Cloud. With these three hooks, your own code stores the sta…">
+<meta property="og:description" content="By default the agent server encrypts a conversation&#x27;s state and stores the ciphertext in the cloud. With these three hooks, your own code stores the state in…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://search2o.com/docs/hooks/conversation-state.html">
 <meta property="og:image" content="https://search2o.com/images/og10.png">
@@ -64,7 +64,7 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../hooks/index.html'>Hooks</a></div>
     <article class="docs-article">
       <h1>Conversation state</h1>
-      <p class="lead">By default the agent server encrypts a conversation's state and stores the ciphertext in Search2o Cloud. With these three hooks, your own code stores the state instead, and it never leaves your organization. Set all three, or none.</p>
+      <p class="lead">By default the agent server encrypts a conversation's state and stores the ciphertext in the cloud. With these three hooks, your own code stores the state instead, and it never leaves your organization. Set all three, or none.</p>
 <div class="tablewrap"><table class="fields data">
 <thead><tr><th>Hook</th><th>When it is called</th><th>The dict holds</th></tr></thead>
 <tbody>
@@ -72,7 +72,7 @@
 <tr><td><code>restore</code><small>Restore conversation state</small></td><td>When a follow-up continues the conversation, and when the UI opens a past conversation. It returns the string that <code>save</code> stored, or <code>None</code> when there is none, which ends the conversation as expired.</td><td><code>convid</code>, <code>userEmail</code> and <code>isValidation</code>.</td></tr>
 <tr><td><code>deleteConversation</code><small>Delete conversation state</small></td><td>When a user deletes the conversation.</td><td><code>convid</code> and <code>isValidation</code>.</td></tr>
 </tbody></table></div>
-<p>Storing the state yourself has three consequences. The agent server passes <code>save</code> the state in plain form; encrypt it before storing it if you need to. Search2o Cloud does not check who continues a conversation whose state your code holds; <code>restore</code> receives <code>userEmail</code> so that your code can. Expiring stored state is the responsibility of your code: the agent server calls <code>deleteConversation</code> when a user deletes a conversation, and nothing else.</p>
+<p>Storing the state yourself has three consequences. The agent server passes <code>save</code> the state in plain form; encrypt it before storing it if you need to. The cloud does not check who continues a conversation whose state your code holds; <code>restore</code> receives <code>userEmail</code> so that your code can. Expiring stored state is the responsibility of your code: the agent server calls <code>deleteConversation</code> when a user deletes a conversation, and nothing else.</p>
 <p>The cloud still keeps the conversation's entry, with the encrypted title and the time of the last run, under the 7-day retention, so an unpinned conversation leaves the conversation list after 7 days. The paid service has no such limit. Validation runs keep their state in the cloud whatever the hooks. See <a href="../agent-execution/conversation-state.html">Conversation state</a>.</p>
 
     </article>

@@ -91,13 +91,13 @@
 <p>In our tests, 100 model-calling runs at the same time gave <strong>1 run per second and 82 failures</strong> on the default pool, and <strong>24 runs per second with no failures</strong> on a wide one. See <a href="../runtime/connection-pools.html">Connection pools</a>.</p>
 
 <h2 id="keeping-the-default-cloud-connection-pool">Keeping the default cloud connection pool</h2>
-<p>The cloud pool is the one the agent server uses to reach Search2o Cloud, not the one your agents use. Widening it from 20 to 200 gained nothing in our tests and made heavy load worse, because it admits more work into one process.</p>
+<p>The cloud pool is the one the agent server uses to reach the cloud, not the one your agents use. Widening it from 20 to 200 gained nothing in our tests and made heavy load worse, because it admits more work into one process.</p>
 
 <h2 id="treating-107-mb-to-165-mb-as-base-memory">Treating 107 MB to 165 MB as base memory</h2>
-<p>An agent server held 107 MB idle and 165 MB with 400 runs in flight. It stays in that band because conversation state is saved to Search2o Cloud rather than accumulated in the process.</p>
+<p>An agent server held 107 MB idle and 165 MB with 400 runs in flight. It stays in that band because conversation state is saved to the cloud rather than accumulated in the process.</p>
 <p>That band covers agents that move short text. Everything else a run holds lives in the process while the run lasts. An agent that handles images is the clear case, because an image travels as text and a single one can be several megabytes. Large API responses, database results and long documents count the same way. A run carrying 2 MB needs at least that much on top of the base, and a hundred such runs need at least two hundred megabytes more.</p>
 
-<h2 id="putting-the-agent-server-near-search2o-cloud">Putting the agent server near Search2o Cloud</h2>
+<h2 id="putting-the-agent-server-near-the-cloud">Putting the agent server near the cloud</h2>
 <p>Every agent run makes three requests to Search2o Cloud, which is 0.17s of the 0.28s that the quickest possible run takes. A run that continues an existing conversation makes a fourth request to load the state. That floor follows the distance rather than the speed of the machine.</p>
 
 <h2 id="watching-a-deployment-that-is-already-busy">Watching a deployment that is already busy</h2>
@@ -117,7 +117,7 @@
     </article>
     <nav class=prevnext><a class=prev href='../system-management/agent-servers.html'><small>Previous</small>Agent servers</a><a class=next href='../system-management/authentication.html'><small>Next</small>Authentication</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#running-one-agent-server-for-every-processor-core'>Running one agent server for every processor core</a></li><li class=l2><a href='#planning-about-50-agent-runs-per-second-for-each-agent-server'>Planning about 50 agent runs per second for each agent server</a></li><li class=l2><a href='#raising-the-api-connection-pool-if-your-agents-call-anything'>Raising the API connection pool if your agents call anything</a></li><li class=l2><a href='#keeping-the-default-cloud-connection-pool'>Keeping the default cloud connection pool</a></li><li class=l2><a href='#treating-107-mb-to-165-mb-as-base-memory'>Treating 107 MB to 165 MB as base memory</a></li><li class=l2><a href='#putting-the-agent-server-near-search2o-cloud'>Putting the agent server near Search2o Cloud</a></li><li class=l2><a href='#watching-a-deployment-that-is-already-busy'>Watching a deployment that is already busy</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#running-one-agent-server-for-every-processor-core'>Running one agent server for every processor core</a></li><li class=l2><a href='#planning-about-50-agent-runs-per-second-for-each-agent-server'>Planning about 50 agent runs per second for each agent server</a></li><li class=l2><a href='#raising-the-api-connection-pool-if-your-agents-call-anything'>Raising the API connection pool if your agents call anything</a></li><li class=l2><a href='#keeping-the-default-cloud-connection-pool'>Keeping the default cloud connection pool</a></li><li class=l2><a href='#treating-107-mb-to-165-mb-as-base-memory'>Treating 107 MB to 165 MB as base memory</a></li><li class=l2><a href='#putting-the-agent-server-near-the-cloud'>Putting the agent server near the cloud</a></li><li class=l2><a href='#watching-a-deployment-that-is-already-busy'>Watching a deployment that is already busy</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

@@ -22,7 +22,7 @@ $ curl http://127.0.0.1:9020/openapi.json > search2o-openapi.json
 </ul>
 
 <h2>Limiting access</h2>
-<p>A model with the schema can call anything the service account may call, including <code>deleteAgent</code>, <code>deleteUsers</code> and <code>updateRole</code>. The service account's role is the boundary, so keep it as low as the task allows; the developer role is enough when a report is all that is needed. Every call the model makes is an ordinary API call: Search2o Cloud checks it against the role, records it against the service account, and shows it in the reports like any other.</p>
+<p>A model with the schema can call anything the service account may call, including <code>deleteAgent</code>, <code>deleteUsers</code> and <code>updateRole</code>. The service account's role is the boundary, so keep it as low as the task allows; the developer role is enough when a report is all that is needed. Every call the model makes is an ordinary API call: the cloud checks it against the role, records it against the service account, and shows it in the reports like any other.</p>
 
 <h2>For people rather than models</h2>
 <p>The same schema is rendered for people: Swagger UI at <code>/docs</code> sends a request from the browser, and ReDoc at <code>/redoc</code> is a reference to read. See <a href="overview.html">Overview</a>.</p>

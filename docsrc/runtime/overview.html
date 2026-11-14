@@ -15,7 +15,7 @@
 <h2>How a change reaches every agent server</h2>
 <!--figure:config-sync-->
 <ol>
-  <li>A developer or an administrator changes a part or a profile in the UI. Search2o Cloud stores the change, stamped with the time.</li>
+  <li>A developer or an administrator changes a part or a profile in the UI. The cloud stores the change, stamped with the time.</li>
   <li>Every time an agent run starts, the agent server tells the cloud. The reply carries the time of the latest change.</li>
   <li>If that time is newer than the agent server's runtime, the agent server asks for what changed since it last asked, and receives only those parts.</li>
   <li>The agent server builds a new runtime from the changed parts and the unchanged pieces of the old one, then swaps it in. The agent runs against it.</li>
