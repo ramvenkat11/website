@@ -2450,3 +2450,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Figures: `parts-of-the-system` CSS figure now has `.st-pair` (two cloud boxes, "or", dashed fork; stacks in the narrow container), rules scoped to `.docs-arch` in `html/styles/styles.css` so the pricing figure is untouched. `gen/figures.py` config-sync figure (how-it-fits-together, runtime/overview) draws two boxes with "or". The unused `architecture` figure was not changed.
 - Checks: scratchpad `paircheck.js` clean 320-1280, sweep clean, renders looked at. Docs rebuilt.
 - Left: text generated from `../s2oserver/models/systemconfig.py` still says Search2o Cloud on agent-servers, hooks/overview, single-sign-on (belongs to s2oserver). Ram's license-rotation note about private cloud not added (unanswered). Not uploaded.
+
+## 2026-11-14: conversations section subhead
+- `html/index.html` line 108: subhead under "Conversations let agents build on each other" is now "Hold conversations in the built-in browser interface, or from Slack and Teams with a bot." (Ram's wording). Text only, no renders. Not uploaded.
+- Open: license-rotation private cloud note awaits Ram; pricing page is Ram's.
