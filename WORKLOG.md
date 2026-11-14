@@ -2411,3 +2411,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Phones: arrows under the organization box 18px shorter (`.lnk` 41px, `.out-llm` 72px); wrapped titles in the right boxes, cloud and External LLMs boxes use line-height 1.25.
 - Checks: figure sweep 320-1280 clean, spinecheck clean, pixel line check straight at 2x/3x. Known and older: at 641-643px wide "APIs · Databases · MCP servers" wraps to two lines.
 - Backups in scratchpad: `index.before-polish.html`, `styles.before-polish.css`. Not uploaded.
+
+## 2026-11-13: hybrid figure, arrow contacts
+- Ram: the cloud line had no arrowhead on desktop and stopped short of the cloud box on phones.
+- Desktop: the arrowhead was hidden behind the OR label; `.cc-arch .arch-out .lnk` now stops at the label (`--lnk-stop: 10px`, `z-index: 1`). Phones (<=640): the old `margin-bottom: 9px` left a gap; now 0, height 50px.
+- New check `arrowcheck.js` (scratchpad) tests every arrow's start and tip against its boxes. It also found the two side arrows 2px short of Enterprise systems / Local LLMs on desktop; fixed (`.cc-main .arch-branch::before/::after`).
+- arrowcheck and figure sweep clean 320-1280. Not uploaded.
