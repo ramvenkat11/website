@@ -2420,3 +2420,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-13: cloud "or" label
 - Ram: all-caps OR read like "operations research". `.cc-arch .cloud-hosts b` is now lowercase italic "or", 15px (13px at <=640), no uppercase transform or letter-spacing, same light pill. `--lnk-stop` 12px to match the taller pill. arrowcheck and sweep clean 320-1280. Not uploaded.
+
+## 2026-11-13: two cloud boxes with "or" between
+- Ram rejected the italic "or" pill; chose "two boxes, or between".
+- `html/index.html`: `.cloud-pair` replaces the single cloud box: `.cloud.cloud-s2o` (Search2o Cloud, linked) and `.cloud.cloud-own` (Your private cloud, dashed border), each with the cloud icon and a `.cloud-what` line "State · Search · Reports"; `<b class="cloud-or">or</b>` between.
+- CSS: from 736px up the line from the server forks to both boxes (`.cloud-pair::before` bracket, arrowheads on each box, `--fork-*` on `.cc-arch .arch-out`). At 735px and below the boxes stack with "or" between, no icons, and the arrow lands on the first box. Old `.cloud-hosts` rules are unused now.
+- `arrowcheck.js` updated (fork geometry, or spacing, text fit); clean at every 2px from 320 to 1280; figure sweep and spinecheck clean. Backups: scratchpad `index.before-pair.html`, `styles.before-pair.css`. Not uploaded.
