@@ -2454,3 +2454,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-14: conversations section subhead
 - `html/index.html` line 108: subhead under "Conversations let agents build on each other" is now "Hold conversations in the built-in browser interface, or from Slack and Teams with a bot." (Ram's wording). Text only, no renders. Not uploaded.
 - Open: license-rotation private cloud note awaits Ram; pricing page is Ram's.
+- Same line reworded by Ram: "Users hold conversations from the built-in browser interface, or from Slack and Teams with a bot."
