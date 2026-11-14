@@ -2443,3 +2443,10 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Applied Ram's edits from `content/cloud-wording-docs.md`: 6 edits in 5 `docsrc/` pages (what-is-search2o, running-the-server, how-matching-works, search-quality x2, what-search2o-provides); rebuilt with `gen/build.py`, 6 built pages changed (search/index repeats a lead). Passages he left unchanged keep "Search2o Cloud", including the private cloud sentence on parts-of-the-system.
 - Open: his note on license-rotation ("License key rotation is not applicable to private cloud") not applied; asked whether it is page text.
 - Not uploaded. Site pages (search.html, pricing.html) still to do.
+
+## 2026-11-14: rule "say the cloud; figures show Search2o Cloud or private cloud"
+- Ram's rule for every web page and docs page: text says "the cloud", never "Search2o Cloud"; a figure that showed Search2o Cloud shows "Search2o Cloud or Your private cloud". Pricing page excluded (Ram will redo it). Legal pages excluded.
+- Text: 7 more swaps in 6 `docsrc/` pages (registering, search-quality, data-privacy, license-rotation, license x2, sizing) and 2 in `html/search.html`. `parts-of-the-system`: heading "The cloud", private cloud definition sentence removed.
+- Figures: `parts-of-the-system` CSS figure now has `.st-pair` (two cloud boxes, "or", dashed fork; stacks in the narrow container), rules scoped to `.docs-arch` in `html/styles/styles.css` so the pricing figure is untouched. `gen/figures.py` config-sync figure (how-it-fits-together, runtime/overview) draws two boxes with "or". The unused `architecture` figure was not changed.
+- Checks: scratchpad `paircheck.js` clean 320-1280, sweep clean, renders looked at. Docs rebuilt.
+- Left: text generated from `../s2oserver/models/systemconfig.py` still says Search2o Cloud on agent-servers, hooks/overview, single-sign-on (belongs to s2oserver). Ram's license-rotation note about private cloud not added (unanswered). Not uploaded.
