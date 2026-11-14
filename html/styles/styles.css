@@ -810,8 +810,10 @@ p { margin: 0; }
   .cc-cluster { gap: 4px; }
   .cc-cluster .ic { flex-basis: 30px; border-radius: 9px; }
 }
-.cc-main .cc-server-links { margin-top: 6px; color: var(--muted); font-size: 12.5px; }
-.cc-main .arch-sys { justify-items: stretch; gap: var(--sys-y); padding-left: 0; }
+.cc-main .cc-server .cc-server-links { margin-top: 6px; color: var(--muted); font-size: 11.5px; font-weight: 500; line-height: 1.4; }
+.cc-main .arch-sys { grid-template-rows: 1fr 1fr var(--ext-drop); justify-items: stretch; gap: var(--sys-y); padding-left: 0; }
+.cc-main .arch-branch:not(.arch-branch-ext) { align-items: stretch; }
+.cc-main .arch-branch .arch-node { align-content: center; }
 .cc-main .arch-sys::before { display: none; }
 .cc-main .arch-branch::before { left: -34px; width: 29px; }
 .cc-main .arch-branch::after { left: -5px; }
@@ -1460,7 +1462,7 @@ a.arch-lbl { color: var(--blue-ink); }
   .cc-clients .cc-cc .arch-chips span { font-size: 10px; padding: 2px 5px; white-space: nowrap; }
   .arch-hlink, .arch-sys::before, .arch-branch::before, .arch-branch::after { display: none; }
   .arch-sys { display: flex; flex-wrap: wrap; gap: 6px; padding-left: 0; margin-top: 10px; }
-  .cc-main .cc-server-links { font-size: 11px; }
+  .cc-main .cc-server .cc-server-links { font-size: 10px; }
   .cc-main .arch-sys { display: grid; gap: var(--sys-y); padding-left: 0; margin-top: 0; }
   .cc-main .arch-branch::before { display: block; left: -24px; width: 19px; }
   .cc-main .arch-branch::after { display: block; left: -5px; }
