@@ -2438,3 +2438,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Wrote `content/cloud-wording-docs.md`: the 15 current docs passages (11 source pages) that name Search2o Cloud, text only. Ram edits the file; then apply his wording to `docsrc/` and rebuild. Nothing in `docsrc/` changed yet.
 - Two built pages take their cloud text from `../s2oserver/models/systemconfig.py` (agent-servers, hooks overview): not ours to change.
 - Site pages later: `html/search.html` (200 ms sentence, twice), `html/pricing.html` (name is the priced product), home figure keeps the name.
+
+## 2026-11-14: cloud wording applied to the docs
+- Applied Ram's edits from `content/cloud-wording-docs.md`: 6 edits in 5 `docsrc/` pages (what-is-search2o, running-the-server, how-matching-works, search-quality x2, what-search2o-provides); rebuilt with `gen/build.py`, 6 built pages changed (search/index repeats a lead). Passages he left unchanged keep "Search2o Cloud", including the private cloud sentence on parts-of-the-system.
+- Open: his note on license-rotation ("License key rotation is not applicable to private cloud") not applied; asked whether it is page text.
+- Not uploaded. Site pages (search.html, pricing.html) still to do.
