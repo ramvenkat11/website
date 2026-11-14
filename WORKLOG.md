@@ -2459,3 +2459,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-14: hero title
 - `html/index.html` line 67 h1 is now "Semantic search makes hundreds of task-focused AI agents work as one application" (Ram's wording). Two lines from 700 up, three on phones, four at 320; no overflow at the nine widths. Not uploaded.
 - Stale against the new h1: og:image:alt (line 16), og10.png, LinkedIn banner. Not changed.
+
+## 2026-11-14: server box labels in the hybrid figure
+- `html/index.html` `#user-interfaces` `.cc-server`: added `.cc-server-links` line "Stateless · Scales out · Always in sync", linked to docs/introduction/parts-of-the-system.html, docs/system-management/agent-server-sizing.html, docs/runtime/overview.html. One line from 580 up, three stacked lines below.
+- `html/styles/styles.css`: `.cc-main .arch-sys` rows `1fr 1fr var(--ext-drop)` and stretched branches, so the two side boxes always match the server height; `.cc-server-links` 11.5px (10px on phones).
+- arrowcheck.js and new srvcheck.js clean at fixed widths and in a 320-1280 sweep; renders looked at: 1280 light, 700 light, 384 dark, 320 light. Not uploaded.
