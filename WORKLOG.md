@@ -2392,3 +2392,10 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Ram: move Enterprise systems and Local LLMs above the agent server. Markup: `.hy-above` (`.hy-in` boxes, then `.hy-fan` up arrows) replaces `.arch-link.cc-down` and `.hy-below`. The client line runs between the two boxes to the server. On phones the two boxes use the client column ratio (`--hy-cols`) so the line stays straight. Server is now last in the organization box; `.hy-out::before` starts at the server bottom (`--hy-exit`, `--hy-org-border`).
 - Checks (scratchpad): `linecheck.mjs` + `linecheck.py` read the line from screenshot pixels at 2x, 2.625x, 3x; `hycheck.js` and `spinecheck.js` updated. Sweeps 320-1280 clean. At 2.625x one blended pixel remains at two joins.
 - Not uploaded. Next: deploy-time check still waits for Ram's go-ahead.
+
+## 2026-11-13: hybrid figure back to the side-by-side design
+- Ram: title "Agent server cluster" (no standalone); go back to the design with the server on the left and Enterprise systems / Local LLMs on the right.
+- Figure markup restored from scratchpad `index.before-redraw.html` (`.cc-main`, `.arch-sys`, `.arch-out` with `.lnk` / `.out-llm`); stylesheet restored from `styles.before-redraw.css` plus the phone connector block. All `hy-*` rules are gone. The "systems above the server" version is saved in scratchpad as `index.above-design.html` and `styles.above-design.css`.
+- Server box: `<strong>Agent server cluster</strong>` and the three-server icon; aria-label says "runs as a cluster".
+- Phones (<=579): the server box covers only the left 60%, so the client line had to move left to land on it. The narrow client column is now on the left (Slack, REST client) and the wide one on the right (Browser, Claude Code); `--spine-ratio` .425 / .375. Phone block uses its own `--spine-line`, `--spine-stroke`.
+- Checks: spinecheck 320-578 clean, pixel line check straight at 2x and 3x, figure sweep 320-1280 clean. Not uploaded.
