@@ -98,7 +98,7 @@
 <p>That band covers agents that move short text. Everything else a run holds lives in the process while the run lasts. An agent that handles images is the clear case, because an image travels as text and a single one can be several megabytes. Large API responses, database results and long documents count the same way. A run carrying 2 MB needs at least that much on top of the base, and a hundred such runs need at least two hundred megabytes more.</p>
 
 <h2 id="putting-the-agent-server-near-the-cloud">Putting the agent server near the cloud</h2>
-<p>Every agent run makes three requests to Search2o Cloud, which is 0.17s of the 0.28s that the quickest possible run takes. A run that continues an existing conversation makes a fourth request to load the state. That floor follows the distance rather than the speed of the machine.</p>
+<p>Every agent run makes three requests to the cloud, which is 0.17s of the 0.28s that the quickest possible run takes. A run that continues an existing conversation makes a fourth request to load the state. That floor follows the distance rather than the speed of the machine.</p>
 
 <h2 id="watching-a-deployment-that-is-already-busy">Watching a deployment that is already busy</h2>
 <p>Two things tell you whether another agent server will help. Neither needs any extra load put on the system.</p>

@@ -1,7 +1,7 @@
 <p class="lead">Search2o has three parts: a cloud service, an agent server that runs in your organization, and the interfaces through which people and programs reach that agent server.</p>
 
 <div class="docs-arch">
-  <div class="ui-fan" aria-label="Your organization runs the agent servers and four clients, a browser chat, the chat applications, an agent harness and your own REST client, which all connect to the agent server cluster. The agent servers keep no state of their own: an encrypted link connects them to Search2o Cloud, which keeps the conversations and memories, encrypted by default.">
+  <div class="ui-fan" aria-label="Your organization runs the agent servers and four clients, a browser chat, the chat applications, an agent harness and your own REST client, which all connect to the agent server cluster. The agent servers keep no state of their own: an encrypted link connects them to Search2o Cloud or to your private cloud. Either one keeps the conversations and memories, encrypted by default.">
     <div class="ui-org">
       <span class="tag">Your organization</span>
       <div class="ui-clients">
@@ -36,16 +36,22 @@
       <i class="ln"></i>
       <span class="lock"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>encrypted</span>
     </div>
-    <div class="st-box st-cloud">
-      <span class="tag">Search2o Cloud</span>
-      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
-      <b>State</b>
-      <small>Conversations, memories <span class="enc">encrypted by default</span></small>
+    <div class="st-pair">
+      <div class="st-box st-cloud">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
+        <b>Search2o Cloud</b>
+        <small>Conversations, memories <span class="enc">encrypted by default</span></small>
+      </div>
+      <b class="st-or">or</b>
+      <div class="st-box st-cloud st-own">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
+        <b>Your private cloud</b>
+        <small>Conversations, memories <span class="enc">encrypted by default</span></small>
+      </div>
     </div>
   </div>
 </div>
-<h2>The cloud service</h2>
-<p>The cloud service runs as Search2o Cloud, hosted by Search2o, or as a private cloud, hosted in your own cloud account. The rest of the docs call either one &ldquo;the cloud&rdquo;.</p>
+<h2>The cloud</h2>
 <p>The cloud service holds all state: accounts and users, agent definitions and drafts, configuration, conversation context, the search index, and the data behind the reports. It checks agent definitions, indexes the description a developer writes for a published agent, and answers searches. Only agent servers call the cloud's API. The Search2o license prohibits calling it directly, because a direct call can leave data inconsistent.</p>
 
 <h2>The agent server</h2>

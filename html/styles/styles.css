@@ -599,6 +599,21 @@ p { margin: 0; }
 .ui-fan .st-link .ln::after { content: ""; position: absolute; left: -6px; bottom: -1px; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 8px solid var(--slate); }
 .ui-fan .st-link .lock { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
 .ui-fan .st-cloud { grid-column: 1; grid-row: 3; margin-left: 16px; }
+.docs-arch .st-link .ln { bottom: 8px; }
+.docs-arch .st-link .ln::after { display: none; }
+.docs-arch .st-pair { --pair-or: 40px; position: relative; grid-column: 1 / -1; grid-row: 3; justify-self: start; display: grid; grid-template-columns: minmax(0, 1fr) var(--pair-or) minmax(0, 1fr); width: min(100% - 16px, 508px); margin-left: 16px; }
+.docs-arch .st-pair::before { content: ""; position: absolute; bottom: calc(100% + 8px); left: calc((100% - var(--pair-or)) / 4 - 1px); right: calc((100% - var(--pair-or)) / 4 - 1px); height: 14px; box-sizing: border-box; border: 2px dashed var(--slate); border-bottom: 0; border-left: 0; border-radius: 0 8px 0 0; }
+.docs-arch .st-pair .st-cloud { grid-column: auto; grid-row: auto; width: auto; max-width: none; margin-left: 0; }
+.docs-arch .st-pair .st-cloud::before { content: ""; position: absolute; top: -9px; left: 50%; margin-left: -5px; border-left: 5px solid transparent; border-right: 5px solid transparent; border-top: 8px solid var(--slate); }
+.docs-arch .st-pair .st-own { border-style: dashed; border-color: color-mix(in srgb, #a9c6ff 55%, transparent); }
+.docs-arch .st-or { align-self: center; justify-self: center; color: var(--ink); font-size: 16px; font-weight: 800; line-height: 1; }
+@container (max-width: 560px) {
+  .docs-arch .st-link .ln { bottom: 1px; }
+  .docs-arch .st-link .ln::after { display: block; }
+  .docs-arch .st-pair { justify-self: center; grid-template-columns: minmax(0, 1fr); width: 100%; max-width: 320px; margin-left: 0; }
+  .docs-arch .st-pair::before, .docs-arch .st-pair .st-cloud::before { display: none; }
+  .docs-arch .st-or { margin: 9px 0 10px; }
+}
 @container (max-width: 560px) {
   .ui-fan { grid-template-columns: minmax(0, 1fr); justify-content: stretch; }
   .ui-fan .ui-org { grid-column: 1; grid-template-columns: minmax(0, 1fr); padding: 28px 14px 18px; }
