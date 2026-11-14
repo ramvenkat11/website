@@ -2432,3 +2432,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - `html/styles/styles.css` only: `.cc-main` and `.arch-out` are now two equal columns with `column-gap: var(--sys-x)` (vars on `.cc-arch`: `--org-inset`, `--sys-x`, `--sys-y`, `--ext-drop`, `--ext-inset`, `--srv-rise`). Server ends at the bottom of Local LLMs (`margin-bottom: var(--srv-rise)`); cloud line lengthened by the same amount; External LLMs line is now an elbow from the server bottom (`.arch-branch-ext::before` with borders). Client arrow centred on the server from 580px. Cloud pair stacks up to 829px (was 735). Phone client columns .72fr/1.28fr so the line lands inside the narrower server. Cluster icons shrink with the box.
 - Checks: arrowcheck.js (extended: equal sizes, column alignment) clean 320-1280; spinecheck clean except 320 (arrow 19.9px from the server corner, limit 20); figure sweep 320-1280 clean. Backup: scratchpad `styles.before-equal.css`.
 - Not uploaded.
+
+## 2026-11-14: cloud wording, docs first
+- Ram: the private cloud will not be documented now (per client later); docs say "the cloud" in place of "Search2o Cloud". Legal pages left alone.
+- Wrote `content/cloud-wording-docs.md`: the 15 current docs passages (11 source pages) that name Search2o Cloud, text only. Ram edits the file; then apply his wording to `docsrc/` and rebuild. Nothing in `docsrc/` changed yet.
+- Two built pages take their cloud text from `../s2oserver/models/systemconfig.py` (agent-servers, hooks overview): not ours to change.
+- Site pages later: `html/search.html` (200 ms sentence, twice), `html/pricing.html` (name is the priced product), home figure keeps the name.
