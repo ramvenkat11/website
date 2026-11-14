@@ -2402,3 +2402,12 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-13: cloud box line removed
 - Ram: removed "Conversations and memories live here, encrypted by default" from the cloud box of the hybrid figure in `html/index.html`, and the matching clause from the figure's aria-label. Sweep 320-1280 clean. Not uploaded.
+
+## 2026-11-13: hybrid figure polish
+- Ram: "State, search, reports" without commas; look at the whole image and make it better.
+- Cloud title is now "State · Search · Reports" using the `.sep` pattern (stacks one per line on phones).
+- Server box: three icon tiles (`.cc-cluster .ic`) above "Agent server cluster"; `.cc-modes` markup removed from the page (CSS left).
+- Enterprise systems / Local LLMs: icon tile at the left (`.sys-ic`, database and chip), shown from 861px up; below that the text would wrap.
+- Phones: arrows under the organization box 18px shorter (`.lnk` 41px, `.out-llm` 72px); wrapped titles in the right boxes, cloud and External LLMs boxes use line-height 1.25.
+- Checks: figure sweep 320-1280 clean, spinecheck clean, pixel line check straight at 2x/3x. Known and older: at 641-643px wide "APIs · Databases · MCP servers" wraps to two lines.
+- Backups in scratchpad: `index.before-polish.html`, `styles.before-polish.css`. Not uploaded.
