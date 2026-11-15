@@ -29,7 +29,7 @@ img = Image.alpha_composite(img.convert("RGBA"), grid)
 # tagline as the title with the home page heading as a one-line subtitle, centred as one block in
 # the space right of the logo. The name is left to the logo (gen/linkedin_logo.py).
 LOGO_END = 1097  # x where the overlaid page logo stops covering the banner, as seen on the live page
-TITLE = "Agent server for the enterprise"; TITLE_SIZE = 160
+TITLE = "Agent platform for the enterprise"; TITLE_SIZE = 160
 SUB = "Transform your business workflows into hundreds of task-focused AI agents"; SUB_SIZE = 72
 SUB_GAP = 64
 title_font = bold(TITLE_SIZE); sub_font = medium(SUB_SIZE)
