@@ -32,13 +32,13 @@ The Software is licensed for business, professional, and evaluation use by organ
 
 "License Key" means any key, token, credential, or other identifier issued by Search2o that is used to obtain or maintain Authorization.
 
-"Search2o Cloud" means the hosted services, platforms, and application programming interfaces operated by or for Search2o and made available at search2o.com, its subdomains, or any other domain that Search2o designates in the Documentation or in writing, including the Search2o Cloud APIs.
+"Search2o Cloud Service" means the hosted services, platforms, and application programming interfaces operated by or for Search2o and made available at search2o.com, its subdomains, or any other domain that Search2o designates in the Documentation or in writing, including the Search2o Cloud Service APIs.
 
-"Search2o Cloud APIs" means the programmatic interfaces of Search2o Cloud.
+"Search2o Cloud Service APIs" means the programmatic interfaces of Search2o Cloud Service.
 
-"Search2o-Controlled Systems" means Search2o Cloud and any other systems operated by or for Search2o that issue, verify, renew, or revoke Authorization.
+"Search2o-Controlled Systems" means Search2o Cloud Service and any other systems operated by or for Search2o that issue, verify, renew, or revoke Authorization.
 
-"Search2o Services" means Search2o Cloud and any other services that Search2o provides for use with the Software.
+"Search2o Services" means Search2o Cloud Service and any other services that Search2o provides for use with the Software.
 
 "Service Agreement" means the Search2o Terms of Service, available at https://search2o.com/legal/terms.html, as updated by Search2o from time to time, or any separate written agreement between you and Search2o governing your use of the Search2o Services.
 
@@ -90,13 +90,13 @@ Except as expressly permitted by this Agreement, you may not, directly or indire
 
 (d) remove, disable, bypass, circumvent, interfere with, suppress, misdirect, simulate, emulate, replace, or undermine any License Key mechanism, Authorization process, usage control, required communication with Search2o-Controlled Systems, or other technical restriction governing authorized operation of the Software;
 
-(e) access or invoke the Search2o Cloud APIs directly except where Search2o expressly authorizes such access. Except as expressly authorized, interactions with the Search2o Services must be made through the Search2o Agent Server;
+(e) access or invoke the Search2o Cloud Service APIs directly except where Search2o expressly authorizes such access. Except as expressly authorized, interactions with the Search2o Services must be made through the Search2o Agent Server;
 
-(f) configure or operate the Software with SEARCH2O_CLOUD_URL, or any successor configuration setting used to identify the Search2o Cloud endpoint, specifying an endpoint other than a Search2o-authorized endpoint whose hostname is search2o.com, a subdomain of search2o.com, or another domain that Search2o designates in the Documentation or in writing;
+(f) configure or operate the Software with SEARCH2O_CLOUD_URL, or any successor configuration setting used to identify the Search2o Cloud Service endpoint, specifying an endpoint other than a Search2o-authorized endpoint whose hostname is search2o.com, a subdomain of search2o.com, or another domain that Search2o designates in the Documentation or in writing;
 
 (g) use the Software to provide, enable, or support any service in which persons or entities other than Authorized Users may submit, publish, list, provide, or otherwise contribute Agents or Agent Descriptions for discovery, search, selection, execution, or use by other persons or entities;
 
-(h) use the Software or its source code as a basis to copy, reproduce, derive, or create a substitute or competing implementation of the Search2o Agent Server or Search2o Cloud;
+(h) use the Software or its source code as a basis to copy, reproduce, derive, or create a substitute or competing implementation of the Search2o Agent Server or Search2o Cloud Service;
 
 (i) remove, obscure, or alter any copyright, license, patent, trademark, attribution, proprietary, or other legal notice contained in the Software;
 
@@ -114,7 +114,7 @@ For clarity, Search2o does not grant under this Agreement any right to use the S
 
 This Agreement does not prohibit you from using the Software behind your own website, application, chat application, or internal systems to provide functionality to your customers, users, or other persons, provided that the Agents and Agent Descriptions used with the Software are created by Authorized Users.
 
-Nothing in this Agreement restricts Agents from accessing external systems, APIs, databases, models, or other services that they are otherwise authorized to access. Section 4(f) applies specifically to the Search2o Cloud endpoint used by the Search2o Agent Server.
+Nothing in this Agreement restricts Agents from accessing external systems, APIs, databases, models, or other services that they are otherwise authorized to access. Section 4(f) applies specifically to the Search2o Cloud Service endpoint used by the Search2o Agent Server.
 
 You acknowledge that the License Key and Authorization mechanisms, and the required communications with Search2o-Controlled Systems, are technological measures that effectively control access to and use of the Software.
 

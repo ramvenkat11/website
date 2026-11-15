@@ -182,10 +182,10 @@
     <div class="container">
       <div class="section-head center">
         <h2>Hybrid&nbsp;architecture</h2>
-        <p>The platform has two parts: a stateless agent server that runs in your organization, and a cloud that provides state, search and reporting services. The cloud can be the Search2o cloud service or your organization&rsquo;s cloud&nbsp;service.</p>
+        <p>The platform has two parts: a stateless agent server that runs in your organization, and a cloud service that provides state, search and reporting. The cloud service can be shared or&nbsp;dedicated.</p>
       </div>
       <div class="ui-fig">
-      <aside class="arch cc-arch hero-arch" aria-label="The Search2o agent platform has two parts: an agent server in your organization and a cloud. A browser used by users, developers and admins, Slack, Teams or Google Chat, Claude Code and your own REST client send requests to the Search2o agent server in your organization, which runs as a cluster. The cluster is stateless, scales out and is always in sync. The agent server runs the agents and calls enterprise systems and local LLMs inside the enterprise, and external LLMs outside it. The agent server keeps no state: an encrypted link connects it to Search2o Cloud or to your private cloud. Either one provides state, search and reports.">
+      <aside class="arch cc-arch hero-arch" aria-label="The Search2o agent platform has two parts: an agent server in your organization and a cloud service, which is shared or dedicated. The two are drawn in the same dark colour. A browser used by users, developers and admins, Slack, Teams or Google Chat, Claude Code and your own REST client send requests to the Search2o agent server in your organization, which runs as a cluster. The cluster is stateless, scales out and is always in sync. The agent server runs the agents and calls enterprise systems and local LLMs inside the enterprise, and external LLMs outside it. The agent server keeps no state: an encrypted link connects it to the cloud service, which provides state, search and reports.">
           <div class="arch-flow">
             <div class="arch-org">
             <span class="arch-org-lbl">Your organization</span>
@@ -212,18 +212,11 @@
             <div class="arch-out">
               <div class="arch-link lnk" aria-hidden="true"></div>
               <div class="arch-link out-llm" aria-hidden="true"></div>
-              <div class="cloud-pair">
-                <div class="arch-node cloud cloud-s2o">
-                  <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
-                  <strong><a href="docs/security/data-privacy.html">Search2o Cloud</a></strong>
-                  <span class="cloud-what"><a href="docs/agent-execution/conversation-state.html">State</a>&nbsp;&middot; <a href="search.html">Search</a>&nbsp;&middot; <a href="docs/reports/index.html">Reports</a></span>
-                </div>
-                <b class="cloud-or">or</b>
-                <div class="arch-node cloud cloud-own">
-                  <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
-                  <strong>Your private cloud</strong>
-                  <span class="cloud-what"><a href="docs/agent-execution/conversation-state.html">State</a>&nbsp;&middot; <a href="search.html">Search</a>&nbsp;&middot; <a href="docs/reports/index.html">Reports</a></span>
-                </div>
+              <div class="arch-node cloud">
+                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
+                <strong><a href="docs/security/data-privacy.html">Cloud service</a></strong>
+                <span class="cloud-what cloud-mode">Shared or dedicated</span>
+                <span class="cloud-what"><a href="docs/agent-execution/conversation-state.html">State</a>&nbsp;&middot; <a href="search.html">Search</a>&nbsp;&middot; <a href="docs/reports/index.html">Reports</a></span>
               </div>
               <div class="arch-node arch-ext">
                 <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg></span>
@@ -232,6 +225,7 @@
               </div>
             </div>
           </div>
+          <p class="arch-key"><i aria-hidden="true"></i>Search2o agent platform</p>
         </aside>
       </div>
     </div>
@@ -256,7 +250,7 @@
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m10 12.5-2 2.5 2 2.5M14 12.5l2 2.5-2 2.5"/></svg></div>
           <h3>Source available</h3>
-          <p>Everything that runs in your organization can be built from the source: the <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">agent server</a> and the <a href="https://github.com/Search2o/ui" target="_blank" rel="noopener">UI</a>. Set the <a href="docs/system-management/agent-servers.html#what-a-configuration-sets">logging configuration</a> to see every call to the cloud.</p>
+          <p>Everything that runs in your organization can be built from the source: the <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">agent server</a> and the <a href="https://github.com/Search2o/ui" target="_blank" rel="noopener">UI</a>. Set the <a href="docs/system-management/agent-servers.html#what-a-configuration-sets">logging configuration</a> to see every call to the cloud service.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/></svg></div>

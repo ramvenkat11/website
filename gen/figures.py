@@ -151,7 +151,7 @@ def _architecture():
     f.parts[-1] = f.parts[-1].replace('fill="#fff"', 'fill="rgba(255,255,255,.75)"')
     f.arrow(160, 90, 195, 125)
     f.arrow(160, 220, 195, 185)
-    f.box(500, 100, 200, 110, "Search2o Cloud", "search · state · reports", kind="accent")
+    f.box(500, 100, 200, 110, "Cloud service", "search · state · reports", kind="accent")
     f.arrow(405, 145, 500, 145, both=True)
     f.text(452.5, 165, "sensitive data", size=11, anchor="middle")
     f.text(452.5, 180, "encrypted", size=11, anchor="middle")
@@ -251,19 +251,15 @@ def _build_pipeline():
 def _config_sync():
     f = Fig("config-sync", 260, "How a configuration change reaches every agent server")
     f.box(20, 40, 150, 56, "UI", "administrator edits a part", kind="soft")
-    cloud_x, cloud_y, cloud_w, cloud_h, or_gap = 250, 40, 170, 56, 44
-    own_x = cloud_x + cloud_w + or_gap
-    f.box(cloud_x, cloud_y, cloud_w, cloud_h, "Search2o Cloud", "stores it, stamps the time", kind="accent")
-    f.text(cloud_x + cloud_w + or_gap / 2, cloud_y + cloud_h / 2, "or", size=14, weight=800, fill="ink", anchor="middle")
-    f.box(own_x, cloud_y, cloud_w, cloud_h, "Your private cloud", "stores it, stamps the time", kind="accent")
-    f.parts.append(f'<rect x="{own_x + 3}" y="{cloud_y + 3}" width="{cloud_w - 6}" height="{cloud_h - 6}" rx="8" fill="none" '
-                   f'stroke="rgba(255,255,255,.7)" stroke-dasharray="5 4"/>')
+    cloud_x, cloud_y, cloud_w, cloud_h = 250, 40, 220, 56
+    f.box(cloud_x, cloud_y, cloud_w, cloud_h, "Cloud service", "stores it, stamps the time", kind="accent")
+    f.text(cloud_x + cloud_w + 14, cloud_y + cloud_h / 2 + 4, "shared or dedicated", size=11.5)
     f.arrow(170, 68, cloud_x, 68, "save")
     f.box(20, 170, 140, 56, "Agent server A", kind="dark")
     f.box(175, 170, 140, 56, "Agent server B", kind="dark")
     f.box(330, 170, 140, 56, "Agent server C", kind="dark")
-    for server_x, cloud_target_x in ((90, 280), (245, 335), (400, 390)):
-        f.arrow(server_x, 170, cloud_target_x, cloud_y + cloud_h, dashed=True)
+    for server_x in (90, 245, 400):
+        f.arrow(server_x, 170, min(max(server_x, cloud_x + 10), cloud_x + cloud_w - 10), cloud_y + cloud_h, dashed=True)
     f.text(500, 140, "on every agent start:", size=11.5, weight=700, fill="ink")
     f.text(500, 158, "1. tell the cloud a run starts", size=11.5)
     f.text(500, 174, "2. learn the latest change time", size=11.5)

@@ -64,7 +64,7 @@ Certain Search2o features use third-party artificial intelligence service provid
 
 Customers may configure agents running on their agent servers to communicate with third-party LLM providers, APIs, databases, applications, MCP servers, and other external systems.
 
-Those communications originate from the customer's agent server rather than Search2o Cloud. Customers are responsible for selecting, configuring, and using those services and for determining whether their use complies with applicable requirements.
+Those communications originate from the customer's agent server rather than Search2o Cloud Service. Customers are responsible for selecting, configuring, and using those services and for determining whether their use complies with applicable requirements.
 
 ## 5. Service Providers and Other Disclosures
 
