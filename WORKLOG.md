@@ -2574,3 +2574,10 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-15: hybrid figure shows the platform's two parts
 - Ram: match the agent server box to the cloud's background and/or show both belong to the Search2o platform. Did both: `.cc-main .cc-server` now uses var(--cloud-bg)/--cloud-border with white title, light links and cloud-style icon tiles; new one-line key under the figure, `<p class="arch-key">` navy swatch + "Search2o agent platform". aria-label notes the shared colour.
 - onecheck.js, srvcheck.js and a key-spacing check clean in a 320-1280 sweep; looked at 1280 light, 384 dark, 320 light. Backups index.before-navy.html, styles.before-navy.css. Not uploaded.
+
+## 2026-11-15: web pages: cloud service wording, trademark line, platform sentences
+- Ram: use "cloud service" consistently on the web pages. Changed bare "the cloud" in index.html (Source available card), conversation.html, search.html (2), runtime.html (3).
+- html/legal/intellectual.html trademark line is now "Search that executes(TM) is a trademark of Search2o. ..." (content/legal/intellectual.md already said so).
+- "Search2o Cloud" -> "Search2o Cloud Service" in html/legal/license.html (10) and privacy.html (1), and the same in content/legal/license.md and privacy.md. SEARCH2O_CLOUD_URL untouched. terms.html says "Search2o cloud service" (lower case) once; left.
+- Platform wording applied on the three clear sentences from my survey: conversation.html "the platform saves the conversation's state automatically"; framework.html meta description/og:description "the platform handles credentials..." and "The platform then runs the draft...". Not applied (judgement calls, awaiting Ram): demo-search.html "the agent server's configuration", about.html "hybrid cloud system".
+- Text only, no renders. Not uploaded. Next: docs get the same platform / cloud service wording when Ram says.
