@@ -2607,3 +2607,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-15: wording audit
 - final_audit.py (scratchpad) over html/, docsrc/, gen/: no private cloud, no "Search2o Cloud" without "Service", no old taglines, every page on og11.png. One missed sentence fixed: conversation.html "instead of storing it in the cloud service". Remaining bare "the cloud": html/demo/demo.js (2, built by ui1) and html/demo-agents/cloud_costs.prompts.json (1, sample agent text).
 - Platform vs server: every web page reviewed sentence by sentence with Ram; in the docs I reviewed the docs home, introduction and section index pages (all literal), not all 335 mentions.
+
+## 2026-11-15: demo agents refreshed
+- Ran scripts/refresh-demo-agents.sh (Ram: "Copy the latest agents from s2oserver here"): all 200 .jsonc modified (200 insertions, 201 deletions), none added or removed; html/demo-agents.json and the *.prompts.json unchanged. Ram also dropped a new ui1 build of html/demo/demo.js and demo.css (18:16); the audit no longer finds a bare "the cloud" in demo.js. Only remaining hit: cloud_costs.prompts.json (sample agent about cloud costs). Not uploaded.
