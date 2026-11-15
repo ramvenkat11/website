@@ -209,7 +209,7 @@ def _assistant_connections():
 @figure("request-lifecycle")
 def _request_lifecycle():
     f = Fig("request-lifecycle", 210, "From a query to an answer")
-    steps = [("1. Query", "user types a request", "soft"), ("2. Match", "cloud picks the agent", "accent"),
+    steps = [("1. Query", "user types a request", "soft"), ("2. Match", "cloud service matches", "accent"),
              ("3. Run", "agent server executes", "dark"), ("4. Stream", "output as it happens", "soft"),
              ("5. Save", "state stored, encrypted", "accent")]
     x = 20
@@ -236,10 +236,10 @@ def _build_pipeline():
         if i < 4:
             f.arrow(x + 124, 72, x + 140, 72)
         x += 140
-    f.text(160, 130, "the cloud checks the definition and its expressions;", size=11.5)
+    f.text(160, 130, "the cloud service checks the definition and expressions;", size=11.5)
     f.text(160, 146, "the agent server runs the validation query with tracing on", size=11.5)
-    f.text(520, 130, "cloud indexes the description;", size=11.5)
-    f.text(520, 146, "15 to 30 seconds", size=11.5)
+    f.text(490, 130, "cloud service indexes the description;", size=11.5)
+    f.text(490, 146, "15 to 30 seconds", size=11.5)
     f.arrow(300, 104, 300, 120, dashed=True)
     f.arrow(640, 104, 640, 120, dashed=True)
     f.arrow(82, 104, 82, 190, dashed=True)
@@ -261,7 +261,7 @@ def _config_sync():
     for server_x in (90, 245, 400):
         f.arrow(server_x, 170, min(max(server_x, cloud_x + 10), cloud_x + cloud_w - 10), cloud_y + cloud_h, dashed=True)
     f.text(500, 140, "on every agent start:", size=11.5, weight=700, fill="ink")
-    f.text(500, 158, "1. tell the cloud a run starts", size=11.5)
+    f.text(500, 158, "1. tell the cloud service a run starts", size=11.5)
     f.text(500, 174, "2. learn the latest change time", size=11.5)
     f.text(500, 190, "3. fetch only the changed parts", size=11.5)
     f.text(500, 206, "4. rebuild the runtime, then run", size=11.5)
@@ -533,7 +533,7 @@ def _encryption():
     f = Fig("encryption", 250, "Two ways to hold the encryption key")
     f.group(20, 20, 330, 210, "CLOUD-MANAGED (DEFAULT)")
     f.box(40, 60, 130, 50, "agent server", kind="dark", size=12)
-    f.box(210, 60, 120, 50, "cloud", "key per account", kind="accent")
+    f.box(210, 60, 120, 50, "cloud service", "key per account", kind="accent")
     f.arrow(170, 78, 210, 78, both=True)
     f.text(190, 50, "gets the key", size=10.5, anchor="middle")
     f.arrow(105, 110, 105, 150)
@@ -546,7 +546,7 @@ def _encryption():
     f.text(540, 50, "key by name", size=10.5, anchor="middle")
     f.arrow(455, 110, 455, 150)
     f.box(390, 150, 130, 50, "AES-GCM", "encrypts state", kind="card", size=12)
-    f.box(560, 150, 120, 50, "cloud", "ciphertext only", kind="accent")
+    f.box(560, 150, 120, 50, "cloud service", "ciphertext only", kind="accent")
     f.arrow(520, 175, 560, 175)
     return f.render()
 

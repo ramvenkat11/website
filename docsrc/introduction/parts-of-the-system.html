@@ -1,4 +1,4 @@
-<p class="lead">Search2o has three parts: a cloud service, an agent server that runs in your organization, and the interfaces through which people and programs reach that agent server.</p>
+<p class="lead">The Search2o platform has two parts: a cloud service, and an agent server that runs in your organization. People and programs reach the agent server through its interfaces. The first of these is the bundled UI, where developers build agents and users run them.</p>
 
 <div class="docs-arch">
   <div class="ui-fan" aria-label="Your organization runs the agent servers and four clients, a browser chat, the chat applications, an agent harness and your own REST client, which all connect to the agent server cluster. The agent servers keep no state of their own: an encrypted link connects them to the cloud service, which is shared or dedicated. The cloud service keeps the conversations and memories, encrypted by default.">
@@ -44,8 +44,8 @@
     </div>
   </div>
 </div>
-<h2>The cloud</h2>
-<p>The cloud service holds all state: accounts and users, agent definitions and drafts, configuration, conversation context, the search index, and the data behind the reports. It checks agent definitions, indexes the description a developer writes for a published agent, and answers searches. Only agent servers call the cloud's API. The Search2o license prohibits calling it directly, because a direct call can leave data inconsistent.</p>
+<h2>The cloud service</h2>
+<p>The cloud service holds all state: accounts and users, agent definitions and drafts, configuration, conversation context, the search index, and the data behind the reports. It checks agent definitions, indexes the description a developer writes for a published agent, and answers searches. Only agent servers call the cloud service's API. Calling the cloud service directly can leave the platform in an inconsistent state. The Search2o license also prohibits it. The cloud service is shared or dedicated.</p>
 
 <h2>The agent server</h2>
 <p>The agent server, with the bundled UI, is a Python 3.12+ package installed with <code>pip install search2o</code>. It runs inside your organization and holds no state. At startup it loads the account's configuration, keeps that configuration current, and runs agents. Its REST API is described at <code>/openapi.json</code>, with Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>.</p>

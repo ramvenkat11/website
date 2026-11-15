@@ -10,13 +10,13 @@
   <li>the secrets source and the encryption settings, described under <a href="../security/index.html">Security and privacy</a>;</li>
   <li>the <a href="../hooks/index.html">hooks</a>, imported once when the agent server starts.</li>
 </ul>
-<p>Beside the runtime, the agent server caches the agents it has run. A cached agent is dropped as soon as the cloud reports a change to it, whether to its definition, title, tag, run limits, prompts or const, so a republished agent runs in its new form on its next request.</p>
+<p>Beside the runtime, the agent server caches the agents it has run. A cached agent is dropped as soon as the cloud service reports a change to it, whether to its definition, title, tag, run limits, prompts or const, so a republished agent runs in its new form on its next request.</p>
 
 <h2>How a change reaches every agent server</h2>
 <!--figure:config-sync-->
 <ol>
-  <li>A developer or an administrator changes a part or a profile in the UI. The cloud stores the change, stamped with the time.</li>
-  <li>Every time an agent run starts, the agent server tells the cloud. The reply carries the time of the latest change.</li>
+  <li>A developer or an administrator changes a part or a profile in the UI. The cloud service stores the change, stamped with the time.</li>
+  <li>Every time an agent run starts, the agent server tells the cloud service. The reply carries the time of the latest change.</li>
   <li>If that time is newer than the agent server's runtime, the agent server asks for what changed since it last asked, and receives only those parts.</li>
   <li>The agent server builds a new runtime from the changed parts and the unchanged pieces of the old one, then swaps it in. The agent runs against it.</li>
 </ol>

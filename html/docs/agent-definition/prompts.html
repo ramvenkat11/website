@@ -100,7 +100,7 @@
 <figure class=code data-lang=jsonc><pre><code><span class=key>&quot;system&quot;</span>: <span class=str>&quot;{ &#x27;You answer questions about &#x27; + const.product + &#x27;. Reply in &#x27; + const.language + &#x27;.&#x27; }&quot;</span>,
 <span class=key>&quot;user&quot;</span>: <span class=str>&quot;{ f&#x27;{sys.query} (customer tier: {tier})&#x27; }&quot;</span></code></pre></figure>
 <p>The rules of every other expression apply: only allowlisted functions, no dunder or private names, and printable ASCII inside the braces. Text outside ASCII is allowed in values, including const values, but not directly inside <code>{ ... }</code>. Use an escape such as <code>\u00e9</code>, or keep the text in const.</p>
-<p>Prompt texts are stored in the cloud in plain form. Text that is sensitive belongs in the <a href="const.html">const</a>, which is stored encrypted, and the prompt reads it as <code>{ const.name }</code>.</p>
+<p>Prompt texts are stored in the cloud service in plain form. Text that is sensitive belongs in the <a href="const.html">const</a>, which is stored encrypted, and the prompt reads it as <code>{ const.name }</code>.</p>
 <p>The two texts are evaluated at different moments:</p>
 <ul>
   <li>The <strong>system</strong> text is evaluated on every <code>llm</code> call that uses the prompt, and replaces the previous system text. A system text that reads a variable follows that variable.</li>

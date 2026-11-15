@@ -37,16 +37,16 @@
 <h2>Two stages</h2>
 <p>An expression is checked twice and run once.</p>
 <ol>
-  <li><strong>When the agent is validated.</strong> The cloud reads each expression and refuses the agent if an expression breaks a rule. The agent server then checks that the names and secrets the expressions use exist.</li>
+  <li><strong>When the agent is validated.</strong> The cloud service reads each expression and refuses the agent if an expression breaks a rule. The agent server then checks that the names and secrets the expressions use exist.</li>
   <li><strong>When the agent runs.</strong> The agent server evaluates the expression in the agent runtime.</li>
 </ol>
 <p>The agent server runs the version of each expression that passed the first stage. The agent runtime adds its own protection: an expression sees only the allowlist, never Python's builtins.</p>
 
 <h2>Stage one: validation</h2>
 
-<h3>What the cloud refuses</h3>
-<p>The cloud parses each expression with Python's own parser. An expression that is not valid Python is refused with the line and column of the error.</p>
-<p>The cloud then refuses these constructs:</p>
+<h3>What the cloud service refuses</h3>
+<p>The cloud service parses each expression with Python's own parser. An expression that is not valid Python is refused with the line and column of the error.</p>
+<p>The cloud service then refuses these constructs:</p>
 
 <div class="tablewrap">
 <table class="fields compare">
@@ -74,13 +74,13 @@
 <p>Inside a command, <code>command.&lt;field&gt;</code> reads a field that the same command has already set. A field the command does not have is refused.</p>
 
 <h3>Variables that nothing sets</h3>
-<p>The cloud also refuses an expression that reads a local variable no earlier command in the function can have set: not an argument, not a loop variable, not the target of a <code>var</code> before it. The check is permissive: a variable set on any path before the expression, for example in one branch of an <code>if</code>, passes. An <code>agent.</code> or <code>conv.</code> variable passes when any <code>var</code> command in the agent sets it. The same check applies to the text of each <a href="prompts.html">prompt</a>, at each <code>llm</code> command that names it.</p>
+<p>The cloud service also refuses an expression that reads a local variable no earlier command in the function can have set: not an argument, not a loop variable, not the target of a <code>var</code> before it. The check is permissive: a variable set on any path before the expression, for example in one branch of an <code>if</code>, passes. An <code>agent.</code> or <code>conv.</code> variable passes when any <code>var</code> command in the agent sets it. The same check applies to the text of each <a href="prompts.html">prompt</a>, at each <code>llm</code> command that names it.</p>
 
 <h3>Operator rewriting</h3>
 <p>The account can map an operator to a function. When <code>**</code> is mapped to <code>bounded_pow</code>, the expression <code>a ** b</code> runs as <code>bounded_pow(a, b)</code>. An account uses this to bound an operation such as a very large power. The function must be in the allowlist and take two values.</p>
 
 <h3>What the agent server checks</h3>
-<p>The cloud does not know which functions the agent server provides or which secrets it holds. The cloud therefore gives the agent server the names the expressions use and the secrets they read.</p>
+<p>The cloud service does not know which functions the agent server provides or which secrets it holds. The cloud service therefore gives the agent server the names the expressions use and the secrets they read.</p>
 <p>The agent server refuses the agent when a name is not in the allowlist or a secret cannot be found. Each message gives the path of the first place the name or secret is used.</p>
 <p>Secrets from environment variables and files are stored on one machine. The check therefore tells a developer that the secret exists on the agent server that validated the agent. Another agent server in the same account must have the same secrets, and the same vault when secrets come from one.</p>
 
