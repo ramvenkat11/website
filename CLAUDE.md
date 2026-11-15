@@ -26,6 +26,11 @@
 
 This is the https://search2o.com website project
 
+## Invisible text follows the content (Ram, 2026-11-15)
+- Whenever visible content changes, update the text visitors do not see in the same pass, without
+  being asked: the page's meta description and og:description, og:image:alt, the title tags, and
+  the aria-label of any figure whose content changed. Then say what was updated.
+
 ## Self-review before reporting (Ram, 2026-10-23)
 - Ram is tired of proofreading. Before saying a visual change is done, render every changed view
   at 1280, 1000, 860, 700, 384 (Galaxy A55), 375 and 360, light and dark, and inspect 2x close-ups

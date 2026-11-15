@@ -2526,3 +2526,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Rendered at the nine widths, light and dark; heading one line from 700 up, two on phones; looked at 1280 light and 384 dark. Backup about.before-about2.html in the scratchpad. Not uploaded.
 - Not changed: the meta description / og:description of about.html still describe the old "one idea" text.
 - about.html Consulting: "your team has a working system" -> "your team will have a working system" (Ram). Text only.
+
+## 2026-11-15: invisible text rule and catch-up
+- New standing rule (Ram), in CLAUDE.md and memory: when visible content changes, update meta description, og:description, og:image:alt, titles and figure aria-labels in the same pass.
+- about.html meta description and og:description: "Search2o is an agent platform for the enterprise: one system to build, run and use AI agents. Consulting for turnkey solutions. Based in Northern Virginia."
+- Catch-up for content changed this session: index.html meta description and og:description now "Transform your business workflows into hundreds of task-focused AI agents with Search2o agent server. Users find and run the agents through search and conversation." (was the old "microagents" text); hybrid figure aria-label gained "The cluster is stateless, scales out and is always in sync."; pricing.html descriptions gained "A private cloud is offered as an enterprise solution." Not uploaded.
