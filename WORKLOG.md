@@ -2498,3 +2498,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-15: hero title changed again
 - `html/index.html` h1: "Transform your enterprise AI with many task-focused agents and one agent server that brings them together as one application" (Ram picked it from alternates; he wants no opinions on headlines, only grammar and typo fixes). Three lines at 1280/1000, two at 860/700, four on phones, five at 320; no overflow. Looked at 1280 light, 384 dark.
 - Stale again: og10.png (already uploaded live with the "Semantic search makes..." line), og:image:alt on all pages, content/linkedin-banner2.png. Not uploaded.
+
+## 2026-11-15: hero title, next version
+- `html/index.html` h1: "Transform your enterprise workflows into many task-focused AI agents — Search2o agent server brings them together as one application" (Ram's wording; his hyphen became an em dash, bound to "agents" with nbsp so it never starts a line). Three lines 700-1280, four to five on phones, six at 320; sweep 320-1280 clean. Looked at 1280 light, 384 dark, 320 light.
+- og10.png (live), og:image:alt and LinkedIn banner still carry "Semantic search makes...". Not uploaded.
