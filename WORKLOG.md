@@ -2588,3 +2588,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - New sharing image html/images/og11.png (gen/ogcard.py output renamed): tagline "Agent platform for the enterprise", title "Transform your business / workflows into hundreds of / task-focused AI agents". og:image on the 18 hand-written pages, the docs template (147 pages rebuilt) and content/demo.html now points at og11.png. og10.png kept on disk.
 - content/linkedin-banner2.png regenerated and checked: title "Agent platform for the enterprise", subtitle the hero title. Ram uploads it to LinkedIn by hand.
 - Looked at both images. Not uploaded.
+- about.html Deployment: removed ", and does not depend on your existing application infrastructure" (Ram). Text only.
