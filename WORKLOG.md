@@ -2480,3 +2480,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - `html/styles/styles.css` `.price-fig`: five columns (`--link-w` 156px, 142px at container <=811px, `--or-w` 44px); `.st-own`, `.st-or` rules; stack breakpoint moved from container 560px to 679px, stacked rows 3/4/5.
 - pricecheck.js (scratchpad) clean in a 320-1280 sweep; renders looked at: 1280 light, 1000 dark, 860 dark, 730 light, 384 light, 320 dark. Backups pricing.before-pair.html, styles.before-pricepair.css. Not uploaded.
 - Pricing "Private cloud" section, second sentence now: "With it, the agent server uses your own private cloud instead of Search2o Cloud." (Ram, paraphrased). Text only.
+
+## 2026-11-14: og10 and LinkedIn banner for the current hero
+- Live site still serves og9.png (og10.png is 404 there), so og10.png was regenerated in place: gen/ogcard.py LINES now "Semantic search makes hundreds of / task-focused AI agents / work as one application" (58px, widest 1006 of 1006).
+- gen/linkedin_banner.py SUB is the same sentence at 68px; content/linkedin-banner2.png regenerated (content 1317-3980 of 4200). Ram uploads it to LinkedIn by hand.
+- og:image:alt updated to the new sentence on 18 site pages, content/demo.html and the gen/build.py template; docs rebuilt (147 pages). Looked at both images. Not uploaded.
