@@ -2591,3 +2591,10 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - about.html Deployment: removed ", and does not depend on your existing application infrastructure" (Ram). Text only.
 - about.html Deployment opens "The platform has two parts: an agent server and a cloud service." (Ram; dash made a colon, articles added). Text only.
 - about.html Deployment: "A cloud service provides" -> "The cloud service provides" (follows the new opening sentence; Ram caught it). Text only.
+
+## 2026-11-15: docs: "the cloud service" wording
+- Ram: do the docs now; change what is straightforward, ask about the rest.
+- 79 bare "the cloud"/"a cloud" in 35 docsrc pages -> "the cloud service" (script docs_cloud.py in the scratchpad; kept: Google Cloud, cloud connection pool, cloud pool, <code>cloud</code>, class names). Headings changed: "The cloud service" (parts page), "Putting the agent server near the cloud service", "What the cloud service refuses"; no page links to those anchors.
+- gen/figures.py: figure texts "the cloud service checks the definition and expressions;", "cloud service indexes the description;" (moved to x=490), "2. Match / cloud service matches", "1. tell the cloud service a run starts", encryption figure boxes "cloud service". figcheck.js (scratchpad) run on all 22 pages with figures: clean. Looked at how-it-fits-together at 1280.
+- Docs rebuilt (147 pages). Backup of docsrc before the change: scratchpad/docsrc-before-cloudservice/. Not uploaded.
+- Platform vs agent server in docs: surveyed overview, introduction and section index pages; every "agent server" there is the literal server. Nothing changed. Open questions put to Ram: parts-of-the-system lead ("three parts"), a "shared or dedicated" sentence in the docs text, generated text from s2oserver models that still says "the cloud".
