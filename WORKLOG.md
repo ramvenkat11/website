@@ -2582,3 +2582,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Platform wording applied on the three clear sentences from my survey: conversation.html "the platform saves the conversation's state automatically"; framework.html meta description/og:description "the platform handles credentials..." and "The platform then runs the draft...". Not applied (judgement calls, awaiting Ram): demo-search.html "the agent server's configuration", about.html "hybrid cloud system".
 - Text only, no renders. Not uploaded. Next: docs get the same platform / cloud service wording when Ram says.
 - pricing.html: "A dedicated cloud service will be offered in the future as an enterprise solution." (Ram); meta description and og:description say the same. Text only.
+
+## 2026-11-15: about Deployment paragraph, og11.png, banner
+- about.html Deployment now opens: "The platform has two parts. Administrators run only stateless agent servers in their own environment. A cloud service provides state, search and reporting, and does not depend on your existing application infrastructure." (encryption and shared/dedicated sentences unchanged). Page summary unaffected.
+- New sharing image html/images/og11.png (gen/ogcard.py output renamed): tagline "Agent platform for the enterprise", title "Transform your business / workflows into hundreds of / task-focused AI agents". og:image on the 18 hand-written pages, the docs template (147 pages rebuilt) and content/demo.html now points at og11.png. og10.png kept on disk.
+- content/linkedin-banner2.png regenerated and checked: title "Agent platform for the enterprise", subtitle the hero title. Ram uploads it to LinkedIn by hand.
+- Looked at both images. Not uploaded.
