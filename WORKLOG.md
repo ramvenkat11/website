@@ -2589,3 +2589,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - content/linkedin-banner2.png regenerated and checked: title "Agent platform for the enterprise", subtitle the hero title. Ram uploads it to LinkedIn by hand.
 - Looked at both images. Not uploaded.
 - about.html Deployment: removed ", and does not depend on your existing application infrastructure" (Ram). Text only.
+- about.html Deployment opens "The platform has two parts: an agent server and a cloud service." (Ram; dash made a colon, articles added). Text only.
