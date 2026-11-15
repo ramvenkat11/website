@@ -2464,3 +2464,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - `html/index.html` `#user-interfaces` `.cc-server`: added `.cc-server-links` line "Stateless · Scales out · Always in sync", linked to docs/introduction/parts-of-the-system.html, docs/system-management/agent-server-sizing.html, docs/runtime/overview.html. One line from 580 up, three stacked lines below.
 - `html/styles/styles.css`: `.cc-main .arch-sys` rows `1fr 1fr var(--ext-drop)` and stretched branches, so the two side boxes always match the server height; `.cc-server-links` 11.5px (10px on phones).
 - arrowcheck.js and new srvcheck.js clean at fixed widths and in a 320-1280 sweep; renders looked at: 1280 light, 700 light, 384 dark, 320 light. Not uploaded.
+
+## 2026-11-14: private cloud follow-ups
+- Ram: license rotation applies to a private cloud too, so no note on docsrc/security/license-rotation.html. He will change the systemconfig.py cloud text in s2oserver himself (docs rebuild needed here afterwards). Legal pages stay; enterprise accounts get their own licensing.
+- Wrote `content/pricing-page.md` with the current text of html/pricing.html for Ram to edit; pricing.html itself untouched. Next: apply his edits when he says so (figure will need "Search2o Cloud or private cloud").
