@@ -30,7 +30,7 @@ img = Image.alpha_composite(img.convert("RGBA"), grid)
 # the space right of the logo. The name is left to the logo (gen/linkedin_logo.py).
 LOGO_END = 1097  # x where the overlaid page logo stops covering the banner, as seen on the live page
 TITLE = "Agent server for the enterprise"; TITLE_SIZE = 160
-SUB = "Transform your business workflows into hundreds of task-focused AI agents with Search2o agent server"; SUB_SIZE = 54
+SUB = "Transform your business workflows into hundreds of task-focused AI agents"; SUB_SIZE = 72
 SUB_GAP = 64
 title_font = bold(TITLE_SIZE); sub_font = medium(SUB_SIZE)
 content_w = max(title_font.getlength(TITLE), sub_font.getlength(SUB))

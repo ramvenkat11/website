@@ -44,9 +44,9 @@ d.text((603, wm_bottom), "Agent server for the enterprise", font=medium(34), fil
 
 # headline: segments per line; "ink" and "muted" are flat, "accent" takes the blue-to-teal gradient over its own span
 LINES = [
-    [("Transform your business workflows", "ink")],
-    [("into hundreds of task-focused", "ink")],
-    [("AI agents with Search2o agent server", "ink")],
+    [("Transform your business", "ink")],
+    [("workflows into hundreds of", "ink")],
+    [("task-focused AI agents", "ink")],
 ]
 def line_width(font, segs): return sum(font.getlength(t) for t, _ in segs)
 def draw_lines(img, x0, top, f, pitch, size):

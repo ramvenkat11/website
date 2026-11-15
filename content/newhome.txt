@@ -1,10 +1,7 @@
-Let your users converse with hundreds of microagents
+Developers build task‑focused agents on the agent server, and describe when to use each agent in plain English.
 
-Microagents are small, task focused agents that run on a server for different users.
+Users just chat with the agent server. The right agent runs for each request. Multiple agents build on each other in a conversation.
 
-Developers build, validate and publish microagents on the agent server. They describe when to use each one in plain English. Users never learn them.
 
-Users just start a conversation with a request. The agent server finds the right microagent with semantic search, and runs it on that request. Follow‑up requests can bring in other agents, and build on previous results.
 
-The agent server keeps every run safe, bounded and observable.
 
