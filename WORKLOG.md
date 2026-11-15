@@ -2569,3 +2569,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Docs: parts-of-the-system figure back to one `.st-box.st-cloud` (the `.docs-arch .st-pair` CSS block removed), aria-label updated; gen/figures.py config-sync back to one 220px box "Cloud service" with "shared or dedicated" beside it; unused architecture figure box renamed. Docs rebuilt (147 pages).
 - Checks: home onecheck.js/srvcheck.js/platcheck.js sweeps 320-1280 clean; pricing sweep no overflow or wrapping. Looked at: home section 1280 light, 384 dark; pricing page 1280 light, 384 dark; parts figure 1280 light, 384 dark; config figure 1280 light. Backups *.before-onecloud.* in the scratchpad. Not uploaded.
 - Left: legal pages still name "Search2o Cloud" (license 8, terms 1, privacy 1). content/*.md working files not touched.
+- about.html intro back to "agent platform" / "the platform runs them" (Ram); meta description and og:description follow. Text only.
