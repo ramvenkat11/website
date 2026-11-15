@@ -2542,3 +2542,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-15: hero paragraphs replaced
 - index.html hero paragraphs 1 and 2 are now Ram's text from content/newhome.txt: "Developers build task-focused agents on the agent server, and describe when to use each agent in plain English." / "Users just chat with the agent server. The right agent runs for each request. Multiple agents build on each other in a conversation." Links kept: task-focused agents, describe, right agent (search.html), build on each other, conversation. Third paragraph (safe, bounded, observable) unchanged.
 - "in a conversation" bound with nbsp. Rendered nine widths light+dark, sweep 320-1280 no overflow; looked at 1280 light, 384 dark, 320 light. Meta description still fits; not changed. Not uploaded.
+- about.html Search paragraph: "Users don't pick an agent from a catalog. They just ask a question or make a request." (Ram, paraphrased). Page summary unaffected. Text only.
