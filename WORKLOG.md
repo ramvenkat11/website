@@ -2494,3 +2494,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Ram: nothing in the figure should stand out. He picked (by question) the agent server title and the cloud/External LLMs titles; navy cloud fill and icon tiles stay.
 - `html/styles/styles.css`: `.cc-server-head strong` 19px/800 -> 13px/700; `.arch-ext strong` and `.cloud strong` 15px/800 -> 13px/700; at <=640 all three 12px (was 15px server). All ten titles now 13px/700 (clients 11px, others 12px on phones, as before for clients and side boxes).
 - arrowcheck.js and srvcheck.js clean in a 320-1280 sweep; renders looked at: 1280 light, 384 dark, 320 light. Backup styles.before-equal-titles.css. Not uploaded.
+
+## 2026-11-15: hero title changed again
+- `html/index.html` h1: "Transform your enterprise AI with many task-focused agents and one agent server that brings them together as one application" (Ram picked it from alternates; he wants no opinions on headlines, only grammar and typo fixes). Three lines at 1280/1000, two at 860/700, four on phones, five at 320; no overflow. Looked at 1280 light, 384 dark.
+- Stale again: og10.png (already uploaded live with the "Semantic search makes..." line), og:image:alt on all pages, content/linkedin-banner2.png. Not uploaded.
