@@ -2471,3 +2471,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-14: docs rebuilt after systemconfig.py change
 - Ram changed the cloud text in ../s2oserver/models/systemconfig.py; `python3 gen/build.py` rebuilt 147 pages. hooks/overview, system-management/agent-servers and single-sign-on now say "the cloud". "Search2o Cloud" remains in built docs only in the two figures (parts-of-the-system; config-sync on how-it-fits-together and runtime/overview), as intended. Not uploaded.
+
+## 2026-11-14: pricing page private cloud section
+- `html/pricing.html`: new h2 "Private cloud" after "Search2o Cloud is free during beta": "A private cloud will be offered as an enterprise solution. With it, the cloud also runs in your organization, alongside the agent server." Ram said to ignore content/pricing-page.md (his notes there on usage-based and custom pricing were not applied). Pricing figure unchanged (one Search2o Cloud box). Text only, not uploaded.
