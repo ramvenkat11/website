@@ -2485,3 +2485,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Live site still serves og9.png (og10.png is 404 there), so og10.png was regenerated in place: gen/ogcard.py LINES now "Semantic search makes hundreds of / task-focused AI agents / work as one application" (58px, widest 1006 of 1006).
 - gen/linkedin_banner.py SUB is the same sentence at 68px; content/linkedin-banner2.png regenerated (content 1317-3980 of 4200). Ram uploads it to LinkedIn by hand.
 - og:image:alt updated to the new sentence on 18 site pages, content/demo.html and the gen/build.py template; docs rebuilt (147 pages). Looked at both images. Not uploaded.
+
+## 2026-11-14: og10.png uploaded alone
+- On Ram's go-ahead: `aws s3 cp html/images/og10.png s3://search2o.com/images/og10.png --acl public-read --cache-control "public, max-age=2592000" --content-type image/png`. No sync, no invalidation. Live copy is byte-identical to the local file. First attempt carried the deploy.sh line comment inside the Cache-Control value (my sed kept it); re-uploaded at once with the clean value, and the live header is clean.
+- Live pages still point at og9.png until the next full deploy.
