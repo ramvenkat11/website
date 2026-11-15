@@ -2489,3 +2489,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-14: og10.png uploaded alone
 - On Ram's go-ahead: `aws s3 cp html/images/og10.png s3://search2o.com/images/og10.png --acl public-read --cache-control "public, max-age=2592000" --content-type image/png`. No sync, no invalidation. Live copy is byte-identical to the local file. First attempt carried the deploy.sh line comment inside the Cache-Control value (my sed kept it); re-uploaded at once with the clean value, and the live header is clean.
 - Live pages still point at og9.png until the next full deploy.
+
+## 2026-11-14: equal titles in the hybrid figure
+- Ram: nothing in the figure should stand out. He picked (by question) the agent server title and the cloud/External LLMs titles; navy cloud fill and icon tiles stay.
+- `html/styles/styles.css`: `.cc-server-head strong` 19px/800 -> 13px/700; `.arch-ext strong` and `.cloud strong` 15px/800 -> 13px/700; at <=640 all three 12px (was 15px server). All ten titles now 13px/700 (clients 11px, others 12px on phones, as before for clients and side boxes).
+- arrowcheck.js and srvcheck.js clean in a 320-1280 sweep; renders looked at: 1280 light, 384 dark, 320 light. Backup styles.before-equal-titles.css. Not uploaded.
