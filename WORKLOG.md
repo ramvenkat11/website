@@ -2525,3 +2525,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - `html/about.html`: h1 "Rethinking search" -> "One system to build, run and use AI agents"; the seven opening paragraphs replaced by the text of content/about2.md (intro plus eight bold-led paragraphs: Framework, Runtime, Search, Conversations, Interfaces, Observability, Administration, Deployment). Company, Consulting and Contact unchanged. No wording changes to Ram's text.
 - Rendered at the nine widths, light and dark; heading one line from 700 up, two on phones; looked at 1280 light and 384 dark. Backup about.before-about2.html in the scratchpad. Not uploaded.
 - Not changed: the meta description / og:description of about.html still describe the old "one idea" text.
+- about.html Consulting: "your team has a working system" -> "your team will have a working system" (Ram). Text only.
