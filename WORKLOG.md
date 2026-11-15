@@ -2532,3 +2532,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - about.html meta description and og:description: "Search2o is an agent platform for the enterprise: one system to build, run and use AI agents. Consulting for turnkey solutions. Based in Northern Virginia."
 - Catch-up for content changed this session: index.html meta description and og:description now "Transform your business workflows into hundreds of task-focused AI agents with Search2o agent server. Users find and run the agents through search and conversation." (was the old "microagents" text); hybrid figure aria-label gained "The cluster is stateless, scales out and is always in sync."; pricing.html descriptions gained "A private cloud is offered as an enterprise solution." Not uploaded.
 - about.html intro: "agent platform" -> "agent server", "the platform runs them" -> "the agent server runs them" (Ram); meta description and og:description follow ("Search2o is an agent server for the enterprise: one system to build, run and use AI agents. ..."). Text only.
+
+## 2026-11-15: "with Search2o agent server" dropped from hero and image
+- index.html h1: "Transform your business workflows into hundreds of task-focused AI agents". Two lines from 440 up (incl. 1280-1440), three on phones 320-420; no overflow. Looked at 1280 light, 384 dark.
+- og10.png regenerated locally: "Transform your business / workflows into hundreds of / task-focused AI agents" at 64px; og:image:alt on all pages (docs rebuilt) now ends "...task-focused AI agents."; LinkedIn banner subtitle the same sentence at 72px (content 1383-3915 of 4200). Looked at both.
+- Kept, as Ram said: the home meta description / og:description still name the product ("...with Search2o agent server. Users find and run...").
+- Not uploaded; live og10.png is still the 2026-11-14 card.
