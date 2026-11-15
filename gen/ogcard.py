@@ -40,13 +40,13 @@ d = ImageDraw.Draw(img)
 wm_bottom = 96 + wm.height  # the wordmark's baseline (no descenders)
 # hairline + tagline on the wordmark's baseline
 d.rectangle([568, 96, 569, wm_bottom - 1], fill=HAIR)
-d.text((603, wm_bottom), "Agent server built around search", font=medium(34), fill=MUTED, anchor="ls")
+d.text((603, wm_bottom), "Agent server for the enterprise", font=medium(34), fill=MUTED, anchor="ls")
 
 # headline: segments per line; "ink" and "muted" are flat, "accent" takes the blue-to-teal gradient over its own span
 LINES = [
-    [("Semantic search makes hundreds of", "ink")],
-    [("task-focused AI agents", "ink")],
-    [("work as one application", "ink")],
+    [("Transform your business workflows", "ink")],
+    [("into hundreds of task-focused", "ink")],
+    [("AI agents with Search2o agent server", "ink")],
 ]
 def line_width(font, segs): return sum(font.getlength(t) for t, _ in segs)
 def draw_lines(img, x0, top, f, pitch, size):
@@ -69,7 +69,8 @@ def draw_lines(img, x0, top, f, pitch, size):
 size = 64
 while max(line_width(bold(size), l) for l in LINES) > 1006: size -= 1
 f = bold(size); pitch = round(size * 1.3)
-n = len(LINES); top = round((300 + 462) / 2 - n * pitch / 2) + 6
+LONG_BLOCK_LIFT = 22  # a four-line heading is raised so it clears the rule above the address
+n = len(LINES); top = round((300 + 462) / 2 - n * pitch / 2) + 6 - (LONG_BLOCK_LIFT if n > 3 else 0)
 draw_lines(img, 97, top, f, pitch, size)
 
 # rule and the address
