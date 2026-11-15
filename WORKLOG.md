@@ -2538,3 +2538,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - og10.png regenerated locally: "Transform your business / workflows into hundreds of / task-focused AI agents" at 64px; og:image:alt on all pages (docs rebuilt) now ends "...task-focused AI agents."; LinkedIn banner subtitle the same sentence at 72px (content 1383-3915 of 4200). Looked at both.
 - Kept, as Ram said: the home meta description / og:description still name the product ("...with Search2o agent server. Users find and run...").
 - Not uploaded; live og10.png is still the 2026-11-14 card.
+
+## 2026-11-15: hero paragraphs replaced
+- index.html hero paragraphs 1 and 2 are now Ram's text from content/newhome.txt: "Developers build task-focused agents on the agent server, and describe when to use each agent in plain English." / "Users just chat with the agent server. The right agent runs for each request. Multiple agents build on each other in a conversation." Links kept: task-focused agents, describe, right agent (search.html), build on each other, conversation. Third paragraph (safe, bounded, observable) unchanged.
+- "in a conversation" bound with nbsp. Rendered nine widths light+dark, sweep 320-1280 no overflow; looked at 1280 light, 384 dark, 320 light. Meta description still fits; not changed. Not uploaded.
