@@ -2474,3 +2474,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-14: pricing page private cloud section
 - `html/pricing.html`: new h2 "Private cloud" after "Search2o Cloud is free during beta": "A private cloud will be offered as an enterprise solution. With it, the cloud also runs in your organization, alongside the agent server." Ram said to ignore content/pricing-page.md (his notes there on usage-based and custom pricing were not applied). Pricing figure unchanged (one Search2o Cloud box). Text only, not uploaded.
+
+## 2026-11-14: pricing figure with two clouds
+- `html/pricing.html` `.price-fig`: one cloud box (tag "Search2o Cloud", "State") replaced by two boxes, "Search2o Cloud / Free during beta" and dashed "Your private cloud / Enterprise solution", with `<b class="st-or">or</b>` between; aria-label updated.
+- `html/styles/styles.css` `.price-fig`: five columns (`--link-w` 156px, 142px at container <=811px, `--or-w` 44px); `.st-own`, `.st-or` rules; stack breakpoint moved from container 560px to 679px, stacked rows 3/4/5.
+- pricecheck.js (scratchpad) clean in a 320-1280 sweep; renders looked at: 1280 light, 1000 dark, 860 dark, 730 light, 384 light, 320 dark. Backups pricing.before-pair.html, styles.before-pricepair.css. Not uploaded.
