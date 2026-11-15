@@ -2510,3 +2510,10 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-15: hero title, shorter version
 - `html/index.html` h1: "Transform your enterprise workflows into hundreds of task-focused AI agents with Search2o agent server" (Ram). "AI agents" bound with nbsp. Looked at 1280 light, 384 dark, 320 light; sweep 320-1280 no overflow.
 - og10.png (local shows the previous "...brings them together as one application" title; live shows "Semantic search makes..."), og:image:alt and LinkedIn banner are stale. Not uploaded.
+
+## 2026-11-15: tagline back to "Agent server for the enterprise"
+- Replaced "Agent server built around search" in the header span.tagline and footer brand line on the 18 hand-written pages, the gen/build.py template (docs rebuilt, 147 pages), gen/ogcard.py and gen/linkedin_banner.py.
+- og:image:alt everywhere: "Search2o, agent server for the enterprise. Transform your enterprise workflows into hundreds of task-focused AI agents with Search2o agent server."
+- html/images/og10.png regenerated locally with the new tagline and the current hero on three lines (56px, widest 999 of 1006); content/linkedin-banner2.png regenerated (title = tagline, subtitle = hero at 54px, content 1335-3962 of 4200). Neither uploaded; live og10.png is still the "Semantic search makes..." card.
+- Header sweep 320-1280 on home, a docs page and pricing: no overlap or overflow; tagline on two lines at 320-348 (home, pricing) and 320-392 (docs). Looked at header 1280 light, docs 1000 light, docs 384 dark, home 320 light, og10.png, banner.
+- Left for Ram: html/about.html:67 body sentence "an agent server built around search" and the trademark line in html/legal/intellectual.html:64.
