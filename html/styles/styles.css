@@ -754,7 +754,7 @@ p { margin: 0; }
 .cc-arch .cc-clients .cc-skill { position: absolute; left: 50%; bottom: 0; z-index: 1; margin: 0; transform: translate(-50%, 50%); flex-wrap: nowrap; width: max-content; }
 .cc-arch .cc-clients .cc-skill span { white-space: nowrap; }
 .cc-server-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 2px 8px; }
-.cc-arch.hero-arch .cc-server-head strong { font-size: 19px; font-weight: 800; letter-spacing: -0.02em; }
+.cc-arch.hero-arch .cc-server-head strong { font-size: 13px; line-height: 1.25; }
 .cc-join { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, .85fr) minmax(0, 1fr) minmax(0, .85fr); gap: 0 var(--g); width: 100%; justify-items: center; }
 .cc-join i { position: relative; width: 2px; height: 30px; background: var(--slate); opacity: .55; }
 .cc-join i { height: 17px; margin-top: 13px; }
@@ -839,7 +839,7 @@ p { margin: 0; }
 .cc-arch .arch-out .arch-ext { width: auto; justify-self: stretch; justify-items: center; align-content: center; gap: 4px; padding: 20px 14px 14px; text-align: center; }
 .cc-arch .arch-out .arch-ext .ic { display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 4px; border-radius: 13px; background: var(--icon-bg); color: var(--icon-fg); }
 .cc-arch .arch-out .arch-ext .ic svg { width: 24px; height: 24px; }
-.cc-arch .arch-out .arch-ext strong { font-size: 15px; font-weight: 800; line-height: 1.25; }
+.cc-arch .arch-out .arch-ext strong { font-size: 13px; line-height: 1.25; }
 .cc-arch .arch-out .arch-ext > span { font-size: 12px; line-height: 1.4; }
 @media (max-width: 579px) {
   .cc-arch .sep { display: block; height: 0; overflow: hidden; }
@@ -860,7 +860,7 @@ p { margin: 0; }
 .cc-arch .cloud-hosts b { padding: 2px 12px 4px; border-radius: 999px; background: #e6edf9; color: #131f38; font-size: 15px; font-style: italic; font-weight: 700; line-height: 1.2; box-shadow: 0 0 0 3px var(--card); }
 .cc-arch .arch-out .cloud .ic { display: grid; place-items: center; width: 44px; height: 44px; margin-bottom: 4px; border-radius: 13px; background: rgba(255, 255, 255, .1); color: #a9c6ff; }
 .cc-arch .arch-out .cloud .ic svg { width: 24px; height: 24px; }
-.cc-arch .arch-out .cloud strong { font-size: 15px; font-weight: 800; line-height: 1.25; }
+.cc-arch .arch-out .cloud strong { font-size: 13px; line-height: 1.25; }
 .cc-arch .arch-out .cloud strong a { color: inherit; }
 .cc-arch .arch-out .cloud > span { max-width: 300px; color: #c7d5f5; font-size: 12px; line-height: 1.4; }
 .cc-arch .arch-out .cloud > span em { display: block; margin-top: 2px; font-style: normal; color: #a9c6ff; font-size: 11.5px; }
@@ -1477,7 +1477,7 @@ a.arch-lbl { color: var(--blue-ink); }
   .cc-main .arch-branch .arch-node strong { font-size: 12px; }
   .cc-main .arch-sys .arch-node > span { font-size: 10px; }
   .cc-main .cc-server { padding: 12px 10px; }
-  .cc-arch.hero-arch .cc-main .cc-server-head strong { font-size: 15px; }
+  .cc-arch.hero-arch .cc-main .cc-server-head strong, .cc-arch .arch-out .arch-ext strong, .cc-arch .arch-out .cloud strong { font-size: 12px; }
   .header-cta { display: none; }
   .cardgrid, .form-grid, .how-steps { grid-template-columns: 1fr; }
   .footer-main { flex-direction: column; gap: 32px; }
