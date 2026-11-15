@@ -2570,3 +2570,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Checks: home onecheck.js/srvcheck.js/platcheck.js sweeps 320-1280 clean; pricing sweep no overflow or wrapping. Looked at: home section 1280 light, 384 dark; pricing page 1280 light, 384 dark; parts figure 1280 light, 384 dark; config figure 1280 light. Backups *.before-onecloud.* in the scratchpad. Not uploaded.
 - Left: legal pages still name "Search2o Cloud" (license 8, terms 1, privacy 1). content/*.md working files not touched.
 - about.html intro back to "agent platform" / "the platform runs them" (Ram); meta description and og:description follow. Text only.
+
+## 2026-11-15: hybrid figure shows the platform's two parts
+- Ram: match the agent server box to the cloud's background and/or show both belong to the Search2o platform. Did both: `.cc-main .cc-server` now uses var(--cloud-bg)/--cloud-border with white title, light links and cloud-style icon tiles; new one-line key under the figure, `<p class="arch-key">` navy swatch + "Search2o agent platform". aria-label notes the shared colour.
+- onecheck.js, srvcheck.js and a key-spacing check clean in a 320-1280 sweep; looked at 1280 light, 384 dark, 320 light. Backups index.before-navy.html, styles.before-navy.css. Not uploaded.
