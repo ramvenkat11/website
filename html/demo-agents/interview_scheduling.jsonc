@@ -18,7 +18,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate a mock interview schedule...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that finds times when a candidate and the interview panel are all free, proposes an interview schedule, and drafts the invitation the candidate receives...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

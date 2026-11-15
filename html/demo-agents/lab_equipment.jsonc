@@ -39,7 +39,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.labInstrument": "{ labInstrument }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock lab equipment booking...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that books time on shared lab instruments such as the mass spectrometer, electron microscope and 3D printer, and says which slots are free and what training is needed first...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

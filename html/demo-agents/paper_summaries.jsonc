@@ -45,7 +45,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.paperAbstract": "{ paperAbstract }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock paper summary...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that explains a scientific paper's abstract in plain language and says how its findings could apply to our own products...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

@@ -51,7 +51,7 @@
           "then": { "fail": "Items used for over a year cannot be returned." }
         },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock return and refund decision...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that handles a customer's return: checks whether the item is eligible, explains how to send it back, and says when and how the refund will arrive...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

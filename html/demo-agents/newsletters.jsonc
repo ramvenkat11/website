@@ -39,7 +39,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.tone": "{ tone }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock newsletter...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that writes the company's email newsletter from a list of updates, with a subject line, short sections and links...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

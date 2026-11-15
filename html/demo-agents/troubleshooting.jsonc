@@ -16,7 +16,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate mock troubleshooting steps...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that guides a customer step by step through fixing a problem with a product that is not working as expected, and says when to contact support instead...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

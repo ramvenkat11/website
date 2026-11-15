@@ -51,7 +51,7 @@
           "then": { "end": "Executives do not speak at political events. The request has been declined." }
         },
 
-        "progress.2": "Asking OpenAI gpt-5-mini to generate a mock speaking request review...",
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock data as an agent that reviews an invitation for an executive to speak at an event, says whether it fits the company's priorities and drafts a reply accepting or declining it...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

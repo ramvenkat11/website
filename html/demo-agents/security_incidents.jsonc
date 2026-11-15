@@ -51,7 +51,7 @@
           "then": { "end": "Call the security operations hotline now on extension 5000. Do not turn off the affected computer." }
         },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock security incident record...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that takes a report of a suspected security incident, such as a lost laptop, malware or a leaked password, tells the employee what to do right away, and writes up the report for the security team...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

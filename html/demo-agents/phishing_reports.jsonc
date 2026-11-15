@@ -45,7 +45,7 @@
           "then": { "fail": "Disconnect from the network now and call the IT security line." }
         },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock phishing report result...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that lets an employee report a suspicious email, tells them whether it is a known phishing attempt, and what to do if they already clicked a link...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

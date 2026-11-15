@@ -10,7 +10,7 @@
         "var": { "figure": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate a mock privacy request record...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that handles a person's request to see, correct or delete the personal data the company holds about them, and tracks the legal response deadline...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

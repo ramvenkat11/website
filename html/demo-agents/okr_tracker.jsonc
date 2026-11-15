@@ -10,7 +10,7 @@
         "var": { "figure": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock objectives and key results...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that shows the company's objectives and key results for the quarter, how far along each one is and which are at risk of being missed...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

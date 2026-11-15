@@ -39,7 +39,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.accessibilityCheck": "{ accessibilityCheck }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock accessibility test guidance...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that explains how to test a screen or page for accessibility, such as screen reader, keyboard and color contrast checks, and what counts as a pass...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

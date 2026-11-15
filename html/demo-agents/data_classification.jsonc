@@ -53,7 +53,7 @@
         // Shared with every agent in the conversation.
         "var.6": { "conv.dataAction": "{ dataAction }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock data classification...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that tells an employee how sensitive a document or dataset is under the company's classification levels, and how that level lets them store, share and send it...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

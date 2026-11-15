@@ -10,7 +10,7 @@
         "var": { "figure": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to generate a mock visitor registration...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that registers a visitor coming to the office, prints their badge details, and tells the host when they arrive...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

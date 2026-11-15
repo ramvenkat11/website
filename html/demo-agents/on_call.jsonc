@@ -23,7 +23,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking OpenAI gpt-5-mini to generate a mock on-call schedule...",
+        "progress": "Asking OpenAI gpt-5-mini to generate mock data as an agent that tells an engineer who is on call for a team or service right now and next week, and how to reach them...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }

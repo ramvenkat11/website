@@ -53,7 +53,7 @@
           "then": { "end": "Hazardous items follow separate rules. Ask the hazardous materials agent instead." }
         },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock packaging specifications...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that tells warehouse and shipping staff how to pack an item - box strength, cushioning, pallet layout and labels - so it arrives undamaged...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

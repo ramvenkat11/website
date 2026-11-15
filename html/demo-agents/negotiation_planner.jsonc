@@ -10,7 +10,7 @@
         "var": { "target": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to generate a mock negotiation plan...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that prepares a buyer for a price negotiation with a supplier: a target price, a walk-away point, the arguments to use and the concessions to ask for in return...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

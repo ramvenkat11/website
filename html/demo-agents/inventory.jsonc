@@ -12,7 +12,7 @@
         "var.2": { "units": "{ randint(0, 500) }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate mock stock levels...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that shows how much of a product is in stock at each warehouse, what is on order, and which items are running low...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

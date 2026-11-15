@@ -60,7 +60,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.approvalDecision": "{ approvalDecision }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock approval limits...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that tells a manager who is allowed to approve a decision, such as spending, hiring or signing a contract, and the limits each level of the company can approve alone...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

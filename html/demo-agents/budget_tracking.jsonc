@@ -15,7 +15,7 @@
         "var.2": { "figure": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking OpenAI gpt-5-mini to generate mock budget and spending figures...",
+        "progress": "Asking OpenAI gpt-5-mini to generate mock data as an agent that compares a department's actual spending with its budget for the month or quarter, shows where it is over or under, and by how much...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

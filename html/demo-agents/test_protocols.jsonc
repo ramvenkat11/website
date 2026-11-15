@@ -44,7 +44,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.productStage": "{ productStage }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock test protocol...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that writes a test protocol for a prototype or final design, with the setup, steps, measurements and pass or fail criteria...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

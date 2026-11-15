@@ -57,7 +57,7 @@
         // Shared with every agent in the conversation.
         "var.5": { "conv.cardRequest": "{ cardRequest }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock purchasing card request...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that requests a new company purchasing card or a higher monthly limit on an existing one, and explains which purchases the card may and may not be used for...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

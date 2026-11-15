@@ -39,7 +39,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.executive": "{ executive }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock speech...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that writes speeches and talking points for a company leader to deliver at events, all-hands meetings or conferences...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

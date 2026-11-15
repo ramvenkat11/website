@@ -42,7 +42,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.disruptionScenario": "{ disruptionScenario }" },
 
-        "progress.2": "Asking Google gemini-3.6-flash to generate a mock business continuity plan...",
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock data as an agent that gives the plan for keeping the business running during a disruption such as a site outage or IT failure: recovery steps, time targets and who to call...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

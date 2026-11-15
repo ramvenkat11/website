@@ -60,7 +60,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.customerType": "{ customerType }" },
 
-        "progress.2": "Asking Google gemini-3.6-flash to generate a mock list of identity checks...",
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock data as an agent that lists the identity documents and background checks needed before onboarding a new customer, depending on whether it is a person, business or government body...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

@@ -16,7 +16,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate a mock brand guideline check...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that checks text or a design description against the company's brand guidelines - logo use, colors, fonts, tone of voice and approved terms - and lists what to change...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

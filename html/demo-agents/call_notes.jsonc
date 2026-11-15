@@ -10,7 +10,7 @@
         "trace": "{ 'Question length: ' + str(len(sys.query)) }",
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate a mock call summary...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that turns a salesperson's notes from a customer call into a clean summary with next steps, decision makers mentioned and follow-up dates...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

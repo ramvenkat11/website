@@ -15,7 +15,7 @@
         "trace": "{ 'Question length: ' + str(len(sys.query)) }",
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to generate a mock test failure explanation...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that explains why an automated test failed: the error, the likely cause in recent code changes, and whether the test fails intermittently...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }

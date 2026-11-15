@@ -10,7 +10,7 @@
         "var": { "figure": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock RICE scores...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that scores candidate features by reach, impact, confidence and effort, and ranks them so a product team can decide what to build next...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

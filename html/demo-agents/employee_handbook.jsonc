@@ -4,7 +4,7 @@
     "main": {
       "commands": {
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate a mock handbook answer...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that answers questions about company policies in the employee handbook, such as dress code, remote work, working hours, holidays and the code of conduct...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

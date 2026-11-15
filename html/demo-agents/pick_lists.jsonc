@@ -15,7 +15,7 @@
         "trace": "{ 'Question length: ' + str(len(sys.query)) }",
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate a mock pick list...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that generates the pick list for warehouse staff to fill today's orders, ordered by location in the warehouse...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

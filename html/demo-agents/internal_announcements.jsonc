@@ -39,7 +39,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.announcementAudience": "{ announcementAudience }" },
 
-        "progress.2": "Asking Google gemini-3.6-flash to generate a mock internal announcement...",
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock data as an agent that writes an announcement for employees about a change, with a clear headline, what is changing, when it happens and who to ask...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

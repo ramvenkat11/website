@@ -7,7 +7,7 @@
         "var": { "dishes": "{ randint(6, 14) }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate a mock cafeteria menu...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that shows the office cafeteria's menu for today and the week, opening hours, prices, and dishes that suit dietary needs such as vegetarian or gluten-free...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

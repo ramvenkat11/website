@@ -55,7 +55,7 @@
         // Shared with every agent in the conversation.
         "var.6": { "conv.regulationArea": "{ regulationArea }" },
 
-        "progress.2": "Asking OpenAI gpt-5-mini to generate a mock compliance answer...",
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock data as an agent that answers questions about the regulations the company must follow, such as anti-bribery, data protection and industry rules, and what they require in a given situation...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

@@ -10,7 +10,7 @@
         "var.2": { "conv.lastTopic": "SQL queries" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to generate a mock SQL query...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that writes and explains SQL queries against the company's data warehouse from a plain-language question, and fixes queries that return errors...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }

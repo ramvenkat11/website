@@ -16,7 +16,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking OpenAI gpt-5-mini to generate a mock product requirements document...",
+        "progress": "Asking OpenAI gpt-5-mini to generate mock data as an agent that drafts a product requirements document from a short idea, with the problem, goals, user stories, scope, success metrics and open questions...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }

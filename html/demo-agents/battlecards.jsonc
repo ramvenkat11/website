@@ -4,7 +4,7 @@
     "main": {
       "commands": {
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate a mock competitor battlecard...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that writes a battlecard comparing our product with a named competitor: where we win, where they win, common objections and how to answer them...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

@@ -10,7 +10,7 @@
         "var": { "figure": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate mock customer satisfaction results...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that analyzes customer satisfaction survey responses: the overall score, trends over time and the most common complaints and praise...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

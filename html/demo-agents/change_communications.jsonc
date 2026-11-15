@@ -10,7 +10,7 @@
         "var": { "weeks": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to generate a mock change communication plan...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that plans how to tell employees, managers and leaders about a reorganization or other big change, and in what order, before it takes effect...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

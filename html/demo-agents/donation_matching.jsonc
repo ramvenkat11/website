@@ -16,7 +16,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock donation matching rules...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that explains how the company matches employees' charitable donations, which charities qualify, the yearly limit, and how to submit a donation to be matched...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }

@@ -10,7 +10,7 @@
         "var.2": { "conv.lastTopic": "loyalty points" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate a mock loyalty points balance...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that tells a customer how many loyalty points they have, how they earned them, when they expire and what they can redeem them for...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

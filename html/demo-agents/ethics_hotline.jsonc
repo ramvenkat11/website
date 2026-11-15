@@ -53,7 +53,7 @@
           "then": { "end": "Call emergency services now, then Northwind Security on extension 5555." }
         },
 
-        "progress.2": "Asking OpenAI gpt-5-mini to generate mock ethics reporting guidance...",
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock data as an agent that helps an employee raise a concern about fraud, harassment or other misconduct, explains how to report it anonymously, and what happens next...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

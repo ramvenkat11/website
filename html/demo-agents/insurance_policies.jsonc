@@ -52,7 +52,7 @@
         // Shared with every agent in the conversation.
         "var.6": { "conv.insurancePolicy": "{ insurancePolicy }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock insurance cover details...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that explains what the company's own insurance covers - property, liability, cyber and travel - and what to do and whom to contact when something needs to be claimed...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

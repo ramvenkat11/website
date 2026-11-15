@@ -7,7 +7,7 @@
         "var": { "sunset": "{ (datetime.now().date() + timedelta(days=90)).isoformat() }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate a mock feature retirement plan...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that plans how to retire an old product feature: who still uses it, the announcement and sunset dates, the migration path and what to tell customers...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

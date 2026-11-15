@@ -16,7 +16,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate a mock communications calendar...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that plans the weeks ahead of internal communications so announcements, newsletters and leadership messages do not land on top of each other...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

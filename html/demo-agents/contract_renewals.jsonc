@@ -39,7 +39,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.spendCategory": "{ spendCategory }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock list of contract renewals...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that lists the supplier contracts coming up for renewal in a spending category, with their end dates, notice periods and annual value, and flags the ones that renew automatically if nobody acts...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

@@ -43,7 +43,7 @@
           "then": { "end": "Take the skills check in the learning portal first, then ask again." }
         },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock training course recommendations...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that recommends internal training courses and certifications for a skill or role, with their length, format and how to sign up...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

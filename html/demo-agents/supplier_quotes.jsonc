@@ -13,7 +13,7 @@
         "var": { "cheapestView": "{ result['cheapest'] }", "fastestView": "{ result['fastest'] }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to combine the 2 results into one answer...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that compares quotes from several suppliers for the same item on price, delivery time and terms, and recommends the best one...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

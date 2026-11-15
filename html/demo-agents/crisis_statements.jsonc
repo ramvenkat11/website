@@ -53,7 +53,7 @@
           "then": { "end": "Statements about pending lawsuits must come from the legal team. Please contact legal before saying anything publicly." }
         },
 
-        "progress.2": "Asking OpenAI gpt-5-mini to generate a mock holding statement...",
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock data as an agent that drafts a calm holding statement during an outage, data breach or product safety incident, saying what happened, what we are doing and when we will update...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

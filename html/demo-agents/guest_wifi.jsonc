@@ -10,7 +10,7 @@
         "var": { "figure": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock guest Wi-Fi access details...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that issues guest Wi-Fi access for a visitor to the office, with the network name, a temporary password and how long it is valid...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

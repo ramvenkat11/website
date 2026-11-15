@@ -39,7 +39,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.productArea": "{ productArea }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock regression test plan...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that tells a tester which regression tests to run for a change in their product area, how long the run takes and which tests were flaky last time...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

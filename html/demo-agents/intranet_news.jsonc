@@ -4,7 +4,7 @@
     "main": {
       "commands": {
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate mock intranet news...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that finds and summarizes recent company news posted on the intranet, such as leadership changes, office openings and awards...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

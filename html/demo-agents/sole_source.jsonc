@@ -48,7 +48,7 @@
           "then": { "fail": "Purchases over $250k cannot be sole-sourced. They must go out to competitive bid." }
         },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock sole-source justification...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that writes the justification needed to buy from a single supplier without competitive bids, explaining why no other supplier can meet the need, for purchases within the sole-source limit...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

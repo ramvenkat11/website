@@ -53,7 +53,7 @@
           "then": { "end": "Come back once the announcement is decided." }
         },
 
-        "progress.2": "Asking Google gemini-3.6-flash to generate a mock press release...",
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock data as an agent that drafts a press release for an announcement - a launch, partnership, funding or hire - with headline, dateline, quotes and a company boilerplate...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

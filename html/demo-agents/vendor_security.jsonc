@@ -13,7 +13,7 @@
         "var": { "strengthsView": "{ result['strengths'] }", "gapsView": "{ result['gaps'] }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to combine the 2 results into one answer...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that reviews a supplier's answers to the security questionnaire before they get access to company data, listing the controls they meet and the gaps they must close first...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

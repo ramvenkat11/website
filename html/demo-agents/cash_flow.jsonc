@@ -7,7 +7,7 @@
         "var": { "days": "{ randint(30, 90) }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate mock cash flow figures...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that summarizes the company's cash coming in and going out for a period, the current cash position, and the largest payments due in the coming weeks...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

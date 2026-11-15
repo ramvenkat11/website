@@ -39,7 +39,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.seatPreference": "{ seatPreference }" },
 
-        "progress.2": "Asking Google gemini-3.6-flash to generate a mock travel plan...",
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock data as an agent that plans travel for an executive: flights, hotels and ground transport around their meetings, remembering their seat preference for next time...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

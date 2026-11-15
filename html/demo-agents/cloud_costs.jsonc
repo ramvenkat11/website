@@ -16,7 +16,7 @@
         "var.2": { "figure": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate mock cloud cost figures...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that reports cloud spending by service, team and environment, shows what changed since last month, and points out resources that can be shut down...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

@@ -52,7 +52,7 @@
         // Shared with every agent in the conversation.
         "var.6": { "conv.warehouse": "{ warehouse }" },
 
-        "progress.2": "Asking OpenAI gpt-5-mini to generate mock inbound shipment tracking...",
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock data as an agent that tracks shipments coming from suppliers to our warehouses: where they are, when they will arrive and whether they are delayed...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

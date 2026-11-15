@@ -53,7 +53,7 @@
           "then": { "fail": "Do not touch it. Call the safety officer." }
         },
 
-        "progress.2": "Asking OpenAI gpt-5-mini to generate mock hazardous material handling rules...",
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock data as an agent that explains how to store, label, ship and dispose of hazardous materials such as chemicals and batteries, and what to do after a spill...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

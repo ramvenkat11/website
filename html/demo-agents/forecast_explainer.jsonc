@@ -39,7 +39,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.salesRegion": "{ salesRegion }" },
 
-        "progress.2": "Asking Google gemini-3.6-flash to generate mock sales forecast figures...",
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock data as an agent that explains the latest sales forecast for a region: the expected numbers for the quarter, what changed since the last forecast and which assumptions drive it...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

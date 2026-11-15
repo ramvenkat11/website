@@ -15,7 +15,7 @@
         "trace": "{ 'Question length: ' + str(len(sys.query)) }",
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking OpenAI gpt-5-mini to generate a mock data catalog entry...",
+        "progress": "Asking OpenAI gpt-5-mini to generate mock data as an agent that finds the warehouse table or dataset that holds a given piece of information, and describes its columns, owner, freshness and how it joins to other tables...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }

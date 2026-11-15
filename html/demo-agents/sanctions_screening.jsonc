@@ -46,7 +46,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.screenedParty": "{ screenedParty }" },
 
-        "progress.2": "Asking OpenAI gpt-5-mini to generate a mock sanctions screening result...",
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock data as an agent that screens a person or company name against sanctions and denied-party lists before doing business with them, and says what to do on a match...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

@@ -13,7 +13,7 @@
         "var": { "securityView": "{ result['security'] }", "financialView": "{ result['financial'] }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to combine the 2 results into one answer...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that assesses the risk of working with a vendor or partner, covering their security, privacy and financial health, and gives an overall risk rating...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

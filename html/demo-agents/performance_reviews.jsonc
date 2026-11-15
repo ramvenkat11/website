@@ -39,7 +39,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.feedbackStyle": "{ feedbackStyle }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock performance review notes...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that helps a manager or employee prepare for a performance review: summarizes goals, drafts self-assessment and feedback text, and explains the rating scale and review timeline...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

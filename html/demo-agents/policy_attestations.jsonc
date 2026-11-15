@@ -16,7 +16,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate mock policy sign-off records...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that shows which employees have signed this year's required policies, such as the code of conduct, who is overdue, and when reminders go out...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

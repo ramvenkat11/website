@@ -21,7 +21,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking OpenAI gpt-5-mini to generate mock warehouse capacity figures...",
+        "progress": "Asking OpenAI gpt-5-mini to generate mock data as an agent that shows how full each warehouse is, how many pallet positions are free, and when each site is expected to run out of space...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }

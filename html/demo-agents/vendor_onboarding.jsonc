@@ -16,7 +16,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking OpenAI gpt-5-mini to generate a mock vendor onboarding record...",
+        "progress": "Asking OpenAI gpt-5-mini to generate mock data as an agent that sets up a new vendor: collects their tax, banking and insurance details, runs the required checks, and adds them to the approved vendor list...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }

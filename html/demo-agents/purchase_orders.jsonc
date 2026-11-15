@@ -10,7 +10,7 @@
         "var": { "figure": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to generate a mock purchase order...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that creates a purchase order for goods or services from an approved vendor, with quantities, prices and the budget code, and sends it for approval...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

@@ -53,7 +53,7 @@
           "then": { "end": "Access to customer personal data goes through the privacy office. Please file a privacy review first." }
         },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock data access request...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that helps an employee request read access to a dataset or warehouse schema, telling them who approves it, how long it takes and which datasets need extra privacy review...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

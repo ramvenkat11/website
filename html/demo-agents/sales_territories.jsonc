@@ -37,7 +37,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.salesRegion": "{ salesRegion }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock sales territory assignments...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that tells a salesperson which region, industry or account list they own, and who owns a given customer or city...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

@@ -16,7 +16,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate a mock contract review...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that reviews a contract for risky clauses - liability, indemnity, termination, auto-renewal and payment terms - and suggests safer wording...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

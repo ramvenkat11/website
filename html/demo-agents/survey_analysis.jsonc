@@ -37,7 +37,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.survey": "{ survey }" },
 
-        "progress.2": "Asking OpenAI gpt-5-mini to generate a mock survey summary...",
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock data as an agent that summarizes the answers to an internal or customer survey: the main themes in the comments, the scores by group and the points worth following up...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

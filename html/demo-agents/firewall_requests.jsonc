@@ -10,7 +10,7 @@
         "trace": "{ 'Question length: ' + str(len(sys.query)) }",
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking OpenAI gpt-5-mini to generate a mock firewall change request...",
+        "progress": "Asking OpenAI gpt-5-mini to generate mock data as an agent that turns a request to open a network connection between two systems into a firewall change request with the source, destination, port and business reason the network team needs...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }

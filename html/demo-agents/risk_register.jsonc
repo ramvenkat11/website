@@ -37,7 +37,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.businessUnit": "{ businessUnit }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock risk register...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that keeps the list of business risks for a unit: each risk's likelihood, impact, owner, mitigation and next review date...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

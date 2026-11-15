@@ -16,7 +16,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to generate a mock stage-gate review...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that reviews an R&D project against the stage-gate criteria - feasibility, market need, cost to complete and risks - and recommends pass, hold or stop...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }

@@ -50,7 +50,7 @@
         // Shared with every agent in the conversation.
         "var.6": { "conv.productProblem": "{ productProblem }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock warranty check...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that checks whether a customer's product is still under warranty, what the warranty covers, and how to file a claim for a repair or replacement...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

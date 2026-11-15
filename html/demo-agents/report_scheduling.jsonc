@@ -53,7 +53,7 @@
           "then": { "fail": "Hourly report emails are not allowed. Use a live dashboard instead." }
         },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock report schedule...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that sets up a recurring report delivery: which report, how often, to whom and in what format, and explains how to change or stop it later...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

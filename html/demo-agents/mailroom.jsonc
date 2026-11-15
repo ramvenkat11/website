@@ -10,7 +10,7 @@
         "trace": "{ 'Question length: ' + str(len(sys.query)) }",
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate a mock mailroom record...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that tells an employee when a package or letter has arrived for them in the mailroom and where to collect it...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

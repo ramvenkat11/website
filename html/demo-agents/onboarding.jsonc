@@ -16,7 +16,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to generate a mock first-week checklist...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that gives a new employee their first-week checklist: the forms to sign, the people to meet, the systems to set up and the orientation sessions to attend...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }

@@ -10,7 +10,7 @@
         "var": { "figure": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking OpenAI gpt-5-mini to generate a mock payslip...",
+        "progress": "Asking OpenAI gpt-5-mini to generate mock data as an agent that explains the lines on an employee's payslip - gross pay, taxes, deductions, overtime and bonuses - and why this month's net pay differs from last month's...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

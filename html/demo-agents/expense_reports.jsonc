@@ -53,7 +53,7 @@
           "then": { "fail": "Personal expenses cannot be claimed." }
         },
 
-        "progress.2": "Asking Google gemini-3.6-flash to generate a mock expense report check...",
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock data as an agent that checks an expense report before it is submitted: flags missing receipts, spending over policy limits and categories that are wrong, and explains how to fix each one...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

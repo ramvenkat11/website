@@ -53,7 +53,7 @@
           "then": { "end": "No change made. Your plan stays as it is." }
         },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock subscription change...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that changes a customer's subscription: upgrades, downgrades, pauses or cancellations, with the price difference and when the change takes effect...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

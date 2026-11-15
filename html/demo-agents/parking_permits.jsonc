@@ -53,7 +53,7 @@
           "then": { "end": "Deliveries use the loading dock and need no permit." }
         },
 
-        "progress.2": "Asking Google gemini-3.6-flash to generate a mock parking permit...",
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock data as an agent that requests a parking permit for the office car park, for an employee or a visitor, and explains the parking rules and spaces available...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

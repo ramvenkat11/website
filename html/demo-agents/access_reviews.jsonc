@@ -39,7 +39,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.accessSystem": "{ accessSystem }" },
 
-        "progress.2": "Asking OpenAI gpt-5-mini to generate a mock access review for your team...",
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock data as an agent that helps a manager review who on their team has access to a business system, points out accounts that look excessive or unused, and records which access to keep or remove...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

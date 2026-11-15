@@ -39,7 +39,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.executive": "{ executive }" },
 
-        "progress.2": "Asking Google gemini-3.6-flash to generate a mock executive calendar...",
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock data as an agent that finds a meeting slot with a senior executive, shows what is already on their calendar this week and explains how to request time...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

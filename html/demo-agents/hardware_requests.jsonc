@@ -52,7 +52,7 @@
         // Shared with every agent in the conversation.
         "var.6": { "conv.hardwareItem": "{ hardwareItem }" },
 
-        "progress.2": "Asking OpenAI gpt-5-mini to generate a mock hardware request...",
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock data as an agent that handles an employee's request for a new or replacement laptop, monitor, keyboard or headset, and tells them when it will arrive...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

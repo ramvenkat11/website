@@ -53,7 +53,7 @@
           "then": { "end": "Do not handle an unknown substance. Seal it and call the lab safety officer on extension 4400." }
         },
 
-        "progress.2": "Asking Google gemini-3.6-flash to generate mock lab safety requirements...",
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock data as an agent that tells a researcher what protective equipment, training and approvals are needed before working with chemicals, lasers, high voltage or biological samples...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

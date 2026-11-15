@@ -53,7 +53,7 @@
           "then": { "fail": "Discounts over 40% need the sales director's approval in person." }
         },
 
-        "progress.2": "Asking OpenAI gpt-5-mini to generate a mock discount approval request...",
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock data as an agent that prepares a request to approve a discount above the standard limit, with the deal size, the discount asked for and the business reason, and routes it to the right approver...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

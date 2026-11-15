@@ -13,7 +13,7 @@
         "var": { "growthView": "{ result['growth'] }", "retentionView": "{ result['retention'] }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to combine the 2 results into one answer...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that gives a manager a short weekly summary of the company's key numbers - revenue, sign-ups, retention and support volume - with what moved and why...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

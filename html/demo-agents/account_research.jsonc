@@ -13,7 +13,7 @@
         "var": { "overviewView": "{ result['overview'] }", "contactsView": "{ result['contacts'] }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to combine the 2 results into one answer...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that prepares a briefing on a prospect company before a sales meeting: what it does, its size, recent news, likely needs and who the decision makers are...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

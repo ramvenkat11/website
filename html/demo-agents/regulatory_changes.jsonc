@@ -9,7 +9,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate a mock summary of regulatory changes...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that summarizes new and upcoming laws and regulations that affect the company, when they take effect, and which teams must change what...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

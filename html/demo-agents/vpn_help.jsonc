@@ -21,7 +21,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock VPN troubleshooting steps...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that helps an employee connect to the company VPN from home or while traveling, and fixes common connection errors...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }

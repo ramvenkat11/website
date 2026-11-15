@@ -13,7 +13,7 @@
         "var": { "requirementsView": "{ result['requirements'] }", "scoringView": "{ result['scoring'] }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking OpenAI gpt-5-mini to combine the 2 results into one answer...",
+        "progress": "Asking OpenAI gpt-5-mini to generate mock data as an agent that drafts a request for proposal from a short description of what is being bought, with the scope and requirements suppliers must answer and the criteria their proposals will be scored on...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

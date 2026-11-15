@@ -16,7 +16,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate a mock release readiness check...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that shows whether a release is ready to ship by checking each quality gate, and lists what is still blocking QA sign-off...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

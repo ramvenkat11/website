@@ -53,7 +53,7 @@
           "then": { "end": "Free trial accounts cannot join beta programs. Ask again once the account is on a paid plan." }
         },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock beta sign-up result...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that signs a customer account up for an early-access beta of a new feature, checks it is eligible, and explains what to expect and how to give feedback...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

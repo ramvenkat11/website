@@ -7,7 +7,7 @@
         "var": { "changes": "{ randint(8, 25) }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking OpenAI gpt-5-mini to generate mock release notes...",
+        "progress": "Asking OpenAI gpt-5-mini to generate mock data as an agent that writes customer-facing release notes from a list of changes, grouped into new features, improvements and fixes...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }

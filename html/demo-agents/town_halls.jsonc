@@ -16,7 +16,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate mock town hall questions and answers...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that prepares leaders for a town hall by listing the hard questions employees are likely to ask and a short honest answer to each...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

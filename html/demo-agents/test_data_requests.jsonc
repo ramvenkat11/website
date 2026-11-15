@@ -51,7 +51,7 @@
           "then": { "end": "Real customer data cannot be used for testing. Ask for masked customer data instead." }
         },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock test data request...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that gets a tester the test accounts, sample orders or masked data they need for a test run, and explains why real customer data cannot be used...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

@@ -10,7 +10,7 @@
         "var.2": { "conv.lastTopic": "partner referrals" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate a mock partner referral record...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that registers a deal referred by a reseller or partner, checks that the customer is not already registered to someone else, and explains the referral fee...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

@@ -7,7 +7,7 @@
         "log": { "level": "info", "message": "{ 'supply_disruptions asked: ' + sys.query[:80] }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate mock supply disruption alerts...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that shows current events that could delay supplies - port congestion, strikes, storms or supplier outages - and which open orders each one affects...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

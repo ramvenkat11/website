@@ -46,7 +46,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.bugSeverity": "{ bugSeverity }" },
 
-        "progress.2": "Asking Google gemini-3.6-flash to generate a mock bug triage decision...",
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock data as an agent that helps decide how serious a newly reported bug is, what priority it gets, which team should own it and whether it is a duplicate of a known issue...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

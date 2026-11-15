@@ -9,7 +9,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate a mock list of research grants...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that finds government and industry research grants that fit a project, with their deadlines, funding amounts and eligibility rules...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

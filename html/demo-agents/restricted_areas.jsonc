@@ -51,7 +51,7 @@
           "then": { "fail": "Unescorted data center access is only granted to the infrastructure team." }
         },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock badge access request...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that requests badge access for an employee to a restricted area such as the server room, the lab or the executive floor, and explains who must approve it and for how long it lasts...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

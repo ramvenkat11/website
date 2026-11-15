@@ -39,7 +39,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.team": "{ team }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock legal request record...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that takes a new request for the legal team - a question, a contract or a dispute - collects the details lawyers need, and routes it to the right lawyer...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

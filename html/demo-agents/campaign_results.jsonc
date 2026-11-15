@@ -7,7 +7,7 @@
         "var": { "leads": "{ randint(200, 1500) }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate mock campaign results...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that reports how a marketing campaign performed - impressions, clicks, leads generated, cost per lead and conversions - compared with its goals...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

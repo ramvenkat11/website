@@ -4,7 +4,7 @@
     "main": {
       "commands": {
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate a mock lost and found record...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that reports an item lost in the office or checks whether an item someone found has been handed in, and how to collect it...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

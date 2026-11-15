@@ -37,7 +37,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.productArea": "{ productArea }" },
 
-        "progress.2": "Asking Google gemini-3.6-flash to generate a mock roadmap status...",
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock data as an agent that tells anyone where a product initiative stands on the roadmap: its current stage, target quarter, owner and whether it is on track or slipping...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

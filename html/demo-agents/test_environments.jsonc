@@ -51,7 +51,7 @@
           "then": { "fail": "Testing is not allowed in production. Book QA-1, QA-2 or Staging." }
         },
 
-        "progress.2": "Asking Google gemini-3.6-flash to generate a mock test environment booking...",
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock data as an agent that books a shared QA or staging environment for a test run, shows who has it now and when it frees up, and refuses test runs against production...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

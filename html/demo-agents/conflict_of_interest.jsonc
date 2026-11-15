@@ -10,7 +10,7 @@
         "var.2": { "conv.lastTopic": "conflicts of interest" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate a mock conflict of interest declaration...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that helps an employee declare an outside job, investment or relationship that might be a conflict of interest, and explains what happens next...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

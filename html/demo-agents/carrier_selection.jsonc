@@ -23,7 +23,7 @@
         "var.2": { "costView": "{ result['cost'] }", "reliabilityView": "{ result['reliability'] }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to recommend one carrier from the 2 comparisons...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that compares shipping carriers for a route on price, on-time delivery and damage rates, and recommends which one to book...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

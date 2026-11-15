@@ -10,7 +10,7 @@
         "var": { "figure": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking OpenAI gpt-5-mini to generate a mock A/B test analysis...",
+        "progress": "Asking OpenAI gpt-5-mini to generate mock data as an agent that reads the conversion numbers from an A/B experiment, works out the lift between variants and says whether the result is strong enough to act on...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

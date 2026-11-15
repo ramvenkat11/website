@@ -10,7 +10,7 @@
         "var": { "figure": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate a mock commission statement...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that calculates a salesperson's commission for a quarter from their closed deals, quota attainment and commission plan, and explains each line of the payout...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

@@ -7,7 +7,7 @@
         "var": { "orderNo": "{ randint(100000, 999999) }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate a mock order status...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that tells a customer where their order is: whether it has shipped, the carrier and tracking number, and the expected delivery date...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     }

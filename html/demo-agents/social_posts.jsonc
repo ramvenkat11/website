@@ -50,7 +50,7 @@
         // Shared with every agent in the conversation.
         "var.6": { "conv.socialPlatform": "{ socialPlatform }" },
 
-        "progress.2": "Asking Google gemini-3.6-flash to generate mock social media posts...",
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock data as an agent that writes social media posts for LinkedIn, X and Instagram about an announcement or topic, in the company's voice and within each platform's length limits...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

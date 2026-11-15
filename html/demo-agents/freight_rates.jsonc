@@ -46,7 +46,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.shippingMode": "{ shippingMode }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock freight rates...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that quotes the company's contracted freight rates and transit times for ocean, air, truck or rail shipments between two locations...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

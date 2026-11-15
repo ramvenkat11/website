@@ -39,7 +39,7 @@
         // Shared with every agent in the conversation.
         "var.4": { "conv.auditArea": "{ auditArea }" },
 
-        "progress.2": "Asking Google gemini-3.6-flash to generate a mock list of audit requests and evidence...",
+        "progress.2": "Asking Google gemini-3.6-flash to generate mock data as an agent that gathers the documents auditors ask for - approvals, reconciliations, contracts and system reports - and tracks which audit requests are still open...",
         "llm.2": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

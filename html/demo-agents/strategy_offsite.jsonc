@@ -16,7 +16,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to generate a mock offsite plan...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that plans the leadership team's strategy offsite: the agenda, the pre-reads each session needs, the venue logistics and who presents what...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }

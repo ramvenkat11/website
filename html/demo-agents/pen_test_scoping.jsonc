@@ -10,7 +10,7 @@
         "var": { "window": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate a mock penetration test scope...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that plans a penetration test of an application: what is in and out of scope, the testing window, the rules of engagement and who to call if something breaks...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

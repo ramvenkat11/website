@@ -51,7 +51,7 @@
         // Shared with every agent in the conversation.
         "var.5": { "conv.companySize": "{ companySize }" },
 
-        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate a mock lead score...",
+        "progress.2": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that scores a new sales lead from its company size, industry, budget and stated needs, and says whether it is ready for a salesperson or needs more nurturing...",
         "llm.2": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

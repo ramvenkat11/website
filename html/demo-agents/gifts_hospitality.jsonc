@@ -17,7 +17,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking OpenAI gpt-5-mini to generate a mock gift register entry...",
+        "progress": "Asking OpenAI gpt-5-mini to generate mock data as an agent that records gifts, meals and event invitations given to or received from business contacts, and says whether one needs approval under the gift limit...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

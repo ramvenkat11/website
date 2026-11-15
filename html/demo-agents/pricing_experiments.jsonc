@@ -53,7 +53,7 @@
           "then": { "fail": "Price tests on existing customers at renewal need approval from the pricing committee first." }
         },
 
-        "progress.2": "Asking OpenAI gpt-5-mini to generate a mock pricing test plan...",
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock data as an agent that plans a pricing or packaging test: which customers see which price, how long it runs, what to measure and the risks to watch for...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

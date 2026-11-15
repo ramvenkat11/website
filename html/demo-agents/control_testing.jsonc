@@ -15,7 +15,7 @@
         "var.2": { "rate": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate mock control test results...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that reports the results of internal control tests for the quarter: which controls passed or failed, the issues found, and who is fixing them...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

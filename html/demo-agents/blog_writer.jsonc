@@ -13,7 +13,7 @@
         "var": { "outlineView": "{ result['outline'] }", "headlinesView": "{ result['headlines'] }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to combine the 2 results into one answer...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that drafts a company blog article from a topic and key points, with a headline, introduction, sections and a closing call to action...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     },

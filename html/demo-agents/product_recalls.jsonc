@@ -10,7 +10,7 @@
         "trace": "{ 'Question length: ' + str(len(sys.query)) }",
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking OpenAI gpt-5-mini to generate a mock recall check...",
+        "progress": "Asking OpenAI gpt-5-mini to generate mock data as an agent that tells a customer whether a product they own is under a safety recall, what the risk is, and how to get a repair, replacement or refund...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }

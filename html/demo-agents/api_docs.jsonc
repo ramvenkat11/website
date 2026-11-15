@@ -4,7 +4,7 @@
     "main": {
       "commands": {
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate mock API documentation...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that finds the documentation for an internal API: its endpoints, parameters, example requests and responses, and which team owns it...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

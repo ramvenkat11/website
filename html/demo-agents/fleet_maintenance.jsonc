@@ -18,7 +18,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Ollama gemma4:31b to generate a mock vehicle service schedule...",
+        "progress": "Asking Ollama gemma4:31b to generate mock data as an agent that schedules servicing and inspections for company vehicles and trucks, and shows which vehicles are due or overdue...",
         "llm": { "profile": "ollama_nemotron", "prompt": "default", "streamOutput": true }
       }
     }

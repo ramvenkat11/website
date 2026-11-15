@@ -10,7 +10,7 @@
         "var": { "figure": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking OpenAI gpt-5-mini to generate a mock price quote...",
+        "progress": "Asking OpenAI gpt-5-mini to generate mock data as an agent that builds a price quote for a customer from the products, quantities and contract length they want, applying list prices and standard volume discounts...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

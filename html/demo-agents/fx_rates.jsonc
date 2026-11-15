@@ -47,7 +47,7 @@
           "then": { "end": "Our books are already in USD, so no conversion is needed." }
         },
 
-        "progress.2": "Asking OpenAI gpt-5-mini to generate mock exchange rates...",
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock data as an agent that gives current and past foreign exchange rates between currencies and converts amounts, using the rates the company uses for its books...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

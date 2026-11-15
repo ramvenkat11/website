@@ -55,7 +55,7 @@
         // Shared with every agent in the conversation.
         "var.6": { "conv.buildingProblem": "{ buildingProblem }" },
 
-        "progress.2": "Asking OpenAI gpt-5-mini to generate a mock maintenance ticket...",
+        "progress.2": "Asking OpenAI gpt-5-mini to generate mock data as an agent that reports a problem in the office building - heating, lighting, plumbing or a broken door - and tracks when it will be fixed...",
         "llm.2": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     },

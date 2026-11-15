@@ -16,7 +16,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to generate a mock office supplies order...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that orders office supplies such as paper, pens, notebooks and printer toner for a team, and says when they will be delivered...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }

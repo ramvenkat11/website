@@ -16,7 +16,7 @@
         },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Anthropic claude-haiku-4-5 to generate a mock data quality report...",
+        "progress": "Asking Anthropic claude-haiku-4-5 to generate mock data as an agent that helps an analyst report a data problem such as missing rows, duplicates or late loads, and checks the report covers the table, the impact and when it started...",
         "llm": { "profile": "claude_haiku", "prompt": "default", "streamOutput": true }
       }
     }

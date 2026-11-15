@@ -10,7 +10,7 @@
         "var": { "figure": "{ result }" },
 
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking Google gemini-3.6-flash to generate a mock load test plan...",
+        "progress": "Asking Google gemini-3.6-flash to generate mock data as an agent that plans a performance or load test: the traffic to simulate, the target response times and the pass or fail thresholds for a service...",
         "llm": { "profile": "gemini_flash", "prompt": "default", "streamOutput": true }
       }
     },

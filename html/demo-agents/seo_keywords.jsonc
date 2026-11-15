@@ -4,7 +4,7 @@
     "main": {
       "commands": {
         // Tell the user what is happening before each wait for an LLM.
-        "progress": "Asking OpenAI gpt-5-mini to generate mock keyword suggestions...",
+        "progress": "Asking OpenAI gpt-5-mini to generate mock data as an agent that suggests search keywords for a web page or topic, with how often people search for them and how hard they are to rank for, and where to use them on the page...",
         "llm": { "profile": "gpt5_mini", "prompt": "default", "streamOutput": true }
       }
     }
