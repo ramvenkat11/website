@@ -2610,3 +2610,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-15: demo agents refreshed
 - Ran scripts/refresh-demo-agents.sh (Ram: "Copy the latest agents from s2oserver here"): all 200 .jsonc modified (200 insertions, 201 deletions), none added or removed; html/demo-agents.json and the *.prompts.json unchanged. Ram also dropped a new ui1 build of html/demo/demo.js and demo.css (18:16); the audit no longer finds a bare "the cloud" in demo.js. Only remaining hit: cloud_costs.prompts.json (sample agent about cloud costs). Not uploaded.
+
+## 2026-11-15: full platform-vs-server pass on the docs
+- Ram asked for the full pass. Read every docs sentence that says "agent server": 316 sentences across the 147 docsrc pages (docs_server.py in the scratchpad), plus the server sentences in the generated reference tables. Every one refers to the server process itself (install, run, configure, what stays on it, what it sends). No change needed. Web pages: all mentions were listed and reviewed with Ram earlier today; unchanged since.
