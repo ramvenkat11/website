@@ -2517,3 +2517,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - html/images/og10.png regenerated locally with the new tagline and the current hero on three lines (56px, widest 999 of 1006); content/linkedin-banner2.png regenerated (title = tagline, subtitle = hero at 54px, content 1335-3962 of 4200). Neither uploaded; live og10.png is still the "Semantic search makes..." card.
 - Header sweep 320-1280 on home, a docs page and pricing: no overlap or overflow; tagline on two lines at 320-348 (home, pricing) and 320-392 (docs). Looked at header 1280 light, docs 1000 light, docs 384 dark, home 320 light, og10.png, banner.
 - Left for Ram: html/about.html:67 body sentence "an agent server built around search" and the trademark line in html/legal/intellectual.html:64.
+
+## 2026-11-15: hero says "business workflows"
+- "Transform your enterprise workflows" -> "Transform your business workflows" in the index.html h1, og:image:alt on all pages (docs rebuilt), gen/ogcard.py and gen/linkedin_banner.py; og10.png and content/linkedin-banner2.png regenerated locally. Looked at og10.png. Title is two characters shorter, so page wrap was not re-rendered. Not uploaded.
