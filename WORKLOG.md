@@ -2552,3 +2552,10 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - og10.png and content/linkedin-banner2.png regenerated locally; the og10.png uploaded earlier today still says "Agent server for the enterprise". Not uploaded.
 - Header sweep 320-1280 on home, docs, pricing: no overlap or overflow; tagline two lines at 320-360 (home, pricing) and 320-404 (docs). Looked at home 1280, docs 984 light (button ends 977 of 984), docs 384 dark, og10.png.
 - Left as Ram wrote them: about.html body "Search2o is an agent server for the enterprise." and its meta description.
+
+## 2026-11-15: home page says "platform"
+- Ram's definition: Search2o is an agent platform with two parts, a stateless agent server and a cloud that provides state, search and reporting services (a private cloud counts as part of the platform). To be applied everywhere; home page first.
+- html/index.html: hero paragraphs ("on the platform", "Users just chat with the platform", "The platform keeps every run..."), hero figure title "Search2o agent platform", conversation notes ("the platform saved/restored..."), hybrid section subhead "The platform has two parts: a stateless agent server, and a cloud that provides state, search and reporting services.", Integration card "the platform's decision points". Invisible text: meta description/og:description ("...with the Search2o agent platform."), hero and conversation aria-labels, hybrid aria-label opens with the two-part sentence.
+- Kept as "agent server" (Ram agreed): the hybrid figure box and its description, Source available card, Horizontally scalable card. Hybrid figure itself unchanged; sentence is enough for now.
+- Sweeps 320-1280 clean (platcheck.js, arrowcheck.js); looked at hero 1280 light and 384 dark, hybrid heading 1280/384 light and 320 dark, conversations 1280 light. Backup index.before-platform.html. Not uploaded.
+- Next: the same change on the other web pages, then docs, when Ram says.
