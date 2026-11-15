@@ -2546,3 +2546,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-15: og10.png uploaded again (one file)
 - On Ram's go-ahead: `aws s3 cp html/images/og10.png s3://search2o.com/images/og10.png` with `--acl public-read --cache-control "public, max-age=2592000" --content-type image/png`. No sync, no invalidation. Card: tagline "Agent server for the enterprise", title "Transform your business / workflows into hundreds of / task-focused AI agents". Live fetch returned the new file, byte-identical (x-cache Miss). Live pages still reference og9.png until a full deploy.
+
+## 2026-11-15: tagline "Agent platform for the enterprise"
+- Replaced "Agent server for the enterprise" in header span.tagline and footer brand line on the 18 hand-written pages, gen/build.py template (docs rebuilt), gen/ogcard.py, gen/linkedin_banner.py; og:image:alt now starts "Search2o, agent platform for the enterprise." on all 164 pages.
+- og10.png and content/linkedin-banner2.png regenerated locally; the og10.png uploaded earlier today still says "Agent server for the enterprise". Not uploaded.
+- Header sweep 320-1280 on home, docs, pricing: no overlap or overflow; tagline two lines at 320-360 (home, pricing) and 320-404 (docs). Looked at home 1280, docs 984 light (button ends 977 of 984), docs 384 dark, og10.png.
+- Left as Ram wrote them: about.html body "Search2o is an agent server for the enterprise." and its meta description.
