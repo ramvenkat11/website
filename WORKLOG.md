@@ -2590,3 +2590,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Looked at both images. Not uploaded.
 - about.html Deployment: removed ", and does not depend on your existing application infrastructure" (Ram). Text only.
 - about.html Deployment opens "The platform has two parts: an agent server and a cloud service." (Ram; dash made a colon, articles added). Text only.
+- about.html Deployment: "A cloud service provides" -> "The cloud service provides" (follows the new opening sentence; Ram caught it). Text only.
