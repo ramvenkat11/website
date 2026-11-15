@@ -2468,3 +2468,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-14: private cloud follow-ups
 - Ram: license rotation applies to a private cloud too, so no note on docsrc/security/license-rotation.html. He will change the systemconfig.py cloud text in s2oserver himself (docs rebuild needed here afterwards). Legal pages stay; enterprise accounts get their own licensing.
 - Wrote `content/pricing-page.md` with the current text of html/pricing.html for Ram to edit; pricing.html itself untouched. Next: apply his edits when he says so (figure will need "Search2o Cloud or private cloud").
+
+## 2026-11-14: docs rebuilt after systemconfig.py change
+- Ram changed the cloud text in ../s2oserver/models/systemconfig.py; `python3 gen/build.py` rebuilt 147 pages. hooks/overview, system-management/agent-servers and single-sign-on now say "the cloud". "Search2o Cloud" remains in built docs only in the two figures (parts-of-the-system; config-sync on how-it-fits-together and runtime/overview), as intended. Not uploaded.
