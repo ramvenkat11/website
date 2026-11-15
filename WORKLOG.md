@@ -2502,3 +2502,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-15: hero title, next version
 - `html/index.html` h1: "Transform your enterprise workflows into many task-focused AI agents — Search2o agent server brings them together as one application" (Ram's wording; his hyphen became an em dash, bound to "agents" with nbsp so it never starts a line). Three lines 700-1280, four to five on phones, six at 320; sweep 320-1280 clean. Looked at 1280 light, 384 dark, 320 light.
 - og10.png (live), og:image:alt and LinkedIn banner still carry "Semantic search makes...". Not uploaded.
+
+## 2026-11-15: og10 for the newest hero
+- gen/ogcard.py LINES: "Transform your enterprise workflows / into many task-focused AI agents — / Search2o agent server brings them / together as one application" (52px, four lines, block raised 22px via LONG_BLOCK_LIFT). html/images/og10.png regenerated locally; NOT uploaded (the live og10.png still shows "Semantic search makes...", cached 30 days, so the next deploy must invalidate /images/og10.png or the file needs a new name).
+- og:image:alt updated on 18 site pages, content/demo.html, gen/build.py template; docs rebuilt. LinkedIn banner not changed (still "Semantic search makes...").
