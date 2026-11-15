@@ -2479,3 +2479,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - `html/pricing.html` `.price-fig`: one cloud box (tag "Search2o Cloud", "State") replaced by two boxes, "Search2o Cloud / Free during beta" and dashed "Your private cloud / Enterprise solution", with `<b class="st-or">or</b>` between; aria-label updated.
 - `html/styles/styles.css` `.price-fig`: five columns (`--link-w` 156px, 142px at container <=811px, `--or-w` 44px); `.st-own`, `.st-or` rules; stack breakpoint moved from container 560px to 679px, stacked rows 3/4/5.
 - pricecheck.js (scratchpad) clean in a 320-1280 sweep; renders looked at: 1280 light, 1000 dark, 860 dark, 730 light, 384 light, 320 dark. Backups pricing.before-pair.html, styles.before-pricepair.css. Not uploaded.
+- Pricing "Private cloud" section, second sentence now: "With it, the agent server uses your own private cloud instead of Search2o Cloud." (Ram, paraphrased). Text only.
