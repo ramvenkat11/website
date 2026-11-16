@@ -2694,3 +2694,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-16 pricing: "beta" removed
 - Ram: "free during beta" was exactly what he asked to remove (it ties free to a release stage). `html/pricing.html` now says "currently free" in the figure pill, the card note, the section heading and text, the aria-label, the meta description and og:description. The word "beta" no longer appears on the page (legal terms still use it as a legal term). Text only, same pill and heading lengths or shorter; no render. Not uploaded.
+
+## 2026-11-16 pricing: heading and "indicative" removed
+- `html/pricing.html`: h2 "The agent server and the UI are always free"; "indicative price" removed from the card note, the section text, the meta description and og:description (now "expected in early 2027, at $40 per user per month"). Text only, no render. Not uploaded.
