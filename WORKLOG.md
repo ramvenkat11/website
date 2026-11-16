@@ -2645,3 +2645,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Why us opening: "The architecture is hybrid." removed; five small grammar/flow fixes (repeated "task-focused", "the set of agents", "do not need to know", "is quick", "do not talk"). Nothing uploaded.
 - Why us opening: "Semantic search routes each request to the right agent in less than a second." (Ram). Nothing uploaded.
 - Why us opening updated from Ram's revised `content/newhome.txt`: order is task-focused agents, fast development, designed for change, built-in routing and orchestration, quick setup; "small" and "agents do not talk to each other" removed. Paraphrases: "Architected for change" → "Designed for change", "Builtin" → "Built-in". Nothing uploaded.
+- Why us table, Search2o row: "Develop, run and route many task-focused agents on a single platform" (in sync with the new heading). Nothing uploaded.
