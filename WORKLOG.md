@@ -2672,3 +2672,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-16 docs: config-sync figure corrected
 - Ram: the UI never talks to the cloud service directly; it only knows the agent server. `gen/figures.py` config-sync redrawn as UI -> Agent server A -> Cloud service (solid "save", "store"), with dashed arrows from all three agent servers to the cloud service for the check before every run. Page text now says the UI sends each change to the agent server, which stores it in the cloud service. Rendered at 1280 light only. Not uploaded.
 - Rule to keep: never draw or write the UI as a client of the cloud service.
+
+## 2026-11-16 docs: fits-together figures show state only in the cloud service
+- Ram: the UI and the agent server hold no state; the figures showed things in the UI. Asked three questions; answers: remove the part pills, UI box name only, label the parts.
+- `gen/figures.py`: step figures are plain numbered cards (pills and `_part_pills` removed); Draft and Save read "in the cloud service". config-sync: UI box has no sub line, arrow "change", agent servers read "stateless", cloud service reads "holds all state". aria-labels updated. Page step 1 now says the draft is stored in the cloud service.
+- Rendered at 1000 light and dark. Not uploaded.
