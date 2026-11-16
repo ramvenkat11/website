@@ -2627,3 +2627,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Home, hybrid section subhead: added "The agent server can run standalone or in a cluster." before the shared-or-dedicated sentence; figure aria-label follows. Text only, not rendered. Nothing uploaded.
 - Home, framework section subhead rewritten from Ram's text: "The UI includes a complete development environment for agents…", plus two sentences on profiles and prompts living outside the agent's code (links to docs/profiles/overview.html and docs/agent-definition/prompts.html). Text only, not rendered. Nothing uploaded.
 - Home, framework subhead: "the agent's metadata" → "the agent meta" (docs term, Ram). Nothing uploaded.
+- Home, conversations subhead: Google Chat added; two sentences added on the model-neutral LLM message thread and on short-term (conversation variables) vs long-term (`memory` command) memory, with docs links. Text only, not rendered. Nothing uploaded.
