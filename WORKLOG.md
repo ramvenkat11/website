@@ -2629,3 +2629,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Home, framework subhead: "the agent's metadata" → "the agent meta" (docs term, Ram). Nothing uploaded.
 - Home, conversations subhead: Google Chat added; two sentences added on the model-neutral LLM message thread and on short-term (conversation variables) vs long-term (`memory` command) memory, with docs links. Text only, not rendered. Nothing uploaded.
 - Home, conversations subhead (applied after an earlier failed edit): Google Chat, model-neutral message thread "…can continue the same thread with a different model", conversation variables vs memory command, docs links. Nothing uploaded.
+
+## 2026-11-16 — platform has three parts (agent server, UI, cloud service)
+- Ram: three parts, order agent server, UI, cloud service; pip installs server + UI together; separate GitHub projects (docs only); home figure box stays "Browser" but dark like the other two; about page too; pricing figure unchanged.
+- `html/index.html`: hybrid subhead and figure aria-label say three parts; Browser box has class `cc-ui` (dark, rules after `.cc-server-links a:hover` in styles.css). `html/about.html` Deployment sentence. `docsrc/introduction/parts-of-the-system.html` restructured: lead, sections Agent server / UI (GitHub links) / Cloud service / Other interfaces; figure tile "UI". Docs rebuilt.
+- Checked: hybrid section 9 widths light+dark, sweep clean, viewed 1280 light+dark and 384; docs figure at 1280.
+- Open: Ram to decide "UI" vs "bundled UI" for 17 remaining sentences (list sent). Nothing uploaded.
