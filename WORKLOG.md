@@ -2660,3 +2660,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-16 home: hybrid section heading
 - `html/index.html` section `#user-interfaces`: h2 "Hybrid architecture" -> "An integrated platform to build, run and use agents". Text only, no render. Meta text and the figure aria-label do not mention the old heading, so nothing else changed. Not uploaded.
+
+## 2026-11-16 docs: What is Search2o rewritten
+- `docsrc/introduction/what-is-search2o.html` rewritten to follow `html/about.html`: lead plus bold-led paragraphs (Framework, Runtime, Search, Conversations, Interfaces, Observability, Administration, Deployment), formal wording, each linked to its docs section. "What makes it different" list removed. Docs rebuilt (147 pages); meta description comes from the lead. Text only, no render. Not uploaded.
