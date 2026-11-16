@@ -2650,3 +2650,10 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Home, hybrid subhead: "pip installs the agent server and the UI together. Each can also be installed separately from source." (link to the docs install-from-source section). Nothing uploaded.
 - Why us table, Search2o row: "Build and run task-focused agents on an integrated platform" (confirmed by Ram). Nothing uploaded.
 - Why us table, Search2o row: "Build and run agents on an integrated platform" (Ram). Nothing uploaded.
+
+## 2026-11-16 — visual check of all web pages; docs parts figure dark
+- Docs "Parts of the system" figure: agent server box and UI tile dark like the cloud service (class `is-part`, rules `.docs-arch .is-part*` in styles.css; aria-label updated). Sweep clean, viewed 1280 light and 384 dark.
+- Check of 18 web pages (not docs): shots at 1280/412/384/360/320 light+dark and sweep 320–1280 on each (4338 loads), zero overflow; header one row at every measured width on every page. Viewed every page at 384 light in contact sheets (`scratchpad/allpages/sheet-*.png`, made by `scratchpad/sheets.py`) and index/why at 1280.
+- Fixed: short last line in the home framework subhead; the three long home subheads (#framework-runtime, #conversations, #user-interfaces) now use `text-wrap: balance`.
+- Limits of the check: demo widgets and the demo agent list do not load from file://; 404.html uses root-absolute paths so it is unstyled from file://; legal pages got the automated check only. Framework page render repeats its top at the bottom: capture artifact (text occurs once in the source).
+- Noted for Ram: demo-agents.html says "Every agent that can run on the home page". Nothing uploaded.
