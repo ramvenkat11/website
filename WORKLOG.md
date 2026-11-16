@@ -2649,3 +2649,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Why us table, Search2o row: "An integrated platform for task-focused agents" (Ram's wording). Nothing uploaded.
 - Home, hybrid subhead: "pip installs the agent server and the UI together. Each can also be installed separately from source." (link to the docs install-from-source section). Nothing uploaded.
 - Why us table, Search2o row: "Build and run task-focused agents on an integrated platform" (confirmed by Ram). Nothing uploaded.
+- Why us table, Search2o row: "Build and run agents on an integrated platform" (Ram). Nothing uploaded.
