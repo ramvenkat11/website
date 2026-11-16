@@ -2657,3 +2657,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Fixed: short last line in the home framework subhead; the three long home subheads (#framework-runtime, #conversations, #user-interfaces) now use `text-wrap: balance`.
 - Limits of the check: demo widgets and the demo agent list do not load from file://; 404.html uses root-absolute paths so it is unstyled from file://; legal pages got the automated check only. Framework page render repeats its top at the bottom: capture artifact (text occurs once in the source).
 - Noted for Ram: demo-agents.html says "Every agent that can run on the home page". Nothing uploaded.
+
+## 2026-11-16 home: hybrid section heading
+- `html/index.html` section `#user-interfaces`: h2 "Hybrid architecture" -> "An integrated platform to build, run and use agents". Text only, no render. Meta text and the figure aria-label do not mention the old heading, so nothing else changed. Not uploaded.
