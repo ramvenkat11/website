@@ -2624,3 +2624,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-16 — home page: sections 2 and 3 swapped
 - `html/index.html` order is now hero, `#framework-runtime`, `#conversations`, `#user-interfaces`, `#platform`. The `soft` class moved with the position (framework is plain, conversations is soft) so the backgrounds still alternate. Viewed both sections at 1280 light+dark and conversations at 384. Nothing uploaded.
+- Home, hybrid section subhead: added "The agent server can run standalone or in a cluster." before the shared-or-dedicated sentence; figure aria-label follows. Text only, not rendered. Nothing uploaded.
