@@ -1,14 +1,17 @@
-<p class="lead">Search2o is a platform for building <a href="search2o-agents.html">agents</a> and running them from a search box. A user types what they need. Search2o finds the agent built for that need, runs it, and returns the answer. The answer starts a conversation that the user can continue.</p>
+<p class="lead">Search2o is an agent platform for the enterprise. Developers build task-focused <a href="search2o-agents.html">agents</a>, the platform runs them safely against enterprise systems, and people across the organization use them through search and conversation.</p>
 
-<p>Developers write agents in JSON with Python expressions and describe each agent in plain English. Search matches a request to the agent whose description fits, and the agent runs under controlled execution.</p>
+<p><strong>Framework.</strong> Each agent handles one well-defined task and combines deterministic workflow steps with LLM-driven reasoning. Developers write an agent as a <a href="../agent-definition/index.html">structured definition</a> in JSON with Python expressions, built from twenty <a href="../commands/index.html">commands</a>, and <a href="../development/publishing.html">publish</a> it, versioned, to a common system.</p>
 
-<p>Search2o is self-contained. Create an account and install the agent server. The search box, the editor, user management and reports come with it.</p>
+<p><strong>Runtime.</strong> Agents execute on the Search2o agent server under <a href="../runtime/controlled-execution.html">controlled execution</a>. The agent server calls enterprise systems, holds each agent to its <a href="../runtime/time-and-cost-bounds.html">time and LLM-cost bounds</a>, and pauses for user approval before critical actions.</p>
 
-<h2>What makes it different</h2>
-<ul>
-  <li><strong>Search finds the agent.</strong> An enterprise accumulates many agents, written by different teams. Users do not learn their names; they ask for what they need, and search chooses the agent. The whole collection behaves like one application.</li>
-  <li><strong>Agents are small and structured.</strong> An agent does one task. It is a set of functions, and a function is an ordered list of commands. Twenty commands cover what agents do: call APIs and databases, prompt LLMs with tools, ask the user for input, and remember facts across conversations.</li>
-  <li><strong>Agents are independent.</strong> No agent calls another. Agents build on each other's work through the conversation: a follow-up goes through search again, and the agent that runs next sees what the conversation already holds.</li>
-  <li><strong>Execution is controlled.</strong> The Python expressions in an agent run in the agent runtime, under the allowlist, the compile rules and the runtime limits that developers set.</li>
-  <li><strong>Nothing to host for state.</strong> The agent server holds no state. Everything is stored in the cloud service, so agent servers can be started, stopped and scaled freely. Conversations, queries and memories are encrypted.</li>
-</ul>
+<p><strong>Search.</strong> <a href="../search/index.html">Search</a> matches the meaning of a request to an agent built to handle it, runs that agent and returns its output. Users do not select an agent from a catalog. They ask a question or make a request. Search performs the routing, so hundreds of independent agents work as one system.</p>
+
+<p><strong>Conversations.</strong> Follow-up requests continue in the same conversation, where the user can bring in other agents that <a href="../agent-execution/building-on-each-other.html">build on earlier results</a>. Agents remain independent of one another. The user decides the combination.</p>
+
+<p><strong>Interfaces.</strong> The same agents can be reached from several places. Users search and hold conversations in the <a href="../gui/index.html">UI</a> or from <a href="../chat-integrations/index.html">chat applications</a>. <a href="../skill-integration/index.html">Agent harnesses</a> such as Claude Code can search for and run Search2o agents as part of their own work. A <a href="../rest-api/index.html">REST API</a> opens the agents to other frameworks and custom applications.</p>
+
+<p><strong>Observability.</strong> Every agent run is <a href="../reports/index.html">reported</a> in real time: who asked, what ran, how long it took, any errors and the LLM token cost. Developers also receive a <a href="../development/trace-and-validation.html">trace</a> of a run when building and debugging an agent.</p>
+
+<p><strong>Administration.</strong> Administrators manage the account and its <a href="../system-management/users-and-roles.html">users</a>, with <a href="../system-management/single-sign-on.html">single sign-on</a> and an <a href="../system-management/audit-log.html">audit log</a>.</p>
+
+<p><strong>Deployment.</strong> The platform has <a href="parts-of-the-system.html">three parts</a>: an agent server, a UI and a cloud service. Your organization runs only stateless agent servers and the UI. The cloud service provides state, search and reporting, and can be shared or dedicated. Customers can turn on end-to-end <a href="../security/encryption.html">encryption</a> by supplying their own encryption key.</p>

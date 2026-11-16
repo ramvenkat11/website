@@ -1,23 +1,27 @@
-<p class="lead">From a developer writing an agent to a user getting an answer.</p>
+<p class="lead">How the three <a href="parts-of-the-system.html">parts of the platform</a> work together when a developer builds an agent, when a user makes a request, and when an administrator changes the configuration.</p>
 
 <h2>Building an agent</h2>
 <!--figure:build-pipeline-->
 <ol>
-  <li>A developer creates a <strong>draft</strong> and writes the agent in JSON, in the editor or with Draft with AI.</li>
-  <li>The developer <strong>validates</strong> the draft. The cloud service checks the definition and every Python expression in it. The agent server then runs the draft against a validation query the developer supplies and shows the full execution trace.</li>
-  <li>A validated draft is <strong>published</strong>. Other developers can now see the agent, and users can run it.</li>
-  <li>In a separate step, the developer writes a plain-English <strong>description</strong> of what the published agent does. The cloud service indexes the description, and from then on search can find the agent.</li>
+  <li>A developer creates a <a href="../development/drafts.html"><strong>draft</strong></a> in the UI and writes the agent definition in the <a href="../development/code-editor.html">code editor</a> or with <a href="../development/draft-with-ai.html">Draft with AI</a>. A draft is private to the developer who created it.</li>
+  <li>The developer <a href="../development/trace-and-validation.html"><strong>validates</strong></a> the draft. The cloud service checks the definition and every Python expression in it. The agent server then runs the draft against the developer's validation query with tracing on, so that every step is visible.</li>
+  <li>The developer <a href="../development/publishing.html"><strong>publishes</strong></a> the validated draft. Every developer can see the published agent, and users can run it. A publish that changes the definition creates a new version.</li>
+  <li>The developer writes a plain-English <a href="../search/describing-an-agent.html"><strong>description</strong></a> of the agent. The cloud service indexes the description in 15 to 30 seconds, and search can then find the agent.</li>
 </ol>
+<p>A change to a published agent follows the same steps, starting from a new draft.</p>
 
-<h2>Answering a query</h2>
+<h2>Handling a request</h2>
 <!--figure:request-lifecycle-->
 <ol>
-  <li>A user types a request in the search box or in a connected chat application. The agent server sends the request to the cloud service, which returns the matching agent: one agent, several candidates when the request is ambiguous, or none when nothing fits.</li>
-  <li>The agent server runs the chosen agent in the agent runtime. The agent calls LLMs and your systems, may ask the user for more input, and streams its output back as it runs.</li>
-  <li>When the agent finishes, the conversation context is encrypted and stored in the cloud service, or stored by your own code if the account keeps conversations in its own enterprise.</li>
-  <li>A follow-up request continues the conversation. The context is restored, and the same agent or a different one runs with it, so agents build on each other's work.</li>
+  <li>A user makes a <strong>request</strong> in the UI or in a chat application. An agent harness or your own program makes requests in the same way, through the REST API.</li>
+  <li>The agent server sends the request to the cloud service. <a href="../search/how-matching-works.html">Search</a> <strong>matches</strong> the meaning of the request to the agent descriptions in about 200 milliseconds. It returns one agent, two when the request is ambiguous, or none when no agent fits.</li>
+  <li>The agent server <strong>runs</strong> the matched agent in the <a href="../runtime/overview.html">agent runtime</a>. The agent calls LLMs and your systems, and can pause to ask the user for input.</li>
+  <li>The agent server streams the <strong>output</strong> to the user as the agent runs.</li>
+  <li>When the agent ends or pauses, the agent server encrypts the <a href="../agent-execution/conversation-state.html">conversation state</a> and <strong>saves</strong> it in the cloud service. An account can keep the state in its own organization instead.</li>
 </ol>
+<p>A follow-up request repeats these steps in the same conversation. The state is restored, and the same agent or a different one runs with it. This is how agents <a href="../agent-execution/building-on-each-other.html">build on each other's work</a>.</p>
 
-<h2>Keeping servers consistent</h2>
+<h2>Keeping agent servers current</h2>
 <!--figure:config-sync-->
-<p>Configuration, such as LLM profiles, allowlists and limits, is edited in the UI and stored in the cloud service. Each time an agent starts, the agent server asks the cloud service what has changed since the server last checked, fetches only those parts, and applies them before the run. A change is live on the next run on every server, and two servers starting the same agent at the same moment run with the same configuration. See <a href="../runtime/overview.html">Runtime sync</a>.</p>
+<p>Configuration, such as profiles, the allowlist and the runtime limits, is edited in the UI. The UI sends each change to the agent server, and the agent server stores it in the cloud service. Each time an agent run starts, the agent server reports the run to the cloud service, and the reply carries the time of the latest change. When the configuration has changed, the agent server fetches only what changed and rebuilds its runtime before the run.</p>
+<p>A change is live on the next run on every agent server, and two agent servers that start the same agent at the same moment run with the same configuration. A running agent keeps the runtime it started with. See <a href="../runtime/overview.html">Agent runtime</a>.</p>

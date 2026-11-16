@@ -12,8 +12,9 @@ W = 720  # canvas width; the page scales it
 
 
 class Fig:
-    def __init__(self, name: str, height: int, title: str, width: int = W):
+    def __init__(self, name: str, height: int, title: str, width: int = W, description: str = ""):
         self.name, self.w, self.h, self.title = name, width, height, title
+        self.description = description or title
         self.parts: list[str] = []
 
     # ---- primitives -------------------------------------------------------------
@@ -124,7 +125,7 @@ class Fig:
                 f'<path d="M0,0 L10,5 L0,10 z" fill="var(--faint)"/></marker>'
                 f'<marker id="{self.name}-arr-r" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">'
                 f'<path d="M10,0 L0,5 L10,10 z" fill="var(--faint)"/></marker></defs>')
-        return (f'<figure class="fig"><svg viewBox="0 0 {self.w} {self.h}" role="img" aria-label="{html.escape(self.title)}" '
+        return (f'<figure class="fig"><svg viewBox="0 0 {self.w} {self.h}" role="img" aria-label="{html.escape(self.description)}" '
                 f'xmlns="http://www.w3.org/2000/svg">{defs}{"".join(self.parts)}</svg>'
                 f'<figcaption>{html.escape(self.title)}</figcaption></figure>')
 
@@ -206,66 +207,95 @@ def _assistant_connections():
     return f.render()
 
 
+PART_UI = "UI"
+PART_CLOUD = "Cloud service"
+PART_SERVER = "Agent server"
+STEP_TOP = 40
+STEP_HEIGHT = 64
+STEP_GAP = 16
+STEP_LEFT = 20
+STEP_BOTTOM = STEP_TOP + STEP_HEIGHT
+LOOP_Y = STEP_BOTTOM + 28
+
+
+def _step_flow(f, steps, loop_label):
+    """A row of numbered steps with a return path from the last step to the first."""
+    count = len(steps)
+    step_width = (f.w - 2 * STEP_LEFT - STEP_GAP * (count - 1)) / count
+    middle_y = STEP_TOP + STEP_HEIGHT / 2
+    centers = []
+    for index, (label, sub) in enumerate(steps):
+        x = STEP_LEFT + index * (step_width + STEP_GAP)
+        f.box(x, STEP_TOP, step_width, STEP_HEIGHT, f"{index + 1}. {label}", sub, kind="card", size=13)
+        if index < count - 1:
+            f.arrow(x + step_width, middle_y, x + step_width + STEP_GAP, middle_y)
+        centers.append(x + step_width / 2)
+    f.line(centers[-1], STEP_BOTTOM, centers[-1], LOOP_Y)
+    f.line(centers[-1], LOOP_Y, centers[0], LOOP_Y)
+    f.arrow(centers[0], LOOP_Y, centers[0], STEP_BOTTOM + 2)
+    f.text(f.w / 2, LOOP_Y + 18, loop_label, size=11.5, anchor="middle")
+
+
 @figure("request-lifecycle")
 def _request_lifecycle():
-    f = Fig("request-lifecycle", 210, "From a query to an answer")
-    steps = [("1. Query", "user types a request", "soft"), ("2. Match", "cloud service matches", "accent"),
-             ("3. Run", "agent server executes", "dark"), ("4. Stream", "output as it happens", "soft"),
-             ("5. Save", "state stored, encrypted", "accent")]
-    x = 20
-    for i, (a, b, k) in enumerate(steps):
-        f.box(x, 40, 124, 64, a, b, kind=k, size=13)
-        if i < 4:
-            f.arrow(x + 124, 72, x + 140, 72)
-        x += 140
-    f.line(642, 104, 642, 140)
-    f.line(642, 140, 82, 140)
-    f.arrow(82, 140, 82, 104)
-    f.text(362, 168, "follow-up: the state is restored and the conversation continues", size=11.5, anchor="middle")
+    f = Fig("request-lifecycle", 170, "From a request to an answer",
+            description="The five steps of a request: a user makes the request, search matches it to an agent in about 200 milliseconds, "
+            "the agent runs and calls LLMs and systems, the output is streamed, and the encrypted state is saved. "
+            "A follow-up request restores the state and repeats the steps.")
+    _step_flow(f, [("Request", "a user asks"), ("Match", "about 200 ms"), ("Run", "LLMs and systems"),
+                   ("Output", "streamed"), ("Save", "state, encrypted")],
+               "A follow-up request restores the state and continues the conversation")
     return f.render()
 
 
 @figure("build-pipeline")
 def _build_pipeline():
-    f = Fig("build-pipeline", 230, "From a draft to a searchable agent")
-    steps = [("Draft", "private, JSONC", "soft"), ("Validate", "check + run", "accent"), ("Publish", "new version", "dark"),
-             ("Describe", "plain English", "soft"), ("Indexed", "found by search", "ok")]
-    x = 20
-    for i, (a, b, k) in enumerate(steps):
-        f.box(x, 40, 124, 64, a, b, kind=k)
-        if i < 4:
-            f.arrow(x + 124, 72, x + 140, 72)
-        x += 140
-    f.text(160, 130, "the cloud service checks the definition and expressions;", size=11.5)
-    f.text(160, 146, "the agent server runs the validation query with tracing on", size=11.5)
-    f.text(490, 130, "cloud service indexes the description;", size=11.5)
-    f.text(490, 146, "15 to 30 seconds", size=11.5)
-    f.arrow(300, 104, 300, 120, dashed=True)
-    f.arrow(640, 104, 640, 120, dashed=True)
-    f.arrow(82, 104, 82, 190, dashed=True)
-    f.text(96, 190, "every edit creates a new draft; changes to a published agent go through a draft too", size=11.5)
+    f = Fig("build-pipeline", 170, "From a draft to a searchable agent",
+            description="The four steps of building an agent: a draft is written in the code editor or with Draft with AI, the draft is validated by "
+            "checks and a traced run, it is published as a new version, and its description is indexed for search. "
+            "A change to a published agent starts from a new draft.")
+    _step_flow(f, [("Draft", "editor or Draft with AI"), ("Validate", "checks, then a traced run"),
+                   ("Publish", "a new version"), ("Describe", "indexed for search")],
+               "A change to a published agent starts from a new draft")
     return f.render()
+
+
+SYNC_COLUMN_LEFT = 20
+SYNC_COLUMN_WIDTH = 450
+SYNC_BOX_HEIGHT = 56
+SYNC_UI_TOP = 30
+SYNC_SERVER_TOP = 130
+SYNC_CLOUD_TOP = 230
+SYNC_SERVER_WIDTH = 140
+SYNC_ARROW_OFFSET = 30
+SYNC_NOTE_LEFT = 500
 
 
 @figure("config-sync")
 def _config_sync():
-    f = Fig("config-sync", 260, "How a configuration change reaches every agent server")
-    f.box(20, 40, 150, 56, "UI", "administrator edits a part", kind="soft")
-    cloud_x, cloud_y, cloud_w, cloud_h = 250, 40, 220, 56
-    f.box(cloud_x, cloud_y, cloud_w, cloud_h, "Cloud service", "stores it, stamps the time", kind="accent")
-    f.text(cloud_x + cloud_w + 14, cloud_y + cloud_h / 2 + 4, "shared or dedicated", size=11.5)
-    f.arrow(170, 68, cloud_x, 68, "save")
-    f.box(20, 170, 140, 56, "Agent server A", kind="dark")
-    f.box(175, 170, 140, 56, "Agent server B", kind="dark")
-    f.box(330, 170, 140, 56, "Agent server C", kind="dark")
-    for server_x in (90, 245, 400):
-        f.arrow(server_x, 170, min(max(server_x, cloud_x + 10), cloud_x + cloud_w - 10), cloud_y + cloud_h, dashed=True)
-    f.text(500, 140, "on every agent start:", size=11.5, weight=700, fill="ink")
-    f.text(500, 158, "1. tell the cloud service a run starts", size=11.5)
-    f.text(500, 174, "2. learn the latest change time", size=11.5)
-    f.text(500, 190, "3. fetch only the changed parts", size=11.5)
-    f.text(500, 206, "4. rebuild the runtime, then run", size=11.5)
-    f.text(20, 246, "Every change is live on the next run, on every server; a running agent keeps the runtime it started with.", size=11.5)
+    f = Fig("config-sync", 330, "How a configuration change reaches every agent server",
+            description="An administrator changes the configuration in the UI. The UI sends the change to an agent server, which is stateless and stores it in the "
+            "cloud service. The cloud service holds all state. Before every agent run, each agent server asks the cloud service for the time of the latest change, "
+            "fetches only what changed, and rebuilds its runtime.")
+    server_gap = (SYNC_COLUMN_WIDTH - 3 * SYNC_SERVER_WIDTH) / 2
+    server_bottom = SYNC_SERVER_TOP + SYNC_BOX_HEIGHT
+    first_center = SYNC_COLUMN_LEFT + SYNC_SERVER_WIDTH / 2
+    f.box(SYNC_COLUMN_LEFT, SYNC_UI_TOP, SYNC_SERVER_WIDTH, SYNC_BOX_HEIGHT, PART_UI, kind="dark")
+    f.arrow(first_center, SYNC_UI_TOP + SYNC_BOX_HEIGHT, first_center, SYNC_SERVER_TOP, "change")
+    f.arrow(first_center - SYNC_ARROW_OFFSET, server_bottom, first_center - SYNC_ARROW_OFFSET, SYNC_CLOUD_TOP, "store")
+    for index, name in enumerate("ABC"):
+        x = SYNC_COLUMN_LEFT + index * (SYNC_SERVER_WIDTH + server_gap)
+        f.box(x, SYNC_SERVER_TOP, SYNC_SERVER_WIDTH, SYNC_BOX_HEIGHT, f"{PART_SERVER} {name}", "stateless", kind="dark")
+        check_x = x + SYNC_SERVER_WIDTH / 2 + (SYNC_ARROW_OFFSET if index == 0 else 0)
+        f.arrow(check_x, server_bottom, check_x, SYNC_CLOUD_TOP, dashed=True)
+    f.box(SYNC_COLUMN_LEFT, SYNC_CLOUD_TOP, SYNC_COLUMN_WIDTH, SYNC_BOX_HEIGHT, PART_CLOUD, "holds all state", kind="dark")
+    note_top = SYNC_SERVER_TOP + 8
+    f.text(SYNC_NOTE_LEFT, note_top, "Before every agent run:", size=11.5, weight=700, fill="ink")
+    for index, step in enumerate(["report the run to the cloud service", "learn the time of the latest change",
+                                  "fetch only what changed", "rebuild the runtime, then run"]):
+        f.text(SYNC_NOTE_LEFT, note_top + 18 * (index + 1), f"{index + 1}. {step}", size=11.5)
+    f.text(SYNC_COLUMN_LEFT, SYNC_CLOUD_TOP + SYNC_BOX_HEIGHT + 24,
+           "A change is live on the next run on every agent server. A running agent keeps the runtime it started with.", size=11.5)
     return f.render()
 
 

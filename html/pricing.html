@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pricing — Search2o</title>
-<meta name="description" content="The Search2o agent server has no license fee. The shared cloud service is free during beta and becomes a paid service at general availability. A dedicated cloud service will be offered in the future as an enterprise solution. Get started without a credit card.">
+<meta name="description" content="The Search2o agent server has no license fee. The shared cloud service is currently free. A paid service is expected in early 2027, at $40 per user per month. A dedicated cloud service with custom pricing will be offered in the future. Get started without a credit card.">
 <meta property="og:title" content="Pricing — Search2o">
-<meta property="og:description" content="The Search2o agent server has no license fee. The shared cloud service is free during beta and becomes a paid service at general availability. A dedicated cloud service will be offered in the future as an enterprise solution. Get started without a credit card.">
+<meta property="og:description" content="The Search2o agent server has no license fee. The shared cloud service is currently free. A paid service is expected in early 2027, at $40 per user per month. A dedicated cloud service with custom pricing will be offered in the future. Get started without a credit card.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://search2o.com/pricing.html">
 <meta property="og:url" content="https://search2o.com/pricing.html">
@@ -58,9 +58,15 @@
     <div class="container">
       <h1>Pricing</h1>
       <div class="price-fig-wrap">
-        <div class="ui-fan price-fig" aria-label="The agent server runs in your organization and is always free. An encrypted link connects it to the cloud service, which is shared or dedicated. The shared cloud service is free during the beta.">
+        <div class="ui-fan price-fig" aria-label="The UI and the agent server run in your organization and are always free. The UI connects to the agent server. An encrypted link connects the agent server to the cloud service, which is shared or dedicated. The shared cloud service is currently free.">
           <div class="ui-org">
             <span class="tag">Your organization</span>
+            <div class="st-box st-srv st-ui">
+              <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></span>
+              <b>UI</b>
+              <span class="free">Always free</span>
+            </div>
+            <i class="ui-conn" aria-hidden="true"></i>
             <div class="st-box st-srv">
               <span class="cluster" aria-hidden="true">
                 <span class="nodes"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><i class="ln"></i><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span><i class="ln"></i><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg></span></span>
@@ -77,8 +83,29 @@
             <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></span>
             <b>Cloud service</b>
             <small>Shared or dedicated</small>
-            <span class="free">Free during beta</span>
+            <span class="free">Currently free</span>
           </div>
+        </div>
+      </div>
+
+      <div class="price-plans">
+        <div class="price-plan">
+          <h3>Agent server and UI</h3>
+          <p class="price-amount">Free</p>
+          <p class="price-note">Always free</p>
+          <p>No license fee. Both run in your organization.</p>
+        </div>
+        <div class="price-plan is-main">
+          <h3>Shared cloud service</h3>
+          <p class="price-amount">$40 <span>per user per month</span></p>
+          <p class="price-note">Currently free</p>
+          <p>A paid service is expected in early 2027.</p>
+        </div>
+        <div class="price-plan">
+          <h3>Dedicated cloud service</h3>
+          <p class="price-amount">Custom</p>
+          <p class="price-note">Planned</p>
+          <p>An enterprise solution with custom pricing. <a href="about.html#contact">Contact us</a>.</p>
         </div>
       </div>
 
@@ -86,15 +113,15 @@
       <p><a href="gettingstarted.html">Create an account</a>, install the agent server and start using it. Everything is currently free, and you will hear from us before anything changes.</p>
       <div class="cta"><a class="btn btn-blue btn-lg" href="gettingstarted.html">Get started</a></div>
 
-      <h2>The agent server is always free</h2>
+      <h2>The agent server and the UI are always free</h2>
       <p>The Search2o agent server has no license fee. It is <a href="docs/runtime/overview.html">stateless</a> and runs in your organization, either standalone or in a load-balanced <a href="docs/system-management/agent-servers.html">cluster</a>. Install the server and UI with <a href="docs/getting-started/registering-and-downloading.html#install"><code>pip install search2o</code></a>.</p>
       <p>Both the <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">agent server</a> and <a href="https://github.com/Search2o/ui" target="_blank" rel="noopener">UI</a> are source-available and can also be <a href="docs/getting-started/registering-and-downloading.html#to-install-from-the-source">installed from source</a>.</p>
 
-      <h2>The shared cloud service is free during beta</h2>
-      <p>The agent server stores state in the cloud service. The shared cloud service is in beta and free to use. It becomes a paid service at general availability, planned for January 2027. You can then upgrade from the Account page.</p>
+      <h2>The shared cloud service is currently free</h2>
+      <p>The agent server stores state in the cloud service. The shared cloud service is currently free to use. A paid service is expected in early 2027, at $40 per user per month. You can then upgrade from the Account page.</p>
 
       <h2>Dedicated cloud service</h2>
-      <p>A dedicated cloud service will be offered in the future as an enterprise solution.</p>
+      <p>A dedicated cloud service will be offered in the future as an enterprise solution, with custom pricing.</p>
 
       <h2>Usage limits and restrictions</h2>
       <p>Your free account has usage limits. If they get in the way of your work, send us a message from the UI and we will raise them. Please coordinate with us before running load or stress tests.</p>
