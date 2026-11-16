@@ -2686,3 +2686,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - `html/pricing.html`: three cards under the figure (`.price-plans` / `.price-plan`): Agent server and UI = Free; Shared cloud service = $40 per user per month, indicative, free during beta; Dedicated cloud service = Custom, planned. Shared and dedicated prose sections each gained the price sentence. Meta description and og:description updated. Figure unchanged.
 - `html/styles/styles.css`: `.price-plan*` rules before `.pricing h2 ~ p`; cards stack at 760 and below.
 - Cards rendered at 9 widths light+dark, sweep 320-1280 clean; full page viewed at 1280 light. Awaiting Ram's decision on layout. Not uploaded.
+
+## 2026-11-16 pricing: UI in the figure, paid service untied from general availability
+- `html/pricing.html` figure: UI box added inside "Your organization", left of the agent server, with a solid arrow UI -> agent server; "Always free" on both. aria-label updated. CSS: `.price-fig .st-ui`, `.ui-conn`; figure stacks at container width 760 and below (was 560).
+- Wording: no mention of general availability or January 2027 anywhere on the page. Card: "A paid service is expected in early 2027." Section: "A paid service is expected in early 2027, at an indicative price of $40 per user per month." Meta description and og:description follow. Ram: the paid service comes before general availability, but do not say so explicitly.
+- Figure rendered at 9 widths light+dark, sweep clean. Not uploaded.
