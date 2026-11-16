@@ -1,7 +1,11 @@
-Developers build task‑focused agents on the agent server, and describe when to use each agent in plain English.
+Search2o combines agent development, execution and routing in a single platform
 
-Users just chat with the agent server. The right agent runs for each request. Multiple agents build on each other in a conversation.
+Task-focused agents. Each agent is independent, and handles one task. Agents are repeatable, observable and versioned.
 
+Fast development. Developing, changing and publishing an agent is quick, typically a matter of minutes.
 
+Architected for change. The set of agents changes constantly as developers add, revise and remove them. Users do not need to know which agents exist. They care about the result, not the agent.
 
+Builtin routing and orchestration. Semantic search routes each request to the right agent in less than a second. Conversation orchestrates the work: a follow-up request can bring in another agent that builds on earlier results.
 
+Quick setup and maintenance. Your organization runs only a stateless agent server and the UI. The cloud service provides state, search and reporting.
