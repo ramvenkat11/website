@@ -2636,3 +2636,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Checked: hybrid section 9 widths light+dark, sweep clean, viewed 1280 light+dark and 384; docs figure at 1280.
 - Open: Ram to decide "UI" vs "bundled UI" for 17 remaining sentences (list sent). Nothing uploaded.
 - "UI" everywhere (Ram: no "bundled UI"): 16 sentences across 6 web pages and 9 docs sources changed ("bundled UI", "built-in browser interface", "browser interface", "Search2o UI" → "UI"; the three "agent server, with the bundled UI" sentences now say the agent server and the UI are installed together). Heading in docs search-settings is now "The UI", so the link from agent-servers.html points to `#the-ui`. Docs rebuilt. Nothing uploaded.
+- Home, framework section headline: "…in minutes, from the UI" → "Build, validate and publish agents in minutes". Alternates without "minutes" offered to Ram. Nothing uploaded.
