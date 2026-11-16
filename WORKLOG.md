@@ -2613,3 +2613,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-15: full platform-vs-server pass on the docs
 - Ram asked for the full pass. Read every docs sentence that says "agent server": 316 sentences across the 147 docsrc pages (docs_server.py in the scratchpad), plus the server sentences in the generated reference tables. Every one refers to the server process itself (install, run, configure, what stays on it, what it sends). No change needed. Web pages: all mentions were listed and reviewed with Ram earlier today; unchanged since.
+
+## 2026-11-15 — new page why.html from content/why.md
+- `html/why.html` built from `content/why.md` with no new wording: kicker "Why Search2o", the bold sentence as h1, "Which one fits" as a table (stacks ≤560), each comparison as three cards (Choose X when / Choose Search2o when / Together), the not-right list, three link cards under "Try it". Styles are the `.why*` block at the end of `html/styles/styles.css`.
+- Nav: link added between Demo and Docs on all 17 web pages and in the docs template (`gen/build.py`, docs rebuilt, sitemap has why.html). Label is `Why<span class="nav-long"> Search2o</span>`: "Why Search2o" at ≥1240px, "Why" below. Header spacing tightened at 981–1100 and ≤400/≤370 so the header keeps the same row count as before at every width (two nav rows only ≤340, as before).
+- Checked: page at 9 widths light+dark, sweep 320–1280 clean; header measured on why, home and two docs pages.
+- Open: Ram to pick the nav label (Why Search2o / Why / Compare / Vs competition). Nothing uploaded.
