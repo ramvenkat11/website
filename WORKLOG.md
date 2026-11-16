@@ -2620,3 +2620,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Checked: page at 9 widths light+dark, sweep 320–1280 clean; header measured on why, home and two docs pages.
 - Open: Ram to pick the nav label (Why Search2o / Why / Compare / Vs competition). Nothing uploaded.
 - Nav label for why.html is now plain "Why" at every width (Ram: "Why Search2o is too tight even for desktop"); the `.nav-long` span and rule are removed, docs rebuilt. Nothing uploaded.
+- Nav label for why.html is now "Why us" (Ram's choice) on all web pages and the docs template; docs rebuilt. Header spacing tiers in `html/styles/styles.css` moved to ≤420, ≤390 and a new ≤366, and the 981–1100 padding is 7px. Measured: one menu row down to 352px, two rows at ≤344 (before the link existed: two rows at ≤340). No overflow on web or docs pages at any measured width. Nothing uploaded.
