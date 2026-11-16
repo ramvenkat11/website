@@ -2677,3 +2677,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Ram: the UI and the agent server hold no state; the figures showed things in the UI. Asked three questions; answers: remove the part pills, UI box name only, label the parts.
 - `gen/figures.py`: step figures are plain numbered cards (pills and `_part_pills` removed); Draft and Save read "in the cloud service". config-sync: UI box has no sub line, arrow "change", agent servers read "stateless", cloud service reads "holds all state". aria-labels updated. Page step 1 now says the draft is stored in the cloud service.
 - Rendered at 1000 light and dark. Not uploaded.
+
+## 2026-11-16 docs: fits-together step labels
+- Ram: "Draft - in the cloud service" makes no sense, since every state is in the cloud service. Draft now reads "editor or Draft with AI" and Save reads "state, encrypted"; the sentence added to step 1 is reverted. Do not label individual items as stored in the cloud service. Text-length labels were rendered earlier in the same boxes; no new render. Not uploaded.
