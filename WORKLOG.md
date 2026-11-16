@@ -2647,3 +2647,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Why us opening updated from Ram's revised `content/newhome.txt`: order is task-focused agents, fast development, designed for change, built-in routing and orchestration, quick setup; "small" and "agents do not talk to each other" removed. Paraphrases: "Architected for change" → "Designed for change", "Builtin" → "Built-in". Nothing uploaded.
 - Why us table, Search2o row: "Develop, run and route many task-focused agents on a single platform" (in sync with the new heading). Nothing uploaded.
 - Why us table, Search2o row: "An integrated platform for task-focused agents" (Ram's wording). Nothing uploaded.
+- Home, hybrid subhead: "pip installs the agent server and the UI together. Each can also be installed separately from source." (link to the docs install-from-source section). Nothing uploaded.
