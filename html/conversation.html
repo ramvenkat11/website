@@ -112,7 +112,7 @@
         <p>A follow-up in a conversation is searched like a new request. If it belongs to another agent, that agent runs next with the conversation&rsquo;s state already in place. If no new agent matches, the agent that answered last answers again.</p>
       </div>
       <div class="fw-text">
-        <p>What an interface does with the matches depends on its <a href="docs/search/search-settings.html">search behavior</a>. The bundled UI runs the best match immediately; your own interface can let the user choose between the two best matches.</p>
+        <p>What an interface does with the matches depends on its <a href="docs/search/search-settings.html">search behavior</a>. The UI runs the best match immediately; your own interface can let the user choose between the two best matches.</p>
         <p>The client always decides which agent runs next. An agent cannot run another agent. A request with several parts is coordinated from outside: an agent harness with the Search2o skill splits the request, sends each part through search and <code>execAgent</code> in the same conversation, and combines the results into one answer. See <a href="docs/agent-execution/building-on-each-other.html">How agents build on each other</a>.</p>
       </div>
     </div>

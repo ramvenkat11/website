@@ -5,7 +5,7 @@
 <p>Search2o does that routing. The skill takes one slot in the assistant's list. Behind it, Search2o matches the request against the descriptions of every published agent, with accuracy measured and published at a thousand agents; see <a href="../search/search-quality.html">Search quality</a>. The assistant decides whether a request is for the company's systems at all. Search2o decides which agents fit.</p>
 
 <h2>The two calls</h2>
-<p>The skill uses two calls on the Search2o REST API, the same API the Search2o UI and the Slack, Teams and Google Chat bots use.</p>
+<p>The skill uses two calls on the Search2o REST API, the same API the UI and the Slack, Teams and Google Chat bots use.</p>
 <ul>
   <li><a href="../rest-api/search.html"><code>search</code></a> takes the request and returns the matching agents, best first, each with its name and title.</li>
   <li><a href="../rest-api/running-agents.html"><code>execAgent</code></a> runs one agent and returns its output, the conversation id, a result code and, when the agent has paused for input, the questions it is asking.</li>

@@ -65,7 +65,7 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../search/index.html'>Search</a></div>
     <article class="docs-article">
       <h1>Search behavior</h1>
-      <p class="lead">A search returns the agents that match a query, best first. What an interface does with those matches, run the best one at once or show them for the user to choose from, is the interface's own behavior, not an account setting. The bundled UI takes it from the agent server's configuration; an interface of your own decides for itself.</p>
+      <p class="lead">A search returns the agents that match a query, best first. What an interface does with those matches, run the best one at once or show them for the user to choose from, is the interface's own behavior, not an account setting. The UI takes it from the agent server's configuration; an interface of your own decides for itself.</p>
 
 <h2 id="what-an-interface-can-do-with-the-matches">What an interface can do with the matches</h2>
 <p>A search returns one or two agents, or none; see <a href="how-matching-works.html">How matching behaves</a>. The interface then chooses how to act:</p>
@@ -81,7 +81,7 @@
 <h2 id="follow-ups">Follow-ups</h2>
 <p>A follow-up is a query typed into a conversation that already exists. An interface can search it like a new query and keep the agent that answered last as a fallback or among the choices, or it can keep the whole conversation on the agent that started it. See <a href="how-matching-works.html#follow-ups">Follow-ups</a>.</p>
 
-<h2 id="the-bundled-ui">The bundled UI</h2>
+<h2 id="the-ui">The UI</h2>
 <p>The UI reads its behavior from the <code>uiConfig</code> object of the <a href="../system-management/agent-servers.html#the-ui-s-settings">agent server configuration</a> it is served by, so each agent server in an account can behave differently. By default the best match runs at once, and a follow-up is searched again with the previous agent as the fallback. A change takes effect when the agent server restarts and each user reloads the UI.</p>
 <p><code>search.searchBehavior</code>, for a new search:</p>
 <div class="tablewrap"><table class="fields">
@@ -108,7 +108,7 @@
     </article>
     <nav class=prevnext><a class=prev href='../search/tags.html'><small>Previous</small>Tags</a><a class=next href='../search/search-quality.html'><small>Next</small>Search quality</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#what-an-interface-can-do-with-the-matches'>What an interface can do with the matches</a></li><li class=l2><a href='#follow-ups'>Follow-ups</a></li><li class=l2><a href='#the-bundled-ui'>The bundled UI</a></li><li class=l2><a href='#your-own-interface'>Your own interface</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#what-an-interface-can-do-with-the-matches'>What an interface can do with the matches</a></li><li class=l2><a href='#follow-ups'>Follow-ups</a></li><li class=l2><a href='#the-ui'>The UI</a></li><li class=l2><a href='#your-own-interface'>Your own interface</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

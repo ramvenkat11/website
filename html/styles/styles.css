@@ -776,6 +776,9 @@ p { margin: 0; }
 .cc-main .cc-server .cc-server-links { color: #c7d5f5; }
 .cc-main .cc-server .cc-server-links a { color: #a9c6ff; }
 .cc-main .cc-server .cc-server-links a:hover { color: #fff; }
+.cc-arch .cc-clients .cc-ui { background: var(--cloud-bg); border-color: var(--cloud-border); }
+.cc-arch .cc-clients .cc-ui strong { color: #fff; }
+.cc-arch .cc-clients .cc-ui strong a:hover { color: #a9c6ff; }
 .cc-arch .arch-key { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 16px 0 0; color: var(--muted); font-size: 12px; font-weight: 600; line-height: 1; }
 .cc-arch .arch-key i { width: 14px; height: 14px; border: 1px solid var(--cloud-border); border-radius: 4px; background: var(--cloud-bg); }
 .cc-main .cc-server-head { justify-content: center; }

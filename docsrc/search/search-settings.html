@@ -1,4 +1,4 @@
-<p class="lead">A search returns the agents that match a query, best first. What an interface does with those matches, run the best one at once or show them for the user to choose from, is the interface's own behavior, not an account setting. The bundled UI takes it from the agent server's configuration; an interface of your own decides for itself.</p>
+<p class="lead">A search returns the agents that match a query, best first. What an interface does with those matches, run the best one at once or show them for the user to choose from, is the interface's own behavior, not an account setting. The UI takes it from the agent server's configuration; an interface of your own decides for itself.</p>
 
 <h2>What an interface can do with the matches</h2>
 <p>A search returns one or two agents, or none; see <a href="how-matching-works.html">How matching behaves</a>. The interface then chooses how to act:</p>
@@ -14,7 +14,7 @@
 <h2>Follow-ups</h2>
 <p>A follow-up is a query typed into a conversation that already exists. An interface can search it like a new query and keep the agent that answered last as a fallback or among the choices, or it can keep the whole conversation on the agent that started it. See <a href="how-matching-works.html#follow-ups">Follow-ups</a>.</p>
 
-<h2>The bundled UI</h2>
+<h2>The UI</h2>
 <p>The UI reads its behavior from the <code>uiConfig</code> object of the <a href="../system-management/agent-servers.html#the-ui-s-settings">agent server configuration</a> it is served by, so each agent server in an account can behave differently. By default the best match runs at once, and a follow-up is searched again with the previous agent as the fallback. A change takes effect when the agent server restarts and each user reloads the UI.</p>
 <p><code>search.searchBehavior</code>, for a new search:</p>
 <div class="tablewrap"><table class="fields">

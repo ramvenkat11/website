@@ -71,7 +71,7 @@
 <p>Search2o is in open beta, and anyone is welcome to try it. Creating an account is one step. It opens a free account with you as its first user and owner, and shows the account's license key once. The key connects an agent server to your account in the cloud service, so store it with your other secrets as soon as it is shown. You are not asked for a password; you choose one the first time you open the UI.</p>
 
 <h2 id="install">Install</h2>
-<p>The agent server, with the bundled UI, requires Python 3.12 or later and is published on PyPI as <code>search2o</code>:</p>
+<p>The agent server and the UI are installed together. They require Python 3.12 or later and are published on PyPI as <code>search2o</code>:</p>
 <figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>pip install search2o</code></pre></figure>
 <p>The <code>db</code> command uses SQLAlchemy's async engines, so the driver for your database must be installed too. SQLite works without an extra driver. The other drivers are optional extras of the package:</p>
 <figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>pip install <span class=str>&quot;search2o[postgres]&quot;</span>   <span class=cm># asyncpg</span>

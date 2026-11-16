@@ -102,42 +102,11 @@
       <p class="hero-caption"><a href="demo-search.html">Demo: Chat with agents</a></p>
     </div>
   </section>
-  <section class="section" id="conversations">
-    <div class="container">
-      <div class="section-head center">
-        <h2>Conversations let agents build on each&nbsp;other</h2>
-        <p>Users hold conversations from the built-in browser interface, or from Slack and Teams with a&nbsp;bot.</p>
-      </div>
-      <div class="cv" aria-label="One conversation across two independent agents, with four notes. Search matches the first request to the Travel desk agent, which asks for confirmation before booking. The platform saves the conversation context when the agent ends. A second request is matched to the Reimbursements agent, which continues the same conversation and files the trip expenses.">
-        <div class="cv-title">Conversation</div>
-        <div class="turn-user r2">Book my trip for Tuesday's all&#8209;day meeting in New York</div>
-        <aside class="cv-note r2"><b><a href="search.html">Discovery</a></b>Search matched the request to the Travel desk agent, and the UI ran it automatically. The UI can also be set to confirm with the user before running an agent. The request had no conversation ID, so a new, empty conversation started.</aside>
-        <div class="turn-agent r3">
-          <div class="msg ask" aria-label="The agent asks before booking"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>
-            <span class="q">UA1191 departs 06:00 Tuesday, back at 19:30, and a night at the Marriott near the office. $1,240. <b>Book it?</b></span>
-            <span class="opts"><i class="on">Book</i><i>Hold</i></span>
-            <span class="submit">Submit</span>
-          </div>
-        </div>
-        <aside class="cv-note r3"><b><a href="docs/commands/ask.html">Human in the loop</a></b>The agent&rsquo;s state is stored, and when the user answers, the agent continues from where it paused.</aside>
-        <div class="turn-agent r4">
-          <div class="msg"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>Booked UA1191 and the hotel night. The confirmation is in your inbox.</div>
-        </div>
-        <aside class="cv-note r4"><b><a href="conversation.html#state">Conversation context</a></b>The Travel desk agent ended here, and the platform saved the conversation context automatically: the agent&rsquo;s variables and its LLM message thread, which is stored in a model&#8209;neutral format.</aside>
-        <div class="turn-user r5">File the expenses for that trip</div>
-        <div class="turn-agent r6">
-          <div class="msg"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Reimbursements</span>Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
-        </div>
-        <aside class="cv-note r6"><b><a href="docs/agent-execution/building-on-each-other.html">Building on each other</a></b>The request carried the conversation ID, so the platform restored the saved context first. Search then matched the follow&#8209;up to the Reimbursements agent, which continued the LLM message thread. To the Reimbursements agent&rsquo;s LLM, it looks like one continuous conversation that started with booking the&nbsp;trip.</aside>
-      </div>
-      <p class="hero-caption"><a href="demo-trace.html">Demo: Trace an agent run</a></p>
-    </div>
-  </section>
-  <section class="section soft" id="framework-runtime">
+  <section class="section" id="framework-runtime">
     <div class="container">
       <div class="section-head center">
         <h2>Build, validate and publish agents in minutes, from the&nbsp;UI</h2>
-        <p>Describe an agent to <a href="docs/development/draft-with-ai.html">Draft with AI</a>, refine it in the <a href="docs/development/code-editor.html">schema&#8209;aware code editor</a>, then <a href="docs/development/trace-and-validation.html">trace and validate</a> it before <a href="docs/development/publishing.html">publishing</a>, all from one&nbsp;place.</p>
+        <p>The UI includes a complete development environment for agents. Tell <a href="docs/development/draft-with-ai.html">Draft with AI</a> what the agent should do, refine the generated agent in the <a href="docs/development/code-editor.html">schema&#8209;aware code editor</a>, then <a href="docs/development/trace-and-validation.html">trace and validate</a> it before <a href="docs/development/publishing.html">publishing</a>. Connection details for APIs, databases, MCP servers and LLMs are kept in <a href="docs/profiles/overview.html">profiles</a>, outside the agent&rsquo;s code. <a href="docs/agent-definition/prompts.html">Prompts</a> are kept outside the code too, in the agent&nbsp;meta.</p>
       </div>
       <div class="fr" aria-label="An agent that answers from a knowledge base, beside a card that explains the agent syntax and structure and lists the 20 commands. A top-level comment calls it a simple RAG agent that answers from a knowledge base. The agent is a JSONC document with one function, main, holding three commands, with comments explaining the API profile, the query parameter, the variable, the LLM profile and the prompt: api searches the knowledge base with sys.query, var keeps the text of the first five hits as passages with a Python list comprehension, and llm sends the prompt named answer to gpt5_mini and streams the answer to the user. The card says an agent is defined in JSONC, JSON with comments, where a string in braces is a Python expression evaluated in a controlled runtime, and that an agent is a set of functions, each a list of commands, with every run starting in main, that a function can take arguments, and that a function used in a tool call also has a description. It lists the 20 commands in eight groups: Variables, Flow control, LLM interaction, External systems, Human-in-the-loop, Agent output, Agent termination, Observability.">
         <pre class="fr-code"><span class="fr-title">Example agent</span><code><span class="cm i0">// A simple RAG agent that answers from a knowledge base.</span>{
@@ -179,19 +148,50 @@
       <p class="hero-caption"><a href="demo-draft.html">Demo: Draft an agent with AI</a></p>
     </div>
   </section>
+  <section class="section soft" id="conversations">
+    <div class="container">
+      <div class="section-head center">
+        <h2>Conversations let agents build on each&nbsp;other</h2>
+        <p>Users hold conversations from the UI, or from Slack, Teams and Google Chat with a <a href="docs/chat-integrations/index.html">bot</a>. The LLM message thread is stored in a model-neutral format, so the next agent can continue the same thread with a different model. <a href="docs/agent-definition/variables.html">Conversation variables</a> give agents short-term memory, and the <a href="docs/commands/memory.html">memory command</a> gives them long-term&nbsp;memory.</p>
+      </div>
+      <div class="cv" aria-label="One conversation across two independent agents, with four notes. Search matches the first request to the Travel desk agent, which asks for confirmation before booking. The platform saves the conversation context when the agent ends. A second request is matched to the Reimbursements agent, which continues the same conversation and files the trip expenses.">
+        <div class="cv-title">Conversation</div>
+        <div class="turn-user r2">Book my trip for Tuesday's all&#8209;day meeting in New York</div>
+        <aside class="cv-note r2"><b><a href="search.html">Discovery</a></b>Search matched the request to the Travel desk agent, and the UI ran it automatically. The UI can also be set to confirm with the user before running an agent. The request had no conversation ID, so a new, empty conversation started.</aside>
+        <div class="turn-agent r3">
+          <div class="msg ask" aria-label="The agent asks before booking"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>
+            <span class="q">UA1191 departs 06:00 Tuesday, back at 19:30, and a night at the Marriott near the office. $1,240. <b>Book it?</b></span>
+            <span class="opts"><i class="on">Book</i><i>Hold</i></span>
+            <span class="submit">Submit</span>
+          </div>
+        </div>
+        <aside class="cv-note r3"><b><a href="docs/commands/ask.html">Human in the loop</a></b>The agent&rsquo;s state is stored, and when the user answers, the agent continues from where it paused.</aside>
+        <div class="turn-agent r4">
+          <div class="msg"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>Booked UA1191 and the hotel night. The confirmation is in your inbox.</div>
+        </div>
+        <aside class="cv-note r4"><b><a href="conversation.html#state">Conversation context</a></b>The Travel desk agent ended here, and the platform saved the conversation context automatically: the agent&rsquo;s variables and its LLM message thread, which is stored in a model&#8209;neutral format.</aside>
+        <div class="turn-user r5">File the expenses for that trip</div>
+        <div class="turn-agent r6">
+          <div class="msg"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Reimbursements</span>Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
+        </div>
+        <aside class="cv-note r6"><b><a href="docs/agent-execution/building-on-each-other.html">Building on each other</a></b>The request carried the conversation ID, so the platform restored the saved context first. Search then matched the follow&#8209;up to the Reimbursements agent, which continued the LLM message thread. To the Reimbursements agent&rsquo;s LLM, it looks like one continuous conversation that started with booking the&nbsp;trip.</aside>
+      </div>
+      <p class="hero-caption"><a href="demo-trace.html">Demo: Trace an agent run</a></p>
+    </div>
+  </section>
   <section class="section" id="user-interfaces">
     <div class="container">
       <div class="section-head center">
         <h2>Hybrid&nbsp;architecture</h2>
-        <p>The platform has two parts: a stateless agent server that runs in your organization, and a cloud service that provides state, search and reporting. The cloud service can be shared or&nbsp;dedicated.</p>
+        <p>The platform has three parts: a stateless agent server and a UI that run in your organization, and a cloud service that provides state, search and reporting. <code>pip install search2o</code> installs the agent server and the UI together. The agent server can run standalone or in a cluster. The cloud service can be shared or&nbsp;dedicated.</p>
       </div>
       <div class="ui-fig">
-      <aside class="arch cc-arch hero-arch" aria-label="The Search2o agent platform has two parts: an agent server in your organization and a cloud service, which is shared or dedicated. The two are drawn in the same dark colour. A browser used by users, developers and admins, Slack, Teams or Google Chat, Claude Code and your own REST client send requests to the Search2o agent server in your organization, which runs as a cluster. The cluster is stateless, scales out and is always in sync. The agent server runs the agents and calls enterprise systems and local LLMs inside the enterprise, and external LLMs outside it. The agent server keeps no state: an encrypted link connects it to the cloud service, which provides state, search and reports.">
+      <aside class="arch cc-arch hero-arch" aria-label="The Search2o agent platform has three parts: an agent server and a UI in your organization, and a cloud service, which is shared or dedicated. The three are drawn in the same dark colour. A browser running the UI, used by users, developers and admins, Slack, Teams or Google Chat, Claude Code and your own REST client send requests to the Search2o agent server in your organization, which runs standalone or as a cluster. The agent server is stateless, scales out and is always in sync. The agent server runs the agents and calls enterprise systems and local LLMs inside the enterprise, and external LLMs outside it. The agent server keeps no state: an encrypted link connects it to the cloud service, which provides state, search and reports.">
           <div class="arch-flow">
             <div class="arch-org">
             <span class="arch-org-lbl">Your organization</span>
             <div class="cc-clients">
-              <div class="arch-node cc-cc"><strong><a href="docs/gui/index.html">Browser</a></strong><div class="arch-chips cc-skill cc-roles"><span><a href="docs/system-management/users-and-roles.html">User &middot; Developer &middot; Admin</a></span></div></div>
+              <div class="arch-node cc-cc cc-ui"><strong><a href="docs/gui/index.html">Browser</a></strong><div class="arch-chips cc-skill cc-roles"><span><a href="docs/system-management/users-and-roles.html">User &middot; Developer &middot; Admin</a></span></div></div>
               <div class="arch-node cc-cc"><strong><a href="docs/chat-integrations/index.html">Slack, Teams, Google&nbsp;Chat</a></strong><div class="arch-chips cc-skill"><span><a href="docs/chat-integrations/index.html">Bot</a></span></div></div>
               <div class="arch-node cc-cc"><strong><a href="docs/skill-integration/index.html">Claude&nbsp;Code</a></strong><div class="arch-chips cc-skill"><span><a href="https://github.com/Search2o/search2o-skill" target="_blank" rel="noopener">search2o-skill</a></span></div></div>
               <div class="arch-node cc-cc"><strong><a href="docs/rest-api/clients.html">REST client</a></strong><div class="arch-chips cc-skill"><span><a href="docs/rest-api/overview.html">REST&nbsp;API</a></span></div></div>
