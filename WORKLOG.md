@@ -2619,3 +2619,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Nav: link added between Demo and Docs on all 17 web pages and in the docs template (`gen/build.py`, docs rebuilt, sitemap has why.html). Label is `Why<span class="nav-long"> Search2o</span>`: "Why Search2o" at ≥1240px, "Why" below. Header spacing tightened at 981–1100 and ≤400/≤370 so the header keeps the same row count as before at every width (two nav rows only ≤340, as before).
 - Checked: page at 9 widths light+dark, sweep 320–1280 clean; header measured on why, home and two docs pages.
 - Open: Ram to pick the nav label (Why Search2o / Why / Compare / Vs competition). Nothing uploaded.
+- Nav label for why.html is now plain "Why" at every width (Ram: "Why Search2o is too tight even for desktop"); the `.nav-long` span and rule are removed, docs rebuilt. Nothing uploaded.
