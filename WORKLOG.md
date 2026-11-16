@@ -2691,3 +2691,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - `html/pricing.html` figure: UI box added inside "Your organization", left of the agent server, with a solid arrow UI -> agent server; "Always free" on both. aria-label updated. CSS: `.price-fig .st-ui`, `.ui-conn`; figure stacks at container width 760 and below (was 560).
 - Wording: no mention of general availability or January 2027 anywhere on the page. Card: "A paid service is expected in early 2027." Section: "A paid service is expected in early 2027, at an indicative price of $40 per user per month." Meta description and og:description follow. Ram: the paid service comes before general availability, but do not say so explicitly.
 - Figure rendered at 9 widths light+dark, sweep clean. Not uploaded.
+
+## 2026-11-16 pricing: "beta" removed
+- Ram: "free during beta" was exactly what he asked to remove (it ties free to a release stage). `html/pricing.html` now says "currently free" in the figure pill, the card note, the section heading and text, the aria-label, the meta description and og:description. The word "beta" no longer appears on the page (legal terms still use it as a legal term). Text only, same pill and heading lengths or shorter; no render. Not uploaded.
