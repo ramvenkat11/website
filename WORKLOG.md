@@ -2680,3 +2680,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-16 docs: fits-together step labels
 - Ram: "Draft - in the cloud service" makes no sense, since every state is in the cloud service. Draft now reads "editor or Draft with AI" and Save reads "state, encrypted"; the sentence added to step 1 is reverted. Do not label individual items as stored in the cloud service. Text-length labels were rendered earlier in the same boxes; no new render. Not uploaded.
+
+## 2026-11-16 pricing: indicative price, first version
+- Source: Ram's notes in `content/newhome.txt` and his answers: everything stays free in beta; prices are "indicative"; usage-based pricing dropped; no line about usage limits on the plan; "start with something".
+- `html/pricing.html`: three cards under the figure (`.price-plans` / `.price-plan`): Agent server and UI = Free; Shared cloud service = $40 per user per month, indicative, free during beta; Dedicated cloud service = Custom, planned. Shared and dedicated prose sections each gained the price sentence. Meta description and og:description updated. Figure unchanged.
+- `html/styles/styles.css`: `.price-plan*` rules before `.pricing h2 ~ p`; cards stack at 760 and below.
+- Cards rendered at 9 widths light+dark, sweep 320-1280 clean; full page viewed at 1280 light. Awaiting Ram's decision on layout. Not uploaded.
