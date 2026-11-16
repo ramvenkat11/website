@@ -2663,3 +2663,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-16 docs: What is Search2o rewritten
 - `docsrc/introduction/what-is-search2o.html` rewritten to follow `html/about.html`: lead plus bold-led paragraphs (Framework, Runtime, Search, Conversations, Interfaces, Observability, Administration, Deployment), formal wording, each linked to its docs section. "What makes it different" list removed. Docs rebuilt (147 pages); meta description comes from the lead. Text only, no render. Not uploaded.
+
+## 2026-11-16 docs: How it fits together redone
+- `docsrc/introduction/how-it-fits-together.html` rewritten: lead ties the page to the three parts; sections Building an agent (4 steps), Handling a request (5 steps, was "Answering a query"), Keeping agent servers current (was "Keeping servers consistent"). No inbound links used the old anchors. Facts checked against development/, search/, runtime/overview and agent-execution/conversation-state.
+- `gen/figures.py`: build-pipeline, request-lifecycle and config-sync redrawn. Steps are plain numbered cards; a dark pill under each names the part that performs it (UI, Cloud service, Agent server); config-sync is a vertical flow with all three parts dark. New `_step_flow` and `_part_pills` helpers. `Fig` takes an optional `description` used for aria-label; the caption stays the short title.
+- Rendered at 1280 light and 384 dark only. Docs SVG figures scale down on phones, so figure text is very small at 384 (true of every docs figure, not new). Not uploaded.
