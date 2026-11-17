@@ -2758,3 +2758,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-17 Why us: page title
 - `html/why.html` h1: "Search2o combines agent development, execution and routing in a single platform" -> "One platform for agents you can depend on in production". Meta description and og:description opening sentence changed to match. Title tag stays "Why Search2o". Not rendered yet; Ram may still adjust the wording.
+
+## 2026-11-17 Why us: title chosen
+- Ram chose "A complete agent platform, built for production" for the `html/why.html` h1. Meta description and og:description open "Search2o is a complete agent platform, built for production." Title tag stays "Why Search2o". Not rendered.
