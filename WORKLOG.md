@@ -2761,3 +2761,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-17 Why us: title chosen
 - Ram chose "A complete agent platform, built for production" for the `html/why.html` h1. Meta description and og:description open "Search2o is a complete agent platform, built for production." Title tag stays "Why Search2o". Not rendered.
+
+## 2026-11-17 Why us: velocity folded in, runtime paragraph added
+- `html/why.html` intro: "Built for velocity" paragraph removed; its content went into "Task-focused agents" (developing, changing and publishing takes minutes) and "Built-in routing and orchestration" (users need not know which agents exist as developers add, revise and remove them). Dropped: "They care about the result, not the agent." and "The set of agents changes constantly".
+- New third paragraph "Controlled runtime" (profiles limit systems, time and cost limits, every run recorded; link to runtime.html). Order: task-focused, routing and orchestration, controlled runtime, quick setup and maintenance.
