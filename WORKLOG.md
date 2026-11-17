@@ -2715,3 +2715,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-17 docs "Search2o agents": cost paragraph
 - Added "Lower cost" (cheapest LLM that does the task well) to "Why agents are task-focused", before "Contained change". Docs rebuilt. Hero and Why us still pending.
+
+## 2026-11-17 docs "Search2o agents": revised from the talk's transcript
+- Ram pasted the transcript of the Schroeder talk. Revised "Why agents are task-focused": new opening on business processes; "A clear measure of success" extended (test one process until right every time); "Least access" became "Enforced limits" (runtime enforces, a prompt does not; runs stop at limits); "Lower cost" extended (models differ); new "Adoption one process at a time". Docs rebuilt. Hero and Why us still pending.
