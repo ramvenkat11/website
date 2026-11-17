@@ -2727,3 +2727,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-17 docs "Search2o agents": rest of page aligned
 - Intro now introduces the term "task-focused"; Examples closing trimmed (the boundary/paths/search sentences duplicated the new section; kept the overlap sentence, tied examples to "one business process"); "is not" list defines general-purpose agent as in the new section. Docs rebuilt. Hero and Why us still pending.
+
+## 2026-11-17 docs "Search2o agents": examples moved up and extended
+- "Examples" now sits before "Why agents are task-focused". Added two examples (part reorder, matching the home demo; support ticket summary) and a sentence on what the LLM does within fixed steps. Docs rebuilt. Hero and Why us still pending.
