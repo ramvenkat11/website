@@ -2697,3 +2697,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-16 pricing: heading and "indicative" removed
 - `html/pricing.html`: h2 "The agent server and the UI are always free"; "indicative price" removed from the card note, the section text, the meta description and og:description (now "expected in early 2027, at $40 per user per month"). Text only, no render. Not uploaded.
+
+## 2026-11-16 pricing final touches and pre-deploy check
+- `html/pricing.html`: paragraph and meta/og descriptions now say "The Search2o agent server and UI have no license fee"; figure pills on UI and agent server read "Source available · free" (aria-label follows); organization box widened (456px, equal columns), figure stacks at container width 840 and below.
+- Pre-deploy check: 166 pages, 0 broken links or anchors, 0 HTML comments, 0 CSS comments, config.js production URLs, sitemap has why.html. Sweep 320-1280: 18 web pages 4338 loads clean, 6 changed docs pages 1446 loads clean, pricing re-swept after the pill change. Header one row on every page (404 unstyled from disk as before).
+- Open for Ram: `html/why.html` still says "The cloud service is free during the beta, and usage based after that"; `docsrc/getting-started/registering-and-downloading.html` says "Search2o is in open beta". Both conflict with the new pricing wording. Not changed.
+- Nothing uploaded; Ram deploys.
