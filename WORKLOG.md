@@ -2721,3 +2721,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-17 docs "Search2o agents": section grouped as integration, trust, efficacy, cost
 - At Ram's direction (points from the Schroeder talk), regrouped "Why agents are task-focused" under h3 Integration, Trust, Efficacy, Cost. New items: built around one process, simple to evaluate, right model for the task (uneven models), far fewer tokens, small language models practical. "Same path on every run" merged into "Few paths". Docs rebuilt, not rendered. Hero and Why us still pending.
+
+## 2026-11-17 docs "Search2o agents": passage rewritten in Search2o's own frame
+- Ram: do not reuse the talk's headings (integration, trust, efficacy); the talk is input, the content must be Search2o's. Rewrote "Why agents are task-focused": two opening paragraphs, then seven bold-led qualities in Search2o terms: validated before publishing, repeatable, bounded, matched by search, economical, independent, observable. h3 groups removed. Docs rebuilt, not rendered. Hero and Why us still pending.
