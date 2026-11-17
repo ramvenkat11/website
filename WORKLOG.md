@@ -2752,3 +2752,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-17 Why us: table row
 - `html/why.html` "Which one fits" first row: "Build and run agents on an integrated platform" -> "One platform to build, run and use task-focused agents".
+
+## 2026-11-17 Why us: heading of merged paragraph
+- `html/why.html`: "Fast development, designed for change." -> "Built for velocity." (Ram asked for a velocity wording; alternatives offered: "Minutes from idea to published agent", "Change at the speed of the business").
