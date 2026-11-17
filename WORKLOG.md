@@ -2741,3 +2741,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-17 home hero: prod-as-dev sentence removed
 - Ram: the line is awkward; a good line or none. Removed it from `html/index.html`; the last hero paragraph is back to "The platform keeps every run safe, bounded and observable." The message stays in the docs passage and on Why us. A hero line remains an open idea, to be written by Ram or on his brief.
+
+## 2026-11-17 Why us: pricing sentence and bullet order
+- `html/why.html` "Try it": "free during the beta, and usage based after that" replaced with "The cloud service is currently free. A paid service is expected in early 2027." (matches pricing page).
+- Swapped the bullets "Fast development" and "Built-in routing and orchestration"; order is now task-focused, routing and orchestration, designed for change, fast development, quick setup.
+- Reported, not changed: the same line says only the agent server is free and source available (pricing page also names the UI).
