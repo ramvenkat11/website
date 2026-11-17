@@ -2703,3 +2703,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Pre-deploy check: 166 pages, 0 broken links or anchors, 0 HTML comments, 0 CSS comments, config.js production URLs, sitemap has why.html. Sweep 320-1280: 18 web pages 4338 loads clean, 6 changed docs pages 1446 loads clean, pricing re-swept after the pill change. Header one row on every page (404 unstyled from disk as before).
 - Open for Ram: `html/why.html` still says "The cloud service is free during the beta, and usage based after that"; `docsrc/getting-started/registering-and-downloading.html` says "Search2o is in open beta". Both conflict with the new pricing wording. Not changed.
 - Nothing uploaded; Ram deploys.
+
+## 2026-11-17 docs "Search2o agents": why task-focused
+- Added section "Why agents are task-focused" after the intro of `docsrc/introduction/search2o-agents.html` (message from `content/newhome.txt`: behaves in production as in development; few paths, validated before publishing). Trimmed the "Validation" benefit so it does not repeat the new section. Docs rebuilt.
+- Next: same message in the home hero and on Why us (drafts given to Ram; waiting for his choices: hero version A or B, drop or merge the "safe, bounded and observable" paragraph, "behaves" vs "performs").
