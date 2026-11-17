@@ -1323,8 +1323,8 @@ a.arch-lbl { color: var(--blue-ink); }
 .pricing h1 + h2 { margin-top: 30px; }
 .price-fig-wrap { container-type: inline-size; margin: 24px 0 0; }
 .price-fig-wrap + h2 { margin-top: 32px; }
-.price-fig { grid-template-columns: minmax(0, 372px) 156px minmax(0, 204px); justify-content: start; align-items: center; margin: 0; }
-.price-fig .ui-org { grid-column: 1; grid-row: 1; grid-template-columns: minmax(0, 5fr) 28px minmax(0, 7fr); align-items: stretch; padding: 20px 10px 10px; border-radius: 16px; }
+.price-fig { grid-template-columns: minmax(0, 456px) 156px minmax(0, 204px); justify-content: start; align-items: center; margin: 0; }
+.price-fig .ui-org { grid-column: 1; grid-row: 1; grid-template-columns: minmax(0, 1fr) 28px minmax(0, 1fr); align-items: stretch; padding: 20px 10px 10px; border-radius: 16px; }
 .price-fig .ui-org > .tag { font-size: 11px; }
 .price-fig .st-srv { grid-column: 3; grid-row: 1; align-self: auto; }
 .price-fig .st-ui { grid-column: 1; }
@@ -1347,9 +1347,9 @@ a.arch-lbl { color: var(--blue-ink); }
 .price-fig .st-box .nodes .ln { width: 10px; }
 .price-fig .st-cloud .ic { width: 40px; height: 40px; border-radius: 12px; }
 .price-fig .st-cloud .ic svg { width: 22px; height: 22px; }
-.price-fig .free { display: inline-block; margin-top: 1px; padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--blue) 11%, transparent); color: var(--blue-ink); font-size: 12px; font-weight: 700; letter-spacing: .01em; }
+.price-fig .free { display: inline-block; white-space: nowrap; margin-top: 1px; padding: 3px 10px; border-radius: 999px; background: color-mix(in srgb, var(--blue) 11%, transparent); color: var(--blue-ink); font-size: 12px; font-weight: 700; letter-spacing: .01em; }
 .price-fig .st-cloud .free { background: rgba(255, 255, 255, .12); color: #dbe7ff; }
-@container (max-width: 760px) {
+@container (max-width: 840px) {
   .price-fig { grid-template-columns: minmax(0, 1fr); max-width: 260px; margin: 0 auto; }
   .price-fig .ui-org { grid-template-columns: minmax(0, 1fr); padding: 20px 10px 10px; }
   .price-fig .st-ui { grid-column: 1; grid-row: 1; }
