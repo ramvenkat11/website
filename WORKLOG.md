@@ -2755,3 +2755,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-17 Why us: heading of merged paragraph
 - `html/why.html`: "Fast development, designed for change." -> "Built for velocity." (Ram asked for a velocity wording; alternatives offered: "Minutes from idea to published agent", "Change at the speed of the business").
+
+## 2026-11-17 Why us: page title
+- `html/why.html` h1: "Search2o combines agent development, execution and routing in a single platform" -> "One platform for agents you can depend on in production". Meta description and og:description opening sentence changed to match. Title tag stays "Why Search2o". Not rendered yet; Ram may still adjust the wording.
