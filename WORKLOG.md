@@ -2749,3 +2749,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-17 Why us: two bullets merged
 - `html/why.html`: "Fast development" and "Designed for change" merged into one paragraph, "Fast development, designed for change", in third place. Four paragraphs remain: task-focused, routing and orchestration, the merged one, quick setup.
+
+## 2026-11-17 Why us: table row
+- `html/why.html` "Which one fits" first row: "Build and run agents on an integrated platform" -> "One platform to build, run and use task-focused agents".
