@@ -2738,3 +2738,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - `html/index.html` last hero paragraph now opens "Task-focused agents behave in prod as they did in dev." (link on "prod as they did in dev" to docs `introduction/search2o-agents.html#why-agents-are-task-focused`; "The&nbsp;platform" kept together). Rendered `.hero-head` at 9 widths light+dark, sweep 320-1280 clean (241 loads). Meta description not changed.
 - shot.mjs is gone from the scratchpad; wrote `hero.mjs` there (hero crops + sweep).
 - Open: Ram is choosing the final wording (asked for alternatives to "behave consistently in dev and prod").
+
+## 2026-11-17 home hero: prod-as-dev sentence removed
+- Ram: the line is awkward; a good line or none. Removed it from `html/index.html`; the last hero paragraph is back to "The platform keeps every run safe, bounded and observable." The message stays in the docs passage and on Why us. A hero line remains an open idea, to be written by Ram or on his brief.
