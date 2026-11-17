@@ -2733,3 +2733,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-17 Why us: task-focused bullet
 - `html/why.html` first bullet rewritten with the production-as-in-development message and a link to docs `introduction/search2o-agents.html#why-agents-are-task-focused`. Meta description unchanged (does not mention this bullet). Hero still pending.
+
+## 2026-11-17 home hero: prod-as-dev sentence
+- `html/index.html` last hero paragraph now opens "Task-focused agents behave in prod as they did in dev." (link on "prod as they did in dev" to docs `introduction/search2o-agents.html#why-agents-are-task-focused`; "The&nbsp;platform" kept together). Rendered `.hero-head` at 9 widths light+dark, sweep 320-1280 clean (241 loads). Meta description not changed.
+- shot.mjs is gone from the scratchpad; wrote `hero.mjs` there (hero crops + sweep).
+- Open: Ram is choosing the final wording (asked for alternatives to "behave consistently in dev and prod").
