@@ -2707,3 +2707,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-17 docs "Search2o agents": why task-focused
 - Added section "Why agents are task-focused" after the intro of `docsrc/introduction/search2o-agents.html` (message from `content/newhome.txt`: behaves in production as in development; few paths, validated before publishing). Trimmed the "Validation" benefit so it does not repeat the new section. Docs rebuilt.
 - Next: same message in the home hero and on Why us (drafts given to Ram; waiting for his choices: hero version A or B, drop or merge the "safe, bounded and observable" paragraph, "behaves" vs "performs").
+
+## 2026-11-17 docs "Search2o agents": fuller case for task-focused agents
+- Ram pointed to the talk "Why Domain-specific Agents Are the Future" (Justin Schroeder, youtube wIPr9GmLRaQ). Transcript fetch was blocked; used three published summaries.
+- Rewrote "Why agents are task-focused" in `docsrc/introduction/search2o-agents.html`: demo-vs-production opening, then six bold-led reasons (few paths, clear measure of success, same path every run, least access, contained change, record of every run). Removed the section "Benefits of the boundary"; its four items are absorbed. Docs rebuilt.
+- Next: hero and Why us still pending Ram's choices.
