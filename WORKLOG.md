@@ -2712,3 +2712,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Ram pointed to the talk "Why Domain-specific Agents Are the Future" (Justin Schroeder, youtube wIPr9GmLRaQ). Transcript fetch was blocked; used three published summaries.
 - Rewrote "Why agents are task-focused" in `docsrc/introduction/search2o-agents.html`: demo-vs-production opening, then six bold-led reasons (few paths, clear measure of success, same path every run, least access, contained change, record of every run). Removed the section "Benefits of the boundary"; its four items are absorbed. Docs rebuilt.
 - Next: hero and Why us still pending Ram's choices.
+
+## 2026-11-17 docs "Search2o agents": cost paragraph
+- Added "Lower cost" (cheapest LLM that does the task well) to "Why agents are task-focused", before "Contained change". Docs rebuilt. Hero and Why us still pending.
