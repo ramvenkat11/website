@@ -2724,3 +2724,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-17 docs "Search2o agents": passage rewritten in Search2o's own frame
 - Ram: do not reuse the talk's headings (integration, trust, efficacy); the talk is input, the content must be Search2o's. Rewrote "Why agents are task-focused": two opening paragraphs, then seven bold-led qualities in Search2o terms: validated before publishing, repeatable, bounded, matched by search, economical, independent, observable. h3 groups removed. Docs rebuilt, not rendered. Hero and Why us still pending.
+
+## 2026-11-17 docs "Search2o agents": rest of page aligned
+- Intro now introduces the term "task-focused"; Examples closing trimmed (the boundary/paths/search sentences duplicated the new section; kept the overlap sentence, tied examples to "one business process"); "is not" list defines general-purpose agent as in the new section. Docs rebuilt. Hero and Why us still pending.
