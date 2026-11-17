@@ -1,22 +1,5 @@
-Pricing:
+Why task-focused agents?
 
-#Shared cloud
+Because we can depend on them to perform the same way in production as they did in dev.
 
-##Usage based
-
-Single user
-Conversations not saved
-$5/agent/month (prorated on a daily basis)
-$1/indexing
-$0.20 for search request
-$0.05 for other requests
-
-## User based
-
-$40/user/month
-
-# Dedicated cloud
-
-Custom pricing
-
-
+They have only a few paths. They use LLMs to add intelligence to a small, well-understood business process - hence, they can be validated well before publishing.
