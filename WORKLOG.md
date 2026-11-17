@@ -2746,3 +2746,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - `html/why.html` "Try it": "free during the beta, and usage based after that" replaced with "The cloud service is currently free. A paid service is expected in early 2027." (matches pricing page).
 - Swapped the bullets "Fast development" and "Built-in routing and orchestration"; order is now task-focused, routing and orchestration, designed for change, fast development, quick setup.
 - Reported, not changed: the same line says only the agent server is free and source available (pricing page also names the UI).
+
+## 2026-11-17 Why us: two bullets merged
+- `html/why.html`: "Fast development" and "Designed for change" merged into one paragraph, "Fast development, designed for change", in third place. Four paragraphs remain: task-focused, routing and orchestration, the merged one, quick setup.
