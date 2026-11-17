@@ -2730,3 +2730,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-17 docs "Search2o agents": examples moved up and extended
 - "Examples" now sits before "Why agents are task-focused". Added two examples (part reorder, matching the home demo; support ticket summary) and a sentence on what the LLM does within fixed steps. Docs rebuilt. Hero and Why us still pending.
+
+## 2026-11-17 Why us: task-focused bullet
+- `html/why.html` first bullet rewritten with the production-as-in-development message and a link to docs `introduction/search2o-agents.html#why-agents-are-task-focused`. Meta description unchanged (does not mention this bullet). Hero still pending.
