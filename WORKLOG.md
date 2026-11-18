@@ -2816,3 +2816,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-18 footer tagline on one line
 - Cause of the wrap: `.footer-brand p` had `max-width: 34ch`, sized for the old shorter tagline. Removed the limit and added `text-wrap: balance`; tagline is one line from 352 up, two balanced lines at 320-348. Footer rendered at 9 widths, sweep clean.
 - Side effect: the wider tagline makes the footer links drop below the logo up to 1004 wide (before today: up to 912). Reduced `.footer-main` column gap 40 -> 24 to pull that back by about 16px (computed, not re-measured).
+
+## 2026-11-18 home hero: task-focused sentence back in the last paragraph
+- Last hero paragraph now opens "Being task-focused keeps every agent dependable and economical." ("task-focused" links to docs `introduction/search2o-agents.html#why-agents-are-task-focused`; "The&nbsp;platform" kept together). Wording is mine on Ram's pattern "Agents being task-focused keeps them X and Y"; alternatives offered. Rendered at 9 widths light and dark; sweep clean.
