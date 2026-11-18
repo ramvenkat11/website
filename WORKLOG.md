@@ -2784,3 +2784,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-18 hero links: M7
 - Ram switched from M9 to M7. `.hero-attr` underline is now 1px solid blue (62%), offset 4px; words still take the surrounding colour and weight; hover turns words and line full blue. Layout unchanged from the M9 render; not re-rendered on the home page (M7 was seen on the preview page at 1280, light and dark).
+
+## 2026-11-18 one shared link style for web and docs pages
+- `html/styles/styles.css` (loaded by web and docs pages) now has ONE rule pair for in-text links, right after the base `a` rules: `:is(.text-link, .hero-attr, main :is(p, li, td, dd, label) a:not([class]):not(:is(.hero-caption, .pagecards) a))` and its `:hover`. Style = M7: colour and weight inherited, 1px solid blue (62%) underline, offset 4px; hover full blue. Change these two lines to restyle every in-text link; add class `text-link` to opt a link in.
+- Removed rules it replaces: `.hero-attr` colour/underline (kept nowrap), `#framework-runtime .fr-struct a`, `.pl-kick a` in styles.css; `.docs-article a` pair in `html/docs/docs.css`.
+- Audit over 166 pages, light and dark: 683 links carry the style, all match their parent's text colour, none under 4.5:1 contrast. Left as they were (not in-text): breadcrumbs, prev/next, page cards, hero captions ("Demo: ..."), buttons, figure labels and chips, why-go, mail. 404 shows 4 unstyled links only because it loads without CSS from disk.
+- Viewed: docs agents page 1280 light and 384 dark, docs command reference 1280 light, why 1280 light, getting started 384 light. Hover not viewed.
