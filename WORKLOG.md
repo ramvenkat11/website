@@ -2790,3 +2790,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Removed rules it replaces: `.hero-attr` colour/underline (kept nowrap), `#framework-runtime .fr-struct a`, `.pl-kick a` in styles.css; `.docs-article a` pair in `html/docs/docs.css`.
 - Audit over 166 pages, light and dark: 683 links carry the style, all match their parent's text colour, none under 4.5:1 contrast. Left as they were (not in-text): breadcrumbs, prev/next, page cards, hero captions ("Demo: ..."), buttons, figure labels and chips, why-go, mail. 404 shows 4 unstyled links only because it loads without CSS from disk.
 - Viewed: docs agents page 1280 light and 384 dark, docs command reference 1280 light, why 1280 light, getting started 384 light. Hover not viewed.
+
+## 2026-11-18 docs "Task-focused agents": model-neutrality
+- "Economical" paragraph in `docsrc/introduction/search2o-agents.html` now says Search2o is model-neutral: each agent uses its own model, and agents on different models still work together in one conversation (links to the page's "How Search2o agents work together"). Same sense as the home page ("model-neutral format"). Docs rebuilt.
