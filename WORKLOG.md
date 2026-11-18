@@ -2803,3 +2803,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Docs "What is Search2o" lead: "Search2o is a model-neutral agent platform for the enterprise." Docs rebuilt (147).
 - Checks: header sweep 320-1280 on 19 pages (4579 loads): no overflow; menu wraps to two rows at 320-340 and 444-484, same widths as before the change; header 10-23px shorter on phones. Hero rendered at 9 widths light and dark; sweep clean.
 - Reported, not changed: About page body and meta still say "Search2o is an agent platform for the enterprise".
+
+## 2026-11-18 About: model-neutral
+- `html/about.html`: "Search2o is an agent platform for the enterprise" -> "Search2o is a model-neutral agent platform for the enterprise" in the opening paragraph, the meta description and og:description. og:image:alt left (waits for Ram's social card instructions).
