@@ -2771,3 +2771,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-18 hero links: ten marker/soft-underline variations (preview only)
 - Ram's goal: linked words are normal words (same colour and weight as the text), marked only as clickable concepts. Added a section M1-M10 at the top of the scratchpad preview `linkstyles/link-styles.html`: four tinted bands, two thick soft underlines, two hairlines, dotted, dashed. Hover turns the words blue. Nothing in the site changed. Bands M1-M3 are faint in dark mode and would need a stronger dark value if chosen.
+
+## 2026-11-18 hero links: five blue dotted-underline variations (preview only)
+- Ram clarified: linked words should still stand out (blue), only less than the title; dotted underline works best. Added D1-D5 at the top of the scratchpad preview `linkstyles/link-styles.html`: semibold or medium weight, 2px blue dots, fine pale dots, grey dots. Nothing in the site changed; waiting for his choice and its scope (hero only or all such links).
