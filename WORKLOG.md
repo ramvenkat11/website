@@ -2793,3 +2793,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-18 docs "Task-focused agents": model-neutrality
 - "Economical" paragraph in `docsrc/introduction/search2o-agents.html` now says Search2o is model-neutral: each agent uses its own model, and agents on different models still work together in one conversation (links to the page's "How Search2o agents work together"). Same sense as the home page ("model-neutral format"). Docs rebuilt.
+
+## 2026-11-18 tagline test: "Model-neutral agent platform for the enterprise" (not applied)
+- Ram asked to check this tagline. Tested by swapping the header `.tagline` text in a render only (no file changed), sweep 320-1280 on index.html and docs/index.html. Result: page overflows sideways at 984-1032 and 1104-1116 on web pages (up to 51px); docs header changes at 101 of 241 widths; on phones the tagline takes one more line (header +12px) and at 564-624 it wraps (+25px). It fits cleanly only from about 1120 up on web pages. Would need header CSS work (hide or shrink tagline between about 980 and 1120) before use.
