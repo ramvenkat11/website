@@ -2806,3 +2806,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-18 About: model-neutral
 - `html/about.html`: "Search2o is an agent platform for the enterprise" -> "Search2o is a model-neutral agent platform for the enterprise" in the opening paragraph, the meta description and og:description. og:image:alt left (waits for Ram's social card instructions).
+
+## 2026-11-18 home: Google Chat removed
+- `html/index.html`: conversations paragraph now "from Slack and Teams with a bot"; architecture figure client box now "Slack, Teams"; figure aria-label "Slack or Teams". Docs keep Google Chat (Ram). Figure rendered at 9 widths light and dark; sweep 320-1280 clean (241 loads).
