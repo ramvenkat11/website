@@ -2765,3 +2765,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-17 Why us: velocity folded in, runtime paragraph added
 - `html/why.html` intro: "Built for velocity" paragraph removed; its content went into "Task-focused agents" (developing, changing and publishing takes minutes) and "Built-in routing and orchestration" (users need not know which agents exist as developers add, revise and remove them). Dropped: "They care about the result, not the agent." and "The set of agents changes constantly".
 - New third paragraph "Controlled runtime" (profiles limit systems, time and cost limits, every run recorded; link to runtime.html). Order: task-focused, routing and orchestration, controlled runtime, quick setup and maintenance.
+
+## 2026-11-18 hero links: ten style choices (preview only)
+- Ram suspects visitors read the hero's linked phrases (`.hero-attr`: blue, semibold, no underline) as emphasis, not links. Built a preview page outside the repo, in the session scratchpad `linkstyles/link-styles.html`, showing today's style and ten alternatives on the real hero text with the site stylesheet, with a light/dark switch. Nothing in the site changed. Waiting for his choice.
