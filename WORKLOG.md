@@ -2781,3 +2781,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-18 hero links restyled (M9)
 - `html/styles/styles.css` `.hero-attr`: linked phrases now take the colour and weight of the surrounding text with a 2px dotted blue underline (blue 60%, offset 4px); hover turns the words blue and the line solid. The class is used only in the home hero (8 links). Rendered `.hero-head` at 9 widths, light and dark; sweep 320-1280 clean (241 loads). Hover state not viewed.
 - The preview page stays in the scratchpad (`linkstyles/link-styles.html`).
+
+## 2026-11-18 hero links: M7
+- Ram switched from M9 to M7. `.hero-attr` underline is now 1px solid blue (62%), offset 4px; words still take the surrounding colour and weight; hover turns words and line full blue. Layout unchanged from the M9 render; not re-rendered on the home page (M7 was seen on the preview page at 1280, light and dark).
