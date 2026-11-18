@@ -2819,3 +2819,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-18 home hero: task-focused sentence back in the last paragraph
 - Last hero paragraph now opens "Being task-focused keeps every agent dependable and economical." ("task-focused" links to docs `introduction/search2o-agents.html#why-agents-are-task-focused`; "The&nbsp;platform" kept together). Wording is mine on Ram's pattern "Agents being task-focused keeps them X and Y"; alternatives offered. Rendered at 9 widths light and dark; sweep clean.
+
+## 2026-11-18 home hero paragraphs from newhome; docs "Dependable"
+- Hero (`html/index.html`), per `content/newhome.txt` with Ram's answers: P1 "Developers transform your business workflows into AI agents in the built-in development environment. They also describe when to use each agent in plain English." (link to docs development/index.html, allowed to wrap via `.hero-attr-long`); P2 "Semantic search routes each request to the right agent." (link moved from "right agent" to "Semantic search"); P3 "Search2o agents are task-focused, which keeps them dependable and economical." ("them" added: his text had the object missing) with links to docs anchors #dependable and #economical. Home meta description updated; og left.
+- Docs `introduction/search2o-agents.html`: "Repeatable" renamed "Dependable" and rewritten (few paths, same path every run, validated agent is the agent in production, failure has a place); ids `dependable` and `economical` added. Docs rebuilt.
+- Hero rendered at 9 widths light and dark, twice; sweep clean.
