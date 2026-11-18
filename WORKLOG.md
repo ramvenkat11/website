@@ -2809,3 +2809,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-18 home: Google Chat removed
 - `html/index.html`: conversations paragraph now "from Slack and Teams with a bot"; architecture figure client box now "Slack, Teams"; figure aria-label "Slack or Teams". Docs keep Google Chat (Ram). Figure rendered at 9 widths light and dark; sweep 320-1280 clean (241 loads).
+
+## 2026-11-18 home figure: "Slack · Teams"
+- Ram: the figure label must use the dot separator like the rest of the figure, not a comma. Label is now "Slack · Teams" (`.cc-pair` with a `.cc-sep` span). To avoid a dangling dot when the box is narrow, the label's strong is a size container (`.cc-pair-box`) and under 7em the separator collapses so the names stack as "Slack / Teams" (happens at 320-372 and 644-676). Measured at every width 320-1280: never tight or overflowing; sweep clean. Viewed 1280, 412, 384, 320 light and 700, 375, 360 dark.
