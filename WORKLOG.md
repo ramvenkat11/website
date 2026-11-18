@@ -2812,3 +2812,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-18 home figure: "Slack · Teams"
 - Ram: the figure label must use the dot separator like the rest of the figure, not a comma. Label is now "Slack · Teams" (`.cc-pair` with a `.cc-sep` span). To avoid a dangling dot when the box is narrow, the label's strong is a size container (`.cc-pair-box`) and under 7em the separator collapses so the names stack as "Slack / Teams" (happens at 320-372 and 644-676). Measured at every width 320-1280: never tight or overflowing; sweep clean. Viewed 1280, 412, 384, 320 light and 700, 375, 360 dark.
+
+## 2026-11-18 footer tagline on one line
+- Cause of the wrap: `.footer-brand p` had `max-width: 34ch`, sized for the old shorter tagline. Removed the limit and added `text-wrap: balance`; tagline is one line from 352 up, two balanced lines at 320-348. Footer rendered at 9 widths, sweep clean.
+- Side effect: the wider tagline makes the footer links drop below the logo up to 1004 wide (before today: up to 912). Reduced `.footer-main` column gap 40 -> 24 to pull that back by about 16px (computed, not re-measured).
