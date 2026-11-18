@@ -1,5 +1,5 @@
-Why task-focused agents?
+Developers transform your business workflows into AI agents from the built-in development environment. They also describe when to use each agent in plain English.
 
-Because we can depend on them to perform the same way in production as they did in dev.
+Users just chat with the platform. Semantic search routes each request to the right agent. Multiple agents build on each other in a conversation.
 
-They have only a few paths. They use LLMs to add intelligence to a small, well-understood business process - hence, they can be validated well before publishing.
+Search2o agents are task‑focused, which keeps  dependable and economical (both are links). The platform keeps every run safe, bounded and observable.

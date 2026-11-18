@@ -55,8 +55,6 @@
 .docs-article li { margin: 6px 0; }
 .docs-article li > p { margin-bottom: 8px; }
 .docs-article strong { color: var(--ink); font-weight: 650; }
-.docs-article a { text-decoration: underline; text-decoration-color: color-mix(in srgb, var(--blue-ink) 35%, transparent); text-underline-offset: 3px; }
-.docs-article a:hover { text-decoration-color: var(--blue-ink); }
 .docs-article hr { border: 0; border-top: 1px solid var(--line); margin: 36px 0; }
 .docs-article .lead { font-size: 18px; color: var(--muted); margin-bottom: 28px; }
 .docs-article img { border: 1px solid var(--line); border-radius: 12px; box-shadow: var(--card-shadow); margin: 8px 0 20px; }
