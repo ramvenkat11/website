@@ -2768,3 +2768,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-18 hero links: ten style choices (preview only)
 - Ram suspects visitors read the hero's linked phrases (`.hero-attr`: blue, semibold, no underline) as emphasis, not links. Built a preview page outside the repo, in the session scratchpad `linkstyles/link-styles.html`, showing today's style and ten alternatives on the real hero text with the site stylesheet, with a light/dark switch. Nothing in the site changed. Waiting for his choice.
+
+## 2026-11-18 hero links: ten marker/soft-underline variations (preview only)
+- Ram's goal: linked words are normal words (same colour and weight as the text), marked only as clickable concepts. Added a section M1-M10 at the top of the scratchpad preview `linkstyles/link-styles.html`: four tinted bands, two thick soft underlines, two hairlines, dotted, dashed. Hover turns the words blue. Nothing in the site changed. Bands M1-M3 are faint in dark mode and would need a stronger dark value if chosen.
