@@ -2796,3 +2796,10 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-18 tagline test: "Model-neutral agent platform for the enterprise" (not applied)
 - Ram asked to check this tagline. Tested by swapping the header `.tagline` text in a render only (no file changed), sweep 320-1280 on index.html and docs/index.html. Result: page overflows sideways at 984-1032 and 1104-1116 on web pages (up to 51px); docs header changes at 101 of 241 widths; on phones the tagline takes one more line (header +12px) and at 564-624 it wraps (+25px). It fits cleanly only from about 1120 up on web pages. Would need header CSS work (hide or shrink tagline between about 980 and 1120) before use.
+
+## 2026-11-18 new hero, tagline out of the header
+- Tagline is now "Model-neutral agent platform for the enterprise". Removed the header tagline span from all 18 web pages and from the docs template in `gen/build.py`; removed the three `.tagline` rules from styles.css; footer tagline on the 18 web pages changed to the new text (docs footer has none).
+- Home hero (`html/index.html`) per `content/newhome.txt`: h1 = the tagline; first paragraph "Developers transform your business workflows into task-focused AI agents. They describe when to use each agent in plain English." (links kept on "task-focused AI agents" and "describe"). Home meta description rewritten. og:description, og:image:alt and the social card NOT touched: Ram will give separate instructions.
+- Docs "What is Search2o" lead: "Search2o is a model-neutral agent platform for the enterprise." Docs rebuilt (147).
+- Checks: header sweep 320-1280 on 19 pages (4579 loads): no overflow; menu wraps to two rows at 320-340 and 444-484, same widths as before the change; header 10-23px shorter on phones. Hero rendered at 9 widths light and dark; sweep clean.
+- Reported, not changed: About page body and meta still say "Search2o is an agent platform for the enterprise".
