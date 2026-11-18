@@ -2777,3 +2777,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-18 hero links: M9 chosen; five weight variations (preview only)
 - Ram chose M9 (words in body colour and weight, dotted blue underline) and asked to try slightly heavier words. Added W1-W5 at the top of the scratchpad preview `linkstyles/link-styles.html`: weight 550 or 600, in body colour or heading colour, plus "darker only". Measured that weight 550 really renders (Inter is variable 400-800). Nothing in the site changed.
+
+## 2026-11-18 hero links restyled (M9)
+- `html/styles/styles.css` `.hero-attr`: linked phrases now take the colour and weight of the surrounding text with a 2px dotted blue underline (blue 60%, offset 4px); hover turns the words blue and the line solid. The class is used only in the home hero (8 links). Rendered `.hero-head` at 9 widths, light and dark; sweep 320-1280 clean (241 loads). Hover state not viewed.
+- The preview page stays in the scratchpad (`linkstyles/link-styles.html`).
