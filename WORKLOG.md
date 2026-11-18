@@ -2774,3 +2774,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-18 hero links: five blue dotted-underline variations (preview only)
 - Ram clarified: linked words should still stand out (blue), only less than the title; dotted underline works best. Added D1-D5 at the top of the scratchpad preview `linkstyles/link-styles.html`: semibold or medium weight, 2px blue dots, fine pale dots, grey dots. Nothing in the site changed; waiting for his choice and its scope (hero only or all such links).
+
+## 2026-11-18 hero links: M9 chosen; five weight variations (preview only)
+- Ram chose M9 (words in body colour and weight, dotted blue underline) and asked to try slightly heavier words. Added W1-W5 at the top of the scratchpad preview `linkstyles/link-styles.html`: weight 550 or 600, in body colour or heading colour, plus "darker only". Measured that weight 550 really renders (Inter is variable 400-800). Nothing in the site changed.
