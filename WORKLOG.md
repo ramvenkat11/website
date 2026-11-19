@@ -2841,3 +2841,12 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-18 Tactet rename, step 1: logo and favicon options (nothing in the repo changed)
 - Ram's order: images first (logo, favicon, og card), then web pages, then docs; demo is changed from the ui1 session; LinkedIn images later. Wordmark is "Tactet", capital T, one colour. Favicon: a T "with something done to it". The old "2o" badge is no longer used anywhere.
 - Preview page in the scratchpad (`tactet-logo/options.html`): wordmarks W1-W10 (open-licence fonts: Outfit, Urbanist, Figtree, Lexend, Sora, Manrope, Plus Jakarta Sans, Red Hat Display, Space Grotesk) and favicons F1-F8. Waiting for Ram's picks; then logo.png, logo-dark.png, favicon.svg, gen/assets wordmark and a new og card.
+
+## 2026-11-18 Tactet rename, step 1 done: logo, favicon, social card
+- Ram picked W4 (Figtree semibold, one colour) and F1 (white T on a blue tile).
+- New `gen/wordmark.py` draws the wordmark from `gen/assets/Figtree-wght.ttf` (OFL, licence beside it) and writes `html/images/logo.png` (navy) and `logo-dark.png` (light ink), 243x61. `html/images/favicon.svg` = F1.
+- `gen/ogcard.py` imports the wordmark, address "tactet.com", output `html/images/og13.png`. og:image -> og13.png, og:image:alt "Tactet, model-neutral agent platform for the enterprise.", logo img alt "Tactet" with width 243, brand aria-label "Tactet home" on the 18 hand-written pages and the docs template (147 rebuilt).
+- `html/styles/styles.css`: `.brand img` width clamp(98px, 9.4vw, 122px) (was 136/13vw/168) and footer logo 108px (was 150) so the letters keep their old height.
+- Rendered header (home and a docs page) and footer, 9 widths light+dark, sweep 320-1280 clean. Menu still wraps "About" at 320 as before.
+- Kept: `gen/assets/wordmark.png` (old art, still used by the LinkedIn scripts), og12.png and older cards, `content/demo.html`. Not uploaded.
+- Next: web pages (text, titles, canonical, og:url, JSON-LD, sitemap), then docs.
