@@ -2884,3 +2884,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - CSS class names and script identifiers with s2o were kept as they are.
 - Open: old og.png to og12.png still in html/; Google verification file is for search2o.com; GitHub repo links unverified; first upload waits for Ram's go-ahead.
 - Old social cards moved out of html/ with git mv (Ram): html/images/og.png and og2 to og12 → retired/og/, html/og.png → retired/og/og-site-root.png. Only og13.png remains in html/images. Not committed.
+- Dry run of scripts/deploy.sh (Ram asked for proof of the target): 616 uploads, 0 deletes, every destination s3://tactet.com/; no line names the search2o bucket or E330RKTBY31L8X; docsweb untouched. search2o.com still answers 200. Nothing uploaded.
