@@ -2883,3 +2883,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Checked scripts/deploy.sh: targets bucket tactet.com and E2A04VIVSARG0J; config.js passes; both API hosts answer; ui1's demo.js reads TACTET_CONFIG with a SEARCH2O_CONFIG fallback.
 - CSS class names and script identifiers with s2o were kept as they are.
 - Open: old og.png to og12.png still in html/; Google verification file is for search2o.com; GitHub repo links unverified; first upload waits for Ram's go-ahead.
+- Old social cards moved out of html/ with git mv (Ram): html/images/og.png and og2 to og12 → retired/og/, html/og.png → retired/og/og-site-root.png. Only og13.png remains in html/images. Not committed.
