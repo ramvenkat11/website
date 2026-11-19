@@ -2829,3 +2829,11 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - New card `html/images/og12.png` from `gen/ogcard.py`: wordmark, then "Model-neutral agent platform / for the enterprise" (72px, widest 1006 of 1006), address. The small tagline and hairline beside the wordmark are gone (the heading is the tagline now). og11.png kept on disk.
 - og:image -> og12.png and og:image:alt -> "Search2o, model-neutral agent platform for the enterprise." on the 18 hand-written pages and the `gen/build.py` template (147 docs pages rebuilt). Home og:description now equals its meta description.
 - Not changed: `gen/linkedin_banner.py` / `content/linkedin-banner2.png` (still old tagline and "hundreds" line; title and subtitle would now be the same text, needs Ram's call); `content/demo.html` (still og8). Not uploaded.
+
+## 2026-11-18 Tactet: new bucket, CloudFront and DNS (Search2o is being renamed Tactet)
+- Ram: create the tactet bucket and CloudFront; all uploads go there from now on; old site frozen; rename of pages comes before the first content upload.
+- Created: S3 bucket `tactet.com` (us-east-1, BucketOwnerPreferred, no public access block, website index.html / error 404.html, same CORS as the old bucket); ACM cert `e06b7eeb-63dc-46e9-923f-16f544309f31` (tactet.com, *.tactet.com, DNS-validated, ISSUED); CloudFront function `tactet-canonical-host` (tested, published); distribution `E2A04VIVSARG0J` (`d1k3ob3va52p4p.cloudfront.net`), a copy of the old one's settings with aliases tactet.com, www, docs; Route 53 alias A records for the three hosts in zone Z0611286X6ZR21QH9CHQ.
+- `docsweb/` copied once from s3://search2o.com to s3://tactet.com (public-read, 352258 bytes). No site content uploaded: the bucket holds only docsweb/.
+- `html/js/config.js` -> reg.api.tactet.com / demo.api.tactet.com (both hosts already resolve and answer like the search2o ones). `scripts/deploy.sh`, `scripts/cloudfront-setup.sh`, `scripts/cloudfront-canonical-host.js`, `website_deploy.md` switched to the tactet bucket, distribution and URLs.
+- Old bucket `search2o.com` and distribution `E330RKTBY31L8X` untouched and frozen. Its live config.js still has the search2o API URLs.
+- Next: rename of the pages (Search2o -> Tactet: text, canonical links, og:url, sitemap, logo, card), on Ram's instructions; then first upload on his go-ahead.
