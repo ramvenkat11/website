@@ -2850,3 +2850,12 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Rendered header (home and a docs page) and footer, 9 widths light+dark, sweep 320-1280 clean. Menu still wraps "About" at 320 as before.
 - Kept: `gen/assets/wordmark.png` (old art, still used by the LinkedIn scripts), og12.png and older cards, `content/demo.html`. Not uploaded.
 - Next: web pages (text, titles, canonical, og:url, JSON-LD, sitemap), then docs.
+
+## 2026-11-18 Tactet rename, step 2: web pages (legal text held)
+- Ram: product "Tactet"; company stays Search2o; pip package `tactetai`; GitHub name undecided, keep it easy to change.
+- 14 non-legal pages in `html/`: Search2o -> Tactet in text, titles, descriptions, og text, aria-labels; search2o.com -> tactet.com (canonical, og:url, JSON-LD, 404 text); `pip install tactetai`; `TACTET_LICENSE_KEY=... tactet` (names read from the search2o repo: command `tactet`, package folder `tactet`); info@tactet.com.
+- Kept as Search2o: copyright line, JSON-LD Organization name, About "Search2o was founded by..." and "Search2o also delivers turnkey solutions", GitHub links (github.com/Search2o/...), "search2o-skill" and "the Search2o skill", `window.SEARCH2O_CONFIG` (shared with ui1's demo.js), links to docs/introduction/search2o-agents.html (docs step).
+- Legal pages: only canonical, og:url, og:image changed; titles, descriptions and the legal text still say Search2o, waiting for Ram.
+- `html/js/site.js`: fallback API URLs and support address -> tactet.com. `gen/build.py` SITE -> https://tactet.com (sitemap and docs canonicals); `html/robots.txt`. Docs rebuilt.
+- New `gen/names.json` (pipPackage, githubOrg) and `scripts/set-names.py` to change either everywhere.
+- Text-only; no renders. Not uploaded. Next: Ram's answers on legal, About, skill name, emails; then docs.
