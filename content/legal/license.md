@@ -42,7 +42,7 @@ The Software is licensed for business, professional, and evaluation use by organ
 
 "Service Agreement" means the Tactet Terms of Service, available at https://tactet.com/legal/terms.html, as updated by Search2o from time to time, or any separate written agreement between you and Search2o governing your use of the Tactet Services.
 
-"Software" means the version of the Tactet Agent Server with which this Agreement is provided, including the software Search2o makes available through GitHub, the Python Package Index ("PyPI"), or otherwise distributes as the "tactetai" Python package, in source or built form, together with the user interface, Documentation, and other files included in that distribution.
+"Software" means the version of the Tactet Agent Server with which this Agreement is provided, including the software Search2o makes available through GitHub, the Python Package Index ("PyPI"), or otherwise distributes as the "tactet" Python package, in source or built form, together with the user interface, Documentation, and other files included in that distribution.
 
 References to the "Tactet Agent Server" mean the Software or a running instance of it.
 

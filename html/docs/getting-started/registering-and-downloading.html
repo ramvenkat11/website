@@ -71,14 +71,14 @@
 <p>Tactet is in open beta, and anyone is welcome to try it. Creating an account is one step. It opens a free account with you as its first user and owner, and shows the account's license key once. The key connects an agent server to your account in the cloud service, so store it with your other secrets as soon as it is shown. You are not asked for a password; you choose one the first time you open the UI.</p>
 
 <h2 id="install">Install</h2>
-<p>The agent server and the UI are installed together. They require Python 3.12 or later and are published on PyPI as <code>tactetai</code>:</p>
-<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>pip install tactetai</code></pre></figure>
+<p>The agent server and the UI are installed together. They require Python 3.12 or later and are published on PyPI as <code>tactet</code>:</p>
+<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>pip install tactet</code></pre></figure>
 <p>The <code>db</code> command uses SQLAlchemy's async engines, so the driver for your database must be installed too. SQLite works without an extra driver. The other drivers are optional extras of the package:</p>
-<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>pip install <span class=str>&quot;tactetai[postgres]&quot;</span>   <span class=cm># asyncpg</span>
-<span class=ps1>$ </span>pip install <span class=str>&quot;tactetai[mysql]&quot;</span>      <span class=cm># aiomysql, also used for MariaDB</span>
-<span class=ps1>$ </span>pip install <span class=str>&quot;tactetai[oracle]&quot;</span>     <span class=cm># oracledb</span>
-<span class=ps1>$ </span>pip install <span class=str>&quot;tactetai[mssql]&quot;</span>      <span class=cm># aioodbc, also needs a system ODBC driver</span>
-<span class=ps1>$ </span>pip install <span class=str>&quot;tactetai[db]&quot;</span>         <span class=cm># postgres, mysql and oracle together</span></code></pre></figure>
+<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>pip install <span class=str>&quot;tactet[postgres]&quot;</span>   <span class=cm># asyncpg</span>
+<span class=ps1>$ </span>pip install <span class=str>&quot;tactet[mysql]&quot;</span>      <span class=cm># aiomysql, also used for MariaDB</span>
+<span class=ps1>$ </span>pip install <span class=str>&quot;tactet[oracle]&quot;</span>     <span class=cm># oracledb</span>
+<span class=ps1>$ </span>pip install <span class=str>&quot;tactet[mssql]&quot;</span>      <span class=cm># aioodbc, also needs a system ODBC driver</span>
+<span class=ps1>$ </span>pip install <span class=str>&quot;tactet[db]&quot;</span>         <span class=cm># postgres, mysql and oracle together</span></code></pre></figure>
 <p>A note on <code>mssql</code>: aioodbc presents an async API but wraps the synchronous ODBC driver underneath. The agent server is fully asynchronous, so a driver that blocks under load can slow the whole server.</p>
 
 <h3 id="to-install-from-the-source">To install from the source</h3>

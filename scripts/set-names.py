@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Changes the pip package name or the GitHub organization everywhere on the site in one step.
 
-    scripts/set-names.py --pip tactetai
+    scripts/set-names.py --pip tactet-agents
     scripts/set-names.py --github tactet-com
 
 The current values are in gen/names.json. The script replaces the current pip name (in install commands and where the package is named)
@@ -14,10 +14,11 @@ import pathlib
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 NAMES_FILE = ROOT / "gen" / "names.json"
 PATTERNS = {
-    "pipPackage": ("pip install {}", 'pip install "{}[', "PyPI as <code>{}</code>", "<code>{}</code> package"),
+    "pipPackage": ("pip install {}", 'pip install "{}[', "PyPI as <code>{}</code>", "<code>{}</code> package",
+                   "&quot;{}&quot; Python package", '"{}" Python package'),
     "githubOrg": ("github.com/{}/",),
 }
-FILE_GLOBS = ("html/*.html", "html/legal/*.html", "docsrc/**/*.html", "gen/build.py", "gen/toc.py")
+FILE_GLOBS = ("html/*.html", "html/legal/*.html", "docsrc/**/*.html", "gen/build.py", "gen/toc.py", "content/legal/*.md")
 
 parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
 parser.add_argument("--pip", dest="pipPackage", help="new pip package name")
