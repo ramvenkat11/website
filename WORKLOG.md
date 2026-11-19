@@ -2837,3 +2837,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - `html/js/config.js` -> reg.api.tactet.com / demo.api.tactet.com (both hosts already resolve and answer like the search2o ones). `scripts/deploy.sh`, `scripts/cloudfront-setup.sh`, `scripts/cloudfront-canonical-host.js`, `website_deploy.md` switched to the tactet bucket, distribution and URLs.
 - Old bucket `search2o.com` and distribution `E330RKTBY31L8X` untouched and frozen. Its live config.js still has the search2o API URLs.
 - Next: rename of the pages (Search2o -> Tactet: text, canonical links, og:url, sitemap, logo, card), on Ram's instructions; then first upload on his go-ahead.
+
+## 2026-11-18 Tactet rename, step 1: logo and favicon options (nothing in the repo changed)
+- Ram's order: images first (logo, favicon, og card), then web pages, then docs; demo is changed from the ui1 session; LinkedIn images later. Wordmark is "Tactet", capital T, one colour. Favicon: a T "with something done to it". The old "2o" badge is no longer used anywhere.
+- Preview page in the scratchpad (`tactet-logo/options.html`): wordmarks W1-W10 (open-licence fonts: Outfit, Urbanist, Figtree, Lexend, Sora, Manrope, Plus Jakarta Sans, Red Hat Display, Space Grotesk) and favicons F1-F8. Waiting for Ram's picks; then logo.png, logo-dark.png, favicon.svg, gen/assets wordmark and a new og card.
