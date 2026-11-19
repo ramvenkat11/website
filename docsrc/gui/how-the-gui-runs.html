@@ -1,4 +1,4 @@
-<p class="lead">The UI is Search2o&rsquo;s official interface: a single-page application bundled with the agent server. It uses the server&rsquo;s REST API and nothing else, and you can build interfaces of your own on the same API.</p>
+<p class="lead">The UI is Tactet&rsquo;s official interface: a single-page application bundled with the agent server. It uses the server&rsquo;s REST API and nothing else, and you can build interfaces of your own on the same API.</p>
 
 <h2>Only the REST API</h2>
 <p>Every action in the UI is a call to the agent server&rsquo;s <a href="../rest-api/overview.html">REST API</a>. The UI has no private endpoints and no other channel, so everything it does is available to your own code.</p>
@@ -7,7 +7,7 @@
 <p>The UI&rsquo;s files sit in the agent server&rsquo;s <code>ui</code> directory, and the server serves them at its <code>/ui</code> path. Installing the agent server is sufficient.</p>
 
 <h2>Serving the UI from somewhere else</h2>
-<p>The files are static, so any web server or CDN can serve them. <code>index.html</code> carries one setting in a <code>&lt;meta name="search2o-ui-config"&gt;</code> tag:</p>
+<p>The files are static, so any web server or CDN can serve them. <code>index.html</code> carries one setting in a <code>&lt;meta name="tactet-ui-config"&gt;</code> tag:</p>
 <div class="tablewrap"><table class="fields">
 <thead><tr><th>Setting</th><th>Meaning</th></tr></thead>
 <tbody>

@@ -7,7 +7,7 @@
 <p>A program authenticates with a service account's key, sent in the <code>Authorization</code> header of every call. The key alone authenticates each call; there is no sign-in and the key does not expire. It stops working when an administrator rotates it or deletes the service account. See <a href="../system-management/service-accounts.html">Service accounts</a>.</p>
 <x-code lang="bash">
 $ curl -s -X POST http://127.0.0.1:9020/api/user/getUserProfile \
-    -H "Authorization: Bearer $SEARCH2O_SERVICE_KEY" -H "Content-Type: application/json" -d '{}'
+    -H "Authorization: Bearer $TACTET_SERVICE_KEY" -H "Content-Type: application/json" -d '{}'
 </x-code>
 <p>Calls are recorded against the service account, with its role, in the usage report. A person's <a href="../chat-integrations/integration-tokens.html">integration token</a> is sent the same way, and acts as that person with the user role.</p>
 

@@ -6,8 +6,8 @@ docsrc/<section>/<page>.html. A section's own landing page is docsrc/<section>/i
 
 TOC = [
     ("introduction", "Introduction", [
-        ("what-is-search2o", "What is Search2o"),
-        ("search2o-agents", "Task-focused agents"),
+        ("what-is-tactet", "What is Tactet"),
+        ("tactet-agents", "Task-focused agents"),
         ("parts-of-the-system", "Parts of the system"),
         ("how-it-fits-together", "How it fits together"),
     ]),
@@ -157,13 +157,13 @@ TOC = [
         ("ai-prompts", "Building a bot with an AI assistant"),
     ]),
     ("skill-integration", "Skill integration", [
-        ("overview", "Skills + Search2o"),
-        ("what-search2o-provides", "What Search2o adds"),
+        ("overview", "Skills + Tactet"),
+        ("what-tactet-provides", "What Tactet adds"),
         ("finding-and-running-an-agent", "What the skill does"),
         ("installing-the-skill", "Installing the skill"),
     ]),
     ("comparisons", "Comparisons", [
-        ("langchain", "Search2o and LangChain"),
+        ("langchain", "Tactet and LangChain"),
     ]),
     ("support-licensing", "Support and licensing", [
         ("asking-the-docs", "Asking the docs"),

@@ -2,8 +2,8 @@
 # One-time CloudFront and S3 setup for search engine friendliness. Safe to re-run.
 #
 #   1. Publishes scripts/cloudfront-canonical-host.js as the CloudFront Function
-#      "search2o-canonical-host" and attaches it to the distribution's viewer-request event:
-#      www.search2o.com and docs.search2o.com redirect (301) to search2o.com.
+#      "tactet-canonical-host" and attaches it to the distribution's viewer-request event:
+#      www.tactet.com and docs.tactet.com redirect (301) to tactet.com.
 #   2. Maps the origin's 403 and 404 answers to a real 404 status with /404.html as the body.
 #   3. Makes 404.html the bucket's error document (it was index.html).
 #
@@ -14,10 +14,10 @@
 # so that /404.html exists in the bucket.
 set -euo pipefail
 
-BUCKET="search2o.com"
-DISTRIBUTION="E330RKTBY31L8X"
+BUCKET="tactet.com"
+DISTRIBUTION="E2A04VIVSARG0J"
 AWS_ACCOUNT="406848153313"
-FUNCTION_NAME="search2o-canonical-host"
+FUNCTION_NAME="tactet-canonical-host"
 ERROR_PAGE="/404.html"
 DEPLOY_POLL_SECONDS=20
 DEPLOY_MAX_WAIT_SECONDS=1200
@@ -34,13 +34,13 @@ step "Preflight"
 identity="$(aws sts get-caller-identity --query Account --output text 2>/dev/null || true)"
 [[ "$identity" == "$AWS_ACCOUNT" ]] || fail "AWS credentials are for account '${identity:-none}', expected $AWS_ACCOUNT"
 [[ -f "$CODE" ]] || fail "$CODE not found"
-page_status="$(curl -s -o /dev/null -w '%{http_code}' "https://search2o.com$ERROR_PAGE")"
-[[ "$page_status" == "200" ]] || fail "https://search2o.com$ERROR_PAGE returns $page_status - deploy the site first"
+page_status="$(curl -s -o /dev/null -w '%{http_code}' "https://tactet.com$ERROR_PAGE")"
+[[ "$page_status" == "200" ]] || fail "https://tactet.com$ERROR_PAGE returns $page_status - deploy the site first"
 echo "account $identity; $ERROR_PAGE is live"
 
 # ---- 1. the function ---------------------------------------------------------------------------
 step "Function $FUNCTION_NAME"
-config='{"Comment":"Redirect www. and docs. hosts to search2o.com","Runtime":"cloudfront-js-2.0"}'
+config='{"Comment":"Redirect www. and docs. hosts to tactet.com","Runtime":"cloudfront-js-2.0"}'
 if etag="$(aws cloudfront describe-function --name "$FUNCTION_NAME" --query ETag --output text 2>/dev/null)"; then
     aws cloudfront update-function --name "$FUNCTION_NAME" --if-match "$etag" \
         --function-config "$config" --function-code "fileb://$CODE" --query ETag --output text >/dev/null
@@ -60,11 +60,11 @@ run_test() {   # host, uri -> the function's output
     aws cloudfront test-function --name "$FUNCTION_NAME" --if-match "$etag" --stage DEVELOPMENT \
         --event-object "fileb://$event_file" --query TestResult.FunctionOutput --output text
 }
-out="$(run_test www.search2o.com /pricing.html)"
-[[ "$out" == *'"statusCode":301'* && "$out" == *'https://search2o.com/pricing.html'* ]] || fail "www redirect test failed: $out"
-out="$(run_test search2o.com /pricing.html)"
+out="$(run_test www.tactet.com /pricing.html)"
+[[ "$out" == *'"statusCode":301'* && "$out" == *'https://tactet.com/pricing.html'* ]] || fail "www redirect test failed: $out"
+out="$(run_test tactet.com /pricing.html)"
 [[ "$out" == *'"uri":"/pricing.html"'* && "$out" != *statusCode* ]] || fail "apex pass-through test failed: $out"
-out="$(run_test docs.search2o.com /docsweb/uitext_current.json)"   # the GUI reads under this host: never redirected
+out="$(run_test docs.tactet.com /docsweb/uitext_current.json)"   # the GUI reads under this host: never redirected
 [[ "$out" == *'"uri":"/docsweb/uitext_current.json"'* && "$out" != *statusCode* ]] || fail "docs-host pass-through test failed: $out"
 rm -f "$event_file"
 echo "tests passed"
@@ -112,12 +112,12 @@ if $wait_for_deploy; then
         echo "  $status (${waited}s)"
     done
     step "Verifying"
-    printf '%-42s %s\n' "https://www.search2o.com/pricing.html" "$(curl -s -o /dev/null -w '%{http_code} -> %{redirect_url}' https://www.search2o.com/pricing.html)"
-    printf '%-42s %s\n' "https://docs.search2o.com/runtime/allowlist.html" "$(curl -s -o /dev/null -w '%{http_code} -> %{redirect_url}' https://docs.search2o.com/runtime/allowlist.html)"
-    printf '%-42s %s\n' "https://search2o.com/no-such-page" "$(curl -s -o /dev/null -w '%{http_code}' https://search2o.com/no-such-page)"
+    printf '%-42s %s\n' "https://www.tactet.com/pricing.html" "$(curl -s -o /dev/null -w '%{http_code} -> %{redirect_url}' https://www.tactet.com/pricing.html)"
+    printf '%-42s %s\n' "https://docs.tactet.com/runtime/allowlist.html" "$(curl -s -o /dev/null -w '%{http_code} -> %{redirect_url}' https://docs.tactet.com/runtime/allowlist.html)"
+    printf '%-42s %s\n' "https://tactet.com/no-such-page" "$(curl -s -o /dev/null -w '%{http_code}' https://tactet.com/no-such-page)"
 else
     echo
     echo "Applied. The distribution takes a few minutes to deploy; re-run with --wait, or check later:"
-    echo "  curl -sI https://www.search2o.com/ | head -3          # expect 301 to https://search2o.com/"
-    echo "  curl -s -o /dev/null -w '%{http_code}\\n' https://search2o.com/no-such-page   # expect 404"
+    echo "  curl -sI https://www.tactet.com/ | head -3          # expect 301 to https://tactet.com/"
+    echo "  curl -s -o /dev/null -w '%{http_code}\\n' https://tactet.com/no-such-page   # expect 404"
 fi

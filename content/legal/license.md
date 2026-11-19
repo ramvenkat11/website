@@ -1,10 +1,10 @@
-# Search2o Software License Agreement
+# Tactet Software License Agreement
 
 Version 1.0 — Effective September 10, 2026
 
 Copyright (c) 2025–2026 Search2o, Inc. All rights reserved.
 
-The Search2o Agent Server is proprietary software owned by Search2o, Inc. ("Search2o") and is licensed, not sold. Availability of its source code, including through a public source repository or package index, does not make the Software open-source software and does not grant any rights except those expressly provided by this Agreement, independently granted under the GitHub Terms where applicable, or provided by applicable law.
+The Tactet Agent Server is proprietary software owned by Search2o, Inc. ("Search2o") and is licensed, not sold. Availability of its source code, including through a public source repository or package index, does not make the Software open-source software and does not grant any rights except those expressly provided by this Agreement, independently granted under the GitHub Terms where applicable, or provided by applicable law.
 
 IMPORTANT — READ CAREFULLY. This is a legal agreement between you and Search2o. This Agreement is presented for your acceptance when you request or are issued a License Key. By clicking to accept this Agreement, by obtaining or using a License Key, by installing, activating, running, or otherwise using the Software, or by exercising any right granted under this Agreement after having had an opportunity to review it, you agree to be bound by this Agreement. If you do not agree to this Agreement, do not accept it, do not obtain a License Key, and do not install, run, or otherwise use the Software.
 
@@ -24,27 +24,27 @@ The Software is licensed for business, professional, and evaluation use by organ
 
 "Authorized Users" means you, your employees, employees of your Affiliates acting on your behalf, and contractors engaged by you to create Agents specifically for your own business purposes.
 
-"Documentation" means the documentation for the Software and the Search2o Services that Search2o makes available from time to time.
+"Documentation" means the documentation for the Software and the Tactet Services that Search2o makes available from time to time.
 
 "GitHub Terms" means the GitHub Terms of Service governing public repositories, solely to the extent they grant rights to third parties as a result of Search2o making a repository public.
 
-"Intended Use" means using the Software in connection with your authorized use of the Search2o Services under the Service Agreement to create, manage, search, select, execute, and operate Agents and Agent Descriptions created by Authorized Users for your own business purposes.
+"Intended Use" means using the Software in connection with your authorized use of the Tactet Services under the Service Agreement to create, manage, search, select, execute, and operate Agents and Agent Descriptions created by Authorized Users for your own business purposes.
 
 "License Key" means any key, token, credential, or other identifier issued by Search2o that is used to obtain or maintain Authorization.
 
-"Search2o Cloud Service" means the hosted services, platforms, and application programming interfaces operated by or for Search2o and made available at search2o.com, its subdomains, or any other domain that Search2o designates in the Documentation or in writing, including the Search2o Cloud Service APIs.
+"Tactet Cloud Service" means the hosted services, platforms, and application programming interfaces operated by or for Search2o and made available at tactet.com, its subdomains, or any other domain that Search2o designates in the Documentation or in writing, including the Tactet Cloud Service APIs.
 
-"Search2o Cloud Service APIs" means the programmatic interfaces of Search2o Cloud Service.
+"Tactet Cloud Service APIs" means the programmatic interfaces of Tactet Cloud Service.
 
-"Search2o-Controlled Systems" means Search2o Cloud Service and any other systems operated by or for Search2o that issue, verify, renew, or revoke Authorization.
+"Search2o-Controlled Systems" means Tactet Cloud Service and any other systems operated by or for Search2o that issue, verify, renew, or revoke Authorization.
 
-"Search2o Services" means Search2o Cloud Service and any other services that Search2o provides for use with the Software.
+"Tactet Services" means Tactet Cloud Service and any other services that Search2o provides for use with the Software.
 
-"Service Agreement" means the Search2o Terms of Service, available at https://search2o.com/legal/terms.html, as updated by Search2o from time to time, or any separate written agreement between you and Search2o governing your use of the Search2o Services.
+"Service Agreement" means the Tactet Terms of Service, available at https://tactet.com/legal/terms.html, as updated by Search2o from time to time, or any separate written agreement between you and Search2o governing your use of the Tactet Services.
 
-"Software" means the version of the Search2o Agent Server with which this Agreement is provided, including the software Search2o makes available through GitHub, the Python Package Index ("PyPI"), or otherwise distributes as the "search2o" Python package, in source or built form, together with the user interface, Documentation, and other files included in that distribution.
+"Software" means the version of the Tactet Agent Server with which this Agreement is provided, including the software Search2o makes available through GitHub, the Python Package Index ("PyPI"), or otherwise distributes as the "tactetai" Python package, in source or built form, together with the user interface, Documentation, and other files included in that distribution.
 
-References to the "Search2o Agent Server" mean the Software or a running instance of it.
+References to the "Tactet Agent Server" mean the Software or a running instance of it.
 
 Third-party software and any Search2o component expressly identified as being provided under a separate license are governed by their respective licenses and are not part of the Software for purposes of the license grant in Section 2. A list of such third-party software and the applicable licenses is provided in the NOTICE or THIRD_PARTY_LICENSES file included with the Software.
 
@@ -56,7 +56,7 @@ Agents operated under this Agreement may provide functionality to your employees
 
 Ordinary installation, configuration, packaging, containerization, compilation, debugging, profiling, and observability activities that do not alter the functionality or contents of the Software and do not circumvent any restriction of this Agreement do not constitute modification of the Software.
 
-Running or operating the Software requires Authorization and valid authorization to use the applicable Search2o Services under the Service Agreement. No right is granted to run or operate the Software without both forms of authorization.
+Running or operating the Software requires Authorization and valid authorization to use the applicable Tactet Services under the Service Agreement. No right is granted to run or operate the Software without both forms of authorization.
 
 This Agreement is effective upon your acceptance and continues until terminated in accordance with Section 9.
 
@@ -90,13 +90,13 @@ Except as expressly permitted by this Agreement, you may not, directly or indire
 
 (d) remove, disable, bypass, circumvent, interfere with, suppress, misdirect, simulate, emulate, replace, or undermine any License Key mechanism, Authorization process, usage control, required communication with Search2o-Controlled Systems, or other technical restriction governing authorized operation of the Software;
 
-(e) access or invoke the Search2o Cloud Service APIs directly except where Search2o expressly authorizes such access. Except as expressly authorized, interactions with the Search2o Services must be made through the Search2o Agent Server;
+(e) access or invoke the Tactet Cloud Service APIs directly except where Search2o expressly authorizes such access. Except as expressly authorized, interactions with the Tactet Services must be made through the Tactet Agent Server;
 
-(f) configure or operate the Software with SEARCH2O_CLOUD_URL, or any successor configuration setting used to identify the Search2o Cloud Service endpoint, specifying an endpoint other than a Search2o-authorized endpoint whose hostname is search2o.com, a subdomain of search2o.com, or another domain that Search2o designates in the Documentation or in writing;
+(f) configure or operate the Software with SEARCH2O_CLOUD_URL, or any successor configuration setting used to identify the Tactet Cloud Service endpoint, specifying an endpoint other than a Search2o-authorized endpoint whose hostname is tactet.com, a subdomain of tactet.com, or another domain that Search2o designates in the Documentation or in writing;
 
 (g) use the Software to provide, enable, or support any service in which persons or entities other than Authorized Users may submit, publish, list, provide, or otherwise contribute Agents or Agent Descriptions for discovery, search, selection, execution, or use by other persons or entities;
 
-(h) use the Software or its source code as a basis to copy, reproduce, derive, or create a substitute or competing implementation of the Search2o Agent Server or Search2o Cloud Service;
+(h) use the Software or its source code as a basis to copy, reproduce, derive, or create a substitute or competing implementation of the Tactet Agent Server or Tactet Cloud Service;
 
 (i) remove, obscure, or alter any copyright, license, patent, trademark, attribution, proprietary, or other legal notice contained in the Software;
 
@@ -114,7 +114,7 @@ For clarity, Search2o does not grant under this Agreement any right to use the S
 
 This Agreement does not prohibit you from using the Software behind your own website, application, chat application, or internal systems to provide functionality to your customers, users, or other persons, provided that the Agents and Agent Descriptions used with the Software are created by Authorized Users.
 
-Nothing in this Agreement restricts Agents from accessing external systems, APIs, databases, models, or other services that they are otherwise authorized to access. Section 4(f) applies specifically to the Search2o Cloud Service endpoint used by the Search2o Agent Server.
+Nothing in this Agreement restricts Agents from accessing external systems, APIs, databases, models, or other services that they are otherwise authorized to access. Section 4(f) applies specifically to the Tactet Cloud Service endpoint used by the Tactet Agent Server.
 
 You acknowledge that the License Key and Authorization mechanisms, and the required communications with Search2o-Controlled Systems, are technological measures that effectively control access to and use of the Software.
 
@@ -122,11 +122,11 @@ Search2o may verify your compliance with this Agreement through the Authorizatio
 
 ## 5. Authorization, Communications with Search2o, and Data
 
-The Software is designed to operate only while Authorized. To obtain and maintain Authorization, the Software communicates with Search2o-Controlled Systems and transmits the License Key, an instance identifier derived from the host name of the system running the Software, and the Software version. Search2o's collection and handling of personal information is described in the Search2o Privacy Policy at https://search2o.com/legal/privacy.html.
+The Software is designed to operate only while Authorized. To obtain and maintain Authorization, the Software communicates with Search2o-Controlled Systems and transmits the License Key, an instance identifier derived from the host name of the system running the Software, and the Software version. Search2o's collection and handling of personal information is described in the Search2o Privacy Policy at https://tactet.com/legal/privacy.html.
 
 You consent to these communications and acknowledge that the Software will not run, or will cease to run, if such communications cannot be completed or if Authorization is not granted, expires, or is suspended or revoked.
 
-Search2o may suspend or revoke Authorization at any time if Search2o reasonably believes that you are in breach of this Agreement or the Service Agreement, or if your access to the Search2o Services is suspended or terminated.
+Search2o may suspend or revoke Authorization at any time if Search2o reasonably believes that you are in breach of this Agreement or the Service Agreement, or if your access to the Tactet Services is suspended or terminated.
 
 You are responsible for maintaining the confidentiality of your License Keys and for all use of the Software under them.
 
@@ -166,7 +166,7 @@ Nothing in this Agreement requires Search2o to make or to continue to make the S
 
 Search2o does not accept contributions to the Software. You should not submit pull requests, patches, code, documentation, or other materials for inclusion in the Software, and Search2o has no obligation to review, accept, respond to, or return any such submission.
 
-If you nonetheless submit or make available to Search2o any code, documentation, fix, suggestion, idea, feedback, comment, or other material relating to the Software or the Search2o Services (a "Submission"), then:
+If you nonetheless submit or make available to Search2o any code, documentation, fix, suggestion, idea, feedback, comment, or other material relating to the Software or the Tactet Services (a "Submission"), then:
 
 (a) you represent that you have all rights necessary to make the Submission and that the Submission does not infringe or misappropriate any third-party right and is not subject to license terms that would impose obligations on Search2o;
 
@@ -198,13 +198,13 @@ Public availability of the Software through GitHub, PyPI, or any other public di
 
 Search2o otherwise reserves all rights and remedies under its patents and patent applications.
 
-No rights are granted to use any Search2o name, trademark, service mark, logo, domain name, product name, trade dress, or other brand feature except as reasonably necessary to identify genuine Search2o Software accurately.
+No rights are granted to use any Search2o name, trademark, service mark, logo, domain name, product name, trade dress, or other brand feature except as reasonably necessary to identify genuine Tactet Software accurately.
 
 Such use may not state or imply that any person, repository, fork, distribution, product, or service is created by, maintained by, sponsored by, endorsed by, affiliated with, or specially authorized by Search2o unless Search2o has expressly authorized that relationship.
 
 ## 9. Termination
 
-All rights granted to you by Search2o under this Agreement terminate automatically when your authorization to use the applicable Search2o Services under the Service Agreement terminates.
+All rights granted to you by Search2o under this Agreement terminate automatically when your authorization to use the applicable Tactet Services under the Service Agreement terminates.
 
 Any violation of Section 4 constitutes a material breach of this Agreement and automatically terminates all rights granted to you by Search2o under this Agreement.
 
@@ -252,7 +252,7 @@ SEARCH2O DOES NOT WARRANT THE ACCURACY, COMPLETENESS, RELIABILITY, OR SUITABILIT
 
 TO THE MAXIMUM EXTENT PERMITTED BY LAW, SEARCH2O SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR FOR ANY LOSS OF PROFITS, REVENUE, BUSINESS, GOODWILL, DATA, OR USE, OR FOR THE COST OF PROCURING SUBSTITUTE GOODS OR SERVICES, ARISING OUT OF OR RELATING TO THE SOFTWARE OR THIS AGREEMENT, EVEN IF SEARCH2O HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
 
-TO THE MAXIMUM EXTENT PERMITTED BY LAW, SEARCH2O'S TOTAL AGGREGATE LIABILITY ARISING OUT OF OR RELATING TO THE SOFTWARE OR THIS AGREEMENT SHALL NOT EXCEED THE AMOUNTS PAID BY YOU TO SEARCH2O FOR THE SOFTWARE OR THE SEARCH2O SERVICES USED WITH THE SOFTWARE DURING THE TWELVE MONTHS PRECEDING THE EVENT GIVING RISE TO THE CLAIM.
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, SEARCH2O'S TOTAL AGGREGATE LIABILITY ARISING OUT OF OR RELATING TO THE SOFTWARE OR THIS AGREEMENT SHALL NOT EXCEED THE AMOUNTS PAID BY YOU TO SEARCH2O FOR THE SOFTWARE OR THE TACTET SERVICES USED WITH THE SOFTWARE DURING THE TWELVE MONTHS PRECEDING THE EVENT GIVING RISE TO THE CLAIM.
 
 THE LIMITATIONS IN THIS SECTION APPLY REGARDLESS OF THE THEORY OF LIABILITY (CONTRACT, TORT, STATUTE, OR OTHERWISE) AND EVEN IF ANY REMEDY FAILS OF ITS ESSENTIAL PURPOSE. THEY DO NOT APPLY TO LIABILITY THAT CANNOT BE LIMITED OR EXCLUDED UNDER APPLICABLE LAW.
 
@@ -284,15 +284,15 @@ The Software is "commercial computer software" and "commercial computer software
 
 Nothing in this Agreement excludes, limits, or waives any right or remedy that cannot be excluded, limited, or waived under applicable law, including mandatory consumer-protection laws that apply to you. To the extent any such law applies, the disclaimers, limitations, waivers, and venue provisions in this Agreement apply only to the maximum extent permitted by that law.
 
-## 18. Relationship to Search2o Services and Other Agreements
+## 18. Relationship to Tactet Services and Other Agreements
 
 This Agreement governs your rights to download, copy, install, and use the Software.
 
-The Software may be used only in connection with your authorized use of the Search2o Services under the Service Agreement. Your use of the Software must comply with this Agreement and the Service Agreement.
+The Software may be used only in connection with your authorized use of the Tactet Services under the Service Agreement. Your use of the Software must comply with this Agreement and the Service Agreement.
 
-Your use of the Search2o Services is governed by the Service Agreement. Search2o's collection and handling of personal information is described in the Search2o Privacy Policy referenced in Section 5.
+Your use of the Tactet Services is governed by the Service Agreement. Search2o's collection and handling of personal information is described in the Search2o Privacy Policy referenced in Section 5.
 
-If a separate written agreement signed by both you and Search2o expressly governs the Software or the Search2o Services and conflicts with this Agreement, the separate written agreement controls to the extent of the conflict. Subject to that, in the event of a conflict between this Agreement and the Service Agreement, this Agreement controls with respect to the Software and the Service Agreement controls with respect to the Search2o Services.
+If a separate written agreement signed by both you and Search2o expressly governs the Software or the Tactet Services and conflicts with this Agreement, the separate written agreement controls to the extent of the conflict. Subject to that, in the event of a conflict between this Agreement and the Service Agreement, this Agreement controls with respect to the Software and the Service Agreement controls with respect to the Tactet Services.
 
 Subject to the foregoing, this Agreement constitutes the entire agreement between you and Search2o concerning the licensing and use of the Software and supersedes all prior or contemporaneous agreements, proposals, and communications, written or oral, concerning that subject.
 
@@ -310,7 +310,7 @@ Failure or delay by Search2o in enforcing any provision of this Agreement does n
 
 ## 21. Notices
 
-Notices to Search2o under this Agreement must be sent by email to info@search2o.com with the subject line "Legal Notice." Search2o will provide legal notices to you by email to the address associated with your Search2o account or License Key, and may additionally post notices through the Search2o Services, the Documentation, or the public repository for the Software.
+Notices to Search2o under this Agreement must be sent by email to info@tactet.com with the subject line "Legal Notice." Search2o will provide legal notices to you by email to the address associated with your Tactet account or License Key, and may additionally post notices through the Tactet Services, the Documentation, or the public repository for the Software.
 
 ## 22. General
 

@@ -1,12 +1,12 @@
-// CloudFront Function (viewer-request) for the search2o.com distribution.
-//   www.search2o.com/x -> 301 https://search2o.com/x
-// docs.search2o.com is NOT redirected: the GUI reads data under that host (the docsweb/ prefix
+// CloudFront Function (viewer-request) for the tactet.com distribution.
+//   www.tactet.com/x -> 301 https://tactet.com/x
+// docs.tactet.com is NOT redirected: the GUI reads data under that host (the docsweb/ prefix
 // and other paths not linked from the site), so it must keep serving the bucket root as is.
 // Deployed by scripts/cloudfront-setup.sh.
 function handler(event) {
     var request = event.request;
     var host = request.headers.host && request.headers.host.value;
-    if (host !== 'www.search2o.com') {
+    if (host !== 'www.tactet.com') {
         return request;
     }
     var qs = '';
@@ -16,6 +16,6 @@ function handler(event) {
     return {
         statusCode: 301,
         statusDescription: 'Moved Permanently',
-        headers: { location: { value: 'https://search2o.com' + request.uri + qs } }
+        headers: { location: { value: 'https://tactet.com' + request.uri + qs } }
     };
 }

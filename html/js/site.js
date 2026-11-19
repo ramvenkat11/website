@@ -121,7 +121,7 @@ var altchaLoaded = null;
 
 function demoUrl() {
   var cfg = window.SEARCH2O_CONFIG || {};
-  return String(cfg.demoUrl || "https://demo.api.search2o.com").replace(/\/+$/, "");
+  return String(cfg.demoUrl || "https://demo.api.tactet.com").replace(/\/+$/, "");
 }
 
 function challengeUrl() {
@@ -193,7 +193,7 @@ function resetAltcha(widget) {
 
 (function () {
   if (!document.getElementById("reg-go1")) return;
-  var BASE = (window.SEARCH2O_CONFIG && window.SEARCH2O_CONFIG.apiUrl) || "https://reg.api.search2o.com";
+  var BASE = (window.SEARCH2O_CONFIG && window.SEARCH2O_CONFIG.apiUrl) || "https://reg.api.tactet.com";
   var REG_ERRORS = {
     notHuman: "Human verification failed. Please try again.",
     didYouMean: "Please check your email address. Did you mean {didYouMean}?",
@@ -203,7 +203,7 @@ function resetAltcha(widget) {
     currentlySuspended: "New accounts are paused at the moment due to high volume. Please try again in a few days.",
     termsNotAccepted: "Please accept the Terms of Service and Privacy Policy to create an account.",
       freeAccountExists: "An account already exists for this email address. " +
-        "If you lost your license key, please contact us at support@search2o.com."
+        "If you lost your license key, please contact us at support@tactet.com."
   };
   function esc(s) {
     return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -299,7 +299,7 @@ function resetAltcha(widget) {
 (function () {
   var btn = document.getElementById("agen-go");
   if (!btn) return;
-  var BASE = (window.SEARCH2O_CONFIG && window.SEARCH2O_CONFIG.apiUrl) || "https://reg.api.search2o.com";
+  var BASE = (window.SEARCH2O_CONFIG && window.SEARCH2O_CONFIG.apiUrl) || "https://reg.api.tactet.com";
   var text = document.getElementById("agen-text");
   var out = document.getElementById("agen-out");
   var codeEl = document.getElementById("agen-code");

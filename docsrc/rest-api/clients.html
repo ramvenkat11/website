@@ -3,7 +3,7 @@
 <h2>Generating a client</h2>
 <x-code lang="bash">
 $ curl http://127.0.0.1:9020/openapi.json > openapi.json
-$ npx orval --input openapi.json --output ./search2o-client   # TypeScript
+$ npx orval --input openapi.json --output ./tactet-client   # TypeScript
 $ openapi-generator-cli generate -i openapi.json -g python     # Python, Java, Go, ...
 </x-code>
 <p>The schema carries every request and response model, including the streamed line types of <code>execAgent</code>, so a generated client knows the shapes without hand-written definitions.</p>

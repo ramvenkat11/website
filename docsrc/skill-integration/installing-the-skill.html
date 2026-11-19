@@ -1,8 +1,8 @@
-<p class="lead">You need a Search2o account with published agents, an agent server the person's machine can reach, and an integration token for each person who will use the skill. The skill is published at <a href="https://github.com/Search2o/search2o-skill">github.com/Search2o/search2o-skill</a>, and the same folder works in every client that implements the Agent Skills standard.</p>
+<p class="lead">You need a Tactet account with published agents, an agent server the person's machine can reach, and an integration token for each person who will use the skill. The skill is published at <a href="https://github.com/tactetai/tactet-skill">github.com/tactetai/tactet-skill</a>, and the same folder works in every client that implements the Agent Skills standard.</p>
 
 <h2>The folder</h2>
 <x-code lang="text">
-search2o/
+tactet/
   SKILL.md          the instructions, and the description that triggers the skill
   reference.md      request and response shapes, result codes, output types
   scripts/s2o.py    the two calls, search and execAgent
@@ -14,27 +14,27 @@ search2o/
 <p>Each person creates a token from their profile in the UI, as described in <a href="../chat-integrations/connecting-a-person.html">Connecting a person</a>. The token is never stored in the skill's files. Revoke a token when it is no longer needed, and revoke any token that has been pasted into a chat.</p>
 
 <h2>Installing</h2>
-<p>Copy the <code>search2o</code> folder into the client's skills directory. For Claude Code:</p>
+<p>Copy the <code>tactet</code> folder into the client's skills directory. For Claude Code:</p>
 <x-code lang="text">
-cp -R search2o ~/.claude/skills/
+cp -R tactet ~/.claude/skills/
 </x-code>
 <p>Then give the script the agent server's address and the token, either as environment variables:</p>
 <x-code lang="text">
-export SEARCH2O_SERVER=https://search2o.example.com
-export SEARCH2O_TOKEN=<the integration token>
+export TACTET_SERVER=https://tactet.example.com
+export TACTET_TOKEN=<the integration token>
 </x-code>
 <p>or as files, for a client that does not keep environment variables between sessions:</p>
 <x-code lang="text">
-mkdir -p ~/.search2o
-echo -n https://search2o.example.com > ~/.search2o/server
-echo -n <the integration token> > ~/.search2o/token
-chmod 600 ~/.search2o/token
+mkdir -p ~/.tactet
+echo -n https://tactet.example.com > ~/.tactet/server
+echo -n <the integration token> > ~/.tactet/token
+chmod 600 ~/.tactet/token
 </x-code>
 
 <h2>Testing the skill</h2>
 <x-code lang="text">
-python3 search2o/scripts/s2o.py search '{"query": "where is order 4182"}'
-python3 search2o/scripts/s2o.py execAgent '{"agentName": "order_status", "inputs": {"query": "where is order 4182"}}'
+python3 tactet/scripts/s2o.py search '{"query": "where is order 4182"}'
+python3 tactet/scripts/s2o.py execAgent '{"agentName": "order_status", "inputs": {"query": "where is order 4182"}}'
 </x-code>
 <p>Each call prints one JSON object. A failed call prints a message and exits with a non-zero status, so the assistant sees what went wrong: a refused token, a server it cannot reach, or a call the token may not make.</p>
 

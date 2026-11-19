@@ -4,7 +4,7 @@
 <ul>
   <li>Use Socket Mode where possible. The bot then needs only outgoing connections, so it can run inside a private network beside the agent server, with nothing exposed to the internet. This matters when the agent server is not reachable from outside the company.</li>
   <li>Verify Slack's request signature on every event.</li>
-  <li>Post answers in a thread, so that a conversation in Search2o matches a thread in Slack.</li>
+  <li>Post answers in a thread, so that a conversation in Tactet matches a thread in Slack.</li>
   <li>The <a href="connecting-a-person.html">connect flow</a> uses an ordinary link button. Slack has no masked input, so never collect a password or a token in a Slack form.</li>
 </ul>
 
@@ -12,7 +12,7 @@
 <ul>
   <li>Teams bots are registered in Azure and receive events over HTTPS. The bot needs a public endpoint, or a tunnel into the company network.</li>
   <li>Adaptive Cards suit the connect button, and the input form when an agent asks a question.</li>
-  <li>Teams identifies a conversation and a reply chain. Both are needed to key the record of which thread belongs to which Search2o conversation.</li>
+  <li>Teams identifies a conversation and a reply chain. Both are needed to key the record of which thread belongs to which Tactet conversation.</li>
 </ul>
 
 <h2>Google Chat</h2>

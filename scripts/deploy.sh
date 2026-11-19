@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Deploys the website (html/) to the search2o.com S3 bucket and invalidates CloudFront.
+# Deploys the website (html/) to the tactet.com S3 bucket and invalidates CloudFront.
 #
 #   scripts/deploy.sh                 rebuild the docs, upload what changed, delete bucket objects that no
 #                                     longer exist locally, invalidate, wait for it, verify with curl
@@ -9,10 +9,10 @@
 # The full procedure and the one-time bucket setup are in website_deploy.md.
 set -euo pipefail
 
-BUCKET="search2o.com"
-DISTRIBUTION="E330RKTBY31L8X"
+BUCKET="tactet.com"
+DISTRIBUTION="E2A04VIVSARG0J"
 AWS_ACCOUNT="406848153313"
-SITE_URL="https://search2o.com"
+SITE_URL="https://tactet.com"
 # docsweb/ is excluded from the sync itself: it holds the in-app docs data that s2oserver's
 # maintenance/docswebuploader.py maintains, so --delete must never touch it.
 SYNC_EXCLUDES=(--exclude ".DS_Store" --exclude "*/.DS_Store" --exclude "docsweb/*")
@@ -49,12 +49,12 @@ identity="$(aws sts get-caller-identity --query Account --output text 2>/dev/nul
 [[ "$identity" == "$AWS_ACCOUNT" ]] || fail "AWS credentials are for account '${identity:-none}', expected $AWS_ACCOUNT"
 echo "AWS account $identity"
 
-# STANDING RULE (Ram, 2026-09-13; demoUrl added 2026-09-21): the website is never published unless
+# STANDING RULE (Ram, 2026-09-13; demoUrl added 2026-09-21; tactet.com hosts since 2026-11-18): the website is never published unless
 # config.js carries exactly the production URLs. A test or local URL here has gone live before; it
 # must not again. Every key in PRODUCTION_URLS is checked, locally before the upload and live after it.
 PRODUCTION_URLS=(
-    "apiUrl=https://reg.api.search2o.com"
-    "demoUrl=https://demo.api.search2o.com"
+    "apiUrl=https://reg.api.tactet.com"
+    "demoUrl=https://demo.api.tactet.com"
 )
 config_value() {   # config_value <key> <config.js text>: the string assigned to the key, or nothing
     printf '%s\n' "$2" | grep -E "^[[:space:]]*$1:" | sed -E "s/.*$1: *\"([^\"]*)\".*/\\1/"

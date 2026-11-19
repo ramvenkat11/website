@@ -58,13 +58,13 @@ Privacy requests relating to information controlled by your organization should 
 
 ## 4. Artificial Intelligence and External Services
 
-Certain Search2o features use third-party artificial intelligence service providers. Information may be transmitted to those providers as necessary to perform functions such as agent indexing, documentation assistance, and agent-development assistance.
+Certain Tactet features use third-party artificial intelligence service providers. Information may be transmitted to those providers as necessary to perform functions such as agent indexing, documentation assistance, and agent-development assistance.
 
 **Do not submit sensitive personal information through documentation questions, agent-writing assistance, or similar AI-assistance features.**
 
 Customers may configure agents running on their agent servers to communicate with third-party LLM providers, APIs, databases, applications, MCP servers, and other external systems.
 
-Those communications originate from the customer's agent server rather than Search2o Cloud Service. Customers are responsible for selecting, configuring, and using those services and for determining whether their use complies with applicable requirements.
+Those communications originate from the customer's agent server rather than Tactet Cloud Service. Customers are responsible for selecting, configuring, and using those services and for determining whether their use complies with applicable requirements.
 
 ## 5. Service Providers and Other Disclosures
 
@@ -132,11 +132,11 @@ Depending on applicable law, individuals may have rights concerning their person
 
 To submit a privacy request concerning information controlled by Search2o, contact:
 
-`info@search2o.com`
+`info@tactet.com`
 
 We may take reasonable steps to verify your identity or authority before acting on a request. Requests are subject to applicable legal exceptions, limitations, and retention requirements.
 
-If we deny a request and applicable law provides a right to appeal, you may appeal by contacting `info@search2o.com` and identifying the request as a **Privacy Appeal**.
+If we deny a request and applicable law provides a right to appeal, you may appeal by contacting `info@tactet.com` and identifying the request as a **Privacy Appeal**.
 
 Where Search2o processes information on behalf of a customer, we may direct the request to the customer that controls the applicable account.
 
@@ -164,4 +164,4 @@ If we make material changes, we will send notice to the account contact email ad
 
 **Search2o, Inc.**
 Virginia, United States
-`info@search2o.com`
+`info@tactet.com`

@@ -1,11 +1,11 @@
-"""Draws the social card html/images/og12.png (1200x630): the wordmark art from gen/assets/wordmark.png,
+"""Draws the social card html/images/og13.png (1200x630): the wordmark from gen/wordmark.py,
 the home page heading (which is the tagline), and the address. Run with the system python3 (needs PIL)."""
 from PIL import Image, ImageDraw, ImageFont, ImageChops
 import math
 import os
-S = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets")
+from wordmark import draw_wordmark
 W, H = 1200, 630
-OUT_NAME = "og12.png"
+OUT_NAME = "og13.png"
 BASE = (9, 15, 29); GLOW = (28, 48, 93); INK = (238, 243, 251); MUTED = (138, 154, 182)
 BLUE = (77, 141, 255); TEAL = (45, 212, 191); RULE = (34, 44, 66)
 FONT = "/System/Library/Fonts/HelveticaNeue.ttc"
@@ -26,16 +26,9 @@ for x in range(0, W, 60): gd.line([(x, 0), (x, H)], fill=(255, 255, 255, 12))
 for y in range(0, H, 60): gd.line([(0, y), (W, y)], fill=(255, 255, 255, 12))
 img = Image.alpha_composite(img.convert("RGBA"), grid)
 
-# wordmark: the 1810x331 art, navy recoloured to ink, the slate "2o" kept
-wm = Image.open(f"{S}/wordmark.png").convert("RGBA")
-wp = wm.load()
-for y in range(wm.height):
-    for x in range(wm.width):
-        r, g, b, a = wp[x, y]
-        if a and r + g + b < 260:
-            wp[x, y] = (*INK, a)
-wm = wm.resize((440, round(331 * 440 / 1810)), Image.LANCZOS)
-img.alpha_composite(wm, (97, 96))
+# wordmark, drawn from the font by gen/wordmark.py
+WORDMARK_HEIGHT = 80
+img.alpha_composite(draw_wordmark(WORDMARK_HEIGHT, INK), (97, 96))
 d = ImageDraw.Draw(img)
 
 # headline: segments per line; "ink" and "muted" are flat, "accent" takes the blue-to-teal gradient over its own span
@@ -72,6 +65,6 @@ draw_lines(img, 97, top, f, pitch, size)
 # rule and the address
 d = ImageDraw.Draw(img)
 d.line([(97, 530), (1103, 530)], fill=RULE, width=1)
-d.text((97, 572), "search2o.com", font=bold(24), fill=INK, anchor="ls")
+d.text((97, 572), "tactet.com", font=bold(24), fill=INK, anchor="ls")
 out = img.convert("RGB"); out.save(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "html", "images", OUT_NAME), optimize=True)
 print("saved", out.size, "size", size, "widest line", round(max(line_width(f, l) for l in LINES)), "of 1006")

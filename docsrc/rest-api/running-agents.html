@@ -11,7 +11,7 @@
 </tbody></table></div>
 <x-code lang="bash">
 $ curl -s -X POST http://127.0.0.1:9020/api/exec/execAgent \
-    -H "Authorization: Bearer $SEARCH2O_SERVICE_KEY" -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $TACTET_SERVICE_KEY" -H "Content-Type: application/json" \
     -d '{"agentName": "morning_briefing",
          "inputs": {"query": "what changed overnight", "team": "payments"}}'
 </x-code>
@@ -50,7 +50,7 @@ $ curl -s -X POST http://127.0.0.1:9020/api/exec/execAgent \
 <p>Collect the answers. Then call <code>execAgent</code> again with the same <code>agentName</code> and <code>convid</code>, and the answers as <code>inputs</code> under the same keys: one dictionary of input name to answer per block. The agent resumes at the <code>ask</code> command, or at every paused branch when the blocks came from a <code>parallel</code> command. Answers sent without their block key are not applied, and the same ask is returned again. The pause survives any delay: the answers may arrive the next day, from another client.</p>
 <x-code lang="bash">
 $ curl -s -X POST http://127.0.0.1:9020/api/exec/execAgent \
-    -H "Authorization: Bearer $SEARCH2O_SERVICE_KEY" -H "Content-Type: application/json" \
+    -H "Authorization: Bearer $TACTET_SERVICE_KEY" -H "Content-Type: application/json" \
     -d '{"agentName": "travel_booking", "convid": "'$CONVID'",
          "inputs": {"ask_": {"departure": "Boston", "seat": "aisle"}}}'
 </x-code>

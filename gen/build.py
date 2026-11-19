@@ -438,7 +438,7 @@ def header(depth) -> str:
     r = rel(depth) + "../"
     return f"""<header class="site-header">
   <div class="container header-row">
-    <a class="brand" href="{r}index.html" aria-label="Search2o home"><img class="logo-light" src="{r}images/logo.png" alt="Search2o" width="336" height="61"><img class="logo-dark" src="{r}images/logo-dark.png" alt="Search2o" width="336" height="61"></a>
+    <a class="brand" href="{r}index.html" aria-label="Tactet home"><img class="logo-light" src="{r}images/logo.png" alt="Tactet" width="243" height="61"><img class="logo-dark" src="{r}images/logo-dark.png" alt="Tactet" width="243" height="61"></a>
     <nav class="site-nav" aria-label="Main">
       <details class="nav-menu">
         <summary class="navlink">Product<svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
@@ -476,7 +476,7 @@ def footer(depth) -> str:
     return f"""<footer class="site-footer">
   <div class="container">
     <div class="footer-base">
-      <span>&copy; <span id="year">2026</span> Search2o &middot; Virginia, USA</span>
+      <span>&copy; <span id="year">2026</span> Search2o, Inc. &middot; Virginia, USA</span>
       <span><a href="{r}about.html#contact">Contact</a></span>
     </div>
   </div>
@@ -493,7 +493,7 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
     nav += (f"<a class=prev href='{href(prev[0], prev[1], depth)}'><small>Previous</small>{html.escape(prev[3])}</a>" if prev else "<span></span>")
     nav += (f"<a class=next href='{href(nxt[0], nxt[1], depth)}'><small>Next</small>{html.escape(nxt[3])}</a>" if nxt else "<span></span>")
     nav += "</nav>"
-    title = f"{ptitle} — Search2o docs" if pslug or sslug else "Search2o documentation"
+    title = f"{ptitle} — Tactet docs" if pslug or sslug else "Tactet documentation"
     path = docs_path(sslug, pslug)
     has_demo = DEMO_MARKER in body
     demo_css = f'<link rel="stylesheet" href="{r}demo/demo.css">\n' if has_demo else ""
@@ -512,10 +512,10 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
 <meta property="og:description" content="{html.escape(description)}">
 <meta property="og:type" content="article">
 <meta property="og:url" content="{SITE}/{path}">
-<meta property="og:image" content="{SITE}/images/og12.png">
+<meta property="og:image" content="{SITE}/images/og13.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Search2o, model-neutral agent platform for the enterprise.">
+<meta property="og:image:alt" content="Tactet, model-neutral agent platform for the enterprise.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="{r}images/favicon.svg">
 <link rel="preload" as="font" type="font/woff2" href="{r}fonts/inter-latin.woff2" crossorigin>
@@ -548,7 +548,7 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
 """
 
 
-SITE = "https://search2o.com"
+SITE = "https://tactet.com"
 DEMO_MARKER = "data-s2o-demo="
 SITE_PAGES = ("", "framework.html", "runtime.html", "search.html", "conversation.html", "demo-search.html", "demo-draft.html", "demo-trace.html", "demo-agents.html", "gettingstarted.html", "pricing.html", "why.html", "about.html",
               "legal/terms.html", "legal/privacy.html", "legal/license.html", "legal/intellectual.html")   # the sitemap
@@ -582,7 +582,7 @@ def build() -> int:
     home = SRC / "index.html"
     # docs home
     body = expand_code(expand_placeholders(home.read_text()))
-    (OUT / "index.html").write_text(render_page(None, None, "Documentation", "Search2o documentation",
+    (OUT / "index.html").write_text(render_page(None, None, "Documentation", "Tactet documentation",
                                                 body, None, pages[0], 0, first_paragraph(body)))
     written = 1
     for i, (sslug, pslug, stitle, ptitle) in enumerate(pages):

@@ -1,14 +1,14 @@
-<p class="lead">An adapter connects Search2o to an LLM. Six are bundled: three for every endpoint that speaks the OpenAI, Anthropic or Gemini protocol, and three for models you host with Ollama, vLLM or SGLang. An LLM with a protocol of its own needs an adapter class, written in Python and named on the Hooks page.</p>
+<p class="lead">An adapter connects Tactet to an LLM. Six are bundled: three for every endpoint that speaks the OpenAI, Anthropic or Gemini protocol, and three for models you host with Ollama, vLLM or SGLang. An LLM with a protocol of its own needs an adapter class, written in Python and named on the Hooks page.</p>
 
 <h2>First, try a bundled adapter</h2>
 <p>A private deployment, a gateway, or a vendor with an OpenAI-compatible API does not need code: create an <a href="../profiles/llm-profiles.html">LLM profile</a> under <strong>Profiles &rsaquo; LLM</strong>, choose the adapter that matches the protocol (<code>openai</code>, <code>anthropic</code> or <code>gemini</code>), and set the URL, the headers and the model. A model served by Ollama, vLLM or SGLang takes the <code>ollama</code>, <code>vllm</code> or <code>sglang</code> adapter. See <a href="vendors.html">LLM vendors</a>.</p>
 <p>The UI shows each adapter's description when a profile is created, and the description says which protocol the adapter speaks.</p>
 
 <h2>When you need an adapter of your own</h2>
-<p>An adapter turns the request Search2o builds, with the prompt, tools, model and limits, into the vendor's request body, and turns the vendor's response back into Search2o's form. Write one only when the vendor's protocol matches none of the bundled adapters.</p>
+<p>An adapter turns the request Tactet builds, with the prompt, tools, model and limits, into the vendor's request body, and turns the vendor's response back into Tactet's form. Write one only when the vendor's protocol matches none of the bundled adapters.</p>
 
 <h3>BaseLlmAdapter, for most APIs</h3>
-<p><code>search2o.llm.basellmadapter.BaseLlmAdapter</code> does the assembly and the control flow. It builds the request in a fixed order, merges the profile's <code>additionalParams</code> over the result, and reads the response in a fixed order. You supply the vendor-specific pieces, as these methods:</p>
+<p><code>tactet.llm.basellmadapter.BaseLlmAdapter</code> does the assembly and the control flow. It builds the request in a fixed order, merges the profile's <code>additionalParams</code> over the result, and reads the response in a fixed order. You supply the vendor-specific pieces, as these methods:</p>
 <div class="tablewrap"><table class="fields data">
 <thead><tr><th>Method</th><th>What it does</th></tr></thead>
 <tbody>
@@ -29,8 +29,8 @@
 <p><code>BaseLlmAdapter</code> goes through the prompt history and calls the four message methods in the order the exchange happened, so an adapter never sorts the history itself. <code>get_error</code> has a working implementation that reads the response's <code>error</code> field; override it when the vendor reports errors differently.</p>
 
 <h3>LlmAdapter, for anything else</h3>
-<p><code>search2o.llm.llmadapter.LlmAdapter</code> is the bare interface, for a protocol so different that the assembly above does not help. An adapter that extends it implements all five methods: <code>name</code>, <code>description</code>, <code>process_request</code> (an <code>LlmRequestModel</code> in, the request body out), <code>process_response</code> (the response in, an <code>LlmResponseModel</code> out), and <code>get_error</code>.</p>
-<p>The bundled adapters in <code>search2o.llm</code> are the reference implementations, and each is a short file: <code>openaiadapter.py</code>, <code>anthropicadapter.py</code> and <code>geminiadapter.py</code>. <code>ollamaadapter.py</code>, <code>vllmadapter.py</code> and <code>sglangadapter.py</code> extend the OpenAI adapter.</p>
+<p><code>tactet.llm.llmadapter.LlmAdapter</code> is the bare interface, for a protocol so different that the assembly above does not help. An adapter that extends it implements all five methods: <code>name</code>, <code>description</code>, <code>process_request</code> (an <code>LlmRequestModel</code> in, the request body out), <code>process_response</code> (the response in, an <code>LlmResponseModel</code> out), and <code>get_error</code>.</p>
+<p>The bundled adapters in <code>tactet.llm</code> are the reference implementations, and each is a short file: <code>openaiadapter.py</code>, <code>anthropicadapter.py</code> and <code>geminiadapter.py</code>. <code>ollamaadapter.py</code>, <code>vllmadapter.py</code> and <code>sglangadapter.py</code> extend the OpenAI adapter.</p>
 
 <h2>Registering an adapter</h2>
 <ol>

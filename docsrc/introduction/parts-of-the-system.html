@@ -1,4 +1,4 @@
-<p class="lead">The Search2o platform has three parts: an agent server, a UI and a cloud service. The agent server and the UI run in your organization. Developers build agents in the UI and users run them there. Chat applications, agent harnesses and your own programs reach the agent server through the same REST API.</p>
+<p class="lead">The Tactet platform has three parts: an agent server, a UI and a cloud service. The agent server and the UI run in your organization. Developers build agents in the UI and users run them there. Chat applications, agent harnesses and your own programs reach the agent server through the same REST API.</p>
 
 <div class="docs-arch">
   <div class="ui-fan" aria-label="Your organization runs the agent servers and four clients, the UI in a browser, the chat applications, an agent harness and your own REST client, which all connect to the agent server cluster. The agent servers keep no state of their own: an encrypted link connects them to the cloud service, which is shared or dedicated. The cloud service keeps the conversations and memories, encrypted by default. The three parts of the platform, the agent server, the UI and the cloud service, are drawn in the same dark colour.">
@@ -15,7 +15,7 @@
         </div>
         <div class="ui-tile">
           <span class="ui-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 17 6-5-6-5"/><path d="M12 19h8"/></svg></span>
-          <span><b>Agent harness</b><small><a href="https://github.com/Search2o/search2o-skill" target="_blank" rel="noopener">search2o-skill</a> &middot; <a href="../skill-integration/index.html">Skill integration</a></small></span>
+          <span><b>Agent harness</b><small><a href="https://github.com/tactetai/tactet-skill" target="_blank" rel="noopener">tactet-skill</a> &middot; <a href="../skill-integration/index.html">Skill integration</a></small></span>
         </div>
         <div class="ui-tile">
           <span class="ui-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 3H7a2 2 0 0 0-2 2v5a2 2 0 0 1-2 2 2 2 0 0 1 2 2v5c0 1.1.9 2 2 2h1"/><path d="M16 21h1a2 2 0 0 0 2-2v-5c0-1.1.9-2 2-2a2 2 0 0 1-2-2V5a2 2 0 0 0-2-2h-1"/></svg></span>
@@ -45,24 +45,24 @@
   </div>
 </div>
 <h2>The agent server</h2>
-<p>The agent server is a Python 3.12+ package. <code>pip install search2o</code> installs the agent server and the UI together. The agent server runs inside your organization and holds no state. At startup it loads the account's configuration, keeps that configuration current, and runs agents. Its REST API is described at <code>/openapi.json</code>, with Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>.</p>
+<p>The agent server is a Python 3.12+ package. <code>pip install tactetai</code> installs the agent server and the UI together. The agent server runs inside your organization and holds no state. At startup it loads the account's configuration, keeps that configuration current, and runs agents. Its REST API is described at <code>/openapi.json</code>, with Swagger UI at <code>/docs</code> and ReDoc at <code>/redoc</code>.</p>
 <p>The server is asynchronous and needs nothing beyond its Python packages. Run one on a laptop, run one as a standalone server, or run several as a load-balanced cluster. No server holds state, so any server can serve any request.</p>
 
 <h2>The UI</h2>
 <p>The UI is a single-page application that the agent server serves at <code>/ui</code>. What a person sees depends on their role. Users get search and conversations. Developers also get drafts, the editor with Draft with AI, validation and publishing, agent configuration and agent execution reports. Administrators also get users, authentication, system configuration and user reports. Owners get account settings and billing as well. See <a href="../gui/index.html">UI</a>.</p>
-<p>The UI is installed with the agent server, but the two are separate projects on GitHub: <a href="https://github.com/Search2o/agent-server" target="_blank" rel="noopener">agent-server</a> and <a href="https://github.com/Search2o/ui" target="_blank" rel="noopener">ui</a>. The UI uses nothing but the agent server's REST API, so an interface of your own can replace it.</p>
+<p>The UI is installed with the agent server, but the two are separate projects on GitHub: <a href="https://github.com/tactetai/agent-server" target="_blank" rel="noopener">agent-server</a> and <a href="https://github.com/tactetai/ui" target="_blank" rel="noopener">ui</a>. The UI uses nothing but the agent server's REST API, so an interface of your own can replace it.</p>
 
 <h2>The cloud service</h2>
-<p>The cloud service holds all state: accounts and users, agent definitions and drafts, configuration, conversation context, the search index, and the data behind the reports. It checks agent definitions, indexes the description a developer writes for a published agent, and answers searches. Only agent servers call the cloud service's API. Calling the cloud service directly can leave the platform in an inconsistent state. The Search2o license also prohibits it. The cloud service is shared or dedicated.</p>
+<p>The cloud service holds all state: accounts and users, agent definitions and drafts, configuration, conversation context, the search index, and the data behind the reports. It checks agent definitions, indexes the description a developer writes for a published agent, and answers searches. Only agent servers call the cloud service's API. Calling the cloud service directly can leave the platform in an inconsistent state. The Tactet license also prohibits it. The cloud service is shared or dedicated.</p>
 
 <h2>Other interfaces</h2>
 <p>The UI is one client of the agent server's REST API. Three other kinds of client use the same API.</p>
 
 <h3>Chat applications</h3>
-<p>People can use agents from Slack, Microsoft Teams or Google Chat. Search2o provides the integration points; the bot that sits between the chat application and the agent server is written by your company. See <a href="../chat-integrations/index.html">Chat integrations</a>.</p>
+<p>People can use agents from Slack, Microsoft Teams or Google Chat. Tactet provides the integration points; the bot that sits between the chat application and the agent server is written by your company. See <a href="../chat-integrations/index.html">Chat integrations</a>.</p>
 
 <h3>Agent harness</h3>
-<p>An agent harness such as Claude Code, or any client that implements Agent Skills, uses your agents through one skill, <a href="https://github.com/Search2o/search2o-skill" target="_blank" rel="noopener">search2o-skill</a>. The assistant chooses which published agent runs, the agent runs on your agent server, and each person authenticates with their own integration token. See <a href="../skill-integration/index.html">Skill integration</a>.</p>
+<p>An agent harness such as Claude Code, or any client that implements Agent Skills, uses your agents through one skill, <a href="https://github.com/tactetai/tactet-skill" target="_blank" rel="noopener">tactet-skill</a>. The assistant chooses which published agent runs, the agent runs on your agent server, and each person authenticates with their own integration token. See <a href="../skill-integration/index.html">Skill integration</a>.</p>
 
 <h3>REST client</h3>
 <p>Your own scripts, schedulers and applications call the same REST API the UI uses. Every call under <code>/api/</code> is an HTTP POST with a JSON body, and the API is described at <code>/openapi.json</code> on the agent server. See <a href="../rest-api/index.html">REST API</a> and <a href="../rest-api/clients.html">Creating your own client</a>.</p>

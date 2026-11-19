@@ -1,4 +1,4 @@
-# Search2o Terms of Service
+# Tactet Terms of Service
 
 **Effective Date: September 5, 2026**
 
@@ -34,7 +34,7 @@ Search2o provides a platform for creating, operating, searching for, and executi
 
 The Services may include cloud-based search, indexing, state management, reporting, agent development and management, documentation assistance, AI-assisted agent drafting, APIs, integrations, and other functionality provided by Search2o.
 
-Certain software, including the Search2o Agent Server, may be distributed under a separate software license. That license governs the copying, installation, modification, distribution, and use of the separately licensed software. These Terms do not grant rights to such software except as expressly provided in its applicable license.
+Certain software, including the Tactet Agent Server, may be distributed under a separate software license. That license governs the copying, installation, modification, distribution, and use of the separately licensed software. These Terms do not grant rights to such software except as expressly provided in its applicable license.
 
 ## 3. Accounts and Authorized Users
 
@@ -106,7 +106,7 @@ Search2o may add, remove, or change third-party AI providers without amending th
 
 Search2o does not use Customer Content to train general-purpose artificial intelligence models operated by Search2o.
 
-Search2o may use AI to provide features such as answering questions about Search2o documentation and assisting with the drafting of agents.
+Search2o may use AI to provide features such as answering questions about Tactet documentation and assisting with the drafting of agents.
 
 AI-generated answers, comments, explanations, drafts, and other content may be incomplete, inaccurate, or incorrect. Customer is responsible for reviewing and, where appropriate, testing AI-assisted output before relying on or deploying it.
 
@@ -168,7 +168,7 @@ Customer and its Authorized Users may not:
 
 (g) scrape, crawl, harvest, or systematically extract information from the Services except through functionality expressly provided for that purpose;
 
-(h) reverse engineer or attempt to derive the non-public implementation of the Search2o cloud service, except to the extent such a restriction is prohibited by applicable law;
+(h) reverse engineer or attempt to derive the non-public implementation of the Tactet cloud service, except to the extent such a restriction is prohibited by applicable law;
 
 (i) conduct penetration testing, vulnerability testing, load testing, stress testing, or similar testing against Search2o systems without Search2o’s prior written authorization;
 
@@ -256,7 +256,7 @@ Search2o may maintain, update, modify, add, replace, limit, or remove functional
 
 Search2o does not guarantee that any particular feature, functionality, integration, provider, model, implementation, or version will remain available.
 
-Support, if provided, may be described on the Search2o website, in applicable documentation, or in a separate written agreement. No such description creates a service-level commitment unless expressly identified as such by Search2o.
+Support, if provided, may be described on the Tactet website, in applicable documentation, or in a separate written agreement. No such description creates a service-level commitment unless expressly identified as such by Search2o.
 
 Any binding service-level commitment must be expressly agreed by Search2o in writing.
 
@@ -302,7 +302,7 @@ Search2o may terminate paid Services immediately, to the extent permitted by app
 
 Termination does not eliminate payment obligations incurred before termination.
 
-Customer is responsible for exporting Customer Content it wishes to retain, including through available Search2o APIs. Where advance notice of termination is provided, Customer should export Customer Content during the notice period.
+Customer is responsible for exporting Customer Content it wishes to retain, including through available Tactet APIs. Where advance notice of termination is provided, Customer should export Customer Content during the notice period.
 
 Search2o has no obligation to provide post-termination access except as required by applicable law or a separate written agreement. To the extent applicable law requires Search2o following termination to deliver or make available information owned by Customer, Search2o will use the efforts required by applicable law to do so.
 
@@ -482,7 +482,7 @@ Search2o will provide legal notices to Customer by email to Customer’s account
 
 Customer is responsible for maintaining a current account contact email address and other contact information.
 
-Legal notices to Search2o must be sent by email to info@search2o.com with the subject line “Legal Notice.”
+Legal notices to Search2o must be sent by email to info@tactet.com with the subject line “Legal Notice.”
 
 Search2o may designate another notice address on its website.
 

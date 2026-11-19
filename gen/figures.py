@@ -104,7 +104,7 @@ class Fig:
         self.parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="12" fill="var(--card)" stroke="var(--line)"/>')
         rw = 120
         self.parts.append(f'<path d="M{x + 12},{y} h{rw - 12} v{h} h-{rw - 12} a12,12 0 0 1 -12,-12 v-{h - 24} a12,12 0 0 1 12,-12z" fill="var(--navy)"/>')
-        self.text(x + 14, y + 20, "Search2o", size=11, weight=800, fill="white")
+        self.text(x + 14, y + 20, "Tactet", size=11, weight=800, fill="white")
         ry = y + 44
         pitch = min(17, (h - 52) / len(rail))
         for item in rail:
@@ -163,14 +163,14 @@ def _architecture():
 
 @figure("skill-flow")
 def _skill_flow():
-    f = Fig("skill-flow", 276, "A skill in Claude Code asks Search2o; the systems and models stay behind Search2o")
+    f = Fig("skill-flow", 276, "A skill in Claude Code asks Tactet; the systems and models stay behind Tactet")
     f.group(8, 12, 704, 252, "YOUR ORGANIZATION")
     f.group(24, 42, 206, 210, "CLAUDE CODE")
     f.box(42, 70, 170, 52, "Claude Code", "", kind="soft")
-    f.box(42, 144, 170, 52, "Search2o skill", "search · execAgent", kind="card")
+    f.box(42, 144, 170, 52, "Tactet skill", "search · execAgent", kind="card")
     f.arrow(127, 122, 127, 144)
     f.box(275, 115, 200, 110, kind="dark")
-    f.text(375, 133, "Search2o Agent Server", size=13, fill="white", weight=700, anchor="middle")
+    f.text(375, 133, "Tactet Agent Server", size=13, fill="white", weight=700, anchor="middle")
     f.box(290, 147, 170, 64, "Agent runtime", "agents run here", kind="soft")
     f.arrow(212, 170, 275, 170, both=True)
     f.text(243.5, 188, "request", size=11, anchor="middle")

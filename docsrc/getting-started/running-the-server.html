@@ -1,12 +1,12 @@
-<p class="lead">The agent server is a FastAPI application served by Uvicorn. The <code>search2o</code> command starts it and passes any further options to Uvicorn.</p>
+<p class="lead">The agent server is a FastAPI application served by Uvicorn. The <code>tactet</code> command starts it and passes any further options to Uvicorn.</p>
 
 <h2>Start</h2>
 <x-code lang="bash">
-$ export SEARCH2O_LICENSE_KEY=your-license-key
-$ search2o                                     # 127.0.0.1:9020
-$ search2o --host 0.0.0.0 --port 8080
+$ export TACTET_LICENSE_KEY=your-license-key
+$ tactet                                       # 127.0.0.1:9020
+$ tactet --host 0.0.0.0 --port 8080
 
-$ SEARCH2O_LICENSE_KEY=... ANTHROPIC_API_KEY=... search2o   # key, one LLM key, start
+$ TACTET_LICENSE_KEY=... ANTHROPIC_API_KEY=... tactet   # key, one LLM key, start
 </x-code>
 <p>Other command line options go to Uvicorn. The <code>--reload</code> family, <code>--factory</code> and <code>--workers</code> are refused: the server always runs one worker, and capacity comes from more servers rather than more workers. See <a href="../system-management/agent-servers.html">Agent servers</a>.</p>
 
@@ -30,4 +30,4 @@ $ export GEMINI_API_KEY=...
 
 <h2>Running in production</h2>
 <p>The server holds no state. Moving from a laptop to a shared server, or from one server to a cluster, changes nothing in the agents or the configuration. Start as many servers as you need with the same license key and put them behind any load balancer. Each server brings itself up to date with the account's configuration on every agent run.</p>
-<p>To let colleagues try Search2o, add them to the account and start one server where they can reach it. The APIs and databases your agents call must be reachable from wherever the server runs.</p>
+<p>To let colleagues try Tactet, add them to the account and start one server where they can reach it. The APIs and databases your agents call must be reachable from wherever the server runs.</p>

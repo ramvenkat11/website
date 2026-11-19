@@ -1,10 +1,13 @@
-# Deploying the website (search2o.com)
+# Deploying the website (tactet.com)
+
+Since 2026-11-18 every upload goes to the `tactet.com` bucket and distribution. The old bucket
+`search2o.com` and its distribution `E330RKTBY31L8X` are frozen as they were on that day.
 
 The site and the docs are static files under `docs/website/html/`. They are served from the S3
-bucket `search2o.com` (static-website hosting) behind the CloudFront distribution
-`E330RKTBY31L8X`, which carries the aliases `search2o.com`, `www.search2o.com` and
-`docs.search2o.com`. The distribution's origin is the bucket's **website endpoint**
-(`search2o.com.s3-website-us-east-1.amazonaws.com`), so the bucket's index-document rule applies:
+bucket `tactet.com` (static-website hosting) behind the CloudFront distribution
+`E2A04VIVSARG0J`, which carries the aliases `tactet.com`, `www.tactet.com` and
+`docs.tactet.com`. The distribution's origin is the bucket's **website endpoint**
+(`tactet.com.s3-website-us-east-1.amazonaws.com`), so the bucket's index-document rule applies:
 `/` serves `index.html`, and any missing key also serves `index.html` (there is no 404 page).
 
 ## The script
@@ -13,8 +16,8 @@ bucket `search2o.com` (static-website hosting) behind the CloudFront distributio
 deletes every bucket object that no longer exists locally, invalidates, waits for the
 invalidation to complete and verifies with curl. `--dry-run` shows what would be uploaded and
 deleted and touches nothing; `--skip-build` leaves the docs as they are. The script refuses to run with credentials for another AWS account, or unless
-`html/js/config.js` carries exactly the production URLs: `apiUrl` https://reg.api.search2o.com
-and `demoUrl` https://demo.api.search2o.com. After the invalidation it fetches the live
+`html/js/config.js` carries exactly the production URLs: `apiUrl` https://reg.api.tactet.com
+and `demoUrl` https://demo.api.tactet.com. After the invalidation it fetches the live
 config.js and fails if either value differs.
 The `docsweb/` prefix is excluded from the sync: it is the in-app docs data that s2oserver's
 uploader maintains, not website content, and the script never uploads to it or deletes from it.
@@ -26,12 +29,12 @@ uploader maintains, not website content, and the script never uploads to it or d
 carry their own. `html/404.html` is the page for a missing URL; every path in it is absolute
 because CloudFront serves it under whatever URL was asked for. `scripts/cloudfront-setup.sh`
 holds the one-time CloudFront and S3 part: it publishes `scripts/cloudfront-canonical-host.js`
-as a viewer-request function that 301-redirects `www.search2o.com` to `search2o.com`, maps the
+as a viewer-request function that 301-redirects `www.tactet.com` to `tactet.com`, maps the
 origin's 403 and 404 to a real 404 with `/404.html`, and makes `404.html` the bucket's error
-document. `docs.search2o.com` is never redirected: the GUI reads data under that host (the
+document. `docs.tactet.com` is never redirected: the GUI reads data under that host (the
 `docsweb/` prefix and other paths not linked from the site), so it keeps serving the bucket
-root exactly as `search2o.com` does; the canonical links on every page point search engines
-at `search2o.com`. Run it once after a deploy; `--wait` polls until the
+root exactly as `tactet.com` does; the canonical links on every page point search engines
+at `tactet.com`. Run it once after a deploy; `--wait` polls until the
 distribution is deployed and verifies the redirects.
 
 ## Before deploying
@@ -52,23 +55,23 @@ distribution is deployed and verifies the redirects.
 
 Run from `docs/website/html`, with AWS credentials for account 406848153313:
 
-    aws s3 sync . s3://search2o.com/ \
+    aws s3 sync . s3://tactet.com/ \
         --exclude ".DS_Store" --exclude "*/.DS_Store" \
         --acl public-read
 
-    aws cloudfront create-invalidation --distribution-id E330RKTBY31L8X --paths "/*"
+    aws cloudfront create-invalidation --distribution-id E2A04VIVSARG0J --paths "/*"
 
 That is the whole deploy. `sync` uploads only files that changed and sets the content type from
 the extension. The script adds `--delete`, so a page removed from the build is removed from the
 bucket as well, and it syncs in two passes so that pages, CSS and JS carry
 `Cache-Control: max-age=600` while images and icons carry 30 days. The invalidation takes about a minute:
 
-    aws cloudfront get-invalidation --distribution-id E330RKTBY31L8X --id <id> --query Invalidation.Status
+    aws cloudfront get-invalidation --distribution-id E2A04VIVSARG0J --id <id> --query Invalidation.Status
 
 ## Verify
 
-    curl -s -o /dev/null -w "%{http_code}\n" https://search2o.com/
-    curl -s https://search2o.com/docs/index.html | grep -o "<title>[^<]*"
+    curl -s -o /dev/null -w "%{http_code}\n" https://tactet.com/
+    curl -s https://tactet.com/docs/index.html | grep -o "<title>[^<]*"
 
 Screenshots live under `docs/img/` as light/dark pairs; check one of each renders.
 
@@ -76,7 +79,7 @@ Screenshots live under `docs/img/` as light/dark pairs; check one of each render
 
 The bucket's index document was `home.html` (the 2024 "Coming soon" page). It is now:
 
-    aws s3api put-bucket-website --bucket search2o.com --website-configuration \
+    aws s3api put-bucket-website --bucket tactet.com --website-configuration \
         '{"IndexDocument":{"Suffix":"index.html"},"ErrorDocument":{"Key":"index.html"}}'
 
 Objects are uploaded with `--acl public-read`; the bucket has ACLs enabled for that purpose.
