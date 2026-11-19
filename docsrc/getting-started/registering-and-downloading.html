@@ -19,14 +19,14 @@ $ pip install "tactet[db]"         # postgres, mysql and oracle together
 <p>A note on <code>mssql</code>: aioodbc presents an async API but wraps the synchronous ODBC driver underneath. The agent server is fully asynchronous, so a driver that blocks under load can slow the whole server.</p>
 
 <h3>To install from the source</h3>
-<p>Clone the <a href="https://github.com/tactetai/agent-server">agent server</a> and install it from the clone. The clone does not include the UI.</p>
+<p>Clone the <a href="https://github.com/tactet-ai/agent-server">agent server</a> and install it from the clone. The clone does not include the UI.</p>
 <x-code lang="bash">
-$ git clone https://github.com/tactetai/agent-server.git
+$ git clone https://github.com/tactet-ai/agent-server.git
 $ pip install -e agent-server
 </x-code>
-<p>Then build the <a href="https://github.com/tactetai/ui">UI</a>, which needs Node.js 22.18 or newer, and copy the build into the agent server's <code>ui</code> directory:</p>
+<p>Then build the <a href="https://github.com/tactet-ai/ui">UI</a>, which needs Node.js 22.18 or newer, and copy the build into the agent server's <code>ui</code> directory:</p>
 <x-code lang="bash">
-$ git clone https://github.com/tactetai/ui.git
+$ git clone https://github.com/tactet-ai/ui.git
 $ cd ui && npm install && npm run build
 $ cp -R dist ../agent-server/tactet/ui
 </x-code>

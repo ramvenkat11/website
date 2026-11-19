@@ -82,11 +82,11 @@
 <p>A note on <code>mssql</code>: aioodbc presents an async API but wraps the synchronous ODBC driver underneath. The agent server is fully asynchronous, so a driver that blocks under load can slow the whole server.</p>
 
 <h3 id="to-install-from-the-source">To install from the source</h3>
-<p>Clone the <a href="https://github.com/tactetai/agent-server">agent server</a> and install it from the clone. The clone does not include the UI.</p>
-<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>git clone https://github.com/tactetai/agent-server.git
+<p>Clone the <a href="https://github.com/tactet-ai/agent-server">agent server</a> and install it from the clone. The clone does not include the UI.</p>
+<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>git clone https://github.com/tactet-ai/agent-server.git
 <span class=ps1>$ </span>pip install -e agent-server</code></pre></figure>
-<p>Then build the <a href="https://github.com/tactetai/ui">UI</a>, which needs Node.js 22.18 or newer, and copy the build into the agent server's <code>ui</code> directory:</p>
-<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>git clone https://github.com/tactetai/ui.git
+<p>Then build the <a href="https://github.com/tactet-ai/ui">UI</a>, which needs Node.js 22.18 or newer, and copy the build into the agent server's <code>ui</code> directory:</p>
+<figure class=code data-lang=bash><pre><code><span class=ps1>$ </span>git clone https://github.com/tactet-ai/ui.git
 <span class=ps1>$ </span>cd ui &amp;&amp; npm install &amp;&amp; npm run build
 <span class=ps1>$ </span>cp -R dist ../agent-server/tactet/ui</code></pre></figure>
 <p>On Windows, copy the <code>dist</code> folder to the same directory. Any web server can serve the UI instead; see <a href="../gui/how-the-gui-runs.html">How the UI runs</a>. For the license, see <a href="../support-licensing/license.html">License</a>.</p>
