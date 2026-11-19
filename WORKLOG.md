@@ -2859,3 +2859,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - `html/js/site.js`: fallback API URLs and support address -> tactet.com. `gen/build.py` SITE -> https://tactet.com (sitemap and docs canonicals); `html/robots.txt`. Docs rebuilt.
 - New `gen/names.json` (pipPackage, githubOrg) and `scripts/set-names.py` to change either everywhere.
 - Text-only; no renders. Not uploaded. Next: Ram's answers on legal, About, skill name, emails; then docs.
+
+## 2026-11-18 Tactet rename: About sentence, skill name, copyright line; legal text stopped
+- About: "Tactet is made by Search2o, Inc." before "Search2o was founded by...". Skill -> "tactet-skill" / "the Tactet skill" on the home page (link is github.com/Search2o/tactet-skill until the GitHub name is decided). Copyright line "Search2o, Inc." on the 18 pages and the docs template (rebuilt). info@/support@tactet.com confirmed live by Ram.
+- Legal text NOT changed although Ram said yes to changing product names: the search2o repo's WORKLOG shows its LICENSE.md was renamed and then "restored verbatim" to Search2o. The licence page must match the file shipped with the software, so asked Ram before touching any legal text.
+- Next: Ram's answer on legal; then the docs.
