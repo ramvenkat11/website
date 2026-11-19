@@ -2871,3 +2871,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Not renamed (skill repo still uses them): folder `search2o/`, SEARCH2O_SERVER, SEARCH2O_TOKEN, ~/.search2o/, search2o/scripts/s2o.py on docs page "Installing the skill". GitHub links still github.com/Search2o/.
 - `scripts/set-names.py` handles all pip-name forms. Built 147 pages, 35 examples valid, 0 broken internal links, sitemap has no search2o.
 - Stale built files still on disk (delete was denied; needs Ram's permission): html/docs/introduction/search2o-agents.html, html/docs/introduction/what-is-search2o.html, html/docs/skill-integration/what-search2o-provides.html. deploy.sh would upload them as they are.
+
+## 2026-11-18 Tactet rename: skill names, GitHub name, security sentence
+- Ram: skill names follow the rename (presumed): docs page "Installing the skill" now shows folder `tactet/`, TACTET_SERVER, TACTET_TOKEN, ~/.tactet/, tactet/scripts/s2o.py. The skill repo itself is not renamed yet.
+- GitHub organisation is `tactetai`: `scripts/set-names.py --github tactetai` changed 31 places (web pages, docs); `gen/names.json` updated. billing@tactet.com confirmed. data-privacy: "managed by Search2o, so Search2o and Google".
+- Docs rebuilt (147). The only search2o left outside legal text and company mentions is inside the three stale built pages.
+- Ram approved deleting html/docs/introduction/search2o-agents.html, html/docs/introduction/what-is-search2o.html, html/docs/skill-integration/what-search2o-provides.html, but the permission system denied my `rm` twice. Ram to run it himself. Must be gone before any deploy.
