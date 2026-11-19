@@ -2877,3 +2877,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - GitHub organisation is `tactetai`: `scripts/set-names.py --github tactetai` changed 31 places (web pages, docs); `gen/names.json` updated. billing@tactet.com confirmed. data-privacy: "managed by Search2o, so Search2o and Google".
 - Docs rebuilt (147). The only search2o left outside legal text and company mentions is inside the three stale built pages.
 - Ram approved deleting html/docs/introduction/search2o-agents.html, html/docs/introduction/what-is-search2o.html, html/docs/skill-integration/what-search2o-provides.html, but the permission system denied my `rm` twice. Ram to run it himself. Must be gone before any deploy.
+
+## 2026-11-19 Stale docs pages removed; deploy readiness checked
+- Ram deleted the three stale built pages (search2o-agents, what-is-search2o, what-search2o-provides). No page links to them.
+- Checked scripts/deploy.sh: targets bucket tactet.com and E2A04VIVSARG0J; config.js passes; both API hosts answer; ui1's demo.js reads TACTET_CONFIG with a SEARCH2O_CONFIG fallback.
+- CSS class names and script identifiers with s2o were kept as they are.
+- Open: old og.png to og12.png still in html/; Google verification file is for search2o.com; GitHub repo links unverified; first upload waits for Ram's go-ahead.
