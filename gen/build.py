@@ -443,7 +443,7 @@ def header(depth) -> str:
       <details class="nav-menu">
         <summary class="navlink">Product<svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
         <div class="nav-menu-list">
-          <a class="navlink" href="{r}framework.html">Agent framework</a>
+          <a class="navlink" href="{r}development.html">Agent development</a>
           <a class="navlink" href="{r}runtime.html">Agent runtime</a>
           <a class="navlink" href="{r}search.html">Search</a>
           <a class="navlink" href="{r}conversation.html">Conversation</a>
@@ -550,7 +550,7 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
 
 SITE = "https://tactet.com"
 DEMO_MARKER = "data-s2o-demo="
-SITE_PAGES = ("", "framework.html", "runtime.html", "search.html", "conversation.html", "demo-search.html", "demo-draft.html", "demo-trace.html", "demo-agents.html", "gettingstarted.html", "pricing.html", "why.html", "about.html",
+SITE_PAGES = ("", "development.html", "runtime.html", "search.html", "conversation.html", "demo-search.html", "demo-draft.html", "demo-trace.html", "demo-agents.html", "gettingstarted.html", "pricing.html", "why.html", "about.html",
               "legal/terms.html", "legal/privacy.html", "legal/license.html", "legal/intellectual.html")   # the sitemap
 
 

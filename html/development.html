@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
-<title>Agent framework — Tactet</title>
-<meta name="description" content="An agent is a JSON file with 20 commands and Python expressions in braces. Write what the agent does; the platform handles credentials, connections, streaming, memory, and limits.">
-<meta property="og:title" content="Agent framework — Tactet">
-<meta property="og:description" content="An agent is a JSON file with 20 commands and Python expressions in braces. Write what the agent does; the platform handles credentials, connections, streaming, memory, and limits.">
+<title>Agent development — Tactet</title>
+<meta name="description" content="Build, validate and publish agents in minutes. Tactet includes a complete development environment: Draft with AI, a code editor that knows the agent language, validation with a full trace, and publishing. An agent is JSON with 20 commands and Python expressions.">
+<meta property="og:title" content="Agent development — Tactet">
+<meta property="og:description" content="Build, validate and publish agents in minutes. Tactet includes a complete development environment: Draft with AI, a code editor that knows the agent language, validation with a full trace, and publishing. An agent is JSON with 20 commands and Python expressions.">
 <meta property="og:type" content="website">
-<link rel="canonical" href="https://tactet.com/framework.html">
-<meta property="og:url" content="https://tactet.com/framework.html">
+<link rel="canonical" href="https://tactet.com/development.html">
+<meta property="og:url" content="https://tactet.com/development.html">
 <meta property="og:image" content="https://tactet.com/images/og13.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -32,7 +32,7 @@
       <details class="nav-menu">
         <summary class="navlink">Product<svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary>
         <div class="nav-menu-list">
-          <a class="navlink" href="framework.html" aria-current="page">Agent framework</a>
+          <a class="navlink" href="development.html" aria-current="page">Agent development</a>
           <a class="navlink" href="runtime.html">Agent runtime</a>
           <a class="navlink" href="search.html">Search</a>
           <a class="navlink" href="conversation.html">Conversation</a>
@@ -58,14 +58,49 @@
 <main>
   <section class="page-hero">
     <div class="container">
-      <span class="kicker">Agent framework</span>
-      <h1>An agent is JSON with Python expressions.</h1>
-      <p class="lead">Below is a complete agent. It sends the user&rsquo;s question to a language model and streams the answer back.</p>
+      <span class="kicker">Agent development</span>
+      <h1>Build, validate and publish agents in minutes</h1>
+      <p class="lead">The Tactet UI includes a complete development environment for agents. Describe an agent and AI drafts it. Refine the draft in a code editor that knows the agent language, validate it with a full trace, and publish it for users. Agents are written in a small framework: JSON with Python expressions.</p>
     </div>
   </section>
 
-  <section class="fw-sec fw-first" id="first-agent">
+  <section class="fw-sec fw-first" id="environment">
     <div class="container">
+      <div class="section-head">
+        <span class="kicker">Development environment</span>
+        <h2>Draft, edit, validate, publish</h2>
+        <p>An agent goes through four steps before users can run it. Every step happens in the&nbsp;UI.</p>
+      </div>
+      <div class="numbered">
+        <div class="step-sec">
+          <h2>Draft with AI</h2>
+          <p><a href="docs/development/draft-with-ai.html">Draft with AI</a> creates the first version of an agent from a sentence describing what the agent should do. It works from the same schema that the editor and validation use, and it knows the profiles and prompts in your account. It can also change an existing draft, and it keeps everything your request does not touch.</p>
+          <p>Try the <a href="demo-draft.html">Draft with AI demo</a> with your own description or one of the examples.</p>
+        </div>
+        <div class="step-sec">
+          <h2>Edit</h2>
+          <p>A <a href="docs/development/drafts.html">draft</a> is private to the developer who created it. The <a href="docs/development/code-editor.html">code editor</a> is built on Monaco, the editor inside Visual Studio Code, and it understands the agent language. It suggests the commands and fields allowed where you are typing, and it points out mistakes as you type.</p>
+        </div>
+        <div class="step-sec">
+          <h2>Validate</h2>
+          <p>Validation checks the definition against the schema and security rules. It also confirms that everything the agent refers to exists in the account. The platform then runs the draft with a sample question and shows the <a href="docs/development/trace-and-validation.html">trace</a>: every command that ran, the values it received, and what it returned. An agent cannot be published until it passes validation.</p>
+          <p>The <a href="demo-trace.html">Trace demo</a> shows a trace of a running agent.</p>
+        </div>
+        <div class="step-sec">
+          <h2>Publish</h2>
+          <p>When an agent is <a href="docs/development/publishing.html">published</a>, it receives a version number and a description written in plain English. <a href="docs/search/index.html">Search</a> indexes that description, and users find the agent by asking for what it does in their own words. When several developers change the same agent, each works on a separate draft and merges the others&rsquo; changes before publishing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="first-agent">
+    <div class="container">
+      <div class="section-head">
+        <span class="kicker">Agent framework</span>
+        <h2>An agent is JSON with Python expressions</h2>
+        <p>Below is a complete agent. It sends the user&rsquo;s question to a language model and streams the answer back.</p>
+      </div>
       <figure class="anno" aria-label="The first agent, annotated">
         <div class="codecard"><div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">answer.json</span></div><pre><code>{
   <span class=key>&quot;functions&quot;</span>: {
@@ -263,42 +298,6 @@
       </aside>
       <div class="fw-text">
         <p>A command is written on one line when it needs only a string, and as an object when it needs more than one field. The <a href="docs/agent-definition/syntax.html">syntax page</a> explains all the rules.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="fw-sec" id="demo">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker">Live demo</span>
-        <h2>Describe an agent and read the definition it produces</h2>
-        <p>Draft with AI creates the first draft of an agent from a sentence describing what the agent should do. The same assistant is available in the draft editor, where it can also change an existing agent. Try the <a href="demo-draft.html">Draft with AI demo</a> with your own description or one of the examples.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="fw-sec" id="development">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker">Development process</span>
-        <h2>Draft, validate, publish</h2>
-        <p>An agent goes through three stages before users can run it.</p>
-      </div>
-      <div class="numbered">
-        <div class="step-sec">
-          <h2>Draft</h2>
-          <p>A draft is private to the developer who created it. You can write it in the <a href="docs/development/code-editor.html">editor</a>, which understands the agent language and points out mistakes as you type. You can also let <a href="docs/development/draft-with-ai.html">Draft with AI</a> create the first version from a sentence, then refine it by hand.</p>
-        </div>
-        <div class="step-sec">
-          <h2>Validate</h2>
-          <p>Validation checks the definition against the schema and security rules. It also confirms that everything the agent refers to exists in the account. The platform then runs the draft with a sample question and shows the <a href="docs/development/trace-and-validation.html">trace</a>: every command that ran, the values it received, and what it returned. An agent cannot be published until it passes validation.</p>
-        </div>
-        <div class="step-sec">
-          <h2>Publish</h2>
-          <p>When an agent is <a href="docs/development/publishing.html">published</a>, it receives a version number and a description written in plain English. <a href="docs/search/index.html">Search</a> indexes that description, and users find the agent by asking for what it does in their own words.</p>
-        </div>
-      </div>
-      <div class="fw-text fw-after-steps">
         <p>The <a href="docs/runtime/controlled-execution.html">agent runtime</a> handles everything the agent does not specify: credentials, connections to outside systems, streaming, conversation memory, pauses for a person&rsquo;s answer, and the time and cost <a href="docs/runtime/time-and-cost-bounds.html">limits</a> for every run.</p>
       </div>
     </div>
