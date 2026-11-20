@@ -2918,3 +2918,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-20 Why us: point order
 - `html/why.html` intro: "Enterprise ready" now comes before the setup point, and the setup label is "Setup." (was "Quick setup and maintenance."). Text of both points unchanged. Local only, not uploaded.
+- `html/why.html` intro: last point's label is now "Maintenance." (was "Setup."). Local only.
