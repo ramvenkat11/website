@@ -2936,3 +2936,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Next: Ram picks the heading.
 - #agent-harness: h2 now "Agent harness as the orchestrator" (Ram). Lead now opens "Conversations are one way to use Tactet agents. An agent harness, such as Claude Code or the open-source Pi, is another. One skill connects the harness to every published agent." Local only.
 - #agent-harness lead: Pi removed; "An agent harness, such as Claude Code, is another." (Ram). Local only.
+- #agent-harness lead: "Tactet-skill connects the harness to every published agent." (Ram; link to "What the skill does" kept). Local only.
