@@ -7,7 +7,7 @@ docsrc/<section>/<page>.html. A section's own landing page is docsrc/<section>/i
 TOC = [
     ("introduction", "Introduction", [
         ("what-is-tactet", "What is Tactet"),
-        ("tactet-agents", "Task-focused agents"),
+        ("tactet-agents", "Tactet agents"),
         ("parts-of-the-system", "Parts of the system"),
         ("how-it-fits-together", "How it fits together"),
     ]),
