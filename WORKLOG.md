@@ -2926,3 +2926,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-20 Docs: "Tactet agents" page
 - `docsrc/introduction/tactet-agents.html` rewritten from `content/newhome.txt` (Ram's text, grammar fixes only): three opening paragraphs, Examples, closing paragraph on working together. Title in `gen/toc.py` is now "Tactet agents" (slug unchanged). Docs rebuilt, 147 pages. Removed sections: Why task-focused, Other features, What a Tactet agent is not, How it runs, How agents work together; anchors `#dependable`, `#cost-effective` gone (no inbound links).
 - Reported, not changed: links in `docsrc/skill-integration/what-tactet-provides.html` (lines 59, 63) and `html/why.html:147` point at this page for content it no longer holds. Local only.
+- `docsrc/introduction/tactet-agents.html`: "Developers describe what an agent does in natural language." (verb next to its object; rule saved to memory). Docs rebuilt. Local only.
