@@ -2953,3 +2953,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Figure aria-label trimmed to the diagrams and windows; the points are real table text now. hx CSS block rewritten (old .hx-body/.hx-right/.hx-facts/.hx-srv rules removed).
 - Rendered whole section at 9 widths light+dark, sweep 0 overflow. Docs point 8 (data stays on your server) not added as a row. Local only.
 - #agent-harness table, Control row left: "The model decides what runs on your enterprise systems" (Ram). Local only.
+- #agent-harness table rows reordered to the group order of docs "What Tactet adds": Selection, Tokens, Context (context and tokens); Model upgrades, LLM choice (models); Control, Credentials, Versions, Run record (control and reach). Before, Model upgrades split Control from Credentials and LLM choice was last. Local only.
