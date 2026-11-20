@@ -185,15 +185,14 @@
         <h2>Agent harness as the&nbsp;orchestrator</h2>
         <p>Conversations are one way to use Tactet agents. An agent harness, such as Claude&nbsp;Code, is another. <a href="docs/skill-integration/finding-and-running-an-agent.html">Tactet&#8209;skill</a> connects the harness to every published agent. The harness splits a request into parts and combines the results. Each agent runs on the agent server, inside your organization. <a href="docs/skill-integration/what-tactet-provides.html">What Tactet&nbsp;adds</a></p>
       </div>
-      <div class="hx" aria-label="Two ways for an agent harness to carry out company workflows, each drawn as the harness context. With a skill per workflow, the context holds a skill description for each workflow, the skill instructions, tool definitions, and every generated step with its API response or database rows, before the result. The workflow is generated again on every run, the context fills with steps and results, credentials and scripts sit on every laptop, and each person runs their own copy. With one skill and Tactet, the context holds one skill entry, the search call with the matching agents, and the execAgent call with the result. The rest of the context stays free. The workflow runs on the agent server, which keeps the agent steps, API responses, database rows and credentials. One skill serves every published agent, no tokens are spent generating the workflow, credentials stay on the server, agents are validated with one version for everyone, every run is recorded with its cost, and Tactet agents combine with local skills.">
+      <div class="hx" aria-label="Two ways for an agent harness to carry out company workflows, each drawn as the harness context. With direct access to enterprise systems, the context holds the tool definitions, the workflow instructions, and every generated step with its API response or database rows, before the result. The model chooses among every tool&rsquo;s description, the workflow is generated again on every run, the context fills with steps and results, credentials and scripts sit on every laptop, and each person runs their own copy. With one skill and Tactet, the context holds one skill entry, the search call with the matching agents, and the execAgent call with the result. The rest of the context stays free. The workflow runs on the agent server, which keeps the agent steps, API responses, database rows and credentials. Search finds the agent with no model call, no tokens are spent generating the workflow, credentials stay on the server, agents are validated with one version for everyone, every run is recorded with its cost, and Tactet agents combine with local skills.">
         <div class="hx-side">
-          <h3>A skill per workflow</h3>
+          <h3>Direct access to enterprise&nbsp;systems</h3>
           <div class="hx-body">
             <div class="hx-win">
               <span class="hx-win-t">Harness context</span>
-              <span class="hx-b is-skill">Skill descriptions, one per&nbsp;workflow</span>
-              <span class="hx-b is-skill">Skill instructions</span>
               <span class="hx-b is-skill">Tool definitions</span>
+              <span class="hx-b is-skill">Workflow instructions</span>
               <span class="hx-b is-step">Generated step</span>
               <span class="hx-b is-data">API response</span>
               <span class="hx-b is-step">Generated step</span>
@@ -202,6 +201,7 @@
               <span class="hx-b is-data">Result</span>
             </div>
             <ul class="hx-facts">
+              <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>The model chooses among every tool&rsquo;s&nbsp;description</span></li>
               <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Workflow generated again on every&nbsp;run</span></li>
               <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Context fills with steps and&nbsp;results</span></li>
               <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Credentials and scripts on every&nbsp;laptop</span></li>
@@ -226,7 +226,7 @@
                 <span class="hx-chips"><i>Agent steps</i><i>API responses</i><i>Database rows</i><i>Credentials</i></span>
               </div>
               <ul class="hx-facts">
-              <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>One skill for every published&nbsp;agent</span></li>
+              <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Search finds the agent, with no model&nbsp;call</span></li>
               <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>No tokens spent generating the&nbsp;workflow</span></li>
               <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Credentials stay on the&nbsp;server</span></li>
               <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Validated agents, one version for&nbsp;everyone</span></li>

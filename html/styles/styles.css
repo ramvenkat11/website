@@ -1065,6 +1065,10 @@ a.arch-lbl { color: var(--blue-ink); }
 .hx-facts .hx-yes { color: var(--ok); }
 .hx-side:not(.is-tactet) .hx-facts { align-self: center; }
 .hx-side:not(.is-tactet) .hx-b { flex: 1; display: flex; align-items: center; }
+@media (min-width: 901px) {
+  .hx-side { display: grid; grid-template-rows: subgrid; grid-row: span 2; gap: 0; }
+  .hx-side h3 { align-self: start; }
+}
 @media (max-width: 900px) {
   .hx { grid-template-columns: minmax(0, 1fr); max-width: 560px; }
 }
