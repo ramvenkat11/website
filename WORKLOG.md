@@ -2934,3 +2934,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Shading shifted to keep alternation: #user-interfaces is now soft, #platform plain.
 - Rendered #agent-harness, #user-interfaces, #platform at 9 widths light+dark, sweep 320-1280: 0 overflow. Home meta description unchanged (it summarises the hero). Local only.
 - Next: Ram picks the heading.
+- #agent-harness: h2 now "Agent harness as the orchestrator" (Ram). Lead now opens "Conversations are one way to use Tactet agents. An agent harness, such as Claude Code or the open-source Pi, is another. One skill connects the harness to every published agent." Local only.
