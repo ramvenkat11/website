@@ -2938,3 +2938,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #agent-harness lead: Pi removed; "An agent harness, such as Claude Code, is another." (Ram). Local only.
 - #agent-harness lead: "Tactet-skill connects the harness to every published agent." (Ram; link to "What the skill does" kept). Local only.
 - #agent-harness left card: title now "Enterprise systems exposed directly to the harness" (Ram). Left window entries now Tool definitions, Workflow instructions, then steps (skill descriptions/instructions entries dropped); aria-label follows. CSS: at >=901px the two cards share rows by subgrid so the windows stay level when the long title wraps (seen at 920). Rendered 9 widths light+dark plus 920; sweep 0 overflow. Local only.
+- #agent-harness left card title now "Direct access to enterprise systems" (Ram picked option 2); aria-label follows. Local only.
