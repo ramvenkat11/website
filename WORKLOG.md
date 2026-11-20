@@ -2928,3 +2928,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Reported, not changed: links in `docsrc/skill-integration/what-tactet-provides.html` (lines 59, 63) and `html/why.html:147` point at this page for content it no longer holds. Local only.
 - `docsrc/introduction/tactet-agents.html`: "Developers describe what an agent does in natural language." (verb next to its object; rule saved to memory). Docs rebuilt. Local only.
 - `docsrc/introduction/tactet-agents.html`: first sentence now "A Tactet agent is built for one well-defined task." Docs rebuilt. Local only.
+
+## 2026-11-20 Home: new section #agent-harness
+- `html/index.html`: new `<section class="section" id="agent-harness">` between #conversations and #user-interfaces. Provisional h2 "Agent harnesses plan the work, Tactet agents carry it out" (Ram to pick from options); lead names Claude Code and open-source Pi, links docs "What the skill does" and "What Tactet adds". Figure `.hx`: two cards, each a "Harness context" window. Left "A skill per workflow" (skill descriptions, instructions, tool definitions, generated steps, responses) with four crossed points; right "One skill, with Tactet" (one skill entry, search, execAgent, free space), arrow to dark "Agent server" box, six ticked points. Styles `.hx*` in `html/styles/styles.css` before `.cardgrid`; only existing colour variables, so no dark-mode block needed.
+- Shading shifted to keep alternation: #user-interfaces is now soft, #platform plain.
+- Rendered #agent-harness, #user-interfaces, #platform at 9 widths light+dark, sweep 320-1280: 0 overflow. Home meta description unchanged (it summarises the hero). Local only.
+- Next: Ram picks the heading.
