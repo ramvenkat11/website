@@ -2921,3 +2921,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - `html/why.html` intro: last point's label is now "Maintenance." (was "Setup."). Local only.
 - `html/why.html` Maintenance point: first sentence now ends ", both of which can be installed from the source." Local only.
 - `html/why.html` LangChain section, "Choose Tactet when": removed "The developer writes the task and publishes it." Local only.
+- `html/why.html` vendors section, "Choose Tactet when": removed the sentence "The agent server runs in your environment, works with any model including local ones, and reaches any API, database, or MCP server you point it at." Local only.
