@@ -4,6 +4,20 @@
 
 <p>A Tactet agent also carries a plain-language description of the task and its boundaries. Search uses that description to find the agent for a request.</p>
 
+<h2>Why agents are task-focused</h2>
+<p>Many agents work in a demonstration and fail in production. A general-purpose agent decides its own steps at run time, so the paths it can take are open-ended. A test covers a few of those paths, and real requests then take the others.</p>
+<p>A Tactet agent automates one small, well-understood business process and uses LLMs to add intelligence to it. The process fixes the steps, and the LLMs work within them. The agent has only a few paths, so an organization can depend on it to behave in production as it did in development.</p>
+<p><strong>Validated before publishing.</strong> A developer must validate an agent before publishing it. Validation checks the agent's definition and then runs the agent on a sample request, with every step in the trace. The agent has only a few paths, so the developer can validate each of them. The inputs of the process are known, and the people who own the process can judge whether the output is correct. See <a href="../development/trace-and-validation.html">Trace and validation</a>.</p>
+<p id="dependable"><strong>Dependable.</strong> The agent has only a few paths, and the same request takes the same path through the same commands on every run. The agent that a developer validated in development is therefore the agent that runs in production. A failure has a place: the command it failed at, in the run's record.</p>
+<p><strong>Matched by search.</strong> An agent with one task has a precise description. Search matches a request to that description, so users state what they need and do not need to know which agents exist.</p>
+<p id="cost-effective"><strong>Cost-effective.</strong> The agent sends an LLM only the instructions and the context of its own task, so it uses few tokens. Tactet is model-neutral: each agent uses its own model, and agents that use different models still <a href="#how-tactet-agents-work-together">work together</a> in one conversation. Models differ in what they do well, so each agent uses the cheapest model that does its task well. A small language model, including one that runs inside the organization, is often enough. A general-purpose agent needs a model capable enough for its hardest request, and pays for that model on every request.</p>
+
+<h2>Other features</h2>
+<p>The platform provides these for every agent, whatever its task.</p>
+<p><strong>Bounded.</strong> The agent reaches only the systems its profiles name and stops at its <a href="../runtime/time-and-cost-bounds.html">time and cost limits</a>. The <a href="../runtime/controlled-execution.html">agent runtime</a> enforces these boundaries, so they hold however a request is worded. A security team approves one bounded operation, not unrestricted access.</p>
+<p><strong>Independent.</strong> Each agent is published and versioned separately. A change to one agent is validated on that agent alone, and every other agent keeps running as before. An organization can automate one process, confirm the result, and then move to the next.</p>
+<p><strong>Observable.</strong> Every run is recorded: who requested it, what ran, how long it took, what failed, and what the LLM calls cost. The <a href="../reports/index.html">reports</a> show these per agent and per user.</p>
+
 <h2>Examples</h2>
 <p>Typical Tactet agents:</p>
 <ul>
@@ -15,17 +29,6 @@
 </ul>
 <p>Each is one business process: one verb, one or two systems, and a run measured in seconds. The steps are fixed. An LLM does the part that needs language or judgment, such as reading the dates in a request or summarizing a ticket.</p>
 <p>The less the tasks of agents overlap, the more easily search matches a request to a single agent.</p>
-
-<h2>Why agents are task-focused</h2>
-<p>Many agents work in a demonstration and fail in production. A general-purpose agent decides its own steps at run time, so the paths it can take are open-ended. A test covers a few of those paths, and real requests then take the others.</p>
-<p>A Tactet agent automates one small, well-understood business process and uses LLMs to add intelligence to it. The process fixes the steps, and the LLMs work within them. The agent has only a few paths, so an organization can depend on it to behave in production as it did in development.</p>
-<p><strong>Validated before publishing.</strong> A developer can run every path of the agent, with every step in the trace, before the agent is published. The inputs of the process are known, and the people who own the process can judge whether the output is correct. See <a href="../development/trace-and-validation.html">Trace and validation</a>.</p>
-<p id="dependable"><strong>Dependable.</strong> The agent has only a few paths, and the same request takes the same path through the same commands on every run. The agent that a developer validated in development is therefore the agent that runs in production. A failure has a place: the command it failed at, in the run's record.</p>
-<p><strong>Bounded.</strong> The agent reaches only the systems its profiles name and stops at its <a href="../runtime/time-and-cost-bounds.html">time and cost limits</a>. The <a href="../runtime/controlled-execution.html">agent runtime</a> enforces these boundaries, so they hold however a request is worded. A security team approves one bounded operation, not unrestricted access.</p>
-<p><strong>Matched by search.</strong> An agent with one task has a precise description. Search matches a request to that description, so users state what they need and do not need to know which agents exist.</p>
-<p id="economical"><strong>Economical.</strong> The agent sends an LLM only the instructions and the context of its own task, so it uses few tokens. Tactet is model-neutral: each agent uses its own model, and agents that use different models still <a href="#how-tactet-agents-work-together">work together</a> in one conversation. Models differ in what they do well, so each agent uses the cheapest model that does its task well. A small language model, including one that runs inside the organization, is often enough. A general-purpose agent needs a model capable enough for its hardest request, and pays for that model on every request.</p>
-<p><strong>Independent.</strong> Each agent is published and versioned separately. A change to one agent is validated on that agent alone, and every other agent keeps running as before. An organization can automate one process, confirm the result, and then move to the next.</p>
-<p><strong>Observable.</strong> Every run is recorded: who requested it, what ran, how long it took, what failed, and what the LLM calls cost. The <a href="../reports/index.html">reports</a> show these per agent and per user.</p>
 
 <h2>What a Tactet agent is not</h2>
 <ul>

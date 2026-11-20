@@ -1,4 +1,59 @@
-Search2o is going to be renamed to Tactet
+Task-focused agents
 
-Rename everything in this project to tactet.
-Upload script should work
+A Tactet agent is task-focused, i.e., it is built for one well-defined business process.
+
+The agent has clear boundaries on the systems it can reach: APIs, Databases and MCP servers. These are defined at compile time. LLM tool calls pick within those system boundaries.
+
+A Tactet agent does not: (a) Call other agents (b) Generate arbitrary code and run it.
+
+Validated before publishing. An agent must pass validation before it can be published. Validation runs the agent on a sample request. It traces every command in the agent. This can be seen in the [demo]. See Trace and validation.
+
+Matched by search. Developers create a description of what an agent does in natural language. Search uses that description to match the agent for a request. An agent with one task has a precise description. Search matches a request to that description, so users state what they need and do not need to know which agents exist.
+
+Cost-effective. The agent sends an LLM only the instructions and the context of its own task, so it uses few tokens. Tactet is model-neutral: each agent uses its own model, and agents that use different models still work together in one conversation. Models differ in what they do well, so each agent uses the cheapest model that does its task well. A small language model, including one that runs inside the organization, is often enough. A general-purpose agent needs a model capable enough for its hardest request, and pays for that model on every request.
+
+
+Other features
+
+The platform provides these for every agent, whatever its task.
+
+Bounded. The agent reaches only the systems its profiles name and stops at its time and cost limits. The agent runtime enforces these boundaries, so they hold however a request is worded. A security team approves one bounded operation, not unrestricted access.
+
+Independent. Each agent is published and versioned separately. A change to one agent is validated on that agent alone, and every other agent keeps running as before. An organization can automate one process, confirm the result, and then move to the next.
+
+Observable. Every run is recorded: who requested it, what ran, how long it took, what failed, and what the LLM calls cost. The reports show these per agent and per user.
+
+
+Examples
+
+Typical Tactet agents:
+
+- Vacation request: takes the dates from the request, checks the leave balance, files the request and reports the result.
+- Invoice status: takes an invoice number and reports where the invoice stands in accounts payable.
+- Expense filing for a trip: retrieves the trip's amounts, files the claim and asks the user before submitting.
+- Part reorder: compares the stock of a part with its reorder point and raises a purchase order with an approved supplier.
+- Support ticket summary: retrieves a customer's open tickets and summarizes the state of each.
+
+Each is one business process: one verb, one or two systems, and a run measured in seconds. The steps are fixed. An LLM does the part that needs language or judgment, such as reading the dates in a request or summarizing a ticket.
+
+The less the tasks of agents overlap, the more easily search matches a request to a single agent.
+
+
+What a Tactet agent is not
+
+- An agent that runs on a person's own machine.
+- An agent built to run for hours or days.
+- An agent run only by the people who built it.
+- A general-purpose agent that decides its own steps at run time, or calls other agents for specific tasks.
+
+
+How a Tactet agent runs
+
+A request that matches the agent's description starts it; see How matching behaves. The agent runs for a short time, may ask the user for inputs or an approval on the way, and produces a response.
+
+
+How Tactet agents work together
+
+Tactet agents do not call each other. They build on each other's work through the shared context of a conversation: the prompts and the conversation variables. Two agents share a prompt's history when both have a prompt of the same name with the conversation scope; see Prompts.
+
+A shared prompt history does not depend on the model, so a second agent in the same conversation can use a different LLM and still continue the exchange. Conversation variables carry the context that is not in a prompt, such as the user's authorization.

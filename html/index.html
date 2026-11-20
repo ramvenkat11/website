@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tactet</title>
-<meta name="description" content="Tactet is a model-neutral agent platform for the enterprise. Developers transform your business workflows into AI agents in the built-in development environment. Users just chat, and semantic search routes each request to the right agent.">
+<meta name="description" content="Tactet is a model-neutral agent platform for the enterprise. Developers build, validate and publish AI agents in the built-in development environment. Users just chat, and semantic search routes each request to the agent whose description fits.">
 <meta property="og:title" content="Tactet">
-<meta property="og:description" content="Tactet is a model-neutral agent platform for the enterprise. Developers transform your business workflows into AI agents in the built-in development environment. Users just chat, and semantic search routes each request to the right agent.">
+<meta property="og:description" content="Tactet is a model-neutral agent platform for the enterprise. Developers build, validate and publish AI agents in the built-in development environment. Users just chat, and semantic search routes each request to the agent whose description fits.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://tactet.com/">
 <meta property="og:url" content="https://tactet.com/">
@@ -66,9 +66,9 @@
     <div class="container">
       <div class="hero-head as-head">
         <h1 class="hero-claim">Model&#8209;neutral agent platform for the&nbsp;enterprise</h1>
-        <p class="hero-lead">Developers transform your business workflows into AI&nbsp;agents in the built&#8209;in <a class="hero-attr hero-attr-long" href="development.html">development environment</a>. They also <a class="hero-attr" href="search.html#description">describe</a> when to use each agent in plain&nbsp;English.</p>
-        <p class="hero-lead">Users just chat with the platform. <a class="hero-attr" href="search.html">Semantic search</a> routes each request to the right&nbsp;agent. Multiple agents build on each other in&nbsp;a&nbsp;<a class="hero-attr" href="conversation.html">conversation</a>.</p>
-        <p class="hero-lead">Tactet agents are task&#8209;focused, which keeps them <a class="hero-attr" href="docs/introduction/tactet-agents.html#dependable">dependable</a> and <a class="hero-attr" href="docs/introduction/tactet-agents.html#economical">economical</a>. The&nbsp;platform keeps every run <a class="hero-attr" href="docs/runtime/controlled-execution.html">safe</a>, <a class="hero-attr" href="docs/runtime/time-and-cost-bounds.html">bounded</a> and <a class="hero-attr" href="docs/reports/index.html">observable</a>.</p>
+        <p class="hero-lead">Developers build, validate and publish AI&nbsp;agents in the built&#8209;in <a class="hero-attr hero-attr-long" href="development.html">development environment</a>. They also <a class="hero-attr" href="search.html#description">describe</a> when to use each agent in plain&nbsp;English.</p>
+        <p class="hero-lead">Users just chat with the platform. <a class="hero-attr" href="search.html">Semantic search</a> routes each request to the agent whose description&nbsp;fits. The agent runs in a <a class="hero-attr" href="runtime.html">controlled runtime</a>. Multiple agents build on each other in&nbsp;a&nbsp;<a class="hero-attr" href="conversation.html">conversation</a>.</p>
+        <p class="hero-lead">The platform maintains conversation state between runs. It keeps every run <a class="hero-attr" href="docs/runtime/overview.html">current</a>, <a class="hero-attr" href="docs/runtime/time-and-cost-bounds.html">bounded</a> and&nbsp;<a class="hero-attr" href="docs/reports/index.html">observable</a>.</p>
       </div>
       <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example Inventory, which reports stock levels by part and site, and Purchasing, which raises purchase orders with approved suppliers. The Tactet agent platform holds hundreds of agents. Users converse with it: a first request, Is part 7731 in stock in Berlin?, is matched to Inventory, which answers Berlin has 42 units of part 7731, below its reorder point of 60. A follow-up, Reorder the part, is matched to Purchasing, which answers Done. PO-5519 orders 18 units of part 7731 for Berlin. Below the platform, arrows lead from it to enterprise systems and LLMs, which the agents call.">
         <div class="as-side as-dev">
@@ -183,7 +183,7 @@
     <div class="container">
       <div class="section-head center">
         <h2>An integrated platform to build, run and use&nbsp;agents</h2>
-        <p>The platform has three parts: a stateless agent server and a UI that run in your organization, and a cloud service that provides state, search and reporting. <code>pip</code> installs the agent server and the UI together. Each can also be installed separately <a href="docs/getting-started/registering-and-downloading.html#to-install-from-the-source">from source</a>. The agent server can run standalone or in a cluster. The cloud service can be shared or&nbsp;dedicated.</p>
+        <p>The platform has three parts: a stateless agent server and a UI that run in your organization, and a cloud service that provides state, search and reporting. <code>pip</code> installs the agent server and the UI together. Each can also be installed separately <a href="docs/getting-started/registering-and-downloading.html#to-install-from-the-source">from the source</a>. The agent server can run standalone or in a cluster. The cloud service can be shared or&nbsp;dedicated.</p>
       </div>
       <div class="ui-fig">
       <aside class="arch cc-arch hero-arch" aria-label="The Tactet agent platform has three parts: an agent server and a UI in your organization, and a cloud service, which is shared or dedicated. The three are drawn in the same dark colour. A browser running the UI, used by users, developers and admins, Slack or Teams, Claude Code and your own REST client send requests to the Tactet agent server in your organization, which runs standalone or as a cluster. The agent server is stateless, scales out and is always in sync. The agent server runs the agents and calls enterprise systems and local LLMs inside the enterprise, and external LLMs outside it. The agent server keeps no state: an encrypted link connects it to the cloud service, which provides state, search and reports.">
