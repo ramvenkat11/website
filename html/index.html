@@ -185,67 +185,67 @@
         <h2>Agent harness as the&nbsp;orchestrator</h2>
         <p>Conversations are one way to use Tactet agents. An agent harness, such as Claude&nbsp;Code, is another. <a href="https://github.com/tactet-ai/tactet-skill" target="_blank" rel="noopener">Tactet&#8209;skill</a> connects the harness to every published agent. The harness splits a request into parts and combines the results. Each agent runs on the agent server, inside your organization. <a href="docs/skill-integration/what-tactet-provides.html">What Tactet&nbsp;adds</a></p>
       </div>
-      <div class="hx" aria-label="Two ways for an agent harness to carry out company workflows. In the first, without Tactet, the agent harness on the user&rsquo;s machine calls APIs, databases and MCP servers on the server machines directly. In the second, with Tactet, the agent harness on the user&rsquo;s machine calls the agent server, which runs on the server machines and calls the APIs, databases and MCP servers there. Each is also drawn as the harness context. Without Tactet, the context holds the tool definitions, the workflow instructions, and every generated step with its API response or database rows, before the result. The model chooses among every tool&rsquo;s description, the workflow is generated again on every run, the context fills with steps and results, credentials and scripts sit on every laptop, and each person runs their own copy. With Tactet, the context holds one skill entry, the search call with the matching agents, and the execAgent call with the result. The rest of the context stays free. The workflow runs on the agent server, which keeps the agent steps, API responses, database rows and credentials. Search finds the agent with no model call, no tokens are spent generating the workflow, each agent uses the LLM that suits it, which lowers token cost, credentials stay on the server, agents are validated with one version for everyone, every run is recorded with its cost, and Tactet agents combine with local skills.">
+      <div class="hx" aria-label="Two ways for an agent harness to carry out company workflows. Without Tactet, the agent harness on the user&rsquo;s machine calls APIs, databases and MCP servers on the server machines directly. Its context holds the tool definitions, the workflow instructions, and every generated step with its API response or database rows, before the result. The workflow runs on the user&rsquo;s machine, with the generated steps, scripts and credentials. With Tactet, the agent harness on the user&rsquo;s machine calls the agent server, which runs on the server machines and calls the APIs, databases and MCP servers there. The harness context holds one skill entry, the search call with the matching agents, and the execAgent call with the result. The rest of the context stays free. The workflow runs on the agent server, which keeps the agent steps, API responses, database rows and credentials.">
         <div class="hx-side">
           <h3>Agent harness without&nbsp;Tactet</h3>
           <div class="hx-path" aria-hidden="true"><span class="hx-zone"><b><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9z"/><path d="M2 19h20"/></svg>User&rsquo;s machine</b><span class="hx-zc"><span class="hx-n">Agent harness</span></span></span><span class="hx-fan is-cross"><svg viewBox="0 0 26 60" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.6"><path vector-effect="non-scaling-stroke" d="M0 30C13 30 13 9 26 9M0 30H26M0 30C13 30 13 51 26 51"/></svg></span><span class="hx-zone"><b><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>Server machines</b><span class="hx-zc"><span class="hx-sys"><i>APIs</i><i>Databases</i><i>MCP&nbsp;servers</i></span></span></span></div>
-          <div class="hx-body">
-            <div class="hx-win">
-              <span class="hx-win-t">Harness context</span>
-              <span class="hx-b is-skill">Tool definitions</span>
-              <span class="hx-b is-skill">Workflow instructions</span>
-              <span class="hx-b is-step">Generated step</span>
-              <span class="hx-b is-data">API response</span>
-              <span class="hx-b is-step">Generated step</span>
-              <span class="hx-b is-data">Database rows</span>
-              <span class="hx-b is-step">Generated step</span>
-              <span class="hx-b is-data">Result</span>
-            </div>
-            <ul class="hx-facts">
-              <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>The model chooses among every tool&rsquo;s&nbsp;description</span></li>
-              <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Workflow generated again on every&nbsp;run</span></li>
-              <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Context fills with steps and&nbsp;results</span></li>
-              <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Credentials and scripts on every&nbsp;laptop</span></li>
-              <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Each person runs their own&nbsp;copy</span></li>
-            </ul>
+          <div class="hx-win">
+            <span class="hx-win-t">Harness context</span>
+            <span class="hx-b is-skill">Tool definitions</span>
+            <span class="hx-b is-skill">Workflow instructions</span>
+            <span class="hx-b is-step">Generated step</span>
+            <span class="hx-b is-data">API response</span>
+            <span class="hx-b is-step">Generated step</span>
+            <span class="hx-b is-data">Database rows</span>
+            <span class="hx-b is-step">Generated step</span>
+            <span class="hx-b is-data">Result</span>
+          </div>
+          <div class="hx-run">
+            <strong>User&rsquo;s machine</strong>
+            <span class="hx-run-s">The workflow runs&nbsp;here</span>
+            <span class="hx-chips"><i>Generated steps</i><i>Scripts</i><i>Credentials</i></span>
           </div>
         </div>
         <div class="hx-side is-tactet">
           <h3>Agent harness with&nbsp;Tactet</h3>
           <div class="hx-path" aria-hidden="true"><span class="hx-zone"><b><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9z"/><path d="M2 19h20"/></svg>User&rsquo;s machine</b><span class="hx-zc"><span class="hx-n">Agent harness</span></span></span><span class="hx-to is-cross"></span><span class="hx-zone"><b><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>Server machines</b><span class="hx-zc"><span class="hx-n is-srv">Agent server</span><span class="hx-fan"><svg viewBox="0 0 26 60" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.6"><path vector-effect="non-scaling-stroke" d="M0 30C13 30 13 9 26 9M0 30H26M0 30C13 30 13 51 26 51"/></svg></span><span class="hx-sys"><i>APIs</i><i>Databases</i><i>MCP&nbsp;servers</i></span></span></span></div>
-          <div class="hx-body">
-            <div class="hx-win">
-              <span class="hx-win-t">Harness context</span>
-              <span class="hx-b is-skill">Tactet skill, one&nbsp;entry</span>
-              <span class="hx-b is-step"><code>search</code>: matching&nbsp;agents</span>
-              <span class="hx-b is-data"><code>execAgent</code>: result</span>
-              <span class="hx-free">Free for the rest of the&nbsp;request</span>
-            </div>
-            <div class="hx-right">
-              <div class="hx-srv">
-                <strong><a href="runtime.html">Agent server</a></strong>
-                <span class="hx-srv-s">The workflow runs&nbsp;here</span>
-                <span class="hx-chips"><i>Agent steps</i><i>API responses</i><i>Database rows</i><i>Credentials</i></span>
-              </div>
-              <ul class="hx-facts">
-              <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Search finds the agent, with no model&nbsp;call</span></li>
-              <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>No tokens spent generating the&nbsp;workflow</span></li>
-              <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>The right LLM for each agent, at lower token&nbsp;cost</span></li>
-              <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Credentials stay on the&nbsp;server</span></li>
-              <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Validated agents, one version for&nbsp;everyone</span></li>
-              <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Every run recorded, with its&nbsp;cost</span></li>
-              <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Combines with local&nbsp;skills</span></li>
-              </ul>
-            </div>
+          <div class="hx-win">
+            <span class="hx-win-t">Harness context</span>
+            <span class="hx-b is-skill">Tactet skill, one&nbsp;entry</span>
+            <span class="hx-b is-step"><code>search</code>: matching&nbsp;agents</span>
+            <span class="hx-b is-data"><code>execAgent</code>: result</span>
+            <span class="hx-free">Free for the rest of the&nbsp;request</span>
+          </div>
+          <div class="hx-run is-srv">
+            <strong><a href="runtime.html">Agent server</a></strong>
+            <span class="hx-run-s">The workflow runs&nbsp;here</span>
+            <span class="hx-chips"><i>Agent steps</i><i>API responses</i><i>Database rows</i><i>Credentials</i></span>
           </div>
         </div>
       </div>
+      <table class="hx-cmp">
+        <thead>
+          <tr><th scope="col"><span class="hx-sr">What differs</span></th><th scope="col">Without Tactet</th><th scope="col">With Tactet</th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Selection</th><td class="hx-l"><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>The model picks from a list that grows with every&nbsp;tool</span></td><td class="hx-r"><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Search finds the agent, with no model&nbsp;call</span></td></tr>
+          <tr><th scope="row">Tokens</th><td class="hx-l"><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Workflow generated again on every&nbsp;run</span></td><td class="hx-r"><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>No tokens spent generating the&nbsp;workflow</span></td></tr>
+          <tr><th scope="row">Context</th><td class="hx-l"><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Context fills with steps and&nbsp;results</span></td><td class="hx-r"><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Context holds only the&nbsp;result</span></td></tr>
+          <tr><th scope="row">Model upgrades</th><td class="hx-l"><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Each workflow needs a retest when the model&nbsp;changes</span></td><td class="hx-r"><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Workflows do not change when the harness model&nbsp;changes</span></td></tr>
+          <tr><th scope="row">LLM choice</th><td class="hx-l"><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Every step runs on the harness&nbsp;model</span></td><td class="hx-r"><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Each step uses the cheapest model that fits, even one you&nbsp;host</span></td></tr>
+          <tr><th scope="row">Control</th><td class="hx-l"><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>The model decides what runs on your enterprise&nbsp;systems</span></td><td class="hx-r"><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Agents do only what their authors fixed, within time and cost&nbsp;limits</span></td></tr>
+          <tr><th scope="row">Credentials</th><td class="hx-l"><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Credentials and scripts on every&nbsp;laptop</span></td><td class="hx-r"><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Credentials stay on the&nbsp;server</span></td></tr>
+          <tr><th scope="row">Versions</th><td class="hx-l"><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>A copy on every machine, at whatever&nbsp;version</span></td><td class="hx-r"><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Validated agents, one version for&nbsp;everyone</span></td></tr>
+          <tr><th scope="row">Run record</th><td class="hx-l"><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>A record only if you collect session&nbsp;telemetry</span></td><td class="hx-r"><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Every run recorded, with its&nbsp;cost</span></td></tr>
+        </tbody>
+      </table>
+      <p class="hx-also"><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Tactet agents also combine with local skills in one&nbsp;request.</span></p>
     </div>
   </section>
   <section class="section soft" id="user-interfaces">
     <div class="container">
       <div class="section-head center">
-        <h2>An integrated platform to build, run and use&nbsp;agents</h2>
+        <h2>How the platform fits in your&nbsp;organization</h2>
         <p>The platform has three parts: a stateless agent server and a UI that run in your organization, and a cloud service that provides state, search and reporting. <code>pip</code> installs the agent server and the UI together. Each can also be installed separately <a href="docs/getting-started/registering-and-downloading.html#to-install-from-the-source">from the source</a>. The agent server can run standalone or in a cluster. The cloud service can be shared or&nbsp;dedicated.</p>
       </div>
       <div class="ui-fig">
