@@ -2955,3 +2955,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #agent-harness table, Control row left: "The model decides what runs on your enterprise systems" (Ram). Local only.
 - #agent-harness table rows reordered to the group order of docs "What Tactet adds": Selection, Tokens, Context (context and tokens); Model upgrades, LLM choice (models); Control, Credentials, Versions, Run record (control and reach). Before, Model upgrades split Control from Credentials and LLM choice was last. Local only.
 - Home #user-interfaces h2 now "How the platform fits in your organization" (Ram; was "An integrated platform to build, run and use agents"). Local only.
+
+## 2026-11-20 Home #agent-harness: points back inside the cards
+- Ram: the table under the cards is not needed; put the points into the boxes, split as needed. Table `.hx-cmp` and note `.hx-also` removed (HTML and CSS). Each card is now title, path band, then two rows of [drawing | points]: "Harness context" window beside Selection, Tokens, Context, Model upgrades, LLM choice; "The workflow runs here" box beside Control, Credentials, Versions, Run record. Lists `.hx-facts` use equal-height rows, and desktop cards share rows by subgrid (span 4), so each crossed point sits level with its ticked answer. Down arrow from window to Agent server on desktop/tablet; hidden <=480 where the points sit between them. "Combines with local skills" line dropped with the table. Topic labels dropped.
+- A stray `}` left by my edit had disabled the <=480 rules (two columns and diagram overflow on phones in the first render); fixed, brace count checked.
+- Rendered 9 widths light+dark, sweep 0 overflow; #platform after it re-checked. Local only.
