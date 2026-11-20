@@ -2915,3 +2915,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - why.html top part: trailing links "Agent development" and "Runtime" removed, words and links (Ram). The six points now carry no links. Not committed, not uploaded.
 - why.html table row: "One platform to build, run and use task-focused agents" → "…use agents" (Ram). No "task-focused" left on any site page; it remains in the docs (What is Tactet, Task-focused agents) and the LinkedIn banner generator. Not committed, not uploaded.
 - Docs "What is Tactet" lead now matches the About paragraph (Ram): "Developers build, validate and publish agents on it. The platform runs each agent safely against enterprise systems. People across the organization use the agents from a browser, a chat application, an agent harness, or through other custom applications and orchestrators built on the platform." Link on "agents" → tactet-agents.html kept. Docs rebuilt (147). Not committed, not uploaded.
+
+## 2026-11-20 Why us: point order
+- `html/why.html` intro: "Enterprise ready" now comes before the setup point, and the setup label is "Setup." (was "Quick setup and maintenance."). Text of both points unchanged. Local only, not uploaded.
