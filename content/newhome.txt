@@ -16,8 +16,8 @@ Without: Tokens are spent on tool selection and generating the workflow
 With:    LLMs are used (or called) only where the task needs it
 
 4
-Without: Every workflow needs a retest when the harness model changes
-With:    Agents do not change when the harness model changes
+Without: Every skill needs a retest when the harness model changes
+With:    A single tactet-skill needs a retest when the harness model changes
 
 5
 Without: Every step runs on the same model

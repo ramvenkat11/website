@@ -183,7 +183,7 @@
     <div class="container">
       <div class="section-head center">
         <h2>Agent harness as the&nbsp;orchestrator</h2>
-        <p>Conversations are one way to use Tactet agents. An agent harness, such as Claude&nbsp;Code, is another. <a href="https://github.com/tactet-ai/tactet-skill" target="_blank" rel="noopener">Tactet&#8209;skill</a> connects the harness to every published agent. The harness splits a request into parts and combines the results. Each agent runs on the agent server, inside your organization. <a href="docs/skill-integration/what-tactet-provides.html">What Tactet&nbsp;adds</a></p>
+        <p>Conversations are one way to use Tactet agents. An agent harness, such as Claude&nbsp;Code, is another. <a href="https://github.com/tactet-ai/tactet-skill" target="_blank" rel="noopener">Tactet&#8209;skill</a> connects the harness to every published agent. The harness splits a request into parts, runs Tactet agents alongside its local skills, and combines the results. Each agent runs on the agent server, inside your organization. <a href="docs/skill-integration/what-tactet-provides.html">What Tactet&nbsp;adds</a></p>
       </div>
       <div class="hx" aria-label="Two ways for an agent harness to carry out company workflows. Without Tactet, the agent harness on the user&rsquo;s machine calls APIs, databases and MCP servers on the server machines directly. Its context holds many skills, the MCP tool definitions, the generated workflow, the intermediate results and the result. With Tactet, the agent harness on the user&rsquo;s machine calls the agent server, which runs on the server machines and calls the APIs, databases and MCP servers there. The harness context holds the Tactet skill and the result. Beside each drawing is a list of points, in the same order on both sides.">
         <div class="hx-side">
@@ -194,14 +194,16 @@
             <span class="hx-toks"><span class="hx-b is-skill">Many skills</span><span class="hx-b is-skill">MCP tool definitions</span><span class="hx-b is-step">Generated workflow</span><span class="hx-b is-data">Intermediate results</span><span class="hx-b is-data">Result</span></span>
           </div>
           <ul class="hx-facts">
+            <li class="hx-h">Accuracy and cost</li>
             <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Tool selection accuracy degrades sharply as the number of tools&nbsp;grows</span></li>
             <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Context rot from tool schemas, generated workflows and intermediate&nbsp;results</span></li>
             <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Tokens are spent on tool selection and generating the&nbsp;workflow</span></li>
-            <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Every workflow needs a retest when the harness model&nbsp;changes</span></li>
             <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Every step runs on the same&nbsp;model</span></li>
+            <li class="hx-h">Security and maintenance</li>
             <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>The model decides which enterprise systems are called at run&nbsp;time</span></li>
             <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Credentials for enterprise systems are included on each user&rsquo;s&nbsp;machine</span></li>
             <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Session telemetry needs to be recorded&nbsp;separately</span></li>
+            <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Every skill needs a retest when the harness model&nbsp;changes</span></li>
           </ul>
         </div>
         <div class="hx-side is-tactet">
@@ -212,18 +214,19 @@
             <span class="hx-toks"><span class="hx-b is-skill">Tactet skill</span><span class="hx-b is-data">Result</span></span>
           </div>
           <ul class="hx-facts">
+            <li class="hx-h">Accuracy and cost</li>
             <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span><a href="docs/search/search-quality.html">Search accuracy</a> does not degrade with the number of&nbsp;agents</span></li>
             <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>The harness context holds only the end&nbsp;result</span></li>
             <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>LLMs are called only where the task needs&nbsp;them</span></li>
-            <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Agents do not change when the harness model&nbsp;changes</span></li>
             <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Each agent uses the best or the cheapest model for its&nbsp;task</span></li>
+            <li class="hx-h">Security and maintenance</li>
             <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>The enterprise systems called by an agent are defined at the time it is&nbsp;published</span></li>
             <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Credentials are managed centrally in a secret&nbsp;vault</span></li>
-            <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Every agent run is recorded, with who ran it and what it cost in LLM&nbsp;tokens</span></li>
+            <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Every agent run is recorded, including its LLM&nbsp;cost</span></li>
+            <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>A single Tactet skill needs a retest when the harness model&nbsp;changes</span></li>
           </ul>
         </div>
       </div>
-      <p class="hx-also"><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Tactet agents can combine with local skills in one&nbsp;request</span></p>
     </div>
   </section>
   <section class="section soft" id="user-interfaces">
