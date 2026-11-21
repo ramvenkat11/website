@@ -2997,3 +2997,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Read the 375 light sheets for index, why, about, pricing, development, runtime, search, conversation, gettingstarted, the four demo pages, 404, intellectual, privacy (top), terms (top), docs index, Tactet agents, What is Tactet; 375 dark for index, demo-search, Tactet agents; 1280 for why, about, development (top 2600px). No layout faults found; no changes made.
 - Local-only artefacts, not faults: 404.html is unstyled from file:// (root-absolute asset paths, correct on the bucket); demo-agents list and docs index question box need the server.
 - Reported, not changed: legal/intellectual.html still says "Search2o technology" and the "Search that executes" trademark.
+
+## 2026-11-21: home hero, last paragraph
+- `html/index.html:71` now reads: "An agent's code holds only business logic. The platform handles all the plumbing and records every agent run for observability." ("observability" links to `docs/reports/index.html`). The conversation state sentence and the "current" and "bounded" links are gone.
+- Meta description, og text and the hero figure aria-label checked: none mentioned the removed text, so no change.
+- State: local only, not uploaded. Next: Ram's go-ahead before any upload.
