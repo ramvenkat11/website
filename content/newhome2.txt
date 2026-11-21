@@ -1,13 +1,1 @@
-
-
-Development environment to build, validate and publish agents from one place. Draft with AI and schema-aware code editor helps to create agents in minutes.
-
-Built‑in routing and orchestration. Semantic search routes each request to the right agent in less than a second, so users do not need to know which agents exist, even as developers add, revise and remove them. Conversation orchestrates the work: a follow-up request can bring in another agent that builds on earlier results.
-
-Controlled runtime. An agent reaches only the systems its profiles allow and stops at its time and cost limits.
-
-Observability: Every run is recorded, with who requested it, what ran and what it cost.
-
-Quick setup and maintenance. Your organization runs only a stateless agent server and the UI. The cloud service provides state, search and reporting.
-
-Enterprise ready - authentication, horzontal scalability,
+An agent is a set of function objects. Each function object contains an ordered map of command objects. The commands run in the order in which they are declared.

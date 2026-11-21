@@ -68,7 +68,7 @@
         <h1 class="hero-claim">Model&#8209;neutral agent platform for the&nbsp;enterprise</h1>
         <p class="hero-lead">Developers build, validate and publish AI&nbsp;agents in the built&#8209;in <a class="hero-attr hero-attr-long" href="development.html">development environment</a>. They also <a class="hero-attr" href="search.html#description">describe</a> when to use each agent in plain&nbsp;English.</p>
         <p class="hero-lead">Users just chat with the platform. <a class="hero-attr" href="search.html">Semantic search</a> routes each request to the agent whose description&nbsp;fits. The agent runs in a <a class="hero-attr" href="runtime.html">controlled runtime</a>. Multiple agents build on each other in&nbsp;a&nbsp;<a class="hero-attr" href="conversation.html">conversation</a>.</p>
-        <p class="hero-lead">The platform maintains conversation state between runs. It keeps every run <a class="hero-attr" href="docs/runtime/overview.html">current</a>, <a class="hero-attr" href="docs/runtime/time-and-cost-bounds.html">bounded</a> and&nbsp;<a class="hero-attr" href="docs/reports/index.html">observable</a>.</p>
+        <p class="hero-lead">The platform handles all the plumbing and records every agent run for&nbsp;<a class="hero-attr" href="docs/reports/index.html">observability</a>.</p>
       </div>
       <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example Inventory, which reports stock levels by part and site, and Purchasing, which raises purchase orders with approved suppliers. The Tactet agent platform holds hundreds of agents. Users converse with it: a first request, Is part 7731 in stock in Berlin?, is matched to Inventory, which answers Berlin has 42 units of part 7731, below its reorder point of 60. A follow-up, Reorder the part, is matched to Purchasing, which answers Done. PO-5519 orders 18 units of part 7731 for Berlin. Below the platform, arrows lead from it to enterprise systems and LLMs, which the agents call.">
         <div class="as-side as-dev">
@@ -108,42 +108,48 @@
         <h2>Build, validate and publish agents in&nbsp;minutes</h2>
         <p>The UI includes a complete development environment for agents. Tell <a href="docs/development/draft-with-ai.html">Draft with AI</a> what the agent should do, refine the generated agent in the <a href="docs/development/code-editor.html">schema&#8209;aware code editor</a>, then <a href="docs/development/trace-and-validation.html">trace and validate</a> it before <a href="docs/development/publishing.html">publishing</a>. Systems and prompts are defined outside the agent&rsquo;s code: APIs, databases, MCP servers and LLMs in platform-wide <a href="docs/profiles/overview.html">profiles</a>, and <a href="docs/agent-definition/prompts.html">prompts</a> in each agent&rsquo;s&nbsp;meta.</p>
       </div>
-      <div class="fr" aria-label="An agent that answers from a knowledge base, beside a card that explains the agent syntax and structure and lists the 20 commands. A top-level comment calls it a simple RAG agent that answers from a knowledge base. The agent is a JSONC document with one function, main, holding three commands, with comments explaining the API profile, the query parameter, the variable, the LLM profile and the prompt: api searches the knowledge base with sys.query, var keeps the text of the first five hits as passages with a Python list comprehension, and llm sends the prompt named answer to gpt5_mini and streams the answer to the user. The card says an agent is defined in JSONC, JSON with comments, where a string in braces is a Python expression evaluated in a controlled runtime, and that an agent is a set of functions, each a list of commands, with every run starting in main, that a function can take arguments, and that a function used in a tool call also has a description. It lists the 20 commands in eight groups: Variables, Flow control, LLM interaction, External systems, Human-in-the-loop, Agent output, Agent termination, Observability.">
-        <pre class="fr-code"><span class="fr-title">Example agent</span><code><span class="cm i0">// A simple RAG agent that answers from a knowledge base.</span>{
-  <span class=key>"functions"</span>: {
-    <span class=key>"main"</span>: {
-      <span class=key>"commands"</span>: {
-        <span class=key>"api"</span>: {
-<span class="cm i10">// The API profile 'knowledgeBase', defined externally, is used to connect.</span>          <span class=key>"profile"</span>: <span class=str>"knowledgeBase"</span>,
-          <span class=key>"queryParams"</span>: {
-<span class="cm i12">// The API query parameter is set to sys.query, a built-in variable that contains the user&rsquo;s request.</span>            <span class=key>"q"</span>: <span class=str>"<span class=ex>{ sys.query }</span>"</span>
-          }
-        },
-        <span class=key>"var"</span>: {
-<span class="cm i10">// 'result' is a built-in variable that is set to the result of the API call. A variable called 'passages' is set with a Python expression using 'result'.</span><span class="wl i10"><span class=key>"passages"</span>: <span class=str>"<span class=ex>{ [hit['text'] for hit in result[:5]] }</span>"</span></span>        },
-        <span class=key>"llm"</span>: {
-<span class="cm i10">// An LLM profile, 'gpt5_mini', is used. LLM profiles specify the vendor and the model in use.</span>          <span class=key>"profile"</span>: <span class=str>"gpt5_mini"</span>,
-<span class="cm i10">// A prompt named 'answer' is used to talk to the LLM. This prompt is specific to this agent and defined externally.</span>          <span class=key>"prompt"</span>: <span class=str>"answer"</span>,
-          <span class=key>"streamOutput"</span>: <span class=tk-bool>true</span>
-        }
-      }
-    }
-  }
-}</code></pre>
-        <aside class="cmdcard fr-cmds">
-          <div class="cmdcard-head fr-title">Agent framework</div>
-          <p class="fr-struct">An agent is defined in <a href="docs/agent-definition/syntax.html">JSONC</a>, JSON with comments. A string enclosed in braces is interpreted as a <a href="docs/agent-definition/python-expressions.html">Python expression</a>, evaluated in a <a href="docs/runtime/controlled-execution.html">controlled&nbsp;runtime</a>.</p>
-          <p class="fr-struct">An agent is a set of <a href="docs/agent-definition/structure.html">functions</a>. <a href="docs/agent-definition/structure.html#main"><code>main</code></a> is a special function where every run starts. Each function contains an ordered map of <a href="docs/commands/index.html">commands</a> from the set shown below. The commands run in the order in which they are declared.</p>
-          <p class="fr-struct fr-struct-last"><a href="docs/commands/llm.html#tool-calling">Tool calling</a> is done by passing function names to the <a href="docs/commands/llm.html"><code>llm</code></a>&nbsp;command.</p>
-          <div class="cg"><span class="cg-l">Variables</span><span class="cg-c"><a href="docs/commands/var.html"><code>var</code></a></span></div>
-          <div class="cg"><span class="cg-l">Flow control</span><span class="cg-c"><a href="docs/commands/if.html"><code>if</code></a><a href="docs/commands/while.html"><code>while</code></a><a href="docs/commands/for.html"><code>for</code></a><a href="docs/commands/break.html"><code>break</code></a><a href="docs/commands/continue.html"><code>continue</code></a><a href="docs/commands/func.html"><code>func</code></a><a href="docs/commands/return.html"><code>return</code></a><a href="docs/commands/parallel.html"><code>parallel</code></a></span></div>
-          <div class="cg"><span class="cg-l">LLM interaction</span><span class="cg-c"><a href="docs/commands/llm.html"><code>llm</code></a><a href="docs/commands/memory.html"><code>memory</code></a></span></div>
-          <div class="cg"><span class="cg-l">External systems</span><span class="cg-c"><a href="docs/commands/api.html"><code>api</code></a><a href="docs/commands/db.html"><code>db</code></a></span></div>
-          <div class="cg"><span class="cg-l">Human-in-the-loop</span><span class="cg-c"><a href="docs/commands/ask.html"><code>ask</code></a></span></div>
-          <div class="cg"><span class="cg-l">Agent output</span><span class="cg-c"><a href="docs/commands/output.html"><code>output</code></a></span></div>
-          <div class="cg"><span class="cg-l">Agent termination</span><span class="cg-c"><a href="docs/commands/end.html"><code>end</code></a><a href="docs/commands/fail.html"><code>fail</code></a></span></div>
-          <div class="cg"><span class="cg-l">Observability</span><span class="cg-c"><a href="docs/commands/progress.html"><code>progress</code></a><a href="docs/commands/trace.html"><code>trace</code></a><a href="docs/commands/log.html"><code>log</code></a></span></div>
-        </aside>
+      <div class="fr" aria-label="The structure of an agent and the 20 commands. The structure is shown as a JSON outline with a label beside each level. An agent is a set of functions. The outline has two functions, main and order_status. Every run starts in main. Each function holds commands that run in the order they are declared: api, var and llm in main, and db and return in order_status. Beside the outline is a list headed: Each command is one of these 20. The 20 commands are in eight groups: Variables, Flow control, LLM interaction, External systems, Human-in-the-loop, Agent output, Agent termination, Observability.">
+        <div class="fr-code fr-map"><span class="fr-title">Agent structure</span>
+          <div class="fr-body">
+            <div class="fr-out">
+              <div class="fr-lines">
+              <code>{</code>
+              <code>  <span class=key>"functions"</span>: {</code>
+              <code>    <span class=key>"main"</span>: {</code>
+              <code>      <span class=key>"commands"</span>: {</code>
+              <code>        <span class=key>"api"</span>: { <span class=dim>&hellip;</span> },</code>
+              <code>        <span class=key>"var"</span>: { <span class=dim>&hellip;</span> },</code>
+              <code>        <span class=key>"llm"</span>: { <span class=dim>&hellip;</span> }</code>
+              <code>      }</code>
+              <code>    },</code>
+              <code>    <span class=key>"order_status"</span>: {</code>
+              <code>      <span class=key>"commands"</span>: {</code>
+              <code>        <span class=key>"db"</span>: { <span class=dim>&hellip;</span> },</code>
+              <code>        <span class=key>"return"</span>: { <span class=dim>&hellip;</span> }</code>
+              <code>      }</code>
+              <code>    }</code>
+              <code>  }</code>
+              <code>}</code>
+              <span class="fr-note" style="grid-row: 2 / 3"><b>Agent<span class="fr-x">: a set of functions</span></b></span>
+              <span class="fr-note" style="grid-row: 3 / 4"><b>Function<span class="fr-x">. Every run starts in main</span></b></span>
+              <span class="fr-note" style="grid-row: 5 / 8"><b>Commands, <span class="fr-x">run </span>in <span class="fr-x">this </span>order</b></span>
+              <span class="fr-note" style="grid-row: 10 / 11"><b>Another function</b></span>
+              <span class="fr-note" style="grid-row: 12 / 14"><b>Its commands<span class="fr-x">, in order</span></b></span>
+              </div>
+            </div>
+            <div class="fr-pal">
+              <span class="fr-pal-t">Each command is one of these&nbsp;20</span>
+              <div class="fr-g"><span class="fr-gl">Variables</span><span class="fr-gc"><a href="docs/commands/var.html"><code>var</code></a></span></div>
+              <div class="fr-g"><span class="fr-gl">Flow control</span><span class="fr-gc"><a href="docs/commands/if.html"><code>if</code></a><a href="docs/commands/while.html"><code>while</code></a><a href="docs/commands/for.html"><code>for</code></a><a href="docs/commands/break.html"><code>break</code></a><a href="docs/commands/continue.html"><code>continue</code></a><a href="docs/commands/func.html"><code>func</code></a><a href="docs/commands/return.html"><code>return</code></a><a href="docs/commands/parallel.html"><code>parallel</code></a></span></div>
+              <div class="fr-g"><span class="fr-gl">LLM interaction</span><span class="fr-gc"><a href="docs/commands/llm.html"><code>llm</code></a><a href="docs/commands/memory.html"><code>memory</code></a></span></div>
+              <div class="fr-g"><span class="fr-gl">External systems</span><span class="fr-gc"><a href="docs/commands/api.html"><code>api</code></a><a href="docs/commands/db.html"><code>db</code></a></span></div>
+              <div class="fr-g"><span class="fr-gl">Human-in-the-loop</span><span class="fr-gc"><a href="docs/commands/ask.html"><code>ask</code></a></span></div>
+              <div class="fr-g"><span class="fr-gl">Agent output</span><span class="fr-gc"><a href="docs/commands/output.html"><code>output</code></a></span></div>
+              <div class="fr-g"><span class="fr-gl">Agent termination</span><span class="fr-gc"><a href="docs/commands/end.html"><code>end</code></a><a href="docs/commands/fail.html"><code>fail</code></a></span></div>
+              <div class="fr-g"><span class="fr-gl">Observability</span><span class="fr-gc"><a href="docs/commands/progress.html"><code>progress</code></a><a href="docs/commands/trace.html"><code>trace</code></a><a href="docs/commands/log.html"><code>log</code></a></span></div>
+            </div>
+          </div>
+        </div>
       </div>
       <p class="hero-caption"><a href="demo-draft.html">Demo: Draft an agent with AI</a></p>
     </div>

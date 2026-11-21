@@ -1,50 +1,8 @@
-Agent harness section: the points
+Build, validate and publish agents in minutes -> Need alternatives. We have already said build, validate and publish in the hero. We need to introduce the agent framework here. Do the title last - it needs to reflect the content.
 
-Each numbered pair sits on one row. Edit the text after "Without:" and "With:".
+- Introduce agents/framework here -
 
+An agent contains only the steps of its task. Systems and prompts are defined outside the agent’s code: APIs, databases, MCP servers and LLMs in platform-wide profiles, and prompts in each agent’s meta. (Praphrase)
 
-1
-Without: Tool selection accuracy degrades sharply as number of tools grow
-With:    Search accuracy does not degrade with number of agents (link to search quality)
+The UI includes a complete development environment for agents. Tell Draft with AI what the agent should do, refine the generated agent in the schema‑aware code editor, then trace and validate it before publishing.
 
-3
-Without: Context rot with tool schema, generated workflows and intermediate results
-With:    The harness context holds only the end result
-
-2
-Without: Tokens are spent on tool selection and generating the workflow
-With:    LLMs are used (or called) only where the task needs it
-
-4
-Without: Every skill needs a retest when the harness model changes
-With:    A single tactet-skill needs a retest when the harness model changes
-
-5
-Without: Every step runs on the same model
-With:    Each agent uses the best/cheapest model for that task
-
-6
-Without: The model decides which enterprise systems are called at runtime
-With:    The enterprise systems called by an agent are defined at the time it is published
-
-7
-Without: Credentials to enterprise systems are included on each user's machine
-With:    Credentials are managed centrally on a secret vault
-
-8  (Remove this)
-Without: Every machine holds its own copy of a workflow, at whatever version
-With:    Everyone runs the same validated version of an agent
-
-9
-Without: Session telemetry needs to be recorded separately
-With:    Every agent run is recorded, with who ran it and what it cost in LLM tokens
-
-10 (Display this separately at the bottom)
-Without:
-With:    Tactet agents can combine with local skills in one request
-
-
-Harness context chips (for reference)
-
-Without: Many skills | MCP tool definitions | Generated workflow | Intermediate results | Result
-With:    Tactet skill | Result
