@@ -3008,3 +3008,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Ram wants section 2 of the home page to open with this claim and asked whether other frameworks make it. Research only, nothing changed.
 - Findings from first-party pages: the claim is common. Temporal ("focus on your agent's core business logic"), Restate, AWS AgentCore ("agent logic", "not back end plumbing"), LangChain ("cognitive architectures, not infrastructure") all make it, in each case for the hosted platform or runtime, not for the framework. CrewAI's intro does not make it. In all of them the agent is still general-purpose code.
 - Next: Ram decides the wording for the section 2 opening.
+
+## 2026-11-21: home, agent framework card
+- `html/index.html:137`: "Tool calling is done by passing JSON function names to the llm command." (added "JSON", Ram's wording). Local only.
