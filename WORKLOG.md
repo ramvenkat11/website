@@ -3003,3 +3003,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Meta description, og text and the hero figure aria-label checked: none mentioned the removed text, so no change.
 - State: local only, not uploaded. Next: Ram's go-ahead before any upload.
 - Later the same day: removed "An agent's code holds only business logic." at Ram's request. The paragraph is now the single sentence "The platform handles all the plumbing and records every agent run for observability." Local only.
+
+## 2026-11-21: research, "agent code is just business logic" claim
+- Ram wants section 2 of the home page to open with this claim and asked whether other frameworks make it. Research only, nothing changed.
+- Findings from first-party pages: the claim is common. Temporal ("focus on your agent's core business logic"), Restate, AWS AgentCore ("agent logic", "not back end plumbing"), LangChain ("cognitive architectures, not infrastructure") all make it, in each case for the hosted platform or runtime, not for the framework. CrewAI's intro does not make it. In all of them the agent is still general-purpose code.
+- Next: Ram decides the wording for the section 2 opening.
