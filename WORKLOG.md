@@ -3022,3 +3022,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - `html/styles/styles.css`: new `.fr-map`, `.fr-lines`, `.fr-note`, `.fr-x` rules before `.fr-cmds`. Sizes step down with container queries on the block's width (455, 450, 340, 300, 270); the long halves of the labels (`.fr-x`) hide under 455. The old `.fr-code .cm/.wl/.str/.ex` rules are now unused and left in place.
 - Trap: text and spans directly inside a flex container lose the spaces between them; labels are wrapped in `<b>`.
 - Rendered at 1280, 1000, 860, 700, 412, 384, 375, 360, 320 light and dark, sweep 320 to 1280: 0 overflow. Local only.
+
+## 2026-11-21: home section 2, one figure (structure + 20 commands)
+- At Ram's request the 20 commands moved into the structure figure and the right card (`aside.cmdcard.fr-cmds`, with its three paragraphs on JSONC, Python expressions, functions and tool calling) was removed from `html/index.html`. The figure is now one dark block: `div.fr-code.fr-map` > `div.fr-body` > `div.fr-out` (outline, container for the label queries) + `div.fr-pal` ("The 20 commands", eight `div.fr-g` rows, the 20 docs links kept). Figure aria-label rewritten.
+- `html/styles/styles.css`: `.fr` is one column; new `.fr-body`, `.fr-out`, `.fr-pal`, `.fr-g`, `.fr-gl`, `.fr-gc` rules; stacks at 820 and below. The `.fr-cmds`, `.fr-struct` and old `.fr-code .cm/.wl/.str/.ex` rules are now unused and left in place.
+- Rendered at the nine widths light and dark, sweep 320 to 1280: 0 overflow. Last tweak (phone label column 110px to 116px) not re-rendered. Local only.
