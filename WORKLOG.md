@@ -3035,3 +3035,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-21: section 2 title
 - `html/index.html` `#framework-runtime` h2 is now "An agent framework built for AI-assisted development" (Ram's wording; was "Build, validate and publish agents in minutes"). The section subtitle is unchanged and still to be rewritten (drafts given earlier, none chosen). Local only.
+
+## 2026-11-21: section 2 subtitle
+- `html/index.html` `#framework-runtime` subtitle is now two paragraphs, from `content/newhome.txt`: (1) "An agent is written in JSON with Python expressions. Systems and prompts are defined outside the agent's code: ..." with "JSON with Python expressions" linked to `development.html#first-agent`; (2) the development environment paragraph. Existing links kept. Text only, not rendered. Local only.
