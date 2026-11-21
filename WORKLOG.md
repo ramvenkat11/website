@@ -3032,3 +3032,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - List heading is now "Each command is one of these 20" (was "The 20 commands"). The five commands used in the outline (`api`, `var`, `llm`, `db`, `return`) are highlighted on both sides: bold blue keys in the outline (`.key.used`), blue chips in the list (`a.used`). Figure aria-label updated.
 - Rendered at the nine widths light and dark, sweep 320 to 1280: 0 overflow. Looked at 1280 light, 860 dark, 375 light, 320 dark. Local only.
 - Later: Ram had the highlight removed. The heading "Each command is one of these 20" stays; the `used` classes, their three style rules and the aria-label sentence are gone. Not re-rendered (returns the chips and keys to the state rendered before). Local only.
+
+## 2026-11-21: section 2 title
+- `html/index.html` `#framework-runtime` h2 is now "An agent framework built for AI-assisted development" (Ram's wording; was "Build, validate and publish agents in minutes"). The section subtitle is unchanged and still to be rewritten (drafts given earlier, none chosen). Local only.
