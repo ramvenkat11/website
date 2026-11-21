@@ -3048,3 +3048,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Built by `<scratchpad>/build_dev.py` from the old page (backups: `<scratchpad>/development-before-rewrite.html`, `styles-before-devrewrite.css`, `index-before-devrewrite.html`).
 - Checked: full-page pass on development.html and index.html (0 overflow 320 to 1280, nothing crossing the edge on phones); read the 1280 light page in full and the 375 light page in full; structure figure at 1280, 1000, 860, 700, 412, 320; first annotated figure at 1280, 1000, 860; home section 2 at 1280, 860, 375. Not looked at: 375 dark full page, the tickets figure crops, the orders figure at mid widths (its markup is unchanged apart from colour).
 - Local only. Other pages still using the old title "Build, validate and publish agents in minutes": none (home and this page both changed).
+- Later: home section 2 subtitle, "development environment" now links to `development.html#environment`. Text only. Local only.
