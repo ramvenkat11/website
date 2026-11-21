@@ -2987,3 +2987,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - #agent-harness left context chips no longer stretch to fill the row (removed `flex: 1 1 auto`); every chip is as wide as its text, like the right card's. Rendered 9 widths light+dark, sweep 0 overflow. Local only.
 - #agent-harness: the line under the cards ("Tactet agents can combine with local skills in one request") removed with its CSS; folded into the lead, whose fourth sentence is now "The harness splits a request into parts, runs Tactet agents alongside its local skills, and combines the results." Local only.
 - #agent-harness group headings no longer uppercase (Ram): sentence case, 13px bold, no letter-spacing. Local only.
+- #agent-harness: pair "Every step runs on the same model" / "Each agent uses the best or the cheapest model for its task" moved to the end of the "Accuracy and cost" group (Ram). Groups are now 4 / 1 / 3; "Models" holds only the retest pair. Local only.
