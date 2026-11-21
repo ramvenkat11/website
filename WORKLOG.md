@@ -3016,3 +3016,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Ram wants an image that makes the agent structure obvious (text in `content/newhome2.txt`: agent = set of function objects, each an ordered map of command objects, run in declared order). Six versions (S1 nested boxes, S2 tree, S3 annotated JSON, S4 three levels, S5 lanes, S6 rows) are on one scratch page: `<scratchpad>/agent-structure/options.html`. Nothing changed in the site.
 - Also discussed, nothing applied: section 2 title and subtitle rewrite (drafts given twice), where to link "plumbing" in the hero (suggested `why.html`).
 - Next: Ram picks a version.
+
+## 2026-11-21: home section 2, agent structure outline replaces the example agent
+- `html/index.html` `#framework-runtime`: the left block (the commented RAG example in `pre.fr-code`) is replaced by option S3: a JSON outline (`div.fr-code.fr-map` > `div.fr-lines`, one `<code>` per line, `span.fr-note` labels placed with inline `grid-row`). Functions `main` (api, var, llm) and `order_status` (db, return). Block title "Agent structure" (mine; S3 had none). Figure aria-label rewritten.
+- `html/styles/styles.css`: new `.fr-map`, `.fr-lines`, `.fr-note`, `.fr-x` rules before `.fr-cmds`. Sizes step down with container queries on the block's width (455, 450, 340, 300, 270); the long halves of the labels (`.fr-x`) hide under 455. The old `.fr-code .cm/.wl/.str/.ex` rules are now unused and left in place.
+- Trap: text and spans directly inside a flex container lose the spaces between them; labels are wrapped in `<b>`.
+- Rendered at 1280, 1000, 860, 700, 412, 384, 375, 360, 320 light and dark, sweep 320 to 1280: 0 overflow. Local only.
