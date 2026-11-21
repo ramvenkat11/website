@@ -3002,3 +3002,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - `html/index.html:71` now reads: "An agent's code holds only business logic. The platform handles all the plumbing and records every agent run for observability." ("observability" links to `docs/reports/index.html`). The conversation state sentence and the "current" and "bounded" links are gone.
 - Meta description, og text and the hero figure aria-label checked: none mentioned the removed text, so no change.
 - State: local only, not uploaded. Next: Ram's go-ahead before any upload.
+- Later the same day: removed "An agent's code holds only business logic." at Ram's request. The paragraph is now the single sentence "The platform handles all the plumbing and records every agent run for observability." Local only.
