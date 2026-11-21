@@ -3050,3 +3050,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Local only. Other pages still using the old title "Build, validate and publish agents in minutes": none (home and this page both changed).
 - Later: home section 2 subtitle, "development environment" now links to `development.html#environment`. Text only. Local only.
 - Later: home agent harness section lead, the trailing "What Tactet adds" link is removed; the same docs page (`docs/skill-integration/what-tactet-provides.html`) is now linked from "runs Tactet agents alongside its local skills". Text only. Local only.
+- Later: Ram rejected that placement ("makes no sense"). The link is taken off the phrase; the home page currently has no link to `what-tactet-provides.html` in the harness section lead. Options given, waiting for his pick.
