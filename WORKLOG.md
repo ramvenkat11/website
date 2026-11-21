@@ -3027,3 +3027,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - At Ram's request the 20 commands moved into the structure figure and the right card (`aside.cmdcard.fr-cmds`, with its three paragraphs on JSONC, Python expressions, functions and tool calling) was removed from `html/index.html`. The figure is now one dark block: `div.fr-code.fr-map` > `div.fr-body` > `div.fr-out` (outline, container for the label queries) + `div.fr-pal` ("The 20 commands", eight `div.fr-g` rows, the 20 docs links kept). Figure aria-label rewritten.
 - `html/styles/styles.css`: `.fr` is one column; new `.fr-body`, `.fr-out`, `.fr-pal`, `.fr-g`, `.fr-gl`, `.fr-gc` rules; stacks at 820 and below. The `.fr-cmds`, `.fr-struct` and old `.fr-code .cm/.wl/.str/.ex` rules are now unused and left in place.
 - Rendered at the nine widths light and dark, sweep 320 to 1280: 0 overflow. Last tweak (phone label column 110px to 116px) not re-rendered. Local only.
+
+## 2026-11-21: section 2 figure, outline and command list tied together
+- List heading is now "Each command is one of these 20" (was "The 20 commands"). The five commands used in the outline (`api`, `var`, `llm`, `db`, `return`) are highlighted on both sides: bold blue keys in the outline (`.key.used`), blue chips in the list (`a.used`). Figure aria-label updated.
+- Rendered at the nine widths light and dark, sweep 320 to 1280: 0 overflow. Looked at 1280 light, 860 dark, 375 light, 320 dark. Local only.
