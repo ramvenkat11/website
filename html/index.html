@@ -105,11 +105,12 @@
   <section class="section" id="framework-runtime">
     <div class="container">
       <div class="section-head center">
-        <h2>Build, validate and publish agents in&nbsp;minutes</h2>
-        <p>The UI includes a complete development environment for agents. Tell <a href="docs/development/draft-with-ai.html">Draft with AI</a> what the agent should do, refine the generated agent in the <a href="docs/development/code-editor.html">schema&#8209;aware code editor</a>, then <a href="docs/development/trace-and-validation.html">trace and validate</a> it before <a href="docs/development/publishing.html">publishing</a>. Systems and prompts are defined outside the agent&rsquo;s code: APIs, databases, MCP servers and LLMs in platform-wide <a href="docs/profiles/overview.html">profiles</a>, and <a href="docs/agent-definition/prompts.html">prompts</a> in each agent&rsquo;s&nbsp;meta.</p>
+        <h2>An agent framework built for AI&#8209;assisted&nbsp;development</h2>
+        <p>An agent is written in <a href="development.html#first-agent">JSON with Python&nbsp;expressions</a>. Systems and prompts are defined outside the agent&rsquo;s code: APIs, databases, MCP servers and LLMs in platform-wide <a href="docs/profiles/overview.html">profiles</a>, and <a href="docs/agent-definition/prompts.html">prompts</a> in each agent&rsquo;s&nbsp;meta.</p>
+        <p>The UI includes a complete development environment for agents. Tell <a href="docs/development/draft-with-ai.html">Draft with AI</a> what the agent should do, refine the generated agent in the <a href="docs/development/code-editor.html">schema&#8209;aware code editor</a>, then <a href="docs/development/trace-and-validation.html">trace and validate</a> it before <a href="docs/development/publishing.html">publishing</a>.</p>
       </div>
       <div class="fr" aria-label="The structure of an agent and the 20 commands. The structure is shown as a JSON outline with a label beside each level. An agent is a set of functions. The outline has two functions, main and order_status. Every run starts in main. Each function holds commands that run in the order they are declared: api, var and llm in main, and db and return in order_status. Beside the outline is a list headed: Each command is one of these 20. The 20 commands are in eight groups: Variables, Flow control, LLM interaction, External systems, Human-in-the-loop, Agent output, Agent termination, Observability.">
-        <div class="fr-code fr-map"><span class="fr-title">Agent structure</span>
+        <div class="fr-map"><span class="fr-map-t">Agent structure</span>
           <div class="fr-body">
             <div class="fr-out">
               <div class="fr-lines">

@@ -1,8 +1,8 @@
-Build, validate and publish agents in minutes -> Need alternatives. We have already said build, validate and publish in the hero. We need to introduce the agent framework here. Do the title last - it needs to reflect the content.
+- A line that says that agent in written in JSON with Python expressions, as shown below -
 
-- Introduce agents/framework here -
-
-An agent contains only the steps of its task. Systems and prompts are defined outside the agent’s code: APIs, databases, MCP servers and LLMs in platform-wide profiles, and prompts in each agent’s meta. (Praphrase)
+Systems and prompts are defined outside the agent’s code: APIs, databases, MCP servers and LLMs in platform-wide profiles, and prompts in each agent’s meta.
 
 The UI includes a complete development environment for agents. Tell Draft with AI what the agent should do, refine the generated agent in the schema‑aware code editor, then trace and validate it before publishing.
+
+
 
