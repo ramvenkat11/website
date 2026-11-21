@@ -3011,3 +3011,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-21: home, agent framework card
 - `html/index.html:137`: "Tool calling is done by passing JSON function names to the llm command." (added "JSON", Ram's wording). Local only.
+
+## 2026-11-21: agent structure image options
+- Ram wants an image that makes the agent structure obvious (text in `content/newhome2.txt`: agent = set of function objects, each an ordered map of command objects, run in declared order). Six versions (S1 nested boxes, S2 tree, S3 annotated JSON, S4 three levels, S5 lanes, S6 rows) are on one scratch page: `<scratchpad>/agent-structure/options.html`. Nothing changed in the site.
+- Also discussed, nothing applied: section 2 title and subtitle rewrite (drafts given twice), where to link "plumbing" in the hero (suggested `why.html`).
+- Next: Ram picks a version.
