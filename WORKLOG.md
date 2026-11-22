@@ -3074,3 +3074,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Both copies: "Its commands, in order" label removed. The order_status label is now "Another function, called from main" (narrow outlines: "Called from main", via new `.fr-n` shown where `.fr-x` hides). Aria-labels updated.
 - The longer "Commands, run in the order declared" clipped at 536-548 and 964-1000, so labels now shorten at container <=464px (was 440). Viewport 1000 therefore shows the short labels.
 - Fit measured 320-1280 on both pages, 0 overflow; looked at home 1280, 1000, 320. Local only.
+
+## 2026-11-22: structure figure example uses shortuuid
+- Both copies: the opened `var` line is now `"id": "{ shortuuid.uuid() }"` (was `"avg": "{ np.mean(result) }"`), per Ram: a small package, no unexplained `result`, self-evident. Aria-labels updated. Line is 2 characters shorter, so not re-rendered. Local only.
