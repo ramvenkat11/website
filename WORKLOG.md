@@ -3093,3 +3093,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-22: allowlist linked in the structure figure
 - Both copies: "allowlist" in the Python label links to docs/runtime/allowlist.html. New rule `.fr-map .fr-note a` (inherits colour, blue underline). Rendered both pages at nine widths, 0 overflow; looked at home 1280 dark and development 320. Local only.
+
+## 2026-11-22: content/pages text files
+- New directory `content/pages/` with one plain-text file per page: development, runtime, search, conversation, demo-draft, demo-search, demo-trace, why, pricing, about. Ram edits these; I apply the edits to the html pages.
+- Per Ram's answers: plain text only (no link marks; I keep existing links where the words survive), prose and tables only (each figure is a `[figure: ...]` placeholder), visible text only (no title or meta text).
+- Format: `#`/`##`/`###` headings by level, `- ` list items, table rows with ` | `; non-breaking spaces and hyphens written as plain ones.
+- Generated from the current local html by a scratchpad script (not in the repo). Home page not included (not asked).
