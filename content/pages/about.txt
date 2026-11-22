@@ -1,0 +1,45 @@
+About
+
+
+# One system to build, run and use AI agents
+
+Tactet is a model-neutral agent platform for the enterprise. Developers build, validate and publish agents on it. The platform runs each agent safely against enterprise systems. People across the organization use the agents from a browser, a chat application, an agent harness, or through other custom applications and orchestrators built on the platform.
+
+Framework. Developers write agents in structured JSON and publish them, versioned, to a common system. Each agent handles a single task.
+
+Runtime. Agents execute in a controlled runtime on the agent server.
+
+Search matches the meaning of a request to an agent built to handle it, runs that agent and returns its output. Users don’t pick an agent from a catalog. They just ask a question or make a request. This is what lets hundreds of independent agents work as one system, with no routing to wire by hand.
+
+Conversations. Follow-up requests continue in the same conversation, where the user can bring in other agents that build on earlier results. The user decides the combination; nothing is prewired.
+
+Interfaces. The same agents can be reached from several places. End users search and hold conversations in the UI or from chat applications. Agent harnesses such as Claude Code can search for and run Tactet agents as part of their own work. A REST API opens the agents to other frameworks and custom applications.
+
+Observability. Every agent run is reported in real time: who asked, what ran, how long it took, any errors and the LLM token cost. Developers also get a trace of a run when building and debugging an agent.
+
+Administration. Administrators manage the workspace and its members, with single sign-on and an audit trail.
+
+Deployment. The platform has three parts: an agent server, a UI and a cloud service. Administrators run only stateless agent servers in their own environment. The cloud service provides state, search and reporting. Customers can turn on end-to-end encryption by supplying their own encryption key on the client side. The cloud service can be shared or dedicated.
+
+
+## Company
+
+Tactet is made by Search2o, Inc. Search2o was founded by Ram Venkat and is built on decades of experience designing and operating enterprise search and cloud systems. That experience includes systems built for large corporations and U.S. government environments, most of them long-running, mission-critical production deployments.
+
+The company is based in Northern Virginia, USA.
+
+
+## Consulting
+
+Search2o also delivers turnkey solutions. You describe the tasks your users need done, and we design, build, validate and publish the agents for those tasks.
+
+We set up everything around the agents as well: the agent servers in your environment, the connections to your LLMs, APIs and databases, the guardrails, user access, and the interfaces your users work in, such as the browser, Slack or Claude Code. When the project ends, your team will have a working system and the knowledge to maintain and extend it.
+
+Ram Venkat is directly available to you throughout the project, as needed. To discuss a project, please contact us.
+
+
+## Contact
+
+Please contact us by email. If you already use Tactet, the message icon in the UI reaches us too, and the docs icon answers product questions.
+
+info@tactet.com

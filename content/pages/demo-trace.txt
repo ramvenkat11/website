@@ -1,0 +1,30 @@
+Demo
+
+
+# Trace an agent as it runs
+
+This demo answers your request in the same way as the Chat with agents demo, and then shows a trace of the agent that ran.
+
+
+## What it shows
+
+- Every step the agent took for your request
+- What each step did, including the input and output of each call
+- Sensitive information, masked
+
+
+## How to use it
+
+- Ask for something that one of the 200 agents handles.
+- Use the filters to narrow the trace to the kinds of line you want to see.
+
+
+## Keep in mind
+
+- The demo is not a general search engine or an AI assistant.
+- The answers are mock data.
+- Search chooses only among these 200 agents.
+
+In the product, trace and validation are part of the agent editor, where a developer uses a trace to validate an agent.
+
+How it works: Agent development

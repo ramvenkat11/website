@@ -1,0 +1,42 @@
+Search
+
+
+# Users do not choose agents. They say what they need.
+
+Search reads a request in plain language and returns the agent built to handle it. The exchange below is the same whether it comes from the UI, a chatbot, or your own interface.
+
+[figure: A search call and its response, annotated]
+
+Search works from meaning, not specific words. A request and a description do not need to share any words or even a language. A search takes about 200 milliseconds in the cloud service, and searching a thousand agents is as fast as searching a hundred.
+
+
+## The description is what search matches against
+
+A developer describes each agent in plain language when publishing it. Search indexes that description and matches every request against it. The request above matched this one.
+
+[figure: The description of the Travel desk agent]
+
+A description is written for the person who will type the request. It explains what the agent does for the user: the questions it answers, the actions it takes, and what it leaves to other agents. A typical description is two to five sentences long. A description that names only the mechanism, such as “calls the travel API and summarizes the JSON”, matches poorly because users do not ask for a mechanism. Search returns it to the developer with an explanation of what to change. When two agents accidentally overlap, a request in their shared area returns both. More precise descriptions separate them. See describing an agent.
+
+Tags divide an account’s agents into pools, such as one for the help desk and another for finance. A search can name one pool or search all of them.
+
+Live demo
+
+
+## Ask for something, in your own words
+
+The search and conversation demo runs in a live Tactet account with 200 agents, from human resources and finance to engineering and sales. Ask for something, and the matched agent runs and answers with mock data.
+
+Search quality
+
+
+## Measured on 15,000 questions, against the live service
+
+The test used six agent catalogs, ranging from a university catalog to one with a thousand agents across fifty business areas. It included 15,000 questions, each with a known correct agent. Every question went through the production search service.
+
+The correct agent ranks first 84% to 91% of the time, depending on the catalog, and appears in the first two results 92% to 97% of the time. A request about something completely unrelated is always refused. A request related to the customer’s enterprise that no agent covers is refused 82% to 86% of the time. A search takes about 200 milliseconds in the cloud service. A catalog of a thousand agents scores within one percentage point of a catalog of a hundred. The difference between easy and difficult catalogs is how distinct their agents are, which depends on their descriptions. The search quality page includes every table and the conditions behind each number.
+
+
+## Where to read more
+
+The search section of the documentation covers how matching works, describing an agent, tags, search behavior, and search quality. The REST API’s search call provides the search box as an API call.

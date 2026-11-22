@@ -1,0 +1,28 @@
+Demo
+
+
+# Describe an agent and AI will draft it
+
+Draft with AI creates an agent interactively from your description.
+
+
+## What it shows
+
+- AI writing a fully formed agent from a description
+- AI editing the same draft when you ask for changes
+
+
+## How to use it
+
+- Describe what the agent should do, or click one of the examples.
+- Then ask for changes to the draft.
+
+
+## Keep in mind
+
+- This demo stops at the draft. The drafted agent cannot be run here.
+- The AI does not write the prompts or the profiles. Both are defined outside the agent, and the draft refers to them by name.
+
+Tactet agents follow a defined schema, so the AI produces a fully formed agent. In the product, Draft with AI is part of the agent editor.
+
+How it works: Agent development

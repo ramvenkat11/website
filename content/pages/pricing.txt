@@ -1,0 +1,66 @@
+# Pricing
+
+[figure: The UI and the agent server run in your organization]
+
+
+### Agent server and UI
+
+Free
+
+Always free
+
+No license fee. Both run in your organization.
+
+
+### Shared cloud service
+
+$40 per user per month
+
+Currently free
+
+A paid service is expected in early 2027.
+
+
+### Dedicated cloud service
+
+Custom
+
+Planned
+
+An enterprise solution with custom pricing. Contact us.
+
+
+## Get started, no credit card needed
+
+Create an account, install the agent server and start using it. Everything is currently free, and you will hear from us before anything changes.
+
+Get started
+
+
+## The agent server and the UI are always free
+
+The Tactet agent server and UI have no license fee. Both run in your organization. The agent server is stateless and runs either standalone or in a load-balanced cluster. Install the agent server and the UI with pip install tactet.
+
+Both the agent server and UI are source-available and can also be installed from the source.
+
+
+## The shared cloud service is currently free
+
+The agent server stores state in the cloud service. The shared cloud service is currently free to use. A paid service is expected in early 2027, at $40 per user per month. You can then upgrade from the Account page.
+
+
+## Dedicated cloud service
+
+A dedicated cloud service will be offered in the future as an enterprise solution, with custom pricing.
+
+
+## Usage limits and restrictions
+
+Your free account has usage limits. If they get in the way of your work, send us a message from the UI and we will raise them. Please coordinate with us before running load or stress tests.
+
+
+## Please tell us what you need
+
+We are committed to the success of your project. If you have questions, find a bug or need a feature, contact us. When you are signed in, send a message from the message icon in the UI. Before you have an account, use the contact page. We can also build the agents and set up the system for you; see Consulting.
+
+Contact us

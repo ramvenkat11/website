@@ -1,0 +1,60 @@
+Agent runtime
+
+
+# The agent says what to do. The runtime decides what it may do.
+
+Every agent server builds a runtime from the account’s configuration and runs each agent inside it. Below is the orders agent from the Agent development page, annotated to show what the runtime supplies.
+
+[figure: The orders agent, annotated with what the runtime supplies]
+
+An agent is a definition written by a developer, validated with a real run before publication, versioned, and kept unchanged while it runs. Credentials stay out of the definition. A secret is read as sys.secret['NAME'], and the agent server resolves its value at run time. The definition therefore shows which secrets an agent uses, but never their values. An agent’s variables belong to that agent; by design, the conversation is the only channel between agents.
+
+
+## What the runtime holds
+
+An agent server stores no state of its own, but it holds a runtime in memory. The runtime contains everything an agent needs and is built from the account’s configuration. Every part is edited in the UI.
+
+[figure: The parts of the runtime: guardrails, profiles and operations]
+
+Guardrails limit what an expression can do. The allowlist defines what it can access, the compile rules define which operators and expression forms are accepted, and the runtime limits cap loop iterations, database rows, and definition length. Profiles are the only way to reach models, APIs, databases, and MCP servers. Every HTTP call goes through a connection pool sized by administrators. Hooks are your own code. They run around agent runs and publishing, before LLM and API calls, and when handling conversation state, secrets, and encryption keys. Every part has a version, so two people cannot silently overwrite each other, and every change is recorded in the audit log.
+
+
+## Two limits on every agent: time and cost
+
+Every agent has two limits and is published and run with both. These limits belong to the agent, not the account.
+
+The time limit is the number of seconds one agent run may take. A run that exceeds it ends with the result code timedOut. The cost limit is the amount, in US dollars, that one run may spend on LLM calls. The agent server calculates the cost of every call using the LLM profile, stops the run when the total exceeds the limit, and tells the user why. An agent that looks up one record can be limited to a few seconds and a few cents; an agent that researches a question can receive more of both. A draft starts with default limits, and its validation run must stay within them. Publishing applies the same limits to the agent. A developer can change the limits on a published agent, and the reports show how much time and money each agent’s runs use. See Time and cost bounds in the docs.
+
+Every agent server
+
+
+## A change is live on the next agent run, on every server
+
+Every agent server builds its runtime from the same configuration, so an agent behaves the same wherever it runs. Changes to a part or profile reach every server without a restart.
+
+
+## A part changes
+
+A developer or administrator saves a part or profile in the UI. The cloud service stores it with a timestamp.
+
+
+## The next agent run asks
+
+When an agent run starts, the agent server contacts the cloud service. The reply includes the time of the latest change. If that change is newer than the server’s runtime, the server requests everything that has changed since its last check and receives only those parts.
+
+
+## The runtime is swapped
+
+The server builds a new runtime from the changed parts and the unchanged parts of the old runtime. The agent run then starts with the new runtime. Two servers that start the same agent at the same time use the same runtime.
+
+An agent keeps the runtime it started with for the entire run. The old runtime’s connections stay open until the last agent using them finishes, so a change never interrupts an agent in the middle of a call. The agent server is a stateless process. It runs within your organization’s chosen isolation and in a cluster.
+
+
+## What leaves the agent server
+
+The cloud service receives the search request and conversation state, which are encrypted before they leave the agent server. API, database, MCP, and LLM traffic goes to the destinations specified by the profiles. Everything else the agent handles, including API responses, database rows, credentials, and variables, stays on the agent server for the duration of the run. Data privacy explains where each kind of data goes.
+
+
+## Where to read more
+
+The controlled execution page is the summary of every control. The agent runtime section describes each part, and profiles, hooks and security and privacy have sections of their own.

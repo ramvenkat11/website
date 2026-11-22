@@ -1,0 +1,113 @@
+Why Tactet
+
+
+# A complete agent platform, built for production
+
+Development environment. Developers build, validate and publish agents from one place. Draft with AI and a schema-aware code editor help them create an agent in minutes.
+
+Built-in routing and conversations. Users do not need to know which agents exist. They ask for what they need in a conversation, and each request reaches the right agent. Conversations let multiple agents build on each other.
+
+Controlled runtime. An agent reaches only the systems its profiles allow and stops at its time and cost limits.
+
+Observability. Every run is recorded, with who requested it, what ran and what it cost.
+
+Enterprise ready. Single sign-on, users and roles, and an audit log are built in. Agent servers are designed to run in a load-balanced cluster.
+
+Maintenance. Your organization runs only a stateless agent server and the UI, both of which can be installed from the source. The cloud service provides state, search and reporting.
+
+
+## Which one fits
+
+What you want | Use
+One platform to build, run and use agents | Tactet
+Build a general purpose agent application in Python | LangChain / LangGraph, CrewAI, LlamaIndex
+Give people an agent to run on their own machine | Skills
+Build agents inside one vendor’s products | That vendor’s builder: Copilot Studio, Agentforce, OpenAI Frontier
+
+
+## Tactet and LangChain
+
+LangChain and LangGraph are tools for building a general purpose agent application in Python. The team that builds it also builds everything around it: how requests reach it, where it runs, who can use it, how it is updated, and how it is tracked. The same goes for other Python frameworks such as CrewAI and LlamaIndex.
+
+
+### Choose LangChain when
+
+you are building one application and want full control in code, or when the agent has to work on its own for a long time.
+
+
+### Choose Tactet when
+
+agents written by developers have to be used by other people. Everything around the agent is already there and is the same for every agent.
+
+
+### Together
+
+A LangGraph application can call Tactet to find and run a published agent, and a Tactet agent can call what you have deployed elsewhere. More detail
+
+
+## Tactet and skills
+
+A skill puts a copy of the agent with every person who uses it. It runs on their machine, with their credentials and their model, at whatever version they last pulled.
+
+
+### Choose skills when
+
+the work belongs on the user’s machine: their files, their spreadsheets, their code.
+
+
+### Choose Tactet when
+
+the work reaches company systems. Credentials and logic stay on the server, there is one version, and every run is recorded.
+
+
+### Together
+
+One small skill lets Claude Code find and run published agents. A Tactet agent returns inventory data as a CSV, and a local skill loads it into Excel and analyzes it, in one request.
+
+
+## Tactet and Microsoft, Salesforce, OpenAI
+
+Copilot Studio, Agentforce, and OpenAI Frontier also let you build agents for other people to use. Each is at its best inside its own vendor’s products, models, and cloud.
+
+
+### Choose the vendor’s builder when
+
+the work lives inside that vendor’s products. It comes with tools made for them, and you may need those.
+
+
+### Choose Tactet when
+
+the work crosses systems, or when you want to decide where agents run and which model they use.
+
+
+### Together
+
+Nothing has to be replaced. Tactet agents can call those platforms through their APIs.
+
+
+## When Tactet is not the right choice
+
+- You are building an agent only for yourself to run.
+- You want to give people the agent itself, to read, change, and run locally.
+- You want a general purpose ReAct agent: one agent that runs in a loop and orchestrates many other agents to handle any request. A Tactet agent does one task and does not call other agents. To get this with Tactet, pair it with a skill, as described in Tactet and skills above.
+- You need agents that work on their own for hours or days.
+- You want non-developers to build agents without code.
+
+What a Tactet agent is, and is not
+
+
+## Try it
+
+The agent server is free and source available. The cloud service is currently free. A paid service is expected in early 2027.
+
+Chat with published agents
+
+No signup.
+
+Get started
+
+Free account and pip install tactet.
+
+Talk to us
+
+Tell us what you want to publish. We will help you build the first agents.
