@@ -3066,3 +3066,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-22: structure figure example uses NumPy
 - Both copies of the figure: the opened `var` line is now `"avg": "{ np.mean(result) }"` (was `"count": "{ len(result) }"`), per Ram: a common package outside the standard library. Aria-labels updated.
 - Fit measured 320-1280 on both pages (nothing within 4px of the outline edge), 0 overflow; looked at home 1280 and 320. Local only.
+
+## 2026-11-22: structure figure commands label
+- Both copies: "Commands, run in this order" is now "Commands, run in the order declared" (short form on narrow outlines stays "Commands, in order"). Fit measured 320-1280 on both pages. Local only.
