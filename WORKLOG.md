@@ -3083,3 +3083,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-22: structure figure Python label
 - Both copies: label is now "Python expression, limited to your allowlist" (Ram asked for "You define the allowlist" said without a full stop). Aria-labels updated. Fit measured 320-1280 on both pages. Local only.
+
+## 2026-11-22: structure figure example uses Arrow
+- Both copies: the opened `var` line is now `"now": "{ arrow.utcnow() }"` (was shortuuid), per Ram: a more common package. Aria-labels updated. One character shorter, not re-rendered. Local only.
