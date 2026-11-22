@@ -3056,3 +3056,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-21: structure figure, list heading
 - After several rounds Ram chose: the command list is headed "Commands" (was "Each command is one of these 20"); the left label stays "Commands, run in this order", so the shared word pairs the two sides. Applied to the figure on both `html/index.html` and `html/development.html`, with both aria-labels. Text only, not rendered. Local only.
+
+## 2026-11-22: structure figure shows a Python expression
+- Home section 2 and development.html#structure (same figure): `var` is opened over three lines, `"count": "{ len(result) }"` in gold (`.fr-map .ex`), with a label under it: "Python expression, limited to an allowlist" (`.fr-note-in`, spans both columns; indent drops at container <=360px).
+- The two "commands" labels moved from a bracket over the command rows to the `"commands"` line, because the expression line now runs into the label column.
+- Both aria-labels updated. Rendered at nine widths light/dark, sweep 320-1280: 0 overflow, no label within 4px of the outline edge. Local only.
+- Next: Ram to confirm label wording.
