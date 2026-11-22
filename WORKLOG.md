@@ -3051,3 +3051,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Later: home section 2 subtitle, "development environment" now links to `development.html#environment`. Text only. Local only.
 - Later: home agent harness section lead, the trailing "What Tactet adds" link is removed; the same docs page (`docs/skill-integration/what-tactet-provides.html`) is now linked from "runs Tactet agents alongside its local skills". Text only. Local only.
 - Later: Ram rejected that placement ("makes no sense"). The link is taken off the phrase; the home page currently has no link to `what-tactet-provides.html` in the harness section lead. Options given, waiting for his pick.
+- Later: Ram picked option 2. In the "Agent harness with Tactet" card on the home page, the two group headings ("Accuracy and cost", "Security and maintenance") now link to `docs/skill-integration/what-tactet-provides.html`. They take the existing `.hx-facts a` underline style. Not rendered. Local only.
