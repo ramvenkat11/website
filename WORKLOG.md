@@ -3080,3 +3080,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-22: home section 2 subtitle
 - Second paragraph's sentence now starts "You can tell Draft with AI what the agent should do, ...". Text only, local only.
+
+## 2026-11-22: structure figure Python label
+- Both copies: label is now "Python expression, limited to your allowlist" (Ram asked for "You define the allowlist" said without a full stop). Aria-labels updated. Fit measured 320-1280 on both pages. Local only.
