@@ -3090,3 +3090,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-22: structure figure example uses numpy.mean
 - Both copies: the opened `var` line is now `"avg": "{ numpy.mean([1, 2, 3]) }"` (Ram picked NumPy with a literal list; no variables, package named in the call). Aria-labels updated.
 - Fit measured 320-1280 on both pages: nothing clipped, tightest 2px inside the outline at 336. 0 overflow. Looked at home 1280 and 320. Local only.
+
+## 2026-11-22: allowlist linked in the structure figure
+- Both copies: "allowlist" in the Python label links to docs/runtime/allowlist.html. New rule `.fr-map .fr-note a` (inherits colour, blue underline). Rendered both pages at nine widths, 0 overflow; looked at home 1280 dark and development 320. Local only.
