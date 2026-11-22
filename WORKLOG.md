@@ -3053,3 +3053,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Later: Ram rejected that placement ("makes no sense"). The link is taken off the phrase; the home page currently has no link to `what-tactet-provides.html` in the harness section lead. Options given, waiting for his pick.
 - Later: Ram picked option 2. In the "Agent harness with Tactet" card on the home page, the two group headings ("Accuracy and cost", "Security and maintenance") now link to `docs/skill-integration/what-tactet-provides.html`. They take the existing `.hx-facts a` underline style. Not rendered. Local only.
 - Later: Ram had the heading links removed ("not obvious"). The home page's agent harness section now has no link to `docs/skill-integration/what-tactet-provides.html`. Local only.
+
+## 2026-11-21: structure figure, list heading
+- After several rounds Ram chose: the command list is headed "Commands" (was "Each command is one of these 20"); the left label stays "Commands, run in this order", so the shared word pairs the two sides. Applied to the figure on both `html/index.html` and `html/development.html`, with both aria-labels. Text only, not rendered. Local only.
