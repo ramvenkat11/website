@@ -3077,3 +3077,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-22: structure figure example uses shortuuid
 - Both copies: the opened `var` line is now `"id": "{ shortuuid.uuid() }"` (was `"avg": "{ np.mean(result) }"`), per Ram: a small package, no unexplained `result`, self-evident. Aria-labels updated. Line is 2 characters shorter, so not re-rendered. Local only.
+
+## 2026-11-22: home section 2 subtitle
+- Second paragraph's sentence now starts "You can tell Draft with AI what the agent should do, ...". Text only, local only.
