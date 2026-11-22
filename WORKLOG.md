@@ -3086,3 +3086,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-22: structure figure example uses Arrow
 - Both copies: the opened `var` line is now `"now": "{ arrow.utcnow() }"` (was shortuuid), per Ram: a more common package. Aria-labels updated. One character shorter, not re-rendered. Local only.
+
+## 2026-11-22: structure figure example uses numpy.mean
+- Both copies: the opened `var` line is now `"avg": "{ numpy.mean([1, 2, 3]) }"` (Ram picked NumPy with a literal list; no variables, package named in the call). Aria-labels updated.
+- Fit measured 320-1280 on both pages: nothing clipped, tightest 2px inside the outline at 336. 0 overflow. Looked at home 1280 and 320. Local only.
