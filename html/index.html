@@ -107,9 +107,9 @@
       <div class="section-head center">
         <h2>An agent framework built for AI&#8209;assisted&nbsp;development</h2>
         <p>An agent is written in <a href="development.html#first-agent">JSON with Python&nbsp;expressions</a>. Systems and prompts are defined outside the agent&rsquo;s code: APIs, databases, MCP servers and LLMs in platform-wide <a href="docs/profiles/overview.html">profiles</a>, and <a href="docs/agent-definition/prompts.html">prompts</a> in each agent&rsquo;s&nbsp;meta.</p>
-        <p>The UI includes a complete <a href="development.html#environment">development environment</a> for agents. Tell <a href="docs/development/draft-with-ai.html">Draft with AI</a> what the agent should do, refine the generated agent in the <a href="docs/development/code-editor.html">schema&#8209;aware code editor</a>, then <a href="docs/development/trace-and-validation.html">trace and validate</a> it before <a href="docs/development/publishing.html">publishing</a>.</p>
+        <p>The UI includes a complete <a href="development.html#environment">development environment</a> for agents. You can tell <a href="docs/development/draft-with-ai.html">Draft with AI</a> what the agent should do, refine the generated agent in the <a href="docs/development/code-editor.html">schema&#8209;aware code editor</a>, then <a href="docs/development/trace-and-validation.html">trace and validate</a> it before <a href="docs/development/publishing.html">publishing</a>.</p>
       </div>
-      <div class="fr" aria-label="The structure of an agent and the 20 commands. The structure is shown as a JSON outline with a label beside each level. An agent is a set of functions. The outline has two functions, main and order_status. Every run starts in main. Each function holds commands that run in the order they are declared: api, var and llm in main, and db and return in order_status. Beside the outline is a list headed Commands. The 20 commands are in eight groups: Variables, Flow control, LLM interaction, External systems, Human-in-the-loop, Agent output, Agent termination, Observability.">
+      <div class="fr" aria-label="The structure of an agent and the 20 commands. The structure is shown as a JSON outline with a label beside each level. An agent is a set of functions. The outline has two functions, main and order_status. Every run starts in main. The order_status function runs when it is called from main. Each function holds commands that run in the order they are declared: api, var and llm in main, and db and return in order_status. The var command is shown in full: it sets avg to numpy.mean([1, 2, 3]), a Python expression that uses the NumPy package and is limited to your allowlist. Beside the outline is a list headed Commands. The 20 commands are in eight groups: Variables, Flow control, LLM interaction, External systems, Human-in-the-loop, Agent output, Agent termination, Observability.">
         <div class="fr-map"><span class="fr-map-t">Agent structure</span>
           <div class="fr-body">
             <div class="fr-out">
@@ -119,7 +119,9 @@
               <code>    <span class=key>"main"</span>: {</code>
               <code>      <span class=key>"commands"</span>: {</code>
               <code>        <span class=key>"api"</span>: { <span class=dim>&hellip;</span> },</code>
-              <code>        <span class=key>"var"</span>: { <span class=dim>&hellip;</span> },</code>
+              <code>        <span class=key>"var"</span>: {</code>
+              <code class="fr-wide">          <span class=key>"avg"</span>: <span class=ex>"{ numpy.mean([1, 2, 3]) }"</span></code>
+              <code>        },</code>
               <code>        <span class=key>"llm"</span>: { <span class=dim>&hellip;</span> }</code>
               <code>      }</code>
               <code>    },</code>
@@ -133,9 +135,9 @@
               <code>}</code>
               <span class="fr-note" style="grid-row: 2 / 3"><b>Agent<span class="fr-x">: a set of functions</span></b></span>
               <span class="fr-note" style="grid-row: 3 / 4"><b>Function<span class="fr-x">. Every run starts in main</span></b></span>
-              <span class="fr-note" style="grid-row: 5 / 8"><b>Commands, <span class="fr-x">run </span>in <span class="fr-x">this </span>order</b></span>
-              <span class="fr-note" style="grid-row: 10 / 11"><b>Another function</b></span>
-              <span class="fr-note" style="grid-row: 12 / 14"><b>Its commands<span class="fr-x">, in order</span></b></span>
+              <span class="fr-note" style="grid-row: 4 / 5"><b>Commands, <span class="fr-x">run </span>in <span class="fr-x">the </span>order<span class="fr-x"> declared</span></b></span>
+              <span class="fr-note fr-note-in" style="grid-row: 8 / 9"><b>Python expression, limited to your&nbsp;<a href="docs/runtime/allowlist.html">allowlist</a></b></span>
+              <span class="fr-note" style="grid-row: 13 / 14"><b><span class="fr-x">Another function, called</span><span class="fr-n">Called</span> from main</b></span>
               </div>
             </div>
             <div class="fr-pal">
