@@ -1,7 +1,7 @@
 # Intellectual Property
 
-Search2o technology is protected by U.S. Patent No. **12,682,000**.
+Tactet technology is protected by U.S. Patent No. **12,682,000**.
 
-Additional patent applications relating to Search2o technology are pending.
+Additional patent applications relating to Tactet technology are pending.
 
-**Search that executes™** is a trademark of Search2o. A U.S. federal trademark registration application is pending.
+**Search that executes™** is a trademark of Tactet. A U.S. federal trademark registration application is pending.
