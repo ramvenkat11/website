@@ -3122,3 +3122,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-23: cloud box qualifier
 - Home platform figure: "shared or dedicated" (now lowercase) is a second line of the "Cloud service" title: white, weight 500, pulled up to the title, with a gap before the State / Search / Reports links (`.cloud-mode` margin -3px 0 7px). Rendered nine widths light/dark, 0 overflow; looked at 1280 light/dark, 700, 375 light/dark, 320. Local only.
+
+## 2026-11-23: top row chip links coloured
+- Home platform figure: the four chip links (User · Developer · Admin, Bot, tactet-skill, REST API) now use the site link colour (`.cc-skill a` was `inherit`). Box titles (Browser, Slack · Teams, Claude Code, REST client) are links too but stay in the title colour, like the other box titles. Looked at 1280 and 375, light and dark. Local only.
