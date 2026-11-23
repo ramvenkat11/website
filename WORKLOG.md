@@ -3099,3 +3099,10 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Per Ram's answers: plain text only (no link marks; I keep existing links where the words survive), prose and tables only (each figure is a `[figure: ...]` placeholder), visible text only (no title or meta text).
 - Format: `#`/`##`/`###` headings by level, `- ` list items, table rows with ` | `; non-breaking spaces and hyphens written as plain ones.
 - Generated from the current local html by a scratchpad script (not in the repo). Home page not included (not asked).
+
+## 2026-11-22: company renamed to Tactet, Inc.
+- Ram: business name changed from Search2o, Inc. to Tactet, Inc. His answers: set legal dates to today, no "formerly" mention, About starts "Tactet was founded by...".
+- Legal (content/legal/*.md and html/legal/*.html, same replacements in both): every Search2o/SEARCH2O is now Tactet/TACTET; Terms effective date, License effective date (still Version 1.0) and Privacy last-updated date are November 22, 2026.
+- Footers on all html/*.html pages and in gen/build.py; docs rebuilt (147 pages). About page Company and Consulting text; index.html JSON-LD organisation name "Tactet, Inc."; docsrc/security/data-privacy.html and docsrc/support-licensing/license.html; content/pages/about.txt.
+- Left as is: `SEARCH2O_CLOUD_URL` in the license (a software setting name), `window.SEARCH2O_CONFIG` in html/js and ui1's html/demo/demo.js, content/register (old pages with api.search2o.com), retired/, notes/, review files.
+- Local only. Script: scratchpad rename_company.py.
