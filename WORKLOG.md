@@ -3109,3 +3109,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-23: About page sentence removed
 - Removed "That experience includes systems built for large corporations and U.S. government environments..." from the Company section of html/about.html and from content/pages/about.txt. Meta text did not mention it. Local only.
+
+## 2026-11-23: home section 5 server labels
+- Platform figure labels: "Scales out" is now "Horizontally scalable", "Always in sync" is now "Agents run in sync"; aria-label updated.
+- Longer labels wrapped with a dangling dot at 580-795 and came within 2px of the box edge at 320-332. Appended two rules at the end of styles.css: stack the three labels (separators hidden) up to 795px; 9.5px font at <=340px.
+- Measured 320-1280 (labels on 1 or 3 lines, never 2; >=5px from the box edge), 0 overflow; looked at 1280, 700 light, 360 light, 320 dark. Local only.
+- crop.mjs had been cleared from the scratchpad; recreated. New scratchpad script links.mjs.
