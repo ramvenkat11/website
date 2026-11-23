@@ -3106,3 +3106,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Footers on all html/*.html pages and in gen/build.py; docs rebuilt (147 pages). About page Company and Consulting text; index.html JSON-LD organisation name "Tactet, Inc."; docsrc/security/data-privacy.html and docsrc/support-licensing/license.html; content/pages/about.txt.
 - Left as is: `SEARCH2O_CLOUD_URL` in the license (a software setting name), `window.SEARCH2O_CONFIG` in html/js and ui1's html/demo/demo.js, content/register (old pages with api.search2o.com), retired/, notes/, review files.
 - Local only. Script: scratchpad rename_company.py.
+
+## 2026-11-23: About page sentence removed
+- Removed "That experience includes systems built for large corporations and U.S. government environments..." from the Company section of html/about.html and from content/pages/about.txt. Meta text did not mention it. Local only.
