@@ -3131,3 +3131,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - conversation.html: new two-paragraph lead, "The runs so far" removed, section "Kept safe, kept yours" removed, meta description updated. search.html: new section "What search is not" after the hero (h2, not a second h1), section "Search quality" removed; `demo-search.html` link to `search.html#quality` repointed to the docs search-quality page. development.html: meta description updated. why.html: "See the home page for why" links to `index.html#agent-harness`.
 - Looked at search and conversation at 1280 light and search at 375 dark; sweep 320–1280 no overflow. Local only.
 - Memory: content/pages and html pages stay in sync from now on.
+
+## 2026-11-23: links restored after text removal
+- conversation.html lead: "encrypted" links to the encryption docs and "stored" to the conversation-state hook docs. why.html: "skill" in "(Python or a skill)" links to `#skills`. The pinning link was not re-added; "Where to read more" on the conversation page already links the REST conversations page. Text files unchanged (no link marks). Local only.
