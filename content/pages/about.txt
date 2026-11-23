@@ -5,7 +5,7 @@ About
 
 Tactet is a model-neutral agent platform for the enterprise. Developers build, validate and publish agents on it using the built-in development environment. The platform runs each agent in a controlled runtime. People across the organization use the agents from a browser, a chat application, an agent harness, or through other custom applications and orchestrators built on the platform.
 
-Agent framework. Developers write agents in structured JSON and publish them, versioned, to a common system. Each agent handles a single task.
+Agent framework. Developers write agents in structured JSON and publish them, versioned. Each agent handles a single task, which developers describe in natural language.
 
 Runtime. Agents execute in a controlled runtime on the agent server.
 
@@ -24,7 +24,7 @@ Deployment. The platform has three parts: an agent server, a UI and a cloud serv
 
 ## Company
 
-Tactet was founded by Ram Venkat and is built on decades of experience designing and operating enterprise search and cloud systems. That experience includes systems built for large corporations and U.S. government environments, most of them long-running, mission-critical production deployments.
+Tactet was founded by Ram Venkat and is built on decades of experience designing and operating enterprise search and cloud systems.
 
 The company is based in Northern Virginia, USA.
 

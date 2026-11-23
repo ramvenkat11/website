@@ -3,18 +3,21 @@ Conversation
 
 # Conversations let agents build on each other.
 
-In Tactet, an agent does not call another agent directly. Instead, it is the conversation that carries the work from one agent to the next. A conversation is unique and belongs to one user.
+In Tactet, an agent does not call another agent directly. Instead, conversations carry the work from one agent to the next.
+
+A conversation is unique and belongs to one user. A conversation is encrypted and stored automatically when an agent runs successfully.
 
 
 ## What a conversation keeps
 
 When an agent ends successfully, the platform saves the conversation’s state automatically. The next run in the conversation, whether by the same agent or another, starts from that state.
 
-The prompts. A prompt is a data structure that maintains the message thread with a LLM - the user’s questions and the model’s answers - in a standard format. An agent can use multiple prompts and each prompt has a name and scope. The scope can be local, agent or conversation. Prompts at the conversation scope are the ones that allow one agent to build on the message thread
+The prompts. A prompt is a data structure that maintains the message thread with an LLM in a standard format. An agent can use multiple prompts and each prompt has a name and scope.
 
-The variables. The conversation variables that every agent in the conversation can read and write, plus each agent’s own variables. An agent stores information that later agents will need, such as trip details, in a conversation variable.
+The variables. The conversation variables that every agent in the conversation can read and write, plus each agent’s own variables. An agent stores information that later agents will need in a conversation variable.
 
-A conversation also keeps additional information to show its history, to continue from a ask command etc., but these are not exposed to other agents.
+A conversation also keeps additional internal information that is used for other purposes, such as showing the conversation history and restoring an agent that is waiting for user input.
+
 
 ## Prompts carry the exchange
 
@@ -40,7 +43,7 @@ A naming scheme can be short: one standard prompt name, such as chat, for every 
 
 A follow-up in a conversation is searched like a new request. If it belongs to another agent, that agent runs next with the conversation’s state already in place. If no new agent matches, the agent that answered last answers again.
 
-What an interface does with the matches depends on its search behavior. The UI runs the best match immediately; your own interface can let the user choose between the two best matches.
+What an interface does with the matches depends on its search behavior. The default setting in the UI runs the best match immediately; it can be set to show the matches, including the last agent that ran.
 
 The client always decides which agent runs next. An agent cannot run another agent. A request with several parts is coordinated from outside: an agent harness with the Tactet skill splits the request, sends each part through search and execAgent in the same conversation, and combines the results into one answer. See How agents build on each other.
 
@@ -49,12 +52,7 @@ Live demo
 
 ## Ask for something, then follow up
 
-The search and conversation demo runs in a live Tactet account with 200 agents, from human resources and finance to engineering and sales. Ask for something, then ask a follow-up and watch the conversation move to another agent that knows what the first one found.
-
-
-## Kept safe, kept yours
-
-State is encrypted before it leaves the agent server, and the cloud service never decrypts it. An account can keep the state in its own enterprise instead of storing it in the cloud service. On the free service, a conversation that has been unused for 7 days is deleted unless the user pins it. A user can also delete a conversation at any time.
+The search and conversation demo runs in a live Tactet account with 200 agents, from human resources and finance to engineering and sales. Ask for something, then ask a follow-up and watch the conversation move to another agent that knows what the first one found. It is configured to run an agent automatically if the agent server returns a single match. Otherwise, it shows the options.
 
 
 ## Where to read more

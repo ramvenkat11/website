@@ -3,11 +3,11 @@ Why Tactet
 
 # A complete agent platform, built for production
 
-Development environment. Developers build, validate and publish agents from one place. Draft with AI and a schema-aware code editor help them create an agent in minutes.
+Development environment. Developers build, validate and publish agents from one place, in minutes.
 
-Built-in routing and conversations. Users do not need to know which agents exist. They ask for what they need in a conversation, and each request reaches the right agent. Conversations let multiple agents build on each other.
+Built-in routing and conversations. Users do not need to know which agents exist. They ask for what they need, and each request reaches the right agent. Conversations let multiple agents build on each other.
 
-Controlled runtime. An agent reaches only the systems its profiles allow and stops at its time and cost limits.
+Controlled runtime. An agent reaches only the systems its profiles allow and stops at its time and cost limits. The platform restricts Python expressions to an allowlist.
 
 Observability. Every run is recorded, with who requested it, what ran and what it cost.
 
@@ -27,7 +27,7 @@ Build agents inside one vendor’s products | That vendor’s builder: Copilot S
 
 ## Tactet and LangChain
 
-LangChain and LangGraph are tools for building a general purpose agent application in Python. The team that builds it also builds everything around it: how requests reach it, where it runs, who can use it, how it is updated, and how it is tracked. The same goes for other Python frameworks such as CrewAI and LlamaIndex.
+LangChain and LangGraph are tools for building a general purpose agent application in Python. The team that uses them to build an agent also builds everything around it: how requests reach it, where it runs, who can use it, how it is updated, and how it is tracked. The same goes for other Python frameworks such as CrewAI and LlamaIndex.
 
 
 ### Choose LangChain when
@@ -37,7 +37,7 @@ you are building one application and want full control in code, or when the agen
 
 ### Choose Tactet when
 
-agents written by developers have to be used by other people. Everything around the agent is already there and is the same for every agent.
+users are not required to know about agents and just submit their requests.
 
 
 ### Together
@@ -57,12 +57,12 @@ the work belongs on the user’s machine: their files, their spreadsheets, their
 
 ### Choose Tactet when
 
-the work reaches company systems. Credentials and logic stay on the server, there is one version, and every run is recorded.
+the work reaches company systems. See the home page for why.
 
 
 ### Together
 
-One small skill lets Claude Code find and run published agents. A Tactet agent returns inventory data as a CSV, and a local skill loads it into Excel and analyzes it, in one request.
+Tactet-skill lets Claude Code find and run published agents. A Tactet agent returns inventory data as a CSV, and a local skill loads it into Excel and analyzes it, in one request.
 
 
 ## Tactet and Microsoft, Salesforce, OpenAI
@@ -87,9 +87,9 @@ Nothing has to be replaced. Tactet agents can call those platforms through their
 
 ## When Tactet is not the right choice
 
-- You are building an agent only for yourself to run.
-- You want to give people the agent itself, to read, change, and run locally.
-- You want a general purpose ReAct agent: one agent that runs in a loop and orchestrates many other agents to handle any request. A Tactet agent does one task and does not call other agents. To get this with Tactet, pair it with a skill, as described in Tactet and skills above.
+- You are building an agent only for yourself to run on your own machine.
+- You want to give people the agent code itself (Python or a skill), to read, change, and run locally.
+- You want a general purpose ReAct agent: one agent that runs in a loop and orchestrates many other agents to handle any request.
 - You need agents that work on their own for hours or days.
 - You want non-developers to build agents without code.
 

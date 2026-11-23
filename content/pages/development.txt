@@ -3,7 +3,7 @@ Agent development
 
 # An agent framework built for AI-assisted development
 
-Tactet has its own agent framework. An agent is a JSON document with one structure and 20 commands, and its values can be Python expressions. One schema describes all of it. Draft with AI, the code editor and validation work from that schema, in the development environment that is part of the UI.
+Tactet has its own agent framework and a corresponding agent runtime. An agent is expressed in JSONC (JSON with comments), with Python expressions. There are 20 built-in commands (or declarations) in JSON that cover all the aspects of agent programming. The entire framework is structured on a schema. Draft with AI, the code editor and validation work from that schema, in the development environment that is part of the UI.
 
 Agent framework
 
@@ -14,7 +14,7 @@ Below is a complete agent. It searches a knowledge base for the user’s request
 
 [figure: A complete agent with five notes]
 
-Every value keeps its JSON meaning, with one extension: a string enclosed in braces is a Python expression, evaluated when the agent runs. Any other string is plain text. An expression can read variables, the result of the last command, and what the runtime provides, such as the user’s request. Each expression is checked when the agent is validated and runs in a controlled runtime.
+Every value keeps its JSON meaning, with one extension: a string enclosed in braces is a Python expression, evaluated when the agent runs. Any other string is plain text. Most strings are allowed to be a Python expression. The exceptions are function names, prompt names and a few others that are needed to check the agent for correctness at compile time. An expression can read variables, the result of the last command, and what the runtime provides, such as the user’s request. Each expression is checked when the agent is validated and runs in a controlled runtime.
 
 
 ## Every agent has the same structure
@@ -23,14 +23,14 @@ An agent is a set of functions. Each function contains an ordered map of command
 
 [figure: The structure of an agent and the 20 commands]
 
-A command is a key, and its value contains the command’s fields: an object for most commands, and a single value for simple ones such as progress and return. To use a command a second time in the same function, add a suffix after a dot: api, then api.2. The syntax and structure pages explain all the rules.
+A command is a key, and its value contains the command’s fields: an object for most commands, and a single value for simple ones such as progress and trace. To use a command a second time in the same function, add a suffix after a dot: api, then api.2. The syntax and structure pages explain all the rules.
 
 Every run starts in main. Another function runs when a function calls it with func or parallel, or when a model calls it as a tool.
 
 
 ## A function can be a tool for the model
 
-This agent answers questions about orders. Its function getOrder looks up one order through an API, and the model decides when to call it. Agents are written in JSONC, a form of JSON that allows comments, so this one includes a few.
+This agent answers questions about orders. Its function getOrder looks up one order through an API, and the model decides when to call it.
 
 [figure: An agent with a tool, with six notes]
 
@@ -55,26 +55,26 @@ The UI includes a complete development environment for agents. An agent goes thr
 
 ## Draft with AI
 
-Draft with AI writes the first version of an agent from a description of what the agent should do. It works from the same schema that the editor and validation use, and it knows the profiles and prompts of your account. It has never seen your APIs and databases, so it leaves paths, queries and parameters empty, with a comment that says what belongs there. It can also change an existing draft, and it keeps everything your request does not touch.
+Draft with AI writes or modifies an agent from a description of what the agent should do. It works from the same schema that the editor and validation use, and it knows the profiles and prompts of your account. It never sees your APIs and databases, so it leaves paths, queries and parameters empty, with a comment that says what belongs there.
 
 Try the Draft with AI demo with your own description or one of the examples.
 
 
 ## Edit
 
-A draft is private to the developer who created it. The code editor is built on Monaco, the editor inside Visual Studio Code, and it understands the agent language. It suggests the commands and fields allowed where you are typing, and it points out mistakes as you type.
+A draft is private to the developer who created it. The code editor is built on Monaco, the editor inside Visual Studio Code, and it understands the agent framework. It suggests the commands and fields allowed where you are typing, and it points out mistakes as you type.
 
 
 ## Validate
 
-Validation checks the definition against the schema and the security rules. It also confirms that everything the agent names exists in the account. The agent server then runs the draft against a sample question and shows the trace: every command that ran, the values it received, and what it returned. A draft cannot be published until it validates.
+Validation checks the definition against the schema and the security rules. It also confirms that everything the agent names exists in the account. The agent server then runs the draft against a sample question and shows the trace: every command that ran, the values it received, and what it returned. A draft cannot be published from the UI until it validates.
 
 The Trace demo shows a trace of a running agent.
 
 
 ## Publish
 
-Publishing gives the agent a version and makes it available to users. The developer then describes the agent in plain English. Search indexes that description, and users find the agent by asking for what it does in their own words. When several developers change the same agent, each works on a separate draft and merges the others’ changes before publishing.
+Publishing gives the agent a version and makes it ready to execute. But it cannot be matched by search until a description is created in plain English. Search indexes that description and makes the agent available to users. When several developers edit the same agent, each works on a separate draft and merges the others’ changes before publishing.
 
 
 ## Where to read more

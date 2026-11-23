@@ -64,9 +64,9 @@
   <section class="page-body why">
     <div class="container">
       <div class="why-intro">
-        <p><strong>Development environment.</strong> Developers build, validate and publish agents from one place. Draft with AI and a schema&#8209;aware code editor help them create an agent in minutes.</p>
-        <p><strong>Built&#8209;in routing and conversations.</strong> Users do not need to know which agents exist. They ask for what they need in a conversation, and each request reaches the right agent. Conversations let multiple agents build on each&nbsp;other.</p>
-        <p><strong>Controlled runtime.</strong> An agent reaches only the systems its profiles allow and stops at its time and cost limits.</p>
+        <p><strong>Development environment.</strong> Developers build, validate and publish agents from one place, in minutes.</p>
+        <p><strong>Built&#8209;in routing and conversations.</strong> Users do not need to know which agents exist. They ask for what they need, and each request reaches the right agent. Conversations let multiple agents build on each&nbsp;other.</p>
+        <p><strong>Controlled runtime.</strong> An agent reaches only the systems its profiles allow and stops at its time and cost limits. The platform restricts Python expressions to an allowlist.</p>
         <p><strong>Observability.</strong> Every run is recorded, with who requested it, what ran and what it&nbsp;cost.</p>
         <p><strong>Enterprise ready.</strong> Single sign&#8209;on, users and roles, and an audit log are built in. Agent servers are designed to run in a load&#8209;balanced cluster.</p>
         <p><strong>Maintenance.</strong> Your organization runs only a stateless agent server and the UI, both of which can be installed from the&nbsp;source. The cloud service provides state, search and reporting.</p>
@@ -86,7 +86,7 @@
       </table>
 
       <h2 id="langchain">Tactet and LangChain</h2>
-      <p>LangChain and LangGraph are tools for building a general purpose agent application in Python. The team that builds it also builds everything around it: how requests reach it, where it runs, who can use it, how it is updated, and how it is tracked. The same goes for other Python frameworks such as CrewAI and LlamaIndex.</p>
+      <p>LangChain and LangGraph are tools for building a general purpose agent application in Python. The team that uses them to build an agent also builds everything around it: how requests reach it, where it runs, who can use it, how it is updated, and how it is tracked. The same goes for other Python frameworks such as CrewAI and LlamaIndex.</p>
       <div class="why-choose">
         <div class="why-opt">
           <h3>Choose LangChain when</h3>
@@ -94,7 +94,7 @@
         </div>
         <div class="why-opt is-s2o">
           <h3>Choose Tactet when</h3>
-          <p>agents written by developers have to be used by other people. Everything around the agent is already there and is the same for every agent.</p>
+          <p>users are not required to know about agents and just submit their requests.</p>
         </div>
         <div class="why-opt is-both">
           <h3>Together</h3>
@@ -111,11 +111,11 @@
         </div>
         <div class="why-opt is-s2o">
           <h3>Choose Tactet when</h3>
-          <p>the work reaches company systems. Credentials and logic stay on the server, there is one version, and every run is recorded.</p>
+          <p>the work reaches company systems. See the <a href="index.html#agent-harness">home page</a> for why.</p>
         </div>
         <div class="why-opt is-both">
           <h3>Together</h3>
-          <p>One <a href="docs/skill-integration/index.html">small skill</a> lets Claude Code find and run published agents. A Tactet agent returns inventory data as a CSV, and a local skill loads it into Excel and analyzes it, in one request.</p>
+          <p><a href="docs/skill-integration/index.html">Tactet&#8209;skill</a> lets Claude Code find and run published agents. A Tactet agent returns inventory data as a CSV, and a local skill loads it into Excel and analyzes it, in one request.</p>
         </div>
       </div>
 
@@ -138,9 +138,9 @@
 
       <h2 id="not-the-right-choice">When Tactet is not the right choice</h2>
       <ul class="why-not">
-        <li>You are building an agent only for yourself to run.</li>
-        <li>You want to give people the agent itself, to read, change, and run locally.</li>
-        <li>You want a general purpose ReAct agent: one agent that runs in a loop and orchestrates many other agents to handle any request. A Tactet agent does one task and does not call other agents. To get this with Tactet, pair it with a skill, as described in <a href="#skills">Tactet and skills</a> above.</li>
+        <li>You are building an agent only for yourself to run on your own machine.</li>
+        <li>You want to give people the agent code itself (Python or a <a href="#skills">skill</a>), to read, change, and run locally.</li>
+        <li>You want a general purpose ReAct agent: one agent that runs in a loop and orchestrates many other agents to handle any request.</li>
         <li>You need agents that work on their own for hours or days.</li>
         <li>You want non-developers to build agents without code.</li>
       </ul>

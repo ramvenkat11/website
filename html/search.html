@@ -64,7 +64,16 @@
     </div>
   </section>
 
-  <section class="fw-sec fw-first" id="the-call">
+  <section class="fw-sec fw-first" id="what-search-is-not">
+    <div class="container">
+      <div class="section-head">
+        <h2>What search is not</h2>
+        <p>Search in Tactet is neither keyword search (BM25) nor asking an LLM to pick an agent. It is semantic search: search that matches based on meaning and intention.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="the-call">
     <div class="container">
       <figure class="anno" aria-label="A search call and its response, annotated">
         <div class="codecard"><div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">POST /api/exec/search</span></div><pre><code><span class=cm>// the request</span>
@@ -97,15 +106,15 @@
     <div class="container">
       <div class="section-head">
         <h2>The description is what search matches against</h2>
-        <p>A developer describes each agent in plain language when publishing it. Search indexes that description and matches every request against it. The request above matched this one.</p>
+        <p>A developer describes each agent in natural language (English and others) when publishing it. Search indexes that description and matches every request against it. The request above matched this one.</p>
       </div>
       <figure class="desc-example" aria-label="The description of the Travel desk agent">
         <div class="desc-head"><span class="st-label">travel_desk</span><span class="st-hint">Travel desk</span></div>
         <p>Arranges air travel and hotel stays for business travel. Books flights and hotel nights for the dates and the city the traveler names, holds a booking when the traveler is not ready to confirm, and answers questions about an existing booking. It does not file expenses and does not approve travel.</p>
       </figure>
       <div class="fw-text">
-        <p>A description is written for the person who will type the request. It explains what the agent does for the user: the questions it answers, the actions it takes, and what it leaves to other agents. A typical description is two to five sentences long. A description that names only the mechanism, such as &ldquo;calls the travel API and summarizes the JSON&rdquo;, matches poorly because users do not ask for a mechanism. Search returns it to the developer with an explanation of what to change. When two agents accidentally overlap, a request in their shared area returns both. More precise descriptions separate them. See <a href="docs/search/describing-an-agent.html">describing an agent</a>.</p>
-        <p><a href="docs/search/tags.html">Tags</a> divide an account&rsquo;s agents into pools, such as one for the help desk and another for finance. A search can name one pool or search all of them.</p>
+        <p>A description should be written with the end user in mind. It should explain what the agent does for the user. A description that names only the mechanism, such as &ldquo;calls the travel API and summarizes the JSON&rdquo;, matches poorly because users do not ask for a mechanism. Search returns it to the developer with an explanation of what to change. When two agents accidentally overlap, a request in their shared area returns both. More precise descriptions separate them. See <a href="docs/search/describing-an-agent.html">describing an agent</a>.</p>
+        <p><a href="docs/search/tags.html">Tags</a> divide an account&rsquo;s agents into pools, such as one for the help desk and another for finance. When a tag is not specified, all the tags are searched, which is the default.</p>
       </div>
     </div>
   </section>
@@ -115,20 +124,7 @@
       <div class="section-head">
         <span class="kicker">Live demo</span>
         <h2>Ask for something, in your own words</h2>
-        <p>The <a href="demo-search.html">search and conversation demo</a> runs in a live Tactet account with 200 agents, from human resources and finance to engineering and sales. Ask for something, and the matched agent runs and answers with mock data.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="fw-sec" id="quality">
-    <div class="container">
-      <div class="section-head">
-        <span class="kicker">Search quality</span>
-        <h2>Measured on 15,000 questions, against the live service</h2>
-        <p>The test used six agent catalogs, ranging from a university catalog to one with a thousand agents across fifty business areas. It included 15,000 questions, each with a known correct agent. Every question went through the production search service.</p>
-      </div>
-      <div class="fw-text">
-        <p>The correct agent ranks first 84% to 91% of the time, depending on the catalog, and appears in the first two results 92% to 97% of the time. A request about something completely unrelated is always refused. A request related to the customer&rsquo;s enterprise that no agent covers is refused 82% to 86% of the time. A search takes about 200 milliseconds in the cloud service. A catalog of a thousand agents scores within one percentage point of a catalog of a hundred. The difference between easy and difficult catalogs is how distinct their agents are, which depends on their descriptions. The <a href="docs/search/search-quality.html">search quality</a> page includes every table and the conditions behind each number.</p>
+        <p>The <a href="demo-search.html">conversation demo</a> runs in a live Tactet account with 200 agents, from human resources and finance to engineering and sales. Ask for something, and the matched agent runs and answers with mock data.</p>
       </div>
     </div>
   </section>

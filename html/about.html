@@ -64,10 +64,10 @@
   <section class="page-body">
     <div class="container">
       <div class="prose">
-        <p>Tactet is a model-neutral agent platform for the enterprise. Developers build, validate and publish agents on it. The platform runs each agent safely against enterprise systems. People across the organization use the agents from a browser, a chat application, an agent harness, or through other custom applications and orchestrators built on the platform.</p>
-        <p><strong>Framework.</strong> Each agent handles one well-defined task and combines deterministic workflow steps with LLM-driven reasoning. Developers write agents as structured definitions and publish them, versioned, to a common system.</p>
-        <p><strong>Runtime.</strong> Agents execute on the Tactet agent server. It calls enterprise systems, holds each agent to its time and LLM-cost budgets, and pauses for user approval before critical actions.</p>
-        <p><strong>Search.</strong> Tactet matches the meaning of a request to an agent built to handle it, runs that agent and returns its output. Users don&rsquo;t pick an agent from a catalog. They just ask a question or make a request. This is what lets hundreds of independent agents work as one system, with no routing to wire by hand.</p>
+        <p>Tactet is a model-neutral agent platform for the enterprise. Developers build, validate and publish agents on it using the built&#8209;in development environment. The platform runs each agent in a controlled runtime. People across the organization use the agents from a browser, a chat application, an agent harness, or through other custom applications and orchestrators built on the platform.</p>
+        <p><strong>Agent framework.</strong> Developers write agents in structured JSON and publish them, versioned. Each agent handles a single task, which developers describe in natural language.</p>
+        <p><strong>Runtime.</strong> Agents execute in a controlled runtime on the agent server.</p>
+        <p><strong>Search</strong> matches the meaning of a request to an agent built to handle it, runs that agent and returns its output. Users don&rsquo;t pick an agent from a catalog. They just ask a question or make a request. This is what lets hundreds of independent agents work as one system, with no routing to wire by hand.</p>
         <p><strong>Conversations.</strong> Follow-up requests continue in the same conversation, where the user can bring in other agents that build on earlier results. The user decides the combination; nothing is prewired.</p>
         <p><strong>Interfaces.</strong> The same agents can be reached from several places. End users search and hold conversations in the UI or from chat applications. Agent harnesses such as Claude Code can search for and run Tactet agents as part of their own work. A REST API opens the agents to other frameworks and custom applications.</p>
         <p><strong>Observability.</strong> Every agent run is reported in real time: who asked, what ran, how long it took, any errors and the LLM token cost. Developers also get a trace of a run when building and debugging an agent.</p>
@@ -75,7 +75,7 @@
         <p><strong>Deployment.</strong> The platform has three parts: an agent server, a UI and a cloud service. Administrators run only stateless agent servers in their own environment. The cloud service provides state, search and reporting. Customers can turn on end-to-end encryption by supplying their own encryption key on the client side. The cloud service can be shared or dedicated.</p>
 
         <h2>Company</h2>
-        <p>Tactet was founded by <a href="https://www.linkedin.com/in/ramv1">Ram Venkat</a> and is built on decades of experience designing and operating enterprise search and cloud systems. That experience includes systems built for large corporations and U.S. government environments, most of them long-running, mission-critical production deployments.</p>
+        <p>Tactet was founded by <a href="https://www.linkedin.com/in/ramv1">Ram Venkat</a> and is built on decades of experience designing and operating enterprise search and cloud systems.</p>
         <p>The company is based in Northern Virginia, USA.</p>
         <h2 id="consulting">Consulting</h2>
         <p>Tactet also delivers turnkey solutions. You describe the tasks your users need done, and we design, build, validate and publish the agents for those tasks.</p>

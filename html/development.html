@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Agent development — Tactet</title>
-<meta name="description" content="Tactet has its own agent framework, built for AI-assisted development. An agent is JSON with one structure, 20 commands and Python expressions. The development environment in the UI includes Draft with AI, a code editor that knows the agent language, validation with a full trace, and publishing.">
+<meta name="description" content="Tactet has its own agent framework, built for AI-assisted development. An agent is JSON with comments, 20 built-in commands and Python expressions. The development environment in the UI includes Draft with AI, a code editor that knows the agent framework, validation with a full trace, and publishing.">
 <meta property="og:title" content="Agent development — Tactet">
-<meta property="og:description" content="Tactet has its own agent framework, built for AI-assisted development. An agent is JSON with one structure, 20 commands and Python expressions. The development environment in the UI includes Draft with AI, a code editor that knows the agent language, validation with a full trace, and publishing.">
+<meta property="og:description" content="Tactet has its own agent framework, built for AI-assisted development. An agent is JSON with comments, 20 built-in commands and Python expressions. The development environment in the UI includes Draft with AI, a code editor that knows the agent framework, validation with a full trace, and publishing.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://tactet.com/development.html">
 <meta property="og:url" content="https://tactet.com/development.html">
@@ -60,7 +60,7 @@
     <div class="container">
       <span class="kicker">Agent development</span>
       <h1>An agent framework built for AI&#8209;assisted&nbsp;development</h1>
-      <p class="lead">Tactet has its own agent framework. An agent is a JSON document with one structure and 20 commands, and its values can be Python expressions. One schema describes all of it. Draft with AI, the code editor and validation work from that schema, in the development environment that is part of the&nbsp;UI.</p>
+      <p class="lead">Tactet has its own agent framework and a corresponding agent runtime. An agent is expressed in JSONC (JSON with comments), with Python expressions. There are 20 built&#8209;in commands (or declarations) in JSON that cover all the aspects of agent programming. The entire framework is structured on a schema. Draft with AI, the code editor and validation work from that schema, in the development environment that is part of the&nbsp;UI.</p>
     </div>
   </section>
 
@@ -102,7 +102,7 @@
         <svg class="anno-svg" aria-hidden="true"></svg>
       </figure>
       <div class="fw-text">
-        <p>Every value keeps its JSON meaning, with one extension: a string enclosed in braces is a <a href="docs/agent-definition/python-expressions.html">Python expression</a>, evaluated when the agent runs. Any other string is plain text. An expression can read variables, the result of the last command, and what the runtime provides, such as the user&rsquo;s request. Each expression is checked when the agent is validated and runs in a <a href="docs/runtime/controlled-execution.html">controlled runtime</a>.</p>
+        <p>Every value keeps its JSON meaning, with one extension: a string enclosed in braces is a <a href="docs/agent-definition/python-expressions.html">Python expression</a>, evaluated when the agent runs. Any other string is plain text. Most strings are allowed to be a Python expression. The exceptions are function names, prompt names and a few others that are needed to check the agent for correctness at compile time. An expression can read variables, the result of the last command, and what the runtime provides, such as the user&rsquo;s request. Each expression is checked when the agent is validated and runs in a <a href="docs/runtime/controlled-execution.html">controlled runtime</a>.</p>
       </div>
     </div>
   </section>
@@ -157,7 +157,7 @@
         </div>
       </figure>
       <div class="fw-text">
-        <p>A command is a key, and its value contains the command&rsquo;s fields: an object for most commands, and a single value for simple ones such as <code>progress</code> and <code>return</code>. To use a command a second time in the same function, add a suffix after a dot: <code>api</code>, then <code>api.2</code>. The <a href="docs/agent-definition/syntax.html">syntax</a> and <a href="docs/agent-definition/structure.html">structure</a> pages explain all the rules.</p>
+        <p>A command is a key, and its value contains the command&rsquo;s fields: an object for most commands, and a single value for simple ones such as <code>progress</code> and <code>trace</code>. To use a command a second time in the same function, add a suffix after a dot: <code>api</code>, then <code>api.2</code>. The <a href="docs/agent-definition/syntax.html">syntax</a> and <a href="docs/agent-definition/structure.html">structure</a> pages explain all the rules.</p>
         <p>Every run starts in <code>main</code>. Another function runs when a function calls it with <code>func</code> or <code>parallel</code>, or when a model calls it as a tool.</p>
       </div>
     </div>
@@ -167,7 +167,7 @@
     <div class="container">
       <div class="section-head">
         <h2>A function can be a tool for the model</h2>
-        <p>This agent answers questions about orders. Its function <code>getOrder</code> looks up one order through an API, and the model decides when to call it. Agents are written in JSONC, a form of JSON that allows comments, so this one includes a few.</p>
+        <p>This agent answers questions about orders. Its function <code>getOrder</code> looks up one order through an API, and the model decides when to call it.</p>
       </div>
       <figure class="anno" aria-label="An agent with a tool, with six notes. The function getOrder has a description and one typed argument, orderId. Its commands show a progress message, write a log line, call the orders API with the order number in the path, write a trace line, show a second progress message and return the order. The function main has one llm command that lists getOrder in its functions field, so the model can call it.">
         <div class="codecard"><div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">orders.jsonc</span></div><pre><code>{
@@ -295,21 +295,21 @@
       <div class="numbered">
         <div class="step-sec">
           <h2>Draft with AI</h2>
-          <p><a href="docs/development/draft-with-ai.html">Draft with AI</a> writes the first version of an agent from a description of what the agent should do. It works from the same schema that the editor and validation use, and it knows the profiles and prompts of your account. It has never seen your APIs and databases, so it leaves paths, queries and parameters empty, with a comment that says what belongs there. It can also change an existing draft, and it keeps everything your request does not touch.</p>
+          <p><a href="docs/development/draft-with-ai.html">Draft with AI</a> writes or modifies an agent from a description of what the agent should do. It works from the same schema that the editor and validation use, and it knows the profiles and prompts of your account. It never sees your APIs and databases, so it leaves paths, queries and parameters empty, with a comment that says what belongs there.</p>
           <p>Try the <a href="demo-draft.html">Draft with AI demo</a> with your own description or one of the examples.</p>
         </div>
         <div class="step-sec">
           <h2>Edit</h2>
-          <p>A <a href="docs/development/drafts.html">draft</a> is private to the developer who created it. The <a href="docs/development/code-editor.html">code editor</a> is built on Monaco, the editor inside Visual Studio Code, and it understands the agent language. It suggests the commands and fields allowed where you are typing, and it points out mistakes as you type.</p>
+          <p>A <a href="docs/development/drafts.html">draft</a> is private to the developer who created it. The <a href="docs/development/code-editor.html">code editor</a> is built on Monaco, the editor inside Visual Studio Code, and it understands the agent framework. It suggests the commands and fields allowed where you are typing, and it points out mistakes as you type.</p>
         </div>
         <div class="step-sec">
           <h2>Validate</h2>
-          <p>Validation checks the definition against the schema and the security rules. It also confirms that everything the agent names exists in the account. The agent server then runs the draft against a sample question and shows the <a href="docs/development/trace-and-validation.html">trace</a>: every command that ran, the values it received, and what it returned. A draft cannot be published until it validates.</p>
+          <p>Validation checks the definition against the schema and the security rules. It also confirms that everything the agent names exists in the account. The agent server then runs the draft against a sample question and shows the <a href="docs/development/trace-and-validation.html">trace</a>: every command that ran, the values it received, and what it returned. A draft cannot be published from the UI until it validates.</p>
           <p>The <a href="demo-trace.html">Trace demo</a> shows a trace of a running agent.</p>
         </div>
         <div class="step-sec">
           <h2>Publish</h2>
-          <p><a href="docs/development/publishing.html">Publishing</a> gives the agent a version and makes it available to users. The developer then describes the agent in plain English. <a href="docs/search/index.html">Search</a> indexes that description, and users find the agent by asking for what it does in their own words. When several developers change the same agent, each works on a separate draft and merges the others&rsquo; changes before publishing.</p>
+          <p><a href="docs/development/publishing.html">Publishing</a> gives the agent a version and makes it ready to execute. But it cannot be matched by search until a description is created in plain English. <a href="docs/search/index.html">Search</a> indexes that description and makes the agent available to users. When several developers edit the same agent, each works on a separate draft and merges the others&rsquo; changes before publishing.</p>
         </div>
       </div>
     </div>

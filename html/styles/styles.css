@@ -772,7 +772,7 @@ p { margin: 0; }
 }
 .hero-arch .arch-org { padding: 18px 12px 10px; }
 #system-architecture .cc-arch.hero-arch { padding: 22px 28px; }
-.cc-skill a { color: inherit; }
+.cc-skill a { color: var(--blue-ink); }
 .cc-arch.hero-arch .cc-col .arch-link { height: 44px; }
 .cc-arch.hero-arch .arch-flow > .arch-node { container-type: inline-size; padding: 24px 16px; }
 .cc-arch.hero-arch .cc-col .arch-node { padding: 18px 16px; }
@@ -960,9 +960,9 @@ p { margin: 0; }
   .cc-arch .cloud-host { padding: 3px 9px; font-size: 11px; }
 }
 .cc-arch .arch-out .cloud .cloud-what { max-width: none; color: #c7d5f5; font-size: 12px; line-height: 1.4; }
-.cc-arch .arch-out .cloud .cloud-what a { color: inherit; }
+.cc-arch .arch-out .cloud .cloud-what a { color: #a9c6ff; }
 .cc-arch .arch-out .cloud .cloud-what a:hover { color: #fff; }
-.cc-arch .arch-out .cloud .cloud-mode { color: #a9c6ff; }
+.cc-arch .arch-out .cloud .cloud-mode { margin: -3px 0 7px; color: #fff; font-weight: 500; }
 @media (max-width: 640px) {
   .cc-arch .arch-out .cloud { padding-left: 6px; padding-right: 6px; }
   .cc-arch .arch-out .cloud .cloud-what { font-size: 10.5px; }
@@ -1908,4 +1908,10 @@ a.arch-lbl { color: var(--blue-ink); }
   .why-fit tr:first-child { border-top: 0; }
   .why-fit td { padding: 14px 16px 0; border-top: 0; }
   .why-fit td:last-child { width: auto; padding: 4px 16px 14px; }
+}
+@media (max-width: 795px) {
+  .cc-main .cc-server .cc-server-links .sep { display: block; height: 0; overflow: hidden; }
+}
+@media (max-width: 340px) {
+  .cc-main .cc-server .cc-server-links { font-size: 9.5px; }
 }

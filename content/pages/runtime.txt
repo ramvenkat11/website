@@ -7,12 +7,12 @@ Every agent server builds a runtime from the account’s configuration and runs 
 
 [figure: The orders agent, annotated with what the runtime supplies]
 
-An agent is a definition written by a developer, validated with a real run before publication, versioned, and kept unchanged while it runs. Credentials stay out of the definition. A secret is read as sys.secret['NAME'], and the agent server resolves its value at run time. The definition therefore shows which secrets an agent uses, but never their values. An agent’s variables belong to that agent; by design, the conversation is the only channel between agents.
+An agent is a definition written by a developer, validated with a real run before publication, versioned, and kept unchanged while it runs. Credentials stay out of the definition using a secret vault. An agent does not talk to other agents; by design, the conversation is the only channel between agents.
 
 
 ## What the runtime holds
 
-An agent server stores no state of its own, but it holds a runtime in memory. The runtime contains everything an agent needs and is built from the account’s configuration. Every part is edited in the UI.
+An agent server stores no state of its own, but it holds a runtime in memory. The runtime contains everything an agent needs and is built from the account’s configuration. Every part of the runtime can be edited from the UI. Every agent that starts after a change, on any agent server, uses the new value.
 
 [figure: The parts of the runtime: guardrails, profiles and operations]
 
@@ -21,7 +21,7 @@ Guardrails limit what an expression can do. The allowlist defines what it can ac
 
 ## Two limits on every agent: time and cost
 
-Every agent has two limits and is published and run with both. These limits belong to the agent, not the account.
+Every agent has two limits and is published and run with both.
 
 The time limit is the number of seconds one agent run may take. A run that exceeds it ends with the result code timedOut. The cost limit is the amount, in US dollars, that one run may spend on LLM calls. The agent server calculates the cost of every call using the LLM profile, stops the run when the total exceeds the limit, and tells the user why. An agent that looks up one record can be limited to a few seconds and a few cents; an agent that researches a question can receive more of both. A draft starts with default limits, and its validation run must stay within them. Publishing applies the same limits to the agent. A developer can change the limits on a published agent, and the reports show how much time and money each agent’s runs use. See Time and cost bounds in the docs.
 
@@ -30,7 +30,7 @@ Every agent server
 
 ## A change is live on the next agent run, on every server
 
-Every agent server builds its runtime from the same configuration, so an agent behaves the same wherever it runs. Changes to a part or profile reach every server without a restart.
+Agent servers are stateless and do not talk to each other, but every agent runs with the latest configuration.
 
 
 ## A part changes

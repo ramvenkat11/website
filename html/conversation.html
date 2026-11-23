@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Conversation — Tactet</title>
-<meta name="description" content="Conversations let agents build on each other. A conversation keeps variables and prompts. A follow-up is searched like a new request, and the matching agent continues from that record.">
+<meta name="description" content="Conversations let agents build on each other. In Tactet, an agent does not call another agent directly. Instead, conversations carry the work from one agent to the next.">
 <meta property="og:title" content="Conversation — Tactet">
-<meta property="og:description" content="Conversations let agents build on each other. A conversation keeps variables and prompts. A follow-up is searched like a new request, and the matching agent continues from that record.">
+<meta property="og:description" content="Conversations let agents build on each other. In Tactet, an agent does not call another agent directly. Instead, conversations carry the work from one agent to the next.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://tactet.com/conversation.html">
 <meta property="og:url" content="https://tactet.com/conversation.html">
@@ -60,7 +60,8 @@
     <div class="container">
       <span class="kicker">Conversation</span>
       <h1>Conversations let agents build on each other.</h1>
-      <p class="lead">A conversation keeps variables and prompts. A follow-up is searched like a new request, and the matching agent continues from that record. No agent calls another; the conversation carries the work from one agent to the next.</p>
+      <p class="lead">In Tactet, an agent does not call another agent directly. Instead, conversations carry the work from one agent to the next.</p>
+      <p class="lead">A conversation is unique and belongs to one user. A conversation is <a href="docs/security/encryption.html">encrypted</a> and <a href="docs/hooks/conversation-state.html">stored</a> automatically when an agent runs successfully.</p>
     </div>
   </section>
 
@@ -68,12 +69,12 @@
     <div class="container">
       <div class="section-head">
         <h2>What a conversation keeps</h2>
-        <p>When an agent ends or pauses, the platform saves the conversation&rsquo;s state automatically. The next run in the conversation, whether by the same agent or another, starts from that state. Other conversations cannot see it. A conversation also belongs to one user, so other users cannot see it either.</p>
+        <p>When an agent ends successfully, the platform saves the conversation&rsquo;s state automatically. The next run in the conversation, whether by the same agent or another, starts from that state.</p>
       </div>
       <div class="fw-text">
-        <p><b>The runs so far.</b> Which agent ran, what inputs it received, what it answered, and where it stopped if it paused to ask a question.</p>
-        <p><b>The prompts.</b> The history of every prompt used in the conversation: the user&rsquo;s turns, the model&rsquo;s answers, and the tool results. This history lets a model handling a follow-up remember the earlier exchange.</p>
-        <p><b>The variables.</b> The conversation variables that every agent in the conversation can read and write, plus each agent&rsquo;s own variables. An agent stores information that later agents will need, such as trip details, in a conversation variable.</p>
+        <p><b>The prompts.</b> A prompt is a data structure that maintains the message thread with an LLM in a standard format. An agent can use multiple prompts and each prompt has a name and scope.</p>
+        <p><b>The variables.</b> The conversation variables that every agent in the conversation can read and write, plus each agent&rsquo;s own variables. An agent stores information that later agents will need in a conversation variable.</p>
+        <p>A conversation also keeps additional internal information that is used for other purposes, such as showing the conversation history and restoring an agent that is waiting for user input.</p>
       </div>
     </div>
   </section>
@@ -112,7 +113,7 @@
         <p>A follow-up in a conversation is searched like a new request. If it belongs to another agent, that agent runs next with the conversation&rsquo;s state already in place. If no new agent matches, the agent that answered last answers again.</p>
       </div>
       <div class="fw-text">
-        <p>What an interface does with the matches depends on its <a href="docs/search/search-settings.html">search behavior</a>. The UI runs the best match immediately; your own interface can let the user choose between the two best matches.</p>
+        <p>What an interface does with the matches depends on its <a href="docs/search/search-settings.html">search behavior</a>. The default setting in the UI runs the best match immediately; it can be set to show the matches, including the last agent that ran.</p>
         <p>The client always decides which agent runs next. An agent cannot run another agent. A request with several parts is coordinated from outside: an agent harness with the Tactet skill splits the request, sends each part through search and <code>execAgent</code> in the same conversation, and combines the results into one answer. See <a href="docs/agent-execution/building-on-each-other.html">How agents build on each other</a>.</p>
       </div>
     </div>
@@ -123,16 +124,7 @@
       <div class="section-head">
         <span class="kicker">Live demo</span>
         <h2>Ask for something, then follow up</h2>
-        <p>The <a href="demo-search.html">search and conversation demo</a> runs in a live Tactet account with 200 agents, from human resources and finance to engineering and sales. Ask for something, then ask a follow-up and watch the conversation move to another agent that knows what the first one found.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="fw-sec" id="kept">
-    <div class="container">
-      <div class="section-head">
-        <h2>Kept safe, kept yours</h2>
-        <p>State is <a href="docs/security/encryption.html">encrypted</a> before it leaves the agent server, and the cloud service never decrypts it. An account can <a href="docs/hooks/conversation-state.html">keep the state in its own enterprise</a> instead of storing it in the cloud service. On the free service, a conversation that has been unused for 7 days is deleted unless the user <a href="docs/rest-api/conversations.html">pins</a> it. A user can also delete a conversation at any time.</p>
+        <p>The <a href="demo-search.html">search and conversation demo</a> runs in a live Tactet account with 200 agents, from human resources and finance to engineering and sales. Ask for something, then ask a follow-up and watch the conversation move to another agent that knows what the first one found. It is configured to run an agent automatically if the agent server returns a single match. Otherwise, it shows the options.</p>
       </div>
     </div>
   </section>
