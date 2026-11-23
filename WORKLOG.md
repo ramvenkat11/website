@@ -3119,3 +3119,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-23: cloud service box link colours
 - Home platform figure: State / Search / Reports links now #a9c6ff (were `inherit`, so they looked like plain text); "Shared or dedicated" (not a link) now #c7d5f5 (was #a9c6ff, the link colour). Looked at 1280 and 375, light and dark. Local only.
 - Ram: answers are too long for simple questions; keep them short.
+
+## 2026-11-23: cloud box qualifier
+- Home platform figure: "shared or dedicated" (now lowercase) is a second line of the "Cloud service" title: white, weight 500, pulled up to the title, with a gap before the State / Search / Reports links (`.cloud-mode` margin -3px 0 7px). Rendered nine widths light/dark, 0 overflow; looked at 1280 light/dark, 700, 375 light/dark, 320. Local only.
