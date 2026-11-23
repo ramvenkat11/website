@@ -3115,3 +3115,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Longer labels wrapped with a dangling dot at 580-795 and came within 2px of the box edge at 320-332. Appended two rules at the end of styles.css: stack the three labels (separators hidden) up to 795px; 9.5px font at <=340px.
 - Measured 320-1280 (labels on 1 or 3 lines, never 2; >=5px from the box edge), 0 overflow; looked at 1280, 700 light, 360 light, 320 dark. Local only.
 - crop.mjs had been cleared from the scratchpad; recreated. New scratchpad script links.mjs.
+
+## 2026-11-23: cloud service box link colours
+- Home platform figure: State / Search / Reports links now #a9c6ff (were `inherit`, so they looked like plain text); "Shared or dedicated" (not a link) now #c7d5f5 (was #a9c6ff, the link colour). Looked at 1280 and 375, light and dark. Local only.
+- Ram: answers are too long for simple questions; keep them short.
