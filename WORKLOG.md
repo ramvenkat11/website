@@ -3125,3 +3125,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-23: top row chip links coloured
 - Home platform figure: the four chip links (User · Developer · Admin, Bot, tactet-skill, REST API) now use the site link colour (`.cc-skill a` was `inherit`). Box titles (Browser, Slack · Teams, Claude Code, REST client) are links too but stay in the title colour, like the other box titles. Looked at 1280 and 375, light and dark. Local only.
+
+## 2026-11-23: Ram's text edits applied from content/pages
+- Applied Ram's edits in `content/pages/{about,conversation,development,runtime,search,why}.txt` to the html pages, with grammar fixes written back to the text files. Found by extracting current page text and diffing (git diff misses his earlier edits).
+- conversation.html: new two-paragraph lead, "The runs so far" removed, section "Kept safe, kept yours" removed, meta description updated. search.html: new section "What search is not" after the hero (h2, not a second h1), section "Search quality" removed; `demo-search.html` link to `search.html#quality` repointed to the docs search-quality page. development.html: meta description updated. why.html: "See the home page for why" links to `index.html#agent-harness`.
+- Looked at search and conversation at 1280 light and search at 375 dark; sweep 320–1280 no overflow. Local only.
+- Memory: content/pages and html pages stay in sync from now on.
