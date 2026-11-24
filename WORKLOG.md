@@ -3152,3 +3152,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-24: getting started, install from source
 - `html/gettingstarted.html`: the paragraph "Clone the agent server and install it from the clone. The clone does not include the UI." became "Requires Python 3.12+." (Ram wrote "Python 12+"; docs say 3.12). The docs page `docsrc/getting-started/registering-and-downloading.html` still has the old sentence; reported. Local only.
+- Same page, UI step: "Then build the UI, which needs Node.js 22.18 or newer, and copy the build into the agent server's ui directory:" became "Requires Node.js 22.18+." Local only.
