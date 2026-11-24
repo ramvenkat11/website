@@ -191,6 +191,79 @@ function resetAltcha(widget) {
   try { if (widget && typeof widget.reset === "function") widget.reset(); } catch (e) {}
 }
 
+var ATTRIBUTION_COOKIE = "tactet_attribution";
+var ATTRIBUTION_UTM = {
+  utmSource: "utm_source", utmMedium: "utm_medium", utmCampaign: "utm_campaign",
+  utmTerm: "utm_term", utmContent: "utm_content"
+};
+var ATTRIBUTION_DAYS = 90;
+var SECONDS_PER_DAY = 86400;
+var UTM_MAX_LENGTH = 128;
+var REFERRER_MAX_LENGTH = 1024;
+var COOKIE_VALUE_MAX_LENGTH = 3800;
+var SITE_DOMAIN = "tactet.com";
+var OWN_HOSTS = ["tactet.com", "www.tactet.com", "docs.tactet.com"];
+
+function emptyAttribution() {
+  var values = {referrer: ""};
+  Object.keys(ATTRIBUTION_UTM).forEach(function (field) { values[field] = ""; });
+  return values;
+}
+
+function savedAttribution() {
+  var values = emptyAttribution();
+  try {
+    var prefix = ATTRIBUTION_COOKIE + "=";
+    var found = document.cookie.split("; ").filter(function (part) { return part.indexOf(prefix) === 0; })[0];
+    var saved = found ? JSON.parse(decodeURIComponent(found.slice(prefix.length))) || {} : {};
+    Object.keys(values).forEach(function (field) {
+      if (typeof saved[field] === "string") values[field] = saved[field];
+    });
+  } catch (e) {}
+  return values;
+}
+
+function writeAttributionCookie(encoded, maxAgeSeconds) {
+  var host = location.hostname;
+  var onSite = host === SITE_DOMAIN || host.slice(-SITE_DOMAIN.length - 1) === "." + SITE_DOMAIN;
+  document.cookie = ATTRIBUTION_COOKIE + "=" + encoded
+    + "; path=/; max-age=" + maxAgeSeconds + "; SameSite=Lax"
+    + (onSite ? "; domain=" + SITE_DOMAIN : "")
+    + (location.protocol === "https:" ? "; Secure" : "");
+}
+
+function saveAttribution(values) {
+  var encoded = encodeURIComponent(JSON.stringify(values));
+  if (encoded.length > COOKIE_VALUE_MAX_LENGTH) {
+    values.referrer = new URL(values.referrer).origin;
+    encoded = encodeURIComponent(JSON.stringify(values));
+  }
+  writeAttributionCookie(encoded, ATTRIBUTION_DAYS * SECONDS_PER_DAY);
+}
+
+function clearAttribution() {
+  try { writeAttributionCookie("", 0); } catch (e) {}
+}
+
+(function () {
+  try {
+    var params = new URLSearchParams(location.search);
+    var referrer = document.referrer || "";
+    var values = emptyAttribution();
+    var hasUtm = false;
+    Object.keys(ATTRIBUTION_UTM).forEach(function (field) {
+      var name = ATTRIBUTION_UTM[field];
+      if (params.has(name)) hasUtm = true;
+      values[field] = (params.get(name) || "").slice(0, UTM_MAX_LENGTH);
+    });
+    if (!hasUtm) {
+      if (!referrer || OWN_HOSTS.indexOf(new URL(referrer).hostname) !== -1) return;
+    }
+    values.referrer = referrer.slice(0, REFERRER_MAX_LENGTH);
+    saveAttribution(values);
+  } catch (e) {}
+})();
+
 (function () {
   if (!document.getElementById("reg-go1")) return;
   var BASE = (window.SEARCH2O_CONFIG && window.SEARCH2O_CONFIG.apiUrl) || "https://reg.api.tactet.com";
@@ -276,11 +349,15 @@ function resetAltcha(widget) {
         $("reg-go1").disabled = false;
         return say("We could not verify this request. Please reload the page and try again.", false);
       }
-      return post("/register", {email: email, userName: userName, accountName: accountName, terms: true, token: token})
+      var body = {email: email, userName: userName, accountName: accountName, terms: true, token: token};
+      var attribution = savedAttribution();
+      Object.keys(attribution).forEach(function (field) { body[field] = attribution[field]; });
+      return post("/register", body)
         .then(function (data) {
           if (data && data.success && data.license) {
             $("reg-step1").hidden = true;
             showLicense(data.license);
+            clearAttribution();
           } else {
             var msgs = regErrorMessages(data);
             say(msgs.length ? msgs.join("<br>")

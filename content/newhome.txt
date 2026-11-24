@@ -1,8 +1,28 @@
-- A line that says that agent in written in JSON with Python expressions, as shown below -
+  Registration attribution: the server's /register call now accepts six new optional
+  fields. Please make the website capture and send them.
 
-Systems and prompts are defined outside the agent’s code: APIs, databases, MCP servers and LLMs in platform-wide profiles, and prompts in each agent’s meta.
+  Fields (all optional strings, omit or send "" when unknown):
+    utmSource, utmMedium, utmCampaign, utmTerm, utmContent, referrer
 
-The UI includes a complete development environment for agents. Tell Draft with AI what the agent should do, refine the generated agent in the schema‑aware code editor, then trace and validate it before publishing.
+  Capture, on every page load of the site:
+    - If the page address has any utm_* parameter (utm_source, utm_medium, utm_campaign,
+      utm_term, utm_content), save all five (missing ones as empty) plus document.referrer,
+      replacing whatever was saved before. Last visit wins.
+    - If the address has no utm_* parameter, and document.referrer is non-empty and is NOT
+      one of our own hosts (tactet.com, www.tactet.com, docs.tactet.com), save that referrer
+      and clear the five utm values. Otherwise leave what is saved alone, so moving between
+      our own pages does not wipe it.
+    - Keep it in localStorage so it survives until the visitor registers.
 
+  Send: on the registration form submit, add the six saved values to the same JSON body
+  that already carries email, userName, terms, token and accountName. Use exactly the
+  camelCase names above.
+
+  Notes:
+    - The server never refuses a registration over these fields. It trims them (utm values
+      to 128 characters, referrer to 1024), so no validation is needed on the page.
+    - Storage may be blocked (private windows). Wrap reads and writes in try/catch and
+      register normally without the values if it fails.
+    - Do not add them to any other API call.
 
 
