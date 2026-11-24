@@ -3134,3 +3134,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-23: links restored after text removal
 - conversation.html lead: "encrypted" links to the encryption docs and "stored" to the conversation-state hook docs. why.html: "skill" in "(Python or a skill)" links to `#skills`. The pinning link was not re-added; "Where to read more" on the conversation page already links the REST conversations page. Text files unchanged (no link marks). Local only.
+
+## 2026-11-23: registration attribution
+- `html/js/site.js`: every page load (site and docs pages both load it) saves utm_source/medium/campaign/term/content plus document.referrer in localStorage key `tactet-attribution`, per the server session's rules (utm present: replace all; no utm and an external referrer: save referrer, clear utm; otherwise keep). The registration submit adds utmSource, utmMedium, utmCampaign, utmTerm, utmContent, referrer to the /register body only. Storage wrapped in try/catch.
+- Tested the rules with a node harness (six cases). Not tested against the live server. Local only.
