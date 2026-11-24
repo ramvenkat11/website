@@ -3149,3 +3149,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-24: home hero figure wording
 - `html/index.html` hero figure: "Reports stock levels by part and site." became "Reports inventory stock levels by part and site."; the figure's aria-label updated to match. Looked at 1280 and 1000 light and 360 dark; sweep 320–1280 no overflow. Local only.
+
+## 2026-11-24: getting started, install from source
+- `html/gettingstarted.html`: the paragraph "Clone the agent server and install it from the clone. The clone does not include the UI." became "Requires Python 3.12+." (Ram wrote "Python 12+"; docs say 3.12). The docs page `docsrc/getting-started/registering-and-downloading.html` still has the old sentence; reported. Local only.
