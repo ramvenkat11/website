@@ -3146,3 +3146,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-23: attribution cookie tested in a browser
 - Served `html/` locally, mapped tactet.com, www.tactet.com and docs.tactet.com to 127.0.0.1 in headless Chrome, stubbed captcha and captured the `/register` fetch (nothing sent to prod). Passed: utm visit on docs host sets cookie for .tactet.com (90 days, Lax); read on tactet.com; internal navigation keeps it; outside referrer without utm replaces referrer and clears utm; newer utm overwrites; body carries the six fields; cookie stays after a refusal and is cleared after success. Script: scratchpad `attr_browser.mjs`.
 - Not done: a real registration against prod (creates an account; needs Ram's go-ahead). The live site does not have this script until the next upload.
+
+## 2026-11-24: home hero figure wording
+- `html/index.html` hero figure: "Reports stock levels by part and site." became "Reports inventory stock levels by part and site."; the figure's aria-label updated to match. Looked at 1280 and 1000 light and 360 dark; sweep 320–1280 no overflow. Local only.
