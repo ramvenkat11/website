@@ -3142,3 +3142,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-23: attribution moved to a cookie
 - Ram: values must be shared across the site, so `html/js/site.js` now keeps them in cookie `tactet_attribution` (domain tactet.com on our hosts, path /, 90 days, SameSite=Lax, Secure on https) instead of localStorage. utm values trimmed to 128 and referrer to 1024; an over-long encoded value falls back to the referrer's origin. The cookie is cleared after a successful registration. Tested with a node harness. Local only.
 - Open: privacy policy does not mention this cookie; reported to Ram.
+
+## 2026-11-23: attribution cookie tested in a browser
+- Served `html/` locally, mapped tactet.com, www.tactet.com and docs.tactet.com to 127.0.0.1 in headless Chrome, stubbed captcha and captured the `/register` fetch (nothing sent to prod). Passed: utm visit on docs host sets cookie for .tactet.com (90 days, Lax); read on tactet.com; internal navigation keeps it; outside referrer without utm replaces referrer and clears utm; newer utm overwrites; body carries the six fields; cookie stays after a refusal and is cleared after success. Script: scratchpad `attr_browser.mjs`.
+- Not done: a real registration against prod (creates an account; needs Ram's go-ahead). The live site does not have this script until the next upload.
