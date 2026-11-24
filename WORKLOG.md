@@ -3138,3 +3138,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-23: registration attribution
 - `html/js/site.js`: every page load (site and docs pages both load it) saves utm_source/medium/campaign/term/content plus document.referrer in localStorage key `tactet-attribution`, per the server session's rules (utm present: replace all; no utm and an external referrer: save referrer, clear utm; otherwise keep). The registration submit adds utmSource, utmMedium, utmCampaign, utmTerm, utmContent, referrer to the /register body only. Storage wrapped in try/catch.
 - Tested the rules with a node harness (six cases). Not tested against the live server. Local only.
+
+## 2026-11-23: attribution moved to a cookie
+- Ram: values must be shared across the site, so `html/js/site.js` now keeps them in cookie `tactet_attribution` (domain tactet.com on our hosts, path /, 90 days, SameSite=Lax, Secure on https) instead of localStorage. utm values trimmed to 128 and referrer to 1024; an over-long encoded value falls back to the referrer's origin. The cookie is cleared after a successful registration. Tested with a node harness. Local only.
+- Open: privacy policy does not mention this cookie; reported to Ram.
