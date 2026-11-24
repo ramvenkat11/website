@@ -3156,3 +3156,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-24: getting started, secrets moved to step 5
 - `html/gettingstarted.html`: the vendor API key paragraph left step 3 (Run the server) and became the first item of step 5, "Set up secrets": environment variables need a server restart; secrets from files or a vault do not (linked to the Secret vault docs). Local only.
+- Step 5 heading "Get started" became "Publish and run your first agents" (Ram picked option 2). Local only.
