@@ -3153,3 +3153,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-24: getting started, install from source
 - `html/gettingstarted.html`: the paragraph "Clone the agent server and install it from the clone. The clone does not include the UI." became "Requires Python 3.12+." (Ram wrote "Python 12+"; docs say 3.12). The docs page `docsrc/getting-started/registering-and-downloading.html` still has the old sentence; reported. Local only.
 - Same page, UI step: "Then build the UI, which needs Node.js 22.18 or newer, and copy the build into the agent server's ui directory:" became "Requires Node.js 22.18+." Local only.
+
+## 2026-11-24: getting started, secrets moved to step 5
+- `html/gettingstarted.html`: the vendor API key paragraph left step 3 (Run the server) and became the first item of step 5, "Set up secrets": environment variables need a server restart; secrets from files or a vault do not (linked to the Secret vault docs). Local only.
