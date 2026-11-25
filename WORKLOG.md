@@ -3183,3 +3183,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-25: two hero links moved
 - `html/index.html` hero: the search.html#description link moved from "describe" to "plain English"; the conversation.html link moved from "conversation" to "build on each other" (allowed to wrap via `.hero-attr-long`).
 - Looked at `.hero-head` at 1280 and 320 light and 360 dark; sweep 320-1280 no overflow. Local only.
+
+## 2026-11-25: hero sentence reworded
+- `html/index.html` hero, second paragraph: "Agents share prompts and build on each other in a conversation." (was "Multiple agents build on each other..."). Link unchanged. Not rendered (text-only). Local only.
