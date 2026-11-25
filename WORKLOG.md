@@ -3163,3 +3163,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Not changed: html/demo-agents.json and html/demo-agents/*.jsonc (copies from s2oserver, refreshed by scripts/refresh-demo-agents.sh; s2oserver's copies already use the new names), retired/, notes/, review files.
 - Flagged: the sizing page's latency row (4.5s) was measured on the old model and now carries the new model's name. Local only.
 - Added to "The seeded profiles" (LLM vendors) and "Seeded profiles" (LLM profiles): "Each profile is named for its vendor and role, not its model, so the name stays the same when the model changes." Docs rebuilt. Local only.
+
+## 2026-11-24: mergeDraft docs (rule-based merge, s2oserver release 36)
+- Request pasted from the server session. `docsrc/development/publishing.html`, section "When several developers change the same agent": rewrote the merge paragraph and added three h3 parts: "How the merge works" (rule table, what counts as changed, one before/after example using the real comment sentence from `maintenance/update_offline.py`), "After a merge", "When a draft cannot be merged" (invalid JSON; 20,480 characters).
+- No wording in docsrc, content or the site pages said an LLM or AI does the merge; nothing to remove. Docs rebuilt (147 pages).
+- State: local only. Next: Ram reviews.
