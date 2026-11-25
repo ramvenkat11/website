@@ -3175,3 +3175,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-25: hero links blue and semibold again
 - `html/styles/styles.css`: new rule `.hero-head .hero-lead a.hero-attr { color: var(--blue-ink); font-weight: 600; }` (the colour and weight the hero links had before 2026-11-18); the 1px blue underline of the shared link rule stays. Only the six home hero links change.
 - Looked at `.hero-head` at 1280 and 700 light and 360 dark; sweep 320-1280 no overflow. Local only.
+
+## 2026-11-25: hero links in the title colour
+- Ram did not want blue. The rule is now `.hero-head .hero-lead a.hero-attr { color: var(--ink); font-weight: 650; }` (the values of the commit before the 2026-11-18 restyle); the 1px blue underline stays; hover still turns the words blue.
+- Looked at `.hero-head` at 1280 light and 360 dark; sweep 320-1280 no overflow. Local only.
