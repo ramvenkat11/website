@@ -12,4 +12,51 @@
 
 <h2>When several developers change the same agent</h2>
 <p>Developers who create drafts of the same published agent each work on their own copy. A draft remembers the version it was created from. When someone else publishes a new version of the definition, the draft is behind, and it cannot be published until it is merged.</p>
-<p>The next time the draft is opened, the UI says so and offers to merge. The cloud service produces a merged definition from the draft and the new version, saves it to the draft, and marks the draft as based on the current version. The merge clears the draft's validation, so the developer reviews the merged definition, validates it, and publishes it like any draft. If the agent has not changed since the draft was created, there is nothing to merge and publishing proceeds. In the REST API the same step is the <code>mergeDraft</code> call, offered when <code>getDraft</code> reports that the agent has changed.</p>
+<p>The next time the draft is opened, the UI says so and offers to merge. The cloud service merges the new version into the draft, saves the result to the draft, and marks the draft as based on the current version. Only the definition is merged. The title, the prompts, the const and the run limits are handled when the draft is published, as described <a href="#when-the-published-agent-changed-after-the-draft-was-made">above</a>. In the REST API the same step is the <code>mergeDraft</code> call, offered when <code>getDraft</code> reports that the agent has changed.</p>
+<p>If the agent has not changed since the draft was created, there is nothing to merge and publishing proceeds. A draft of a new agent has no published agent to merge with.</p>
+
+<h3>How the merge works</h3>
+<p>The merge follows fixed rules, so the same draft and the same published agent always give the same result. It works one function at a time and never mixes a function from two versions.</p>
+<div class="tablewrap"><table class="fields">
+<thead><tr><th>Function</th><th>Result in the merged draft</th></tr></thead>
+<tbody>
+<tr><td>Same in both, or only you changed it</td><td>Your function.</td></tr>
+<tr><td>Only the published agent changed it, or the published agent added it</td><td>The published function, without a comment.</td></tr>
+<tr><td>Both changed it</td><td>Your function. The published function is placed above it inside <code>/* ... */</code> for you to compare.</td></tr>
+<tr><td>The published agent removed it and you did not change it</td><td>Removed, with a short <code>/* */</code> note.</td></tr>
+<tr><td>The published agent removed it and you changed it</td><td>Your function, with a note.</td></tr>
+<tr><td>You removed it and the published agent did not change it</td><td>Stays removed.</td></tr>
+<tr><td>You removed it and the published agent changed it</td><td>Stays removed. The published function is shown inside <code>/* ... */</code>.</td></tr>
+</tbody></table></div>
+<p>A function counts as changed when its content differs. A change to only the layout or the comments of a function does not count. If you changed only the layout or the comments of a function and the published agent changed its content, the published function replaces yours. Functions taken from your draft are kept exactly as typed, including layout and comments.</p>
+<p>In this example, you changed the timeout of <code>lookup</code> and the published agent changed its URL.</p>
+<x-code lang="jsonc" nocheck title="Your draft before the merge">
+    "lookup": {
+      "commands": {
+        "api": { "url": "https://api.example.com/v1/orders", "timeout": 30 }
+      }
+    }
+</x-code>
+<x-code lang="jsonc" nocheck title="Your draft after the merge">
+    /* PUBLISHED VERSION of "lookup": you and the published agent both changed this function. Yours is kept below. The published one is here for you to compare.
+    "lookup": {
+      "commands": {
+        "api": { "url": "https://api.example.com/v2/orders", "timeout": 10 }
+      }
+    }
+    */
+    "lookup": {
+      "commands": {
+        "api": { "url": "https://api.example.com/v1/orders", "timeout": 30 }
+      }
+    }
+</x-code>
+
+<h3>After a merge</h3>
+<p>The merge clears the draft's validation. Review each <code>/* ... */</code> block, copy over what you want, and delete the block. Then validate and publish the draft like any draft. Inside a commented-out function, the characters <code>*/</code> are written as <code>* /</code> so that the comment does not end early.</p>
+
+<h3>When a draft cannot be merged</h3>
+<ul>
+<li>A draft that is not valid JSON cannot be merged. Fix the draft first.</li>
+<li>A definition may be at most 20,480 characters by default. If the merged draft would be longer, the merge is refused, and the draft must be merged by hand.</li>
+</ul>
