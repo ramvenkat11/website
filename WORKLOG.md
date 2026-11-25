@@ -3186,3 +3186,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-25: hero sentence reworded
 - `html/index.html` hero, second paragraph: "Agents share prompts and build on each other in a conversation." (was "Multiple agents build on each other..."). Link unchanged. Not rendered (text-only). Local only.
+
+## 2026-11-25: hero sentence moved to the third paragraph
+- `html/index.html` hero: "Agents share prompts and build on each other in a conversation." is now the first sentence of the third paragraph (briefly put first in paragraph 1; Ram corrected to 3). Paragraph 2 ends at "controlled runtime."
+- Looked at `.hero-head` at 1280 light and 360 dark; sweep 320-1280 no overflow. Local only.
