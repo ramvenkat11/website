@@ -3168,3 +3168,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Request pasted from the server session. `docsrc/development/publishing.html`, section "When several developers change the same agent": rewrote the merge paragraph and added three h3 parts: "How the merge works" (rule table, what counts as changed, one before/after example using the real comment sentence from `maintenance/update_offline.py`), "After a merge", "When a draft cannot be merged" (invalid JSON; 20,480 characters).
 - No wording in docsrc, content or the site pages said an LLM or AI does the merge; nothing to remove. Docs rebuilt (147 pages).
 - State: local only. Next: Ram reviews.
+
+## 2026-11-25: home hero, last paragraph
+- `html/index.html`: third hero paragraph is now "The platform manages everything behind the scenes and reports on agent runs and LLM costs." The reports link moved from "observability" to "reports". Local only.
