@@ -3157,3 +3157,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-24: getting started, secrets moved to step 5
 - `html/gettingstarted.html`: the vendor API key paragraph left step 3 (Run the server) and became the first item of step 5, "Set up secrets": environment variables need a server restart; secrets from files or a vault do not (linked to the Secret vault docs). Local only.
 - Step 5 heading "Get started" became "Publish and run your first agents" (Ram picked option 2). Local only.
+
+## 2026-11-24: seeded LLM profile names updated
+- Per the s2oserver session: old seeded profile names replaced with the new ones (openai_mini, openai_image, gemini_mini, anthropic_mini, ollama_local, vllm_local, sglang_local) and the old OpenAI mini model name with gpt-6-luna. Changed: 5 content/*.md, 8 docsrc pages, html/development.html, html/runtime.html; docs rebuilt (9 html/docs pages). Script: scratchpad `rename_profiles.py`.
+- Not changed: html/demo-agents.json and html/demo-agents/*.jsonc (copies from s2oserver, refreshed by scripts/refresh-demo-agents.sh; s2oserver's copies already use the new names), retired/, notes/, review files.
+- Flagged: the sizing page's latency row (4.5s) was measured on the old model and now carries the new model's name. Local only.
