@@ -3179,3 +3179,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-25: hero links in the title colour
 - Ram did not want blue. The rule is now `.hero-head .hero-lead a.hero-attr { color: var(--ink); font-weight: 650; }` (the values of the commit before the 2026-11-18 restyle); the 1px blue underline stays; hover still turns the words blue.
 - Looked at `.hero-head` at 1280 light and 360 dark; sweep 320-1280 no overflow. Local only.
+
+## 2026-11-25: two hero links moved
+- `html/index.html` hero: the search.html#description link moved from "describe" to "plain English"; the conversation.html link moved from "conversation" to "build on each other" (allowed to wrap via `.hero-attr-long`).
+- Looked at `.hero-head` at 1280 and 320 light and 360 dark; sweep 320-1280 no overflow. Local only.
