@@ -71,7 +71,7 @@
         <h2>An agent is JSON with Python expressions</h2>
         <p>Below is a complete agent. It searches a knowledge base for the user&rsquo;s request and has a model write the answer from the best passages.</p>
       </div>
-      <figure class="anno" aria-label="A complete agent with five notes. The agent has one function, main, with three commands. The api command searches a knowledge base with the user&rsquo;s request, through the knowledgeBase profile. The var command keeps the text of the first five hits in a variable named passages, with a Python list comprehension. The llm command names the gpt5_mini profile and the prompt named answer, and streams the answer to the user.">
+      <figure class="anno" aria-label="A complete agent with five notes. The agent has one function, main, with three commands. The api command searches a knowledge base with the user&rsquo;s request, through the knowledgeBase profile. The var command keeps the text of the first five hits in a variable named passages, with a Python list comprehension. The llm command names the openai_mini profile and the prompt named answer, and streams the answer to the user.">
         <div class="codecard"><div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">kb_answer.json</span></div><pre><code>{
   <span class=key>&quot;functions&quot;</span>: {
     <span class="al" data-n="1"><span class=key>&quot;main&quot;</span>: {</span>
@@ -84,7 +84,7 @@
           <span class="al" data-n="4"><span class=key>&quot;passages&quot;</span>: <span class=str>&quot;<span class=ex>{ [hit[&#x27;text&#x27;] for hit in result[:5]] }</span>&quot;</span></span>
 <span class="al-note" style="margin-left:10ch"><span class="an">4</span><code>result</code> contains what the last command returned. This expression keeps the text of the first five hits in a variable named <code>passages</code>.</span>        },
         <span class=key>&quot;llm&quot;</span>: {
-          <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;gpt5_mini&quot;</span>,
+          <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;openai_mini&quot;</span>,
           <span class="al" data-n="5"><span class=key>&quot;prompt&quot;</span>: <span class=str>&quot;answer&quot;</span>,</span>
 <span class="al-note" style="margin-left:10ch"><span class="an">5</span>The <code>llm</code> command names a prompt. The prompt&rsquo;s text is kept outside the definition and reads <code>passages</code>. The answer is streamed to the user.</span>          <span class=key>&quot;streamOutput&quot;</span>: <span class=kw>true</span>
         }
@@ -192,7 +192,7 @@
     <span class=key>&quot;main&quot;</span>: {
       <span class=key>&quot;commands&quot;</span>: {
         <span class=key>&quot;llm&quot;</span>: {
-          <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;gpt5_mini&quot;</span>,
+          <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;openai_mini&quot;</span>,
           <span class=key>&quot;prompt&quot;</span>: <span class=str>&quot;orders&quot;</span>,
           <span class="al" data-n="6"><span class=key>&quot;functions&quot;</span>: [<span class=str>&quot;getOrder&quot;</span>],</span>
 <span class="al-note" style="margin-left:10ch"><span class="an">6</span>Listing <code>getOrder</code> here gives the model that function as a tool. The model calls it whenever a question needs an order looked up.</span>          <span class=key>&quot;streamOutput&quot;</span>: <span class=kw>true</span>
@@ -221,7 +221,7 @@
         <p>An agent names the systems it calls and the prompts it sends. The connection details are in platform-wide <a href="docs/profiles/overview.html">profiles</a>, and the text of each <a href="docs/agent-definition/prompts.html">prompt</a> is in the agent&rsquo;s meta. This agent lists a user&rsquo;s open IT tickets and has a model say where each one stands.</p>
       </div>
       <div class="pl-wrap">
-        <figure class="pl-fig" aria-label="A complete agent beside the three things it names. The file my_tickets.json has one function, main, with four commands: an api command that lists the user&rsquo;s open tickets through the helpdesk profile, a var command that keeps the result as tickets, an llm command that names the gpt5_mini profile and the ticket_status prompt, and an output command. Three cards show what the names stand for: the helpdesk API profile with its URL, its key read from the secret vault and its connection pool; the gpt5_mini LLM profile with its vendor, model, key and prices; and the ticket_status prompt with its system text, its user text, which is a Python expression that reads the tickets variable, and its scope.">
+        <figure class="pl-fig" aria-label="A complete agent beside the three things it names. The file my_tickets.json has one function, main, with four commands: an api command that lists the user&rsquo;s open tickets through the helpdesk profile, a var command that keeps the result as tickets, an llm command that names the openai_mini profile and the ticket_status prompt, and an output command. Three cards show what the names stand for: the helpdesk API profile with its URL, its key read from the secret vault and its connection pool; the openai_mini LLM profile with its vendor, model, key and prices; and the ticket_status prompt with its system text, its user text, which is a Python expression that reads the tickets variable, and its scope.">
           <div class="codecard pl-code">
             <div class="bar"><span class="d"></span><span class="d"></span><span class="d"></span><span class="fname">my_tickets.json</span><a class="pl-lang" href="docs/agent-definition/syntax.html">JSON with Python expressions</a></div>
             <pre><code>{
@@ -240,7 +240,7 @@
           <span class=key>"tickets"</span>: <span class=str>"<span class=ex>{ result }</span>"</span>
         },
         <span class="pl-step">"llm"</span>: {
-          <span class=key>"profile"</span>: <span class="str pl-ref" data-ref="gpt5_mini">"gpt5_mini"</span>,
+          <span class=key>"profile"</span>: <span class="str pl-ref" data-ref="openai_mini">"openai_mini"</span>,
           <span class=key>"prompt"</span>: <span class="str pl-ref" data-ref="ticket_status">"ticket_status"</span>
         },
         <span class="pl-step">"output"</span>: <span class=str>"<span class=ex>{ result }</span>"</span>
@@ -258,10 +258,10 @@
               <span class="pl-row"><span>Pool</span><span>8 connections, 10&nbsp;s timeout, 3&nbsp;retries</span></span>
               <span class="pl-foot">One profile for every agent that calls the helpdesk.</span>
             </div>
-            <div class="pl-card" data-ref="gpt5_mini">
+            <div class="pl-card" data-ref="openai_mini">
               <span class="pl-kind"><a href="docs/profiles/llm-profiles.html">LLM profile</a></span>
-              <span class="pl-name">gpt5_mini</span>
-              <span class="pl-row"><span>Vendor</span><span>OpenAI, <code>gpt-5-mini</code></span></span>
+              <span class="pl-name">openai_mini</span>
+              <span class="pl-row"><span>Vendor</span><span>OpenAI, <code>gpt-6-luna</code></span></span>
               <span class="pl-row"><span>Key</span><span><code>{ sys.secret['OPENAI_API_KEY'] }</code></span></span>
               <span class="pl-row"><span>Prices</span><span>Per million tokens in and out, for the cost report</span></span>
               <span class="pl-foot"><a href="docs/llm/vendors.html">Six adapters</a>: OpenAI, Anthropic, Gemini, Ollama, vLLM, SGLang.</span>

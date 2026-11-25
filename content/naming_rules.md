@@ -15,7 +15,7 @@ Most things you name — agents, functions, variables, arguments, profiles, memo
 - ends with a letter or a digit
 - at least two characters
 
-`weather_agent`, `getForecast`, `user_id`, `gpt5_mini` are all valid. `2fa_check` is not, because it starts with a digit. `weather-agent` is not, because a hyphen inside an expression reads as subtraction. `check_` is not, because it ends with a separator.
+`weather_agent`, `getForecast`, `user_id`, `openai_mini` are all valid. `2fa_check` is not, because it starts with a digit. `weather-agent` is not, because a hyphen inside an expression reads as subtraction. `check_` is not, because it ends with a separator.
 
 | Name | Length | Where you write it |
 |---|---|---|

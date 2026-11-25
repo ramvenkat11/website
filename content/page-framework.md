@@ -24,7 +24,7 @@ File: answer.json
     "main": {
       "commands": {
         "llm": {
-          "profile": "gpt5_mini",
+          "profile": "openai_mini",
           "prompt": "answer",
           "streamOutput": true
         }
@@ -50,7 +50,7 @@ Every agent has the same shape.
 > - "main" · runs first
 > - "commands"
 > - "api": { "profile": "orders", … }
-> - "llm": { "profile": "gpt5_mini", "prompt": "orders", … }
+> - "llm": { "profile": "openai_mini", "prompt": "orders", … }
 > - "getOrder" · called by name, or by the model as a tool
 > - "commands"
 > - "api": { … }
@@ -90,7 +90,7 @@ File: orders.jsonc
     "main": {
       "commands": {
         "llm": {
-          "profile": "gpt5_mini",
+          "profile": "openai_mini",
           "prompt": "orders",
           "functions": ["getOrder"],
           "streamOutput": true

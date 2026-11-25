@@ -55,8 +55,8 @@
       "commands": {
         "if": {
           "condition": "{ 'photo' in sys.inputs }",
-          "then": { "llm": { "profile": "claude_haiku", "prompt": "with_photo" } },
-          "else": { "llm": { "profile": "claude_haiku", "prompt": "chat" } }
+          "then": { "llm": { "profile": "anthropic_mini", "prompt": "with_photo" } },
+          "else": { "llm": { "profile": "anthropic_mini", "prompt": "chat" } }
         },
         "output": "{ result }"
       }

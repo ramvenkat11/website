@@ -34,7 +34,7 @@ File: orders.jsonc
     "main": {
       "commands": {
         "llm": {
-          "profile": "gpt5_mini",
+          "profile": "openai_mini",
           "prompt": "orders",
           "functions": ["getOrder"],
           "streamOutput": true

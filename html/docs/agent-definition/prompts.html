@@ -78,7 +78,7 @@
 </tbody></table></div>
 
 <p>The agent's <code>llm</code> command names it:</p>
-<figure class=code data-lang=jsonc><pre><code><span class=key>&quot;llm&quot;</span>: { <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;gpt5_mini&quot;</span>, <span class=key>&quot;prompt&quot;</span>: <span class=str>&quot;orders&quot;</span>, <span class=key>&quot;streamOutput&quot;</span>: <span class=kw>true</span> }</code></pre></figure>
+<figure class=code data-lang=jsonc><pre><code><span class=key>&quot;llm&quot;</span>: { <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;openai_mini&quot;</span>, <span class=key>&quot;prompt&quot;</span>: <span class=str>&quot;orders&quot;</span>, <span class=key>&quot;streamOutput&quot;</span>: <span class=kw>true</span> }</code></pre></figure>
 
 <h2 id="fields">Fields</h2>
 <div class=tablewrap><table class=fields><thead><tr><th>Field</th><th>Type</th><th>Default</th><th>Description</th></tr></thead><tbody><tr><td><code>system</code></td><td class=ty>PromptText</td><td class=dflt></td><td>The system prompt. It must evaluate to text.</td></tr><tr><td><code>user</code></td><td class=ty>PromptText</td><td class=dflt></td><td>The user prompt. Evaluated at each LLM call that uses this prompt. It must evaluate to text, a content part ({contentType: text|image}), or a list of them.</td></tr><tr><td><code>scope</code></td><td class=ty>&quot;conversation&quot; | &quot;agent&quot; | &quot;local&quot;</td><td class=dflt>&quot;conversation&quot;</td><td>How long the prompt&#x27;s history is kept.</td></tr><tr><td><code>doc</code></td><td class=ty>string</td><td class=dflt></td><td>What the prompt is for. Shown to draft help in place of the prompt&#x27;s text.</td></tr></tbody></table></div>
@@ -114,7 +114,7 @@
 <p>A prompt is written outside every command, so at an <code>llm</code> call <code>result</code> is whatever the previous command left there. Reorder the commands, or insert one, and the prompt silently reads something else. Validation therefore refuses a prompt that reads <code>result</code>. Save the value into a variable before the <code>llm</code> command and read that variable in the prompt. Validation checks that the variable is set before every <code>llm</code> call that uses the prompt.</p>
 <figure class=code data-lang=jsonc><pre><code><span class=key>&quot;api&quot;</span>: { <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;orders&quot;</span>, <span class=key>&quot;path&quot;</span>: <span class=str>&quot;{ f&#x27;/orders/{orderId}&#x27; }&quot;</span> },
 <span class=key>&quot;var&quot;</span>: { <span class=key>&quot;order&quot;</span>: <span class=str>&quot;{ result }&quot;</span> },
-<span class=key>&quot;llm&quot;</span>: { <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;gpt5_mini&quot;</span>, <span class=key>&quot;prompt&quot;</span>: <span class=str>&quot;summary&quot;</span> }</code></pre></figure>
+<span class=key>&quot;llm&quot;</span>: { <span class=key>&quot;profile&quot;</span>: <span class=str>&quot;openai_mini&quot;</span>, <span class=key>&quot;prompt&quot;</span>: <span class=str>&quot;summary&quot;</span> }</code></pre></figure>
 <p>The prompt named <code>summary</code> then reads the variable in its user text:</p>
 <div class="tablewrap"><table class="fields">
 <tbody>

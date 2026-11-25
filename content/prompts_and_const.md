@@ -17,7 +17,7 @@ A prompt is a named entry in the agent's `agentPrompts`. Each `llm` command name
   "functions": {
     "main": {
       "commands": {
-        "llm": { "profile": "claude_haiku", "prompt": "chat" },
+        "llm": { "profile": "anthropic_mini", "prompt": "chat" },
         "output": "{ result }"
       }
     }
@@ -261,8 +261,8 @@ A support agent that answers in the customer's language, about the right product
         "commands": {
           "if": {
             "condition": "{ 'photo' in sys.inputs }",
-            "then": { "llm": { "profile": "claude_haiku", "prompt": "with_photo" } },
-            "else": { "llm": { "profile": "claude_haiku", "prompt": "chat" } }
+            "then": { "llm": { "profile": "anthropic_mini", "prompt": "with_photo" } },
+            "else": { "llm": { "profile": "anthropic_mini", "prompt": "chat" } }
           },
           "output": "{ result }"
         }

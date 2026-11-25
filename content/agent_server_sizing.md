@@ -39,7 +39,7 @@ decides how many runs fit. These are the medians we measured with small fast mod
 |---|---|
 | claude-haiku-4-5 | 1.5s |
 | gemini-3.6-flash | 3.9s |
-| gpt-5-mini | 4.5s |
+| gpt-6-luna | 4.5s |
 
 
 Agents that stream their answers hold a connection for the life of the run, so a deployment that

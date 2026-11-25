@@ -12,7 +12,7 @@
 
 <p>The agent's <code>llm</code> command names it:</p>
 <x-code lang="jsonc">
-"llm": { "profile": "gpt5_mini", "prompt": "orders", "streamOutput": true }
+"llm": { "profile": "openai_mini", "prompt": "orders", "streamOutput": true }
 </x-code>
 
 <h2>Fields</h2>
@@ -52,7 +52,7 @@
 <x-code lang="jsonc">
 "api": { "profile": "orders", "path": "{ f'/orders/{orderId}' }" },
 "var": { "order": "{ result }" },
-"llm": { "profile": "gpt5_mini", "prompt": "summary" }
+"llm": { "profile": "openai_mini", "prompt": "summary" }
 </x-code>
 <p>The prompt named <code>summary</code> then reads the variable in its user text:</p>
 <div class="tablewrap"><table class="fields">
