@@ -3228,3 +3228,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-26: home "Agent harness as the orchestrator" section removed
 - `html/index.html`: section `#agent-harness` removed. Home is now hero, agent framework, how the platform fits, enterprise operations. The `.hx-*` styles stay (the harness page uses them); the two `#agent-harness .section-head` rules are now unused. Not rendered.
 - Open, reported to Ram: `html/why.html:115` still links `index.html#agent-harness` ("See the home page for why."); the home page no longer makes the skills argument, mentions Tactet-skill only in the architecture figure, and no home text links to harness.html except the menu. Local only.
+
+## 2026-11-26: Why us link repointed
+- `html/why.html` and `content/pages/why.txt`: "See the home page for why." is now "See Agent harness for why.", linking harness.html (the home section it pointed to is gone). Local only.
