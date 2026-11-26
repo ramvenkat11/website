@@ -3234,3 +3234,8 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-26: home framework section heading
 - `html/index.html` `#framework-runtime` h2: "Agents written like a skill, validated like software" (was "An agent framework built for AI-assisted development"). Chosen by Ram after options. Claims behind it checked in the docs: Draft with AI writes the whole draft from a description (prompt text and some values left to the developer); validation is a real run and Publish stays unavailable until it passes; profiles and prompts live outside the definition. Not rendered. Local only.
+
+## 2026-11-26: home section "Many ways to use agents"
+- Ram's brief in `content/newhome.txt` and answers: placed after the agent framework section; the architecture figure stays as it is (option A); message is simply the ways it can be used; Slack and Teams only; Claude Code as the example.
+- `html/index.html`: new `<section class="section" id="clients">` with four cards (`.ways` / `.way`), each a small inline SVG picture, a title, a line of a few words and one link: Browser chat -> demo-search.html; Chat apps -> docs/chat-integrations/index.html; Agent harness -> harness.html; REST API -> docs/rest-api/overview.html. Styles added to `html/styles/styles.css` after the `.fw-page #conversations .cv` rule; pictures reuse the `.hn-pic` classes. Added by scratchpad `add_clients.py`.
+- Looked at `#clients` at 1280 and 700 light, 1000 and 375 dark; sweep 320-1280 no overflow. Home order now: hero, agent framework, many ways to use agents, how the platform fits, enterprise operations (the first three after the hero are all on white). Local only.
