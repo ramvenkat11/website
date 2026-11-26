@@ -3210,3 +3210,11 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-26: agent gateway sentence checked
 - Read Okta's "What is Agent Gateway?" and the Agentic AI Foundation post on agentgateway (Snowflake's guide returned 403). Gateways sit between agents and tools, authenticate callers, handle credentials, apply per-call policy and log calls; none runs workflow logic. `content/pages/harness.txt`: "holds the credentials in one place" became "handles the credentials", and "records every call" added.
+
+## 2026-11-26: Agent harness page built
+- New page `html/harness.html` from `content/pages/harness.txt` (Ram's go-ahead; "images that communicate"). Text is the txt verbatim; one grammar fix written back ("one way for end users to use those agents"), apostrophes normalised.
+- Eight figures, all HTML/CSS/inline SVG with theme tokens, new `.hn-*` rules appended to `html/styles/styles.css` (reuses `.hx-path`, `.hx-win`, `.hx-b` from the home figure): two-ways cards with the topology drawing and "on each user's machine" chips; three-step strip instructions -> script in a skill -> Tactet agent with pictograms; search options with the 85.5% / 92.2% tiles; harness context chips; one request step by step (No LLM / model tags); stack users' machines -> agent server -> company systems; four icon cards; four-step orchestration strip; two-call sequence diagram.
+- Menu: "Agent harness" added after Conversation under Product in all 14 site pages, 404, 4 legal pages and `gen/build.py` (docs rebuilt, 147 pages); `harness.html` added to SITE_PAGES so it is in `html/sitemap.xml`.
+- Assembled by scratchpad `harness/assemble.py` from `harness/main.html` and the conversation page shell; `harness/sync_check.py` checks every txt sentence is on the page (only the two card headings differ, by their full stop). Full-page renderer: scratchpad `page.mjs` (PAGE, OUT, WIDTHS, THEMES, SWEEP).
+- Looked at: 1280 light and dark (whole page), 1000 and 860 light (top half), 700 light (middle), 375 light (most of the page), 360 dark (cards), 320 dark (top) and close-ups of the sequence and orchestration figures. Sweep 320-1280: no overflow. Not looked at: every part at 412/384, the menu dropdown with five entries.
+- Not changed: home page sections 3 and 4 (next task), why.html link "home page" for skills. Local only.
