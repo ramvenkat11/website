@@ -3204,3 +3204,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-26: harness text, second pass
 - `content/pages/harness.txt` per Ram's answers: selection "drops sharply" restored, with Anthropic's own 49% figure (advanced-tool-use post), its keyword tool search, and Tactet's published 85.5% / 92.2% at 1,000 agents; context item back to "Tactet-skill and each agent's result" with tool definitions on the other side; agent gateways explained; Claude Code skill/subagent models are Claude-only. Memory `project-skills-vs-tactet-argument.md` records the settled argument.
 - Sources checked today: anthropic.com/engineering/advanced-tool-use (49% to 74%, 79.5% to 88.1%; regex and BM25), arXiv 2505.03275 RAG-MCP (13.62% baseline), search snippets for Arcade (BM25 64% at 4,027 tools) and Stacklok. State: waiting for Ram.
+
+## 2026-11-26: harness text, selection item rewritten
+- `content/pages/harness.txt`: the selection item is now "High-quality search, at no token cost": model reading every description (accuracy drops sharply) or keyword pre-filter (regex, BM25) against Tactet's semantic search by meaning with no LLM call, tested and published (85.5% / 92.2% at 1,000 agents). Anthropic's 49% figure removed (Ram: no figures that date quickly). Memory updated. Waiting for Ram.
