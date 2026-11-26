@@ -3207,3 +3207,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-26: harness text, selection item rewritten
 - `content/pages/harness.txt`: the selection item is now "High-quality search, at no token cost": model reading every description (accuracy drops sharply) or keyword pre-filter (regex, BM25) against Tactet's semantic search by meaning with no LLM call, tested and published (85.5% / 92.2% at 1,000 agents). Anthropic's 49% figure removed (Ram: no figures that date quickly). Memory updated. Waiting for Ram.
+
+## 2026-11-26: agent gateway sentence checked
+- Read Okta's "What is Agent Gateway?" and the Agentic AI Foundation post on agentgateway (Snowflake's guide returned 403). Gateways sit between agents and tools, authenticate callers, handle credentials, apply per-call policy and log calls; none runs workflow logic. `content/pages/harness.txt`: "holds the credentials in one place" became "handles the credentials", and "records every call" added.
