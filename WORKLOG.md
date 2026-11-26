@@ -3231,3 +3231,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-26: Why us link repointed
 - `html/why.html` and `content/pages/why.txt`: "See the home page for why." is now "See Agent harness for why.", linking harness.html (the home section it pointed to is gone). Local only.
+
+## 2026-11-26: home framework section heading
+- `html/index.html` `#framework-runtime` h2: "Agents written like a skill, validated like software" (was "An agent framework built for AI-assisted development"). Chosen by Ram after options. Claims behind it checked in the docs: Draft with AI writes the whole draft from a description (prompt text and some values left to the developer); validation is a real run and Publish stays unavailable until it passes; profiles and prompts live outside the definition. Not rendered. Local only.
