@@ -3194,3 +3194,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-25: hero conversation link moved again
 - `html/index.html` hero, third paragraph: the conversation.html link is now on "Agents share prompts" (was on "build on each other").
 - Looked at `.hero-head` at 1280 light and 360 dark; sweep 320-1280 no overflow. Local only.
+
+## 2026-11-26: Agent harness page, text draft
+- Ram's brief is in `content/newhome.txt`: a new Product page on using Tactet from an agent harness (any harness), for people deciding whether to try Tactet; home-page level; only links for install; the home section 4 figure to be redrawn less densely. The home rewrite (sections 3 and 4 become one "three ways to use Tactet" section) is a later task.
+- Wrote `content/pages/harness.txt` (text only; no html yet). Argument per Ram: a skill per workflow (instructions or bundled script, reaching systems through MCP/CLI/API from each machine) against one Tactet-skill plus agents on the agent server; Anthropic's advice to prefer scripts is used in Tactet's favour (the agent is that script, centralized); agent gateways named as the existing category.
+- Claims re-checked on 2026-11-26 against Anthropic's Agent Skills overview, enterprise and best-practices pages, Claude Code skills, MCP and LLM gateway pages, and the two engineering posts. Softened in the draft versus the home page: "degrades sharply" (Anthropic says the model "might fail to select the right Skill or miss relevant ones"); "tool schemas" in context (Claude Code defers MCP tool definitions by default); "holds only the end result" (also the skill and agent titles); "does not degrade" (now "as accurate with 1,000 agents as with 100"); credentials "included on each machine" (now "a route and a credential").
+- State: waiting for Ram to finalize the text. Then html page, menu entry, sync memory list (add harness to the content-pages list).
