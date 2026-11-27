@@ -3254,3 +3254,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Platform card title "Multi-user access" -> "Identity & access" (Ram's pick). Text-only; not rendered.
 - Multiple environments card: "profiles point" -> "profiles can point" (Ram's wording). Text-only; not rendered or measured.
 - Home #clients REST API card line: "Call agents from other agents or applications" -> "From other agents or applications" (Ram's wording). Text-only; not rendered.
+- Home #clients REST API card line is now "Call from other agent frameworks" (Ram's wording; "applications" dropped). Text-only; not rendered.
