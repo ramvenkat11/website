@@ -3284,3 +3284,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Section 4 subtitle: "Install with pip or from the source." removed (Ram). The link to installing from the source is no longer in this section. Not rendered.
 - Section 4 subtitle: "The cloud service can be shared or dedicated." removed (Ram). Paragraph 2 is now the single sync sentence. Not rendered.
 - Section 4 subtitle: "holds no state of its own" -> "is stateless", linked to docs/introduction/parts-of-the-system.html (the figure's "Stateless" link target). Not rendered.
+- Section 4 figure, agent server box: the three links (Stateless · Horizontally scalable · Agents run in sync) replaced with `pip install tactet` (link to docs/getting-started/registering-and-downloading.html) · GitHub (github.com/tactet-ai/agent-server, new tab). aria-label sentence replaced accordingly. Looked at the figure at 1280 light and 375 dark (two lines on a phone); sweep clean.
