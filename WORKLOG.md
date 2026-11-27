@@ -3253,3 +3253,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Change control card third sentence replaced (Ram chose the rollout point): "A change is live on the next agent run on every server, without a restart." Link runtime/overview#how-a-change-reaches-every-agent-server. Line counts measured, see chat; not looked at in a render.
 - Platform card title "Multi-user access" -> "Identity & access" (Ram's pick). Text-only; not rendered.
 - Multiple environments card: "profiles point" -> "profiles can point" (Ram's wording). Text-only; not rendered or measured.
+- Home #clients REST API card line: "Call agents from other agents or applications" -> "From other agents or applications" (Ram's wording). Text-only; not rendered.
