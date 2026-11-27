@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>try{var t=localStorage.getItem("s2o-theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <title>Prompts — Tactet docs</title>
-<meta name="description" content="A prompt is what an llm command sends to a model: a system text, a user text, and the history of the exchange so far. Prompts are part of the agent meta, not…">
+<meta name="description" content="In Tactet, a prompt is a named object that an llm command sends to a model. It holds a system text, a user text and the message history of the exchange so fa…">
 <link rel="canonical" href="https://tactet.com/docs/agent-definition/prompts.html">
 <meta property="og:title" content="Prompts — Tactet docs">
-<meta property="og:description" content="A prompt is what an llm command sends to a model: a system text, a user text, and the history of the exchange so far. Prompts are part of the agent meta, not…">
+<meta property="og:description" content="In Tactet, a prompt is a named object that an llm command sends to a model. It holds a system text, a user text and the message history of the exchange so fa…">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://tactet.com/docs/agent-definition/prompts.html">
 <meta property="og:image" content="https://tactet.com/images/og13.png">
@@ -66,7 +66,7 @@
     <div class="crumbs"><a href='../index.html'>Docs</a> <span>/</span> <a href='../agent-definition/index.html'>Agent definition</a></div>
     <article class="docs-article">
       <h1>Prompts</h1>
-      <p class="lead">A prompt is what an <code>llm</code> command sends to a model: a system text, a user text, and the history of the exchange so far. Prompts are part of the <a href="structure.html#definition-and-agent-meta">agent meta</a>, not of the definition: they are edited with the draft, validated with it and published with it. Each prompt has a name, and an <code>llm</code> command names the prompt it uses in its <code>prompt</code> field.</p>
+      <p class="lead">In Tactet, a prompt is a named object that an <code>llm</code> command sends to a model. It holds a system text, a user text and the message history of the exchange so far, and it has a scope. This is wider than the usual meaning of the word, which is the text alone. Prompts are part of the <a href="structure.html#definition-and-agent-meta">agent meta</a>, not of the definition: they are edited with the draft, validated with it and published with it. Each prompt has a name, and an <code>llm</code> command names the prompt it uses in its <code>prompt</code> field.</p>
 
 <p>For example, an agent that answers questions about orders could have this prompt:</p>
 <div class="tablewrap"><table class="fields">

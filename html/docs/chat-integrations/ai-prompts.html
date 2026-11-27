@@ -68,9 +68,9 @@
       <h1>Building a bot with an AI assistant</h1>
       <p class="lead">The API is small enough that an assistant can write most of a bot in one pass. What an assistant cannot do is guess the contract: a wrong guess produces code that looks right and fails in testing. Give it the contract first.</p>
 
-<p>Paste the reference prompt, then the prompt for your chat application, and let the assistant work. Both are written to be pasted as they are.</p>
+<p>Paste the reference instructions, then the instructions for your chat application, and let the assistant work. Both are written to be pasted as they are.</p>
 
-<h2 id="the-reference-prompt">The reference prompt</h2>
+<h2 id="the-reference-instructions">The reference instructions</h2>
 <figure class=code data-lang=text><div class=bar><span>The contract</span></div><pre><code>You are writing a chat bot that connects a chat application to Tactet. Use only the
 API described here. Do not invent endpoints, fields or values.
 
@@ -178,7 +178,7 @@ RULES YOU MUST FOLLOW
   - When a run returns unknownConversation, reuse the message you already posted for
     the retry. Do not post a second one.</code></pre></figure>
 
-<h2 id="the-prompt-for-slack">The prompt for Slack</h2>
+<h2 id="the-instructions-for-slack">The instructions for Slack</h2>
 <figure class=code data-lang=text><div class=bar><span>Slack</span></div><pre><code>Write a Slack bot in &lt;your language&gt; using the reference above.
 
   - Use Socket Mode, so the bot needs no public address and can run inside a private
@@ -201,7 +201,7 @@ RULES YOU MUST FOLLOW
   - Convert markdown to Slack mrkdwn. Bold is *text*, links are &lt;url|label&gt;.
   - Upload image parts with files.uploadV2 and post them in the thread.</code></pre></figure>
 
-<h2 id="the-prompt-for-microsoft-teams">The prompt for Microsoft Teams</h2>
+<h2 id="the-instructions-for-microsoft-teams">The instructions for Microsoft Teams</h2>
 <figure class=code data-lang=text><div class=bar><span>Microsoft Teams</span></div><pre><code>Write a Microsoft Teams bot in &lt;your language&gt; using the reference above.
 
   - Use the Bot Framework. The bot needs a public HTTPS endpoint, or a tunnel into the
@@ -218,7 +218,7 @@ RULES YOU MUST FOLLOW
   - Teams accepts a useful subset of markdown. Convert what it does not accept.
   - Attach image parts as card images or file attachments.</code></pre></figure>
 
-<h2 id="the-prompt-for-google-chat">The prompt for Google Chat</h2>
+<h2 id="the-instructions-for-google-chat">The instructions for Google Chat</h2>
 <figure class=code data-lang=text><div class=bar><span>Google Chat</span></div><pre><code>Write a Google Chat app in &lt;your language&gt; using the reference above.
 
   - Receive events over Pub/Sub, so the app needs no public address and can run inside a
@@ -250,7 +250,7 @@ RULES YOU MUST FOLLOW
     </article>
     <nav class=prevnext><a class=prev href='../chat-integrations/chat-applications.html'><small>Previous</small>Slack, Teams and Google Chat</a><a class=next href='../skill-integration/index.html'><small>Next</small>Skill integration</a></nav>
   </main>
-  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#the-reference-prompt'>The reference prompt</a></li><li class=l2><a href='#the-prompt-for-slack'>The prompt for Slack</a></li><li class=l2><a href='#the-prompt-for-microsoft-teams'>The prompt for Microsoft Teams</a></li><li class=l2><a href='#the-prompt-for-google-chat'>The prompt for Google Chat</a></li><li class=l2><a href='#points-to-check-in-the-generated-code'>Points to check in the generated code</a></li></ul></aside>
+  <aside class=pagetoc><div class=label>On this page</div><ul><li class=l2><a href='#the-reference-instructions'>The reference instructions</a></li><li class=l2><a href='#the-instructions-for-slack'>The instructions for Slack</a></li><li class=l2><a href='#the-instructions-for-microsoft-teams'>The instructions for Microsoft Teams</a></li><li class=l2><a href='#the-instructions-for-google-chat'>The instructions for Google Chat</a></li><li class=l2><a href='#points-to-check-in-the-generated-code'>Points to check in the generated code</a></li></ul></aside>
 </div>
 <footer class="site-footer">
   <div class="container">

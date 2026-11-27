@@ -12,14 +12,14 @@ A conversation is unique and belongs to one user. A conversation is encrypted an
 
 Users hold conversations from the UI, or from Slack and Teams with a bot. In this example, a user books a trip and then files its expenses. Two independent agents do the work in a single conversation.
 
-[figure: one conversation across two agents, with four notes. Discovery: search matches the first request to the Travel desk agent. Human in the loop: the agent asks before booking. Conversation state: the platform saves the state when the agent ends. Building on each other: the follow-up is matched to the Reimbursements agent, which continues the same prompt.]
+[figure: one conversation across two agents, with four notes. Discovery: search matches the first request to the Travel desk agent. Human in the loop: the agent asks before booking. Conversation state: the platform saves the state when the agent ends. Building on each other: the follow-up is matched to the Reimbursements agent, which continues the same message history.]
 
 
 ## What a conversation keeps
 
 When an agent ends successfully, the platform saves the conversation’s state automatically. The next run in the conversation, whether by the same agent or another, starts from that state.
 
-The prompts. A prompt is a data structure that maintains the message thread with an LLM in a standard format. The format is model‑neutral, so the next agent can continue the same thread with a different model. An agent can use multiple prompts and each prompt has a name and scope.
+The prompts. In Tactet, a prompt is a named object that holds a system text, a user text and the message history with an LLM. The history is kept in a model‑neutral format, so the next agent can continue it with a different model. An agent can use multiple prompts, and each prompt has a name and a scope.
 
 The variables. The conversation variables that every agent in the conversation can read and write, plus each agent’s own variables. An agent stores information that later agents will need in a conversation variable. Conversation variables give agents short‑term memory, and the memory command gives them long‑term memory.
 
@@ -28,7 +28,7 @@ A conversation also keeps additional internal information that is used for other
 
 ## Prompts carry the exchange
 
-A prompt is what an llm command sends to a model: system text, user text, and the history of the exchange so far. Each prompt has a scope that determines how long its history lasts and which agents share it.
+A prompt is what an llm command sends to a model: a system text, a user text, and the message history of the exchange so far. Each prompt has a scope that determines how long its history lasts and which agents share it.
 
 conversation (the default). One history for the whole conversation, shared by every agent that has a prompt with the same name. A second agent can see what was said to the first.
 

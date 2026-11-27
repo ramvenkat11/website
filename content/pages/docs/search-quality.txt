@@ -22,10 +22,10 @@ Search research calls this the vocabulary problem: in the study that named it, t
 
 A platform can also give a model every agent's description and let the model choose. A model understands meaning, so it handles the requests above.
 
-This method does not scale to hundreds of descriptions. The more text a prompt holds, the less reliably a model uses any one part of it, an effect known as context rot. Independent studies have measured the drop on lists of tools, which a model selects in the same way as agents.
+This method does not scale to hundreds of descriptions. The more text a model is given, the less reliably it uses any one part of it, an effect known as context rot. Independent studies have measured the drop on lists of tools, which a model selects in the same way as agents.
 
 - The LongFuncEval study found that performance drops by up to 85%: "we observe a performance drop of 7% to 85% as the number of tools increases."
-- The RAG-MCP study put every tool description in the prompt, and the model selected the right tool 13.62% of the time.
+- The RAG-MCP study gave the model every tool description, and the model selected the right tool 13.62% of the time.
 - The MTU-Bench study reports the same decline as the number of tools increases.
 
 The method has three more costs.
@@ -163,6 +163,6 @@ Real people ask what they mean, in their own words, and we expect search to do b
 The statements about keyword search and about selection by an LLM rest on published research. We did not run those two methods on our catalogs.
 
 - G. W. Furnas, T. K. Landauer, L. M. Gomez and S. T. Dumais, "The vocabulary problem in human-system communication", Communications of the ACM, 1987. The study that named the vocabulary problem.
-- "RAG-MCP: Mitigating Prompt Bloat in LLM Tool Selection via Retrieval-Augmented Generation", arXiv 2505.03275, 2025. Measures how a model's tool selection falls when every tool description is in the prompt.
+- "RAG-MCP: Mitigating Prompt Bloat in LLM Tool Selection via Retrieval-Augmented Generation", arXiv 2505.03275, 2025. Measures how a model's tool selection falls when the model is given every tool description.
 - "LongFuncEval: Measuring the effectiveness of long context models for function calling", arXiv 2505.10570, 2025. Measures the drop in function calling as the number of tools increases.
 - "MTU-Bench: A Multi-granularity Tool-Use Benchmark for Large Language Models", arXiv 2410.11710, 2024. Reports declines in tool use as the number of tools increases.

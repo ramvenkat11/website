@@ -88,12 +88,12 @@
           <div class="turn-agent r4">
             <div class="msg"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>Booked UA1191 and the hotel night. The confirmation is in your inbox.</div>
           </div>
-          <aside class="cv-note r4"><b><a href="#state">Conversation state</a></b>The Travel desk agent ended here, and the platform saved the conversation&rsquo;s state automatically: the variables and the prompts, which hold the LLM message thread in a model&#8209;neutral format.</aside>
+          <aside class="cv-note r4"><b><a href="#state">Conversation state</a></b>The Travel desk agent ended here, and the platform saved the conversation&rsquo;s state automatically: the variables and the message history with the LLM, which is kept in a model&#8209;neutral format.</aside>
           <div class="turn-user r5">File the expenses for that trip</div>
           <div class="turn-agent r6">
             <div class="msg"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Reimbursements</span>Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
           </div>
-          <aside class="cv-note r6"><b><a href="#follow-up">Building on each other</a></b>The request carried the conversation ID, so the platform restored the saved state first. Search then matched the follow&#8209;up to the Reimbursements agent, which continued the same prompt. To the Reimbursements agent&rsquo;s LLM, it looks like one continuous conversation that started with booking the&nbsp;trip.</aside>
+          <aside class="cv-note r6"><b><a href="#follow-up">Building on each other</a></b>The request carried the conversation ID, so the platform restored the saved state first. Search then matched the follow&#8209;up to the Reimbursements agent, which continued the same message history. To the Reimbursements agent&rsquo;s LLM, it looks like one continuous conversation that started with booking the&nbsp;trip.</aside>
         </div>
       </div>
     </div>
@@ -106,7 +106,7 @@
         <p>When an agent ends successfully, the platform saves the conversation&rsquo;s state automatically. The next run in the conversation, whether by the same agent or another, starts from that state.</p>
       </div>
       <div class="fw-text">
-        <p><b>The prompts.</b> A prompt is a data structure that maintains the message thread with an LLM in a standard format. The format is model&#8209;neutral, so the next agent can continue the same thread with a different model. An agent can use multiple prompts and each prompt has a name and scope.</p>
+        <p><b>The prompts.</b> In Tactet, a prompt is a named object that holds a system text, a user text and the message history with an LLM. The history is kept in a model&#8209;neutral format, so the next agent can continue it with a different model. An agent can use multiple prompts, and each prompt has a name and a scope.</p>
         <p><b>The variables.</b> The conversation variables that every agent in the conversation can read and write, plus each agent&rsquo;s own variables. An agent stores information that later agents will need in a conversation variable. <a href="docs/agent-definition/variables.html">Conversation variables</a> give agents short&#8209;term memory, and the <a href="docs/commands/memory.html">memory command</a> gives them long&#8209;term memory.</p>
         <p>A conversation also keeps additional internal information that is used for other purposes, such as showing the conversation history and restoring an agent that is waiting for user input.</p>
       </div>
@@ -117,7 +117,7 @@
     <div class="container">
       <div class="section-head">
         <h2>Prompts carry the exchange</h2>
-        <p>A prompt is what an <code>llm</code> command sends to a model: system text, user text, and the history of the exchange so far. Each prompt has a scope that determines how long its history lasts and which agents share it.</p>
+        <p>A prompt is what an <code>llm</code> command sends to a model: a system text, a user text, and the message history of the exchange so far. Each prompt has a scope that determines how long its history lasts and which agents share it.</p>
       </div>
       <div class="fw-text">
         <p><b>conversation</b> (the default). One history for the whole conversation, shared by every agent that has a prompt with the same name. A second agent can see what was said to the first.</p>

@@ -45,7 +45,7 @@ Which systems are called is decided when an agent is published. In a harness, th
 
 Every run is recorded. Tactet records who ran which agent, which version ran, how long it took, the result and the LLM cost. Session telemetry from a harness has to be collected separately.
 
-One skill to retest. A skill is a prompt, and Anthropic advises retesting skills when the model changes. With Tactet, a single skill is due a retest when the harness model changes. An agent’s own LLM steps stay on the models that its profiles name.
+One skill to retest. A skill is a set of instructions for a model, and Anthropic advises retesting skills when the model changes. With Tactet, a single skill is due a retest when the harness model changes. An agent’s own LLM steps stay on the models that its profiles name.
 
 Publish once. A new or corrected agent is available to every user on the next request. Nothing is installed on a user’s machine.
 

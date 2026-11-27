@@ -1,8 +1,8 @@
 <p class="lead">The API is small enough that an assistant can write most of a bot in one pass. What an assistant cannot do is guess the contract: a wrong guess produces code that looks right and fails in testing. Give it the contract first.</p>
 
-<p>Paste the reference prompt, then the prompt for your chat application, and let the assistant work. Both are written to be pasted as they are.</p>
+<p>Paste the reference instructions, then the instructions for your chat application, and let the assistant work. Both are written to be pasted as they are.</p>
 
-<h2>The reference prompt</h2>
+<h2>The reference instructions</h2>
 <x-code lang="text" title="The contract">
 You are writing a chat bot that connects a chat application to Tactet. Use only the
 API described here. Do not invent endpoints, fields or values.
@@ -112,7 +112,7 @@ RULES YOU MUST FOLLOW
     the retry. Do not post a second one.
 </x-code>
 
-<h2>The prompt for Slack</h2>
+<h2>The instructions for Slack</h2>
 <x-code lang="text" title="Slack">
 Write a Slack bot in <your language> using the reference above.
 
@@ -137,7 +137,7 @@ Write a Slack bot in <your language> using the reference above.
   - Upload image parts with files.uploadV2 and post them in the thread.
 </x-code>
 
-<h2>The prompt for Microsoft Teams</h2>
+<h2>The instructions for Microsoft Teams</h2>
 <x-code lang="text" title="Microsoft Teams">
 Write a Microsoft Teams bot in <your language> using the reference above.
 
@@ -156,7 +156,7 @@ Write a Microsoft Teams bot in <your language> using the reference above.
   - Attach image parts as card images or file attachments.
 </x-code>
 
-<h2>The prompt for Google Chat</h2>
+<h2>The instructions for Google Chat</h2>
 <x-code lang="text" title="Google Chat">
 Write a Google Chat app in <your language> using the reference above.
 
