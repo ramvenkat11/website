@@ -3265,3 +3265,6 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Home #clients heading: "Use agents where you already work" (Ram's pick; "Two calls, any client" rejected). Text-only; not rendered.
 - Home #clients REST API card line: "Call from other agent frameworks or applications" (Ram's wording, no full stop to match the other cards). Text-only; not rendered.
 - Home #clients REST API card line: "From other agent frameworks or applications" ("Call" dropped). Text-only; not rendered.
+
+## 2026-11-27 Home framework section subtitle rewritten to match the title
+- `html/index.html` #framework-runtime subtitle, two paragraphs, one per half of "Agents written like a skill, validated like software": (1) "Describe what an agent should do in plain English, and Draft with AI writes the agent. Refine it in the schema-aware code editor of the built-in development environment." (2) "An agent must pass validation before it is published, and published agents are versioned. Enterprise systems and LLMs are defined outside the agent in profiles, and prompts are kept outside its code." Ram: order Draft-with-AI first, JSON sentence removed (link to development.html#first-agent gone), two paragraphs. Other links kept. Meta description unaffected. Looked at the section head at 1280 light and 375 dark; sweep clean.
