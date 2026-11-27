@@ -3261,3 +3261,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Home #clients subtitle is now two paragraphs from Ram's draft, lightly edited: "Every client uses the same two calls: search finds the right agent, and execAgent runs it. The rest is up to the client." / "A client can run the best match automatically or let the user choose. It can also use an LLM to split a request into parts and search for each part separately, as an agent harness does." Token sentence dropped. Looked at the section head at 1280 light and 375 dark; sweep clean.
 - Home #clients heading: "One set of agents for every client" (Ram: ok for now, not fully satisfied). Text-only; not rendered.
 - Home #clients heading: "Two calls, any client" (Ram's pick). Text-only; not rendered.
+- Home #clients subtitle, first paragraph: added "An authorization token identifies the user." before "The rest is up to the client." Text-only; not rendered.
