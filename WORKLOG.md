@@ -3257,3 +3257,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Home #clients REST API card line is now "Call from other agent frameworks" (Ram's wording; "applications" dropped). Text-only; not rendered.
 - Home #clients Browser chat card line: "Built into the Tactet UI, or a UI of your own" (Ram: also say a custom UI is easy, without "trivial"). Text-only; not rendered.
 - Home #clients Chat apps card line: "Slack, Teams and others, through a bot" (Ram asked for other apps, paraphrased). Text-only; not rendered.
+- Home #clients subtitle added under the heading: "Every client works the same way. It calls search to find the agent for a request, and execAgent to run it. An authorization token identifies the user." (`search`/`execAgent` in code; `text-wrap: balance` rule added for `#clients .section-head p`). Looked at 1280 light and 375 dark; sweep clean. Heading still "Many ways to use agents"; Ram has not picked the new one.
