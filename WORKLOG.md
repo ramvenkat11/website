@@ -3295,3 +3295,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Hero paragraph 3: "conversation" is now a hero link to conversation.html. "Agents share prompts" in the same sentence also links there; reported. Not rendered.
 - Hero paragraph 3: "Agents share prompts" unlinked; only "conversation" links to conversation.html. Not rendered.
 - Hero figure: the "Enterprise systems" and "LLMs" boxes and their connector arrows (`div.as-ext`) removed (Ram: they made sense only when the box was the agent server). aria-label last sentence removed. The `.as-ext*` rules in styles.css are now unused (left in place; reported). Looked at the whole hero at 1280 light and the figure at 375 dark; sweep clean.
+- Home #framework-runtime subtitle paragraph 2: "An agent is not a dynamic workflow that an LLM generates." removed (Ram); the paragraph now opens "An agent runs as Python code with LLM calls, and it must pass validation before it is published." Rest unchanged. Not rendered.
