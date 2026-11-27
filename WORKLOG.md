@@ -3356,3 +3356,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Home #framework-runtime paragraph 2, last sentence shortened (Ram): "Prompts also live outside the definition and change without a new version." Not rendered.
 - Home #framework-runtime paragraph 1: sentences 2 and 3 combined (Ram): "The AI understands the agent language: twenty commands, written as structured JSON with Python expressions that can call any function on your allowlist." Not rendered.
 - Home #framework-runtime paragraph 1: "The AI understands" -> "It understands" (Ram). To keep "It" from reading as the agent, sentence 1 now ends "writes the agent" where it ended "writes it". Not rendered.
+
+## 2026-11-27 Pre-publish check (Ram: "Check before I publish all the changes")
+- Automated, all clean: config.js apiUrl/demoUrl exact; 167 html pages, 0 broken internal links or anchors; 0 html comments; 0 leftover words (search2o, TODO, lorem); every sentence of the 12 text files is on its page (why.txt table rows and two harness card titles are format false positives); docs build 147 pages, 0 missing; sweep 320-1280 on home, conversation, development, harness, why and six docs pages: 0 overflow.
+- Looked at: home whole page 1280 light; home 375 light (hero, clients) and 375 dark (section 4); conversation top 1280; docs Command reference and Focused agents 1280.
+- Not checked: other widths by eye; browser console errors; the sign-up form against production; the deploy script was not run.
+- Reported to Ram: repeated sentences on home (profile names in section 2 and Multiple environments card; "live on the next agent run" in section 4 and Change control card); hero box still shows `pip install tactet`; LangChain comparison page still says "the Tactet agents page"; docs Commands summary sentence does not name long-term memory; unused CSS (.as-ext, #agent-harness).
