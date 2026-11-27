@@ -1,0 +1,168 @@
+Search quality
+
+
+# Search quality
+
+Every request has to reach the right agent. A platform can choose the agent by keyword search, by asking an LLM, or by semantic search. Tactet uses semantic search. This page compares the three, then gives the measured accuracy of Tactet's search.
+
+
+## Three ways to choose an agent
+
+### Keyword search
+
+Keyword search, such as regex or BM25, matches the words of a request against the words of each agent's description. It is fast and costs no tokens, but it matches words, not meaning, so it cannot do this job.
+
+Search research calls this the vocabulary problem: in the study that named it, two people chose the same word for the same thing less than one time in five. The problem is worst on short texts, and a request and a description are each a sentence or two, written by different people.
+
+- "Can I take next Friday off?" shares no word with "Files vacation requests and checks the leave balance". Keyword search misses the agent.
+- "What is the status of invoice 4471?" shares "status" with every agent that reports a status. Keyword search returns unrelated agents.
+- A request in German shares no word with a description in English.
+
+### Selection by an LLM
+
+A platform can also give a model every agent's description and let the model choose. A model understands meaning, so it handles the requests above.
+
+This method does not scale to hundreds of descriptions. The more text a prompt holds, the less reliably a model uses any one part of it, an effect known as context rot. Independent studies have measured the drop on lists of tools, which a model selects in the same way as agents.
+
+- The LongFuncEval study found that performance drops by up to 85%: "we observe a performance drop of 7% to 85% as the number of tools increases."
+- The RAG-MCP study put every tool description in the prompt, and the model selected the right tool 13.62% of the time.
+- The MTU-Bench study reports the same decline as the number of tools increases.
+
+The method has three more costs.
+
+- Every request spends tokens on the whole list before any agent runs.
+- The choice has to be tested again when the model changes.
+- An LLM call takes several seconds.
+
+### Semantic search
+
+Tactet's semantic search matches a request to an agent's description by meaning and intention, without calling an LLM. It costs no tokens and takes about 200 milliseconds on the cloud side, for a hundred agents or a thousand. We test it and publish the results below.
+
+When a developer submits a description, Tactet builds a search index from it, and each request is matched against that index.
+
+[table]
+| Keyword search (regex, BM25) | Selection by an LLM | Tactet semantic search
+Matches by | Words | Meaning | Meaning
+Short requests against short descriptions | Misses when the words differ | Works | Works
+As the number of agents grows | Returns more unrelated matches | Accuracy drops sharply | Accuracy holds; see below
+Tokens for each request | None | The whole list of descriptions | None
+Time for each request | Milliseconds | A model call | About 200 milliseconds
+Other languages | Only when the words are the same | Yes | Yes
+Published accuracy | — | — | This page
+[end table]
+
+
+## How search was tested
+
+Everything below was measured against the live search service, with the code and the settings we ship. Nothing is modeled or extrapolated.
+
+We built five catalogs of agents, each for a different kind of business, and one very large catalog to test scale. Every question has one known correct agent.
+
+[table]
+Catalog | Agents | Questions asked
+A university | 50 | 500
+A clinic group | 50 | 500
+A software company's internal agents | 100 | 2,000
+A large corporation's departments | 100 | 1,000
+A retailer's supply chain and merchandising | 100 | 1,000
+A catalog spanning fifty business areas | 1,000 | 10,000
+[end table]
+
+That is 15,000 questions in total, typed in plain language as a user would type them. None names an agent.
+
+The catalogs differ in how much their agents overlap. A university's agents sit well apart, and a retailer's supply chain agents share a great deal of ground. That difference decides how hard search is, and it is why we do not report a single number.
+
+
+## How often search finds the right agent
+
+Search returns the single best match or the two that are plausible, never more. So two numbers matter.
+
+[table]
+Catalog | Right agent first | Right agent among the first two
+A university | 91.0% | 96.8%
+A clinic group | 90.6% | 97.4%
+A software company's internal agents | 89.0% | 95.8%
+A large corporation's departments | 85.5% | 92.3%
+A retailer's supply chain and merchandising | 83.8% | 94.3%
+A catalog spanning fifty business areas | 85.5% | 92.2%
+[end table]
+
+The spread between catalogs is larger than the spread between any settings we tried: the easiest and the hardest are about seven points apart. What separates them is how distinct their agents are. You control that when you write your agents; search cannot fix it afterwards. Describing an agent covers what makes a description distinct.
+
+
+## Accuracy as the number of agents grows
+
+This is where selection by an LLM fails. A catalog of a thousand agents scores within a point of a catalog of a hundred. Adding agents does not make search worse. Adding agents that overlap does.
+
+
+## One answer or two
+
+When the best match is clearly ahead, search returns that one. When the top two are close, it returns both, and the client decides what to do with them.
+
+A single wrong answer is worse than two that include the right one, so we set the line by checking every single answer against a reviewer's judgment (see Limits of these numbers).
+
+[table]
+Catalog | Questions answered with one result | Of all questions, a single answer that was wrong
+A university | 80.8% | 0.6%
+A clinic group | 73.0% | 1.0%
+A software company's internal agents | 73.6% | 1.2%
+A large corporation's departments | 75.0% | 1.7%
+A retailer's supply chain and merchandising | 65.0% | 1.1%
+A catalog spanning fifty business areas | 64.6% | 0.6%
+[end table]
+
+
+## Returning no match when no agent fits
+
+A search that always answers is harmful, because the wrong agent will act. We test two kinds of question that should be turned away.
+
+Questions about something else entirely. "How to replace brake pads on a 2012 Honda Civic", asked of a university's catalog. These are refused 100% of the time.
+
+Questions about the customer's own world that no agent covers. Asking a university about appealing a parking ticket when nobody has built a parking agent. These are harder, because something in the catalog always looks close. They are refused 82% to 86% of the time, depending on the catalog.
+
+The second case is the one that matters in practice: people ask about the one thing nobody has built an agent for yet. How matching behaves covers what the user sees when search returns two agents, or none.
+
+
+## Speed and cost
+
+A search takes about 200 milliseconds in the cloud service, and a little over 200 milliseconds for a thousand agents. Search does not get slower as the catalog grows. End to end, a user can expect an answer in well under a second. The cloud service is served from the US East region today.
+
+Search calls no LLM, so it spends no tokens.
+
+
+## Across languages
+
+Search works on meaning, not words, so it handles other languages, and a question in one language against agents described in another. Accuracy in a non-English catalog is within about three points of English. Asking across two languages costs about three points more.
+
+
+## Limits of these numbers
+
+Every number above comes from catalogs we built, and a real catalog will differ. Read the numbers as a range: a well-separated catalog scores at the top, and a catalog full of near-duplicate agents at the bottom.
+
+### The numbers are likely lower than real use
+
+The test questions and their answer key were written by a language model and made hard on purpose. Many name something that belongs to one agent while asking for what another agent does. "What are the top drivers behind incident date by severity?" is marked for an insurance-claims agent, because "incident date" is one of its fields, though most people would want the incident-report agent.
+
+So we had every question where search's first choice differed from the key, about 2,000 of them, judged blind: the reviewer saw the question and the two agents' descriptions in random order. In about three cases out of four the key stood. In the rest, search's choice was as good or better. Counting those:
+
+[table]
+Catalog | Right agent first, as marked | As judged
+A university | 91.0% | 92.8%
+A clinic group | 90.6% | 92.0%
+A software company's internal agents | 89.0% | 91.7%
+A large corporation's departments | 85.5% | 87.8%
+A retailer's supply chain and merchandising | 83.8% | 87.0%
+A catalog spanning fifty business areas | 85.5% | 89.2%
+[end table]
+
+Real people ask what they mean, in their own words, and we expect search to do better on those. The fastest way to measure your own catalog is to add your own agents and ask your own questions.
+
+
+## Sources
+
+The statements about keyword search and about selection by an LLM rest on published research. We did not run those two methods on our catalogs.
+
+- G. W. Furnas, T. K. Landauer, L. M. Gomez and S. T. Dumais, "The vocabulary problem in human-system communication", Communications of the ACM, 1987. The study that named the vocabulary problem.
+- "RAG-MCP: Mitigating Prompt Bloat in LLM Tool Selection via Retrieval-Augmented Generation", arXiv 2505.03275, 2025. Measures how a model's tool selection falls when every tool description is in the prompt.
+- "LongFuncEval: Measuring the effectiveness of long context models for function calling", arXiv 2505.10570, 2025. Measures the drop in function calling as the number of tools increases.
+- "MTU-Bench: A Multi-granularity Tool-Use Benchmark for Large Language Models", arXiv 2410.11710, 2024. Reports declines in tool use as the number of tools increases.
