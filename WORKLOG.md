@@ -3301,3 +3301,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 ## 2026-11-27 Docs page "Tactet agents" renamed "Focused agents"
 - `gen/toc.py` title -> "Focused agents"; `docsrc/introduction/tactet-agents.html` text adjusted: opens "A Tactet agent is focused: it is built for one well-defined task."; "A focused agent has clear boundaries..."; "A focused agent does not:"; "Focused agents work together in a conversation." File name and URL unchanged (tactet-agents.html). Docs rebuilt: 147 pages, 0 missing.
 - Reported, not changed: docsrc/comparisons/langchain.html names "the Tactet agents page" twice in prose and once as a link text in its sources list.
+- Hero paragraph 2: "routes each request to the agent whose description fits" -> "routes each request to the right agent with high accuracy", "high accuracy" a hero link to docs/search/search-quality.html (Ram). Meta description and og:description follow. Not rendered.
