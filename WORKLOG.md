@@ -3293,3 +3293,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Looked at the whole hero at 1280 light and 375 dark; sweep clean. At 1280 paragraph 2 is now four lines (was three), the last being "a controlled runtime."
 - Hero text trimmed (Ram): paragraph 2 opens "Clients send requests to the platform."; paragraph 3 is now only "Agents share prompts and build on each other in a conversation." (the "manages everything behind the scenes and reports..." sentence and its reports link removed). Meta description and og:description follow: "Clients send requests, and semantic search routes each request...". Text-only; not rendered.
 - Hero paragraph 3: "conversation" is now a hero link to conversation.html. "Agents share prompts" in the same sentence also links there; reported. Not rendered.
+- Hero paragraph 3: "Agents share prompts" unlinked; only "conversation" links to conversation.html. Not rendered.
