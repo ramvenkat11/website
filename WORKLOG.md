@@ -3264,3 +3264,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Home #clients subtitle, first paragraph: added "An authorization token identifies the user." before "The rest is up to the client." Text-only; not rendered.
 - Home #clients heading: "Use agents where you already work" (Ram's pick; "Two calls, any client" rejected). Text-only; not rendered.
 - Home #clients REST API card line: "Call from other agent frameworks or applications" (Ram's wording, no full stop to match the other cards). Text-only; not rendered.
+- Home #clients REST API card line: "From other agent frameworks or applications" ("Call" dropped). Text-only; not rendered.
