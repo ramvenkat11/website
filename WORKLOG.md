@@ -3297,3 +3297,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Hero figure: the "Enterprise systems" and "LLMs" boxes and their connector arrows (`div.as-ext`) removed (Ram: they made sense only when the box was the agent server). aria-label last sentence removed. The `.as-ext*` rules in styles.css are now unused (left in place; reported). Looked at the whole hero at 1280 light and the figure at 375 dark; sweep clean.
 - Home #framework-runtime subtitle paragraph 2: "An agent is not a dynamic workflow that an LLM generates." removed (Ram); the paragraph now opens "An agent runs as Python code with LLM calls, and it must pass validation before it is published." Rest unchanged. Not rendered.
 - Hero paragraph 1: "publish AI agents" -> "publish focused AI agents", "focused" a hero link to docs/introduction/tactet-agents.html ("A Tactet agent is built for one well-defined task"). Meta description not changed (reported). Not rendered.
+
+## 2026-11-27 Docs page "Tactet agents" renamed "Focused agents"
+- `gen/toc.py` title -> "Focused agents"; `docsrc/introduction/tactet-agents.html` text adjusted: opens "A Tactet agent is focused: it is built for one well-defined task."; "A focused agent has clear boundaries..."; "A focused agent does not:"; "Focused agents work together in a conversation." File name and URL unchanged (tactet-agents.html). Docs rebuilt: 147 pages, 0 missing.
+- Reported, not changed: docsrc/comparisons/langchain.html names "the Tactet agents page" twice in prose and once as a link text in its sources list.
