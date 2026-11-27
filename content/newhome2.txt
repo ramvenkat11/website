@@ -1,1 +1,5 @@
-An agent is a set of function objects. Each function object contains an ordered map of command objects. The commands run in the order in which they are declared.
+Developers build, validate and publish AI agents in the built‑in development environment. They also describe when to use each agent in plain English.
+
+Users just chat with the platform. Semantic search routes each request to the agent whose description fits. The agent runs in a controlled runtime.
+
+Agents share prompts and build on each other in a conversation.

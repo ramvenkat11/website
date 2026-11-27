@@ -36,6 +36,7 @@
           <a class="navlink" href="runtime.html">Agent runtime</a>
           <a class="navlink" href="search.html">Search</a>
           <a class="navlink" href="conversation.html" aria-current="page">Conversation</a>
+          <a class="navlink" href="harness.html">Agent harness</a>
         </div>
       </details>
       <details class="nav-menu">
@@ -65,15 +66,48 @@
     </div>
   </section>
 
-  <section class="fw-sec fw-first" id="state">
+  <section class="fw-sec fw-first" id="example">
+    <div class="container">
+      <div class="section-head">
+        <h2>One conversation, two agents</h2>
+        <p>Users hold conversations from the UI, or from Slack and Teams with a <a href="docs/chat-integrations/index.html">bot</a>. In this example, a user books a trip and then files its expenses. Two independent agents do the work in a single conversation.</p>
+      </div>
+      <div id="conversations">
+        <div class="cv" aria-label="One conversation across two independent agents, with four notes. Search matches the first request to the Travel desk agent, which asks for confirmation before booking. The platform saves the conversation&rsquo;s state when the agent ends. A second request is matched to the Reimbursements agent, which continues the same conversation and files the trip expenses.">
+          <div class="cv-title">Conversation</div>
+          <div class="turn-user r2">Book my trip for Tuesday's all&#8209;day meeting in New York</div>
+          <aside class="cv-note r2"><b><a href="search.html">Discovery</a></b>Search matched the request to the Travel desk agent, and the UI ran it automatically. The UI can also be set to confirm with the user before running an agent. The request had no conversation ID, so a new, empty conversation started.</aside>
+          <div class="turn-agent r3">
+            <div class="msg ask" aria-label="The agent asks before booking"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>
+              <span class="q">UA1191 departs 06:00 Tuesday, back at 19:30, and a night at the Marriott near the office. $1,240. <b>Book it?</b></span>
+              <span class="opts"><i class="on">Book</i><i>Hold</i></span>
+              <span class="submit">Submit</span>
+            </div>
+          </div>
+          <aside class="cv-note r3"><b><a href="docs/commands/ask.html">Human in the loop</a></b>The agent&rsquo;s state is stored, and when the user answers, the agent continues from where it paused.</aside>
+          <div class="turn-agent r4">
+            <div class="msg"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>Booked UA1191 and the hotel night. The confirmation is in your inbox.</div>
+          </div>
+          <aside class="cv-note r4"><b><a href="#state">Conversation state</a></b>The Travel desk agent ended here, and the platform saved the conversation&rsquo;s state automatically: the variables and the prompts, which hold the LLM message thread in a model&#8209;neutral format.</aside>
+          <div class="turn-user r5">File the expenses for that trip</div>
+          <div class="turn-agent r6">
+            <div class="msg"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Reimbursements</span>Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
+          </div>
+          <aside class="cv-note r6"><b><a href="#follow-up">Building on each other</a></b>The request carried the conversation ID, so the platform restored the saved state first. Search then matched the follow&#8209;up to the Reimbursements agent, which continued the same prompt. To the Reimbursements agent&rsquo;s LLM, it looks like one continuous conversation that started with booking the&nbsp;trip.</aside>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fw-sec" id="state">
     <div class="container">
       <div class="section-head">
         <h2>What a conversation keeps</h2>
         <p>When an agent ends successfully, the platform saves the conversation&rsquo;s state automatically. The next run in the conversation, whether by the same agent or another, starts from that state.</p>
       </div>
       <div class="fw-text">
-        <p><b>The prompts.</b> A prompt is a data structure that maintains the message thread with an LLM in a standard format. An agent can use multiple prompts and each prompt has a name and scope.</p>
-        <p><b>The variables.</b> The conversation variables that every agent in the conversation can read and write, plus each agent&rsquo;s own variables. An agent stores information that later agents will need in a conversation variable.</p>
+        <p><b>The prompts.</b> A prompt is a data structure that maintains the message thread with an LLM in a standard format. The format is model&#8209;neutral, so the next agent can continue the same thread with a different model. An agent can use multiple prompts and each prompt has a name and scope.</p>
+        <p><b>The variables.</b> The conversation variables that every agent in the conversation can read and write, plus each agent&rsquo;s own variables. An agent stores information that later agents will need in a conversation variable. <a href="docs/agent-definition/variables.html">Conversation variables</a> give agents short&#8209;term memory, and the <a href="docs/commands/memory.html">memory command</a> gives them long&#8209;term memory.</p>
         <p>A conversation also keeps additional internal information that is used for other purposes, such as showing the conversation history and restoring an agent that is waiting for user input.</p>
       </div>
     </div>

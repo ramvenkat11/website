@@ -8,13 +8,20 @@ In Tactet, an agent does not call another agent directly. Instead, conversations
 A conversation is unique and belongs to one user. A conversation is encrypted and stored automatically when an agent runs successfully.
 
 
+## One conversation, two agents
+
+Users hold conversations from the UI, or from Slack and Teams with a bot. In this example, a user books a trip and then files its expenses. Two independent agents do the work in a single conversation.
+
+[figure: one conversation across two agents, with four notes. Discovery: search matches the first request to the Travel desk agent. Human in the loop: the agent asks before booking. Conversation state: the platform saves the state when the agent ends. Building on each other: the follow-up is matched to the Reimbursements agent, which continues the same prompt.]
+
+
 ## What a conversation keeps
 
 When an agent ends successfully, the platform saves the conversation’s state automatically. The next run in the conversation, whether by the same agent or another, starts from that state.
 
-The prompts. A prompt is a data structure that maintains the message thread with an LLM in a standard format. An agent can use multiple prompts and each prompt has a name and scope.
+The prompts. A prompt is a data structure that maintains the message thread with an LLM in a standard format. The format is model‑neutral, so the next agent can continue the same thread with a different model. An agent can use multiple prompts and each prompt has a name and scope.
 
-The variables. The conversation variables that every agent in the conversation can read and write, plus each agent’s own variables. An agent stores information that later agents will need in a conversation variable.
+The variables. The conversation variables that every agent in the conversation can read and write, plus each agent’s own variables. An agent stores information that later agents will need in a conversation variable. Conversation variables give agents short‑term memory, and the memory command gives them long‑term memory.
 
 A conversation also keeps additional internal information that is used for other purposes, such as showing the conversation history and restoring an agent that is waiting for user input.
 

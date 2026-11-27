@@ -447,6 +447,7 @@ def header(depth) -> str:
           <a class="navlink" href="{r}runtime.html">Agent runtime</a>
           <a class="navlink" href="{r}search.html">Search</a>
           <a class="navlink" href="{r}conversation.html">Conversation</a>
+          <a class="navlink" href="{r}harness.html">Agent harness</a>
         </div>
       </details>
       <details class="nav-menu">
@@ -550,7 +551,7 @@ def render_page(sslug, pslug, stitle, ptitle, body, prev, nxt, depth, descriptio
 
 SITE = "https://tactet.com"
 DEMO_MARKER = "data-s2o-demo="
-SITE_PAGES = ("", "development.html", "runtime.html", "search.html", "conversation.html", "demo-search.html", "demo-draft.html", "demo-trace.html", "demo-agents.html", "gettingstarted.html", "pricing.html", "why.html", "about.html",
+SITE_PAGES = ("", "development.html", "runtime.html", "search.html", "conversation.html", "harness.html", "demo-search.html", "demo-draft.html", "demo-trace.html", "demo-agents.html", "gettingstarted.html", "pricing.html", "why.html", "about.html",
               "legal/terms.html", "legal/privacy.html", "legal/license.html", "legal/intellectual.html")   # the sitemap
 
 

@@ -57,7 +57,7 @@ the work belongs on the user’s machine: their files, their spreadsheets, their
 
 ### Choose Tactet when
 
-the work reaches company systems. See the home page for why.
+the work reaches company systems. See Agent harness for why.
 
 
 ### Together

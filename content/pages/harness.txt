@@ -1,0 +1,69 @@
+Agent harness
+
+
+# Open your business workflows to Claude Code with one skill
+
+A business workflow reads or changes one or more company systems and takes an action that a user understands: check an order, open a ticket, approve an expense. In Tactet, each workflow is an agent that runs on your agent server.
+
+Conversations are one way for end users to use those agents. An agent harness, such as Claude Code, is another. Tactet‑skill connects the harness to every published agent. It works in any harness that supports the Agent Skills standard.
+
+
+## Two ways to open a workflow to a harness
+
+A skill for each workflow. The skill holds instructions that the model follows, or a script that the harness runs. Either way, the work reaches company systems from each user’s machine, through MCP servers, command-line tools or direct API calls.
+
+An agent for each workflow. A developer publishes the workflow once as a Tactet agent. Every harness reaches every agent through a single skill. The work reaches company systems from the agent server.
+
+[figure: two drawings side by side. Without Tactet: the harness on a user’s machine holds many skills and calls MCP servers, APIs and databases directly. With Tactet: the harness holds one skill and calls the agent server, which runs the agents and calls the APIs, databases and MCP servers.]
+
+
+## Anthropic recommends a script. Tactet centralizes it.
+
+A skill made of instructions is carried out by the model. The model writes each step, on every run, and each step and its result stay in the context.
+
+Anthropic recommends a script for work that must be the same every time, because a script is more reliable and costs fewer tokens than code the model writes during the task. But a script in a skill is copied to every machine, and it runs there with that person’s access.
+
+A Tactet agent is that script, kept in one place. It is validated before it is published, it is versioned, and it runs on the agent server.
+
+
+## Accuracy and cost
+
+High-quality search, at no token cost. There can be hundreds of workflows, and a harness has two ways to choose among them. The model can read every description, but a model’s accuracy drops sharply as the list grows. Or the harness can search the list first with keyword matching, such as regex or BM25, which matches words and not meaning. Tactet does neither. Its semantic search matches a request to an agent’s description by meaning, without calling an LLM. This is what lets a single Tactet‑skill replace a skill for each workflow. We test the search and publish the results: with 1,000 agents, the right agent came first for 85.5% of 10,000 questions and was among the first two for 92.2%.
+
+A small context. With a skill for each workflow, the harness context holds the skills, the tool definitions, the steps the model writes and every intermediate result. With Tactet, it holds Tactet‑skill and each agent’s result.
+
+Tokens only where the task needs them. Search uses no LLM. In an agent, API calls, database calls and flow control use no LLM either. Only an llm command spends tokens.
+
+A model for each step. In a harness, the steps run on the harness’s models. Claude Code, for example, can give a skill or a subagent a different model, but only a Claude model. In an agent, each llm command names the best or the cheapest model for its task, from any vendor or one that you host.
+
+
+## Security and maintenance
+
+Access is managed on the server. Not every person can have access to every company system. With a skill for each workflow, each user’s machine needs a route and a credential for every system that the skills reach. Agent gateways were created to solve this: a gateway sits between the harnesses and the company systems, handles the credentials, decides which user may call which tool, and records every call. Tactet takes the same place and also runs the agents. A user’s machine holds one revocable token for the agent server, and credentials for company systems stay in a secret vault.
+
+Which systems are called is decided when an agent is published. In a harness, the model decides at run time what to call, within that person’s access. A harness with Tactet‑skill can only choose which published agent runs.
+
+Every run is recorded. Tactet records who ran which agent, which version ran, how long it took, the result and the LLM cost. Session telemetry from a harness has to be collected separately.
+
+One skill to retest. A skill is a prompt, and Anthropic advises retesting skills when the model changes. With Tactet, a single skill is due a retest when the harness model changes. An agent’s own LLM steps stay on the models that its profiles name.
+
+Publish once. A new or corrected agent is available to every user on the next request. Nothing is installed on a user’s machine.
+
+
+## The harness still orchestrates
+
+The harness keeps doing what it does well. It splits a request into parts, runs Tactet agents alongside its local skills, and combines the results.
+
+For example: a Tactet agent returns inventory data as a CSV, and a local skill loads it into Excel and analyzes it, in one request.
+
+
+## How Tactet‑skill works
+
+Tactet‑skill makes two calls on your agent server. search takes the user’s request and returns the matching agents. execAgent runs the agent that the harness chooses and returns its output. When nothing matches, the harness answers as it normally would.
+
+Each user signs in with their own integration token, so every run appears under that user’s name.
+
+
+## Get started
+
+Tactet‑skill is on GitHub. See Skill integration in the documentation for installing it and adapting it to your company.

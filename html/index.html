@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tactet</title>
-<meta name="description" content="Tactet is a model-neutral agent platform for the enterprise. Developers build, validate and publish AI agents in the built-in development environment. Users just chat, and semantic search routes each request to the agent whose description fits.">
+<meta name="description" content="Tactet is a model-neutral agent platform for the enterprise. Developers build, validate and publish AI agents in the built-in development environment. Clients send requests, and semantic search routes each request to the agent whose description fits.">
 <meta property="og:title" content="Tactet">
-<meta property="og:description" content="Tactet is a model-neutral agent platform for the enterprise. Developers build, validate and publish AI agents in the built-in development environment. Users just chat, and semantic search routes each request to the agent whose description fits.">
+<meta property="og:description" content="Tactet is a model-neutral agent platform for the enterprise. Developers build, validate and publish AI agents in the built-in development environment. Clients send requests, and semantic search routes each request to the agent whose description fits.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://tactet.com/">
 <meta property="og:url" content="https://tactet.com/">
@@ -41,6 +41,7 @@
           <a class="navlink" href="runtime.html">Agent runtime</a>
           <a class="navlink" href="search.html">Search</a>
           <a class="navlink" href="conversation.html">Conversation</a>
+          <a class="navlink" href="harness.html">Agent harness</a>
         </div>
       </details>
       <details class="nav-menu">
@@ -66,17 +67,17 @@
     <div class="container">
       <div class="hero-head as-head">
         <h1 class="hero-claim">Model&#8209;neutral agent platform for the&nbsp;enterprise</h1>
-        <p class="hero-lead">Developers build, validate and publish AI&nbsp;agents in the built&#8209;in <a class="hero-attr hero-attr-long" href="development.html">development environment</a>. They also <a class="hero-attr" href="search.html#description">describe</a> when to use each agent in plain&nbsp;English.</p>
-        <p class="hero-lead">Users just chat with the platform. <a class="hero-attr" href="search.html">Semantic search</a> routes each request to the agent whose description&nbsp;fits. The agent runs in a <a class="hero-attr" href="runtime.html">controlled runtime</a>. Multiple agents build on each other in&nbsp;a&nbsp;<a class="hero-attr" href="conversation.html">conversation</a>.</p>
-        <p class="hero-lead">The platform handles all the plumbing and records every agent run for&nbsp;<a class="hero-attr" href="docs/reports/index.html">observability</a>.</p>
+        <p class="hero-lead">Developers build, validate and publish AI&nbsp;agents in the built&#8209;in <a class="hero-attr hero-attr-long" href="development.html">development environment</a>. They also describe when to use each agent in <a class="hero-attr" href="search.html#description">plain&nbsp;English</a>.</p>
+        <p class="hero-lead">Clients send requests to the&nbsp;platform. <a class="hero-attr" href="search.html">Semantic search</a> routes each request to the agent whose description&nbsp;fits. The agent runs in a <a class="hero-attr" href="runtime.html">controlled runtime</a>.</p>
+        <p class="hero-lead"><a class="hero-attr hero-attr-long" href="conversation.html">Agents share prompts</a> and build on each other in&nbsp;a&nbsp;<a class="hero-attr" href="conversation.html">conversation</a>.</p>
       </div>
-      <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example Inventory, which reports inventory stock levels by part and site, and Purchasing, which raises purchase orders with approved suppliers. The Tactet agent platform holds hundreds of agents. Users converse with it: a first request, Is part 7731 in stock in Berlin?, is matched to Inventory, which answers Berlin has 42 units of part 7731, below its reorder point of 60. A follow-up, Reorder the part, is matched to Purchasing, which answers Done. PO-5519 orders 18 units of part 7731 for Berlin. Below the platform, arrows lead from it to enterprise systems and LLMs, which the agents call.">
+      <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example Inventory, which reports inventory stock levels by part and site, and Purchasing, which raises purchase orders with approved suppliers. The Tactet agent platform holds hundreds of agents. Clients send requests to it: a first request, Is part 7731 in stock in Berlin?, is matched to Inventory, which answers Berlin has 42 units of part 7731, below its reorder point of 60. A follow-up, Reorder the part, is matched to Purchasing, which answers Done. PO-5519 orders 18 units of part 7731 for Berlin. Below the platform, arrows lead from it to enterprise systems and LLMs, which the agents call.">
         <div class="as-side as-dev">
           <div class="as-actor"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 4-4 16"/></svg></span><span class="nm">Developers</span></div>
           <i class="rail"></i>
         </div>
         <div class="as-side as-user">
-          <div class="as-actor"><span class="nm">Users</span><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span></div>
+          <div class="as-actor"><span class="nm">Clients</span><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></span></div>
           <i class="rail"></i>
         </div>
         <div class="as-srv" aria-hidden="true"></div>
@@ -105,12 +106,12 @@
   <section class="section" id="framework-runtime">
     <div class="container">
       <div class="section-head center">
-        <h2>An agent framework built for AI&#8209;assisted&nbsp;development</h2>
-        <p>An agent is written in <a href="development.html#first-agent">JSON with Python&nbsp;expressions</a>. Systems and prompts are defined outside the agent&rsquo;s code: APIs, databases, MCP servers and LLMs in platform-wide <a href="docs/profiles/overview.html">profiles</a>, and <a href="docs/agent-definition/prompts.html">prompts</a> in each agent&rsquo;s&nbsp;meta.</p>
-        <p>The UI includes a complete <a href="development.html#environment">development environment</a> for agents. You can tell <a href="docs/development/draft-with-ai.html">Draft with AI</a> what the agent should do, refine the generated agent in the <a href="docs/development/code-editor.html">schema&#8209;aware code editor</a>, then <a href="docs/development/trace-and-validation.html">trace and validate</a> it before <a href="docs/development/publishing.html">publishing</a>.</p>
+        <h2>Agents written like a skill, validated like&nbsp;software</h2>
+        <p>Describe what an agent should do in plain English, and <a href="docs/development/draft-with-ai.html">Draft with AI</a> writes&nbsp;it. The result is structured <a href="development.html#first-agent">JSON with Python&nbsp;expressions</a>, so developers can refine it in the <a href="docs/development/code-editor.html">schema&#8209;aware code&nbsp;editor</a>.</p>
+        <p>An agent is not a dynamic workflow that an LLM generates. It runs as Python code with LLM calls, and it must pass <a href="docs/development/trace-and-validation.html">validation</a> before it is <a href="docs/development/publishing.html">published</a>. <a href="docs/profiles/overview.html">Profiles</a> define enterprise systems and LLMs outside the agent, so dev and prod can&nbsp;differ. <a href="docs/agent-definition/prompts.html">Prompts</a> change without a new&nbsp;version.</p>
       </div>
-      <div class="fr" aria-label="The structure of an agent and the 20 commands. The structure is shown as a JSON outline with a label beside each level. An agent is a set of functions. The outline has two functions, main and order_status. Every run starts in main. The order_status function runs when it is called from main. Each function holds commands that run in the order they are declared: api, var and llm in main, and db and return in order_status. The var command is shown in full: it sets avg to numpy.mean([1, 2, 3]), a Python expression that uses the NumPy package and is limited to your allowlist. Beside the outline is a list headed Commands. The 20 commands are in eight groups: Variables, Flow control, LLM interaction, External systems, Human-in-the-loop, Agent output, Agent termination, Observability.">
-        <div class="fr-map"><span class="fr-map-t">Agent structure</span>
+      <div class="fr" aria-label="The structure of an agent and the 20 commands. An agent is written in JSONC with Python expressions. The structure is shown as a JSONC outline with a label beside each level. An agent is a set of functions. The outline has two functions, main and order_status. Every run starts in main. The order_status function runs when it is called from main. Each function holds commands that run in the order they are declared: api, var and llm in main, and db and return in order_status. The var command is shown in full: it sets avg to numpy.mean([1, 2, 3]), a Python expression that uses the NumPy package and is limited to your allowlist. Beside the outline is a list headed Commands. The 20 commands are in eight groups: Variables, Flow control, LLM interaction, External systems, Human-in-the-loop, Agent output, Agent termination, Observability.">
+        <div class="fr-map"><span class="fr-map-t">Agent example</span>
           <div class="fr-body">
             <div class="fr-out">
               <div class="fr-lines">
@@ -157,95 +158,50 @@
       <p class="hero-caption"><a href="demo-draft.html">Demo: Draft an agent with AI</a></p>
     </div>
   </section>
-  <section class="section soft" id="conversations">
+  <section class="section" id="clients">
     <div class="container">
       <div class="section-head center">
-        <h2>Conversations let agents build on each&nbsp;other</h2>
-        <p>Users hold conversations from the UI, or from Slack and Teams with a <a href="docs/chat-integrations/index.html">bot</a>. The LLM message thread is stored in a model-neutral format, so the next agent can continue the same thread with a different model. <a href="docs/agent-definition/variables.html">Conversation variables</a> give agents short-term memory, and the <a href="docs/commands/memory.html">memory command</a> gives them long-term&nbsp;memory.</p>
+        <h2>Use agents where you already&nbsp;work</h2>
+        <p>Every client uses the same two calls: <code>search</code> finds the right agent, and <code>execAgent</code> runs&nbsp;it. An authorization token identifies the&nbsp;user. The rest is up to the&nbsp;client.</p>
+        <p>A client can run the best match automatically or let the user choose. It can also use an LLM to split a request into parts and search for each part separately, as an agent harness&nbsp;does.</p>
       </div>
-      <div class="cv" aria-label="One conversation across two independent agents, with four notes. Search matches the first request to the Travel desk agent, which asks for confirmation before booking. The platform saves the conversation context when the agent ends. A second request is matched to the Reimbursements agent, which continues the same conversation and files the trip expenses.">
-        <div class="cv-title">Conversation</div>
-        <div class="turn-user r2">Book my trip for Tuesday's all&#8209;day meeting in New York</div>
-        <aside class="cv-note r2"><b><a href="search.html">Discovery</a></b>Search matched the request to the Travel desk agent, and the UI ran it automatically. The UI can also be set to confirm with the user before running an agent. The request had no conversation ID, so a new, empty conversation started.</aside>
-        <div class="turn-agent r3">
-          <div class="msg ask" aria-label="The agent asks before booking"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>
-            <span class="q">UA1191 departs 06:00 Tuesday, back at 19:30, and a night at the Marriott near the office. $1,240. <b>Book it?</b></span>
-            <span class="opts"><i class="on">Book</i><i>Hold</i></span>
-            <span class="submit">Submit</span>
-          </div>
-        </div>
-        <aside class="cv-note r3"><b><a href="docs/commands/ask.html">Human in the loop</a></b>The agent&rsquo;s state is stored, and when the user answers, the agent continues from where it paused.</aside>
-        <div class="turn-agent r4">
-          <div class="msg"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Travel desk</span>Booked UA1191 and the hotel night. The confirmation is in your inbox.</div>
-        </div>
-        <aside class="cv-note r4"><b><a href="conversation.html#state">Conversation context</a></b>The Travel desk agent ended here, and the platform saved the conversation context automatically: the agent&rsquo;s variables and its LLM message thread, which is stored in a model&#8209;neutral format.</aside>
-        <div class="turn-user r5">File the expenses for that trip</div>
-        <div class="turn-agent r6">
-          <div class="msg"><span class="by"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>Reimbursements</span>Filed the New York trip, $1,240, against your cost center. Sent to your manager for approval.</div>
-        </div>
-        <aside class="cv-note r6"><b><a href="docs/agent-execution/building-on-each-other.html">Building on each other</a></b>The request carried the conversation ID, so the platform restored the saved context first. Search then matched the follow&#8209;up to the Reimbursements agent, which continued the LLM message thread. To the Reimbursements agent&rsquo;s LLM, it looks like one continuous conversation that started with booking the&nbsp;trip.</aside>
-      </div>
-      <p class="hero-caption"><a href="demo-trace.html">Demo: Trace an agent run</a></p>
-    </div>
-  </section>
-  <section class="section" id="agent-harness">
-    <div class="container">
-      <div class="section-head center">
-        <h2>Agent harness as the&nbsp;orchestrator</h2>
-        <p>Conversations are one way to use Tactet agents. An agent harness, such as Claude&nbsp;Code, is another. <a href="https://github.com/tactet-ai/tactet-skill" target="_blank" rel="noopener">Tactet&#8209;skill</a> connects the harness to every published agent. The harness splits a request into parts, runs Tactet agents alongside its local skills, and combines the results. Each agent runs on the agent server, inside your organization.</p>
-      </div>
-      <div class="hx" aria-label="Two ways for an agent harness to carry out company workflows. Without Tactet, the agent harness on the user&rsquo;s machine calls APIs, databases and MCP servers on the server machines directly. Its context holds many skills, the MCP tool definitions, the generated workflow, the intermediate results and the result. With Tactet, the agent harness on the user&rsquo;s machine calls the agent server, which runs on the server machines and calls the APIs, databases and MCP servers there. The harness context holds the Tactet skill and the result. Beside each drawing is a list of points, in the same order on both sides.">
-        <div class="hx-side">
-          <h3>Agent harness without&nbsp;Tactet</h3>
-          <div class="hx-path" aria-hidden="true"><span class="hx-zone"><b><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9z"/><path d="M2 19h20"/></svg>User&rsquo;s machine</b><span class="hx-zc"><span class="hx-n">Agent harness</span></span></span><span class="hx-fan is-cross"><svg viewBox="0 0 26 60" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.6"><path vector-effect="non-scaling-stroke" d="M0 30C13 30 13 9 26 9M0 30H26M0 30C13 30 13 51 26 51"/></svg></span><span class="hx-zone"><b><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>Server machines</b><span class="hx-zc"><span class="hx-sys"><i>APIs</i><i>Databases</i><i>MCP&nbsp;servers</i></span></span></span></div>
-          <div class="hx-win">
-            <span class="hx-win-t">Harness context</span>
-            <span class="hx-toks"><span class="hx-b">Many skills</span><span class="hx-b">MCP tool definitions</span><span class="hx-b">Generated workflow</span><span class="hx-b">Intermediate results</span><span class="hx-b">Result</span></span>
-          </div>
-          <ul class="hx-facts">
-            <li class="hx-h">Accuracy and cost</li>
-            <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Tool selection accuracy degrades sharply as the number of tools&nbsp;grows</span></li>
-            <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Context rot from tool schemas, generated workflows and intermediate&nbsp;results</span></li>
-            <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Tokens are spent on tool selection and generating the&nbsp;workflow</span></li>
-            <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Every step runs on the same&nbsp;model</span></li>
-            <li class="hx-h">Security and maintenance</li>
-            <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>The model decides which enterprise systems are called at run&nbsp;time</span></li>
-            <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Credentials for enterprise systems are included on each user&rsquo;s&nbsp;machine</span></li>
-            <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Session telemetry needs to be recorded&nbsp;separately</span></li>
-            <li><svg class="hx-no" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg><span>Every skill needs a retest when the harness model&nbsp;changes</span></li>
-          </ul>
-        </div>
-        <div class="hx-side is-tactet">
-          <h3>Agent harness with&nbsp;Tactet</h3>
-          <div class="hx-path" aria-hidden="true"><span class="hx-zone"><b><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v9z"/><path d="M2 19h20"/></svg>User&rsquo;s machine</b><span class="hx-zc"><span class="hx-n">Agent harness</span></span></span><span class="hx-to is-cross"></span><span class="hx-zone"><b><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>Server machines</b><span class="hx-zc"><span class="hx-n is-srv">Agent server</span><span class="hx-fan"><svg viewBox="0 0 26 60" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.6"><path vector-effect="non-scaling-stroke" d="M0 30C13 30 13 9 26 9M0 30H26M0 30C13 30 13 51 26 51"/></svg></span><span class="hx-sys"><i>APIs</i><i>Databases</i><i>MCP&nbsp;servers</i></span></span></span></div>
-          <div class="hx-win">
-            <span class="hx-win-t">Harness context</span>
-            <span class="hx-toks"><span class="hx-b">Tactet skill</span><span class="hx-b">Result</span></span>
-          </div>
-          <ul class="hx-facts">
-            <li class="hx-h">Accuracy and cost</li>
-            <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span><a href="docs/search/search-quality.html">Search accuracy</a> does not degrade with the number of&nbsp;agents</span></li>
-            <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>The harness context holds only the end&nbsp;result</span></li>
-            <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>LLMs are called only where the task needs&nbsp;them</span></li>
-            <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Each agent uses the best or the cheapest model for its&nbsp;task</span></li>
-            <li class="hx-h">Security and maintenance</li>
-            <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>The enterprise systems called by an agent are defined at the time it is&nbsp;published</span></li>
-            <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Credentials are managed centrally in a secret&nbsp;vault</span></li>
-            <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>Every agent run is recorded, including its LLM&nbsp;cost</span></li>
-            <li><svg class="hx-yes" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg><span>A single Tactet skill needs a retest when the harness model&nbsp;changes</span></li>
-          </ul>
-        </div>
+      <div class="ways">
+        <article class="way">
+          <svg class="hn-pic" viewBox="0 0 200 96" aria-hidden="true"><rect class="f" x="14" y="8" width="172" height="80" rx="8"/><path class="s" d="M14 24h172"/><circle class="d" cx="25" cy="16" r="2.5"/><circle class="d" cx="34" cy="16" r="2.5"/><circle class="d" cx="43" cy="16" r="2.5"/><rect class="n" x="92" y="33" width="82" height="16" rx="8"/><rect class="c" x="26" y="58" width="104" height="20" rx="8"/><path class="s" d="M36 65h70M36 71h46"/></svg>
+          <h3>Browser chat</h3>
+          <p>Built into the Tactet&nbsp;UI, or a UI of your&nbsp;own</p>
+          <a class="way-link" href="demo-search.html">Demo: Chat with agents</a>
+        </article>
+        <article class="way">
+          <svg class="hn-pic" viewBox="0 0 200 96" aria-hidden="true"><rect class="f" x="14" y="8" width="172" height="80" rx="8"/><path class="s" d="M58 8v80"/><path class="s" d="M24 24h24M24 36h18M24 48h22M24 60h16"/><rect class="n" x="70" y="22" width="22" height="22" rx="6"/><circle class="wd" cx="77" cy="32" r="2"/><circle class="wd" cx="85" cy="32" r="2"/><path class="w" d="M77 38h8"/><path class="s" d="M81 22v-5"/><circle class="d" cx="81" cy="15" r="2"/><rect class="c" x="100" y="22" width="74" height="26" rx="8"/><path class="s" d="M110 31h52M110 39h34"/><rect class="c" x="70" y="58" width="104" height="18" rx="8"/><path class="s" d="M80 67h40"/></svg>
+          <h3>Chat apps</h3>
+          <p>Slack, Teams and others, through a&nbsp;bot</p>
+          <a class="way-link" href="docs/chat-integrations/index.html">Chat integrations</a>
+        </article>
+        <article class="way">
+          <svg class="hn-pic" viewBox="0 0 200 96" aria-hidden="true"><rect class="n" x="14" y="8" width="172" height="80" rx="8"/><circle class="wd" cx="25" cy="18" r="2.5"/><circle class="wd" cx="34" cy="18" r="2.5"/><circle class="wd" cx="43" cy="18" r="2.5"/><path class="w" d="m26 36 7 6-7 6"/><path class="w" d="M40 48h44"/><path class="wl" d="M26 62h96M26 72h64"/></svg>
+          <h3>Agent harness</h3>
+          <p>Claude&nbsp;Code and others, with Tactet&#8209;skill</p>
+          <a class="way-link" href="harness.html">Agent harness</a>
+        </article>
+        <article class="way">
+          <svg class="hn-pic" viewBox="0 0 200 96" aria-hidden="true"><rect class="f" x="14" y="26" width="62" height="44" rx="8"/><path class="s" d="M38 38c-5 0-3 10-8 10 5 0 3 10 8 10M52 38c5 0 3 10 8 10-5 0-3 10-8 10"/><path class="s" d="M84 42h34"/><path class="s" d="m112 37 6 5-6 5"/><path class="s" d="M118 56H84"/><path class="s" d="m90 51-6 5 6 5"/><rect class="n" x="126" y="20" width="60" height="24" rx="6"/><rect class="n" x="126" y="52" width="60" height="24" rx="6"/><circle class="wd" cx="138" cy="32" r="2.5"/><circle class="wd" cx="138" cy="64" r="2.5"/><path class="wl" d="M150 32h24M150 64h24"/></svg>
+          <h3>REST API</h3>
+          <p>From other agent frameworks or&nbsp;applications</p>
+          <a class="way-link" href="docs/rest-api/overview.html">REST API</a>
+        </article>
       </div>
     </div>
   </section>
   <section class="section soft" id="user-interfaces">
     <div class="container">
       <div class="section-head center">
-        <h2>How the platform fits in your&nbsp;organization</h2>
-        <p>The platform has three parts: a stateless agent server and a UI that run in your organization, and a cloud service that provides state, search and reporting. <code>pip</code> installs the agent server and the UI together. Each can also be installed separately <a href="docs/getting-started/registering-and-downloading.html#to-install-from-the-source">from the source</a>. The agent server can run standalone or in a cluster. The cloud service can be shared or&nbsp;dedicated.</p>
+        <h2>Stateless agent servers scale horizontally and stay in&nbsp;sync</h2>
+        <p>An agent server is <a href="docs/introduction/parts-of-the-system.html">stateless</a>: the cloud service provides state, search and&nbsp;reporting. Run one agent server or several in a <a href="docs/system-management/agent-servers.html">cluster</a>, and any agent server can serve any&nbsp;request.</p>
+        <p>A newly published agent, or a change to a profile or to the configuration, is <a href="docs/runtime/overview.html#how-a-change-reaches-every-agent-server">live on the next agent run</a> on every agent&nbsp;server.</p>
       </div>
       <div class="ui-fig">
-      <aside class="arch cc-arch hero-arch" aria-label="The Tactet agent platform has three parts: an agent server and a UI in your organization, and a cloud service, which is shared or dedicated. The three are drawn in the same dark colour. A browser running the UI, used by users, developers and admins, Slack or Teams, Claude Code and your own REST client send requests to the Tactet agent server in your organization, which runs standalone or as a cluster. The agent server is stateless and horizontally scalable, and agents run in sync. The agent server runs the agents and calls enterprise systems and local LLMs inside the enterprise, and external LLMs outside it. The agent server keeps no state: an encrypted link connects it to the cloud service, which provides state, search and reports.">
+      <aside class="arch cc-arch hero-arch" aria-label="The Tactet agent platform has three parts: an agent server and a UI in your organization, and a cloud service, which is shared or dedicated. The three are drawn in the same dark colour. A browser running the UI, used by users, developers and admins, Slack or Teams, Claude Code and your own REST client send requests to the Tactet agent server in your organization, which runs standalone or as a cluster. Under the agent server are two links, pip and GitHub, to the two ways of installing it. The agent server runs the agents and calls enterprise systems and local LLMs inside the enterprise, and external LLMs outside it. The agent server keeps no state: an encrypted link connects it to the cloud service, which provides state, search and reports.">
           <div class="arch-flow">
             <div class="arch-org">
             <span class="arch-org-lbl">Your organization</span>
@@ -260,7 +216,7 @@
             <div class="cc-main">
               <div class="arch-node cc-server">
                 <div class="cc-server-head"><span class="cc-cluster" aria-hidden="true"><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></i><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></i><i class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="8" x="2" y="2" rx="2" ry="2"/><rect width="20" height="8" x="2" y="14" rx="2" ry="2"/><line x1="6" x2="6.01" y1="6" y2="6"/><line x1="6" x2="6.01" y1="18" y2="18"/></svg></i></span><strong>Agent server cluster</strong></div>
-                <span class="cc-server-links"><a href="docs/introduction/parts-of-the-system.html">Stateless</a><i class="sep">&nbsp;&middot; </i><a href="docs/system-management/agent-server-sizing.html">Horizontally&nbsp;scalable</a><i class="sep">&nbsp;&middot; </i><a href="docs/runtime/overview.html">Agents&nbsp;run&nbsp;in&nbsp;sync</a></span>
+                <span class="cc-server-links"><a href="docs/getting-started/registering-and-downloading.html#install">pip</a><i class="sep">&nbsp;&middot; </i><a href="docs/getting-started/registering-and-downloading.html#to-install-from-the-source">GitHub</a></span>
               </div>
               <div class="arch-sys">
                 <div class="arch-branch"><div class="arch-node"><i class="sys-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></i><strong><a href="docs/profiles/overview.html">Enterprise systems</a></strong><span><a href="docs/profiles/api-profiles.html">APIs</a><i class="sep">&nbsp;&middot; </i><a href="docs/profiles/db-profiles.html">Databases</a><i class="sep">&nbsp;&middot; </i><a href="docs/profiles/mcp-servers.html">MCP&nbsp;servers</a></span></div></div>
@@ -304,23 +260,23 @@
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M17.5 13.5a6.5 6.5 0 0 1 4 6.5"/></svg></div>
-          <h3>Multi-user access</h3>
+          <h3>Identity &amp; access</h3>
           <p><a href="docs/system-management/users-and-roles.html">Four roles</a>: users, developers, administrators and owners. <a href="docs/system-management/service-accounts.html">Service accounts</a> for bots and scripts. Built-in <a href="docs/system-management/authentication.html">authentication</a> as well as <a href="docs/system-management/single-sign-on.html">single sign&#8209;on</a>.</p>
         </article>
         <article class="pcard">
-          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="m10 12.5-2 2.5 2 2.5M14 12.5l2 2.5-2 2.5"/></svg></div>
-          <h3>Source available</h3>
-          <p>Everything that runs in your organization can be built from the source: the <a href="https://github.com/tactet-ai/agent-server" target="_blank" rel="noopener">agent server</a> and the <a href="https://github.com/tactet-ai/ui" target="_blank" rel="noopener">UI</a>. Set the <a href="docs/system-management/agent-servers.html#what-a-configuration-sets">logging configuration</a> to see every call to the cloud service.</p>
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M2 12h6.5M15.5 12H22"/></svg></div>
+          <h3>Change control</h3>
+          <p>Agents are <a href="docs/development/publishing.html#versions">versioned</a>. An <a href="docs/system-management/audit-log.html">audit trail</a> shows every change to agents and configuration. A change is live on the <a href="docs/runtime/overview.html#how-a-change-reaches-every-agent-server">next agent run</a> on every server, without a&nbsp;restart.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/></svg></div>
           <h3>Multiple environments</h3>
-          <p>An agent refers to enterprise systems by <a href="docs/profiles/overview.html">profile name</a>. <a href="docs/security/multiple-environments.html">Dev and prod</a> profiles point at their own systems, so the same agent runs unchanged.</p>
+          <p>An agent refers to enterprise systems by <a href="docs/profiles/overview.html">profile name</a>. <a href="docs/security/multiple-environments.html">Dev and prod</a> profiles can point at their own systems, so the same agent runs unchanged.</p>
         </article>
         <article class="pcard">
-          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="5" height="8" rx="1"/><rect x="9.5" y="3" width="5" height="8" rx="1"/><rect x="17" y="3" width="5" height="8" rx="1"/><path d="M2 18h20"/><path d="m18 14 4 4-4 4"/><path d="m6 14-4 4 4 4"/></svg></div>
-          <h3>Horizontally scalable</h3>
-          <p>Agent servers are stateless and can be run in a <a href="docs/system-management/agent-servers.html">cluster</a>. Configuration and profile changes are <a href="docs/runtime/overview.html#how-a-change-reaches-every-agent-server">live on the next agent run</a> on every server, without a restart.</p>
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-5 3 3 5-7"/></svg></div>
+          <h3>Observability</h3>
+          <p>Every agent run is <a href="docs/reports/index.html">recorded</a>. Reports show <a href="docs/reports/performance.html">agent performance</a>, <a href="docs/reports/errors.html">errors</a>, <a href="docs/reports/cost.html">LLM cost</a> and <a href="docs/reports/usage.html">usage</a>. Reports break down by published version, so a regression stands&nbsp;out.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 4-4 16"/></svg></div>
