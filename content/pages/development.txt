@@ -37,7 +37,7 @@ This agent answers questions about orders. Its function getOrder looks up one or
 
 ## Systems and prompts are defined outside the agent
 
-An agent names the systems it calls and the prompts it sends. The connection details are in platform-wide profiles, and the text of each prompt is in the agent’s meta. This agent lists a user’s open IT tickets and has a model say where each one stands.
+An agent names the systems it calls and the prompts it sends. The connection details are in platform-wide profiles, and the text of each prompt is in the agent’s meta. In Tactet, a prompt also keeps the message history of its exchange with the model. This agent lists a user’s open IT tickets and has a model say where each one stands.
 
 [figure: A complete agent beside the three things it names]
 

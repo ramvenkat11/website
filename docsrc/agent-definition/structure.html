@@ -20,7 +20,7 @@
 
 <!--figure:agent-structure-->
 <h2>Definition and agent meta</h2>
-<p>An agent has two parts. The <strong>definition</strong> is the JSON above: its functions and their commands. The <strong>agent meta</strong> is everything else that belongs to the agent: its title, tag, run limits, <a href="prompts.html">prompts</a> and <a href="const.html">const</a>. The meta is edited in the same <a href="../development/drafts.html">draft</a> as the definition, validated with it and published with it, but it is not written in the definition. A publish that changes only the meta keeps the agent's version; see <a href="../development/publishing.html">Publishing</a>.</p>
+<p>An agent has two parts. The <strong>definition</strong> is the JSON above: its functions and their commands. The <strong>agent meta</strong> is everything else that belongs to the agent: its title, tag, run limits, <a href="prompts.html">prompts</a> and <a href="const.html">const</a>. A prompt holds a system text and a user text, and it also keeps the message history of its exchange with the model. The meta is edited in the same <a href="../development/drafts.html">draft</a> as the definition, validated with it and published with it, but it is not written in the definition. A publish that changes only the meta keeps the agent's version; see <a href="../development/publishing.html">Publishing</a>.</p>
 
 <h2>Commands are keys</h2>
 <p>Each command is a key-value pair. The key is the command name and the value carries the command's fields: an object for most commands, a single value for simple ones such as <code>progress</code> or <code>return</code>. Commands run in the order they are written.</p>
