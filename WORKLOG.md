@@ -3341,3 +3341,9 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Docs rebuilt: 147 pages, 0 missing. Not rendered (text only).
 - Ram: fine to say in several places that a Tactet prompt also includes the message history. Added one sentence at the three early mentions that come before the definition: docs "Your first agent" (with a link to the Prompts page), docs "Agent structure", and the Development site page (+ development.txt): "In Tactet, a prompt also keeps the message history of its exchange with the model." Docs rebuilt (147 pages). Home subtitle left as it is. Not rendered.
 - Home #framework-runtime subtitle paragraph 2, last sentence (Ram's wording, "the" added): "Prompts also live outside the agent definition, so they can change without publishing a new version." Not rendered.
+
+## 2026-11-27 Command groups: Long-term memory; External systems above LLM interaction
+- Ram: `memory` gets its own group "Long-term memory"; External systems moves above LLM interaction so llm, memory and ask sit together. New order: Variables, Flow control, External systems, LLM interaction (llm), Long-term memory (memory), Human-in-the-loop, Agent output, Agent termination, Observability.
+- Changed: the command list in the home figure (`html/index.html` #framework-runtime) and the same figure on `html/development.html` (#commands), both aria-labels ("nine groups", new order); `gen/toc.py` (Command reference order and group name), docs rebuilt (147 pages; sidebar and commands index follow).
+- Not changed, reported: `docsrc/development/code-editor.html` table lists the groups the product's editor shows (memory under LLM interaction, External systems after it); that follows ui1. `docsrc/agent-definition/commands.html` summary sentence does not name memory.
+- Looked at: home figure at 1280 light and 375 dark; development figure at 1280 light; sweeps clean.
