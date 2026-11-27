@@ -3347,3 +3347,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Changed: the command list in the home figure (`html/index.html` #framework-runtime) and the same figure on `html/development.html` (#commands), both aria-labels ("nine groups", new order); `gen/toc.py` (Command reference order and group name), docs rebuilt (147 pages; sidebar and commands index follow).
 - Not changed, reported: `docsrc/development/code-editor.html` table lists the groups the product's editor shows (memory under LLM interaction, External systems after it); that follows ui1. `docsrc/agent-definition/commands.html` summary sentence does not name memory.
 - Looked at: home figure at 1280 light and 375 dark; development figure at 1280 light; sweeps clean.
+- `docsrc/development/code-editor.html` group table updated to the same order and the new "Long-term memory" group (Ram changed the agent schema in the cloud, which the UI's list is generated from). Docs rebuilt.
