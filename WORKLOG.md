@@ -3355,3 +3355,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Home #framework-runtime paragraph 2, profiles sentence (Ram's wording, comma added): "An agent refers to enterprise systems by profile names, so it can run unchanged in dev and prod." "profile" links to docs/profiles/overview.html; "and LLMs" is no longer said. Not rendered.
 - Home #framework-runtime paragraph 2, last sentence shortened (Ram): "Prompts also live outside the definition and change without a new version." Not rendered.
 - Home #framework-runtime paragraph 1: sentences 2 and 3 combined (Ram): "The AI understands the agent language: twenty commands, written as structured JSON with Python expressions that can call any function on your allowlist." Not rendered.
+- Home #framework-runtime paragraph 1: "The AI understands" -> "It understands" (Ram). To keep "It" from reading as the agent, sentence 1 now ends "writes the agent" where it ended "writes it". Not rendered.
