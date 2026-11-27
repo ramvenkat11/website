@@ -3242,3 +3242,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 
 ## 2026-11-27 Home platform card: Horizontally scalable -> Observability
 - `html/index.html` #platform, fifth card: now "Observability" (line chart icon). Text from docs/reports: every run recorded (agent, version, user, result, duration, LLM cost); reports for performance, errors, cost, usage by user, each linked. The hero figure still says "Horizontally scalable" under the agent server. Not rendered (text and icon swap). Local only.
+- Ram's wording applied to the Observability card: "Every agent run is recorded. Reports show agent performance, errors, LLM cost and usage by user." Same five links. The card is now shorter than its neighbours; not rendered.
