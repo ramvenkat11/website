@@ -3245,3 +3245,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Ram's wording applied to the Observability card: "Every agent run is recorded. Reports show agent performance, errors, LLM cost and usage by user." Same five links. The card is now shorter than its neighbours; not rendered.
 - Observability card: third sentence added, "Agent reports break down by published version." Measured line counts of the six platform cards: Observability is 4 lines at 1440, 1280 and 1100, matching its neighbours. "Source available" is 5 lines at those widths (reported, not changed).
 - Observability card, Ram's wording: "Every agent run is recorded. Reports show agent performance, errors, LLM cost and usage. Reports break down by published version, so a regression stands out." ("a" added). Measured: 4 lines at 1440, 1280, 1100; 5 at 700 and 375.
+
+## 2026-11-27 Home platform card: Source available -> Change control (text rejected)
+- `html/index.html` #platform third card is now "Change control" (commit-node icon): "Each change to an agent is published as a new version. Developers' drafts are merged by fixed rules. The audit log records who changed what." Links: publishing#versions, publishing#how-the-merge-works, audit-log. Four lines at 1440/1280/1100; all six cards equal height at 1280. No rollback claim (the feature does not exist).
+- Ram: "bad content." Text awaits his direction; the card and icon are in place. The Source available card can be restored with `git checkout`-free copy from HEAD if he wants it back.
