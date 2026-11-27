@@ -3256,3 +3256,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Home #clients REST API card line: "Call agents from other agents or applications" -> "From other agents or applications" (Ram's wording). Text-only; not rendered.
 - Home #clients REST API card line is now "Call from other agent frameworks" (Ram's wording; "applications" dropped). Text-only; not rendered.
 - Home #clients Browser chat card line: "Built into the Tactet UI, or a UI of your own" (Ram: also say a custom UI is easy, without "trivial"). Text-only; not rendered.
+- Home #clients Chat apps card line: "Slack, Teams and others, through a bot" (Ram asked for other apps, paraphrased). Text-only; not rendered.
