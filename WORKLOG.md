@@ -3283,3 +3283,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Section 4 subtitle: install sentence shortened to "Install with pip or from the source." (Ram). Not rendered after this edit.
 - Section 4 subtitle: "Install with pip or from the source." removed (Ram). The link to installing from the source is no longer in this section. Not rendered.
 - Section 4 subtitle: "The cloud service can be shared or dedicated." removed (Ram). Paragraph 2 is now the single sync sentence. Not rendered.
+- Section 4 subtitle: "holds no state of its own" -> "is stateless", linked to docs/introduction/parts-of-the-system.html (the figure's "Stateless" link target). Not rendered.
