@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tactet</title>
-<meta name="description" content="Tactet is a model-neutral agent platform for the enterprise. Developers build, validate and publish AI agents in the built-in development environment. Clients send requests, and semantic search routes each request to the agent whose description fits.">
+<meta name="description" content="Tactet is a model-neutral agent platform for the enterprise. Developers build, validate and publish AI agents in the built-in development environment. Clients send requests, and semantic search routes each request to the right agent with high accuracy.">
 <meta property="og:title" content="Tactet">
-<meta property="og:description" content="Tactet is a model-neutral agent platform for the enterprise. Developers build, validate and publish AI agents in the built-in development environment. Clients send requests, and semantic search routes each request to the agent whose description fits.">
+<meta property="og:description" content="Tactet is a model-neutral agent platform for the enterprise. Developers build, validate and publish AI agents in the built-in development environment. Clients send requests, and semantic search routes each request to the right agent with high accuracy.">
 <meta property="og:type" content="website">
 <link rel="canonical" href="https://tactet.com/">
 <meta property="og:url" content="https://tactet.com/">
@@ -67,11 +67,11 @@
     <div class="container">
       <div class="hero-head as-head">
         <h1 class="hero-claim">Model&#8209;neutral agent platform for the&nbsp;enterprise</h1>
-        <p class="hero-lead">Developers build, validate and publish AI&nbsp;agents in the built&#8209;in <a class="hero-attr hero-attr-long" href="development.html">development environment</a>. They also describe when to use each agent in <a class="hero-attr" href="search.html#description">plain&nbsp;English</a>.</p>
-        <p class="hero-lead">Clients send requests to the&nbsp;platform. <a class="hero-attr" href="search.html">Semantic search</a> routes each request to the agent whose description&nbsp;fits. The agent runs in a <a class="hero-attr" href="runtime.html">controlled runtime</a>.</p>
-        <p class="hero-lead"><a class="hero-attr hero-attr-long" href="conversation.html">Agents share prompts</a> and build on each other in&nbsp;a&nbsp;<a class="hero-attr" href="conversation.html">conversation</a>.</p>
+        <p class="hero-lead">Developers build, validate and publish <a class="hero-attr" href="docs/introduction/tactet-agents.html">focused</a> AI&nbsp;agents in the built&#8209;in <a class="hero-attr hero-attr-long" href="development.html">development environment</a>. They also describe when to use each agent in <a class="hero-attr" href="search.html#description">plain&nbsp;English</a>.</p>
+        <p class="hero-lead">Clients send requests to the&nbsp;platform. <a class="hero-attr" href="search.html">Semantic search</a> routes each request to the right agent with <a class="hero-attr" href="docs/search/search-quality.html">high&nbsp;accuracy</a>. The agent runs in a <a class="hero-attr" href="runtime.html">controlled runtime</a>.</p>
+        <p class="hero-lead">Agents share prompts and build on each other in&nbsp;a&nbsp;<a class="hero-attr" href="conversation.html">conversation</a>.</p>
       </div>
-      <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example Inventory, which reports inventory stock levels by part and site, and Purchasing, which raises purchase orders with approved suppliers. The Tactet agent platform holds hundreds of agents. Clients send requests to it: a first request, Is part 7731 in stock in Berlin?, is matched to Inventory, which answers Berlin has 42 units of part 7731, below its reorder point of 60. A follow-up, Reorder the part, is matched to Purchasing, which answers Done. PO-5519 orders 18 units of part 7731 for Berlin. Below the platform, arrows lead from it to enterprise systems and LLMs, which the agents call.">
+      <div class="appsrv" aria-label="Developers build, validate and publish agents, and describe them in English, for example Inventory, which reports inventory stock levels by part and site, and Purchasing, which raises purchase orders with approved suppliers. The Tactet agent platform holds hundreds of agents. Clients send requests to it: a first request, Is part 7731 in stock in Berlin?, is matched to Inventory, which answers Berlin has 42 units of part 7731, below its reorder point of 60. A follow-up, Reorder the part, is matched to Purchasing, which answers Done. PO-5519 orders 18 units of part 7731 for Berlin.">
         <div class="as-side as-dev">
           <div class="as-actor"><span class="ic"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 8-4 4 4 4"/><path d="m16 8 4 4-4 4"/><path d="m14 4-4 16"/></svg></span><span class="nm">Developers</span></div>
           <i class="rail"></i>
@@ -95,10 +95,6 @@
         <div class="as-lane as-right as-r2">
           <div class="as-flow l"><span class="lbl">Reorder the part.</span><i class="ln"></i><span class="sub"><b class="as-agent">Purchasing</b>: Done. PO&#8209;5519 orders 18 units of part 7731 for&nbsp;Berlin.</span></div>
         </div>
-        <div class="as-ext">
-          <div class="as-ext-node"><span class="as-ext-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg></span><strong>Enterprise systems</strong></div>
-          <div class="as-ext-node"><span class="as-ext-ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9L12 3Z"/><path d="m19 15 .8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8L19 15Z"/></svg></span><strong>LLMs</strong></div>
-        </div>
       </div>
       <p class="hero-caption"><a href="demo-search.html">Demo: Chat with agents</a></p>
     </div>
@@ -108,7 +104,7 @@
       <div class="section-head center">
         <h2>Agents written like a skill, validated like&nbsp;software</h2>
         <p>Describe what an agent should do in plain English, and <a href="docs/development/draft-with-ai.html">Draft with AI</a> writes&nbsp;it. The result is structured <a href="development.html#first-agent">JSON with Python&nbsp;expressions</a>, so developers can refine it in the <a href="docs/development/code-editor.html">schema&#8209;aware code&nbsp;editor</a>.</p>
-        <p>An agent is not a dynamic workflow that an LLM generates. It runs as Python code with LLM calls, and it must pass <a href="docs/development/trace-and-validation.html">validation</a> before it is <a href="docs/development/publishing.html">published</a>. <a href="docs/profiles/overview.html">Profiles</a> define enterprise systems and LLMs outside the agent, so dev and prod can&nbsp;differ. <a href="docs/agent-definition/prompts.html">Prompts</a> change without a new&nbsp;version.</p>
+        <p>An agent runs as Python code with LLM calls, and it must pass <a href="docs/development/trace-and-validation.html">validation</a> before it is <a href="docs/development/publishing.html">published</a>. <a href="docs/profiles/overview.html">Profiles</a> define enterprise systems and LLMs outside the agent, so dev and prod can&nbsp;differ. <a href="docs/agent-definition/prompts.html">Prompts</a> change without a new&nbsp;version.</p>
       </div>
       <div class="fr" aria-label="The structure of an agent and the 20 commands. An agent is written in JSONC with Python expressions. The structure is shown as a JSONC outline with a label beside each level. An agent is a set of functions. The outline has two functions, main and order_status. Every run starts in main. The order_status function runs when it is called from main. Each function holds commands that run in the order they are declared: api, var and llm in main, and db and return in order_status. The var command is shown in full: it sets avg to numpy.mean([1, 2, 3]), a Python expression that uses the NumPy package and is limited to your allowlist. Beside the outline is a list headed Commands. The 20 commands are in eight groups: Variables, Flow control, LLM interaction, External systems, Human-in-the-loop, Agent output, Agent termination, Observability.">
         <div class="fr-map"><span class="fr-map-t">Agent example</span>
