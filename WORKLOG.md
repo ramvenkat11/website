@@ -3262,3 +3262,4 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Home #clients heading: "One set of agents for every client" (Ram: ok for now, not fully satisfied). Text-only; not rendered.
 - Home #clients heading: "Two calls, any client" (Ram's pick). Text-only; not rendered.
 - Home #clients subtitle, first paragraph: added "An authorization token identifies the user." before "The rest is up to the client." Text-only; not rendered.
+- Home #clients heading: "Use agents where you already work" (Ram's pick; "Two calls, any client" rejected). Text-only; not rendered.
