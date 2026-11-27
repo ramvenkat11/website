@@ -3322,3 +3322,7 @@ Old .ss-* markup and CSS removed. Next: Ram reviews.
 - Search quality page, Semantic search section: new paragraph (Ram's point, my wording): "A request is not compared with the raw text of a description. When a developer submits a description, Tactet builds a search index from it, and each request is matched against that index. How the index is built and searched is our own work, and we keep improving it." txt, docsrc and built docs updated.
 - Search quality page: "How the index is built and searched is our own work, and we keep improving it." removed (Ram). txt, docsrc and built docs updated.
 - Search quality page: "A request is not compared with the raw text of a description." removed (Ram). The paragraph is now "When a developer submits a description, Tactet builds a search index from it, and each request is matched against that index."
+
+## 2026-11-27 Hero figure: "Hundreds of agents" label
+- Tried Ram's picks 1 and 2: label "Agents" -> "Hundreds of agents" plus two lit pills named Inventory and Purchasing over the field. Ram, on seeing it: "Remove 2". The named pills and all `.as-named` rules are removed.
+- Kept: the label "Hundreds of agents" (`.as-agents-lbl { white-space: nowrap; }`; at <=560px it wraps to two centred lines, 12px). Looked at the agents box at 1280 light and 375 dark; sweep clean. aria-label already says "holds hundreds of agents".
