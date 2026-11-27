@@ -1,5 +1,1 @@
-Developers build, validate and publish AI agents in the built‑in development environment. They also describe when to use each agent in plain English.
-
-Users just chat with the platform. Semantic search routes each request to the agent whose description fits. The agent runs in a controlled runtime.
-
-Agents share prompts and build on each other in a conversation.
+Bring your own keys. OpenAI, Anthropic, Gemini, ...and compatible LLMs are supported out of the box. For any other LLM, you write a small adapter class.

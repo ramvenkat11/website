@@ -263,12 +263,12 @@
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M2 12h6.5M15.5 12H22"/></svg></div>
           <h3>Change control</h3>
-          <p>Agents are <a href="docs/development/publishing.html#versions">versioned</a>. An <a href="docs/system-management/audit-log.html">audit trail</a> shows every change to agents and configuration. A change is live on the <a href="docs/runtime/overview.html#how-a-change-reaches-every-agent-server">next agent run</a> on every server, without a&nbsp;restart.</p>
+          <p>Agents are <a href="docs/development/publishing.html#versions">versioned</a>. An <a href="docs/system-management/audit-log.html">audit trail</a> shows every change to agents and configuration. Changes to agents, configuration and profiles need <a href="docs/runtime/overview.html#how-a-change-reaches-every-agent-server">no server&nbsp;restart</a>.</p>
         </article>
         <article class="pcard">
-          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="18" r="3"/><circle cx="6" cy="6" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9v2c0 .6-.4 1-1 1H7c-.6 0-1-.4-1-1V9"/><path d="M12 12v3"/></svg></div>
-          <h3>Multiple environments</h3>
-          <p>An agent refers to enterprise systems by <a href="docs/profiles/overview.html">profile name</a>. <a href="docs/security/multiple-environments.html">Dev and prod</a> profiles can point at their own systems, so the same agent runs unchanged.</p>
+          <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 2 9 5-9 5-9-5 9-5z"/><path d="m3 12 9 5 9-5"/><path d="m3 17 9 5 9-5"/></svg></div>
+          <h3>Model neutrality</h3>
+          <p>Bring your own keys. OpenAI, Anthropic, Gemini, Ollama, vLLM, SGLang and compatible LLMs are supported <a href="docs/llm/vendors.html">out of the&nbsp;box</a>. Others need a small <a href="docs/llm/llm-adapters.html">adapter&nbsp;class</a>.</p>
         </article>
         <article class="pcard">
           <div class="icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3v18h18"/><path d="m7 15 4-5 3 3 5-7"/></svg></div>
